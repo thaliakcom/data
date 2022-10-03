@@ -1,0 +1,316 @@
+id: 30117
+tier: Abyssos
+boss: Proto-Carbuncle
+HP: 29844576
+enrage: 10:00
+description: Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had. [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
+status:
+  2911:  # Damage Down
+    duration: 30.00
+    description: Reduces damage dealt by approximately 40%.
+  2940:  # Physical Vulnerability Up
+    duration: 15.00
+    description: Makes any physical damage received lethal.
+  3390:  # Poison
+    duration: 12.00
+    description: Ticks 4 times for about 30,000 damage each tick. Note that each tick's damage is directly relative to how much damage the source tankbuster inflicted.
+  3082:  # Toxicosis
+    duration: 15.00
+    description: Ticks 5 times for approximately 24,000 damage each tick.
+  3407:  # Toxicosis (from puddles)
+    duration: 999999.0
+    description: Ticks for approximately 18,000 damage each tick for as long as the player is standing inside the caustic pool.
+actions:
+  30496:  # Sonic Howl
+    target: 0
+    damage: 45800
+    type: M
+    description: Medium-damage raidwide. [boss] always follows it up with [a:30452]. Well-timed mitigation can cover both (except for the second Ruby Glow).
+  30452:  # Ruby Glow
+    target: 0
+    damage: 65300
+    type: M
+    description: High-damage raidwide. Sets up reflective ruby walls around the arena for the next mechanic.
+  30457:  # Ruby Reflection
+    type: M
+    description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of high damage. Inflicts [s:2911].
+  30461:  # Topaz Stones
+    description: |
+      Places topaz and emeralds around the arena. After some time, both types of stones will release an effect:
+      **Topaz** will always be placed next to a ruby wall, which will reflect their [t:AoE] when they explode and bathe the entire square in [a:30457] that inflict [s:2911]. Note that this is a **lingering** effect that lasts for 3 ticks. Do not step into an affected square until the visual effect has dissipated.
+      **Emeralds** do not interact with ruby walls. They release a poison puddle that gradually grows. The maximum size of these puddles is slightly smaller than the total length of the arena. Stepping into a puddle inflicts [s:3082] for 15 seconds.
+  30493:  # Venomous Mass
+    target: 1
+    damage: 71200
+    type: M
+    description: High-damage tankbuster. Inflicts [s:2940] and [s:3390]. Immediately follows up with [a:30794], which deals physical damage and thus requires a tankswap.
+    note: This hit of the tankbuster is an [t:AoE]. Stay away from the main tank during this cast!
+  30794:  # Toxic Crunch
+    target: 1
+    damage: 76700
+    type: P
+    description: |
+      High-damage tankbuster. Inflicts [s:3390]. Note that this tankbuster **cannot be invulned** if you have [s:2940], as the resulting [s:3390] effect is directly relative to how much damage the initial hit inflicted. With [s:2940] each tick of the DoT will be lethal. Due to the DoT's long duration, it is not possible to cover all 4 ticks with invulnerability either.
+      Be aware that [s:2940] will fade before the boss starts auto-attacking again, so there is no need to swap back after this hit.
+  30476:  # Venom
+    target: 4
+    damage: 177396
+    type: M
+    description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
+  30477:  # Scatterbait
+    target: 0
+    type: M
+    description: High-damage raidwide that inflicts [s:2911] on every living party member.
+  Caustic Pools:
+    description: |
+      Spawns 4 caustic pools on the circular engravings in the arena floor – two on the inside, two on the outside. 10 orbs slowly encircle the puddle. After the tenth orb appears, the puddle will "resolve". At that time, there must be two players inside the puddle or [s:30476] will hit the closest player to the puddle, likely killing them and anyone nearby, and spawning a [n:11441] which will begin to cast [a:30477].
+      Entering the puddle inflicts [s:3407], so it is recommended to stand on the outside of the pool and only enter your designated pool when there are only 1 or 2 missing orbs around the pool.
+    strategy: Assign partners at the start of the fight. Tanks should always be paired with each other; the remaining partners can be assigned freely, but it is common to use role partners (melees with melees, healers with healers, ranged with ranged). Designate two pairs that always take outside pools and two pairs that always take inside pools. It is recommended to make the tanks and melee DPS take the inside pools, but the boss's hitbox is large enough that even melees can maintain full melee uptime from an outside pool.
+    strategies:
+      - name: Clockwise/counter-clockwise priority
+        description: |
+          One inside pair always starts north and goes clockwise until it finds a pool (most commonly tanks). The other inside pair does the opposite, starting west and going counter-clockwise until they find a pool. The same goes for the two outside pairs, but they start northeast and northwest, respectively.
+          If you put markers on each of the pool spawn points (letters on the inside, numbers on the outside), another way to think about it is that you always take the first pooled marker in the sequence if you're the clockwise pair, and the last pooled marker in the sequence if you're the counter-clockwise pair. For instance, if there are pools on the B and C markers, the north pair would choose B, as it comes before C in the alphabet, and the other pair chooses C.
+  30492:  # Double Rush
+    target: 0
+    damage: 58000
+    type: P
+    description: \[boss] faces one of two directions and rushes the arena twice, applying a knockback and heavy damage to anything in its path. Since [boss] always starts in the center, the first rush can and should be avoided by simply standing behind [boss]. The second rush cannot be avoided and should be mitigated. You can use [a:7548] and [a:7559] to negate the knockback.
+    note: This attack forces downtime on melee players. With good ping, you may be able to get a [t:GCD] in as [boss] rushes past the second time, but your [t:GCD] may easily be [ghosted](t:ghosting).
+  30488:  # Venom Rain
+    target: 0
+    damage: 64000
+    type: M
+    description: Hits every party member with a high-damage [t:AoE].
+    strategy: Assign clock spots at the start of the fight and use them here.
+  30489:  # Venom Drops
+    target: 0
+    type: M
+    description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
+  30490:  # Venom Pool
+    target: 5
+    damage: 50000
+    type: M
+    description: |
+      Hits both healers with an untelegraphed [t:AoE] that should be shared by exactly 4 players.
+      This attack has a special interaction with topaz stones. If dropped within the [t:AoE] circle of a topaz stone before it explodes, it will *swap* that topaz to an emerald.
+  30486:  # Venom Squall
+    description: "Uses the following sequence of attacks: [a:30488] → [a:30489] → [a:30490] (or: spread → bait → stack)."
+    strategies:
+      - name: Stay after spread
+        description: Healers spread far away from [boss], close to the edge of the arena. Everyone elses is in their designated clock position. Afterwards all players remain in position where they spread. Once the baited puddles appear, everyone moves to one of the two safe spots on [boss]'s sides, where healer stacks will happen. This minimizes movement for casters.
+      - name: Center after spread
+        description: After the initial spreads, everyone moves dead-center of [boss]'s hitbox. Once all [a:30489] puddles are baited in the center, everyone moves to their healer's stack spot.
+  30487:  # Venom Surge
+    description: "Uses the following sequence of attacks: [a:30490] → [a:30489] → [a:30488] (or: stack → bait → spread)."
+    strategies:
+      - name: Stay after stack
+        description: Healer stacks happen close to [boss], inside the monster's hitbox. Afterwards all players remain in position where they stacked. Once the baited puddles appear, everyone moves to their designated clock positions. Healers move out past the baited puddles in the direction of their clock spots. This minimizes movement for casters.
+      - name: Center after stack
+        description: After the initial stacks, everyone moves dead-center of [boss]'s hitbox. Once all [a:30489] puddles are baited in the center, everyone moves to their designated clock spots.
+  30479:  # Raging Claw
+    type: P
+    description: "[boss] cleaves the arena in front of it with seven deadly hits that inflict [s:2911]. This attack does not interact with ruby walls. The safe zone is always behind [boss]."
+  30481:  # Raging Tail
+    type: P
+    description: "[boss] cleaves the arena behind it with a heavy hit that inflicts [s:2911]. The safe zone is always in front of [boss]."
+  30455:  # Searing Ray
+    type: M
+    description: |
+      [boss] cleaves the arena in front of it with a heavy hit that inflicts [s:2911]. If the attack hits a ruby wall, the entire square will be bathed in [a:30457].
+      In Savage, this attack is only ever used in combination with a ruby wall, so stay away from [boss] during this cast.
+  30482:  # Tail to Claw
+    description: "Uses the following sequence of attacks: [a:30481] → 7 hits of [a:30479] (or: get in front → get behind)."
+    note: Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind him just as [a:30481] comes out.
+  30478:  # Claw to Tail
+    description: "Uses the following sequence of attacks: 7 hits of [a:30479] → [a:30481] (or: get behind → wait → get in front). The last hit of the [a:30479] sequence is the double claw finisher. This is your cue to switch sides, as [a:30481] will hit the rear immediately after, with no additional cast time."
+    note: Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind it just as (or even *before*) the last hit of [a:30479] comes out.
+  30793:  # Devour
+    description: "[boss] lowers itself to all fours and "
+  30497:  # Sonic Shatter
+    target: 0
+    type: M
+    damage: 40000
+    description: Medium damage raidwide used five times in quick succession.
+  30499:  # Acidic Slaver
+    target: 0
+    type: M
+    damage: 999999.0
+    description: This is the [t:enrage].
+timeline:
+  - at: 00:10
+    id: 30496
+  - at: 00:17
+    id: 30452
+    description: Divides the arena into quarters.
+  - at: 00:25
+    id: 30461
+    description: Spawns 2 topaz and 2 emeralds. Only one square is safe.
+    patterns:
+      - name: Tight pattern
+        graph: ruby-glow-1-1
+        description: If all topaz are in different squares from the emeralds, the safe spot is on the outer corner of the square with the close emerald. The boss follows tanks here, so it is imperative that the tanks don't take the scenic route to the safe spot.
+      - name: Wide pattern
+        graph: ruby-glow-1-2
+        description: If a topaz shares a square with an emerald, there will be one square with neither topaz nor emerald in it. Half of this square is safe.
+  - at: 00:51
+    id: 30493
+  - at: 00:58
+    id: 30794
+  - at: 01:25
+    id: Caustic Pools
+  - at: 01:29
+    id: 30493
+  - at: 01:36
+    id: 30794
+macros:
+graphing:
+  elements:
+    ruby-wall-short:
+      graphic:
+        - type: rectangle
+          width: 100
+          height: 2
+          color: "#FC8796"
+      description: A ruby wall. Has no direct effect and can be freely stepped through, but reflects any magic fired at it.
+    ruby-wall-long:
+      graphic:
+        - type: rectangle
+          width: 141.42
+          height: 2
+          color: "#FC8796"
+      description: A ruby wall. Has no direct effect and can be freely stepped through, but reflects any magic fired at it.
+    emerald:
+      graphic:
+        - type: radial
+          width: 40
+          height: 40
+          color: "#4CD2A3"
+          effect: pulsate 9s
+      description: An emerald that initially has no effect, but soon spawns an expanding poison puddle around it. Inflicts [s:3082] if stepped in.
+    topaz:
+      graphic:
+        - type: radial-half
+          width: 5
+          height: 10
+          color: yellow
+      description: A topaz placed on a ruby wall that will soon shatter, bathing its entire walled-off section with [a:30457].
+    topaz-explosion:
+      graphic:
+        - type: rectangle
+          width: 50
+          height: 50
+          color: "#FCFCFF"
+          effect: pulse 1s
+      description: The square is being bathed in the light of [a:30457].
+  graphs:
+    - id: ruby-glow-1-1
+      background: https://i.imgur.com/hoi2bAP.jpeg
+      steps:
+        - elements:
+            - id: ruby-wall-short-1
+              x: 50
+              y: 50
+            - id: ruby-wall-short-2
+              x: 50
+              y: 50
+              rotate: 90deg
+            - id: emerald-1
+              x: 40
+              y: 60
+            - id: emerald-2
+              x: 90
+              y: 10
+            - id: topaz-1
+              x: 50
+              y: 25
+            - id: topaz-explosion-1
+              x: 25
+              y: 25
+            - id: topaz-2
+              x: 75
+              y: 50
+              rotate: -90deg
+            - id: topaz-explosion-2
+              x: 75
+              y: 75
+          players:
+            T1:
+              x: 5
+              y: 95
+            T2:
+              x: 5
+              y: 95
+            H1:
+              x: 5
+              y: 95
+            H2:
+              x: 5
+              y: 95
+            M1:
+              x: 5
+              y: 95
+            M2:
+              x: 5
+              y: 95
+            R1:
+              x: 5
+              y: 95
+            R2:
+              x: 5
+              y: 95
+    - id: ruby-glow-1-2
+      background: https://i.imgur.com/hoi2bAP.jpeg
+      steps:
+        - elements:
+            - id: ruby-wall-short-1
+              x: 50
+              y: 50
+            - id: ruby-wall-short-2
+              x: 50
+              y: 50
+              rotate: 90deg
+            - id: emerald-1
+              x: 40
+              y: 60
+            - id: emerald-2
+              x: 90
+              y: 10
+            - id: topaz-1
+              x: 50
+              y: 25
+            - id: topaz-explosion-1
+              x: 25
+              y: 25
+            - id: topaz-2
+              x: 25
+              y: 50
+              rotate: 90deg
+            - id: topaz-explosion-2
+              x: 25
+              y: 75
+          players:
+            T1:
+              x: 95
+              y: 95
+            T2:
+              x: 95
+              y: 95
+            H1:
+              x: 95
+              y: 95
+            H2:
+              x: 95
+              y: 95
+            M1:
+              x: 95
+              y: 95
+            M2:
+              x: 95
+              y: 95
+            R1:
+              x: 95
+              y: 95
+            R2:
+              x: 95
+              y: 95
