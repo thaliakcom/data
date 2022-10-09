@@ -2,17 +2,17 @@ id: 30117
 date: 2022-10-03
 modified: 2022-10-03
 author: 27637301
-tier: Abyssos
-boss: Hegemone
+tier: Asphodelos
+boss: Phoinix
 HP: 29844576
-enrage: 10:00
-required_dps: 53900
+enrage: 11:03
+required_dps: 42200
 wip: true
 description: Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had. [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
 status:
   2911:  # Damage Down
     duration: 30.00
-    description: Reduces damage dealt by approximately 31%.
+    description: Reduces damage dealt by approximately 36%.
 actions:
 timeline:
 macros:
