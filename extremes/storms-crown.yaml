@@ -1,0 +1,19 @@
+id: 20085
+patch: 6.2
+date: 2022-11-04
+modified: 2022-11-04
+author: 27637301
+boss: Barbariccia
+HP: 0
+enrage: 00:00
+required_dps: 0
+wip: true
+description: Unknown
+status:
+  2911:  # Damage Down
+    duration: 30.00
+    description: Reduces damage dealt by approximately 25%.
+actions:
+timeline:
+macros:
+graphing:
