@@ -1,0 +1,17 @@
+id: 30004
+patch: 2.0
+date: 2022-11-22
+modified: 2022-11-22
+author: 27637301
+tier: The Binding Coil of Bahamut
+boss: None
+HP: 0
+enrage: 00:00
+required_dps: 0
+wip: true
+description: Unknown
+status:
+actions:
+timeline:
+macros:
+graphing:
