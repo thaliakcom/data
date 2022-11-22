@@ -1,0 +1,20 @@
+id: 20009
+patch: 2.1
+date: 2022-11-22
+modified: 2022-11-22
+author: 27637301
+tier: A Realm Reborn MSQ
+boss: Titan
+HP: 0
+enrage: 00:00
+required_dps: 0
+wip: true
+description: Unknown
+status:
+  2911:  # Damage Down
+    duration: 30.00
+    description: Reduces damage dealt by approximately 25%.
+actions:
+timeline:
+macros:
+graphing:
