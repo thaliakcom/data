@@ -156,7 +156,7 @@ timeline:
   - at: 00:25
     id: 30461
     description: Spawns 2 topaz and 2 emeralds. Only one square is safe.
-    patterns:
+    variations:
       - name: Tight pattern
         graph: ruby-glow-1-1
         description: If all topaz are in different squares from the emeralds, the safe spot is on the outer corner of the square with the close emerald. The boss follows tanks here, so it is imperative that the tanks don't take the scenic route to the safe spot.
