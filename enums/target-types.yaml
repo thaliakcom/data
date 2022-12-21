@@ -10,3 +10,7 @@
   description: Hits the player who is closest to the source (usually the boss).
 - name: Healers
   description: Targets both healers. If less than two healers are alive, usually targets a random party member.
+- name: Primary target (Shared)
+  description: Hits the player with the highest enmity with an attack that must be shared by another player.
+- name: Double
+  description: Hits the two players with the highest enmity.
