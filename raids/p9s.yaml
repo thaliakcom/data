@@ -1,0 +1,23 @@
+id: 30127
+patch: 6.4
+date: 2023-05-30
+modified: 2023-06-11
+author: 27637301
+tier: Anabaseios
+boss: Kokytos
+HP: 36660084
+enrage: 10:00
+average_hp: 73000
+autos: O/1
+description: |
+  A variety encounter, as [boss] eats souls for breakfast, then adopts their aspects. While most of the fight revolves around simple AoE avoidance and stack/spread mechanics,
+  [boss] executes a dangerous Limit Cut mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.
+wip: true
+status:
+  2911:  # Damage Down
+    duration: 30.00
+    description: Reduces damage dealt by approximately 25%.
+actions:
+timeline:
+macros:
+graphing:

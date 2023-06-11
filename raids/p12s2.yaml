@@ -1,0 +1,25 @@
+id: 30133
+patch: 6.4
+date: 2023-05-30
+modified: 2023-06-11
+author: 27637301
+tier: Anabaseios
+boss: Pallas Athena
+suffix: " Part 2"
+HP: 40192744
+enrage: 8:45
+average_hp: 73000
+autos: M/1
+spoiler: true
+wip: true
+description: |
+  Embracing the Heart of Sabik, Athena obtains the High Seraph's power to unmake worlds and alter the laws of reality.
+  To beat her with her newfound might, players must gain an understanding of these new laws of reality as written by Athena.
+status:
+  2911:  # Damage Down
+    duration: 30.00
+    description: Reduces damage dealt by 50%.
+actions:
+timeline:
+macros:
+graphing:
