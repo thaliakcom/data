@@ -8,7 +8,6 @@ boss: Gaia
 suffix: " Part 2"
 HP: 0
 enrage: 00:00
-required_dps: 0
 spoiler: true
 wip: true
 description: Unknown

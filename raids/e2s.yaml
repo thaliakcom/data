@@ -8,7 +8,6 @@ tier: Eden's Gate
 boss: Voidwalker
 HP: 0
 enrage: 00:00
-required_dps: 0
 wip: true
 description: Unknown
 status:

@@ -7,7 +7,6 @@ tier: Alphascape
 boss: Midgardsormr
 HP: 0
 enrage: 00:00
-required_dps: 0
 wip: true
 description: Unknown
 status:

@@ -7,7 +7,7 @@ tier: Abyssos
 boss: Proto-Carbuncle
 HP: 29844576
 enrage: 10:00
-required_dps: 49200
+average_hp: 60000
 autos: P/1
 description: |
   Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had.
