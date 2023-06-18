@@ -7,7 +7,6 @@ tier: Abyssos
 boss: Hephaistos
 suffix: " Part 1"
 HP: 29844576
-enrage: 10:00
 average_hp: 60000
 autos: M/1
 wip: true
