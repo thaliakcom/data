@@ -13,11 +13,30 @@ autos:
 description: |
   A variety encounter, as [boss] eats souls for breakfast, then adopts their aspects. While most of the fight revolves around simple AoE avoidance and stack/spread mechanics,
   [boss] executes a dangerous Limit Cut mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.
-wip: true
 status:
+  2095:  # Lightning Resistance Down II
+    duration: 10.00
+    description: Makes any lightning damage received lethal.
+  2098:  # Fire Resistance Down II
+    duration: 10.00
+    description: Makes any fire damage received lethal.
+  2096:  # Wind Resistance Down II
+    duration: 10.00
+    description: Makes any wind damage received lethal.
   2911:  # Damage Down
     duration: 30.00
     description: Reduces damage dealt by approximately 25%.
+  2940:  # Physical Vulnerability Up
+    duration: 10.00
+    description: Makes any physical damage received lethal.
+  2941:  # Magic Vulnerability Up
+    description: Makes any magic damage received lethal.
+  2944:  # Concussion
+    duration: 12.00
+    description: A heavy [t:DoT] inflicted by [a:33135] that ticks 4 times for approximately 31,000 damage per tick.
+  3323:  # Dark Resistance Down II
+    duration: 10.00
+    description: Makes any dark magic damage received lethal.
 actions:
 timeline:
 macros:
