@@ -7,7 +7,9 @@ tier: Anabaseios
 boss: Pandæmonium
 HP: 43656896
 average_hp: 73000
-autos: M/1
+autos:
+  target: MT
+  type: magic
 wip: true
 description: |
   Facing the enormous monster prison, now bequeathed with its own soul, players must avoid its attacks, lest they be entrapped in its dark depths for all eternity.

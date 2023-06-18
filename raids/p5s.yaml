@@ -7,7 +7,10 @@ tier: Abyssos
 boss: Proto-Carbuncle
 HP: 29844576
 average_hp: 60000
-autos: P/1
+wip: true
+autos:
+  target: MT
+  type: physical
 description: |
   Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had.
   [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
@@ -148,12 +151,12 @@ actions:
     damage: 9999999
     description: This is the [t:enrage].
 timeline:
-  - at: 00:10
+  - at: 10000
     id: 30496
-  - at: 00:17
+  - at: 17000
     id: 30452
     description: Divides the arena into quarters.
-  - at: 00:25
+  - at: 25000
     id: 30461
     description: Spawns 2 topaz and 2 emeralds. Only one square is safe.
     variations:
@@ -163,15 +166,15 @@ timeline:
       - name: Wide pattern
         graph: ruby-glow-1-2
         description: If a topaz shares a square with an emerald, there will be one square with neither topaz nor emerald in it. Half of this square is safe.
-  - at: 00:51
+  - at: 51000
     id: 30493
-  - at: 00:58
+  - at: 58000
     id: 30794
-  - at: 01:25
+  - at: 85000
     id: Caustic Pools
-  - at: 01:29
+  - at: 89000
     id: 30493
-  - at: 01:36
+  - at: 96000
     id: 30794
 macros:
 graphing:

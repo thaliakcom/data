@@ -1,0 +1,12 @@
+physical:
+  name: Physical
+  description: Inflicts physical damage. Cannot be mitigated by abilities that target magic damage.
+magic:
+  name: Magical
+  description: Inflicts magical damage. Cannot be mitigated by abilities that target physical damage.
+dark:
+  name: Darkness
+  description: Inflicts darkness damage. Cannot be mitigated in any way.
+mixed:
+  name: Mixed
+  description: Inflicts a mix of physical and magical damage.

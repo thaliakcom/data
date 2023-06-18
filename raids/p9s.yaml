@@ -7,7 +7,9 @@ tier: Anabaseios
 boss: Kokytos
 HP: 36660084
 average_hp: 73000
-autos: O/1
+autos:
+  target: MT
+  type: mixed
 description: |
   A variety encounter, as [boss] eats souls for breakfast, then adopts their aspects. While most of the fight revolves around simple AoE avoidance and stack/spread mechanics,
   [boss] executes a dangerous Limit Cut mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.

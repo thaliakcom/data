@@ -8,7 +8,9 @@ boss: Hephaistos
 suffix: " Part 2"
 HP: 29844576
 average_hp: 60000
-autos: M/6
+autos:
+  target: MT
+  type: magic
 spoiler: true
 wip: true
 description: Unknown

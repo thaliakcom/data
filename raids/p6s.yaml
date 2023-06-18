@@ -8,7 +8,9 @@ tier: Abyssos
 boss: Hegemone
 HP: 29844576
 average_hp: 60000
-autos: M/1
+autos:
+  target: MT
+  type: magic
 wip: true
 description: Unknown
 status:

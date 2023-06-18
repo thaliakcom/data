@@ -8,7 +8,9 @@ tier: Abyssos
 boss: Agdistis
 HP: 29844576
 average_hp: 60000
-autos: M/7
+autos:
+  target: MTOT
+  type: magic
 wip: true
 description: Unknown
 status:
