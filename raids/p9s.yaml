@@ -37,7 +37,385 @@ status:
   3323:  # Dark Resistance Down II
     duration: 10.00
     description: Makes any dark magic damage received lethal.
+  3545:  # Chimeric Soul
+    name: Chimeric Soul
 actions:
+  33048:  # Ravening
+    description: "[boss] consumes a soul and absorbs its power, changing its form to either [s:3542], [s:3543], [s:3544], or [s:3545]. At the end of the animation, [boss] executes [a:33051], inflicting heavy raidwide damage."
+    attack: raidwide
+    type: magic
+    damage: 60000
+  33100:  # Gluttony's Augur
+    description: Moderate raidwide damage.
+    attack: raidwide
+    type: magic
+    damage: 28000
+  33105:  # Duality of Death
+    description: "[boss] channels wind and fire, then hits the highest enmity player with [a:33106] (inflicting [s:2098]) and the second-highest enmity player with [a:33107] (inflicting [s:2096]). It executes this attack twice in quick succession. Due to the elemental vulnerabilities inflicted, this attack necessitates a tankswap."
+  33108:  # Dualspell
+    description: |
+      [boss] channels either ice and lightning, or ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players.
+      **Fire**: all 4 players of one role (either all DPS or all tanks and healers) are targeted with [a:33110], a fire pillar that must be shared by at least one other player and inflicts [s:2098], preventing players from being hit by more than one [a:33110].
+      **Lightning**: all 8 players are targeted with [a:33114], a lightning-aspected line [t:AoE] that inflicts [s:2095], preventing players from being clipped by a line other than their own.
+      **Ice**: A giant [t:dynamo] [t:AoE] originating from the center of the arena.
+    strategies:
+      - name: Ice and Thunder (out)
+        graph: dualspell-thunder-l
+      - name: Ice and Thunder (in)
+        graph: dualspell-thunder-s
+      - name: Ice and Fire (out)
+        graph: dualspell-fire-l
+      - name: Ice and Fire (in)
+        graph: dualspell-fire-s
+  33118:  # Uplift
+    description: "[boss] erects four ice walls around the outside of the arena. The walls are either placed on cardinals or intercardinals."
+  33119:  # Archaic Rockbreaker
+    description: Placeholder description for Archaic Rockbreaker
+  33129:
+    name: Rear Combination
+    description: Placeholder description for Rear Combination
+  33130:
+    name: Front Combination
+    description: Placeholder description for Front Combination
+  33133:  # Archaic Demolish
+    description: Placeholder description for Archaic Demolish
+  33135:  # Ascendant Fist
+    description: Placeholder description for Ascendant Fist
+  33136:  # Charybdis
+    description: Placeholder description for Charybdis
+  33138:  # Comet
+    description: Placeholder description for Comet
+  33139:  # Comet Impact
+    description: Placeholder description for Comet Impact
+  33140:  # Burst
+    description: Placeholder description for Burst
+  33141:  # Ecliptic Meteor
+    description: Placeholder description for Ecliptic Meteor
+  33143:  # Beastly Bile
+    description: Placeholder description for Beastly Bile
+  33145:  # Thunderbolt
+    description: Placeholder description for Thunderbolt
+  33148:  # Levinstrike Summoning
+    description: Placeholder description for Levinstrike Summoning
+  33149:  # Scrambled Succession
+    description: Placeholder description for Scrambled Succession
+  33153:  # Shock
+    description: Placeholder description for Shock
+  33157:  # Two Minds
+    description: "Identical to [a:33108] except for one thing: [a:33108] executes both the telegraph for the empowered element and the mechanic with a significant delay *after* the cast finishes, while [a:33157] shows the element *during* the cast and executes the mechanic immediately at the end of the cast. To make up for this, [a:33157] has a longer cast time."
+  33158:  # Beastly Fury
+    description: Placeholder description for Beastly Fury
+  33162:  # Disintegration
+    description: Placeholder description for Disintegration
+  33211:
+    name: Chimeric Succession
+    description: Placeholder description for Chimeric Succession
+  33315:  # Swinging Kick
+    description: Placeholder description for Swinging Kick
+  33336:  # Inside Roundhouse
+    description: Placeholder description for Inside Roundhouse
+  33337:  # Outside Roundhouse
+    description: Placeholder description for Outside Roundhouse
+  34702:
+    name: Front Firestrikes
+    description: Placeholder description for Front Firestrikes
+  34703:
+    name: Rear Firestrikes
+    description: Placeholder description for Rear Firestrikes
+  34709:  # Swinging Kick
+    description: Placeholder description for Swinging Kick
 timeline:
+  - at: 6856
+    id: 33100
+  - at: 20877
+    id: 33048
+    phase: Mage Phase
+  - at: 41451
+    id: 33105
+  - at: 54762
+    id: 33108
+  - at: 67909
+    id: 33108
+  - at: 81035
+    id: 33108
+  - at: 109933
+    id: 33048
+    phase: Martialist Phase
+  - at: 109977
+    id: 33118
+  - at: 128374
+    id: 33135
+  - at: 140805
+    id: 33119
+  - at: 148959
+    id: [33130, 33129]
+  - at: 155233
+    id: [33336, 33337]
+  - at: 158352
+    id: 33315
+  - at: 161249
+    id: [33337, 33336]
+  - at: 164325
+    id: 33133
+  - at: 170468
+    id: 33100
+  - at: 181804
+    id: 33135
+  - at: 204172
+    id: 33048
+    phase: Mage/Martialist Phase
+  - at: 204217
+    id: 33118
+  - at: 217304
+    id: 33148
+  - at: 223411
+    id: 33149
+  - at: 237406
+    id: 33153
+  - at: 243075
+    id: 33153
+  - at: 248653
+    id: 33153
+  - at: 254320
+    id: 33153
+  - at: 257982
+    id: 33157
+  - at: 267081
+    id: 33100
+  - at: 286141
+    id: 33048
+    phase: Beast Phase
+  - at: 299470
+    id: 33136
+  - at: 304596
+    id: 33138
+  - at: 305622
+    id: 33139
+  - at: 313734
+    id: 33143
+  - at: 320865
+    id: 33145
+  - at: 326513
+    id: 33140
+  - at: 327003
+    id: 33145
+  - at: 332488
+    id: 33140
+  - at: 334181
+    id: 33141
+  - at: 343269
+    id: 33140
+  - at: 349680
+    id: 33158
+  - at: 369944
+    id: 33048
+    phase: Mage/Martialist Phase
+  - at: 369988
+    id: 33118
+  - at: 388416
+    id: 33105
+  - at: 397605
+    id: 33119
+  - at: 407774
+    id: 33108
+  - at: 420929
+    id: 33100
+  - at: 433348
+    id: 33211
+  - at: 445825
+    id: [34702, 34703]
+  - at: 456307
+    id: 34709
+  - at: 462852
+    id: 33157
+  - at: 481876
+    id: 33048
+    phase: Mage Phase
+  - at: 495012
+    id: 33108
+  - at: 508154
+    id: 33100
+  - at: 515279
+    id: 33108
+  - at: 529464
+    id: 33105
+  - at: 538626
+    id: 33108
+  - at: 551756
+    id: 33100
+  - at: 574035
+    id: 33048
+  - at: 587171
+    id: 33162
 macros:
 graphing:
+  coordinate-system: polar
+  defs:
+    thunder: "linear-gradient(0 #ABFFFC 10% #3F8DFB 80% #3F8DFB 100% #ABFFFC)"
+  elements:
+    arena:
+      type: ellipse
+      image: https://i.imgur.com/WDIUtwE.jpeg
+    boss:
+      size: 85
+    thunder-l:
+      coordinate-system: cartesian
+      type: rectangle
+      size: [50, 100]
+      scale: [1, 0]
+      color: "url(#thunder)"
+      opacity: 0.5
+      origin: [0.5, 0]
+    thunder-s:
+      coordinate-system: cartesian
+      type: rectangle
+      size: [28, 100]
+      scale: [1, 0]
+      color: "url(#thunder)"
+      opacity: 0.5
+      origin: [0.5, 0]
+    ice-l:
+      type: donut
+      size: [72, 200]
+      color: "#ffffff"
+      opacity: 0
+    ice-s:
+      type: donut
+      size: [126, 200]
+      color: "#ffffff"
+      opacity: 0
+    pyremeld:
+      type: ellipse
+      size: 120
+      scale: 0
+      color: "#ffa700"
+      opacity: 0.5
+  graphs:
+    dualspell-thunder-l:
+      - thunder-l#1: [0, 0, 0]
+        thunder-l#2: [0, 0, 45]
+        thunder-l#3: [0, 0, 90]
+        thunder-l#4: [0, 0, 135]
+        thunder-l#5: [0, 0, 180]
+        thunder-l#6: [0, 0, -135]
+        thunder-l#7: [0, 0, -90]
+        thunder-l#8: [0, 0, -45]
+        ice-s: [0, 0]
+        boss: [0, 0]
+        T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+      - T1: [60, 0]
+        T2: [60, 180]
+        H1: [60, -90]
+        H2: [60, 90]
+        M1: [60, -135]
+        M2: [60, 135]
+        R1: [60, -45]
+        R2: [60, 45]
+      - thunder-l#1: { h: 1 }
+        thunder-l#2: { h: 1 }
+        thunder-l#3: { h: 1 }
+        thunder-l#4: { h: 1 }
+        thunder-l#5: { h: 1 }
+        thunder-l#6: { h: 1 }
+        thunder-l#7: { h: 1 }
+        thunder-l#8: { h: 1 }
+        ice-s: { opacity: 0.5 }
+    dualspell-thunder-s:
+      - thunder-s#1: [0, 0, 0]
+        thunder-s#2: [0, 0, 45]
+        thunder-s#3: [0, 0, 90]
+        thunder-s#4: [0, 0, 135]
+        thunder-s#5: [0, 0, 180]
+        thunder-s#6: [0, 0, -135]
+        thunder-s#7: [0, 0, -90]
+        thunder-s#8: [0, 0, -45]
+        ice-l: [0, 0]
+        boss: [0, 0]
+        T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+      - T1: [33, 0]
+        T2: [33, 180]
+        H1: [33, -90]
+        H2: [33, 90]
+        M1: [33, -135]
+        M2: [33, 135]
+        R1: [33, -45]
+        R2: [33, 45]
+      - thunder-s#1: { h: 1 }
+        thunder-s#2: { h: 1 }
+        thunder-s#3: { h: 1 }
+        thunder-s#4: { h: 1 }
+        thunder-s#5: { h: 1 }
+        thunder-s#6: { h: 1 }
+        thunder-s#7: { h: 1 }
+        thunder-s#8: { h: 1 }
+        ice-l: { opacity: 0.5 }
+    dualspell-fire-l:
+      - ice-s: [0, 0]
+        pyremeld#1: [60, -135]
+        pyremeld#2: [60, 135]
+        pyremeld#3: [60, -45]
+        pyremeld#4: [60, 45]
+        boss: [0, 0]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+        T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+      - T1: [60, 45]
+        T2: [60, -135]
+        H1: [60, -45]
+        H2: [60, 135]
+        M1: [60, -135]
+        M2: [60, 135]
+        R1: [60, -45]
+        R2: [60, 45]
+      - pyremeld#1: { scale: 1 }
+        pyremeld#2: { scale: 1 }
+        pyremeld#3: { scale: 1 }
+        pyremeld#4: { scale: 1 }
+        ice-s: { opacity: 0.5 }
+    dualspell-fire-s:
+      - ice-l: [0, 0]
+        pyremeld#1: [33, -135]
+        pyremeld#2: [33, 135]
+        pyremeld#3: [33, -45]
+        pyremeld#4: [33, 45]
+        boss: [0, 0]
+        T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+      - T1: [33, 45]
+        T2: [33, -135]
+        H1: [33, -45]
+        H2: [33, 135]
+        M1: [33, -135]
+        M2: [33, 135]
+        R1: [33, -45]
+        R2: [33, 45]
+      - pyremeld#1: { scale: 0.6 }
+        pyremeld#2: { scale: 0.6 }
+        pyremeld#3: { scale: 0.6 }
+        pyremeld#4: { scale: 0.6 }
+        ice-l: { opacity: 0.5 }
