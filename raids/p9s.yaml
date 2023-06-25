@@ -10,7 +10,7 @@ average_hp: 73000
 autos:
   target: MT
   type: mixed
-description: |
+description: >
   A variety encounter, as [boss] eats souls for breakfast, then adopts their aspects. While most of the fight revolves around simple AoE avoidance and stack/spread mechanics,
   [boss] executes a dangerous Limit Cut mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.
 status:
@@ -52,11 +52,17 @@ actions:
     damage: 28000
   33105:  # Duality of Death
     description: "[boss] channels wind and fire, then hits the highest enmity player with [a:33106] (inflicting [s:2098]) and the second-highest enmity player with [a:33107] (inflicting [s:2096]). It executes this attack twice in quick succession. Due to the elemental vulnerabilities inflicted, this attack necessitates a tankswap."
+    attack: tb
+    target: MTOT
+    type: magic
   33108:  # Dualspell
     description: |
       [boss] channels either ice and lightning, or ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players.
+
       **Fire**: all 4 players of one role (either all DPS or all tanks and healers) are targeted with [a:33110], a fire pillar that must be shared by at least one other player and inflicts [s:2098], preventing players from being hit by more than one [a:33110].
+
       **Lightning**: all 8 players are targeted with [a:33114], a lightning-aspected line [t:AoE] that inflicts [s:2095], preventing players from being clipped by a line other than their own.
+      
       **Ice**: A giant [t:dynamo] [t:AoE] originating from the center of the arena.
     strategies:
       - name: Ice and Thunder (out)
@@ -134,10 +140,13 @@ timeline:
     id: 33105
   - at: 54762
     id: 33108
+    description: "[boss] channels ice and fire, requiring partner stacks. See [here](a:33108) for more information."
   - at: 67909
     id: 33108
+    description: "[boss] channels ice and thunder, requiring clock positions. See [here](a:33108) for more information."
   - at: 81035
     id: 33108
+    description: "[boss] channels ice and fire, requiring partner stacks. The strengthened element will be the opposite of the first one. See [here](a:33108) for more information."
   - at: 109933
     id: 33048
     phase: Martialist Phase
