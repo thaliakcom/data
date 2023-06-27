@@ -1,11 +1,17 @@
+mechanic:
+  name: minor mechanic
+  description: Requires the party to take certain steps to avoid heavy damage and deaths.
+mechanic-xl:
+  name: major mechanic
+  description: Requires the party to take certain steps to avoid certain doom.
 raidwide:
-  name: Raidwide
+  name: raidwide
   description: Hits all party members with moderate to heavy damage.
 tb:
-  name: Tankbuster
+  name: tankbuster
   description: A heavy-hitting attack that must be heavily mitigated with tank cooldowns to survive.
 stack:
-  name: Stack
+  name: stack
   description: A heavy-hitting attack on a party member. Other party members must stack close to reduce the damage dealt and make it survivable. The more players stack, the less damage each individual person receives.
 stack-2:
   name: 2P Stack
@@ -14,7 +20,7 @@ stack-3:
   name: 3P Stack
   description: A heavy-hitting attack on a party member that must be shared by two other party members to reduce the damage to survivable levels. Any more players will not further reduce the damage.
 stack-line:
-  name: Line Stack
+  name: line stack
   description: A variation of the stack where each player must be in a line with the targeted player to reduce the damage to survivable levels.
 wild-charge:
   name: Wild Charge
@@ -23,35 +29,35 @@ wild-charge-2:
   name: 2P Wild Charge
   description: An attack that deals heavy damage to all players in a line with the targeted players. The first two players hit receive drastically increased damage, requiring heavy mitigation through the use of tank cooldowns to survive. So named due to Imdugud's signature attack.
 dorito:
-  name: Dorito Stack
+  name: dorito stack
   description: A mechanic that requires affected players to stack with at least one other party member. They will not receive damage, but failing to stack will generally inflict heavy damage and/or a debuff.
 spread:
-  name: Spread
-  description: A circular [t:chariot] [t:AoE]. Affected players must avoid each other, as overlapping these AoEs usually leads to death.
+  name: spread
+  description: An unavoidable player-targeted [t:AoE]. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
 tether-proximity:
-  name: Proximity Tethers
+  name: proximity tethers
   description: A player is tethered to something or someone else, often either an enemy or another party member. Depending on the type of tether, they must either keep their tether short or long. Failing to do so may either inflict continuous damage while the tether is at the incorrect length, or instantly kills the affected party member(s) when the tether resolves.
 towers:
-  name: Towers
+  name: towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. Some towers may need to be occupied by more than one person. If the incorrect number of players occupy a tower when it resolves, it will deal heavy damage and inflict debuffs to every party member, often killing the entire party instantly.
 gaze:
-  name: Gaze
+  name: gaze
   description: Players must look away from a given target (often the boss). Failing to do so in time usually inflicts a debilitating debuff or deals heavy damage.
 proximity:
-  name: Proximity
+  name: proximity
   description: Proximity damage originates from a given source (usually a specific spot in the arena). The farther players are away from the source of the damage, the less damage they take.
 cone:
-  name: Cone
+  name: cone
   description: A conal [t:AoE] aimed in a specific direction.
 kb:
-  name: Knockback
+  name: knockback
   description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:143].
 kb-i:
-  name: Knockback (Immune)
+  name: knockback (immune)
   description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:143].
 pull:
-  name: Draw-in
+  name: draw-in
   description: Draws in all players to a given location. Can be avoided using [a:7548] or [a:143].
 pull-i:
-  name: Draw-in (Immune)
+  name: draw-in (immune)
   description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:143].

@@ -64,6 +64,7 @@ actions:
       **Lightning**: all 8 players are targeted with [a:33114], a lightning-aspected line [t:AoE] that inflicts [s:2095], preventing players from being clipped by a line other than their own.
       
       **Ice**: A giant [t:dynamo] [t:AoE] originating from the center of the arena.
+    type: magic
     strategies:
       - name: Ice and Thunder (out)
         graph: dualspell-thunder-l
@@ -135,18 +136,40 @@ timeline:
     id: 33100
   - at: 20877
     id: 33048
+    description: "[boss] absorbs [s:3542]."
     phase: Mage Phase
   - at: 41451
     id: 33105
   - at: 54762
     id: 33108
     description: "[boss] channels ice and fire, requiring partner stacks. See [here](a:33108) for more information."
+    attack: stack-2
+    target: dps
+    strategies:
+      - name: Ice and Fire (out)
+        graph: dualspell-fire-l
+      - name: Ice and Fire (in)
+        graph: dualspell-fire-s
   - at: 67909
     id: 33108
     description: "[boss] channels ice and thunder, requiring clock positions. See [here](a:33108) for more information."
+    attack: spread
+    target: raid
+    strategies:
+      - name: Ice and Thunder (out)
+        graph: dualspell-thunder-l
+      - name: Ice and Thunder (in)
+        graph: dualspell-thunder-s
   - at: 81035
     id: 33108
     description: "[boss] channels ice and fire, requiring partner stacks. The strengthened element will be the opposite of the first one. See [here](a:33108) for more information."
+    attack: stack-2
+    target: dps
+    strategies:
+      - name: Ice and Fire (out)
+        graph: dualspell-fire-l
+      - name: Ice and Fire (in)
+        graph: dualspell-fire-s
   - at: 109933
     id: 33048
     phase: Martialist Phase
