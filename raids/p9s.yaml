@@ -40,21 +40,41 @@ status:
   3545:  # Chimeric Soul
     name: Chimeric Soul
 actions:
+  19148:  # Ravensclaw (for reference)
+    description: "A mechanic from <a href=\"/extremes/cinder-drift/\">Cinder Drift</a> wherein Ruby Weapon plunges its claw into the ground and spawns eight cracks in the ground with lights traveling alongside them. Once they reach the end of the crack, the lights explode in a small [t:chariot] [t:AoE]."
   33048:  # Ravening
     description: "[boss] consumes a soul and absorbs its power, changing its form to either [s:3542], [s:3543], [s:3544], or [s:3545]. At the end of the animation, [boss] executes [a:33051], inflicting heavy raidwide damage."
     attack: raidwide
     type: magic
-    damage: 60000
-  33100:  # Gluttony's Augur
-    description: Moderate raidwide damage.
+    damage: 65000
+  33051:  # Soul Surge
+    description: The raidwide executed at the end of [a:33048].
     attack: raidwide
     type: magic
-    damage: 28000
+    damage: 65000
+  33100:  # Gluttony's Augur
+    description: Heavy raidwide damage.
+    attack: raidwide
+    type: magic
+    damage: 80000
   33105:  # Duality of Death
     description: "[boss] channels wind and fire, then hits the highest enmity player with [a:33106] (inflicting [s:2098]) and the second-highest enmity player with [a:33107] (inflicting [s:2096]). It executes this attack twice in quick succession. Due to the elemental vulnerabilities inflicted, this attack necessitates a tankswap."
     attack: tb
     target: MTOT
     type: magic
+    damage: 75000
+  33106:  # Fire IV
+    description: One half of the two-part tankbuster executed during [a:33105]. Inflicts [s:2098], preventing players from taking two of these in succession.
+    attack: tb
+    target: OT
+    type: magic
+    damage: 75000
+  33107:  # Aero IV
+    description: One half of the two-part tankbuster executed during [a:33105]. Inflicts [s:2096], preventing players from taking two of these in succession.
+    attack: tb
+    target: OT
+    type: magic
+    damage: 75000
   33108:  # Dualspell
     description: |
       [boss] channels either ice and lightning, or ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players.
@@ -66,117 +86,182 @@ actions:
       **Ice**: A giant [t:dynamo] [t:AoE] originating from the center of the arena.
     type: magic
     strategies:
-      - name: Ice and Thunder (out)
-        graph: dualspell-thunder-l
-      - name: Ice and Thunder (in)
-        graph: dualspell-thunder-s
-      - name: Ice and Fire (out)
-        graph: dualspell-fire-l
-      - name: Ice and Fire (in)
-        graph: dualspell-fire-s
-  33118:  # Uplift
-    description: "[boss] erects four ice walls around the outside of the arena. The walls are either placed on cardinals or intercardinals."
+      dualspell-thunder-l:
+        name: Ice and Thunder (out)
+      dualspell-thunder-s:
+        name: Ice and Thunder (in)
+      dualspell-fire-l:
+        name: Ice and Fire (out)
+      dualspell-fire-s:
+        name: Ice and Fire (in)
+  33112:  # Pile Pyre
+    description: The stack [t:chariot] fired during the fire variant of [a:33108] or [a:33157].
+    attack: stack
+    target: roles
+    type: magic
+    damage: 57000
+  33114:  # Thunder III
+    description: The [t:protean] [t:AoE] fired during the thunder variant of [a:33108] or [a:33157].
+    attack: spread
+    target: raid
+    type: magic
+    damage: 57000
   33119:  # Archaic Rockbreaker
-    description: Placeholder description for Archaic Rockbreaker
+    description: |
+      A four-step mechanic. [boss] punches the center of the arena, knocking all players away from a [t:knockback circle] (see [a:33120]), then hits all supports with a 2-person rock stack, inflicting [s:2941]. The initial punch itself spawns eight [a:19148]-like cracks, though only four are initially lit. Once those lights reach the end of the cracks, they explode and spawn the remaining four. During this mechanic, [boss] casts and executes another mechanic.
+
+      The knockback portion of the mechanic essentially resolves itself. Party Finder generally uses [t:color partners] to find the correct marker to go to at the start of the mechanic: if your marker has a wall behind it, you stay there; otherwise, you move to whichever marker has the same color as yours. This both ensures that you will get knocked into a wall (as the knockback is too far to survive otherwise) and that you'll be with your [a:33108] partner.
+
+      After being knocked back, make sure you and your partner are on the same page about subsequent movement. For instance, if one person uses a gapcloser to dash back into the boss while the other person remains at the wall, one of you will die to the stack.
+    attack: mech
+    target: roles
+    type: magic
+    damage: 58000
+  33120:  # Shockwave
+    description: The knockback executed during [a:33119]. Deals minimal damage but knocks players into the death wall, unless they get knocked into a wall.
+    attack: knockback
+    type: physical
   33129:
     name: Rear Combination
-    description: Placeholder description for Rear Combination
+    description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:33315]."
+    attack: cleave
+    type: physical
   33130:
     name: Front Combination
-    description: Placeholder description for Front Combination
+    description: "[boss] [t:stores] a half-arena cleave in front of him, which he will execute during [a:33315]."
+    attack: cleave
+    type: physical
   33133:  # Archaic Demolish
-    description: Placeholder description for Archaic Demolish
+    description: "Two 4-person stack rocks hit each healer, inflicting [s:2941]. This stack can be easily survived as a 3-stack with minimal mitigation, or even as a 2-stack with average mitigation."
+    attack: stack
+    target: healers
+    type: magic
+    damage: 74000
   33135:  # Ascendant Fist
-    description: Placeholder description for Ascendant Fist
+    description: "[boss] uppercuts the main target, dealing heavy damage and applying both [s:2944] and [s:2940]. The latter forces a tankswap, as [boss]'s auto-attacks are physical in this phase."
+    attack: tb
+    target: MT
+    type: physical
+    damage: 128000
   33136:  # Charybdis
-    description: Placeholder description for Charybdis
+    description: Summons four tornados on the four cardinals of the arena. Stepping into one applies [s:3706].
+    attack: mech
   33138:  # Comet
-    description: Placeholder description for Comet
+    description: Places four comets on the intercardinals of the arena, between the tornadoes. Two of them will start out cracked. Each impact site will deal a moderate amount of proximity damage, so the party should stack in the center of the arena.
+
+      After they have spawned, two comets will appear whole, while two will appear cracked. If a comet takes any damage during this phase, its health state will be reduced by one (to "cracked" or, if it's already cracked, destroyed). The two "whole" comets must not take any damage during this phase, or a wipe is guaranteed.
+    damage: 76000
+    attack: proximity
+    type: magical
   33139:  # Comet Impact
-    description: Placeholder description for Comet Impact
+    description: This is the damage instance of [a:33138]s hitting the ground.
+    damage: 19000
+    attack: proximity
+    type: magical
   33140:  # Burst
-    description: Placeholder description for Burst
+    description: Happens after a [a:33138] is reduced to 0 health states. After a short delay it explodes, dealing huge damage to everything around it. Note that, if the comet is reduced *below* zero health states before it can complete [a:33140] (such as when [a:33141] hits an already damaged comet), it will *skip* [a:33140] and explode immediately. This will not deal any damage, but will prevent players from using damaged comets for cover during [a:33141].
   33141:  # Ecliptic Meteor
-    description: Placeholder description for Ecliptic Meteor
+    description: "[boss] targets a random whole comet (or a damaged one if no whole ones remain) and telegraphs it with a black cross above it. An ecliptic meteor now begins descending onto this comet. The party must stack behind the remaining whole comet, avoiding line of sight with the targeted comet. If no other whole comets remain, a wipe is guaranteed, as [a:33141] deals **two** health states of damage to each comet. If a comet is \"overkilled\" in this manner, it will explode instantly rather than exploding after [a:33140], which means players cannot use it to avoid line of sight of the targeted comet. If any player is in line of sight of the targeted comet, [a:33141] deals ten million damage to them."
   33143:  # Beastly Bile
-    description: Placeholder description for Beastly Bile
+    description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:3323] to all players hit. The stack is executed at the same time as the [a:33145] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
+    attack: stack
+    target: farthest
+    type: magic
+    damage: 46000
   33145:  # Thunderbolt
-    description: Placeholder description for Thunderbolt
+    description: Launches conal attacks at the closest 4 players, originating from [boss], and applies [s:2095]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:33143] resolves at the same time.
+
+      To avoid damaging any comets, the cones should be aimed into the tornados. The lines on each cardinal and intercardinal assist with positioning.
+    attack: spread
+    target: closest
+    type: magic
+    damage: 60000
   33148:  # Levinstrike Summoning
-    description: Placeholder description for Levinstrike Summoning
+    description: Summons four thunder orbs in front of the four ice walls. These will become relevant during [a:33149].
   33149:  # Scrambled Succession
     description: Placeholder description for Scrambled Succession
+  33152:  # Firemeld
+    description: "[boss] dashes to a target and blows them up in a fire tornado. Happens during [a:33149]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible."
+    type: magic
+    damage: 53000
   33153:  # Shock
-    description: Placeholder description for Shock
+    description: This is the damage instance of players soaking towers during [a:33149].
+    type: magic
+    damage: 23000
+  33155:  # Icemeld
+    description: These are the enormous [t:AoE]s indicated by blue markers during [a:33149] and [a:33211].
+    attack: spread
+    type: magic
+    damage: 70000
   33157:  # Two Minds
     description: "Identical to [a:33108] except for one thing: [a:33108] executes both the telegraph for the empowered element and the mechanic with a significant delay *after* the cast finishes, while [a:33157] shows the element *during* the cast and executes the mechanic immediately at the end of the cast. To make up for this, [a:33157] has a longer cast time."
   33158:  # Beastly Fury
-    description: Placeholder description for Beastly Fury
+    description: Raidwide inflicting moderate damage.
+    attack: raidwide
+    type: magic
   33162:  # Disintegration
-    description: Placeholder description for Disintegration
+    description: Instantly kills all players.
+    damage: 9999999
+    attack: enrage
+    type: dark
   33211:
     name: Chimeric Succession
     description: Placeholder description for Chimeric Succession
   33315:  # Swinging Kick
-    description: Placeholder description for Swinging Kick
+    description: Executes the previously stored [a:33129] or [a:33130]. Note that this does *not* inflict [s:2911] but *does* inflict [s:2944]. This means that it is better to be hit by this than by [a:33336] or [a:33337].
   33336:  # Inside Roundhouse
-    description: Placeholder description for Inside Roundhouse
+    description: A [t:chariot] centered on the boss, leaving only the outside of the arena safe. Being hit by this inflicts [s:2911].
   33337:  # Outside Roundhouse
-    description: Placeholder description for Outside Roundhouse
+    description: A [t:dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Being hit by this inflicts [s:2911].
   34702:
     name: Front Firestrikes
-    description: Placeholder description for Front Firestrikes
+    description: Similar to [a:33130], [t:stores] a frontal [a:33315] that will be executed after a [a:34708]. After [a:34708], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the wall to ensure the [a:33155] players can avoid the [a:33315].
   34703:
     name: Rear Firestrikes
-    description: Placeholder description for Rear Firestrikes
-  34709:  # Swinging Kick
-    description: Placeholder description for Swinging Kick
+    description: Similar to [a:33130], [t:stores] a rear [a:33315] that will be executed after a [a:34708]. After [a:34708], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the center of the arena to ensure the [a:33155] players can avoid the [a:33315].
+  34708:  # Pyremeld
+    description: |
+      [boss] dashes to a target and blows them up in a fire tornado. Happens during [a:33211]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible.
+      
+      This attack is almost the same as [a:33152], but there are a few differences. For one, [a:34708] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:33152].
+      
+      [a:34708] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:33155] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:33315] into the wall if [boss] used [a:34702] before.
+    attack: distance
+    type: magic
+    damage: 53000
 timeline:
   - at: 6856
     id: 33100
   - at: 20877
     id: 33048
-    description: "[boss] absorbs [s:3542]."
-    phase: Mage Phase
+    description: "[boss] absorbs [s:3542], dealing raidwide damage and switching to Mage Form."
   - at: 41451
     id: 33105
+    phase: Mage Phase
   - at: 54762
     id: 33108
-    description: "[boss] channels ice and fire, requiring partner stacks. See [here](a:33108) for more information."
-    attack: stack-2
-    target: dps
-    strategies:
-      - name: Ice and Fire (out)
-        graph: dualspell-fire-l
-      - name: Ice and Fire (in)
-        graph: dualspell-fire-s
+    description: "[boss] channels ice and fire, requiring partner stacks in either in the inner or middle circle."
+    attack: stack
+    target: roles
+    strategies: [dualspell-fire-l, dualspell-fire-s]
   - at: 67909
     id: 33108
-    description: "[boss] channels ice and thunder, requiring clock positions. See [here](a:33108) for more information."
+    description: "[boss] channels ice and thunder, requiring [t:protean] positions in either the inner or middle circle."
     attack: spread
     target: raid
-    strategies:
-      - name: Ice and Thunder (out)
-        graph: dualspell-thunder-l
-      - name: Ice and Thunder (in)
-        graph: dualspell-thunder-s
+    strategies: [dualspell-thunder-l, dualspell-thunder-s]
   - at: 81035
     id: 33108
-    description: "[boss] channels ice and fire, requiring partner stacks. The strengthened element will be the opposite of the first one. See [here](a:33108) for more information."
-    attack: stack-2
+    description: "[boss] channels ice and fire, requiring partner stacks. Whichever element [boss] chose to enhance in the first Ice and Fire, this will be the opposite element."
+    attack: stack
     target: dps
-    strategies:
-      - name: Ice and Fire (out)
-        graph: dualspell-fire-l
-      - name: Ice and Fire (in)
-        graph: dualspell-fire-s
+    strategies: [dualspell-fire-l, dualspell-fire-s]
   - at: 109933
     id: 33048
-    phase: Martialist Phase
-  - at: 109977
-    id: 33118
+    description: "[boss] absorbs [s:3543], dealing raidwide damage, switching to Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
   - at: 128374
     id: 33135
+    phase: Martialist Phase
   - at: 140805
     id: 33119
   - at: 148959
@@ -195,34 +280,23 @@ timeline:
     id: 33135
   - at: 204172
     id: 33048
-    phase: Mage/Martialist Phase
-  - at: 204217
-    id: 33118
+    description: "[boss] absorbs both [s:3542] and [s:3543], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
   - at: 217304
     id: 33148
+    phase: Mage/Martialist Phase
   - at: 223411
     id: 33149
-  - at: 237406
-    id: 33153
-  - at: 243075
-    id: 33153
-  - at: 248653
-    id: 33153
-  - at: 254320
-    id: 33153
   - at: 257982
     id: 33157
   - at: 267081
     id: 33100
   - at: 286141
     id: 33048
-    phase: Beast Phase
   - at: 299470
     id: 33136
+    phase: Beast Phase
   - at: 304596
     id: 33138
-  - at: 305622
-    id: 33139
   - at: 313734
     id: 33143
   - at: 320865
@@ -241,11 +315,10 @@ timeline:
     id: 33158
   - at: 369944
     id: 33048
-    phase: Mage/Martialist Phase
-  - at: 369988
-    id: 33118
+    description: "[boss] absorbs both [s:3542] and [s:3543], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
   - at: 388416
     id: 33105
+    phase: Mage/Martialist Phase
   - at: 397605
     id: 33119
   - at: 407774
@@ -257,14 +330,14 @@ timeline:
   - at: 445825
     id: [34702, 34703]
   - at: 456307
-    id: 34709
+    id: 33315
   - at: 462852
     id: 33157
   - at: 481876
     id: 33048
-    phase: Mage Phase
   - at: 495012
     id: 33108
+    phase: Mage Phase
   - at: 508154
     id: 33100
   - at: 515279
