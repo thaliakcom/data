@@ -6,7 +6,7 @@ magic:
   description: Inflicts magical damage. Cannot be mitigated by abilities that target physical damage.
 dark:
   name: darkness
-  description: Inflicts darkness damage. Cannot be mitigated in any way.
+  description: Inflicts darkness damage. Ignores all types of mitigation, including invulnerabilities.
 mixed:
   name: mixed
   description: Inflicts a mix of physical and magical damage.

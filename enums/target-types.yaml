@@ -9,10 +9,10 @@ OT:
   description: Targets the party member with the second-highest enmity (off-tank).
 farthest:
   name: farthest
-  description: Targets the player who is farthest from the source (usually the boss).
+  description: Targets the player(s) who are farthest from the source (usually the boss).
 closest:
   name: closest
-  description: Targets the player who is closest to the source (usually the boss).
+  description: Targets the player(s) who are closest to the source (usually the boss).
 healers:
   name: healers
   description: Targets both healers. If less than two healers are alive, usually targets a random party member.
@@ -33,4 +33,4 @@ MTOT:
   description: Targets the two players with the highest enmity.
 random:
   name: random
-  description: Targets a completely random party member.
+  description: Targets one or more completely random party members.

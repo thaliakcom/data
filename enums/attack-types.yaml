@@ -1,27 +1,27 @@
-mechanic:
+mech:
   name: minor mechanic
   description: Requires the party to take certain steps to avoid heavy damage and deaths.
-mechanic-xl:
+bigmech:
   name: major mechanic
   description: Requires the party to take certain steps to avoid certain doom.
 raidwide:
   name: raidwide
   description: Hits all party members with moderate to heavy damage.
+enrage:
+  name: enrage
+  description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities.
 tb:
   name: tankbuster
   description: A heavy-hitting attack that must be heavily mitigated with tank cooldowns to survive.
 stack:
   name: stack
   description: A heavy-hitting attack on a party member. Other party members must stack close to reduce the damage dealt and make it survivable. The more players stack, the less damage each individual person receives.
-stack-2:
-  name: 2P Stack
-  description: A heavy-hitting attack on a party member that must be shared by one other party member to reduce the damage to survivable levels. Any more players will not further reduce the damage.
-stack-3:
-  name: 3P Stack
-  description: A heavy-hitting attack on a party member that must be shared by two other party members to reduce the damage to survivable levels. Any more players will not further reduce the damage.
 stack-line:
   name: line stack
   description: A variation of the stack where each player must be in a line with the targeted player to reduce the damage to survivable levels.
+cleave:
+  name: cleave
+  description: Cleaves a portion (usually half) of the arena.
 wild-charge:
   name: Wild Charge
   description: An attack that deals heavy damage to all players in a line with the targeted players. The first player hit receives drastically increased damage, requiring heavy mitigation through the use of tank cooldowns to survive. So named due to Imdugud's signature attack.
@@ -43,16 +43,19 @@ towers:
 gaze:
   name: gaze
   description: Players must look away from a given target (often the boss). Failing to do so in time usually inflicts a debilitating debuff or deals heavy damage.
+distance:
+  name: distance
+  description: Players take more damage the closer they are to a given entity (usually the boss itself) when this attack is executed.
 proximity:
   name: proximity
   description: Proximity damage originates from a given source (usually a specific spot in the arena). The farther players are away from the source of the damage, the less damage they take.
 cone:
   name: cone
   description: A conal [t:AoE] aimed in a specific direction.
-kb:
+knockback:
   name: knockback
   description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:143].
-kb-i:
+knockback-i:
   name: knockback (immune)
   description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:143].
 pull:
