@@ -16,5 +16,5 @@ description: |
   A unique encounter owing to its unusual arena, players must strategically place the webs of Pandæmonium to avoid falling into poison, or worse...
 status:
   2911:  # Damage Down
-    duration: 30.00
+    duration: 30000
     description: Reduces damage dealt by approximately 31%.

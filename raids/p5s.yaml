@@ -16,16 +16,16 @@ description: |
   [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
 status:
   2911:  # Damage Down
-    duration: 30.00
+    duration: 30000
     description: Reduces damage dealt by approximately 25%.
   2940:  # Physical Vulnerability Up
-    duration: 15.00
+    duration: 15000
     description: Makes any physical damage received lethal.
   3390:  # Poison
-    duration: 12.00
+    duration: 12000
     description: Ticks 4 times for about 30,000 damage each tick. Note that each tick's damage is directly relative to how much damage the source tankbuster inflicted.
   3082:  # Toxicosis
-    duration: 15.00
+    duration: 15000
     description: Ticks 5 times for approximately 24,000 damage each tick.
   3407:  # Toxicosis (from puddles)
     duration: 999999.0
