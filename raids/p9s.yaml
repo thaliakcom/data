@@ -88,12 +88,16 @@ actions:
     strategies:
       dualspell-thunder-l:
         name: Ice and Thunder (out)
+        description: Thunder will flash on the screen, requiring everyone to be spread out from each other at [t:protean] positions.
       dualspell-thunder-s:
         name: Ice and Thunder (in)
+        description: Ice will flash on the screen, requiring everyone to be inside the inner circle at [t:protean] positions.
       dualspell-fire-l:
         name: Ice and Fire (out)
+        description: Fire will flash on the screen, requiring partner stacks on the outside of the cardinals or intercardinals.
       dualspell-fire-s:
         name: Ice and Fire (in)
+        description: Ice will flash on the screen, requiring partner stacks on the inside of either the cardinals or intercardinals.
   33112:  # Pile Pyre
     description: The stack [t:chariot] fired during the fire variant of [a:33108] or [a:33157].
     attack: stack
@@ -118,9 +122,10 @@ actions:
     type: magic
     damage: 58000
   33120:  # Shockwave
-    description: The knockback executed during [a:33119]. Deals minimal damage but knocks players into the death wall, unless they get knocked into a wall.
+    description: The knockback executed during [a:33119]. Deals minimal damage but knocks players into the death wall, unless they get knocked into an ice wall.
     attack: knockback
     type: physical
+    damage: 10000
   33129:
     name: Rear Combination
     description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:33315]."
@@ -152,12 +157,12 @@ actions:
       After they have spawned, two comets will appear whole, while two will appear cracked. If a comet takes any damage during this phase, its health state will be reduced by one (to "cracked" or, if it's already cracked, destroyed). The two "whole" comets must not take any damage during this phase, or a wipe is guaranteed.
     damage: 76000
     attack: proximity
-    type: magical
+    type: magic
   33139:  # Comet Impact
     description: This is the damage instance of [a:33138]s hitting the ground.
     damage: 19000
     attack: proximity
-    type: magical
+    type: magic
   33140:  # Burst
     description: Happens after a [a:33138] is reduced to 0 health states. After a short delay it explodes, dealing huge damage to everything around it. Note that, if the comet is reduced *below* zero health states before it can complete [a:33140] (such as when [a:33141] hits an already damaged comet), it will *skip* [a:33140] and explode immediately. This will not deal any damage, but will prevent players from using damaged comets for cover during [a:33141].
   33141:  # Ecliptic Meteor
@@ -352,14 +357,14 @@ timeline:
     id: 33048
   - at: 587171
     id: 33162
-macros:
 graphing:
   coordinate-system: polar
   defs:
     thunder: "linear-gradient(0 #ABFFFC 10% #3F8DFB 80% #3F8DFB 100% #ABFFFC)"
   elements:
     arena:
-      type: ellipse
+      type: image
+      shape: circle
       image: https://i.imgur.com/WDIUtwE.jpeg
     boss:
       size: 85
