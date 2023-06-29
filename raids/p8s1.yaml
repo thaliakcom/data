@@ -17,7 +17,3 @@ status:
   2911:  # Damage Down
     duration: 30.00
     description: Reduces damage dealt by approximately 38%.
-actions:
-timeline:
-macros:
-graphing:
