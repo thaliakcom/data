@@ -7,30 +7,33 @@ MT:
 OT:
   name: OT
   description: Targets the party member with the second-highest enmity (off-tank).
-farthest:
-  name: farthest
-  description: Targets the player(s) who are farthest from the source (usually the boss).
-closest:
-  name: closest
-  description: Targets the player(s) who are closest to the source (usually the boss).
+MTOT:
+  name: MT & OT
+  description: Targets the two players with the highest enmity.
+dps:
+  name: DPS
+  description: Targets all DPS players. If less than four DPS players are alive, usually starts targeting random party members.
 healers:
   name: healers
   description: Targets both healers. If less than two healers are alive, usually targets a random party member.
 supports:
   name: supports
   description: Targets all supports (tanks and healers). If less than four supports are alive, usually starts targeting random party members.
-dps:
-  name: DPS
-  description: Targets all DPS players. If less than four DPS players are alive, usually starts targeting random party members.
+farthest:
+  name: farthest
+  description: Targets the player(s) who are farthest from the source (usually the boss).
+closest:
+  name: closest
+  description: Targets the player(s) who are closest to the source (usually the boss).
 rolesplit:
   name: role split
   description: Targets one DPS and one tank or healer.
 roles:
   name: roles
   description: Targets all members of one role (either all DPS or all supports).
-MTOT:
-  name: MT & OT
-  description: Targets the two players with the highest enmity.
+numbered:
+  name: numbers
+  description: Players are marked with numbers. The attack then targets each player in numerical order. Mechanics of this kind are also sometimes called [t:limit cut] mechanics, after the first such number-based mechanic in Alexander - The Heart of the Creator (Savage).
 random:
   name: random
   description: Targets one or more completely random party members.

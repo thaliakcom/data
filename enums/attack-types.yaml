@@ -22,6 +22,12 @@ stack-line:
 cleave:
   name: cleave
   description: Cleaves a portion (usually half) of the arena.
+donut:
+  name: donut
+  description: An [t:AoE] that requires you to get close to its source.
+chariot:
+  name: chariot
+  description: An [t:AoE] that requires you to get away from the source.
 wild-charge:
   name: Wild Charge
   description: An attack that deals heavy damage to all players in a line with the targeted players. The first player hit receives drastically increased damage, requiring heavy mitigation through the use of tank cooldowns to survive. So named due to Imdugud's signature attack.
@@ -64,3 +70,6 @@ pull:
 pull-i:
   name: draw-in (immune)
   description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:143].
+los:
+  name: line of sight
+  description: Hits all players in direct line of sight to the source of the attack. Usually some sort of cover is required to hide behind.
