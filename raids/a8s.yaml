@@ -7,7 +7,7 @@ tier: "Alexander: Midas"
 boss:  Brute Justice
 HP: 0
 wip: true
-description: Unknown
+description: ""
 status:
   2911:  # Damage Down
     duration: 30000

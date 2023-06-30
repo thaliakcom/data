@@ -8,7 +8,7 @@ tier: Asphodelos
 boss: Erichthonios
 HP: 29844576
 wip: true
-description: Unknown
+description: ""
 status:
   2911:  # Damage Down
     duration: 30000

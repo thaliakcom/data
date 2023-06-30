@@ -12,7 +12,7 @@ autos:
   target: MT
   type: magic
 wip: true
-description: Unknown
+description: ""
 status:
   2911:  # Damage Down
     duration: 30000
