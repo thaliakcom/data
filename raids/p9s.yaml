@@ -99,7 +99,7 @@ actions:
       dualspell-fire-s:
         name: Ice and Fire (in)
         description: Ice will flash on the screen, requiring partner stacks on the inside of either the cardinals or intercardinals.
-  33112:  # Pile Pyre
+  33110:  # Pile Pyre
     description: The stack [t:chariot] fired during the fire variant of [a:33108] or [a:33157].
     attack: stack
     target: roles
