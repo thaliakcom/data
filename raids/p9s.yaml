@@ -39,6 +39,8 @@ status:
     description: Makes any dark magic damage received lethal.
   3545:  # Chimeric Soul
     name: Chimeric Soul
+    description: An amalgamation of [s:3542] and [s:3543].
+    gameDescription: Wielding the power of multiple ancient souls.
 actions:
   19148:  # Ravensclaw (for reference)
     description: "A mechanic from <a href=\"/extremes/cinder-drift/\">Cinder Drift</a> wherein Ruby Weapon plunges its claw into the ground and spawns eight cracks in the ground with lights traveling alongside them. Once they reach the end of the crack, the lights explode in a small [t:chariot] [t:AoE]."
