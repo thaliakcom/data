@@ -382,6 +382,9 @@ timeline:
     phase: Mage/Martialist Phase
   - at: 397605
     id: 33119
+    description: |
+      Same mechanic as the previous [a:33119], except [boss] doesn't use [a:33129] or [a:33130] but instead casts [a:33108].
+      This does mean that you _must_ dodge the lines' [t:chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:33336], [a:33337], or [a:33315], and that [a:33108] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:33119].
   - at: 407774
     id: 33108
   - at: 420929
