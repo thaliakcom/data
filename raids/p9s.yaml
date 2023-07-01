@@ -423,7 +423,6 @@ graphing:
   elements:
     arena:
       type: image
-      shape: circle
       image: https://i.imgur.com/WDIUtwE.jpeg
     boss:
       size: 85
@@ -453,12 +452,18 @@ graphing:
       size: [126, 200]
       color: "#ffffff"
       opacity: 0
-    pyremeld:
+    pyre:
       type: ellipse
       size: 120
       scale: 0
       color: "#ffa700"
       opacity: 0.5
+    ice-wall:
+      type: prism
+      size: [45, 15]
+      depth: 3
+      origin: [0.5, 0]
+      color: "#CCEEEE"
   graphs:
     dualspell-thunder-l:
       - thunder-l#1: [0, 0, 0]
@@ -534,10 +539,10 @@ graphing:
         ice-l: { opacity: 0.5 }
     dualspell-fire-l:
       - ice-s: [0, 0]
-        pyremeld#1: [60, -135]
-        pyremeld#2: [60, 135]
-        pyremeld#3: [60, -45]
-        pyremeld#4: [60, 45]
+        pyre#1: [60, -135]
+        pyre#2: [60, 135]
+        pyre#3: [60, -45]
+        pyre#4: [60, 45]
         boss: [0, 0]
         M1: [50, -135]
         M2: [50, 135]
@@ -555,17 +560,17 @@ graphing:
         M2: [60, 135]
         R1: [60, -45]
         R2: [60, 45]
-      - pyremeld#1: { scale: 1 }
-        pyremeld#2: { scale: 1 }
-        pyremeld#3: { scale: 1 }
-        pyremeld#4: { scale: 1 }
+      - pyre#1: { scale: 1 }
+        pyre#2: { scale: 1 }
+        pyre#3: { scale: 1 }
+        pyre#4: { scale: 1 }
         ice-s: { opacity: 0.5 }
     dualspell-fire-s:
       - ice-l: [0, 0]
-        pyremeld#1: [33, -135]
-        pyremeld#2: [33, 135]
-        pyremeld#3: [33, -45]
-        pyremeld#4: [33, 45]
+        pyre#1: [33, -135]
+        pyre#2: [33, 135]
+        pyre#3: [33, -45]
+        pyre#4: [33, 45]
         boss: [0, 0]
         T1: [50, 0]
         T2: [50, 180]
@@ -583,8 +588,21 @@ graphing:
         M2: [33, 135]
         R1: [33, -45]
         R2: [33, 45]
-      - pyremeld#1: { scale: 0.6 }
-        pyremeld#2: { scale: 0.6 }
-        pyremeld#3: { scale: 0.6 }
-        pyremeld#4: { scale: 0.6 }
+      - pyre#1: { scale: 0.6 }
+        pyre#2: { scale: 0.6 }
+        pyre#3: { scale: 0.6 }
+        pyre#4: { scale: 0.6 }
         ice-l: { opacity: 0.5 }
+    oppo:
+      - T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+        ice-wall#ne: [85, 45, 45]
+        ice-wall#nw: [85, -45, -45]
+        ice-wall#se: [85, 135, -45]
+        ice-wall#sw: [85, -135, 45]
