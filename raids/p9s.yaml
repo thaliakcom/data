@@ -175,7 +175,6 @@ actions:
     description: "[boss] targets a random whole comet (or a damaged one if no whole ones remain) and telegraphs it with a black cross above it. An ecliptic meteor now begins descending onto this comet. The party must stack behind the remaining whole comet, avoiding line of sight with the targeted comet. If no other whole comets remain, a wipe is guaranteed, as [a:33141] deals **two** health states of damage to each comet. If a comet is \"overkilled\" in this manner, it will explode instantly rather than exploding after [a:33140], which means players cannot use it to avoid line of sight of the targeted comet. If any player is in line of sight of the targeted comet, [a:33141] deals ten million damage to them."
     variations: [los]
     type: magic
-    damage: 9999999
   33143:  # Beastly Bile
     description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:3323] to all players hit. The stack is executed at the same time as the [a:33145] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
     variations: [stack on farthest]
