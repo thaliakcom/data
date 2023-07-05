@@ -55,20 +55,20 @@ actions:
         name: Wide pattern
         description: If a topaz shares a square with an emerald, there will be one square with neither topaz nor emerald in it. Half of this square is safe.
   30493:  # Venomous Mass
-    target: MT
+    variations: [tb on MT]
     damage: 71200
     type: magic
     description: High-damage tankbuster. Inflicts [s:2940] and [s:3390]. Immediately follows up with [a:30794], which deals physical damage and thus requires a tankswap.
     note: This hit of the tankbuster is an [t:AoE]. Stay away from the main tank during this cast!
   30794:  # Toxic Crunch
-    target: MT
+    variations: [tb on MT]
     damage: 76700
     type: physical
     description: |
       High-damage tankbuster. Inflicts [s:3390]. Note that this tankbuster **cannot be invulned** if you have [s:2940], as the resulting [s:3390] effect is directly relative to how much damage the initial hit inflicted. With [s:2940] each tick of the DoT will be lethal. Due to the DoT's long duration, it is not possible to cover all 4 ticks with invulnerability either.
       Be aware that [s:2940] will fade before the boss starts auto-attacking again, so there is no need to swap back after this hit.
   30476:  # Venom
-    target: closest
+    variations: [chariot on closest]
     damage: 177396
     type: magic
     description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
@@ -104,7 +104,7 @@ actions:
     type: magic
     description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
   30490:  # Venom Pool
-    target: healers
+    variations: [stack on healers]
     damage: 50000
     type: magic
     description: |
