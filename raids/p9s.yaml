@@ -219,7 +219,7 @@ actions:
     variations: [bigmech on numbered]
   33152:  # Firemeld
     description: "[boss] dashes to a target and blows them up in a fire tornado. Happens during [a:33149]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible."
-    variations: [distance on numbered]
+    variations: [proximity on numbered]
     type: magic
     damage: 53000
   33153:  # Shock
@@ -275,19 +275,19 @@ actions:
   34702:
     name: Front Firestrikes
     description: Similar to [a:33130], [t:stores] a frontal [a:33315] that will be executed after a [a:34708]. After [a:34708], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the wall to ensure the [a:33155] players can avoid the [a:33315].
-    variations: [distance on random]
+    variations: [proximity on random]
     type: magic
   34703:
     name: Rear Firestrikes
     description: Similar to [a:33129], [t:stores] a rear [a:33315] that will be executed after a [a:34708]. After [a:34708], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the center of the arena to ensure the [a:33155] players can avoid the [a:33315].
-    variations: [distance on random]
+    variations: [proximity on random]
     type: magic
   34708:  # Pyremeld
     description: |
       [boss] dashes to a target and blows them up in a fire tornado. Happens during [a:33211]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible.
       This attack is almost the same as [a:33152], but there are a few differences. For one, [a:34708] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:33152].
       [a:34708] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:33155] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:33315] into the wall if [boss] used [a:34702] before.
-    variations: [distance]
+    variations: [proximity]
     type: magic
     damage: 53000
 timeline:
@@ -312,7 +312,7 @@ timeline:
   - at: 81035
     id: 33108
     description: "[boss] channels ice and fire, requiring partner stacks. Whichever element [boss] chose to enhance in the first Ice and Fire, this will be the opposite element."
-    variations: [stack on dps]
+    variations: [stack on roles]
     strategies: [dualspell-fire-l, dualspell-fire-s]
   - at: 109933
     id: 33048
@@ -357,8 +357,10 @@ timeline:
     phase: Mage/Martialist Phase
   - at: 223411
     id: 33149
+    link: then
   - at: 257982
     id: 33157
+    link: then
   - at: 267081
     id: 33100
   - at: 286141
