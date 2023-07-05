@@ -60,16 +60,16 @@ cone:
   description: A conal [t:AoE] aimed in a specific direction.
 knockback:
   name: knockback
-  description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:143].
+  description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:7559].
 knockback-i:
   name: knockback (immune)
-  description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:143].
+  description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:7559].
 pull:
   name: draw-in
-  description: Draws in all players to a given location. Can be avoided using [a:7548] or [a:143].
+  description: Draws in all players to a given location. Can be avoided using [a:7548] or [a:7559].
 pull-i:
   name: draw-in (immune)
-  description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:143].
+  description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:7559].
 los:
   name: line of sight
   description: Hits all players in direct line of sight to the source of the attack. Usually some sort of cover is required to hide behind.
