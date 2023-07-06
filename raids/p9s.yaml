@@ -140,6 +140,35 @@ actions:
       The knockback portion of the mechanic essentially resolves itself. Party Finder generally uses [t:color partners] to find the correct marker to go to at the start of the mechanic: if your marker has a wall behind it, you stay there; otherwise, you move to whichever marker has the same color as yours. This both ensures that you will get knocked into a wall (as the knockback is too far to survive otherwise) and that you'll be with your [a:dualspell] partner.
       After being knocked back, make sure you and your partner are on the same page about subsequent movement. For instance, if one person uses a gapcloser to dash back into the boss while the other person remains at the wall, one of you will die to the stack.
     variations: [mech on roles]
+    children:
+    - at: 0
+      id: shockwave
+    - at: 1332
+      id: rockbreaker-stack
+    - at: 7609
+      id: front-comb
+      link: or
+    - at: 7609
+      id: rear-comb
+    - at: 8587
+      id: roundhouse-in
+      link: or
+    - at: 8587
+      id: roundhouse-out
+      link: and
+    - at: 8587
+      id: rockbreaker-aoe
+      description: The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s. This spawns the remaining four lights.
+    - at: 11707
+      id: swinging-kick
+    - at: 14604
+      id: roundhouse-out
+      link: or
+    - at: 14604
+      id: roundhouse-in
+      link: and
+    - at: 14604
+      id: rockbreaker-aoe
     type: magic
     damage: 58000
   shockwave:  # Shockwave
@@ -183,7 +212,23 @@ actions:
       After they have spawned, two comets will appear whole, while two will appear cracked. If a comet takes any damage during this phase, its health state will be reduced by one (to "cracked" or, if it's already cracked, destroyed). The two "whole" comets must not take any damage during this phase, or a wipe is guaranteed.
     variations: [proximity]
     type: physical
-    damage: 76000
+    children:
+    - at: 1070
+      id: comet-impact
+    - at: 15232
+      id: beastly-bile
+      link: and
+    - at: 15232
+      id: thunderbolt
+    - at: 22140
+      id: beastly-bile
+      description: The second stack resolves. Must be taken by the 4 players who just received [a:thunderbolt].
+      link: and
+    - at: 22140
+      id: thunderbolt
+      description: The second cones resolve. Must be taken by the 4 players who just received [a:beastly-bile].
+    - at: 33500
+      id: ecliptic
   comet-impact:  # Comet Impact
     id: 33139
     description: This is the damage instance of [a:comet]s hitting the ground.
@@ -362,27 +407,6 @@ timeline:
     phase: Martialist Phase
   - at: 140805
     id: rockbreaker
-    children-minimal: true
-    children:
-    - at: 140805
-      id: shockwave
-    - at: 148959
-      id: front-comb
-      link: or
-    - at: 148959
-      id: rear-comb
-    - at: 155233
-      id: roundhouse-in
-      link: or
-    - at: 155233
-      id: roundhouse-out
-    - at: 158352
-      id: swinging-kick
-    - at: 161249
-      id: roundhouse-out
-      link: or
-    - at: 161249
-      id: roundhouse-in
   - at: 164325
     id: demolish
   - at: 170468
@@ -410,21 +434,6 @@ timeline:
     phase: Beast Phase
   - at: 304596
     id: comet
-    children:
-    - at: 313734
-      id: beastly-bile
-    - at: 320865
-      id: thunderbolt
-    - at: 326513
-      id: burst
-    - at: 327003
-      id: thunderbolt
-    - at: 332488
-      id: burst
-    - at: 334181
-      id: ecliptic
-    - at: 343269
-      id: burst
   - at: 349680
     id: beastly-fury
   - at: 369944
