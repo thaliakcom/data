@@ -376,110 +376,102 @@ actions:
     type: magic
     damage: 53000
 timeline:
-  - at: 6856
+  - at: 11556
     id: gluttony
-  - at: 20877
+  - at: 24577
     id: ravening
     description: "[boss] absorbs [s:3542], dealing raidwide damage and switching to Mage Form."
-  - at: 41451
+  - at: 46151
     id: duality
     phase: Mage Phase
-  - at: 54762
+  - at: 67306
     id: dualspell
     description: "[boss] channels ice and fire, requiring partner stacks in either in the inner or middle circle."
     variations: [stack on roles]
     strategies: [dualspell-fire-l, dualspell-fire-s]
-  - at: 67909
+  - at: 80453
     id: dualspell
     description: "[boss] channels ice and thunder, requiring [t:protean] positions in either the inner or middle circle."
     variations: [spread on raid]
     strategies: [dualspell-thunder-l, dualspell-thunder-s]
-  - at: 81035
+  - at: 93579
     id: dualspell
     description: "[boss] channels ice and fire, requiring partner stacks. Whichever element [boss] chose to enhance in the first Ice and Fire, this will be the opposite element."
     variations: [stack on roles]
     strategies: [dualspell-fire-l, dualspell-fire-s]
-  - at: 109933
+  - at: 113633
     id: ravening
     description: "[boss] absorbs [s:3543], dealing raidwide damage, switching to Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
-  - at: 128374
+  - at: 133074
     id: ascendant-fist
     phase: Martialist Phase
-  - at: 140805
+  - at: 147026
     id: rockbreaker
-  - at: 164325
+  - at: 168025
     id: demolish
-  - at: 170468
+  - at: 175168
     id: gluttony
-  - at: 181804
+  - at: 186504
     id: ascendant-fist
-  - at: 204172
+  - at: 207872
     id: ravening
     description: "[boss] absorbs both [s:3542] and [s:3543], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
-  - at: 217304
+  - at: 221004
     id: levinstrike
     phase: Mage/Martialist Phase
-  - at: 223411
+  - at: 233111
     id: lc1
-    link: then
-  - at: 257982
+  - at: 264682
     id: two-minds
     link: then
-  - at: 267081
+  - at: 271781
     id: gluttony
-  - at: 286141
+  - at: 288841
     id: ravening
-  - at: 299470
+  - at: 302170
     id: charybdis
     phase: Beast Phase
-  - at: 304596
+  - at: 309296
     id: comet
-  - at: 349680
+  - at: 354380
     id: beastly-fury
-  - at: 369944
+  - at: 373644
     id: ravening
     description: "[boss] absorbs both [s:3542] and [s:3543], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
-  - at: 388416
+  - at: 393116
     id: duality
     phase: Mage/Martialist Phase
-  - at: 397605
+  - at: 403826
     id: rockbreaker
     description: |
       Same mechanic as the previous [a:rockbreaker], except [boss] doesn't use [a:rear-comb] or [a:front-comb] but instead casts [a:dualspell].
       This does mean that you _must_ dodge the lines' [t:chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker].
-  - at: 407774
+  - at: 420318
     id: dualspell
-  - at: 420929
+  - at: 425629
     id: gluttony
-  - at: 433348
+  - at: 438048
     id: lc2
-  - at: 445825
-    id: front-firestrikes
-    link: or
-  - at: 445825
-    id: rear-firestrikes
-  - at: 456307
-    id: swinging-kick
-  - at: 462852
+  - at: 469552
     id: two-minds
-  - at: 481876
+  - at: 485576
     id: ravening
-  - at: 495012
+  - at: 507556
     id: dualspell
     phase: Mage Phase
-  - at: 508154
+  - at: 512854
     id: gluttony
-  - at: 515279
+  - at: 527823
     id: dualspell
-  - at: 529464
+  - at: 534164
     id: duality
-  - at: 538626
+  - at: 551170
     id: dualspell
-  - at: 551756
+  - at: 556456
     id: gluttony
-  - at: 574035
+  - at: 577735
     id: ravening
-  - at: 587171
+  - at: 596871
     id: enrage
 graphing:
   coordinate-system: polar
