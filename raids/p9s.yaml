@@ -66,6 +66,7 @@ actions:
     variations: [raidwide]
     type: magic
     damage: 65000
+    delay: 6595
   soul-surge:  # Soul Surge
     id: 33051
     description: The raidwide executed at the end of [a:ravening].
@@ -106,6 +107,7 @@ actions:
       **Ice**: A giant [t:dynamo] [t:AoE] originating from the center of the arena.
     variations: [stack on roles, spread on raid]
     type: magic
+    delay: 7844
     strategies:
       dualspell-thunder-l:
         name: Ice and Thunder (out)
@@ -203,6 +205,7 @@ actions:
     description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
     variations: [stack on farthest]
     type: magic
+    delay: 11958
     damage: 46000
   thunderbolt:  # Thunderbolt
     id: 33145
