@@ -530,7 +530,7 @@ graphing:
       type: ellipse
       size: 8
       color: "url(#sphere-gradient)"
-      opacity: 0.85
+      opacity: 0.65
     tower:
       type: ellipse
       size: 25
@@ -543,6 +543,13 @@ graphing:
       color: "#6447f5"
       opacity: 0.7
       scale: 0
+    cleave:
+      type: rectangle
+      size: [200, 30]
+      opacity: 0.6
+      color: "#F2E99C"
+      origin: [0.5, 0]
+      scale: [1, 0]
   graphs:
     dualspell-thunder-l:
       - thunder-l#1: [0, 0, 0]
@@ -679,10 +686,6 @@ graphing:
         tower#nw: [75, -45]
         tower#se: [75, 135]
         tower#sw: [75, -135]
-        orb#ne: [40, 45]
-        orb#nw: [40, -45]
-        orb#se: [40, 135]
-        orb#sw: [40, -135]
         T1: [50, 0]
         T2: [50, 180]
         H1: [50, -90]
@@ -692,10 +695,14 @@ graphing:
         R1: [50, -45]
         R2: [50, 45]
         boss: [0, 0]
-        pyre#s: [80, 180]
-        pyre#e: [80, 90]
-        pyre#n: [80, 0]
-        pyre#w: [80, -90]
+        orb#ne: [40, 45]
+        orb#nw: [40, -45]
+        orb#se: [40, 135]
+        orb#sw: [40, -135]
+        pyre#s: [85, 180]
+        pyre#e: [85, 90]
+        pyre#n: [85, 0]
+        pyre#w: [85, -90]
         icemeld#ne: [80, 45]
         icemeld#nw: [80, -45]
         icemeld#se: [80, 135]
@@ -720,7 +727,7 @@ graphing:
         R1: [77, 52]
         H1: [48, -128]
         H2: [48, -140]
-        M1: [80, 180]
+        M1: [85, 180]
         R2: [48, -115]
       - M2: { status: [jump] }
       - T1: [77, -43]
@@ -747,7 +754,7 @@ graphing:
         icemeld#ne: { opacity: 0 }
         pyre#s: { opacity: 0 }
         boss: { opacity: 0 }
-        H1: [80, 90]
+        H1: [85, 90]
         H2: [48, 145]
         M1: [45, 134]
         M2: [45, 120]
@@ -777,7 +784,7 @@ graphing:
         H2: [48, 45]
         M1: [48, 52]
         M2: [40, 40]
-        R2: [80, 0]
+        R2: [85, 0]
         T1: [80, 135]
       # turn 3
       - boss: { pos: [60, -135], rotate: -135, opacity: 0.5 }
@@ -801,7 +808,7 @@ graphing:
         M2: [40, -45]
         R1: [44, -36]
         R2: [38, -40]
-        H2: [80, -90]
+        H2: [85, -90]
       # turn 4
       - boss: { pos: [60, 135], rotate: 135, opacity: 0.5 }
       - orb#se: { pos: [80, -45], opacity: 0 }
@@ -816,4 +823,224 @@ graphing:
       - tower#nw: { opacity: 0 }
         icemeld#se: { opacity: 0 }
         pyre#w: { opacity: 0 }
-        boss: { pos: [0, 0], rotate: 0, opacity: 1 }
+        boss: { pos: [0, 0], rotate: 180, opacity: 0.7 }
+    jp:
+      - ice-wall#ne: [85, 45, 45]
+        ice-wall#nw: [85, -45, -45]
+        tower#ne: [75, 45]
+        tower#nw: [75, -45]
+        tower#se: [75, 135]
+        tower#sw: [75, -135]
+        T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+        boss: [0, 0]
+        orb#ne: [40, 45]
+        orb#nw: [40, -45]
+        orb#se: [40, 135]
+        orb#sw: [40, -135]
+        pyre#n: [85, 0]
+        pyre#s: [85, 180]
+        icemeld#n: [85, 0]
+        icemeld#s: [85, 180]
+        shock#ne: [75, 45]
+        shock#nw: [75, -45]
+        shock#se: [75, 135]
+        shock#sw: [75, -135]
+        ice-wall#se: [85, 135, -45]
+        ice-wall#sw: [85, -135, 45]
+      - orb#ne: { status: [dice-1] }
+        orb#nw: { status: [dice-3] }
+        orb#sw: { status: [dice-5] }
+        orb#se: { status: [dice-7] }
+        M1: { status: [dice-2] }
+        H1: { status: [dice-4] }
+        R2: { status: [dice-6] }
+        H2: { status: [dice-8] }
+      - T1: [20, -15]
+        T2: [20, 15]
+        M2: [10, -25]
+        R1: [10, 25]
+        H1: [40, -170]
+        H2: [40, 170]
+        M1: [85, 180]
+        R2: [40, 180]
+      - M2: { status: [jump] }
+      - T1: [32, -170]
+        T2: [32, 170]
+        M2: [85, 0]
+        R1: [32, 180]
+        boss: { opacity: 0 }
+      # turn 1
+      - boss: { pos: [60, 45], rotate: 45, opacity: 0.5 }
+        T2: { status: [jump] }
+      - orb#ne: { pos: [80, -135], opacity: 0 }
+        shock#sw: { scale: 1 }
+      - boss: [65, 180, 15]
+        pyre#s: { scale: 0.6 }
+        tower#sw: { scale: 1 }
+        R2: [75, -135]
+        shock#sw: { opacity: 0 }
+        icemeld#n: { scale: 1 }
+        M2: { status: [] }
+      - tower#sw: { opacity: 0 }
+        icemeld#n: { opacity: 0 }
+        pyre#s: { opacity: 0 }
+        boss: { opacity: 0 }
+        H1: [85, 180]
+        M1: [40, -170]
+        R2: [40, 180]
+        T2: [85, 0]
+        M2: [32, 170]
+      # turn 2
+      - boss: { pos: [60, -45], rotate: -45, opacity: 0.5 }
+        R1: { status: [jump] }
+        icemeld#n: { scale: 0 }
+        pyre#s: { scale: 0 }
+      - orb#nw: { pos: [80, 135], opacity: 0 }
+        shock#se: { scale: 1 }
+        icemeld#n: { opacity: 0.8 }
+        pyre#s: { opacity: 0.5 }
+      - boss: [65, 180, -15]
+        pyre#s: { scale: 0.6 }
+        tower#se: { scale: 1 }
+        H2: [75, 135]
+        shock#se: { opacity: 0 }
+        icemeld#n: { scale: 1 }
+        T2: { status: [] }
+      - tower#se: { opacity: 0 }
+        icemeld#n: { opacity: 0 }
+        pyre#s: { opacity: 0 }
+        boss: { opacity: 0 }
+        R2: [85, 0]
+        H1: [40, 0]
+        R1: [85, 180]
+        H2: [40, -10]
+        M1: [40, 10]
+        T1: [32, -10]
+        T2: [32, 10]
+        M2: [32, 0]
+      # turn 3
+      - boss: { pos: [60, -135], rotate: -135, opacity: 0.5 }
+        T1: { status: [jump] }
+      - orb#sw: { pos: [80, 45], opacity: 0 }
+        shock#ne: { scale: 1 }
+      - boss: [65, 0, -165]
+        pyre#n: { scale: 0.6 }
+        tower#ne: { scale: 1 }
+        M1: [75, 45]
+        shock#ne: { opacity: 0 }
+        icemeld#s: { scale: 1 }
+        R1: { status: [] }
+      - tower#ne: { opacity: 0 }
+        icemeld#s: { opacity: 0 }
+        pyre#n: { opacity: 0 }
+        boss: { opacity: 0 }
+        R2: [40, -10]
+        H1: [40, 0]
+        H2: [85, 0]
+        R1: [32, -10]
+        M1: [40, 10]
+        T1: [85, 180]
+        T2: [32, 10]
+        M2: [32, 0]
+      # turn 4
+      - boss: { pos: [60, 135], rotate: 135, opacity: 0.5 }
+        icemeld#s: { scale: 0 }
+        pyre#n: { scale: 0 }
+      - orb#se: { pos: [80, -45], opacity: 0 }
+        shock#nw: { scale: 1 }
+        icemeld#s: { opacity: 0.8 }
+        pyre#n: { opacity: 0.5 }
+      - boss: [65, 0, 165]
+        pyre#n: { scale: 0.6 }
+        tower#nw: { scale: 1 }
+        H1: [75, -45]
+        shock#nw: { opacity: 0 }
+        icemeld#s: { scale: 1 }
+        T1: { status: [] }
+      - tower#nw: { opacity: 0 }
+        icemeld#s: { opacity: 0 }
+        pyre#n: { opacity: 0 }
+        boss: { pos: [0, 0], rotate: 180, opacity: 0.7 }
+    lc2-nenw:
+      - T1: [50, 0]
+        T2: [50, 180]
+        H1: [50, -90]
+        H2: [50, 90]
+        M1: [50, -135]
+        M2: [50, 135]
+        R1: [50, -45]
+        R2: [50, 45]
+        boss: [0, 0]
+        pyre: [85, 180]
+        icemeld#nw: [85, -45]
+        icemeld#ne: [85, 45]
+        cast: { progress: 0, visible: false }
+        cleave: [85, 180]
+      - T1: [40, 0]
+        T2: [40, 180]
+        H1: [60, -90]
+        H2: [60, 90]
+        M1: [40, -135]
+        M2: [40, 135]
+        R1: [60, -45]
+        R2: [60, 45]
+      - H1: { status: [dice-1] }
+        H2: { status: [dice-4] }
+        R1: { status: [dice-2] }
+        R2: { status: [dice-3] }
+      - T1: [80, 0]
+        boss: [20, 0]
+        H1: [85, -45]
+        R1: [85, 45]
+        H2: [30, 165]
+        R2: [30, -165]
+        T2: [42, 180]
+        M1: [42, 165]
+        M2: [42, -165]
+      - cast: { text: "Front Firestrikes", progress: 0.25, visible: true }
+      - cast: { progress: 0.5 }
+        T1: [29, 180]
+        icemeld#nw: { scale: 1 }
+      - cast: { progress: 0.85 }
+        icemeld#nw: { opacity: 0 }
+        icemeld#ne: { scale: 1 }
+        H1: [30, -165]
+        R2: [85, -45]
+        T1: [75, 180]
+        T2: [85, 180]
+        M1: [80, 172]
+        M2: [80, -172]
+      - cast: { progress: 1 }
+        icemeld#nw: { scale: 0 }
+        icemeld#ne: { opacity: 0 }
+        boss: [85, 180, 0]
+        pyre: { scale: 0.6 }
+        R1: [30, 165]
+        H2: [85, 45]
+      - cast: { text: "Swinging Kick", progress: 0 }
+        icemeld#nw: { scale: 1 }
+        icemeld#ne: { scale: 0 }
+        pyre: { opacity: 0 }
+        T1: [90, 180]
+        T2: [90, 180]
+        M1: [90, 180]
+        M2: [90, 180]
+      - cast: { progress: 0.5 }
+        icemeld#nw: { opacity: 0 }
+        icemeld#ne: { scale: 1 }
+        T1: [70, 180]
+        T2: [80, 180]
+        M1: [75, -170]
+        M2: [75, 170]
+      - icemeld#ne: { opacity: 0 }
+        cast: { progress: 1 }
+        cleave: { scale: [1, 1] }
+      - cast: { visible: false }
+        cleave: { opacity: 0 }
