@@ -81,8 +81,7 @@ actions:
     damage: 80000
   duality:  # Duality of Death
     id: 33105
-    description: "[boss] channels wind and fire, then hits the highest enmity player with [a:33106] (inflicting [s:fire-vuln]) and the second-highest enmity player with [a:33107] (inflicting [s:wind-vuln]). It executes this attack twice in quick succession. Due to the elemental vulnerabilities inflicted, this attack necessitates a tankswap."
-    minimal-description: "[boss] hits both tanks twice for high damage, requiring a tankswap in-between the hits."
+    description: "[boss] channels a tankbuster on both tanks, inflicting vulnerabilities and requiring a tankswap in-between."
     variations: [tb on MTOT]
     type: magic
     damage: 75000
@@ -197,8 +196,9 @@ actions:
     damage: 74000
   ascendant-fist:  # Ascendant Fist
     id: 33135
-    description: "[boss] uppercuts the main target, dealing heavy damage and applying both [s:concussion] and [s:physical-vuln]. The latter forces a tankswap, as [boss]'s auto-attacks are physical in this phase."
-    minimal-description: "[boss] hits the main target for high damage and applies vulnerability, forcing a tankswap."
+    description: |
+      [boss] uppercuts the main target for heavy damage, [s:concussion], and [s:physical-vuln]. Requires a tankswap.
+      The tankswap is required as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln].
     variations: [tb on MT]
     type: physical
     damage: 128000
