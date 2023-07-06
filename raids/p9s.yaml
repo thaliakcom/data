@@ -66,21 +66,18 @@ actions:
     variations: [raidwide]
     type: magic
     damage: 65000
-    fade: true
   soul-surge:  # Soul Surge
     id: 33051
     description: The raidwide executed at the end of [a:ravening].
     variations: [raidwide]
     type: magic
     damage: 65000
-    fade: true
   gluttony:  # Gluttony's Augur
     id: 33100
     description: Heavy raidwide damage.
     variations: [raidwide]
     type: magic
     damage: 80000
-    fade: true
   duality:  # Duality of Death
     id: 33105
     description: "[boss] channels wind and fire, then hits the highest enmity player with [a:33106] (inflicting [s:fire-vuln]) and the second-highest enmity player with [a:33107] (inflicting [s:wind-vuln]). It executes this attack twice in quick succession. Due to the elemental vulnerabilities inflicted, this attack necessitates a tankswap."
@@ -88,7 +85,6 @@ actions:
     variations: [tb on MTOT]
     type: magic
     damage: 75000
-    fade: true
   33106:  # Fire IV
     id: 33106
     description: One half of the two-part tankbuster executed during [a:duality]. Inflicts [s:fire-vuln], preventing players from taking two of these in succession.
@@ -168,7 +164,6 @@ actions:
     variations: [stack on healers]
     type: magic
     damage: 74000
-    fade: true
   ascendant-fist:  # Ascendant Fist
     id: 33135
     description: "[boss] uppercuts the main target, dealing heavy damage and applying both [s:concussion] and [s:physical-vuln]. The latter forces a tankswap, as [boss]'s auto-attacks are physical in this phase."
@@ -176,12 +171,10 @@ actions:
     variations: [tb on MT]
     type: physical
     damage: 128000
-    fade: true
   charybdis:  # Charybdis
     id: 33136
     description: Summons four tornados on the four cardinals of the arena. Stepping into one applies [s:3706].
     variations: [mech]
-    fade: true
   comet:  # Comet
     id: 33138
     description: Places four comets on the intercardinals of the arena, between the tornadoes. Two of them will start out cracked. Each impact site will deal a moderate amount of proximity damage, so the party should stack in the center of the arena.
@@ -195,7 +188,6 @@ actions:
     variations: [proximity]
     type: magic
     damage: 19000
-    fade: true
   burst:  # Burst
     id: 33140
     description: Happens after a [a:comet] is reduced to 0 health states. After a short delay it explodes, dealing huge damage to everything around it. Note that, if the comet is reduced *below* zero health states before it can complete [a:burst] (such as when [a:ecliptic] hits an already damaged comet), it will *skip* [a:burst] and explode immediately. This will not deal any damage, but will prevent players from using damaged comets for cover during [a:ecliptic].
@@ -224,7 +216,6 @@ actions:
     id: 33148
     description: Summons four thunder orbs in front of the four ice walls. These will become relevant during [a:lc1].
     variations: [mech]
-    fade: true
   lc1:  # Scrambled Succession
     id: 33149
     description: |
@@ -280,7 +271,6 @@ actions:
     description: Raidwide inflicting moderate damage.
     variations: [raidwide]
     type: magic
-    fade: true
   enrage:  # Disintegration
     id: 33162
     description: Instantly kills all players.
@@ -306,7 +296,6 @@ actions:
     description: Executes the previously stored [a:rear-comb] or [a:front-comb]. Note that this does *not* inflict [s:damage-down] but *does* inflict [s:concussion]. This means that it is better to be hit by this than by [a:roundhouse-in] or [a:roundhouse-out].
     variations: [cleave]
     type: physical
-    fade: true
   roundhouse-in:  # Inside Roundhouse
     id: 33336
     description: A [t:chariot] centered on the boss, leaving only the outside of the arena safe. Being hit by this inflicts [s:damage-down].
