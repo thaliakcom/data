@@ -75,7 +75,7 @@ actions:
     description: The raidwide executed at the end of [a:ravening].
     variations: [raidwide]
     type: magic
-    damage: 65000
+    damage: 70000
   gluttony:  # Gluttony's Augur
     id: 33100
     description: Heavy raidwide damage.
@@ -307,6 +307,7 @@ actions:
     description: Launches conal attacks at the closest 4 players, originating from [boss], and applies [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
       To avoid damaging any comets, the cones should be aimed into the tornados. The lines on each cardinal and intercardinal assist with positioning.
     variations: [spread on closest]
+    raid-damage: true
     type: magic
     damage: 60000
   levinstrike:  # Levinstrike Summoning
@@ -407,6 +408,7 @@ actions:
     id: 33158
     description: Raidwide inflicting moderate damage.
     variations: [raidwide]
+    damage: 80000
     type: magic
   enrage:  # Disintegration
     id: 33162
@@ -486,7 +488,7 @@ actions:
       [boss] dashes to a target and blows them up in a fire tornado. Happens during [a:lc2]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible.
       This attack is almost the same as [a:firemeld], but there are a few differences. For one, [a:pyremeld] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:firemeld].
       [a:pyremeld] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:icemeld] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:swinging-kick-cast] into the wall if [boss] used [a:front-firestrikes] before.
-    variations: [proximity]
+    variations: [proximity on random]
     type: magic
     damage: 53000
 timeline:
