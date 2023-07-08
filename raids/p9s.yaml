@@ -211,10 +211,10 @@ actions:
     - at: 8587
       id: rockbreaker-aoe
       description: The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s. This spawns the remaining four lights.
+    - at: 8607
+      id: dualspell
     - at: 14604
       id: rockbreaker-aoe
-    - at: 16451
-      id: dualspell
   shockwave:  # Shockwave
     id: 33120
     description: "[boss] punches the center of the arena, knocking all players away from the [t:knockback circle] and spawning 12 [a:ravensclaw]-like cracks in the ground, 8 of which will be initially lit. Players must position themselves to get knocked into one of the ice walls, lest they be knocked straight into the afterlife. If your protean spot does not have a wall behind it, rotate to your [color partner](t:color partners)."
@@ -495,17 +495,17 @@ timeline:
   - at: 46151
     id: duality
     phase: Mage Phase
-  - at: 67306
+  - at: 59462
     id: dualspell
     description: "[boss] channels ice and fire, requiring partner stacks in either in the inner or middle circle."
     variations: [stack on roles]
     strategies: [dualspell-fire-l, dualspell-fire-s]
-  - at: 80453
+  - at: 72609
     id: dualspell
     description: "[boss] channels ice and thunder, requiring [t:protean] positions in either the inner or middle circle."
     variations: [spread on raid]
     strategies: [dualspell-thunder-l, dualspell-thunder-s]
-  - at: 93579
+  - at: 85735
     id: dualspell
     description: "[boss] channels ice and fire, requiring partner stacks. Whichever element [boss] chose to enhance in the first Ice and Fire, this will be the opposite element."
     variations: [stack on roles]
@@ -558,7 +558,7 @@ timeline:
     description: |
       Same mechanic as the previous [a:rockbreaker-1], except [boss] doesn't use [a:rear-comb] or [a:front-comb] but instead casts [a:dualspell].
       This does mean that you _must_ dodge the lines' [t:chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
-  - at: 420318
+  - at: 412474
     id: dualspell
   - at: 425629
     id: gluttony
@@ -569,16 +569,16 @@ timeline:
   - at: 485576
     id: ravening
     description: "[boss] absorbs [s:3542], dealing raidwide damage and switching to Mage Form."
-  - at: 507556
+  - at: 499712
     id: dualspell
     phase: Mage Phase
   - at: 512854
     id: gluttony
-  - at: 527823
+  - at: 519979
     id: dualspell
   - at: 534164
     id: duality
-  - at: 551170
+  - at: 543326
     id: dualspell
   - at: 556456
     id: gluttony
