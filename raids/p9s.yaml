@@ -263,12 +263,14 @@ actions:
     - at: 15232
       id: beastly-bile
       link: and
+      mitigation: max
     - at: 15232
       id: thunderbolt
     - at: 22140
       id: beastly-bile
       description: The second stack resolves. Must be taken by the 4 players who just received [a:thunderbolt].
       link: and
+      mitigation: max
     - at: 22140
       id: thunderbolt
       description: The second cones resolve. Must be taken by the 4 players who just received [a:beastly-bile].
@@ -374,6 +376,7 @@ actions:
     id: 33152
     description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
     variations: [proximity on numbered]
+    raid-damage: false
     type: magic
     damage: 53000
   shock:  # Shock
