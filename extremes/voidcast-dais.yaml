@@ -2,7 +2,9 @@ id: 20090
 patch: "6.4"
 date: 2023-05-23
 modified: 2023-06-11
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Endwalker
 boss: Golbez
 HP: 0

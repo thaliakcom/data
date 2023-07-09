@@ -2,7 +2,9 @@ id: 20067
 patch: "5.1"
 date: 2022-11-22
 modified: 2022-11-22
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Shadowbringers
 boss: Hades
 HP: 0

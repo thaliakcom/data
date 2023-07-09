@@ -2,7 +2,9 @@ id: 20072
 patch: "5.3"
 date: 2022-11-22
 modified: 2022-11-22
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Shadowbringers
 boss: Elidibus
 HP: 0

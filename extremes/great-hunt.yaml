@@ -2,7 +2,9 @@ id: 20054
 patch: "4.36"
 date: 2022-11-22
 modified: 2022-11-22
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Stormblood
 boss: Rathalos
 HP: 0

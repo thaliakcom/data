@@ -2,7 +2,9 @@ id: 30057
 patch: "4.11"
 date: 2022-11-18
 modified: 2022-11-18
-author: 27637301
+by:
+  id: 27637301
+  role: author
 boss: Golden Bahamut
 HP: 0
 wip: true

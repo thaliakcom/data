@@ -2,7 +2,9 @@ id: 30028
 patch: "3.05"
 date: 2022-11-22
 modified: 2022-11-22
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: "Alexander: Gordias"
 boss: The Manipulator
 HP: 0

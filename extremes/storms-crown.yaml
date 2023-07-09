@@ -2,7 +2,9 @@ id: 20085
 patch: "6.2"
 date: 2022-11-04
 modified: 2022-11-04
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Endwalker
 boss: Barbariccia
 HP: 0

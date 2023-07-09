@@ -2,7 +2,9 @@ id: 20083
 patch: "6.1"
 date: 2022-11-18
 modified: 2022-11-18
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Endwalker
 boss: The Endsinger
 HP: 0

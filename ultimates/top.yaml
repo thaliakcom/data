@@ -2,7 +2,9 @@ id: 30124
 patch: "6.31"
 date: 2023-01-24
 modified: 2023-06-11
-author: 27637301
+by:
+  id: 27637301
+  role: author
 boss: Alpha-Omega
 HP: 0
 wip: true

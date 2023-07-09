@@ -3,7 +3,9 @@ sort_id: 30110
 patch: "6.05"
 date: 2022-10-03
 modified: 2022-10-03
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Asphodelos
 boss: Erichthonios
 HP: 29844576

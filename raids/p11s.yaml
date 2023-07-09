@@ -2,7 +2,9 @@ id: 30131
 patch: "6.4"
 date: 2023-05-30
 modified: 2023-06-11
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Anabaseios
 boss: Themis
 HP: 49884204

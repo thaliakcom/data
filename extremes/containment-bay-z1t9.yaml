@@ -2,7 +2,9 @@ id: 20044
 patch: "3.5"
 date: 2022-11-22
 modified: 2022-11-22
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: The Warring Triad
 boss: Zurvan
 HP: 0

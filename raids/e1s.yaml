@@ -2,7 +2,9 @@ id: 30079
 patch: "5.05"
 date: 2022-11-18
 modified: 2022-11-18
-author: 27637301
+by:
+  id: 27637301
+  role: author
 tier: Eden's Gate
 boss: Eden-Prime
 HP: 0
