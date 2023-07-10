@@ -1150,7 +1150,7 @@ graphing:
         R1: [30, 165]
         H2: [85, 45]
       - cast: { text: "Swinging Kick", progress: 0 }
-        icemeld#nw: { scale: 1 }
+        icemeld#nw: { scale: 1, opacity: 1 }
         icemeld#ne: { scale: 0 }
         pyre: { opacity: 0 }
         T1: [90, 180]
@@ -1159,7 +1159,7 @@ graphing:
         M2: [90, 180]
       - cast: { progress: 0.5 }
         icemeld#nw: { opacity: 0 }
-        icemeld#ne: { scale: 1 }
+        icemeld#ne: { scale: 1, opacity: 1 }
         T1: [70, 180]
         T2: [80, 180]
         M1: [75, -170]
