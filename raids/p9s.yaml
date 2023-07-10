@@ -422,7 +422,8 @@ actions:
     id: 33211
     name: Chimeric Succession
     description: |
-      This is another [t:limit cut] mechanic similar to [a:lc1], though this one is far simpler. Four numbers from 1-4 are placed above the four farthest players from [boss]. These players will receive [a:icemeld]s in that order, requiring them to be away from every other party member.
+      This is another [t:limit cut] mechanic similar to [a:lc1], though this one is far simpler. Four numbers from 1-4 are placed above four players. These players will receive [a:icemeld]s in that order, requiring them to be away from every other party member.
+      Note that these numbers can be baited. The *farthest* player from [boss] receives *1*, the second-farthest *2*, and so on. This allows you to give the same players the same role each time and use identical movement each pull.
       As the [a:icemeld]s come out quite fast, it is recommended to place the *1* and *2* players both on the outside of the arena, then swap *3* for *1* once *1* resolves, and *4* for *2* once *2* resolves.
       The rest of the party must stack outside of [a:icemeld] range and pay attention to [boss]'s cast: either [a:front-firestrikes] or [a:rear-firestrikes]. At the end of the cast (which happens between the resolution of the *2* and *3* [a:icemeld]s), [boss] will dash towards a random non-numbered player and hit them with [a:pyremeld]. Like [a:firemeld], [a:pyremeld] is a proximity-based attack, dealing more damage the closer the targeted player is to [boss]'s initial position, but unlike [a:firemeld] it is also a *stack*.
       Note that the distance from the center of the arena to the far edge of the wall is insufficient to survive [a:pyremeld] without mitigation, so the solution is to either drag [boss] slightly towards the [a:icemeld] side at the start of the mechanic to increase the distance of the dash, or to heavily mitigate [a:pyremeld].
