@@ -35,14 +35,11 @@ status:
 actions:
   30496:  # Sonic Howl
     damage: 45800
-    type: magic
     description: Medium-damage raidwide. [boss] always follows it up with [a:30452]. Well-timed mitigation can cover both (except for the second Ruby Glow).
   30452:  # Ruby Glow
     damage: 65300
-    type: magic
     description: High-damage raidwide. Sets up reflective ruby walls around the arena for the next mechanic.
   30457:  # Ruby Reflection
-    type: magic
     description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of high damage. Inflicts [s:2911].
   30461:  # Topaz Stones
     description: |
@@ -73,10 +70,8 @@ actions:
   30476:  # Venom
     variations: [chariot on closest]
     damage: 177396
-    type: magic
     description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
   30477:  # Scatterbait
-    type: magic
     description: High-damage raidwide that inflicts [s:2911] on every living party member.
   caustic-pools:
     name: Caustic Pools
@@ -93,25 +88,21 @@ actions:
   30492:
     name: Double Rush
     damage: 58000
-    type: physical
     description: |
       [boss] faces one of two directions and rushes the arena twice, applying a knockback and heavy damage to anything in its path. Since [boss] always starts in the center, the first rush can and should be avoided by simply standing behind [boss]. The second rush cannot be avoided and should be mitigated. You can use [a:7548] and [a:7559] to negate the knockback.
       This attack forces downtime on melee players. With good ping, you may be able to get a [t:GCD] in as [boss] rushes past the second time, but your [t:GCD] may easily be [ghosted](t:ghosting).
   30488:  # Venom Rain
     damage: 64000
-    type: magic
     description: Hits every party member with a high-damage [t:AoE].
     strategies:
       clock-spots:
         name: Clock spots
         description: Assign clock spots at the start of the fight and use them here.
   30489:  # Venom Drops
-    type: magic
     description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
   30490:  # Venom Pool
     variations: [stack on healers]
     damage: 50000
-    type: magic
     description: |
       Hits both healers with an untelegraphed [t:AoE] that should be shared by exactly 4 players.
       This attack has a special interaction with topaz stones. If dropped within the [t:AoE] circle of a topaz stone before it explodes, it will *swap* that topaz to an emerald.
@@ -134,13 +125,10 @@ actions:
         name: Center after stack
         description: After the initial stacks, everyone moves dead-center of [boss]'s hitbox. Once all [a:30489] puddles are baited in the center, everyone moves to their designated clock spots.
   30479:  # Raging Claw
-    type: physical
     description: "[boss] cleaves the arena in front of it with seven deadly hits that inflict [s:2911]. This attack does not interact with ruby walls. The safe zone is always behind [boss]."
   30481:  # Raging Tail
-    type: physical
     description: "[boss] cleaves the arena behind it with a heavy hit that inflicts [s:2911]. The safe zone is always in front of [boss]."
   30455:  # Searing Ray
-    type: magic
     description: |
       [boss] cleaves the arena in front of it with a heavy hit that inflicts [s:2911]. If the attack hits a ruby wall, the entire square will be bathed in [a:30457].
       In Savage, this attack is only ever used in combination with a ruby wall, so stay away from [boss] during this cast.
@@ -157,11 +145,9 @@ actions:
   30793:  # Devour
     description: "[boss] lowers itself to all fours and prepares to "
   30497:  # Sonic Shatter
-    type: magic
     damage: 40000
     description: Medium damage raidwide used five times in quick succession.
   30499:  # Acidic Slaver
-    type: magic
     damage: 9999999
     description: This is the [t:enrage].
 timeline:

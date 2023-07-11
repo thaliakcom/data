@@ -76,7 +76,6 @@ actions:
     id: 33051
     description: The raidwide executed at the end of [a:ravening].
     variations: [raidwide]
-    type: magic
     damage: 70000
   gluttony:  # Gluttony's Augur
     id: 33100
@@ -104,13 +103,11 @@ actions:
     id: 33106
     description: "[boss] hits the main target with heavy fire damage. Inflicts [s:fire-vuln], preventing players from taking two of these in succession."
     variations: [tb on MT]
-    type: magic
     damage: 75000
   aero-iv:  # Aero IV
     id: 33107
     description: "[boss] hits the second target with heavy wind damage. Inflicts [s:wind-vuln], preventing players from taking two of these in succession."
     variations: [tb on OT]
-    type: magic
     damage: 75000
   dualspell:  # Dualspell
     id: 33108
@@ -146,27 +143,23 @@ actions:
     id: 33110
     description: The stack [t:chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
     variations: [stack on roles]
-    type: magic
     damage: 57000
   thunder-iii:  # Thunder III
     id: 33114
     description: The [t:protean] [t:AoE] fired during the thunder variant of [a:dualspell] or [a:two-minds].
     variations: [spread on raid]
-    type: magic
     damage: 57000
   rockbreaker-stack:  # Archaic Rockbreaker
     id: 33122
     name: Archaic Rockbreaker (Stack)
     description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a party member of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
     variations: [stack on roles]
-    type: magic
     damage: 58000
   rockbreaker-aoe:  # Archaic Rockbreaker
     id: 33121
     name: Archaic Rockbreaker (AoE)
     description: "The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s."
     variations: [chariot]
-    type: magic
   rockbreaker-1:  # Archaic Rockbreaker
     id: 33119
     description: A four-step mechanic involving a knockback, partner stack, and some [t:AoE] avoidance.
@@ -221,7 +214,6 @@ actions:
     id: 33120
     description: "[boss] punches the center of the arena, knocking all players away from the [t:knockback circle] and spawning 12 [a:ravensclaw]-like cracks in the ground, 8 of which will be initially lit. Players must position themselves to get knocked into one of the ice walls, lest they be knocked straight into the afterlife. If your protean spot does not have a wall behind it, rotate to your [color partner](t:color partners)."
     variations: [knockback]
-    type: physical
     damage: 10000
   rear-comb:
     id: 33129
@@ -240,6 +232,7 @@ actions:
     description: "Two 4-person stack rocks hit each healer, inflicting [s:magic-vuln]. If players are dead, this stack still be easily survived with some mitigation."
     variations: [stack on healers]
     type: magic
+    element: earth
     damage: 74000
   ascendant-fist:  # Ascendant Fist
     id: 33135
@@ -247,7 +240,6 @@ actions:
       [boss] uppercuts the main target for heavy damage, [s:concussion], and [s:physical-vuln]. Requires a tankswap.
       The tankswap is required as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln].
     variations: [tb on MT]
-    type: physical
     damage: 128000
   charybdis:  # Charybdis
     id: 33136
@@ -282,7 +274,6 @@ actions:
     id: 33139
     description: The [a:comet]s crash into the ground. Each impact site will deal a moderate amount of proximity damage, so the party should stack in the center of the arena.
     variations: [proximity]
-    type: magic
     cast: 0
     damage: 76000
   burst:  # Burst
@@ -291,7 +282,6 @@ actions:
       Happens after a [a:comet] is reduced to 0 health states. After a short delay it explodes, dealing damage to everything around it.
       Note that, if the comet is reduced *below* 0 health states (such as when [a:ecliptic] hits an already damaged comet, since [a:ecliptic] damages a comet by *2* health states), it will *skip* [a:burst] and explode immediately. This will not deal any damage, but resolves *before* the game checks whether players are out of line-of-sight of [a:ecliptic], which means that any players hiding behind a cracked comet will instantly die.
     variations: [chariot]
-    type: magic
   ecliptic:  # Ecliptic Meteor
     id: 33141
     description: "[boss] targets a random whole comet (or a damaged one if no whole ones remain) and telegraphs it with a black cross above it. An ecliptic meteor now begins descending onto this comet. The party must stack behind the remaining whole comet, avoiding line of sight with the targeted comet. If no other whole comets remain, a wipe is guaranteed, as [a:ecliptic] deals *2* health states of damage to each comet. If a comet is \"overkilled\" in this manner, it will vanish instantly rather than exploding after [a:burst], which means players cannot use it to avoid line of sight of [a:ecliptic]. Any player in line of sight of the targeted comet is killed instantly."
@@ -380,19 +370,16 @@ actions:
     description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
     variations: [proximity on numbered]
     raid-damage: false
-    type: magic
     damage: 53000
   shock:  # Shock
     id: 33153
     description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [t:chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
     variations: [towers]
-    type: magic
     damage: 23000
   icemeld:  # Icemeld
     id: 33155
     description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2].
     variations: [spread]
-    type: magic
     damage: 70000
   two-minds:  # Two Minds
     id: 33157
@@ -411,7 +398,6 @@ actions:
     description: Raidwide inflicting moderate damage.
     variations: [raidwide]
     damage: 80000
-    type: magic
   enrage:  # Disintegration
     id: 33162
     description: "[boss] engineers an attack that combines the might of the mage's and martialist's souls, creating an explosion so terrible it strains the bounds of reality."
@@ -457,22 +443,18 @@ actions:
     id: 33315
     description: Executes the previously stored kick (either in front or behind [boss]). Inflicts [s:concussion].
     variations: [cleave]
-    type: physical
   swinging-kick-cast:  # Swinging Kick (with castbar)
     id: 34709
     description: Executes the previously stored kick (either in front or behind [boss]). Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
     variations: [cleave]
-    type: physical
   roundhouse-in:  # Inside Roundhouse
     id: 33336
     description: A [t:chariot] centered on the boss, leaving only the outside of the arena safe. Inflicts [s:damage-down].
     variations: [chariot]
-    type: physical
   roundhouse-out:  # Outside Roundhouse
     id: 33337
     description: A [t:dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Inflicts [s:damage-down].
     variations: [donut]
-    type: physical
   front-firestrikes:
     id: 34702
     name: Front Firestrikes
@@ -492,7 +474,6 @@ actions:
       This attack is almost the same as [a:firemeld], but there are a few differences. For one, [a:pyremeld] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:firemeld].
       [a:pyremeld] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:icemeld] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:swinging-kick-cast] into the wall if [boss] used [a:front-firestrikes] before.
     variations: [proximity on random]
-    type: magic
     damage: 53000
 timeline:
   - at: 11556
