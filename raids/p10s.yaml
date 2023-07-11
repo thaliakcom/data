@@ -10,7 +10,7 @@ boss: Pandæmonium
 HP: 43656896
 average_hp: 73000
 autos:
-  target: MT
+  mechanic: auto.single
   type: magic
 wip: true
 description: |

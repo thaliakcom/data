@@ -11,7 +11,7 @@ boss: Hegemone
 HP: 29844576
 average_hp: 60000
 autos:
-  target: MT
+  mechanic: auto.single
   type: magic
 wip: true
 description: ""

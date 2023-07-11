@@ -11,7 +11,7 @@ HP: 29844576
 average_hp: 60000
 wip: true
 autos:
-  target: MT
+  mechanic: auto.single
   type: physical
 description: |
   Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had.
@@ -54,22 +54,21 @@ actions:
         name: Wide pattern
         description: If a topaz shares a square with an emerald, there will be one square with neither topaz nor emerald in it. Half of this square is safe.
   30493:  # Venomous Mass
-    variations: [tb on MT]
+    mechanic: tb.mt
     damage: 71200
     type: magic
     description: |
       High-damage tankbuster. Inflicts [s:2940] and [s:3390]. Immediately follows up with [a:30794], which deals physical damage and thus requires a tankswap.
       **Note that this hit of the tankbuster is an [t:AoE]. Stay away from the main tank during this cast!**
   30794:  # Toxic Crunch
-    variations: [tb on MT]
+    mechanic: tb.mt
     damage: 76700
     type: physical
     description: |
       High-damage tankbuster. Inflicts [s:3390]. Note that this tankbuster **cannot be invulned** if you have [s:2940], as the resulting [s:3390] effect is directly relative to how much damage the initial hit inflicted. With [s:2940] each tick of the DoT will be lethal. Due to the DoT's long duration, it is not possible to cover all 4 ticks with invulnerability either.
       Be aware that [s:2940] will fade before the boss starts auto-attacking again, so there is no need to swap back after this hit.
   30476:  # Venom
-    variations: [chariot on closest]
-    damage: 177396
+    mechanic: tb.close.stack
     description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
   30477:  # Scatterbait
     description: High-damage raidwide that inflicts [s:2911] on every living party member.
@@ -101,7 +100,7 @@ actions:
   30489:  # Venom Drops
     description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
   30490:  # Venom Pool
-    variations: [stack on healers]
+    mechanic: stack.healers
     damage: 50000
     description: |
       Hits both healers with an untelegraphed [t:AoE] that should be shared by exactly 4 players.
@@ -159,7 +158,7 @@ timeline:
   - at: 25000
     id: 30461
     description: Spawns 2 topaz and 2 emeralds. Only one square is safe.
-    strategies: [ruby-glow-1-1, ruby-glow-1-2]
+    # strategies: [ruby-glow-1-1, ruby-glow-1-2]
   - at: 51000
     id: 30493
   - at: 58000

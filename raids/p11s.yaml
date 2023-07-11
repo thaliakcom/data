@@ -10,7 +10,7 @@ boss: Themis
 HP: 49884204
 average_hp: 73000
 autos:
-  target: MT
+  mechanic: auto.single
   type: physical
 wip: true
 description: Elidibus faces the players yet again, yet this time not as the Warrior of Light of eld but as the Emissary, who balances the powers of both Light and Dark.

@@ -1,19 +1,19 @@
-GCD: >
+GCD: |
   Refers to a button that invokes the global cooldown. Weaponskills are always on the global cooldown. There are also certain abilities that trigger the global cooldown, like [a:7497] or [a:7418]. Such abilities have the following text in their tooltip: "Triggers the cooldown of weaponskills upon execution. Cannot be executed during the cooldown of weaponskills."
-ghosting: >
+ghosting: |
   "GCD ghosting" is an effect whereby, after pressing one of your buttons, your character begins the animation for that weaponskill, ability, or spell, but then cancels it as the server rejects the button input. This can happen for a variety of reasons, the most common being enemies moving out of range (especially during a dungeon pull), enemies (particularly large bosses) moving directly through your character, and so on. It points at a mismatch between where the server believes you and the enemies are, and where you are on your screen. Good ping can mitigate this effect.
 AoE: Refers to an area of effect attack, i.e. an attack that can hit multiple enemies or players if they are too close to the target.
 HoT: A status effect that heals over time. One healing tick happens approximately every three seconds.
 DoT: A status effect that deals damage over time. One damage tick happens approximately every three seconds.
-enrage: Refers to an attack that instantly and unavoidably kills all players. The party must kill the enemy before this attack goes off or the fight restarts.
-chariot: A point-blank circular AoE, requiring players to get out of the circle as soon as possible. So named due to Nael deus Darnus's signature attack Iron Chariot.
-dynamo: A donut-shaped AoE, requiring players to get into its center as soon as possible. So named due to Nael deus Darnus's signature attack Lunar Dynamo.
-protean: >
-  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss. The name originates from Living Liquid's "Protean Wave" attack in Arm of the Father.
-proteans: >
-  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss. The name originates from Living Liquid's "Protean Wave" attack in Arm of the Father.
+protean: |
+  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss.
+  Named after Living Liquid's eponymous attack, [a:3829].
+proteans: |
+  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss.
+  Named after Living Liquid's eponymous attack, [a:3829].
 knockback circle: A knockback circle is a telegraphed circle that is pulsing purple. Being inside the circle when it resolves results in lethal damage; being outside of it knocks players away from the circle. It is generally recommended to be just on the outside of the circle to avoid being knocked outside of the arena.
 color partners: A common strategy whereby markers are placed on each cardinal and intercard (generally with two adjacent markers being the same color), then assigns each marker to a player. The two players that share a marker color are considered partners for any mechanic that requires a partner stack.
 stores: If a mechanic is "stored", it isn't executed immediately but is instead executed at some arbitrary point in the future, after other mechanics have been executed first.
-limit cut: A mechanic that is generally identified by numbers appearing above players' or objects' heads, indicating that they will receive some kind of mechanic in sequence. Named after the first such number-based mechanic in Alexander - The Heart of the Creator (Savage).
 body check: A type of mechanic that immediately follows another mechanic and is meant to punish parties that did not resolve the first mechanic cleanly (that is, without deaths), as all players are required to be alive to resolve this mechanic cleanly. If some players are dead, it may inevitably result in either more players dying, or the entire party wiping.
+tankswap: A strategy whereby the two tanks "swap" their enmity values. The main tank becomes the off-tank and vice-versa. Generally accomplished via the off-tank using [a:7533] and, optionally, the main tank using [a:7537] afterwards.
+max melee: The maximum distance outside an enemy's hitbox at which melee GCDs can still be used on the enemy.

@@ -10,11 +10,11 @@ boss: Kokytos
 HP: 36660084
 average_hp: 73000
 autos:
-  target: MT
+  mechanic: auto.single
   type: mixed
 description: >
   A variety encounter, as [boss] eats souls for breakfast, then adopts their aspects. While most of the fight revolves around simple AoE avoidance and stack/spread mechanics,
-  [boss] executes a dangerous [t:limit cut] mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.
+  [boss] executes a dangerous [m:mech.limit] mechanic in the middle of the fight, one of the most lethal mechanics a first floor has ever had.
 status:
   lightning-vuln:  # Lightning Resistance Down II
     id: 2095
@@ -56,16 +56,16 @@ status:
 actions:
   ravensclaw:  # Ravensclaw (for reference)
     id: 19148
-    description: "A mechanic from <a href=\"/extremes/cinder-drift/\">Cinder Drift</a> wherein Ruby Weapon plunges its claw into the ground and spawns eight cracks in the ground with lights traveling alongside them. Once they reach the end of the crack, the lights explode in a small [t:chariot] [t:AoE]."
+    description: "A mechanic from <a href=\"/extremes/cinder-drift/\">Cinder Drift</a> wherein Ruby Weapon plunges its claw into the ground and spawns eight cracks in the ground with lights traveling alongside them. Once they reach the end of the crack, the lights explode in a small [m:aoe.chariot] [t:AoE]."
   ravening:  # Ravening
     id: 33048
     description: |
       [boss] consumes a soul and absorbs its power, changing its form to either [s:3542], [s:3543], [s:3544], or [s:chimeric]. At the end of the animation, [boss] executes [a:soul-surge], inflicting heavy raidwide damage.
       In [s:3542], [boss]'s auto-attacks and abilities are magical, and his trademark abilities are [a:dualspell] and [a:two-minds].
-      In [s:3543], [boss]'s auto-attacks are physical, and his abilities are primarily physical and earth-aspected magic. In this form, his trademark abilities are [a:rockbreaker-1] and [a:swinging-kick].
+      In [s:3543], [boss]'s auto-attacks are physical, and his abilities are primarily physical and earth-aspected magic. In this form, his trademark abilities are [a:rockbreaker-1] and [a:swinging-kick-front].
       In [s:3544], [boss]'s auto-attacks are physical. Likened to a behemoth, he only executes the [a:charybdis] into [a:ecliptic] combo here.
-      In [s:chimeric], [boss] combines both the aspects of [s:3542] and [s:3543] and can cast abilities from either form. In this form, his trademark abilities are the [t:limit cut] mechanics [a:lc1] and [a:lc2].
-    variations: [raidwide]
+      In [s:chimeric], [boss] combines both the aspects of [s:3542] and [s:3543] and can cast abilities from either form. In this form, his trademark abilities are the [m:mech.limit] mechanics [a:lc1] and [a:lc2].
+    mechanic: raidwide
     type: magic
     delay: 6595
     compact: trim
@@ -75,18 +75,18 @@ actions:
   soul-surge:  # Soul Surge
     id: 33051
     description: The raidwide executed at the end of [a:ravening].
-    variations: [raidwide]
+    mechanic: raidwide
     damage: 70000
   gluttony:  # Gluttony's Augur
     id: 33100
     description: Heavy raidwide damage.
-    variations: [raidwide]
+    mechanic: raidwide
     type: magic
     damage: 80000
   duality:  # Duality of Death
     id: 33105
-    description: "[boss] channels a tankbuster on both tanks, inflicting vulnerabilities and requiring a tankswap in-between."
-    variations: [tb on MTOT]
+    description: "[boss] channels a tankbuster on both tanks, inflicting vulnerabilities and requiring a [t:tankswap] in-between."
+    mechanic: tb.double
     type: magic
     children:
       - at: 600
@@ -102,12 +102,12 @@ actions:
   fire-iv:  # Fire IV
     id: 33106
     description: "[boss] hits the main target with heavy fire damage. Inflicts [s:fire-vuln], preventing players from taking two of these in succession."
-    variations: [tb on MT]
+    mechanic: tb.mt
     damage: 75000
   aero-iv:  # Aero IV
     id: 33107
     description: "[boss] hits the second target with heavy wind damage. Inflicts [s:wind-vuln], preventing players from taking two of these in succession."
-    variations: [tb on OT]
+    mechanic: tb.ot
     damage: 75000
   dualspell:  # Dualspell
     id: 33108
@@ -115,17 +115,23 @@ actions:
       [boss] channels either ice and lightning, or ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players.
       **Fire**: all 4 players of one role (either all DPS or all tanks and healers) are targeted with [a:pile-pyre], a fire pillar that must be shared by at least one other player and inflicts [s:magic-vuln]. Overlap results in death.
       **Lightning**: all 8 players are targeted with [a:thunder-iii], a lightning-aspected line [t:AoE] that inflicts [s:magic-vuln]. Overlap results in death.
-      **Ice**: A giant [t:dynamo], leaving only the center of the arena safe.
-    variations: [stack on roles, spread on raid]
+      **Ice**: A giant [m:aoe.dynamo], leaving only the center of the arena safe.
+    mechanic: mech.protean
     type: magic
     delay: 7844
     compact: trim
     children:
       - at: 7844
         id: pile-pyre
+        link: and
+      - at: 7844
+        id: blizzard-iii
         link: or
       - at: 7844
         id: thunder-iii
+        link: and
+      - at: 7844
+        id: blizzard-iii
     strategies:
       dualspell-thunder-l:
         name: Ice and Thunder (out)
@@ -139,31 +145,75 @@ actions:
       dualspell-fire-s:
         name: Ice and Fire (in)
         description: Ice will flash on the screen, requiring partner stacks on the inside of either the cardinals or intercardinals.
+  dualspell-fire:  # Dualspell
+    id: 33108
+    description: "[boss] channels ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players. See [a:dualspell] for more information."
+    mechanic: stack.partner
+    type: magic
+    delay: 7844
+    compact: trim
+    children:
+      - at: 7844
+        id: pile-pyre
+        link: and
+      - at: 7844
+        id: blizzard-iii
+    strategies:
+      dualspell-fire-l:
+        name: Ice and Fire (out)
+        description: Fire will flash on the screen, requiring partner stacks on the outside of the cardinals or intercardinals.
+      dualspell-fire-s:
+        name: Ice and Fire (in)
+        description: Ice will flash on the screen, requiring partner stacks on the inside of either the cardinals or intercardinals.
+  dualspell-thunder:  # Dualspell
+    id: 33108
+    description: "[boss] channels ice and lightning. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players. See [a:dualspell] for more information."
+    mechanic: spread.line
+    type: magic
+    delay: 7844
+    compact: trim
+    children:
+      - at: 7844
+        id: thunder-iii
+        link: and
+      - at: 7844
+        id: blizzard-iii
+    strategies:
+      dualspell-thunder-l:
+        name: Ice and Thunder (out)
+        description: Thunder will flash on the screen, requiring everyone to be spread out from each other at [t:protean] positions.
+      dualspell-thunder-s:
+        name: Ice and Thunder (in)
+        description: Ice will flash on the screen, requiring everyone to be inside the inner circle at [t:protean] positions.
   pile-pyre:  # Pile Pyre
     id: 33110
-    description: The stack [t:chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
-    variations: [stack on roles]
+    description: The stack [m:aoe.chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
+    mechanic: stack.partner
     damage: 57000
   thunder-iii:  # Thunder III
     id: 33114
     description: The [t:protean] [t:AoE] fired during the thunder variant of [a:dualspell] or [a:two-minds].
-    variations: [spread on raid]
+    mechanic: spread.line
     damage: 57000
+  blizzard-iii:  # Blizzard III
+    id: 33111
+    description: A [m:aoe.dynamo] on the outside of the arena during [a:dualspell] and [a:two-minds]. Must be avoided. Looking at the rings on the arena floor can help; if ice is empowered, only the inner ring (inside the boss's hitbox) will be safe, otherwise everything inside the middle ring (at [t:max melee] to the boss) will be safe.
+    mechanic: aoe.dynamo
   rockbreaker-stack:  # Archaic Rockbreaker
     id: 33122
     name: Archaic Rockbreaker (Stack)
     description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a party member of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
-    variations: [stack on roles]
+    mechanic: stack.partner
     damage: 58000
   rockbreaker-aoe:  # Archaic Rockbreaker
     id: 33121
     name: Archaic Rockbreaker (AoE)
-    description: "The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s."
-    variations: [chariot]
+    description: "The lights reach the end of the cracks and explode in small [m:aoe.chariot] [t:AoE]s."
+    mechanic: aoe.chariot
   rockbreaker-1:  # Archaic Rockbreaker
     id: 33119
     description: A four-step mechanic involving a knockback, partner stack, and some [t:AoE] avoidance.
-    variations: [mech]
+    mechanic: mech
     children:
     - at: 0
       id: shockwave
@@ -182,9 +232,12 @@ actions:
       link: and
     - at: 8587
       id: rockbreaker-aoe
-      description: The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s. This spawns the remaining four lights.
+      description: The lights reach the end of the cracks and explode in small [m:aoe.chariot] [t:AoE]s. This spawns the remaining four lights.
     - at: 11707
-      id: swinging-kick
+      id: swinging-kick-front
+      link: or
+    - at: 11707
+      id: swinging-kick-rear
     - at: 14604
       id: roundhouse-out
       link: or
@@ -196,7 +249,7 @@ actions:
   rockbreaker-2:  # Archaic Rockbreaker
     id: 33119
     description: Same as the last [a:rockbreaker-1], except [boss] uses [a:dualspell] instead of [a:front-comb] or [a:rear-comb] in-between.
-    variations: [mech on roles]
+    mechanic: mech
     type: magic
     children:
     - at: 0
@@ -205,7 +258,7 @@ actions:
       id: rockbreaker-stack
     - at: 8587
       id: rockbreaker-aoe
-      description: The lights reach the end of the cracks and explode in small [t:chariot] [t:AoE]s. This spawns the remaining four lights.
+      description: The lights reach the end of the cracks and explode in small [m:aoe.chariot] [t:AoE]s. This spawns the remaining four lights.
     - at: 8607
       id: dualspell
     - at: 14604
@@ -213,43 +266,43 @@ actions:
   shockwave:  # Shockwave
     id: 33120
     description: "[boss] punches the center of the arena, knocking all players away from the [t:knockback circle] and spawning 12 [a:ravensclaw]-like cracks in the ground, 8 of which will be initially lit. Players must position themselves to get knocked into one of the ice walls, lest they be knocked straight into the afterlife. If your protean spot does not have a wall behind it, rotate to your [color partner](t:color partners)."
-    variations: [knockback]
+    mechanic: mech.knockback.unavoidable
     damage: 10000
   rear-comb:
     id: 33129
     name: Rear Combination
-    description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:swinging-kick]."
-    variations: [cleave]
+    description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:swinging-kick-rear]."
+    mechanic: mech.store
     type: physical
   front-comb:
     id: 33130
     name: Front Combination
-    description: "[boss] [t:stores] a half-arena cleave in front of him, which he will execute during [a:swinging-kick]."
-    variations: [cleave]
+    description: "[boss] [t:stores] a half-arena cleave in front of him, which he will execute during [a:swinging-kick-front]."
+    mechanic: mech.store
     type: physical
   demolish:  # Archaic Demolish
     id: 33133
     description: "Two 4-person stack rocks hit each healer, inflicting [s:magic-vuln]. If players are dead, this stack still be easily survived with some mitigation."
-    variations: [stack on healers]
+    mechanic: stack.healers
     type: magic
     element: earth
     damage: 74000
   ascendant-fist:  # Ascendant Fist
     id: 33135
     description: |
-      [boss] uppercuts the main target for heavy damage, [s:concussion], and [s:physical-vuln]. Requires a tankswap.
-      The tankswap is required as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln].
-    variations: [tb on MT]
+      [boss] uppercuts the main target for heavy damage, [s:concussion], and [s:physical-vuln]. Requires a [t:tankswap].
+      The [t:tankswap] is required as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln].
+    mechanic: tb.mt
     damage: 128000
   charybdis:  # Charybdis
     id: 33136
     description: Summons four tornados on the four cardinals of the arena. Stepping into one applies [s:3706].
-    variations: [mech]
+    mechanic: mech
   comet:  # Comet
     id: 33138
     description: Places four comets on the intercardinals of the arena, between the tornadoes. Two of them will start out cracked.
       After they have spawned, two comets will appear whole, while two will appear cracked. If a comet takes any damage during this phase, its health state will be reduced by one (to "cracked" or, if it's already cracked, ready to [a:burst]). The two "whole" comets must not take any damage during this phase or a wipe is guaranteed.
-    variations: [proximity]
+    mechanic: raidwide.proximity
     type: physical
     children:
     - at: 1070
@@ -273,7 +326,7 @@ actions:
   comet-impact:  # Comet Impact
     id: 33139
     description: The [a:comet]s crash into the ground. Each impact site will deal a moderate amount of proximity damage, so the party should stack in the center of the arena.
-    variations: [proximity]
+    mechanic: raidwide.proximity
     cast: 0
     damage: 76000
   burst:  # Burst
@@ -281,16 +334,16 @@ actions:
     description: |
       Happens after a [a:comet] is reduced to 0 health states. After a short delay it explodes, dealing damage to everything around it.
       Note that, if the comet is reduced *below* 0 health states (such as when [a:ecliptic] hits an already damaged comet, since [a:ecliptic] damages a comet by *2* health states), it will *skip* [a:burst] and explode immediately. This will not deal any damage, but resolves *before* the game checks whether players are out of line-of-sight of [a:ecliptic], which means that any players hiding behind a cracked comet will instantly die.
-    variations: [chariot]
+    mechanic: aoe.chariot
   ecliptic:  # Ecliptic Meteor
     id: 33141
     description: "[boss] targets a random whole comet (or a damaged one if no whole ones remain) and telegraphs it with a black cross above it. An ecliptic meteor now begins descending onto this comet. The party must stack behind the remaining whole comet, avoiding line of sight with the targeted comet. If no other whole comets remain, a wipe is guaranteed, as [a:ecliptic] deals *2* health states of damage to each comet. If a comet is \"overkilled\" in this manner, it will vanish instantly rather than exploding after [a:burst], which means players cannot use it to avoid line of sight of [a:ecliptic]. Any player in line of sight of the targeted comet is killed instantly."
-    variations: [los]
+    mechanic: mech.los
     type: dark
   beastly-bile:  # Beastly Bile
     id: 33143
     description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
-    variations: [stack on farthest]
+    mechanic: stack.far
     type: magic
     delay: 11958
     damage: 46000
@@ -298,23 +351,23 @@ actions:
     id: 33145
     description: Launches conal attacks at the closest 4 players, originating from [boss], and applies [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
       To avoid damaging any comets, the cones should be aimed into the tornados. The lines on each cardinal and intercardinal assist with positioning.
-    variations: [spread on closest]
-    raid-damage: true
+    mechanic: spread.cone
     type: magic
     damage: 60000
   levinstrike:  # Levinstrike Summoning
     id: 33148
     description: Summons four thunder orbs in front of the four ice walls. These will become relevant during [a:lc1].
-    variations: [mech]
+    mechanic: mech
   lc1:  # Scrambled Succession
     id: 33149
     description: |
-      Odd numbers (1, 3, 5, 7) appear above the orbs, while even numbers (2, 4, 6, 8) appear above four random players. This is a [t:limit cut] mechanic with *four turns*. After the cast resolves, the boss becomes untargetable and the first turn begins. In each turn the following three mechanics happen simultaneously:
+      Odd numbers (1, 3, 5, 7) appear above the orbs, while even numbers (2, 4, 6, 8) appear above four random players. This is a [m:mech.limit] mechanic with *four turns*. After the cast resolves, the boss becomes untargetable and the first turn begins. In each turn the following three mechanics happen simultaneously:
       [a:shock]: [a:shock:d]
       [a:firemeld]: [a:firemeld:d]
-      [a:icemeld]: Before each turn, a blue marker appears above a random unnumbered party member. These party members will receive an enormous [t:chariot] [t:AoE] that inflicts [s:magic-vuln]. Unlike [a:shock]'s and [a:firemeld]'s vulnerabilities, however, [a:icemeld]'s vulnerability lasts for the duration of the entire mechanic. This means that even after their [a:icemeld] is resolved, these players cannot soak towers at any point. All towers must be soaked by numbered players two turns before or after their respective [a:firemeld] dash.
+      [a:icemeld]: Before each turn, a blue marker appears above a random unnumbered party member. These party members will receive an enormous [m:aoe.chariot] [t:AoE] that inflicts [s:magic-vuln]. Unlike [a:shock]'s and [a:firemeld]'s vulnerabilities, however, [a:icemeld]'s vulnerability lasts for the duration of the entire mechanic. This means that even after their [a:icemeld] is resolved, these players cannot soak towers at any point. All towers must be soaked by numbered players two turns before or after their respective [a:firemeld] dash.
       **Order** (tower soaks): 6-8-2-4. An easy way to remember this is that, if you're 2 or 4, your first mechanic is a [a:firemeld]. If you're a 6 or 8, your first mechanic is a tower soak. Afterwards, your other responsibility resolves exactly two turns later.
       Note that, after the last tower is resolved, the boss immediately starts casting [a:two-minds], which essentially serves as a [t:body check] and also requires players to get into their assigned [t:protean] or partner positions quickly.
+    mechanic: mech.limit
     compact: trim
     children:
       - at: 4951
@@ -364,56 +417,61 @@ actions:
           For the numbered players, towers resolve as normal (*6* and *8* just head into whichever towers first appear). The [a:firemeld] players (*2* and *4*) treat this mechanic exactly the same as the [a:icemeld] players, but on the opposite side; so *2* will plant at the edge between the *5* and *7* orbs, then swap with *4* once their [a:firemeld] resolves.
           After the first two turns, the party switches sides: the numbered players will now go to the [a:icemeld] side (which will now have no orbs left) and the [a:icemeld]s will resolve their mechanic where the [a:firemeld]s previously resolved theirs, and vice-versa.
           The benefit of this strategy is that, aside from finding the initial positions, you do not need to remember the direction of rotation at all. The downside is that there is a far greater amount of movement than in Oppo, which may cause problems for abilities that accrue resources and require you to stand still like [a:7497] or [a:24387].
-    variations: [bigmech on numbered]
   firemeld:  # Firemeld
     id: 33152
     description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
-    variations: [proximity on numbered]
-    raid-damage: false
+    mechanic: mech.distance
     damage: 53000
   shock:  # Shock
     id: 33153
-    description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [t:chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
-    variations: [towers]
+    description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [m:aoe.chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
+    mechanic: towers.single
     damage: 23000
   icemeld:  # Icemeld
     id: 33155
     description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2].
-    variations: [spread]
+    mechanic: spread.chariot
     damage: 70000
   two-minds:  # Two Minds
     id: 33157
     description: "Identical to [a:dualspell] except for one thing: [a:dualspell] executes both the telegraph for the empowered element and the mechanic with a significant delay *after* the cast finishes, while [a:two-minds] shows the element *during* the cast and executes the mechanic immediately at the end of the cast. To make up for this, [a:two-minds] has a longer cast time."
-    variations: [stack on roles, spread on raid]
+    mechanic: mech.protean
     type: magic
     compact: full
     children:
       - at: 0
         id: pile-pyre
+        link: and
+      - at: 0
+        id: blizzard-iii
         link: or
       - at: 0
         id: thunder-iii
+        link: and
+      - at: 0
+        id: blizzard-iii
   beastly-fury:  # Beastly Fury
     id: 33158
     description: Raidwide inflicting moderate damage.
-    variations: [raidwide]
+    mechanic: raidwide
     damage: 80000
   enrage:  # Disintegration
     id: 33162
     description: "[boss] engineers an attack that combines the might of the mage's and martialist's souls, creating an explosion so terrible it strains the bounds of reality."
     damage: 9999999
-    variations: [enrage]
+    mechanic: enrage
     type: dark
   lc2:
     id: 33211
     name: Chimeric Succession
     description: |
-      This is another [t:limit cut] mechanic similar to [a:lc1], though this one is far simpler. Four numbers from 1-4 are placed above four players. These players will receive [a:icemeld]s in that order, requiring them to be away from every other party member.
+      This is another [m:mech.limit] mechanic similar to [a:lc1], though this one is far simpler. Four numbers from 1-4 are placed above four players. These players will receive [a:icemeld]s in that order, requiring them to be away from every other party member.
       Note that these numbers can be baited. The *farthest* player from [boss] receives *1*, the second-farthest *2*, and so on. This allows you to give the same players the same role each time and use identical movement each pull.
       As the [a:icemeld]s come out quite fast, it is recommended to place the *1* and *2* players both on the outside of the arena, then swap *3* for *1* once *1* resolves, and *4* for *2* once *2* resolves.
       The rest of the party must stack outside of [a:icemeld] range and pay attention to [boss]'s cast: either [a:front-firestrikes] or [a:rear-firestrikes]. At the end of the cast (which happens between the resolution of the *2* and *3* [a:icemeld]s), [boss] will dash towards a random non-numbered player and hit them with [a:pyremeld]. Like [a:firemeld], [a:pyremeld] is a proximity-based attack, dealing more damage the closer the targeted player is to [boss]'s initial position, but unlike [a:firemeld] it is also a *stack*.
       Note that the distance from the center of the arena to the far edge of the wall is insufficient to survive [a:pyremeld] without mitigation, so the solution is to either drag [boss] slightly towards the [a:icemeld] side at the start of the mechanic to increase the distance of the dash, or to heavily mitigate [a:pyremeld].
-      After [a:pyremeld], the boss *briefly* turns towards whichever player he jumped on, then casts [a:swinging-kick-cast] either in front or behind him (based on whichever Firestrikes was cast at the beginning). Note that during this cast you can no longer turn [boss]. This means that, for [a:front-firestrikes] all stacking players should briefly move in front of [boss] to face him into the outside of the arena, while for [a:rear-firestrikes] all players should move back towards the center of the arena to make [boss] face into the arena. Either way, his [a:swinging-kick-cast] will now hit the outside of the arena, leaving the [a:icemeld] players safe.
+      After [a:pyremeld], the boss *briefly* turns towards whichever player he jumped on, then casts [a:swinging-kick-cast-front] (front) or [a:swinging-kick-cast-rear] (rear) based on whichever Firestrikes was cast at the beginning. Note that during this cast you can no longer turn [boss]. This means that, for [a:front-firestrikes] all stacking players should briefly move in front of [boss] to face him into the outside of the arena, while for [a:rear-firestrikes] all players should move back towards the center of the arena to make [boss] face into the arena. Either way, his Swinging Kick will now hit the outside of the arena, leaving the [a:icemeld] players safe.
+    mechanic: mech.limit
     compact: trim
     children:
       - at: 10836
@@ -433,47 +491,57 @@ actions:
       - at: 19841
         id: icemeld
       - at: 20954
-        id: swinging-kick
+        id: swinging-kick-cast-front
+        link: or
+      - at: 20954
+        id: swinging-kick-cast-rear
     strategies:
       lc2-nenw:
         name: Northeast/Northwest
-        description: This strategy places the [a:icemeld] on the north side of the arena and the party stack on the south side. The two most important slides in the diagram are slides **4**, where the tank drags the boss northward to significantly reduce the damage dealt by [a:pyremeld], and slide **9**, where all jumped-on players position themselves in front of [boss] to bait [a:swinging-kick] forward. Note that [boss] cast [a:front-firestrikes] in this diagram; if [boss] had cast [a:rear-firestrikes] instead, the jumped-on players would instead position themselves behind the boss after [a:pyremeld] to turn the boss toward the center of the arena.
-    variations: [bigmech on numbered]
-  swinging-kick:  # Swinging Kick
+        description: This strategy places the [a:icemeld] on the north side of the arena and the party stack on the south side. The two most important slides in the diagram are slides **4**, where the tank drags the boss northward to significantly reduce the damage dealt by [a:pyremeld], and slide **9**, where all jumped-on players position themselves in front of [boss] to bait [a:swinging-kick-cast-front] forward. Note that [boss] cast [a:front-firestrikes] in this diagram; if [boss] had cast [a:rear-firestrikes] instead, the jumped-on players would instead position themselves behind the boss after [a:pyremeld] to turn the boss toward the center of the arena.
+  swinging-kick-front:  # Swinging Kick
+    id: 33314
+    description: Executes the previously stored frontward cleave. Inflicts [s:concussion].
+    mechanic: aoe.front
+  swinging-kick-rear:  # Swinging Kick
     id: 33315
-    description: Executes the previously stored kick (either in front or behind [boss]). Inflicts [s:concussion].
-    variations: [cleave]
-  swinging-kick-cast:  # Swinging Kick (with castbar)
+    description: Executes the previously stored rearward cleave. Inflicts [s:concussion].
+    mechanic: aoe.rear
+  swinging-kick-cast-front:  # Swinging Kick (with castbar)
     id: 34709
-    description: Executes the previously stored kick (either in front or behind [boss]). Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
-    variations: [cleave]
+    description: Executes the previously stored frontward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
+    mechanic: mech
+  swinging-kick-cast-rear:  # Swinging Kick (with castbar)
+    id: 34710
+    description: Executes the previously stored rearward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
+    mechanic: mech
   roundhouse-in:  # Inside Roundhouse
     id: 33336
-    description: A [t:chariot] centered on the boss, leaving only the outside of the arena safe. Inflicts [s:damage-down].
-    variations: [chariot]
+    description: A [m:aoe.chariot] centered on the boss, leaving only the outside of the arena safe. Inflicts [s:damage-down].
+    mechanic: aoe.chariot
   roundhouse-out:  # Outside Roundhouse
     id: 33337
-    description: A [t:dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Inflicts [s:damage-down].
-    variations: [donut]
+    description: A [m:aoe.dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Inflicts [s:damage-down].
+    mechanic: aoe.dynamo
   front-firestrikes:
     id: 34702
     name: Front Firestrikes
-    description: Similar to [a:front-comb], [t:stores] a frontal [a:swinging-kick-cast] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the wall to ensure the [a:icemeld] players can avoid the [a:swinging-kick-cast].
-    variations: [proximity on random]
+    description: Similar to [a:front-comb], [t:stores] a frontal [a:swinging-kick-cast-front] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the wall to ensure the [a:icemeld] players can avoid the [a:swinging-kick-cast-front].
+    mechanic: mech.distance
     type: magic
   rear-firestrikes:
     id: 34703
     name: Rear Firestrikes
-    description: Similar to [a:rear-comb], [t:stores] a rear [a:swinging-kick-cast] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the center of the arena to ensure the [a:icemeld] players can avoid the [a:swinging-kick-cast].
-    variations: [proximity on random]
+    description: Similar to [a:rear-comb], [t:stores] a rear [a:swinging-kick-cast-rear] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on, allowing that player to face [boss] into the center of the arena to ensure the [a:icemeld] players can avoid the [a:swinging-kick-cast-rear].
+    mechanic: mech.distance
     type: magic
   pyremeld:  # Pyremeld
     id: 34708
     description: |
       [boss] dashes to a target and blows them up in a fire tornado. Happens during [a:lc2]. It deals more damage the *less* distance [boss] dashes. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position as possible.
       This attack is almost the same as [a:firemeld], but there are a few differences. For one, [a:pyremeld] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:firemeld].
-      [a:pyremeld] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:icemeld] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:swinging-kick-cast] into the wall if [boss] used [a:front-firestrikes] before.
-    variations: [proximity on random]
+      [a:pyremeld] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage. It is therefore recommended for the main tank to pull the boss at least 3y to the [a:icemeld] side at the start of the mechanic, to allow the party to stack at least 22y away from the boss. Be aware that you shouldn't be *all* the way at the wall, to allow you to bait the subsequent [a:swinging-kick-cast-front] into the wall if [boss] used [a:front-firestrikes] before.
+    mechanic: raidwide.proximity
     damage: 53000
 timeline:
   - at: 11556
@@ -485,20 +553,12 @@ timeline:
     id: duality
     phase: Mage Phase
   - at: 59462
-    id: dualspell
-    description: "[boss] channels ice and fire, requiring partner stacks in either in the inner or middle circle."
-    variations: [stack on roles]
-    strategies: [dualspell-fire-l, dualspell-fire-s]
+    id: dualspell-fire
   - at: 72609
-    id: dualspell
-    description: "[boss] channels ice and thunder, requiring [t:protean] positions in either the inner or middle circle."
-    variations: [spread on raid]
-    strategies: [dualspell-thunder-l, dualspell-thunder-s]
+    id: dualspell-thunder
   - at: 85735
-    id: dualspell
+    id: dualspell-fire
     description: "[boss] channels ice and fire, requiring partner stacks. Whichever element [boss] chose to enhance in the first Ice and Fire, this will be the opposite element."
-    variations: [stack on roles]
-    strategies: [dualspell-fire-l, dualspell-fire-s]
   - at: 113633
     id: ravening
     description: "[boss] absorbs [s:3543], dealing raidwide damage, switching to Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
@@ -546,7 +606,7 @@ timeline:
     id: rockbreaker-2
     description: |
       Same mechanic as the previous [a:rockbreaker-1], except [boss] doesn't use [a:rear-comb] or [a:front-comb] but instead casts [a:dualspell].
-      This does mean that you _must_ dodge the lines' [t:chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
+      This does mean that you _must_ dodge the lines' [m:aoe.chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick-front], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
   - at: 412474
     id: dualspell
   - at: 425629

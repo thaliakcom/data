@@ -1,0 +1,190 @@
+raidwide:
+  name: raidwide
+  description: Hits all party members with moderate to heavy damage.
+  is-raid-damage: true
+raidwide.proximity:
+  name: proximity
+  description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
+  is-raid-damage: true
+raidwide.transition:
+  name: ultimate attack
+  description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
+  is-raid-damage: true
+tb.mt:
+  name: tankbuster (MT)
+  description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
+tb.ot:
+  name: tankbuster (OT)
+  description: A heavy-hitting attack on the party member with the second-highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
+tb.double:
+  name: tankbuster (MT & OT)
+  description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
+tb.stack:
+  name: tankbuster (stack)
+  description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+tb.far:
+  name: tankbuster (far)
+  description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns to survive.
+tb.far.stack:
+  name: tankbuster (far)
+  description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+tb.close:
+  name: tankbuster (close)
+  description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns to survive.
+tb.close.stack:
+  name: tankbuster (close)
+  description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+auto.single:
+  name: MT
+  description: These auto-attacks target the player with the highest enmity.
+auto.double:
+  name: MT & OT
+  description: These auto-attacks target the two players with the highest enmity.
+auto.stack:
+  name: MT & OT (stack)
+  description: These auto-attacks target the player with the highest enmity and need to be shared by another tank to reduce the damage to survivable levels.
+auto.close:
+  name: closest
+  description: These auto-attacks target the closest player to the boss.
+auto.far:
+  name: farthest
+  description: These auto-attacks target the farthest player from the boss.
+stack.party:
+  name: stack
+  description: A heavy-hitting attack on one party member that cannot be survived alone. As many other party members as possible must stack close to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.partner:
+  name: partner stack
+  description: A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.role:
+  name: role stack
+  description: A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.healers:
+  name: healer stack
+  description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.far:
+  name: far stack
+  description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.close:
+  name: close stack
+  description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.line:
+  name: line stack
+  description: A heavy-hitting attack on one party member that cannot be survived alone. As many players as possible must be in-line with the targeted player to divide the damage amongst themselves and make it survivable.
+  is-raid-damage: true
+stack.wildcharge:
+  name: Wild Charge
+  description: |
+    An attack that deals heavy damage to a targeted player and all other players in-line with them. The first player(s) hit receives tremendously amplified damage, generally requiring a tank to stand in front of the line and mitigate the hit with individual mitigation.
+    Note that while Wild Charge attacks target a specific player, there is generally no telegraph for who that player is. This means that, even though this is not a stacking mechanic (damage is not reduced per additional person in the stack), all players still need to stand in a line as the attack may target any of them.
+    Named after Imdugud's eponymous attack, [a:2134].
+  is-raid-damage: true
+stack.ululation:
+  name: ululation
+  description: |
+    A mechanic that requires affected players to stack with at least one other party member. They will not receive damage, but failing to stack will generally inflict heavy damage or debuffs.
+    Named after Cerberus's eponymous attack, [a:3254]. Also sometimes called a "dorito stack", after the appearance of the marker that appears above affected players' heads in some normal raids and trials.
+aoe.front:
+  name: front cleave
+  description: Deals avoidable damage to everything in front of the boss (or another enemy).
+aoe.rear:
+  name: rear cleave
+  description: Deals avoidable damage to everything behind the boss (or another enemy).
+aoe.side:
+  name: side cleave
+  description: Deals avoidable damage to everything on one side of the boss (or another enemy). Which side is hit can either be identified from the cast name or some specific telegraph on the enemy's model.
+aoe.line:
+  name: line cleave
+  description: Deals avoidable damage to everything in a line with the boss (or another enemy).
+aoe.dynamo:
+  name: dynamo
+  description: |
+    A ring-shaped [t:AoE] that deals avoidable damage to everything outside its inner radius. Some dynamo AoEs have an unlimited outer radius, while some can be avoided by either being inside its inner radius or outside its outer radius.
+    Named after Nael deus Darnus's eponymous attack, [a:2010].
+aoe.chariot:
+  name: chariot
+  description: |
+    A circular [t:AoE] that deals avoidable damage to everything inside its radius.
+    Named after Neul deus Darnus's eponymous attack, [a:2008].
+spread.chariot:
+  name: spread (chariot)
+  description: An unavoidable player-targeted circle that deals damage to the player and all players within a certain radius of them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
+  is-raid-damage: true
+spread.line:
+  name: spread (line)
+  description: An unavoidable player-targeted line that deals damage to the player and all players in-line with them and the source. Affected players must angle themselves away from each other, as clipping each other with these AoEs usually leads to death.
+  is-raid-damage: true
+spread.cone:
+  name: spread (cone)
+  description: An unavoidable player-targeted cone that deals damage to the player and all players in a cone-shaped area around them. Affected players must angle themselves away from each other, as clipping each other with these AoEs usually leads to death.
+  is-raid-damage: true
+spread.close:
+  name: spread (close)
+  description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
+  is-raid-damage: true
+mech:
+  name: mechanic
+  description: A mechanic that does nothing on its own but sets up a sequence of other mechanics.
+mech.protean:
+  name: spread or stack
+  description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
+  is-raid-damage: true
+mech.store:
+  name: store
+  description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to member *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
+mech.gaze:
+  name: gaze
+  description: Players must look away from a given target (often the boss). Failing to do so usually inflicts a debilitating debuff like [s:210].
+mech.los:
+  name: line of sight
+  description: Hits all players in direct line of sight to the source of the attack. Usually some sort of cover is required to hide behind.
+mech.limit:
+  name: limit cut
+  description: |
+    A mechanic that is generally identified by numbers appearing above players' or objects' heads, indicating that they will receive some kind of mechanic in sequence.
+    Named after Cruise Chaser's eponymous attack, [a:7916].
+mech.distance:
+  name: distance
+  description: Players must be at the correct distance to something else in order to avoid debuffs and/or death.
+mech.tether.far:
+  name: far tethers
+  description: Players are tethered to something else (usually another player). If they ever get closer to each other than a certain distance threshold, they will take heavy debuffs and/or damage.
+mech.tether.close:
+  name: close tethers
+  description: Players are tethered to something else (usually another player). If they ever get farther from each other than a certain distance threshold, they will take heavy debuffs and/or damage.
+mech.knockback:
+  name: knockback
+  description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:7559].
+  is-raid-damage: true
+mech.knockback.unavoidable:
+  name: knockback
+  description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:7559].
+  is-raid-damage: true
+mech.pull:
+  name: draw-in
+  description: Draws in all players to a given location. Can be avoided using [a:7548] or [a:7559].
+  is-raid-damage: true
+mech.pull.unavoidable:
+  name: draw-in
+  description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:7559].
+  is-raid-damage: true
+towers.single:
+  name: towers
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  is-raid-damage: true
+towers.double:
+  name: 2P towers
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least two people. If less than two people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  is-raid-damage: true
+towers.triple:
+  name: 3P towers
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three people. If less than three people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  is-raid-damage: true
+enrage:
+  name: enrage
+  description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
