@@ -68,7 +68,6 @@ actions:
       In [s:chimeric], [boss] combines both the aspects of [s:3542] and [s:3543] and can cast abilities from either form. In this form, his trademark abilities are the [m:mech.limit] mechanics [a:lc1] and [a:lc2].
     mechanic: raidwide
     type: magic
-    delay: 6595
     compact: trim
     children:
       - at: 6595
@@ -119,7 +118,6 @@ actions:
       **Ice**: A giant [m:aoe.dynamo], leaving only the center of the arena safe.
     mechanic: mech.protean
     type: magic
-    delay: 7844
     compact: trim
     children:
       - at: 7844
@@ -151,7 +149,6 @@ actions:
     description: "[boss] channels ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players. See [a:dualspell] for more information."
     mechanic: stack.partner
     type: magic
-    delay: 7844
     compact: trim
     children:
       - at: 7844
@@ -171,7 +168,6 @@ actions:
     description: "[boss] channels ice and lightning. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players. See [a:dualspell] for more information."
     mechanic: spread.line
     type: magic
-    delay: 7844
     compact: trim
     children:
       - at: 7844
@@ -346,7 +342,6 @@ actions:
     description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
     mechanic: stack.far
     type: magic
-    delay: 11958
     damage: 46000
   thunderbolt:  # Thunderbolt
     id: 33145
