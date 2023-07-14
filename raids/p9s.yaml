@@ -82,7 +82,7 @@ actions:
     description: Heavy raidwide damage.
     mechanic: raidwide
     type: magic
-    damage: 80000
+    damage: 65000
   duality:  # Duality of Death
     id: 33105
     description: "[boss] channels a tankbuster on both tanks, inflicting vulnerabilities and requiring a [t:tankswap] in-between."
