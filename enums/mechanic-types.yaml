@@ -19,6 +19,9 @@ tb.ot:
 tb.double:
   name: tankbuster (MT & OT)
   description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
+tb.towers:
+  name: tankbuster towers
+  description: Two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking players should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
 tb.stack:
   name: tankbuster (stack)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns and shared by another tank to survive.
@@ -57,6 +60,9 @@ stack.partner:
   name: partner stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+stack.enumeration:
+  name: enumeration
+  description: Similar to a [m:stack.partner], but instead of splitting the damage between everyone in the stack, there is instead a required number of players in the stack (generally 2). If the wrong number of players are in the stack (less *or* more), it kills all stacking players instantly.
 stack.role:
   name: role stack
   description: A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
@@ -111,6 +117,14 @@ aoe.chariot:
   description: |
     A circular [t:AoE] that deals avoidable damage to everything inside its radius.
     Named after Neul deus Darnus's eponymous attack, [a:2008].
+aoe.chariot.baitable:
+  name: baits (chariot)
+  description: |
+    A circular [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
+    Named after Neul deus Darnus's eponymous attack, [a:2008].
+aoe.rotating:
+  name: rotating AoEs
+  description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
 spread.chariot:
   name: spread (chariot)
   description: An unavoidable player-targeted circle that deals damage to the player and all players within a certain radius of them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.

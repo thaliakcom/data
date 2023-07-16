@@ -17,3 +17,4 @@ stores: If a mechanic is "stored", it isn't executed immediately but is instead 
 body check: A type of mechanic that immediately follows another mechanic and is meant to punish parties that did not resolve the first mechanic cleanly (that is, without deaths), as all players are required to be alive to resolve this mechanic cleanly. If some players are dead, it may inevitably result in either more players dying, or the entire party wiping.
 tankswap: A strategy whereby the two tanks "swap" their enmity values. The main tank becomes the off-tank and vice-versa. Generally accomplished via the off-tank using [a:7533] and, optionally, the main tank using [a:7537] afterwards.
 max melee: The maximum distance outside an enemy's hitbox at which melee GCDs can still be used on the enemy.
+kitchen sink: Refers to a tank using all of their defensive cooldowns (except invulnerability) on one attack to drastically reduce damage taken.
