@@ -187,11 +187,13 @@ actions:
     description: The stack [m:aoe.chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
     mechanic: stack.partner
     damage: 57000
+    count: 4
   thunder-iii:  # Thunder III
     id: 33114
     description: The [t:protean] [t:AoE] fired during the thunder variant of [a:dualspell] or [a:two-minds].
     mechanic: spread.line
     damage: 57000
+    count: 8
   blizzard-iii:  # Blizzard III
     id: 33111
     description: A [m:aoe.dynamo] on the outside of the arena during [a:dualspell] and [a:two-minds]. Must be avoided. Looking at the rings on the arena floor can help; if ice is empowered, only the inner ring (inside the boss's hitbox) will be safe, otherwise everything inside the middle ring (at [t:max melee] to the boss) will be safe.
@@ -202,6 +204,7 @@ actions:
     description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a party member of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
     mechanic: stack.partner
     damage: 58000
+    count: 4
   rockbreaker-aoe:  # Archaic Rockbreaker
     id: 33121
     name: Archaic Rockbreaker (AoE)
@@ -230,6 +233,7 @@ actions:
     - at: 8587
       id: rockbreaker-aoe
       description: The lights reach the end of the cracks and explode in small [m:aoe.chariot] [t:AoE]s. This spawns the remaining four lights.
+      count: 8
     - at: 11707
       id: swinging-kick-front
       link: or
@@ -243,6 +247,7 @@ actions:
       link: and
     - at: 14604
       id: rockbreaker-aoe
+      count: 4
   rockbreaker-2:  # Archaic Rockbreaker
     id: 33119
     description: Same as the last [a:rockbreaker-1], except [boss] uses [a:dualspell] instead of [a:front-comb] or [a:rear-comb] in-between.
@@ -256,10 +261,12 @@ actions:
     - at: 8587
       id: rockbreaker-aoe
       description: The lights reach the end of the cracks and explode in small [m:aoe.chariot] [t:AoE]s. This spawns the remaining four lights.
+      count: 8
     - at: 8607
       id: dualspell
     - at: 14604
       id: rockbreaker-aoe
+      count: 4
   shockwave:  # Shockwave
     id: 33120
     description: "[boss] punches the center of the arena, knocking all players away from the [t:knockback circle] and spawning 12 [a:ravensclaw]-like cracks in the ground, 8 of which will be initially lit. Players must position themselves to get knocked into one of the ice walls, lest they be knocked straight into the afterlife. If your protean spot does not have a wall behind it, rotate to your [color partner](t:color partners)."
@@ -284,6 +291,7 @@ actions:
     type: magic
     element: earth
     damage: 74000
+    count: 2
   ascendant-fist:  # Ascendant Fist
     id: 33135
     description: |
@@ -325,6 +333,7 @@ actions:
     description: The [a:comet]s crash into the ground. Each impact site will deal a moderate amount of proximity damage, so the party should stack in the center of the arena.
     mechanic: raidwide.proximity
     cast: 0
+    count: 4
     damage: 76000
   burst:  # Burst
     id: 33140
@@ -343,6 +352,7 @@ actions:
     mechanic: stack.far
     type: magic
     damage: 46000
+    count: 1
   thunderbolt:  # Thunderbolt
     id: 33145
     description: Launches conal attacks at the closest 4 players, originating from [boss], and applies [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
@@ -350,6 +360,7 @@ actions:
     mechanic: spread.cone
     type: magic
     damage: 60000
+    count: 4
   levinstrike:  # Levinstrike Summoning
     id: 33148
     description: Summons four thunder orbs in front of the four ice walls. These will become relevant during [a:lc1].
@@ -497,18 +508,22 @@ actions:
         description: This strategy places the [a:icemeld] on the north side of the arena and the party stack on the south side. The two most important slides in the diagram are slides **4**, where the tank drags the boss northward to significantly reduce the damage dealt by [a:pyremeld], and slide **9**, where all jumped-on players position themselves in front of [boss] to bait [a:swinging-kick-cast-front] forward. Note that [boss] cast [a:front-firestrikes] in this diagram; if [boss] had cast [a:rear-firestrikes] instead, the jumped-on players would instead position themselves behind the boss after [a:pyremeld] to turn the boss toward the center of the arena.
   swinging-kick-front:  # Swinging Kick
     id: 33314
+    name: Swinging Kick (Front)
     description: Executes the previously stored frontward cleave. Inflicts [s:concussion].
     mechanic: aoe.front
   swinging-kick-rear:  # Swinging Kick
     id: 33315
+    name: Swinging Kick (Rear)
     description: Executes the previously stored rearward cleave. Inflicts [s:concussion].
     mechanic: aoe.rear
   swinging-kick-cast-front:  # Swinging Kick (with castbar)
     id: 34709
+    name: Swinging Kick (Front)
     description: Executes the previously stored frontward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
     mechanic: mech
   swinging-kick-cast-rear:  # Swinging Kick (with castbar)
     id: 34710
+    name: Swinging Kick (Rear)
     description: Executes the previously stored rearward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
     mechanic: mech
   roundhouse-in:  # Inside Roundhouse
@@ -603,8 +618,6 @@ timeline:
     description: |
       Same mechanic as the previous [a:rockbreaker-1], except [boss] doesn't use [a:rear-comb] or [a:front-comb] but instead casts [a:dualspell].
       This does mean that you _must_ dodge the lines' [m:aoe.chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick-front], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
-  - at: 412474
-    id: dualspell
   - at: 425629
     id: gluttony
   - at: 438048
