@@ -86,8 +86,8 @@ stack.line:
 stack.wildcharge:
   name: Wild Charge
   description: |
-    An attack that deals heavy damage to a targeted player and all other players in-line with them. The first player(s) hit receives tremendously amplified damage, generally requiring a tank to stand in front of the line and mitigate the hit with individual mitigation.
-    Note that while Wild Charge attacks target a specific player, there is generally no telegraph for who that player is. This means that, even though this is not a stacking mechanic (damage is not reduced per additional person in the stack), all players still need to stand in a line as the attack may target any of them.
+    An attack that deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
+    Wild Charge attacks often (but not always) target a specific non-tank player. Sometimes this player is unmarked, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
     Named after Imdugud's eponymous attack, [a:2134].
   is-raid-damage: true
 stack.ululation:
