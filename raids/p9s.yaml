@@ -20,14 +20,17 @@ status:
     id: 2095
     duration: 9960
     description: Makes any lightning damage received lethal.
+    type: vuln
   fire-vuln:  # Fire Resistance Down II
     id: 2098
     duration: 9960
     description: Makes any fire damage received lethal.
+    type: vuln
   wind-vuln:  # Wind Resistance Down II
     id: 2096
     duration: 9960
     description: Makes any wind damage received lethal.
+    type: vuln
   damage-down:  # Damage Down
     id: 2911
     duration: 30000
@@ -36,32 +39,41 @@ status:
     id: 2940
     duration: 10000
     description: Makes any physical damage received lethal.
+    type: vuln
   magic-vuln:  # Magic Vulnerability Up
     id: 2941
     duration: [1960, 7000, 8960, 9960, 12960, 15960, 18960]
     description: Makes any magic damage received lethal.
+    type: vuln
   concussion:  # Concussion
     id: 2944
     duration: 12000
-    description: A heavy [t:DoT] inflicted by [a:ascendant-fist] that ticks 4 times for approximately 31,000 damage per tick.
+    description: A heavy [t:DoT] inflicted by [a:ascendant-fist].
+    tick: 31000
+    type: dot
   dark-vuln:  # Dark Resistance Down II
     id: 3323
     duration: 9960
     description: Makes any dark magic damage received lethal.
+    type: vuln
   mage-soul:
     id: 3542
     description: In this form, [boss] uses magical elemental abilities such as [a:dualspell] and [a:two-minds]. It is also the only form in which [boss] has magical auto-attacks.
+    type: form
   monk-soul:
     id: 3543
     description: In this form, [boss] uses physical and earth-aspected magical abilities such as [a:rockbreaker-1] and [a:swinging-kick-front].
+    type: form
   beast-soul:
     id: 3544
     description: In this form, [boss] uses the classic behemoth's abilities [a:charybdis] and [a:ecliptic].
+    type: form
   chimeric:  # Chimeric Soul
     id: 3545
     name: Chimeric Soul
     description: An amalgamation of [s:mage-soul] and [s:monk-soul]. In this form, [boss] combines his physical and magical abilities into one, for instance in the form of [a:firemeld] and [a:lc1].
     gameDescription: Wielding the power of multiple ancient souls.
+    type: form
 actions:
   ravensclaw:  # Ravensclaw (for reference)
     id: 19148

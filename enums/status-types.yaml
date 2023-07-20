@@ -1,0 +1,18 @@
+dot:
+  name: damage over time
+  description: Deals a certain amount of damage every tick (3 seconds) until the status effect falls off.
+vuln:
+  name: Resistance Down
+  description: All damage of a certain type is greatly amplified (usually to the point of certain death).
+condition:
+  name: condition
+  description: Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
+delay:
+  name: delayed execution
+  description: Represents a mechanic that will be executed when the status effect expires.
+form:
+  name: form
+  description: A form or "stance" that changes certain abilities and mechanics.
+impairment:
+  name: impairment
+  description: Impairs the player's movement or actions in some way.
