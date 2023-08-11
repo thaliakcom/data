@@ -1,0 +1,42 @@
+# Role Actions
+- id: 16151    # Aurora
+  regen: 200
+
+# GNB
+- id: 16151    # Aurora
+  regen: 200
+
+# PLD
+- id: 30       # Hallowed Ground
+  status: [82]
+
+# SAM
+# - id: 
+
+# WHM
+- id: 25862    # Liturgy of the Bell
+  status: [2709]
+
+# PLD: [17, 22, 27, 30, 3540, 3542]
+# WAR: []
+# DRK: []
+# GNB: [16151]
+
+# WHM: []
+# SCH: []
+# AST: []
+# SGE: []
+
+# MNK: []
+# DRG: []
+# NIN: []
+# SAM: []
+# RPR: []
+
+# BRD: []
+# MCH: [2887, 16889]
+# DNC: []
+
+# BLM: []
+# SMN: []
+# RDM: []
