@@ -83,18 +83,14 @@ stack.line:
   name: line stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. As many players as possible must be in-line with the targeted player to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
-stack.wildcharge:
-  name: Wild Charge
-  description: |
-    An attack that deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
-    Wild Charge attacks often (but not always) target a specific non-tank player. Sometimes this player is unmarked, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
-    Named after Imdugud's eponymous attack, [a:2134].
-  is-raid-damage: true
 stack.ululation:
   name: ululation
   description: |
     A mechanic that requires affected players to stack with at least one other party member. They will not receive damage, but failing to stack will generally inflict heavy damage or debuffs.
     Named after Cerberus's eponymous attack, [a:3254]. Also sometimes called a "dorito stack", after the appearance of the marker that appears above affected players' heads in some normal raids and trials.
+aoe:
+  name: AoE
+  description: Leaves only a specific section of the arena safe.
 aoe.front:
   name: front cleave
   description: Deals avoidable damage to everything in front of the boss (or another enemy).
@@ -125,6 +121,14 @@ aoe.chariot.baitable:
 aoe.rotating:
   name: rotating AoEs
   description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
+aoe.intercept:
+  name: interceptable attack
+  description: |
+    An attack targeting a specific player that must be intercepted by another player or the first player will die.
+    This type of mechanic often appears in the form of a tankbuster, where the attack deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
+    These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
+    Often named after Imdugud's eponymous attack, [a:2134].
+  is-raid-damage: true
 spread.chariot:
   name: spread (chariot)
   description: An unavoidable player-targeted circle that deals damage to the player and all players within a certain radius of them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.

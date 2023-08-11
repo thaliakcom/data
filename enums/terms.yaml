@@ -18,3 +18,4 @@ body check: A type of mechanic that immediately follows another mechanic and is 
 tankswap: A strategy whereby the two tanks "swap" their enmity values. The main tank becomes the off-tank and vice-versa. Generally accomplished via the off-tank using [a:7533] and, optionally, the main tank using [a:7537] afterwards.
 max melee: The maximum distance outside an enemy's hitbox at which melee GCDs can still be used on the enemy.
 kitchen sink: Refers to a tank using all of their defensive cooldowns (except invulnerability) on one attack to drastically reduce damage taken.
+invuln: The action of using a tank invulnerability such as [a:30] or [a:43] to survive an attack.

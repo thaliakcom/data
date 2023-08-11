@@ -4,6 +4,9 @@ dot:
 vuln:
   name: Resistance Down
   description: All damage of a certain type is greatly amplified (usually to the point of certain death).
+resistance:
+  name: Resistance Up
+  description: All damage of a certain type is greatly reduced.
 condition:
   name: condition
   description: Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
@@ -16,3 +19,6 @@ form:
 impairment:
   name: impairment
   description: Impairs the player's movement or actions in some way.
+indicator:
+  name: Indicator
+  description: Has no effect on its own but serves as a helper status to make mechanics easier to resolve by assigning everyone a letter or number.

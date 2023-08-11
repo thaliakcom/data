@@ -13,7 +13,6 @@ average_hp: 73000
 autos:
   mechanic: auto.single
   type: magic
-wip: true
 description: |
   Athena is a difficult encounter. Featuring rapid combinations of mechanics by both Athena and her soul-transformed minions,
   players must react quickly and decisively to avoid certain doom.
@@ -21,3 +20,423 @@ status:
   2911:  # Damage Down
     duration: 30000
     description: Reduces damage dealt by approximately 38%.
+    type: impairment
+actions:
+  on-the-soul:
+    id: 33540
+    description: Placeholder description for On the Soul
+    children:
+      - at: 8101
+        id: on-the-soul-hit
+  on-the-soul-hit:
+    id: 33540
+    description: Placeholder description for On the Soul Hit
+  paradeigma:
+    id: 33517
+    description: Placeholder description for Paradeigma
+  white-flame:
+    id: 33519
+    description: Placeholder description for White Flame
+    children:
+      - at: 899
+        id: white-flame-1
+  trinity-of-souls:
+    id: 33511
+    description: Placeholder description for Trinity of Souls
+  white-flame-1:
+    id: 33520
+    description: Placeholder description for White Flame
+  trinity-of-souls-1:
+    id: 33514
+    description: Placeholder description for Trinity of Souls
+  trinity-of-souls-2:
+    id: 33516
+    description: Placeholder description for Trinity of Souls
+  engravement-of-souls:
+    id: 33541
+    description: Placeholder description for Engravement of Souls
+  polarized-glow:
+    id: 33616
+    description: Placeholder description for Polarized Glow
+  searing-radiance:
+    id: 33521
+    description: Placeholder description for Searing Radiance
+  shadowsear:
+    id: 33522
+    description: Placeholder description for Shadowsear
+  umbral-glow:
+    id: 33548
+    description: Placeholder description for Umbral Glow
+  astral-glow:
+    id: 33549
+    description: Placeholder description for Astral Glow
+  umbral-advance:
+    id: 33550
+    description: Placeholder description for Umbral Advance
+  astral-advance:
+    id: 33551
+    description: Placeholder description for Astral Advance
+  ray-of-light:
+    id: 33518
+    description: Placeholder description for Ray of Light
+  glaukopis:
+    id: 33532
+    description: Placeholder description for Glaukopis
+    children:
+      - at: 3157
+        id: glaukopis-1
+  glaukopis-1:
+    id: 33533
+    description: Placeholder description for Glaukopis
+  superchain-theory-i:
+    id: 33498
+    description: Placeholder description for Superchain Theory I
+  superchain-radiation:
+    id: 33501
+    description: Placeholder description for Superchain Radiation
+  superchain-burst:
+    id: 33499
+    description: Placeholder description for Superchain Burst
+  polarized-ray:
+    id: 33543
+    description: Placeholder description for Polarized Ray
+  superchain-coil:
+    id: 33500
+    description: Placeholder description for Superchain Coil
+  umbral-impact:
+    id: 33544
+    description: Placeholder description for Umbral Impact
+  astral-impact:
+    id: 33545
+    description: Placeholder description for Astral Impact
+  theoss-holy:
+    id: 33542
+    description: Placeholder description for Theos's Holy
+  trinity-of-souls-3:
+    id: 33505
+    description: Placeholder description for Trinity of Souls
+    children:
+      - at: 2627
+        id: trinity-of-souls-4
+      - at: 5172
+        id: trinity-of-souls-5
+  trinity-of-souls-4:
+    id: 33508
+    description: Placeholder description for Trinity of Souls
+  trinity-of-souls-5:
+    id: 33510
+    description: Placeholder description for Trinity of Souls
+  apodialogos:
+    id: 33534
+    description: Placeholder description for Apodialogos
+    children:
+      - at: 269
+        id: apodialogos-1
+  apodialogos-1:
+    id: 33536
+    description: Placeholder description for Apodialogos
+  dialogos:
+    id: 33538
+    description: Placeholder description for Dialogos
+  unnatural-enchainment:
+    id: 33503
+    description: Placeholder description for Unnatural Enchainment
+  shock:
+    id: 33554
+    description: Placeholder description for Shock
+  sample:
+    id: 33504
+    description: Placeholder description for Sample
+  theoss-cross:
+    id: 33546
+    description: Placeholder description for Theos's Cross
+  theoss-saltire:
+    id: 33547
+    description: Placeholder description for Theos's Saltire
+  ultima-blade:
+    id: 33523
+    description: Placeholder description for Ultima Blade
+    children:
+      - at: 7497
+        id: ultima-blade-1
+  ultima-blade-1:
+    id: 33524
+    description: Placeholder description for Ultima Blade
+  clear-cut:
+    id: 33531
+    description: Placeholder description for Clear Cut
+  palladion:
+    id: 33525
+    description: Placeholder description for Palladion
+    children:
+      - at: 224
+        id: palladion-1
+  palladion-1:
+    id: 33526
+    description: Placeholder description for Palladion
+  shockwave:
+    id: 33527
+    description: Placeholder description for Shockwave
+  palladion-2:
+    id: 33528
+    description: Placeholder description for Palladion
+    children:
+      - at: 4057
+        id: palladion-3
+  palladion-3:
+    id: 33529
+    description: Placeholder description for Palladion
+  theoss-ultima:
+    id: 33530
+    description: Placeholder description for Theos's Ultima
+  superchain-theory-iia:
+    id: 34554
+    description: Placeholder description for Superchain Theory IIA
+  superchain-emission:
+    id: 33502
+    description: Placeholder description for Superchain Emission
+  trinity-of-souls-6:
+    id: 33515
+    description: Placeholder description for Trinity of Souls
+  superchain-theory-iib:
+    id: 34555
+    description: Placeholder description for Superchain Theory IIB
+  parthenos:
+    id: 33539
+    description: Placeholder description for Parthenos
+  theoss-ultima-1:
+    id: 34134
+    description: Placeholder description for Theos's Ultima
+timeline:
+  - at: 11854
+    id: on-the-soul
+  - at: 22009
+    id: paradeigma
+  - at: 37445
+    id: white-flame
+  - at: 37534
+    id: trinity-of-souls
+  - at: 38336
+    id: white-flame-1
+  - at: 40154
+    id: trinity-of-souls-1
+  - at: 42470
+    id: white-flame
+  - at: 42738
+    id: trinity-of-souls-2
+  - at: 43362
+    id: white-flame-1
+  - at: 58064
+    id: paradeigma
+  - at: 65728
+    id: engravement-of-souls
+  - at: 75428
+    id: polarized-glow
+  - at: 75609
+    id: searing-radiance
+  - at: 75653
+    id: shadowsear
+  - at: 75653
+    id: searing-radiance
+  - at: 76593
+    id: umbral-glow
+  - at: 76593
+    id: astral-glow
+  - at: 76593
+    id: umbral-glow
+  - at: 79575
+    id: umbral-advance
+  - at: 79575
+    id: astral-advance
+  - at: 79575
+    id: umbral-advance
+  - at: 82555
+    id: ray-of-light
+  - at: 89548
+    id: on-the-soul
+  - at: 97820
+    id: glaukopis
+  - at: 117127
+    id: superchain-theory-i
+  - at: 124261
+    id: engravement-of-souls
+  - at: 129333
+    id: superchain-radiation
+  - at: 129377
+    id: superchain-burst
+  - at: 135465
+    id: polarized-ray
+  - at: 136309
+    id: superchain-coil
+  - at: 136309
+    id: superchain-burst
+  - at: 136620
+    id: umbral-impact
+  - at: 136620
+    id: astral-impact
+  - at: 141292
+    id: superchain-coil
+  - at: 143294
+    id: superchain-burst
+  - at: 143560
+    id: polarized-glow
+  - at: 144722
+    id: astral-glow
+  - at: 144722
+    id: umbral-glow
+  - at: 146456
+    id: theoss-holy
+  - at: 147702
+    id: umbral-advance
+  - at: 147702
+    id: astral-advance
+  - at: 158670
+    id: trinity-of-souls-3
+  - at: 172100
+    id: apodialogos
+  - at: 173350
+    id: dialogos
+  - at: 180000
+    id: on-the-soul
+  - at: 196650
+    id: paradeigma
+  - at: 203798
+    id: engravement-of-souls
+  - at: 213945
+    id: unnatural-enchainment
+  - at: 213991
+    id: shock
+  - at: 215104
+    id: sample
+  - at: 215282
+    id: searing-radiance
+  - at: 215282
+    id: shadowsear
+  - at: 215282
+    id: searing-radiance
+  - at: 221117
+    id: polarized-glow
+  - at: 221965
+    id: theoss-cross
+  - at: 221965
+    id: theoss-saltire
+  - at: 222187
+    id: white-flame
+  - at: 222275
+    id: umbral-glow
+  - at: 223078
+    id: white-flame-1
+  - at: 225299
+    id: umbral-advance
+  - at: 231232
+    id: on-the-soul
+  - at: 243547
+    id: glaukopis
+  - at: 261405
+    id: ultima-blade
+  - at: 291194
+    id: clear-cut
+  - at: 292001
+    id: palladion
+  - at: 292225
+    id: shockwave
+  - at: 294237
+    id: white-flame
+  - at: 295268
+    id: palladion-1
+  - at: 295268
+    id: shockwave
+  - at: 297223
+    id: white-flame
+  - at: 298338
+    id: palladion-1
+  - at: 298338
+    id: shockwave
+  - at: 300207
+    id: clear-cut
+  - at: 301417
+    id: palladion-1
+  - at: 301417
+    id: shockwave
+  - at: 303201
+    id: white-flame
+  - at: 304499
+    id: palladion-1
+  - at: 304499
+    id: shockwave
+  - at: 306235
+    id: clear-cut
+  - at: 307575
+    id: palladion-1
+  - at: 307575
+    id: shockwave
+  - at: 309224
+    id: clear-cut
+  - at: 310653
+    id: palladion-1
+  - at: 310653
+    id: shockwave
+  - at: 312213
+    id: white-flame
+  - at: 313733
+    id: palladion-1
+  - at: 313733
+    id: shockwave
+  - at: 318904
+    id: palladion-2
+  - at: 334675
+    id: theoss-ultima
+  - at: 354065
+    id: superchain-theory-iia
+  - at: 367209
+    id: trinity-of-souls
+  - at: 367253
+    id: superchain-emission
+  - at: 367253
+    id: superchain-burst
+  - at: 369789
+    id: superchain-coil
+  - at: 369834
+    id: trinity-of-souls-1
+  - at: 372279
+    id: superchain-burst
+  - at: 372412
+    id: trinity-of-souls-6
+  - at: 375792
+    id: superchain-emission
+  - at: 375792
+    id: superchain-burst
+  - at: 381711
+    id: apodialogos
+  - at: 382916
+    id: dialogos
+  - at: 389529
+    id: on-the-soul
+  - at: 404176
+    id: superchain-theory-iib
+  - at: 410323
+    id: paradeigma
+  - at: 417361
+    id: superchain-burst
+  - at: 417406
+    id: superchain-coil
+  - at: 420476
+    id: parthenos
+  - at: 424343
+    id: superchain-radiation
+  - at: 424343
+    id: superchain-burst
+  - at: 426786
+    id: ray-of-light
+  - at: 433377
+    id: superchain-radiation
+  - at: 433377
+    id: superchain-burst
+  - at: 436178
+    id: unnatural-enchainment
+  - at: 437339
+    id: sample
+  - at: 444302
+    id: on-the-soul
+  - at: 467852
+    id: theoss-ultima-1

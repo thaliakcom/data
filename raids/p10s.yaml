@@ -22,6 +22,7 @@ status:
       Deals damage in the form of a [m:spread.chariot] when the effect expires.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated to take damage when this effect expires.
+    type: delay
   duo-bonds:
     id: 3551
     name: Duodæmoniac Bonds
@@ -29,6 +30,7 @@ status:
       Deals damage in the form of a [m:stack.partner] when the effect expires. The effect will only ever be applied to either supports or DPS players. Thus, each DPS player should have a preassigned support player to stack with when the effect expires.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated twofold to take damage when this effect expires.
+    type: delay
   tetra-bonds:
     id: 3696
     name: Tetradæmoniac Bonds
@@ -36,20 +38,26 @@ status:
       Deals damage in the form of a [m:stack.role] when the effect expires. This effect will only ever be applied to one random support and one random DPS playre. Thus, all DPS players and all supports should stack separately.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated fourfold to take damage when this effect expires.
+    type: delay
   stab-wound:
     id: 2080
     duration: 18000
-    description: A heavy [t:DoT] inflicted by [a:wicked-step] that ticks 6 times for approximately 24,000 damage per tick.
+    description: A heavy [t:DoT] inflicted by [a:wicked-step].
+    tick: 24000
+    type: dot
   bleeding:
     id: 2088
     duration: 15000
-    description: A light [t:DoT] inflicted by [a:ultima] and [a:dividing-wings] that ticks 5 times for approximately 20,000 damage per tick.
+    description: A heavy [t:DoT] inflicted by [a:ultima] and [a:dividing-wings].
+    tick: 20000
+    type: dot
   binding-soul-snare:
     id: 3547
     duration: 30000
     description: |
       The player is bound and unable to move, but can still execute actions. Must be saved by an unbound player. Cannot be saved if afflicted with [s:incapacitating-soul-snare].
       Note that, while bound, players will receive an additional stack every 1.5 seconds. Reaching 5 stacks results in death. Unbound players therefore have 6 seconds to save these players.
+    type: impairment
   heavy-soul-snare:
     id: 3548
     duration: 15000
@@ -57,59 +65,72 @@ status:
       Afflicted on players who break a web. Slows movement speed for the duration and ticks 5 times for approximately 5000 damage per tick per stack (maxing out at 15,000 damage per tick for 3 stacks).
       Be aware that players afflicted with this debuff are most likely simultaneously afflicted with [s:bleeding] as a result of baiting [a:dividing-wings], meaning they will take approximately 30,000 damage per tick, not just 15,000.
       Reaching 4 stacks transforms this debuff into [s:poison], which is essentially a death sentence.
+    type: impairment
   incapacitating-soul-snare:
     id: 3549
     description: Player is bound by a **reinforced** web and cannot move or execute actions. This web cannot be broken in any way. Any player afflicted with this debuff is simultaneously afflicted with [s:3547]. As there is no way to break the web and stop the build-up of [s:3547], these players are consigned to certain death.
+    type: impairment
   poison:
     id: 3692
     duration: 45000
     description: |
-      A debilitating [t:DoT] that ticks 15 times for approximately 30,000 damage per tick. Applied either by stepping into the poison between the three platforms or by accumulating 4 stacks of [s:heavy-soul-snare] (i.e. breaking 4 webs within a short period of time).
+      A debilitating [t:DoT] that also reduces all healing to this player by about 35%. Inflicted either by stepping into the poison between the three platforms or by accumulating 4 stacks of [s:heavy-soul-snare] (i.e. breaking 4 webs within a short period of time).
       Acquiring this [t:DoT] is absolutely not recommended and will lead to an almost guaranteed death, as it would require healers to do nothing but heal you for 45 whole seconds. Keeping in mind, however, that other damage such as [a:ultima] may come out during its duration, surviving this debuff is almost impossible, so it's often a better idea when inflicted with this debuff to commit suicide whenever it's most convenient (for instance after spending all your resources), then get resurrected.
+    tick: 30000
+    type: dot
   dark-vuln:
     id: 3323
     duration: 14960
     description: Being hit by any subsequent turret beam is lethal.
+    type: vuln
   magic-vuln:
     id: 2941
     duration: [960, 1960, 2960]
     description: Being hit by any subsequent magic attack is lethal.
+    type: vuln
   bind:
     id: 2518
     duration: 1000
     description: Player is unable to move but can still execute actions.
+    type: impairment
   doom:
     id: 3364
     duration: 5000
     description: Applied by [a:cannonspawn] and [a:imprisonment]. Can be cleansed.
+    type: delay
   fetters:
     id: 3552
     duration: 6000
     description: Player is lifted into the air and unable to move or execute actions.
+    type: impairment
   paralysis:
     id: 3463
     duration: 15000
+    type: impairment
   hysteria:
     id: 296
     duration: 6000
     description: Affected players lose the ability to control their own character and instead move autonomously, aimlessly. This is very likely to lead to the player walking off the edge or into poison.
+    type: impairment
   2935:  # Sustained Damage
     duration: 15000
-    description: Ticks 5 times for approximately 20,000 damage per tick.
+    description: A heavy [t:DoT] inflicted by [a:unmitigated-explosion].
+    tick: 20000
+    type: dot
   2911:  # Damage Down
     duration: 30000
     description: Reduces damage dealt by approximately 31%.
+    type: impairment
 actions:
   ultima:
     id: 33445
-    description: Heavy raidwide. Applies [s:bleeding].
+    description: Heavy raidwide. Inflicts [s:bleeding] and erases any webs (including web bridges) in the arena.
     mechanic: raidwide
     damage: 64000
   soul-grasp:
     id: 33439
-    description: |
-      4-hit stacking tankbuster on the main target.
-      While it is recommended to stack, the damage scales linearly with the number of people in the stack, so [kitchen sinking](t:kitchen sink) reduces the damage to survivable levels even when alone.
+    description: 4-hit shared tankbuster on the main target.
+    resolve: The off-tank should stack with the main-tank. Alternatively, the main-tank can use their invulnerability. If neither is available, [kitchen sinking](t:kitchen sink) is also an option – the stack scaling is linear, so taking the stack alone will deal about 100,000 damage per hit, which is still easily survivable with sufficient mitigation and some well-placed heals.
     compact: full
     mechanic: tb.stack
     children:
@@ -133,17 +154,17 @@ actions:
   dividing-wings:
     id: 33431
     description: |
-      Places two wing pillars in the arena that tether to players.
+      Places two wing pillars in the arena that tether to and eventually shoot cones at players.
       One pillar will always tether itself to a random tank or healer, while the other will always tether to a random DPS player. After some time, each wing shoots a wide conal [t:AoE] toward their tethered player, inflicting [s:bleeding] and [s:magic-vuln].
-      [a:dividing-wings] will always resolve at the same time as [a:steel-web]. As [a:steel-web] also applies [s:magic-vuln], it is essential that the tethered players aim their cones away from every other player.
+      [a:dividing-wings] will always resolve at the same time as [a:steel-web]. As [a:steel-web] also applies [s:magic-vuln], any player hit by both will die.
     mechanic: mech
     children:
-    - at: 6158
+    - at: 6155
       id: steel-web
-    - at: 14122
+    - at: 13831
       id: dividing-wings-hit
       link: and
-    - at: 14435
+    - at: 14144
       id: steel-web-hit
   steel-web:
     id: 34595
@@ -158,11 +179,13 @@ actions:
     name: Dividing Wings (Hit)
     description: "[a:dividing-wings] resolves and shoots a wide conal [t:AoE] toward each tethered player that inflicts [s:bleeding] and [s:magic-vuln]."
     mechanic: spread.cone
+    count: 2
   steel-web-hit:
     id: 33407
     name: Steel Web (Hit)
-    description: "[a:steel-web] resolves and creates a web between the stacking players."
+    description: "[a:steel-web] resolves, creating a web between the stacking players that must be broken by a free player."
     mechanic: stack.role
+    count: 2
   pandæmons-holy:
     id: 33446
     description: The entirety of [boss]'s hitbox (and a few inches more) becomes unsafe. Max melee remains safe.
@@ -175,9 +198,11 @@ actions:
     id: 33433
     description: |
       Two towers appear on the central platform that must be soaked by tanks.
-      After a short time, [boss] will step on the west tower, then the east tower, dealing heavy damage, inflicting [s:stab-wound], and knocking everyone within the tower up and away. The knocked distance is quite far, so tanks will need precise positioning (in the northeast of the west tower/the northwest of the east tower) to get knocked onto the two side platforms. Every other position will lead to a fallen tank.
-      There is a significant delay between the resolution of the west tower and the east tower, so if you're the tank soaking the east tower, be careful of popping your defensive cooldowns too early.
+      After a short time, [boss] will step on the west tower, then the east tower, dealing heavy damage, inflicting [s:stab-wound], and knocking everyone within the tower up and away.
     mechanic: tb.towers
+    resolve: |
+      The knocked distance is quite far, so tanks will need precise positioning (in the northeast of the west tower/the northwest of the east tower) to get knocked onto the two side platforms. Every other position will lead to a fallen tank.
+      There is a significant delay between the resolution of the west tower and the east tower, so if you're the tank soaking the east tower, be careful of popping your defensive cooldowns too early.
     compact: trim
     children:
       - at: 1380
@@ -206,11 +231,13 @@ actions:
     name: Entangling Web (Lock)
     description: The [a:entangling-web] "locks in". In other words, it no longer follows the player it spawned on.
     mechanic: aoe.chariot.baitable
+    count: 4
   entangling-web-hit:
     id: 33406
     name: Entangling Web (Hit)
     description: The [a:entangling-web] drops, dealing heavy damage and entangling everything in its radius in a similar way as [a:steel-web].
     mechanic: aoe.chariot
+    count: 4
   pandæmoniac-pillars:
     id: 33408
     description: |
@@ -222,30 +249,50 @@ actions:
       [boss] will cast either [a:pandæmons-holy] or [a:circles-of-pandæmonium] at the same time as these post-tower mechanics resolve, limiting the party to either the first or second row (the third row will always be unsafe).
       Failing to soak a tower causes an [a:unmitigated-explosion].
     mechanic: towers.single
+    children:
+    - at: 806
+      id: bury
+    - at: 6641
+      id: pandæmons-holy
+      link: or
+    - at: 6641
+      id: circles-of-pandæmonium
+    - at: 6819
+      id: peal-of-damnation
+      link: and
+    - at: 7309
+      id: cannonspawn
+      link: and
+    - at: 7309
+      id: imprisonment
   unmitigated-explosion:
     id: 33411
-    description: Raidwide affecting all players if one of [a:pandæmoniac-pillars] is left unsoaked. Applies [s:2935].
+    description: Raidwide affecting all players if one of [a:pandæmoniac-pillars] is left unsoaked. Inflicts [s:2935].
     mechanic: raidwide
   bury:
     id: 33409
     description: Damage event that happens when one of [a:pandæmoniac-pillars] is soaked.
-    mechanic: raidwide
+    mechanic: towers.single
     damage: 10000
+    count: 8
     type: physical
   peal-of-damnation:
     id: 34736
-    mechanic: aoe.line
     description: |
       A wide [m:aoe.line] originating from two pandæmoniac turrets after [a:pandæmoniac-pillars] that leaves the last row unsafe.
       :unverified(Anyone in this row is killed instantly.)
+    mechanic: aoe.line
+    count: 2
   imprisonment:
     id: 33413
     description: A small [m:aoe.chariot] originating from three of the eight towers that inflicts [s:doom] and [s:fetters].
     mechanic: aoe.chariot
+    count: 3
   cannonspawn:
     id: 33415
     description: A small [m:aoe.dynamo] originating from three of the eight towers that inflicts [s:doom].
     mechanic: aoe.dynamo
+    count: 3
   silkspit:
     id: 33404
     description: |
@@ -262,6 +309,7 @@ actions:
     description: Deals heavy damage and briefly inflicts [s:bind].
     mechanic: spread.chariot
     damage: 80000
+    count: 8
   dæmoniac-bonds:
     id: 33441
     name: Dæmoniac Bonds
@@ -295,16 +343,19 @@ actions:
     name: Dæmoniac Bonds (Hit)
     description: "[s:bonds] resolves. Requires everyone to be spread from each other."
     mechanic: spread.chariot
+    count: 8
   duodæmoniac-bonds-hit:
     id: 33443
     name: Duodæmoniac Bonds (Hit)
     description: "[s:duo-bonds] resolves. Requires all supports to stack with a DPS player."
     mechanic: stack.partner
+    count: 4
   tetradæmoniac-bonds-hit:
     id: 34734
     name: Tetradæmoniac Bonds (Hit)
     description: "[s:tetra-bonds] resolves. Requires all supports and all DPS players to stack in separate groups."
     mechanic: stack.role
+    count: 2
   pandæmoniac-turrets:
     id: 34735
     name: Pandæmoniac Turrets
@@ -317,6 +368,17 @@ actions:
       Note that it is essential the tanks take their solo turret *last*, not first. If they take it first, they will not be able to join any of the other line stacks anymore, which then consigns one pair of baiters to death.
       Be aware that [a:dæmoniac-bonds] resolves immediately after the last two turrets fire.
     mechanic: towers.single
+    children:
+      - at: 805
+        id: bury
+      - at: 11856
+        id: peal-of-condemnation
+      - at: 16400
+        id: peal-of-condemnation
+      - at: 20855
+        id: peal-of-condemnation
+      - at: 25400
+        id: peal-of-condemnation
     strategies:
       turrets-2221:
         name: "2221"
@@ -337,8 +399,9 @@ actions:
           Fourth turret: tank, tank
   peal-of-condemnation:
     id: 33416
-    description: A [m:stack.line] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
-    mechanic: stack.line
+    description: An [m:aoe.intercept] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
+    mechanic: aoe.intercept
+    count: 2
   pandæmoniac-ray:
     id: 33419
     description: |
@@ -364,7 +427,8 @@ actions:
       This is the tighest heal-check a second turn has ever had. Each hit deals approximately 120,000 damage to the two closest targets to [boss], and 50,000 damage to everyone else.
       The last hit deals about 35% more damage and also knocks the entire party back. The distance of the knockback exceeds the length of the arena, so it is not possible to survive the knockback without establishing a wall in the back during [a:pandæmoniac-web]. If a wall **was** established, players will be stopped by the wall and are not killed.
       The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:1195] and [a:1193] is all but mandatory along with whatever mitigation your healers and tanks can offer.
-    mechanic: stack.wildcharge
+    mechanic: aoe.intercept
+    compact: full
     children:
       - at: 1219
         id: harrowing-hell-hit
@@ -387,14 +451,14 @@ actions:
   harrowing-hell-hit:
     id: 33424
     name: Harrowing Hell (Hit)
-    description: Hard-hitting [m:stack.wildcharge]. The first two players receive about 120,000 damage.
-    mechanic: stack.wildcharge
+    description: Hard-hitting [m:aoe.intercept]. The first two players receive about 120,000 damage.
+    mechanic: aoe.intercept
     damage: 50000
   harrowing-hell-lasthit:
     id: 33428
     name: Harrowing Hell (Knockback)
     description: |
-      Extremely hard-hitting [m:stack.wildcharge]. The first two players receive about 160,000 damage.
+      Extremely hard-hitting [m:aoe.intercept]. The first two players receive about 160,000 damage.
       Knocks all players back, killing them if they have not established a wall in the back of the arena. This knockback cannot be immuned.
     mechanic: mech.knockback.unavoidable
     damage: 70000
@@ -405,6 +469,7 @@ actions:
       Be aware that [a:pandæmoniac-ray] directly follows this mechanic, so you might want to consider using [s:50] if you end up on the wrong side following the AoEs.
       The AoEs rotate at a rate of about 3.3/s.
     mechanic: aoe.rotating
+    compact: full
     children:
       - at: 7798
         id: parted-plumes-hit
@@ -429,193 +494,140 @@ actions:
     name: Parted Plumes (Hit)
     description: A set of two line [AoEs](t:AoE) explodes, inflicting [s:paralysis] to anyone caught inside.
     mechanic: aoe.line
+    count: 2
 timeline:
-  - at: 13982
+  - at: 14240
     id: ultima
-  - at: 23135
+  - at: 23428
     id: soul-grasp
-  - at: 34372
+  - at: 34663
     id: dividing-wings
-  - at: 58560
+  - at: 58828
+    id: circles-of-pandæmonium
+    link: or
+  - at: 58828
     id: pandæmons-holy
-  - at: 67202
+  - at: 67467
     id: wicked-step
-  - at: 78336
+  - at: 78624
     id: entangling-web
-  - at: 95746
+  - at: 96004
     id: pandæmoniac-pillars
-  - at: 96810
-    id: bury
-  - at: 102379
-    id: pandæmons-holy
-  - at: 102542
-    id: peal-of-damnation
-  - at: 102645
-    id: pandæmons-holy
-  - at: 102823
-    id: peal-of-damnation
-  - at: 103313
-    id: cannonspawn
-  - at: 108016
+  - at: 108308
     id: silkspit
-  - at: 122423
+  - at: 122711
     id: dæmoniac-bonds
-  - at: 131603
+  - at: 131887
     id: pandæmoniac-meltdown
-  - at: 143771
+  - at: 144038
     id: touchdown
   - at: 145554
     id: dæmoniac-bonds-hit
   - at: 148540
+    id: duodæmoniac-bonds-hit
+    link: or
+  - at: 148540
     id: tetradæmoniac-bonds-hit
-  - at: 159182
+  - at: 159475
     id: ultima
-  - at: 168358
+  - at: 168643
     id: soul-grasp
-  - at: 184349
+  - at: 184634
     id: dæmoniac-bonds
-  - at: 193530
+  - at: 193789
     id: pandæmoniac-turrets
-  - at: 194594
-    id: bury
-  - at: 194595
-    id: bury
-  - at: 205645
-    id: peal-of-condemnation
-  - at: 210189
-    id: peal-of-condemnation
-  - at: 214644
-    id: peal-of-condemnation
-  - at: 219189
-    id: peal-of-condemnation
   - at: 223464
     id: duodæmoniac-bonds-hit
   - at: 226450
     id: dæmoniac-bonds-hit
-  - at: 232933
+  - at: 233205
     id: pandæmoniac-ray
-  - at: 248360
+  - at: 248634
     id: ultima
-  - at: 257506
+  - at: 257780
     id: soul-grasp
-  - at: 276507
+  - at: 276765
     id: wicked-step
-  - at: 287650
+  - at: 287931
     id: entangling-web
-  - at: 297933
-    id: silkspit
-  - at: 298603
-    id: entangling-web-hit
   - at: 298226
     id: silkspit
   - at: 298894
     id: entangling-web-hit
-  - at: 307081
+  - at: 307366
     id: dæmoniac-bonds
   - at: 308216
     id: silkspit-hit
-  - at: 315230
+  - at: 315526
     id: pandæmoniac-pillars
-  - at: 316325
-    id: bury
-  - at: 321896
-    id: circles-of-pandæmonium
-  - at: 322052
-    id: peal-of-damnation
-  - at: 322554
-    id: cannonspawn
-  - at: 322152
-    id: circles-of-pandæmonium
-  - at: 322331
-    id: peal-of-damnation
-  - at: 322819
-    id: cannonspawn
-  - at: 329518
-    id: pandæmoniac-ray
   - at: 329172
     id: tetradæmoniac-bonds-hit
+    link: then
   - at: 329796
     id: pandæmoniac-ray
+    link: then
   - at: 333174
     id: dæmoniac-bonds-hit
-  - at: 337652
+  - at: 337929
     id: dividing-wings
-  - at: 343794
+  - at: 344083
     id: steel-web
-  - at: 355928
+  - at: 356206
     id: touchdown
   - at: 356740
     id: dividing-wings-hit
   - at: 357096
     id: steel-web-hit
   - at: 357185
-    id: touchdown-hit
-  - at: 374463
+    id: touchdown
+  - at: 374744
     id: pandæmoniac-meltdown
-  - at: 383625
+  - at: 383912
     id: soul-grasp
-  - at: 403705
+  - at: 403990
     id: dividing-wings
-  - at: 409846
+  - at: 410127
     id: pandæmoniac-web
-  - at: 417962
-    id: pandæmons-holy
   - at: 417820
     id: dividing-wings-hit
-  - at: 420786
-    id: entangling-web-hit
+  - at: 418086
+    id: steel-web-hit
   - at: 418220
     id: pandæmons-holy
   - at: 421075
-    id: entangling-web-hit
-  - at: 425106
-    id: dæmoniac-bonds
-  - at: 426794
     id: entangling-web-hit
   - at: 425386
     id: dæmoniac-bonds
   - at: 427077
     id: entangling-web-hit
-  - at: 436407
+  - at: 436693
     id: harrowing-hell
   - at: 458187
     id: tetradæmoniac-bonds-hit
   - at: 461209
     id: dæmoniac-bonds-hit
-  - at: 479325
+  - at: 479612
     id: ultima
-  - at: 489468
+  - at: 489749
     id: soul-grasp
-  - at: 511537
+  - at: 511799
     id: wicked-step
-  - at: 521659
+  - at: 521939
     id: entangling-web
-  - at: 542455
+  - at: 542733
     id: parted-plumes
-    link: then
-  - at: 554722
+  - at: 555002
     id: pandæmoniac-ray
-  - at: 561859
+  - at: 58828
     id: circles-of-pandæmonium
-  - at: 568059
+    link: or
+  - at: 58828
+    id: pandæmons-holy
+  - at: 568339
     id: silkspit
-  - at: 585567
+  - at: 585844
     id: pandæmoniac-pillars
-  - at: 586643
-    id: bury
-  - at: 592207
-    id: circles-of-pandæmonium
-  - at: 592364
-    id: peal-of-damnation
-  - at: 592865
-    id: imprisonment
-  - at: 592506
-    id: circles-of-pandæmonium
-  - at: 592639
-    id: peal-of-damnation
-  - at: 593129
-    id: cannonspawn
-  - at: 599870
+  - at: 600147
     id: pandæmoniac-meltdown
-  - at: 622626
+  - at: 622902
     id: harrowing-hell

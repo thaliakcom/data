@@ -12,9 +12,467 @@ average_hp: 73000
 autos:
   mechanic: auto.single
   type: physical
-wip: true
 description: Elidibus faces the players yet again, yet this time not as the Warrior of Light of eld but as the Emissary, who balances the powers of both Light and Dark.
 status:
   2911:  # Damage Down
     duration: 30000
     description: Reduces damage dealt by approximately 39%.
+    type: impairment
+actions:
+  eunomia:
+    id: 33323
+    description: Placeholder description for Eunomia
+  dike:
+    id: 33328
+    description: Placeholder description for Dike
+    children:
+      - at: 0
+        id: dike-1
+      - at: 3119
+        id: dike-3
+  dike-1:
+    id: 33327
+    description: Placeholder description for Dike
+  dike-2:
+    id: 33325
+    description: Placeholder description for Dike
+  dike-3:
+    id: 33326
+    description: Placeholder description for Dike
+  dike-4:
+    id: 33330
+    description: Placeholder description for Dike
+  dike-5:
+    id: 33329
+    description: Placeholder description for Dike
+  jury-overruling:
+    id: 33254
+    description: Placeholder description for Jury Overruling
+    children:
+      - at: 1827
+        id: jury-overruling-1
+  jury-overruling-1:
+    id: 33256
+    description: Placeholder description for Jury Overruling
+  illusory-glare:
+    id: 33258
+    description: Placeholder description for Illusory Glare
+  inevitable-law:
+    id: 33276
+    description: Placeholder description for Inevitable Law
+  upheld-overruling:
+    id: 34771
+    description: Placeholder description for Upheld Overruling
+    children:
+      - at: 533
+        id: upheld-overruling-1
+  upheld-overruling-1:
+    id: 33266
+    description: Placeholder description for Upheld Overruling
+  lightburst:
+    id: 33270
+    description: Placeholder description for Lightburst
+  divisive-overruling:
+    id: 33261
+    description: Placeholder description for Divisive Overruling
+    children:
+      - at: 1915
+        id: divisive-overruling-1
+  divisive-overruling-1:
+    id: 33262
+    description: Placeholder description for Divisive Overruling
+  ripples-of-gloom:
+    id: 33265
+    description: Placeholder description for Ripples of Gloom
+    children:
+      - at: 0
+        id: ripples-of-gloom-1
+  ripples-of-gloom-1:
+    id: 33264
+    description: Placeholder description for Ripples of Gloom
+  inevitable-sentence:
+    id: 33277
+    description: Placeholder description for Inevitable Sentence
+  styx:
+    id: 33303
+    description: Placeholder description for Styx
+    children:
+      - at: 1202
+        id: styx-1
+      - at: 2317
+        id: styx-1
+      - at: 3431
+        id: styx-1
+      - at: 4542
+        id: styx-1
+      - at: 5618
+        id: styx-1
+      - at: 6731
+        id: styx-1
+      - at: 7933
+        id: styx-1
+  styx-1:
+    id: 33304
+    description: Placeholder description for Styx
+  arcane-revelation:
+    id: 33294
+    description: Placeholder description for Arcane Revelation
+  dismissal-overruling:
+    id: 34693
+    description: Placeholder description for Dismissal Overruling
+    children:
+      - at: 490
+        id: dismissal-overruling-1
+  dismissal-overruling-1:
+    id: 34695
+    description: Placeholder description for Dismissal Overruling
+  outer-dark:
+    id: 34697
+    description: Placeholder description for Outer Dark
+  shadowed-messengers:
+    id: 33305
+    description: Placeholder description for Shadowed Messengers
+  divisive-ruling:
+    id: 33306
+    description: Placeholder description for Divisive Ruling
+    children:
+      - at: 492
+        id: divisive-ruling-2
+  divisive-ruling-1:
+    id: 33307
+    description: Placeholder description for Divisive Ruling
+    children:
+      - at: 489
+        id: divisive-ruling-2
+  divisive-ruling-2:
+    id: 33308
+    description: Placeholder description for Divisive Ruling
+  divisive-overruling-2:
+    id: 34739
+    description: Placeholder description for Divisive Overruling
+  divine-ruination:
+    id: 33309
+    description: Placeholder description for Divine Ruination
+  ripples-of-gloom-2:
+    id: 33311
+    description: Placeholder description for Ripples of Gloom
+    children:
+      - at: 0
+        id: ripples-of-gloom-3
+  ripples-of-gloom-3:
+    id: 33310
+    description: Placeholder description for Ripples of Gloom
+  divisive-overruling-3:
+    id: 34741
+    description: Placeholder description for Divisive Overruling
+  divine-ruination-1:
+    id: 34742
+    description: Placeholder description for Divine Ruination
+  upheld-ruling:
+    id: 34769
+    description: Placeholder description for Upheld Ruling
+    children:
+      - at: 44
+        id: upheld-ruling-1
+      - at: 355
+        id: upheld-ruling-2
+  upheld-ruling-1:
+    id: 34768
+    description: Placeholder description for Upheld Ruling
+  upheld-ruling-2:
+    id: 33312
+    description: Placeholder description for Upheld Ruling
+  upheld-ruling-3:
+    id: 33313
+    description: Placeholder description for Upheld Ruling
+  dark-perimeter:
+    id: 33317
+    description: Placeholder description for Dark Perimeter
+  lightburst-1:
+    id: 33316
+    description: Placeholder description for Lightburst
+  jury-overruling-2:
+    id: 33255
+    description: Placeholder description for Jury Overruling
+    children:
+      - at: 1830
+        id: jury-overruling-3
+  jury-overruling-3:
+    id: 33257
+    description: Placeholder description for Jury Overruling
+  illusory-gloom:
+    id: 33259
+    description: Placeholder description for Illusory Gloom
+  lightstream:
+    id: 33283
+    description: Placeholder description for Lightstream
+  upheld-overruling-2:
+    id: 34772
+    description: Placeholder description for Upheld Overruling
+    children:
+      - at: 534
+        id: upheld-overruling-3
+  upheld-overruling-3:
+    id: 33267
+    description: Placeholder description for Upheld Overruling
+  dark-perimeter-1:
+    id: 33271
+    description: Placeholder description for Dark Perimeter
+  dark-and-light:
+    id: 33278
+    description: Placeholder description for Dark and Light
+  arcane-revelation-1:
+    id: 33295
+    description: Placeholder description for Arcane Revelation
+  divisive-overruling-4:
+    id: 33260
+    description: Placeholder description for Divisive Overruling
+    children:
+      - at: 1914
+        id: divisive-overruling-1
+  divine-ruination-2:
+    id: 33263
+    description: Placeholder description for Divine Ruination
+  katakrisis:
+    id: 33280
+    description: Placeholder description for Katakrisis
+  emissarys-will:
+    id: 33282
+    description: Placeholder description for Emissary's Will
+  dark-current:
+    id: 33284
+    description: Placeholder description for Dark Current
+    children:
+      - at: 8102
+        id: dark-current-1
+      - at: 9216
+        id: dark-current-2
+  dark-current-1:
+    id: 33289
+    description: Placeholder description for Dark Current
+    children:
+      - at: 44
+        id: dark-current-2
+      - at: 1067
+        id: dark-current-2
+      - at: 2139
+        id: dark-current-2
+      - at: 3207
+        id: dark-current-2
+      - at: 4275
+        id: dark-current-2
+      - at: 5347
+        id: dark-current-2
+  dark-current-2:
+    id: 33290
+    description: Placeholder description for Dark Current
+  blinding-light:
+    id: 33322
+    description: Placeholder description for Blinding Light
+  blinding-light-1:
+    id: 33321
+    description: Placeholder description for Blinding Light
+  letter-of-the-law:
+    id: 34770
+    description: Placeholder description for Letter of the Law
+  twofold-revelation:
+    id: 33297
+    description: Placeholder description for Twofold Revelation
+  heart-of-judgment:
+    id: 33318
+    description: Placeholder description for Heart of Judgment
+  explosion:
+    id: 33319
+    description: Placeholder description for Explosion
+  dismissal-overruling-2:
+    id: 34692
+    description: Placeholder description for Dismissal Overruling
+    children:
+      - at: 494
+        id: dismissal-overruling-3
+  dismissal-overruling-3:
+    id: 34694
+    description: Placeholder description for Dismissal Overruling
+  inner-light:
+    id: 34696
+    description: Placeholder description for Inner Light
+  ultimate-verdict:
+    id: 33324
+    description: Placeholder description for Ultimate Verdict
+timeline:
+  - at: 15908
+    id: eunomia
+  - at: 26070
+    id: dike
+  - at: 42331
+    id: jury-overruling
+  - at: 48304
+    id: illusory-glare
+  - at: 48393
+    id: inevitable-law
+  - at: 61848
+    id: upheld-overruling
+  - at: 66481
+    id: lightburst
+  - at: 66570
+    id: inevitable-law
+  - at: 80251
+    id: divisive-overruling
+  - at: 84747
+    id: ripples-of-gloom
+  - at: 84836
+    id: inevitable-sentence
+  - at: 94009
+    id: styx
+  - at: 114020
+    id: arcane-revelation
+  - at: 121153
+    id: dismissal-overruling
+  - at: 126630
+    id: outer-dark
+  - at: 126719
+    id: inevitable-sentence
+  - at: 153588
+    id: shadowed-messengers
+  - at: 167491
+    id: divisive-ruling
+  - at: 170611
+    id: divisive-overruling-2
+  - at: 171190
+    id: divine-ruination
+  - at: 171235
+    id: ripples-of-gloom-2
+  - at: 172526
+    id: divisive-overruling-3
+  - at: 175153
+    id: divine-ruination-1
+  - at: 175243
+    id: inevitable-law
+  - at: 180279
+    id: upheld-ruling
+  - at: 184732
+    id: dark-perimeter
+  - at: 184732
+    id: lightburst-1
+  - at: 190386
+    id: jury-overruling-2
+  - at: 196363
+    id: illusory-gloom
+  - at: 196453
+    id: inevitable-sentence
+  - at: 204613
+    id: styx
+  - at: 222405
+    id: lightstream
+  - at: 241556
+    id: divisive-overruling
+  - at: 246053
+    id: ripples-of-gloom
+  - at: 246143
+    id: inevitable-sentence
+  - at: 258340
+    id: eunomia
+  - at: 272807
+    id: upheld-overruling-2
+  - at: 277439
+    id: dark-perimeter-1
+  - at: 277529
+    id: inevitable-sentence
+  - at: 295696
+    id: dark-and-light
+  - at: 308877
+    id: arcane-revelation-1
+  - at: 324999
+    id: jury-overruling
+  - at: 330974
+    id: illusory-glare
+  - at: 331063
+    id: inevitable-law
+  - at: 343573
+    id: divisive-overruling-4
+  - at: 348072
+    id: divine-ruination-2
+  - at: 348162
+    id: inevitable-law
+  - at: 349497
+    id: katakrisis
+  - at: 355343
+    id: emissarys-will
+  - at: 363552
+    id: styx
+  - at: 382356
+    id: dike
+  - at: 404828
+    id: dark-current
+  - at: 414982
+    id: blinding-light
+  - at: 415116
+    id: dark-current-2
+  - at: 429113
+    id: jury-overruling-2
+  - at: 435088
+    id: illusory-gloom
+  - at: 435177
+    id: inevitable-sentence
+  - at: 448632
+    id: upheld-overruling
+  - at: 453177
+    id: lightburst
+  - at: 453267
+    id: inevitable-law
+  - at: 468817
+    id: divisive-overruling-4
+  - at: 473322
+    id: divine-ruination-2
+  - at: 473412
+    id: inevitable-law
+  - at: 486618
+    id: eunomia
+  - at: 512999
+    id: letter-of-the-law
+  - at: 520160
+    id: twofold-revelation
+  - at: 529287
+    id: heart-of-judgment
+  - at: 532003
+    id: upheld-ruling
+  - at: 536410
+    id: dark-perimeter
+  - at: 536454
+    id: lightburst-1
+  - at: 541358
+    id: explosion
+  - at: 544256
+    id: divisive-ruling-1
+  - at: 547950
+    id: ripples-of-gloom-2
+  - at: 547994
+    id: divine-ruination
+  - at: 550445
+    id: dismissal-overruling-2
+  - at: 555930
+    id: inner-light
+  - at: 556020
+    id: inevitable-law
+  - at: 564710
+    id: styx
+  - at: 583794
+    id: lightstream
+  - at: 602466
+    id: divisive-overruling
+  - at: 606965
+    id: ripples-of-gloom
+  - at: 607054
+    id: inevitable-sentence
+  - at: 623278
+    id: dike
+  - at: 642494
+    id: jury-overruling-2
+  - at: 648475
+    id: illusory-gloom
+  - at: 648564
+    id: inevitable-sentence
+  - at: 659659
+    id: eunomia
+  - at: 675849
+    id: ultimate-verdict
