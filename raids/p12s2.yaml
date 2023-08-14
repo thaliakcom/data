@@ -33,7 +33,9 @@ status:
     type: vuln
   physical-vuln-stack:
     id: 200
-    description: Stacking vulnerability to physical damage. Can be cleansed.
+    description: |
+      Stacking vulnerability to physical damage. Can be cleansed.
+      Each stack increases the damage taken from physical attacks by approximately 50%.
     type: vuln
   doom:
     id: 3364
@@ -44,7 +46,7 @@ status:
     description: |
       Confined to a tiny cutout of the arena and shrunk down to a corresponding size.
       Note that the camera zoom is not adjusted, so when zoomed all the way out movement feels significantly reduced but feels normal when zoomed in.
-      **Be aware that distance units have not changed, so any kind of fixed-distance gapcloser makes the user travel the same distance as before, not the "shrunk-down" distance, which can easily lead to players dropping out of the new arena.**
+      Be aware that distance units have not changed, so any kind of fixed-distance gapcloser makes the user travel the same distance as before, not the "shrunk-down" distance, which can easily lead to players dropping out of the new arena.
     gameDescription: Drawn into the celestial realm created by Athena.
     type: impairment
   caloric:
@@ -68,13 +70,13 @@ status:
   alpha:
     id: 3560
     name: Alpha Target
-    description: A helper status to aid in resolving [a:classical].
+    description: A helper status to aid in resolving [a:classical-1].
     gameDescription: Marked as the target of a particular attack.
     type: indicator
   beta:
     id: 3561
     name: Beta Target
-    description: A helper status to aid in resolving [a:classical].
+    description: A helper status to aid in resolving [a:classical-1].
     gameDescription: Marked as the target of a particular attack.
     type: indicator
   umbral-tilt:
@@ -93,7 +95,7 @@ status:
     id: 3593
     name: Unstable Factor
     description: |
-      Randomly assigned to everyone by [a:pangenesis] at between 0-2 stacks. To avoid a wipe, each player must reduce their number of stacks to zero by the end of the mechanic. Stacks can be reduced by one by _merging_ with (i.e. standing close to) someone with a _lower_ number of stacks.
+      Randomly assigned to everyone by [a:pangenesis] at between 0-2 stacks. To avoid a wipe, each player must reduce their number of stacks to zero by the end of the mechanic. Stacks can be reduced by one by *merging* with (i.e. standing close to) someone with a *lower* number of stacks.
       Be aware that only 2s and 1s, and only 1s and 0s should merge. If a 2-stack merges with a 0-stack, the 2-stack becomes a 1-stack, but the 0-stack becomes a 1-stack as well, which is undesirable.
       There will always be 4 players with 2 stacks, 2 players with 1 stack, and 2 players with no stacks.
       Reducing your stack count for the first time inflicts [s:critical-factor].
@@ -148,7 +150,7 @@ actions:
     name: Ultima
     description: Medium raidwide.
     mechanic: raidwide
-    damage: 63000
+    damage: 93000
   palladian-grasp:
     id: 33562
     name: Palladian Grasp
@@ -176,7 +178,7 @@ actions:
     trivia: >
       Literally: "earth-holder", an epithet often given to Poseidon as the god of earthquakes. Of quite literal meaning here, as [boss] literally holds the "world" in her tentacles during [a:geocentrism].
     mechanic: raidwide
-    damage: 75000
+    damage: 105000
   summon-darkness-1:
     id: 33583
     name: Summon Darkness
@@ -253,114 +255,164 @@ actions:
     mechanic: spread.chariot
     description: Every player is hit by a small [m:spread.chariot] that inflicts [s:magic-vuln].
     resolve: Spread out. The AoEs themselves are tiny, so while it is recommended to use fixed positions for every pattern, it is not strictly necessary.
+    damage: 61000
   ultima-restore:
     id: 34550
     name: Ultima
     description: Like the first [a:ultima], but also restores the arena and removes [s:ascended].
     mechanic: raidwide
-    damage: 63000
-  classical:
+    damage: 90000
+  classical-1:
     id: 33585
     name: The Classical Concepts
-    description: Placeholder description for The Classical Concepts
+    mechanic: mech
+    description: |
+      Heavy raidwide that initiates a major shape-based mechanic.
+      12 polyhedra spawn in a 4x3 grid pattern within the arena: 4 red tetrahedra, 4 yellow cubes, and 4 blue icosahedra. After some time, each tetrahedron and cube attempts to *tether* itself to a neighbouring icosahedron. If successful, the shapes merge, wiping the raid. Players can prevent this by *intercepting* the tether before it appears. This causes the shape to tether itself to the player and merge with them instead, dealing medium damage to that player.
+      Additionally, each player is assigned either [s:alpha] or [s:beta], shows a PlayStation icon above their head, and is tethered to another player ([s:shackled-together]), causing a wipe if the pair separates.
+      The arrangement of the shapes is pseudo-random, but there are some guarantees:
+      * There will never be more than 1 icosahedron per column.
+      * Each icosahedron will be surrounded by at least 1 cube and 1 tetrahedron (but may be surrounded by more).
+    resolve: |
+      As there are 4 icosahedra and 4 pairs of players, each shackled pair should choose one icosahedron to "protect". The challenge of this mechanic, then, lies in figuring out which tetrahedron and which cube will tether to your designated icosahedron, as you must stand directly between that shape and the icosahedron to intercept the tether, and you must do so *before* the tether appears.
+      If your icosahedron appears in a corner, this is a simple task; there are only two shapes neighbouring the corners, so there is no ambiguity. However, any other icosahedron may have 2 or even 3 different options on which shapes it may choose to tether to. Despite this, there is no randomness to the linking; each link can be 100% deterministically determined by checking the other shapes that surround the icosahedron and checking the possible options from *their* perspective.
+      For instance, if you're designated to intercept the link between an icosahedron and one of two surrounding cubes, you will likely find that one of the cubes is next to two icosahedra, but that the other cube is next to *only your icosahedron* and therefore has no other option than to tether to that one.
+      Note that while you *can* "YOLO" the mechanic, it is **strongly recommended** to use a deterministic shape assignment for your players. The [s:alpha] and [s:beta] status effects and PlayStation icons help with this and have no mechanical effect whatsoever. Since each column spawns exactly one icosahedron, you may use the PlayStation markers to assign columns to pairs (e.g. [i:cross][i:square][i:circle][i:triangle] for columns 1–4), and the statuses to determine which player within the pair intercepts which shape (e.g. [s:alpha] for tetrahedron, [s:beta] for cube).
+    damage: 105000
+    raid-damage: true
     trivia: >
-      This ability is a reference to the classical elements earth, fire, air, and water. Notably, the mechanic itself uses Platonic solids (the collective name of the five convex, regular polyhedra) as stand-ins for these elements. Plato was a Greek philosopher who first associated each of these polyhedra with a particular element: fire with the tetrahedron, earth with the cube, air with the octahedron, and water with the icosahedron. With the notable absence of the octahedron, Plato's interpretation matches the polyhedra in the arena.
+      This ability is a reference to the classical elements earth, fire, air, and water. Notably, the mechanic itself uses Platonic solids (the collective name of the five convex, regular polyhedra) as stand-ins for these elements. Plato was a Greek philosopher who first associated each of these polyhedra with a particular element: fire with the tetrahedron, earth with the cube, air with the octahedron, and water with the icosahedron. With the notable absence of the octahedron, Plato's interpretation matches the colours and names of the polyhedra in the arena.
+  classical-2:
+    id: 33585
+    name: The Classical Concepts
+    mechanic: mech
+    damage: 105000
+    raid-damage: true
+    description: |
+      Like the first [a:classical-1], but with two major differences:
+      * Just before the icosahedra tethers appear, all shapes are both horizontally and vertically inverted.
+      * The subsequent [a:palladian-ray] towers appear and shoot their cones *before* [a:implode].
   aspect-effect:
     id: 33588
     name: Aspect Effect
-    description: Placeholder description for Aspect Effect
-    children:
-      - at: 0
-        id: aspect-effect-1
-      - at: 355
-        id: aspect-effect-1
-      - at: 711
-        id: aspect-effect-1
-      - at: 135
-        id: aspect-effect-1
-  aspect-effect-1:
-    id: 33588
-    name: Aspect Effect
-    description: Placeholder description for Aspect Effect
+    description: A cube or tetrahedron merges with a player, dealing medium damage.
+    mechanic: raidwide
+    damage: 54000
   implode:
     id: 33587
     name: Implode
-    description: Placeholder description for Implode
+    mechanic: aoe.chariot
+    description: All shapes implode, killing anyone nearby.
+    resolve: Move in-between 4 shapes.
   palladian-ray:
     id: 33571
     name: Palladian Ray
-    description: Placeholder description for Palladian Ray
+    description: Spawns a tower on the west and on the east of the arena that each shoot 6 cones toward the 4 closest players. Each cone inflicts [s:magic-vuln].
+    resolve: |
+      While it is possible to "YOLO" this mechanic and just have players spread to an intercardinal relative to their tower that is closest to their initial spot while intercepting the tether, it is recommended to use a more deterministic strategy, for instance by using the [s:alpha] and [s:beta] markers to determine whether a player goes to the northmost or southmost spot to bait their cone within their column.
+      If you're on the second or third column, make sure to stay close to the tower while baiting the cone to avoid getting clipped by a cone from the other side.
+      After the first cone appears, move out of it.
+    compact: full
+    mechanic: spread.cone
+    type: magic
+    damage: 37000
     children:
       - at: 2722
-        id: palladian-ray-1
+        id: palladian-ray-hit
       - at: 4283
-        id: palladian-ray-2
+        id: palladian-ray-hit
       - at: 4863
-        id: palladian-ray-2
+        id: palladian-ray-hit
       - at: 5441
-        id: palladian-ray-2
+        id: palladian-ray-hit
       - at: 6019
-        id: palladian-ray-2
+        id: palladian-ray-hit
       - at: 6598
-        id: palladian-ray-2
-  palladian-ray-1:
+        id: palladian-ray-hit
+  palladian-ray-hit:
     id: 33572
     name: Palladian Ray
-    description: Placeholder description for Palladian Ray
-    children:
-      - at: 1560
-        id: palladian-ray-2
-      - at: 2139
-        id: palladian-ray-2
-  palladian-ray-2:
-    id: 33573
-    name: Palladian Ray
-    description: Placeholder description for Palladian Ray
+    description: A cone hit. Inflicts [s:magic-vuln].
+    mechanic: spread.cone
+    damage: 37000
   crush-helm:
     id: 33559
     name: Crush Helm
-    description: Placeholder description for Crush Helm
+    description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
+    resolve: |
+      Wait for all 4 stacks to be applied, then cleanse them using [a:126] or [a:7408], or use [a:27].
+      Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being applied.
+    mechanic: tb.double
     children:
       - at: 800
-        id: crush-helm-1
+        id: crush-helm-vulnup
       - at: 1868
-        id: crush-helm-1
+        id: crush-helm-vulnup
       - at: 2938
-        id: crush-helm-1
+        id: crush-helm-vulnup
       - at: 4008
-        id: crush-helm-1
+        id: crush-helm-vulnup
       - at: 6099
-        id: crush-helm-2
-  crush-helm-1:
+        id: crush-helm-hit
+  crush-helm-vulnup:
     id: 33560
     name: Crush Helm
-    description: Placeholder description for Crush Helm
-  crush-helm-2:
+    description: Inflicts one stack of [s:physical-vuln-stack], up to a maximum of 4 stacks.
+    mechanic: mech
+  crush-helm-hit:
     id: 33561
-    name: Crush Helm
-    description: Placeholder description for Crush Helm
+    name: Crush Helm (Hit)
+    damage: 150000
+    mechanic: tb.double
+    description: The final hit of the tankbuster. Lethal if any [s:physical-vuln-stack] remain.
   caloric-theory:
-    id: 33597
+    id: 33592
     name: Caloric Theory
-    description: Placeholder description for Caloric Theory
-    trivia: The caloric theory is a debunked scientic theory that posed that heat comes from a unique fluid called *caloric*
-  pyre-pulse:
-    id: 34557
-    name: Pyre Pulse
-    description: Placeholder description for Pyre Pulse
+    mechanic: mech
+    damage: 43000
+    raid-damage: true
+    description: |
+      Major mechanic.
+      At the start of the cast, a grid appears on the arena. Additionally, 2 players (1 support and 1 DPS) are marked with a beacon. At the end of the cast, **one** of them explodes for massive damage that can be shared in addition to raidwide damage to every party member.
+      After the cast, 4 players (2 supports and 2 DPS) are assigned [s:pyrefaction] and 1 stack of [s:caloric]; these players are marked with a giant fire beacon above their heads. The other 4 players are assigned [s:atmosfaction] and 2 stacks of [s:caloric].
+      [s:caloric]: During the entire mechanic, moving the length of the short side of two grid rectangles or moving the diagonal length of one grid rectangle adds one stack of [s:caloric] to that player. Reaching 5 stacks wipes the party.
+      [s:pyrefaction]: A partner stack that must be shared by one other player or the party wipes. This also adds another stack of [s:caloric] to the source players (but not to anyone stacking with them).
+      [s:atmosfaction]: A chariot that knocks back everyone who is hit by it, causing a wipe due to the resulting rapid accumulation of [s:caloric].
+    trivia: The caloric theory is a debunked scientic theory that posed that heat comes from a unique fluid called the *caloric* which flows from hot to cold.
+    resolve: |
+      Regardless of what your strategy for this mechanic overall is, the initial beacon players must stack with at least one other person. Note that, since only one of them actually gets the stack, they can stack with each other.
+      After this, movement becomes severely limited. All [s:atmosfaction] players must share one [a:pyre-pulse], while all [s:pyrefaction] players must share 2 [Pyre Pulses](a:pyre-pulse). This means that all players receive 3 stacks of [s:caloric] from those status effects alone, leaving them with only one single move for the entire mechanic.
+      This does make it easy to think about the mechanic though. Basically, the rule is: if you haven't moved yet, your job is yet to come. If you *have* already moved, your job is done and you can sit back for the rest of the mechanic. It is out of your hands.
+      To start with, the goal is to pair each [s:atmosfaction] player with one [s:pyrefaction] player, since [Pyrefactions](s:pyrefaction) can't stack with each other. Depending on the strategy you use, you may use either the [s:atmosfaction] players' one move here or the [s:pyrefaction] players'.
+      Either way, once the first step of the mechanic is concluded and 2 more [Pyrefactions](s:pyrefaction) are assigned, the goal is to then pair the two players who now have nothing with the two players with [s:pyrefaction]. You have to do this away from the [s:atmosfaction] players as they will blow up at the same time.
+      Once the mechanic is complete, **do not move until your stacks have disappeared.** After the last [a:pyre-pulse] it still takes several seconds for [s:caloric] stacks to expire.
     children:
-      - at: 802
-        id: pyre-pulse-1
-      - at: 11337
-        id: pyre-pulse-1
-  pyre-pulse-1:
+      - at: 11876
+        id: pyre-pulse
+        description: Resolves [a:pyre-pulse] while also assigning another [s:pyrefaction] to one random DPS and one random support who had [s:pyrefaction] previously.
+      - at: 23835
+        id: dynamic-atmosphere
+      - at: 24013
+        id: pyre-pulse
+  caloric-beacon:
+    id: 33597
+    name: Caloric Theory (Beacon)
+    mechanic: stack.role
+    damage: 50000
+    description: One of the two initially marked players explodes, hitting them for massive damage. This damage can be shared.
+    resolve: 2 players is enough to reduce the damage to survivable levels with sufficient mitigation. 3+ makes it even safer but may require significant strategy adjustments since it affects your starting position for the main mechanic.
+  pyre-pulse:
     id: 33594
     name: Pyre Pulse
-    description: Placeholder description for Pyre Pulse
+    description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
+    mechanic: stack.partner
+    damage: 64000
   dynamic-atmosphere:
     id: 33595
     name: Dynamic Atmosphere
-    description: Placeholder description for Dynamic Atmosphere
+    description: A small [m:spread.chariot]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
+    mechanic: spread.chariot
+    damage: 58000
   ekpyrosis:
     id: 33566
     name: Ekpyrosis
@@ -521,7 +573,7 @@ timeline:
   - at: 94133
     id: ultima-restore
   - at: 108345
-    id: classical
+    id: classical-1
   - at: 124187
     id: aspect-effect
   - at: 129934
@@ -534,12 +586,6 @@ timeline:
     id: crush-helm
   - at: 173024
     id: caloric-theory
-  - at: 184900
-    id: pyre-pulse
-  - at: 196859
-    id: dynamic-atmosphere
-  - at: 197037
-    id: pyre-pulse-1
   - at: 207325
     id: ekpyrosis
   - at: 226493
@@ -577,7 +623,7 @@ timeline:
   - at: 279997
     id: palladian-grasp
   - at: 296592
-    id: classical
+    id: classical-2
   - at: 313718
     id: panta-rhei
   - at: 319674
@@ -586,12 +632,8 @@ timeline:
     id: palladian-ray
   - at: 319898
     id: aspect-effect
-  - at: 322565
-    id: palladian-ray-1
   - at: 325104
     id: implode
-  - at: 325282
-    id: palladian-ray-2
   - at: 332977
     id: ultima
   - at: 342138
