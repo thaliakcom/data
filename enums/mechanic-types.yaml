@@ -118,6 +118,11 @@ aoe.chariot.baitable:
   description: |
     A circular [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
     Named after Neul deus Darnus's eponymous attack, [a:2008].
+aoe.exaflares:
+  name: exaflares
+  description: |
+    A series of circular [AoEs](t:AoE) traveling in a specific direction through the arena until they reach the other side.
+    Exaflares are a recurring attack throughout the Final Fantasy series. In Final Fantasy XIV they first appeared by that name in The Unending Coil of Bahamut (Ultimate), though the attack did appear before then by various other names.
 aoe.rotating:
   name: rotating AoEs
   description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
@@ -133,6 +138,11 @@ spread.chariot:
   name: spread (chariot)
   description: An unavoidable player-targeted circle that deals damage to the player and all players within a certain radius of them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
   is-raid-damage: true
+spread.defamation:
+  name: defamation
+  description: |
+    A [m:aoe.chariot] [t:AoE], but *significantly* bigger than the average chariot. Usually encompasses the entire arena and must be taken to the edge to avoid clipping players.
+    Named after the eponymous attack in Alexander: Soul of the Creator (Savage).
 spread.line:
   name: spread (line)
   description: An unavoidable player-targeted line that deals damage to the player and all players in-line with them and the source. Affected players must angle themselves away from each other, as clipping each other with these AoEs usually leads to death.

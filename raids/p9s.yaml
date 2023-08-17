@@ -458,7 +458,7 @@ actions:
   icemeld:  # Icemeld
     id: 33155
     description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2].
-    mechanic: spread.chariot
+    mechanic: spread.defamation
     raid-damage: false
     damage: 70000
   two-minds:  # Two Minds

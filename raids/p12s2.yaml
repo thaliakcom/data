@@ -52,7 +52,7 @@ status:
   caloric:
     id: 3589
     name: Close Caloric
-    description: Stacks accumulate through movement and [a:pyre-pulse]. One stack corresponds to roughly one diagonal tile's worth of movement. If anyone reaches 5 stacks, the party wipes.
+    description: Stacks accumulate through movement and [a:pyre-pulse]. One stack corresponds to roughly one diagonal tile's worth of movement. If anyone reaches [s:caloric:5], the party wipes.
     gameDescription: Movement causes the accumulation of a physical substance composed of pure heat. Accumulating 5 stacks will result in a massive explosion.
     type: condition
   atmosfaction:
@@ -82,31 +82,39 @@ status:
   umbral-tilt:
     id: 3576
     name: Umbral Tilt
-    description: The status effect from phase 1 makes a triumphant return, with the exact same effect – lethal damage is inflicted by taking a light tower. At the start of [a:pangenesis], two of the four players with 2 [s:unstable-factor] stacks will be randomly assigned this debuff, limiting them to taking a dark tower.
+    description: The status effect from phase 1 makes a triumphant return, with the exact same effect – lethal damage is inflicted by taking a light tower. At the start of [a:pangenesis], two of the four players with [s:unstable-factor:2] stacks will be randomly assigned this debuff, limiting them to taking a dark tower.
     gameDescription: Internal aether is dramatically polarized toward the umbral. Damage taken from umbral attacks is increased, though explosive damage from astral attacks can be quelled.
     type: vuln
   astral-tilt:
     id: 3577
     name: Astral Tilt
-    description: The status effect from phase 1 makes a triumphant return, with the exact same effect – lethal damage is inflicted by taking a dark tower. At the start of [a:pangenesis], two of the four players with 2 [s:unstable-factor] stacks will be randomly assigned this debuff, limiting them to taking a light tower.
+    description: The status effect from phase 1 makes a triumphant return, with the exact same effect – lethal damage is inflicted by taking a dark tower. At the start of [a:pangenesis], two of the four players with [s:unstable-factor:2] stacks will be randomly assigned this debuff, limiting them to taking a light tower.
     gameDescription: Internal aether is dramatically polarized toward the astral. Damage taken from astral attacks is increased, though explosive damage from umbral attacks can be quelled.
     type: vuln
   unstable-factor:
     id: 3593
     name: Unstable Factor
+    type: condition
+    duration: 27000
     description: |
       Randomly assigned to everyone by [a:pangenesis] at between 0-2 stacks. To avoid a wipe, each player must reduce their number of stacks to zero by the end of the mechanic. Stacks can be reduced by one by *merging* with (i.e. standing close to) someone with a *lower* number of stacks.
-      Be aware that only 2s and 1s, and only 1s and 0s should merge. If a 2-stack merges with a 0-stack, the 2-stack becomes a 1-stack, but the 0-stack becomes a 1-stack as well, which is undesirable.
       There will always be 4 players with 2 stacks, 2 players with 1 stack, and 2 players with no stacks.
       Reducing your stack count for the first time inflicts [s:critical-factor].
+      *Note*: The in-game description states that merging players will receive the *average number of stacks* between them. This is either a bug or a localization error as it would mean that a 0-stack can become a 1-stack if they merge with a 2-stack, which doesn't happen. Stacks can never be increased, only reduced.
     gameDescription: Subject to a factor that will cause explosive damage when this effect ends. Physical contact with another subject with unstable factors will result in both subjects' stack counts being added together, divided by two, and redistributed. Fractions will be rounded down to the nearest whole number.
-    type: condition
   critical-factor:
     id: 3594
     name: Critical Factor
     description: Inflicted on players who lose an [s:unstable-factor] stack. Taking damage from [a:factor-in] results in death.
     gameDescription: Subject to an as-yet-unknown element that increases damage taken from attacks by forbidden factors.
     type: vuln
+  stable-system:
+    id: 3618
+    name: Stable System
+    duration: [10000, 2000]
+    description: Player is unable to merge with another player to divide their [Unstable Factors](s:unstable-factor).
+    gameDescription: Unaffected by contact with subjects with unstable factors.
+    type: resistance
   shackled-together:
     id: 3588
     name: Shackled Together
@@ -124,12 +132,6 @@ status:
     name: Entropy Resistance
     description: x
     gameDescription: Invulnerable to [s:entropifaction].
-    type: resistance
-  stable-system:
-    id: 3618
-    name: Stable System
-    description: x
-    gameDescription: Unaffected by contact with subjects with unstable factors.
     type: resistance
   fourfold-come-ruin:
     id: 3695
@@ -237,7 +239,8 @@ actions:
     name: Geocentrism
     mechanic: mech
     description: |
-      [boss] lays her tentacles around the bubble the players reside in and gets ready to spin it along with the AoEs from [a:demi-parhelion]. [boss] may spin the bubble in one of three ways; it is important to discern which way it will rotate as the AoEs will leave a lingering scorch effect wherever they rotate.
+      [boss] lays her tentacles around the bubble the players reside in and gets ready to spin it along with the AoEs from [a:demi-parhelion].
+      [boss] may spin the bubble in one of three ways; it is important to discern which way it will rotate as the AoEs will leave a lingering scorch effect wherever they rotate.
       If she lays a tentacle horizontally atop and below the bubble she will spin the bubble around its width axis, leaving only horizontal strips between the AoEs safe.
       If she lays a tentacle vertically atop and below bubble she will spin the bubble around its depth axis, leaving only vertical strips between the AoEs safe.
       If she lays two tentacles around the sides of the bubble she will spin the bubble around its height axis, leaving only a ring around the center safe.
@@ -264,7 +267,7 @@ actions:
     damage: 90000
   classical-1:
     id: 33585
-    name: The Classical Concepts
+    name: The Classical Concepts I
     mechanic: mech
     description: |
       Heavy raidwide that initiates a major shape-based mechanic.
@@ -282,16 +285,35 @@ actions:
     raid-damage: true
     trivia: >
       This ability is a reference to the classical elements earth, fire, air, and water. Notably, the mechanic itself uses Platonic solids (the collective name of the five convex, regular polyhedra) as stand-ins for these elements. Plato was a Greek philosopher who first associated each of these polyhedra with a particular element: fire with the tetrahedron, earth with the cube, air with the octahedron, and water with the icosahedron. With the notable absence of the octahedron, Plato's interpretation matches the colours and names of the polyhedra in the arena.
+    children:
+      - at: 15842
+        id: aspect-effect
+      - at: 21589
+        id: implode
+      - at: 22170
+        id: palladian-ray
   classical-2:
     id: 33585
-    name: The Classical Concepts
+    name: The Classical Concepts II
     mechanic: mech
     damage: 105000
     raid-damage: true
     description: |
-      Like the first [a:classical-1], but with two major differences:
-      * Just before the icosahedra tethers appear, all shapes are both horizontally and vertically inverted.
+      Like [a:classical-1], but with two major differences.
+      * Just before the icosahedra tethers appear, the positions of all shapes are both horizontally and vertically flipped. Northwest shapes end up southeast, and so on.
       * The subsequent [a:palladian-ray] towers appear and shoot their cones *before* [a:implode].
+    resolve: |
+      Take your time. You have over 17 seconds to resolve the mechanic. Pretend this is [a:classical-1] and go to the corresponding spot with your partner. Then, when you feel good about your positions, look through the center of the shapes grid and just keep pressing W until you arrive at the opposite position.
+      Afterwards, *don't go in-between the shapes immediately*. Bait [a:palladian-ray] first, *then* move in-between the shapes. Don't point your Palladian Ray at a safespot.
+    children:
+      - at: 17126
+        id: panta-rhei
+      - at: 23082
+        id: aspect-effect
+      - at: 23261
+        id: palladian-ray
+      - at: 28512
+        id: implode
   aspect-effect:
     id: 33588
     name: Aspect Effect
@@ -316,42 +338,27 @@ actions:
     mechanic: spread.cone
     type: magic
     damage: 37000
-    children:
-      - at: 2722
-        id: palladian-ray-hit
-      - at: 4283
-        id: palladian-ray-hit
-      - at: 4863
-        id: palladian-ray-hit
-      - at: 5441
-        id: palladian-ray-hit
-      - at: 6019
-        id: palladian-ray-hit
-      - at: 6598
-        id: palladian-ray-hit
-  palladian-ray-hit:
-    id: 33572
-    name: Palladian Ray
-    description: A cone hit. Inflicts [s:magic-vuln].
-    mechanic: spread.cone
-    damage: 37000
   crush-helm:
     id: 33559
     name: Crush Helm
     description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
     resolve: |
-      Wait for all 4 stacks to be applied, then cleanse them using [a:126] or [a:7408], or use [a:27].
+      Wait for all 4 stacks to be applied, then cleanse them using [a:7568] or [a:3561], or use [a:27].
       Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being applied.
     mechanic: tb.double
     children:
       - at: 800
         id: crush-helm-vulnup
+        description: Inflicts [s:physical-vuln-stack:1], dealing mild damage.
       - at: 1868
         id: crush-helm-vulnup
+        description: Inflicts [s:physical-vuln-stack:2], dealing mild damage.
       - at: 2938
         id: crush-helm-vulnup
+        description: Inflicts [s:physical-vuln-stack:3], dealing mild damage.
       - at: 4008
         id: crush-helm-vulnup
+        description: Inflicts [s:physical-vuln-stack:4], dealing mild damage.
       - at: 6099
         id: crush-helm-hit
   crush-helm-vulnup:
@@ -364,24 +371,24 @@ actions:
     name: Crush Helm (Hit)
     damage: 150000
     mechanic: tb.double
-    description: The final hit of the tankbuster. Lethal if any [s:physical-vuln-stack] remain.
+    description: Deals massive damage to 1st and 2nd in enmity. Lethal if any [s:physical-vuln-stack] remain.
   caloric-theory:
     id: 33592
-    name: Caloric Theory
+    name: Caloric Theory I
     mechanic: mech
     damage: 43000
     raid-damage: true
     description: |
       Major mechanic.
       At the start of the cast, a grid appears on the arena. Additionally, 2 players (1 support and 1 DPS) are marked with a beacon. At the end of the cast, **one** of them explodes for massive damage that can be shared in addition to raidwide damage to every party member.
-      After the cast, 4 players (2 supports and 2 DPS) are assigned [s:pyrefaction] and 1 stack of [s:caloric]; these players are marked with a giant fire beacon above their heads. The other 4 players are assigned [s:atmosfaction] and 2 stacks of [s:caloric].
-      [s:caloric]: During the entire mechanic, moving the length of the short side of two grid rectangles or moving the diagonal length of one grid rectangle adds one stack of [s:caloric] to that player. Reaching 5 stacks wipes the party.
+      After the cast, 4 players (2 supports and 2 DPS) are assigned [s:pyrefaction] and [s:caloric:1]; these players are marked with a giant fire beacon above their heads. The other 4 players are assigned [s:atmosfaction] and [s:caloric:2].
+      [s:caloric]: During the entire mechanic, moving the length of the short side of two grid rectangles or moving the diagonal length of one grid rectangle adds one stack of [s:caloric] to that player. Reaching [s:caloric:5] wipes the party.
       [s:pyrefaction]: A partner stack that must be shared by one other player or the party wipes. This also adds another stack of [s:caloric] to the source players (but not to anyone stacking with them).
       [s:atmosfaction]: A chariot that knocks back everyone who is hit by it, causing a wipe due to the resulting rapid accumulation of [s:caloric].
     trivia: The caloric theory is a debunked scientic theory that posed that heat comes from a unique fluid called the *caloric* which flows from hot to cold.
     resolve: |
       Regardless of what your strategy for this mechanic overall is, the initial beacon players must stack with at least one other person. Note that, since only one of them actually gets the stack, they can stack with each other.
-      After this, movement becomes severely limited. All [s:atmosfaction] players must share one [a:pyre-pulse], while all [s:pyrefaction] players must share 2 [Pyre Pulses](a:pyre-pulse). This means that all players receive 3 stacks of [s:caloric] from those status effects alone, leaving them with only one single move for the entire mechanic.
+      After this, movement becomes severely limited. All [s:atmosfaction] players must share one [a:pyre-pulse], while all [s:pyrefaction] players must share 2 [Pyre Pulses](a:pyre-pulse). This means that all players receive [s:caloric:3] from those status effects alone, leaving them with only one single move for the entire mechanic.
       This does make it easy to think about the mechanic though. Basically, the rule is: if you haven't moved yet, your job is yet to come. If you *have* already moved, your job is done and you can sit back for the rest of the mechanic. It is out of your hands.
       To start with, the goal is to pair each [s:atmosfaction] player with one [s:pyrefaction] player, since [Pyrefactions](s:pyrefaction) can't stack with each other. Depending on the strategy you use, you may use either the [s:atmosfaction] players' one move here or the [s:pyrefaction] players'.
       Either way, once the first step of the mechanic is concluded and 2 more [Pyrefactions](s:pyrefaction) are assigned, the goal is to then pair the two players who now have nothing with the two players with [s:pyrefaction]. You have to do this away from the [s:atmosfaction] players as they will blow up at the same time.
@@ -410,91 +417,113 @@ actions:
   dynamic-atmosphere:
     id: 33595
     name: Dynamic Atmosphere
-    description: A small [m:spread.chariot]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
+    description: A small [spread AoE](m:spread.chariot). If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
     mechanic: spread.chariot
     damage: 58000
   ekpyrosis:
     id: 33566
     name: Ekpyrosis
-    description: Placeholder description for Ekpyrosis
+    mechanic: mech
+    compact: full
+    description: |
+      Spawns two [proximity AoEs](m:raidwide.proximity) on either the west and east *or* north and south, then spawns two rows of exaflares on the other two cardinals.
+      Everyone receives [spread AoEs](m:spread.chariot) shortly after the [proximity AoEs](m:raidwide.proximity) resolve.
+      If the exaflares spawn west/east, they'll travel straight across the arena. If they spawn north/south, they will travel through the arena diagonally.
+    resolve: |
+      To reduce the proximity damage to survivable levels, the party must stack in-between the exaflares on the cardinals that the [proximity AoEs](m:raidwide.proximity) *don't* spawn on.
+      As everyone gets a [spread AoEs](m:spread.chariot) right afterward, it is recommended to split your party into two light parties for this initial bit of movement. The generally accepted split is light party 1 on west and light party 2 on east, or all melees and tanks north and all ranged DPS and healers south. Afterwards, quickly move to spread positions along the edge where you stacked.
+      If you use fixed positions for [a:geocentrism], you can use the same spread positions here.
     trivia: >
-      *Ekpyrosis* refers to the ancient Stoic belief that the universe was periodically (every 36,000 years or so) destroyed and then remade.
+      *Ekpyrosis* refers to the ancient Stoic belief that the universe is periodically (every 36,000 years or so) destroyed and then remade.
     children:
       - at: 6777
-        id: ekpyrosis-1
+        id: ekpyrosis-proximity
       - at: 7801
-        id: ekpyrosis-2
+        id: ekpyrosis-exa
       - at: 8867
-        id: ekpyrosis-3
+        id: ekpyrosis-spread
       - at: 10830
-        id: ekpyrosis-4
+        id: ekpyrosis-exa
       - at: 12969
-        id: ekpyrosis-3
+        id: ekpyrosis-exa
       - at: 15020
-        id: ekpyrosis-3
-  ekpyrosis-1:
-    id: 33567
-    name: Ekpyrosis
-    description: Placeholder description for Ekpyrosis
-  ekpyrosis-2:
+        id: ekpyrosis-exa
+  ekpyrosis-proximity:
     id: 33569
     name: Ekpyrosis
-    description: Placeholder description for Ekpyrosis
-  ekpyrosis-3:
+    mechanic: raidwide.proximity
+    damage: 70000
+    description: Two [m:raidwide.proximity] explode on either the north/south or east/west of the arena.
+  ekpyrosis-exa:
     id: 33568
     name: Ekpyrosis
-    description: Placeholder description for Ekpyrosis
-  ekpyrosis-4:
+    mechanic: aoe.exaflares
+    description: Exaflares travel through the arena.
+  ekpyrosis-spread:
     id: 33570
     name: Ekpyrosis
-    description: Placeholder description for Ekpyrosis
+    mechanic: spread.chariot
+    description: Spread AoEs.
   pangenesis:
     id: 33599
     name: Pangenesis
+    mechanic: mech
     description: |
-      4 players are assigned two stacks of [s:unstable-factor] and 2 players are assigned one stack of [s:unstable-factor]. Additionally, 2 of the 4 2-stack players are assigned [s:astral-tilt] and the other 2 [s:umbral-tilt]. Soon thereafter [a:pantheos] spawns two 2-person towers (dark on west and light on east), then four 2-person towers (light/dark on west and dark/light on east), then another four 2-person towers (light/dark on west and dark/light on east). All towers must be soaked by 2 players with either no tilt debuff or the opposite tilt debuff.
-      After soaking a tower, one of the two soakers receives a corresponding tilt debuff, limiting the next tower they are able to take to the opposite polarity. The other soaker's tilt debuff (if they had one) falls off, allowing them to take any tower.
-      The goal of this mechanic is to properly soak all towers while also reducing everyone's [s:unstable-factor] stacks to zero. Failing to do results in a wipe. [Unstable factor](s:unstable-factor) stacks can be reduced by merging with (i.e. standing close to) a player with less stacks (including zero). Reducing your number of stacks for the first time inflicts [s:critical-factor] and spawns a slime. After all towers have been soaked, all 6 slimes will tether to a random player before rushing toward them and executing [a:factor-in], an enormous Defamation-like explosion that inflicts lethal damage to anyone under the effect of [s:critical-factor].
+      Tower-based major mechanic.
+      [s:unstable-factor:2], 1× [s:astral-tilt] (20s), 1× [s:astral-tilt] (16s), 1× [s:umbral-tilt] (20s), 1× [s:umbral-tilt] (16s) on 4 random players
+      [s:unstable-factor:1] on 2 other random players
+      [s:stable-system] on everyone
+      Then [a:pantheos] spawns a subsequent series of 2-person towers, which all must be soaked by the proper number of players:
+      * Step 1: dark + light
+      * Step 2: dark + light + light + dark
+      * Step 3: dark + light + light + dark
+      It is random whether the west side first spawns a dark tower or a light tower. The east side will always spawn the exact opposite towers as the west side.
+      Soaking a tower while you have the same elemental tilt results in a wipe.
+      After soaking a tower, one of the two soakers receives a corresponding tilt debuff, requiring them to soak a tower of the opposite polarity in the next step. The other soaker's tilt debuff (if they had one) falls off, allowing them to soak any tower.
+      The goal of this mechanic is to properly soak all towers while also reducing everyone's [s:unstable-factor] stacks to zero. Failing to do results in a wipe. [s:unstable-factor] stacks can be reduced by merging with (i.e. standing close to) a player with less stacks (including zero). No merge will occur if either player has [s:stable-system]. All players initially start with this status effect to avoid accidentally merging at the start of the mechanic, but it quickly falls off.
+      Reducing your number of stacks for the first time inflicts [s:critical-factor] and spawns a Forbidden Factor (slime). After all towers have been soaked, all 6 Forbidden Factors will tether to a random player before rushing toward them and executing [a:factor-in], an enormous Defamation-like explosion that inflicts lethal damage to anyone under the effect of [s:critical-factor]. The tethers can be passed.
     trivia: >
-      *Pangenesis* is the name of Darwin's debunked theory on heredity, which postulates that the body is composed of tiny particles called *gemmules* that contain hereditary information. These gemmules are to gather in the reproductive organs and are passed onto offspring during reproduction.
+      *Pangenesis* is the name of Darwin's outdated theory on heredity, which postulates that the body is composed of tiny particles called *gemmules* that contain hereditary information. These gemmules are to gather in the reproductive organs and are passed onto offspring during reproduction.
+    compact: trim
+    children:
+      - at: 8105
+        id: pantheos
+      - at: 13904
+        id: advent
+      - at: 18939
+        id: advent
+      - at: 23930
+        id: advent
+      - at: 36308
+        id: factor-in
   pantheos:
     id: 33602
     name: Pantheos
+    mechanic: mech
     description: |
       A 2-person dark tower spawns on the west while a 2-person light tower spawns on the east. This is followed by a set of two towers on each side: light and dark on the west, and dark and light on the east, followed by another set with the same constellation. Dark towers may not be taken by players with [s:astral-tilt] and light towers may not be taken by players with [s:umbral-tilt].
     trivia: >
       From the Greek word *pantheon* ("of all gods"), bastardized into singular form to show that Athena believes herself the only god.
-  biochemical-factor:
-    id: 33600
-    name: Biochemical Factor
-    description: Placeholder description for Biochemical Factor
-    children:
-      - at: 0
-        id: biochemical-factor-1
-      - at: 3652
-        id: biochemical-factor-1
-      - at: 4276
-        id: biochemical-factor-1
-      - at: 267
-        id: biochemical-factor-1
-      - at: 4813
-        id: biochemical-factor-1
-  biochemical-factor-1:
-    id: 33600
-    name: Biochemical Factor
-    description: Placeholder description for Biochemical Factor 1
-  astral-advent:
-    id: 33604
-    name: Astral Advent
-    description: Placeholder description for Astral Advent
+  advent:
+    name: Umbral/Astral Advent
+    mechanic: towers.double
+    description: A light or dark tower resolves, dealing mild damage and inflicting the corresponding tilt ([s:umbral-tilt] or [s:astral-tilt]) to one of the two soakers.
   umbral-advent:
     id: 33603
     name: Umbral Advent
-    description: Placeholder description for Umbral Advent
+    mechanic: towers.double
+    description: A light tower resolves, dealing mild damage and inflicting [s:umbral-tilt] to one of the two soakers.
+  astral-advent:
+    id: 33604
+    name: Astral Advent
+    mechanic: towers.double
+    description: A dark tower resolves, dealing mild damage and inflicting [s:astral-tilt] to one of the two soakers.
   factor-in:
     id: 33607
     name: Factor In
-    description: Placeholder description for Factor In
+    mechanic: spread.defamation
+    description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [m:spread.defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
+    resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
     id: 33590
     name: Panta Rhei
@@ -503,36 +532,57 @@ actions:
       Means "all things flow", referring to the idea that the world is in a constant state of flux.
   caloric-theory-2:
     id: 34706
-    name: Caloric Theory
-    description: Placeholder description for Caloric Theory
-  caloric-theory-3:
-    id: 33598
-    name: Caloric Theory
-    description: Placeholder description for Caloric Theory
+    name: Caloric Theory II
+    mechanic: mech
+    damage: 60000
+    raid-damage: true
+    compact: full
+    description: |
+      Hot Potato – The Mechanic.
+      Similar to [a:caloric-theory], but while [a:caloric-theory] focused on limited movement to properly resolve stacks/spreads, [a:caloric-theory-2] is instead a much simpler "hot potato" type mechanic. One person is inflicted with [s:entropification:8], which "pulses" periodically, creating a telegraphed [chariot AoE](m:aoe.chariot.baitable) underneath the player that must be moved out of. Each of these pulses reduces the stacks of the status effect by one, until it disappears completely.
+      [s:entropification:8] can be passed to another player. This is necessary because movement is still limited, so no one player has enough movement to move out of every one of the [chariot AoEs](m:aoe.chariot.baitable).
+      Additionally, at the start of the mechanic 7 players receive a green marker above their heads and 1 player receives a red marker. These are all [spread AoEs](m:spread.chariot), but all green marker players start with [s:caloric:2] while the red marker player starts with [s:caloric:3]. Only green marker players can be selected for [s:entropification:8].
+      Everyone also receives [s:atmosfaction], which releases a [spread AoE](m:spread.chariot) at the end of the mechanic.
+    resolve: |
+      Preposition in a circle (or hexagon), with the red marker player in the center, as they can only move once. As a hexagon only has six corners, one of the green marker players should position close to another player on the outside of the hexagon.
+      Whoever receives [s:entropification:8] waits until the first AoE appears below their feet, then moves clockwise to the next player. Both players wait until the next AoE appears, then the player who *passed* the status effect moves outside the hexagon, while the player who was passed *to* moves to the next player clockwise. Remember to take a detour to include the player who had to position on the outside of the hexagon initially.
+      Note that, although the red marker player in the center can move once, which might suggest you should pass to them last, this is a red herring – you *should never* pass [s:entropification] to the red marker player, as this will only complicate the mechanic for no reason, as you'd have to worry about the green marker player on the outside of the hexagon being the second-to-last person with [s:entropification], as they're too far away to pass to the center player.
+      Instead, just ignore the red marker player entirely and have the last player on the edge of the hexagon take two pulses instead of just one. After all, the only reason you needed to pass [s:entropification] after each pulse is to ensure the next pulse can get to where it needs to be, but once you're on the last player there *is* no next pulse.
+    children:
+      - at: 6803
+        id: entropic-excess
+      - at: 9785
+        id: entropic-excess
+      - at: 12810
+        id: entropic-excess
+      - at: 15787
+        id: entropic-excess
+      - at: 18807
+        id: entropic-excess
+      - at: 21790
+        id: entropic-excess
+      - at: 24812
+        id: entropic-excess
+      - at: 27789
+        id: entropic-excess
+      - at: 27834
+        id: dynamic-atmosphere
   entropic-excess:
     id: 33596
     name: Entropic Excess
-    description: Placeholder description for Entropic Excess
-    children:
-      - at: 2982
-        id: entropic-excess-1
-      - at: 6007
-        id: entropic-excess-1
-      - at: 8984
-        id: entropic-excess-1
-      - at: 12004
-        id: entropic-excess-1
-      - at: 14987
-        id: entropic-excess-1
-      - at: 18009
-        id: entropic-excess-1
-      - at: 20986
-        id: entropic-excess-1
-  entropic-excess-1:
-    id: 33596
-    name: Entropic Excess
-    description: Placeholder description for Entropic Excess 1
+    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.chariot.baitable) which reduces the stack of the status effect by one.
+    mechanic: aoe.chariot.baitable
+    trivia: |
+      *Entropy* is a complicated scientific concept that, in general, describes the amount of unusable energy in a system. Anytime an energy transaction happens, a part of that energy (or heat) disperses and is irreversibly "lost" as the system can no longer use it for future energy transactions.
+      Consider <a href="https://www.wikipedia.com/en/File:Newtons_cradle_animation_book_2.gif">Newton's cradle</a>: in theory all the momentum is conserved, so the balls should keep swinging forever. In practice they stop completely after some time, because a part of that kinetic energy disperses during each swing until there is nothing left.
+      In any system (including the universe itself) entropy is constantly increasing. The end result is the <a href="https://www.wikipedia.com/en/Heat_death_of_the_universe">heat death of the universe</a>, a state wherein all energy in the universe has completely dispersed. There is no single concentrated cluster of energy anywhere; every single cubic centimeter in the entire universe has the exact same amount of energy in it. In this state stars can no longer exist, so it is also the end of life as we know it.
+      This mechanic demonstrates this concept quite well; at the start of the mechanic entropy is extremely low as all 8 stacks of [s:entropification:8] are initially concentrated on one player, but each pulse irreversibly loses one stack until there is no heat left.
   summon-darkness-2:
+    id: 33583
+    name: Summon Darkness
+    description: Summons one dark angel on the outside of the arena.
+    mechanic: mech
+  summon-darkness-3:
     id: 33583
     name: Summon Darkness
     description: |
@@ -574,12 +624,6 @@ timeline:
     id: ultima-restore
   - at: 108345
     id: classical-1
-  - at: 124187
-    id: aspect-effect
-  - at: 129934
-    id: implode
-  - at: 130515
-    id: palladian-ray
   - at: 143652
     id: ultima
   - at: 152819
@@ -592,58 +636,17 @@ timeline:
     id: ultima
   - at: 240707
     id: pangenesis
-  - at: 248812
-    id: pantheos
-  - at: 254075
-    id: biochemical-factor
-  - at: 254611
-    id: astral-advent
-  - at: 254611
-    id: umbral-advent
-  - at: 255191
-    id: biochemical-factor
-  - at: 259646
-    id: astral-advent
-  - at: 259646
-    id: umbral-advent
-  - at: 259646
-    id: astral-advent
-  - at: 259735
-    id: biochemical-factor
-  - at: 264637
-    id: astral-advent
-  - at: 264637
-    id: umbral-advent
-  - at: 264637
-    id: astral-advent
-  - at: 266023
-    id: biochemical-factor
-  - at: 277015
-    id: factor-in
   - at: 279997
     id: palladian-grasp
+    resolve: This tankbuster happens right after [a:factor-in], so the slime player on the tank side may not have enough time to move to the party side. Use [a:7571] on this player if necessary.
   - at: 296592
     id: classical-2
-  - at: 313718
-    id: panta-rhei
-  - at: 319674
-    id: aspect-effect
-  - at: 319853
-    id: palladian-ray
-  - at: 319898
-    id: aspect-effect
-  - at: 325104
-    id: implode
   - at: 332977
     id: ultima
   - at: 342138
     id: crush-helm
   - at: 362358
     id: caloric-theory-2
-  - at: 369161
-    id: entropic-excess
-  - at: 390192
-    id: dynamic-atmosphere
   - at: 392545
     id: ekpyrosis
   - at: 411707
@@ -651,31 +654,25 @@ timeline:
   - at: 425883
     id: gaiaochos
   - at: 437081
-    id: summon-darkness-1
+    id: summon-darkness-2
   - at: 443218
     id: demi-parhelion
+  - at: 447417
+    id: missing-link
   - at: 453356
     id: geocentrism
-  - at: 453490
-    id: demi-parhelion-hit
   - at: 453977
     id: ultima-ray
   - at: 454022
-    id: demi-parhelion
+    id: demi-parhelion-hit
   - at: 454245
-    id: missing-link
+    id: missing-link-resolve
   - at: 454600
     id: demi-parhelion
   - at: 457398
     id: divine-excoriation
   - at: 465532
-    id: summon-darkness-2
-  - at: 476512
-    id: ultima-blow
-  - at: 480687
-    id: ultima
-  - at: 490514
-    id: ultima-blow
+    id: summon-darkness-3
   - at: 494821
     id: ultima
   - at: 523878
