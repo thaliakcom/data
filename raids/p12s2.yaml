@@ -234,6 +234,11 @@ actions:
         id: demi-parhelion-hit
       - at: 11178
         id: divine-excoriation
+  demi-parhelion-2:
+    id: 33575
+    name: Demi Parhelion
+    description: "[a:demi-parhelion:d]"
+    mechanic: mech
   geocentrism:
     id: 33577
     name: Geocentrism
@@ -527,6 +532,7 @@ actions:
   panta-rhei:
     id: 33590
     name: Panta Rhei
+    mechanic: mech
     description: Inverts the positions of all shapes in the arena both horizontally and vertically.
     trivia: >
       Means "all things flow", referring to the idea that the world is in a constant state of flux.
@@ -580,14 +586,37 @@ actions:
   summon-darkness-2:
     id: 33583
     name: Summon Darkness
-    description: Summons one dark angel on the outside of the arena.
+    description: |
+      Summons one dark angel on the outside of the arena.
+      Similar to [summon-darkness], but this time [a:ultima-ray] + [a:missing-link] and [a:demi-parhelion] happen at the same time and you'll need to deal with both mechanics at once. To make up for this, there's only one angel rather than three.
+    resolve: |
+      Divide into supports/DPS groups like before. Use the singular angel as north and move one group west of it, one group east of it, then have each group step into the proper [a:geocentrism] safe spot *stacked*. Only *after* [a:ultima-ray] has gone off should you move along the safe spot to establish spread positions.
+      Remember that [a:divine-excoriation] is a very small AoE. You don't need to use more than half of a "lane" for the spreads.
     mechanic: mech
+    children:
+      - at: 6137
+        id: demi-parhelion-2
+      - at: 10336
+        id: missing-link
+      - at: 16275
+        id: geocentrism
+        description: "[boss] lays her tentacles either vertically or horizontally on top of the bubble."
+      - at: 16896
+        id: ultima-ray
+        description: The angel spawned by [a:summon-darkness-2] shoots a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
+      - at: 16941
+        id: demi-parhelion-hit
+      - at: 17164
+        id: missing-link-resolve
+      - at: 20317
+        id: divine-excoriation
   summon-darkness-3:
     id: 33583
     name: Summon Darkness
     description: |
       Summons eight dark angels on the outside of the arena.
       Four adjacent angels will tether to each DPS or each support, inflicting [s:magic-vuln].
+    resolve: The beam must be intercepted by a player of the opposite role. Establish cross-role partners before this mechanic.
     mechanic: mech
     children:
       - at: 10980
@@ -653,24 +682,11 @@ timeline:
     id: ultima
   - at: 425883
     id: gaiaochos
+    description: |
+      [a:gaiaochos:d]
+      The rest of the fight takes place in the bubble.
   - at: 437081
     id: summon-darkness-2
-  - at: 443218
-    id: demi-parhelion
-  - at: 447417
-    id: missing-link
-  - at: 453356
-    id: geocentrism
-  - at: 453977
-    id: ultima-ray
-  - at: 454022
-    id: demi-parhelion-hit
-  - at: 454245
-    id: missing-link-resolve
-  - at: 454600
-    id: demi-parhelion
-  - at: 457398
-    id: divine-excoriation
   - at: 465532
     id: summon-darkness-3
   - at: 494821

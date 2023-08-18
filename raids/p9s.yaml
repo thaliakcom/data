@@ -660,7 +660,7 @@ timeline:
     id: rockbreaker-2
     description: |
       Same mechanic as the previous [a:rockbreaker-1], except [boss] doesn't use [a:rear-comb] or [a:front-comb] but instead casts [a:dualspell].
-      This does mean that you _must_ dodge the lines' [m:aoe.chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick-front], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
+      This does mean that you *must* dodge the lines' [m:aoe.chariot] [t:AoE]s at or close to your [t:protean] position (or your partner's position if the boss casts fire and ice). While this initially sounds horrible, bear in mind that you don't have to worry about [a:roundhouse-in], [a:roundhouse-out], or [a:swinging-kick-front], and that [a:dualspell] resolves *after* all the lines have already resolved, making this arguably the easier combination of mechanics than the first [a:rockbreaker-1].
   - at: 425629
     id: gluttony
   - at: 438048
