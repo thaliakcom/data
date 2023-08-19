@@ -194,6 +194,7 @@ actions:
         id: missing-link
       - at: 11875
         id: ultima-ray
+        count: 3
       - at: 13166
         id: missing-link-resolve
   ultima-ray:
@@ -206,6 +207,7 @@ actions:
     name: Missing Link
     cast: 4800
     mechanic: mech.tether.far
+    count: 8
     description: |
       Chain symbols appear above all players. After roughly 5 seconds, all players receive a [s:missing-link] that tethers pairs of players together.
       The tethers will always pair a support with a DPS, unless players are dead.
@@ -215,6 +217,7 @@ actions:
     id: 34182
     name: Missing Link (Hit)
     mechanic: mech.tether.far
+    count: 8
     description: |
       If any chains are left unbroken by this time, they will begin dealing continuous damage to all players with [s:missing-link].
       Note that no additional status (such as [s:damage-down]) is inflicted.
@@ -230,6 +233,7 @@ actions:
     children:
       - at: 10152
         id: geocentrism
+        link: and
       - at: 10286
         id: demi-parhelion-hit
       - at: 11178
@@ -261,9 +265,10 @@ actions:
     id: 33582
     name: Divine Excoriation
     mechanic: spread.chariot
+    damage: 61000
+    count: 8
     description: Every player is hit by a small [m:spread.chariot] that inflicts [s:magic-vuln].
     resolve: Spread out. The AoEs themselves are tiny, so while it is recommended to use fixed positions for every pattern, it is not strictly necessary.
-    damage: 61000
   ultima-restore:
     id: 34550
     name: Ultima
@@ -295,6 +300,7 @@ actions:
         id: aspect-effect
       - at: 21589
         id: implode
+        link: then
       - at: 22170
         id: palladian-ray
   classical-2:
@@ -315,6 +321,7 @@ actions:
         id: panta-rhei
       - at: 23082
         id: aspect-effect
+        link: and
       - at: 23261
         id: palladian-ray
       - at: 28512
@@ -322,35 +329,39 @@ actions:
   aspect-effect:
     id: 33588
     name: Aspect Effect
-    description: A cube or tetrahedron merges with a player, dealing medium damage.
     mechanic: raidwide
     damage: 54000
+    count: 8
+    description: A cube or tetrahedron merges with a player, dealing medium damage.
   implode:
     id: 33587
     name: Implode
     mechanic: aoe.chariot
+    count: 12
     description: All shapes implode, killing anyone nearby.
     resolve: Move in-between 4 shapes.
   palladian-ray:
     id: 33571
     name: Palladian Ray
+    compact: full
+    mechanic: spread.cone
+    type: magic
+    damage: 37000
+    count: 8
     description: Spawns a tower on the west and on the east of the arena that each shoot 6 cones toward the 4 closest players. Each cone inflicts [s:magic-vuln].
     resolve: |
       While it is possible to "YOLO" this mechanic and just have players spread to an intercardinal relative to their tower that is closest to their initial spot while intercepting the tether, it is recommended to use a more deterministic strategy, for instance by using the [s:alpha] and [s:beta] markers to determine whether a player goes to the northmost or southmost spot to bait their cone within their column.
       If you're on the second or third column, make sure to stay close to the tower while baiting the cone to avoid getting clipped by a cone from the other side.
       After the first cone appears, move out of it.
-    compact: full
-    mechanic: spread.cone
-    type: magic
-    damage: 37000
   crush-helm:
     id: 33559
     name: Crush Helm
+    mechanic: tb.double
+    count: 2
     description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
     resolve: |
       Wait for all 4 stacks to be applied, then cleanse them using [a:7568] or [a:3561], or use [a:27].
       Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being applied.
-    mechanic: tb.double
     children:
       - at: 800
         id: crush-helm-vulnup
@@ -369,13 +380,15 @@ actions:
   crush-helm-vulnup:
     id: 33560
     name: Crush Helm
-    description: Inflicts one stack of [s:physical-vuln-stack], up to a maximum of 4 stacks.
     mechanic: mech
+    count: 2
+    description: Inflicts one stack of [s:physical-vuln-stack], up to a maximum of 4 stacks.
   crush-helm-hit:
     id: 33561
     name: Crush Helm (Hit)
     damage: 150000
     mechanic: tb.double
+    count: 2
     description: Deals massive damage to 1st and 2nd in enmity. Lethal if any [s:physical-vuln-stack] remain.
   caloric-theory:
     id: 33592
@@ -401,11 +414,15 @@ actions:
     children:
       - at: 11876
         id: pyre-pulse
+        count: 4
         description: Resolves [a:pyre-pulse] while also assigning another [s:pyrefaction] to one random DPS and one random support who had [s:pyrefaction] previously.
       - at: 23835
         id: dynamic-atmosphere
+        count: 4
+        link: and
       - at: 24013
         id: pyre-pulse
+        count: 2
   caloric-beacon:
     id: 33597
     name: Caloric Theory (Beacon)
@@ -416,15 +433,15 @@ actions:
   pyre-pulse:
     id: 33594
     name: Pyre Pulse
-    description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
     mechanic: stack.partner
     damage: 64000
+    description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
   dynamic-atmosphere:
     id: 33595
     name: Dynamic Atmosphere
-    description: A small [spread AoE](m:spread.chariot). If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
     mechanic: spread.chariot
     damage: 58000
+    description: A small [spread AoE](m:spread.chariot). If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
   ekpyrosis:
     id: 33566
     name: Ekpyrosis
@@ -458,21 +475,26 @@ actions:
     name: Ekpyrosis
     mechanic: raidwide.proximity
     damage: 70000
+    count: 2
     description: Two [m:raidwide.proximity] explode on either the north/south or east/west of the arena.
   ekpyrosis-exa:
     id: 33568
     name: Ekpyrosis
     mechanic: aoe.exaflares
+    count: 4
     description: Exaflares travel through the arena.
   ekpyrosis-spread:
     id: 33570
     name: Ekpyrosis
     mechanic: spread.chariot
+    damage: 25000
+    count: 8
     description: Spread AoEs.
   pangenesis:
     id: 33599
     name: Pangenesis
     mechanic: mech
+    damage: 100000
     description: |
       Tower-based major mechanic.
       [s:unstable-factor:2], 1× [s:astral-tilt] (20s), 1× [s:astral-tilt] (16s), 1× [s:umbral-tilt] (20s), 1× [s:umbral-tilt] (16s) on 4 random players
@@ -495,10 +517,13 @@ actions:
         id: pantheos
       - at: 13904
         id: advent
+        count: 2
       - at: 18939
         id: advent
+        count: 4
       - at: 23930
         id: advent
+        count: 4
       - at: 36308
         id: factor-in
   pantheos:
@@ -512,21 +537,28 @@ actions:
   advent:
     name: Umbral/Astral Advent
     mechanic: towers.double
+    damage: 27000
+    type: magic
     description: A light or dark tower resolves, dealing mild damage and inflicting the corresponding tilt ([s:umbral-tilt] or [s:astral-tilt]) to one of the two soakers.
   umbral-advent:
     id: 33603
     name: Umbral Advent
     mechanic: towers.double
+    damage: 27000
     description: A light tower resolves, dealing mild damage and inflicting [s:umbral-tilt] to one of the two soakers.
   astral-advent:
     id: 33604
     name: Astral Advent
     mechanic: towers.double
+    damage: 27000
     description: A dark tower resolves, dealing mild damage and inflicting [s:astral-tilt] to one of the two soakers.
   factor-in:
     id: 33607
     name: Factor In
     mechanic: spread.defamation
+    damage: 81000
+    count: 6
+    raid-damage: false
     description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [m:spread.defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
     resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
@@ -571,6 +603,7 @@ actions:
         id: entropic-excess
       - at: 27789
         id: entropic-excess
+        link: and
       - at: 27834
         id: dynamic-atmosphere
   entropic-excess:
@@ -600,12 +633,15 @@ actions:
         id: missing-link
       - at: 16275
         id: geocentrism
+        link: and
         description: "[boss] lays her tentacles either vertically or horizontally on top of the bubble."
       - at: 16896
         id: ultima-ray
+        link: and
         description: The angel spawned by [a:summon-darkness-2] shoots a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
       - at: 16941
         id: demi-parhelion-hit
+        link: and
       - at: 17164
         id: missing-link-resolve
       - at: 20317
@@ -630,11 +666,14 @@ actions:
     id: 33608
     name: Ultima Blow
     mechanic: aoe.intercept
+    damage: 61000
+    count: 4
     description: Each angel shoots a beam at their tethered target. The beam can be intercepted by another player to prevent the target from dying due to their [s:magic-vuln].
   ignorabimus:
     id: 33609
     name: Ignorabimus
     description: "[boss]'s tentacles crush the bubble of the miniature world within which you reside."
+    damage: 9999999
     trivia: >
       The name refers to *ignoramus et ignorabimus*, a Latin maxim meaning "we do not know and will not know". In science this maxim is used to emphasize the idea that there are some things science will never be able to explain, regardless of the amount of research conducted. For [boss], however, you might interpret it a different way: Athena doesn't understand (and never will understand) why the party opposes her in creating her perfect paradise, hence why she gives up on trying to show them her new world and annihilates them instead.
     mechanic: enrage

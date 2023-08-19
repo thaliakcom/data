@@ -216,3 +216,4 @@ towers.triple:
 enrage:
   name: enrage
   description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
+  is-raid-damage: true
