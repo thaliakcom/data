@@ -19,3 +19,6 @@ tankswap: A strategy whereby the two tanks "swap" their enmity values. The main 
 max melee: The maximum distance outside an enemy's hitbox at which melee GCDs can still be used on the enemy.
 kitchen sink: Refers to a tank using all of their defensive cooldowns (except invulnerability) on one attack to drastically reduce damage taken.
 invuln: The action of using a tank invulnerability such as [a:30] or [a:43] to survive an attack.
+true north: Not to be confused with the player action [a:7546], when a mechanic is handled "true north," this means that all player positions during the mechanic are relative to the north of the arena (and therefore the waymarkers that were placed down). Contrast [t:boss relative] strategies, where player positions are relative to the direction the boss is facing.
+boss relative: When a mechanic is handled "boss relative," all positions are relative to the direction the boss is facing. This means that you should ignore the waymarkers and instead focus on the boss's hitbox. Contrast [t:true north] strategies, where player positions are relative to the absolute north of the arena.
+collapse: When multiple players "collapse" onto each other, this means they stack right on top of each other for subsequent mechanics or movement.

@@ -10,6 +10,9 @@ raidwide.transition:
   name: ultimate attack
   description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
   is-raid-damage: true
+tb.tether:
+  name: tankbuster (tether)
+  description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive.
 tb.mt:
   name: tankbuster (MT)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
@@ -103,6 +106,9 @@ aoe.side:
 aoe.line:
   name: line cleave
   description: Deals avoidable damage to everything in a line with the boss (or another enemy).
+aoe.sides:
+  name: side cleaves
+  description: Deals avoidable damage to everything on the boss's (or another enemy's) sides, leaving only a line through the boss safe.
 aoe.dynamo:
   name: dynamo
   description: |
@@ -158,6 +164,9 @@ spread.close:
 mech:
   name: mechanic
   description: A mechanic that does nothing on its own but sets up a sequence of other mechanics.
+mech.check:
+  name: check
+  description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.
 mech.protean:
   name: spread or stack
   description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
