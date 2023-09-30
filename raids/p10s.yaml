@@ -149,7 +149,7 @@ actions:
   soul-grasp-hit:
     id: 33440
     damage: 50000
-    description: "[a:soul-grasp:d]"
+    description: Shared tankbuster on the main target. Damage can split to a maximum of 2 players; if there is more than one other player in the stack, a player will be chosen at random to be dealt the damage. (This will kill a non-tank.)
     mechanic: tb.stack
   dividing-wings:
     id: 33431
