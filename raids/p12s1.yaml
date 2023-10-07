@@ -21,421 +21,741 @@ status:
     duration: 30000
     description: Reduces damage dealt by approximately 38%.
     type: impairment
+  magic-vuln:
+    id: 2941
+    description: Makes any additional magic damage received lethal.
+    type: vuln
+  concussion:
+    id: 2944
+    duration: 9000
+    tick: 40000
+    type: dot
+  bleeding:
+    id: 2951
+    duration: 30000
+    tick: 100000
+    description: Inflicted by stepping into the fire puddles during limit cut.
+    type: dot
+  astral-tilt:
+    id: 3577
+    name: Astral Tilt
+    type: vuln
+    description: Enables player to soak light towers, but any astral (dark) damage received is lethal.
+  umbral-tilt:
+    id: 3576
+    name: Umbral Tilt
+    type: vuln
+    description: Enables player to soak dark towers, but any astral (dark) damage received is lethal.
+  astralbright:
+    id: 3580
+    type: delay
+    description: Player drops an astral (dark) tower on their position when the effect expires.
+  umbralbright:
+    id: 3579
+    type: delay
+    description: Player drops an umbral (light) tower on their position when the effect expires.
+  astralstrong:
+    id: 3582
+    type: delay
+    description: When the effect expires, [boss] shoots an astral (dark) beam ([a:astral-impact]) at the player, killing any [s:astral-tilt] players hit and switching everyone's [s:umbral-tilt] debuff to [s:astral-tilt].
+  umbralstrong:
+    id: 3581
+    type: delay
+    description: When the effect expires, [boss] shoots an umbral (light) beam ([a:umbral-impact]) at the player, killing any [s:umbral-tilt] players hit and switching everyone's [s:astral-tilt] debuff to [s:umbral-tilt].
+  heavensflame-soul:
+    id: 3578
+    type: delay
+    duration: 21000
+    description: Player drops a [ms:chariot] [m:spread] ([a:theoss-holy]) when the effect expires.
+  quartered-soul:
+    id: 3585
+    type: delay
+    description: Player drops a cross of two [ms:line]s ([a:theoss-cross]) when the effect expires.
+  x-marked-soul:
+    id: 3584
+    type: delay
+    description: Player drops an X of two [ms:line]s ([a:theoss-saltire]) when the effect expires.
+  enchained-soul:
+    id: 3585
+    type: impairment
+    description: Prevents player from jumping. Active whenever segments of the platform are taken away to prevent players from jumping across gaps.
 actions:
   on-the-soul:
     id: 33540
-    description: Placeholder description for On the Soul
-    children:
-      - at: 8101
-        id: on-the-soul-hit
-  on-the-soul-hit:
-    id: 33540
-    description: Placeholder description for On the Soul Hit
-  paradeigma:
+    damage: 92080
+    mechanic: raidwide
+    description: Standard raidwide. Restores any missing platforms.
+  paradeigma-1:
     id: 33517
-    description: Placeholder description for Paradeigma
-  white-flame:
-    id: 33519
-    description: Placeholder description for White Flame
+    mechanic: mech
+    compact: space
+    description: |
+      [boss] creates four yellow crystals which coalesce into angels.
+      Two angels will be positioned on the east side of the arena and two angels on the west. They will always be opposite each other. After a short time the first set of angels will each fire two [a:white-flame] beams at the two closest players (for 4 beams total), inflicting [s:magic-vuln], then disappear. After a short time, the other set of angels will fire another two beams each.
+      Remember to dodge [a:trinity-of-souls] while this is happening.
+      Be aware that [boss] auto-attacks immediately following the second set of beams. Therefore, if a tank receives such a beam, their [s:magic-vuln] will render the next auto-attack lethal.
+    strategies:
+      intended:
+        name: Intended solution
+        description: DPS players wait on the non-angel side while supports form a vertical line on the angel side, in the middle of the arena. After each support is hit by one beam, they swap their positions with the DPS players. It is recommended to place healers and casters closest to the center of the arena to minimize movement; even the player at the far wall is still in [t:max melee] of the boss.
+      lazy:
+        name: Lazy Lasers
+        description: The entire party except for the tanks stacks on the non-angel side. Tanks both use their [t:invuln] before the first set of beams. Note that this strategy requires the main tank to [t:kitchen sink] after the last set of beams or they will die to the next auto-attack.
+      nearly-lazy:
+        name: Nearly Lazy Lasers
+        description: Same as Lazy Lasers, but one player moves close to the middle to bait one of the lasers. The off-tank positions themselves closer to the far wall to bait two beams; the main tank stays closer to the center so that they'll be hit by only one beam for the first set. Only *then* do they invuln. This allows the invuln to last until the auto-attack after the second set of beams, saving tank cooldowns.
     children:
-      - at: 899
-        id: white-flame-1
+    - at: 15525
+      id: trinity-of-souls
+    - at: 16327
+      id: white-flame
+      count: 4
+    - at: 21353
+      id: white-flame
+      count: 4
   trinity-of-souls:
     id: 33511
-    description: Placeholder description for Trinity of Souls
-  white-flame-1:
-    id: 33520
-    description: Placeholder description for White Flame
-  trinity-of-souls-1:
+    mechanic: aoe
+    shape: side
+    compact: full
+    description: |
+      One of [boss]'s wings begins to glow, then another, and finally a third. The glows indicate which side of the arena [boss] will cleave.
+      However, there is one caveat: when [boss]'s wings begin to glow bottom-to-top (instead of top-to-bottom), she will **spin 180°** after each cleave. In essence, this means that the second cleave is inverted.
+    children:
+    - at: 0
+      id: trinity-of-souls-hit
+    - at: 2620
+      id: trinity-of-souls-hit
+    - at: 5204
+      id: trinity-of-souls-hit
+  trinity-of-souls-hit:
     id: 33514
-    description: Placeholder description for Trinity of Souls
-  trinity-of-souls-2:
-    id: 33516
-    description: Placeholder description for Trinity of Souls
+    name: Trinity of Souls (Hit)
+    mechanic: aoe
+    shape: side
+    description: A cleave from [a:trinity-of-souls]. Inflicts [s:2911].
+  white-flame:
+    id: 33520
+    damage: 65723
+    mechanic: spread.close
+    shape: line
+    description: Beam of light fired by an angel. Inflicts [s:magic-vuln] for 6 seconds, preventing anyone from being hit by two consecutive beams.
+  paradeigma-2:
+    id: 33517
+    mechanic: mech
+    compact: space
+    description: |
+      [boss] summons 6 angels – 4 from blue crystals, 2 from red crystals – then casts [a:engravement-of-souls], placing the following debuffs on players:
+      1× random DPS: [s:astralbright]
+      1× random support: [s:astralbright]
+      1× random DPS: [s:umbralbright]
+      1× random support: [s:umbralbright]
+      You will end up with 4 players without debuffs. The 4 blue crystal angels will now tether to those 4 remaining players. There are 2 types of tethers: light (orange colour) and dark (purple colour). After a short time, the angels fire [a b](a:searing-radiance)[eam](a:shadowsear) at the tethered player, inflicting [s:astral-tilt] (dark beam) or [s:umbral-tilt] (light beam). The tether must be stretched to at least half the length of the arena, otherwise this beam is lethal.
+      At approximately the same time as the beams firing, [s:astralbright]/[s:umbralbright] resolves, causing those players to drop a dark/light tower at their current location. These towers can *only* be soaked by players with [s:astral-tilt] or [s:umbral-tilt], meaning that the players who dropped the towers cannot also soak them. They must be soaked by the four beam players.
+      After the towers resolve, only the 2 red crystal angels remain. These angels are always situated at the northern edge of the arena, where they will shoot a [a:ray-of-light] that is as wide as a quarter of the arena across the arena. These two angels can never spawn adjacent to each other.
+    children:
+    - at: 7664
+      id: engravement-of-souls
+    - at: 17545
+      id: searing-radiance
+      count: 2
+      link: and
+    - at: 17545
+      id: shadowsear
+      count: 2
+    - at: 18529
+      id: umbral-glow
+      count: 2
+      link: and
+    - at: 18529
+      id: astral-glow
+      count: 2
+    - at: 21511
+      id: umbral-advance
+      count: 2
+      link: and
+    - at: 21511
+      id: astral-advance
+      count: 2
+    - at: 24491
+      id: ray-of-light
   engravement-of-souls:
     id: 33541
-    description: Placeholder description for Engravement of Souls
-  polarized-glow:
-    id: 33616
-    description: Placeholder description for Polarized Glow
+    description: Applies the aforementioned status effects.
+    mechanic: mech.status
   searing-radiance:
     id: 33521
-    description: Placeholder description for Searing Radiance
+    name: Searing Radiance
+    damage: 62439
+    mechanic: spread
+    shape: line
+    description: An umbral (light) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:umbral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   shadowsear:
     id: 33522
-    description: Placeholder description for Shadowsear
+    name: Shadowsear
+    damage: 65063
+    mechanic: spread
+    shape: line
+    description: An astral (dark) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:astral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   umbral-glow:
     id: 33548
-    description: Placeholder description for Umbral Glow
+    name: Umbral Glow
+    damage: 63954
+    mechanic: spread
+    shape: chariot
+    description: Drops an umbral (light) tower on the position of a player with [s:umbralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:umbral-tilt].
   astral-glow:
     id: 33549
-    description: Placeholder description for Astral Glow
+    name: Astral Glow
+    damage: 62352
+    mechanic: spread
+    shape: chariot
+    description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:astral-tilt].
   umbral-advance:
     id: 33550
-    description: Placeholder description for Umbral Advance
+    name: Umbral Advance
+    damage: 26729
+    mechanic: towers.single
+    description: An umbral (light) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:astral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
   astral-advance:
     id: 33551
-    description: Placeholder description for Astral Advance
+    name: Astral Advance
+    damage: 26899
+    mechanic: towers.single
+    description: An astral (dark) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:umbral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
+  unmitigated-explosion:
+    id: 33552
+    damage: 9999999
+    mechanic: mech.failure
+    description: An unsoaked tower explodes, wiping the party.
   ray-of-light:
     id: 33518
-    description: Placeholder description for Ray of Light
+    damage: 80868
+    count: 2
+    mechanic: aoe
+    shape: line
+    description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:2911] to anyone caught inside.
   glaukopis:
     id: 33532
-    description: Placeholder description for Glaukopis
+    description: Two-hit line tankbuster on the main target. Each hit inflicts [s:magic-vuln].
+    mechanic: tb.mt
+    shape: line
+    compact: full
     children:
+      - at: 0
+        id: glaukopis-hit
       - at: 3157
-        id: glaukopis-1
-  glaukopis-1:
+        id: glaukopis-hit
+  glaukopis-hit:
     id: 33533
-    description: Placeholder description for Glaukopis
+    damage: 190000
+    mechanic: tb.mt
+    shape: line
+    description: An individual tankbuster hit. Inflicts [s:magic-vuln].
+    resolve: The main tank should take the first hit, the off-tank the second. If the main tank were to take the second hit, the [s:magic-vuln] would cause the next auto-attack to kill them.
   superchain-theory-i:
     id: 33498
-    description: Placeholder description for Superchain Theory I
+    name: Superchain Theory I
+    mechanic: mech
+    compact: space
+    description: |
+      Summons several swirling rings around the outside of the arena. Each of these has one or two chains tethered to it. At the end of these chains are one of four shapes which slowly travel towards the source. Once they arrive, one of the following effects takes place:
+      Green orb: [a:superchain-burst] ([ms:chariot])
+      Blue ring: [a:superchain-coil] ([ms:dynamo])
+      Purple spikes: [a:superchain-emission] ([ms:cone] [m:stack.partner])
+      Orange spikes: [a:superchain-radiation] ([ms:cone] [m:spread])
+      The chain's colour is the same as the shape's colour, so it is not necessary to find the end of the chain to know what its effect will be.
+      After the chains are summoned, [boss] casts [a:engravement-of-souls], inflicting the following debuffs:
+      1× [s:astralstrong] (11s)
+      1× [s:umbralstrong] (11s)
+      1× [s:astralbright] (19s)
+      1× [s:umbralbright] (19s)
+      2× [s:astral-tilt] (23s) + [s:heavensflame-soul] (21s)
+      2× [s:umbral-tilt] (23s) + [s:heavensflame-soul] (21s)
+    children:
+    - at: 7134
+      id: engravement-of-souls
+    - at: 12206
+      id: superchain-burst
+      link: or
+    - at: 12206
+      id: superchain-coil
+      link: and
+    - at: 12206
+      id: superchain-radiation
+      link: or
+    - at: 12206
+      id: superchain-emission
+    - at: 19182
+      id: superchain-coil
+    - at: 19493
+      id: umbral-impact
+      link: and
+    - at: 19493
+      id: astral-impact
+    - at: 24165
+      id: superchain-coil
+      link: or
+    - at: 24165
+      id: superchain-burst
+      link: then
+    - at: 26167
+      id: superchain-burst
+      link: or
+    - at: 26167
+      id: superchain-coil
+      link: then
+    - at: 27595
+      id: astral-glow
+      link: and
+    - at: 27595
+      id: umbral-glow
+    - at: 29329
+      id: theoss-holy
+      link: and
+    - at: 30575
+      id: umbral-advance
+      link: and
+    - at: 30575
+      id: astral-advance
   superchain-radiation:
     id: 33501
-    description: Placeholder description for Superchain Radiation
-  superchain-burst:
-    id: 33499
-    description: Placeholder description for Superchain Burst
-  polarized-ray:
-    id: 33543
-    description: Placeholder description for Polarized Ray
-  superchain-coil:
-    id: 33500
-    description: Placeholder description for Superchain Coil
-  umbral-impact:
-    id: 33544
-    description: Placeholder description for Umbral Impact
-  astral-impact:
-    id: 33545
-    description: Placeholder description for Astral Impact
-  theoss-holy:
-    id: 33542
-    description: Placeholder description for Theos's Holy
-  trinity-of-souls-3:
-    id: 33505
-    description: Placeholder description for Trinity of Souls
-    children:
-      - at: 2627
-        id: trinity-of-souls-4
-      - at: 5172
-        id: trinity-of-souls-5
-  trinity-of-souls-4:
-    id: 33508
-    description: Placeholder description for Trinity of Souls
-  trinity-of-souls-5:
-    id: 33510
-    description: Placeholder description for Trinity of Souls
-  apodialogos:
-    id: 33534
-    description: Placeholder description for Apodialogos
-    children:
-      - at: 269
-        id: apodialogos-1
-  apodialogos-1:
-    id: 33536
-    description: Placeholder description for Apodialogos
-  dialogos:
-    id: 33538
-    description: Placeholder description for Dialogos
-  unnatural-enchainment:
-    id: 33503
-    description: Placeholder description for Unnatural Enchainment
-  shock:
-    id: 33554
-    description: Placeholder description for Shock
-  sample:
-    id: 33504
-    description: Placeholder description for Sample
-  theoss-cross:
-    id: 33546
-    description: Placeholder description for Theos's Cross
-  theoss-saltire:
-    id: 33547
-    description: Placeholder description for Theos's Saltire
-  ultima-blade:
-    id: 33523
-    description: Placeholder description for Ultima Blade
-    children:
-      - at: 7497
-        id: ultima-blade-1
-  ultima-blade-1:
-    id: 33524
-    description: Placeholder description for Ultima Blade
-  clear-cut:
-    id: 33531
-    description: Placeholder description for Clear Cut
-  palladion:
-    id: 33525
-    description: Placeholder description for Palladion
-    children:
-      - at: 224
-        id: palladion-1
-  palladion-1:
-    id: 33526
-    description: Placeholder description for Palladion
-  shockwave:
-    id: 33527
-    description: Placeholder description for Shockwave
-  palladion-2:
-    id: 33528
-    description: Placeholder description for Palladion
-    children:
-      - at: 4057
-        id: palladion-3
-  palladion-3:
-    id: 33529
-    description: Placeholder description for Palladion
-  theoss-ultima:
-    id: 33530
-    description: Placeholder description for Theos's Ultima
-  superchain-theory-iia:
-    id: 34554
-    description: Placeholder description for Superchain Theory IIA
+    name: Superchain Radiation
+    damage: 60000
+    mechanic: spread
+    shape: cone
+    count: 8
+    description: Conal spreads on each player around the chain source. Inflicts [s:magic-vuln]. Note that if any players are dead, the cones will still target their dead bodies.
   superchain-emission:
     id: 33502
-    description: Placeholder description for Superchain Emission
-  trinity-of-souls-6:
-    id: 33515
-    description: Placeholder description for Trinity of Souls
+    name: Superchain Emission
+    damage: 60000
+    mechanic: stack.partner
+    shape: cone
+    count: 4
+    description: Conal [m:stack.partner] around the chain source. Inflicts [s:magic-vuln]. Note that if any players are dead, the cones will still target their dead bodies.
+  superchain-burst:
+    id: 33499
+    mechanic: aoe
+    shape: chariot
+    description: A [ms:chariot] centered on the chain source. Inflicts [s:2911].
+  superchain-coil:
+    id: 33500
+    mechanic: aoe
+    shape: dynamo
+    description: A [ms:dynamo] centered on the chain source. Inflicts [s:2911].
+  umbral-impact:
+    id: 33544
+    name: Umbral Impact
+    damage: 71765
+    mechanic: stack.party
+    shape: line
+    description: "[s:umbralstrong] resolves, causing [boss] to fire a light beam at the player that must be shared by other players. Inflicts [s:umbral-tilt] to anyone hit. The beam is lethal to anyone under the effect of [s:umbral-tilt]."
+    resolve: All [s:astral-tilt] players should stack with the debuffed player. [s:astralbright] should also stack, as their tower will kill them if they are hit by the dark beam.
+  astral-impact:
+    id: 33545
+    name: Astral Impact
+    damage: 68901
+    mechanic: stack.party
+    shape: line
+    description: "[s:astralstrong] resolves, causing [boss] to fire a dark beam at the player that must be shared by other players. Inflicts [s:astral-tilt] to anyone hit. The beam is lethal to anyone under the effect of [s:astral-tilt]."
+    resolve: All [s:umbral-tilt] players should stack with the debuffed player. [s:umbralbright] should also stack, as their tower will kill them if they are hit by the light beam.
+  theoss-holy:
+    id: 33542
+    name: Theos's Holy
+    damage: 58287
+    mechanic: spread
+    shape: chariot
+    count: 4
+    description: "[s:heavensflame-soul] resolves, dealing damage within a [ms:chariot] [m:spread] around the player. Inflicts [s:magic-vuln]."
+  apodialogos:
+    id: 33534
+    name: Apodialogos
+    damage: 148212
+    type: magic
+    mechanic: tb.far.stack
+    shape: chariot
+    description: Hits the farthest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the closest target with an [ms:chariot] party stack.
+    resolve: Party in the center of the hitbox, tanks outside.
+  peridialogos:
+    id: 33535
+    damage: 148212
+    mechanic: tb.close.stack
+    shape: chariot
+    type: magic
+    description: Hits the closest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the farthest target with an [ms:chariot] party stack.
+    resolve: Party at the south at max melee, tanks in the center of the hitbox.
+  paradeigma-3:
+    id: 33517
+    mechanic: mech
+    compact: space
+    description: |
+      A combination of [a:paradeigma-1] and [a:paradeigma-2].
+      [boss] summons 4 blue crystal angels that will cast dark/light tethers to the DPS players, and 2 yellow crystal angels that function the same way as in [a:paradeigma-1]. The blue crystal angels will always be situated directly east/west of the arena, while the yellow crystal angels will position themselves on the northern- and southernmost platforms. Angels on the same side always cast the same colour tether.
+      [boss] then applies the following debuffs:
+      2× random support: [s:astralbright] or [s:umbralbright] (only one, never both)
+      1× random support: [s:quartered-soul]
+      1× random support: [s:x-marked-soul]
+      Finally, [boss] uses [a:unnatural-enchainment-1], temporarily removing 4 alternating platforms from the arena and spawning an unaspected tower on each remaining platform. Players cannot cross platforms after this point, so everyone must be on the correct platform before this cast finishes.
+    resolve: |
+      After [a:engravement-of-souls], check whether the 2 tower supports received [s:astralbright] or [s:umbralbright], as this will determine which angel tether is responsible for soaking towers, and as a consequence which side of the arena the towers should be placed on.
+      DPS players should always position themselves on the middle platform opposite their tether angel. There will be 2 DPS players per platform; to avoid clipping the players on the opposite platform, the players tethered to the angels closest to the middle of the arena should keep their tether straight, while the outer tethers should cross their tether with the straight tethers. Avoid pointing a tether into a tower.
+      Support players will all be on different platforms. The [s:quartered-soul] player will be on the southernmost platform, the [s:x-marked-soul] player on the northernmost platform, and the two remaining players can use whatever priority system they wish to decide which of the two will be on the inner west platform and who on the inner east platform.
+      All supports first soak the tower on their platform. Then, the [s:quartered-soul] player moves to the outermost corner of their platform to place their AoEs and the [s:x-marked-soul] player moves to the outer middle corner of their platform. They move out of their AoEs after they've placed them. Their job is then done; as the yellow crystal angel is on the same platform as they are, they are guaranteed to be close enough to bait one set of [a:white-flame] beams.
+      The inner support players, after soaking their tower, will need to check which side needs the towers (if you have the same coloured debuff as the DPS players on your platform, the other side needs your tower). If you're already on the right side, simply drop your tower anywhere in the center of the platform while being careful not to drop it on top of the DPS players. If you're on the wrong side, place your tower on the innermost corner of the platform, so that the edge of your tower clips into the other platform and is accessible from there.
+      After this, the 2 DPS players who are responsible for towers each take a tower. You can use a priority system based on which angel they were tethered to to determine who takes which tower (for instance, straight tether takes inner tower, crossed tether takes outer tower is common on EU). The other 2 DPS players are instead responsible for baiting the second set of beams from the two yellow crystal angels. While positioning yourself for tethers, take note of which yellow crystal angel you're closest to, then (after your beam resolves) get as close to that angel as possible without falling off the platform.
+    children:
+    - at: 7148
+      id: engravement-of-souls
+    - at: 17295
+      id: unnatural-enchainment-1
+    - at: 17341
+      id: shock
+      count: 4
+    - at: 18632
+      id: searing-radiance
+      count: 2
+      link: and
+    - at: 18632
+      id: shadowsear
+      count: 2
+    - at: 25315
+      id: theoss-cross
+      link: and
+    - at: 25315
+      id: theoss-saltire
+    - at: 25625
+      id: umbral-glow
+      count: 2
+      link: or
+    - at: 25625
+      id: astral-glow
+      count: 2
+    - at: 26428
+      id: white-flame
+      count: 4
+    - at: 28649
+      id: umbral-advance
+      count: 2
+      link: or
+    - at: 28649
+      id: astral-advance
+      count: 2
+    - at: 34582
+      id: on-the-soul
+  unnatural-enchainment-1:
+    id: 33503
+    mechanic: mech.arena
+    description: Temporarily removes 4 platforms from the arena and inflicts all players with [s:enchained-soul], preventing jumps.
+  unnatural-enchainment-2:
+    id: 33503
+    mechanic: mech.arena
+    description: Temporarily removes 7 of the 8 platforms of the arena and inflicts all players with [s:enchained-soul], preventing jumps.
+  shock:
+    id: 33554
+    name: Shock
+    mechanic: towers.single
+    damage: 24605
+    description: An unaspected tower explodes, dealing mild damage to anyone inside.
+  electrify:
+    id: 33555
+    damage: 650000
+    mechanic: mech.failure
+    description: An unaspected tower explodes after being left unsoaked, wiping the party.
+  theoss-cross:
+    id: 33546
+    name: Theos's Cross
+    mechanic: aoe.baitable
+    shape: line
+    description: The cross-shaped [ms:line]s placed by [s:quartered-soul] resolve.
+  theoss-saltire:
+    id: 33547
+    name: Theos's Saltire
+    mechanic: aoe.baitable
+    shape: line
+    description: The X-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
+  ultima-blade:
+    id: 33523
+    damage: 86300
+    type: magic
+    mechanic: raidwide.transition
+    description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every party member and transform the arena into a hexagon."
+  palladion:
+    id: 33525
+    damage: 81997
+    type: magic
+    mechanic: mech.limit
+    compact: full
+    description: |
+      Each angel [boss] summoned flies up in a random order, then [boss] herself flies up and comes back down on a random corner of the hexagon as everyone is assigned a number between 1 and 8.
+      [boss] will then dash to each numbered player in turn, dealing more damage the closer the player and all players in her path are to [boss] ([a:shockwave]) and cleaving in a circle around the player while leaving a puddle behind on their position and inflicting [s:magic-vuln] ([a:palladion-hit]). Staying in the puddle inflicts [s:bleeding].
+      Just before each dash resolves, one of the 8 angels comes down in the center of the arena in the same order that they initially flew up and uses either [a:clear-cut] or [a:white-flame].
+      After all 8 dashes are resolved, [boss] jumps to the center, restores the arena to its previous state, and slashes her blades, cutting away the four inner platforms.
+    resolve: |
+      First, note that when [boss] initially summons the angels before [a:ultima-blade], each angel has a sigil underneath them in the same colour as what their crystal would have been, had they been summoned from crystals like the other angels. However, you do not need to pay attention this sigil at this point, as the same sigil shows up again when they come back down during [a:palladion].
+      Each dash should be directly opposite [boss] when she dashes (the maximum distance) as the proximity damage has a very steep falloff. The predominant strategy involves stacking two players per dash, as the puddles otherwise take up too much space.
+      To do this, check where [boss] is, then place players 1 and 3 opposite the boss and 2 and 4 next to the boss. After the first dash, players 2 and 4 quickly move to [boss]'s starting position. (Do not put 2 and 4 on [boss]'s starting position immediately as the first dash will otherwise kill them.)
+      While this is happening, players 5 and 7 wait counter-clockwise of [boss] and players 6 and 8 wait clockwise of [boss], between [boss] and players 1 and 3. They should be spread out and should not be all the way at the wall, as 5/7 will be responsible for baiting the first set of [a:white-flame] beams and 6/8 the second set of [a:white-flame] beams (indicated by the yellow sigil when the angel lands). All players should avoid the middle during this to avoid being clipped by [boss]'s dashes and the purple angels' [a:clear-cut].
+      After each pair's first dash, the pair rotates clockwise, just outside of the puddle. After their second dash, they swap positions with the two [a:white-flame] players clockwise of them. You may have to move quickly here, as there may be a yellow angel coming down just after your second dash.
+      As each pair will be hit by [boss] twice, this mechanic has a fairly strict healing requirement. As [boss] is untargetable here, feel free to use all your non-targeted mitigation and healing cooldowns during this mechanic.
+      After the last dash, remember to go to the northern- or southernmost platforms after the hexagon disappears. It is recommended to all go north here, as [boss] will be facing south.
+    children:
+    - at: 0
+      id: clear-cut
+      link: or
+    - at: 0
+      id: white-flame
+      count: 2
+    - at: 1031
+      id: palladion-hit
+      link: and
+    - at: 1031
+      id: shockwave
+    - at: 3942
+      id: clear-cut
+      link: or
+    - at: 3942
+      id: white-flame
+      count: 2
+    - at: 4074
+      id: palladion-hit
+      link: and
+    - at: 4074
+      id: shockwave
+    - at: 6928
+      id: clear-cut
+      link: or
+    - at: 6928
+      id: white-flame
+      count: 2
+    - at: 7144
+      id: palladion-hit
+      link: and
+    - at: 7144
+      id: shockwave
+    - at: 9013
+      id: clear-cut
+      link: or
+    - at: 9013
+      id: white-flame
+      count: 2
+    - at: 10223
+      id: palladion-hit
+      link: and
+    - at: 10223
+      id: shockwave
+    - at: 12906
+      id: clear-cut
+      link: or
+    - at: 12906
+      id: white-flame
+      count: 2
+    - at: 13305
+      id: palladion-hit
+      link: and
+    - at: 13305
+      id: shockwave
+    - at: 15041
+      id: clear-cut
+      link: or
+    - at: 15041
+      id: white-flame
+      count: 2
+    - at: 16381
+      id: palladion-hit
+      link: and
+    - at: 16381
+      id: shockwave
+    - at: 18030
+      id: clear-cut
+      link: or
+    - at: 18030
+      id: white-flame
+      count: 2
+    - at: 19459
+      id: palladion-hit
+      link: and
+    - at: 19459
+      id: shockwave
+    - at: 21918
+      id: clear-cut
+      link: or
+    - at: 21918
+      id: white-flame
+      count: 2
+    - at: 22539
+      id: palladion-hit
+      link: and
+    - at: 22539
+      id: shockwave
+    - at: 27710
+      id: palladion-platforms
+  clear-cut:
+    id: 33531
+    mechanic: aoe
+    shape: 270°
+    description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:2911] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
+  palladion-hit:
+    id: 33526
+    damage: 81997
+    mechanic: aoe
+    shape: chariot
+    description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding]."
+  palladion-platforms:
+    id: 22529
+    damage: 9999999
+    mechanic: aoe
+    shape: rect
+    description: "[boss] cuts away the inner 4 platforms, killing anyone on them."
+  shockwave:
+    id: 33527
+    damage: 6000
+    mechanic: mech.distance
+    shape: line
+    description: "[boss] dashes to the next player in the sequence, dealing damage to that player and all players in her path relative to how close they were to her starting position (the closer, the more damage)."
+  theoss-ultima:
+    id: 33530
+    damage: 130138
+    mechanic: raidwide.transition
+    description: "[boss] unleashes Ultima, dealing massive damage to all players and restoring the arena. Deals more damage the more players are dead."
+  superchain-theory-iia:
+    id: 34554
+    name: Superchain Theory IIa
+    mechanic: mech
+    compact: space
+    description: |
+      Summons three chain sources in a line from north to south. The two outer chain sources has 1 orange or purple chain and 1 green or blue chain *or* 1 orange and 1 purple chain *or* 1 green and 1 blue chain attached to it; the middle source always has a green, blue, and green chain attached to it.
+      [boss] also uses [a:trinity-of-souls] during this mechanic.
+    resolve: |
+      At the start of the mechanic, quickly find the path through the mess of chains:
+      The starting position will be whichever chain source has the short orange or purple chain attached to it. Check whether this chain source has another purple/orange chain attached to it; if yes, you will have to go back after going middle to resolve the [ms:dynamo].
+      The last spread or partner stack will always be the opposite of whichever the first mechanic was, so if the first step required you to spread, the last step will require partner stacks and vice versa.
+      Be aware that, for each of the three steps during this mechanic, one hit of [a:trinity-of-souls] also resolves, so pay extra attention to the wings.
+      The sequence is always this:
+      Spread or partner stacks + left or right → middle + left or right → back or forward + left or right → spread or partner stacks.
+      Be aware that the first spread/stack is *limited to half the arena* as it resolves at the same time as [a:trinity-of-souls], while the second spread/stack resolves *after* the last hit of [a:trinity-of-souls], allowing free positioning.
+      If anyone dies during this mechanic, stay away from their corpse as it'll be targeted by the final spread/stack.
+    children:
+    - at: 13144
+      id: trinity-of-souls
+    - at: 13188
+      id: superchain-radiation
+      link: or
+    - at: 13188
+      id: superchain-emission
+      link: and
+    - at: 13188
+      id: superchain-burst
+      link: or
+    - at: 13188
+      id: superchain-coil
+    - at: 15724
+      id: superchain-coil
+    - at: 21727
+      id: superchain-emission
+      link: or
+    - at: 21727
+      id: superchain-radiation
   superchain-theory-iib:
     id: 34555
-    description: Placeholder description for Superchain Theory IIB
+    name: Superchain Theory IIb
+    mechanic: mech
+    compact: space
+    description: |
+      Summons a chain source north and a chain source south, then summons a chain source east and a chain source west, then summons another chain source north and south.
+      One of the initial north/south chain sources has a green chain attached to it, the other a blue chain.
+      One of the east/west chain sources has a green chain attached to it, the other a purple or orange chain.
+      One of the second north/south chain sources has a green chain attached to it, the other a purple or orange chain (opposite of the second chains) and a green chain.
+      After the first chains resolve, [boss] uses [a:parthenos], a massive [ms:line] through the middle of the arena.
+      [boss] also summons two red crystal angels that shoot huge [ms:line]s through the arena after the second chains resolve.
+    resolve: |
+      Start at whichever chain source has the blue chain attached to it, then go to whichever chain source has the orange/purple chain attached to it. However, *don't get into position to resolve those chains yet*. Instead, wait at [t:max melee] until the boss has cast [a:parthenos], then quickly move into position for the cones. While this is happening, look to the north or south of the arena to identify where the angels will cleave.
+      After the cones, quickly move out of the subsequent [a:ray-of-light] cleaves, then go to whichever chain source has another purple or orange chain attached to it. This will always be a [ms:chariot], so stay out while moving into your spreads or partner stacks.
+      Finally, identify which platform is *not* being erased and quickly make your way there.
+    children:
+    - at: 6147
+      id: paradeigma-4
+    - at: 13185
+      id: superchain-burst
+      link: or
+    - at: 13185
+      id: superchain-coil
+    - at: 16300
+      id: parthenos
+    - at: 20167
+      id: superchain-radiation
+      link: or
+    - at: 20167
+      id: superchain-emission
+    - at: 22610
+      id: ray-of-light
+    - at: 29201
+      id: superchain-radiation
+      link: or
+    - at: 29201
+      id: superchain-burst
+      link: and
+    - at: 29201
+      id: superchain-emission
+    - at: 32002
+      id: unnatural-enchainment-2
+  paradeigma-4:
+    id: 33517
+    mechanic: mech
+    description: "[boss] summons 2 angels from red crystals."
   parthenos:
     id: 33539
-    description: Placeholder description for Parthenos
+    mechanic: aoe
+    shape: line
+    description: "[boss] faces a certain direction and cleaves all targets in-line with her."
   theoss-ultima-1:
     id: 34134
-    description: Placeholder description for Theos's Ultima
+    name: Theos's Ultima
+    mechanic: enrage
+    description: "[boss] becomes untargetable and unleashes Ultima a second time, wiping the party."
 timeline:
   - at: 11854
     id: on-the-soul
   - at: 22009
-    id: paradeigma
-  - at: 37445
-    id: white-flame
-  - at: 37534
-    id: trinity-of-souls
-  - at: 38336
-    id: white-flame-1
-  - at: 40154
-    id: trinity-of-souls-1
-  - at: 42470
-    id: white-flame
-  - at: 42738
-    id: trinity-of-souls-2
-  - at: 43362
-    id: white-flame-1
+    id: paradeigma-1
   - at: 58064
-    id: paradeigma
-  - at: 65728
-    id: engravement-of-souls
-  - at: 75428
-    id: polarized-glow
-  - at: 75609
-    id: searing-radiance
-  - at: 75653
-    id: shadowsear
-  - at: 75653
-    id: searing-radiance
-  - at: 76593
-    id: umbral-glow
-  - at: 76593
-    id: astral-glow
-  - at: 76593
-    id: umbral-glow
-  - at: 79575
-    id: umbral-advance
-  - at: 79575
-    id: astral-advance
-  - at: 79575
-    id: umbral-advance
-  - at: 82555
-    id: ray-of-light
+    id: paradeigma-2
   - at: 89548
     id: on-the-soul
   - at: 97820
     id: glaukopis
   - at: 117127
     id: superchain-theory-i
-  - at: 124261
-    id: engravement-of-souls
-  - at: 129333
-    id: superchain-radiation
-  - at: 129377
-    id: superchain-burst
-  - at: 135465
-    id: polarized-ray
-  - at: 136309
-    id: superchain-coil
-  - at: 136309
-    id: superchain-burst
-  - at: 136620
-    id: umbral-impact
-  - at: 136620
-    id: astral-impact
-  - at: 141292
-    id: superchain-coil
-  - at: 143294
-    id: superchain-burst
-  - at: 143560
-    id: polarized-glow
-  - at: 144722
-    id: astral-glow
-  - at: 144722
-    id: umbral-glow
-  - at: 146456
-    id: theoss-holy
-  - at: 147702
-    id: umbral-advance
-  - at: 147702
-    id: astral-advance
   - at: 158670
-    id: trinity-of-souls-3
-  - at: 172100
+    id: trinity-of-souls
+  - at: 172369
     id: apodialogos
-  - at: 173350
-    id: dialogos
+    link: or
+  - at: 172369
+    id: peridialogos
   - at: 180000
     id: on-the-soul
   - at: 196650
-    id: paradeigma
-  - at: 203798
-    id: engravement-of-souls
-  - at: 213945
-    id: unnatural-enchainment
-  - at: 213991
-    id: shock
-  - at: 215104
-    id: sample
-  - at: 215282
-    id: searing-radiance
-  - at: 215282
-    id: shadowsear
-  - at: 215282
-    id: searing-radiance
-  - at: 221117
-    id: polarized-glow
-  - at: 221965
-    id: theoss-cross
-  - at: 221965
-    id: theoss-saltire
-  - at: 222187
-    id: white-flame
-  - at: 222275
-    id: umbral-glow
-  - at: 223078
-    id: white-flame-1
-  - at: 225299
-    id: umbral-advance
-  - at: 231232
-    id: on-the-soul
+    id: paradeigma-3
   - at: 243547
     id: glaukopis
-  - at: 261405
+  - at: 268902
     id: ultima-blade
   - at: 291194
-    id: clear-cut
-  - at: 292001
     id: palladion
-  - at: 292225
-    id: shockwave
-  - at: 294237
-    id: white-flame
-  - at: 295268
-    id: palladion-1
-  - at: 295268
-    id: shockwave
-  - at: 297223
-    id: white-flame
-  - at: 298338
-    id: palladion-1
-  - at: 298338
-    id: shockwave
-  - at: 300207
-    id: clear-cut
-  - at: 301417
-    id: palladion-1
-  - at: 301417
-    id: shockwave
-  - at: 303201
-    id: white-flame
-  - at: 304499
-    id: palladion-1
-  - at: 304499
-    id: shockwave
-  - at: 306235
-    id: clear-cut
-  - at: 307575
-    id: palladion-1
-  - at: 307575
-    id: shockwave
-  - at: 309224
-    id: clear-cut
-  - at: 310653
-    id: palladion-1
-  - at: 310653
-    id: shockwave
-  - at: 312213
-    id: white-flame
-  - at: 313733
-    id: palladion-1
-  - at: 313733
-    id: shockwave
-  - at: 318904
-    id: palladion-2
   - at: 334675
     id: theoss-ultima
   - at: 354065
     id: superchain-theory-iia
-  - at: 367209
-    id: trinity-of-souls
-  - at: 367253
-    id: superchain-emission
-  - at: 367253
-    id: superchain-burst
-  - at: 369789
-    id: superchain-coil
-  - at: 369834
-    id: trinity-of-souls-1
-  - at: 372279
-    id: superchain-burst
-  - at: 372412
-    id: trinity-of-souls-6
-  - at: 375792
-    id: superchain-emission
-  - at: 375792
-    id: superchain-burst
-  - at: 381711
+  - at: 381980
     id: apodialogos
-  - at: 382916
-    id: dialogos
+    link: or
+  - at: 381980
+    id: peridialogos
   - at: 389529
     id: on-the-soul
   - at: 404176
     id: superchain-theory-iib
-  - at: 410323
-    id: paradeigma
-  - at: 417361
-    id: superchain-burst
-  - at: 417406
-    id: superchain-coil
-  - at: 420476
-    id: parthenos
-  - at: 424343
-    id: superchain-radiation
-  - at: 424343
-    id: superchain-burst
-  - at: 426786
-    id: ray-of-light
-  - at: 433377
-    id: superchain-radiation
-  - at: 433377
-    id: superchain-burst
-  - at: 436178
-    id: unnatural-enchainment
-  - at: 437339
-    id: sample
   - at: 444302
     id: on-the-soul
   - at: 467852
