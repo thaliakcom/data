@@ -1,0 +1,16 @@
+id: 20092
+patch: "6.5"
+date: 2023-10-08
+modified: 2023-10-08
+by:
+  id: 27637301
+  role: author
+tier: Endwalker
+boss: Zeromus
+HP: 0
+wip: true
+description: ""
+status:
+  2911:  # Damage Down
+    duration: 30000
+    description: Reduces damage dealt by approximately 25%.
