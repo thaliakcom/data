@@ -19,7 +19,7 @@ status:
     id: 3550
     name: Dæmoniac Bonds
     description: |
-      Deals damage in the form of a [m:spread.chariot] when the effect expires.
+      Deals damage in the form of a [ms:chariot] [m:spread] when the effect expires.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated to take damage when this effect expires.
     type: delay
@@ -178,7 +178,8 @@ actions:
     id: 33432
     name: Dividing Wings (Hit)
     description: "[a:dividing-wings] resolves and shoots a wide conal [t:AoE] toward each tethered player that inflicts [s:bleeding] and [s:magic-vuln]."
-    mechanic: spread.cone
+    mechanic: spread
+    shape: cone
     count: 2
   steel-web-hit:
     id: 33407
@@ -189,11 +190,13 @@ actions:
   pandæmons-holy:
     id: 33446
     description: The entirety of [boss]'s hitbox (and a few inches more) becomes unsafe. Max melee remains safe.
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
   circles-of-pandæmonium:
     id: 33447
     description: The outside of [boss]'s hitbox becomes unsafe.
-    mechanic: aoe.dynamo
+    mechanic: aoe
+    shape: dynamo
   wicked-step:
     id: 33433
     description: |
@@ -218,10 +221,11 @@ actions:
   entangling-web:
     id: 34594
     description: |
-      Multiple players are targeted by a telegraphed [m:aoe.chariot.baitable]. This [t:AoE] will initially follow the player but will soon "lock in", after which players should move out of it to avoid damage.
+      Multiple players are targeted by a telegraphed [ms:chariot] [m:aoe.baitable]. This [t:AoE] will initially follow the player but will soon "lock in", after which players should move out of it to avoid damage.
       Like [a:steel-web], these AoEs form webs when dropped. While webs will attach to players, they will also attach to the small posts around the arena. This can be used to *connect* two posts, which requires this AoE to be placed in such a way as to encompass a post as well as intersect with another AoE that also encompasses a post.
       When a web is formed in this way between the two posts at the edge of each poison segment, it will form a *bridge* instead of a usual breakable web. Bridges can be used to cross the poison without being afflicted with [s:poison]. Every [a:wicked-step] will be followed by an [a:entangling-web] on one healer, one DPS player, and both tanks. As tanks are expected to be on the side platforms at this point, it always allows you to form a bridge to bring both tanks back to the central platform.
-    mechanic: aoe.chariot.baitable
+    mechanic: aoe.baitable
+    shape: chariot
     children:
       - at: 6000
         id: entangling-web-lock
@@ -230,21 +234,23 @@ actions:
   entangling-web-lock:
     name: Entangling Web (Lock)
     description: The [a:entangling-web] "locks in". In other words, it no longer follows the player it spawned on.
-    mechanic: aoe.chariot.baitable
+    mechanic: aoe.baitable
+    shape: chariot
     count: 4
   entangling-web-hit:
     id: 33406
     name: Entangling Web (Hit)
     description: The [a:entangling-web] drops, dealing heavy damage and entangling everything in its radius in a similar way as [a:steel-web].
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     count: 4
   pandæmoniac-pillars:
     id: 33408
     description: |
       Eight towers spawn on the central platform and must be soaked.
       Unlike normal mode, the towers spawn in the same positions every time: 3 towers in the front and middle, and 2 towers on the sides in the rear. After they resolve ([a:bury]), each tower is followed by another mechanic:
-      Three towers (at most 2 in the same row) emit [a:cannonspawn] ([m:aoe.dynamo]).
-      Three towers (at most 2 in the same row) emit [a:imprisonment] ([m:aoe.chariot]).
+      Three towers (at most 2 in the same row) emit [a:cannonspawn] ([ms:dynamo]).
+      Three towers (at most 2 in the same row) emit [a:imprisonment] ([ms:chariot]).
       Both of the rear towers emit [a:peal-of-damnation].
       [boss] will cast either [a:pandæmons-holy] or [a:circles-of-pandæmonium] at the same time as these post-tower mechanics resolve, limiting the party to either the first or second row (the third row will always be unsafe).
       Failing to soak a tower causes an [a:unmitigated-explosion].
@@ -279,27 +285,31 @@ actions:
   peal-of-damnation:
     id: 34736
     description: |
-      A wide [m:aoe.line] originating from two pandæmoniac turrets after [a:pandæmoniac-pillars] that leaves the last row unsafe.
+      A wide [ms:line] originating from two pandæmoniac turrets after [a:pandæmoniac-pillars] that leaves the last row unsafe.
       :unverified(Anyone in this row is killed instantly.)
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
     count: 2
   imprisonment:
     id: 33413
-    description: A small [m:aoe.chariot] originating from three of the eight towers that inflicts [s:doom] and [s:fetters].
-    mechanic: aoe.chariot
+    description: A small [ms:chariot] originating from three of the eight towers that inflicts [s:doom] and [s:fetters].
+    mechanic: aoe
+    shape: chariot
     count: 3
   cannonspawn:
     id: 33415
-    description: A small [m:aoe.dynamo] originating from three of the eight towers that inflicts [s:doom].
-    mechanic: aoe.dynamo
+    description: A small [ms:dynamo] originating from three of the eight towers that inflicts [s:doom].
+    mechanic: aoe
+    shape: dynamo
     count: 3
   silkspit:
     id: 33404
     description: |
-      A [m:spread.chariot] that deals heavy damage and briefly inflicts [s:bind].
+      A [ms:chariot] [m:spread] that deals heavy damage and briefly inflicts [s:bind].
       Similar to [a:entangling-web], but [a:silkspit] never "locks in" its position and is therefore unavoidable. Players need to spread from each other to avoid creating a web between themselves, especially the second and third time it happens, as it will be directly followed by [a:pandæmoniac-pillars], meaning there is not enough time to break anyone out of a web if they get tethered.
       As the circles are quite big, properly spreading requires the use of the side platforms, so bridges should have been established during the previous [a:entangling-web].
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     children:
       - at: 10278
         id: silkspit-hit
@@ -307,7 +317,8 @@ actions:
     id: 33405
     name: Silkspit (Hit)
     description: Deals heavy damage and briefly inflicts [s:bind].
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     damage: 80000
     count: 8
   dæmoniac-bonds:
@@ -319,8 +330,9 @@ actions:
     mechanic: mech
   pandæmoniac-meltdown:
     id: 33437
-    description: One person receives a [m:stack.line] marker. One support and one DPS player receive a [m:spread.line] marker. They cannot stack.
-    mechanic: stack.line
+    description: One person receives a [m:stack.party] [ms:line] marker. One support and one DPS player receive a [ms:line] [m:spread] marker. They cannot stack.
+    mechanic: stack.party
+    shape: line
     damage: 87000
     type: magic
   touchdown:
@@ -329,7 +341,8 @@ actions:
       [boss] stomps the central platform, rendering it completely unsafe.
       Anyone on the central platform when [boss] stomps on it will be knocked into the abyss and killed instantly.
       Players should evade to the side platforms.
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     children:
       - at: 1292
         id: touchdown-hit
@@ -337,12 +350,14 @@ actions:
     id: 33422
     name: Touchdown (Hit)
     description: "[a:touchdown:d]"
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
   dæmoniac-bonds-hit:
     id: 33442
     name: Dæmoniac Bonds (Hit)
     description: "[s:bonds] resolves. Requires everyone to be spread from each other."
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     count: 8
   duodæmoniac-bonds-hit:
     id: 33443
@@ -363,7 +378,7 @@ actions:
       Spawns two rows of 4 towers that must be soaked. This begins a [m:mech.limit]-esque mechanic.
       Each tower will have a turret dropped on top of it. They receive [m:mech.limit] markers, indicating the order that they'll shoot in: 1-4 (2 turrets always shoot at the same time).
       All turrets always face the closest player to them until just before it is their turn to shoot, at which point the turret will "lock in" to the closest player to it. After that, the target can't be changed anymore, even if that player moves to the other end of the arena.
-      Each shot is actually a [m:stack.line] that deals lethal damage when taken alone but survivable damage when taken with another player. The damage only divides by two; adding additional players does not further reduce the damage taken. Additionally, each shot inflicts [s:dark-vuln] on the **first** person hit and knocks everyone in the line back a significant distance.
+      Each shot is actually a [m:stack.party] [ms:line] that deals lethal damage when taken alone but survivable damage when taken with another player. The damage only divides by two; adding additional players does not further reduce the damage taken. Additionally, each shot inflicts [s:dark-vuln] on the **first** person hit and knocks everyone in the line back a significant distance.
       To wit: there are eight shots in total. Each shot requires at least 2 people to soak it. Anyone who is first-in-line for a shot cannot take another shot for the duration of the mechanic. By the time the last two shots happen, this therefore leaves only two people remaining without [s:dark-vuln]. No one else is available to stack with them. To resolve the mechanic in spite of this, the last two players must be tanks. Using defensive mitigation, they can each survive a shot alone.
       Note that it is essential the tanks take their solo turret *last*, not first. If they take it first, they will not be able to join any of the other line stacks anymore, which then consigns one pair of baiters to death.
       Be aware that [a:dæmoniac-bonds] resolves immediately after the last two turrets fire.
@@ -408,11 +423,13 @@ actions:
       [boss] detaches its head and gets ready to cleave the side of the arena it's facing.
       Being hit by this cleave applies [s:2911] and [s:hysteria].
       The cleave also summons either 7 or 8 orbs (or "bits") on the side that was cleaved. Each of these will fire a beam.
-    mechanic: aoe.side
+    mechanic: aoe
+    shape: side
   jade-passage:
     id: 33420
     description: Beam fired by the "bits" spawned by [a:pandæmoniac-ray]. Inflicts [s:2911]. To avoid, simply step between the bits.
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
   pandæmoniac-web:
     id: 34596
     name: Pandæmoniac Web
@@ -493,7 +510,8 @@ actions:
     id: 33430
     name: Parted Plumes (Hit)
     description: A set of two line [AoEs](t:AoE) explodes, inflicting [s:paralysis] to anyone caught inside.
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
     count: 2
 timeline:
   - at: 14240

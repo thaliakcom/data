@@ -12,6 +12,7 @@ HP: 29844576
 average_hp: 60000
 autos:
   mechanic: auto.single
+  shape: chariot
   type: magic
 spoiler: true
 wip: true

@@ -201,7 +201,8 @@ actions:
     id: 33584
     name: Ultima Ray
     description: The three angels spawned by [a:summon-darkness-1] each shoot a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
   missing-link:
     id: 34182
     name: Missing Link
@@ -264,10 +265,11 @@ actions:
   divine-excoriation:
     id: 33582
     name: Divine Excoriation
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     damage: 61000
     count: 8
-    description: Every player is hit by a small [m:spread.chariot] that inflicts [s:magic-vuln].
+    description: Every player is hit by a small [ms:chariot] [m:spread] that inflicts [s:magic-vuln].
     resolve: Spread out. The AoEs themselves are tiny, so while it is recommended to use fixed positions for every pattern, it is not strictly necessary.
   ultima-restore:
     id: 34550
@@ -336,7 +338,8 @@ actions:
   implode:
     id: 33587
     name: Implode
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     count: 12
     description: All shapes implode, killing anyone nearby.
     resolve: Move in-between 4 shapes.
@@ -344,7 +347,8 @@ actions:
     id: 33571
     name: Palladian Ray
     compact: full
-    mechanic: spread.cone
+    mechanic: spread
+    shape: cone
     type: magic
     damage: 37000
     count: 8
@@ -439,9 +443,10 @@ actions:
   dynamic-atmosphere:
     id: 33595
     name: Dynamic Atmosphere
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     damage: 58000
-    description: A small [spread AoE](m:spread.chariot). If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
+    description: A small [ms:chariot] [m:spread]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
   ekpyrosis:
     id: 33566
     name: Ekpyrosis
@@ -449,11 +454,11 @@ actions:
     compact: full
     description: |
       Spawns two [proximity AoEs](m:raidwide.proximity) on either the west and east *or* north and south, then spawns two rows of exaflares on the other two cardinals.
-      Everyone receives [spread AoEs](m:spread.chariot) shortly after the [proximity AoEs](m:raidwide.proximity) resolve.
+      Everyone receives [ms:chariot] [m:spread] shortly after the [proximity AoEs](m:raidwide.proximity) resolve.
       If the exaflares spawn west/east, they'll travel straight across the arena. If they spawn north/south, they will travel through the arena diagonally.
     resolve: |
       To reduce the proximity damage to survivable levels, the party must stack in-between the exaflares on the cardinals that the [proximity AoEs](m:raidwide.proximity) *don't* spawn on.
-      As everyone gets a [spread AoEs](m:spread.chariot) right afterward, it is recommended to split your party into two light parties for this initial bit of movement. The generally accepted split is light party 1 on west and light party 2 on east, or all melees and tanks north and all ranged DPS and healers south. Afterwards, quickly move to spread positions along the edge where you stacked.
+      As everyone gets a [ms:chariot] [m:spread] right afterward, it is recommended to split your party into two light parties for this initial bit of movement. The generally accepted split is light party 1 on west and light party 2 on east, or all melees and tanks north and all ranged DPS and healers south. Afterwards, quickly move to spread positions along the edge where you stacked.
       If you use fixed positions for [a:geocentrism], you can use the same spread positions here.
     trivia: >
       *Ekpyrosis* refers to the ancient Stoic belief that the universe is periodically (every 36,000 years or so) destroyed and then remade.
@@ -486,7 +491,8 @@ actions:
   ekpyrosis-spread:
     id: 33570
     name: Ekpyrosis
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     damage: 25000
     count: 8
     description: Spread AoEs.
@@ -555,11 +561,12 @@ actions:
   factor-in:
     id: 33607
     name: Factor In
-    mechanic: spread.defamation
+    mechanic: spread
+    shape: defamation
     damage: 81000
     count: 6
     raid-damage: false
-    description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [m:spread.defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
+    description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [ms:defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
     resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
     id: 33590
@@ -577,10 +584,10 @@ actions:
     compact: full
     description: |
       Hot Potato – The Mechanic.
-      Similar to [a:caloric-theory], but while [a:caloric-theory] focused on limited movement to properly resolve stacks/spreads, [a:caloric-theory-2] is instead a much simpler "hot potato" type mechanic. One person is inflicted with [s:entropification:8], which "pulses" periodically, creating a telegraphed [chariot AoE](m:aoe.chariot.baitable) underneath the player that must be moved out of. Each of these pulses reduces the stacks of the status effect by one, until it disappears completely.
-      [s:entropification:8] can be passed to another player. This is necessary because movement is still limited, so no one player has enough movement to move out of every one of the [chariot AoEs](m:aoe.chariot.baitable).
-      Additionally, at the start of the mechanic 7 players receive a green marker above their heads and 1 player receives a red marker. These are all [spread AoEs](m:spread.chariot), but all green marker players start with [s:caloric:2] while the red marker player starts with [s:caloric:3]. Only green marker players can be selected for [s:entropification:8].
-      Everyone also receives [s:atmosfaction], which releases a [spread AoE](m:spread.chariot) at the end of the mechanic.
+      Similar to [a:caloric-theory], but while [a:caloric-theory] focused on limited movement to properly resolve stacks/spreads, [a:caloric-theory-2] is instead a much simpler "hot potato" type mechanic. One person is inflicted with [s:entropification:8], which "pulses" periodically, creating a telegraphed [chariot AoE](m:aoe.baitable) underneath the player that must be moved out of. Each of these pulses reduces the stacks of the status effect by one, until it disappears completely.
+      [s:entropification:8] can be passed to another player. This is necessary because movement is still limited, so no one player has enough movement to move out of every one of the [chariot AoEs](m:aoe.baitable).
+      Additionally, at the start of the mechanic 7 players receive a green marker above their heads and 1 player receives a red marker. These are all [ms:chariot] [m:spread], but all green marker players start with [s:caloric:2] while the red marker player starts with [s:caloric:3]. Only green marker players can be selected for [s:entropification:8].
+      Everyone also receives [s:atmosfaction], which releases a [ms:chariot] [m:spread] at the end of the mechanic.
     resolve: |
       Preposition in a circle (or hexagon), with the red marker player in the center, as they can only move once. As a hexagon only has six corners, one of the green marker players should position close to another player on the outside of the hexagon.
       Whoever receives [s:entropification:8] waits until the first AoE appears below their feet, then moves clockwise to the next player. Both players wait until the next AoE appears, then the player who *passed* the status effect moves outside the hexagon, while the player who was passed *to* moves to the next player clockwise. Remember to take a detour to include the player who had to position on the outside of the hexagon initially.
@@ -609,8 +616,9 @@ actions:
   entropic-excess:
     id: 33596
     name: Entropic Excess
-    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.chariot.baitable) which reduces the stack of the status effect by one.
-    mechanic: aoe.chariot.baitable
+    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.baitable) which reduces the stack of the status effect by one.
+    mechanic: aoe.baitable
+    shape: chariot
     trivia: |
       *Entropy* is a complicated scientific concept that, in general, describes the amount of unusable energy in a system. Anytime an energy transaction happens, a part of that energy (or heat) disperses and is irreversibly "lost" as the system can no longer use it for future energy transactions.
       Consider <a href="https://www.wikipedia.com/en/File:Newtons_cradle_animation_book_2.gif">Newton's cradle</a>: in theory all the momentum is conserved, so the balls should keep swinging forever. In practice they stop completely after some time, because a part of that kinetic energy disperses during each swing until there is nothing left.

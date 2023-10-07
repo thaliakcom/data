@@ -88,19 +88,20 @@ actions:
   jury-overruling:
     id: 33254
     name: Jury Overruling
-    mechanic: spread.line
+    mechanic: spread
+    shape: line
     compact: full
     count: 8
     damage: 56000
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
-      Light: [a:jury-overruling] ([m:spread.line]) > [a:illusory-glare] ([m:aoe.chariot]) > [a:inevitable-law] ([m:stack.healers])
-      Dark: [a:jury-overruling] ([m:spread.line]) > [a:illusory-gloom] ([m:aoe.dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
+      Light: [a:jury-overruling] ([ms:line] [m:spread]) > [a:illusory-glare] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
+      Dark: [a:jury-overruling] ([ms:line] [m:spread]) > [a:illusory-gloom] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, clones of [boss] dash toward each player, inflicting [s:blunt-vuln].
     resolve: |
       Everyone moves to [t:protean] positions around the boss at [t:max melee]. Use the tiny diamonds around the boss to aid in positioning.
       If it's light, move into the hitbox on west (light party 1) or east (light party 2) for the stack.
-      If it's dark, have either supports or DPS rotate clockwise or counter-clockwise to the next player and stack in their [m:aoe.dynamo].
+      If it's dark, have either supports or DPS rotate clockwise or counter-clockwise to the next player and stack in their [ms:dynamo].
     children:
       - at: 4084
         id: illusory-glare
@@ -116,15 +117,17 @@ actions:
   illusory-glare:
     id: 33258
     damage: 68000
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     count: 8
-    description: "[Chariot AoEs](m:aoe.chariot) left behind wherever players stood at the time of [a:jury-overruling]."
+    description: "[Chariot AoEs](ms:chariot) left behind wherever players stood at the time of [a:jury-overruling]."
   illusory-gloom:
     id: 33259
     damage: 68000
-    mechanic: aoe.dynamo
+    mechanic: aoe
+    shape: dynamo
     count: 8
-    description: "[Dynamo AoEs](m:aoe.dynamo) left behind wherever players stood at the time of [a:jury-overruling]."
+    description: "[Dynamo AoEs](ms:dynamo) left behind wherever players stood at the time of [a:jury-overruling]."
   inevitable-law:
     id: 33276
     mechanic: stack.healers
@@ -145,8 +148,8 @@ actions:
     compact: full
     description: |
       The boss tethers to a random party member and glows either dark or light, indicating the next mechanic.
-      Light: [a:upheld-overruling-stack] > [a:lightburst] ([m:aoe.chariot]) > [a:inevitable-law] ([m:stack.healers])
-      Dark: [a:upheld-overruling-tb] > [a:dark-perimeter] ([m:aoe.dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
+      Light: [a:upheld-overruling-stack] > [a:lightburst] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
+      Dark: [a:upheld-overruling-tb] > [a:dark-perimeter] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
     children:
     - at: 4100
       id: lightburst
@@ -191,20 +194,24 @@ actions:
       id: inevitable-law
   lightburst:
     id: 33270
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     description: "[boss] explodes in an [t:AoE] slightly smaller than [t:max melee]."
   dark-perimeter:
     id: 33317
-    mechanic: aoe.dynamo
+    mechanic: aoe
+    shape: dynamo
     description: Darkness ripples outwards from [boss], leaving only a circle inside his hitbox safe.
   ripples-of-gloom:
     id: 33265
-    mechanic: aoe.sides
+    mechanic: aoe
+    shape: sides
     description: Darkness ripples outwards from [boss], leaving only a line through his hitbox safe.
   divine-ruination:
     id: 33309
-    mechanic: aoe.line
-    description: Light scorches the path that [boss] dashed. This [m:aoe.line] is larger than the size of the initial dash.
+    mechanic: aoe
+    shape: line
+    description: Light scorches the path that [boss] dashed. This [ms:line] is larger than the size of the initial dash.
   divisive-overruling:
     id: 33261
     name: Divisive Overruling
@@ -212,8 +219,8 @@ actions:
     compact: full
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
-      Light: [a:divisive-overruling] ([m:aoe.line]) > [a:divine-ruination] ([m:aoe.sides]) > [a:inevitable-law] ([m:stack.healers])
-      Dark: [a:divisive-overruling] ([m:aoe.sides]) > [a:ripples-of-gloom] ([m:aoe.line]) > [a:inevitable-sentence] ([m:stack.partner])
+      Light: [a:divisive-overruling] ([m:aoe] [ms:line]) > [a:divine-ruination] ([m:aoe] [ms:sides]) > [a:inevitable-law] ([m:stack.healers])
+      Dark: [a:divisive-overruling] ([m:aoe] [ms:sides]) > [a:ripples-of-gloom] ([m:aoe] [ms:line]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, [boss] dashes, leaving either the inside or outside of the dash safe.
     children:
     - at: 4496
@@ -310,7 +317,7 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 4 dark mirrors and 4 light mirrors on the sides of the arena.
-      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [m:aoe.line], dealing massive damage to anyone hit and inflicting [s:2911].
+      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:2911].
     children:
     - at: 7623
       id: dismissal-overruling
@@ -322,13 +329,14 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 2 dark spheres and 2 light spheres on the arena's cardinals.
-      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [m:aoe.chariot], dealing massive damage to anyone hit and inflicting [s:2911].
+      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [ms:chariot], dealing massive damage to anyone hit and inflicting [s:2911].
     children:
     - at: 9635
       id: unlucky-lot
   unlucky-lot:
     name: Unlucky Lot
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     count: 2
     description: The spheres explodes in a huge [t:AoE]. Inflicts [s:2911].
   dismissal-overruling:
@@ -339,8 +347,8 @@ actions:
     compact: full
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
-      Light: [a:dismissal-overruling] ([m:mech.knockback]) > [a:inner-light] ([m:aoe.chariot]) > [a:inevitable-law] ([m:stack.healers])
-      Dark: [a:dismissal-overruling] ([m:mech.knockback]) > [a:outer-dark] ([m:aoe.dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
+      Light: [a:dismissal-overruling] ([m:mech.knockback]) > [a:inner-light] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
+      Dark: [a:dismissal-overruling] ([m:mech.knockback]) > [a:outer-dark] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, [boss] inflicts a knockback slightly smaller than the radius of the arena.
     resolve: Either use [a:7548] or [a:7559] or position yourself close to the boss's center to avoid being knocked into the wall, then go in with your partner or out with your light party, depending on the boss's colour.
     children:
@@ -357,19 +365,22 @@ actions:
       id: inevitable-sentence
   arche:
     id: 33299
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
     count: 4
-    description: The mirrors on the side of the arena corresponding to [boss]'s colour shoot a [m:aoe.line] through the arena.
+    description: The mirrors on the side of the arena corresponding to [boss]'s colour shoot a [ms:line] through the arena.
   inner-light:
     id: 34696
     damage: 72910
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     description: "[boss] explodes in a burst of light, leaving his hitbox unsafe."
     resolve: Max melee and beyond is safe.
   outer-dark:
     id: 34697
     damage: 69204
-    mechanic: aoe.dynamo
+    mechanic: aoe
+    shape: dynamo
     description: Darkness explodes around [boss], leaving only his hitbox safe.
   shadowed-messengers:
     id: 33305
@@ -387,7 +398,8 @@ actions:
       id: upheld-ruling
   divisive-ruling:
     id: 33306
-    mechanic: aoe.line
+    mechanic: aoe
+    shape: line
     compact: full
     description: Same as [a:divisive-overruling], but cast by a clone of [boss] rather than [boss] himself.
     children:
@@ -411,7 +423,7 @@ actions:
     id: 33283
     mechanic: aoe.rotating
     count: 3
-    description: Summons three arcane cylinders that each shoot [m:aoe.line]s through the arena as they rotate either clockwise or counter-clockwise.
+    description: Summons three arcane cylinders that each shoot [ms:line]s through the arena as they rotate either clockwise or counter-clockwise.
     resolve: One possible trick to find the safe spot quickly is to identify the "odd one out" – two of the cylinders will always rotate the same way while one of them rotates the other way. Find this cylinder. The safe spot is the second triangle in the direction it is *not* rotating.
   dark-and-light:
     id: 33278
@@ -443,8 +455,8 @@ actions:
     id: 33284
     mechanic: aoe.rotating
     description: |
-      Summons two [m:aoe.chariot] on two opposite cardinals of the arena, then draws a line in the direction those [t:AoE]s will go.
-      After a short time, the [t:AoE]s move circularly around the arena. After the second hit, [m:spread.chariot] will resolve on all players. The middle of the arena is unsafe for the whole mechanic.
+      Summons two [ms:chariot] on two opposite cardinals of the arena, then draws a line in the direction those [t:AoE]s will go.
+      After a short time, the [t:AoE]s move circularly around the arena. After the second hit, [ms:chariot] [m:spread]s will resolve on all players. The middle of the arena is unsafe for the whole mechanic.
     resolve: Divide into light parties. One party chases the one [t:AoE] while the other party chases the other. Place your tank and melee side-by-side at max melee, while your healer and ranged DPS wait at the edge of the arena. Make sure to [t:collapse] at max melee once [a:blinding-light] resolves to reduce the required movement.
     strategies:
       cw-always:
@@ -474,13 +486,15 @@ actions:
         id: dark-current-hit
   dark-current-hit:
     id: 33289
-    mechanic: aoe.chariot
+    mechanic: aoe
+    shape: chariot
     count: 2
     description: The [t:AoE]s circle around the arena one step.
   blinding-light:
     id: 33322
     damage: 57630
-    mechanic: spread.chariot
+    mechanic: spread
+    shape: chariot
     count: 8
     description: Spread [t:AoE]s on all eight players.
   letter-of-the-law:
@@ -504,7 +518,7 @@ actions:
     id: 33297
     name: Twofold Revelation
     mechanic: aoe
-    description: "[boss] glows either dark or light, then summons 2 light and 2 dark spheres on the cardinals of the arena, and 4 dark and 4 light mirrors on the sides of the arena. Like before, the spheres of the same colour that [boss] glowed in explode in a massive [m:aoe.chariot] while the corresponding mirrors fire a [m:aoe.line] through the arena."
+    description: "[boss] glows either dark or light, then summons 2 light and 2 dark spheres on the cardinals of the arena, and 4 dark and 4 light mirrors on the sides of the arena. Like before, the spheres of the same colour that [boss] glowed in explode in a massive [ms:chariot] while the corresponding mirrors fire a [ms:line] through the arena."
     resolve: "There are two safe spots during this mechanic: one is around the southern sphere, while one is around the northern sphere. The party should always take the southmost safe spot while the tethered tank should always take the northmost safe spot. Find the safe spot first, then look at the sides to determine where you have to stand in around the sphere. Remember you must find both the safe column and the safe row."
   heart-of-judgment:
     id: 33318

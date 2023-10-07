@@ -1,0 +1,40 @@
+chariot:
+  name: chariot
+  description: |
+    A standard circle affecting targets within its radius.
+    Named after Neul deus Darnus's eponymous attack, [a:2008].
+defamation:
+  name: defamation
+  description: |
+    A standard circle affecting targets within its radius, same as the [ms:chariot] AoE. Defamation-type AoEs are generally *significantly* larger than ordinary chariots, often encompassing the entire radius of the arena.
+    Named after the eponymous attack in Alexander: Soul of the Creator (Savage).
+dynamo:
+  name: dynamo
+  description: |
+    Affects targets outside the inner radius of an inverted circle. Or, in other words, a ring or donut that affects targets outside of it.
+    Some dynamo AoEs have an unlimited outer radius, while some can be avoided by being far enough away.
+    Named after Nael deus Darnus's eponymous attack, [a:2010].
+cone:
+  name: cone
+  description: Affects targets within a cone-shaped AoE. A cone can be anywhere from just a few degrees to 179° large.
+270°:
+  name: 270° circle
+  description: Affects targets who are within three quarters of a circle. Leaves a safespot behind the circle.
+line:
+  name: line
+  description: Affects targets who are in-line with the source. Hits both in front and behind the source. To avoid, stay far enough to either side of the source.
+sides:
+  name: sides
+  description: Affects targets who are not in-line with the source. Hits both in front and behind the source. To avoid, stay in a line with the source.
+rect:
+  name: rectangle
+  description: Affects targets within a rectangular area.
+frontal:
+  name: frontal
+  description: Affects anyone in front of the source. Cannot be outranged. To avoid, the only option is to stay behind the source.
+rear:
+  name: rear
+  description: Affects anyone behind the source. Cannot be outranged. To avoid, the only option is to stay in front of the source.
+side:
+  name: side
+  description: Affects anyone on the west or east side of the source. Cannot be outranged. To avoid, the only option is to stay on the other side.

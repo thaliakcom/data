@@ -82,10 +82,6 @@ stack.close:
   name: close stack
   description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
-stack.line:
-  name: line stack
-  description: A heavy-hitting attack on one party member that cannot be survived alone. As many players as possible must be in-line with the targeted player to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
 stack.ululation:
   name: ululation
   description: |
@@ -94,36 +90,9 @@ stack.ululation:
 aoe:
   name: AoE
   description: Leaves only a specific section of the arena safe.
-aoe.front:
-  name: front cleave
-  description: Deals avoidable damage to everything in front of the boss (or another enemy).
-aoe.rear:
-  name: rear cleave
-  description: Deals avoidable damage to everything behind the boss (or another enemy).
-aoe.side:
-  name: side cleave
-  description: Deals avoidable damage to everything on one side of the boss (or another enemy). Which side is hit can either be identified from the cast name or some specific telegraph on the enemy's model.
-aoe.line:
-  name: line cleave
-  description: Deals avoidable damage to everything in a line with the boss (or another enemy).
-aoe.sides:
-  name: side cleaves
-  description: Deals avoidable damage to everything on the boss's (or another enemy's) sides, leaving only a line through the boss safe.
-aoe.dynamo:
-  name: dynamo
-  description: |
-    A ring-shaped [t:AoE] that deals avoidable damage to everything outside its inner radius. Some dynamo AoEs have an unlimited outer radius, while some can be avoided by either being inside its inner radius or outside its outer radius.
-    Named after Nael deus Darnus's eponymous attack, [a:2010].
-aoe.chariot:
-  name: chariot
-  description: |
-    A circular [t:AoE] that deals avoidable damage to everything inside its radius.
-    Named after Neul deus Darnus's eponymous attack, [a:2008].
-aoe.chariot.baitable:
-  name: baits (chariot)
-  description: |
-    A circular [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
-    Named after Neul deus Darnus's eponymous attack, [a:2008].
+aoe.baitable:
+  name: baits
+  description: An [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
 aoe.exaflares:
   name: exaflares
   description: |
@@ -140,26 +109,13 @@ aoe.intercept:
     These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
     Often named after Imdugud's eponymous attack, [a:2134].
   is-raid-damage: true
-spread.chariot:
-  name: spread (chariot)
-  description: An unavoidable player-targeted circle that deals damage to the player and all players within a certain radius of them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
-  is-raid-damage: true
-spread.defamation:
-  name: defamation
-  description: |
-    A [m:aoe.chariot] [t:AoE], but *significantly* bigger than the average chariot. Usually encompasses the entire arena and must be taken to the edge to avoid clipping players.
-    Named after the eponymous attack in Alexander: Soul of the Creator (Savage).
-spread.line:
-  name: spread (line)
-  description: An unavoidable player-targeted line that deals damage to the player and all players in-line with them and the source. Affected players must angle themselves away from each other, as clipping each other with these AoEs usually leads to death.
-  is-raid-damage: true
-spread.cone:
-  name: spread (cone)
-  description: An unavoidable player-targeted cone that deals damage to the player and all players in a cone-shaped area around them. Affected players must angle themselves away from each other, as clipping each other with these AoEs usually leads to death.
+spread:
+  name: spread
+  description: Hits all targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
 spread.close:
   name: spread (close)
-  description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Affected players must spread out from each other, as clipping each other with these AoEs usually leads to death.
+  description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
 mech:
   name: mechanic
@@ -167,6 +123,9 @@ mech:
 mech.check:
   name: check
   description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.
+mech.status:
+  name: debuffs
+  description: Inflicts various status effects on players.
 mech.protean:
   name: spread or stack
   description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
@@ -185,6 +144,10 @@ mech.limit:
   description: |
     A mechanic that is generally identified by numbers appearing above players' or objects' heads, indicating that they will receive some kind of mechanic in sequence.
     Named after Cruise Chaser's eponymous attack, [a:7916].
+mech.failure:
+  name: failure
+  description: Wipes the party after a mechanic was incorrectly executed.
+  is-raid-damage: true
 mech.distance:
   name: distance
   description: Players must be at the correct distance to something else in order to avoid debuffs and/or death.
@@ -210,6 +173,9 @@ mech.pull.unavoidable:
   name: draw-in
   description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:7559].
   is-raid-damage: true
+mech.arena:
+  name: arena change
+  description: Modifies the arena or floor in some way. Is often but not always accompanied by a raidwide.
 towers.single:
   name: towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
