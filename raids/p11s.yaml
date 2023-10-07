@@ -87,7 +87,6 @@ actions:
     description: Pierces first-in-enmity with light damage, inflicting [s:light-vuln], and second-in-enmity with dark damage, inflicting [s:dark-vuln].
   jury-overruling:
     id: 33254
-    name: Jury Overruling
     mechanic: spread
     shape: line
     compact: full
@@ -142,7 +141,6 @@ actions:
     description: A 2-player stack on all DPS players. Targets a random player if any DPS are dead. Cannot be survived alone.
   upheld-overruling:
     id: 34771
-    name: Upheld Overruling
     damage: 38166
     mechanic: mech
     compact: full
@@ -214,7 +212,6 @@ actions:
     description: Light scorches the path that [boss] dashed. This [ms:line] is larger than the size of the initial dash.
   divisive-overruling:
     id: 33261
-    name: Divisive Overruling
     mechanic: mech
     compact: full
     description: |
@@ -313,7 +310,6 @@ actions:
     description: An initial hit of [a:styx-1].
   arcane-revelation:
     id: 33293
-    name: Arcane Revelation
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 4 dark mirrors and 4 light mirrors on the sides of the arena.
@@ -325,7 +321,6 @@ actions:
       id: arche
   arcane-revelation-2:
     id: 33296
-    name: Arcane Revelation
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 2 dark spheres and 2 light spheres on the arena's cardinals.
@@ -341,7 +336,6 @@ actions:
     description: The spheres explodes in a huge [t:AoE]. Inflicts [s:2911].
   dismissal-overruling:
     id: 34693
-    name: Dismissal Overruling
     damage: 22285
     mechanic: mech.knockback
     compact: full
@@ -516,7 +510,6 @@ actions:
       id: dismissal-overruling
   twofold-revelation:
     id: 33297
-    name: Twofold Revelation
     mechanic: aoe
     description: "[boss] glows either dark or light, then summons 2 light and 2 dark spheres on the cardinals of the arena, and 4 dark and 4 light mirrors on the sides of the arena. Like before, the spheres of the same colour that [boss] glowed in explode in a massive [ms:chariot] while the corresponding mirrors fire a [ms:line] through the arena."
     resolve: "There are two safe spots during this mechanic: one is around the southern sphere, while one is around the northern sphere. The party should always take the southmost safe spot while the tethered tank should always take the northmost safe spot. Find the safe spot first, then look at the sides to determine where you have to stand in around the sphere. Remember you must find both the safe column and the safe row."

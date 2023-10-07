@@ -149,13 +149,11 @@ status:
 actions:
   ultima:
     id: 34434
-    name: Ultima
     description: Medium raidwide.
     mechanic: raidwide
     damage: 93000
   palladian-grasp:
     id: 33562
-    name: Palladian Grasp
     description: "[boss] slams her tentacle twice onto the half of the arena with the main target on it. Deals massive damage to everyone on that half of the arena and inflicts [s:physical-vuln]."
     resolve: All party members except the targeted tank should move to the other half of the arena. Either [t:invuln] the two hits or tankswap after the first hit. If you swap, make sure that the tanks also swap positions.
     mechanic: tb.mt
@@ -175,7 +173,6 @@ actions:
     damage: 200000
   gaiaochos:
     id: 33574
-    name: Gaiaochos
     description: "[boss] uses a small section of the arena as the base for her divine realm. The rest of the arena is erased, alongside everyone in it. Inflicts [s:ascended]."
     trivia: >
       Literally: "earth-holder", an epithet often given to Poseidon as the god of earthquakes. Of quite literal meaning here, as [boss] literally holds the "world" in her tentacles during [a:geocentrism].
@@ -183,7 +180,6 @@ actions:
     damage: 105000
   summon-darkness-1:
     id: 33583
-    name: Summon Darkness
     description: |
       Summons three dark angels on the outside of the arena.
       The angels' arrangement is random, but they will never spawn opposite one another. This means that, with 8 spots that the angels can spawn, 3 spots where the angels actually are, and the 3 spots opposite the angels, this leaves 2 empty opposite spots.
@@ -199,13 +195,11 @@ actions:
         id: missing-link-resolve
   ultima-ray:
     id: 33584
-    name: Ultima Ray
     description: The three angels spawned by [a:summon-darkness-1] each shoot a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
     mechanic: aoe
     shape: line
   missing-link:
     id: 34182
-    name: Missing Link
     cast: 4800
     mechanic: mech.tether.far
     count: 8
@@ -224,7 +218,6 @@ actions:
       Note that no additional status (such as [s:damage-down]) is inflicted.
   demi-parhelion:
     id: 33575
-    name: Demi Parhelion
     description: Bright spots appear at the top of the bubble in a 3x3 grid, indicating that they will soon shoot concentrated sunlight downwards.
     trivia: >
       *Parhelion* refers to the optical phenomenon of bright spots to either side of the sun.
@@ -241,12 +234,10 @@ actions:
         id: divine-excoriation
   demi-parhelion-2:
     id: 33575
-    name: Demi Parhelion
     description: "[a:demi-parhelion:d]"
     mechanic: mech
   geocentrism:
     id: 33577
-    name: Geocentrism
     mechanic: mech
     description: |
       [boss] lays her tentacles around the bubble the players reside in and gets ready to spin it along with the AoEs from [a:demi-parhelion].
@@ -264,7 +255,6 @@ actions:
     description: The mechanic resolves.
   divine-excoriation:
     id: 33582
-    name: Divine Excoriation
     mechanic: spread
     shape: chariot
     damage: 61000
@@ -273,7 +263,6 @@ actions:
     resolve: Spread out. The AoEs themselves are tiny, so while it is recommended to use fixed positions for every pattern, it is not strictly necessary.
   ultima-restore:
     id: 34550
-    name: Ultima
     description: Like the first [a:ultima], but also restores the arena and removes [s:ascended].
     mechanic: raidwide
     damage: 90000
@@ -330,14 +319,12 @@ actions:
         id: implode
   aspect-effect:
     id: 33588
-    name: Aspect Effect
     mechanic: raidwide
     damage: 54000
     count: 8
     description: A cube or tetrahedron merges with a player, dealing medium damage.
   implode:
     id: 33587
-    name: Implode
     mechanic: aoe
     shape: chariot
     count: 12
@@ -345,7 +332,6 @@ actions:
     resolve: Move in-between 4 shapes.
   palladian-ray:
     id: 33571
-    name: Palladian Ray
     compact: full
     mechanic: spread
     shape: cone
@@ -359,7 +345,6 @@ actions:
       After the first cone appears, move out of it.
   crush-helm:
     id: 33559
-    name: Crush Helm
     mechanic: tb.double
     count: 2
     description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
@@ -383,7 +368,6 @@ actions:
         id: crush-helm-hit
   crush-helm-vulnup:
     id: 33560
-    name: Crush Helm
     mechanic: mech
     count: 2
     description: Inflicts one stack of [s:physical-vuln-stack], up to a maximum of 4 stacks.
@@ -436,20 +420,17 @@ actions:
     resolve: 2 players is enough to reduce the damage to survivable levels with sufficient mitigation. 3+ makes it even safer but may require significant strategy adjustments since it affects your starting position for the main mechanic.
   pyre-pulse:
     id: 33594
-    name: Pyre Pulse
     mechanic: stack.partner
     damage: 64000
     description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
   dynamic-atmosphere:
     id: 33595
-    name: Dynamic Atmosphere
     mechanic: spread
     shape: chariot
     damage: 58000
     description: A small [ms:chariot] [m:spread]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
   ekpyrosis:
     id: 33566
-    name: Ekpyrosis
     mechanic: mech
     compact: full
     description: |
@@ -477,20 +458,17 @@ actions:
         id: ekpyrosis-exa
   ekpyrosis-proximity:
     id: 33569
-    name: Ekpyrosis
     mechanic: raidwide.proximity
     damage: 70000
     count: 2
     description: Two [m:raidwide.proximity] explode on either the north/south or east/west of the arena.
   ekpyrosis-exa:
     id: 33568
-    name: Ekpyrosis
     mechanic: aoe.exaflares
     count: 4
     description: Exaflares travel through the arena.
   ekpyrosis-spread:
     id: 33570
-    name: Ekpyrosis
     mechanic: spread
     shape: chariot
     damage: 25000
@@ -498,7 +476,6 @@ actions:
     description: Spread AoEs.
   pangenesis:
     id: 33599
-    name: Pangenesis
     mechanic: mech
     damage: 100000
     description: |
@@ -534,7 +511,6 @@ actions:
         id: factor-in
   pantheos:
     id: 33602
-    name: Pantheos
     mechanic: mech
     description: |
       A 2-person dark tower spawns on the west while a 2-person light tower spawns on the east. This is followed by a set of two towers on each side: light and dark on the west, and dark and light on the east, followed by another set with the same constellation. Dark towers may not be taken by players with [s:astral-tilt] and light towers may not be taken by players with [s:umbral-tilt].
@@ -548,19 +524,16 @@ actions:
     description: A light or dark tower resolves, dealing mild damage and inflicting the corresponding tilt ([s:umbral-tilt] or [s:astral-tilt]) to one of the two soakers.
   umbral-advent:
     id: 33603
-    name: Umbral Advent
     mechanic: towers.double
     damage: 27000
     description: A light tower resolves, dealing mild damage and inflicting [s:umbral-tilt] to one of the two soakers.
   astral-advent:
     id: 33604
-    name: Astral Advent
     mechanic: towers.double
     damage: 27000
     description: A dark tower resolves, dealing mild damage and inflicting [s:astral-tilt] to one of the two soakers.
   factor-in:
     id: 33607
-    name: Factor In
     mechanic: spread
     shape: defamation
     damage: 81000
@@ -570,7 +543,6 @@ actions:
     resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
     id: 33590
-    name: Panta Rhei
     mechanic: mech
     description: Inverts the positions of all shapes in the arena both horizontally and vertically.
     trivia: >
@@ -615,7 +587,6 @@ actions:
         id: dynamic-atmosphere
   entropic-excess:
     id: 33596
-    name: Entropic Excess
     description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.baitable) which reduces the stack of the status effect by one.
     mechanic: aoe.baitable
     shape: chariot
@@ -626,7 +597,6 @@ actions:
       This mechanic demonstrates this concept quite well; at the start of the mechanic entropy is extremely low as all 8 stacks of [s:entropification:8] are initially concentrated on one player, but each pulse irreversibly loses one stack until there is no heat left.
   summon-darkness-2:
     id: 33583
-    name: Summon Darkness
     description: |
       Summons one dark angel on the outside of the arena.
       Similar to [summon-darkness], but this time [a:ultima-ray] + [a:missing-link] and [a:demi-parhelion] happen at the same time and you'll need to deal with both mechanics at once. To make up for this, there's only one angel rather than three.
@@ -656,7 +626,6 @@ actions:
         id: divine-excoriation
   summon-darkness-3:
     id: 33583
-    name: Summon Darkness
     description: |
       Summons eight dark angels on the outside of the arena.
       Four adjacent angels will tether to each DPS or each support, inflicting [s:magic-vuln].
@@ -672,14 +641,12 @@ actions:
         id: ultima-blow
   ultima-blow:
     id: 33608
-    name: Ultima Blow
     mechanic: aoe.intercept
     damage: 61000
     count: 4
     description: Each angel shoots a beam at their tethered target. The beam can be intercepted by another player to prevent the target from dying due to their [s:magic-vuln].
   ignorabimus:
     id: 33609
-    name: Ignorabimus
     description: "[boss]'s tentacles crush the bubble of the miniature world within which you reside."
     damage: 9999999
     trivia: >

@@ -300,13 +300,11 @@ actions:
     damage: 10000
   rear-comb:
     id: 33129
-    name: Rear Combination
     description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:swinging-kick-rear]."
     mechanic: mech.store
     type: physical
   front-comb:
-    id: 33130
-    name: Front Combination
+    id: 33127
     description: "[boss] [t:stores] a half-arena cleave in front of him, which he will execute during [a:swinging-kick-front]."
     mechanic: mech.store
     type: physical
@@ -510,7 +508,6 @@ actions:
     damage: 80000
   lc2:
     id: 33211
-    name: Chimeric Succession
     description: |
       This is another [m:mech.limit] mechanic similar to [a:lc1], though this one is far simpler. Four numbers from 1-4 are placed above four players. These players will receive [a:icemeld]s in that order, which will likely kill any other players hit due to the [s:magic-vuln].
       Between the second and third [a:icemeld]s [boss] will use either [a:front-firestrikes] or [a:rear-firestrikes]. Similar to [a:firemeld], this will target a random non-[a:icemeld] player and jump on them, inflicting enormous damage that falls off with distance and can also be shared. Afterwards, [boss] will cleave everything either in front or behind him, depending on the which ability was used.
@@ -585,14 +582,12 @@ actions:
     shape: dynamo
   front-firestrikes:
     id: 34702
-    name: Front Firestrikes
     description: Similar to [a:front-comb], [t:stores] a frontal [a:swinging-kick-cast-front] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on.
     resolve: After the jump, all players in the stack should move closer to the wall to face the [a:swinging-kick-cast-front] into the wall and avoid killing the [a:icemeld] players, who are too far away to dodge.
     mechanic: mech.distance
     type: magic
   rear-firestrikes:
     id: 34703
-    name: Rear Firestrikes
     description: Similar to [a:rear-comb], [t:stores] a rear [a:swinging-kick-cast-rear] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on.
     resolve: After the jump, all players in the stack should move towards the center of the arena to face the [a:swinging-kick-cast-rear] into the wall and avoid killing the [a:icemeld] players, who are too far away to dodge.
     mechanic: mech.distance

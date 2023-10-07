@@ -168,7 +168,6 @@ actions:
       id: steel-web-hit
   steel-web:
     id: 34595
-    name: Steel Web
     description: |
       A telegraphed three-person stack on a random party member. When the stack resolves, a web forms between all players in the stack, preventing movement. Every 1.5 seconds, these players receive a stack of [s:binding-soul-snare], killing them if it reaches 5 before they are freed. To free them, another player must run through the web to break it. Breaking a web inflicts [s:heavy-soul-snare], slowing movement speed and applying a [t:DoT] every 3 seconds. Each player is only able to break up to 3 webs; breaking more inflicts [s:poison], which is essentially a death sentence.
       Note that, if any two players within the stack are too close to each other, the web becomes *reinforced* (indicated by a pink tint) and these players receive [s:incapacitating-soul-snare], preventing actions in addition to movement. A reinforced web cannot be broken in any way, sealing these players' doom. It is therefore essential that the stacking players position themselves close to the edge of the stack circle.
@@ -323,7 +322,6 @@ actions:
     count: 8
   dæmoniac-bonds:
     id: 33441
-    name: Dæmoniac Bonds
     description: |
       Gives everyone [s:bonds] and either [s:duo-bonds] or [s:tetra-bonds]. Resolves at a later time.
       After receiving the status effects, it is necessary to not only check *which* ones you received ([s:tetra-bonds] or [s:duo-bonds]) but also the durations. While the statuses will always resolve at the same time each pull, the *order* changes, so you must ascertain whether [s:bonds] resolves first or [s:duo-bonds]/[s:tetra-bonds].
@@ -373,7 +371,6 @@ actions:
     count: 2
   pandæmoniac-turrets:
     id: 34735
-    name: Pandæmoniac Turrets
     description: |
       Spawns two rows of 4 towers that must be soaked. This begins a [m:mech.limit]-esque mechanic.
       Each tower will have a turret dropped on top of it. They receive [m:mech.limit] markers, indicating the order that they'll shoot in: 1-4 (2 turrets always shoot at the same time).
@@ -432,7 +429,6 @@ actions:
     shape: line
   pandæmoniac-web:
     id: 34596
-    name: Pandæmoniac Web
     description: |
       Combines [a:steel-web] (on 1 player) and [a:entangling-web] (on 3 players) into one cast.
       All of these abilities (plus the preceding [a:dividing-wings]) resolve at the same time, after which the three players who were consigned to stack receive another set of [a:entangling-web].

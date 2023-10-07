@@ -187,41 +187,35 @@ actions:
     mechanic: mech.status
   searing-radiance:
     id: 33521
-    name: Searing Radiance
     damage: 62439
     mechanic: spread
     shape: line
     description: An umbral (light) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:umbral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   shadowsear:
     id: 33522
-    name: Shadowsear
     damage: 65063
     mechanic: spread
     shape: line
     description: An astral (dark) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:astral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   umbral-glow:
     id: 33548
-    name: Umbral Glow
     damage: 63954
     mechanic: spread
     shape: chariot
     description: Drops an umbral (light) tower on the position of a player with [s:umbralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:umbral-tilt].
   astral-glow:
     id: 33549
-    name: Astral Glow
     damage: 62352
     mechanic: spread
     shape: chariot
     description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:astral-tilt].
   umbral-advance:
     id: 33550
-    name: Umbral Advance
     damage: 26729
     mechanic: towers.single
     description: An umbral (light) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:astral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
   astral-advance:
     id: 33551
-    name: Astral Advance
     damage: 26899
     mechanic: towers.single
     description: An astral (dark) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:umbral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
@@ -257,7 +251,6 @@ actions:
     resolve: The main tank should take the first hit, the off-tank the second. If the main tank were to take the second hit, the [s:magic-vuln] would cause the next auto-attack to kill them.
   superchain-theory-i:
     id: 33498
-    name: Superchain Theory I
     mechanic: mech
     compact: space
     description: |
@@ -322,7 +315,6 @@ actions:
       id: astral-advance
   superchain-radiation:
     id: 33501
-    name: Superchain Radiation
     damage: 60000
     mechanic: spread
     shape: cone
@@ -330,7 +322,6 @@ actions:
     description: Conal spreads on each player around the chain source. Inflicts [s:magic-vuln]. Note that if any players are dead, the cones will still target their dead bodies.
   superchain-emission:
     id: 33502
-    name: Superchain Emission
     damage: 60000
     mechanic: stack.partner
     shape: cone
@@ -348,7 +339,6 @@ actions:
     description: A [ms:dynamo] centered on the chain source. Inflicts [s:2911].
   umbral-impact:
     id: 33544
-    name: Umbral Impact
     damage: 71765
     mechanic: stack.party
     shape: line
@@ -356,7 +346,6 @@ actions:
     resolve: All [s:astral-tilt] players should stack with the debuffed player. [s:astralbright] should also stack, as their tower will kill them if they are hit by the dark beam.
   astral-impact:
     id: 33545
-    name: Astral Impact
     damage: 68901
     mechanic: stack.party
     shape: line
@@ -364,7 +353,6 @@ actions:
     resolve: All [s:umbral-tilt] players should stack with the debuffed player. [s:umbralbright] should also stack, as their tower will kill them if they are hit by the light beam.
   theoss-holy:
     id: 33542
-    name: Theos's Holy
     damage: 58287
     mechanic: spread
     shape: chariot
@@ -372,7 +360,6 @@ actions:
     description: "[s:heavensflame-soul] resolves, dealing damage within a [ms:chariot] [m:spread] around the player. Inflicts [s:magic-vuln]."
   apodialogos:
     id: 33534
-    name: Apodialogos
     damage: 148212
     type: magic
     mechanic: tb.far.stack
@@ -456,7 +443,6 @@ actions:
     description: Temporarily removes 7 of the 8 platforms of the arena and inflicts all players with [s:enchained-soul], preventing jumps.
   shock:
     id: 33554
-    name: Shock
     mechanic: towers.single
     damage: 24605
     description: An unaspected tower explodes, dealing mild damage to anyone inside.
@@ -467,13 +453,11 @@ actions:
     description: An unaspected tower explodes after being left unsoaked, wiping the party.
   theoss-cross:
     id: 33546
-    name: Theos's Cross
     mechanic: aoe.baitable
     shape: line
     description: The cross-shaped [ms:line]s placed by [s:quartered-soul] resolve.
   theoss-saltire:
     id: 33547
-    name: Theos's Saltire
     mechanic: aoe.baitable
     shape: line
     description: The X-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
@@ -714,7 +698,6 @@ actions:
     description: "[boss] faces a certain direction and cleaves all targets in-line with her."
   theoss-ultima-1:
     id: 34134
-    name: Theos's Ultima
     mechanic: enrage
     description: "[boss] becomes untargetable and unleashes Ultima a second time, wiping the party."
 timeline:
