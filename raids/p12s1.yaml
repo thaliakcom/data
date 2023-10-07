@@ -87,6 +87,7 @@ actions:
     description: Standard raidwide. Restores any missing platforms.
   paradeigma-1:
     id: 33517
+    name: Paradeigma 1
     mechanic: mech
     compact: space
     description: |
@@ -142,6 +143,7 @@ actions:
     description: Beam of light fired by an angel. Inflicts [s:magic-vuln] for 6 seconds, preventing anyone from being hit by two consecutive beams.
   paradeigma-2:
     id: 33517
+    name: Paradeigma 2
     mechanic: mech
     compact: space
     description: |
@@ -387,6 +389,7 @@ actions:
     resolve: Party at the south at max melee, tanks in the center of the hitbox.
   paradeigma-3:
     id: 33517
+    name: Paradeigma 3
     mechanic: mech
     compact: space
     description: |
@@ -701,6 +704,7 @@ actions:
       id: unnatural-enchainment-2
   paradeigma-4:
     id: 33517
+    name: Paradeigma 4
     mechanic: mech
     description: "[boss] summons 2 angels from red crystals."
   parthenos:
