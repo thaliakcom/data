@@ -1,0 +1,6 @@
+patch: "6.5"
+content:
+  - id: 64008
+    url: /extremes/thordans-reign/
+  - id: 20092
+    url: /extremes/abyssal-fracture/
