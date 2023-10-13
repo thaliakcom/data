@@ -1,16 +1,682 @@
 id: 20036
 patch: "3.1"
 date: 2022-11-22
-modified: 2022-11-22
+modified: 2023-10-12
 by:
   id: 27637301
   role: author
 tier: Heavensward
 boss: King Thordan
-HP: 0
-wip: true
-description: ""
+HP: 14109188
+description: |
+  Armed with the power of Nidhogg's eye, the reincarnated King Thordan and his Knights Twelve bring the full weight of Ascalon to bear against the Warrior of Light and their compatriots.
+  Note that all damage and health values are scaled to the Unreal version of the fight, active during patch 6.5.
 status:
-  2911:  # Damage Down
+  vuln:
+    id: 1789
+    duration: 119650
+    type: vuln
+  physical-vuln:
+    id: 934
+    type: vuln
+    duration: 60000
+  magic-vuln:
+    id: 658
+    type: vuln
+    duration: 10420
+  burning-chains:
+    id: 769
+    type: condition
     duration: 30000
-    description: Reduces damage dealt by approximately 25%.
+    description: Chains link this player with another player, inflicting constant damage ([a:holy-chain]). To break the chain, the distance between the two chained players must be greater than the distance when the chain was initially established.
+  stun:
+    id: 2
+    type: impairment
+    duration: 3000
+  down-for-the-count:
+    id: 783
+    type: impairment
+    duration: 11000
+  hysteria:
+    id: 296
+    type: impairment
+    duration: 4000
+    description: Causes affected players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:7571] on the affected player.
+  paralysis:
+    id: 17
+    type: impairment
+    duration: 30000
+  infirmity:
+    id: 172
+    type: impairment
+    duration: 14000
+  frostbite:
+    id: 268
+    type: dot
+    tick: 10550
+    duration: 30000
+  light-of-ascalon:
+    id: 943
+    type: form
+    description: A stacking damage buff to [boss]. Stacks increase each time [boss] uses [a:the-dragons-eye]. Each stack increases all of [boss]'s damage by approximately 5%, up to a maximum of 6 stacks (30%).
+  area-of-influence:
+    id: 618
+    type: form
+    description: A stacking buff on Ser Grinnaux that increases the size of his [a:dimensional-collapse] AoEs.
+  shield-of-the-heavens:
+    id: 945
+    type: resistance
+    description: Automatically applies [s:vuln-down] to self and any nearby knights.
+  sword-of-the-heavens:
+    id: 944
+    type: resistance
+    description: Automatically applies [s:damage-up] to self and any nearby knights.
+  vuln-down:
+    id: 350
+    type: resistance
+    description: Decreases all damage taken by 90%.
+  damage-up:
+    id: 290
+    type: form
+    description: Increases all damage done by approximately 50%.
+  invincibility:
+    id: 325
+    type: resistance
+    description: "Shielded by a holy knight and impervious to damage."
+  hp-penalty:
+    id: 1089
+actions:
+  ascalons-might:
+    id: 35261
+    damage: 41415
+    mechanic: tb.mt
+    shape: cone
+    description: Untelegraphed tankbuster on the main target.
+  meteorain:
+    id: 35267
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    description: Avoidable AoEs appear underneath each player.
+    resolve: Move out as soon as they disappear.
+  ascalons-mercy:
+    id: 35262
+    mechanic: aoe
+    shape: cone
+    count: 8
+    description: Eight small avoidable cones appear wherever [boss] is facing.
+    resolve: Move out or in-between the cones.
+  the-dragons-eye:
+    id: 35271
+    mechanic: mech
+    description: |
+      Applies a stack of [s:light-of-ascalon], up to a maximum of [s:light-of-ascalon:6].
+      After [a:ultimate-end], this also moves the massive dragon eye on the outside of the arena to a different location.
+  the-dragons-gaze:
+    id: 35272
+    mechanic: mech.gaze
+    description: Inflicts [s:hysteria] on any player looking at [boss] at the end of the cast.
+  lightning-storm:
+    id: 35265
+    damage: 27081
+    mechanic: spread
+    shape: chariot
+    count: 8
+    description: Strikes all players with lightning.
+    resolve: Spread out to minimize damage.
+  the-dragons-rage:
+    id: 35274
+    damage: 38602
+    mechanic: stack.party
+    shape: chariot
+    description: A telegraphed [m:stack.party] on a random player.
+  ancient-quaga:
+    id: 35268
+    damage: 36340
+    mechanic: raidwide
+    description: Standard raidwide.
+  heavenly-heel:
+    id: 35270
+    damage: 82995
+    mechanic: tb.mt
+    description: Stomps the main target, dealing heavy damage.
+  knights-1:
+    name: Charibert and Hermenost
+    mechanic: mech
+    description: |
+      Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert inflicts each player with [s:burning-chains] and summons fire [t:AoE]s beneath them [a:heavensflame] while Ser Hermenost summons four towers at the edge of the arena.
+    resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
+    children:
+      - at: 6984
+        id: heavensflame
+      - at: 13473
+        id: conviction
+  holy-chain:
+    id: 35308
+    damage: 10945
+    mechanic: mech.failure
+    description: The [s:burning-chains] continuously explode, dealing some damage with each explosion.
+  heavensflame:
+    id: 35306
+    mechanic: aoe.baitable
+    shape: chariot
+    description: Summons a series of fire [t:AoE]s under random players.
+    resolve: Move out of the AoEs as they appear.
+    children:
+      - at: 489
+        id: heavensflame-hit
+      - at: 1510
+        id: heavensflame-hit
+      - at: 2488
+        id: heavensflame-hit
+      - at: 3512
+        id: heavensflame-hit
+  heavensflame-hit:
+    id: 35307
+    name: Heavensflame (Hit)
+    mechanic: aoe.baitable
+    shape: chariot
+    description: A set of fire [t:AoE]s summoned by [a:heavensflame] detonates.
+  conviction:
+    id: 35292
+    damage: 3830
+    mechanic: towers.single
+    description: A tower resolves, dealing minimal damage to anyone inside. If no one is inside, casts [a:eternal-conviction] instead.
+  eternal-conviction:
+    id: 35293
+    damage: 26395
+    mechanic: mech.failure
+    description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all party members.
+  knights-2:
+    name: Ser Zephirin and others
+    mechanic: mech
+    description: |
+      Ser Zephirin appears in the middle of the arena, becomes targetable, and starts casting [a:sacred-cross], a light DPS check.
+      Afterward Ser Ignasse, Ser Paulecrain, and Ser Vellguine appear on clock spots at the edge of the arena and begin casting [a:spiral-thrust], dashing across the arena and knocking anyone hit into the wall. These knights will never appear opposite each other, meaning that 6 clock positions will be in the path of their dashes.
+    resolve: |
+      Reduce Ser Zephirin below 50% health as soon as possible to reduce the damage from [a:sacred-cross] to survivable levels, then position yourself on one of the two clock spots that the knights are not dashing through.
+      Alternatively, simply position yourself at the edge of the arena right in-between two prongs of the star on the arena floor, as this position is always safe regardless of the knights' dashes.
+    children:
+    - at: 20000
+      id: sacred-cross
+    - at: 26042
+      id: spiral-thrust
+  sacred-cross:
+    id: 35279
+    damage: 40000
+    mechanic: raidwide
+    description: |
+      Ser Zephirin starts casting [a:sacred-cross]. When he finishes the cast, deals twice Ser Zephirin's remaining health percentage to all party members relative to your maximum health.
+      So, for instance, if you have 47,000 max HP and your tanks have 60,000 max HP, the attack will deal 120,000 damage to tanks and 94,000 damage to everyone else if you don't damage Ser Zephirin at all. This means that the attack becomes survivable after damaging Ser Zephirin to roughly 50% health with sufficient mitigation and/or shields.
+  spiral-thrust:
+    id: 35301
+    mechanic: aoe
+    shape: line
+    description: |
+      A knight dashes across the arena, knocking anyone hit into the wall.
+      This attack is susceptible to knockback immunity effects, in which case it only inflicts [s:vuln].
+  knights-3:
+    name: Ser Janlenoux and Ser Adelphel
+    mechanic: mech
+    compact: full
+    description: |
+      Ser Janleneoux and Ser Adelphel appear on the east and west side of the arena and become targetable.
+      After some time, they will both cast [a:divine-right], giving a random one of the two [s:sword-of-the-heavens] (a significant damage buff) and the other [s:shield-of-the-heavens] (a significant defense increase). If they are ever too close to each other, they will tether to each other, granting both knights both buffs.
+      They will then cycle through [a:holy-bladedance] (a telegraped tankbuster), [a:heavenly-slash] (an untelegraphed tankbuster), and [a:holiest-of-holy] (a raidwide). If you fail to kill one of the two knights in time, they will cast [a:divine-right] once again, switching their buffs and forcing you to target the other knight. Halfway through this phase, three other knights join the fray and mark random players with blue markers, indicating that they will be targeted by a [a:skyward-leap], dealing heavy damage to them and anyone close to them.
+      As soon as one of the two knights is killed, the other immediately loses their [s:sword-of-the-heavens] or [s:shield-of-the-heavens].
+    resolve: |
+      Keep the knights separated (ideally east and west, with one tank taking each knight) at all times to ensure they don't tether. Always target the knight with [s:sword-of-the-heavens], as the other is nigh invulnerable.
+      If you have [t:DoT] abilities, try to put them on both knights before they cast the first [a:divine-right], as any DoTs inflicted before [s:shield-of-the-heavens] are unaffected by the defense increase.
+      Once blue markers appear, place the first north, the second south, and the third north again, to ensure the other party members only take minimal damage from each jump.
+      If you're tanking the knight with [s:sword-of-the-heavens] beware, as his [a:holy-bladedance] deals massive amounts of damage, requiring heavy mitigation or [t:invuln]s.
+    children:
+    - at: 10668
+      id: divine-right
+    - at: 19821
+      id: holy-bladedance
+    - at: 35838
+      id: skyward-leap
+    - at: 37843
+      id: divine-right
+    - at: 38821
+      id: skyward-leap
+    - at: 39978
+      id: heavenly-slash
+    - at: 41804
+      id: skyward-leap
+    - at: 53049
+      id: holiest-of-holy
+    - at: 59177
+      id: holy-bladedance
+    - at: 68152
+      id: holiest-of-holy
+    - at: 72328
+      id: heavenly-slash
+  divine-right:
+    id: 35282
+    mechanic: mech
+    description: Grants the knight who cast it either [s:shield-of-the-heavens] or [s:sword-of-the-heavens]. If the caster already has one of the two, this gets rid of that buff and applies the other one.
+  holy-bladedance:
+    id: 35285
+    damage: 16212
+    mechanic: tb.mt
+    description: A heavy six-hit tankbuster. Note that the [t:snapshot] for *all six hits* happens at the end of the cast, so any mitigation or shields must be applied before then.
+    compact: full
+    resolve: If the caster is under the effect of [s:damage-up] (from [s:sword-of-the-heavens]), requires *significant* mitigation or [t:invuln]s.
+    children:
+      - at: 0
+        id: holy-bladedance-hit
+      - at: 134
+        id: holy-bladedance-hit
+      - at: 267
+        id: holy-bladedance-hit
+      - at: 400
+        id: holy-bladedance-hit
+      - at: 535
+        id: holy-bladedance-hit
+      - at: 668
+        id: holy-bladedance-hit
+  holy-bladedance-hit:
+    id: 35285
+    name: Holy Bladedance (Hit)
+    mechanic: tb.mt
+    damage: 16212
+    description: One out of six tankbuster hits.
+  skyward-leap:
+    id: 35304
+    damage: 36795
+    mechanic: raidwide.proximity
+    description: A player is marked with a blue dive marker. After a short time, a knight dives on them, dealing heavy damage to them and proximity damage to everyone else (relative to how close they were to the dived player).
+    resolve: Each dived player should get away from the party.
+  heavenly-slash:
+    id: 35283
+    damage: 20947
+    mechanic: tb.mt
+    description: Untelegraphed tankbuster. Is always used alongside an auto-attack.
+  holiest-of-holy:
+    id: 35284
+    damage: 19454
+    mechanic: raidwide
+    description: Standard knight raidwide.
+  knights-4:
+    name: All Knights
+    mechanic: mech
+    description: |
+      Five knights appear in the middle of the arena.
+      Three of them cast a yellow tether to three random players and begin casting [a:spiral-pierce].
+      Ser Grinnaux places AoEs underneath each player and begins casting [a:dimensional-collapse], gradually expanding the AoEs until the cast has finished.
+      Meanwhile, all untethered players receive an ice marker, indicating they will be hit by [a:hiemal-storm] soon, dealing mild damage and leaving a frost puddle behind that inflicts [s:frostbite] if anyone steps in it.
+      Finally, Ser Grinnaux uses [a:faith-unmoving], knocking all players back from his position.
+    resolve: |
+      Stack in the center of the arena and wait for the red [a:dimensional-collapse] AoEs to appear. Once they do, move to your clock spot. If you are targeted by [a:hiemal-storm], wait until the frost puddle appears, then move out of it while still avoiding [a:dimensional-collapse].
+      Once [a:dimensional-collapse] resolves, quickly move back to the center while lining yourself up with any part of the arena that *doesn't* have a [a:hiemal-storm] puddle there, so that the ensuing knockback does not knock you into the death wall or a frost puddle.
+    children:
+    - at: 10342
+      id: spiral-pierce
+      count: 3
+    - at: 10387
+      id: hiemal-storm
+      count: 5
+    - at: 12121
+      id: dimensional-collapse
+      count: 8
+    - at: 15186
+      id: faith-unmoving
+  hiemal-storm:
+    id: 35310
+    damage: 24580
+    mechanic: spread
+    shape: chariot
+    description: Telegraphed [t:AoE] on random players that deals  damage and leaves behind a frost puddle. Staying in this puddle for too long inflicts [s:frostbite].
+  spiral-pierce:
+    id: 35302
+    damage: 36567
+    mechanic: spread
+    shape: line
+    description: A knight tethers to a random player and, after some time, dashes towards them, dealing high damage. Anyone else in the path of the dash is knocked into the wall and killed.
+  dimensional-collapse:
+    id: 35288
+    mechanic: aoe.expanding
+    shape: chariot
+    description: |
+      Spawns red expanding [t:AoE]s under players.
+      After spawning the AoEs, Ser Grinnaux gradually gains stacks of [s:area-of-influence]. At [s:area-of-influence:6] he finishes the cast and the AoEs resolve.
+  faith-unmoving:
+    id: 35290
+    damage: 6155
+    mechanic: mech.knockback
+    description: A knockback from Ser Grinnaux. Be aware that this ability has no cast bar.
+    resolve: Get close to Ser Grinnaux and aim yourself away from the [a:hiemal-storm] puddles, to avoid getting [s:frostbite].
+  holy-meteor:
+    name: Holy Meteor
+    cast: 3000
+    mechanic: mech
+    description: |
+      Summons 1 Meteor Circle and 8 smaller Comet Circles.
+      You have about 30 seconds to destroy the Comet Circles and 53 seconds to destroy the Meteor Circle. If any Comet Circles are not destroyed in time, they will [deal heavy but survivable raidwide damage](a:comet-impact) as long as not too many Comet Circles remain. If the Meteor Circle is not destroyed in time, it [wipes the party](a:meteor-impact).
+    children:
+    - at: 9230
+      id: comet
+    - at: 12395
+      id: heavy-impact
+    - at: 12664
+      id: comet
+    - at: 17250
+      id: heavy-impact
+    - at: 31489
+      id: comet-impact
+    - at: 44673
+      id: meteor-impact
+  comet:
+    id: 35316
+    damage: 6000
+    mechanic: spread
+    shape: chariot
+    description: Marks a player with a red marker, then drops 4 consecutive comets on their head, each dealing moderate damage to them and anyone nearby.
+    resolve: The damage cannot be avoided, but you should avoid stacking with other players so you don't hit them too. While one series of comets is rarely lethal, healers should still pay attention and top players off if they notice their health getting low.
+  heavy-impact:
+    id: 35295
+    damage: 29401
+    mechanic: aoe
+    shape: 270°
+    description: A 270° arc that hits multiple times in a row. Each time the arc is bigger and farther from the origin of the attack.
+    resolve: Step into the 90° cone that is safe from the AoE, or step into an AoE explosion after it has gone off.
+  comet-impact:
+    id: 35314
+    damage: 29227
+    mechanic: mech.failure
+    description: A Comet Circle was not destroyed in time and its comet reached the ground. Deals high raidwide damage.
+  meteor-impact:
+    id: 35315
+    damage: 9999999
+    mechanic: mech.failure
+    description: The Meteor Circle was not destroyed in time and its meteor reached the ground. Instantly kills all party members.
+  the-light-of-ascalon:
+    id: 35278
+    mechanic: raidwide
+    compact: full
+    description: Deals minimal damage and inflicts a small knockback on all players 7 times.
+    resolve: Keep moving forward. Heal up after the last hit in preparation for [a:ultimate-end].
+    children:
+      - at: 0
+        id: the-light-of-ascalon-hit
+      - at: 1379
+        id: the-light-of-ascalon-hit
+      - at: 2758
+        id: the-light-of-ascalon-hit
+      - at: 4133
+        id: the-light-of-ascalon-hit
+      - at: 5511
+        id: the-light-of-ascalon-hit
+      - at: 6889
+        id: the-light-of-ascalon-hit
+      - at: 8267
+        id: the-light-of-ascalon-hit
+  the-light-of-ascalon-hit:
+    id: 35278
+    damage: 1300
+    mechanic: raidwide
+    description: Deals minimal damage and inflicts a small knockback on all players.
+  ultimate-end:
+    id: 35277
+    mechanic: raidwide.transition
+    damage: 44915
+    description: |
+      [boss] buries you and your beliefs.
+      After his ultimate, [boss] becomes targetable again and summons a giant dragon eye on the outside of the arena. Each time [a:the-dragons-gaze] is cast, there will now be a gaze coming from both [boss] and the eye ([a:the-dragons-glory]). To make dealing with this easier, try to move [boss] in front of the eye each time [a:the-dragons-eye] is cast.
+  knights-of-the-round-1:
+    id: 35275
+    mechanic: mech
+    description: Ser Zephirin appears and prepares to use [a:spear-of-the-fury].
+    children:
+    - at: 5198
+      id: ascalons-might
+    - at: 11372
+      id: holy-shield-bash
+      count: 2
+    - at: 20396
+      id: spear-of-the-fury
+    - at: 23289
+      id: heavenly-heel
+  knights-of-the-round-2:
+    id: 35275
+    mechanic: mech
+    description: |
+      [boss] summons his knights, who begin to execute a series of mechanics.
+      Starts off with a gaze from both [boss] and the eye that must be avoided. Then, Ser Gerrique and Ser Hermenost appear: one casts [a:heavy-impact] from the center of the arena, while the other summons 4 towers in a line through the center of the arena.
+      Afterward, Ser Grinnaux appears in a random position on the edge of the arena and begins casting [a:dimensional-collapse]. After [a:dimensional-collapse], [boss] begins casting [a:the-dragons-rage]. At the same time Ser Grinnaux uses [a:faith-unmoving], knocking back all players from his position.
+    resolve: |
+      Assign four players to handle towers (ideally all ranged players so the melees can keep attacking [boss]) and an order in which to take them. Tower players should dodge [a:heavy-impact] inside their towers, as [a:conviction] will resolve before all [a:heavy-impact] hits are done.
+      Afterward, quickly locate Ser Grinnaux and either move toward him or use knockback immunity. If you're a melee, prefer to take boss downtime over not being in the stack, as this mechanic is a frequent wipe point.
+    children:
+    - at: 11118
+      id: the-dragons-gaze
+    - at: 11207
+      id: the-dragons-glory
+    - at: 12230
+      id: heavy-impact
+    - at: 14138
+      id: conviction
+      count: 4
+    - at: 21163
+      id: dimensional-collapse
+      count: 8
+    - at: 24228
+      id: faith-unmoving
+    - at: 26360
+      id: the-dragons-rage
+  knights-of-the-round-3:
+    id: 35275
+    mechanic: mech
+    description: |
+      [boss] summons his knights, who begin to execute a series of mechanics.
+      [a:lightning-storm] is a standard spread mechanic. After that, one knight appears at a random position on the edge of the arena and begins casting [a:spiral-thrust]. Meanwhile, one player is tethered and targeted by [a:spiral-pierce], one player receives a blue marker and is targeted by [a:skyward-leap], and one player is targeted by [a:the-dragons-rage].
+    resolve: |
+      Standard spread. Then, try to find the knight [a:spiral-thrust] knight and avoid the line he will dash through. If you have a tether or a blue marker, stay out of the stack.
+    children:
+    - at: 7113
+      id: lightning-storm
+    - at: 15156
+      id: spiral-thrust
+    - at: 15379
+      id: skyward-leap
+    - at: 15379
+      id: spiral-pierce
+    - at: 16980
+      id: the-dragons-rage
+  knights-of-the-round-4:
+    id: 35275
+    mechanic: mech
+    description: |
+      [boss] summons his knights, who begin to execute a series of mechanics.
+      This includes [s:burning-chains], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and a [the-dragons-gaze].
+    resolve: |
+      All attacks can be safely avoided by going to your clock spot once [s:burning-chains] appear.
+    children:
+    - at: 6154
+      id: ascalons-might
+    - at: 11185
+      id: comet
+    - at: 11229
+      id: the-dragons-gaze
+    - at: 11317
+      id: the-dragons-glory
+    - at: 11674
+      id: heavensflame
+    - at: 12256
+      id: comet
+    - at: 15147
+      id: hiemal-storm
+    - at: 16570
+      id: ascalons-mercy
+  knights-of-the-round-5:
+    id: 35275
+    mechanic: mech
+    description: |
+      [boss] summons his knights, who begin to execute a series of mechanics.
+      This phase serves as a "soft enrage": [boss] and his knights will spam various raidwides that must be healed through.
+      If [boss] is not killed in time, [Ser Zephirin will appear and tether to him](a:knightly-cover), rendering him invulnerable until Ser Zephirin finishes casting [a:sacred-cross].
+    children:
+    - at: 5208
+      id: ascalons-might
+    - at: 10150
+      id: holiest-of-holy
+    - at: 15306
+      id: ascalons-might
+    - at: 21356
+      id: heavensward-leap
+    - at: 24334
+      id: heavensward-leap
+    - at: 27358
+      id: heavensward-leap
+    - at: 35358
+      id: knightly-cover
+    - at: 41232
+      id: pure-of-soul
+    - at: 52183
+      id: absolute-conviction
+    - at: 57395
+      id: the-dragons-gaze
+    - at: 57484
+      id: the-dragons-glory
+    - at: 60201
+      id: sacred-cross
+  holy-shield-bash:
+    id: 35286
+    mechanic: mech.status
+    description: A random healer receives a green marker. Shortly thereafter two knights charge at them, inflicting [s:down-for-the-count] and [s:magic-vuln:2].
+  spear-of-the-fury:
+    id: 35281
+    damage: 36000
+    mechanic: aoe.intercept
+    shape: line
+    description: |
+      Ser Zephirin throws an aetheric spear at the healer who is [s:down-for-the-count], intending to inflict upon them the same fate as poor Haurchefant.
+      This attack splits damage between all players hit, reducing damage to survivable levels. The first player hit takes drastically increased damage (about twice as much as everyone else) and is inflicted with [s:physical-vuln].
+      Any player hit is inflicted with [s:infirmity], slightly reducing healing received.
+      If any player (including the targeted healer) dies to this attack, Ser Zephirin immediately follows up with a maximum damage [a:sacred-cross], wiping the party.
+    resolve:
+      All players (except the main tank, who will be busy dealing with a simultaneous [a:heavenly-heel]) must stack in front of the targeted healer. The off-tank must be the closest player to Ser Zephirin, to ensure they get hit first. Be aware that they cannot take enmity from [boss] afterwards, due to their [s:physical-vuln].
+  the-dragons-glory:
+    id: 35273
+    mechanic: mech.gaze
+    description: Anyone looking at the dragon eye on the outside of the arena is inflicted with [s:hysteria] and [s:vuln].
+  heavensward-leap:
+    id: 35305
+    damage: 19448
+    mechanic: raidwide
+    description: A knight dives onto a random party member, dealing moderate raidwide damage.
+  knightly-cover:
+    name: Heaven's Cover
+    mechanic: mech
+    description: |
+      Ser Zephirin appears in the center of the arena, targets himself to [boss], becomes targetable, and begins casting [a:sacred-cross].
+      It functions the same way as before, with Ser Zephirin needing to be reduced to at least 50% HP to reduce damage to survivable levels.
+      While Ser Zephirin is tethered to [boss], [boss] is invulnerable.
+  pure-of-soul:
+    id: 35312
+    damage: 43448
+    mechanic: raidwide
+    description: Ser Charibert engulfs the arena in flames for heavy raidwide damage.
+  absolute-conviction:
+    id: 35300
+    damage: 41680
+    mechanic: raidwide
+    description: The knights call down lightning from the heavens for heavy raidwide damage.
+  ancient-quaga-enrage:
+    id: 35269
+    mechanic: enrage
+    damage: 9999999
+    description: "[boss] casts one last Ancient Quaga, wiping the party."
+timeline:
+  - at: 6895
+    id: ascalons-might
+    phase: Thordan
+  - at: 16668
+    id: meteorain
+  - at: 21871
+    id: ascalons-mercy
+  - at: 24139
+    id: ascalons-might
+  - at: 29296
+    id: the-dragons-eye
+  - at: 39523
+    id: the-dragons-gaze
+  - at: 44687
+    id: ascalons-might
+  - at: 53768
+    id: lightning-storm
+  - at: 60545
+    id: the-dragons-rage
+  - at: 65685
+    id: ancient-quaga
+  - at: 71847
+    id: ascalons-might
+  - at: 77921
+    id: heavenly-heel
+  - at: 80057
+    id: ascalons-might
+  - at: 93493
+    id: knights-1
+    phase: The Knights Twelve
+  - at: 109954
+    id: knights-2
+  - at: 142496
+    id: knights-3
+  - at: 220000
+    id: knights-4
+    push: true
+  - at: 237000
+    id: holy-meteor
+  - at: 303150
+    id: the-light-of-ascalon
+    push: true
+  - at: 321026
+    id: ultimate-end
+  - at: 331703
+    id: the-dragons-eye
+    phase: Thordan + His Knights Twelve
+  - at: 341876
+    id: knights-of-the-round-1
+  - at: 370289
+    id: the-dragons-gaze
+  - at: 370378
+    id: the-dragons-glory
+  - at: 382416
+    id: ancient-quaga
+  - at: 387580
+    id: the-dragons-eye
+  - at: 397758
+    id: knights-of-the-round-2
+  - at: 429317
+    id: ascalons-might
+  - at: 438515
+    id: the-dragons-eye
+  - at: 448693
+    id: knights-of-the-round-3
+  - at: 476873
+    id: heavenly-heel
+  - at: 479008
+    id: ascalons-might
+  - at: 489147
+    id: the-dragons-eye
+  - at: 499351
+    id: knights-of-the-round-4
+  - at: 524055
+    id: ancient-quaga
+  - at: 530234
+    id: heavenly-heel
+  - at: 535342
+    id: ancient-quaga
+  - at: 540500
+    id: the-dragons-eye
+  - at: 550677
+    id: knights-of-the-round-5
+  - at: 618211
+    id: ancient-quaga
+  - at: 627368
+    id: heavenly-heel
+  - at: 629546
+    id: ascalons-might
+  - at: 659223
+    id: ancient-quaga-enrage
