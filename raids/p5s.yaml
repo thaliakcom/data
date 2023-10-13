@@ -18,6 +18,7 @@ description: |
   [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
 status:
   2911:  # Damage Down
+    type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 25%.
   2940:  # Physical Vulnerability Up

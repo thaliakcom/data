@@ -15,9 +15,9 @@ autos:
 description: Elidibus faces the players yet again, yet this time not as the Warrior of Light of eld but as the Emissary, who balances the powers of both Light and Dark.
 status:
   2911:  # Damage Down
+    type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 39%.
-    type: impairment
   bleed:
     id: 2088
     duration: 12000

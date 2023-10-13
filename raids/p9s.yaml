@@ -1,7 +1,7 @@
 id: 30127
 patch: "6.4"
 date: 2023-05-30
-modified: 2023-07-10
+modified: 2023-10-12
 by:
   id: 27637301
   role: author
@@ -310,7 +310,7 @@ actions:
     type: physical
   demolish:  # Archaic Demolish
     id: 33133
-    description: A rock explodes underneath each healer, hitting them for heavy shareable damage and inflicting inflicting [s:magic-vuln]. If players are dead, this stack can still be easily survived with some mitigation.
+    description: A rock explodes underneath each healer, hitting them for heavy shareable damage and inflicting [s:magic-vuln]. If players are dead, this stack can still be easily survived with some mitigation.
     resolve: Establish light parties and have each light party stack with your healer.
     mechanic: stack.healers
     type: magic
@@ -709,6 +709,7 @@ graphing:
   elements:
     arena:
       type: image
+      shape: circle
       image: https://i.imgur.com/WDIUtwE.jpeg
     boss:
       size: 85

@@ -1,7 +1,7 @@
 id: 30133
 patch: "6.4"
 date: 2023-05-30
-modified: 2023-06-11
+modified: 2023-10-08
 by:
   id: 27637301
   role: author
@@ -18,9 +18,9 @@ description: |
   players must react quickly and decisively to avoid certain doom.
 status:
   2911:  # Damage Down
+    type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 38%.
-    type: impairment
   magic-vuln:
     id: 2941
     description: Makes any additional magic damage received lethal.
@@ -96,13 +96,13 @@ actions:
       Remember to dodge [a:trinity-of-souls] while this is happening.
       Be aware that [boss] auto-attacks immediately following the second set of beams. Therefore, if a tank receives such a beam, their [s:magic-vuln] will render the next auto-attack lethal.
     strategies:
-      intended:
+      para-1-intended:
         name: Intended solution
         description: DPS players wait on the non-angel side while supports form a vertical line on the angel side, in the middle of the arena. After each support is hit by one beam, they swap their positions with the DPS players. It is recommended to place healers and casters closest to the center of the arena to minimize movement; even the player at the far wall is still in [t:max melee] of the boss.
-      lazy:
+      lazy-lasers:
         name: Lazy Lasers
         description: The entire party except for the tanks stacks on the non-angel side. Tanks both use their [t:invuln] before the first set of beams. Note that this strategy requires the main tank to [t:kitchen sink] after the last set of beams or they will die to the next auto-attack.
-      nearly-lazy:
+      nearly-lazy-lasers:
         name: Nearly Lazy Lasers
         description: Same as Lazy Lasers, but one player moves close to the middle to bait one of the lasers. The off-tank positions themselves closer to the far wall to bait two beams; the main tank stays closer to the center so that they'll be hit by only one beam for the first set. Only *then* do they invuln. This allows the invuln to last until the auto-attack after the second set of beams, saving tank cooldowns.
     children:
@@ -747,3 +747,35 @@ timeline:
     id: on-the-soul
   - at: 467852
     id: theoss-ultima-1
+# graphing:
+#   defs:
+#     whiteflame-gradient: "linear-gradient(0 #FFF 10% #000 90% #000 100% #FFF)"
+#   elements:
+#     arena:
+#       type: image
+#       shape: rectangle
+#       image: https://i.imgur.com/qMtZ7CN.jpeg
+#     boss:
+#       coordinate-system: polar
+#       size: 85
+#     angel:
+#       type: enemy
+#       size: 10
+#     whiteflame:
+#       type: ellipse
+#       size: [100, 10]
+#       scale: [1, 0]
+#       color: "url(#whiteflame-gradient)"
+#       opacity: 0.5
+#       origin: [0.5, 0.5]
+#   graphs:
+#     para-1-intended:
+#       - T1: [0, -30]
+#         boss: [0, 0]
+#         T2: [0, 10]
+#         M1: [-10, 10]
+#         M2: [10, 10]
+#         R1: [-20, 10]
+#         R2: [20, 10]
+#         H1: [-10, 20]
+#         H2: [10, 20]

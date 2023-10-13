@@ -118,9 +118,9 @@ status:
     tick: 20000
     type: dot
   2911:  # Damage Down
+    type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 31%.
-    type: impairment
 actions:
   ultima:
     id: 33445
