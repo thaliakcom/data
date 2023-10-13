@@ -101,6 +101,9 @@ aoe.exaflares:
 aoe.rotating:
   name: rotating AoEs
   description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
+aoe.expanding:
+  name: expanding AoE(s)
+  description: This [t:AoE] or these AoEs gradually expand. Players must predict how large each AoE will become and identify the safespots based on this prediction and the AoE's original positions.
 aoe.intercept:
   name: interceptable attack
   description: |
