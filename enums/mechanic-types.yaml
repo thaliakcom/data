@@ -120,9 +120,25 @@ spread.close:
   name: spread (close)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+adds:
+  name: adds
+  description: An "adds phase," in which one or more non-boss enemies appear and become targetable. They must be defeated in time or they will usually enrage, wiping the party.
 mech:
   name: mechanic
-  description: A mechanic that does nothing on its own but sets up a sequence of other mechanics.
+  description: A mechanic that does nothing on its own but sets up a series of other mechanics.
+mech.phase:
+  name: phase transition
+  description: Transitions the fight into the next phase.
+mech.trio:
+  name: trio
+  description: |
+    Several untargetable enemies (not necessarily three) appear and execute a series of simultaneous mechanics.
+    Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mini-phase first appeared.
+mech.trio.untargetable:
+  name: trio (untargetable)
+  description: |
+    Several enemies (not necessarily three) appear and execute a series of simultaneous mechanics. No enemies are targetable during this phase.
+    Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mini-phase first appeared.
 mech.check:
   name: check
   description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.
@@ -195,3 +211,6 @@ enrage:
   name: enrage
   description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
   is-raid-damage: true
+enrage.soft:
+  name: soft enrage
+  description: A "soft enrage" generally involves a sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.

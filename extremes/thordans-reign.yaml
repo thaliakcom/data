@@ -140,9 +140,16 @@ actions:
     damage: 82995
     mechanic: tb.mt
     description: Stomps the main target, dealing heavy damage.
+  untargetable:
+    name: Untargetable
+    mechanic: mech.phase
+    description: |
+      [boss] becomes untargetable and a new phase begins.
+      The appearance of the arena changes and a limit break gauge appears underneath the duty timer that gradually fills. Each death increments the gauge slightly. Without deaths this gauge fills completely after approximately seven minutes spent in this phase.
+      If allowed to fill completely, [a:ultimate-end] will deal increased damage, though this damage can still be survived with sufficient shields, mitigation, or a tank limit break.
   knights-1:
     name: Charibert and Hermenost
-    mechanic: mech
+    mechanic: mech.trio.untargetable
     description: |
       Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert inflicts each player with [s:burning-chains] and summons fire [t:AoE]s beneath them [a:heavensflame] while Ser Hermenost summons four towers at the edge of the arena.
     resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
@@ -188,8 +195,8 @@ actions:
     mechanic: mech.failure
     description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all party members.
   knights-2:
-    name: Ser Zephirin and others
-    mechanic: mech
+    name: Zephirin and others
+    mechanic: mech.trio
     description: |
       Ser Zephirin appears in the middle of the arena, becomes targetable, and starts casting [a:sacred-cross], a light DPS check.
       Afterward Ser Ignasse, Ser Paulecrain, and Ser Vellguine appear on clock spots at the edge of the arena and begin casting [a:spiral-thrust], dashing across the arena and knocking anyone hit into the wall. These knights will never appear opposite each other, meaning that 6 clock positions will be in the path of their dashes.
@@ -206,7 +213,7 @@ actions:
     damage: 40000
     mechanic: raidwide
     description: |
-      Ser Zephirin starts casting [a:sacred-cross]. When he finishes the cast, deals twice Ser Zephirin's remaining health percentage to all party members relative to your maximum health.
+      Ser Zephirin casts [a:sacred-cross]. When he finishes the cast, deals twice Ser Zephirin's remaining health percentage to all party members relative to your maximum health.
       So, for instance, if you have 47,000 max HP and your tanks have 60,000 max HP, the attack will deal 120,000 damage to tanks and 94,000 damage to everyone else if you don't damage Ser Zephirin at all. This means that the attack becomes survivable after damaging Ser Zephirin to roughly 50% health with sufficient mitigation and/or shields.
   spiral-thrust:
     id: 35301
@@ -216,14 +223,15 @@ actions:
       A knight dashes across the arena, knocking anyone hit into the wall.
       This attack is susceptible to knockback immunity effects, in which case it only inflicts [s:vuln].
   knights-3:
-    name: Ser Janlenoux and Ser Adelphel
-    mechanic: mech
+    name: Janlenoux and Adelphel
+    mechanic: adds
     compact: full
     description: |
       Ser Janleneoux and Ser Adelphel appear on the east and west side of the arena and become targetable.
       After some time, they will both cast [a:divine-right], giving a random one of the two [s:sword-of-the-heavens] (a significant damage buff) and the other [s:shield-of-the-heavens] (a significant defense increase). If they are ever too close to each other, they will tether to each other, granting both knights both buffs.
       They will then cycle through [a:holy-bladedance] (a telegraped tankbuster), [a:heavenly-slash] (an untelegraphed tankbuster), and [a:holiest-of-holy] (a raidwide). If you fail to kill one of the two knights in time, they will cast [a:divine-right] once again, switching their buffs and forcing you to target the other knight. Halfway through this phase, three other knights join the fray and mark random players with blue markers, indicating that they will be targeted by a [a:skyward-leap], dealing heavy damage to them and anyone close to them.
       As soon as one of the two knights is killed, the other immediately loses their [s:sword-of-the-heavens] or [s:shield-of-the-heavens].
+      This phase does not have a DPS check. If not killed "in time," both knights will continue to cycle through [a:divine-right], [a:holy-bladedance], and [a:holiest-of-holy] endlessly. Be aware, though, that [boss]'s limit break gauge will eventually hit 100. This won't end the phase prematurely, but it will cause [a:ultimate-end] to deal increased damage once you get there.
     resolve: |
       Keep the knights separated (ideally east and west, with one tank taking each knight) at all times to ensure they don't tether. Always target the knight with [s:sword-of-the-heavens], as the other is nigh invulnerable.
       If you have [t:DoT] abilities, try to put them on both knights before they cast the first [a:divine-right], as any DoTs inflicted before [s:shield-of-the-heavens] are unaffected by the defense increase.
@@ -300,7 +308,7 @@ actions:
     description: Standard knight raidwide.
   knights-4:
     name: All Knights
-    mechanic: mech
+    mechanic: mech.trio.untargetable
     description: |
       Five knights appear in the middle of the arena.
       Three of them cast a yellow tether to three random players and begin casting [a:spiral-pierce].
@@ -350,7 +358,7 @@ actions:
   holy-meteor:
     name: Holy Meteor
     cast: 3000
-    mechanic: mech
+    mechanic: adds
     description: |
       Summons 1 Meteor Circle and 8 smaller Comet Circles.
       You have about 30 seconds to destroy the Comet Circles and 53 seconds to destroy the Meteor Circle. If any Comet Circles are not destroyed in time, they will [deal heavy but survivable raidwide damage](a:comet-impact) as long as not too many Comet Circles remain. If the Meteor Circle is not destroyed in time, it [wipes the party](a:meteor-impact).
@@ -423,10 +431,11 @@ actions:
     damage: 44915
     description: |
       [boss] buries you and your beliefs.
+      Does more damage if the limit break gauge is at 100, but can still be survived with sufficient mitigation, shields, or a tank limit break.
       After his ultimate, [boss] becomes targetable again and summons a giant dragon eye on the outside of the arena. Each time [a:the-dragons-gaze] is cast, there will now be a gaze coming from both [boss] and the eye ([a:the-dragons-glory]). To make dealing with this easier, try to move [boss] in front of the eye each time [a:the-dragons-eye] is cast.
   knights-of-the-round-1:
     id: 35275
-    mechanic: mech
+    mechanic: mech.trio
     description: Ser Zephirin appears and prepares to use [a:spear-of-the-fury].
     children:
     - at: 5198
@@ -440,7 +449,7 @@ actions:
       id: heavenly-heel
   knights-of-the-round-2:
     id: 35275
-    mechanic: mech
+    mechanic: mech.trio
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
       Starts off with a gaze from both [boss] and the eye that must be avoided. Then, Ser Gerrique and Ser Hermenost appear: one casts [a:heavy-impact] from the center of the arena, while the other summons 4 towers in a line through the center of the arena.
@@ -467,7 +476,7 @@ actions:
       id: the-dragons-rage
   knights-of-the-round-3:
     id: 35275
-    mechanic: mech
+    mechanic: mech.trio
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
       [a:lightning-storm] is a standard spread mechanic. After that, one knight appears at a random position on the edge of the arena and begins casting [a:spiral-thrust]. Meanwhile, one player is tethered and targeted by [a:spiral-pierce], one player receives a blue marker and is targeted by [a:skyward-leap], and one player is targeted by [a:the-dragons-rage].
@@ -486,7 +495,7 @@ actions:
       id: the-dragons-rage
   knights-of-the-round-4:
     id: 35275
-    mechanic: mech
+    mechanic: mech.trio
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
       This includes [s:burning-chains], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and a [the-dragons-gaze].
@@ -511,7 +520,7 @@ actions:
       id: ascalons-mercy
   knights-of-the-round-5:
     id: 35275
-    mechanic: mech
+    mechanic: enrage.soft
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
       This phase serves as a "soft enrage": [boss] and his knights will spam various raidwides that must be healed through.
@@ -570,7 +579,7 @@ actions:
     name: Heaven's Cover
     mechanic: mech
     description: |
-      Ser Zephirin appears in the center of the arena, targets himself to [boss], becomes targetable, and begins casting [a:sacred-cross].
+      Ser Zephirin appears in the center of the arena, tethers himself to [boss], becomes targetable, and begins casting [a:sacred-cross].
       It functions the same way as before, with Ser Zephirin needing to be reduced to at least 50% HP to reduce damage to survivable levels.
       While Ser Zephirin is tethered to [boss], [boss] is invulnerable.
   pure-of-soul:
@@ -600,6 +609,7 @@ timeline:
     id: ascalons-might
   - at: 29296
     id: the-dragons-eye
+    description: Applies a stack of [s:light-of-ascalon], increasing damage dealt.
   - at: 39523
     id: the-dragons-gaze
   - at: 44687
@@ -616,6 +626,8 @@ timeline:
     id: heavenly-heel
   - at: 80057
     id: ascalons-might
+  - at: 82000
+    id: untargetable
   - at: 93493
     id: knights-1
     phase: The Knights Twelve
@@ -635,6 +647,7 @@ timeline:
     id: ultimate-end
   - at: 331703
     id: the-dragons-eye
+    description: Applies [s:light-of-ascalon:2], increasing damage dealt.
     phase: Thordan + His Knights Twelve
   - at: 341876
     id: knights-of-the-round-1
@@ -646,12 +659,14 @@ timeline:
     id: ancient-quaga
   - at: 387580
     id: the-dragons-eye
+    description: Applies [s:light-of-ascalon:3], increasing damage dealt.
   - at: 397758
     id: knights-of-the-round-2
   - at: 429317
     id: ascalons-might
   - at: 438515
     id: the-dragons-eye
+    description: Applies [s:light-of-ascalon:4], increasing damage dealt.
   - at: 448693
     id: knights-of-the-round-3
   - at: 476873
@@ -660,6 +675,7 @@ timeline:
     id: ascalons-might
   - at: 489147
     id: the-dragons-eye
+    description: Applies [s:light-of-ascalon:5], increasing damage dealt.
   - at: 499351
     id: knights-of-the-round-4
   - at: 524055
@@ -670,6 +686,7 @@ timeline:
     id: ancient-quaga
   - at: 540500
     id: the-dragons-eye
+    description: Applies [s:light-of-ascalon:6], increasing damage dealt.
   - at: 550677
     id: knights-of-the-round-5
   - at: 618211
