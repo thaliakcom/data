@@ -151,8 +151,11 @@ actions:
     name: Charibert and Hermenost
     mechanic: mech.trio.untargetable
     description: |
-      Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert inflicts each player with [s:burning-chains] and summons fire [t:AoE]s beneath them [a:heavensflame] while Ser Hermenost summons four towers at the edge of the arena.
+      Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert shackles each player with [s:burning-chains] to another random player and summons fire [t:AoE]s beneath them ([a:heavensflame]) while Ser Hermenost summons four towers at the edge of the arena.
     resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
+    strategies:
+      knights-1:
+        name: Example
     children:
       - at: 6984
         id: heavensflame
@@ -168,6 +171,7 @@ actions:
     mechanic: aoe.baitable
     shape: chariot
     description: Summons a series of fire [t:AoE]s under random players.
+    count: 3
     resolve: Move out of the AoEs as they appear.
     children:
       - at: 489
@@ -196,7 +200,7 @@ actions:
     description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all party members.
   knights-2:
     name: Zephirin and others
-    mechanic: mech.trio
+    mechanic: adds
     description: |
       Ser Zephirin appears in the middle of the arena, becomes targetable, and starts casting [a:sacred-cross], a light DPS check.
       Afterward Ser Ignasse, Ser Paulecrain, and Ser Vellguine appear on clock spots at the edge of the arena and begin casting [a:spiral-thrust], dashing across the arena and knocking anyone hit into the wall. These knights will never appear opposite each other, meaning that 6 clock positions will be in the path of their dashes.
@@ -207,7 +211,7 @@ actions:
     - at: 20000
       id: sacred-cross
     - at: 26042
-      id: spiral-thrust
+      id: spiral-thrust-x3
   sacred-cross:
     id: 35279
     damage: 40000
@@ -222,6 +226,18 @@ actions:
     description: |
       A knight dashes across the arena, knocking anyone hit into the wall.
       This attack is susceptible to knockback immunity effects, in which case it only inflicts [s:vuln].
+  spiral-thrust-x3:
+    id: 35301
+    mechanic: aoe
+    shape: line
+    count: 3
+    description: |
+      Three knights dash across the arena, knocking anyone hit into the wall. These knights will never spawn opposite one another.
+      The dashes themselves are susceptible to knockback immunity effects, in which case they only inflict [s:vuln].
+    resolve: While there is always one safe clock spot + opposite clock spot, finding it requires inspecting each knight. To make matters easier, simply stand on the lines in-between the prongs of the star on the arena floor. This diagram demonstrates the positioning.
+    strategies:
+      spiral-thrust-x3:
+        name: Example
   knights-3:
     name: Janlenoux and Adelphel
     mechanic: adds
@@ -318,6 +334,9 @@ actions:
     resolve: |
       Stack in the center of the arena and wait for the red [a:dimensional-collapse] AoEs to appear. Once they do, move to your clock spot. If you are targeted by [a:hiemal-storm], wait until the frost puddle appears, then move out of it while still avoiding [a:dimensional-collapse].
       Once [a:dimensional-collapse] resolves, quickly move back to the center while lining yourself up with any part of the arena that *doesn't* have a [a:hiemal-storm] puddle there, so that the ensuing knockback does not knock you into the death wall or a frost puddle.
+    strategies:
+      knights-4:
+        name: Example
     children:
     - at: 10342
       id: spiral-pierce
@@ -455,7 +474,7 @@ actions:
       Starts off with a gaze from both [boss] and the eye that must be avoided. Then, Ser Gerrique and Ser Hermenost appear: one casts [a:heavy-impact] from the center of the arena, while the other summons 4 towers in a line through the center of the arena.
       Afterward, Ser Grinnaux appears in a random position on the edge of the arena and begins casting [a:dimensional-collapse]. After [a:dimensional-collapse], [boss] begins casting [a:the-dragons-rage]. At the same time Ser Grinnaux uses [a:faith-unmoving], knocking back all players from his position.
     resolve: |
-      Assign four players to handle towers (ideally all ranged players so the melees can keep attacking [boss]) and an order in which to take them. Tower players should dodge [a:heavy-impact] inside their towers, as [a:conviction] will resolve before all [a:heavy-impact] hits are done.
+      Assign four players to handle towers (ideally all ranged players so the melees can keep attacking [boss]) and an order in which to take them. Party finder usually does (from left to right) R1 H1 H2 R2. Tower players should dodge [a:heavy-impact] inside their towers, as [a:conviction] will resolve before all [a:heavy-impact] hits are done.
       Afterward, quickly locate Ser Grinnaux and either move toward him or use knockback immunity. If you're a melee, prefer to take boss downtime over not being in the stack, as this mechanic is a frequent wipe point.
     children:
     - at: 11118
@@ -697,3 +716,211 @@ timeline:
     id: ascalons-might
   - at: 659223
     id: ancient-quaga-enrage
+graphing:
+  defs:
+    heavensflame-gradient: "radial-gradient(0 #e3be4433 95% #e3be4433 97% #e07b28 100% #e07b28)"
+    hiemal-storm-gradient: "radial-gradient(97% #aae3f033 100% #aae3f0)"
+    dimensional-collapse-gradient: "radial-gradient(90% #000 100% #ec2a55)"
+    edge-gradient: "radial-gradient(0 #a8e5ff 91% #a8e5ff 94% #022526 100% #022526)"
+    thrust-gradient: "linear-gradient(0 #6ca5ff 10% #6ca5ff33 90% #6ca5ff33 100% #6ca5ff)"
+    pierce-gradient: "linear-gradient(0 #f5be33 50% #f5e833 100% #f5be33)"
+  coordinate-system: polar
+  elements:
+    arena:
+      type: image
+      shape: circle
+      image: /images/arenas/thordan-p2.avif
+    boss:
+      size: 45
+    heavensflame:
+      type: ellipse
+      size: 50
+      color: url(#heavensflame-gradient)
+      origin: [0.5, 0.5]
+      opacity: 0
+    hiemal-storm:
+      type: ellipse
+      size: 60
+      color: url(#hiemal-storm-gradient)
+      origin: [0.5, 0.5]
+    dimensional-collapse:
+      type: ellipse
+      size: 80
+      color: url(#dimensional-collapse-gradient)
+      origin: [0.5, 0.5]
+    edge:
+      type: donut
+      size: [170, 200]
+      color: url(#edge-gradient)
+      opacity: 0.9
+      origin: [0.5, 0.5]
+    burning-chains:
+      type: link
+      color: "#e0a328"
+      opacity: 0
+    spiral-tether:
+      type: link
+      color: "#fed67b"
+    thrust:
+      type: rectangle
+      origin: [0.5, 0]
+      size: [40, 200]
+      color: url(#thrust-gradient)
+    pierce:
+      type: link
+      width: 20
+      color: url(#pierce-gradient)
+      opacity: 0.5
+  graphs:
+    knights-1:
+      - edge: [0, 0]
+        heavensflame#1.1: { x: 10, y: -135 }
+        heavensflame#1.2: { x: 10, y: 180 }
+        heavensflame#1.3: { x: 10, y: 90 }
+        heavensflame#2.1: { x: 20, y: 45 }
+        heavensflame#2.2: { x: 20, y: 0 }
+        heavensflame#2.3: { x: 20, y: 180 }
+        heavensflame#3.1: { x: 40, y: 90 }
+        heavensflame#3.2: { x: 40, y: -45 }
+        heavensflame#3.3: { x: 40, y: -135 }
+        heavensflame#4.1: { x: 60, y: 45 }
+        heavensflame#4.2: { x: 60, y: -45 }
+        heavensflame#4.3: { x: 60, y: 0 }
+        tower#1: [65, 45]
+        tower#2: [65, 180]
+        tower#3: [65, -135]
+        tower#4: [65, 90]
+        burning-chains#1: { from: T1, to: M1 }
+        burning-chains#2: { from: T2, to: H1 }
+        burning-chains#3: { from: R1, to: R2 }
+        burning-chains#4: { from: H2, to: M2 }
+        T1: [10, 0]
+        T2: [10, 180]
+        H1: [10, -135]
+        H2: [10, 135]
+        M1: [10, -90]
+        M2: [10, 90]
+        R1: [10, -45]
+        R2: [10, 45]
+      - heavensflame#1.*: { opacity: 1 }
+        burning-chains#*: { opacity: 1 }
+        players: { x: 20 }
+      - heavensflame#2.*: { opacity: 1 }
+        players: { x: 40 }
+      - heavensflame#3.*: { opacity: 1 }
+        tower#*: { scale: 1 }
+        burning-chains#1: { opacity: 0 }
+        burning-chains#3: { opacity: 0 }
+        players: { x: 60 }
+      - heavensflame#4.*: { opacity: 1 }
+        heavensflame#1.*: { opacity: 0 }
+        players: { x: 80 }
+      - burning-chains#2: { opacity: 0 }
+        burning-chains#4: { opacity: 0 }
+        heavensflame#2.*: { opacity: 0 }
+        T1: [83, -13]
+        R1: [83, -58]
+        R2: [83, 58]
+        H1: [80, -130]
+        T2: [80, 175]
+        M2: [80, 85]
+        H2: [80, 140]
+      - heavensflame#3.*: { opacity: 0 }
+        H1: [70, -135]
+        T2: [70, 175]
+        M2: [70, 85]
+      - heavensflame#4.*: { opacity: 0 }
+        R2: [67, 45]
+      - tower#*: { opacity: 0 }
+    spiral-thrust-x3:
+      - edge: [0, 0]
+        enemy#1: { x: 95, y: 45, opacity: 0, rotate: 45 }
+        enemy#2: { x: 95, y: 0, opacity: 0, rotate: 0 }
+        enemy#3: { x: 95, y: 135, opacity: 0, rotate: 135 }
+        thrust#1: { x: 100, y: 45, h: 0, rotate: 45 }
+        thrust#2: { x: 100, y: 0, h: 0, rotate: 0 }
+        thrust#3: { x: 100, y: 135, h: 0, rotate: 135 }
+        T1: [10, 0]
+        T2: [10, 180]
+        H1: [10, -135]
+        H2: [10, 135]
+        M1: [10, -90]
+        M2: [10, 90]
+        R1: [10, -45]
+        R2: [10, 45]
+      - enemy#*: { opacity: 0.7 }
+        T1: [75, -25]
+        R1: [75, -25]
+        M1: [70, -90]
+        H1: [75, -90]
+        T2: [75, 155]
+        H2: [75, 115]
+        M2: [75, 115]
+        R2: [75, 65]
+      - enemy#1: [105, -135]
+        enemy#2: [105, 180]
+        enemy#3: [105, -45]
+        thrust#*: { h: 1 }
+    knights-4:
+      - edge: [0, 0]
+        dimensional-collapse#7: { x: 10, y: -45, opacity: 0, scale: 0.4 }
+        dimensional-collapse#5: { x: 10, y: -90, opacity: 0, scale: 0.4 }
+        dimensional-collapse#3: { x: 10, y: -135, opacity: 0, scale: 0.4 }
+        dimensional-collapse#2: { x: 10, y: 180, opacity: 0, scale: 0.4 }
+        dimensional-collapse#4: { x: 10, y: 135, opacity: 0, scale: 0.4 }
+        dimensional-collapse#6: { x: 10, y: 90, opacity: 0, scale: 0.4 }
+        dimensional-collapse#8: { x: 10, y: 45, opacity: 0, scale: 0.4 }
+        dimensional-collapse#1: { x: 10, y: 0, opacity: 0, scale: 0.4 }
+        hiemal-storm#1: { x: 10, y: 0, opacity: 0 }
+        hiemal-storm#2: { x: 10, y: -135, opacity: 0 }
+        hiemal-storm#3: { x: 10, y: 135, opacity: 0 }
+        hiemal-storm#4: { x: 10, y: -45, opacity: 0 }
+        hiemal-storm#5: { x: 10, y: 45, opacity: 0 }
+        spiral-tether#1: { from: enemy#1.1, to: M2 }
+        spiral-tether#2: { from: enemy#1.2, to: T2 }
+        spiral-tether#3: { from: enemy#1.3, to: M1 }
+        pierce#1: { from: [10, 0], to: M2, w: 0 }
+        pierce#2: { from: [10, 135], to: T2, w: 0 }
+        pierce#3: { from: [10, -135], to: M1, w: 0 }
+        T1: [10, 0]
+        T2: [10, 180]
+        H1: [10, -135]
+        H2: [10, 135]
+        M1: [10, -90]
+        M2: [10, 90]
+        R1: [10, -45]
+        R2: [10, 45]
+        enemy#1.1: { x: 10, y: 0, scale: 0.5, opacity: 0.8, rotate: M2 }
+        enemy#1.2: { x: 10, y: 135, scale: 0.5, opacity: 0.8, rotate: T2 }
+        enemy#1.3: { x: 10, y: -135, scale: 0.5, opacity: 0.8, rotate: M1 }
+        enemy#grinnaux: { x: 0, y: 0, scale: 0.5, opacity: 0.8, rotate: 0 }
+      - dimensional-collapse#*: { opacity: 1 }
+      - dimensional-collapse#*: { scale: 0.6 }
+        hiemal-storm#*: { x: 30, opacity: 1 }
+        players: { x: 30 }
+      - dimensional-collapse#*: { scale: 0.8 }
+        hiemal-storm#*: { x: 55 }
+        players: { x: 55 }
+      - dimensional-collapse#*: { scale: 1 }
+        hiemal-storm#*: { x: 80 }
+        players: { x: 80 }
+      - enemy#1.1: { x: 110, y: 93, rotate: null }
+        enemy#1.2: { x: 110, y: -179, rotate: null }
+        enemy#1.3: { x: 110, y: -89, rotate: null }
+        pierce#1: { to: enemy#1.1, w: 1 }
+        pierce#2: { to: enemy#1.2, w: 1 }
+        pierce#3: { to: enemy#1.3, w: 1 }
+        spiral-tether#*: { opacity: 0 }
+      - dimensional-collapse#*: { opacity: 0 }
+        players: { x: 40 }
+        pierce#*: { opacity: 0, rotate: null }
+      - T1: [10, -80]
+        T2: [10, 180]
+        H1: [10, -170]
+        H2: [10, 170]
+        M1: [10, -90]
+        M2: [10, 90]
+        R1: [10, -80]
+        R2: [10, 80]
+      - enemy#grinnaux: { scale: 0.7 }
+        players: { x: 80 }

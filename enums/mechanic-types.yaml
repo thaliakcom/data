@@ -165,7 +165,7 @@ mech.limit:
     Named after Cruise Chaser's eponymous attack, [a:7916].
 mech.failure:
   name: failure
-  description: Wipes the party after a mechanic was incorrectly executed.
+  description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:2911] or [s:1789], or wipes the party altogether.
   is-raid-damage: true
 mech.distance:
   name: distance

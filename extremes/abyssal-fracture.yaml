@@ -1,7 +1,7 @@
 id: 20092
 patch: "6.5"
-date: 2023-10-08
-modified: 2023-10-08
+date: 2023-10-12
+modified: 2023-10-12
 by:
   id: 27637301
   role: author
@@ -10,7 +10,694 @@ boss: Zeromus
 HP: 0
 wip: true
 description: ""
+spoiler: true
 status:
   2911:  # Damage Down
+    type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 25%.
+actions:
+  abyssal-nox:
+    id: 35647
+    description: Placeholder description for Abyssal Nox
+  abyssal-echoes:
+    id: 35650
+    description: Placeholder description for Abyssal Echoes
+    children:
+      - at: 4993
+        id: abyssal-echoes
+  sable-thread:
+    id: 35640
+    description: Placeholder description for Sable Thread
+    children:
+      - at: 670
+        id: sable-thread-1
+      - at: 1605
+        id: sable-thread-2
+      - at: 2276
+        id: sable-thread-1
+      - at: 2989
+        id: sable-thread-2
+      - at: 3659
+        id: sable-thread-1
+      - at: 4373
+        id: sable-thread-2
+      - at: 5039
+        id: sable-thread-1
+      - at: 5755
+        id: sable-thread-2
+      - at: 6422
+        id: sable-thread-1
+      - at: 7136
+        id: sable-thread-3
+      - at: 8161
+        id: sable-thread-1
+      - at: 7132
+        id: sable-thread-2
+      - at: 7798
+        id: sable-thread-1
+      - at: 8509
+        id: sable-thread-3
+      - at: 9532
+        id: sable-thread-1
+  sable-thread-1:
+    id: 35643
+    damage: 56498
+    description: Placeholder description for Sable Thread
+  sable-thread-2:
+    id: 35641
+    description: Placeholder description for Sable Thread
+  sable-thread-3:
+    id: 35642
+    description: Placeholder description for Sable Thread
+  dark-matter:
+    id: 35715
+    damage: 81835
+    description: Placeholder description for Dark Matter
+    children:
+      - at: 2358
+        id: dark-matter-1
+      - at: 3919
+        id: dark-matter-1
+  dark-matter-1:
+    id: 35716
+    damage: 81835
+    description: Placeholder description for Dark Matter
+    children:
+      - at: 1558
+        id: dark-matter-1
+      - at: 3114
+        id: dark-matter-1
+  visceral-whirl:
+    id: 35651
+    description: Placeholder description for Visceral Whirl
+    children:
+      - at: 804
+        id: visceral-whirl-1
+      - at: 804
+        id: visceral-whirl-2
+  visceral-whirl-1:
+    id: 35652
+    description: Placeholder description for Visceral Whirl
+  visceral-whirl-2:
+    id: 35653
+    description: Placeholder description for Visceral Whirl
+  miasmic-blast:
+    id: 35657
+    damage: 73738
+    description: Placeholder description for Miasmic Blast
+  flare:
+    id: 35677
+    damage: 67791
+    description: Placeholder description for Flare
+  flare-1:
+    id: 35680
+    damage: 67791
+    description: Placeholder description for Flare
+  scald:
+    id: 35766
+    description: Placeholder description for Scald
+    children:
+      - at: 1069
+        id: scald
+      - at: 2140
+        id: scald
+      - at: 3212
+        id: scald
+      - at: 4281
+        id: scald
+  flare-2:
+    id: 35682
+    description: Placeholder description for Flare
+  prominence-spine:
+    id: 35683
+    description: Placeholder description for Prominence Spine
+  void-bio:
+    id: 35686
+    description: Placeholder description for Void Bio
+  visceral-whirl-3:
+    id: 35654
+    description: Placeholder description for Visceral Whirl
+    children:
+      - at: 801
+        id: visceral-whirl-4
+      - at: 801
+        id: visceral-whirl-5
+  visceral-whirl-4:
+    id: 35655
+    description: Placeholder description for Visceral Whirl
+  visceral-whirl-5:
+    id: 35656
+    description: Placeholder description for Visceral Whirl
+  big-bang:
+    id: 35806
+    damage: 26904
+    description: Placeholder description for Big Bang
+    children:
+      - at: 135
+        id: big-bang
+      - at: 313
+        id: big-bang
+      - at: 447
+        id: big-bang
+      - at: 626
+        id: big-bang
+      - at: 982
+        id: big-bang-1
+      - at: 1115
+        id: big-bang-1
+      - at: 1294
+        id: big-bang-1
+      - at: 1426
+        id: big-bang-1
+      - at: 1606
+        id: big-bang-1
+      - at: 1783
+        id: big-bang-1
+      - at: 1918
+        id: big-bang-1
+      - at: 2096
+        id: big-bang-1
+      - at: 4990
+        id: big-bang-2
+      - at: 844
+        id: big-bang-1
+      - at: 4858
+        id: big-bang-3
+  big-bang-1:
+    id: 35662
+    description: Placeholder description for Big Bang
+  big-bang-2:
+    id: 35660
+    damage: 107977
+    description: Placeholder description for Big Bang
+  void-meteor:
+    id: 35671
+    description: Placeholder description for Void Meteor
+  meteor-impact:
+    id: 35676
+    damage: 19790
+    description: Placeholder description for Meteor Impact
+    children:
+      - at: 11892
+        id: meteor-impact-1
+      - at: 13987
+        id: meteor-impact-2
+      - at: 14166
+        id: meteor-impact-2
+      - at: 14386
+        id: meteor-impact-2
+      - at: 14565
+        id: meteor-impact-2
+      - at: 15053
+        id: meteor-impact-3
+      - at: 15232
+        id: meteor-impact-3
+      - at: 15455
+        id: meteor-impact-3
+      - at: 15633
+        id: meteor-impact-3
+      - at: 21026
+        id: meteor-impact-2
+      - at: 21202
+        id: meteor-impact-2
+      - at: 21424
+        id: meteor-impact-2
+      - at: 21601
+        id: meteor-impact-2
+      - at: 22092
+        id: meteor-impact-3
+      - at: 22271
+        id: meteor-impact-3
+      - at: 22493
+        id: meteor-impact-3
+      - at: 22670
+        id: meteor-impact-3
+  meteor-impact-1:
+    id: 35670
+    description: Placeholder description for Meteor Impact
+  meteor-impact-2:
+    id: 35672
+    damage: 11385
+    description: Placeholder description for Meteor Impact
+  meteor-impact-3:
+    id: 36025
+    description: Placeholder description for Meteor Impact
+  explosion:
+    id: 36148
+    description: Placeholder description for Explosion
+  the-dark-divides:
+    id: 35666
+    damage: 38378
+    description: Placeholder description for the Dark Divides
+  the-dark-beckons:
+    id: 36154
+    damage: 59103
+    description: Placeholder description for the Dark Beckons
+  forked-lightning:
+    id: 35668
+    description: Placeholder description for Forked Lightning
+  black-hole:
+    id: 35689
+    description: Placeholder description for Black Hole
+  fractured-eventide:
+    id: 35644
+    description: Placeholder description for Fractured Eventide
+    children:
+      - at: 491
+        id: fractured-eventide-1
+      - at: 980
+        id: fractured-eventide-2
+      - at: 1427
+        id: fractured-eventide-2
+      - at: 1873
+        id: fractured-eventide-2
+      - at: 2360
+        id: fractured-eventide-2
+      - at: 2808
+        id: fractured-eventide-2
+      - at: 3252
+        id: fractured-eventide-2
+      - at: 3741
+        id: fractured-eventide-2
+      - at: 4189
+        id: fractured-eventide-2
+      - at: 4635
+        id: fractured-eventide-2
+      - at: 5123
+        id: fractured-eventide-2
+      - at: 5568
+        id: fractured-eventide-2
+      - at: 6012
+        id: fractured-eventide-2
+      - at: 6460
+        id: fractured-eventide-2
+      - at: 6948
+        id: fractured-eventide-2
+      - at: 7395
+        id: fractured-eventide-2
+      - at: 7840
+        id: fractured-eventide-2
+      - at: 8286
+        id: fractured-eventide-2
+      - at: 8733
+        id: fractured-eventide-2
+      - at: 9177
+        id: fractured-eventide-2
+      - at: 9625
+        id: fractured-eventide-2
+  fractured-eventide-1:
+    id: 35646
+    description: Placeholder description for Fractured Eventide
+  fractured-eventide-2:
+    id: 35762
+    description: Placeholder description for Fractured Eventide
+  big-crunch:
+    id: 36146
+    damage: 42312
+    description: Placeholder description for Big Crunch
+    children:
+      - at: 133
+        id: big-crunch
+      - at: 312
+        id: big-crunch
+      - at: 534
+        id: big-crunch
+      - at: 713
+        id: big-crunch
+      - at: 980
+        id: big-crunch-1
+      - at: 1114
+        id: big-crunch-1
+      - at: 1293
+        id: big-crunch-1
+      - at: 1516
+        id: big-crunch-1
+      - at: 1695
+        id: big-crunch-1
+      - at: 1918
+        id: big-crunch-1
+      - at: 2098
+        id: big-crunch-1
+      - at: 4991
+        id: big-crunch-2
+  big-crunch-1:
+    id: 36145
+    description: Placeholder description for Big Crunch
+  big-crunch-2:
+    id: 35661
+    damage: 53802
+    description: Placeholder description for Big Crunch
+  branding-flare:
+    id: 35679
+    description: Placeholder description for Branding Flare
+  nox:
+    id: 36136
+    description: Placeholder description for Nox
+  branding-flare-1:
+    id: 35685
+    damage: 53132
+    description: Placeholder description for Branding Flare
+  nox-1:
+    id: 36138
+    damage: 67239
+    description: Placeholder description for Nox
+    children:
+      - at: 3163
+        id: nox-2
+      - at: 4720
+        id: nox-2
+      - at: 6279
+        id: nox-2
+  nox-2:
+    id: 36132
+    damage: 67239
+    description: Placeholder description for Nox
+  burst:
+    id: 35687
+    damage: 24437
+    description: Placeholder description for Burst
+  sparking-flare:
+    id: 35678
+    description: Placeholder description for Sparking Flare
+  sparking-flare-1:
+    id: 35684
+    damage: 56050
+    description: Placeholder description for Sparking Flare
+  rend-the-rift:
+    id: 35853
+    damage: 59551
+    description: Placeholder description for Rend the Rift
+  dimensional-surge:
+    id: 35710
+    damage: 38964
+    description: Placeholder description for Dimensional Surge
+    children:
+      - at: 1026
+        id: dimensional-surge
+      - at: 2006
+        id: dimensional-surge
+      - at: 3030
+        id: dimensional-surge
+      - at: 4011
+        id: dimensional-surge
+  nostalgia:
+    id: 35691
+    description: Placeholder description for Nostalgia
+  bury:
+    id: 35693
+    damage: 16012
+    description: Placeholder description for Bury
+    children:
+      - at: 1025
+        id: bury-1
+      - at: 2005
+        id: bury-2
+      - at: 3030
+        id: bury-3
+  bury-1:
+    id: 35694
+    damage: 15989
+    description: Placeholder description for Bury
+  bury-2:
+    id: 35695
+    damage: 16523
+    description: Placeholder description for Bury
+  bury-3:
+    id: 35696
+    damage: 17033
+    description: Placeholder description for Bury
+  roar:
+    id: 35697
+    damage: 39111
+    description: Placeholder description for Roar
+    children:
+      - at: 1023
+        id: roar-1
+  roar-1:
+    id: 35698
+    damage: 57604
+    description: Placeholder description for Roar
+  primal-roar:
+    id: 35699
+    damage: 66590
+    description: Placeholder description for Primal Roar
+  flow-of-the-abyss:
+    id: 36090
+    description: Placeholder description for Flow of the Abyss
+  umbral-prism:
+    id: 35703
+    damage: 56644
+    description: Placeholder description for Umbral Prism
+  dimensional-surge-1:
+    id: 35714
+    damage: 53660
+    description: Placeholder description for Dimensional Surge
+  chasmic-nails:
+    id: 35704
+    description: Placeholder description for Chasmic Nails
+    children:
+      - at: 667
+        id: chasmic-nails-1
+  chasmic-nails-1:
+    id: 35705
+    description: Placeholder description for Chasmic Nails
+  chasmic-nails-2:
+    id: 35706
+    description: Placeholder description for Chasmic Nails
+  chasmic-nails-3:
+    id: 35707
+    damage: 67623
+    description: Placeholder description for Chasmic Nails
+    children:
+      - at: 670
+        id: chasmic-nails-4
+      - at: 1382
+        id: chasmic-nails-5
+  chasmic-nails-4:
+    id: 35708
+    description: Placeholder description for Chasmic Nails
+  chasmic-nails-5:
+    id: 35709
+    description: Placeholder description for Chasmic Nails
+  umbral-rays:
+    id: 35702
+    description: Placeholder description for Umbral Rays
+  akh-rhai:
+    id: 35700
+    damage: 19678
+    description: Placeholder description for Akh Rhai
+    children:
+      - at: 757
+        id: akh-rhai-1
+  akh-rhai-1:
+    id: 35701
+    damage: 19678
+    description: Placeholder description for Akh Rhai
+    children:
+      - at: 577
+        id: akh-rhai-1
+      - at: 1157
+        id: akh-rhai-1
+      - at: 1733
+        id: akh-rhai-1
+      - at: 2314
+        id: akh-rhai-1
+      - at: 2892
+        id: akh-rhai-1
+      - at: 3472
+        id: akh-rhai-1
+      - at: 4050
+        id: akh-rhai-1
+  big-bang-3:
+    id: 35870
+    description: Placeholder description for Big Bang
+timeline:
+  - at: 11896
+    id: abyssal-nox
+  - at: 27982
+    id: abyssal-echoes
+  - at: 43080
+    id: sable-thread
+  - at: 63446
+    id: dark-matter
+  - at: 79787
+    id: visceral-whirl
+  - at: 88886
+    id: miasmic-blast
+  - at: 103940
+    id: flare
+  - at: 106031
+    id: scald
+  - at: 111025
+    id: flare-2
+  - at: 111069
+    id: prominence-spine
+  - at: 121097
+    id: void-bio
+  - at: 135217
+    id: visceral-whirl-3
+  - at: 144305
+    id: miasmic-blast
+  - at: 154425
+    id: big-bang
+  - at: 174380
+    id: void-meteor
+  - at: 175587
+    id: meteor-impact
+  - at: 204315
+    id: explosion
+  - at: 216652
+    id: visceral-whirl
+  - at: 225743
+    id: miasmic-blast
+  - at: 229309
+    id: the-dark-divides
+  - at: 236309
+    id: the-dark-beckons
+  - at: 236309
+    id: forked-lightning
+  - at: 236487
+    id: dark-matter
+  - at: 236487
+    id: dark-matter-1
+  - at: 249844
+    id: black-hole
+  - at: 261961
+    id: fractured-eventide
+  - at: 285169
+    id: big-crunch
+  - at: 305406
+    id: abyssal-nox
+  - at: 321488
+    id: abyssal-echoes
+  - at: 331560
+    id: sable-thread
+  - at: 355522
+    id: branding-flare
+  - at: 356504
+    id: flare-1
+  - at: 358600
+    id: scald
+  - at: 361628
+    id: nox
+  - at: 361808
+    id: scald
+  - at: 363546
+    id: branding-flare-1
+  - at: 363591
+    id: flare-2
+  - at: 363634
+    id: prominence-spine
+  - at: 369293
+    id: nox-1
+  - at: 382783
+    id: void-bio
+  - at: 392676
+    id: burst
+  - at: 396906
+    id: visceral-whirl-3
+  - at: 405997
+    id: miasmic-blast
+  - at: 417845
+    id: dark-matter
+  - at: 433212
+    id: sparking-flare
+  - at: 434193
+    id: flare-1
+  - at: 436285
+    id: scald
+  - at: 439313
+    id: nox
+  - at: 439492
+    id: scald
+  - at: 441233
+    id: sparking-flare-1
+  - at: 441277
+    id: flare-2
+  - at: 441321
+    id: prominence-spine
+  - at: 446980
+    id: nox-1
+  - at: 470505
+    id: abyssal-nox
+  - at: 486587
+    id: abyssal-echoes
+  - at: 500673
+    id: rend-the-rift
+  - at: 512802
+    id: dimensional-surge
+  - at: 517837
+    id: nostalgia
+  - at: 518593
+    id: bury
+  - at: 523586
+    id: roar
+  - at: 527595
+    id: primal-roar
+  - at: 541983
+    id: flow-of-the-abyss
+  - at: 543099
+    id: umbral-prism
+  - at: 543946
+    id: dimensional-surge-1
+  - at: 555130
+    id: chasmic-nails
+  - at: 556110
+    id: dimensional-surge
+  - at: 556511
+    id: chasmic-nails-2
+  - at: 557134
+    id: dimensional-surge-1
+  - at: 557223
+    id: chasmic-nails-3
+  - at: 571255
+    id: dimensional-surge
+  - at: 576291
+    id: flow-of-the-abyss
+  - at: 577408
+    id: umbral-rays
+  - at: 578255
+    id: dimensional-surge-1
+  - at: 589443
+    id: chasmic-nails
+  - at: 590424
+    id: dimensional-surge
+  - at: 590823
+    id: chasmic-nails-2
+  - at: 591402
+    id: dimensional-surge-1
+  - at: 591535
+    id: chasmic-nails-3
+  - at: 604584
+    id: dimensional-surge
+  - at: 609622
+    id: nostalgia
+  - at: 610381
+    id: bury
+  - at: 615368
+    id: roar
+  - at: 619376
+    id: primal-roar
+  - at: 628732
+    id: dimensional-surge
+  - at: 633767
+    id: flow-of-the-abyss
+  - at: 635102
+    id: akh-rhai
+  - at: 635726
+    id: dimensional-surge-1
+  - at: 636261
+    id: akh-rhai-1
+  - at: 646913
+    id: chasmic-nails
+  - at: 647892
+    id: dimensional-surge
+  - at: 648291
+    id: chasmic-nails-2
+  - at: 648869
+    id: dimensional-surge-1
+  - at: 649004
+    id: chasmic-nails-3
+  - at: 661211
+    id: big-bang
