@@ -732,12 +732,14 @@ graphing:
       type: donut
       size: [72, 200]
       color: "#ffffff"
-      opacity: 0
+      opacity: 0.5
+      visible: false
     ice-s:
       type: donut
       size: [126, 200]
       color: "#ffffff"
-      opacity: 0
+      opacity: 0.5
+      visible: false
     icemeld:
       type: ellipse
       size: 180
@@ -811,7 +813,7 @@ graphing:
         thunder-l#6: { h: 1 }
         thunder-l#7: { h: 1 }
         thunder-l#8: { h: 1 }
-        ice-s: { opacity: 0.5 }
+        ice-s: { visible: true }
     dualspell-thunder-s:
       - thunder-s#1: [0, 0, 0]
         thunder-s#2: [0, 0, 45]
@@ -847,7 +849,7 @@ graphing:
         thunder-s#6: { h: 1 }
         thunder-s#7: { h: 1 }
         thunder-s#8: { h: 1 }
-        ice-l: { opacity: 0.5 }
+        ice-l: { visible: true }
     dualspell-fire-l:
       - ice-s: [0, 0]
         pyre#1: [60, -135]
@@ -875,7 +877,7 @@ graphing:
         pyre#2: { scale: 1 }
         pyre#3: { scale: 1 }
         pyre#4: { scale: 1 }
-        ice-s: { opacity: 0.5 }
+        ice-s: { visible: true }
     dualspell-fire-s:
       - ice-l: [0, 0]
         pyre#1: [33, -135]
@@ -903,7 +905,7 @@ graphing:
         pyre#2: { scale: 0.6 }
         pyre#3: { scale: 0.6 }
         pyre#4: { scale: 0.6 }
-        ice-l: { opacity: 0.5 }
+        ice-l: { visible: true }
     oppo:
       - ice-wall#ne: [85, 45, 45]
         ice-wall#nw: [85, -45, -45]
@@ -959,11 +961,11 @@ graphing:
         T2: [70, -45]
         M2: [80, 45]
         R1: [77, -52]
-        boss: { opacity: 0 }
+        boss: { visible: false }
       # turn 1
-      - boss: { x: 60, y: 45, rotate: 45, opacity: 0.5 }
+      - boss: { x: 60, y: 45, rotate: 45, visible: true }
         T2: { status: [jump] }
-      - orb#ne: { x: 80, y: -135, opacity: 0 }
+      - orb#ne: { x: 80, y: -135, visible: false }
         shock#sw: { scale: 1 }
         T2: [80, -45]
         T1: [68, -90]
@@ -972,13 +974,13 @@ graphing:
         pyre#s: { scale: 0.6 }
         tower#sw: { scale: 1 }
         R2: [75, -135]
-        shock#sw: { opacity: 0 }
+        shock#sw: { visible: false }
         icemeld#ne: { scale: 1 }
         M2: { status: [] }
-      - tower#sw: { opacity: 0 }
-        icemeld#ne: { opacity: 0 }
-        pyre#s: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#sw: { visible: false }
+        icemeld#ne: { visible: false }
+        pyre#s: { visible: false }
+        boss: { visible: false }
         H1: [85, 90]
         H2: [48, 145]
         M1: [45, 134]
@@ -987,9 +989,9 @@ graphing:
         T1: [68, -135]
         R1: [77, -135]
       # turn 2
-      - boss: { x: 60, y: -45, rotate: -45, opacity: 0.5 }
+      - boss: { x: 60, y: -45, rotate: -45, visible: true }
         R1: { status: [jump] }
-      - orb#nw: { x: 80, y: 135, opacity: 0 }
+      - orb#nw: { x: 80, y: 135, visible: false }
         shock#se: { scale: 1 }
         R1: [80, -135]
         T1: [68, 180]
@@ -997,13 +999,13 @@ graphing:
         pyre#e: { scale: 0.6 }
         tower#se: { scale: 1 }
         H2: [75, 135]
-        shock#se: { opacity: 0 }
+        shock#se: { visible: false }
         icemeld#nw: { scale: 1 }
         T2: { status: [] }
-      - tower#se: { opacity: 0 }
-        icemeld#nw: { opacity: 0 }
-        pyre#e: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#se: { visible: false }
+        icemeld#nw: { visible: false }
+        pyre#e: { visible: false }
+        boss: { visible: false }
         T2: [48, 45]
         H1: [40, 52]
         H2: [48, 45]
@@ -1012,21 +1014,21 @@ graphing:
         R2: [85, 0]
         T1: [80, 135]
       # turn 3
-      - boss: { x: 60, y: -135, rotate: -135, opacity: 0.5 }
+      - boss: { x: 60, y: -135, rotate: -135, visible: true }
         T1: { status: [jump] }
-      - orb#sw: { x: 80, y: 45, opacity: 0 }
+      - orb#sw: { x: 80, y: 45, visible: false }
         shock#ne: { scale: 1 }
       - boss: [65, 0, -165]
         pyre#n: { scale: 0.6 }
         tower#ne: { scale: 1 }
         M1: [75, 45]
-        shock#ne: { opacity: 0 }
+        shock#ne: { visible: false }
         icemeld#sw: { scale: 1 }
         R1: { status: [] }
-      - tower#ne: { opacity: 0 }
-        icemeld#sw: { opacity: 0 }
-        pyre#n: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#ne: { visible: false }
+        icemeld#sw: { visible: false }
+        pyre#n: { visible: false }
+        boss: { visible: false }
         T2: [48, -45]
         H1: [40, -52]
         M1: [48, -52]
@@ -1035,20 +1037,20 @@ graphing:
         R2: [38, -40]
         H2: [85, -90]
       # turn 4
-      - boss: { x: 60, y: 135, rotate: 135, opacity: 0.5 }
-      - orb#se: { x: 80, y: -45, opacity: 0 }
+      - boss: { x: 60, y: 135, rotate: 135, visible: true }
+      - orb#se: { x: 80, y: -45, visible: false }
         shock#nw: { scale: 1 }
       - boss: [65, -90, 105]
         pyre#w: { scale: 0.6 }
         tower#nw: { scale: 1 }
         H1: [75, -45]
-        shock#nw: { opacity: 0 }
+        shock#nw: { visible: false }
         icemeld#se: { scale: 1 }
         T1: { status: [] }
-      - tower#nw: { opacity: 0 }
-        icemeld#se: { opacity: 0 }
-        pyre#w: { opacity: 0 }
-        boss: { x: 0, y: 0, rotate: 180, opacity: 0.7 }
+      - tower#nw: { visible: false }
+        icemeld#se: { visible: false }
+        pyre#w: { visible: false }
+        boss: { x: 0, y: 0, rotate: 180, visible: true, opacity: 0.7 }
     jp:
       - ice-wall#ne: [85, 45, 45]
         ice-wall#nw: [85, -45, -45]
@@ -1100,48 +1102,48 @@ graphing:
         T2: [32, 170]
         M2: [85, 0]
         R1: [32, 180]
-        boss: { opacity: 0 }
+        boss: { visible: false }
       # turn 1
-      - boss: { x: 60, y: 45, rotate: 45, opacity: 0.5 }
+      - boss: { x: 60, y: 45, rotate: 45, visible: true }
         T2: { status: [jump] }
-      - orb#ne: { x: 80, y: -135, opacity: 0 }
+      - orb#ne: { x: 80, y: -135, visible: false }
         shock#sw: { scale: 1 }
       - boss: [65, 180, 15]
         pyre#s: { scale: 0.6 }
         tower#sw: { scale: 1 }
         R2: [75, -135]
-        shock#sw: { opacity: 0 }
+        shock#sw: { visible: false }
         icemeld#n: { scale: 1 }
         M2: { status: [] }
-      - tower#sw: { opacity: 0 }
-        icemeld#n: { opacity: 0 }
-        pyre#s: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#sw: { visible: false }
+        icemeld#n: { visible: false }
+        pyre#s: { visible: false }
+        boss: { visible: false }
         H1: [85, 180]
         M1: [40, -170]
         R2: [40, 180]
         T2: [85, 0]
         M2: [32, 170]
       # turn 2
-      - boss: { x: 60, y: -45, rotate: -45, opacity: 0.5 }
+      - boss: { x: 60, y: -45, rotate: -45, visible: true }
         R1: { status: [jump] }
         icemeld#n: { scale: 0 }
         pyre#s: { scale: 0 }
-      - orb#nw: { x: 80, y: 135, opacity: 0 }
+      - orb#nw: { x: 80, y: 135, visible: false }
         shock#se: { scale: 1 }
-        icemeld#n: { opacity: 0.8 }
-        pyre#s: { opacity: 0.5 }
+        icemeld#n: { visible: true }
+        pyre#s: { visible: true }
       - boss: [65, 180, -15]
         pyre#s: { scale: 0.6 }
         tower#se: { scale: 1 }
         H2: [75, 135]
-        shock#se: { opacity: 0 }
+        shock#se: { visible: false }
         icemeld#n: { scale: 1 }
         T2: { status: [] }
-      - tower#se: { opacity: 0 }
-        icemeld#n: { opacity: 0 }
-        pyre#s: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#se: { visible: false }
+        icemeld#n: { visible: false }
+        pyre#s: { visible: false }
+        boss: { visible: false }
         R2: [85, 0]
         H1: [40, 0]
         R1: [85, 180]
@@ -1151,21 +1153,21 @@ graphing:
         T2: [32, 10]
         M2: [32, 0]
       # turn 3
-      - boss: { x: 60, y: -135, rotate: -135, opacity: 0.5 }
+      - boss: { x: 60, y: -135, rotate: -135, visible: true }
         T1: { status: [jump] }
-      - orb#sw: { x: 80, y: 45, opacity: 0 }
+      - orb#sw: { x: 80, y: 45, visible: false }
         shock#ne: { scale: 1 }
       - boss: [65, 0, -165]
         pyre#n: { scale: 0.6 }
         tower#ne: { scale: 1 }
         M1: [75, 45]
-        shock#ne: { opacity: 0 }
+        shock#ne: { visible: false }
         icemeld#s: { scale: 1 }
         R1: { status: [] }
-      - tower#ne: { opacity: 0 }
-        icemeld#s: { opacity: 0 }
-        pyre#n: { opacity: 0 }
-        boss: { opacity: 0 }
+      - tower#ne: { visible: false }
+        icemeld#s: { visible: false }
+        pyre#n: { visible: false }
+        boss: { visible: false }
         R2: [40, -10]
         H1: [40, 0]
         H2: [85, 0]
@@ -1175,10 +1177,10 @@ graphing:
         T2: [32, 10]
         M2: [32, 0]
       # turn 4
-      - boss: { x: 60, y: 135, rotate: 135, opacity: 0.5 }
+      - boss: { x: 60, y: 135, rotate: 135, visible: true }
         icemeld#s: { scale: 0 }
         pyre#n: { scale: 0 }
-      - orb#se: { x: 80, y: -45, opacity: 0 }
+      - orb#se: { x: 80, y: -45, visible: false }
         shock#nw: { scale: 1 }
         icemeld#s: { opacity: 0.8 }
         pyre#n: { opacity: 0.5 }
@@ -1186,13 +1188,13 @@ graphing:
         pyre#n: { scale: 0.6 }
         tower#nw: { scale: 1 }
         H1: [75, -45]
-        shock#nw: { opacity: 0 }
+        shock#nw: { visible: false }
         icemeld#s: { scale: 1 }
         T1: { status: [] }
-      - tower#nw: { opacity: 0 }
-        icemeld#s: { opacity: 0 }
-        pyre#n: { opacity: 0 }
-        boss: { x: 0, y: 0, rotate: 180, opacity: 0.7 }
+      - tower#nw: { visible: false }
+        icemeld#s: { visible: false }
+        pyre#n: { visible: false }
+        boss: { x: 0, y: 0, rotate: 180, visible: true, opacity: 0.7 }
     lc2-nenw:
       - T1: [50, 0]
         T2: [50, 180]
@@ -1234,7 +1236,7 @@ graphing:
         T1: [29, 180]
         icemeld#nw: { scale: 1 }
       - cast: { progress: 0.85 }
-        icemeld#nw: { opacity: 0 }
+        icemeld#nw: { visible: false }
         icemeld#ne: { scale: 1 }
         H1: [30, -165]
         R2: [85, -45]
@@ -1244,28 +1246,28 @@ graphing:
         M2: [80, -172]
       - cast: { progress: 1 }
         icemeld#nw: { scale: 0 }
-        icemeld#ne: { opacity: 0 }
+        icemeld#ne: { visible: false }
         boss: [85, 180, 0]
         pyre: { scale: 0.6 }
         R1: [30, 165]
         H2: [85, 45]
       - cast: { text: "Swinging Kick", progress: 0 }
-        icemeld#nw: { scale: 1, opacity: 1 }
+        icemeld#nw: { scale: 1, visible: true }
         icemeld#ne: { scale: 0 }
-        pyre: { opacity: 0 }
+        pyre: { visible: false }
         T1: [90, 180]
         T2: [90, 180]
         M1: [90, 180]
         M2: [90, 180]
       - cast: { progress: 0.5 }
-        icemeld#nw: { opacity: 0 }
-        icemeld#ne: { scale: 1, opacity: 1 }
+        icemeld#nw: { visible: false }
+        icemeld#ne: { scale: 1, visible: true }
         T1: [70, 180]
         T2: [80, 180]
         M1: [75, -170]
         M2: [75, 170]
-      - icemeld#ne: { opacity: 0 }
+      - icemeld#ne: { visible: false }
         cast: { progress: 1 }
         cleave: { scale: [1, 1] }
       - cast: { visible: false }
-        cleave: { opacity: 0 }
+        cleave: { visible: false }

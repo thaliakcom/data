@@ -472,10 +472,15 @@ actions:
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
       Starts off with a gaze from both [boss] and the eye that must be avoided. Then, Ser Gerrique and Ser Hermenost appear: one casts [a:heavy-impact] from the center of the arena, while the other summons 4 towers in a line through the center of the arena.
+      In this line, there are six "slots" for towers to appear. Outside (at the edge), middle, and inside on both sides. :unverified([a:heavy-impact] will always face away from the line, such that the AoEs themselves always cleave all towers.) However, each possible tower is positioned such that you can dodge [a:heavy-impact] without leaving your tower.
       Afterward, Ser Grinnaux appears in a random position on the edge of the arena and begins casting [a:dimensional-collapse]. After [a:dimensional-collapse], [boss] begins casting [a:the-dragons-rage]. At the same time Ser Grinnaux uses [a:faith-unmoving], knocking back all players from his position.
     resolve: |
-      Assign four players to handle towers (ideally all ranged players so the melees can keep attacking [boss]) and an order in which to take them. Party finder usually does (from left to right) R1 H1 H2 R2. Tower players should dodge [a:heavy-impact] inside their towers, as [a:conviction] will resolve before all [a:heavy-impact] hits are done.
+      Assign four players to handle towers (ideally all ranged players so the melees can keep attacking [boss]) and an order in which to take them. Party finder usually does (from left to right) R1 H1 H2 R2. Be aware that it is not guaranteed for 2 towers to spawn for each side; it can also spawn 1 tower on one side and 3 towers on the other. Tower players should dodge [a:heavy-impact] inside their towers, as [a:conviction] will resolve before all [a:heavy-impact] hits are done.
       Afterward, quickly locate Ser Grinnaux and either move toward him or use knockback immunity. If you're a melee, prefer to take boss downtime over not being in the stack, as this mechanic is a frequent wipe point.
+    strategies:
+      kotr2:
+        name: Example
+        description: For simplicity, this diagram has both [boss] and the eye at north, but they can be at any cardinal or intercardinal here.
     children:
     - at: 11118
       id: the-dragons-gaze
@@ -731,13 +736,14 @@ graphing:
       shape: circle
       image: /images/arenas/thordan-p2.avif
     boss:
-      size: 45
+      size: 28
+      opacity: 0.7
     heavensflame:
       type: ellipse
       size: 50
       color: url(#heavensflame-gradient)
       origin: [0.5, 0.5]
-      opacity: 0
+      visible: false
     hiemal-storm:
       type: ellipse
       size: 60
@@ -746,6 +752,7 @@ graphing:
     dimensional-collapse:
       type: ellipse
       size: 80
+      scale: 0
       color: url(#dimensional-collapse-gradient)
       origin: [0.5, 0.5]
     edge:
@@ -757,7 +764,7 @@ graphing:
     burning-chains:
       type: link
       color: "#e0a328"
-      opacity: 0
+      visible: false
     spiral-tether:
       type: link
       color: "#fed67b"
@@ -771,21 +778,71 @@ graphing:
       width: 20
       color: url(#pierce-gradient)
       opacity: 0.5
+    heavy-impact-1:
+      type: cone
+      angle: 270
+      color: "#f03c24"
+      opacity: 0.5
+      size: [5, 26]
+      group: heavy-impact
+      rotation: -45
+    heavy-impact-2:
+      type: cone
+      angle: 270
+      color: "#f03c24"
+      opacity: 0.5
+      size: [26, 47]
+      group: heavy-impact
+      rotation: -45
+    heavy-impact-3:
+      type: cone
+      angle: 270
+      color: "#f03c24"
+      opacity: 0.5
+      size: [47, 68]
+      group: heavy-impact
+      rotation: -45
+    heavy-impact-4:
+      type: cone
+      angle: 270
+      color: "#f03c24"
+      opacity: 0.5
+      size: [68, 89]
+      group: heavy-impact
+      rotation: -45
+    ascalons-mercy:
+      type: cone
+      angle: 20
+      color: "#f2e03a"
+      opacity: 0.5
+      size: [5, 200]
+    stack:
+      type: image
+      size: 50
+      image: /images/markers/stack.svg
+      planar: false
+      visible: false
+    gaze:
+      type: image
+      size: 10
+      image: /images/markers/gaze.avif
+      planar: false
+      visible: false
   graphs:
     knights-1:
       - edge: [0, 0]
-        heavensflame#1.1: { x: 10, y: -135 }
-        heavensflame#1.2: { x: 10, y: 180 }
-        heavensflame#1.3: { x: 10, y: 90 }
-        heavensflame#2.1: { x: 20, y: 45 }
-        heavensflame#2.2: { x: 20, y: 0 }
-        heavensflame#2.3: { x: 20, y: 180 }
-        heavensflame#3.1: { x: 40, y: 90 }
-        heavensflame#3.2: { x: 40, y: -45 }
-        heavensflame#3.3: { x: 40, y: -135 }
-        heavensflame#4.1: { x: 60, y: 45 }
-        heavensflame#4.2: { x: 60, y: -45 }
-        heavensflame#4.3: { x: 60, y: 0 }
+        heavensflame#1.1: [10, -135]
+        heavensflame#1.2: [10, 180]
+        heavensflame#1.3: [10, 90]
+        heavensflame#2.1: [20, 45]
+        heavensflame#2.2: [20, 0]
+        heavensflame#2.3: [20, 180]
+        heavensflame#3.1: [40, 90]
+        heavensflame#3.2: [40, -45]
+        heavensflame#3.3: [40, -135]
+        heavensflame#4.1: [60, 45]
+        heavensflame#4.2: [60, -45]
+        heavensflame#4.3: [60, 0]
         tower#1: [65, 45]
         tower#2: [65, 180]
         tower#3: [65, -135]
@@ -802,22 +859,22 @@ graphing:
         M2: [10, 90]
         R1: [10, -45]
         R2: [10, 45]
-      - heavensflame#1.*: { opacity: 1 }
-        burning-chains#*: { opacity: 1 }
+      - heavensflame#1.*: { visible: true }
+        burning-chains#*: { visible: true }
         players: { x: 20 }
-      - heavensflame#2.*: { opacity: 1 }
+      - heavensflame#2.*: { visible: true }
         players: { x: 40 }
-      - heavensflame#3.*: { opacity: 1 }
+      - heavensflame#3.*: { visible: true }
         tower#*: { scale: 1 }
-        burning-chains#1: { opacity: 0 }
-        burning-chains#3: { opacity: 0 }
+        burning-chains#1: { visible: false }
+        burning-chains#3: { visible: false }
         players: { x: 60 }
-      - heavensflame#4.*: { opacity: 1 }
-        heavensflame#1.*: { opacity: 0 }
+      - heavensflame#4.*: { visible: true }
+        heavensflame#1.*: { visible: false }
         players: { x: 80 }
-      - burning-chains#2: { opacity: 0 }
-        burning-chains#4: { opacity: 0 }
-        heavensflame#2.*: { opacity: 0 }
+      - burning-chains#2: { visible: false }
+        burning-chains#4: { visible: false }
+        heavensflame#2.*: { visible: false }
         T1: [83, -13]
         R1: [83, -58]
         R2: [83, 58]
@@ -825,18 +882,18 @@ graphing:
         T2: [80, 175]
         M2: [80, 85]
         H2: [80, 140]
-      - heavensflame#3.*: { opacity: 0 }
+      - heavensflame#3.*: { visible: false }
         H1: [70, -135]
         T2: [70, 175]
         M2: [70, 85]
-      - heavensflame#4.*: { opacity: 0 }
+      - heavensflame#4.*: { visible: false }
         R2: [67, 45]
-      - tower#*: { opacity: 0 }
+      - tower#*: { visible: false }
     spiral-thrust-x3:
       - edge: [0, 0]
-        enemy#1: { x: 95, y: 45, opacity: 0, rotate: 45 }
-        enemy#2: { x: 95, y: 0, opacity: 0, rotate: 0 }
-        enemy#3: { x: 95, y: 135, opacity: 0, rotate: 135 }
+        enemy#1: { x: 95, y: 45, visible: false, rotate: 45 }
+        enemy#2: { x: 95, y: 0, visible: false, rotate: 0 }
+        enemy#3: { x: 95, y: 135, visible: false, rotate: 135 }
         thrust#1: { x: 100, y: 45, h: 0, rotate: 45 }
         thrust#2: { x: 100, y: 0, h: 0, rotate: 0 }
         thrust#3: { x: 100, y: 135, h: 0, rotate: 135 }
@@ -848,7 +905,7 @@ graphing:
         M2: [10, 90]
         R1: [10, -45]
         R2: [10, 45]
-      - enemy#*: { opacity: 0.7 }
+      - enemy#*: { visible: true }
         T1: [75, -25]
         R1: [75, -25]
         M1: [70, -90]
@@ -863,19 +920,19 @@ graphing:
         thrust#*: { h: 1 }
     knights-4:
       - edge: [0, 0]
-        dimensional-collapse#7: { x: 10, y: -45, opacity: 0, scale: 0.4 }
-        dimensional-collapse#5: { x: 10, y: -90, opacity: 0, scale: 0.4 }
-        dimensional-collapse#3: { x: 10, y: -135, opacity: 0, scale: 0.4 }
-        dimensional-collapse#2: { x: 10, y: 180, opacity: 0, scale: 0.4 }
-        dimensional-collapse#4: { x: 10, y: 135, opacity: 0, scale: 0.4 }
-        dimensional-collapse#6: { x: 10, y: 90, opacity: 0, scale: 0.4 }
-        dimensional-collapse#8: { x: 10, y: 45, opacity: 0, scale: 0.4 }
-        dimensional-collapse#1: { x: 10, y: 0, opacity: 0, scale: 0.4 }
-        hiemal-storm#1: { x: 10, y: 0, opacity: 0 }
-        hiemal-storm#2: { x: 10, y: -135, opacity: 0 }
-        hiemal-storm#3: { x: 10, y: 135, opacity: 0 }
-        hiemal-storm#4: { x: 10, y: -45, opacity: 0 }
-        hiemal-storm#5: { x: 10, y: 45, opacity: 0 }
+        dimensional-collapse#7: [10, -45]
+        dimensional-collapse#5: [10, -90]
+        dimensional-collapse#3: [10, -135]
+        dimensional-collapse#2: [10, 180]
+        dimensional-collapse#4: [10, 135]
+        dimensional-collapse#6: [10, 90]
+        dimensional-collapse#8: [10, 45]
+        dimensional-collapse#1: [10, 0]
+        hiemal-storm#1: { x: 10, y: 0, visible: false }
+        hiemal-storm#2: { x: 10, y: -135, visible: false }
+        hiemal-storm#3: { x: 10, y: 135, visible: false }
+        hiemal-storm#4: { x: 10, y: -45, visible: false }
+        hiemal-storm#5: { x: 10, y: 45, visible: false }
         spiral-tether#1: { from: enemy#1.1, to: M2 }
         spiral-tether#2: { from: enemy#1.2, to: T2 }
         spiral-tether#3: { from: enemy#1.3, to: M1 }
@@ -890,13 +947,13 @@ graphing:
         M2: [10, 90]
         R1: [10, -45]
         R2: [10, 45]
-        enemy#1.1: { x: 10, y: 0, scale: 0.5, opacity: 0.8, rotate: M2 }
-        enemy#1.2: { x: 10, y: 135, scale: 0.5, opacity: 0.8, rotate: T2 }
-        enemy#1.3: { x: 10, y: -135, scale: 0.5, opacity: 0.8, rotate: M1 }
-        enemy#grinnaux: { x: 0, y: 0, scale: 0.5, opacity: 0.8, rotate: 0 }
-      - dimensional-collapse#*: { opacity: 1 }
+        enemy#1.1: { x: 10, y: 0, scale: 0.5, visible: true, rotate: M2 }
+        enemy#1.2: { x: 10, y: 135, scale: 0.5, visible: true, rotate: T2 }
+        enemy#1.3: { x: 10, y: -135, scale: 0.5, visible: true, rotate: M1 }
+        enemy#grinnaux: { x: 0, y: 0, scale: 0.5, visible: true, rotate: 0 }
+      - dimensional-collapse#*: { scale: 0.4 }
       - dimensional-collapse#*: { scale: 0.6 }
-        hiemal-storm#*: { x: 30, opacity: 1 }
+        hiemal-storm#*: { x: 30, visible: true }
         players: { x: 30 }
       - dimensional-collapse#*: { scale: 0.8 }
         hiemal-storm#*: { x: 55 }
@@ -910,10 +967,10 @@ graphing:
         pierce#1: { to: enemy#1.1, w: 1 }
         pierce#2: { to: enemy#1.2, w: 1 }
         pierce#3: { to: enemy#1.3, w: 1 }
-        spiral-tether#*: { opacity: 0 }
-      - dimensional-collapse#*: { opacity: 0 }
+        spiral-tether#*: { visible: false }
+      - dimensional-collapse#*: { visible: false }
         players: { x: 40 }
-        pierce#*: { opacity: 0, rotate: null }
+        pierce#*: { visible: false, rotate: null }
       - T1: [10, -80]
         T2: [10, 180]
         H1: [10, -170]
@@ -924,3 +981,101 @@ graphing:
         R2: [10, 80]
       - enemy#grinnaux: { scale: 0.7 }
         players: { x: 80 }
+    kotr2:
+      - edge: [0, 0]
+        heavy-impact-1: { x: 0, y: 0, visible: false }
+        heavy-impact-2: { x: 0, y: 0, visible: false }
+        heavy-impact-3: { x: 0, y: 0, visible: false }
+        heavy-impact-4: { x: 0, y: 0, visible: false }
+        dimensional-collapse#1: [80, 0]
+        dimensional-collapse#2: [70, -10]
+        dimensional-collapse#3: [70, 10]
+        dimensional-collapse#4: [60, 0]
+        dimensional-collapse#5: [78, -135]
+        dimensional-collapse#6: [20, 45]
+        dimensional-collapse#7: [43, 45]
+        dimensional-collapse#8: [78, 45]
+        tower#1: [72, -135]
+        tower#2: [25, 45]
+        tower#3: [48.5, 45]
+        tower#4: [72, 45]
+        boss: { x: 70, y: 0, rotate: T1 }
+        enemy#grinnaux: { x: 75, y: 135, scale: 0.5, visible: false, rotate: 135 }
+        T1: [80, 0]
+        T2: [60, 0]
+        H1: [40, -20]
+        H2: [40, 20]
+        M1: [70, -10]
+        M2: [70, 10]
+        R1: [50, -35]
+        R2: [50, 35]
+        gaze#boss: [70, 0]
+        gaze#eye: { x: 95, y: 0, scale: 2 }
+        stack: [50, -82]
+        cast: { text: The Dragon's Gaze, progress: 0 }
+      - gaze#boss: { visible: true }
+        gaze#eye: { visible: true }
+        cast: { visible: true }
+        tower#*: { scale: 1 }
+      - cast: { progress: 0.7 }
+        heavy-impact-1: { visible: true }
+        R1: [78, -135]
+        H1: [31, 45]
+        H2: [53, 45]
+        R2: [78, 45]
+      - cast: { progress: 1, visible: false }
+        gaze#*: { visible: false }
+        heavy-impact-2: { visible: true }
+      - heavy-impact-1: { visible: false }
+        heavy-impact-3: { visible: true }
+        H1: [20, 45]
+      - heavy-impact-2: { visible: false }
+        heavy-impact-4: { visible: true }
+        H2: [43, 45]
+      - heavy-impact-3: { visible: false }
+        tower#*: { visible: false }
+        enemy#grinnaux: { visible: true }
+        dimensional-collapse#*: { scale: 0.4 }
+        R1: [60, -110]
+        R2: [60, 35]
+      - heavy-impact-4: { visible: false }
+        dimensional-collapse#*: { scale: 0.6 }
+        boss: [70, -35]
+        T1: [80, -50]
+        T2: [60, -60]
+        M1: [62, -50]
+        M2: [72, -52]
+        H1: [40, -70]
+        H2: [40, -80]
+        R1: [50, -95]
+        R2: [50, -82]
+      - dimensional-collapse#*: { scale: 0.8 }
+      - dimensional-collapse#*: { scale: 1 }
+      - dimensional-collapse#*: { visible: false }
+        stack: { visible: true }
+        cast: { text: The Dragon's Rage, visible: true, progress: 0 }
+        boss: { rotate: null }
+      - T1: [10, -45]
+        T2: [10, -80]
+        M1: [15, -52]
+        M2: [12, -63]
+        H1: [7, -70]
+        H2: [17, -77]
+        R1: [5, -80]
+        R2: [2, -85]
+        stack: [2, -85]
+        cast: { progress: 0.6 }
+      - enemy#grinnaux: { scale: 1.2 }
+        T1: [-45, -45, "cartesian"]
+        T2: [-40, -50, "cartesian"]
+        M1: [-40, -45, "cartesian"]
+        M2: [-40, -48, "cartesian"]
+        H1: [-38, -30, "cartesian"]
+        H2: [-40, -35, "cartesian"]
+        R1: [-44, -41, "cartesian"]
+        R2: [-35, -45, "cartesian"]
+        stack: [-35, -45, "cartesian"]
+        cast: { progress: 0.9 }
+      - enemy#grinnaux: { scale: 0.5 }
+        cast: { progress: 1, visible: false }
+        stack: { visible: false }
