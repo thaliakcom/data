@@ -411,8 +411,8 @@ actions:
           Fourth turret: tank, tank
   peal-of-condemnation:
     id: 33416
-    description: An [m:aoe.intercept] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
-    mechanic: aoe.intercept
+    description: An [m:stack.intercept] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
+    mechanic: stack.intercept
     count: 2
   pandæmoniac-ray:
     id: 33419
@@ -440,7 +440,7 @@ actions:
       This is the tighest heal-check a second turn has ever had. Each hit deals approximately 120,000 damage to the two closest targets to [boss], and 50,000 damage to everyone else.
       The last hit deals about 35% more damage and also knocks the entire party back. The distance of the knockback exceeds the length of the arena, so it is not possible to survive the knockback without establishing a wall in the back during [a:pandæmoniac-web]. If a wall **was** established, players will be stopped by the wall and are not killed.
       The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:1195] and [a:1193] is all but mandatory along with whatever mitigation your healers and tanks can offer.
-    mechanic: aoe.intercept
+    mechanic: stack.intercept
     compact: full
     children:
       - at: 1219
@@ -464,14 +464,14 @@ actions:
   harrowing-hell-hit:
     id: 33424
     name: Harrowing Hell (Hit)
-    description: Hard-hitting [m:aoe.intercept]. The first two players receive about 120,000 damage.
-    mechanic: aoe.intercept
+    description: Hard-hitting [m:stack.intercept]. The first two players receive about 120,000 damage.
+    mechanic: stack.intercept
     damage: 50000
   harrowing-hell-lasthit:
     id: 33428
     name: Harrowing Hell (Knockback)
     description: |
-      Extremely hard-hitting [m:aoe.intercept]. The first two players receive about 160,000 damage.
+      Extremely hard-hitting [m:stack.intercept]. The first two players receive about 160,000 damage.
       Knocks all players back, killing them if they have not established a wall in the back of the arena. This knockback cannot be immuned.
     mechanic: mech.knockback.unavoidable
     damage: 70000

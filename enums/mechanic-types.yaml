@@ -6,6 +6,9 @@ raidwide.proximity:
   name: proximity
   description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
   is-raid-damage: true
+raidwide.sethp:
+  name: sets hp
+  description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
 raidwide.transition:
   name: ultimate attack
   description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
@@ -87,6 +90,13 @@ stack.ululation:
   description: |
     A mechanic that requires affected players to stack with at least one other party member. They will not receive damage, but failing to stack will generally inflict heavy damage or debuffs.
     Named after Cerberus's eponymous attack, [a:3254]. Also sometimes called a "dorito stack", after the appearance of the marker that appears above affected players' heads in some normal raids and trials.
+stack.intercept:
+  name: Wild Charge
+  description: |
+    A stack (almost always in the shape of a line) that deals heavy damage to the first player(s) hit and moderate damage to all subsequent players.
+    In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
+    Named after Imdugud's eponymous attack, [a:2134].
+  is-raid-damage: true
 aoe:
   name: AoE
   description: Leaves only a specific section of the arena safe.
@@ -110,7 +120,6 @@ aoe.intercept:
     An attack targeting a specific player that must be intercepted by another player or the first player will die.
     This type of mechanic often appears in the form of a tankbuster, where the attack deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
     These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
-    Often named after Imdugud's eponymous attack, [a:2134].
   is-raid-damage: true
 spread:
   name: spread
@@ -192,6 +201,12 @@ mech.pull.unavoidable:
   name: draw-in
   description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:7559].
   is-raid-damage: true
+mech.stillness:
+  name: stillness
+  description: If affected players are moving, auto-attacking, or executing an action when this mechanic is executed, they will take heavy damage and/or debuffs.
+mech.motion:
+  name: motion
+  description: If affected players are standing still when this mechanic is executed, they will take heavy damage and/or debuffs. Jumping in place is a good way to deal with this mechanic without moving your character.
 mech.arena:
   name: arena change
   description: Modifies the arena or floor in some way. Is often but not always accompanied by a raidwide.

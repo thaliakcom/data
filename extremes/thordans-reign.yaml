@@ -581,7 +581,7 @@ actions:
   spear-of-the-fury:
     id: 35281
     damage: 36000
-    mechanic: aoe.intercept
+    mechanic: stack.intercept
     shape: line
     description: |
       Ser Zephirin throws an aetheric spear at the healer who is [s:down-for-the-count], intending to inflict upon them the same fate as poor Haurchefant.
