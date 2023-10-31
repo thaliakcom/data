@@ -29,3 +29,6 @@ snapshot: |
 comet: |
   In Final Fantasy XIV, *comets* are a commonly used fight mechanic and are used in many different ways. However, they always come down from the sky, deal some damage, and leave behind a rock with a distinctive appearance that has not changed since A Realm Reborn. This rock is generally used in subsequent mechanics, for instance to line-of-sight an attack.
   They first appeared in <a href="/raids/t9">The Second Coil of Bahamut - Turn 4</a>, where they come down on certain marked players and cause a wipe if any two comets are placed too close together.
+wall: |
+  *Walling* is the practice of deliberately or accidentally moving past the boundary of an arena in arenas where this leads to instant death.
+  Most often, parties choose to "wall" a pull because they failed some mechanical requirement that would lead to an unrecoverable guaranteed wipe later down the line anyway.

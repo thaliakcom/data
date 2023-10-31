@@ -7,10 +7,1283 @@ by:
   role: author
 boss: Alpha-Omega
 HP: 0
-wip: true
-description: ""
+description: Assist Omega in its journey to discover the meaning of Dynamis.
 status:
   2911:  # Damage Down
     type: impairment
-    duration: 30000
-    description: Reduces damage dealt by approximately 50%.
+    duration: 180000
+    description: Reduces damage dealt by approximately 90%.
+  looper:
+    id: 3456
+    type: condition
+    description: |
+      Players inflicted with this debuff are able to soak towers during [a:program-loop]. (The tower will ignore players without this debuff.)
+      Soaking a tower resolves this debuff. If no tower is soaked before the debuff expires, the player is inflicted with [s:memory-loss].
+    duration: [1600, 2500, 3400, 4300]
+  first-in-line:
+    id: 3004
+    type: indicator
+    description: Marked as the first player to be targeted for a given mechanic.
+  second-in-line:
+    id: 3005
+    type: indicator
+    description: Marked as the second player to be targeted for a given mechanic.
+  third-in-line:
+    id: 3006
+    type: indicator
+    description: Marked as the third player to be targeted for a given mechanic.
+  fourth-in-line:
+    id: 3451
+    type: indicator
+    description: Marked as the fourth player to be targeted for a given mechanic.
+  twice-come-ruin:
+    id: 2534
+    type: condition
+    duration: 10960
+    description: |
+      Inflicted by each step of mechanics that are each supposed to be handled by a different player, like [a:program-loop].
+      If one player is hit by multiple steps of such a mechanic (accruing 2 stacks of this debuff), they will instead be inflicted with [s:doom] and die.
+  thrice-come-ruin:
+    id: 2530
+    type: condition
+    duration: 10960
+    description: |
+      Inflicted by each step of mechanics that are each supposed to be handled by a different player, like [a:hello-world].
+      If one player is hit by multiple steps of such a mechanic (accruing 3 stacks of this debuff), they will instead be inflicted with [s:doom] and die.
+  doom:
+    id: 2519
+    type: delay
+    duration: 2960
+    description: A mechanic was incorrectly executed and the player is subject to certain death once the effect expires.^
+  hp-penalty:
+    id: 3401
+    type: impairment
+    duration: 9000
+    description: Inflicted by [a:blaster]. Reduces maximum HP to triple digits.
+  memory-loss:
+    id: 1626
+    type: impairment
+    duration: 1500
+    description: Players inflicted with this debuff are unable to execute actions and move randomly throughout the arena, changing directions every few seconds. As such, they are liable to walk directly into the death wall on the outside of the arena.
+  guided-missile:
+    id: 3424
+    type: delay
+    duration: [12000, 18000, 24000, 30000]
+    description: When the effect expires, players with this debuff are targeted by [a:guided-missile-kyrios].
+  condensed-wave-cannon-kyrios:
+    id: 2509
+    type: delay
+    duration: [12000, 18000, 24000, 30000]
+    description: When the effect expires, players with this debuff are targeted by [a:condensed-wave-cannon-kyrios].
+  magic-vuln:
+    id: 2941
+    type: vuln
+    description: Magic damage taken is lethal while this effect is active.
+  packet-filter-m:
+    id: 3499
+    type: impairment
+    description: Unable to damage Omega-M.
+  packet-filter-f:
+    id: 3500
+    type: impairment
+    description: Unable to damage Omega-F.
+  remote-glitch:
+    id: 3428
+    type: condition
+    description: Tethered to another player. While the pair is too close to one another both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The minimum distance required is slightly lower than the entire diameter of the arena.
+  mid-glitch:
+    id: 3427
+    type: condition
+    description: Tethered to another player. While the pair is too close to or too far from one another both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The required distance is approximately equal to the radius of the arena.
+  vuln-up:
+    id: 3366
+    type: vuln
+    description: Any damage taken is lethal while this effect is active.
+  physical-vuln-up:
+    id: 2940
+    type: vuln
+    description: Any physcial damage taken is lethal while this effect is active.
+  prey:
+    id: 562
+    type: delay
+    description: Player will be targeted by an [a:optimized-meteor] when the effect expires.
+  sniper-cannon-fodder:
+    id: 3425
+    type: delay
+    duration: 19000
+    description: Player will be targeted by [a:sniper-cannon] when the effect expires.
+  high-powered-sniper-cannon-fodder:
+    id: 3426
+    type: delay
+    duration: 19000
+    description: Player will be targeted by [a:high-powered-sniper-cannon] when the effect expires.
+  latent-defect:
+    id: 3527
+    type: condition
+    duration: 27000
+    description: Player must be hit by [a:critical-overflow-bug] before the effect expires or the party wipes.
+  latent-synchronization-bug:
+    id: 3434
+    type: condition
+    duration: 69000
+    description: Player must be hit by [a:critical-synchronization-bug] before the effect expires or the party wipes.
+  cascading-latent-defect:
+    id: 3528
+    type: condition
+    duration: 10000
+    description: Player must be hit by [a:critical-underflow-bug] before the effect expires or the party wipes.
+  latent-performance-defect:
+    id: 3435
+    type: condition
+    duration: 10000
+    description: Player must be hit by [a:critical-performance-bug] before the effect expires or the party wipes.
+  overflow-code-smell:
+    id: 3437
+    type: delay
+    duration: 3000
+    description: Player will be inflicted with [s:critical-overflow-bug] when the effect expires.
+  performance-code-smell:
+    id: 3439
+    type: delay
+    duration: 3000
+    description: Player will be inflicted with [s:critical-performance-bug] when the effect expires.
+  synchronization-code-smell:
+    id: 3436
+    type: delay
+    duration: 3000
+    description: Player will be inflicted with [s:critical-synchronization-bug] when the effect expires.
+  underflow-code-smell:
+    id: 3438
+    type: delay
+    duration: 3000
+    description: Player will be inflicted with [s:critical-underflow-bug] when the effect expires.
+  remote-code-smell:
+    id: 3441
+    type: condition
+    duration: [23000, 44000, 65000, 86000]
+    description: Player will be inflicted with [s:remote-regression] when the effect expires.
+  local-code-smell:
+    id: 3503
+    type: condition
+    duration: [23000, 44000, 65000, 86000]
+    description: Player will be inflicted with [s:local-regression] when the effect expires.
+  critical-overflow-bug:
+    id: 3525
+    type: delay
+    duration: 21000
+    description: "[a:critical-overflow-bug] is executed at the player's position when the effect expires, causing a massive [ms:chariot] explosion that inflicts any other players hit with [s:critical-overflow-bug]."
+  critical-synchronization-bug:
+    id: 3524
+    type: delay
+    duration: 21000
+    description: "[a:critical-synchronization-bug] is executed at the player's position when the effect expires, causing a small [ms:chariot] explosion that must be shared and inflicts any other players hit with [s:critical-synchronization-bug]."
+  critical-performance-bug:
+    id: 3429
+    type: delay
+    duration: 27000
+    description: Player is able to soak blue towers. Additionally, any player coming in contact with this player will also be inflicted with [s:critical-performance-bug] (with its original duration). When the effect expires, [a small AoE explodes](a:critical-performance-bug) around the player that wipes the party if any other player is hit by it.
+  critical-underflow-bug:
+    id: 3526
+    type: delay
+    duration: 27000
+    description: Player is able to soak red towers. Additionally, any player coming in contact with this player will also be inflicted with [s:critical-underflow-bug] (with its original duration). When the effect expires, [a small AoE explodes](a:critical-underflow-bug) around the player that wipes the party if any other player is hit by it.
+  local-regression:
+    id: 3529
+    type: condition
+    duration: 10000
+    description: Bound to another player with a red-green tether. Moving too close to the other player [snaps the tether](a:patch), inflicting [s:magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration, it will automatically snap itself, which will coincide with magic damage that wipes the party.
+  remote-regression:
+    id: 3530
+    type: condition
+    duration: 10000
+    description: Bound to another player with a blue tether. Moving too far away from the other player [snaps the tether](a:patch), inflicting [s:magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration, it will automatically snap itself, which will coincide with magic damage that wipes the party.
+  synchronization-debugger:
+    id: 3430
+    type: resistance
+    description: Automatically inflicted after the expiration of [s:critical-synchronization-bug]. Renders player immune to [s:critical-synchronization-bug].
+  overflow-debugger:
+    id: 3431
+    type: resistance
+    description: Automatically inflicted after the expiration of [s:critical-overflow-bug]. Renders player immune to [s:critical-overflow-bug].
+  underflow-debugger:
+    id: 3432
+    type: resistance
+    description: Automatically inflicted after the expiration of [s:critical-underflow-bug]. Renders player immune to [s:critical-underflow-bug].
+  performance-debugger:
+    id: 3433
+    type: resistance
+    description: Automatically inflicted after the expiration of [s:critical-performance-bug]. Renders player immune to [s:critical-performance-bug].
+  oversampled-wave-cannon-loading:
+    id: 3452
+    type: delay
+    description: Monitors show up on a random side of the player. Executes [a:oversampled-wave-cannon] when the effect expires, targeting the closest 2 players on player's monitor side with two large [ms:chariot] AoEs.
+  hello-near-world:
+    id: 3442
+    type: delay
+    description: Executes [a:hello-near-world] when the effect expires.
+  hello-distant-world:
+    id: 3443
+    type: delay
+    description: Executes [a:hello-distant-world] when the effect expires.
+  quickening-dynamis:
+    id: 3444
+    type: condition
+    description: |
+      Accumulated by being hit with either [a:hello-near-world] or [a:hello-distant-world].
+      Accumulating [s:quickening-dynamis:3] upgrades this status effect into [s:brilliant-dynamis] when [a:cosmo-memory-2] is cast. By the end of Phase 5, all players must be in possession of [s:quickening-dynamis:3] or a wipe is guaranteed.
+  brilliant-dynamis:
+    id: 3446
+    type: resistance
+    description: |
+      Provides resistance to attacks in Phase 6. Without this effect, any damage taken in Phase 6 is lethal.
+      Additionally, if a player under this effect executes a limit break 3, the limit break gauge immediately refills and this effect changes to [s:spark-of-dynamis].
+  spark-of-dynamis:
+    id: 3448
+    type: resistance
+    description: |
+      Obtained by executing a limit break 3 while under the effect of [s:brilliant-dynamis].
+      Maintains the damage resistance from [s:brilliant-dynamis], but executing limit break 3 no longer refills the limit break gauge.
+  magic-number:
+    id: 3532
+    type: delay
+    duration: 6000
+    description: Player will die at the end of the effect's duration. Can be cleansed through healer LB3.
+actions:
+  program-loop:
+    id: 31491
+    mechanic: mech
+    compact: trim
+    description: |
+      A major mechanic revolving around towers and tethers.
+      Inflicts the following effects:
+      * 2 random players with [s:looper] (16s) and [s:first-in-line]
+      * 2 random players with [s:looper] (25s) and [s:second-in-line]
+      * 2 random players with [s:looper] (34s) and [s:third-in-line]
+      * 2 random players with [s:looper] (43s) and [s:fourth-in-line]
+      Then spawns two towers and two tethers originating from the boss and begins casting [a:blaster-cast]. The tethers can be passed between players by moving through them.
+      Each tower must be soaked by exactly one player with the [s:looper] effect. Towers ignore players without this effect. Soaking a tower inflicts [s:twice-come-ruin] and resolves [s:looper] for that player; if [s:looper] is allowed to expire on its own, the player will be inflicted with [s:memory-loss] and likely [t:wall] themselves.
+      The [a:blaster] tethers release a massive blast roughly the size of the boss's hitbox around the tethered players. The tethered players, as well as anyone else hit by the explosion, are inflicted with [s:hp-penalty] and [s:twice-come-ruin].
+      This mechanic then repeats three more times. Note the following:
+      * Tethers don't disappear after [a:blaster] resolves; they remain on whichever players just received their blasts.
+      * The next set of towers spawns in in a translucent state even before the current set has resolved.
+      * There are, in total, 8 possible locations for towers to spawn (2 per cardinal, slightly offset from that cardinal to either side).
+      * A tower cannot spawn in a location it has already spawned before. In some cases this allows you to predict where the next set of towers is going to spawn even before they appear.
+      * On any given turn, both towers cannot spawn on the same cardinal.
+    resolve: |
+      As each [s:twice-come-ruin] stack lasts for exactly 1 full turn of the mechanic, there is only one order to resolve the mechanic in:
+      Turn 1: [s:first-in-line] soaks towers, [s:third-in-line] takes tethers and brings them to an empty cardinal.
+      Turn 2: [s:second-in-line] soaks towers, [s:fourth-in-line] takes tethers and brings them to an empty cardinal.
+      Turn 3: [s:third-in-line] soaks towers, [s:first-in-line] takes tethers and brings them to an empty cardinal.
+      Turn 4: [s:fourth-in-line] soaks towers, [s:second-in-line] takes tethers and brings them to an empty cardinal.
+      In other words: after resolving your tower or tether, you do nothing for a turn, then the next turn your role is whichever role you haven't had yet.
+      Since there are always two players assigned to each mechanic, it is *strongly recommended* to use a priority system to determine who takes which tower/tether (and, in the case of tethers, where to bring that tether as well). If you're using Party Finder, check with your Data Center's Ultimate Discord to learn what priority system your Data Center uses. For example, LPDU (Light) uses M1/M2/MT/OT/R1/R2/H1/H2 where, if you are to the left of your partner in that list, you take the clockwise tower/tether starting from north, and if you are to the right of your partner in that list, you take the counter-clockwise tower/tether starting from north. As a result, M1 always goes clockwise no matter what, and H2 always goes counter-clockwise no matter what.
+      Here are some additional tips to help you resolve this mechanic:
+      * If you forget which turn it is or what your job on this turn is, check your debuffs. If your [s:looper] debuff is about to expire, it's your turn to take a tower. If your "x in line" debuff and [s:looper] debuffs are gone and you have a [s:twice-come-ruin] stack that is about to expire or has already expired, it's your turn to take a tether.
+      * It is recommended to manually sort your party list so that the players you need to look at to determine your priority are at the very top. For example, using the LPDU priority described above, R1 would move the R2, H1, and H2 players to the top of their party list. If any of them have the same number, the R1 player would move clockwise; otherwise they would move counter-clockwise.
+      * Taking your tether max melee in your designated empty cardinal is far enough to avoid hitting players on the tower cardinals, allowing you to keep full uptime on the boss.
+      * After your tether is resolved, don't immediately beeline for the nearest tower cardinal. Instead, go slightly inside the hitbox so that any non-tether players can make their way past you, then wait until the next tether player has taken their tether from you before moving into a safe spot.
+      * Never move directly through the center of the boss's hitbox, as you will likely steal someone else's tether and cause a wipe.
+      * Since towers completely ignore players without [s:looper], after you resolve your tower, you can then stand in any tower you wish while waiting for your next responsibility.
+    children:
+      - at: 14010
+        id: blaster-cast
+        count: 2
+        link: and
+      - at: 14050
+        id: storage-violation
+        count: 2
+      - at: 23178
+        id: blaster
+        count: 2
+        link: and
+      - at: 23223
+        id: storage-violation
+        count: 2
+      - at: 32197
+        id: blaster
+        count: 2
+        link: and
+      - at: 32247
+        id: storage-violation
+        count: 2
+      - at: 41177
+        id: blaster
+        count: 2
+        link: and
+      - at: 41221
+        id: storage-violation
+        count: 2
+  storage-violation:
+    id: 31492
+    damage: 35847
+    mechanic: towers.single
+    description: |
+      Deals medium damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
+      Does not apply to players who don't have [s:looper].
+      If a tower is left unsoaked it explodes, dealing massive damage and inflicting all players with [s:twice-come-ruin].
+  blaster-cast:
+    id: 31497
+    cast: 7600
+    damage: 35847
+    type: magic
+    mechanic: spread.tethers
+    shape: defamation
+    description: "[a:blaster:d]"
+  blaster:
+    id: 31497
+    damage: 35847
+    type: magic
+    mechanic: spread.tethers
+    shape: defamation
+    description: |
+      Deals medium damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
+      Be aware that [s:hp-penalty] reduces HP to triple digits only *after* the damage is dealt; if the players' HP reaches 0 from the initial hit, their HP won't be reduced to triple digits; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
+  pantokrator:
+    id: 31499
+    description: Placeholder description for Pantokrator
+  flame-thrower:
+    id: 31501
+    description: Placeholder description for Flame Thrower
+    children:
+      - at: 2006
+        id: flame-thrower-1
+      - at: 4011
+        id: flame-thrower-1
+  flame-thrower-1:
+    id: 32368
+    description: Placeholder description for Flame Thrower
+  condensed-wave-cannon-kyrios:
+    id: 31503
+    damage: 90244
+    description: Placeholder description for Condensed Wave Cannon Kyrios
+  guided-missile-kyrios:
+    id: 31502
+    damage: 58926
+    description: Placeholder description for Guided Missile Kyrios
+  ballistic-impact:
+    id: 31500
+    description: Placeholder description for Ballistic Impact
+  wave-cannon-kyrios:
+    id: 31505
+    damage: 36713
+    description: Placeholder description for Wave Cannon Kyrios
+  diffuse-wave-cannon-kyrios:
+    id: 31504
+    description: Placeholder description for Diffuse Wave Cannon Kyrios
+    children:
+      - at: 0
+        id: diffuse-wave-cannon-kyrios-hit
+      - at: 2047
+        id: diffuse-wave-cannon-kyrios-hit
+      - at: 4145
+        id: diffuse-wave-cannon-kyrios-hit
+      - at: 6195
+        id: diffuse-wave-cannon-kyrios-hit
+      - at: 8289
+        id: diffuse-wave-cannon-kyrios-hit
+  diffuse-wave-cannon-kyrios-hit:
+    id: 31504
+    name: Diffuse Wave Cannon Kyrios (Hit)
+    description: Placeholder description for Diffuse Wave Cannon Kyrios (Hit)
+  atomic-ray:
+    id: 31480
+    description: Omega enrages, wiping the party.
+    mechanic: enrage
+  firewall:
+    id: 31553
+    description: Placeholder description for Firewall
+  firewall-1:
+    id: 31552
+    description: Placeholder description for Firewall
+  solar-ray:
+    id: 32362
+    damage: 196246
+    description: Placeholder description for Solar Ray
+  solar-ray-1:
+    id: 32363
+    damage: 188131
+    description: Placeholder description for Solar Ray
+  party-synergy:
+    id: 31551
+    description: Placeholder description for Party Synergy
+  party-synergy-1:
+    id: 31550
+    description: Placeholder description for Party Synergy
+  subject-simulation-m:
+    id: 31516
+    description: Placeholder description for Subject Simulation M
+  subject-simulation-f:
+    id: 31515
+    description: Placeholder description for Subject Simulation F
+  efficient-bladework:
+    id: 31526
+    description: Placeholder description for Efficient Bladework
+  superliminal-steel:
+    id: 31532
+    description: Placeholder description for Superliminal Steel
+  superliminal-steel-1:
+    id: 31531
+    description: Placeholder description for Superliminal Steel
+  optimized-fire-iii:
+    id: 31535
+    damage: 32077
+    description: Placeholder description for Optimized Fire III
+  optical-laser:
+    id: 31521
+    description: Placeholder description for Optical Laser
+  discharger:
+    id: 31534
+    description: Placeholder description for Discharger
+  spotlight:
+    id: 31536
+    damage: 58812
+    description: Placeholder description for Spotlight
+  synthetic-shield:
+    id: 32369
+    description: Placeholder description for Synthetic Shield
+  limitless-synergy:
+    id: 31544
+    description: Placeholder description for Limitless Synergy
+  limitless-synergy-1:
+    id: 31545
+    description: Placeholder description for Limitless Synergy
+  optimized-passage-of-arms:
+    id: 31556
+    description: Placeholder description for Optimized Passage of Arms
+  optimized-bladedance:
+    id: 31540
+    description: Placeholder description for Optimized Bladedance
+  optimized-sagittarius-arrow:
+    id: 31539
+    description: Placeholder description for Optimized Sagittarius Arrow
+  optimized-bladedance-1:
+    id: 32629
+    damage: 220381
+    description: Placeholder description for Optimized Bladedance
+  optimized-bladedance-2:
+    id: 31542
+    description: Placeholder description for Optimized Bladedance
+  beyond-defense:
+    id: 31527
+    damage: 19463
+    type: physical
+    description: Placeholder description for Beyond Defense
+  optimized-meteor:
+    id: 31538
+    damage: 115301
+    description: Placeholder description for Optimized Meteor
+  pile-pitch:
+    id: 31529
+    damage: 50189
+    description: Placeholder description for Pile Pitch
+  cosmo-memory:
+    id: 31522
+    damage: 86602
+    type: magic
+    description: Placeholder description for Cosmo Memory
+  laser-shower:
+    id: 31557
+    damage: 9999999
+    mechanic: enrage
+    description: Omega-F finishes her enrage cast and wipes the party.
+  p3-transition:
+    name: Transition
+    description: Empty
+  wave-repeater:
+    id: 31567
+    description: Placeholder description for Wave Repeater
+    children:
+      - at: 2098
+        id: wave-repeater-hit
+      - at: 4153
+        id: wave-repeater-hit
+      - at: 6211
+        id: wave-repeater-hit
+      - at: 8136
+        id: wave-repeater-hit
+      - at: 10235
+        id: wave-repeater-hit
+  wave-repeater-hit:
+    id: 31568
+    name: Wave Repeater (Hit)
+    description: Placeholder description for Wave Repeater
+  colossal-blow:
+    id: 31566
+    description: Placeholder description for Colossal Blow
+  sniper-cannon:
+    id: 31571
+    damage: 80511
+    description: Placeholder description for Sniper Cannon
+  high-powered-sniper-cannon:
+    id: 31572
+    damage: 72688
+    description: Placeholder description for High-powered Sniper Cannon
+  hello,-world:
+    id: 31573
+    damage: 80879
+    description: Placeholder description for Hello, World
+  latent-defect:
+    id: 31599
+    description: Placeholder description for Latent Defect
+  critical-overflow-bug:
+    id: 31575
+    damage: 49290
+    description: Placeholder description for Critical Overflow Bug
+  critical-synchronization-bug:
+    id: 31574
+    damage: 40727
+    description: Placeholder description for Critical Synchronization Bug
+  latent-performance-defect:
+    id: 31584
+    description: Placeholder description for Latent Performance Defect
+  cascading-latent-defect:
+    id: 31583
+    description: Placeholder description for Cascading Latent Defect
+  patch:
+    id: 31587
+    damage: 32877
+    description: Placeholder description for Patch
+  critical-underflow-bug:
+    id: 31578
+    description: Placeholder description for Critical Underflow Bug
+  critical-performance-bug:
+    id: 31579
+    description: Placeholder description for Critical Performance Bug
+  critical-error:
+    id: 31588
+    damage: 94464
+    description: Placeholder description for Critical Error
+  oversampled-wave-cannon:
+    id: 31596
+    damage: 50785
+    type: magic
+    description: Placeholder description for Oversampled Wave Cannon
+  ion-efflux:
+    id: 31560
+    damage: 9999999
+    mechanic: enrage
+    description: The boss enrages and wipes the party.
+  wave-cannon:
+    id: 31617
+    description: Placeholder description for Wave Cannon
+    children:
+      - at: 624
+        id: wave-cannon-spread
+      - at: 5358
+        id: wave-cannon-lines
+        link: and
+      - at: 5582
+        id: wave-cannon-stack
+  wave-cannon-spread:
+    id: 32534
+    name: Wave Cannon (Spread)
+    damage: 38988
+    type: magic
+    description: Placeholder description for Wave Cannon
+  wave-cannon-lines:
+    id: 31616
+    name: Wave Cannon (Lines)
+    description: Placeholder description for Wave Cannon
+  wave-cannon-stack:
+    id: 31615
+    name: Wave Cannon (Stack)
+    damage: 60363
+    description: Placeholder description for Wave Cannon
+  blue-screen:
+    id: 31611
+    damage: 80243
+    mechanic: enrage.threshold
+    type: magic
+    description: Placeholder description for Blue Screen
+  double-solar-ray:
+    id: 33196
+    description: Placeholder description for Solar Ray
+    children:
+      - at: 0
+        id: solar-ray-hit
+      - at: 3170
+        id: solar-ray-hit
+  solar-ray-hit:
+    id: 31489
+    name: Solar Ray (Hit)
+    description: Placeholder description for Solar Ray
+  run-dynamis-(delta-version):
+    id: 31624
+    damage: 136135
+    description: "Placeholder description for Run: ****mi* (Delta Version)"
+  hyper-pulse:
+    id: 31600
+    description: Placeholder description for Hyper Pulse
+    children:
+      - at: 623
+        id: hyper-pulse-1
+      - at: 1206
+        id: hyper-pulse-1
+      - at: 1786
+        id: hyper-pulse-1
+      - at: 2366
+        id: hyper-pulse-1
+  hyper-pulse-1:
+    id: 31601
+    description: Placeholder description for Hyper Pulse
+  hello,-near-world:
+    id: 31625
+    damage: 49533
+    description: Placeholder description for Hello, Near World
+  hello,-distant-world:
+    id: 33040
+    damage: 51511
+    description: Placeholder description for Hello, Distant World
+  hello,-near-world-1:
+    id: 31626
+    damage: 50228
+    description: Placeholder description for Hello, Near World
+  hello,-distant-world-1:
+    id: 33041
+    damage: 49085
+    description: Placeholder description for Hello, Distant World
+  run-dynamis-(sigma-version):
+    id: 32788
+    damage: 139915
+    description: "Placeholder description for Run: ****mi* (Sigma Version)"
+  subject-simulation-f-1:
+    id: 32559
+    description: Placeholder description for Subject Simulation F
+  hyper-pulse-2:
+    id: 31602
+    damage: 68556
+    description: Placeholder description for Hyper Pulse
+  wave-cannon-8:
+    id: 31604
+    damage: 70865
+    description: Placeholder description for Wave Cannon
+  storage-violation-1:
+    id: 31493
+    damage: 34144
+    description: Placeholder description for Storage Violation
+  superliminal-steel-2:
+    id: 31530
+    description: Placeholder description for Superliminal Steel
+  solar-ray-4:
+    id: 33197
+    damage: 291471
+    description: Placeholder description for Solar Ray
+    children:
+      - at: 3210
+        id: solar-ray-5
+  solar-ray-5:
+    id: 31490
+    damage: 298417
+    description: Placeholder description for Solar Ray
+  run-dynamis-(omega-version):
+    id: 32789
+    damage: 139666
+    description: "Placeholder description for Run: ****mi* (Omega Version)"
+  diffuse-wave-cannon:
+    id: 31609
+    description: Placeholder description for Diffuse Wave Cannon
+  blaster-4:
+    id: 32373
+    damage: 49781
+    description: Placeholder description for Blaster
+  blind-faith:
+    id: 31623
+    damage: 69891
+    mechanic: enrage.threshold
+    type: magic
+    description: Placeholder description for Blind Faith
+  cosmo-memory-2:
+    id: 31649
+    damage: 404130
+    description: Placeholder description for Cosmo Memory
+  flash-gale:
+    id: 32223
+    damage: 39838
+    mechanic: auto.far
+    description: Name of [boss]'s auto-attacks. Hits both the main target and the farthest player from [boss].
+  inhale:
+    id: 32337
+    description: Placeholder description for Inhale
+  cosmo-arrow:
+    id: 31650
+    description: Placeholder description for Cosmo Arrow
+    children:
+      - at: 2001
+        id: cosmo-arrow-hit
+      - at: 4093
+        id: cosmo-arrow-hit
+      - at: 6096
+        id: cosmo-arrow-hit
+      - at: 8096
+        id: cosmo-arrow-hit
+      - at: 10098
+        id: cosmo-arrow-hit
+      - at: 12103
+        id: cosmo-arrow-hit
+  cosmo-arrow-hit:
+    id: 31651
+    description: Placeholder description for Cosmo Arrow
+  cosmo-dive:
+    id: 31654
+    description: Placeholder description for Cosmo Dive
+    children:
+      - at: 2447
+        id: cosmo-dive-1
+      - at: 2447
+        id: cosmo-dive-2
+  cosmo-dive-1:
+    id: 31656
+    damage: 100100
+    description: Placeholder description for Cosmo Dive
+  cosmo-dive-2:
+    id: 31655
+    damage: 272617
+    description: Placeholder description for Cosmo Dive
+  unlimited-wave-cannon:
+    id: 31660
+    description: Placeholder description for Unlimited Wave Cannon
+  wave-cannon-9:
+    id: 31661
+    description: Placeholder description for Wave Cannon
+    children:
+      - at: 1021
+        id: wave-cannon-10
+      - at: 1110
+        id: wave-cannon-11
+      - at: 2097
+        id: wave-cannon-11
+      - at: 3028
+        id: wave-cannon-10
+      - at: 3117
+        id: wave-cannon-11
+      - at: 4100
+        id: wave-cannon-11
+      - at: 5030
+        id: wave-cannon-10
+      - at: 5119
+        id: wave-cannon-11
+      - at: 6103
+        id: wave-cannon-11
+      - at: 7033
+        id: wave-cannon-10
+      - at: 7122
+        id: wave-cannon-11
+      - at: 8107
+        id: wave-cannon-11
+      - at: 9040
+        id: wave-cannon-10
+      - at: 9130
+        id: wave-cannon-11
+      - at: 11044
+        id: wave-cannon-10
+      - at: 14209
+        id: wave-cannon-12
+      - at: 16217
+        id: wave-cannon-12
+      - at: 22425
+        id: wave-cannon-13
+      - at: 22330
+        id: wave-cannon-14
+  wave-cannon-10:
+    id: 31663
+    description: Placeholder description for Wave Cannon
+  wave-cannon-11:
+    id: 31662
+    description: Placeholder description for Wave Cannon
+  wave-cannon-12:
+    id: 31659
+    damage: 88521
+    description: Placeholder description for Wave Cannon
+  wave-cannon-13:
+    id: 31657
+    description: Placeholder description for Wave Cannon
+  wave-cannon-14:
+    id: 31658
+    damage: 369710
+    description: Placeholder description for Wave Cannon
+  cosmo-meteor:
+    id: 31664
+    description: Placeholder description for Cosmo Meteor
+    children:
+      - at: 4007
+        id: cosmo-meteor-1
+      - at: 5211
+        id: cosmo-meteor-2
+      - at: 6235
+        id: cosmo-meteor-2
+      - at: 11226
+        id: cosmo-meteor-2
+      - at: 12252
+        id: cosmo-meteor-2
+      - at: 23256
+        id: cosmo-meteor-3
+      - at: 23256
+        id: cosmo-meteor-4
+      - at: 24279
+        id: cosmo-meteor-5
+  cosmo-meteor-1:
+    id: 31666
+    description: Placeholder description for Cosmo Meteor
+  cosmo-meteor-2:
+    id: 32699
+    damage: 110884
+    description: Placeholder description for Cosmo Meteor
+  cosmo-meteor-3:
+    id: 31667
+    damage: 55069
+    description: Placeholder description for Cosmo Meteor
+  cosmo-meteor-4:
+    id: 31668
+    damage: 70288
+    description: Placeholder description for Cosmo Meteor
+  cosmo-meteor-5:
+    id: 31665
+    description: Placeholder description for Cosmo Meteor
+  magic-number:
+    id: 31670
+    damage: 310607
+    description: Placeholder description for Magic Number
+  run-dynamis:
+    id: 31648
+    mechanic: enrage
+    description: "Placeholder description for Run: ****mi*"
+timeline:
+  - at: 0
+    id: <phase>
+    name: "Phase 1: Beetle"
+    hp: 8557964
+  - at: 14911
+    id: program-loop
+  - at: 69269
+    id: pantokrator
+  - at: 75376
+    id: flame-thrower
+  - at: 81389
+    id: condensed-wave-cannon-kyrios
+  - at: 81389
+    id: guided-missile-kyrios
+  - at: 81389
+    id: condensed-wave-cannon-kyrios
+  - at: 81389
+    id: flame-thrower-1
+  - at: 81923
+    id: ballistic-impact
+  - at: 83393
+    id: flame-thrower-1
+  - at: 83929
+    id: ballistic-impact
+  - at: 85402
+    id: flame-thrower-1
+  - at: 85935
+    id: ballistic-impact
+  - at: 87359
+    id: condensed-wave-cannon-kyrios
+  - at: 87359
+    id: guided-missile-kyrios
+  - at: 87359
+    id: condensed-wave-cannon-kyrios
+  - at: 87359
+    id: guided-missile-kyrios
+  - at: 87402
+    id: flame-thrower-1
+  - at: 87937
+    id: ballistic-impact
+  - at: 89409
+    id: flame-thrower-1
+  - at: 89945
+    id: ballistic-impact
+  - at: 91420
+    id: flame-thrower-1
+  - at: 91954
+    id: ballistic-impact
+  - at: 93383
+    id: guided-missile-kyrios
+  - at: 93383
+    id: condensed-wave-cannon-kyrios
+  - at: 93383
+    id: guided-missile-kyrios
+  - at: 93427
+    id: flame-thrower-1
+  - at: 93961
+    id: ballistic-impact
+  - at: 95383
+    id: flame-thrower-1
+  - at: 95965
+    id: ballistic-impact
+  - at: 97390
+    id: flame-thrower-1
+  - at: 97970
+    id: ballistic-impact
+  - at: 99395
+    id: guided-missile-kyrios
+  - at: 99395
+    id: condensed-wave-cannon-kyrios
+  - at: 99395
+    id: guided-missile-kyrios
+  - at: 99395
+    id: condensed-wave-cannon-kyrios
+  - at: 99395
+    id: flame-thrower-1
+  - at: 99928
+    id: ballistic-impact
+  - at: 101395
+    id: flame-thrower-1
+  - at: 108044
+    id: wave-cannon-kyrios
+  - at: 108044
+    id: diffuse-wave-cannon-kyrios
+  - at: 117089
+    id: wave-cannon-kyrios
+  - at: 130963
+    id: atomic-ray
+  - at: 130963
+    id: <phase>
+    name: "Phase 2: M and F"
+    hp: 8629240
+  - at: 135061
+    id: <targetable>
+    push: true
+  - at: 138537
+    id: firewall
+  - at: 146673
+    id: solar-ray
+  - at: 163113
+    id: party-synergy
+  - at: 172723
+    id: subject-simulation-m
+  - at: 172768
+    id: subject-simulation-f
+  - at: 173530
+    id: efficient-bladework
+  - at: 173530
+    id: superliminal-steel
+  - at: 180009
+    id: optimized-fire-iii
+  - at: 180321
+    id: optical-laser
+  - at: 187217
+    id: discharger
+  - at: 191467
+    id: spotlight
+  - at: 191556
+    id: efficient-bladework
+  - at: 204788
+    id: synthetic-shield
+  - at: 215027
+    id: limitless-synergy
+  - at: 220064
+    id: optimized-passage-of-arms
+  - at: 221312
+    id: synthetic-shield
+  - at: 228269
+    id: optimized-bladedance
+  - at: 228404
+    id: optimized-sagittarius-arrow
+  - at: 228538
+    id: optimized-bladedance-1
+  - at: 239598
+    id: beyond-defense
+  - at: 242454
+    id: optimized-meteor
+  - at: 242768
+    id: pile-pitch
+  - at: 254511
+    id: cosmo-memory
+  - at: 282195
+    id: laser-shower
+  - at: 282195
+    id: <phase>
+    name: "Phase 3: Final Omega"
+    hp: 11125976
+  - at: 292328
+    id: p3-transition
+    push: true
+  - at: 297375
+    id: wave-repeater
+  - at: 309440
+    id: colossal-blow
+  - at: 311455
+    id: sniper-cannon
+  - at: 311455
+    id: high-powered-sniper-cannon
+  - at: 311455
+    id: sniper-cannon
+  - at: 311455
+    id: high-powered-sniper-cannon
+  - at: 311990
+    id: colossal-blow
+  - at: 315693
+    id: <targetable>
+  - at: 324657
+    id: hello,-world
+  - at: 347791
+    id: latent-defect
+  - at: 348817
+    id: critical-overflow-bug
+  - at: 348817
+    id: critical-synchronization-bug
+  - at: 348817
+    id: critical-overflow-bug
+  - at: 348817
+    id: latent-performance-defect
+  - at: 348817
+    id: cascading-latent-defect
+  - at: 350781
+    id: patch
+  - at: 354781
+    id: critical-underflow-bug
+  - at: 354781
+    id: critical-performance-bug
+  - at: 354781
+    id: critical-underflow-bug
+  - at: 368849
+    id: latent-defect
+  - at: 369834
+    id: latent-performance-defect
+  - at: 369834
+    id: cascading-latent-defect
+  - at: 369879
+    id: critical-overflow-bug
+  - at: 369879
+    id: critical-synchronization-bug
+  - at: 371261
+    id: patch
+  - at: 377599
+    id: critical-performance-bug
+  - at: 377822
+    id: critical-underflow-bug
+  - at: 377999
+    id: critical-performance-bug
+  - at: 389920
+    id: latent-defect
+  - at: 390901
+    id: latent-performance-defect
+  - at: 390901
+    id: cascading-latent-defect
+  - at: 390945
+    id: critical-synchronization-bug
+  - at: 390945
+    id: critical-overflow-bug
+  - at: 390945
+    id: critical-synchronization-bug
+  - at: 392598
+    id: patch
+  - at: 398180
+    id: critical-performance-bug
+  - at: 398670
+    id: critical-underflow-bug
+  - at: 410894
+    id: patch
+  - at: 410982
+    id: latent-defect
+  - at: 412009
+    id: critical-synchronization-bug
+  - at: 412009
+    id: critical-overflow-bug
+  - at: 412009
+    id: latent-performance-defect
+  - at: 412009
+    id: cascading-latent-defect
+  - at: 414870
+    id: patch
+  - at: 419610
+    id: critical-performance-bug
+  - at: 420458
+    id: critical-underflow-bug
+  - at: 433147
+    id: critical-error
+  - at: 454597
+    id: oversampled-wave-cannon
+  - at: 470720
+    id: ion-efflux
+  - at: 470720
+    id: <phase>
+    name: "Phase 4: Blue Screen"
+    hp: 4895429
+    maxhp: 979085
+  - at: 478067
+    id: <targetable>
+    push: true
+  - at: 492229
+    id: wave-cannon
+  - at: 500220
+    id: wave-repeater
+  - at: 502989
+    id: wave-cannon
+  - at: 517655
+    id: wave-repeater
+  - at: 517788
+    id: wave-cannon
+  - at: 533987
+    id: blue-screen
+  - at: 533987
+    id: <phase>
+    name: "Phase 5: Run ****mi*"
+    hp: 13707136
+    maxhp: 2741427
+  - at: 549565
+    id: <targetable>
+  - at: 557569
+    id: double-solar-ray
+  - at: 574102
+    id: run-dynamis-(delta-version)
+  - at: 595394
+    id: patch
+  - at: 597316
+    id: optical-laser
+  - at: 599103
+    id: patch
+  - at: 602711
+    id: beyond-defense
+  - at: 605158
+    id: hyper-pulse
+  - at: 607658
+    id: oversampled-wave-cannon
+  - at: 608105
+    id: hyper-pulse-1
+  - at: 608105
+    id: pile-pitch
+  - at: 608149
+    id: hyper-pulse-1
+  - at: 615599
+    id: patch
+  - at: 621260
+    id: hello,-near-world
+  - at: 621261
+    id: hello,-distant-world
+  - at: 622287
+    id: hello,-near-world-1
+  - at: 622287
+    id: hello,-distant-world-1
+  - at: 623270
+    id: hello,-near-world-1
+  - at: 623270
+    id: hello,-distant-world-1
+  - at: 628392
+    id: patch
+  - at: 639583
+    id: double-solar-ray
+  - at: 656087
+    id: run-dynamis-(sigma-version)
+  - at: 673478
+    id: subject-simulation-f-1
+  - at: 678269
+    id: hyper-pulse-2
+  - at: 678447
+    id: wave-cannon-8
+  - at: 687035
+    id: discharger
+  - at: 690969
+    id: storage-violation
+  - at: 708451
+    id: superliminal-steel-2
+  - at: 715242
+    id: hello,-near-world
+  - at: 715242
+    id: hello,-distant-world
+  - at: 715376
+    id: hyper-pulse-2
+  - at: 716268
+    id: hello,-near-world-1
+  - at: 716268
+    id: hello,-distant-world-1
+  - at: 717252
+    id: hello,-near-world-1
+  - at: 717252
+    id: hello,-distant-world-1
+  - at: 728955
+    id: double-solar-ray
+  - at: 745645
+    id: run-dynamis-(omega-version)
+  - at: 764044
+    id: diffuse-wave-cannon
+  - at: 767964
+    id: superliminal-steel
+  - at: 768098
+    id: diffuse-wave-cannon
+  - at: 780788
+    id: hello,-distant-world
+  - at: 780788
+    id: hello,-near-world
+  - at: 781234
+    id: oversampled-wave-cannon
+  - at: 781812
+    id: hello,-distant-world-1
+  - at: 781813
+    id: hello,-near-world-1
+  - at: 782793
+    id: hello,-distant-world-1
+  - at: 782793
+    id: hello,-near-world-1
+  - at: 797128
+    id: blaster-4
+  - at: 798780
+    id: hello,-distant-world
+  - at: 798780
+    id: hello,-near-world
+  - at: 799810
+    id: hello,-distant-world-1
+  - at: 799810
+    id: hello,-near-world-1
+  - at: 800784
+    id: hello,-distant-world-1
+  - at: 800784
+    id: hello,-near-world-1
+  - at: 812225
+    id: double-solar-ray
+  - at: 835472
+    id: blind-faith
+  - at: 835472
+    id: <phase>
+    name: "Phase 6: Alpha-Omega"
+    hp: 20530948
+  - at: 890725
+    id: <targetable>
+  - at: 903280
+    id: cosmo-memory-2
+  - at: 908216
+    id: flash-gale
+  - at: 917125
+    id: inhale
+  - at: 917619
+    id: cosmo-arrow
+  - at: 919131
+    id: inhale
+  - at: 919625
+    id: cosmo-arrow
+  - at: 932346
+    id: cosmo-dive
+  - at: 942286
+    id: flash-gale
+  - at: 950706
+    id: unlimited-wave-cannon
+  - at: 957708
+    id: wave-cannon-9
+  - at: 984926
+    id: flash-gale
+  - at: 993831
+    id: inhale
+  - at: 994327
+    id: cosmo-arrow
+  - at: 995835
+    id: inhale
+  - at: 996329
+    id: cosmo-arrow
+  - at: 1018587
+    id: flash-gale
+  - at: 1027013
+    id: unlimited-wave-cannon
+  - at: 1034007
+    id: wave-cannon-9
+  - at: 1045769
+    id: cosmo-dive
+  - at: 1055792
+    id: flash-gale
+  - at: 1067410
+    id: cosmo-meteor
+  - at: 1102819
+    id: magic-number
+  - at: 1118978
+    id: magic-number
+  - at: 1144133
+    id: run-dynamis

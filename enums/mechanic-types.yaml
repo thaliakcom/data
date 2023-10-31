@@ -97,6 +97,11 @@ stack.intercept:
     In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
     Named after Imdugud's eponymous attack, [a:2134].
   is-raid-damage: true
+stack.tower:
+  name: stack tower
+  description: |
+    Similar to an ordinary tower mechanic, markers or towers appear in certain locations in the arena that require soaking (i.e. if no one is in the tower or marker, it's usually a party wipe).
+    Unlike regular tower mechanics, however, this type of mechanic does not do fixed but shareable damage, meaning that as many party members as possible should be in each stack to reduce the damage taken.
 aoe:
   name: AoE
   description: Leaves only a specific section of the arena safe.
@@ -129,6 +134,9 @@ spread.close:
   name: spread (close)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+spread.tethers:
+  name: tether spread
+  description: Tethers to some players. The tether may be able to be passed around. When the mechanic resolves, hits all tethered players with an unavoidable [t:AoE]. Tethered players should make sure they're not near any other player.
 adds:
   name: adds
   description: An "adds phase," in which one or more non-boss enemies appear and become targetable. They must be defeated in time or they will usually enrage, wiping the party.
@@ -185,6 +193,9 @@ mech.tether.far:
 mech.tether.close:
   name: close tethers
   description: Players are tethered to something else (usually another player). If they ever get farther from each other than a certain distance threshold, they will take heavy debuffs and/or damage.
+mech.tether.distance:
+  name: distance tethers
+  description: Players are tethered to something else and must be at least a certain distance away from the source of their tether. If they are far enough away, their tether appears as a yellow line, otherwise as red-purple arrows pointing out from the center of the tether.
 mech.knockback:
   name: knockback
   description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:7559].
@@ -212,7 +223,7 @@ mech.arena:
   description: Modifies the arena or floor in some way. Is often but not always accompanied by a raidwide.
 towers.single:
   name: towers
-  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire  party instantly.
   is-raid-damage: true
 towers.double:
   name: 2P towers
@@ -226,6 +237,9 @@ enrage:
   name: enrage
   description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
   is-raid-damage: true
+enrage.threshold:
+  name: enrage (threshold)
+  description: Instantly kills all players and ends the fight, *unless* the enemy or enemies are brought down past a certain HP threshold, in which case this attack does standard raidwide damage.
 enrage.soft:
   name: soft enrage
   description: A "soft enrage" generally involves a sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.

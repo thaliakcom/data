@@ -6,7 +6,7 @@ chariot:
 defamation:
   name: defamation
   description: |
-    A standard circle affecting targets within its radius, same as the [ms:chariot] AoE. Defamation-type AoEs are generally *significantly* larger than ordinary chariots, often encompassing the entire radius of the arena.
+    Circular like [chariots](ms:chariot), but *significantly* larger, often the size of the whole arena.
     Named after the eponymous attack in Alexander: Soul of the Creator (Savage).
 dynamo:
   name: dynamo
