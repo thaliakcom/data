@@ -622,9 +622,11 @@ actions:
     damage: 9999999
     description: "[boss] casts one last Ancient Quaga, wiping the party."
 timeline:
+  - at: 0
+    id: <phase>
+    name: Thordan
   - at: 6895
     id: ascalons-might
-    phase: Thordan
   - at: 16668
     id: meteorain
   - at: 21871
@@ -652,9 +654,11 @@ timeline:
     id: ascalons-might
   - at: 82000
     id: untargetable
+  - at: 82000
+    id: <phase>
+    name: The Knights Twelve
   - at: 93493
     id: knights-1
-    phase: The Knights Twelve
   - at: 109954
     id: knights-2
   - at: 142496
@@ -669,10 +673,12 @@ timeline:
     push: true
   - at: 321026
     id: ultimate-end
+  - at: 321026
+    id: <phase>
+    name: Thordan + His Knights Twelve
   - at: 331703
     id: the-dragons-eye
     description: Applies [s:light-of-ascalon:2], increasing damage dealt.
-    phase: Thordan + His Knights Twelve
   - at: 341876
     id: knights-of-the-round-1
   - at: 370289

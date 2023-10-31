@@ -615,9 +615,11 @@ timeline:
   - at: 24577
     id: ravening
     description: "[boss] absorbs [s:mage-soul], dealing raidwide damage and switching to Mage Form."
+  - at: 24577
+    id: <phase>
+    name: Mage Phase
   - at: 46151
     id: duality
-    phase: Mage Phase
   - at: 59462
     id: dualspell-fire
   - at: 72609
@@ -628,9 +630,11 @@ timeline:
   - at: 113633
     id: ravening
     description: "[boss] absorbs [s:monk-soul], dealing raidwide damage, switching to Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
+  - at: 113633
+    id: <phase>
+    name: Martialist Phase
   - at: 133074
     id: ascendant-fist
-    phase: Martialist Phase
   - at: 147026
     id: rockbreaker-1
   - at: 168025
@@ -642,9 +646,11 @@ timeline:
   - at: 207872
     id: ravening
     description: "[boss] absorbs both [s:mage-soul] and [s:monk-soul], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
+  - at: 207872
+    id: <phase>
+    name: Mage/Martialist Phase
   - at: 221004
     id: levinstrike
-    phase: Mage/Martialist Phase
   - at: 233111
     id: lc1
   - at: 264682
@@ -655,9 +661,11 @@ timeline:
   - at: 288841
     id: ravening
     description: "[boss] absorbs [s:beast-soul], dealing raidwide damage and switching to Beast Form."
+  - at: 288841
+    id: <phase>
+    name: Beast Phase
   - at: 302170
     id: charybdis
-    phase: Beast Phase
   - at: 309296
     id: comet
   - at: 354380
@@ -665,9 +673,11 @@ timeline:
   - at: 373644
     id: ravening
     description: "[boss] absorbs both [s:mage-soul] and [s:monk-soul], dealing raidwide damage, switching to Mage + Martialist Form, and erecting four walls on either the cardinals or intercards of the arena."
+  - at: 373644
+    id: <phase>
+    name: Mage/Martialist Phase
   - at: 393116
     id: duality
-    phase: Mage/Martialist Phase
   - at: 403826
     id: rockbreaker-2
     description: |
@@ -682,9 +692,11 @@ timeline:
   - at: 485576
     id: ravening
     description: "[boss] absorbs [s:mage-soul], dealing raidwide damage and switching to Mage Form."
+  - at: 485576
+    id: <phase>
+    name: Mage Phase
   - at: 499712
     id: dualspell
-    phase: Mage Phase
   - at: 512854
     id: gluttony
   - at: 519979
