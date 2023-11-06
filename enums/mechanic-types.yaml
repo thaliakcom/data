@@ -160,8 +160,11 @@ mech.check:
   name: check
   description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.
 mech.status:
-  name: debuffs
-  description: Inflicts various status effects on players.
+  name: status application
+  description: Inflicts one or more status effects on players.
+mech.statusoff:
+  name: status expiration
+  description: One or more status effects fall off from players.
 mech.protean:
   name: spread or stack
   description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
