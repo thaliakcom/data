@@ -325,7 +325,7 @@ actions:
     damage: 128000
   charybdis:  # Charybdis
     id: 33136
-    description: Summons four tornados on the four cardinals of the arena. Stepping into one applies [s:3706].
+    description: Summons four tornados on the four cardinals of the arena. Stepping into one inflicts [s:3706].
     mechanic: mech
   comet:  # Comet
     id: 33138
@@ -444,14 +444,14 @@ actions:
           First, identify the *1* orb, then find whether the *3* orb is clockwise or counter-clockwise to the *1* orb. This will determine the way you rotate during the mechanic.
           Anyone with a number immediately heads opposite the *1* orb (toward the *5* orb, but not too close to the wall). Anyone without a number stays near the *1* orb. One of those players will randomly receive an [a:icemeld] marker. They will plant at the wall behind the *1* orb while the remaining three non-numbered players will rotate in the direction of the *3* orb. The next player who receives a blue marker will then plant at the wall behind the *3* orb, and so on. After their [a:icemeld] resolves, these players will merge back with the numbered players on the opposite side.
           For players with numbers: for the first iteration, the *6* player waits outside where the tower will spawn, then heads inside the tower while the *2* player plants *in-between* the wall of the *5* orb and the *7* orb, or in other words: plant yourself an *eighth* of a rotation in the direction found at the start of the mechanic. Wait for all mechanics to resolve, then all players rotate in the corresponding direction and repeat until the mechanic is concluded.
-          The benefit of this strategy is that it allows for maximum uptime on abilities like [a:7497] or [a:24387]. As long as you remember which direction to rotate, focusing on just your own duty during the mechanic makes it easily digestible.
+          The benefit of this strategy is that it allows for maximum uptime on abilities like [a:meditate] or [a:soulsow]. As long as you remember which direction to rotate, focusing on just your own duty during the mechanic makes it easily digestible.
       jp:
         name: JP
         description: |
           First, identify the *1* and *3* orbs. The non-numbered players will wait there while the numbered players go opposite, between the *5* and *7* orbs (but closer to the center than the wall). Whoever receives the first [a:icemeld] marker stays between *1* and *3*; the other players all move between *5* and *7*. Whoever receives the second [a:icemeld] waits until the first one has resolved, then swaps places with that player.
           For the numbered players, towers resolve as normal (*6* and *8* just head into whichever towers first appear). The [a:firemeld] players (*2* and *4*) treat this mechanic exactly the same as the [a:icemeld] players, but on the opposite side; so *2* will plant at the edge between the *5* and *7* orbs, then swap with *4* once their [a:firemeld] resolves.
           After the first two turns, the party switches sides: the numbered players will now go to the [a:icemeld] side (which will now have no orbs left) and the [a:icemeld]s will resolve their mechanic where the [a:firemeld]s previously resolved theirs, and vice-versa.
-          The benefit of this strategy is that, aside from finding the initial positions, you do not need to remember the direction of rotation at all. The downside is that there is a far greater amount of movement than in Oppo, which may cause problems for abilities that accrue resources and require you to stand still like [a:7497] or [a:24387].
+          The benefit of this strategy is that, aside from finding the initial positions, you do not need to remember the direction of rotation at all. The downside is that there is a far greater amount of movement than in Oppo, which may cause problems for abilities that accrue resources and require you to stand still like [a:meditate] or [a:soulsow].
   firemeld:  # Firemeld
     id: 33152
     description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."

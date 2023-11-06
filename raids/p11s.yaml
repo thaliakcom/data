@@ -344,7 +344,7 @@ actions:
       Light: [a:dismissal-overruling] ([m:mech.knockback]) > [a:inner-light] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
       Dark: [a:dismissal-overruling] ([m:mech.knockback]) > [a:outer-dark] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, [boss] inflicts a knockback slightly smaller than the radius of the arena.
-    resolve: Either use [a:7548] or [a:7559] or position yourself close to the boss's center to avoid being knocked into the wall, then go in with your partner or out with your light party, depending on the boss's colour.
+    resolve: Either use [a:surecast] or [a:arms-length] or position yourself close to the boss's center to avoid being knocked into the wall, then go in with your partner or out with your light party, depending on the boss's colour.
     children:
     - at: 4991
       id: inner-light

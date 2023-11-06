@@ -68,7 +68,7 @@ status:
     type: impairment
   incapacitating-soul-snare:
     id: 3549
-    description: Player is bound by a **reinforced** web and cannot move or execute actions. This web cannot be broken in any way. Any player afflicted with this debuff is simultaneously afflicted with [s:3547]. As there is no way to break the web and stop the build-up of [s:3547], these players are consigned to certain death.
+    description: Player is bound by a **reinforced** web and cannot move or execute actions. This web cannot be broken in any way. Any player afflicted with this debuff is simultaneously afflicted with [s:binding-soul-snare]. As there is no way to break the web and stop the build-up of [s:binding-soul-snare], these players are consigned to certain death.
     type: impairment
   poison:
     id: 3692
@@ -439,7 +439,7 @@ actions:
       Nine raidwide hits in quick succession. The first two players hit receive tankbuster levels of damage.
       This is the tighest heal-check a second turn has ever had. Each hit deals approximately 120,000 damage to the two closest targets to [boss], and 50,000 damage to everyone else.
       The last hit deals about 35% more damage and also knocks the entire party back. The distance of the knockback exceeds the length of the arena, so it is not possible to survive the knockback without establishing a wall in the back during [a:pandæmoniac-web]. If a wall **was** established, players will be stopped by the wall and are not killed.
-      The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:1195] and [a:1193] is all but mandatory along with whatever mitigation your healers and tanks can offer.
+      The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:feint] and [a:reprisal] is all but mandatory along with whatever mitigation your healers and tanks can offer.
     mechanic: stack.intercept
     compact: full
     children:
@@ -479,7 +479,7 @@ actions:
     id: 33429
     description: |
       Sets of two line [AoEs](t:AoE) that start oppoosite, then rotate around the arena. The center is unsafe.
-      Be aware that [a:pandæmoniac-ray] directly follows this mechanic, so you might want to consider using [s:50] if you end up on the wrong side following the AoEs.
+      Be aware that [a:pandæmoniac-ray] directly follows this mechanic, so you might want to consider using [s:sprint] if you end up on the wrong side following the AoEs.
       The AoEs rotate at a rate of about 3.3/s.
     mechanic: aoe.rotating
     compact: full

@@ -198,19 +198,19 @@ mech.tether.distance:
   description: Players are tethered to something else and must be at least a certain distance away from the source of their tether. If they are far enough away, their tether appears as a yellow line, otherwise as red-purple arrows pointing out from the center of the tether.
 mech.knockback:
   name: knockback
-  description: Knocks back all players from a given location. Can be avoided using [a:7548] or [a:7559].
+  description: Knocks back all players from a given location. Can be avoided using [a:surecast] or [a:arms-length].
   is-raid-damage: true
 mech.knockback.unavoidable:
   name: knockback
-  description: Knocks back all players from a given location. Can *not* be avoided using [a:7548] or [a:7559].
+  description: Knocks back all players from a given location. Can *not* be avoided using [a:surecast] or [a:arms-length].
   is-raid-damage: true
 mech.pull:
   name: draw-in
-  description: Draws in all players to a given location. Can be avoided using [a:7548] or [a:7559].
+  description: Draws in all players to a given location. Can be avoided using [a:surecast] or [a:arms-length].
   is-raid-damage: true
 mech.pull.unavoidable:
   name: draw-in
-  description: Draws in all players to a given location. Can *not* be avoided using [a:7548] or [a:7559].
+  description: Draws in all players to a given location. Can *not* be avoided using [a:surecast] or [a:arms-length].
   is-raid-damage: true
 mech.stillness:
   name: stillness
@@ -235,7 +235,7 @@ towers.triple:
   is-raid-damage: true
 enrage:
   name: enrage
-  description: Instantly kills all players and ends the fight. Ignores [s:418] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
+  description: Instantly kills all players and ends the fight. Ignores [s:transcendent] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
   is-raid-damage: true
 enrage.threshold:
   name: enrage (threshold)

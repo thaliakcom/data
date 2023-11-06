@@ -1,0 +1,116 @@
+actions:
+  # Utility
+  lucid-dreaming: 7562
+  swiftcast: 7561
+  surecast: 7559
+  arms-length: 7548
+  sprint: 3
+  true-north: 7546
+  provoke: 7533
+  shirk: 7537
+  rescue: 7571
+  esuna: 7568
+  wardens-paean: 3561
+
+  # Raid Buffs
+  embolden: 7520
+  mug: 2248
+  battle-voice: 118
+  radiant-finale: 25785
+  brotherhood: 7396
+
+  # Healing/Mitigation
+  reprisal: 7535
+  feint: 7549
+  addle: 7560
+  rampart: 7531
+  tbn: 7393
+  oblation: 25754
+  dark-mind: 3634
+  dark-missionary: 16471
+  shadow-wall: 3636
+  living-dead: 3638
+  holy-sheltron: 25746
+  intervention: 7382
+  divine-veil: 3540
+  passage: 7385
+  bulwark: 22
+  sentinel: 17
+  hallowed-ground: 30
+  cover: 27
+  heart-of-corundum: 25758
+  aurora: 16151
+  superbolide: 16152
+  eukrasian-prognosis: 24292
+  taurochole: 24303
+  kerachole: 24298
+  panhaima: 24311
+  holos: 24310
+  divine-benison: 7432
+  aquaveil: 25861
+  liturgy: 25862
+  temperance: 16538
+  riddle-of-earth: 7394
+  shade-shift: 2241
+  troubadour: 7405
+  magick-barrier: 25857
+
+  # Other
+  ten-chi-jin: 7403
+  meditate: 7497
+  soulsow: 24387
+
+status:
+  # Utility
+  lucid-dreaming: 1204
+  dualcast: 1249
+  swiftcast: 167
+  surecast: 160
+  arms-length: 1209
+  sprint: 50
+  peloton: 1199
+  true-north: 1250
+
+  # Raid Buffs
+  embolden: 1297
+  mug: 638
+  battle-voice: 141
+  radiant-finale: 2964
+  brotherhood: 1185
+  
+  # Healing/Mitigation
+  transcendent: 418
+  reprisal: 1193
+  feint: 1195
+  addle: 1203
+  rampart: 1191
+  tbn: 1178
+  oblation: 2682
+  dark-mind: 746
+  dark-missionary: 1894
+  shadow-wall: 747
+  living-dead: 810
+  holy-sheltron: 2674
+  intervention: 1174
+  divine-veil: 1362
+  passage: 1175
+  bulwark: 77
+  sentinel: 74
+  hallowed-ground: 82
+  superbolide: 1836
+  eukrasian-prognosis: 2609
+  taurochole: 2619
+  kerachole: 2618
+  panhaima: 2613
+  holos: 3003
+  divine-benison: 1218
+  aquaveil: 2708
+  liturgy: 2709
+  temperance: 1872
+  riddle-of-earth: 1179
+  shade-shift: 488
+  troubadour: 1934
+  magick-barrier: 2707
+
+  # Other
+  ten-chi-jin: 1186

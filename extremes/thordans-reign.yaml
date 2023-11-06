@@ -41,7 +41,7 @@ status:
     id: 296
     type: impairment
     duration: 4000
-    description: Causes affected players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:7571] on the affected player.
+    description: Causes affected players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:rescue] on the affected player.
   paralysis:
     id: 17
     type: impairment

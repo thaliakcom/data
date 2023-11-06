@@ -349,7 +349,7 @@ actions:
     count: 2
     description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
     resolve: |
-      Wait for all 4 stacks to be applied, then cleanse them using [a:7568] or [a:3561], or use [a:27].
+      Wait for all 4 stacks to be applied, then cleanse them using [a:esuna] or [a:wardens-paean], or use [a:cover].
       Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being applied.
     children:
       - at: 800
@@ -681,7 +681,7 @@ timeline:
     id: pangenesis
   - at: 279997
     id: palladian-grasp
-    resolve: This tankbuster happens right after [a:factor-in], so the slime player on the tank side may not have enough time to move to the party side. Use [a:7571] on this player if necessary.
+    resolve: This tankbuster happens right after [a:factor-in], so the slime player on the tank side may not have enough time to move to the party side. Use [a:rescue] on this player if necessary.
   - at: 296592
     id: classical-2
   - at: 332977
