@@ -77,6 +77,10 @@ stack.healers:
   name: healer stack
   description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+stack.targeted:
+  name: targeted stack
+  description: A heavy-hitting attack on a targeted player that cannot be survived alone.
+  is-raid-damage: true
 stack.far:
   name: far stack
   description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.

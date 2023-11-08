@@ -71,7 +71,7 @@ status:
     duration: [12000, 18000, 24000, 30000]
     description: When the effect expires, players with this debuff are targeted by [a:guided-missile-kyrios].
   condensed-wave-cannon-kyrios:
-    id: 2509
+    id: 3509
     type: delay
     duration: [12000, 18000, 24000, 30000]
     description: When the effect expires, players with this debuff are targeted by [a:condensed-wave-cannon-kyrios].
@@ -79,6 +79,10 @@ status:
     id: 2941
     type: vuln
     description: Magic damage taken is lethal while this effect is active.
+  stacking-magic-vuln:
+    id: 3516
+    type: vuln
+    description: Each stack increases all magic damage taken by approximately 200%.
   packet-filter-m:
     id: 3499
     type: impairment
@@ -121,22 +125,26 @@ status:
     id: 3527
     type: condition
     duration: 27000
-    description: Player must be hit by [a:critical-overflow-bug] before the effect expires or the party wipes.
+    description: Player must correctly resolve a [s:critical-overflow-bug] before the effect expires or the party wipes.
   latent-synchronization-bug:
     id: 3434
     type: condition
     duration: 69000
-    description: Player must be hit by [a:critical-synchronization-bug] before the effect expires or the party wipes.
+    description: Player must correctly resolve a [s:critical-synchronization-bug] before the effect expires or the party wipes.
   cascading-latent-defect:
     id: 3528
     type: condition
     duration: 10000
-    description: Player must be hit by [a:critical-underflow-bug] before the effect expires or the party wipes.
+    description: |
+      Player must correctly resolve a [s:critical-underflow-bug] before the effect expires or the party wipes.
+      Note that [s:critical-underflow-bug] must expire before this effect expires. It is not enough to simply soak a tower with [s:critical-underflow-bug].
   latent-performance-defect:
     id: 3435
     type: condition
     duration: 10000
-    description: Player must be hit by [a:critical-performance-bug] before the effect expires or the party wipes.
+    description: |
+      Player must correctly resolve a [s:critical-performance-bug] before the effect expires or the party wipes.
+      Note that [s:critical-performance-bug] must expire before this effect expires. It is not enough to simply soak a tower with [s:critical-underflow-bug].
   overflow-code-smell:
     id: 3437
     type: delay
@@ -191,12 +199,12 @@ status:
     id: 3529
     type: condition
     duration: 10000
-    description: Bound to another player with a red-green tether. Moving too close to the other player [snaps the tether](a:patch), inflicting [s:magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration, it will automatically snap itself, which will coincide with magic damage that wipes the party.
+    description: Bound to another player with a red-green tether. Moving too close to the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
   remote-regression:
     id: 3530
     type: condition
     duration: 10000
-    description: Bound to another player with a blue tether. Moving too far away from the other player [snaps the tether](a:patch), inflicting [s:magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration, it will automatically snap itself, which will coincide with magic damage that wipes the party.
+    description: Bound to another player with a blue tether. Moving too far away from the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
   synchronization-debugger:
     id: 3430
     type: resistance
@@ -342,36 +350,149 @@ actions:
       Be aware that [s:hp-penalty] reduces HP to triple digits only *after* the damage is dealt; if the players' HP reaches 0 from the initial hit, their HP won't be reduced to triple digits; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
   pantokrator:
     id: 31499
-    description: Placeholder description for Pantokrator
-  flame-thrower:
-    id: 31501
-    description: Placeholder description for Flame Thrower
+    mechanic: mech
+    compact: full
+    description: |
+      Major mechanic with high movement and healing requirements.
+      Inflicts the following effects on players:
+      * 2 random players with [s:guided-missile] (12s), [s:first-in-line], and [s:condensed-wave-cannon-kyrios] (24s)
+      * 2 random players with [s:guided-missile] (18s), [s:second-in-line], and [s:condensed-wave-cannon-kyrios] (30s)
+      * 2 random players with [s:guided-missile] (24s), [s:third-in-line], and [s:condensed-wave-cannon-kyrios] (12s)
+      * 2 random players with [s:guided-missile] (30s), [s:fourth-in-line], and [s:condensed-wave-cannon-kyrios] (18s)
+      Next, Omega telegraphs two wide [a:flame-thrower] conal AoEs on two random opposite positions. A few seconds later, a telegraphed [a:ballistic-impact] puddle appears underneath each player. [a:flame-thrower] resolves first, then rotates either clockwise or counter-clockwise in 2 second intervals until the mechanic is complete. [a:ballistic-impact] resolves half a second later, and from then on spawns new puddles underneath each player every 2 seconds until the mechanic is complete as well.
+      Additionally, the status effects on players will expire and execute their respective mechanic. [a:guided-missile-kyrios] is a spread [ms:chariot] that knocks any other players hit into the wall. [a:condensed-wave-cannon-kyrios] is a [ms:line] originating from Omega that must be shared with 3 other players to avoid dealing lethal damage.
+    resolve: |
+      Like [a:program-loop], the debuff assignment is completely random and thus requires a priority system to handle. The flamethrower cones leave two safe spots for groups to assemble; each group must have only unique "x in line" debuffs amongst its members. As a caveat, both groups will likely be outside of the other group's healing range, so it's essential that each group features one healer. As such, a priority system like the following (LPDU) presents itself: MT/M1/R1/H1 for group 1, and OT/M2/R2/H2 for group 2 where, if duplicate "x in line" debuffs exist within the group, the leftmost member in this priority list swaps to the other group.
+      As for where to place each group, it is most common to start group 1 north and group 2 south (or west/east) and rotate each group clockwise if the flamethrower cones happen to point directly north and south (or east/west).
+      Like [a:program-loop], this mechanic has four turns. During each turn, the respective [s:guided-missile] player must separate from the group to take their [a:guided-missile-kyrios] alone, while the rest of the group must remain stacked to soak [a:condensed-wave-cannon-kyrios].
+      There are two main ways of making this happen, see the strategies below.
+    tips:
+      - Avoid gapclosers or dashes. They make movement unpredictable and may cause you to drop a puddle in an inopportune location.
+      - Due to how fast the mechanic moves, healers don't have the luxury of long-casting AoE heals here. However, there is no other healing-intense mechanic until Phase 3, so both the party and the healers should aim to use every single mitigation and healing cooldown they have during this mechanic.
+      - When moving out for your [a:guided-missile-kyrios], consider using 
+    strategies:
+      chased:
+        name: Chased
+        common: true
+        description: The group stays next to the [a:flame-thrower] that *chases* the group, while the [a:guided-missile-kyrios] baiter moves *deep inside* Omega's hitbox to get to the cone that moves *away* from the group. Moving inside the hitbox reduces the movement requirement and ensures that any puddles this player drops are not in the way of the rest of the group. After [a:guided-missile-kyrios] the baiter waits until their next puddle drop, then quickly moves back to the group.
+      chasing:
+        name: Chasing
+        description: The group stays next to the [a:flame-thrower] that moves *away* from the group, while the [a:guided-missile-kyrios] baiter moves backwards slightly or simply waits in place until they've baited their [a:guided-missile-kyrios]. After baiting their missile, they move back up to the group through Omega's hitbox to reduce the movement requirement and avoid stepping into any puddles the group leaves behind.
     children:
-      - at: 2006
-        id: flame-thrower-1
-      - at: 4011
-        id: flame-thrower-1
-  flame-thrower-1:
+    - at: 6107
+      id: flame-thrower-cast
+    - at: 12120
+      id: condensed-wave-cannon-kyrios
+      count: 2
+      link: and
+    - at: 12120
+      id: guided-missile-kyrios
+      count: 2
+    - at: 12120
+      id: flame-thrower
+    - at: 12654
+      id: ballistic-impact
+    - at: 14124
+      id: flame-thrower
+    - at: 14660
+      id: ballistic-impact
+    - at: 16133
+      id: flame-thrower
+    - at: 16666
+      id: ballistic-impact
+    - at: 18090
+      id: condensed-wave-cannon-kyrios
+      count: 2
+      link: and
+    - at: 18090
+      id: guided-missile-kyrios
+      count: 2
+    - at: 18133
+      id: flame-thrower
+    - at: 18668
+      id: ballistic-impact
+    - at: 20140
+      id: flame-thrower
+    - at: 20676
+      id: ballistic-impact
+    - at: 22151
+      id: flame-thrower
+    - at: 22685
+      id: ballistic-impact
+    - at: 24114
+      id: condensed-wave-cannon-kyrios
+      count: 2
+      link: and
+    - at: 24114
+      id: guided-missile-kyrios
+      count: 2
+    - at: 24158
+      id: flame-thrower
+    - at: 24692
+      id: ballistic-impact
+    - at: 26114
+      id: flame-thrower
+    - at: 26696
+      id: ballistic-impact
+    - at: 28121
+      id: flame-thrower
+    - at: 28701
+      id: ballistic-impact
+    - at: 30126
+      id: condensed-wave-cannon-kyrios
+      count: 2
+      link: and
+    - at: 30126
+      id: guided-missile-kyrios
+      count: 2
+    - at: 30126
+      id: flame-thrower
+    - at: 30659
+      id: ballistic-impact
+    - at: 32126
+      id: flame-thrower
+  flame-thrower-cast:
+    id: 31501
+    mechanic: aoe.rotating
+    shape: cone
+    description: "[a:flame-thrower:d]"
+  flame-thrower:
     id: 32368
-    description: Placeholder description for Flame Thrower
+    mechanic: aoe.rotating
+    shape: cone
+    description: Omega shoots a cone of fire toward two random opposite spots in the arena, then rotates those cones either clockwise or counter-clockwise in 2 second intervals. Being hit is lethal to anyone but tanks, who can get away with [s:2911].
   condensed-wave-cannon-kyrios:
     id: 31503
-    damage: 90244
-    description: Placeholder description for Condensed Wave Cannon Kyrios
+    damage: 58926
+    mechanic: stack.targeted
+    shape: line
+    description: Omega shoots a line beam toward the players targeted by [s:condensed-wave-cannon-kyrios] that deals lethal damage unless soaked by at least 2 other players.
   guided-missile-kyrios:
     id: 31502
     damage: 58926
-    description: Placeholder description for Guided Missile Kyrios
+    mechanic: spread
+    shape: chariot
+    description: Omega fires a barrage of missiles at the players targeted by [s:guided-missile] that deals medium damage to the player themselves and knocks any nearby players into the death wall.
   ballistic-impact:
     id: 31500
-    description: Placeholder description for Ballistic Impact
+    mechanic: aoe.baitable
+    shape: chariot
+    description: A telegraphed baited AoE dropped by all players on their current position. Resolves a few seconds later. Being inside one when it resolves deals massive damage and inflicts [s:2911].
   wave-cannon-kyrios:
     id: 31505
     damage: 36713
-    description: Placeholder description for Wave Cannon Kyrios
+    count: 3
+    mechanic: spread
+    shape: line
+    description: A line beam that fires at 3 random non-tanks. The targeted players are marked before the hit. Inflicts [s:magic-vuln].
+    resolve: As this ability hits twice in a row, you can either designate three positions for the marked players to take their beam at, or you can simply have all players spread in fixed positions. This is easier if your tanks invuln [a:diffuse-wave-cannon-kyrios]. Make sure all non-tank players are inside the hitbox during this, to avoid accidentally baiting a tankbuster toward the party.
   diffuse-wave-cannon-kyrios:
     id: 31504
-    description: Placeholder description for Diffuse Wave Cannon Kyrios
+    count: 2
+    mechanic: tb.far
+    shape: cone
+    description: A wide conal tankbuster on the farthest 2 players from Omega. Lethal to non-tanks. Hits 5 times in quick succession.
+    resolve: All non-tank players should be inside the hitbox while tanks should be outside. If tanks invuln this tankbuster, they can stack together, greatly increasing the space available for the rest of the party to spread for [a:wave-cannon-kyrios].
     children:
       - at: 0
         id: diffuse-wave-cannon-kyrios-hit
@@ -386,108 +507,246 @@ actions:
   diffuse-wave-cannon-kyrios-hit:
     id: 31504
     name: Diffuse Wave Cannon Kyrios (Hit)
-    description: Placeholder description for Diffuse Wave Cannon Kyrios (Hit)
+    count: 2
+    mechanic: tb.far
+    shape: cone
+    description: An individual hit from [a:diffuse-wave-cannon-kyrios].
   atomic-ray:
     id: 31480
-    description: Omega enrages, wiping the party.
+    description: |
+      Omega enrages, wiping the party.
+      Note that, although party buffs come off cooldown here, it is strongly advised to hold them for the start of Phase 2.
     mechanic: enrage
   firewall:
     id: 31553
-    description: Placeholder description for Firewall
-  firewall-1:
-    id: 31552
-    description: Placeholder description for Firewall
+    mechanic: mech
+    description: Inflicts [s:packet-filter-f] on the four closest players to Omega-M and [s:packet-filter-m] on all remaining players (regardless of distance to Omega-F).
+    resolve: |
+      It is recommended to assign one light party to Omega-M and one to Omega-F. Make sure the four players assigned to Omega-M are *on or inside Omega-M's hitbox*, or they may be selected for Omega-F instead. The players assigned to Omega-F can be anywhere in the arena (as long as they're not on or inside Omega-M's hitbox), but should probably be close to Omega-F's hitbox to ensure they're in range for raid buffs.
+      Note that you get 2 GCDs worth of cleaves until [a:firewall] is cast, during which it is strongly recommended to use abilities like [a:shadowbringer] or [a:phlegma] that can cleave both targets.
   solar-ray:
     id: 32362
     damage: 196246
-    description: Placeholder description for Solar Ray
-  solar-ray-1:
-    id: 32363
-    damage: 188131
-    description: Placeholder description for Solar Ray
+    mechanic: tb.mt
+    shape: chariot
+    count: 2
+    description: A heavy-hitting tankbuster from Omega-M and Omega-F.
   party-synergy:
     id: 31551
-    description: Placeholder description for Party Synergy
-  party-synergy-1:
-    id: 31550
-    description: Placeholder description for Party Synergy
+    mechanic: mech
+    compact: trim
+    description: |
+      Omega-M and Omega-F disappear and tether each player to another player, inflicting either [s:mid-glitch] or [s:remote-glitch] on all players, and show a matching PlayStation headmarker above all players and their partners.
+      Omega-M and Omega-F then reappear, along with one *fake* clone for each that do nothing, and prepare a deadly AoE combination.
+      The clones will always spawn in a line, with Omega-F on one side, a fake Omega-M in the center of the arena, Omega-M on the other side, and a fake Omega-F in a random location somewhere else. The true Omegas are always facing each other.
+      Omega-M's and Omega-F's stances and weapons indicate which attack each will use:
+      * Omega-F with a staff: a plus-shaped AoE originating from Omega-F ([a:optimized-blizzard-iii])
+      * Omega-F with a stiletto feet: a safe line in the direction Omega-F is facing ([a:superliminal-steel])
+      * Omega-M with a sword: a [ms:chariot] originating from Omega-M ([a:efficient-bladework])
+      * Omega-F with a sword and shield: a [ms:dynamo] originating from Omega-M ([a:beyond-strength])
+      While this is happening, a massive synthetic eye spawns on a random cardinal or intercardinal outside the arena. Some time after Omega-M and Omega-F have executed their respective AoEs, this eye will fire a deadly [a:optical-laser] line AoE through the center of the arena. At the same time, [a:optimized-fire-iii] (a [ms:chariot] [m:spread]) resolves on each player. This AoE is deadly if the correct distance between each tethered pair (defined by [s:mid-glitch] or [s:remote-glitch]) is not maintained.
+      Finally, Omega-F appears in the center of the arena while 5 clones of Omega-M appear close to the edge of the arena. Two random players are marked with stacks, Omega-F executes a knockback from the center, and all Omega-Ms execute a large [ms:chariot] AoE from their position. There are always 3 Omega-Ms spawning directly beside one another, with a gap between every other Omega-M.
+      If your party is still alive at this point, [s:mid-glitch]/[s:remote-glitch] expires, and the Omega-M that is sandwiched between the two other Omega-Ms, and the Omega-F in the center become targetable again and the next mechanical sequence commences.
+    resolve: |
+      While Party Synergy is casting, preposition yourselves into 2 [t:conga line]s (one per light party) or one big conga line for the whole party. There must always be 4 players per [a:optical-laser] side, and two tethered players cannot be on the same side, so if any tether pair is in the same group, one of them (usually the southmost one) adjusts to the other group.
+      With groups settled, it now becomes time to identify Omega-F's and Omega-M's safe spot. To quickly distinguish the true Omegas from the fake ones, find the Omega-F and Omega-M who are facing each other, or simply find the Omega-F and Omega-M forming a direct line through the center of the arena.
+      The following safe spots are possible:
+      * staff + sword: stay away from Omega-M and Omega-F (be careful not to be on Omega-F's sides)
+      * staff + shield: only Omega-M's sides are safe
+      * stiletto feet + sword: only Omega-F is safe
+      * stiletto feet + shield: only Omega-M is safe
+      Note that there is not enough time to raise anyone, so if anyone dies during this step the mechanic is no longer resolvable and a wipe is all but guaranteed.
+      While moving into the safe spot (or after moving into the safe spot), find the massive eye on the outside of the arena. This eye will be the new north for the duration of the mechanic. Note that the eye emits a directional sound when it spawns, which can make locating it easier.
+      All group 1 players position themselves throughout the arena on the eye's left side (west), while all group 2 players position themselves throughout the arena on the eye's right side (east). Use the PlayStation headmarkers you received at the start of the mechanic to determine your final position. Most groups opt for (from closest to the eye to farthest from the eye): [i:cross][i:square][i:circle][i:triangle] (also known as BPOG – blue, purple, orange, green).
+      Note that the positions must be adjusted based on [s:mid-glitch] or [s:remote-glitch].
+      For [s:mid-glitch], stand close to but not right next to the [a:optical-laser] line. Note that the line is not telegraphed, so it is recommended to use arena markers to position yourself. For instance, with the standard LPDU markers, the correct distance is on the inside of the markers that are right next to [a:optical-laser] (see the diagram).
+      For [s:remote-glitch], stand at the edge of the arena. Be aware that the tether must be stretched to almost the full diameter of the arena, which means group 2 must invert their positions if it's [s:remote-glitch] (so they would use [i:triangle][i:circle][i:square][i:cross] instead of [i:cross][i:square][i:circle][i:triangle]).
+      Wait until the AoEs go off, then check both yourself and your partner to see if either of you have one of the stack markers. Each stack deals lethal damage if not taken with exactly 4 players, so equal groups must be reestablished – reestablished because it is not guaranteed that both stacks target players on opposite sides. If there are two stacks in the same group/side, one of them (usually the southmost one) **and their tether partner** must swap groups. This is why it is important to look at your partner. If there are two stacks per side and either you or your partner have the southmost one, both of you must swap sides.
+      Identify the three Omega-Ms in a row and orient yourself toward them. If you're in group 1 and you're looking at the three side-by-side clones, you must always be knocked into the safe spot to your left. If you're in group 2, you must either be knocked back into the safe spot on your right (if it's [s:remote-glitch]) or the safe spot behind you (if it's [s:mid-glitch]). This knockback cannot be negated. There is, however, enough time after the knockback for slight position adjustments, so precision is not required here.
+    children:
+    - at: 9610
+      id: subject-simulation-m
+      link: and
+    - at: 9655
+      id: subject-simulation-f
+    - at: 10417
+      id: beyond-strength
+      link: or
+    - at: 10417
+      id: efficient-bladework
+      link: and
+    - at: 10417
+      id: superliminal-steel
+      link: or
+    - at: 10417
+      id: optimized-blizzard-iii
+    - at: 16896
+      id: optimized-fire-iii
+      count: 8
+      link: and
+    - at: 17208
+      id: optical-laser
+    - at: 24104
+      id: discharger
+    - at: 28354
+      id: spotlight
+      count: 2
+      link: and
+    - at: 28443
+      id: efficient-bladework
+      count: 5
   subject-simulation-m:
     id: 31516
-    description: Placeholder description for Subject Simulation M
+    mechanic: mech
+    description: Omega-F morphs into Omega-M, essentially swapping their healthbars.
   subject-simulation-f:
     id: 31515
-    description: Placeholder description for Subject Simulation F
+    mechanic: mech
+    description: Omega-M morphs into Omega-F, essentially swapping their healthbars.
+  beyond-strength:
+    id: 31525
+    mechanic: aoe
+    shape: dynamo
+    description: With sword and shield in hand, Omega-M performs a small [ms:dynamo] around him.
   efficient-bladework:
     id: 31526
-    description: Placeholder description for Efficient Bladework
+    mechanic: aoe
+    shape: chariot
+    description: With sword in hand, Omega-M performs a small [ms:chariot] around him.
   superliminal-steel:
     id: 31532
-    description: Placeholder description for Superliminal Steel
-  superliminal-steel-1:
-    id: 31531
-    description: Placeholder description for Superliminal Steel
+    mechanic: aoe
+    shape: sides
+    description: With stiletto legs attached, Omega-F performs a [ms:sides] AoE in the direction she's facing.
+  optimized-blizzard-iii:
+    id: 31533
+    mechanic: aoe
+    shape: plus
+    description: With staff in hand, Omega-F performs a [ms:plus] AoE in the direction she's facing.
   optimized-fire-iii:
     id: 31535
     damage: 32077
-    description: Placeholder description for Optimized Fire III
+    mechanic: spread
+    shape: chariot
+    description: A spread AoE on all players that deals lethal damage if players are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   optical-laser:
     id: 31521
-    description: Placeholder description for Optical Laser
+    mechanic: aoe
+    shape: line
+    description: A wide line AoE from the eye outside the arena directly through the arena's center.
   discharger:
     id: 31534
-    description: Placeholder description for Discharger
+    mechanic: mech.knockback.unavoidable
+    description: A knockback from Omega-F. Deals minimal damage.
   spotlight:
     id: 31536
     damage: 58812
-    description: Placeholder description for Spotlight
+    mechanic: stack.targeted
+    shape: chariot
+    description: A stack that deals lethal damage if taken with less than 4 players, or if any of the players inside are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   synthetic-shield:
     id: 32369
-    description: Placeholder description for Synthetic Shield
+    description: |
+      Omega-M creates a synthetic shield. This shield is used in the following mechanics: [a:optimized-passage-of-arms], [a:beyond-defense], or [a:pile-pitch].
   limitless-synergy:
     id: 31544
-    description: Placeholder description for Limitless Synergy
-  limitless-synergy-1:
-    id: 31545
-    description: Placeholder description for Limitless Synergy
+    compact: trim
+    description: |
+      Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a.optimized-passage-of-arms], rendering Omega-F invulnerable.
+      Additionally, several clones spawn outside of the arena:
+      * Two Omega-M clones spawn on opposite sides, each spawning a passable tether, and begin casting [a:optimized-bladedance]. On execution, these tethers resolve into massive 90° conal tankbusters.
+      * One Omega-M clone spawns on a random position and begins casting [a:optimized-sagittarius-arrow], a baited [ms:line] AoE on a random party member. The position of this AoE snapshots at the start of the [a:optimized-sagittarius-arrow] cast.
+      * One Omega-M clone that prepares a [a:synthetic-shield] and begins casting [a:beyond-defense] into [a:pile-pitch] once [a:optimized-bladedance] resolves.
+      * One Omega-F clone that does nothing for now but begins casting [a:optimized-meteor] on 3 random party members once [a:optimized-bladedance] resolves.
+      After all mechanics resolve, an Omega-M and Omega-F clone spawn behind Omega-F and command the eye to execute [a:cosmo-memory].
+    resolve: |
+      The party should preposition at [t:max melee] to the south of Omega-M. After the Limitless Synergy cast concludes, you once again have about 2-3 GCDs to cleave both bosses until Omega-F becomes invulnerable.
+      Once tethers spawn, tanks should grab the tethers and move to the edge of the arena, slightly *clockwise* of their respective clone. If done correctly, the tankbusters leave a gap in the form of a narrow line through the center in which the party can stack.
+      Consequently, after tanks have grabbed their tethers, the party should immediately move into the center of the arena, right on top of Omega-M. Do *not* wait for the [a:optimized-sagittarius-arrow] telegraph to appear as it has already snapshot its position.
+      If the [a:optimized-sagittarius-arrow] clone spawned behind or in front of the party, the center may not be safe. In this case, wait for the telegraph to appear, then move slightly towards one of the two [a:optimized-bladedance] clones, just enough to get out of the AoE.
+      Afterwards, two previously designated party members (usually the tanks) should move in-between the party and the Omega-M clone with the [a:synthetic-shield] at [t:max melee] to intercept [a:beyond-defense]. Whichever of these two players is targeted should immediately circle around the party, ending up on the opposite side so they cannot be targeted for or hit by [a:pile-pitch], which is lethal to that player. The other player should move in to stack with the party for [a:pile-pitch]. It is okay for the [a:beyond-defense] baiters to also be targeted for [a:optimized-meteor].
+      The intended way to resolve [a:optimized-meteor] is to have these players move out of the [a:pile-pitch] party stack, but with sufficient shielding and mitigation the [a:optimized-meteor] players can just stack with the party. This has become the preferred way to handle this mechanic in most parties.
+      Remember to heal up and mitigate for [a:cosmo-meteor], then it's just DPS until both bosses are dead.
+    children:
+    - at: 0
+      id: <removestatus>
+      status: [packet-filter-f, packet-filter-m]
+    - at: 5037
+      id: optimized-passage-of-arms
+    - at: 13242
+      id: optimized-bladedance
+      count: 2
+      link: and
+    - at: 13377
+      id: optimized-sagittarius-arrow
+    - at: 24571
+      id: beyond-defense
+      resolve: >-
+        Two designated baiters (usually the tanks) should stand between the shield
+        Omega-M on the outside of the arena and the party. Whichever of the two gets
+        hit should run *around the outside* of the party stack to avoid baiting the
+        subsequent [a:pile-pitch] as well. The baiter who wasn't hit should join the
+        party stack.
+      link: then
+    - at: 27741
+      id: pile-pitch
+      link: and
+    - at: 27427
+      id: optimized-meteor
+      count: 3
+    - at: 39484
+      id: cosmo-memory
   optimized-passage-of-arms:
     id: 31556
-    description: Placeholder description for Optimized Passage of Arms
+    mechanic: mech
+    description: Omega-M uses an optimized version of [a:passage] that renders all friendly targets behind Omega-M invulnerable. Omega-M must be eliminated to dispel this effect.
   optimized-bladedance:
     id: 31540
-    description: Placeholder description for Optimized Bladedance
+    damage: 220381
+    type: physical
+    mechanic: tb.tether
+    shape: cone
+    description: An optimized version of the standard melee LB2. Massive 90° conal tankbusters with essentially infinite radius, targeting two tethered players.
+    resolve: The tethers should be taken directly clockwise or counter-clockwise of their respective clone to create a small gap for the rest of the party to hide in.
   optimized-sagittarius-arrow:
     id: 31539
-    description: Placeholder description for Optimized Sagittarius Arrow
-  optimized-bladedance-1:
-    id: 32629
-    damage: 220381
-    description: Placeholder description for Optimized Bladedance
-  optimized-bladedance-2:
-    id: 31542
-    description: Placeholder description for Optimized Bladedance
+    mechanic: aoe.baitable
+    shape: line
+    description: |
+      An optimized version of [a:sagittarius-arrow] that deals lethal damage to anyone inside the line. This attack is telegraphed and can be easily avoided.
+      Be aware that the damage of this attack snapshots as soon as the telegraph disappears, but the damage is not actually applied until the animation has finished nearly 5 seconds later. If someone randomly falls over dead, they were likely hit by Optimized Sagittarius Arrow.
   beyond-defense:
     id: 31527
     damage: 19463
     type: physical
-    description: Placeholder description for Beyond Defense
-  optimized-meteor:
-    id: 31538
-    damage: 115301
-    description: Placeholder description for Optimized Meteor
+    mechanic: spread.close
+    shape: chariot
+    description: At the end of the cast, Omega-M dashes to one of the two closest players and hits them with a small AoE that deals light damage, inflicts [s:twice-come-ruin], and knocks any other players hit into the death wall. The same Omega-M then prepares [a:pile-pitch].
   pile-pitch:
     id: 31529
     damage: 50189
-    description: Placeholder description for Pile Pitch
+    mechanic: stack.party
+    shape: chariot
+    description: A standard stack on one of the 2 closest players from the Omega-M who just used [a:beyond-defense]. Inflicts [s:twice-come-ruin], preventing the player hit by [a:beyond-defense] from stacking.
+  optimized-meteor:
+    id: 31538
+    damage: 115301
+    mechanic: raidwide.proximity
+    description: Three random players are targeted with the standard flare marker.
+    resolve: Have these players leave the [a:pile-pitch] stack. Alternatively, some parties prefer to place all three flares in the middle of the stack and simply apply heavy mitigation and shielding, which makes the flares survivable even when they are stacked with the party.
   cosmo-memory:
     id: 31522
     damage: 86602
+    mechanic: raidwide
     type: magic
-    description: Placeholder description for Cosmo Memory
+    description: A heavy-hitting raidwide from Omega's eye on the outside of the arena.
   laser-shower:
     id: 31557
     damage: 9999999
     mechanic: enrage
-    description: Omega-F finishes her enrage cast and wipes the party.
+    description: |
+      Omega-F finishes her enrage cast and wipes the party.
+      Note that, although party buffs come off cooldown here, it is strongly advised to hold as many of them as possible for the start of Phase 3.
   p3-transition:
     name: Transition
     description: Empty
@@ -520,7 +779,7 @@ actions:
     id: 31572
     damage: 72688
     description: Placeholder description for High-powered Sniper Cannon
-  hello,-world:
+  hello-world:
     id: 31573
     damage: 80879
     description: Placeholder description for Hello, World
@@ -543,8 +802,10 @@ actions:
     description: Placeholder description for Cascading Latent Defect
   patch:
     id: 31587
-    damage: 32877
-    description: Placeholder description for Patch
+    damage: 21894
+    description: |
+      A tether (either [s:local-regression] or [s:remote-regression]) broke, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
+      Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
   critical-underflow-bug:
     id: 31578
     description: Placeholder description for Critical Underflow Bug
@@ -628,19 +889,19 @@ actions:
   hyper-pulse-1:
     id: 31601
     description: Placeholder description for Hyper Pulse
-  hello,-near-world:
+  hello-near-world:
     id: 31625
     damage: 49533
     description: Placeholder description for Hello, Near World
-  hello,-distant-world:
+  hello-distant-world:
     id: 33040
     damage: 51511
     description: Placeholder description for Hello, Distant World
-  hello,-near-world-1:
+  hello-near-world-1:
     id: 31626
     damage: 50228
     description: Placeholder description for Hello, Near World
-  hello,-distant-world-1:
+  hello-distant-world-1:
     id: 33041
     damage: 49085
     description: Placeholder description for Hello, Distant World
@@ -858,84 +1119,15 @@ timeline:
     id: program-loop
   - at: 69269
     id: pantokrator
-  - at: 75376
-    id: flame-thrower
-  - at: 81389
-    id: condensed-wave-cannon-kyrios
-  - at: 81389
-    id: guided-missile-kyrios
-  - at: 81389
-    id: condensed-wave-cannon-kyrios
-  - at: 81389
-    id: flame-thrower-1
-  - at: 81923
-    id: ballistic-impact
-  - at: 83393
-    id: flame-thrower-1
-  - at: 83929
-    id: ballistic-impact
-  - at: 85402
-    id: flame-thrower-1
-  - at: 85935
-    id: ballistic-impact
-  - at: 87359
-    id: condensed-wave-cannon-kyrios
-  - at: 87359
-    id: guided-missile-kyrios
-  - at: 87359
-    id: condensed-wave-cannon-kyrios
-  - at: 87359
-    id: guided-missile-kyrios
-  - at: 87402
-    id: flame-thrower-1
-  - at: 87937
-    id: ballistic-impact
-  - at: 89409
-    id: flame-thrower-1
-  - at: 89945
-    id: ballistic-impact
-  - at: 91420
-    id: flame-thrower-1
-  - at: 91954
-    id: ballistic-impact
-  - at: 93383
-    id: guided-missile-kyrios
-  - at: 93383
-    id: condensed-wave-cannon-kyrios
-  - at: 93383
-    id: guided-missile-kyrios
-  - at: 93427
-    id: flame-thrower-1
-  - at: 93961
-    id: ballistic-impact
-  - at: 95383
-    id: flame-thrower-1
-  - at: 95965
-    id: ballistic-impact
-  - at: 97390
-    id: flame-thrower-1
-  - at: 97970
-    id: ballistic-impact
-  - at: 99395
-    id: guided-missile-kyrios
-  - at: 99395
-    id: condensed-wave-cannon-kyrios
-  - at: 99395
-    id: guided-missile-kyrios
-  - at: 99395
-    id: condensed-wave-cannon-kyrios
-  - at: 99395
-    id: flame-thrower-1
-  - at: 99928
-    id: ballistic-impact
-  - at: 101395
-    id: flame-thrower-1
   - at: 108044
     id: wave-cannon-kyrios
   - at: 108044
     id: diffuse-wave-cannon-kyrios
   - at: 117089
     id: wave-cannon-kyrios
+    description: |
+      3 more beams target the 3 non-tank players who weren't targeted by the first set.
+      If anyone is dead, a beam may target a player who was already targeted, leading to certain death.
   - at: 130963
     id: atomic-ray
   - at: 130963
@@ -951,46 +1143,10 @@ timeline:
     id: solar-ray
   - at: 163113
     id: party-synergy
-  - at: 172723
-    id: subject-simulation-m
-  - at: 172768
-    id: subject-simulation-f
-  - at: 173530
-    id: efficient-bladework
-  - at: 173530
-    id: superliminal-steel
-  - at: 180009
-    id: optimized-fire-iii
-  - at: 180321
-    id: optical-laser
-  - at: 187217
-    id: discharger
-  - at: 191467
-    id: spotlight
-  - at: 191556
-    id: efficient-bladework
   - at: 204788
     id: synthetic-shield
   - at: 215027
     id: limitless-synergy
-  - at: 220064
-    id: optimized-passage-of-arms
-  - at: 221312
-    id: synthetic-shield
-  - at: 228269
-    id: optimized-bladedance
-  - at: 228404
-    id: optimized-sagittarius-arrow
-  - at: 228538
-    id: optimized-bladedance-1
-  - at: 239598
-    id: beyond-defense
-  - at: 242454
-    id: optimized-meteor
-  - at: 242768
-    id: pile-pitch
-  - at: 254511
-    id: cosmo-memory
   - at: 282195
     id: laser-shower
   - at: 282195
@@ -1017,7 +1173,7 @@ timeline:
   - at: 315693
     id: <targetable>
   - at: 324657
-    id: hello,-world
+    id: hello-world
   - at: 347791
     id: latent-defect
   - at: 348817
@@ -1150,17 +1306,17 @@ timeline:
   - at: 615599
     id: patch
   - at: 621260
-    id: hello,-near-world
+    id: hello-near-world
   - at: 621261
-    id: hello,-distant-world
+    id: hello-distant-world
   - at: 622287
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 622287
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 623270
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 623270
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 628392
     id: patch
   - at: 639583
@@ -1180,19 +1336,19 @@ timeline:
   - at: 708451
     id: superliminal-steel-2
   - at: 715242
-    id: hello,-near-world
+    id: hello-near-world
   - at: 715242
-    id: hello,-distant-world
+    id: hello-distant-world
   - at: 715376
     id: hyper-pulse-2
   - at: 716268
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 716268
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 717252
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 717252
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 728955
     id: double-solar-ray
   - at: 745645
@@ -1204,33 +1360,33 @@ timeline:
   - at: 768098
     id: diffuse-wave-cannon
   - at: 780788
-    id: hello,-distant-world
+    id: hello-distant-world
   - at: 780788
-    id: hello,-near-world
+    id: hello-near-world
   - at: 781234
     id: oversampled-wave-cannon
   - at: 781812
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 781813
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 782793
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 782793
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 797128
     id: blaster-4
   - at: 798780
-    id: hello,-distant-world
+    id: hello-distant-world
   - at: 798780
-    id: hello,-near-world
+    id: hello-near-world
   - at: 799810
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 799810
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 800784
-    id: hello,-distant-world-1
+    id: hello-distant-world-1
   - at: 800784
-    id: hello,-near-world-1
+    id: hello-near-world-1
   - at: 812225
     id: double-solar-ray
   - at: 835472

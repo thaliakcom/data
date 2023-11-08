@@ -23,6 +23,12 @@ cone:
 line:
   name: line
   description: Affects targets who are in-line with the source. Hits both in front and behind the source. To avoid, stay far enough to either side of the source.
+plus:
+  name: plus-shaped
+  description: Affects targets who are on one of the source's four cardinals. To avoid, stay at the source's intercardinals.
+cross:
+  name: cross-shaped
+  description: Affects targets who are on one of the source's four intercardinals. To avoid, stay at the source's cardinals.
 sides:
   name: sides
   description: Affects targets who are not in-line with the source. Hits both in front and behind the source. To avoid, stay in a line with the source.
