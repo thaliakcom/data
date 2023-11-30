@@ -5,7 +5,7 @@ modified: 2023-06-11
 by:
   id: 27637301
   role: author
-boss: Alpha-Omega
+boss: Alpha Omega
 wip: true
 HP: 0
 description: An alternate retelling of the Omega raid storyline in which Omega successfully ascertains and harnesses what lies at the heart of a mortal's strength.
@@ -1114,6 +1114,7 @@ actions:
     id: 32223
     damage: 39838
     mechanic: auto.far
+    count: 2
     shape: chariot
     description: |
       [boss]'s auto-attacks. Targets the main target and the farthest player from [boss].
@@ -1122,23 +1123,49 @@ actions:
       After every mechanic (such as [a:wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
   cosmo-arrow:
     id: 31650
-    description: Placeholder description for Cosmo Arrow
+    compact: full
+    mechanic: aoe.exaflares
+    shape: rect
+    description: |
+      Exasquares.
+      [boss] fires up arrows that come down in two fixed shapes: a cross-shaped AoE in the middle, and lines around the outside of the arena. Which of these shapes impacts first depends on which of the two is telegraphed first.
+      After the arrows come down, square-shaped AoEs that are half the width of the initial AoEs begin to travel outwards (for the cross) and inwards (for the outside lines).
+      Note that there is no guarantee you'll see both patterns within a pull. You may only get the cross-first pattern both times the ability is used in this phase, or vice-versa.
+    resolve: |
+      Determine which of the two patterns is used. Generally, these are the accepted dodge strategies (though other dodges are possible), with each comma indicating one hit of the AoEs:
+      * **cross first**: in, stay, out, stay, sides, in.
+      * **outer first**: out, stay, in, sides, in.
+      For "sides", the cardinal edges of [boss]'s hitbox are safe. Check the diagrams for a better idea of where to stand.
+      For the first [a:cosmo-arrow], have both tanks dodge from separate starting positions, and have the rest of the party dodge from the same starting position. This way everyone will already be in position for [a:cosmo-dive] at the end.
+      For the second [a:cosmo-arrow], have 2 players per starting position and dodge towards opposite sides during the "sides" step of the dodge. See the diagram for an illustration. Doing this will automatically have every player spread for [a:cosmo-wave-cannon].
     children:
-      - at: 2001
+      - at: 1998
+        id: cosmo-arrow-hit-initial
+      - at: 3998
+        id: cosmo-arrow-hit-initial
+      - at: 4087
         id: cosmo-arrow-hit
-      - at: 4093
+      - at: 6130
         id: cosmo-arrow-hit
-      - at: 6096
+      - at: 8128
         id: cosmo-arrow-hit
-      - at: 8096
+      - at: 10128
         id: cosmo-arrow-hit
-      - at: 10098
+      - at: 12087
         id: cosmo-arrow-hit
-      - at: 12103
-        id: cosmo-arrow-hit
-  cosmo-arrow-hit:
+  cosmo-arrow-hit-initial:
     id: 31651
-    description: Placeholder description for Cosmo Arrow
+    name: Cosmo Arrow (Initial Hit)
+    mechanic: aoe
+    shape: rect
+    description: The initial hit of the arrows as they come down and hit the arena. Instantly kills anyone hit.
+  cosmo-arrow-hit:
+    id: 31652
+    name: Cosmo Arrow (Exa)
+    mechanic: aoe.exaflares
+    shape: rect
+    count: 8
+    description: A hit of the outwards or inwards moving exasquares.
   cosmo-dive:
     id: 31654
     description: |
@@ -1146,7 +1173,7 @@ actions:
       The stack deals lethal damage if soaked with less than 6 players.
     resolve: |
       Have both tanks stand inside the hitbox (but away from each other), and the party outside or on the edge of the hitbox.
-      Use light party mitigation and light tank mitigation. You'll need your heavy mits for [a:wave-cannon-9].
+      Use light party mitigation and light tank mitigation ([a:rampart] and short mits). You'll need your heavy mits for [a:cosmo-wave-cannon].
     children:
       - at: 2447
         id: cosmo-dive-stack
@@ -1163,6 +1190,7 @@ actions:
   cosmo-dive-tb:
     id: 31655
     name: Cosmo Dive (TB)
+    count: 2
     mechanic: tb.close
     shape: chariot
     damage: 272617
@@ -1179,104 +1207,130 @@ actions:
       Stack in the center of the arena with the entire party. During the cast, continuously turn your camera until you've found the location of the first exaflare. Once the cast finishes and the first set of AoEs appears underneath players, move toward the marker next to the first exaflare that does *not* have another exaflare on top of it, then move into where the first exaflare was, and continue to move around the hitbox at max melee until you're clear.
       Just like [a:pantokrator], don't move too far ahead – only move just outside the previous set of baited AoEs until the next set of baited AoEs appears.
     children:
-      - at: 6994
+      - at: 6984
         id: unlimited-wave-cannon-hit
-      - at: 8019
-        id: unlimited-wave-cannon-bait-hit
+      - at: 5308
+        id: unlimited-wave-cannon-bait
+      - at: 8008
+        id: unlimited-wave-cannon-hit
+      - at: 8983
+        id: unlimited-wave-cannon-hit
+      - at: 10007
+        id: unlimited-wave-cannon-hit
+      - at: 7308
+        id: unlimited-wave-cannon-bait
+      - at: 9308
+        id: unlimited-wave-cannon-bait
+      - at: 11308
+        id: unlimited-wave-cannon-bait
+      - at: 13308
+        id: unlimited-wave-cannon-bait
+      - at: 15308
+        id: unlimited-wave-cannon-bait
   unlimited-wave-cannon-hit:
     id: 31661
     mechanic: aoe.exaflares
     shape: chariot
     name: Wave Cannon (Exaflare)
-    description: Exaflares that spawn on a random cardinal or intercardinal and begin traveling through the arena in the indicated direction 
-  unlimited-wave-cannon-bait-hit:
+    description: The first hit of an exaflare that spawns on a random cardinal or intercardinal and begins traveling through the center of the arena, killing anyone in its path.
+  unlimited-wave-cannon-bait:
     id: 31663
     mechanic: aoe.baitable
+    count: 8
     shape: chariot
     name: Wave Cannon (Baits)
-    description: Placeholder description for Wave Cannon
-  wave-cannon-9:
-    id: 31661
-    description: Placeholder description for Wave Cannon
-    children:
-      - at: 1110
-        id: wave-cannon-11
-      - at: 2097
-        id: wave-cannon-11
-      - at: 3117
-        id: wave-cannon-11
-      - at: 4100
-        id: wave-cannon-11
-      - at: 5119
-        id: wave-cannon-11
-      - at: 6103
-        id: wave-cannon-11
-      - at: 7122
-        id: wave-cannon-11
-      - at: 8107
-        id: wave-cannon-11
-      - at: 9130
-        id: wave-cannon-11
-      - at: 14209
-        id: wave-cannon-12
-      - at: 16217
-        id: wave-cannon-12
-      - at: 22425
-        id: wave-cannon-13
-      - at: 22330
-        id: wave-cannon-14
-  wave-cannon-11:
-    id: 31662
-    description: Placeholder description for Wave Cannon
-  wave-cannon-12:
-    id: 31659
-    damage: 88521
-    description: Placeholder description for Wave Cannon
-  wave-cannon-13:
+    description: Telegraphed AoEs appear underneath each player that explode 2.7 seconds later, killing anyone still in them by that point.
+  cosmo-wave-cannon:
     id: 31657
-    description: Placeholder description for Wave Cannon
-  wave-cannon-14:
+    mechanic: mech
+    description: |
+      Shortly after the **start** of the cast fires lasers at 4 random players, then the other 4 players.
+      At the end of the cast, executes a [m:stack.intercept] towards a random player that deals massive damage to the first targets in line and split damage to all remaining party members.
+      *Note that unlike most mechanics on Thaliak, the timestamp of this mechanic indicates the start of the cast, not the end.*
+    resolve: |
+      Stay spread until the second set of proteans, then heal the party and stack on a designated cardinal (e.g. south) with both tanks in front of the party. Requires *heavy* tank mits and party mits.
+      If tanks have their invuln available, have one tank invuln and use their personal mit on the other tank, who should use everything they have (excluding [a:rampart]).
+    children:
+      - at: 3026
+        id: cosmo-wave-cannon-spread
+      - at: 5029
+        id: cosmo-wave-cannon-spread
+      - at: 11385
+        id: cosmo-wave-cannon-wc
+  cosmo-wave-cannon-spread:
+    id: 31659
+    mechanic: spread
+    shape: line
+    count: 4
+    damage: 90000
+    description: Fires lasers at 4 random party members, then lasers at the remaining 4. Each laser deals heavy damage and inflicts [s:magic-vuln].
+  cosmo-wave-cannon-wc:
     id: 31658
-    damage: 369710
-    description: Placeholder description for Wave Cannon
+    mechanic: stack.intercept
+    shape: line
+    damage: 100000
+    description: A [m:stack.intercept] that hits the two closest targets for about 370,000 damage and all remaining targets for about 100,000 if the whole party is stacked. If not, the attack is unsurvivable.
   cosmo-meteor:
     id: 31664
-    description: Placeholder description for Cosmo Meteor
+    compact: trim
+    mechanic: adds
+    description: |
+      First, spawns massive baited AoEs underneath every party member.
+      A short while later, spawns eight adds around the hitbox: 6× Cosmo Comet and 2× Cosmo Meteor. The meteors always spawn north and south while the remaining ones spawn on the other cardinals and intercardinals. If not killed within 15 seconds, they will wipe the party.
+      At the same time, hits 4 party members with [targeted spreads](a:cosmo-meteor-spreads), then the other 4.
+      There is a second round of spreads that functions the same as the first, then 3 players are targeted by [flare markers](a:cosmo-meteor-flare). At the same time as the flares resolve, a random non-flare player is targeted with a [stack](a:cosmo-meteor-stack) that is lethal if taken with less than 5 players.
+    resolve: |
+      At the start of the cast, everyone should stack dead-center of [boss]'s hitbox. Wait until the AoEs appear, then everyone moves out to their designated clock spot.
+      Note that your [i:pranged] player must be either north or south (in line with the Cosmo Meteors), so if your main [i:tank]'s usual clock spot is north, have them swap with the [i:pranged] for this mechanic.
+      As soon as the comets are targetable, have your [i:caster] use their limit break 3, which will destroy all Cosmo Comets and leave only the Cosmo Meteors alive. You cannot DPS these adds manually; if you do, you'll be sacrificing boss DPS and will hit enrage.
+      Use all your remaining party mitigation before the first round of spreads, heal between the two rounds of spreads.
+      Once the [i:caster] limit break has finished, have your [i:pranged] use their limit break to destroy the remaining 2 Cosmo Meteors.
+      Flares will appear here. One of them should go north or south while the other two should go east and west. The party should stack on whichever clock spot belongs to the [i:pranged] during this mechanic (either north or south).
+      **Be aware that your [i:pranged] will be casting their limit break during this part, so they'll be utterly immobile. If they're a flare, the party must therefore adjust and stack on the opposite clock spot, as the [i:pranged] player cannot move away.**
     children:
-      - at: 4007
-        id: cosmo-meteor-1
+      - at: 44
+        id: cosmo-meteor-baits
       - at: 5211
-        id: cosmo-meteor-2
+        id: cosmo-meteor-spreads
       - at: 6235
-        id: cosmo-meteor-2
+        id: cosmo-meteor-spreads
       - at: 11226
-        id: cosmo-meteor-2
+        id: cosmo-meteor-spreads
       - at: 12252
-        id: cosmo-meteor-2
+        id: cosmo-meteor-spreads
       - at: 23256
-        id: cosmo-meteor-3
+        id: cosmo-meteor-flare
+        link: and
       - at: 23256
-        id: cosmo-meteor-4
-      - at: 24279
-        id: cosmo-meteor-5
-  cosmo-meteor-1:
+        id: cosmo-meteor-stack
+  cosmo-meteor-baits:
     id: 31666
-    description: Placeholder description for Cosmo Meteor
-  cosmo-meteor-2:
+    name: Cosmo Meteor (Baits)
+    mechanic: aoe.baitable
+    shape: defamation
+    description: Spawns massive baited AoEs underneath every party member that resolve about 4 seconds later. Each AoE is almost the size of [boss]'s hitbox.
+  cosmo-meteor-spreads:
     id: 32699
+    name: Cosmo Meteor (Spreads)
+    mechanic: spread
+    shape: chariot
     damage: 110884
-    description: Placeholder description for Cosmo Meteor
-  cosmo-meteor-3:
+    count: 4
+    description: Hits 4 party members with a small protean comet, then the other 4. Each hit inflicts [s:magic-vuln] for about 3 seconds.
+  cosmo-meteor-stack:
     id: 31667
+    name: Cosmo Meteor (Stack)
+    mechanic: stack.party
+    shape: chariot
     damage: 55069
     description: Placeholder description for Cosmo Meteor
-  cosmo-meteor-4:
+  cosmo-meteor-flare:
     id: 31668
-    damage: 70288
-    description: Placeholder description for Cosmo Meteor
-  cosmo-meteor-5:
-    id: 31665
-    description: Placeholder description for Cosmo Meteor
+    name: Cosmo Meteor (Flare)
+    mechanic: raidwide.proximity
+    count: 3
+    damage: 70000
+    description: Deals approximately 70,000 damage to the targeted player and about 7,000 damage to everyone else, provided this player is far enough away.
   magic-number:
     id: 31670
     damage: 310607
@@ -1285,7 +1339,15 @@ actions:
       Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all party members, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
     trivia: |
       In programming terms, a *magic number* is a number that is used directly in source code. This is an anti-pattern; best practice is to extract such numbers into named constants and then reference the constant anywhere the number is needed. This way the name of that constant explains what the number means.
-      For instance, if you saw an expression like "8 * 8760", you'd probably have no idea what this expression calculates. However, if you instead rewrite it as "8 * HOURS_PER_YEAR", now you know exactly that this expression calculates the number of hours in 8 years.
+      For instance, if you saw an expression like "8 × 8760", you'd probably have no idea what this expression calculates. However, if you instead rewrite it as "8 × HOURS_PER_YEAR", now you know exactly that this expression calculates the number of hours in 8 years.
+  limit-break:
+    name: Limit Break
+    mechanic: hint
+    isPlayerSource: true
+    description: |
+      Use 2× [i:melee] LB3s here.
+      This is your one and only chance to use two of your [i:melee] LB3s. You can't use them sooner (due to missing limit break gauge) or later (due to other limit break requirements and mechanics), so don't miss this window.
+      If the first [i:melee] LB3 is late, the second [i:melee] player must make sure to preposition in the center before using their limit break, as they'll be in animation lock as the [a:cosmo-meteor] baits appear.
   run-dynamis:
     id: 31648
     mechanic: enrage
@@ -1581,18 +1643,21 @@ timeline:
     id: cosmo-memory-2
   - at: 917619
     id: cosmo-arrow
-  - at: 919625
-    id: cosmo-arrow
   - at: 932346
     id: cosmo-dive
   - at: 950706
     id: unlimited-wave-cannon
+    link: then
+  - at: 968877
+    id: cosmo-wave-cannon
   - at: 994327
     id: cosmo-arrow
-  - at: 996329
-    id: cosmo-arrow
+  - at: 1002487
+    id: cosmo-wave-cannon
   - at: 1027013
     id: unlimited-wave-cannon
+  - at: 1044769
+    id: limit-break
   - at: 1045769
     id: cosmo-dive
   - at: 1067410

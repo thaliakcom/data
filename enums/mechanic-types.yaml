@@ -257,3 +257,6 @@ enrage.threshold:
 enrage.soft:
   name: soft enrage
   description: A "soft enrage" generally involves a sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.
+hint:
+  name: hint
+  description: Not a mechanic, but merely a hint to players.
