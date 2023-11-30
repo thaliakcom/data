@@ -6,13 +6,17 @@ by:
   id: 27637301
   role: author
 boss: Alpha-Omega
+wip: true
 HP: 0
-description: Assist Omega in its journey to discover the meaning of Dynamis.
+description: An alternate retelling of the Omega raid storyline in which Omega successfully ascertains and harnesses what lies at the heart of a mortal's strength.
 status:
   2911:  # Damage Down
     type: impairment
     duration: 180000
-    description: Reduces damage dealt by approximately 90%.
+    description: |
+      Reduces damage dealt by approximately 90%.
+      Due to the extremely punishing nature of this debuff, great care should be taken to avoid it. If it cannot be avoided, consider killing yourself (for instance by stepping into the wall) and having a healer raise you afterwards, to reduce your damage down percentage from 90% to [s:43]'s 25%.
+      **Do not do this in Phase 6, as this will erase your [s:brilliant-dynamis]/[s:spark-of-dynamis] buffs, making the rest of the phase unresolvable.**
   looper:
     id: 3456
     type: condition
@@ -39,17 +43,19 @@ status:
   twice-come-ruin:
     id: 2534
     type: condition
-    duration: 10960
+    duration: [6960, 10960]
     description: |
       Inflicted by each step of mechanics that are each supposed to be handled by a different player, like [a:program-loop].
-      If one player is hit by multiple steps of such a mechanic (accruing 2 stacks of this debuff), they will instead be inflicted with [s:doom] and die.
+      If a player is hit by multiple steps of such a mechanic (accruing 2 stacks of this debuff), it will turn into [s:doom] and they will die.
+      **Be aware that this debuff stacks with [s:thrice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:2] will also lead to death.
   thrice-come-ruin:
     id: 2530
     type: condition
-    duration: 10960
+    duration: 960
     description: |
-      Inflicted by each step of mechanics that are each supposed to be handled by a different player, like [a:hello-world].
-      If one player is hit by multiple steps of such a mechanic (accruing 3 stacks of this debuff), they will instead be inflicted with [s:doom] and die.
+      Inflicted by mechanics whose resolution is supposed to be staggered (i.e. delayed) by players, like [a:patch].
+      If a player accrues 3 stacks of this condition, it will turn into [s:doom] and they will die.
+      **Be aware that this debuff stacks with [s:twice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:2] will also lead to death.
   doom:
     id: 2519
     type: delay
@@ -64,7 +70,7 @@ status:
     id: 1626
     type: impairment
     duration: 1500
-    description: Players inflicted with this debuff are unable to execute actions and move randomly throughout the arena, changing directions every few seconds. As such, they are liable to walk directly into the death wall on the outside of the arena.
+    description: Players inflicted with this debuff are unable to execute actions and move randomly throughout the arena, changing direction every few seconds. As such, they are liable to walk directly into the death wall on the outside of the arena.
   guided-missile:
     id: 3424
     type: delay
@@ -130,7 +136,7 @@ status:
     id: 3434
     type: condition
     duration: 69000
-    description: Player must correctly resolve a [s:critical-synchronization-bug] before the effect expires or the party wipes.
+    description: Player must correctly resolve a [s:critical-synchronization-bug] (as either stacker or stackee) before the effect expires or the party wipes.
   cascading-latent-defect:
     id: 3528
     type: condition
@@ -187,14 +193,18 @@ status:
     description: "[a:critical-synchronization-bug] is executed at the player's position when the effect expires, causing a small [ms:chariot] explosion that must be shared and inflicts any other players hit with [s:critical-synchronization-bug]."
   critical-performance-bug:
     id: 3429
-    type: delay
+    type: rot
     duration: 27000
-    description: Player is able to soak blue towers. Additionally, any player coming in contact with this player will also be inflicted with [s:critical-performance-bug] (with its original duration). When the effect expires, [a small AoE explodes](a:critical-performance-bug) around the player that wipes the party if any other player is hit by it.
+    description: |
+      When the effect expires, [a small AoE explodes](a:critical-performance-bug) around the player that resolves [s:latent-performance-defect] and kills any other player hit. Any player coming into contact with this player before the effect's expiration is also inflicted with this effect at its original duration.
+      To resolve correctly, players with this effect should soak blue towers.
   critical-underflow-bug:
     id: 3526
-    type: delay
+    type: rot
     duration: 27000
-    description: Player is able to soak red towers. Additionally, any player coming in contact with this player will also be inflicted with [s:critical-underflow-bug] (with its original duration). When the effect expires, [a small AoE explodes](a:critical-underflow-bug) around the player that wipes the party if any other player is hit by it.
+    description: |
+      When the effect expires, [a small AoE explodes](a:critical-underflow-bug) around the player that resolves [s:cascading-latent-defect] and kills any other player hit. Any player coming into contact with this player before the effect's expiration is also inflicted with this effect at its original duration.
+      To resolve correctly, players with this effect should soak red towers.
   local-regression:
     id: 3529
     type: condition
@@ -228,34 +238,63 @@ status:
   hello-near-world:
     id: 3442
     type: delay
-    description: Executes [a:hello-near-world] when the effect expires.
+    description: |
+      Executes [a:hello-near-world] when the effect expires.
+      If a player with this effect dies, [the party wipes](a:hello-world-fail).
   hello-distant-world:
     id: 3443
     type: delay
-    description: Executes [a:hello-distant-world] when the effect expires.
+    description: |
+      Executes [a:hello-distant-world] when the effect expires.
+      If a player with this effect dies, [the party wipes](a:hello-world-fail).
   quickening-dynamis:
     id: 3444
     type: condition
     description: |
       Accumulated by being hit with either [a:hello-near-world] or [a:hello-distant-world].
       Accumulating [s:quickening-dynamis:3] upgrades this status effect into [s:brilliant-dynamis] when [a:cosmo-memory-2] is cast. By the end of Phase 5, all players must be in possession of [s:quickening-dynamis:3] or a wipe is guaranteed.
+      [s:quickening-dynamis] is a *persistent* buff, so you don't lose it on death.
   brilliant-dynamis:
     id: 3446
     type: resistance
     description: |
-      Provides resistance to attacks in Phase 6. Without this effect, any damage taken in Phase 6 is lethal.
-      Additionally, if a player under this effect executes a limit break 3, the limit break gauge immediately refills and this effect changes to [s:spark-of-dynamis].
+      Increases limit break generation and provides resistance to attacks in Phase 6. Any players without this effect take lethal damage from any attack in Phase 6.
+      Additionally, if a player under this effect executes a limit break, however many limit break bars were used for the limit break immediately refill and this effect changes to [s:spark-of-dynamis]. (For instance, if limit break 1 is executed, only one bar is refilled. If a limit break 3 is executed, three bars are refilled. For this reason, you should never use anything less than a limit break 3 in Phase 6.)
+      **[s:brilliant-dynamis] is lost on death.** Any death in Phase 6 before [a:magic-number] is therefore a guaranteed wipe.
   spark-of-dynamis:
     id: 3448
     type: resistance
     description: |
-      Obtained by executing a limit break 3 while under the effect of [s:brilliant-dynamis].
-      Maintains the damage resistance from [s:brilliant-dynamis], but executing limit break 3 no longer refills the limit break gauge.
+      After using a limit break, [s:brilliant-dynamis] downgrades into this effect. Maintains the damage resistance and the limit break generation, but executing a limit break no longer refills the limit break gauge.
+      **[s:spark-of-dynamis] is lost on death.** Any death in Phase 6 before [a:magic-number] is therefore a guaranteed wipe.
   magic-number:
     id: 3532
     type: delay
     duration: 6000
-    description: Player will die at the end of the effect's duration. Can be cleansed through healer LB3.
+    description: If the effect is allowed to expire this player dies. Can be cleansed through healer LB3.
+  invincibility:
+    id: 671
+    type: resistance
+    description: Omega-F is protected by Omega-M and cannot be damaged.
+  omega-m:
+    id: 1674
+    type: form
+    description: Omega-M always has this effect. Has no effect, but can be used to identify whether you're hitting the correct target ([s:packet-filter-m]).
+  omega-f:
+    id: 1675
+    description: Omega-F always has this effect. Has no effect, but can be used to identify whether you're hitting the correct target ([s:packet-filter-f]).
+  superfluid:
+    id: 1676
+    type: form
+    description: Omega-F and Omega-M have this status effect while they are liquid puddles that are transforming into the opposite-gendered form.
+  infinite-limit:
+    id: 3450
+    type: form
+    description: Final Omega has this status effect for the duration of Phase 4. Has no effect and merely serves as flair.
+  code-dynamis:
+    id: 3447
+    type: form
+    description: Alpha-Omega has this status effect for the duration of Phase 6. Has no effect and merely serves as flair.
 actions:
   program-loop:
     id: 31491
@@ -272,11 +311,11 @@ actions:
       Each tower must be soaked by exactly one player with the [s:looper] effect. Towers ignore players without this effect. Soaking a tower inflicts [s:twice-come-ruin] and resolves [s:looper] for that player; if [s:looper] is allowed to expire on its own, the player will be inflicted with [s:memory-loss] and likely [t:wall] themselves.
       The [a:blaster] tethers release a massive blast roughly the size of the boss's hitbox around the tethered players. The tethered players, as well as anyone else hit by the explosion, are inflicted with [s:hp-penalty] and [s:twice-come-ruin].
       This mechanic then repeats three more times. Note the following:
-      * Tethers don't disappear after [a:blaster] resolves; they remain on whichever players just received their blasts.
-      * The next set of towers spawns in in a translucent state even before the current set has resolved.
+      * Tethers don't disappear after [a:blaster] resolves; they remain on whichever players last had them until the fourth set resolves.
+      * The next set of towers spawns in a translucent state even before the current set has resolved.
       * There are, in total, 8 possible locations for towers to spawn (2 per cardinal, slightly offset from that cardinal to either side).
       * A tower cannot spawn in a location it has already spawned before. In some cases this allows you to predict where the next set of towers is going to spawn even before they appear.
-      * On any given turn, both towers cannot spawn on the same cardinal.
+      * Towers can never spawn on both positions of the same cardinal.
     resolve: |
       As each [s:twice-come-ruin] stack lasts for exactly 1 full turn of the mechanic, there is only one order to resolve the mechanic in:
       Turn 1: [s:first-in-line] soaks towers, [s:third-in-line] takes tethers and brings them to an empty cardinal.
@@ -290,10 +329,10 @@ actions:
       - It is recommended to manually sort your party list so that the players you need to look at to determine your priority are at the very top. For example, using the LPDU priority described above, R1 would move the R2, H1, and H2 players to the top of their party list. If any of them have the same number, the R1 player would move clockwise; otherwise they would move counter-clockwise.
       - Taking your tether max melee in your designated empty cardinal is far enough to avoid hitting players on the tower cardinals, allowing you to keep full uptime on the boss.
       - After your tether is resolved, don't immediately beeline for the nearest tower cardinal. Instead, go slightly inside the hitbox so that any non-tether players can make their way past you, then wait until the next tether player has taken their tether from you before moving into a safe spot.
-      - ever move directly through the center of the boss's hitbox, as you will likely steal someone else's tether and cause a wipe.
-      - Since towers completely ignore players without [s:looper], after you resolve your tower, you can then stand in any tower you wish while waiting for your next responsibility.
-      - Healers must heal the [s:third-in-line] and [s:fourth-in-line] players after their [s:hp-penalty] expires, as they'll die from [a:storage-violation] otherwise. Tanks can help by using abilities like [a:tbn], [a:intervention], [a:heart-of-corundum], or [a:aurora].
-      - After the Program Loop cast, Omega does one more auto-attack before beginning the [a:blaster-cast] cast, at which point Omega's position and rotation is locked in for the remainder of the mechanic. So, it can be helpful to turn the boss to the southwest or southeast (depending on where your melees are in your priority order) until the [a:blaster-cast] cast begins, to give your melees easy access to positionals.
+      - Never move directly through the center of the boss's hitbox, as you will likely steal someone else's tether and cause a wipe.
+      - Since towers completely ignore players without [s:looper], after you resolve your tower, you can then stand in any tower you wish while waiting for your [s:twice-come-ruin] to expire.
+      - Healers must heal the [s:third-in-line] and [s:fourth-in-line] players after their [s:hp-penalty] expires, as they'll die from [a:storage-violation] otherwise. Tanks can help by using targeted mitigation like [a:tbn] or [a:heart-of-corundum].
+      - After the Program Loop cast, Omega does one more auto-attack before beginning the [a:blaster-cast] cast, at which point Omega's position and rotation is locked in for the remainder of the mechanic. It can be helpful to turn the boss to the southwest or southeast (depending on where your melees are in your priority order) before the [a:blaster-cast] cast begins, to give your melees easy access to positionals.
     children:
       - at: 14010
         id: blaster-cast
@@ -646,13 +685,15 @@ actions:
     description: A stack that deals lethal damage if taken with less than 4 players, or if any of the players inside are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   synthetic-shield:
     id: 32369
+    mechanic: mech
     description: |
       Omega-M creates a synthetic shield. This shield is used in the following mechanics: [a:optimized-passage-of-arms], [a:beyond-defense], or [a:pile-pitch].
   limitless-synergy:
     id: 31544
     compact: trim
+    mechanic: mech
     description: |
-      Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a.optimized-passage-of-arms], rendering Omega-F invulnerable.
+      Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
       Additionally, several clones spawn outside of the arena:
       * Two Omega-M clones spawn on opposite sides, each spawning a passable tether, and begin casting [a:optimized-bladedance]. On execution, these tethers resolve into massive 90° conal tankbusters.
       * One Omega-M clone spawns on a random position and begins casting [a:optimized-sagittarius-arrow], a baited [ms:line] AoE on a random party member. The position of this AoE snapshots at the start of the [a:optimized-sagittarius-arrow] cast.
@@ -749,10 +790,20 @@ actions:
       Note that, although party buffs come off cooldown here, it is strongly advised to hold as many of them as possible for the start of Phase 3.
   p3-transition:
     name: Transition
-    description: Empty
+    description: |
+      When the transition starts, the following debuffs are inflicted on players:
+      * 4 players with [s:sniper-cannon-fodder] (a [m:spread])
+      * 2 players with [s:high-powered-sniper-cannon-fodder] (a [m:stack.partner])
+      In addition, a telegraphed [ms:chariot] AoE appears underneath the boss's [s:superfluid] puddle, giving players time to move out of it before it goes into effect and becomes a **persistent death zone** for the rest of the transition that continuously emits [a:wave-repeater].
+      3 mechanical hands spawn close to the outside of the arena, then another 3 hands spawn in-between them. Each hand emits a telegraphed [a:colossal-blow] about 12 seconds after it spawns.
+    resolve: |
+      The entire party should organize into a [t:conga line] to the south. Each Data Center's Party Finder may use a different line-up order, but the actual order makes no difference for the mechanic. LPDU uses R1/M1/MT/H1/H2/OT/M2/R2.
+      Look at your debuffs. Once debuffs come out, take a step back if you get [s:sniper-cannon-fodder], take a step forward if you get [s:high-powered-sniper-cannon-fodder], and stay put if you get nothing. Wait until everyone there are 2 people in your new line (as nothing or [s:high-powered-sniper-cannon-fodder]) or 4 people (as [s:sniper-cannon-fodder]). Whichever position you are in this new line-up determines your position (see the diagram).
+      Stay out of the first [a:colossal-blow], then step into both it and the preceding [a:wave-repeater] hit. The sniper cannons resolve at the same time as the second set of [a:colossal-blow], greatly limiting the available safe spots. This means that if anyone is out of position, there is no longer enough space to resolve the mechanic without deaths.
   wave-repeater:
     id: 31567
-    description: Placeholder description for Wave Repeater
+    description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
+    mechanic: aoe.expanding.rings
     children:
       - at: 2098
         id: wave-repeater-hit
@@ -767,44 +818,131 @@ actions:
   wave-repeater-hit:
     id: 31568
     name: Wave Repeater (Hit)
-    description: Placeholder description for Wave Repeater
+    mechanic: aoe.expanding.rings
+    description: An individual [a:wave-repeater] hit.
   colossal-blow:
     id: 31566
-    description: Placeholder description for Colossal Blow
+    mechanic: aoe
+    shape: chariot
+    description: A large AoE around a mechanical hand on the arena.
   sniper-cannon:
     id: 31571
     damage: 80511
-    description: Placeholder description for Sniper Cannon
+    mechanic: spread
+    shape: chariot
+    description: "[s:sniper-cannon-fodder] resolves into a [m:spread]."
   high-powered-sniper-cannon:
     id: 31572
     damage: 72688
-    description: Placeholder description for High-powered Sniper Cannon
+    mechanic: stack.partner
+    shape: chariot
+    description: "[s:high-powered-sniper-cannon-fodder] resolves into a [m:stack.partner]."
   hello-world:
     id: 31573
     damage: 80879
-    description: Placeholder description for Hello, World
+    mechanic: mech
+    description: |
+      Heavy raidwide that begins the next major mechanic.
+      Please note that, while this mechanic is technically quite complicated, resolving it is actually quite simple. If reading all the technical specifications on how the mechanic works confuses you, try skipping to the "Resolve" section below.
+      Inflicts the following debuffs on all players:
+      * [s:local-code-smell] (2×23s, 2×44s, 2×65s, 2×86s)
+      * [s:remote-code-smell] (2×23s, 2×44s, 2×65s, 2×86s)
+      * [s:latent-synchronization-bug] (8×69s)
+      The 2 [s:local-code-smell] players with a duration of 23s are also inflicted with [s:latent-defect].
+      Also inflicts each of the following debuffs on 2 random players:
+      * [s:overflow-code-smell] and either [s:underflow-code-smell] or [s:performance-code-smell]
+      * [s:synchronization-code-smell] and either [s:performance-code-smell] or [s:underflow-code-smell]
+      All of these gray debuffs are considered "inactive" and do not yet have an effect. After they expire, they turn into:
+      * [s:local-code-smell] → [s:local-regression]
+      * [s:remote-code-smell] → [s:remote-regression]
+      * [s:overflow-code-smell] → [s:critical-overflow-bug]
+      * [s:synchronization-code-smell] → [s:critical-synchronization-bug]
+      * [s:underflow-code-smell] → [s:critical-underflow-bug]
+      * [s:performance-code-smell] → [s:critical-performance-bug]
+      Omega then spawns 4 towers (2 blue, 2 red) and begins casting [a:latent-defect]. At the end of the cast, all towers and critical bug debuffs resolve, causing a wipe if any towers are left unsoaked or any critical bugs are resolved incorrectly (more on how to resolve them correctly later). This is also where all 4 currently inactive tethers become active and can now break.
+      Additionally, the blue towers inflict [s:latent-performance-defect] on all players inside, and the red towers [s:cascading-latent-defect]. Both are 10 second debuffs that resolve when [s:critical-performance-bug] and [s:critical-underflow-bug], respectively, expire. If a defect is allowed to expire on its own, the party wipes. In other words: if a player soaks a blue tower without [s:critical-performance-bug], or if a player soaks a red tower without [s:critical-underflow-bug], the party wipes 10 seconds later.
+      In addition to (potentially) resolving [s:latent-performance-defect] or [s:cascading-latent-defect], each critical bug (if resolved correctly) turns into one of the following buffs:
+      * [s:critical-overflow-bug] → [s:overflow-debugger]
+      * [s:critical-synchronization-bug] → [s:synchronization-debugger]
+      * [s:critical-underflow-bug] → [s:underflow-debugger]
+      * [s:critical-performance-bug] → [s:performance-debugger]
+      Each debugger renders the player immune to this type of critical bug for the remainder of the mechanic, even if they fulfill the conditions for being inflicted with it again.
+      Omega repeats [a:latent-defect] 4 times, then casts [a:critical-error] at the end, a heavy raidwide that inflicts all players with all critical bugs again – unless they have the corresponding debugger. Critical bugs are only resolvable during [a:hello-world], so all players must have all 4 debuggers during [a:critical-error] or a wipe is guaranteed.
+      Each critical bug can be passed to other players in some way:
+      * [s:critical-overflow-bug]: a huge [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone else hit by it.
+      * [s:critical-synchronization-bug]: a small 2-man stack that inflicts [s:critical-synchronization-bug] to anyone else in the stack.
+      * [s:critical-underflow-bug]: a [st:rot] that inflicts [s:critical-underflow-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
+      * [s:critical-performance-bug]: a [st:rot] that inflicts [s:critical-performance-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
+    resolve: |
+      While the mechanic seems complicated, the debuffs applied at the start ensure that there is only one way to resolve the mechanic correctly.
+      First, in this description, the following terms will be used instead of the full ability names:
+      * [s:critical-overflow-bug] will be called "defamation".
+      * [s:critical-synchronization-bug] will be called "stack".
+      * [s:critical-underflow-bug] will be called "red rot".
+      * [s:critical-performance-bug] will be called "blue rot".
+      * [s:local-regression] will be called "red-green tether".
+      * [s:remote-regression] will be called "blue tether".
+      At the start of the mechanic, the party should position itself in a loose spread (ideally at clock spots) to avoid accidentally passing rots. Next, look at the party's debuffs and find a player with [s:critical-overflow-bug]. If that player has [s:critical-underflow-bug], *red* is the "[ms:defamation] colour". If that player has [s:critical-performance-bug], *blue* is the "[ms:defamation] colour". Remember this colour, as it doesn't change throughout the whole mechanic.
+      The first red-green tether players always have [s:latent-defect], requiring them to be hit by [a:critical-overflow-bug] (defamation). Thus, the following order of operations establishes itself, which remains the same throughout all 4 [a:latent-defect]s:
+      **Step 1:**
+      * Red rots go to red towers.
+      * Blue rots go to blue towers.
+      * All tower players either stand at max melee if their tower is the defamation tower, or at the edge of their tower closest to the other tower if it isn't.
+      * The blue tether players stand in-between the non-defamation towers, each stacking with one of the players inside those towers.
+      * The red tether players each stand just outside of a defamation tower in-between a defamation tower and a non-defamation tower. Try to stand just outside the hitbox to avoid being clipped by the other defamation.
+      **Step 2:**
+      * [a:latent-defect] resolves.
+      * Tower players get [s:synchronization-debugger] or [s:overflow-debugger].
+      * Blue tether players get [s:critical-synchronization-bug] and red-green tether players get [s:critical-overflow-bug].
+      **Step 3:**
+      * Red-green tether players move on top of their respective tower players to receive their rot.
+      * Blue tether players wait half a GCD for [s:magic-vuln] to expire, then move on top of their respective tower players to receive their rot. This automatically breaks their tether.
+      * Red-green tether players wait a GCD or two for the blue tether's [s:stacking-magic-vuln:2] to expire, then move toward each other to break their own tether.
+      * After this, make sure to **stay away from the previous tower players** as their rot will shortly explode and kill anyone nearby.
+      These steps repeat for every [a:latent-defect]. However, the *last* [a:latent-defect] has a slight variation: instead of red-green tether players going to the defamation towers, they instead pretend they're blue tether players and stack on top of a blue tether player. This is because, at this point, both of these players should already have [s:overflow-debugger], so there is no reason to be hit by defamation again, and it makes more sense for these players to help soak the stack.
+      If done correctly, all 8 players should have all 4 debuggers at the end of the mechanic.
+    tips:
+      - Each [a:latent-defect] set has 3 instances of heavy raidwide damage. Therefore, properly planning out your mitigation and healing is essential to survive this mechanic.
+      - Outside of the [a:latent-defect] casts, the boss is constantly auto-attacking the main tank for over 30k damage per auto during the entire mechanic. There are no tankbusters until Phase 5, so make sure to use all your personal mitigation during this phase (except for your invuln). Off-tanks and healers should try to help the main tank as well. You may even want to consider a tankswap at some point during the mechanic.
+      - It is very easy to accidentally pass rot while moving to your tower. To avoid this, rots should always move outside the hitbox, and tethers should always move inside the hitbox. Be aware of healers, who may have to go into the hitbox to heal (while also having rot).
+      - Timing is extremely important during this mechanic. Rots must be passed within 1 or at most 2 GCDs of the towers resolving. If passed too early or too late, [s:cascading-latent-defect]/[s:latent-performance-defect] will expire, causing a wipe.
+      - Timing is also extremely important for the tether breaks. Avoid breaking a tether while [s:magic-vuln] or [s:stacking-magic-vuln:2] is still active. It won't cause a wipe but will deal significantly increased damage which healers may not be prepared to heal.
+    trivia: |
+      This mechanic uses various programming terms for its submechanics, such as:
+      * *Hello World*: a simple program that just prints "Hello World" to the console. One of the most common examples used to teach beginners the syntax of a new programming language.
+      * *Code Smell*: any kind of code that is considered "bad" by modern programming standards, for instance by violating best practices. Can often result in subtle, hard-to-diagnose bugs.
+      * *Overflow*/*underflow*: before storing a number in a variable, you have to first define the "size" of that variable (i.e. how big the numbers that you're storing in it can be). This size determines how much memory the variable takes up. If you try to store a too-large number in a too-small variable, the number *overflows* (meaning that it wraps back around to 0). *Underflow* is the opposite of that, when you try to store a too-small number in a too-small variable (for instance trying to store a negative value in a variable that can only store positive values).
+      * *Debugger*: tool used to step through code one line at a time and inspect the values of each variable at runtime. Useful for diagnosing bugs.
+  hello-world-fail:
+    id: 31627
+    mechanic: mech.failure
+    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Wipes the party.
   latent-defect:
     id: 31599
-    description: Placeholder description for Latent Defect
+    description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
   critical-overflow-bug:
     id: 31575
     damage: 49290
-    description: Placeholder description for Critical Overflow Bug
+    mechanic: aoe
+    shape: defamation
+    description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone hit while applying [s:overflow-debugger] to themselves."
   critical-synchronization-bug:
     id: 31574
     damage: 40727
-    description: Placeholder description for Critical Synchronization Bug
+    mechanic: stack.partner
+    shape: chariot
+    description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] to anyone stacking while applying [s:synchronization-debugger] to themselves."
   latent-performance-defect:
     id: 31584
-    description: Placeholder description for Latent Performance Defect
+    description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
   cascading-latent-defect:
     id: 31583
-    description: Placeholder description for Cascading Latent Defect
+    description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
   patch:
     id: 31587
     damage: 21894
     description: |
-      A tether (either [s:local-regression] or [s:remote-regression]) broke, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
+      A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
       Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
   critical-underflow-bug:
     id: 31578
@@ -958,15 +1096,30 @@ actions:
   cosmo-memory-2:
     id: 31649
     damage: 404130
-    description: Placeholder description for Cosmo Memory
+    mechanic: raidwide.lb
+    description: |
+      Heavy raidwide. Wipes the party unless a [i:tank] LB3 is used.
+      Upgrades [s:quickening-dynamis:3] into [s:brilliant-dynamis] and gives [boss] [s:code-dynamis].
+      Due to [s:brilliant-dynamis]'s (and [s:spark-of-dynamis]'s) damage resistance, it is required for all 8 players to have this buff at this point. If any players missed a stack of [s:quickening-dynamis] in Phase 5, it is no longer possible to finish the fight.
+      [s:brilliant-dynamis] also gives a player the ability to use a limit break for free once the limit break bar is filled. Mechanically this phase requires:
+      * 3× [i:tank] LB3 ([a:cosmo-memory-2] and [a:magic-number])
+      * 2× [i:healer] LB3 ([a:magic-number])
+      * 1× [i:caster] LB3 and 1× [i:pranged] LB3 ([a:cosmo-meteor])
+      This leaves 3 possible [i:melee] LB3s for a total of 10 available limit breaks during this phase. As of patch 6.5, it is possible to skip one [i:melee] LB3 if your damage is good, but the others cannot currently be skipped as the DPS check is designed with 3 [i:melee] LB3s in mind.
+      Other things to know include:
+      * The [auto attacks](a:flash-gale) in this phase target the main target and the *farthest* target. [boss] always executes 2 auto-attacks in-between major mechanics, so after each major mechanic, it is essential that the party steps into the hitbox and the off-tank outside.
+      * Due to the strict LB requirements, a non-standard [i:dps] composition (i.e. a party without a [i:caster] or [i:pranged], or a party without at least 2× [i:melee]) cannot finish the fight.
+      * **Any death before [a:magic-number] is an automatic wipe** as that player loses their [s:brilliant-dynamis]/[s:spark-of-dynamis], meaning that even if raised they will just die again to the next damage instance. Unless you know what you're doing, do not take any risks during this phase.
   flash-gale:
     id: 32223
     damage: 39838
     mechanic: auto.far
-    description: Name of [boss]'s auto-attacks. Hits both the main target and the farthest player from [boss].
-  inhale:
-    id: 32337
-    description: Placeholder description for Inhale
+    shape: chariot
+    description: |
+      [boss]'s auto-attacks. Targets the main target and the farthest player from [boss].
+      Note that both hits *can* target the same player if the main target is simultaneously farthest from [boss].
+    resolve: |
+      After every mechanic (such as [a:wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
   cosmo-arrow:
     id: 31650
     description: Placeholder description for Cosmo Arrow
@@ -988,57 +1141,82 @@ actions:
     description: Placeholder description for Cosmo Arrow
   cosmo-dive:
     id: 31654
-    description: Placeholder description for Cosmo Dive
+    description: |
+      Hits the two closest targets with tankbusters and the farthest target with a stack.
+      The stack deals lethal damage if soaked with less than 6 players.
+    resolve: |
+      Have both tanks stand inside the hitbox (but away from each other), and the party outside or on the edge of the hitbox.
+      Use light party mitigation and light tank mitigation. You'll need your heavy mits for [a:wave-cannon-9].
     children:
       - at: 2447
-        id: cosmo-dive-1
+        id: cosmo-dive-stack
+        link: and
       - at: 2447
-        id: cosmo-dive-2
-  cosmo-dive-1:
+        id: cosmo-dive-tb
+  cosmo-dive-stack:
     id: 31656
+    name: Cosmo Dive (Stack)
+    mechanic: stack.party
+    shape: chariot
     damage: 100100
-    description: Placeholder description for Cosmo Dive
-  cosmo-dive-2:
+    description: The stack of [a:cosmo-dive]. Hits the farthest target.
+  cosmo-dive-tb:
     id: 31655
+    name: Cosmo Dive (TB)
+    mechanic: tb.close
+    shape: chariot
     damage: 272617
-    description: Placeholder description for Cosmo Dive
+    description: The tankbusters of [a:cosmo-dive]. Hits the closest 2 targets.
   unlimited-wave-cannon:
     id: 31660
-    description: Placeholder description for Unlimited Wave Cannon
+    mechanic: aoe.exaflares
+    shape: chariot
+    compact: full
+    description: |
+      A circle with arrows appears on a random cardinal or intercardinal about half a second before the end of the cast. Three more circles then appear clockwise or counter-clockwise, each with a slight delay.
+      Five seconds after the cast, big telegraphed AoEs spawn underneath each party member that resolve 2.7 seconds later. They do not follow players. More AoEs spawn underneath each party member every 2 seconds. At the same time, the first of the arrow circles on the outside of the arena resolves into exaflares that travel across the arena in the indicated direction, then the next, and so on.
+    resolve: |
+      Stack in the center of the arena with the entire party. During the cast, continuously turn your camera until you've found the location of the first exaflare. Once the cast finishes and the first set of AoEs appears underneath players, move toward the marker next to the first exaflare that does *not* have another exaflare on top of it, then move into where the first exaflare was, and continue to move around the hitbox at max melee until you're clear.
+      Just like [a:pantokrator], don't move too far ahead – only move just outside the previous set of baited AoEs until the next set of baited AoEs appears.
+    children:
+      - at: 6994
+        id: unlimited-wave-cannon-hit
+      - at: 8019
+        id: unlimited-wave-cannon-bait-hit
+  unlimited-wave-cannon-hit:
+    id: 31661
+    mechanic: aoe.exaflares
+    shape: chariot
+    name: Wave Cannon (Exaflare)
+    description: Exaflares that spawn on a random cardinal or intercardinal and begin traveling through the arena in the indicated direction 
+  unlimited-wave-cannon-bait-hit:
+    id: 31663
+    mechanic: aoe.baitable
+    shape: chariot
+    name: Wave Cannon (Baits)
+    description: Placeholder description for Wave Cannon
   wave-cannon-9:
     id: 31661
     description: Placeholder description for Wave Cannon
     children:
-      - at: 1021
-        id: wave-cannon-10
       - at: 1110
         id: wave-cannon-11
       - at: 2097
         id: wave-cannon-11
-      - at: 3028
-        id: wave-cannon-10
       - at: 3117
         id: wave-cannon-11
       - at: 4100
         id: wave-cannon-11
-      - at: 5030
-        id: wave-cannon-10
       - at: 5119
         id: wave-cannon-11
       - at: 6103
         id: wave-cannon-11
-      - at: 7033
-        id: wave-cannon-10
       - at: 7122
         id: wave-cannon-11
       - at: 8107
         id: wave-cannon-11
-      - at: 9040
-        id: wave-cannon-10
       - at: 9130
         id: wave-cannon-11
-      - at: 11044
-        id: wave-cannon-10
       - at: 14209
         id: wave-cannon-12
       - at: 16217
@@ -1047,9 +1225,6 @@ actions:
         id: wave-cannon-13
       - at: 22330
         id: wave-cannon-14
-  wave-cannon-10:
-    id: 31663
-    description: Placeholder description for Wave Cannon
   wave-cannon-11:
     id: 31662
     description: Placeholder description for Wave Cannon
@@ -1105,11 +1280,16 @@ actions:
   magic-number:
     id: 31670
     damage: 310607
-    description: Placeholder description for Magic Number
+    mechanic: raidwide.lb
+    description: |
+      Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all party members, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
+    trivia: |
+      In programming terms, a *magic number* is a number that is used directly in source code. This is an anti-pattern; best practice is to extract such numbers into named constants and then reference the constant anywhere the number is needed. This way the name of that constant explains what the number means.
+      For instance, if you saw an expression like "8 * 8760", you'd probably have no idea what this expression calculates. However, if you instead rewrite it as "8 * HOURS_PER_YEAR", now you know exactly that this expression calculates the number of hours in 8 years.
   run-dynamis:
     id: 31648
     mechanic: enrage
-    description: "Placeholder description for Run: ****mi*"
+    description: "[boss] has finished writing the Dynamis program and begins to run it. Cancel its execution or face the end."
 timeline:
   - at: 0
     id: <phase>
@@ -1399,44 +1579,22 @@ timeline:
     id: <targetable>
   - at: 903280
     id: cosmo-memory-2
-  - at: 908216
-    id: flash-gale
-  - at: 917125
-    id: inhale
   - at: 917619
     id: cosmo-arrow
-  - at: 919131
-    id: inhale
   - at: 919625
     id: cosmo-arrow
   - at: 932346
     id: cosmo-dive
-  - at: 942286
-    id: flash-gale
   - at: 950706
     id: unlimited-wave-cannon
-  - at: 957708
-    id: wave-cannon-9
-  - at: 984926
-    id: flash-gale
-  - at: 993831
-    id: inhale
   - at: 994327
     id: cosmo-arrow
-  - at: 995835
-    id: inhale
   - at: 996329
     id: cosmo-arrow
-  - at: 1018587
-    id: flash-gale
   - at: 1027013
     id: unlimited-wave-cannon
-  - at: 1034007
-    id: wave-cannon-9
   - at: 1045769
     id: cosmo-dive
-  - at: 1055792
-    id: flash-gale
   - at: 1067410
     id: cosmo-meteor
   - at: 1102819

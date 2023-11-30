@@ -404,7 +404,7 @@ actions:
   heavy-impact:
     id: 35295
     damage: 29401
-    mechanic: aoe
+    mechanic: aoe.expanding.rings
     shape: 270°
     description: A 270° arc that hits multiple times in a row. Each time the arc is bigger and farther from the origin of the attack.
     resolve: Step into the 90° cone that is safe from the AoE, or step into an AoE explosion after it has gone off.

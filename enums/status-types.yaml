@@ -20,5 +20,11 @@ impairment:
   name: impairment
   description: Impairs the player's movement or actions in some way.
 indicator:
-  name: Indicator
+  name: indicator
   description: Has no effect on its own but serves as a helper status to make mechanics easier to resolve by assigning everyone a letter or number.
+rot:
+  name: rot
+  description: A status effect that can be passed to other players by walking into them. The original player keeps the status effect when passed. Named after [s:333], a mechanic in The Binding Coil of Bahamut - Turn 2.
+rot.pass:
+  name: rot
+  description: A status effect that can be passed to other players by walking into them. The original player loses the status effect when passed. Named after [s:333], a mechanic in The Binding Coil of Bahamut - Turn 2.

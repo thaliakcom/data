@@ -2,6 +2,10 @@ raidwide:
   name: raidwide
   description: Hits all party members with moderate to heavy damage.
   is-raid-damage: true
+raidwide.lb:
+  name: raidwide (LB)
+  description: A raidwide that must be mitigated with a [i:tank] limit break 3 to survive.
+  is-raid-damage: true
 raidwide.proximity:
   name: proximity
   description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
@@ -123,6 +127,9 @@ aoe.rotating:
 aoe.expanding:
   name: expanding AoE(s)
   description: This [t:AoE] or these AoEs gradually expand. Players must predict how large each AoE will become and identify the safespots based on this prediction and the AoE's original positions.
+aoe.expanding.rings:
+  name: expanding rings
+  description: A ring-shaped ([ms:dynamo]) AoE that hits multiple times, where each hit features a larger ring that hits the area just outside the previous ring. These kinds of attacks only stop once the entire arena has been hit by the rings. Players must stand just outside one ring, then step into that ring once it resolves to avoid the next ring.
 aoe.intercept:
   name: interceptable attack
   description: |
@@ -132,7 +139,7 @@ aoe.intercept:
   is-raid-damage: true
 spread:
   name: spread
-  description: Hits all targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
+  description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
 spread.close:
   name: spread (close)
