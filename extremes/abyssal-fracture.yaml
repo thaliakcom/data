@@ -172,6 +172,7 @@ actions:
   flare:
     id: 35677
     damage: 67791
+    type: magic
     mechanic: stack.tower
     shape: chariot
     count: 2
@@ -376,13 +377,13 @@ actions:
     description: Placeholder description for Big Crunch
     children:
       - at: 133
-        id: big-crunch
+        id: big-crunch-1
       - at: 312
-        id: big-crunch
+        id: big-crunch-1
       - at: 534
-        id: big-crunch
+        id: big-crunch-1
       - at: 713
-        id: big-crunch
+        id: big-crunch-1
       - at: 980
         id: big-crunch-1
       - at: 1114
@@ -449,17 +450,22 @@ actions:
     description: Placeholder description for Rend the Rift
   dimensional-surge:
     id: 35710
-    damage: 38964
     description: Placeholder description for Dimensional Surge
     children:
+      - at: 0
+        id: dimensional-surge-hit
       - at: 1026
-        id: dimensional-surge
+        id: dimensional-surge-hit
       - at: 2006
-        id: dimensional-surge
+        id: dimensional-surge-hit
       - at: 3030
-        id: dimensional-surge
+        id: dimensional-surge-hit
       - at: 4011
-        id: dimensional-surge
+        id: dimensional-surge-hit
+  dimensional-surge-hit:
+    id: 35710
+    damage: 38964
+    description: Placeholder description for Dimensional Surge
   nostalgia:
     id: 35691
     description: Placeholder description for Nostalgia
@@ -544,14 +550,6 @@ actions:
     description: Placeholder description for Umbral Rays
   akh-rhai:
     id: 35700
-    damage: 19678
-    description: Placeholder description for Akh Rhai
-    children:
-      - at: 757
-        id: akh-rhai-1
-  akh-rhai-1:
-    id: 35701
-    damage: 19678
     description: Placeholder description for Akh Rhai
     children:
       - at: 577
@@ -568,6 +566,14 @@ actions:
         id: akh-rhai-1
       - at: 4050
         id: akh-rhai-1
+  akh-rhai-1:
+    id: 35701
+    damage: 19678
+    description: Placeholder description for Akh Rhai
+  big-bang-enrage:
+    name: Big Bang
+    description: Placeholder description for Big Bang
+    mechanic: enrage
 timeline:
   - at: 11896
     id: abyssal-nox
@@ -586,13 +592,13 @@ timeline:
   - at: 106031
     id: scald
   - at: 111025
-    id: flare-2
+    id: flare
   - at: 111069
     id: prominence-spine
   - at: 121097
     id: void-bio
   - at: 135217
-    id: visceral-whirl-3
+    id: visceral-whirl
   - at: 144305
     id: miasmic-blast
   - at: 149433
@@ -613,8 +619,6 @@ timeline:
     id: forked-lightning
   - at: 236487
     id: dark-matter
-  - at: 236487
-    id: dark-matter-1
   - at: 249844
     id: black-hole
   - at: 261961
@@ -630,7 +634,7 @@ timeline:
   - at: 355522
     id: branding-flare
   - at: 356504
-    id: flare-1
+    id: flare
   - at: 358600
     id: scald
   - at: 361628
@@ -640,7 +644,7 @@ timeline:
   - at: 363546
     id: branding-flare-1
   - at: 363591
-    id: flare-2
+    id: flare
   - at: 363634
     id: prominence-spine
   - at: 369293
@@ -650,7 +654,7 @@ timeline:
   - at: 392676
     id: burst
   - at: 396906
-    id: visceral-whirl-3
+    id: visceral-whirl
   - at: 405997
     id: miasmic-blast
   - at: 417845
@@ -658,7 +662,7 @@ timeline:
   - at: 433212
     id: sparking-flare
   - at: 434193
-    id: flare-1
+    id: flare
   - at: 436285
     id: scald
   - at: 439313
@@ -668,7 +672,7 @@ timeline:
   - at: 441233
     id: sparking-flare-1
   - at: 441277
-    id: flare-2
+    id: flare
   - at: 441321
     id: prominence-spine
   - at: 446980

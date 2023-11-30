@@ -86,7 +86,6 @@ actions:
           One inside pair always starts north and goes clockwise until it finds a pool (most commonly tanks). The other inside pair does the opposite, starting west and going counter-clockwise until they find a pool. The same goes for the two outside pairs, but they start northeast and northwest, respectively.
           If you put markers on each of the pool spawn points (letters on the inside, numbers on the outside), another way to think about it is that you always take the first pooled marker in the sequence if you're the clockwise pair, and the last pooled marker in the sequence if you're the counter-clockwise pair. For instance, if there are pools on the B and C markers, the north pair would choose B, as it comes before C in the alphabet, and the other pair chooses C.
   30492:
-    name: Double Rush
     damage: 58000
     description: |
       [boss] faces one of two directions and rushes the arena twice, applying a knockback and heavy damage to anything in its path. Since [boss] always starts in the center, the first rush can and should be avoided by simply standing behind [boss]. The second rush cannot be avoided and should be mitigated. You can use [a:7548] and [a:7559] to negate the knockback.
@@ -133,12 +132,10 @@ actions:
       [boss] cleaves the arena in front of it with a heavy hit that inflicts [s:2911]. If the attack hits a ruby wall, the entire square will be bathed in [a:30457].
       In Savage, this attack is only ever used in combination with a ruby wall, so stay away from [boss] during this cast.
   30482:
-    name: Tail to Claw
     description: |
       Uses the following sequence of attacks: [a:30481] → 7 hits of [a:30479] (or: get in front → get behind).
       Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind him just as [a:30481] comes out.
   30478:
-    name: Claw to Tail
     description: |
       Uses the following sequence of attacks: 7 hits of [a:30479] → [a:30481] (or: get behind → wait → get in front). The last hit of the [a:30479] sequence is the double claw finisher. This is your cue to switch sides, as [a:30481] will hit the rear immediately after, with no additional cast time.
       Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind it just as (or even *before*) the last hit of [a:30479] comes out.
