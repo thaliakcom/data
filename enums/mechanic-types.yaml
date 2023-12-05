@@ -162,11 +162,6 @@ mech.trio:
   description: |
     Several untargetable enemies (not necessarily three) appear and execute a series of simultaneous mechanics.
     Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mini-phase first appeared.
-mech.trio.untargetable:
-  name: trio (untargetable)
-  description: |
-    Several enemies (not necessarily three) appear and execute a series of simultaneous mechanics. No enemies are targetable during this phase.
-    Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mini-phase first appeared.
 mech.check:
   name: check
   description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.

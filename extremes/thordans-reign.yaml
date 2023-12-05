@@ -149,7 +149,7 @@ actions:
       If allowed to fill completely, [a:ultimate-end] will deal increased damage, though this damage can still be survived with sufficient shields, mitigation, or a tank limit break.
   knights-1:
     name: Charibert and Hermenost
-    mechanic: mech.trio.untargetable
+    mechanic: mech.trio
     description: |
       Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert shackles each player with [s:burning-chains] to another random player and summons fire [t:AoE]s beneath them ([a:heavensflame]) while Ser Hermenost summons four towers at the edge of the arena.
     resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
@@ -324,7 +324,7 @@ actions:
     description: Standard knight raidwide.
   knights-4:
     name: All Knights
-    mechanic: mech.trio.untargetable
+    mechanic: mech.trio
     description: |
       Five knights appear in the middle of the arena.
       Three of them cast a yellow tether to three random players and begin casting [a:spiral-pierce].
