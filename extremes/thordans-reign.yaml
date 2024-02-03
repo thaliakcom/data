@@ -522,7 +522,7 @@ actions:
     mechanic: mech.trio
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
-      This includes [s:burning-chains], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and a [the-dragons-gaze].
+      This includes [s:burning-chains], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and [a:the-dragons-gaze].
     resolve: |
       All attacks can be safely avoided by going to your clock spot once [s:burning-chains] appear.
     children:
