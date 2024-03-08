@@ -145,6 +145,10 @@ spread.close:
   name: spread (close)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+spread.far:
+  name: spread (far)
+  description: An unavoidable player-targeted [t:AoE] that deals damage to the farthest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
+  is-raid-damage: true
 spread.tethers:
   name: tether spread
   description: Tethers to some players. The tether may be able to be passed around. When the mechanic resolves, hits all tethered players with an unavoidable [t:AoE]. Tethered players should make sure they're not near any other player.
@@ -230,6 +234,9 @@ mech.motion:
 mech.arena:
   name: arena change
   description: Modifies the arena or floor in some way. Is often but not always accompanied by a raidwide.
+mech.prepare:
+  name: preparation
+  description: The enemy or enemies change their form or otherwise prepare for an upcoming mechanic in a certain way.
 towers.single:
   name: towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire  party instantly.

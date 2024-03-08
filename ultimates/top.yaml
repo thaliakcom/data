@@ -1,7 +1,7 @@
 id: 30124
 patch: "6.31"
 date: 2023-01-24
-modified: 2023-06-11
+modified: 2024-03-08
 by:
   id: 27637301
   role: author
@@ -45,9 +45,9 @@ status:
     type: condition
     duration: [6960, 10960]
     description: |
-      Inflicted by each step of mechanics that are each supposed to be handled by a different player, like [a:program-loop].
-      If a player is hit by multiple steps of such a mechanic (accruing 2 stacks of this debuff), it will turn into [s:doom] and they will die.
-      **Be aware that this debuff stacks with [s:thrice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:2] will also lead to death.
+      Inflicted by certain attacks or mechanics. If the stack counter reaches 2, this debuff will turn into an uncleansable [s:doom], consigning that player to certain death.
+      Generally inflicted by mechanics with multiple steps where each step is intended to be handled by a different player, like [a:program-loop]. Unlike [s:magic-vuln], this debuff cannot be cheesed through the use of mitigation or [invulns](t:invuln).
+      **Be aware that the counter stacks with [s:thrice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:1] will also lead to death.
   thrice-come-ruin:
     id: 2530
     type: condition
@@ -55,36 +55,40 @@ status:
     description: |
       Inflicted by mechanics whose resolution is supposed to be staggered (i.e. delayed) by players, like [a:patch].
       If a player accrues 3 stacks of this condition, it will turn into [s:doom] and they will die.
-      **Be aware that this debuff stacks with [s:twice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:2] will also lead to death.
+      **Be aware that the counter stacks with [s:twice-come-ruin].** Therefore, accruing [s:twice-come-ruin:1] and [s:thrice-come-ruin:1] will also lead to death.
   doom:
     id: 2519
     type: delay
     duration: 2960
-    description: A mechanic was incorrectly executed and the player is subject to certain death once the effect expires.^
+    description: |
+      Once the effect expires the player dies. Cannot be cleansed or avoided via any means, including [invulns](t:invuln).
+      Generally inflicted by incorrectly executing a mechanic which inflicts [s:twice-come-ruin] or [s:thrice-come-ruin].
   hp-penalty:
     id: 3401
     type: impairment
     duration: 9000
-    description: Inflicted by [a:blaster]. Reduces maximum HP to triple digits.
+    description: Inflicted by [a:blaster]. Limits a player's maximum HP to triple digits, essentially rendering any damage lethal.
   memory-loss:
     id: 1626
     type: impairment
     duration: 1500
-    description: Players inflicted with this debuff are unable to execute actions and move randomly throughout the arena, changing direction every few seconds. As such, they are liable to walk directly into the death wall on the outside of the arena.
+    description: |
+      Players inflicted with this debuff are unable to execute actions and will move randomly throughout the arena, changing direction every few seconds. As such, they are liable to walk directly into the death wall on the outside of the arena and die.
+      In theory, players can be [rescued](a:rescue) away from the wall, but this is useless in practice as [s:memory-loss] is only inflicted upon failure of mechanics that cause guaranteed wipes upon failure.
   guided-missile:
     id: 3424
     type: delay
     duration: [12000, 18000, 24000, 30000]
-    description: When the effect expires, players with this debuff are targeted by [a:guided-missile-kyrios].
+    description: Players with this effect are targeted by [a:guided-missile-kyrios], which will execute once the effect expires.
   condensed-wave-cannon-kyrios:
     id: 3509
     type: delay
     duration: [12000, 18000, 24000, 30000]
-    description: When the effect expires, players with this debuff are targeted by [a:condensed-wave-cannon-kyrios].
+    description: Players with this effect are targeted by [a:condensed-wave-cannon-kyrios], which will execute once the effect expires.
   magic-vuln:
     id: 2941
     type: vuln
-    description: Magic damage taken is lethal while this effect is active.
+    description: Magic damage taken is lethal while this effect is active. In general, the only time this debuff is inflicted is if there are multiple other attacks that also inflict the same debuff. In that case, this debuff forces those attacks to each be handled by a different player.
   stacking-magic-vuln:
     id: 3516
     type: vuln
@@ -218,23 +222,25 @@ status:
   synchronization-debugger:
     id: 3430
     type: resistance
-    description: Automatically inflicted after the expiration of [s:critical-synchronization-bug]. Renders player immune to [s:critical-synchronization-bug].
+    description: Automatically applied after the expiration of [s:critical-synchronization-bug]. The next time [s:critical-synchronization-bug] were to be inflicted, this buff is consumed and [s:critical-synchronization-bug] is *not* inflicted.
   overflow-debugger:
     id: 3431
     type: resistance
-    description: Automatically inflicted after the expiration of [s:critical-overflow-bug]. Renders player immune to [s:critical-overflow-bug].
+    description: Automatically applied after the expiration of [s:critical-overflow-bug]. The next time [s:critical-overflow-bug] were to be inflicted, this buff is consumed and [s:critical-overflow-bug] is *not* inflicted.
   underflow-debugger:
     id: 3432
     type: resistance
-    description: Automatically inflicted after the expiration of [s:critical-underflow-bug]. Renders player immune to [s:critical-underflow-bug].
+    description: Automatically applied after the expiration of [s:critical-underflow-bug]. The next time [s:critical-underflow-bug] were to be inflicted, this buff is consumed and [s:critical-underflow-bug] is *not* inflicted.
   performance-debugger:
     id: 3433
     type: resistance
-    description: Automatically inflicted after the expiration of [s:critical-performance-bug]. Renders player immune to [s:critical-performance-bug].
+    description: Automatically applied after the expiration of [s:critical-performance-bug]. The next time [s:critical-performance-bug] were to be inflicted, this buff is consumed and [s:critical-underflow-bug] is *not* inflicted.
   oversampled-wave-cannon-loading:
     id: 3452
     type: delay
-    description: Monitors show up on a random side of the player. Executes [a:oversampled-wave-cannon] when the effect expires, targeting the closest 2 players on player's monitor side with two large [ms:chariot] AoEs.
+    description: |
+      Monitors show up on either the left or right side of the player. Executes [a:oversampled-wave-cannon] when the effect expires, targeting 2 random players on the indicated side with [large AoEs](a:oversampled-wave-cannon) that each inflict [s:twice-come-ruin].
+      To remove the randomness, there should only be 2 players on the indicated side.
   hello-near-world:
     id: 3442
     type: delay
@@ -251,7 +257,7 @@ status:
     id: 3444
     type: condition
     description: |
-      Accumulated by being hit with either [a:hello-near-world] or [a:hello-distant-world].
+      Accumulated by being hit with either [a:hello-near-world] or [a:hello-distant-world], up to a maximum of [s:quickening-dynamis:3].
       Accumulating [s:quickening-dynamis:3] upgrades this status effect into [s:brilliant-dynamis] when [a:cosmo-memory-2] is cast. By the end of Phase 5, all players must be in possession of [s:quickening-dynamis:3] or a wipe is guaranteed.
       [s:quickening-dynamis] is a *persistent* buff, so you don't lose it on death.
   brilliant-dynamis:
@@ -299,6 +305,7 @@ actions:
   program-loop:
     id: 31491
     mechanic: mech
+    major: true
     compact: trim
     description: |
       A major mechanic revolving around towers and tethers.
@@ -333,6 +340,11 @@ actions:
       - Since towers completely ignore players without [s:looper], after you resolve your tower, you can then stand in any tower you wish while waiting for your [s:twice-come-ruin] to expire.
       - Healers must heal the [s:third-in-line] and [s:fourth-in-line] players after their [s:hp-penalty] expires, as they'll die from [a:storage-violation] otherwise. Tanks can help by using targeted mitigation like [a:tbn] or [a:heart-of-corundum].
       - After the Program Loop cast, Omega does one more auto-attack before beginning the [a:blaster-cast] cast, at which point Omega's position and rotation is locked in for the remainder of the mechanic. It can be helpful to turn the boss to the southwest or southeast (depending on where your melees are in your priority order) before the [a:blaster-cast] cast begins, to give your melees easy access to positionals.
+    mistakes:
+      - Miscounting or forgetting your turn.
+      - Ignoring or forgetting the priority and not adjusting.
+      - Moving while passing off a tether. (This increases the likelihood of other players passing through the tether and being unable to take it.)
+      - Rotating the wrong way and stealing someone else's tether.
     children:
       - at: 14010
         id: blaster-cast
@@ -369,7 +381,7 @@ actions:
     description: |
       Deals medium damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
       Does not apply to players who don't have [s:looper].
-      If a tower is left unsoaked it explodes, dealing massive damage and inflicting all players with [s:twice-come-ruin].
+      If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all party members, likely causing [s:doom].
   blaster-cast:
     id: 31497
     cast: 7600
@@ -391,6 +403,7 @@ actions:
     id: 31499
     mechanic: mech
     compact: full
+    major: true
     description: |
       Major mechanic with high movement and healing requirements.
       Inflicts the following effects on players:
@@ -408,7 +421,11 @@ actions:
     tips:
       - Avoid gapclosers or dashes. They make movement unpredictable and may cause you to drop a puddle in an inopportune location.
       - Due to how fast the mechanic moves, healers don't have the luxury of long-casting AoE heals here. However, there is no other healing-intense mechanic until Phase 3, so both the party and the healers should aim to use every single mitigation and healing cooldown they have during this mechanic.
-      - When moving out for your [a:guided-missile-kyrios], consider using 
+      - When moving out for your [a:guided-missile-kyrios] (especially if you're a caster), consider using [a:sprint] to be able to place your puddles more accurately and return to the party in time.
+    mistakes:
+      - Forgetting your turn and bombing the party (especially common for [s:first-in-line]).
+      - Ignoring or forgetting the priority and not adjusting.
+      - Improper puddle placements (e.g. placing a puddle directly in the party's way while coming back after your [a:guided-missile-kyrios]).
     strategies:
       chased:
         name: Chased
@@ -574,6 +591,7 @@ actions:
     id: 31551
     mechanic: mech
     compact: trim
+    major: true
     description: |
       Omega-M and Omega-F disappear and tether each player to another player, inflicting either [s:mid-glitch] or [s:remote-glitch] on all players, and show a matching PlayStation headmarker above all players and their partners.
       Omega-M and Omega-F then reappear, along with one *fake* clone for each that do nothing, and prepare a deadly AoE combination.
@@ -583,7 +601,7 @@ actions:
       * Omega-F with a stiletto feet: a safe line in the direction Omega-F is facing ([a:superliminal-steel])
       * Omega-M with a sword: a [ms:chariot] originating from Omega-M ([a:efficient-bladework])
       * Omega-F with a sword and shield: a [ms:dynamo] originating from Omega-M ([a:beyond-strength])
-      While this is happening, a massive synthetic eye spawns on a random cardinal or intercardinal outside the arena. Some time after Omega-M and Omega-F have executed their respective AoEs, this eye will fire a deadly [a:optical-laser] line AoE through the center of the arena. At the same time, [a:optimized-fire-iii] (a [ms:chariot] [m:spread]) resolves on each player. This AoE is deadly if the correct distance between each tethered pair (defined by [s:mid-glitch] or [s:remote-glitch]) is not maintained.
+      While this is happening, a massive synthetic eye (Optical Unit) spawns on a random cardinal or intercardinal outside the arena. Some time after Omega-M and Omega-F have executed their respective AoEs, this eye will fire a deadly [a:optical-laser] line AoE through the center of the arena. At the same time, [a:optimized-fire-iii] (a [ms:chariot] [m:spread]) resolves on each player. This AoE is deadly if the correct distance between each tethered pair (defined by [s:mid-glitch] or [s:remote-glitch]) is not maintained.
       Finally, Omega-F appears in the center of the arena while 5 clones of Omega-M appear close to the edge of the arena. Two random players are marked with stacks, Omega-F executes a knockback from the center, and all Omega-Ms execute a large [ms:chariot] AoE from their position. There are always 3 Omega-Ms spawning directly beside one another, with a gap between every other Omega-M.
       If your party is still alive at this point, [s:mid-glitch]/[s:remote-glitch] expires, and the Omega-M that is sandwiched between the two other Omega-Ms, and the Omega-F in the center become targetable again and the next mechanical sequence commences.
     resolve: |
@@ -595,13 +613,24 @@ actions:
       * stiletto feet + sword: only Omega-F is safe
       * stiletto feet + shield: only Omega-M is safe
       Note that there is not enough time to raise anyone, so if anyone dies during this step the mechanic is no longer resolvable and a wipe is all but guaranteed.
-      While moving into the safe spot (or after moving into the safe spot), find the massive eye on the outside of the arena. This eye will be the new north for the duration of the mechanic. Note that the eye emits a directional sound when it spawns, which can make locating it easier.
+      While moving into the safe spot (or after moving into the safe spot), find the Optical Unit on the outside of the arena. This eye will be the new north for the duration of the mechanic. Note that the eye emits a directional sound when it spawns, which can make locating it easier.
       All group 1 players position themselves throughout the arena on the eye's left side (west), while all group 2 players position themselves throughout the arena on the eye's right side (east). Use the PlayStation headmarkers you received at the start of the mechanic to determine your final position. Most groups opt for (from closest to the eye to farthest from the eye): [i:cross][i:square][i:circle][i:triangle] (also known as BPOG – blue, purple, orange, green).
       Note that the positions must be adjusted based on [s:mid-glitch] or [s:remote-glitch].
       For [s:mid-glitch], stand close to but not right next to the [a:optical-laser] line. Note that the line is not telegraphed, so it is recommended to use arena markers to position yourself. For instance, with the standard LPDU markers, the correct distance is on the inside of the markers that are right next to [a:optical-laser] (see the diagram).
       For [s:remote-glitch], stand at the edge of the arena. Be aware that the tether must be stretched to almost the full diameter of the arena, which means group 2 must invert their positions if it's [s:remote-glitch] (so they would use [i:triangle][i:circle][i:square][i:cross] instead of [i:cross][i:square][i:circle][i:triangle]).
       Wait until the AoEs go off, then check both yourself and your partner to see if either of you have one of the stack markers. Each stack deals lethal damage if not taken with exactly 4 players, so equal groups must be reestablished – reestablished because it is not guaranteed that both stacks target players on opposite sides. If there are two stacks in the same group/side, one of them (usually the southmost one) **and their tether partner** must swap groups. This is why it is important to look at your partner. If there are two stacks per side and either you or your partner have the southmost one, both of you must swap sides.
       Identify the three Omega-Ms in a row and orient yourself toward them. If you're in group 1 and you're looking at the three side-by-side clones, you must always be knocked into the safe spot to your left. If you're in group 2, you must either be knocked back into the safe spot on your right (if it's [s:remote-glitch]) or the safe spot behind you (if it's [s:mid-glitch]). This knockback cannot be negated. There is, however, enough time after the knockback for slight position adjustments, so precision is not required here.
+    tips:
+      - Look around to find the eye after moving into the safe spot for the initial AoEs. You should already know where the eye is after the AoEs have resolved.
+      - The eye makes an audible directional sound when it spawns, which can be used to pinpoint its location without looking.
+      - Use [a:sprint] to make it to your [a:optimized-fire-iii] spot in time in case you were late to find the eye, or your spot happens to be on the opposite side of the arena from the initial AoE safe spot.
+      - The initial AoEs make a return in [a:run-dynamis-(omega-version)], so this mechanic can be used to practice the dodges.
+    mistakes:
+      - Failing to identify the safe spot in time.
+      - Failing to find the eye in time and being late to your [a:optimized-fire-iii] spot.
+      - "[s:mid-glitch]: improperly judging the distance."
+      - "[s:remote-glitch] as group 2: forgetting to invert your position from [i:cross][i:square][i:circle][i:triangle] to [i:triangle][i:circle][i:square][i:cross]."
+      - "After [a:optimized-fire-iii]: not checking your partner for the stack marker to see if you have to swap groups."
     children:
     - at: 9610
       id: subject-simulation-m
@@ -636,11 +665,11 @@ actions:
       count: 5
   subject-simulation-m:
     id: 31516
-    mechanic: mech
+    mechanic: mech.prepare
     description: Omega-F morphs into Omega-M, essentially swapping their healthbars.
   subject-simulation-f:
     id: 31515
-    mechanic: mech
+    mechanic: mech.prepare
     description: Omega-M morphs into Omega-F, essentially swapping their healthbars.
   beyond-strength:
     id: 31525
@@ -685,13 +714,14 @@ actions:
     description: A stack that deals lethal damage if taken with less than 4 players, or if any of the players inside are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   synthetic-shield:
     id: 32369
-    mechanic: mech
+    mechanic: mech.prepare
     description: |
       Omega-M creates a synthetic shield. This shield is used in the following mechanics: [a:optimized-passage-of-arms], [a:beyond-defense], or [a:pile-pitch].
   limitless-synergy:
     id: 31544
     compact: trim
     mechanic: mech
+    major: true
     description: |
       Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
       Additionally, several clones spawn outside of the arena:
@@ -708,6 +738,16 @@ actions:
       Afterwards, two previously designated party members (usually the tanks) should move in-between the party and the Omega-M clone with the [a:synthetic-shield] at [t:max melee] to intercept [a:beyond-defense]. Whichever of these two players is targeted should immediately circle around the party, ending up on the opposite side so they cannot be targeted for or hit by [a:pile-pitch], which is lethal to that player. The other player should move in to stack with the party for [a:pile-pitch]. It is okay for the [a:beyond-defense] baiters to also be targeted for [a:optimized-meteor].
       The intended way to resolve [a:optimized-meteor] is to have these players move out of the [a:pile-pitch] party stack, but with sufficient shielding and mitigation the [a:optimized-meteor] players can just stack with the party. This has become the preferred way to handle this mechanic in most parties.
       Remember to heal up and mitigate for [a:cosmo-meteor], then it's just DPS until both bosses are dead.
+    tips:
+      - The angle of [a:optimized-sagittarius-arrow] snapshots when the corresponding Omega-M begins the animation. Therefore you can move out of it immediately, without having to wait for the AoE telegraph to appear.
+      - If you're a ranged player, you can safely move to the edge of the arena if targeted by [a:optimized-meteor] to reduce the damage taken by the party. However, be mindful of the shielded Omega-M and do not move to the edge closest to him, or you will likely take the [a:beyond-defense] intended for the tanks and die to your [a:optimized-meteor]. If you're a melee player with [a:optimized-meteor], do not move to max melee; this will not meaningfully decrease the flare damage and only serves to increase the damage the party takes from [a:pile-pitch] (since there's now one less player in the stack).
+      - If the [a:optimized-sagittarius-arrow] clone spawns directly behind or in front of the party (thus shooting the line through the middle), check the positions of the [a:optimized-bladedance] and their tethers. Try to dodge **perpendicular** to those tethers after the tanks have taken them to the edge.
+      - If you "randomly" die, [a:optimized-sagittarius-arrow] may be to blame. Anyone standing in [a:optimized-sagittarius-arrow] when the AoE telegraph disappears are already dead, but they don't actually die until the arrow firing animation has completely finished.
+    mistakes:
+      - Tanks greeding for uptime and not moving to the edge in time (thus tankbustering the entire party).
+      - Tanks not properly communicating whether they'll take their tether to the clockwise or counter-clockwise edge and leaving no safe spot for the party.
+      - In the attempt to avoid [a:optimized-sagittarius-arrow], dodging directly into [a:optimized-bladedance].
+      - The player who was targeted by [a:beyond-defense] not moving around the party stack in time to avoid being one of the closest 2 players to the clone and taking the follow-up [a:pile-pitch].
     children:
     - at: 0
       id: <removestatus>
@@ -788,8 +828,13 @@ actions:
     description: |
       Omega-F finishes her enrage cast and wipes the party.
       Note that, although party buffs come off cooldown here, it is strongly advised to hold as many of them as possible for the start of Phase 3.
+    tips:
+      - As a general rule of thumb, if Omega-F's healthbar reaches the "O" in her name *before* the castbar reaches the "o" in "Laser Shower", you're on track for DPS. If the castbar reaches the "o" first, you're behind on DPS and should consider using some of your cooldowns to kill Omega-F in time.
+      - Needless to say, don't hold cooldowns while you're still progging P3.
   p3-transition:
     name: Transition
+    mechanic: mech
+    major: true
     description: |
       When the transition starts, the following debuffs are inflicted on players:
       * 4 players with [s:sniper-cannon-fodder] (a [m:spread])
@@ -800,6 +845,26 @@ actions:
       The entire party should organize into a [t:conga line] to the south. Each Data Center's Party Finder may use a different line-up order, but the actual order makes no difference for the mechanic. LPDU uses R1/M1/MT/H1/H2/OT/M2/R2.
       Look at your debuffs. Once debuffs come out, take a step back if you get [s:sniper-cannon-fodder], take a step forward if you get [s:high-powered-sniper-cannon-fodder], and stay put if you get nothing. Wait until everyone there are 2 people in your new line (as nothing or [s:high-powered-sniper-cannon-fodder]) or 4 people (as [s:sniper-cannon-fodder]). Whichever position you are in this new line-up determines your position (see the diagram).
       Stay out of the first [a:colossal-blow], then step into both it and the preceding [a:wave-repeater] hit. The sniper cannons resolve at the same time as the second set of [a:colossal-blow], greatly limiting the available safe spots. This means that if anyone is out of position, there is no longer enough space to resolve the mechanic without deaths.
+    tips:
+      - It is not necessary to pay attention to which set of hands spawns first. As long as you stand centered in-between the 2 closest hands, you'll always have enough time to step out of the first AoE. [a:sprint] makes this even easier.
+    mistakes:
+      - Not stepping out of the [t:conga line] in time and confusing your party members.
+      - If you're a [s:high-powered-sniper-cannon-fodder], not checking to make sure you're stacking with a no-debuff player, and vice-versa.
+    children:
+      - at: 5047
+        id: wave-repeater
+      - at: 17112
+        id: colossal-blow
+      - at: 19127
+        id: sniper-cannon
+      - at: 19127
+        id: high-powered-sniper-cannon
+      - at: 19127
+        id: sniper-cannon
+      - at: 19127
+        id: high-powered-sniper-cannon
+      - at: 19662
+        id: colossal-blow
   wave-repeater:
     id: 31567
     description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
@@ -841,6 +906,8 @@ actions:
     id: 31573
     damage: 80879
     mechanic: mech
+    compact: full
+    major: true
     description: |
       Heavy raidwide that begins the next major mechanic.
       Please note that, while this mechanic is technically quite complicated, resolving it is actually quite simple. If reading all the technical specifications on how the mechanic works confuses you, try skipping to the "Resolve" section below.
@@ -907,18 +974,103 @@ actions:
       - It is very easy to accidentally pass rot while moving to your tower. To avoid this, rots should always move outside the hitbox, and tethers should always move inside the hitbox. Be aware of healers, who may have to go into the hitbox to heal (while also having rot).
       - Timing is extremely important during this mechanic. Rots must be passed within 1 or at most 2 GCDs of the towers resolving. If passed too early or too late, [s:cascading-latent-defect]/[s:latent-performance-defect] will expire, causing a wipe.
       - Timing is also extremely important for the tether breaks. Avoid breaking a tether while [s:magic-vuln] or [s:stacking-magic-vuln:2] is still active. It won't cause a wipe but will deal significantly increased damage which healers may not be prepared to heal.
+    mistakes:
+      - Passing or taking rot too late, causing [s:latent-performance-defect] or [s:cascading-latent-defect] to expire before the rot and wiping the party.
+      - Colliding with another player and passing rot unintentionally.
+      - Being mid-movement while attempting to pass your rot. (Similar to [a:blaster] tethers, this increases the likelihood of rot not being passed.)
+      - Snapping both tethers at the same time.
+      - Snapping a tether too late.
+      - Forgetting which set of towers are the [s:critical-overflow-bug] towers and which the [s:critical-synchronization-bug] towers.
+      - Forgetting to count which set of [a:latent-defect] it is and therefore forgetting to take the last red-green tether to the [s:critical-synchronization-bug] towers instead of the [s:critical-overflow-bug] towers (therefore consuming your [s:overflow-debugger], getting another set of [s:critical-overflow-bug] during [a:critical-error] and wiping the party).
     trivia: |
       This mechanic uses various programming terms for its submechanics, such as:
       * *Hello World*: a simple program that just prints "Hello World" to the console. One of the most common examples used to teach beginners the syntax of a new programming language.
       * *Code Smell*: any kind of code that is considered "bad" by modern programming standards, for instance by violating best practices. Can often result in subtle, hard-to-diagnose bugs.
       * *Overflow*/*underflow*: before storing a number in a variable, you have to first define the "size" of that variable (i.e. how big the numbers that you're storing in it can be). This size determines how much memory the variable takes up. If you try to store a too-large number in a too-small variable, the number *overflows* (meaning that it wraps back around to 0). *Underflow* is the opposite of that, when you try to store a too-small number in a too-small variable (for instance trying to store a negative value in a variable that can only store positive values).
       * *Debugger*: tool used to step through code one line at a time and inspect the values of each variable at runtime. Useful for diagnosing bugs.
+    children:
+      - at: 23134
+        id: latent-defect
+      - at: 24160
+        id: critical-overflow-bug
+      - at: 24160
+        id: critical-synchronization-bug
+      - at: 24160
+        id: critical-overflow-bug
+      - at: 24160
+        id: latent-performance-defect
+      - at: 24160
+        id: cascading-latent-defect
+      - at: 26124
+        id: patch
+      - at: 30124
+        id: critical-underflow-bug
+      - at: 30124
+        id: critical-performance-bug
+      - at: 30124
+        id: critical-underflow-bug
+      - at: 44192
+        id: latent-defect
+      - at: 45177
+        id: latent-performance-defect
+      - at: 45177
+        id: cascading-latent-defect
+      - at: 45222
+        id: critical-overflow-bug
+      - at: 45222
+        id: critical-synchronization-bug
+      - at: 46604
+        id: patch
+      - at: 52942
+        id: critical-performance-bug
+      - at: 53165
+        id: critical-underflow-bug
+      - at: 53342
+        id: critical-performance-bug
+      - at: 65263
+        id: latent-defect
+      - at: 66244
+        id: latent-performance-defect
+      - at: 66244
+        id: cascading-latent-defect
+      - at: 66288
+        id: critical-synchronization-bug
+      - at: 66288
+        id: critical-overflow-bug
+      - at: 66288
+        id: critical-synchronization-bug
+      - at: 67941
+        id: patch
+      - at: 73523
+        id: critical-performance-bug
+      - at: 74013
+        id: critical-underflow-bug
+      - at: 86237
+        id: patch
+      - at: 86325
+        id: latent-defect
+      - at: 87352
+        id: critical-synchronization-bug
+      - at: 87352
+        id: critical-overflow-bug
+      - at: 87352
+        id: latent-performance-defect
+      - at: 87352
+        id: cascading-latent-defect
+      - at: 90213
+        id: patch
+      - at: 94953
+        id: critical-performance-bug
+      - at: 95801
+        id: critical-underflow-bug
   hello-world-fail:
     id: 31627
     mechanic: mech.failure
     description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Wipes the party.
   latent-defect:
     id: 31599
+    mechanic: towers.single
+    shape: chariot
     description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
   critical-overflow-bug:
     id: 31575
@@ -934,39 +1086,83 @@ actions:
     description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] to anyone stacking while applying [s:synchronization-debugger] to themselves."
   latent-performance-defect:
     id: 31584
+    mechanic: towers.single
+    shape: chariot
     description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
   cascading-latent-defect:
     id: 31583
+    mechanic: towers.single
+    shape: chariot
     description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
   patch:
     id: 31587
     damage: 21894
+    mechanic: raidwide
     description: |
       A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
       Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
   critical-underflow-bug:
     id: 31578
-    description: Placeholder description for Critical Underflow Bug
+    count: 2
+    mechanic: spread
+    shape: chariot
+    description: A small AoE around the player that resolves [s:cascading-latent-defect] and kills any other player hit.
   critical-performance-bug:
     id: 31579
-    description: Placeholder description for Critical Performance Bug
+    count: 2
+    mechanic: spread
+    shape: chariot
+    description: A small AoE around the player that resolves [s:latent-performance-defect] and kills any other player hit.
   critical-error:
     id: 31588
     damage: 94464
-    description: Placeholder description for Critical Error
+    mechanic: raidwide
+    description: Major raidwide that inflicts [s:critical-synchronization-bug], [s:critical-overflow-bug], [s:critical-underflow-bug], and [s:critical-performance-bug] on all players, making the next mechanic unresolvable.
+    resolve: |
+      To resolve Critical Error, all players must have [s:synchronization-debugger], [s:overflow-debugger], [s:underflow-debugger], and [s:performance-debugger]. In this case, the application of the corresponding bug will instead consume the respective debuffer buff and *not* apply the bug.
+      If any player does not have all debuggers, the subsequent mechanic is no longer resolvable, as the new debuffs resolve at the same time as [a:oversampled-wave-cannon].
   oversampled-wave-cannon:
     id: 31596
     damage: 50785
     type: magic
-    description: Placeholder description for Oversampled Wave Cannon
+    mechanic: mech
+    major: true
+    description: |
+      Monitors appear on either the left or right side of Omega as well as the left or right side of three random players (through [s:oversampled-wave-cannon-loading]).
+      At the end of the cast all monitors resolve, hitting two random players on the indicated side with large [ms:chariot] AoEs that inflict [s:magic-vuln] and [s:twice-come-ruin].
+    resolve: |
+      As there are 4 sets of monitors which hit 2 players each, each player is allowed to only receive one monitor AoE. To accomplish this, first identify whether Omega's east or west is the monitor side. Only 2 players should be on that side. All other players should be on the non-monitor side, where the three monitor players must position and rotate themselves in such a way that there are only 2 players on each of *their* monitor side as well. This removes the randomness from the mechanic.
+      Note that the [s:oversampled-wave-cannon-loading] can (and must!) themselves receive an [a:oversampled-wave-cannon] hit.
+      Check the diagram for an example of how LPDU handles this mechanic.
+      Be aware that attacking the boss with anything but an auto-attack will briefly turn your character, so consider staying idle at the end of the cast if you're an [s:oversampled-wave-cannon-loading] player.
+    tips:
+      - The snapshot for which players are targeted by the monitors is unforgiving. **Do not greed for uptime** if you have [s:oversampled-wave-cannon-loading].
+    mistakes:
+      - Forgetting which non-monitor/monitor player goes where.
+      - Greeding for uptime and targeting the wrong players with [s:oversampled-wave-cannon-loading].
+      - Angling your monitors, thus targeting the wrong players.
+      - Not being spread far enough apart and cleaving someone else with your monitor AoE.
   ion-efflux:
     id: 31560
     damage: 9999999
     mechanic: enrage
-    description: The boss enrages and wipes the party.
+    description: Omega enrages and wipes the party.
   wave-cannon:
     id: 31617
-    description: Placeholder description for Wave Cannon
+    mechanic: mech
+    description: |
+      A two-part mechanic.
+      During the cast, line stack markers appear on 2 random players. Omega will first fire lasers at all 8 players that deal moderate damage, inflict [s:magic-vuln], and leave behind an "afterimage" that resolves at the same time as the stacks 5 seconds later.
+      [a:wave-repeater] also happens during this mechanic.
+    resolve: |
+      **Ignore the line stack markers when they appear.** Do not get baited by the line stack markers – the first mechanic that resolves is the [a:wave-cannon-spread]. Wait until they have gone off, then stack in two groups. *Do not stack somewhere a player resolved a protean laser before.*
+      A good idea is to leave the south safe for the stacks and have 4 players spread on the west and 4 players on the east. If one of these two 4-player groups has 2 stacks, the southern stack should swap alongside the southmost player of the other group.
+      Remember to dodge [a:wave-repeater]. In general, a good strategy is to resolve the stacks and spreads within the ring just outside Omega's hitbox, then quickly step into the inner ring once [a:wave-repeater] hits there, and go back once [a:wave-repeater] has hit the outer ring.
+    mistakes:
+      - Forgetting to swap sides as the second stack on a given side.
+      - Forgetting to swap sides if you're the first player on a given side and your side has no stacks. (A 3-player stack results in lethal damage.)
+      - Forgetting to move in and being hit by [a:wave-repeater].
+      - Not moving back to your designated spot in time and baiting a [a:wave-cannon-lines] in the wrong location (on top of a stack).
     children:
       - at: 624
         id: wave-cannon-spread
@@ -978,27 +1174,42 @@ actions:
   wave-cannon-spread:
     id: 32534
     name: Wave Cannon (Spread)
+    mechanic: spread
+    shape: line
+    count: 8
     damage: 38988
     type: magic
-    description: Placeholder description for Wave Cannon
+    description: Omega fires lasers at all players. These lasers leave behind [an "afterimage"](a:wave-cannon-lines) that resolves 5 seconds later, at the same time as the stack.
   wave-cannon-lines:
     id: 31616
     name: Wave Cannon (Lines)
-    description: Placeholder description for Wave Cannon
+    mechanic: aoe.baitable
+    shape: line
+    count: 8
+    description: The afterimage left behind by [a:wave-cannon-spread]. Not survivable.
   wave-cannon-stack:
     id: 31615
     name: Wave Cannon (Stack)
+    mechanic: stack.targeted
+    shape: line
+    count: 2
     damage: 60363
-    description: Placeholder description for Wave Cannon
+    description: A 4-player stack on two random telegraphed players. Can also be survived with only 3 players given heavy mitigation and shielding.
   blue-screen:
     id: 31611
     damage: 80243
     mechanic: enrage.threshold
     type: magic
-    description: Placeholder description for Blue Screen
+    description: Kills all players if the boss is not brought below 20% health, otherwise deals moderate damage and advances the fight to Phase 5.
+    resolve: |
+      If you used your 2 minutes at the end of Phase 3, use [i:melee] LB3 here to beat the DPS check.
+      The DPS checks in Phase 3 and 4 are deliberately designed in such a way as to **require** the use of [i:melee] LB3 in either P3 or P4.
   double-solar-ray:
     id: 33196
-    description: Placeholder description for Solar Ray
+    mechanic: tb.mt
+    shape: chariot
+    description: Similar to [Solar Ray (single)](a:solar-ray), but deals significantly more damage, inflicts [s:magic-vuln], and executes twice in quick succession.
+    resolve: Either invuln both hits or [t:tankswap] in-between the hits.
     children:
       - at: 0
         id: solar-ray-hit
@@ -1007,92 +1218,329 @@ actions:
   solar-ray-hit:
     id: 31489
     name: Solar Ray (Hit)
-    description: Placeholder description for Solar Ray
+    mechanic: tb.mt
+    shape: chariot
+    damage: 300000
+    description: An individual hit of [a:double-solar-ray].
+  explosion:
+    id: 31482
+    mechanic: aoe.baitable
+    shape: chariot
+    description: A Rocket Punch fist was baited into a fist of the opposite colour. The two fists destroy each other, preventing [a:unmitigated-explosion].
+  unmitigated-explosion:
+    id: 31483
+    damage: 500000
+    mechanic: mech.failure
+    description: A Rocket Punch fist was not baited into a fist of the opposite colour and explodes, wiping the raid.
   run-dynamis-(delta-version):
     id: 31624
     damage: 136135
-    description: "Placeholder description for Run: ****mi* (Delta Version)"
+    mechanic: mech
+    compact: trim
+    major: true
+    description: |
+      Heavy raidwide that initiates the first of three [trios](t:trio).
+      After the raidwide, Omega-M becomes untargetable and tethers all players to another player: two pairs via [s:remote-code-smell] and two pairs via [s:local-code-smell]. Additionally, one player is inflicted with [s:hello-near-world] and one player with [s:hello-distant-world]. At the same time, Beetle Omega spawns on either the west or the east, Final Omega on the other side, and an Optical Unit on either north or south.
+      Multiple things now happen at the same time:
+      **Fists**
+      After some time, untargetable Rocket Punch fists spawn on top of every player. There will be 4 fists with blue lights and 4 fists with yellow lights. All [s:remote-code-smell] players are guaranteed to get exactly 2 blue fists and 2 yellow fists between them, but the exact distribution is random. Same with [s:local-code-smell] players. Each fist "belongs" to the player it spawned on, but the fists stay in place after they spawn. Approximately 11 seconds after they spawn (2 seconds after the tethers become active), the fists jump towards the player they belong to. If this player is stacked with a player of the opposite-coloured fist, [a small puddle](a:explosion) appears as the fists smash into each other and harmlessly explode, otherwise the fist [smashes the ground and wipes the raid](a:unmitigated-explosion).
+      **Arms**
+      Shortly after the fists initially spawn, a Left Arm Unit or a Right Arm Unit spawns on every cardinal and intercardinal except east and west. Left Arm Units are denoted by a blue counter-clockwise rotating arrow marker while Right Arm Units are denoted by a yellow clockwise rotating arrow marker. A few seconds after the fists resolve, each arm snapshots towards the closest player to that arm and, after a brief delay, begins firing a [a:hyper-pulse] where that player was that then rotates in the indicated direction.
+      **Optical Unit**
+      The Optical Unit on the north or south fires an [a:optical-laser] (same as the one during [a:party-synergy]) through the middle of the arena at the same time as the fists resolve.
+      **Omega-M**
+      Shortly before fists resolve, Omega-M spawns in the center of the arena and, shortly *after* fists resolve, targets one of the two closest players to him with [a:beyond-defense], and then the closest player after that with [a:pile-pitch].
+      **Monitors**
+      After the fists resolve, a random [s:remote-regression] (blue tether) player is inflicted with [s:oversampled-wave-cannon-loading], showing monitors on either side of them. Final Omega also prepares monitors on either its left or right (which equates to the north or south of the arena). Both sets of monitors resolve at the same time as [a:pile-pitch].
+      **Beetle**
+      After all other mechanics are resolved, Beetle Omega begins to cast [a:swivel-cannon], indicated by the blue lights on either side of it. [s:hello-near-world] and [s:hello-distant-world] resolve shortly after.
+      **Hello, Near/Distant World**
+      Represents the main mechanic of Phase 5. [a:hello-near-distant-world:d]
+      Be aware that if a player with [s:hello-near-world] or [s:hello-distant-world] dies, [all players are killed instantly](a:hello-world-fail).
+    resolve: |
+      There are many ways to handle this mechanic. Check the diagrams for some of the most common ways.
+      The most important strat-agnostic things are:
+      * Pair both red-green ([s:local-regression]) pairs and both blue ([s:remote-regression]) pairs with each other to resolve fists. Never pair different tether types with each other, as this may result in the fists all being the same colour and therefore unresolvable. If two fist-paired players have the same-coloured fist, simply swap with your tether partner and fists will be correctly resolved.
+      * Don't be in the middle while resolving fists. A common strategy is to place both blue tethers on the Beetle side of the arena, and both red-green pairs on the Final Omega side.
+      * You *can* combine fists with your tether partner if you both get opposite-coloured fists, but due to the distance requirements of the tethers this may make executing the rest of the mechanic more difficult and is therefore not recommended.
+      * The Left/Right Arm Unit rotator indicator disappears *before the arm actually targets a player.* Do **not** move away from the arm as soon as the rotator indicator disappears; instead wait until the yellow line telegraph appears.
+    mistakes:
+      - Being mid-movement while the Rocket Punch fists snapshot. (This **always** causes [a:unmitigated-explosion], even if you're on top of a player with a differently coloured fist.)
+      - As an arm unit baiter, moving to the incorrect side of your arm or not reaching the correct side in time, thus cleaving the entire arena.
+      - As an arm baiter [s:oversampled-wave-cannon-loading] player, forgetting to use [a:sprint] and arriving too late to the middle to properly angle your monitor.
+      - As the [s:oversampled-wave-cannon-loading] player, not moving far enough horizontally from the [a:pile-pitch] stack, thus causing one of the players in the stack to be targeted by [a:oversampled-wave-cannon] and wiping the party.
+      - As a monitor baiter, not moving close enough to the wall and cleaving someone else with your AoE, especially on the non-monitor side (where you may cleave the [a:beyond-defense] player who had to move out of the stack).
+      - As a red-green pair (especially the pair that snaps their tether first), not waiting long enough for all [s:twice-come-ruin]s to expire and inflicting [s:doom]. (Not every [s:twice-come-ruin] has the same duration.)
+      - As the red-green pair that snaps their tether last, snapping it too late, thus causing it to snap on its own and wipe the party.
+    children:
+      - at: 21292
+        id: patch
+      - at: 23214
+        id: optical-laser
+      - at: 25001
+        id: patch
+      - at: 26149
+        id: explosion
+      - at: 28609
+        id: beyond-defense
+      - at: 31056
+        id: hyper-pulse
+      - at: 33556
+        id: oversampled-wave-cannon
+      - at: 34003
+        id: pile-pitch
+      - at: 41497
+        id: patch
+      - at: 47158
+        id: hello-near-distant-world
+      - at: 54290
+        id: patch
   hyper-pulse:
     id: 31600
-    description: Placeholder description for Hyper Pulse
+    mechanic: aoe.rotating
+    shape: line
+    description: |
+      The Left/Right Arm Unit fires a laser at the closest player that rotates counter-clockwise/clockwise after the initial hit.
+      The initial hit is telegraphed and can (and should) be stepped out of.
     children:
+      - at: 0
+        id: hyper-pulse-hit
       - at: 623
-        id: hyper-pulse-1
+        id: hyper-pulse-hit
       - at: 1206
-        id: hyper-pulse-1
+        id: hyper-pulse-hit
       - at: 1786
-        id: hyper-pulse-1
+        id: hyper-pulse-hit
       - at: 2366
-        id: hyper-pulse-1
-  hyper-pulse-1:
+        id: hyper-pulse-hit
+  hyper-pulse-hit:
     id: 31601
-    description: Placeholder description for Hyper Pulse
+    mechanic: aoe.rotating
+    shape: line
+    description: "[a:hyper-pulse:d]"
+  swivel-cannon:
+    id: 31636
+    mechanic: aoe
+    shape: side
+    description: |
+      Beetle Omega cleaves the entire side of the arena to either its left or right. Which side is cleaved is telegraphed by blue lights on that side of Omega. The AoE area is also telegraphed shortly before the cleave.
+      Be aware that the AoE is not exactly a 180° half-arena cleave. It's closer to 210°.
+  hello-near-distant-world:
+    name: Hello, Near/Distant World
+    mechanic: mech
+    compact: full
+    description: |
+      [s:hello-near-world] and [s:hello-distant-world] both resolve, causing those players to explode in large AoEs that wipe the raid if any other player is clipped, and inflicting [s:magic-vuln] and a stack of [s:quickening-dynamis] to them. [s:hello-near-world] then jumps to the closest player via a smaller AoE and [s:hello-distant-world] to the farthest player, inflicting the same statuses, then each jump one last time.
+      Each set of [s:hello-near-world]/[s:hello-distant-world] therefore applies 6 stacks of [s:quickening-dynamis] to players. In total, Phase 5 features 4 sets of [a:hello-near-distant-world], adding up to 24 stacks throughout the whole phase. By the end of the phase each player must have [s:quickening-dynamis:3] or a wipe is guaranteed in Phase 6. This means that no stacks may be wasted (by having a jump go to a player who already has [s:quickening-dynamis:3]).
+      Since any player can only accumulate one stack of [s:quickening-dynamis] per [a:hello-near-distant-world] set without dying, this also means that each player has to "sit out" 1 of the 4 sets and avoid being targeted by a jump.
+    children:
+      - at: 0
+        id: hello-near-world
+        link: and
+      - at: 0
+        id: hello-distant-world
+      - at: 1026
+        id: hello-near-world-jump
+        link: and
+      - at: 1026
+        id: hello-distant-world-jump
+      - at: 2009
+        id: hello-near-world-jump
+        link: and
+      - at: 2009
+        id: hello-distant-world-jump
+  hello-near-far-world:
+    name: Hello Near/Distant World
+    mechanic: spread
+    shape: chariot
+    description: |
+      [a:hello-near-world] and [a:hello-distant-world] executes here.
   hello-near-world:
     id: 31625
-    damage: 49533
-    description: Placeholder description for Hello, Near World
+    damage: 50000
+    mechanic: spread
+    shape: chariot
+    description: |
+      The player with [s:hello-near-world] explodes in a large [ms:chariot] AoE. A smaller AoE jumps onto whoever is closest to them, then jumps to the closest player one last time. Each AoE applies a stack of [s:quickening-dynamis] to the targeted player, but [wipes the raid](a:hello-world-fail) if any other player is clipped by any of the AoEs.
+      Each hit also inflicts [s:magic-vuln], preventing players from receiving multiple [s:quickening-dynamis] stacks during the same [a:hello-near-distant-world] mechanic without dying.
   hello-distant-world:
     id: 33040
-    damage: 51511
-    description: Placeholder description for Hello, Distant World
-  hello-near-world-1:
+    damage: 50000
+    mechanic: spread
+    shape: chariot
+    description: |
+      The player with [s:hello-distant-world] explodes in a large [ms:chariot] AoE. A smaller AoE jumps onto whoever is farthest from them, then jumps to the farthest player one last time. Each AoE applies a stack of [s:quickening-dynamis:1] to the targeted player, but [wipes the raid](a:hello-world-fail) if any other player is clipped by any of the AoEs.
+      Each hit also inflicts [s:magic-vuln], preventing players from receiving multiple [s:quickening-dynamis] stacks during the same [a:hello-near-distant-world] mechanic without dying.
+  hello-near-world-jump:
     id: 31626
-    damage: 50228
-    description: Placeholder description for Hello, Near World
-  hello-distant-world-1:
+    damage: 50000
+    mechanic: spread
+    shape: chariot
+    description: One of the jumps of [a:hello-near-world]. A smaller AoE than [a:hello-near-world], but otherwise shares the same properties.
+  hello-distant-world-jump:
     id: 33041
-    damage: 49085
-    description: Placeholder description for Hello, Distant World
+    damage: 50000
+    mechanic: spread
+    shape: chariot
+    description: One of the jumps of [a:hello-distant-world]. A smaller AoE than [a:hello-distant-world], but otherwise shares the same properties.
   run-dynamis-(sigma-version):
     id: 32788
     damage: 139915
-    description: "Placeholder description for Run: ****mi* (Sigma Version)"
-  subject-simulation-f-1:
-    id: 32559
-    description: Placeholder description for Subject Simulation F
-  hyper-pulse-2:
+    mechanic: mech
+    compact: trim
+    major: true
+    description: |
+      Heavy raidwide that initiates the second of three [trios](t:trio).
+      Also inflicts one player with [s:hello-near-world] and another player with [s:hello-distant-world].
+      **Proteans**
+      Omega-M goes untargetable and two Right Arm Units appear. Unlike the units in [a:run-dynamis-(delta-version)], these units draw a visual tether toward the farthest player and, at the end of the mechanic, shoot a laser at these players. The tether isn't fixed; it dynamically changes its target based on who is farthest from the arm at any given point in time.
+      After the arms appear, Omega-M reappears opposite the arms. Each player is also inflicted with [s:mid-glitch] or [s:remote-glitch] and assigned a PlayStation symbol ([i:cross][i:square][i:circle][i:triangle]). Same as [a:party-synergy], same-symbol players are tethered together.
+      Shortly after, Final Omega spawns in the center of the arena and begins casting [a:wave-cannon-marked] as 6 players receive a red headmarker on top of them with 2 players remaining unmarked. The 2 unmarked players will never be paired with each other. At the end of the cast, [a:wave-cannon-marked] fires a cone at each marked player and the two arms fire [a:far-hyper-pulse] at the two farthest players. Both of these inflict [s:magic-vuln].
+      **Towers**
+      After [a:wave-cannon-marked] resolves, towers appear. The towers spawn in different configurations depending on if it's [s:remote-glitch] or [s:mid-glitch], but otherwise they always spawn in the same configuration. They may, however, be rotated: if wherever Omega-M spawned at the beginning of the mechanic is considered "relative north", then the towers always spawn either north-relative or south-relative.
+      Before the towers explode, Omega-F appears in the center and casts [a:discharger], knocking players back. As [s:remote-glitch]/[s:mid-glitch] is still active here, players must be knocked into a tower away from their tether partner.
+      Note that all players are required to resolve the towers.
+      **Hello World**
+      Omega's Rear Power Unit (the ring) spawns in the center of the arena, shows a rotation indicator, and prepares to cast [a:rear-lasers]. At the same time, Omega-F spawns in-line with the Rear Power Unit and prepares to cast either [a:superliminal-steel] or [a:optimized-blizzard-iii]. Finally, the Right Arm Units from the first part of this mechanic return, but this time they're placed in the wall on the far side of Omega-F.
+      [a:rear-lasers] begins rotating, then [a:superliminal-steel]/[a:optimized-blizzard-iii] resolves while [a:rear-lasers] are still rotating, then [a:hello-near-far-world] and [a:far-hyper-pulse] resolve at the same time after [a:rear-lasers] have stopped firing.
+    resolve: |
+      As soon as the PlayStation symbols appear, the party should establish a 2-column [t:conga line] somewhere in the arena. It's common to line up in front of Omega-M. Don't line up in the center, as Final Omega's model will make it impossible to see the subsequent markers.
+      Once markers appear, place the 2 unmarked players on the cardinals or intercardinals opposite the arms and the other 6 players on the other 6 cardinals or intercardinals. Each player should be opposite their tether partner. If it's [s:remote-glitch], all players should stand on the wall. If it's [s:mid-glitch], all players should stand on the fourth ring on the floor from the center of the arena.
+      Most PF strategies designate fixed positions based on your initial position in the [t:conga line]. The diagram shows these positions for LPDU. After the spreads resolve, remember the marker you spread on and face your camera back towards Omega-M (or opposite him). That way, when towers spawn, you'll already be looking at either the northmost or southmost tower(s), and there is no chance of getting turned around. Most strategies designate towers based on the marker you spread on. Again, the diagram shows the LPDU designations.
+      Wait on any of the center rings to be knocked back to your tower, then either stand in the center of the tower ([s:mid-glitch]) or on the far edge of the tower ([s:remote-glitch]).
+      After towers resolve, assign Hello World spots, then find Omega-F. Go towards her if you're one of the Rear Arm Unit baiters or the first [a:hello-distant-world] target. Everyone else goes opposite Omega-F. Check which direction the [a:rear-lasers] rotate and move slightly towards the other direction to avoid being in the immediate path of the lasers.
+      Take another look at Omega-F; check whether she's holding a staff or wearing stilettos on her feet. If it's the former, **do not follow** the rotating laser until she executes [a:optimized-blizzard-iii], otherwise follow the laser.
+      Lastly, move to [a:hello-near-distant-world] spots, taking care to avoid being in the path of the Rear Arm Units. Check the diagram for how LPDU handles this [a:hello-near-distant-world].
+    mistakes:
+      - Forgetting the marker you initially spread on or otherwise forgetting which tower that correlates to.
+      - Not fixing your camera on the relative north/south, thus getting turned around and choosing the wrong tower.
+      - As the two players designated for [a:far-hyper-pulse], not properly prepositioning or otherwise failing to communicate which arm each one takes.
+      - As the second player to be hit by [a:hello-near-world], seeing that the other player is behind you and deciding to take their spot instead. (There is enough time for someone to make it to their spot if they move on the edge, even if they're slightly late, but due to how slowly player movement updates on other players' screens, there is not enough time to respond to someone else taking their spot.)
+    children:
+      - at: 17391
+        id: subject-simulation-f
+      - at: 22182
+        id: far-hyper-pulse
+      - at: 22360
+        id: wave-cannon-marked
+      - at: 30948
+        id: discharger
+      - at: 34882
+        id: storage-violation
+      - at: 52364
+        id: superliminal-steel
+      - at: 59155
+        id: hello-near-distant-world
+      - at: 59289
+        id: far-hyper-pulse
+  rear-lasers:
+    name: Rear Lasers
+    mechanic: aoe.rotating
+    shape: line
+    description: Final Omega's ring detaches, perches itself in the center of the arena, and begins to rotate clockwise or counter-clockwise while firing continuous laser AoEs that deal massive damage and inflict [s:2911].
+  far-hyper-pulse:
     id: 31602
     damage: 68556
-    description: Placeholder description for Hyper Pulse
-  wave-cannon-8:
+    count: 2
+    mechanic: spread.far
+    shape: line
+    description: |
+      Two Rear Arm Units spawn and each target the farthest player with a small [ms:line] AoE that inflicts [s:magic-vuln].
+      Each arm indicates which player is currently being targeted via a narrow silver tether. This tether is only an indicator; it automatically switches targets when a different player moves farther away than the currently tethered player.
+  wave-cannon-marked:
     id: 31604
     damage: 70865
-    description: Placeholder description for Wave Cannon
-  storage-violation-1:
-    id: 31493
-    damage: 34144
-    description: Placeholder description for Storage Violation
-  superliminal-steel-2:
-    id: 31530
-    description: Placeholder description for Superliminal Steel
-  solar-ray-4:
-    id: 33197
-    damage: 291471
-    description: Placeholder description for Solar Ray
-    children:
-      - at: 3210
-        id: solar-ray-5
-  solar-ray-5:
-    id: 31490
-    damage: 298417
-    description: Placeholder description for Solar Ray
+    count: 6
+    mechanic: spread
+    shape: line
+    description: Marks 6 players with a red marker above their heads and, after a delay, fires a [ms:line] AoE at each of them that inflicts [s:magic-vuln].
   run-dynamis-(omega-version):
     id: 32789
     damage: 139666
-    description: "Placeholder description for Run: ****mi* (Omega Version)"
+    mechanic: mech
+    major: true
+    description: |
+      Heavy raidwide that initiates the third of three [trios](t:trio).
+      Also inflicts **two** players with [s:hello-near-world] and two other players with [s:hello-distant-world]. These players are marked with [s:first-in-line] or [s:second-in-line] to indicate which set of [a:hello-near-distant-world] debuffs resolves first.
+      The four Hello World statuses are guaranteed to **always target players with less than [s:quickening-dynamis:3]**.
+      **AoEs**
+      Final Omega spawns in the center of the arena along with a clone of Omega-M and Omega-F to either side of him. Similar to [a:party-synergy], these clones are either equipped with a sword or shield, or a staff or stilettos respectively, and prepare to execute a combination of [a:efficient-bladework]/[a:beyond-strength] and [a:optimized-blizzard-iii]/[a:superliminal-steel].
+      Then, a second set of Omega-F and Omega-M clones spawns perpendicular to the first ones, who also prepare to execute a combination of the above AoEs.
+      Final Omega either doesn't change the rotation of its ring or turns it sidewards and begins to cast [a:diffuse-wave-cannon] as the ring starts to glow. At the end of the cast, [a:diffuse-wave-cannon] shoots two massive conal AoEs towards either side of the ring, with only the ring's sides remaining safe. In addition, the first set of clones' AoEs resolves here.
+      After a brief delay, Final Omega's ring **rotates by 90°** and executes [a:diffuse-wave-cannon] again. The second set of clones' AoEs resolves here.
+      Note that the clones **always spawn on intercardinals** while the ring can **only face cardinals**.
+      Also note that Omega-F **remains targetable** for the entire duration of this part of the mechanic.
+      **Hello World, Part 1**
+      Omega-F disappears and Final Omega prepares to cast [a:oversampled-wave-cannon] with monitors pointing to either the east or west side of the arena. The first set of [a:hello-near-distant-world] resolves at the same time as [a:oversampled-wave-cannon].
+      **Hello World, Part 2**
+      Final Omega disappears and Beetle Omega spawns on either the east or west side of the arena, and prepares to cast [a:blaster] with two tethers spawning on random players. The second set of [a:hello-near-distant-world] resolves just after [a:blaster].
+    resolve: |
+      **Keep track of whichever set of clones spawns first** and visualize the safe spot. Unless you have brain power to spare, ignore the other set of clones for now.
+      Wait for Final Omega to begin casting [a:diffuse-wave-cannon]. **Don't move into the safe spot before this**, as Final Omega may rotate its ring at this time, thus changing the safe spot. After moving into the first safe spot, look at the next set of clones and visualize *their* safe spot.
+      After the first set of AoEs resolves, either move about **90° counter-clockwise or 90° clockwise** into the next safe spot. **Do not stay or move across the arena** as Final Omega is **guaranteed** to rotate its ring by 90° here.
+      If you've handled P5 correctly up until now, there should be 4 players with [s:quickening-dynamis:2] and 4 players with [s:quickening-dynamis:1] in your party at this time. Randomly choose 2 of the [s:quickening-dynamis:2] players to bait [a:oversampled-wave-cannon]. All other players should receive another stack, thus giving you 6 players with [s:quickening-dynamis:2] and 2 players with [s:quickening-dynamis:3]. The 2 players with [s:quickening-dynamis:3] must take care of the subsequent [a:blaster] tethers.
+      If executed correctly, everyone should now have [s:quickening-dynamis:3], paving the way for Phase 6.
+      If anyone doesn't have [s:quickening-dynamis:3] at this point you are guaranteed to wipe early into Phase 6, so it's recommended to wipe the pull immediately.
+    tips:
+      - It's recommended to use most of your remaining party mitigation after the initial cast of [a:run-dynamis-(omega-version)]. This will allow players (even non-tanks) to survive a hit during the first part of the mechanic, thus keeping the pull alive (though the player will be inflicted with [s:2911]). If this happens, it is **strongly recommended** to [t:wall] yourself at the earliest opportunity to get rid of [s:2911]. The [a:blind-faith] DPS check may not be possible to beat otherwise. Make absolutely sure to only wall yourself if a) you do **not** have [s:hello-near-world] or [s:hello-distant-world] and the first set of [a:hello-near-distant-world] has finished executing, or b) the second set of [a:hello-near-distant-world] has finished executing. In other words, do not wall yourself if you have a mechanical responsibility in the next 10 seconds.
+      - "Generally, you can categorize each dodge into one of three categories: a close dodge ([a:superliminal-steel] + [a:beyond-strength]/[a:efficient-bladework]), a mid dodge ([a:optimized-blizzard-iii] + [a:beyond-strength]), and a far dodge ([a:optimized-blizzard-iii] + [a:efficient-bladework]). As the main condition for which type of dodge it is lies in Omega-F's attack, it is her stance that you should identify first. If she's wearing stilettos, you already know it'll be a close dodge. Otherwise, check Omega-M to determine whether it's a mid or a far dodge."
+    mistakes:
+      - Not reading Omega-F's or Omega-M's stance correctly.
+      - "When Final Omega's ring is facing north/south: aligning yourself with the edge of the ring rather than the arena markers. (When Omega's ring faces north/south, the ring is offset from the center of Omega's hitbox and **cannot** be used to align yourself with its cones.)"
+      - "[a:oversampled-wave-cannon] players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a monitor player."
+      - "[a:blaster] tether players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a tethered player."
+    compact: trim
+    children:
+      - at: 18399
+        id: diffuse-wave-cannon
+        link: and
+      - at: 18399
+        id: optimized-blizzard-iii
+        link: or
+      - at: 18399
+        id: superliminal-steel
+        link: and
+      - at: 18399
+        id: beyond-strength
+        link: or
+      - at: 18399
+        id: efficient-bladework
+      - at: 22319
+        id: diffuse-wave-cannon
+        link: and
+      - at: 22319
+        id: optimized-blizzard-iii
+        link: or
+      - at: 22319
+        id: superliminal-steel
+        link: and
+      - at: 22319
+        id: beyond-strength
+        link: or
+      - at: 22319
+        id: efficient-bladework
+      - at: 23600
+        id: <untargetable>
+      - at: 35143
+        id: hello-near-distant-world
+        link: and
+      - at: 35589
+        id: oversampled-wave-cannon
+      - at: 51483
+        id: blaster
+      - at: 53135
+        id: hello-near-distant-world
   diffuse-wave-cannon:
     id: 31609
-    description: Placeholder description for Diffuse Wave Cannon
-  blaster-4:
-    id: 32373
-    damage: 49781
-    description: Placeholder description for Blaster
+    mechanic: aoe
+    shape: cone
+    description: Final Omega consolidates the ring on its back, *may* turn the ring by 90°, then shoots massive conal AoEs in either direction of the ring that inflict [s:2911].
   blind-faith:
     id: 31623
     damage: 69891
     mechanic: enrage.threshold
     type: magic
-    description: Placeholder description for Blind Faith
+    description: The death wall surrounding the arena disappears and Omega-F begins casting [a:blind-faith]. If she is not brought below 20% HP before the cast finishes, wipes the party.
   cosmo-memory-2:
     id: 31649
     damage: 404130
@@ -1108,8 +1556,8 @@ actions:
       This leaves 3 possible [i:melee] LB3s for a total of 10 available limit breaks during this phase. As of patch 6.5, it is possible to skip one [i:melee] LB3 if your damage is good, but the others cannot currently be skipped as the DPS check is designed with 3 [i:melee] LB3s in mind.
       Other things to know include:
       * The [auto attacks](a:flash-gale) in this phase target the main target and the *farthest* target. [boss] always executes 2 auto-attacks in-between major mechanics, so after each major mechanic, it is essential that the party steps into the hitbox and the off-tank outside.
-      * Due to the strict LB requirements, a non-standard [i:dps] composition (i.e. a party without a [i:caster] or [i:pranged], or a party without at least 2× [i:melee]) cannot finish the fight.
-      * **Any death before [a:magic-number] is an automatic wipe** as that player loses their [s:brilliant-dynamis]/[s:spark-of-dynamis], meaning that even if raised they will just die again to the next damage instance. Unless you know what you're doing, do not take any risks during this phase.
+      * Due to the strict LB requirements, a non-standard [i:dps] composition (i.e. a party that is not composed of [i:melee][i:melee][i:caster][i:pranged]) cannot finish the fight. Unlike DSR, you *can* finish the fight with only 1 healer or even 0 healers though, provided you bring sufficient DPS.
+      * **Any death before [a:cosmo-meteor] is an automatic wipe** as that player loses their [s:brilliant-dynamis]/[s:spark-of-dynamis], meaning that even if raised they will just die again to the next damage instance. The only time players are allowed to die is to the last hit(s) of [a:cosmo-meteor], and only if they're a [i:dps], otherwise they'll lose their free LB3 (but only supports should still have any LB3s left here).
   flash-gale:
     id: 32223
     damage: 39838
@@ -1125,6 +1573,7 @@ actions:
     id: 31650
     compact: full
     mechanic: aoe.exaflares
+    major: true
     shape: rect
     description: |
       Exasquares.
@@ -1168,6 +1617,8 @@ actions:
     description: A hit of the outwards or inwards moving exasquares.
   cosmo-dive:
     id: 31654
+    mechanic: mech
+    shape: chariot
     description: |
       Hits the two closest targets with tankbusters and the farthest target with a stack.
       The stack deals lethal damage if soaked with less than 6 players.
@@ -1200,6 +1651,7 @@ actions:
     mechanic: aoe.exaflares
     shape: chariot
     compact: full
+    major: true
     description: |
       A circle with arrows appears on a random cardinal or intercardinal about half a second before the end of the cast. Three more circles then appear clockwise or counter-clockwise, each with a slight delay.
       Five seconds after the cast, big telegraphed AoEs spawn underneath each party member that resolve 2.7 seconds later. They do not follow players. More AoEs spawn underneath each party member every 2 seconds. At the same time, the first of the arrow circles on the outside of the arena resolves into exaflares that travel across the arena in the indicated direction, then the next, and so on.
@@ -1274,6 +1726,7 @@ actions:
     id: 31664
     compact: trim
     mechanic: adds
+    major: true
     description: |
       First, spawns massive baited AoEs underneath every party member.
       A short while later, spawns eight adds around the hitbox: 6× Cosmo Comet and 2× Cosmo Meteor. The meteors always spawn north and south while the remaining ones spawn on the other cardinals and intercardinals. If not killed within 15 seconds, they will wipe the party.
@@ -1337,6 +1790,7 @@ actions:
     mechanic: raidwide.lb
     description: |
       Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all party members, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
+      Note that [a:cover] *prevents* the targeted player from being inflicted with [s:magic-number]. This can be used to essentially "skip" one [a:magic-number] if one of your healers has died and lost their free LB3. (Have the non-PLD use [i:tank] LB3 while the PLD [a:cover]s the healer who still has [s:brilliant-dynamis], then have the PLD click off their LB3 buff immediately to ensure they die to the cast without having to wait for [s:magic-number] to expire. The healer raises the PLD, the PLD uses [i:tank] LB3 and the healer uses [i:healer] LB3 to raise the rest of the party.)
     trivia: |
       In programming terms, a *magic number* is a number that is used directly in source code. This is an anti-pattern; best practice is to extract such numbers into named constants and then reference the constant anywhere the number is needed. This way the name of that constant explains what the number means.
       For instance, if you saw an expression like "8 × 8760", you'd probably have no idea what this expression calculates. However, if you instead rewrite it as "8 × HOURS_PER_YEAR", now you know exactly that this expression calculates the number of hours in 8 years.
@@ -1398,98 +1852,10 @@ timeline:
   - at: 292328
     id: p3-transition
     push: true
-  - at: 297375
-    id: wave-repeater
-  - at: 309440
-    id: colossal-blow
-  - at: 311455
-    id: sniper-cannon
-  - at: 311455
-    id: high-powered-sniper-cannon
-  - at: 311455
-    id: sniper-cannon
-  - at: 311455
-    id: high-powered-sniper-cannon
-  - at: 311990
-    id: colossal-blow
   - at: 315693
     id: <targetable>
   - at: 324657
     id: hello-world
-  - at: 347791
-    id: latent-defect
-  - at: 348817
-    id: critical-overflow-bug
-  - at: 348817
-    id: critical-synchronization-bug
-  - at: 348817
-    id: critical-overflow-bug
-  - at: 348817
-    id: latent-performance-defect
-  - at: 348817
-    id: cascading-latent-defect
-  - at: 350781
-    id: patch
-  - at: 354781
-    id: critical-underflow-bug
-  - at: 354781
-    id: critical-performance-bug
-  - at: 354781
-    id: critical-underflow-bug
-  - at: 368849
-    id: latent-defect
-  - at: 369834
-    id: latent-performance-defect
-  - at: 369834
-    id: cascading-latent-defect
-  - at: 369879
-    id: critical-overflow-bug
-  - at: 369879
-    id: critical-synchronization-bug
-  - at: 371261
-    id: patch
-  - at: 377599
-    id: critical-performance-bug
-  - at: 377822
-    id: critical-underflow-bug
-  - at: 377999
-    id: critical-performance-bug
-  - at: 389920
-    id: latent-defect
-  - at: 390901
-    id: latent-performance-defect
-  - at: 390901
-    id: cascading-latent-defect
-  - at: 390945
-    id: critical-synchronization-bug
-  - at: 390945
-    id: critical-overflow-bug
-  - at: 390945
-    id: critical-synchronization-bug
-  - at: 392598
-    id: patch
-  - at: 398180
-    id: critical-performance-bug
-  - at: 398670
-    id: critical-underflow-bug
-  - at: 410894
-    id: patch
-  - at: 410982
-    id: latent-defect
-  - at: 412009
-    id: critical-synchronization-bug
-  - at: 412009
-    id: critical-overflow-bug
-  - at: 412009
-    id: latent-performance-defect
-  - at: 412009
-    id: cascading-latent-defect
-  - at: 414870
-    id: patch
-  - at: 419610
-    id: critical-performance-bug
-  - at: 420458
-    id: critical-underflow-bug
   - at: 433147
     id: critical-error
   - at: 454597
@@ -1527,108 +1893,14 @@ timeline:
     id: double-solar-ray
   - at: 574102
     id: run-dynamis-(delta-version)
-  - at: 595394
-    id: patch
-  - at: 597316
-    id: optical-laser
-  - at: 599103
-    id: patch
-  - at: 602711
-    id: beyond-defense
-  - at: 605158
-    id: hyper-pulse
-  - at: 607658
-    id: oversampled-wave-cannon
-  - at: 608105
-    id: hyper-pulse-1
-  - at: 608105
-    id: pile-pitch
-  - at: 608149
-    id: hyper-pulse-1
-  - at: 615599
-    id: patch
-  - at: 621260
-    id: hello-near-world
-  - at: 621261
-    id: hello-distant-world
-  - at: 622287
-    id: hello-near-world-1
-  - at: 622287
-    id: hello-distant-world-1
-  - at: 623270
-    id: hello-near-world-1
-  - at: 623270
-    id: hello-distant-world-1
-  - at: 628392
-    id: patch
   - at: 639583
     id: double-solar-ray
   - at: 656087
     id: run-dynamis-(sigma-version)
-  - at: 673478
-    id: subject-simulation-f-1
-  - at: 678269
-    id: hyper-pulse-2
-  - at: 678447
-    id: wave-cannon-8
-  - at: 687035
-    id: discharger
-  - at: 690969
-    id: storage-violation
-  - at: 708451
-    id: superliminal-steel-2
-  - at: 715242
-    id: hello-near-world
-  - at: 715242
-    id: hello-distant-world
-  - at: 715376
-    id: hyper-pulse-2
-  - at: 716268
-    id: hello-near-world-1
-  - at: 716268
-    id: hello-distant-world-1
-  - at: 717252
-    id: hello-near-world-1
-  - at: 717252
-    id: hello-distant-world-1
   - at: 728955
     id: double-solar-ray
   - at: 745645
     id: run-dynamis-(omega-version)
-  - at: 764044
-    id: diffuse-wave-cannon
-  - at: 767964
-    id: superliminal-steel
-  - at: 768098
-    id: diffuse-wave-cannon
-  - at: 780788
-    id: hello-distant-world
-  - at: 780788
-    id: hello-near-world
-  - at: 781234
-    id: oversampled-wave-cannon
-  - at: 781812
-    id: hello-distant-world-1
-  - at: 781813
-    id: hello-near-world-1
-  - at: 782793
-    id: hello-distant-world-1
-  - at: 782793
-    id: hello-near-world-1
-  - at: 797128
-    id: blaster-4
-  - at: 798780
-    id: hello-distant-world
-  - at: 798780
-    id: hello-near-world
-  - at: 799810
-    id: hello-distant-world-1
-  - at: 799810
-    id: hello-near-world-1
-  - at: 800784
-    id: hello-distant-world-1
-  - at: 800784
-    id: hello-near-world-1
   - at: 812225
     id: double-solar-ray
   - at: 835472
