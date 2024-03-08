@@ -11,7 +11,7 @@ raidwide.proximity:
   description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
   is-raid-damage: true
 raidwide.sethp:
-  name: sets hp
+  name: sets HP
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
 raidwide.transition:
   name: ultimate attack
