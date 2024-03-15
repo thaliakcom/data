@@ -14,16 +14,16 @@ status:
     type: impairment
     duration: 180000
     description: |
-      Reduces damage dealt by approximately 90%.
-      Due to the extremely punishing nature of this debuff, great care should be taken to avoid it. If it cannot be avoided, consider killing yourself (for instance by stepping into the wall) and having a healer raise you afterwards, to reduce your damage down percentage from 90% to [s:43]'s 25%.
-      **Do not do this in Phase 6, as this will erase your [s:brilliant-dynamis]/[s:spark-of-dynamis] buffs, making the rest of the phase unresolvable.**
+      Reduces all damage dealt by 90%.
+      Due to the tight nature of this fight's DPS checks, it is paramount that this debuff is avoided at all costs. If that is not possible, consider [walling](t:wall) yourself to replace [s:2911] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
+      Under no circumstances should you use any kind of damage cooldown while [s:2911] is active, even during the 2m buff window.
   looper:
     id: 3456
     type: condition
+    duration: [1600, 2500, 3400, 4300]
     description: |
       Players inflicted with this debuff are able to soak towers during [a:program-loop]. (The tower will ignore players without this debuff.)
       Soaking a tower resolves this debuff. If no tower is soaked before the debuff expires, the player is inflicted with [s:memory-loss].
-    duration: [1600, 2500, 3400, 4300]
   first-in-line:
     id: 3004
     type: indicator
@@ -67,7 +67,7 @@ status:
     id: 3401
     type: impairment
     duration: 9000
-    description: Inflicted by [a:blaster]. Limits a player's maximum HP to triple digits, essentially rendering any damage lethal.
+    description: Inflicted by [a:blaster]. Reduces a player's maximum HP by 99%, essentially rendering any damage lethal.
   memory-loss:
     id: 1626
     type: impairment
@@ -230,11 +230,11 @@ status:
   underflow-debugger:
     id: 3432
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-underflow-bug]. The next time [s:critical-underflow-bug] were to be inflicted, this buff is consumed and [s:critical-underflow-bug] is *not* inflicted.
+    description: Automatically applied after the expiration of [s:critical-underflow-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-underflow-bug] to this player, making it paramount that every player only receives [s:critical-underflow-bug] once, before they take their tower.
   performance-debugger:
     id: 3433
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-performance-bug]. The next time [s:critical-performance-bug] were to be inflicted, this buff is consumed and [s:critical-underflow-bug] is *not* inflicted.
+    description: Automatically applied after the expiration of [s:critical-performance-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-performance-bug] to this player, making it paramount that every player only receives [s:critical-performance-bug] once, before they take their tower.
   oversampled-wave-cannon-loading:
     id: 3452
     type: delay
@@ -246,13 +246,13 @@ status:
     type: delay
     description: |
       Executes [a:hello-near-world] when the effect expires.
-      If a player with this effect dies, [the party wipes](a:hello-world-fail).
+      [The party wipes](a:hello-world-fail) if the player dies before the debuff can expire, or if any additional players are clipped by the initial explosions or the jumps.
   hello-distant-world:
     id: 3443
     type: delay
     description: |
       Executes [a:hello-distant-world] when the effect expires.
-      If a player with this effect dies, [the party wipes](a:hello-world-fail).
+      [The party wipes](a:hello-world-fail) if the player dies before the debuff can expire, or if any additional players are clipped by the initial explosions or the jumps.
   quickening-dynamis:
     id: 3444
     type: condition
@@ -398,7 +398,7 @@ actions:
     shape: defamation
     description: |
       Deals medium damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
-      Be aware that [s:hp-penalty] reduces HP to triple digits only *after* the damage is dealt; if the players' HP reaches 0 from the initial hit, their HP won't be reduced to triple digits; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
+      Be aware that [s:hp-penalty] reduces max HP only *after* the damage is dealt; if a player's HP reaches 0 from the initial hit, their max HP won't be reduced; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
   pantokrator:
     id: 31499
     mechanic: mech
@@ -740,7 +740,7 @@ actions:
       Remember to heal up and mitigate for [a:cosmo-meteor], then it's just DPS until both bosses are dead.
     tips:
       - The angle of [a:optimized-sagittarius-arrow] snapshots when the corresponding Omega-M begins the animation. Therefore you can move out of it immediately, without having to wait for the AoE telegraph to appear.
-      - If you're a ranged player, you can safely move to the edge of the arena if targeted by [a:optimized-meteor] to reduce the damage taken by the party. However, be mindful of the shielded Omega-M and do not move to the edge closest to him, or you will likely take the [a:beyond-defense] intended for the tanks and die to your [a:optimized-meteor]. If you're a melee player with [a:optimized-meteor], do not move to max melee; this will not meaningfully decrease the flare damage and only serves to increase the damage the party takes from [a:pile-pitch] (since there's now one less player in the stack).
+      - If you're a ranged player, you can safely move to the edge of the arena if targeted by [a:optimized-meteor] to reduce the damage taken by the party. However, be mindful of the shielded Omega-M and do not move to the edge closest to him, or you may bait [a:beyond-defense], which will make it impossible to escape the follow-up [a:pile-pitch]. If you're a melee player with [a:optimized-meteor], do not move to max melee; this will not meaningfully decrease the flare damage and only serves to increase the damage the party takes from [a:pile-pitch] (since there's now one less player in the stack).
       - If the [a:optimized-sagittarius-arrow] clone spawns directly behind or in front of the party (thus shooting the line through the middle), check the positions of the [a:optimized-bladedance] and their tethers. Try to dodge **perpendicular** to those tethers after the tanks have taken them to the edge.
       - If you "randomly" die, [a:optimized-sagittarius-arrow] may be to blame. Anyone standing in [a:optimized-sagittarius-arrow] when the AoE telegraph disappears are already dead, but they don't actually die until the arrow firing animation has completely finished.
     mistakes:
@@ -975,8 +975,8 @@ actions:
       - Timing is extremely important during this mechanic. Rots must be passed within 1 or at most 2 GCDs of the towers resolving. If passed too early or too late, [s:cascading-latent-defect]/[s:latent-performance-defect] will expire, causing a wipe.
       - Timing is also extremely important for the tether breaks. Avoid breaking a tether while [s:magic-vuln] or [s:stacking-magic-vuln:2] is still active. It won't cause a wipe but will deal significantly increased damage which healers may not be prepared to heal.
     mistakes:
-      - Passing or taking rot too late, causing [s:latent-performance-defect] or [s:cascading-latent-defect] to expire before the rot and wiping the party.
       - Colliding with another player and passing rot unintentionally.
+      - Passing or taking rot too late, causing [s:latent-performance-defect] or [s:cascading-latent-defect] to expire before the rot and wiping the party.
       - Being mid-movement while attempting to pass your rot. (Similar to [a:blaster] tethers, this increases the likelihood of rot not being passed.)
       - Snapping both tethers at the same time.
       - Snapping a tether too late.
@@ -985,7 +985,7 @@ actions:
     trivia: |
       This mechanic uses various programming terms for its submechanics, such as:
       * *Hello World*: a simple program that just prints "Hello World" to the console. One of the most common examples used to teach beginners the syntax of a new programming language.
-      * *Code Smell*: any kind of code that is considered "bad" by modern programming standards, for instance by violating best practices. Can often result in subtle, hard-to-diagnose bugs.
+      * *Code Smell*: any kind of code that is considered "bad" by modern programming standards, often violating agreed upon best practices. Can often result in subtle, hard-to-diagnose bugs.
       * *Overflow*/*underflow*: before storing a number in a variable, you have to first define the "size" of that variable (i.e. how big the numbers that you're storing in it can be). This size determines how much memory the variable takes up. If you try to store a too-large number in a too-small variable, the number *overflows* (meaning that it wraps back around to 0). *Underflow* is the opposite of that, when you try to store a too-small number in a too-small variable (for instance trying to store a negative value in a variable that can only store positive values).
       * *Debugger*: tool used to step through code one line at a time and inspect the values of each variable at runtime. Useful for diagnosing bugs.
     children:
@@ -1066,7 +1066,7 @@ actions:
   hello-world-fail:
     id: 31627
     mechanic: mech.failure
-    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Wipes the party.
+    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Deals lethal damage to all party members. Can be [t:invuln]ed, but inflicts [s:2911] in that case.
   latent-defect:
     id: 31599
     mechanic: towers.single
@@ -1116,11 +1116,10 @@ actions:
   critical-error:
     id: 31588
     damage: 94464
-    mechanic: raidwide
-    description: Major raidwide that inflicts [s:critical-synchronization-bug], [s:critical-overflow-bug], [s:critical-underflow-bug], and [s:critical-performance-bug] on all players, making the next mechanic unresolvable.
+    mechanic: mech.check
+    description: Major raidwide that inflicts [s:critical-overflow-bug] on all players. If any [s:critical-overflow-bug] is inflicted, the next mechanic is unresolvable. However, like [a:critical-overflow-bug] itself, the application of [s:critical-overflow-bug] can be prevented through [s:overflow-debugger].
     resolve: |
-      To resolve Critical Error, all players must have [s:synchronization-debugger], [s:overflow-debugger], [s:underflow-debugger], and [s:performance-debugger]. In this case, the application of the corresponding bug will instead consume the respective debuffer buff and *not* apply the bug.
-      If any player does not have all debuggers, the subsequent mechanic is no longer resolvable, as the new debuffs resolve at the same time as [a:oversampled-wave-cannon].
+      To resolve Critical Error, all players must have obtained [s:overflow-debugger] from [a:hello-world]. Everyone should also have [s:synchronization-debugger], [s:underflow-debugger], and [s:performance-debugger], but these buffs are not relevant for this check and are not consumed by the cast, instead remaining on players until the start of Phase 5.
   oversampled-wave-cannon:
     id: 31596
     damage: 50785
@@ -1235,7 +1234,7 @@ actions:
   run-dynamis-(delta-version):
     id: 31624
     damage: 136135
-    mechanic: mech
+    mechanic: mech.trio
     compact: trim
     major: true
     description: |
@@ -1386,7 +1385,7 @@ actions:
   run-dynamis-(sigma-version):
     id: 32788
     damage: 139915
-    mechanic: mech
+    mechanic: mech.trio
     compact: trim
     major: true
     description: |
@@ -1457,12 +1456,12 @@ actions:
   run-dynamis-(omega-version):
     id: 32789
     damage: 139666
-    mechanic: mech
+    mechanic: mech.trio
     major: true
     description: |
       Heavy raidwide that initiates the third of three [trios](t:trio).
       Also inflicts **two** players with [s:hello-near-world] and two other players with [s:hello-distant-world]. These players are marked with [s:first-in-line] or [s:second-in-line] to indicate which set of [a:hello-near-distant-world] debuffs resolves first.
-      The four Hello World statuses are guaranteed to **always target players with less than [s:quickening-dynamis:3]**.
+      A player cannot be inflicted with both [s:first-in-line] and [s:second-in-line] at the same time.
       **AoEs**
       Final Omega spawns in the center of the arena along with a clone of Omega-M and Omega-F to either side of him. Similar to [a:party-synergy], these clones are either equipped with a sword or shield, or a staff or stilettos respectively, and prepare to execute a combination of [a:efficient-bladework]/[a:beyond-strength] and [a:optimized-blizzard-iii]/[a:superliminal-steel].
       Then, a second set of Omega-F and Omega-M clones spawns perpendicular to the first ones, who also prepare to execute a combination of the above AoEs.
@@ -1776,7 +1775,7 @@ actions:
     mechanic: stack.party
     shape: chariot
     damage: 55069
-    description: Placeholder description for Cosmo Meteor
+    description: Hits a random non-[a:cosmo-meteor-flare] player with a party stack. Deals close to lethal damage if not taken with 5 players.
   cosmo-meteor-flare:
     id: 31668
     name: Cosmo Meteor (Flare)

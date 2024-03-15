@@ -1,7 +1,7 @@
 chariot:
   name: chariot
   description: |
-    A standard circle affecting targets within its radius.
+    A standard point-blank circle affecting targets within its radius.
     Named after Neul deus Darnus's eponymous attack, [a:2008].
 defamation:
   name: defamation
