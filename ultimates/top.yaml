@@ -345,6 +345,10 @@ actions:
       - Ignoring or forgetting the priority and not adjusting.
       - Moving while passing off a tether. (This increases the likelihood of other players passing through the tether and being unable to take it.)
       - Rotating the wrong way and stealing someone else's tether.
+    strategies:
+      looper:
+        name: LPDU
+        description: Uses (N) M1 < M2 < MT < OT < R1 < R2 < H1 < H2 (S) priority.
     children:
       - at: 14010
         id: blaster-cast
@@ -427,7 +431,7 @@ actions:
       - Ignoring or forgetting the priority and not adjusting.
       - Improper puddle placements (e.g. placing a puddle directly in the party's way while coming back after your [a:guided-missile-kyrios]).
     strategies:
-      chased:
+      pantokrator:
         name: Chased
         common: true
         description: The group stays next to the [a:flame-thrower] that *chases* the group, while the [a:guided-missile-kyrios] baiter moves *deep inside* Omega's hitbox to get to the cone that moves *away* from the group. Moving inside the hitbox reduces the movement requirement and ensures that any puddles this player drops are not in the way of the rest of the group. After [a:guided-missile-kyrios] the baiter waits until their next puddle drop, then quickly moves back to the group.
@@ -1939,3 +1943,565 @@ timeline:
     id: magic-number
   - at: 1144133
     id: run-dynamis
+graphing:
+  coordinate-system: polar
+  defs:
+    tower-gradient: "radial-gradient(0 #00000000 92% #00000000 95% #f1ffff 97% #f1ffff 100% #00000000)"
+    tower-filled-gradient: "radial-gradient(0 #c2bf9288 92% #c2bf92 95% #f1ffff 97% #f1ffff 100% #00000000)"
+    blaster-gradient: "radial-gradient(0 #0e161d00 94% #0e161d 100% #0e161d)"
+    aoe-gradient: "radial-gradient(0 #fcca6e55 65% #fcca6e55 100% #fcca6ecc)"
+    spread-gradient: "radial-gradient(0 #fcae6e55 65% #fcae6e55 100% #fcae6ecc)"
+    wc-gradient-line: "linear-gradient(0 #fcfcfc 15% #8de8fb 40% #1f325a 60% #1f325a 85% #8de8fb 100% #fcfcfc)"
+    wc-gradient: "radial-gradient(0 #1f325a 20% #1f325a 80% #8de8fb 90% #fcfcfc 100% #fcfcfc)"
+  elements:
+    arena:
+      type: image
+      shape: circle
+      size: 210
+      image: /top-p1.png
+    boss:
+      size: 90
+      opacity: 0.7
+    tower:
+      type: ellipse
+      size: 26
+      scale: 1
+      color: url(#tower-gradient)
+      origin: [0.5, 0.5]
+      visible: false
+    tower-filled:
+      type: ellipse
+      size: 26
+      scale: 1
+      color: url(#tower-filled-gradient)
+      origin: [0.5, 0.5]
+      visible: false
+    blaster-tether:
+      type: link
+      color: "#e8ae82"
+      visible: false
+    blaster:
+      type: ellipse
+      size: 130
+      color: url(#blaster-gradient)
+      scale: 0
+    flamethrower:
+      type: cone
+      angle: 60
+      size: [0, 110]
+      color: "#e8bd46bb"
+    puddle:
+      type: ellipse
+      size: 45
+      color: url(#aoe-gradient)
+      visible: false
+    wave-cannon:
+      type: rectangle
+      size: [15, 200]
+      origin: [0.5, 0]
+      color: url(#wc-gradient)
+      scale: [0, 1]
+    spread:
+      type: ellipse
+      size: 60
+      color: url(#spread-gradient)
+      scale: 0
+  graphs:
+    looper:
+      - marker-a: [60, 0]
+        marker-1: [60, 45]
+        marker-b: [60, 90]
+        marker-2: [60, 135]
+        marker-c: [60, 180]
+        marker-3: [60, -135]
+        marker-d: [60, -90]
+        marker-4: [60, -45]
+        tower#1: [57, 15]
+        tower#2: [57, 75]
+        tower#3: [57, 105]
+        tower#4: [57, 165]
+        tower#5: [57, -165]
+        tower#6: [57, -105]
+        tower#7: [57, -75]
+        tower#8: [57, -15]
+        tower-filled#1: [57, 15]
+        tower-filled#2: [57, 75]
+        tower-filled#3: [57, 105]
+        tower-filled#4: [57, 165]
+        tower-filled#5: [57, -165]
+        tower-filled#6: [57, -105]
+        tower-filled#7: [57, -75]
+        tower-filled#8: [57, -15]
+        blaster-tether#1: { from: boss, to: T2 }
+        blaster-tether#2: { from: boss, to: R1 }
+        blaster#1: [59, 101]
+        blaster#2: [80, -171]
+        T1: [60, 225]
+        T2: [50, 180]
+        M1: [55, 190]
+        M2: [55, 170]
+        R1: [65, 190]
+        R2: [65, 170]
+        H1: [60, 180]
+        H2: [70, 180]
+        boss: [0, 0, 45]
+        cast: { text: "Program Loop", progress: 0, visible: true }
+      - cast: { text: "Program Loop", progress: 1, visible: true }
+        tower#1: { visible: true }
+        tower#7: { visible: true }
+        T1: { status: [3006, 3456] }
+        T2: { status: [3005, 3456] }
+        M1: { status: [3004, 3456] }
+        M2: { status: [3004, 3456] }
+        R1: { status: [3006, 3456] }
+        R2: { status: [3451, 3456] }
+        H1: { status: [3451, 3456] }
+        H2: { status: [3005, 3456] }
+      - cast: { progress: 1, visible: false }
+        T2: [55, 180]
+        M1: [55, 180]
+        M2: [55, 180]
+        R2: [55, 180]
+        H1: [55, 180]
+        H2: [55, 180]
+        R1: [38, 180]
+      - cast: { text: Blaster, progress: 0.1, visible: true }
+        blaster-tether#*: { visible: true }
+      - cast: { progress: 0.3 }
+        T1: [32, 180]
+        blaster-tether#1: { to: T1 }
+      - cast: { progress: 0.8 }
+        tower#1: { visible: false }
+        tower#7: { visible: false }
+        tower-filled#1: { visible: true }
+        tower-filled#7: { visible: true }
+        T1: [59, 101]
+        R1: [80, -171]
+        M1: [50, 9]
+        M2: [50, -68]
+        R2: [53, -2]
+        H1: [50, -56]
+        T2: [52, -10]
+        H2: [51, -44]
+      - cast: { progress: 1 }
+        blaster#*: { scale: 1 }
+        tower-filled#1: { visible: false }
+        tower-filled#7: { visible: false }
+        tower-filled#3: { visible: true }
+        tower#5: { visible: true }
+        T1: { status: [3006, 3456, 3401, 2534] }
+        R1: { status: [3006, 3456, 3401, 2534] }
+        M1: { status: [2534] }
+        M2: { status: [2534] }
+      - cast: { visible: false }
+        T1: [34, 101]
+        R1: [34, -171]
+        M1: [55, 125]
+        M2: [55, 175]
+        R2: [28, 101]
+        H1: [28, -171]
+        T2: [49, 110]
+        H2: [52, -174]
+        tower#5: { visible: false }
+        tower-filled#5: { visible: true }
+        blaster-tether#1: { to: R2 }
+        blaster-tether#2: { to: H1 }
+        blaster#*: { visible: false }
+      - R2: [65, 2]
+        H1: [62, -71]
+        T1: [48, 126]
+        R1: [51, 164]
+        blaster#1: { x: 65, y: 2, scale: 0 }
+        blaster#2: { x: 62, y: -71, scale: 0 }
+      - blaster#*: { scale: 1, visible: true }
+        tower-filled#3: { visible: false }
+        tower-filled#5: { visible: false }
+        tower-filled#4: { visible: true }
+        tower#8: { visible: true }
+        R2: { status: [3451, 3456, 3401, 2534] }
+        H1: { status: [3451, 3456, 3401, 2534] }
+        T1: { status: [3006, 3456] }
+        R1: { status: [3006, 3456] }
+        T2: { status: [2534] }
+        H2: { status: [2534] }
+        M1: { status: [] }
+        M2: { status: [] }
+      - tower#8: { visible: false }
+        tower-filled#8: { visible: true }
+        blaster-tether#1: { to: M1 }
+        blaster-tether#2: { to: M2 }
+        blaster#*: { visible: false }
+        T1: [51, -14]
+        R1: [51, 174]
+        R2: [33, 2]
+        H1: [33, -71]
+        M1: [25, 2]
+        M2: [25, -71]
+        T2: [52, -178]
+        H2: [61, -179]
+      - blaster#1: { x: 60, y: 77, scale: 0 }
+        blaster#2: { x: 60, y: -95, scale: 0 }
+        M1: [60, 77]
+        M2: [60, -95]
+        R2: [58, 1]
+        H1: [68, -175]
+      - blaster#*: { scale: 1, visible: true }
+        tower-filled#4: { visible: false }
+        tower-filled#8: { visible: false }
+        tower#2: { visible: true }
+        tower#6: { visible: true }
+        R2: { status: [3451, 3456] }
+        H1: { status: [3451, 3456] }
+        M1: { status: [3401, 2534] }
+        M2: { status: [3401, 2534] }
+        T1: { status: [2534] }
+        R1: { status: [2534] }
+        T2: { status: [] }
+        H2: { status: [] }
+      - tower#2: { visible: false }
+        tower#6: { visible: false }
+        tower-filled#2: { visible: true }
+        tower-filled#6: { visible: true }
+        blaster-tether#1: { to: T2 }
+        blaster-tether#2: { to: H2 }
+        blaster#*: { visible: false }
+        M1: [33, 77]
+        M2: [33, -95]
+        T2: [28, 77]
+        H2: [28, -95]
+        R2: [51, 83]
+        H1: [48, -100]
+        R1: [66, 88]
+        T1: [67, -93]
+      - blaster#1: { x: 60, y: -10, scale: 0 }
+        blaster#2: { x: 65, y: 173, scale: 0 }
+        T2: [60, -10]
+        H2: [65, 173]
+        M1: [55, 95]
+        M2: [63, -88]
+      - blaster#*: { scale: 1, visible: true }
+        blaster-tether*: { visible: false }
+        tower-filled#2: { visible: false }
+        tower-filled#6: { visible: false }
+        R2: { status: [2534] }
+        H1: { status: [2534] }
+        R1: { status: [] }
+        T1: { status: [] }
+        M1: { status: [] }
+        M2: { status: [] }
+        T2: { status: [3401, 2534] }
+        H2: { status: [3401, 2534] }
+      - blaster#*: { visible: false }
+    pantokrator:
+      - marker-a: [60, 0]
+        marker-1: [60, 45]
+        marker-b: [60, 90]
+        marker-2: [60, 135]
+        marker-c: [60, 180]
+        marker-3: [60, -135]
+        marker-d: [60, -90]
+        marker-4: [60, -45]
+        flamethrower#1: { rotation: 30 }
+        flamethrower#2: { rotation: 60, visible: false }
+        flamethrower#3: { rotation: 90, visible: false }
+        flamethrower#4: { rotation: 120, visible: false }
+        flamethrower#5: { rotation: 150, visible: false }
+        flamethrower#6: { rotation: 180, visible: false }
+        flamethrower#7: { rotation: -150 }
+        flamethrower#8: { rotation: -120, visible: false }
+        flamethrower#9: { rotation: -90, visible: false }
+        flamethrower#10: { rotation: -60, visible: false }
+        flamethrower#11: { rotation: -30, visible: false }
+        flamethrower#12: { rotation: 0, visible: false }
+        puddle#1..24: [0, 0]
+        wave-cannon#1..2: [0, 0]
+        spread#1..2: [0, 0]
+        boss: [0, 0]
+        R1: { x: 30, y: -135, status: [3004] }
+        T2: { x: 30, y: 45, status: [3005] }
+        T1: { x: 30, y: 0, status: [3006] }
+        H1: { x: 30, y: -90, status: [3451] }
+        M1: { x: 30, y: 180, status: [3004] }
+        R2: { x: 30, y: -45, status: [3005] }
+        H2: { x: 30, y: 90, status: [3006] }
+        M2: { x: 30, y: 135, status: [3451] }
+      - R1: [40, -45]
+        T2: [45, -45]
+        T1: [50, -45]
+        H1: [55, -45]
+        M1: [40, 135]
+        R2: [45, 135]
+        H2: [50, 135]
+        M2: [55, 135]
+      - flamethrower#1: { visible: false }
+        flamethrower#7: { visible: false }
+        flamethrower#2: { visible: true }
+        flamethrower#8: { visible: true }
+        R1: [60, 26]
+        M1: [60, -152]
+        puddle#1: [60, 26]
+        puddle#2: [45, -45]
+        puddle#3: [50, -45]
+        puddle#4: [55, -45]
+        puddle#5: [60, -152]
+        puddle#6: [45, 135]
+        puddle#7: [50, 135]
+        puddle#8: [55, 135]
+      - flamethrower#2: { visible: false }
+        flamethrower#8: { visible: false }
+        flamethrower#3: { visible: true }
+        flamethrower#9: { visible: true }
+      - flamethrower#3: { visible: false }
+        flamethrower#9: { visible: false }
+        flamethrower#4: { visible: true }
+        flamethrower#10: { visible: true }
+        puddle#1..8: { visible: true }
+        puddle#9: [60, 54]
+        puddle#10: [45, -8]
+        puddle#11: [50, -10]
+        puddle#12: [55, -12]
+        puddle#13: [60, -123]
+        puddle#14: [45, 170]
+        puddle#15: [50, 168]
+        puddle#16: [55, 166]
+        wave-cannon#1: { rotate: -12 }
+        wave-cannon#2: { rotate: 170 }
+        spread#1: [60, 54]
+        spread#2: [60, -123]
+        R1: [60, 54]
+        T2: [45, -8]
+        T1: [50, -10]
+        H1: [55, -12]
+        M1: [60, -123]
+        R2: [45, 170]
+        H2: [50, 168]
+        M2: [55, 166]
+      - flamethrower#4: { visible: false }
+        flamethrower#10: { visible: false }
+        flamethrower#5: { visible: true }
+        flamethrower#11: { visible: true }
+        wave-cannon#1..2: { scale: 1, visible: false }
+        spread#1..2: { scale: 1, visible: false }
+        puddle#1..8: { visible: false }
+        puddle#9..16: { visible: true }
+        R1: { x: 87, y: 31, status: [] }
+        T2: [38, 110]
+        T1: [50, 20]
+        H1: [55, 18]
+        M1: { x: 87, y: -148, status: [] }
+        R2: [38, -61]
+        H2: [50, -162]
+        M2: [55, -164]
+        puddle#17: [87, 31]
+        puddle#18: [38, 110]
+        puddle#19: [50, 20]
+        puddle#20: [55, 18]
+        puddle#21: [87, -148]
+        puddle#22: [38, -61]
+        puddle#23: [50, -162]
+        puddle#24: [55, -164]
+      - flamethrower#5: { visible: false }
+        flamethrower#11: { visible: false }
+        flamethrower#6: { visible: true }
+        flamethrower#12: { visible: true }
+        puddle#1: [45, 58]
+        puddle#2: [60, 146]
+        puddle#3: [50, 56]
+        puddle#4: [55, 54]
+        puddle#5: [45, -130]
+        puddle#6: [60, -32]
+        puddle#7: [50, -132]
+        puddle#8: [55, -134]
+        puddle#9..16: { visible: false }
+        puddle#17..24: { visible: true }
+        wave-cannon#1..2: { scale: [0, 1] }
+        spread#1..2: { scale: 0 }
+        R1: [45, 58]
+        T2: [60, 146]
+        T1: [50, 56]
+        H1: [55, 54]
+        M1: [45, -130]
+        R2: [60, -32]
+        H2: [50, -132]
+        M2: [55, -134]
+      - flamethrower#6: { visible: false }
+        flamethrower#12: { visible: false }
+        flamethrower#7: { visible: true }
+        flamethrower#1: { visible: true }
+        puddle#1..8: { visible: true }
+        puddle#9: [45, 94]
+        puddle#10: [50, 178]
+        puddle#11: [50, 92]
+        puddle#12: [55, 90]
+        puddle#13: [45, -93]
+        puddle#14: [50, -5]
+        puddle#15: [50, -95]
+        puddle#16: [55, -97]
+        puddle#17..24: { visible: false }
+        wave-cannon#1: { visible: true, rotate: 92 }
+        wave-cannon#2: { visible: true, rotate: -80 }
+        spread#1: { x: 50, y: 178, visible: true }
+        spread#2: { x: 50, y: -5, visible: true }
+        R1: [45, 94]
+        T2: [50, 178]
+        T1: [50, 92]
+        H1: [55, 90]
+        M1: [45, -93]
+        R2: [50, -5]
+        H2: [50, -95]
+        M2: [55, -97]
+      - flamethrower#7: { visible: false }
+        flamethrower#1: { visible: false }
+        flamethrower#8: { visible: true }
+        flamethrower#2: { visible: true }
+        wave-cannon#1..2: { scale: 1, visible: false }
+        spread#1..2: { scale: 1, visible: false }
+        puddle#1..8: { visible: false }
+        puddle#9..16: { visible: true }
+        puddle#17: [45, 127]
+        puddle#18: [80, 162]
+        puddle#19: [40, 129]
+        puddle#20: [50, 123]
+        puddle#21: [45, -57]
+        puddle#22: [80, 4]
+        puddle#23: [40, -55]
+        puddle#24: [50, -59]
+        R1: [45, 127]
+        T2: { x: 80, y: 162, status: [] }
+        T1: [40, 129]
+        H1: [50, 123]
+        M1: [45, -57]
+        R2: { x: 80, y: 4, status: [] }
+        H2: [40, -55]
+        M2: [50, -59]
+      - flamethrower#8: { visible: false }
+        flamethrower#2: { visible: false }
+        flamethrower#9: { visible: true }
+        flamethrower#3: { visible: true }
+        wave-cannon#1..2: { scale: [0, 1] }
+        spread#1..2: { scale: 0 }
+        puddle#1: [45, 162]
+        puddle#2: [50, 162]
+        puddle#3: [50, -124]
+        puddle#4: [55, 162]
+        puddle#5: [45, -19]
+        puddle#6: [50, -21]
+        puddle#7: [50, 54]
+        puddle#8: [55, -23]
+        puddle#9..16: { visible: false }
+        puddle#17..24: { visible: true }
+        R1: [45, 162]
+        T2: [50, 162]
+        T1: [50, -124]
+        H1: [55, 162]
+        M1: [45, -19]
+        R2: [50, -21]
+        H2: [50, 54]
+        M2: [55, -23]
+      - flamethrower#9: { visible: false }
+        flamethrower#3: { visible: false }
+        flamethrower#10: { visible: true }
+        flamethrower#4: { visible: true }
+        wave-cannon#1: { rotate: -168, visible: true }
+        wave-cannon#2: { rotate: 10, visible: true }
+        spread#1: { x: 50, y: -92, visible: true }
+        spread#2: { x: 50, y: 84, visible: true }
+        puddle#1..8: { visible: true }
+        puddle#9: [45, -168]
+        puddle#10: [50, -168]
+        puddle#11: [50, -92]
+        puddle#12: [55, -168]
+        puddle#13: [45, 12]
+        puddle#14: [50, 10]
+        puddle#15: [50, 84]
+        puddle#16: [55, 8]
+        puddle#17..24: { visible: false }
+        R1: [45, -168]
+        T2: [50, -168]
+        T1: [50, -92]
+        H1: [55, -168]
+        M1: [45, 12]
+        R2: [50, 10]
+        H2: [50, 84]
+        M2: [55, 8]
+      - flamethrower#10: { visible: false }
+        flamethrower#4: { visible: false }
+        flamethrower#11: { visible: true }
+        flamethrower#5: { visible: true }
+        wave-cannon#1..2: { scale: 1, visible: false }
+        spread#1..2: { scale: 1, visible: false }
+        puddle#1..8: { visible: false }
+        puddle#9..16: { visible: true }
+        puddle#17: [45, -138]
+        puddle#18: [50, -138]
+        puddle#19: [74, -107]
+        puddle#20: [55, -138]
+        puddle#21: [45, 45]
+        puddle#22: [50, 43]
+        puddle#23: [80, 71]
+        puddle#24: [55, 41]
+        R1: [45, -138]
+        T2: [50, -138]
+        T1: { x: 74, y: -107, status: [] }
+        H1: [55, -138]
+        M1: [45, 45]
+        R2: [50, 43]
+        H2: { x: 80, y: 71, status: [] }
+        M2: [55, 41]
+      - flamethrower#11: { visible: false }
+        flamethrower#5: { visible: false }
+        flamethrower#12: { visible: true }
+        flamethrower#6: { visible: true }
+        wave-cannon#1..2: { scale: [0, 1] }
+        spread#1..2: { scale: 0 }
+        puddle#1: [40, -102]
+        puddle#2: [45, -104]
+        puddle#3: [50, -106]
+        puddle#4: [39, -33]
+        puddle#5: [45, 76]
+        puddle#6: [50, 74]
+        puddle#7: [55, 72]
+        puddle#8: [54, 146]
+        puddle#9..16: { visible: false }
+        puddle#17..24: { visible: true }
+        R1: [40, -102]
+        T2: [45, -104]
+        T1: [50, -106]
+        H1: [39, -33]
+        M1: [45, 76]
+        R2: [50, 74]
+        H2: [55, 72]
+        M2: [54, 146]
+      - flamethrower#12: { visible: false }
+        flamethrower#6: { visible: false }
+        flamethrower#1: { visible: true }
+        flamethrower#7: { visible: true }
+        wave-cannon#1: { visible: true, rotate: -75 }
+        wave-cannon#2: { visible: true, rotate: 110 }
+        spread#1: { visible: true, x: 50, y: -2 }
+        spread#2: { visible: true, x: 48, y: 177 }
+        puddle#1..8: { visible: true }
+        puddle#17..24: { visible: false }
+        R1: [45, -66]
+        T2: [50, -68]
+        T1: [55, -70]
+        H1: [50, -2]
+        M1: [45, 106]
+        R2: [50, 104]
+        H2: [55, 102]
+        M2: [48, 177]
+      - flamethrower#1: { visible: false }
+        flamethrower#7: { visible: false }
+        flamethrower#2: { visible: true }
+        flamethrower#8: { visible: true }
+        wave-cannon#1..2: { scale: 1, visible: false }
+        spread#1..2: { scale: 1, visible: false }
+        puddle#1..8: { visible: false }
+        R1: [45, -66]
+        T2: [50, -68]
+        T1: [55, -70]
+        H1: { x: 50, y: -2, status: [] }
+        M1: [45, 106]
+        R2: [50, 104]
+        H2: [55, 102]
+        M2: { x: 48, y: 177, status: [] }
