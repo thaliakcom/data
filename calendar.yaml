@@ -1,0 +1,43 @@
+- name: The Path Infernal (FFXVI Crossover)
+  short: FFXVI Crossover
+  type: event
+  from: 2024-04-02 08:00:00
+  to: 2024-05-08 14:59:00
+- name: Letter from the Producer Live Part LXXX
+  short: PLL LXXX
+  type: live letter
+  at: 2024-04-13 04:00:00
+- name: Yo-kai Watch
+  type: event
+  from: 2024-04-24 08:00:00
+  to: 2024-06-26
+- name: Moogle Treasure Trove – The Second Hunt for Genesis
+  short: Treasure Hunt
+  type: event
+  from: 2024-05-14
+  to: 2024-06-24
+- name: Media Tour
+  type: other
+  from: 2024-05-15
+  to: 2024-05-30
+- name: Make It Rain
+  type: event
+  from: 2024-05-15
+  to: 2024-05-31
+- name: Letter from the Producer Live Part LXXXI
+  short: PLL LXXXI
+  type: live letter
+  at: 2024-05-16
+- name: Dragon Quest X Collaboration
+  short: DQX Collab
+  type: event
+  from: 2024-06-05
+  to: 2024-06-20
+- name: Letter from the Producer Live Part LXXXII
+  short: PLL LXXXII
+  type: live letter
+  at: 2024-06-14
+- name: Dawntrail (7.0)
+  short: "7.0"
+  type: patch
+  at: 2024-06-28 09:00:00
