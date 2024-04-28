@@ -348,7 +348,7 @@ actions:
     strategies:
       looper:
         name: LPDU
-        description: Uses (N) M1 < M2 < MT < OT < R1 < R2 < H1 < H2 (S) priority.
+        description: Uses (N) M1 ← M2 ← MT ← OT ← R1 ← R2 ← H1 ← H2 (S) priority.
     children:
       - at: 14010
         id: blaster-cast
