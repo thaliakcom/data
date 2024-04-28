@@ -1,43 +1,55 @@
 - name: The Path Infernal (FFXVI Crossover)
-  short: FFXVI Crossover
   type: event
+  color: "#b83404"
+  url: https://na.finalfantasyxiv.com/lodestone/special/ffxvi/
   from: 2024-04-02 08:00:00
   to: 2024-05-08 14:59:00
 - name: Letter from the Producer Live Part LXXX
   short: PLL LXXX
   type: live letter
+  url: https://www.youtube.com/watch?v=OxVWTktvt_M
   at: 2024-04-13 04:00:00
 - name: Yo-kai Watch
   type: event
+  color: "#bf8f08"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/youkai-watch/j9rq1fpxxd
   from: 2024-04-24 08:00:00
   to: 2024-06-26
 - name: Moogle Treasure Trove – The Second Hunt for Genesis
-  short: Treasure Hunt
   type: event
+  color: "#a834eb"
   from: 2024-05-14
   to: 2024-06-24
+  allDay: true
 - name: Media Tour
   type: other
+  color: "#33b5a6"
   from: 2024-05-15
   to: 2024-05-30
+  allDay: true
 - name: Make It Rain
   type: event
+  color: "#a8a82d"
   from: 2024-05-15
   to: 2024-05-31
+  allDay: true
 - name: Letter from the Producer Live Part LXXXI
   short: PLL LXXXI
   type: live letter
   at: 2024-05-16
+  allDay: true
 - name: Dragon Quest X Collaboration
-  short: DQX Collab
   type: event
+  color: "#e03f77"
   from: 2024-06-05
   to: 2024-06-20
+  allDay: true
 - name: Letter from the Producer Live Part LXXXII
   short: PLL LXXXII
   type: live letter
   at: 2024-06-14
-- name: Dawntrail (7.0)
-  short: "7.0"
+  allDay: true
+- name: Dawntrail (7.0) Release
+  short: DT Release
   type: patch
   at: 2024-06-28 09:00:00
