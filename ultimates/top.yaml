@@ -598,24 +598,27 @@ actions:
     major: true
     description: |
       Omega-M and Omega-F disappear and tether each player to another player, inflicting either [s:mid-glitch] or [s:remote-glitch] on all players, and show a matching PlayStation headmarker above all players and their partners.
-      Omega-M and Omega-F then reappear, along with one *fake* clone for each that do nothing, and prepare a deadly AoE combination.
-      The clones will always spawn in a line, with Omega-F on one side, a fake Omega-M in the center of the arena, Omega-M on the other side, and a fake Omega-F in a random location somewhere else. The true Omegas are always facing each other.
-      Omega-M's and Omega-F's stances and weapons indicate which attack each will use:
-      * Omega-F with a staff: a plus-shaped AoE originating from Omega-F ([a:optimized-blizzard-iii])
-      * Omega-F with a stiletto feet: a safe line in the direction Omega-F is facing ([a:superliminal-steel])
-      * Omega-M with a sword: a [ms:chariot] originating from Omega-M ([a:efficient-bladework])
-      * Omega-F with a sword and shield: a [ms:dynamo] originating from Omega-M ([a:beyond-strength])
+      Omega-M and Omega-F then reappear and prepare a deadly AoE combination. Each of them also spawns a *fake* clone of themselves that does nothing and merely serves to misdirect players. The true and fake copies each follow a set of strict rules that makes identifying the true bosses simple:
+      * The true Omega-M will always spawn between a cardinal and an intercardinal, and will always face the true Omega-F.
+      * The true Omega-F will always spawn opposite the true Omega-M (i.e. also between a cardinal and an intercardinal), and will always face him.
+      * The fake Omega-M will always spawn in the center of the arena and will always wield a sword (without a shield).
+      * The fake Omega-F will always spawn on a cardinal or intercardinal, and will always wield a staff.
+      The true Omega-M's and Omega-F's stances and weapons indicate which attack each will use:
+      * Omega-F with a staff: a plus-shaped AoE in the direction she is facing ([a:optimized-blizzard-iii])
+      * Omega-F with blade legs: cleaves her sides, leaving a safe line toward Omega-M ([a:superliminal-steel])
+      * Omega-M with a sword: a [ms:chariot] AoE on his position ([a:efficient-bladework])
+      * Omega-F with a sword and shield: a [ms:dynamo] AoE on his position ([a:beyond-strength])
       While this is happening, a massive synthetic eye (Optical Unit) spawns on a random cardinal or intercardinal outside the arena. Some time after Omega-M and Omega-F have executed their respective AoEs, this eye will fire a deadly [a:optical-laser] line AoE through the center of the arena. At the same time, [a:optimized-fire-iii] (a [ms:chariot] [m:spread]) resolves on each player. This AoE is deadly if the correct distance between each tethered pair (defined by [s:mid-glitch] or [s:remote-glitch]) is not maintained.
       Finally, Omega-F appears in the center of the arena while 5 clones of Omega-M appear close to the edge of the arena. Two random players are marked with stacks, Omega-F executes a knockback from the center, and all Omega-Ms execute a large [ms:chariot] AoE from their position. There are always 3 Omega-Ms spawning directly beside one another, with a gap between every other Omega-M.
       If your party is still alive at this point, [s:mid-glitch]/[s:remote-glitch] expires, and the Omega-M that is sandwiched between the two other Omega-Ms, and the Omega-F in the center become targetable again and the next mechanical sequence commences.
     resolve: |
       While Party Synergy is casting, preposition yourselves into 2 [t:conga line]s (one per light party) or one big conga line for the whole party. There must always be 4 players per [a:optical-laser] side, and two tethered players cannot be on the same side, so if any tether pair is in the same group, one of them (usually the southmost one) adjusts to the other group.
-      With groups settled, it now becomes time to identify Omega-F's and Omega-M's safe spot. To quickly distinguish the true Omegas from the fake ones, find the Omega-F and Omega-M who are facing each other, or simply find the Omega-F and Omega-M forming a direct line through the center of the arena.
+      With groups settled, it now becomes time to identify the true Omega-F and Omega-M and their combined safe spot. There are many ways to go about finding the correct bosses, but the simplest way is to find the Omega-M who is *not* in the center of the arena. The Omega-F he is facing is the true Omega-F.
       The following safe spots are possible:
-      * staff + sword: stay away from Omega-M and Omega-F (be careful not to be on Omega-F's sides)
+      * staff + sword: stay away from Omega-M and Omega-F (be careful not to be on Omega-F's sides; ideally just stick close but not too close to Omega-M's sides)
       * staff + shield: only Omega-M's sides are safe
-      * stiletto feet + sword: only Omega-F is safe
-      * stiletto feet + shield: only Omega-M is safe
+      * blade legs + sword: stack on Omega-F
+      * blade legs + shield: stack on Omega-M
       Note that there is not enough time to raise anyone, so if anyone dies during this step the mechanic is no longer resolvable and a wipe is all but guaranteed.
       While moving into the safe spot (or after moving into the safe spot), find the Optical Unit on the outside of the arena. This eye will be the new north for the duration of the mechanic. Note that the eye emits a directional sound when it spawns, which can make locating it easier.
       All group 1 players position themselves throughout the arena on the eye's left side (west), while all group 2 players position themselves throughout the arena on the eye's right side (east). Use the PlayStation headmarkers you received at the start of the mechanic to determine your final position. Most groups opt for (from closest to the eye to farthest from the eye): [i:cross][i:square][i:circle][i:triangle] (also known as BPOG – blue, purple, orange, green).
@@ -635,6 +638,10 @@ actions:
       - "[s:mid-glitch]: improperly judging the distance."
       - "[s:remote-glitch] as group 2: forgetting to invert your position from [i:cross][i:square][i:circle][i:triangle] to [i:triangle][i:circle][i:square][i:cross]."
       - "After [a:optimized-fire-iii]: not checking your partner for the stack marker to see if you have to swap groups."
+    strategies:
+      party-synergy:
+        name: LPDU
+        common: true
     children:
     - at: 9610
       id: subject-simulation-m
@@ -689,7 +696,7 @@ actions:
     id: 31532
     mechanic: aoe
     shape: sides
-    description: With stiletto legs attached, Omega-F performs a [ms:sides] AoE in the direction she's facing.
+    description: With blade legs, Omega-F performs a [ms:sides] AoE in the direction she's facing.
   optimized-blizzard-iii:
     id: 31533
     mechanic: aoe
@@ -729,7 +736,7 @@ actions:
     description: |
       Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
       Additionally, several clones spawn outside of the arena:
-      * Two Omega-M clones spawn on opposite sides, each spawning a passable tether, and begin casting [a:optimized-bladedance]. On execution, these tethers resolve into massive 90° conal tankbusters.
+      * An Omega-M clone and an Omega-F clone spawn on opposite sides, each spawning a passable tether, and begin casting [a:optimized-bladedance]. On execution, these tethers resolve into massive 90° conal tankbusters.
       * One Omega-M clone spawns on a random position and begins casting [a:optimized-sagittarius-arrow], a baited [ms:line] AoE on a random party member. The position of this AoE snapshots at the start of the [a:optimized-sagittarius-arrow] cast.
       * One Omega-M clone that prepares a [a:synthetic-shield] and begins casting [a:beyond-defense] into [a:pile-pitch] once [a:optimized-bladedance] resolves.
       * One Omega-F clone that does nothing for now but begins casting [a:optimized-meteor] on 3 random party members once [a:optimized-bladedance] resolves.
@@ -752,6 +759,10 @@ actions:
       - Tanks not properly communicating whether they'll take their tether to the clockwise or counter-clockwise edge and leaving no safe spot for the party.
       - In the attempt to avoid [a:optimized-sagittarius-arrow], dodging directly into [a:optimized-bladedance].
       - The player who was targeted by [a:beyond-defense] not moving around the party stack in time to avoid being one of the closest 2 players to the clone and taking the follow-up [a:pile-pitch].
+    strategies:
+      limitless-synergy:
+        name: LPDU/NA
+        common: true
     children:
     - at: 0
       id: <removestatus>
@@ -1412,7 +1423,7 @@ actions:
       Most PF strategies designate fixed positions based on your initial position in the [t:conga line]. The diagram shows these positions for LPDU. After the spreads resolve, remember the marker you spread on and face your camera back towards Omega-M (or opposite him). That way, when towers spawn, you'll already be looking at either the northmost or southmost tower(s), and there is no chance of getting turned around. Most strategies designate towers based on the marker you spread on. Again, the diagram shows the LPDU designations.
       Wait on any of the center rings to be knocked back to your tower, then either stand in the center of the tower ([s:mid-glitch]) or on the far edge of the tower ([s:remote-glitch]).
       After towers resolve, assign Hello World spots, then find Omega-F. Go towards her if you're one of the Rear Arm Unit baiters or the first [a:hello-distant-world] target. Everyone else goes opposite Omega-F. Check which direction the [a:rear-lasers] rotate and move slightly towards the other direction to avoid being in the immediate path of the lasers.
-      Take another look at Omega-F; check whether she's holding a staff or wearing stilettos on her feet. If it's the former, **do not follow** the rotating laser until she executes [a:optimized-blizzard-iii], otherwise follow the laser.
+      Take another look at Omega-F; check whether she's holding a staff or her legs are blades. If it's the former, **do not follow** the rotating laser until she executes [a:optimized-blizzard-iii], otherwise follow the laser.
       Lastly, move to [a:hello-near-distant-world] spots, taking care to avoid being in the path of the Rear Arm Units. Check the diagram for how LPDU handles this [a:hello-near-distant-world].
     mistakes:
       - Forgetting the marker you initially spread on or otherwise forgetting which tower that correlates to.
@@ -1467,7 +1478,7 @@ actions:
       Also inflicts **two** players with [s:hello-near-world] and two other players with [s:hello-distant-world]. These players are marked with [s:first-in-line] or [s:second-in-line] to indicate which set of [a:hello-near-distant-world] debuffs resolves first.
       A player cannot be inflicted with both [s:first-in-line] and [s:second-in-line] at the same time.
       **AoEs**
-      Final Omega spawns in the center of the arena along with a clone of Omega-M and Omega-F to either side of him. Similar to [a:party-synergy], these clones are either equipped with a sword or shield, or a staff or stilettos respectively, and prepare to execute a combination of [a:efficient-bladework]/[a:beyond-strength] and [a:optimized-blizzard-iii]/[a:superliminal-steel].
+      Final Omega spawns in the center of the arena along with a clone of Omega-M and Omega-F to either side of him. Similar to [a:party-synergy], these clones are either equipped with a sword or shield, or a staff or blade legs respectively, and prepare to execute a combination of [a:efficient-bladework]/[a:beyond-strength] and [a:optimized-blizzard-iii]/[a:superliminal-steel].
       Then, a second set of Omega-F and Omega-M clones spawns perpendicular to the first ones, who also prepare to execute a combination of the above AoEs.
       Final Omega either doesn't change the rotation of its ring or turns it sidewards and begins to cast [a:diffuse-wave-cannon] as the ring starts to glow. At the end of the cast, [a:diffuse-wave-cannon] shoots two massive conal AoEs towards either side of the ring, with only the ring's sides remaining safe. In addition, the first set of clones' AoEs resolves here.
       After a brief delay, Final Omega's ring **rotates by 90°** and executes [a:diffuse-wave-cannon] again. The second set of clones' AoEs resolves here.
@@ -1486,7 +1497,7 @@ actions:
       If anyone doesn't have [s:quickening-dynamis:3] at this point you are guaranteed to wipe early into Phase 6, so it's recommended to wipe the pull immediately.
     tips:
       - It's recommended to use most of your remaining party mitigation after the initial cast of [a:run-dynamis-(omega-version)]. This will allow players (even non-tanks) to survive a hit during the first part of the mechanic, thus keeping the pull alive (though the player will be inflicted with [s:2911]). If this happens, it is **strongly recommended** to [t:wall] yourself at the earliest opportunity to get rid of [s:2911]. The [a:blind-faith] DPS check may not be possible to beat otherwise. Make absolutely sure to only wall yourself if a) you do **not** have [s:hello-near-world] or [s:hello-distant-world] and the first set of [a:hello-near-distant-world] has finished executing, or b) the second set of [a:hello-near-distant-world] has finished executing. In other words, do not wall yourself if you have a mechanical responsibility in the next 10 seconds.
-      - "Generally, you can categorize each dodge into one of three categories: a close dodge ([a:superliminal-steel] + [a:beyond-strength]/[a:efficient-bladework]), a mid dodge ([a:optimized-blizzard-iii] + [a:beyond-strength]), and a far dodge ([a:optimized-blizzard-iii] + [a:efficient-bladework]). As the main condition for which type of dodge it is lies in Omega-F's attack, it is her stance that you should identify first. If she's wearing stilettos, you already know it'll be a close dodge. Otherwise, check Omega-M to determine whether it's a mid or a far dodge."
+      - "Generally, you can categorize each dodge into one of three categories: a close dodge ([a:superliminal-steel] + [a:beyond-strength]/[a:efficient-bladework]), a mid dodge ([a:optimized-blizzard-iii] + [a:beyond-strength]), and a far dodge ([a:optimized-blizzard-iii] + [a:efficient-bladework]). As the main condition for which type of dodge it is lies in Omega-F's attack, it is her stance that you should identify first. If she has blade legs, you already know it'll be a close dodge. Otherwise, check Omega-M to determine whether it's a mid or a far dodge."
     mistakes:
       - Not reading Omega-F's or Omega-M's stance correctly.
       - "When Final Omega's ring is facing north/south: aligning yourself with the edge of the ring rather than the arena markers. (When Omega's ring faces north/south, the ring is offset from the center of Omega's hitbox and **cannot** be used to align yourself with its cones.)"
@@ -1953,12 +1964,15 @@ graphing:
     spread-gradient: "radial-gradient(0 #fcae6e55 65% #fcae6e55 100% #fcae6ecc)"
     wc-gradient-line: "linear-gradient(0 #fcfcfc 15% #8de8fb 40% #1f325a 60% #1f325a 85% #8de8fb 100% #fcfcfc)"
     wc-gradient: "radial-gradient(0 #1f325a 20% #1f325a 80% #8de8fb 90% #fcfcfc 100% #fcfcfc)"
+    wave-repeater-gradient: "radial-gradient(80% #407af499 100% #88d8fa)"
+    sniper-gradient: "radial-gradient(0% #cfacdc 70% #080d1daa)"
+    hp-sniper-gradient: "radial-gradient(0% #fffdff 30% #fffdff55 70% #fffdff55 100% #fffdff)"
   elements:
     arena:
       type: image
       shape: circle
       size: 210
-      image: /top-p1.png
+      image: /images/arenas/top-p1.avif
     boss:
       size: 90
       opacity: 0.7
