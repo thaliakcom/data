@@ -1999,27 +1999,82 @@ graphing:
       size: 130
       color: url(#blaster-gradient)
       scale: 0
+      shadow: false
     flamethrower:
       type: cone
       angle: 60
       size: [0, 110]
       color: "#e8bd46bb"
-    puddle:
+      shadow: false
+    circle:
       type: ellipse
       size: 45
       color: url(#aoe-gradient)
       visible: false
+      shadow: false
+    donut:
+      type: donut
+      size: [100, 320]
+      color: url(#aoe-gradient)
+      scale: 0
+      visible: false
+      shadow: false
+    wave-repeater:
+      type: donut
+      color: url(#wave-repeater-gradient)
+      visible: false
+      shadow: false
+    rect:
+      type: rectangle
+      size: 45
+      color: url(#aoe-gradient)
+      scale: 0
+      visible: false
+      shadow: false
+    label:
+      type: rectangle
+      planar: false
+      size: [120, 25]
+      color: "#111111bb"
+      visible: false
+      coordinate-system: cartesian
+      shadow: false
     wave-cannon:
       type: rectangle
       size: [15, 200]
       origin: [0.5, 0]
       color: url(#wc-gradient)
       scale: [0, 1]
+      shadow: false
     spread:
       type: ellipse
       size: 60
       color: url(#spread-gradient)
       scale: 0
+      shadow: false
+    glitch-link:
+      type: link
+      width: 1
+      color: "#e1e2e3cc"
+    stack:
+      type: image
+      size: 50
+      image: /images/markers/stack.svg
+      shadow: false
+      visible: false
+    bladedance:
+      type:  cone
+      angle: 125
+      size: [0, 200]
+      color: url(#aoe-gradient)
+      visible: false
+      shadow: false
+    flare:
+      type: image
+      size: 50
+      image: /images/markers/flare.svg
+      shadow: false
+      visible: false
   graphs:
     looper:
       - marker-a: [60, 0]
@@ -2194,7 +2249,7 @@ graphing:
         M1: [55, 95]
         M2: [63, -88]
       - blaster#*: { scale: 1, visible: true }
-        blaster-tether*: { visible: false }
+        blaster-tether#*: { visible: false }
         tower-filled#2: { visible: false }
         tower-filled#6: { visible: false }
         R2: { status: [2534] }
@@ -2227,7 +2282,7 @@ graphing:
         flamethrower#10: { rotation: -60, visible: false }
         flamethrower#11: { rotation: -30, visible: false }
         flamethrower#12: { rotation: 0, visible: false }
-        puddle#1..24: [0, 0]
+        circle#1..24: [0, 0]
         wave-cannon#1..2: [0, 0]
         spread#1..2: [0, 0]
         boss: [0, 0]
@@ -2253,14 +2308,14 @@ graphing:
         flamethrower#8: { visible: true }
         R1: [60, 26]
         M1: [60, -152]
-        puddle#1: [60, 26]
-        puddle#2: [45, -45]
-        puddle#3: [50, -45]
-        puddle#4: [55, -45]
-        puddle#5: [60, -152]
-        puddle#6: [45, 135]
-        puddle#7: [50, 135]
-        puddle#8: [55, 135]
+        circle#1: [60, 26]
+        circle#2: [45, -45]
+        circle#3: [50, -45]
+        circle#4: [55, -45]
+        circle#5: [60, -152]
+        circle#6: [45, 135]
+        circle#7: [50, 135]
+        circle#8: [55, 135]
       - flamethrower#2: { visible: false }
         flamethrower#8: { visible: false }
         flamethrower#3: { visible: true }
@@ -2269,15 +2324,15 @@ graphing:
         flamethrower#9: { visible: false }
         flamethrower#4: { visible: true }
         flamethrower#10: { visible: true }
-        puddle#1..8: { visible: true }
-        puddle#9: [60, 54]
-        puddle#10: [45, -8]
-        puddle#11: [50, -10]
-        puddle#12: [55, -12]
-        puddle#13: [60, -123]
-        puddle#14: [45, 170]
-        puddle#15: [50, 168]
-        puddle#16: [55, 166]
+        circle#1..8: { visible: true }
+        circle#9: [60, 54]
+        circle#10: [45, -8]
+        circle#11: [50, -10]
+        circle#12: [55, -12]
+        circle#13: [60, -123]
+        circle#14: [45, 170]
+        circle#15: [50, 168]
+        circle#16: [55, 166]
         wave-cannon#1: { rotate: -12 }
         wave-cannon#2: { rotate: 170 }
         spread#1: [60, 54]
@@ -2296,8 +2351,8 @@ graphing:
         flamethrower#11: { visible: true }
         wave-cannon#1..2: { scale: 1, visible: false }
         spread#1..2: { scale: 1, visible: false }
-        puddle#1..8: { visible: false }
-        puddle#9..16: { visible: true }
+        circle#1..8: { visible: false }
+        circle#9..16: { visible: true }
         R1: { x: 87, y: 31, status: [] }
         T2: [38, 110]
         T1: [50, 20]
@@ -2306,28 +2361,28 @@ graphing:
         R2: [38, -61]
         H2: [50, -162]
         M2: [55, -164]
-        puddle#17: [87, 31]
-        puddle#18: [38, 110]
-        puddle#19: [50, 20]
-        puddle#20: [55, 18]
-        puddle#21: [87, -148]
-        puddle#22: [38, -61]
-        puddle#23: [50, -162]
-        puddle#24: [55, -164]
+        circle#17: [87, 31]
+        circle#18: [38, 110]
+        circle#19: [50, 20]
+        circle#20: [55, 18]
+        circle#21: [87, -148]
+        circle#22: [38, -61]
+        circle#23: [50, -162]
+        circle#24: [55, -164]
       - flamethrower#5: { visible: false }
         flamethrower#11: { visible: false }
         flamethrower#6: { visible: true }
         flamethrower#12: { visible: true }
-        puddle#1: [45, 58]
-        puddle#2: [60, 146]
-        puddle#3: [50, 56]
-        puddle#4: [55, 54]
-        puddle#5: [45, -130]
-        puddle#6: [60, -32]
-        puddle#7: [50, -132]
-        puddle#8: [55, -134]
-        puddle#9..16: { visible: false }
-        puddle#17..24: { visible: true }
+        circle#1: [45, 58]
+        circle#2: [60, 146]
+        circle#3: [50, 56]
+        circle#4: [55, 54]
+        circle#5: [45, -130]
+        circle#6: [60, -32]
+        circle#7: [50, -132]
+        circle#8: [55, -134]
+        circle#9..16: { visible: false }
+        circle#17..24: { visible: true }
         wave-cannon#1..2: { scale: [0, 1] }
         spread#1..2: { scale: 0 }
         R1: [45, 58]
@@ -2342,16 +2397,16 @@ graphing:
         flamethrower#12: { visible: false }
         flamethrower#7: { visible: true }
         flamethrower#1: { visible: true }
-        puddle#1..8: { visible: true }
-        puddle#9: [45, 94]
-        puddle#10: [50, 178]
-        puddle#11: [50, 92]
-        puddle#12: [55, 90]
-        puddle#13: [45, -93]
-        puddle#14: [50, -5]
-        puddle#15: [50, -95]
-        puddle#16: [55, -97]
-        puddle#17..24: { visible: false }
+        circle#1..8: { visible: true }
+        circle#9: [45, 94]
+        circle#10: [50, 178]
+        circle#11: [50, 92]
+        circle#12: [55, 90]
+        circle#13: [45, -93]
+        circle#14: [50, -5]
+        circle#15: [50, -95]
+        circle#16: [55, -97]
+        circle#17..24: { visible: false }
         wave-cannon#1: { visible: true, rotate: 92 }
         wave-cannon#2: { visible: true, rotate: -80 }
         spread#1: { x: 50, y: 178, visible: true }
@@ -2370,16 +2425,16 @@ graphing:
         flamethrower#2: { visible: true }
         wave-cannon#1..2: { scale: 1, visible: false }
         spread#1..2: { scale: 1, visible: false }
-        puddle#1..8: { visible: false }
-        puddle#9..16: { visible: true }
-        puddle#17: [45, 127]
-        puddle#18: [80, 162]
-        puddle#19: [40, 129]
-        puddle#20: [50, 123]
-        puddle#21: [45, -57]
-        puddle#22: [80, 4]
-        puddle#23: [40, -55]
-        puddle#24: [50, -59]
+        circle#1..8: { visible: false }
+        circle#9..16: { visible: true }
+        circle#17: [45, 127]
+        circle#18: [80, 162]
+        circle#19: [40, 129]
+        circle#20: [50, 123]
+        circle#21: [45, -57]
+        circle#22: [80, 4]
+        circle#23: [40, -55]
+        circle#24: [50, -59]
         R1: [45, 127]
         T2: { x: 80, y: 162, status: [] }
         T1: [40, 129]
@@ -2394,16 +2449,16 @@ graphing:
         flamethrower#3: { visible: true }
         wave-cannon#1..2: { scale: [0, 1] }
         spread#1..2: { scale: 0 }
-        puddle#1: [45, 162]
-        puddle#2: [50, 162]
-        puddle#3: [50, -124]
-        puddle#4: [55, 162]
-        puddle#5: [45, -19]
-        puddle#6: [50, -21]
-        puddle#7: [50, 54]
-        puddle#8: [55, -23]
-        puddle#9..16: { visible: false }
-        puddle#17..24: { visible: true }
+        circle#1: [45, 162]
+        circle#2: [50, 162]
+        circle#3: [50, -124]
+        circle#4: [55, 162]
+        circle#5: [45, -19]
+        circle#6: [50, -21]
+        circle#7: [50, 54]
+        circle#8: [55, -23]
+        circle#9..16: { visible: false }
+        circle#17..24: { visible: true }
         R1: [45, 162]
         T2: [50, 162]
         T1: [50, -124]
@@ -2420,16 +2475,16 @@ graphing:
         wave-cannon#2: { rotate: 10, visible: true }
         spread#1: { x: 50, y: -92, visible: true }
         spread#2: { x: 50, y: 84, visible: true }
-        puddle#1..8: { visible: true }
-        puddle#9: [45, -168]
-        puddle#10: [50, -168]
-        puddle#11: [50, -92]
-        puddle#12: [55, -168]
-        puddle#13: [45, 12]
-        puddle#14: [50, 10]
-        puddle#15: [50, 84]
-        puddle#16: [55, 8]
-        puddle#17..24: { visible: false }
+        circle#1..8: { visible: true }
+        circle#9: [45, -168]
+        circle#10: [50, -168]
+        circle#11: [50, -92]
+        circle#12: [55, -168]
+        circle#13: [45, 12]
+        circle#14: [50, 10]
+        circle#15: [50, 84]
+        circle#16: [55, 8]
+        circle#17..24: { visible: false }
         R1: [45, -168]
         T2: [50, -168]
         T1: [50, -92]
@@ -2444,16 +2499,16 @@ graphing:
         flamethrower#5: { visible: true }
         wave-cannon#1..2: { scale: 1, visible: false }
         spread#1..2: { scale: 1, visible: false }
-        puddle#1..8: { visible: false }
-        puddle#9..16: { visible: true }
-        puddle#17: [45, -138]
-        puddle#18: [50, -138]
-        puddle#19: [74, -107]
-        puddle#20: [55, -138]
-        puddle#21: [45, 45]
-        puddle#22: [50, 43]
-        puddle#23: [80, 71]
-        puddle#24: [55, 41]
+        circle#1..8: { visible: false }
+        circle#9..16: { visible: true }
+        circle#17: [45, -138]
+        circle#18: [50, -138]
+        circle#19: [74, -107]
+        circle#20: [55, -138]
+        circle#21: [45, 45]
+        circle#22: [50, 43]
+        circle#23: [80, 71]
+        circle#24: [55, 41]
         R1: [45, -138]
         T2: [50, -138]
         T1: { x: 74, y: -107, status: [] }
@@ -2468,16 +2523,16 @@ graphing:
         flamethrower#6: { visible: true }
         wave-cannon#1..2: { scale: [0, 1] }
         spread#1..2: { scale: 0 }
-        puddle#1: [40, -102]
-        puddle#2: [45, -104]
-        puddle#3: [50, -106]
-        puddle#4: [39, -33]
-        puddle#5: [45, 76]
-        puddle#6: [50, 74]
-        puddle#7: [55, 72]
-        puddle#8: [54, 146]
-        puddle#9..16: { visible: false }
-        puddle#17..24: { visible: true }
+        circle#1: [40, -102]
+        circle#2: [45, -104]
+        circle#3: [50, -106]
+        circle#4: [39, -33]
+        circle#5: [45, 76]
+        circle#6: [50, 74]
+        circle#7: [55, 72]
+        circle#8: [54, 146]
+        circle#9..16: { visible: false }
+        circle#17..24: { visible: true }
         R1: [40, -102]
         T2: [45, -104]
         T1: [50, -106]
@@ -2494,8 +2549,8 @@ graphing:
         wave-cannon#2: { visible: true, rotate: 110 }
         spread#1: { visible: true, x: 50, y: -2 }
         spread#2: { visible: true, x: 48, y: 177 }
-        puddle#1..8: { visible: true }
-        puddle#17..24: { visible: false }
+        circle#1..8: { visible: true }
+        circle#17..24: { visible: false }
         R1: [45, -66]
         T2: [50, -68]
         T1: [55, -70]
@@ -2510,7 +2565,7 @@ graphing:
         flamethrower#8: { visible: true }
         wave-cannon#1..2: { scale: 1, visible: false }
         spread#1..2: { scale: 1, visible: false }
-        puddle#1..8: { visible: false }
+        circle#1..8: { visible: false }
         R1: [45, -66]
         T2: [50, -68]
         T1: [55, -70]
@@ -2519,3 +2574,500 @@ graphing:
         R2: [50, 104]
         H2: [55, 102]
         M2: { x: 48, y: 177, status: [] }
+    party-synergy:
+      - arena: { image: /images/arenas/top-p2.avif }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        boss#F1: { x: 16, y: 90, scale: 0.4, text: F }
+        boss#F2: { visible: false, scale: 0.4, text: F }
+        boss#M1: { x: 16, y: -90, scale: 0.4, text: M }
+        boss#M2: { visible: false, scale: 0.4, text: M }
+        boss#M3: { x: 63, y: 90, visible: false, scale: 0.4, text: M, rotate: 90 }
+        boss#M4: { x: 63, y: 0, visible: false, scale: 0.4, text: M, rotate: 0 }
+        boss#M5: { x: 63, y: -90, visible: false, scale: 0.4, text: M, rotate: -90 }
+        boss#M6: { x: 63, y: 180, visible: false, scale: 0.4, text: M }
+        boss#eye: { x: 100, y: 0, scale: 0.8, visible: false, rotate: 0 }
+        rect#1: { x: 92, y: 22.5, scale: 0, rotate: 112.5 }
+        rect#2: { x: 92, y: -157.5, scale: 0, rotate: 112.5 }
+        rect#3: { x: 52, y: 112.5, scale: 0, rotate: 112.5 }
+        rect#4: { x: 52, y: 112.5, scale: 0, rotate: 22.5 }
+        rect#eye: { scale: [1.7, 10], rotate: 0 }
+        circle#1..2: { x: 52, y: -67.5, scale: 0 }
+        circle#3: { x: -79, y: -36, scale: 1.5, coordinate-system: cartesian }
+        circle#4: { x: 79, y: -36, scale: 1.5, coordinate-system: cartesian }
+        circle#5: { x: -79, y: 36, scale: 1.5, coordinate-system: cartesian }
+        circle#6: { x: 79, y: 36, scale: 1.5, coordinate-system: cartesian }
+        circle#7: { x: -45, y: 75, scale: 1.5, coordinate-system: cartesian }
+        circle#8: { x: 45, y: -75, scale: 1.5, coordinate-system: cartesian }
+        donut#1: { x: 52, y: -67.5 }
+        donut#2: { x: 52, y: -67.5 }
+        stack#1..2: { coordinate-system: cartesian }
+        glitch-link#1: { from: T1, to: R1, visible: false }
+        glitch-link#2: { from: H1, to: R2, visible: false }
+        glitch-link#3: { from: M1, to: T2, visible: false }
+        glitch-link#4: { from: H2, to: M2, visible: false }
+        T1: { x: -16, y: -25, coordinate-system: cartesian }
+        T2: { x: 16, y: -25, coordinate-system: cartesian }
+        H1: { x: -36, y: -10, coordinate-system: cartesian }
+        H2: { x: 36, y: -10, coordinate-system: cartesian }
+        M1: { x: -36, y: 5, coordinate-system: cartesian }
+        M2: { x: 36, y: 5, coordinate-system: cartesian }
+        R1: { x: -36, y: 20, coordinate-system: cartesian }
+        R2: { x: 36, y: 20, coordinate-system: cartesian }
+        cast: { text: Party Synergy, progress: 0, visible: true }
+        label: { x: 0, y: -90, visible: false }
+      - cast: { progress: 1, visible: false }
+        glitch-link#*: { visible: true }
+        T1: { x: -36, y: -25, status: [circle] }
+        H1: { status: [triangle] }
+        M1: { status: [cross] }
+        R1: { status: [circle] }
+        T2: { x: 36, y: -25, status: [cross] }
+        H2: { status: [square] }
+        M2: { status: [square] }
+        R2: { status: [triangle] }
+        boss#*: { visible: false }
+      - R1: [36, 5]
+        M2: [-36, 20]
+        boss#M1: { x: 52, y: -67.5, rotate: boss#F1, text: Sword-M }
+        boss#M2: { x: 0, y: 0, rotate: boss#F1, text: Sword-M }
+        boss#F1: { x: 52, y: 112.5, rotate: boss#M1, text: Blades-F }
+        boss#F2: { x: 62, y: 180, rotate: 180, text: Staff-F }
+      - label: { visible: true, text: Variation 1 }
+        boss#eye: { visible: true }
+        boss#M1: { visible: true }
+        boss#M2: { visible: true }
+        boss#F1: { visible: true }
+        boss#F2: { visible: true }
+      - T1: [40, 30]
+        T2: [40, 30]
+        H1: [40, 30]
+        H2: [40, 30]
+        R1: [40, 30]
+        R2: [40, 30]
+        M1: [40, 30]
+        M2: [40, 30]
+        rect#1..2: { scale: [3, 10], visible: true }
+        circle#1: { scale: 2, visible: true }
+      - label: { text: Variation 2 }
+        boss#F1: { text: Staff-F }
+        rect#1..2: { visible: false }
+        circle#1: { visible: false }
+        T1: [-36, -25]
+        T2: [36, -25]
+        H1: [-36, -10]
+        H2: [36, -10]
+        M1: [-36, 5]
+        M2: [-36, 20]
+        R1: [36, 5]
+        R2: [36, 20]
+      - rect#1..2: { scale: 0 }
+        rect#3..4: { scale: [1, 10], visible: true }
+        circle#1: { scale: 0 }
+        circle#2: { scale: 2, visible: true }
+        T1: [-44, 44]
+        H1: [-44, 44]
+        M1: [-44, 44]
+        M2: [-44, 44]
+        T2: [20, -51]
+        H2: [20, -51]
+        R1: [20, -51]
+        R2: [20, -51]
+      - label: { text: Variation 3 }
+        boss#M1: { text: Shield-M }
+        boss#F1: { text: Blades-F }
+        rect#3..4: { visible: false }
+        circle#2: { visible: false }
+        T1: [-36, -25]
+        T2: [36, -25]
+        H1: [-36, -10]
+        H2: [36, -10]
+        M1: [-36, 5]
+        M2: [-36, 20]
+        R1: [36, 5]
+        R2: [36, 20]
+      - donut#1: { scale: 1, visible: true }
+        rect#1..2: { scale: [3, 10], visible: true }
+        rect#3..4: { scale: 0 }
+        T1: [-47, -22]
+        T2: [-47, -22]
+        M1: [-47, -22]
+        M2: [-47, -22]
+        R1: [-47, -22]
+        R2: [-47, -22]
+        H1: [-47, -22]
+        H2: [-47, -22]
+      - label: { text: Variation 4 }
+        boss#F1: { text: Staff-F }
+        rect#1..2: { visible: false }
+        donut#1: { visible: false }
+        T1: [-36, -25]
+        T2: [36, -25]
+        H1: [-36, -10]
+        H2: [36, -10]
+        M1: [-36, 5]
+        M2: [-36, 20]
+        R1: [36, 5]
+        R2: [36, 20]
+      - donut#2: { scale: 1, visible: true }
+        rect#3..4: { scale: [1, 10], visible: true }
+        T1: [-60, 12]
+        H1: [-60, 12]
+        M1: [-60, 12]
+        M2: [-60, 12]
+        T2: [-36, -56]
+        H2: [-36, -56]
+        R1: [-36, -56]
+        R2: [-36, -56]
+      - label: { text: Remote Glitch }
+        donut#2: { visible: false }
+        rect#3..4: { visible: false }
+        boss#M1: { visible: false }
+        boss#M2: { visible: false }
+        boss#F1: { visible: false }
+        boss#F2: { visible: false }
+        boss#M3: { visible: true }
+        boss#M4: { visible: true }
+        boss#M5: { visible: true }
+        boss#M6: { visible: true }
+        circle#1: { x: -45, y: -75, coordinate-system: cartesian, scale: 1.5 }
+        circle#2: { x: 45, y: 75, coordinate-system: cartesian, scale: 1.5 }
+        M1: [-45, -75]
+        T2: [45, 75]
+        M2: [-79, -36]
+        R1: [79, -36]
+        T1: [-79, 36]
+        H2: [79, 36]
+        H1: [-45, 75]
+        R2: [45, -75]
+      - rect#eye: { visible: true }
+        boss#M1: { x: 63, y: 45, rotate: 45, text: M }
+        boss#F1: { x: 0, y: 0, rotate: 0 }
+        circle#1..8: { visible: true }
+        stack#1: [-79, -36]
+        stack#2: [45, 75]
+      - circle#1..8: { visible: false }
+        rect#eye: { visible: false }
+        boss#M1: { visible: true }
+        boss#F1: { visible: true }
+        stack#1..2: { visible: true }
+      - M1: { x: 12, y: -45, coordinate-system: polar }
+        M2: { x: 12, y: -45, coordinate-system: polar }
+        T1: { x: 12, y: -45, coordinate-system: polar }
+        H1: { x: 12, y: -45, coordinate-system: polar }
+        T2: { x: 12, y: 135, coordinate-system: polar }
+        R1: { x: 12, y: 135, coordinate-system: polar }
+        H2: { x: 12, y: 135, coordinate-system: polar }
+        R2: { x: 12, y: 135, coordinate-system: polar }
+        stack#1: { x: 12, y: -45, coordinate-system: polar }
+        stack#2: { x: 12, y: 135, coordinate-system: polar }
+      - boss#F1: { scale: 0.6, visible: false }
+        M1: { x: 88, y: -45, coordinate-system: polar }
+        M2: { x: 88, y: -45, coordinate-system: polar }
+        T1: { x: 88, y: -45, coordinate-system: polar }
+        H1: { x: 88, y: -45, coordinate-system: polar }
+        T2: { x: 88, y: 135, coordinate-system: polar }
+        R1: { x: 88, y: 135, coordinate-system: polar }
+        H2: { x: 88, y: 135, coordinate-system: polar }
+        R2: { x: 88, y: 135, coordinate-system: polar }
+        stack#1: { x: 88, y: -45, coordinate-system: polar }
+        stack#2: { x: 88, y: 135, coordinate-system: polar }
+        circle#1: { x: 63, y: 0, scale: 0, coordinate-system: polar }
+        circle#2: { x: 63, y: 45, scale: 0, coordinate-system: polar }
+        circle#3: { x: 63, y: 90, scale: 0, coordinate-system: polar }
+        circle#4: { x: 63, y: 180, scale: 0, coordinate-system: polar }
+        circle#5: { x: 63, y: -90, scale: 0, coordinate-system: polar }
+        circle#6: { x: 88, y: -45, scale: 0.9, coordinate-system: polar }
+        circle#7: { x: 88, y: 135, scale: 0.9, coordinate-system: polar }
+      - circle#1..5: { scale: 2, visible: true }
+        circle#6..7: { visible: true }
+      - circle#1..7: { visible: false }
+        stack#1..2: { visible: false }
+        boss#M*: { visible: false }
+        T1: { status: [] }
+        T2: { status: [] }
+        H1: { status: [] }
+        H2: { status: [] }
+        M1: { status: [] }
+        M2: { status: [] }
+        R1: { status: [] }
+        R2: { status: [] }
+        glitch-link#*: { visible: false }
+      - label: { text: Mid Glitch }
+        rect#eye: { visible: false }
+        circle#1..8: { visible: false }
+        glitch-link#*: { visible: true }
+        T1: { x: -60, y: 12, status: [circle], coordinate-system: cartesian }
+        H1: { x: -60, y: 12, status: [triangle], coordinate-system: cartesian }
+        M1: { x: -60, y: 12, status: [cross], coordinate-system: cartesian }
+        M2: { x: -60, y: 12, status: [square], coordinate-system: cartesian }
+        T2: { x: -36, y: -56, status: [cross], coordinate-system: cartesian }
+        H2: { x: -36, y: -56, status: [square], coordinate-system: cartesian }
+        R1: { x: -36, y: -56, status: [circle], coordinate-system: cartesian }
+        R2: { x: -36, y: -56, status: [triangle], coordinate-system: cartesian }
+        boss#M3: { visible: true }
+        boss#M4: { visible: true }
+        boss#M5: { visible: true }
+        boss#M6: { visible: true }
+      - M1: [-50, -71]
+        T2: [50, -71]
+        M2: [-50, -23.6]
+        R1: [50, 23.6]
+        T1: [-50, 23.6]
+        H2: [50, -23.6]
+        H1: [-50, 71]
+        R2: [50, 71]
+        circle#1: { x: -50, y: -71, coordinate-system: cartesian, scale: 1.5 }
+        circle#2: { x: 50, y: -71, coordinate-system: cartesian, scale: 1.5 }
+        circle#3: { x: -50, y: -23.6, coordinate-system: cartesian, scale: 1.5 }
+        circle#4: { x: 50, y: 23.6, coordinate-system: cartesian, scale: 1.5 }
+        circle#5: { x: -50, y: 23.6, coordinate-system: cartesian, scale: 1.5 }
+        circle#6: { x: 50, y: -23.6, coordinate-system: cartesian, scale: 1.5 }
+        circle#7: { x: -50, y: 71, coordinate-system: cartesian, scale: 1.5 }
+        circle#8: { x: 50, y: 71, coordinate-system: cartesian, scale: 1.5 }
+        stack#1..2: { coordinate-system: cartesian }
+      - rect#eye: { visible: true }
+        circle#1..8: { visible: true }
+        stack#1: [50, -23.6]
+        stack#2: [50, 71]
+      - circle#1..8: { visible: false }
+        rect#eye: { visible: false }
+        boss#M1: { visible: true }
+        boss#F1: { visible: true }
+        stack#1..2: { visible: true }
+      - M1: { x: 12, y: -45, coordinate-system: polar }
+        M2: { x: 12, y: -45, coordinate-system: polar }
+        T1: { x: 12, y: -45, coordinate-system: polar }
+        H1: { x: 12, y: -135, coordinate-system: polar }
+        T2: { x: 12, y: -135, coordinate-system: polar }
+        R1: { x: 12, y: -135, coordinate-system: polar }
+        H2: { x: 12, y: -135, coordinate-system: polar }
+        R2: { x: 12, y: -45, coordinate-system: polar }
+        stack#1: { x: 12, y: -45, coordinate-system: polar }
+        stack#2: { x: 12, y: -135, coordinate-system: polar }
+      - boss#F1: { scale: 0.6, visible: false }
+        M1: { x: 70, y: -45, coordinate-system: polar }
+        M2: { x: 70, y: -45, coordinate-system: polar }
+        T1: { x: 70, y: -45, coordinate-system: polar }
+        H1: { x: 70, y: -45, coordinate-system: polar }
+        T2: { x: 70, y: -135, coordinate-system: polar }
+        R1: { x: 70, y: -135, coordinate-system: polar }
+        H2: { x: 70, y: -135, coordinate-system: polar }
+        R2: { x: 70, y: -135, coordinate-system: polar }
+        stack#1: { x: 70, y: -45, coordinate-system: polar }
+        stack#2: { x: 70, y: -135, coordinate-system: polar }
+        circle#1: { x: 63, y: 0, scale: 0, coordinate-system: polar }
+        circle#2: { x: 63, y: 45, scale: 0, coordinate-system: polar }
+        circle#3: { x: 63, y: 90, scale: 0, coordinate-system: polar }
+        circle#4: { x: 63, y: 180, scale: 0, coordinate-system: polar }
+        circle#5: { x: 63, y: -90, scale: 0, coordinate-system: polar }
+        circle#6: { x: 70, y: -45, scale: 0.9, coordinate-system: polar }
+        circle#7: { x: 88, y: -135, scale: 0.9, coordinate-system: polar }
+      - circle#1..5: { scale: 2, visible: true }
+        circle#6..7: { visible: true }
+      - circle#1..7: { visible: false }
+        stack#1..2: { visible: false }
+        boss#M*: { visible: false }
+        T1: { status: [] }
+        T2: { status: [] }
+        H1: { status: [] }
+        H2: { status: [] }
+        M1: { status: [] }
+        M2: { status: [] }
+        R1: { status: [] }
+        R2: { status: [] }
+        glitch-link#*: { visible: false }
+    limitless-synergy:
+      - arena: { image: "/images/arenas/top-p2.avif" }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        rect: { scale: [1.1, 10], visible: false }
+        circle#BD: { scale: 0.8, visible: false }
+        circle#PP: { scale: 0.8, visible: false }
+        bladedance#1: { x: 90, y: -45, rotation: 60, visible: false }
+        bladedance#2: { x: 90, y: 135, rotation: -120, visible: false }
+        blaster-tether#1: { from: boss#TB1, to: T1, visible: false }
+        blaster-tether#2: { from: boss#TB2, to: T2, visible: false }
+        boss#PoA: { scale: 0.5, rotate: T1, text: M }
+        boss#LS: { scale: 0.5, rotate: T2, text: F }
+        boss#BD: { x: 90, y: 45, rotate: 45, scale: 0.3, visible: false, text: Shield-M }
+        boss#SA: { x: 90, y: 180, rotate: 180, scale: 0.3, visible: false, text: Bow-M }
+        boss#TB1: { x: 90, y: -45, rotate: -45, scale: 0.3, visible: false, text: Sword-M }
+        boss#TB2: { x: 90, y: 135, rotate: 135, scale: 0.3, visible: false, text: F }
+        boss#flare: { x: 90, y: -67.5, rotate: -67.5, scale: 0.3, visible: false, text: F }
+        T1: [36, -45]
+        T2: [36, -45]
+        H1: [36, 180]
+        H2: [36, 180]
+        M1: [36, 180]
+        M2: [36, 180]
+        R1: [36, 180]
+        R2: [36, 180]
+        flare#1..3: { visible: false }
+      - T1: [36, 180]
+        T2: [36, 180]
+        boss#PoA: { rotate: 0 }
+        boss#LS: { x: 47, y: 0, scale: 0.3, rotate: 0 }
+        boss#BD: { visible: true }
+        boss#SA: { visible: true }
+        boss#TB1: { visible: true }
+        boss#TB2: { visible: true }
+        boss#flare: { visible: true }
+        flare#1: [10, -90]
+        flare#2: [10, 30]
+        flare#3: [10, 150]
+      - blaster-tether#1..2: { visible: true }
+        T1: [31, -44]
+        T2: [33, 155]
+      - rect: { visible: true }
+        T1: [88, -31]
+        T2: [88, 155]
+        H1: [36, 124]
+        H2: [36, 120]
+        M1: [36, -60]
+        M2: [36, -56]
+        R1: [42, 120]
+        R2: [42, -60]
+      - bladedance#1..2: { visible: true }
+      - rect: { visible: false }
+        bladedance#1..2: { visible: false }
+        blaster-tether#1..2: { visible: false }
+        boss#TB1: { visible: false }
+        boss#TB2: { visible: false }
+        T1: [33, 22]
+        T2: [33, 75]
+        H1: [10, -90]
+        H2: [10, 90]
+        M1: [10, -30]
+        M2: [10, 30]
+        R1: [10, -150]
+        R2: [10, 150]
+        flare#1..3: { visible: true }
+        circle#BD: [33, 75]
+      - boss#BD: { x: 52, y: 53, rotate: T2 }
+        circle#BD: { visible: true }
+        H1: [87, -32]
+        R2: [87, -163]
+        flare#1: [87, -32]
+        flare#3: [87, -163]
+      - circle#BD: { visible: false }
+        boss#BD: { x: 30, y: 46, rotate: M1 }
+        circle#PP: { visible: true }
+        flare#2: [0, 0]
+        flare#1..3: { scale: 3, visible: false }
+        players: [0, 0]
+        H1: [87, -32]
+        R2: [87, -163]
+        T2: [35, -130]
+      - circle#PP: { visible: false }
+        boss#BD: { visible: false }
+        boss#flare: { visible: false }
+        boss#SA: { visible: false }
+        T1: [16, 0]
+        T2: [16, 180]
+        H1: [10, -90]
+        H2: [10, 90]
+        M1: [10, -30]
+        M2: [10, 30]
+        R1: [10, -150]
+        R2: [10, 150]
+    p3-transition:
+      - arena: { image: "/images/arenas/top-p2.avif" }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        circle#1: { scale: 1.15, visible: false }
+        circle#2: { scale: 1.15, visible: false, color: url(#wave-repeater-gradient) }
+        circle#3: { x: 63, y: -60, size: 100 }
+        circle#4: { x: 63, y: 60, size: 100 }
+        circle#5: { x: 63, y: 180, size: 100 }
+        circle#6: { x: 63, y: -120, size: 100 }
+        circle#7: { x: 63, y: 120, size: 100 }
+        circle#8: { x: 63, y: 0, size: 100 }
+        circle#9: { x: 74, y: -46, size: 40, color: url(#hp-sniper-gradient) }
+        circle#10: { x: 74, y: 46, size: 40, color: url(#hp-sniper-gradient) }
+        circle#11: { x: 74, y: -72, size: 40, color: url(#sniper-gradient) }
+        circle#12: { x: 74, y: 72, size: 40, color: url(#sniper-gradient) }
+        circle#13: { x: 74, y: -166, size: 40, color: url(#sniper-gradient) }
+        circle#14: { x: 74, y: 166, size: 40, color: url(#sniper-gradient) }
+        wave-repeater#1: { size: [51, 114] }
+        wave-repeater#2: { size: [114, 162] }
+        wave-repeater#3: { size: [162, 200] }
+        boss#omega: { scale: 0.5, opacity: 0.2 }
+        boss#1..6: { x: 63, scale: 0.1, visible: false, rotate: boss#omega }
+        boss#1: { y: -60 }
+        boss#2: { y: 60 }
+        boss#3: { y: 180 }
+        boss#4: { y: -120 }
+        boss#5: { y: 120 }
+        boss#6: { y: 0 }
+        R1: { x: -40, y: 55, coordinate-system: cartesian }
+        H1: { x: -5.71, y: 55, coordinate-system: cartesian }
+        M1: { x: -28.57, y: 55, coordinate-system: cartesian }
+        T1: { x: -17.14, y: 55, coordinate-system: cartesian }
+        H2: { x: 5.71, y: 55, coordinate-system: cartesian }
+        T2: { x: 17.14, y: 55, coordinate-system: cartesian }
+        M2: { x: 28.57, y: 55, coordinate-system: cartesian }
+        R2: { x: 40, y: 55, coordinate-system: cartesian }
+      - circle#1: { visible: true }
+        R1: { y: 65, status: [3425] }
+        M1: { y: 45, status: [3426] }
+        T1: { y: 65, status: [3425] }
+        H1: { status: [] }
+        H2: { y: 65, status: [3425] }
+        T2: { y: 65, status: [3425] }
+        M2: { status: [] }
+        R2: { y: 45, status: [3426] }
+      - boss#1..3: { visible: true }
+      - circle#1: { visible: false }
+        circle#2: { visible: true }
+        boss#4..6: { visible: true }
+        M1: { x: 88, y: -20, coordinate-system: polar }
+        H1: { x: 88, y: -20, coordinate-system: polar }
+        M2: { x: 88, y: 20, coordinate-system: polar }
+        R2: { x: 88, y: 20, coordinate-system: polar }
+        R1: { x: 88, y: -100, coordinate-system: polar }
+        T1: { x: 88, y: -140, coordinate-system: polar }
+        H2: { x: 88, y: 140, coordinate-system: polar }
+        T2: { x: 88, y: 100, coordinate-system: polar }
+      - wave-repeater#1: { visible: true }
+        circle#3..5: { visible: true }
+      - wave-repeater#1: { visible: false }
+        wave-repeater#2: { visible: true }
+        circle#3..5: { visible: false }
+        circle#6..8: { visible: true }
+        M1: [74, -46]
+        H1: [74, -46]
+        M2: [74, 46]
+        R2: [74, 46]
+        R1: [74, -72]
+        T1: [74, -166]
+        H2: [74, 166]
+        T2: [74, 72]
+      - wave-repeater#2: { visible: false }
+        wave-repeater#3: { visible: true }
+        boss#1..3: { visible: false }
+        circle#6..8: { visible: false }
+        circle#9..14: { visible: true }
+      - players: { status: [] }
+        wave-repeater#3: { visible: false }
+        circle#*: { visible: false }
+        boss#4..6: { visible: false }
+        boss#omega: { scale: 1, opacity: 0.7 }
