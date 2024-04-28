@@ -1,3 +1,504 @@
+# PDT to UTC = +7h
+# PST to UTC = +8h
+
+- name: A Realm Reborn (Patch 2.0)
+  short: Patch 2.0
+  type: patch
+  url: https://na.finalfantasyxiv.com/a_realm_reborn/
+  at: 2013-08-27 12:00:00
+- name: A Realm Awoken (Patch 2.1)
+  short: Patch 2.1
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/03843d6bf7ba69adc37d7955ff7af43f3c43828a
+  at: 2013-12-17 12:00:00
+- name: Patch 2.15
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/259c00a28523999519a34896d7ba39b67875a7af
+  at: 2014-01-20 12:00:00
+- name: Patch 2.16
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/1e50acf08461e355e3e5d4736391ba3f787720f1
+  at: 2014-02-19 12:00:00
+- name: Through the Maelstrom (Patch 2.2)
+  short: Patch 2.2
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/69e2c959d2e9285fd541e7f5f70fb8139b3464da
+  at: 2014-03-27 12:00:00
+- name: Patch 2.21
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/198cac9ac0f1ad52a42c7ff4addc97c280208a1c
+  at: 2014-04-09 12:00:00
+- name: Patch 2.25
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/506a135c96590f304f18e8c110b45897e3a016cf
+  at: 2014-04-23 12:00:00
+- name: Patch 2.28
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/450816f57ade2015876e7675c3d06dca30386770
+  at: 2014-06-05 12:00:00
+- name: Defenders of Eorzea (Patch 2.3)
+  short: Patch 2.3
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c96b9e090eb60d1ebd1b89e20e582d59335acd84
+  at: 2014-07-08 12:00:00
+- name: Patch 2.35
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/2952cde08127ad3911220b2b5744330af2f11d85
+  at: 2014-08-18 12:00:00
+- name: Patch 2.38
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/466a99222687298cf0515b6f476869b10e012e57
+  at: 2014-09-15 12:00:00
+- name: Dreams of Ice (Patch 2.4)
+  short: Patch 2.4
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/4a7a48cd010551b65b1e0f03b318d0d45bf52d59
+  at: 2014-10-28 12:00:00
+- name: Patch 2.41
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/b1efc31304f61d1171ac95d7b954908abc185342
+  at: 2014-11-17 12:00:00
+- name: Patch 2.45
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/e131753e64b2980c646e605b11cf56b933b99601
+  at: 2014-12-08 12:00:00
+- name: Before the Fall (Patch 2.5)
+  short: Patch 2.5
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5d677f92bbe71478ffaccd9972735b3d4280abe6
+  at: 2015-01-20 12:00:00
+- name: Patch 2.51
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/fb9f6956394bb5547bdc91b2062ec4fa99fee568
+  at: 2015-02-23 12:00:00
+- name: Patch 2.55
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/ca7d7d74c94b623db3991220110aa80df21ff1fc
+  at: 2015-03-30 12:00:00
+- name: Patch 2.56
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6f36bfdddf00f7d04ed02b15cd5e610089cc0c86
+  at: 2015-04-19 12:00:00
+- name: Patch 2.57
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/4af393d0bac4c00047fed36f242cc71e9f20311f
+  at: 2015-05-11 12:00:00
+- name: As Goes Light, So Goes Darkness (Patch 3.1)
+  short: Patch 3.1
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6707e4bc0ca533c1a2cb12155fc91d884c6b6a84
+  at: 2015-11-10 12:00:00
+- name: Patch 3.15
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/86c483a5b15766c988ee8db15f4eda117b9d66e4
+  at: 2015-12-15 12:00:00
+- name: The Gears of Change (Patch 3.2)
+  short: Patch 3.2
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c755d756aece79cc9707f5444ad0980ac2b5a39c
+  at: 2016-02-23 12:00:00
+- name: Patch 3.21
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/93afb251b0a22bb2b7bf83f8b85150bc2eef00f6
+  at: 2016-03-09 12:00:00
+- name: Patch 3.22
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/d75b25c63991da97f2c79311d39cc307c28477e3
+  at: 2016-03-16 12:00:00
+- name: Patch 3.25
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/cbb6ca2c6b2f1fdfee3a68f0e18c9d4a609addd1
+  at: 2016-03-28 12:00:00
+- name: Patch 3.26
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f2acf38d25fcc1243dedefa7e45ec7ba1c3aadaa
+  at: 2016-04-13 12:00:00
+- name: Revenge of the Horde (Patch 3.3)
+  short: Patch 3.3
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/197e9c8b2f04efdecffe26bebe43b40551d1e3e8
+  at: 2016-06-07 12:00:00
+- name: Patch 3.35
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/498f86d8acb4d44925b3f83e96c82c85a550f9a0
+  at: 2016-07-18 12:00:00
+- name: Patch 3.38
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/e4b6631397ff961d32d63a6a5b275bb2bbd2382d
+  at: 2016-08-22 12:00:00
+- name: Soul Surrender (Patch 3.4)
+  short: Patch 3.4
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/159309cb1ef0706cf37a9a91e3e18865b70097a6
+  at: 2016-09-27 12:00:00
+- name: Patch 3.41
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f521043481b76b6e081c2f311ce013ea15fc8117
+  at: 2016-10-17 12:00:00
+- name: Patch 3.45
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c55a99e864094c0c7dfcbde0fa35bd9fda60dfcb
+  at: 2016-10-31 12:00:00
+- name: The Far Edge of Fate (Patch 3.5)
+  short: Patch 3.5
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/d90ea3ee6d083eaba4f22e5deefe934b0a0a464e
+  at: 2017-01-17 12:00:00
+- name: Patch 3.51
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/12ed915838dbdc22fe36871a2604f9b1d97b848d
+  at: 2017-01-25 12:00:00
+- name: Patch 3.55a
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/18f5ec1117033baa6574e9428acd375129aa498e
+  at: 2017-02-27 12:00:00
+- name: Patch 3.55b
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/d702c56b0d28cd257090bb292c23471f85772028
+  at: 2017-03-08 12:00:00
+- name: Patch 3.56
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/26738a49887f2b9f9e6b0aa67ae5f7d1a09dd1f2
+  at: 2017-03-27 12:00:00
+- name: Patch 3.57
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/7ee22ba181fbc53f3579bb5d97e21a459f2ab5b3
+  at: 2017-04-17 12:00:00
+- name: The Legend Returns (Patch 4.1)
+  short: Patch 4.1
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/cfd6b53bc9cd08b494512a662c04942848db9539
+  at: 2017-10-10 12:00:00
+- name: Patch 4.11
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/aee832c2c57456a26f36531c78380e74202d0d75
+  at: 2017-10-23 12:00:00
+- name: Patch 4.15
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/fc2b7b7429f139b0bbab2f19620f3c1efcf30368
+  at: 2017-11-20 12:00:00
+- name: Patch 4.18
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/fb2cfeec68d0da7ae33b84f5c2eee0e39c815192
+  at: 2017-12-11 12:00:00
+- name: Rise of a New Sun (Patch 4.2)
+  short: Patch 4.2
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/75c691f90f4a7da3907f0671ac33e139e9792abf
+  at: 2018-01-30 12:00:00
+- name: Patch 4.21
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/98f632cc4aaa15ac51d0d581c72dc03d12d5c51a
+  at: 2018-02-13 12:00:00
+- name: Patch 4.25
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5ad19879fc01a5d878af9a7f90f29e4a2394c5b4
+  at: 2018-03-12 12:00:00
+- name: Under the Moonlight (Patch 4.3)
+  short: Patch 4.3
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/13e322580acb8e9861160a6e08ccabfaff09eeee
+  at: 2018-05-22 12:00:00
+- name: Patch 4.31
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/661a0c5168742c1b2c1bacb42af5736902d63c36
+  at: 2018-06-05 12:00:00
+- name: Patch 4.35
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/9bec77e23715121624f84c7a17c0ad0afa003977
+  at: 2018-07-03 12:00:00
+- name: Patch 4.36
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5cd214d57cdf76296a16db00a0a0f6e5e87212b0
+  at: 2018-08-06 12:00:00
+- name: Prelude in Violet (Patch 4.4)
+  short: Patch 4.4
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/cc70f5b1c61174463b431d06424e6be8f2701ef6
+  at: 2018-09-18 12:00:00
+- name: Patch 4.41
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/09707bd11f14584d48cb97f093d320c3bb3ecded
+  at: 2018-10-01 12:00:00
+- name: Patch 4.45
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/2580dbb66daca8405ce1c051dbb1970d66c5f22a
+  at: 2018-11-05 12:00:00
+- name: A Requiem for Heroes (Patch 4.5)
+  short: Patch 4.5
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/97afed7c0efbbe8260755f948d0cf2b912d71121
+  at: 2019-01-08 12:00:00
+- name: Patch 4.55
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5e197cab52a09dd4f8de83e1f6d5e0bca4289061
+  at: 2019-02-11 12:00:00
+- name: Patch 4.56
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/e597114c5473edae40f259a45abe138f4d2a46e6
+  at: 2019-03-25 12:00:00
+- name: Patch 4.57
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/3caf18c98fb67021b20b4123ad5b57f985645aeb
+  at: 2019-04-22 12:00:00
+- name: Patch 4.58
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/76e462d96058ff6e0171dbe6cfdc1d3c23d57039
+  at: 2019-05-14 12:00:00
+- name: Shadowbringers (Patch 5.0)
+  short: Patch 5.0
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/330f2b280067d69d85b17831c66712a499e97484
+  at: 2019-07-02 12:00:00
+- name: Patch 5.01
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/4ddd33c83933ec4ad3dccb0e6538bbb9e85e63e7
+  at: 2019-07-15 12:00:00
+- name: Patch 5.05
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/b6083dbda4e9497698b64163ffc8cee52472b81a
+  at: 2019-07-29 12:00:00
+- name: Patch 5.08
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f9f9bc037d81305bd34c688b701db7c6162503b9
+  at: 2019-08-28 12:00:00
+- name: Vows of Virtue, Deeds of Cruelty (Patch 5.1)
+  short: Patch 5.1
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/3a23a8ba13b2c4152681ec4fa5716915b851002f
+  at: 2019-10-29 12:00:00
+- name: Patch 5.11
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/d7d53d91c131adfdc71ad0f270f1d38252e5aa39
+  at: 2019-11-11 12:00:00
+- name: Patch 5.15
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c8640b7f57d04db1acf5434d9812b102c455cb79
+  at: 2019-12-09 12:00:00
+- name: Patch 5.18
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/36ab41b81c81a289336f63c1b9d40f6ed444ca9c
+  at: 2019-12-23 12:00:00
+- name: Echoes of a Fallen Star (Patch 5.2)
+  short: Patch 5.2
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/b0151eaed1faecb46061b947cf9c08bed75d230d
+  at: 2020-02-18 12:00:00
+- name: Patch 5.21
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/9ee566b4cad525c8330bfb3c09591b3f63f433fd
+  at: 2020-03-09 12:00:00
+- name: Patch 5.25
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/b1a1fb2c812285a29a27bf477b0c895c78666296
+  at: 2020-04-06 12:00:00
+- name: Reflections in Crystal (Patch 5.3)
+  short: Patch 5.3
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c2f8c5ba14d9cfaa09d5aab63c5c2da260eae21a
+  at: 2020-08-11 12:00:00
+- name: Patch 5.31
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/193fc17936818e36fb58224398aaabda0a6f6adc
+  at: 2020-09-07 12:00:00
+- name: Patch 5.35
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f1e5bfcb2a0bf477bcc8c81845c440f300e12f75
+  at: 2020-10-12 12:00:00
+- name: Futures Rewritten (Patch 5.4)
+  short: Patch 5.4
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/230f6e0af3536f9a40654d783c8c2f1094131070
+  at: 2020-12-08 12:00:00
+- name: Patch 5.41
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/bb3c277326e77817273a0029760223422d86935a
+  at: 2021-01-11 12:00:00
+- name: Patch 5.45
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/a65cab900e97855414cd1acab0a2070ed1b8e41b
+  at: 2021-02-01 12:00:00
+- name: Death unto Dawn (Patch 5.5)
+  short: Patch 5.5
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6526ce95a595e8a557b55736f85f19687dc11883
+  at: 2021-04-13 12:00:00
+- name: Patch 5.55
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/fdea72f70dafb7da0f7145ebc3f8c7d56dacb702
+  at: 2021-05-24 12:00:00
+- name: Patch 5.57
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/4f379e06b6471c55ea02f138b6ada581b088ab2e
+  at: 2021-06-21 12:00:00
+- name: Patch 5.58
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/20c842781ec0a2ebd7a2ad2510e8849372cb139e
+  at: 2021-07-19 12:00:00
+- name: Endwalker (Patch 6.0)
+  short: Patch 6.0
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/bdd208b52ddababad086dc9679e96a8412962edf
+  at: 2021-12-07 12:00:00
+- name: Patch 6.01
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/bba3f0b1f5c8d2708d7a126957ad76fb30c4eb71
+  at: 2021-12-20 12:00:00
+- name: Patch 6.05
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/674bcc0a4da4caba1ded710a7af99389094d52a8
+  at: 2022-01-03 12:00:00
+- name: Patch 6.08
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/9325d2a5dae2ac34b9f970c803848e8fb1c3aaf7
+  at: 2022-01-24 12:00:00
+- name: Newfound Adventure (Patch 6.1)
+  short: Patch 6.1
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c73cd284013587066d8f9e697fab1db9f007372c
+  at: 2022-04-12 12:00:00
+- name: Patch 6.11
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6a3e8bf216810babcbe07b2842488577ec22cb54
+  at: 2022-04-25 12:00:00
+- name: Patch 6.11a
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/d88afafea8d33e11ff14d39f3d07ff7412b92b79
+  at: 2022-05-23 12:00:00
+- name: Patch 6.15
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/91ca242abdbf0750db28d01f4f38d27c3aea617b
+  at: 2022-06-06 12:00:00
+- name: Patch 6.18
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/aa641701b181ebf66aaf3264896b65acdbd23850
+  at: 2022-07-04 12:00:00
+- name: Buried Memory (Patch 6.2)
+  short: Patch 6.2
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6eee1ca8a733856669d901d95d2fa9db46a466e6/
+  at: 2022-08-23 12:00:00
+- name: Patch 6.21
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/3740d2052d6f21aa5d3b8d4cc94795a082fca0f6
+  at: 2022-09-12 12:00:00
+- name: Patch 6.25
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/0210a35806ead4c80482b12a3edd9eb5e4db5bb0
+  at: 2022-10-17 12:00:00
+- name: Patch 6.28
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/c8900c4aae544f7a013a49553aa104c1961a5c87
+  at: 2022-10-31 12:00:00
+- name: Gods Revel, Lands Tremble (Patch 6.3)
+  short: Patch 6.3
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/764840557caa22a8f77550b480aa3c79b2e733d2
+  at: 2023-01-10 12:00:00
+- name: Patch 6.31
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/8eebddf71a43266f45fba4c27b78853be2801343
+  at: 2023-01-23 12:00:00
+- name: Patch 6.35
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/549b10141c2add85f11595f5ba39127cc0433327
+  at: 2023-03-06 12:00:00
+- name: Patch 6.38
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/99372e256a66b3103f633b1951efb38c9a050aab
+  at: 2023-04-03 12:00:00
+- name: The Dark Throne (Patch 6.4)
+  short: Patch 6.4
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/7533e7a9b6b72d8e5aad3c1e7c4247967b3ee196
+  at: 2023-05-23 12:00:00
+- name: Patch 6.41
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/6f516e5324d82e5781fcdf0c4d5c29497c2f477c
+  at: 2023-06-19 12:00:00
+- name: Fan Fest Las Vegas
+  type: event
+  color: "#383642"
+  url: https://fanfest2.finalfantasyxiv.com/2023-24/na/
+  from: 2023-07-28 14:00:00
+  to: 2023-07-30 03:00:00
+- name: Patch 6.45
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/2a6c65f39b5b16b58bd4f0d9b1edaa8c0b7ec4f3
+  at: 2023-07-17 12:00:00
+- name: Patch 6.48
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/77ced00c8fc9b818f7a31b9925162a7007bf7882
+  at: 2023-08-07 12:00:00
+- name: Fan Fest London
+  type: event
+  color: "#383642"
+  url: https://fanfest2.finalfantasyxiv.com/2023-24/eu/
+  from: 2023-10-02 07:00:00
+  to: 2023-10-03 19:15:00
+- name: Growing Light (Patch 6.5)
+  short: Patch 6.5
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/e17ce5b98068f6972379cef5adbc6c4b664f9780
+  at: 2023-10-03 12:00:00
+- name: Patch 6.51
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/46ff678d764ec5b14996fcd2fae85a7170f385f0
+  at: 2023-10-30 12:00:00
+- name: Heavensturn
+  type: event
+  color: "#3f6e67"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/Heavensturn/t03u4zqkln
+  from: 2023-12-31 08:00:00
+  to: 2024-01-15 14:59:00
+- name: Fan Fest Tokyo
+  type: event
+  color: "#383642"
+  url: https://fanfest.finalfantasyxiv.com/2023-24/jp/
+  from: 2024-01-07 01:00:00
+  to: 2024-01-08 11:30:00
+- name: Patch 6.55
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/012d8e96b662a92eb4405c25b9958184db248348
+  at: 2024-01-16 12:00:00
+- name: The Maiden's Rhapsody (FFXI Crossover)
+  type: event
+  color: "#872e1c"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/The_Maidens_Rhapsody/flf9m2g38k
+  from: 2024-01-22 08:00:00
+  to: 2024-02-05 14:59:00
+- name: Moogle Treasure Trove - The First Hunt for Genesis
+  type: event
+  color: "#9e7123"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/mogmog-collection/202401/8degg9wgnk
+  from: 2024-01-30 08:00:00
+  to: 2024-03-11 14:59:00
+- name: Valentione's Day
+  type: event
+  color: "#912777"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2024/Valentiones_Day/ob5mppsb6x
+  from: 2024-02-07 08:00:00
+  to: 2024-02-21 14:59:00
+- name: Patch 6.57
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5178db4decaeb4dc6cd7d6843b6ab0798abe2b00
+  at: 2024-02-12 12:00:00
+- name: A Nocturne for Heroes (FFXV Crossover)
+  type: event
+  color: "#322a73"
+  url: https://na.finalfantasyxiv.com/lodestone/special/ffxv/9tkdm9tw1g/
+  from: 2024-02-28 08:00:00
+  to: 2024-03-13 14:59:00
+- name: Little Ladies' Day & Hatching-tide
+  type: event
+  color: "#578f35"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/Little_Ladies_Day_Hatching_tide/fnvycqn3ol
+  from: 2024-03-14 08:00:00
+  to: 2024-04-01 14:59:00
+- name: Patch 6.58
+  type: patch
+  url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f679ab8855882f6c1d2415fb79067160ef629d31
+  at: 2024-03-19 12:00:00
 - name: The Path Infernal (FFXVI Crossover)
   type: event
   color: "#b83404"
@@ -49,7 +550,7 @@
   type: live letter
   at: 2024-06-14
   allDay: true
-- name: Dawntrail (7.0) Release
-  short: DT Release
+- name: Dawntrail (Patch 7.0)
+  short: Patch 7.0
   type: patch
   at: 2024-06-28 09:00:00
