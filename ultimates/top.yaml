@@ -1004,6 +1004,10 @@ actions:
       * *Code Smell*: any kind of code that is considered "bad" by modern programming standards, often violating agreed upon best practices. Can often result in subtle, hard-to-diagnose bugs.
       * *Overflow*/*underflow*: before storing a number in a variable, you have to first define the "size" of that variable (i.e. how big the numbers that you're storing in it can be). This size determines how much memory the variable takes up. If you try to store a too-large number in a too-small variable, the number *overflows* (meaning that it wraps back around to 0). *Underflow* is the opposite of that, when you try to store a too-small number in a too-small variable (for instance trying to store a negative value in a variable that can only store positive values).
       * *Debugger*: tool used to step through code one line at a time and inspect the values of each variable at runtime. Useful for diagnosing bugs.
+    strategies:
+      hello-world:
+        name: PF Standard
+        common: true
     children:
       - at: 23134
         id: latent-defect
@@ -1157,6 +1161,22 @@ actions:
       - Greeding for uptime and targeting the wrong players with [s:oversampled-wave-cannon-loading].
       - Angling your monitors, thus targeting the wrong players.
       - Not being spread far enough apart and cleaving someone else with your monitor AoE.
+    strategies:
+      monitors:
+        name: LPDU
+        common: true
+        description: |
+          Players line up in a [t:conga line] from north to south on the boss's west side in the following order: H1, H2, M1, M2, M1, M2, R1, R2
+          Each player now counts their position only amongst players with the same responsibility, i.e. [s:oversampled-wave-cannon-loading] players ignore non-monitor players and only count their position amongst the other monitor players from 1–3, and non-monitor players only count amongst non-monitor players (from 1–5).
+          * Monitor 1 goes to the non-boss-monitor side and centers themselves inside the 1/4 marker, facing their monitor towards the east (if on the east side) or west (if on the west side).
+          * Monitor 2 goes to the boss monitor side and aligns themselves with the **south** edge of the 1/4 marker, facing their monitor north.
+          * Monitor 3 goes to the boss monitor side and aligns themselves with the **north** edge of the 2/3 marker, facing their monitor south.
+          All non-monitor players position themselves on the non-boss-monitor side.
+          * Non-monitor 1 positions themselves max melee above the A marker (north).
+          * Non-monitor 2 positions themselves max melee between 1 and B (or 4 and D).
+          * Non-monitor 3 positions themselves max melee between B and 2 (or D and 3).
+          * Non-monitor 4 positions themselves **on the southwest corner** of the 2/3 marker.
+          * Non-monitor 5 positions themselves max melee below the C marker (south).
   ion-efflux:
     id: 31560
     damage: 9999999
@@ -1968,6 +1988,14 @@ graphing:
     wave-repeater-gradient: "radial-gradient(80% #407af499 100% #88d8fa)"
     sniper-gradient: "radial-gradient(0% #cfacdc 70% #080d1daa)"
     hp-sniper-gradient: "radial-gradient(0% #fffdff 30% #fffdff55 70% #fffdff55 100% #fffdff)"
+    underflow-gradient: "radial-gradient(0% #4a8aee00 54% #4a8aee00 55% #4a8aeeaa 90% #4a8aeeaa 100% #fff0ffcc)"
+    performance-gradient: "radial-gradient(0% #ff5ecf00 54% #ff5ecf00 55% #6f1e5aaa 90% #6f1e5acc 100% #fff0ff99)"
+    red-tower: "radial-gradient(0% #ffffffcc 5% #ffffffcc 25% #e06a65aa 50% #2b0f10aa 95% #2b0f10aa 97% #ffffffaa 98% #ffffffaa 100% #ffffff00)"
+    blue-tower: "radial-gradient(0% #ffffffcc 5% #ffffffcc 25% #859effaa 50% #0c0f1eaa 95% #0c0f1eaa 97% #ffffffaa 98% #ffffffaa 100% #ffffff00)"
+    far-gradient: "linear-gradient(0% #21bf5b 45% #21bf5b 55% #b83535)"
+    close-gradient: "radial-gradient(0% #a3c5d1 100% #39a5cc)"
+    monitor-gradient: "linear-gradient(0% #88e7f7 2% #3a8efc 100% transparent)"
+    monitor-boom-gradient: "radial-gradient(0% #dbeeff 95% #dbeeff 100% #a1ebff)"
   elements:
     arena:
       type: image
@@ -2066,7 +2094,7 @@ graphing:
     bladedance:
       type:  cone
       angle: 125
-      size: [0, 200]
+      size: [0, 230]
       color: url(#aoe-gradient)
       visible: false
       shadow: false
@@ -2076,6 +2104,24 @@ graphing:
       image: /images/markers/flare.svg
       shadow: false
       visible: false
+    far-tether:
+      type: link
+      width: 2
+      color: url(#far-gradient)
+      visible: false
+    close-tether:
+      type: link
+      width: 2
+      color: url(#close-gradient)
+      visible: false
+    monitor:
+      type: rectangle
+      opacity: 0.5
+      size: [30, 40]
+      origin: [0, 0.5]
+      color: url(#monitor-gradient)
+      visible: false
+      shadow: false
   graphs:
     looper:
       - marker-a: [60, 0]
@@ -3249,3 +3295,58 @@ graphing:
         [T1, H2]: { status: [3430, 3432, 3431, 3433] }
         [H1, M1]: { status: [3431, 3433, 3430, 3432] }
         circle#[performance,underflow]-2.[1,2]: { visible: false }
+    monitors:
+      - arena: { image: /images/arenas/top-p3.avif }
+        monitor#boss: { attach: boss, size: [50, 200], rotate: 180 }
+        monitor#T2: { attach: T2, rotate: 180 }
+        monitor#M1: { attach: M1 }
+        monitor#R2: { attach: R2 }
+        boss: { opacity: 0.7, rotate: T1 }
+        circle#monitor-[1..8]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle#monitor-1: { attach: T1 }
+        circle#monitor-2: { attach: T2 }
+        circle#monitor-3: { attach: H1 }
+        circle#monitor-4: { attach: H2 }
+        circle#monitor-5: { attach: M1 }
+        circle#monitor-6: { attach: M2 }
+        circle#monitor-7: { attach: R1 }
+        circle#monitor-8: { attach: R2 }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        T1: [34, 115]
+        H1: [54, -37]
+        H2: [54, -53]
+        T2: [54, -85]
+        M1: [54, -101]
+        M2: [54, -117]
+        R1: [54, -133]
+        R2: [54, -149]
+        cast: { text: Oversampled Wave Cannon, visible: false, progress: 0 }
+      - T1: [54, -69]
+      - boss: { rotate: 180 }
+        cast: { visible: true }
+        monitor#*: { visible: true }
+        [T2,M1,R2]: { status: [3452] }
+      - cast: { progress: 0.4 }
+        T2: [68, 40]
+        M1: [61, -48]
+        R2: [61, -132]
+        H1: [75, 2]
+        H2: [67, 72]
+        T1: [67, 107]
+        M2: [61, 140]
+        R1: [67, 177]
+      - cast: { progress: 0.7 }
+        monitor#T2: { rotate: 0 }
+        monitor#M1: { rotate: -90 }
+        monitor#R2: { rotate: 90 }
+      - cast: { progress: 1 }
+        circle#monitor-*: { scale: 1 }
+        monitor#*: { visible: false }
+        [T2,M1,R2]: { status: [] }
