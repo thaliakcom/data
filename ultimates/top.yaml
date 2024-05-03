@@ -3072,3 +3072,180 @@ graphing:
         circle#*: { visible: false }
         boss#4..6: { visible: false }
         boss#omega: { scale: 1, opacity: 0.7 }
+    hello-world:
+      - arena: { image: /images/arenas/top-p3.avif }
+        boss: { opacity: 0.7 }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        far-tether#1: { from: H1, to: M1, opacity: 0.4 }
+        far-tether#2: { from: R1, to: R2, opacity: 0. }
+        close-tether#1: { from: T1, to: H2, opacity: 0. }
+        close-tether#2: { from: T2, to: M2, opacity: 0. }
+        circle#tower-1: { x: 63, y: 45, size: 60, color: url(#blue-tower) }
+        circle#tower-2: { x: 63, y: 135, size: 60, color: url(#blue-tower) }
+        circle#tower-3: { x: 63, y: -135, size: 60, color: url(#red-tower) }
+        circle#tower-4: { x: 63, y: -45, size: 60, color: url(#red-tower) }
+        circle#stack-1: { attach: R1, size: 50, color: "#000000aa", scale: 0, visible: true }
+        circle#stack-2: { attach: R2, size: 50, color: "#000000aa", scale: 0, visible: true }
+        circle#defam-1: { attach: T2, size: 180, color: "#000000aa", scale: 0, visible: true }
+        circle#defam-2: { attach: M2, size: 180, color: "#000000aa", scale: 0, visible: true }
+        circle#link-1: { x: 44, y: 90, size: 300, color: "#00000088", scale: 0, visible: true }
+        circle#link-2: { x: 44, y: -90, size: 300, color: "#00000088", scale: 0, visible: true }
+        circle#latent-1: { attach: R1, size: 40, color: "#000000aa", scale: 0, visible: true }
+        circle#latent-2: { attach: R2, size: 40, color: "#000000aa", scale: 0, visible: true }
+        circle#latent-3: { attach: T2, size: 40, color: "#000000aa", scale: 0, visible: true }
+        circle#latent-4: { attach: M2, size: 40, color: "#000000aa", scale: 0, visible: true }
+        T1: [50, 0]
+        R2: [50, 45]
+        H2: [50, 90]
+        M2: [50, 135]
+        T2: [50, 180]
+        M1: [50, -135]
+        H1: [50, -90]
+        R1: [50, -45]
+        circle#performance-1.1: { size: 13, color: url(#performance-gradient), attach: T2 }
+        circle#performance-1.2: { size: 13, color: url(#performance-gradient), attach: M2 }
+        circle#performance-2.1: { size: 13, color: url(#performance-gradient), attach: H1 }
+        circle#performance-2.2: { size: 13, color: url(#performance-gradient), attach: M1 }
+        circle#underflow-1.1: { size: 13, color: url(#underflow-gradient), attach: R1 }
+        circle#underflow-1.2: { size: 13, color: url(#underflow-gradient), attach: R2 }
+        circle#underflow-2.1: { size: 13, color: url(#underflow-gradient), attach: T1 }
+        circle#underflow-2.2: { size: 13, color: url(#underflow-gradient), attach: H2 }
+        cast: { progress: 0, text: Hello World }
+        label: { text: "Fast-forwarding to last set...", visible: false, y: -90 }
+      - arena: { image: /images/arenas/top-p3-hw.avif }
+        cast: { progress: 1 }
+        [T1, H2]: { status: [3503, 3441, 3434] }
+        [T2, M2]: { status: [3503, 3441, 3434, 3437, 3438] }
+        [H1, M1]: { status: [3503, 3441, 3434, 3527] }
+        [R1, R2]: { status: [3503, 3441, 3434, 3436, 3439] }
+        far-tether#1: { visible: true }
+        close-tether#1: { visible: true }
+        circle#[performance,underflow]-1.[1,2]: { visible: true }
+      - cast: { visible: false }
+        [T2, M2]: { status: [3503, 3441, 3434, 3525, 3526] }
+        [R1, R2]: { status: [3503, 3441, 3434, 3524, 3429] }
+      - cast: { progress: 0, text: Latent Defect, visible: true }
+        circle#tower-*: { visible: true }
+      - cast: { progress: 0.3 }
+        M1: [17, -153]
+        H1: [26, -98]
+        T1: [20, 0]
+        H2: [23, 90]
+        T2: [57, -124]
+        M2: [73, -135]
+        R2: [49, 116]
+        R1: [49, 65]
+      - cast: { progress: 0.6 }
+        T2: [73, -45]
+        M1: [71, -163]
+        H1: [71, -13]
+        T1: [45, 79]
+        H2: [45, 100]
+      - cast: { progress: 1 }
+        far-tether#1: { opacity: 1 }
+        close-tether#1: { opacity: 1 }
+        far-tether#2: { visible: true }
+        close-tether#2: { visible: true }
+        circle#[stack,defam]-[1,2]: { scale: 1 }
+        circle#tower-*: { scale: 0 }
+        [T1, H2]: { status: [3503, 3530, 3434] }
+        [T2, M2]: { status: [3503, 3441, 3434, 3431, 3526, 3528] }
+        [H1, M1]: { status: [3529, 3441, 3434, 3525] }
+        [R1, R2]: { status: [3503, 3441, 3430, 3429, 3435] }
+      - cast: { visible: false }
+        boss: { rotate: T1 }
+        M1: { x: 73, y: -135, status: [3529, 3441, 3434, 3525, 3526] }
+        H1: { x: 73, y: -45, status: [3529, 3441, 3434, 3525, 3526] }
+        T1: { x: 49, y: 65, status: [3503, 3524, 3434] }
+        H2: { x: 49, y: 116, status: [3503, 3524, 3434] }
+        close-tether#1: { visible: false }
+        circle#[stack,defam]-[1,2]: { visible: false }
+        circle#[performance,underflow]-2.[1,2]: { visible: true }
+        circle#link-1: { scale: 1, visible: false }
+      - T1: [60, 16]
+        H2: [60, 158]
+        M1: { x: 27, y: -110, status: [3441, 3434, 3525, 3526] }
+        H1: { x: 27, y: -45, status: [3441, 3434, 3525, 3526] }
+        far-tether#1: { visible: false }
+        circle#link-2: { scale: 1, visible: false }
+      - circle#latent-*: { scale: 1 }
+        far-tether#1: { from: T2, to: M2, opacity: 0.4 }
+        close-tether#1: { from: R1, to: R2, opacity: 0.4 }
+        circle#tower-*: { visible: false }
+        circle#tower-1: { y: 0, color: url(#red-tower) }
+        circle#tower-2: { y: 90, color: url(#red-tower) }
+        circle#tower-3: { y: 180, color: url(#blue-tower) }
+        circle#tower-4: { y: -90, color: url(#blue-tower) }
+        circle#[performance,underflow]-1.[1,2]: { visible: false }
+        [T2, M2]: { status: [3503, 3441, 3434, 3431, 3433] }
+        [R1, R2]: { status: [3503, 3441, 3430, 3432] }
+        H1: [61, -16]
+        M1: [53, -159]
+      - label: { visible: true }
+        cast: { progress: 0 }
+        circle#tower-*: { scale: 1 }
+        circle#latent-*: { visible: false }
+        far-tether#1: { visible: true }
+        close-tether#1: { visible: true }
+        far-tether#2: { visible: false }
+        close-tether#2: { visible: false }
+        circle#performance-2.[1,2]: { color: url(#underflow-gradient) }
+        circle#underflow-2.[1,2]: { color: url(#performance-gradient) }
+        [T1, H2]: { status: [3430, 3432, 3525, 3526] }
+        [H1, M1]: { status: [3434, 3431, 3433, 3429, 3524] }
+        [R1, R2]: { status: [3441, 3430, 3432, 3431, 3433] }
+        [T2, M2]: { status: [3503, 3430, 3432, 3431, 3433] }
+      - circle#tower-*: { visible: true }
+        cast: { visible: true }
+        label: { visible: false }
+        circle#link-[1,2]: { scale: 0 }
+        circle#[stack,defam]-[1,2]: { scale: 0 }
+      - boss: { rotate: 196 }
+        cast: { progress: 0.5 }
+        T2: [49, -122]
+        M2: [52, -145]
+        H1: [54, -108]
+        R1: [48, -120]
+        R2: [54, -145]
+        H2: [63, 89]
+        T1: [63, 0]
+        circle#link-[1,2]: { visible: true, x: 48, y: -131 }
+        circle#stack-1: { visible: true, attach: M1 }
+        circle#stack-2: { visible: true, attach: H1 }
+        circle#defam-1: { visible: true, attach: T1 }
+        circle#defam-2: { visible: true, attach: H2 }
+      - cast: { progress: 1 }
+        far-tether#1: { visible: false }
+        close-tether#1: { opacity: 1 }
+        circle#[stack,defam]-[1,2]: { scale: 1 }
+        circle#tower-*: { scale: 0 }
+        circle#link-1: { scale: 1, visible: false }
+        circle#latent-*: { scale: 0 }
+        [T1, H2]: { status: [3430, 3432, 3431, 3526, 3528] }
+        [H1, M1]: { status: [3431, 3433, 3430, 3429, 3435] }
+        [R1, R2]: { status: [3530, 3432, 3431, 3433] }
+        [T2, M2]: { status: [3432, 3431, 3433] }
+      - cast: { visible: false }
+        boss: { rotate: T1 }
+        circle#[stack,defam]-[1,2]: { visible: false }
+        circle#link-2: { scale: 1, visible: false }
+        close-tether#1: { visible: false }
+        M2: [18, -161]
+        R1: { x: 58, y: -58, status: [3432, 3431, 3433] }
+        T2: [21, -116]
+        R2: { x: 53, y: 169, status: [3432, 3431, 3433] }
+        circle#latent-1: { attach: H1, visible: true }
+        circle#latent-2: { attach: H2, visible: true }
+        circle#latent-3: { attach: T1, visible: true }
+        circle#latent-4: { attach: M1, visible: true }
+      - circle#latent-*: { scale: 1 }
+        [T1, H2]: { status: [3430, 3432, 3431, 3433] }
+        [H1, M1]: { status: [3431, 3433, 3430, 3432] }
+        circle#[performance,underflow]-2.[1,2]: { visible: false }
