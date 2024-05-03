@@ -941,7 +941,8 @@ actions:
       * [s:synchronization-code-smell] → [s:critical-synchronization-bug]
       * [s:underflow-code-smell] → [s:critical-underflow-bug]
       * [s:performance-code-smell] → [s:critical-performance-bug]
-      Omega then spawns 4 towers (2 blue, 2 red) and begins casting [a:latent-defect]. At the end of the cast, all towers and critical bug debuffs resolve, causing a wipe if any towers are left unsoaked or any critical bugs are resolved incorrectly (more on how to resolve them correctly later). This is also where all 4 currently inactive tethers become active and can now break.
+      Omega then spawns 4 large towers (2 blue, 2 red) around the arena and begins casting [a:latent-defect]. The towers always spawn on either cardinals or intercardinals. Towers with the same colour can never spawn opposite each other, only adjacent.
+      At the end of the cast, all towers and critical bug debuffs resolve, causing a wipe if any towers are left unsoaked or any critical bugs are resolved incorrectly (more on how to resolve them correctly later). This is also where all 4 currently inactive tethers become active and can now break.
       Additionally, the blue towers inflict [s:latent-performance-defect] on all players inside, and the red towers [s:cascading-latent-defect]. Both are 10 second debuffs that resolve when [s:critical-performance-bug] and [s:critical-underflow-bug], respectively, expire. If a defect is allowed to expire on its own, the party wipes. In other words: if a player soaks a blue tower without [s:critical-performance-bug], or if a player soaks a red tower without [s:critical-underflow-bug], the party wipes 10 seconds later.
       In addition to (potentially) resolving [s:latent-performance-defect] or [s:cascading-latent-defect], each critical bug (if resolved correctly) turns into one of the following buffs:
       * [s:critical-overflow-bug] → [s:overflow-debugger]
