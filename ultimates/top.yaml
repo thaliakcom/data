@@ -2111,6 +2111,12 @@ graphing:
       image: /images/markers/stack.svg
       shadow: false
       visible: false
+    line-stack:
+      type: image
+      size: 50
+      image: /images/markers/line-stack.svg
+      shadow: false
+      visible: false
     bladedance:
       type:  cone
       angle: 125
@@ -3370,3 +3376,150 @@ graphing:
         circle#monitor-*: { scale: 1 }
         monitor#*: { visible: false }
         [T2,M1,R2]: { status: [] }
+    p4:
+      - arena: { image: /images/arenas/top-p4.avif }
+        boss: { size: 113, opacity: 0.7 }
+        circle#1: { scale: 1.15, visible: false }
+        circle#2: { scale: 1.15, visible: false, color: url(#wave-repeater-gradient) }
+        wave-repeater#1: { size: [51, 114] }
+        wave-repeater#2: { size: [114, 162] }
+        wave-repeater#3: { size: [162, 200] }
+        wave-cannon#[1..10]: { size: [30, 200] }
+        wave-cannon#1: { rotate: 119 }
+        wave-cannon#2: { rotate: -119 }
+        wave-cannon#3: { rotate: 68 }
+        wave-cannon#4: { rotate: -68 }
+        wave-cannon#5: { rotate: 46 }
+        wave-cannon#6: { rotate: -46 }
+        wave-cannon#7: { rotate: 93 }
+        wave-cannon#8: { rotate: -93 }
+        wave-cannon#9: { rotate: R1 }
+        wave-cannon#10: { rotate: H2 }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        T1: [64, -60]
+        T2: [64, 60]
+        H1: [64, -112]
+        H2: [64, 112]
+        M1: [64, -134]
+        M2: [64, 134]
+        R1: [64, -87]
+        R2: [64, 87]
+        line-stack#1: { attach: R1, rotate: boss }
+        line-stack#2: { attach: H2, rotate: boss }
+        cast: { progress: 0, text: Wave Cannon, visible: true }
+      - line-stack#*: { visible: true }
+        cast: { progress: 0.5 }
+      - wave-cannon#[1..8]: { scale: 1 }
+        cast: { progress: 1 }
+      - wave-cannon#[1..8]: { scale: [0, 1] }
+        cast: { visible: false }
+        circle#1: { visible: true }
+        M1: [59, -164]
+        H1: [62, -164]
+        R1: [56, -164]
+        T1: [65, -164]
+        M2: [59, 165]
+        H2: [62, 165]
+        R2: [56, 165]
+        T2: [65, 165]
+      - wave-cannon#[1..8]: { scale: 1 }
+        wave-cannon#[9..10]: { scale: 1 }
+        line-stack#*: { visible: false }
+      - T1: [64, -60]
+        T2: [64, 60]
+        H1: [64, -112]
+        H2: [64, 112]
+        M1: [64, -134]
+        M2: [64, 134]
+        R1: [64, -87]
+        R2: [64, 87]
+        wave-cannon#[1..10]: { scale: [0, 1], rotate: null }
+        circle#1: { visible: false }
+        circle#2: { visible: true }
+        line-stack#1: { attach: T1, visible: true }
+        line-stack#2: { attach: M1, visible: true }
+      - circle#2: { visible: false }
+        wave-repeater#1: { visible: true }
+        wave-cannon#[1..8]: { scale: 1 }
+        wave-cannon#9: { rotate: T1 }
+        wave-cannon#10: { rotate: M1 }
+      - T1: [43, -60]
+        T2: [43, 60]
+        H1: [43, -112]
+        H2: [43, 112]
+        M1: [43, -134]
+        M2: [43, 134]
+        R1: [43, -87]
+        R2: [43, 87]
+        wave-cannon#[1..8]: { scale: [0, 1] }
+        wave-repeater#1: { visible: false }
+      - wave-repeater#2: { visible: true }
+        M2: [38, -164]
+        H1: [41, -164]
+        R1: [35, -164]
+        T1: [44, -164]
+        M1: [38, 165]
+        H2: [41, 165]
+        R2: [35, 165]
+        T2: [44, 165]
+      - M2: [59, -164]
+        H1: [62, -164]
+        R1: [56, -164]
+        T1: [65, -164]
+        M1: [59, 165]
+        H2: [62, 165]
+        R2: [56, 165]
+        T2: [65, 165]
+        wave-repeater#2: { visible: false }
+        wave-repeater#3: { visible: true }
+        wave-cannon#[1..10]: { scale: 1 }
+        line-stack#*: { visible: false }
+      - wave-cannon#[1..10]: { scale: [0, 1], rotate: null }
+        wave-repeater#3: { visible: false }
+        T1: [64, -60]
+        T2: [64, 60]
+        H1: [64, -112]
+        H2: [64, 112]
+        M1: [64, -134]
+        M2: [64, 134]
+        R1: [64, -87]
+        R2: [64, 87]
+        line-stack#1: { attach: H2, visible: true }
+        line-stack#2: { attach: R2, visible: true }
+      - circle#1: { visible: true }
+        wave-cannon#[1..8]: { scale: 1 }
+      - wave-cannon#[1..8]: { scale: [0, 1] }
+        H2: [59, -164]
+        H1: [62, -164]
+        R1: [56, -164]
+        T1: [65, -164]
+        M2: [59, 165]
+        M1: [62, 165]
+        R2: [56, 165]
+        T2: [65, 165]
+      - wave-cannon#[1..10]: { scale: 1 }
+        line-stack#*: { visible: false }
+        circle#1: { visible: false }
+        circle#2: { visible: true }
+      - wave-cannon#[1..10]: { scale: [0, 1] }
+        circle#2: { visible: false }
+        wave-repeater#1: { visible: true }
+      - H2: [38, -164]
+        H1: [41, -164]
+        R1: [35, -164]
+        T1: [44, -164]
+        M2: [38, 165]
+        M1: [41, 165]
+        R2: [35, 165]
+        T2: [44, 165]
+        wave-repeater#1: { visible: false }
+        wave-repeater#2: { visible: true }
+      - wave-repeater#2: { visible: false }
+        wave-repeater#3: { visible: true }
