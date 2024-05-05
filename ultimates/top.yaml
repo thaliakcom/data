@@ -551,6 +551,7 @@ actions:
     count: 2
     mechanic: tb.far
     shape: cone
+    compact: full
     description: A wide conal tankbuster on the farthest 2 players from Omega. Lethal to non-tanks. Hits 5 times in quick succession.
     resolve: All non-tank players should be inside the hitbox while tanks should be outside. If tanks invuln this tankbuster, they can stack together, greatly increasing the space available for the rest of the party to spread for [a:wave-cannon-kyrios].
     children:
@@ -850,6 +851,7 @@ actions:
     name: Transition
     mechanic: mech
     major: true
+    compact: trim
     description: |
       When the transition starts, the following debuffs are inflicted on players:
       * 4 players with [s:sniper-cannon-fodder] (a [m:spread])
@@ -885,6 +887,7 @@ actions:
     id: 31567
     description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
     mechanic: aoe.expanding.rings
+    compact: full
     children:
       - at: 2098
         id: wave-repeater-hit
@@ -1226,6 +1229,7 @@ actions:
     id: 31617
     description: An individual set of Wave Cannon.
     mechanic: mech
+    compact: full
     children:
       - at: 624
         id: wave-cannon-spread
@@ -1270,6 +1274,7 @@ actions:
   double-solar-ray:
     id: 33196
     mechanic: tb.mt
+    compact: full
     shape: chariot
     description: Similar to [Solar Ray (single)](a:solar-ray), but deals significantly more damage, inflicts [s:magic-vuln], and executes twice in quick succession.
     resolve: Either invuln both hits or [t:tankswap] in-between the hits.
@@ -1361,6 +1366,7 @@ actions:
   hyper-pulse:
     id: 31600
     mechanic: aoe.rotating
+    compact: full
     shape: line
     description: |
       The Left/Right Arm Unit fires a laser at the closest player that rotates counter-clockwise/clockwise after the initial hit.
@@ -1521,6 +1527,7 @@ actions:
     id: 32789
     damage: 139666
     mechanic: mech.trio
+    compact: trim
     major: true
     description: |
       Heavy raidwide that initiates the third of three [trios](t:trio).
@@ -1552,7 +1559,6 @@ actions:
       - "When Final Omega's ring is facing north/south: aligning yourself with the edge of the ring rather than the arena markers. (When Omega's ring faces north/south, the ring is offset from the center of Omega's hitbox and **cannot** be used to align yourself with its cones.)"
       - "[a:oversampled-wave-cannon] players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a monitor player."
       - "[a:blaster] tether players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a tethered player."
-    compact: trim
     children:
       - at: 18399
         id: diffuse-wave-cannon
