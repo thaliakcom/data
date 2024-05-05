@@ -868,6 +868,7 @@ actions:
     children:
       - at: 5047
         id: wave-repeater
+        flatten: true
       - at: 17112
         id: colossal-blow
       - at: 19127
@@ -897,7 +898,6 @@ actions:
         id: wave-repeater-hit
   wave-repeater-hit:
     id: 31568
-    name: Wave Repeater (Hit)
     mechanic: aoe.expanding.rings
     description: An individual [a:wave-repeater] hit.
   colossal-blow:
@@ -1137,9 +1137,10 @@ actions:
     id: 31588
     damage: 94464
     mechanic: mech.check
-    description: Major raidwide that inflicts [s:critical-overflow-bug] on all players. If any [s:critical-overflow-bug] is inflicted, the next mechanic is unresolvable. However, like [a:critical-overflow-bug] itself, the application of [s:critical-overflow-bug] can be prevented through [s:overflow-debugger].
-    resolve: |
-      To resolve Critical Error, all players must have obtained [s:overflow-debugger] from [a:hello-world]. Everyone should also have [s:synchronization-debugger], [s:underflow-debugger], and [s:performance-debugger], but these buffs are not relevant for this check and are not consumed by the cast, instead remaining on players until the start of Phase 5.
+    description: |
+      Major raidwide that inflicts [s:critical-overflow-bug] on all players. Can only be prevented through [s:overflow-debugger].
+      If any [Critical Overflow Bugs](s:critical-overflow-bug) are successfully inflicted, the next mechanic is unresolvable, necessitating that all players have [s:overflow-debugger] at the end of [a:hello-world].
+      **Note**: All players should also have [s:underflow-debugger] and [s:performance-debugger], and most players should have [s:synchronization-debugger] at this point. However, these debuffs are not relevant for [a:critical-error] and will persist even past this cast, only expiring at the start of Phase 5.
   oversampled-wave-cannon:
     id: 31596
     damage: 50785
@@ -1185,19 +1186,46 @@ actions:
   wave-cannon:
     id: 31617
     mechanic: mech
+    compact: full
     description: |
-      A two-part mechanic.
-      During the cast, line stack markers appear on 2 random players. Omega will first fire lasers at all 8 players that deal moderate damage, inflict [s:magic-vuln], and leave behind an "afterimage" that resolves at the same time as the stacks 5 seconds later.
-      [a:wave-repeater] also happens during this mechanic.
+      3 sets of spreads followed by stacks.
+      During the cast, line stack markers appear on 2 random players. However, before these resolve, Omega first fires lasers at all 8 players that deal moderate damage, inflict [s:magic-vuln], and leave behind an "afterimage" that resolves at the same time as the stacks 5 seconds later.
+      This mechanic repeats three times until [boss] begins casting its enrage, [a:blue-screen].
+      After the first set, [boss] also fires out [a:wave-repeater].
     resolve: |
       **Ignore the line stack markers when they appear.** Do not get baited by the line stack markers – the first mechanic that resolves is the [a:wave-cannon-spread]. Wait until they have gone off, then stack in two groups. *Do not stack somewhere a player resolved a protean laser before.*
       A good idea is to leave the south safe for the stacks and have 4 players spread on the west and 4 players on the east. If one of these two 4-player groups has 2 stacks, the southern stack should swap alongside the southmost player of the other group.
       Remember to dodge [a:wave-repeater]. In general, a good strategy is to resolve the stacks and spreads within the ring just outside Omega's hitbox, then quickly step into the inner ring once [a:wave-repeater] hits there, and go back once [a:wave-repeater] has hit the outer ring.
+      **It is strongly recommended to use [i:melee] LB3 at the start of this phase** or the DPS check is close to impossible.
     mistakes:
       - Forgetting to swap sides as the second stack on a given side.
       - Forgetting to swap sides if you're the first player on a given side and your side has no stacks. (A 3-player stack results in lethal damage.)
       - Forgetting to move in and being hit by [a:wave-repeater].
       - Not moving back to your designated spot in time and baiting a [a:wave-cannon-lines] in the wrong location (on top of a stack).
+    strategies:
+      p4:
+        name: South Safe
+        description: Everyone spreads in predetermined positions around Omega's sides, leaving south safe for the stacks.
+    children:
+      - at: 0
+        id: wave-cannon-set
+        flatten: true
+      - at: 7991
+        id: wave-repeater
+        flatten: true
+      - at: 10760
+        id: wave-cannon-set
+        flatten: true
+      - at: 25426
+        id: wave-repeater
+        flatten: true
+      - at: 25559
+        id: wave-cannon-set
+        flatten: true
+  wave-cannon-set:
+    id: 31617
+    description: An individual set of Wave Cannon.
+    mechanic: mech
     children:
       - at: 624
         id: wave-cannon-spread
@@ -1906,14 +1934,6 @@ timeline:
     id: <targetable>
     push: true
   - at: 492229
-    id: wave-cannon
-  - at: 500220
-    id: wave-repeater
-  - at: 502989
-    id: wave-cannon
-  - at: 517655
-    id: wave-repeater
-  - at: 517788
     id: wave-cannon
   - at: 533987
     id: blue-screen
