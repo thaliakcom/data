@@ -1308,20 +1308,20 @@ actions:
     major: true
     description: |
       Heavy raidwide that initiates the first of three [trios](t:trio).
-      After the raidwide, Omega-M becomes untargetable and tethers all players to another player: two pairs via [s:remote-code-smell] and two pairs via [s:local-code-smell]. Additionally, one player is inflicted with [s:hello-near-world] and one player with [s:hello-distant-world]. At the same time, Beetle Omega spawns on either the west or the east, Final Omega on the other side, and an Optical Unit on either north or south.
+      After the raidwide, Omega-M becomes untargetable and tethers all players to another player: two pairs via [s:remote-code-smell] and two pairs via [s:local-code-smell]. Additionally, one player is inflicted with [s:hello-near-world] and one player with [s:hello-distant-world]. At the same time, Beetle Omega and Final Omega spawn on two random opposite cardinals, and an Optical Unit on one of the two remaining cardinals.
       Multiple things now happen at the same time:
       **Fists**
       After some time, untargetable Rocket Punch fists spawn on top of every player. There will be 4 fists with blue lights and 4 fists with yellow lights. All [s:remote-code-smell] players are guaranteed to get exactly 2 blue fists and 2 yellow fists between them, but the exact distribution is random. Same with [s:local-code-smell] players. Each fist "belongs" to the player it spawned on, but the fists stay in place after they spawn. Approximately 11 seconds after they spawn (2 seconds after the tethers become active), the fists jump towards the player they belong to. If this player is stacked with a player of the opposite-coloured fist, [a small puddle](a:explosion) appears as the fists smash into each other and harmlessly explode, otherwise the fist [smashes the ground and wipes the raid](a:unmitigated-explosion).
       **Arms**
-      Shortly after the fists initially spawn, a Left Arm Unit or a Right Arm Unit spawns on every cardinal and intercardinal except east and west. Left Arm Units are denoted by a blue counter-clockwise rotating arrow marker while Right Arm Units are denoted by a yellow clockwise rotating arrow marker. A few seconds after the fists resolve, each arm snapshots towards the closest player to that arm and, after a brief delay, begins firing a [a:hyper-pulse] where that player was that then rotates in the indicated direction.
+      Shortly after the fists initially spawn, one Arm Unit spawns near the Optical Unit, one directly opposite, and four more spawn 60° offset from the first two for a total of six. Each Arm Unit is either a Left Arm Unit or a Right Arm Unit, denoted by the rotating arrow marker (blue/counter-clockwise arrows for Left; yellow/clockwise arrows for Right). A few seconds after the fists resolve, each arm snapshots towards the closest player to that arm and, after a brief delay, begins firing a [a:hyper-pulse] where that player was that then rotates in the indicated direction.
       **Optical Unit**
-      The Optical Unit on the north or south fires an [a:optical-laser] (same as the one during [a:party-synergy]) through the middle of the arena at the same time as the fists resolve.
+      The Optical Unit fires an [a:optical-laser] (same as the one during [a:party-synergy]) through the middle of the arena at the same time as the fists resolve.
       **Omega-M**
       Shortly before fists resolve, Omega-M spawns in the center of the arena and, shortly *after* fists resolve, targets one of the two closest players to him with [a:beyond-defense], and then the closest player after that with [a:pile-pitch].
       **Monitors**
-      After the fists resolve, a random [s:remote-regression] (blue tether) player is inflicted with [s:oversampled-wave-cannon-loading], showing monitors on either side of them. Final Omega also prepares monitors on either its left or right (which equates to the north or south of the arena). Both sets of monitors resolve at the same time as [a:pile-pitch].
+      After the fists resolve, a random [s:remote-regression] (blue tether) player is inflicted with [s:oversampled-wave-cannon-loading], showing monitors on either side of them. Final Omega also prepares monitors on either its left or right. Both sets of monitors resolve at the same time as [a:pile-pitch].
       **Beetle**
-      After all other mechanics are resolved, Beetle Omega begins to cast [a:swivel-cannon], indicated by the blue lights on either side of it. [s:hello-near-world] and [s:hello-distant-world] resolve shortly after.
+      After all other mechanics are resolved, Beetle Omega begins to cast [a:swivel-cannon], indicated by the blue lights on either side of it, significantly limiting the amount of space available to resolve [s:hello-near-world] and [s:hello-distant-world], which resolve shortly after.
       **Hello, Near/Distant World**
       Represents the main mechanic of Phase 5. [a:hello-near-distant-world:d]
       Be aware that if a player with [s:hello-near-world] or [s:hello-distant-world] dies, [all players are killed instantly](a:hello-world-fail).
