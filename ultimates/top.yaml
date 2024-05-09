@@ -1340,6 +1340,26 @@ actions:
       - As a monitor baiter, not moving close enough to the wall and cleaving someone else with your AoE, especially on the non-monitor side (where you may cleave the [a:beyond-defense] player who had to move out of the stack).
       - As a red-green pair (especially the pair that snaps their tether first), not waiting long enough for all [s:twice-come-ruin]s to expire and inflicting [s:doom]. (Not every [s:twice-come-ruin] has the same duration.)
       - As the red-green pair that snaps their tether last, snapping it too late, thus causing it to snap on its own and wipe the party.
+    strategies:
+      delta-lpdu:
+        name: LPDU Standard
+        description: |
+          At the start, red-green tethers go to Final Omega, blue tethers to Beetle Omega. For each colour of tether, one pair is closer to the center, the other closest to their Omega. If one pair has a healer and the other doesn't, the healer pair prioritizes the center arena spot.
+          For blue tethers, the pair closest to Beetle Omega keeps their tether **short**. The pair closer to the center keeps their tether **long**. The idea is to have this blue tether snap instantly once the tethers become active.
+          The two pairs closest to the center each watch the other tether player they're closest to. When fists spawn, each center tether player compares their fist with that outer tether player's fist. If their fists match colours, the center pair switches positions.
+          The red-green tether players can stack on their markers immediately. The blue tether players will not stack; instead the center pair waits until their tether becomes active and snaps, then collapses onto the other pair. These players must make sure they're fast about it; if they're not standing still when fists snapshot, the party wipes.
+          If all fists were handled correctly, the blue tether pair that still has their tether as well as the red-green tether pair closer to the edge move out to bait the closest two Arm Units, thus snapping their tether. The blue tether pair whose tether already snapped move towards the center to bait [a:beyond-defense]. The red-green tether pair that was closer to the center bait the sidemost Arm Units.
+          After telegraphs appear, both pairs of red-green tethers move close to the sidemost edges to bait [a:oversampled-wave-cannon]. The red-green pair that baited the sidemost Arm Units moves closer to the Beetle side, while the other pair stays on the Final Omega side.
+          As for the (former) blue tethers: each of them, **except for the player hit by [a:beyond-defense]** stacks close to the center on the **non-monitor side**. The [a:beyond-defense] player moves away from the stack towards either Beetle or Final Omega, but **has to make sure they stay vertically aligned with the stack** so as to not accidentally bait a monitor.
+          One random blue tether player will receive [s:oversampled-wave-cannon-loading]. This player must be at the front of the stack, facing away from the center. Be aware that this player may be the [a:beyond-defense] player, in which case they will still move out as before but also have to face the correct direction.
+          If all mechanics properly resolve, watch Beetle Omega for the shining blue lights that appear on either side of it. Set up for [a:hello-near-distant-world] on the **other** side in the following way:
+          * The two blue tether players without anything go to the edge, lining themselves up with the center of the 2/3 marker.
+          * The blue tether player with [s:hello-near-world] lines themselves up with the B/D marker, directly in front of Omega's cleave.
+          * The blue tether player with [s:hello-distant-world] lines themselves up with the B/D marker at the edge of the arena.
+          * The red-green tether pair that baited the sidemost Arm Units **wait for [s:twice-come-ruin] to expire on all players**, then collapse onto each other on the safe side to snap their tether and line themselves up with the 1/4 marker – one player directly in front of Omega's cleave, the other in the center of the marker.
+          * The red-green tether pair that baited the Arm Units closer to Final Omega rotate clockwise such that one player ends up directly underneath Beetle Omega, and the other player opposite. Both should stand directly in front of the cleave.
+          After all [a:hello-near-distant-world] jumps resolve, the last remaining red-green tether pair must snap their tether, but they **must wait for all [s:twice-come-ruin] to expire first**.
+        common: true
     children:
       - at: 21292
         id: patch
@@ -2154,6 +2174,35 @@ graphing:
       color: url(#monitor-gradient)
       visible: false
       shadow: false
+    blue-fist:
+      type: image
+      image: /images/other/fist-blue.avif
+      size: 26
+      planar: false
+      shadow: true
+    orange-fist:
+      type: image
+      image: /images/other/fist-orange.avif
+      size: 26
+      planar: false
+      shadow: true
+    arm:
+      type: image
+      image: /images/other/arm.avif
+      size: 20
+      shadow: true
+    rotate-cw:
+      type: image
+      image: /images/markers/rotate-cw.svg
+      size: 40
+      shadow: false
+      visible: false
+    rotate-ccw:
+      type: image
+      image: /images/markers/rotate-ccw.svg
+      size: 40
+      shadow: false
+      visible: false
   graphs:
     looper:
       - marker-a: [60, 0]
@@ -3529,3 +3578,237 @@ graphing:
         wave-repeater#2: { visible: true }
       - wave-repeater#2: { visible: false }
         wave-repeater#3: { visible: true }
+    delta-lpdu:
+      - arena: { image: /images/arenas/top-p5.avif }
+        circle#fist-1: { attach: H1 }
+        circle#fist-2: { attach: H2 }
+        circle#fist-3: { attach: M1 }
+        circle#fist-4: { attach: R1 }
+        circle#fist-[1..4]: { size: 25 }
+        circle#BD: { scale: 0.8, attach: H2 }
+        circle#monitor-[1..4]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle#monitor-1: { attach: R2 }
+        circle#monitor-2: { attach: T1 }
+        circle#monitor-3: { attach: M1 }
+        circle#monitor-4: { attach: R1 }
+        circle#hello-far-1: { size: 76, attach: H1 }
+        circle#hello-far-2: { size: 40, attach: M1 }
+        circle#hello-far-3: { size: 40, attach: R1 }
+        circle#hello-near-1: { size: 76, attach: T2 }
+        circle#hello-near-2: { size: 40, attach: R2 }
+        circle#hello-near-3: { size: 40, attach: T1 }
+        rect#eye: { scale: [1.7, 10], rotate: 90 }
+        rect#arm-[1..6]: { origin: [0.5, 0], scale: [1, 10] }
+        rect#arm-1: { attach: arm#1, rotate: T1 }
+        rect#arm-2: { attach: arm#2, rotate: R2 }
+        rect#arm-3: { attach: arm#3, rotate: H1 }
+        rect#arm-4: { attach: arm#4, rotate: M2 }
+        rect#arm-5: { attach: arm#5, rotate: R1 }
+        rect#arm-6: { attach: arm#6, rotate: M1 }
+        rect#swivel: { scale: 1, size: [150, 300], origin: [1, 0.2], attach: boss#beetle, rotate: -15 }
+        monitor#boss: { attach: boss#final, size: [50, 200], rotate: 180 }
+        monitor#M2: { attach: M2, rotate: 20 }
+        boss#m: { size: 50, opacity: 0.6, rotate: 180, visible: false }
+        boss#beetle: { text: Beetle, x: 90, y: 0, size: 50, opacity: 0.6, rotate: 0 }
+        boss#final: { text: Final, x: -90, y: 0, size: 50, opacity: 0.6 }
+        boss#eye: { text: Eye, x: 100, y: 90, scale: 0.8, rotate: 90 }
+        boss#BD: { rotate: -90, scale: 0.3, visible: false, text: Shield-M }
+        circle#omega-light-1: { attach: boss#beetle, x: -20, color: "#c8dbf7", size: 10 }
+        circle#omega-light-2: { attach: boss#beetle, x: -15, y: 10, color: "#c8dbf7", size: 10 }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        far-tether#1: { from: T1, to: R2, visible: true, opacity: 0.5 }
+        far-tether#2: { from: M1, to: R1, visible: true, opacity: 0.5 }
+        close-tether#1: { from: T2, to: H2, visible: true, opacity: 0.5 }
+        close-tether#2: { from: H1, to: M2, visible: true, opacity: 0.5 }
+        T1: [30, -30]
+        T2: { x: 30, y: 30, status: [3442] }
+        R1: [22, -130]
+        R2: [22, 130]
+        M1: [17, -90]
+        M2: [17, 90]
+        H1: { x: 22, y: -47, status: [3443] }
+        H2: [22, 47]
+        blue-fist#[1..4]: { visible: false }
+        orange-fist#[1..4]: { visible: false }
+        blue-fist#1: { attach: M1, rotate: M1, x: 10, y: 5 }
+        blue-fist#2: { attach: T1, rotate: T1, x: -10, y: -5 }
+        blue-fist#3: { attach: M2, rotate: M2, x: -10, y: 5 }
+        blue-fist#4: { attach: H1, rotate: H1, x: -5, y: 10 }
+        orange-fist#1: { attach: T2, rotate: T2, x: 5, y: 10 }
+        orange-fist#2: { attach: R1, rotate: R1, x: -5, y: 10 }
+        orange-fist#3: { attach: R2, rotate: R2, x: 5, y: -10 }
+        orange-fist#4: { attach: H2, rotate: H2, x: 10, y: -5 }
+        arm#1: { x: 90, y: 90, rotate: 90, visible: false }
+        arm#2: { x: 90, y: -90, rotate: -90, visible: false }
+        arm#3: { x: 90, y: -30, rotate: -30, visible: false }
+        arm#4: { x: 90, y: 30, rotate: 30, visible: false }
+        arm#5: { x: 90, y: 150, rotate: 150, visible: false }
+        arm#6: { x: 90, y: -150, rotate: -150, visible: false }
+        rotate-cw#1: { attach: arm#1 }
+        rotate-cw#2: { attach: arm#4 }
+        rotate-cw#3: { attach: arm#6 }
+        rotate-ccw#1: { attach: arm#2 }
+        rotate-ccw#2: { attach: arm#3 }
+        rotate-ccw#3: { attach: arm#5 }
+        circle#link-1: { x: 63, y: 0, size: 300, color: "#00000088", scale: 0, visible: true }
+        circle#link-2: { x: 81, y: 0, size: 300, color: "#00000088", scale: 0, visible: true }
+      - T1: [46, -118]
+        T2: [61, -41]
+        R1: [62, 135]
+        R2: [46, 120]
+        M1: [63, -134]
+        M2: [65, 10]
+        H1: [67, -12]
+        H2: [62, 45]
+      - blue-fist#*: { visible: true, attach: null, rotate: null }
+        orange-fist#*: { visible: true, attach: null, rotate: null }
+      - T1: [46, 120]
+        R2: [46, -118]
+      - R2: [63, -134]
+        T1: [62, 135]
+        T2: [70, -25]
+        H2: [70, 25]
+        arm#*: { visible: true }
+      - circle#link-1: { scale: 1, visible: false }
+        far-tether#*: { opacity: 1 }
+        close-tether#1: { visible: false }
+        close-tether#2: { opacity: 1 }
+        T2: [67, -12]
+        H2: [65, 10]
+        rotate-cw#*: { visible: true }
+        rotate-ccw#*: { visible: true }
+        boss#BD: { visible: true }
+      - circle#fist-*: { visible: true, attach: null }
+        rect#eye: { visible: true }
+      - rect#eye: { visible: false }
+        boss#eye: { visible: false }
+        circle#link-2: { scale: 1, visible: false }
+        close-tether#2: { visible: false }
+        monitor#boss: { visible: true }
+        H2: [16, 87]
+        H1: [88, -22]
+        M2: [90, 23]
+        T2: [16, -83]
+        M1: [90, -155]
+        R1: [89, 155]
+        T1: [89, 82]
+        R2: [88, -84]
+      - circle#fist-*: { visible: false }
+        blue-fist#1: { attach: circle#fist-3, rotate: circle#fist-3 }
+        blue-fist#2: { attach: circle#fist-4, rotate: circle#fist-4 }
+        blue-fist#3: { attach: circle#fist-1, rotate: circle#fist-1 }
+        blue-fist#4: { attach: circle#fist-2, rotate: circle#fist-2 }
+        orange-fist#1: { attach: circle#fist-1, rotate: circle#fist-1 }
+        orange-fist#2: { attach: circle#fist-4, rotate: circle#fist-4 }
+        orange-fist#3: { attach: circle#fist-3, rotate: circle#fist-3 }
+        orange-fist#4: { attach: circle#fist-2, rotate: circle#fist-2 }
+        blue-fist#*: { x: 0, y: 0, visible: false }
+        orange-fist#*: { x: 0, y: 0, visible: false }
+      - rotate-cw#*: { visible: false }
+        rotate-ccw#*: { visible: false }
+      - monitor#M2: { visible: true }
+        M2: { status: [3452] }
+        H2: { status: [2534] }
+        rect#arm-[1..6]: { visible: true, rotate: null }
+        circle#BD: { visible: true }
+        arm#1: { rotate: T1 }
+        arm#2: { rotate: R2 }
+        arm#3: { rotate: H1 }
+        arm#4: { rotate: M2 }
+        arm#5: { rotate: R1 }
+        arm#6: { rotate: M1 }
+      - arm#[1..6]: { rotate: null }
+        rect#arm-[1..6]: { color: url(#wc-gradient-line), opacity: 0.7 }
+        circle#BD: { visible: false, attach: null }
+        monitor#M2: { rotate: -160 }
+        R2: [69, -50]
+        T1: [73, 52]
+        M1: [77, -124]
+        R1: [82, 123]
+        H2: [65, 177]
+        T2: [7, 82]
+        M2: [13, 71]
+        H1: [9, 64]
+      - monitor#M2: { rotate: 0 }
+        circle#BD: { attach: T2 }
+        rect#arm-1: { rotate: 190 }
+        rect#arm-2: { rotate: -190 }
+        rect#arm-3: { rotate: -130 }
+        rect#arm-4: { rotate: 130 }
+        rect#arm-5: { rotate: 40 }
+        rect#arm-6: { rotate: -40 }
+      - circle#BD: { visible: true }
+        circle#monitor-[1..4]: { scale: 1 }
+        monitor#boss: { visible: false }
+        monitor#M2: { visible: false }
+        M2: { status: [] }
+        [M1, M2, R2, T1, R1]: { status: [2534] }
+        T2: { status: [3442, 2534] }
+        H1: { status: [3443, 2534] }
+        rect#arm-1: { rotate: 220 }
+        rect#arm-2: { rotate: -220 }
+        rect#arm-3: { rotate: -160 }
+        rect#arm-4: { rotate: 160 }
+        rect#arm-5: { rotate: 10 }
+        rect#arm-6: { rotate: -10 }
+      - boss#BD: { visible: false }
+        boss#final: { visible: false }
+        circle#BD: { visible: false }
+        circle#monitor-[1..4]: { visible: false }
+        rect#arm-*: { visible: false }
+        arm#*: { visible: false }
+        H2: { status: [] }
+      - circle#omega-light-*: { visible: true }
+        circle#link-[1..2]: { scale: 0 }
+      - [M1, R2, T1, R1]: { status: [] }
+        circle#link-[1..2]: { visible: true }
+        circle#link-1: [48, 17]
+        circle#link-2: [8, -138]
+        M1: [86, 3]
+        R1: [87, 147]
+        H2: [88, 120]
+        H1: [88, 89]
+        M2: [88, 120]
+        T2: [28, 87]
+        R2: [53, -33]
+        T1: [64, 45]
+      - T2: { status: [3442] }
+        H1: { status: [3443] }
+        M2: { status: [] }
+      - R2: [49, 20]
+        far-tether#1: { visible: false }
+        circle#link-1: { scale: 1, visible: false }
+      - rect#swivel: { visible: true }
+      - circle#hello-[far,near]-1: { visible: true }
+        rect#swivel: { visible: false }
+        [H1, T2]: { status: [3444, 2941] }
+      - circle#hello-[far,near]-2: { visible: true }
+        circle#hello-[far,near]-1: { visible: false }
+        [M1, R2]: { status: [3444, 2941] }
+      - circle#hello-[far,near]-3: { visible: true }
+        circle#hello-[far,near]-2: { visible: false }
+        [R1, T1]: { status: [3444, 2941] }
+      - circle#hello-[far,near]-3: { visible: false }
+        boss#m: { visible: true }
+        boss#beetle: { visible: false }
+        [H1, T2]: { status: [3444] }
+        T1: [33, -1]
+        T2: [27, 40]
+        R2: [18, 169]
+        H1: [21, 147]
+        H2: [24, 115]
+        M2: [18, 122]
+        M1: [31, -83]
+        R1: [48, 116]
+      - [M1, R2, R1, T1]: { status: [3444] }
+      - M1: [15, -111]
+        R1: [15, 98]
+        circle#link-2: { scale: 1, visible: false }
+        far-tether#2: { visible: false }
