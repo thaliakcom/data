@@ -539,6 +539,11 @@
   type: live letter
   at: 2024-05-16 11:00:00
   url: https://sqex.to/oX18H
+- name: Fall Guys Collaboration
+  color: "#7d2885"
+  from: 2024-05-23
+  to: 2024-06-10
+  allDay: true
 - name: Dragon Quest X Collaboration
   type: event
   color: "#e03f77"
