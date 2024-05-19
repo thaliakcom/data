@@ -1593,6 +1593,11 @@ actions:
       - "When Final Omega's ring is facing north/south: aligning yourself with the edge of the ring rather than the arena markers. (When Omega's ring faces north/south, the ring is offset from the center of Omega's hitbox and **cannot** be used to align yourself with its cones.)"
       - "[a:oversampled-wave-cannon] players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a monitor player."
       - "[a:blaster] tether players standing too close to the [a:hello-near-distant-world] players and vice-versa. It is recommended to stand at the edge of the arena as a tethered player."
+    strategies:
+      omega:
+        name: LPDU
+        common: true
+        description: PF standard. Shows all possible dodge patterns during the initial AoEs. It is recommended to mark players who take the [a:hello-near-far-world] baits to remove the ambiguity about positioning.
     children:
       - at: 18399
         id: diffuse-wave-cannon
@@ -2143,6 +2148,13 @@ graphing:
       angle: 60
       color: url(#wc-gradient)
       opacity: 0.8
+      visible: false
+      shadow: false
+    ring-cone:
+      type: cone
+      size: [0, 200]
+      angle: 120
+      color: url(#aoe-gradient)
       visible: false
       shadow: false
     spread:
@@ -4153,4 +4165,193 @@ graphing:
         circle#hello-[near, far]-3: { visible: true }
         R2: { status: [mark2, quickening-dynamis:1] }
         M1: { status: [mark4, quickening-dynamis:1] }
-        
+    omega:
+      - arena: { image: /images/arenas/top-p5.avif }
+        circle#hello-far-1: { size: 76, attach: M1 }
+        circle#hello-far-2: { size: 40, attach: H2 }
+        circle#hello-far-3: { size: 40, attach: M2 }
+        circle#hello-near-1: { size: 76, attach: T1 }
+        circle#hello-near-2: { size: 40, attach: H1 }
+        circle#hello-near-3: { size: 40, attach: R1 }
+        circle#hello-[near,far]-[1..3]: { color: url(#hw-background) }
+        rect#blades-1: { x: 81, y: 65, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
+        rect#blades-2: { x: 78, y: -125, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
+        rect#staff-1: { size: [45, 300], origin: [0.5, 0.5], scale: [0, 1], rotate: 45, attach: boss#f2, visible: true }
+        rect#staff-2: { size: [45, 300], origin: [0.5, 0.5], scale: [0, 1], rotate: 135, attach: boss#f2, visible: true }
+        circle#m: { attach: boss#m2, size: 100, scale: 0, visible: true }
+        donut#m: { attach: boss#m1, visible: true }
+        ring-cone#[1..4]: { visible: true }
+        ring-cone#1: { scale: [0, 1] }
+        ring-cone#2: { rotation: 180, scale: [0, 1] }
+        ring-cone#3: { rotation: 90, scale: [1, 0] }
+        ring-cone#4: { rotation: -90, scale: [1, 0] }
+        monitor: { attach: boss#final, size: [50, 200], rotate: 180 }
+        circle#monitor-[1..2]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle#monitor-1: { attach: R2 }
+        circle#monitor-2: { attach: T2 }
+        boss#m[1..2]: { size: 30, opacity: 0.6, visible: false }
+        boss#f[0..2]: { text: F, size: 30, opacity: 0.6, visible: false }
+        boss#f1: { x: 52, y: -45, rotate: boss#final, text: Blades-F }
+        boss#m1: { x: 52, y: 135, rotate: boss#final, text: Shield-M }
+        boss#f2: { x: 52, y: 45, rotate: boss#final, text: Staff-F }
+        boss#m2: { x: 52, y: -135, rotate: boss#final, text: Sword-M }
+        boss#f0: { visible: true, rotate: T1 }
+        boss#beetle: { text: Beetle, x: 90, y: -90, size: 65, opacity: 0.6, rotate: -90, visible: false }
+        boss#final: { text: Final, size: 65, opacity: 0.6, visible: false }
+        boss#ring: { text: Ring, size: 57, opacity: 0.6, rotate: 90, visible: false }
+        blaster-tether#1: { from: boss#beetle, to: H2 }
+        blaster-tether#2: { from: boss#beetle, to: T1 }
+        blaster#1: { attach: M1 }
+        blaster#2: { attach: T1 }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        T1: { x: 30, y: 1, status: [quickening-dynamis:1, hello-near-world] }
+        H1: { x: 22, y: -96, status: [quickening-dynamis] }
+        M1: { x: 22, y: -130, status: [quickening-dynamis:1, hello-distant-world] }
+        R1: { x: 28, y: -160, status: [quickening-dynamis] }
+        T2: { x: 21, y: -180, status: [quickening-dynamis:1] }
+        H2: { x: 20, y: 100, status: [quickening-dynamis] }
+        M2: { x: 20, y: 138, status: [quickening-dynamis, hello-distant-world] }
+        R2: { x: 27, y: 160, status: [quickening-dynamis:1, hello-near-world] }
+        label: { x: 0, y: -90, visible: false }
+        cast: { text: "Run: ****mi* (Omega Version)", progress: 0 }
+      - cast: { progress: 1, visible: false }
+        boss#final: { visible: true }
+        boss#[m,f]1: { visible: true }
+        label: { visible: true, text: Variation 1 }
+      - boss#[m,f]2: { visible: true }
+      - players: [22, 90]
+      - ring-cone#[1..2]: { scale: 1 }
+        donut#m: { scale: 1 }
+        rect#blades-[1..2]: { scale: 1 }
+      - ring-cone#[1..2]: { visible: false }
+        donut#m: { visible: false }
+        rect#blades-[1..2]: { visible: false }
+        players: [58, 159]
+        T1: [84, 163]
+        boss#f0: [58, 159]
+      - ring-cone#[3..4]: { scale: 1 }
+        circle#m: { scale: 1 }
+        rect#staff-[1..2]: { scale: 1 }
+      - label: { text: Variation 2 }
+        ring-cone#[3..4]: { visible: false }
+        circle#m: { visible: false }
+        rect#staff-[1..2]: { visible: false }
+        boss#f0: [0, 0]
+        boss#[f,m][1..2]: { visible: false }
+        T1: { x: 30, y: 1 }
+        H1: { x: 22, y: -96 }
+        M1: { x: 22, y: -130 }
+        R1: { x: 28, y: -160 }
+        T2: { x: 21, y: -180 }
+        H2: { x: 20, y: 100 }
+        M2: { x: 20, y: 138 }
+        R2: { x: 27, y: 160 }
+      - boss#f2: { visible: true }
+        boss#m2: { text: Shield-M, visible: true }
+        boss#m1: { text: Sword-M }
+        rect#staff-[1..2]: { scale: [0, 1] }
+        rect#blades-[1..2]: { scale: [0, 1] }
+        donut#m: { scale: 0 }
+        circle#m: { scale: 0 }
+        ring-cone#[1..2]: { scale: [0, 1] }
+        ring-cone#[3..4]: { scale: [1, 0] }
+      - rect#staff-[1..2]: { visible: true }
+        rect#blades-[1..2]: { visible: true }
+        donut#m: { visible: true, attach: boss#m2 }
+        circle#m: { visible: true, attach: boss#m1 }
+        ring-cone#[1..4]: { visible: true }
+        boss#[m,f]1: { visible: true }
+      - players: [62, -92]
+        boss#f0: [43, -87]
+      - donut#m: { scale: 1 }
+        rect#staff-[1..2]: { scale: 1 }
+        ring-cone#[1..2]: { scale: 1 }
+      - donut#m: { visible: false }
+        rect#staff-[1..2]: { visible: false }
+        ring-cone#[1..2]: { visible: false }
+        players: [22, 0]
+        boss#f0: [22, -54]
+      - ring-cone#[3..4]: { scale: 1 }
+        circle#m: { scale: 1 }
+        rect#blades-[1..2]: { scale: 1 }
+      - label: { visible: false }
+        ring-cone#[3..4]: { visible: false }
+        circle#m: { visible: false }
+        rect#blades-[1..2]: { visible: false }
+        boss#[f,m][1..2]: { visible: false }
+        boss#f0: { visible: false }
+        R2: [25, 53]
+        M2: [25, -56]
+        H2: [25, -122]
+        T2: [25, 172]
+        R1: [25, 28]
+        M1: [25, -29]
+        H1: [25, 118]
+      - monitor: { visible: true }
+        M2: { status: [quickening-dynamis, mark1, hello-distant-world] }
+        R1: { status: [quickening-dynamis, mark2] }
+        H1: { status: [quickening-dynamis, mark3] }
+        H2: { status: [quickening-dynamis, mark4] }
+      - T1: [45, 89]
+        M1: [46, 3]
+        R2: [70, -49]
+        T2: [70, -128]
+        M2: [89, 2]
+        R1: [88, 80]
+        H1: [88, 103]
+        H2: [88, 179]
+      - circle#hello-[near, far]-1: { visible: true }
+        circle#monitor*: { scale: 1 }
+        monitor: { visible: false }
+        boss#beetle: { visible: true }
+        [M1,T1]: { status: [quickening-dynamis:2] }
+      - circle#monitor*: { visible: false }
+        circle#hello-[near, far]-1: { visible: false }
+        circle#hello-[near, far]-2: { visible: true }
+        H2: { status: [quickening-dynamis:1, mark4] }
+        H1: { status: [quickening-dynamis:1, mark3] }
+      - circle#hello-[near, far]-2: { visible: false }
+        circle#hello-[near, far]-3: { visible: true }
+        R1: { status: [quickening-dynamis:1, mark2] }
+        M2: { status: [quickening-dynamis:1, mark1, hello-distant-world] }
+      - circle#hello-[near, far]-3: { visible: false }
+        blaster-tether#[1..2]: { visible: true }
+        H2: [87, 173]
+        M2: { x: 45, y: 88, status: [quickening-dynamis:1, hello-distant-world] }
+        M1: [13, -79]
+        T2: { x: 62, y: -134, status: [quickening-dynamis:1, mark1] }
+        R2: [47, 10]
+        T1: [16, 87]
+        blaster-tether#1: { to: T2 }
+        blaster-tether#2: { to: M1 }
+      - T2: [24, 86]
+        blaster-tether#1: { to: T1 }
+        circle#hello-near-1: { attach: R2 }
+        circle#hello-near-2: { attach: H2 }
+        circle#hello-near-3: { attach: T2 }
+        circle#hello-far-1: { attach: M2 }
+        circle#hello-far-2: { attach: H1 }
+        circle#hello-far-3: { attach: R1 }
+      - T2: [89, 6]
+        M1: [90, -60]
+        T1: [90, -120]
+      - blaster#*: { scale: 1 }
+        blaster-tether#*: { visible: false }
+        [M1, T1]: { status: [quickening-dynamis:2, hp-penalty] }
+        circle#hello-[near, far]-1: { visible: true }
+        [R2, M2]: { status: [quickening-dynamis:2] }
+      - blaster#*: { visible: false }
+        circle#hello-[near, far]-1: { visible: false }
+        circle#hello-[near, far]-2: { visible: true }
+        [H2, H1]: { status: [quickening-dynamis:2] }
+      - circle#hello-[near, far]-2: { visible: false }
+        circle#hello-[near, far]-3: { visible: true }
+        [T2, R1]: { status: [quickening-dynamis:2] }
+      - circle#hello-[near, far]-3: { visible: false }
