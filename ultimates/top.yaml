@@ -1779,6 +1779,10 @@ actions:
     resolve: |
       Stack in the center of the arena with the entire party. During the cast, continuously turn your camera until you've found the location of the first exaflare. Once the cast finishes and the first set of AoEs appears underneath players, move toward the marker next to the first exaflare that does *not* have another exaflare on top of it, then move into where the first exaflare was, and continue to move around the hitbox at max melee until you're clear.
       Just like [a:pantokrator], don't move too far ahead – only move just outside the previous set of baited AoEs until the next set of baited AoEs appears.
+    strategies:
+      unlimited-wave-cannon:
+        name: PF Standard
+        description: Stack middle, then follow the first exaflare that appeared.
     children:
       - at: 6984
         id: unlimited-wave-cannon-hit
@@ -2264,6 +2268,12 @@ graphing:
       type: image
       image: /images/markers/rotate-ccw.svg
       size: 40
+      shadow: false
+      visible: false
+    exaflare:
+      type: image
+      image: /images/markers/exaflare.svg
+      size: 60
       shadow: false
       visible: false
   graphs:
@@ -4689,3 +4699,105 @@ graphing:
         cast: { progress: 0.9 }
       - p6-wc#9: { scale: 1 }
         cast: { progress: 1, visible: false }
+    unlimited-wave-cannon:
+      - arena: { image: /images/arenas/top-p6.avif }
+        boss: { size: 115, opacity: 0.5 }
+        exaflare#1: { x: 100, y: 135, rotate: 45 }
+        exaflare#2: { x: 100, y: 90 }
+        exaflare#3: { x: 100, y: 45, rotate: -45 }
+        exaflare#4: { x: 100, y: 0, rotate: -90 }
+        circle#[1..6]: { attach: T1, size: 60, scale: 0, visible: true }
+        circle#exa-[1..4]-[1..8]: { size: 60, color: url(#wc-p6-gradient) }
+        circle#exa-1-1: [100, 135]
+        circle#exa-2-1: [100, 90]
+        circle#exa-3-1: [100, 45]
+        circle#exa-4-1: [100, 0]
+        circle#exa-1-2: [70, 135]
+        circle#exa-2-2: [70, 90]
+        circle#exa-3-2: [70, 45]
+        circle#exa-4-2: [70, 0]
+        circle#exa-1-3: [40, 135]
+        circle#exa-2-3: [40, 90]
+        circle#exa-3-3: [40, 45]
+        circle#exa-4-3: [40, 0]
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        T1: [47, -1]
+        T2: [66, 32]
+        R1: [21, 107]
+        R2: [22, -100]
+        M1: [32, -138]
+        H1: [32, -162]
+        H2: [33, 171]
+        M2: [34, 138]
+        cast: { text: Unlimited Wave Cannon, progress: 0 }
+      - cast: { progress: 0.8 }
+        exaflare#1: { visible: true }
+        players: [0, 0]
+      - cast: { progress: 1, visible: false }
+        exaflare#2: { visible: true }
+      - exaflare#3: { visible: true }
+      - exaflare#4: { visible: true }
+      - circle#1: { scale: 1, attach: null }
+      - players: [33, 175]
+      - circle#2: { scale: 1, attach: null }
+        circle#exa-1-1: { visible: true }
+        exaflare#1: { visible: false }
+      - players: [67, 175]
+        circle#[1,exa-1-1]: { visible: false }
+        circle#exa-[2-1,1-2]: { visible: true }
+        exaflare#2: { visible: false }
+      - circle#3: { scale: 1, attach: null }
+        circle#exa-[2-1,1-2]: { visible: false }
+        circle#exa-[3-1,2-2,1-3]: { visible: true }
+        circle#exa-1-1: [10, 135]
+        exaflare#3: { visible: false }
+      - players: [81, 149]
+        circle#[2, exa-3-1, exa-2-2, exa-1-3]: { visible: false }
+        circle#exa-[4-1,3-2,2-3,1-1]: { visible: true }
+        circle#exa-2-1: [10, 90]
+        circle#exa-1-2: [20, -45]
+        exaflare#4: { visible: false }
+      - circle#4: { scale: 1, attach: null }
+        circle#exa-[4-1,3-2,2-3,1-1]: { visible: false }
+        circle#exa-[3-3,1-2,2-1,4-2]: { visible: true }
+        circle#exa-3-1: [10, 45]
+        circle#exa-2-2: [20, -90]
+        circle#exa-1-3: [50, -45]
+      - players: [76, 121]
+        circle#exa-[1-2,2-1,3-3,4-2]: { visible: false }
+        circle#exa-[1-3,2-2,3-1,4-3]: { visible: true }
+        circle#3: { visible: false }
+        circle#exa-4-1: [10, 0]
+        circle#exa-3-2: [20, -135]
+        circle#exa-2-3: [50, -90]
+        circle#exa-1-1: [80, -45]
+      - circle#5: { scale: 1, attach: null }
+        circle#exa-[1-3,2-2,3-1,4-3]: { visible: false }
+        circle#exa-[1-1,2-3,3-2,4-1]: { visible: true }
+        circle#exa-1-2: [110, -45]
+        circle#exa-2-1: [80, -90]
+        circle#exa-3-3: [50, -135]
+        circle#exa-4-2: [20, 180]
+      - players: [72, 89]
+        circle#4: { visible: false }
+        circle#exa-[1-1,2-3,3-2,4-1]: { visible: false }
+        circle#exa-[1-2,2-1,3-3,4-2]: { visible: true }
+        circle#exa-2-2: [110, -90]
+        circle#exa-3-1: [80, -135]
+        circle#exa-4-3: [50, 180]
+      - circle#6: { scale: 1, attach: null }
+        circle#exa-[1-2,2-1,3-3,4-2]: { visible: false }
+        circle#exa-[2-2,3-1,4-3]: { visible: true }
+        circle#exa-3-2: [110, -135]
+        circle#exa-4-1: [80, 180]
+      - players: [76, 60]
+        circle#5: { visible: false }
+        circle#exa-[2-2,3-1,4-3]: { visible: false }
+        circle#exa-[3-2,4-1]: { visible: true }
