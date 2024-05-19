@@ -1505,6 +1505,20 @@ actions:
       - Not fixing your camera on the relative north/south, thus getting turned around and choosing the wrong tower.
       - As the two players designated for [a:far-hyper-pulse], not properly prepositioning or otherwise failing to communicate which arm each one takes.
       - As the second player to be hit by [a:hello-near-world], seeing that the other player is behind you and deciding to take their spot instead. (There is enough time for someone to make it to their spot if they move on the edge, even if they're slightly late, but due to how slowly player movement updates on other players' screens, there is not enough time to respond to someone else taking their spot.)
+    strategies:
+      sigma:
+        name: LPDU
+        common: true
+        description: |
+          Line up in two rows in front of Omega-M in the order of [i:cross][i:square][i:circle][i:triangle], with [i:cross] being closest to Omega-M. Then, from Final Omega, with Omega-M counting as north:
+          * The first double-marked pair goes west/east, respectively.
+          * The second double-marked pair goes north/south, respectively.
+          * The first single-marked pair goes northeast (unmarked) and southwest (marked).
+          * The second single-marked pair goes northwest (unmarked) and southeast (marked).
+          The waymark you are on at this point determines your tower. "North", in this case, will either be where Omega-M spawned or directly opposite. To identify which it is, look at relative north and south and find the spot that has one tower (Remote Glitch) or two towers (Mid Glitch).
+          * Waymark 1 takes the northwest tower, waymark 2 the northeast tower (Mid Glitch). In Far Glitch, waymarks 1 and 2 take the northmost tower.
+          * Waymark 3 takes the southwest 2-person tower, waymark 4 the southeast 2-person tower.
+          * Waymarks A–D take the southern towers, with A taking the westmost tower and D taking the eastmost tower.
     children:
       - at: 17391
         id: subject-simulation-f
