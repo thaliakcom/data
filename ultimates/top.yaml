@@ -2025,6 +2025,7 @@ graphing:
   coordinate-system: polar
   defs:
     tower-gradient: "radial-gradient(0 #00000000 92% #00000000 95% #f1ffff 97% #f1ffff 100% #00000000)"
+    double-tower-gradient: "radial-gradient(0 #00000000 84% #00000000 87% #f1ffff 89% #f1ffff 92% #00000000 95% #f1ffff 97% #f1ffff 100% #00000000)"
     tower-filled-gradient: "radial-gradient(0 #c2bf9288 92% #c2bf92 95% #f1ffff 97% #f1ffff 100% #00000000)"
     blaster-gradient: "radial-gradient(0 #0e161d00 94% #0e161d 100% #0e161d)"
     aoe-gradient: "radial-gradient(0 #fcca6e55 65% #fcca6e55 100% #fcca6ecc)"
@@ -2042,6 +2043,7 @@ graphing:
     close-gradient: "radial-gradient(0% #a3c5d1 100% #39a5cc)"
     monitor-gradient: "linear-gradient(0% #88e7f7 2% #3a8efc 100% transparent)"
     monitor-boom-gradient: "radial-gradient(0% #dbeeff 95% #dbeeff 100% #a1ebff)"
+    hw-background: "image(/images/hello-world.svg)"
   elements:
     arena:
       type: image
@@ -2120,6 +2122,14 @@ graphing:
       origin: [0.5, 0]
       color: url(#wc-gradient)
       scale: [0, 1]
+      shadow: false
+    wc-cone:
+      type: cone
+      size: [0, 100]
+      angle: 60
+      color: url(#wc-gradient)
+      opacity: 0.8
+      visible: false
       shadow: false
     spread:
       type: ellipse
@@ -3597,6 +3607,7 @@ graphing:
         circle#hello-near-1: { size: 76, attach: T2 }
         circle#hello-near-2: { size: 40, attach: R2 }
         circle#hello-near-3: { size: 40, attach: T1 }
+        circle#hello-[near,far]-[1..3]: { color: url(#hw-background) }
         rect#eye: { scale: [1.7, 10], rotate: 90 }
         rect#arm-[1..6]: { origin: [0.5, 0], scale: [1, 10] }
         rect#arm-1: { attach: arm#1, rotate: T1 }
@@ -3812,3 +3823,320 @@ graphing:
         R1: [15, 98]
         circle#link-2: { scale: 1, visible: false }
         far-tether#2: { visible: false }
+    sigma:
+      - arena: { image: /images/arenas/top-p5.avif }
+        circle#hello-far-1: { size: 76, attach: M2 }
+        circle#hello-far-2: { size: 40, attach: H2 }
+        circle#hello-far-3: { size: 40, attach: M1 }
+        circle#hello-near-1: { size: 76, attach: T2 }
+        circle#hello-near-2: { size: 40, attach: T1 }
+        circle#hello-near-3: { size: 40, attach: R2 }
+        circle#hello-[near,far]-[1..3]: { color: url(#hw-background) }
+        tower#far-1: { x: 80, y: -90, color: url(#double-tower-gradient) }
+        tower#far-2: [80, 0]
+        tower#far-3: { x: 80, y: 45, color: url(#double-tower-gradient) }
+        tower#far-4: { x: 80, y: 135, color: url(#double-tower-gradient) }
+        tower#far-5: [80, 180]
+        tower#mid-1: [80, -67.5]
+        tower#mid-2: { x: 80, y: 22.5, color: url(#double-tower-gradient) }
+        tower#mid-3: [80, 67.5]
+        tower#mid-4: [80, 112.5]
+        tower#mid-5: { x: 80, y: 157.5, color: url(#double-tower-gradient) }
+        tower#mid-6: [80, -112.5]
+        wave-cannon#arm-1: { attach: arm#1, rotate: T2, size: [30, 200], opacity: 0.8 }
+        wave-cannon#arm-2: { attach: arm#2, rotate: H2, size: [30, 200], opacity: 0.8 }
+        wc-cone#1: { rotation: -90 }
+        wc-cone#2: { rotation: 0 }
+        wc-cone#3: { rotation: 45 }
+        wc-cone#4: { rotation: 90 }
+        wc-cone#5: { rotation: 135 }
+        wc-cone#6: { rotation: 180 }
+        circle#target-1: { attach: M1 }
+        circle#target-2: { attach: T1 }
+        circle#target-3: { attach: H1 }
+        circle#target-4: { attach: M2 }
+        circle#target-5: { attach: R2 }
+        circle#target-6: { attach: R1 }
+        circle#target-[1..6]: { size: 10, color: "#d16232", y: 2 }
+        rect#blades-1: { x: 75, y: 22.5, size: [100, 300], rotate: 90, visible: true }
+        rect#blades-2: { x: 75, y: -157.5, size: [100, 300], rotate: 90, visible: true }
+        rect#staff-1: { x: 45, y: 90, size: [45, 300], scale: [0, 1], rotate: 90, visible: true }
+        rect#staff-2: { x: 45, y: 90, size: [45, 300], scale: [0, 1], rotate: 0, visible: true }
+        rect#ring: { size: [57, 300], scale: [0, 1], rotate: 90, visible: true }
+        boss#m: { text: M, size: 30, opacity: 0.6, rotate: 180 }
+        boss#mf: { x: 90, y: -90, text: M, size: 30, opacity: 0.6, rotate: -90, visible: false }
+        boss#beetle: { text: Beetle, x: 90, y: 90, size: 65, opacity: 0.6, rotate: 90, visible: false }
+        boss#final: { text: Final, rotate: -90, size: 65, opacity: 0.6, visible: false }
+        boss#ring: { text: Ring, size: 57, opacity: 0.6, rotate: 90, visible: false }
+        marker-a: [63, 0]
+        marker-1: [63, 45]
+        marker-b: [63, 90]
+        marker-2: [63, 135]
+        marker-c: [63, 180]
+        marker-3: [63, -135]
+        marker-d: [63, -90]
+        marker-4: [63, -45]
+        glitch-link#[1..6]: { visible: false }
+        glitch-link#1: { from: arm#1, to: M1 }
+        glitch-link#2: { from: arm#2, to: H1 }
+        glitch-link#3: { from: T1, to: M2 }
+        glitch-link#4: { from: H1, to: R1 }
+        glitch-link#5: { from: M1, to: T2 }
+        glitch-link#6: { from: H2, to: R2 }
+        T1: { x: 30, y: 1, status: [3444] }
+        H1: { x: 17, y: -77, status: [3444] }
+        M1: { x: 21, y: -116, status: [3444] }
+        R1: { x: 33, y: -147, status: [3444] }
+        T2: { x: 21, y: -180, status: [3444, 3442] }
+        H2: { x: 17, y: 77 }
+        M2: { x: 21, y: 116, status: [3443] }
+        R2: { x: 33, y: 147, status: [3444] }
+        arm#1: { x: 45, y: 45, rotate: M1, visible: false }
+        arm#2: { x: 45, y: 135, rotate: H1, visible: false }
+        rotate-cw: { attach: boss#final, size: 75 }
+        label: { x: 0, y: -90, visible: false }
+        cast: { text: "Run: ****mi* (Sigma Version)", progress: 0 }
+      - cast: { progress: 1, visible: false }
+        boss#m: { visible: false }
+        arm#*: { visible: true }
+        glitch-link#*: { visible: true }
+        T1: { status: [3444, square] }
+        M2: { status: [3443, square] }
+        [H1, R1]: { status: [3444, triangle] }
+        M1: { status: [3444, cross] }
+        T2: { status: [3444, cross, 3442] }
+        H2: { status: [circle] }
+        R2: { status: [3444, circle] }
+        boss#mf: { visible: true }
+      - M1: [80, -84]
+        T2: [81, -96]
+        T1: [71, -84]
+        M2: [71, -96]
+        H2: [62, -83]
+        R2: [62, -98]
+        H1: [51, -82]
+        R1: [51, -99]
+        glitch-link#1: { to: T2 }
+        arm#1: { rotate: T2 }
+        glitch-link#2: { to: M1 }
+        arm#2: { rotate: M1 }
+      - boss#[beetle, final]: { visible: true }
+        circle#target-[1..6]: { visible: true }
+        [T1, H1, R1, R2, M1]: { status: [3444] }
+        M2: { status: [3443] }
+        T2: { status: [3444, 3442] }
+        H2: { status: [] }
+      - T2: [90, -135]
+        M1: [90, 45]
+        M2: [90, -90]
+        T1: [90, 90]
+        H2: [90, -45]
+        R2: [90, 135]
+        R1: [90, -180]
+        H1: [90, 0]
+        glitch-link#2: { to: H2 }
+        arm#2: { rotate: H2 }
+        label: { visible: true, text: Remote Glitch }
+      - players: { x: 57 }
+        label: { text: Mid Glitch }
+      - label: { visible: false }
+        wave-cannon#arm-[1..2]: { scale: 1 }
+        wc-cone#*: { visible: true }
+        circle#target-[1..6]: { visible: false }
+      - label: { visible: true, text: Remote Glitch }
+        wave-cannon#arm-[1..2]: { visible: false }
+        wc-cone#*: { visible: false }
+        players: { x: 25 }
+        boss#[beetle, final]: { visible: false }
+        boss#mf: { text: F }
+        arm#*: { visible: false }
+        glitch-link#[1,2]: { visible: false }
+        tower#far-*: { visible: true }
+      - boss#mf: [0, 0]
+        [M1, R2]: [16, -90]
+        H1: [16, 180]
+        [T1, T2]: [16, 135]
+        [R1, H2]: [16, 45]
+        M2: [16, 0]
+      - boss#mf: { scale: 1.3 }
+        players: { x: 90 }
+        tower#far-*: { color: url(#tower-filled-gradient) }
+      - label: { text: Mid Glitch }
+        tower#far-*: { visible: false }
+        boss#mf: { x: 90, y: -90, scale: 1 }
+        tower#mid-*: { visible: true }
+        T2: [25, -135]
+        M1: [25, 45]
+        M2: [25, -90]
+        T1: [25, 90]
+        H2: [25, -45]
+        R2: [25, 135]
+        R1: [25, -180]
+        H1: [25, 0]
+      - boss#mf: [0, 0]
+        R2: [16, -67.5]
+        M1: [16, -112.5]
+        [H1, T2]: [16, 157.5]
+        T1: [16, 112.5]
+        R1: [16, 67.5]
+        [M2, H2]: [16, 22.5]
+      - boss#mf: { scale: 1.3 }
+        players: { x: 80 }
+        tower#mid-*: { color: url(#tower-filled-gradient) }
+      - tower#*: { visible: false }
+        boss#mf: { scale: 1, visible: false }
+        glitch-link#*: { visible: false }
+        label: { visible: false }
+        T2: [60, 164]
+        H1: [60, 137]
+        M1: { x: 60, y: -112, status: [mark4, 3444] }
+        R2: { x: 60, y: -58, status: [mark2, 3444] }
+        M2: [60, 9]
+        H2: { x: 60, y: 44, status: [mark1] }
+        R1: [60, 73]
+        T1: { x: 60, y: 111, status: [mark3, 3444] }
+        arm#1: { x: 90, y: -45, rotate: H1 }
+        arm#2: { x: 90, y: -135, rotate: H2 }
+        glitch-link#1: { to: H1 }
+        glitch-link#2: { to: H2 }
+        wave-cannon#arm-1: { rotate: R1, scale: [0, 1] }
+        wave-cannon#arm-2: { rotate: H1, scale: [0, 1] }
+      - label: { visible: true, text: Staff-F }
+        boss#mf: { text: F, x: 45, y: 90, visible: true, rotate: 90 }
+        boss#ring: { visible: true }
+        rotate-cw: { visible: true }
+        arm#*: { visible: true }
+        wave-cannon#arm-[1..2]: { visible: true }
+        glitch-link#[1..2]: { visible: true }
+      - H2: [88, 67]
+        R1: [87, 66]
+        H1: [85, 66]
+        T2: [83, -113]
+        M1: [84, -116]
+        R2: [85, -112]
+        T1: [83, -117]
+        M2: [83, -115]
+        arm#1: { rotate: H2 }
+        glitch-link#1: { to: H2 }
+      - rect#ring: { scale: 1 }
+      - rect#ring: { color: url(#wc-gradient), opacity: 0.8 }
+        rotate-cw: { visible: false }
+      - rect#ring: { rotate: 100 }
+        boss#ring: { rotate: 100 }
+      - rect#ring: { rotate: 110 }
+        boss#ring: { rotate: 110 }
+        rect#staff-*: { scale: 1 }
+      - rect#staff-*: { visible: false }
+        boss#mf: { visible: false }
+        rect#ring: { rotate: 120 }
+        boss#ring: { rotate: 120 }
+        H2: [89, 90]
+        R1: [83, 97]
+        H1: [89, 49]
+        R2: [78, -84]
+        M2: [57, -98]
+        T2: [72, -86]
+        M1: [89, -90]
+        T1: [84, -82]
+        arm#1: { rotate: R1 }
+        glitch-link#1: { to: R1 }
+        arm#2: { rotate: H1 }
+        glitch-link#2: { to: H1 }
+      - H2: [88, 67]
+        R1: [87, 66]
+        H1: [85, 66]
+        T2: [83, -113]
+        M1: [84, -116]
+        R2: [85, -112]
+        T1: [83, -117]
+        M2: [83, -115]
+        arm#1: { rotate: H2 }
+        glitch-link#1: { to: H2 }
+        label: { text: Blades-F }
+        boss#mf: { visible: true }
+        boss#ring: { rotate: 90 }
+        rect#ring: { rotate: 90, color: url(#aoe-gradient) }
+      - rect#ring: { color: url(#wc-gradient), opacity: 0.8 }
+        rotate-cw: { visible: false }
+      - rect#ring: { rotate: 100 }
+        boss#ring: { rotate: 100 }
+        H2: [87, 77]
+        R1: [86, 76]
+        H1: [84, 75]
+        R2: [85, -103]
+        T2: [84, -103]
+        M2: [85, -103]
+        M1: [82, -104]
+        T1: [81, -104]
+      - rect#ring: { rotate: 110 }
+        boss#ring: { rotate: 110 }
+        rect#blades-*: { scale: 1 }
+        H2: [85, 87]
+        R1: [83, 85]
+        H1: [82, 85]
+        R2: [86, -91]
+        M2: [82, -93]
+        T2: [82, -94]
+        M1: [79, -95]
+        T1: [77, -95]
+      - rect#blades-*: { visible: false }
+        boss#mf: { visible: false }
+        rect#ring: { rotate: 120 }
+        boss#ring: { rotate: 120 }
+        H2: [89, 90]
+        R1: [83, 97]
+        H1: [89, 49]
+        R2: [78, -84]
+        M2: [57, -98]
+        T2: [72, -86]
+        M1: [89, -90]
+        T1: [84, -82]
+        arm#1: { rotate: R1 }
+        glitch-link#1: { to: R1 }
+        arm#2: { rotate: H1 }
+        glitch-link#2: { to: H1 }
+      - rect#ring: { rotate: 130 }
+        boss#ring: { rotate: 130 }
+        label: { visible: false }
+        R1: [86, 109]
+        M2: [45, -90]
+        R2: [83, -71]
+        T1: [86, -71]
+        T2: [67, -78]
+      - rect#ring: { rotate: 160 }
+        boss#ring: { rotate: 160 }
+        T2: [51, -58]
+        R2: [86, -42]
+        T1: [88, -51]
+        R1: [87, 135]
+      - rect#ring: { rotate: 190 }
+        boss#ring: { rotate: 190 }
+        T2: [47, -32]
+        R2: [89, -11]
+        T1: [89, -18]
+      - rect#ring: { rotate: 205 }
+        boss#ring: { rotate: 205 }
+        T2: [47, -18]
+        R2: [89, 4]
+        T1: [89, -10]
+      - rect#ring: { visible: false }
+        boss#ring: { visible: false }
+        H1: [89, 45]
+        T2: [46, -1]
+        R2: [89, 10]
+      - wave-cannon#arm-[1..2]: { scale: 1 }
+        glitch-link#[1..2]: { visible: false }
+        circle#hello-[near, far]-1: { visible: true }
+        M2: { status: [quickening-dynamis] }
+        T2: { status: [quickening-dynamis:1] }
+      - wave-cannon#arm-[1..2]: { visible: false }
+        arm#*: { visible: false }
+        circle#hello-[near, far]-1: { visible: false }
+        circle#hello-[near, far]-2: { visible: true }
+        T1: { status: [mark3, quickening-dynamis:1] }
+        H2: { status: [mark1, quickening-dynamis] }
+      - circle#hello-[near, far]-2: { visible: false }
+        circle#hello-[near, far]-3: { visible: true }
+        R2: { status: [mark2, quickening-dynamis:1] }
+        M1: { status: [mark4, quickening-dynamis:1] }
+        
