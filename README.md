@@ -67,7 +67,7 @@ The following placeholders are valid:
 | `[st:STATUS_TYPE(:d)(:c)]` | `[st:dot]` `[st:dot:d]` `[st:dot:c]`       | Replaced with a button that opens a dialog to explain the status effect type in more detail. `STATUS_TYPE` must be a key from `enums/status-types.yaml`. |
 | `[TEXT](st:STATUS_TYPE)`   | `[damage over time](st:dot)`               | Like `[st:STATUS_TYPE]`, but instead of using the name of the status effect type for the button, uses `TEXT` instead. |
 | `[i:ICON]`                 | `[i:caster]`                               | Replaced with the specified icon. See below for a list of valid icons. |
-| `:unverified(TEXT)`        | `:unverified(always hits twice)            | Highlights a given piece of text with the disclaimer that the information is unverified and may be false. |
+| `:unverified(TEXT)`        | `:unverified(always hits twice)`           | Highlights a given piece of text with the disclaimer that the information is unverified and may be false. |
 
 In addition, all HTML is valid in descriptions but should be avoided if possible.
 
