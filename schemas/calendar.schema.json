@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/calendar.schema.json",
+    "title": "Calendar",
+    "description": "A list of past and upcoming events in Final Fantasy XIV.",
+    "type": "array",
+    "definitions": {
+        "CalendarObject": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The name of the event.",
+                    "type": "string"
+                },
+                "short": {
+                    "description": "An abbreviated event name (optional).",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the event.",
+                    "type": "string",
+                    "enum": [
+                        "patch",
+                        "event",
+                        "live letter",
+                        "other"
+                    ]
+                },
+                "color": {
+                    "description": "A background color for the event.",
+                    "type": "string",
+                    "pattern": "^#[a-f0-9]{6}$"
+                },
+                "url": {
+                    "description": "A URL to the official finalfantasyxiv.com or Lodestone URL for this event.",
+                    "type": "string"
+                },
+                "allDay": {
+                    "description": "Whether the time should be omitted from the calendar.",
+                    "type": "boolean"
+                }
+            },
+            "required": ["name", "type"]
+        }
+    },
+    "items": {
+        "oneOf": [
+            {
+                "allOf": [{ "$ref": "#/definitions/CalendarObject" }],
+                "properties": {
+                    "name": true,
+                    "short": true,
+                    "type": true,
+                    "color": true,
+                    "url": true,
+                    "allDay": true,
+                    "at": {
+                        "type": "string"
+                    }
+                },
+                "required": ["at"],
+                "additionalProperties": false
+            },
+            {
+                "allOf": [{ "$ref": "#/definitions/CalendarObject" }],
+                "properties": {
+                    "name": true,
+                    "short": true,
+                    "type": true,
+                    "color": true,
+                    "url": true,
+                    "allDay": true,
+                    "from": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "string"
+                    }
+                },
+                "required": ["from", "to"],
+                "additionalProperties": false
+            }
+        ]
+    }
+}

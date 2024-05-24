@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/recent.schema.json",
+    "title": "Recent fights",
+    "description": "The most recently released fights.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "patch": {
+            "description": "The semantic version of the most recently released patch (that contained fights).",
+            "type": "string"
+        },
+        "content": {
+            "description": "A list of fights released in that patch.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "description": "The ID of the instance.",
+                        "type": "number"
+                    },
+                    "url": {
+                        "description": "The URL of the timeline.",
+                        "type": "string"
+                    }
+                },
+                "required": ["id", "url"]
+            }
+        }
+    },
+    "required": ["patch", "content"]
+}

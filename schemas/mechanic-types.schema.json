@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/mechanic-types.schema.json",
+    "title": "Mechanic types",
+    "description": "A dictionary of mechanic type objects.",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "name": {
+                "description": "The name of the item.",
+                "type": "string"
+            },
+            "description": {
+                "description": "The description of the item.",
+                "type": "string"
+            },
+            "is-raid-damage": {
+                "description": "Should be set to true if this type of mechanic is usually raidwide damage.",
+                "type": "boolean"
+            }
+        },
+        "required": ["name", "description"]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/metadata.schema.json",
+    "title": "Metadata",
+    "description": "Metadata about thaliak.com.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "description": "The website's title.",
+            "type": "string"
+        },
+        "description": {
+            "description": "A description of thaliak.com",
+            "type": "string"
+        },
+        "url": {
+            "description": "The URL of the website.",
+            "type": "string"
+        }
+    },
+    "required": ["title", "url", "description"]
+}

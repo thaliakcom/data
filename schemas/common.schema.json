@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/common.schema.json",
+    "title": "Common actions/statuses",
+    "description": "Common actions and status effects. Any actions/status effects defined here serve as aliases in timelines.",
+    "type": "object",
+    "definitions": {
+        "IdSet": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "integer"
+            }
+        }
+    },
+    "properties": {
+        "actions": {
+            "$ref": "#/definitions/IdSet"
+        },
+        "status": {
+            "$ref": "#/definitions/IdSet"
+        }
+    },
+    "required": ["actions", "status"],
+    "additionalProperties": false
+}

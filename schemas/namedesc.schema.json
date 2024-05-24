@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://thaliak.com/namedesc.schema.json",
+    "title": "Name/description objects",
+    "description": "A dictionary of objects containing a name and a description.",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "name": {
+                "description": "The name of the item.",
+                "type": "string"
+            },
+            "description": {
+                "description": "The description of the item.",
+                "type": "string"
+            }
+        },
+        "required": ["name", "description"]
+    }
+}
