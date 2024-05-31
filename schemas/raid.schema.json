@@ -11,7 +11,7 @@
         "id": {
           "type": "integer",
           "minimum": 0,
-          "description": "The ID of the encounter. Must match an encounter in `xivapi.com/instancecontent/ID`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See  {@link  suffix } ."
+          "description": "The ID of the encounter. Must match an encounter in `xivapi.com/contentfindercondition/ID`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See  {@link  suffix } ."
         },
         "sort_id": {
           "type": "integer",
