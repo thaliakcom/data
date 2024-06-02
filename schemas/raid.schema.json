@@ -1,9 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://thaliak.com/raid.schema.json",
   "$ref": "#/definitions/UnprocessedRaidData",
-  "title": "Fight timeline",
-  "description": "A full fight timeline, including definitions for actions and statuses, diagrams, and the timeline itself.",
   "definitions": {
     "UnprocessedRaidData": {
       "type": "object",
@@ -11,7 +8,7 @@
         "id": {
           "type": "integer",
           "minimum": 0,
-          "description": "The ID of the encounter. Must match an encounter in `xivapi.com/contentfindercondition/ID`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See  {@link  suffix } ."
+          "description": "The ID of the encounter. Must be a valid encounter in `ContentFinderCondition`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See  {@link  suffix } ."
         },
         "sort_id": {
           "type": "integer",
@@ -113,14 +110,14 @@
           "additionalProperties": {
             "$ref": "#/definitions/UnprocessedStatusEffect"
           },
-          "description": "The status effects that appear in this encounter. Each status effect is either its XIVAPI ID or (if there is no XIVAPI entry for it) a unique string representing the status effect, and a data object further describing it."
+          "description": "The status effects that appear in this encounter. Each status effect is either its game data ID or (if there is no game data entry for it) a unique string representing the status effect, and a data object further describing it."
         },
         "actions": {
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/UnprocessedAction"
           },
-          "description": "The actions (mechanics) that appear in this encounter. Each action is either its XIVAPI ID or (if there is no XIVAPI entry for it) a unique string representing the action, and a data object further describing it."
+          "description": "The actions (mechanics) that appear in this encounter. Each action is either its game data ID or (if there is no game data entry for it) a unique string representing the action, and a data object further describing it."
         },
         "timeline": {
           "type": "array",
@@ -298,15 +295,15 @@
       "properties": {
         "id": {
           "type": "number",
-          "description": "If specified, will use this ID to retrieve additional information about the status from XIVAPI. If not specified, will use the key of this status instead.\n\nNote that timeline items and in-text references still use the key of the status to retrieve additional action data.\n\nWhile not necessary, using this field is generally recommended to \"alias\" statuses used in the fight to make the timeline easier to read and maintain."
+          "description": "If specified, will use this ID to retrieve additional information about the status from game data. If not specified, will use the key of this status instead.\n\nNote that timeline items and in-text references still use the key of the status to retrieve additional action data.\n\nWhile not necessary, using this field is generally recommended to \"alias\" statuses used in the fight to make the timeline easier to read and maintain."
         },
         "name": {
           "type": "string",
-          "description": "Can be used to override the name of the status effect. Note that the status name is automatically retrieved from XIVAPI based on the status ID, so overriding this value is only necessary if there is no XIVAPI entry for this status, or when the XIVAPI name is incorrect."
+          "description": "Can be used to override the name of the status effect. Note that the status name is automatically retrieved from game data based on the status ID, so overriding this value is only necessary if there is no game data entry for this status, or when the game data name is incorrect."
         },
         "icon": {
-          "type": "string",
-          "description": "A URL to the icon of the status effect. Note that this URL is automatically retrieved from XIVAPI, so explicitly defining it is strongly discouraged."
+          "type": "number",
+          "description": "The icon ID of the status effect. Note that this ID is automatically retrieved from game data, so explicitly defining it is strongly discouraged."
         },
         "duration": {
           "anyOf": [
@@ -339,20 +336,20 @@
         },
         "gameDescription": {
           "type": "string",
-          "description": "The in-game text of the status effect that appears when you hover over the effect. Note that this value is automatically retrieved from XIVAPI, so explicitly defining it here is strongly discouraged."
+          "description": "The in-game text of the status effect that appears when you hover over the effect. Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
         },
         "isBuff": {
           "type": "boolean",
-          "description": "Whether this status effect represents a buff (enhancement) or debuff (enfeeblement). Note that this value is automatically retrieved from XIVAPI, so explicitly defining it here is strongly discouraged."
+          "description": "Whether this status effect represents a buff (enhancement) or debuff (enfeeblement). Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
         },
         "maxStacks": {
           "type": "integer",
           "minimum": 0,
-          "description": "If the status effect can be stacked, the maximum number of stacks. Note that this value is automatically retrieved from XIVAPI, so explicitly defining it here is strongly discouraged."
+          "description": "If the status effect can be stacked, the maximum number of stacks. Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
         },
         "isPlayerSource": {
           "type": "boolean",
-          "description": "Whether the status effect originates from a player or an enemy. Note that this value is automatically retrieved from XIVAPI, so explicitly defining it here is strongly discouraged."
+          "description": "Whether the status effect originates from a player or an enemy. Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
         }
       },
       "additionalProperties": false
@@ -377,11 +374,11 @@
       "properties": {
         "id": {
           "type": "number",
-          "description": "If specified, will use this ID to retrieve additional information about the action from XIVAPI. If not specified, will use the key of this action instead.\n\nNote that timeline items and in-text references still use the key of the action to retrieve additional action data.\n\nWhile not necessary, using this field is strongly recommended to \"alias\" actions used in the fight to make the timeline easier to read and maintain."
+          "description": "If specified, will use this ID to retrieve additional information about the action from game data. If not specified, will use the key of this action instead.\n\nNote that timeline items and in-text references still use the key of the action to retrieve additional action data.\n\nWhile not necessary, using this field is strongly recommended to \"alias\" actions used in the fight to make the timeline easier to read and maintain."
         },
         "name": {
           "type": "string",
-          "description": "Can be used to override the name of the action. Note that the action name is automatically retrieved from XIVAPI based on the action ID, so overriding this value is only necessary if there is no XIVAPI entry for this action, or when the XIVAPI name is incorrect."
+          "description": "Can be used to override the name of the action. Note that the action name is automatically retrieved from game data based on the action ID, so overriding this value is only necessary if there is no game data entry for this action, or when the game data name is incorrect."
         },
         "mechanic": {
           "$ref": "#/definitions/MechanicType",
@@ -393,11 +390,11 @@
         },
         "type": {
           "$ref": "#/definitions/DamageType",
-          "description": "The type of damage applied. Must be one of the values from `damage-types.yaml`.\n\nNote that this field is automatically retrieved from XIVAPI, so explicitly specifying this field is strongly discouraged.\n\nOnly specify this field for actual *damage instances*, not casts of mechanics that involve damage instances in some way."
+          "description": "The type of damage applied. Must be one of the values from `damage-types.yaml`.\n\nNote that this field is automatically retrieved from game data, so explicitly specifying this field is strongly discouraged.\n\nOnly specify this field for actual *damage instances*, not casts of mechanics that involve damage instances in some way."
         },
         "element": {
           "$ref": "#/definitions/Element",
-          "description": "The type of element, if the damage is elemental. Only applicable to magic damage.\n\nNote that this field is automatically retrieved from XIVAPI, so explicitly specifying this field is strongly discouraged."
+          "description": "The type of element, if the damage is elemental. Only applicable to magic damage.\n\nNote that this field is automatically retrieved from game data, so explicitly specifying this field is strongly discouraged."
         },
         "damage": {
           "type": "integer",
@@ -416,7 +413,7 @@
         "cast": {
           "type": "integer",
           "minimum": 0,
-          "description": "The cast time in milliseconds.\n\nNote that this value is automatically retrieved from XIVAPI based on the ID, so explicitly defining this field is only necessary if the XIVAPI value is wrong.\n\nAlso note that this does not affect the timeline in any way. It is purely used to provide additional information to the user."
+          "description": "The cast time in milliseconds.\n\nNote that this value is automatically retrieved from game data based on the ID, so explicitly defining this field is only necessary if the game data value is wrong.\n\nAlso note that this does not affect the timeline in any way. It is purely used to provide additional information to the user."
         },
         "resolve": {
           "type": "string",
@@ -475,12 +472,12 @@
           "description": "Whether the `damage` is *raidwide* damage or not. Used in mitigation calculation. Specifically, if multiple mechanics happen at the same time, the damage is considered cumulative if the attack is marked as raid damage. If it is not, the attack with the highest damge out of all simultaneous attacks is used.\n\nNote that this value is automatically derived from the `mechanic` type. You should specify it only if the action's mechanic type doesn't allow for a definitive conclusion on whether the damage is raidwide damage or not.\n\nAs an example, individual hits of a limit cut mechanic are usually *individual* damage, but not always. You could specify this attribute on limit cut mechanics that *are* raidwide damage to indicate that each limit cut hit needs to be mitigated more strongly, and that the party needs to be healed after each individual hit as opposed to only at the end of the mechanic."
         },
         "icon": {
-          "type": "string",
-          "description": "A URL to the icon of the action. This is primarily meant for player actions and is automatically filled from XIVAPI data in that case. Monster actions do not have icons."
+          "type": "number",
+          "description": "The ID of the action icon. This is primarily meant for player actions and is automatically filled from game data in that case. Monster actions do not have icons."
         },
         "isPlayerSource": {
           "type": "boolean",
-          "description": "Whether this is a player or enemy action. This value is automatically derived from XIVAPI data, so explicitly defining this field is strongly discouraged."
+          "description": "Whether this is a player or enemy action. This value is automatically derived from game data, so explicitly defining this field is strongly discouraged."
         }
       },
       "required": [

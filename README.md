@@ -19,7 +19,7 @@ The fight timelines are the main component of thaliak.com, and as a result also 
 
 | Property       | Description                                                       |
 | --------------- | ----------------------------------------------------------------- |
-| `id`            | The ID of the instance in the game files. Can be found via XIVAPI. |
+| `id`            | The ID of the duty finder instance in the game files. Can be found via [`ironworks-cli`](https://github.com/thaliakcom/ironworks-cli). |
 | `patch`         | The patch in which this fight was released. |
 | `date`          | The date the timeline was first created.                        |
 | `modified`      | The date the timeline was last modified.                         |
