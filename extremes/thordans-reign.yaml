@@ -996,7 +996,7 @@ graphing:
         dimensional-collapse#1: [80, 0]
         dimensional-collapse#2: [70, -10]
         dimensional-collapse#3: [70, 10]
-        dimensional-collapse#4: [60, 0]
+        dimensional-collapse#4: [42, 0]
         dimensional-collapse#5: [78, -135]
         dimensional-collapse#6: [20, 45]
         dimensional-collapse#7: [43, 45]
@@ -1038,12 +1038,16 @@ graphing:
       - heavy-impact-2: { visible: false }
         heavy-impact-4: { visible: true }
         H2: [43, 45]
+        T2: [42, 0]
       - heavy-impact-3: { visible: false }
         tower#*: { visible: false }
         enemy#grinnaux: { visible: true }
         dimensional-collapse#*: { scale: 0.4 }
         R1: [60, -110]
         R2: [60, 35]
+        M1: [64, -28]
+        M2: [50, -23]
+        T1: [56, -29]
       - heavy-impact-4: { visible: false }
         dimensional-collapse#*: { scale: 0.6 }
         boss: [70, -35]
