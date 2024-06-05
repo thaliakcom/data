@@ -318,10 +318,10 @@ actions:
     resolve: Do not be in the [a:the-dark-beckons] stack. Spread out from all other players.
   black-hole:
     id: 35689
-    description: Placeholder description for Black Hole
+    description: "A defamation marker will be shown above the head of one player, causing them to be targeted with an AoE that expands rapidly, and will eventually consume most of the arena. Players that are caught in it's effect will be pulled in and instantly downed."
   fractured-eventide:
     id: 35644
-    description: Placeholder description for Fractured Eventide
+    description: "[boss] will lean onto the arena, positioning their head to the left side of the arena and slowly sweeping it with a magical beam in the direction opposite of where the beam originated."
     children:
       - at: 491
         id: fractured-eventide-1
