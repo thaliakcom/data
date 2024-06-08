@@ -18,7 +18,7 @@ status:
     description: Increases damage taken by approximately 14% per stack.
     type: vuln
   doom:
-    id: 1089
+    id: 1769
     duration: 10000
     description: Death occurs if health is not restored to 100% before the debuff expires.
     type: condition
@@ -28,7 +28,7 @@ status:
     description: Makes any additional magic damage taken lethal.
     type: vuln
   hp-penalty:
-    id: 1769
+    id: 1089
     description: Reduces maximum HP by 30%.
     type: impairment
   acceleration-bomb:
