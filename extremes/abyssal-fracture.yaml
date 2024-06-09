@@ -20,12 +20,12 @@ status:
   doom:
     id: 1769
     duration: 10000
-    description: Death occurs if health is not restored to 100% before the debuff expires.
+    description: Automatically dispelled if HP is restored to 100%, otherwise the player dies.
     type: condition
   magic-vuln:
     id: 2941
     duration: 2000
-    description: Makes any additional magic damage taken lethal.
+    description: Renders any magic damage taken lethal.
     type: vuln
   hp-penalty:
     id: 1089
@@ -34,60 +34,66 @@ status:
   acceleration-bomb:
     id: 2657
     duration: 57000
-    description: Near the end of this debuff's duration, a cube above affected players' heads ticks down from 3. If affected players are moving, auto-attacking, or executing an action at this point, they will be launched into the air and take heavy damage.
+    description: If afflicted players are moving, auto-attacking, or executing an action when the debuff expires, they take heavy damage, are knocked into the air, and inflicted with [s:vuln].
     type: delay
   divisive-dark:
     id: 3762
     duration: 69000
-    description: Executes [a:the-dark-divides] (a [m:spread]) on all affected players when the debuff expires.
+    description: Executes [a:the-dark-divides] (a [m:spread]) on all afflicted players when the debuff expires.
     type: delay
   beckoning-dark:
     id: 3794
     duration: 76000
-    description: Executes [a:the-dark-beckons] (a [m:stack.party]) on all affected players when the debuff expires.
+    description: Executes [a:the-dark-beckons] (a [m:stack.party]) on all afflicted players when the debuff expires.
     type: delay
   forked-lightning:
     id: 3799
     duration: 76000
-    description: Executes [a:forked-lightning] (an untelegraphed [m:spread]) on all affected players when the debuff expires. Any *other* player hit by the [ms:chariot] is inflicted with [s:paralysis].
+    description: Executes [a:forked-lightning] (an untelegraphed [m:spread]) on all afflicted players when the debuff expires. Any *other* player hit by the [ms:chariot] is inflicted with [s:paralysis].
     type: delay
   big-bounce:
     id: 3761
     duration: 15000
-    description: Deals damage over time.
+    description: Deals moderate damage over time.
     type: dot
     tick: 11000
   bind:
     id: 2518
     duration: 3000
-    description: Affected players can't move, but can continue to attack.
+    description: Afflicted players can't move, but can continue to attack.
     type: impairment
   blunt-vuln:
     id: 2248
     duration: 9960
-    description: Any additional blunt damage taken (i.e. a comet) is lethal.
+    description: Renders any blunt damage (i.e. [a:meteor-impact-cast]) lethal.
     type: vuln
   bonds-of-darkness:
     id: 3767
     duration: 30000
-    description: Affected players are chained to another player. If the chains aren't stretched enough to break within 5 seconds, players will take damage from [a:the-dark-binds] and be inflicted with [s:vuln].
+    description: Afflicted players are chained to another player. If the chains aren't stretched far enough to break within 5 seconds, players take damage from [a:the-dark-binds] and are inflicted with [s:vuln].
     type: condition
   fire-vuln:
     id: 2098
     duration: 2000
-    description: Any additional damage taken from [a:branding-flare] or [a:sparking-flare] is lethal.
+    description: Renders any fire damage (i.e. from [a:branding-flare] or [a:sparking-flare]) lethal.
     type: vuln
   pollen:
     id: 1507
     duration: 15000
-    description: Deals massive damage over 4 ticks for a total of over 300,000 damage.
+    description: Deals massive damage over time for a total of over 300,000 damage.
     tick: 75000
     type: dot
   paralysis:
     id: 3463
     duration: 10000
-    description: Occasionally interrupts all player actions.
+    description: Randomly stuns afflicted players for a brief period of time, interrupting any actions and movement.
     type: impairment
+  flesh-wound:
+    id: 264
+    duration: 15000
+    tick: 10000
+    description: A cleansable DoT inflicted by [a:chasmic-nails].
+    type: dot
 actions:
   abyssal-nox:
     id: 35647
@@ -98,18 +104,22 @@ actions:
     mechanic: aoe
     shape: chariot
     description: |
-      Glowing lights travel across lines on the floor and eventually settle on one of 9 possible locations, where they will then emit a large [ms:chariot] explosion that inflicts [s:vuln].
-      This then repeats, with all subsequent lights settling on all the spots that were *not* already hit.
-      The possible locations are the cardinals, intercardinals, and the center of the arena.
-      There are a limited number of patterns. At least one of the front spots (within [boss]'s hitbox) is safe on either iteration.
-    resolve: Find a safe spot close to [boss], wait, then go to where an explosion just happened.
+      Divides the arena into a 3x3 grid and spawns glowing lights that travel across the floor to 5 of the 9 grid cells.
+      Shortly after, those grid cells explode in a large [ms:chariot] that deals heavy damage and inflicts [s:vuln]. At the same time, lights travel to the other four cells, which are next to explode.
+      There are a limited number of patterns. At least one of the northmost cells (within [boss]'s hitbox) is always safe.
+    resolve: Find a dark cell close to [boss], wait, then go to where an explosion just happened.
     children:
       - at: 0
         id: abyssal-echoes-hit
+        count: 5
+        description: The first set of AoEs explode.
       - at: 4993
         id: abyssal-echoes-hit
+        count: 4
+        description: The second set of AoEs explode.
   abyssal-echoes-hit:
     id: 35650
+    name: Abyssal Echoes (Hit)
     mechanic: aoe
     shape: chariot
     description: The [t:AoE]s generated by [a:abyssal-echoes] explode.
@@ -117,8 +127,8 @@ actions:
     id: 35640
     mechanic: stack.intercept
     shape: line
-    description: Multi-hit line stack. Hits 6 times for heavy damage per hit. The first two targets hit take double damage.
-    resolve: Have both tanks stand in front and pop tank cooldowns. Be aware that, on the first Sable Thread, there's a tankbuster immediately after the stack, so well-timed tank cooldowns can cover both.
+    description: Multi-hit line stack. Hits 6 times for heavy damage per hit. The first two targets take double damage.
+    resolve: Have both tanks stand in front and pop tank cooldowns. Be aware that [a:dark-matter] directly follows the first Sable Thread, so well-timed tank cooldowns can cover both.
     children:
       - at: 670
         id: sable-thread-hit
@@ -134,11 +144,12 @@ actions:
         id: sable-thread-hit
   sable-thread-hit:
     id: 35643
+    name: Sable Thread (Hit)
     damage: 28000
     description: Individual [a:sable-thread] hit.
   dark-matter:
     id: 35715
-    description: A three-hit multi tankbuster.
+    description: A three-hit two-target tankbuster.
     mechanic: tb.double
     shape: chariot
     count: 2
@@ -151,6 +162,7 @@ actions:
         id: dark-matter-hit
   dark-matter-hit:
     id: 35716
+    name: Dark Matter (Hit)
     damage: 53000
     count: 2
     description: Individual [a:dark-matter] hit.
@@ -159,7 +171,7 @@ actions:
     mechanic: aoe
     description: |
       [boss] drives his claws through the arena, leaving only two small triangle-shaped telegraphed safe spots.
-      Afterwards, leaves behind 3 star-shaped lights in the arena.
+      The attack leaves behind 3 crosses in the arena.
     children:
       - at: 9099
         id: miasmic-blast
@@ -168,22 +180,48 @@ actions:
     count: 6
     mechanic: aoe
     shape: line
-    description: Each star generated by [a:visceral-whirl] emits massive [ms:line] [t:AoE]s in the direction of its tips, again leaving only two small safe spots.
+    description: |
+      Each cross generated by [a:visceral-whirl] emits a wide [ms:line] [t:AoE]s in the direction of its tips, again leaving only two small safe spots.
+      There are only 3 possible patterns.
   flare:
     id: 35677
+    mechanic: stack.tower
+    shape: chariot
+    compact: trim
+    count: 2
+    description: |
+      Two towers appear. Deals lethal damage to anyone inside, but the damage can be shared by multiple players to render it survivable.
+      The first tower always appears in the southeast of the arena, the second tower in the northwest.
+      When the towers resolve massive fireballs descend on the tower, sink halfway into the floor, and stay there. Players who do not exit the fireball immediately suffer continuous damage from [a:scald].
+    resolve: Due to the locations of the towers it makes the most sense to place tanks and melees in the northwest tower and healers and ranged DPS in the southeast tower, so melees can maintain uptime.
+    children:
+    - at: 1091
+      id: flare-hit
+    - at: 3091
+      id: scald
+    - at: 8085
+      id: flare
+    - at: 8120
+      id: flare-implosion
+    - at: 8129
+      id: prominence-spine
+  flare-hit:
+    id: 35680
+    name: Flare (Hit)
     damage: 67791
     type: magic
     mechanic: stack.tower
     shape: chariot
     count: 2
-    description: |
-      Two towers appear that must both be soaked with as many party members as possible.
-      The first tower always appears in the southeast of the arena, the second tower in the northwest.
-      When the towers resolve, massive fireballs come down on the tower, sink halfway into the floor, and then stay there. Players must exit the fireball immediately or suffer continuous damage from [a:scald].
-    resolve: Due to the locations of the towers it makes the most sense to place tanks and melees in the northwest tower and healers and ranged DPS in the southeast tower, so melees can maintain uptime.
-    children:
-      - at: 7129
-        id: prominence-spine
+    description: The stack towers resolve.
+  flare-implosion:
+    id: 35682
+    name: Flare (Implosion)
+    type: magic
+    mechanic: aoe
+    shape: chariot
+    count: 2
+    description: The fireballs left behind by the stack towers implode, dealing massive damage to anyone within.
   scald:
     id: 35766
     mechanic: mech.failure
@@ -194,13 +232,13 @@ actions:
     shape: line
     count: 6
     description: |
-      3 flames stream out from each fireball, soon shooting a [ms:line] [t:AoE] in that direction.
+      4 flames stream out from each fireball and, after some time, shoot a [ms:line] [t:AoE] in that direction that deals heavy damage and inflicts [s:vuln].
       Note that the location of the lines is not completely random. There are a limited number of patterns. Either the middle of the arena or its sides will always be safe.
     trivia: "*Prominence* is the scientific term for a massive loop of plasma that streams out from the sun."
   void-bio:
     id: 35686
     description: |
-      [boss] spits poison onto the arena, generating a row of poison orbs that slowly travel across the arena in a random order.
+      [boss] generates a row of poison orbs that slowly travel across the arena in a random order.
       [a:void-bio] is always followed directly by [a:visceral-whirl], requiring you to dodge into the safe spot while avoiding the poison balls.
       [Being hit by an orb](a:burst) inflicts [s:vuln] and [s:pollen].
   big-bang:
@@ -224,10 +262,15 @@ actions:
     shape: chariot
     count: 18
     description: Random AoEs appear in the arena.
+  acceleration-bomb:
+    id: 35663
+    mechanic: mech.stillness
+    damage: 40000
+    description: "[s:acceleration-bomb] resolves. If afflicted players are moving, auto-attacking, or executing an action they take heavy damage, are knocked into the air and inflicted with [s:vuln]."
   big-bang-spread:
     id: 35806
     name: Big Bang (Spread)
-    damage: 26904
+    damage: 42312
     mechanic: spread
     shape: chariot
     count: 8
@@ -235,7 +278,7 @@ actions:
   big-bang-hit:
     id: 35660
     name: Big Bang (Hit)
-    damage: 107977
+    damage: 53802
     mechanic: raidwide.transition
     description: The final hit of [a:big-bang]. Deals heavy damage, changes the appearance of the arena, and inflicts all players with [s:big-bounce], [s:hp-penalty], [s:acceleration-bomb], [s:divisive-dark], one of the healers with [s:beckoning-dark], and 2 random players with [s:forked-lightning].
   void-meteor:
@@ -311,127 +354,98 @@ actions:
     description: "[s:beckoning-dark] resolves, dealing heavy damage that must be shared and inflicting [s:magic-vuln]."
   the-dark-binds:
     id: 35669
-    description: Placeholder description for the Dark Binds
+    mechanic: mech.check
+    description: Checks if all players with [s:bonds-of-darkness] are far enough away from their partner and if not, deals heavy damage to them.
   forked-lightning:
     id: 35668
-    description: "[s:forked-lightning] resolves. Does not affect the debuffed player themselves but deals heavy damage to all other players hit and inflicts them with [s:paralysis]."
-    resolve: Do not be in the [a:the-dark-beckons] stack. Spread out from all other players.
+    mechanic: spread
+    shape: chariot
+    description: "[s:forked-lightning] resolves. Does not affect the afflicted player themselves but deals heavy damage to all other players hit and inflicts them with [s:paralysis]."
+    resolve: Afflicted players should make sure to stay away from all other players, particularly those in the [a:the-dark-beckons] stack.
   black-hole:
     id: 35689
-    description: "A defamation marker will be shown above the head of one player, causing them to be targeted with an AoE that expands rapidly, and will eventually consume most of the arena. Players that are caught in it's effect will be pulled in and instantly downed."
+    mechanic: aoe.baitable
+    shape: chariot
+    description: |
+      A marker appears above one player. When it resolves, they drop a black hole on their location that rapidly expands, consuming everything in its wake.
+      After being dropped, there is a grace period of a few seconds before the black hole becomes active. Any player caught in its radius after that point is sucked in and instantly killed.
+    resolve: Drop the [a:black-hole] at the corner on the side the beam starts on. Stack *behind* where the beam starts, then follow it as it moves toward the other side.
+    children:
+    - at: 961
+      id: fractured-eventide
   fractured-eventide:
     id: 35644
-    description: "[boss] will lean onto the arena, positioning their head to the left side of the arena and slowly sweeping it with a magical beam in the direction opposite of where the beam originated."
-    children:
-      - at: 491
-        id: fractured-eventide-1
-      - at: 980
-        id: fractured-eventide-2
-      - at: 1427
-        id: fractured-eventide-2
-      - at: 1873
-        id: fractured-eventide-2
-      - at: 2360
-        id: fractured-eventide-2
-      - at: 2808
-        id: fractured-eventide-2
-      - at: 3252
-        id: fractured-eventide-2
-      - at: 3741
-        id: fractured-eventide-2
-      - at: 4189
-        id: fractured-eventide-2
-      - at: 4635
-        id: fractured-eventide-2
-      - at: 5123
-        id: fractured-eventide-2
-      - at: 5568
-        id: fractured-eventide-2
-      - at: 6012
-        id: fractured-eventide-2
-      - at: 6460
-        id: fractured-eventide-2
-      - at: 6948
-        id: fractured-eventide-2
-      - at: 7395
-        id: fractured-eventide-2
-      - at: 7840
-        id: fractured-eventide-2
-      - at: 8286
-        id: fractured-eventide-2
-      - at: 8733
-        id: fractured-eventide-2
-      - at: 9177
-        id: fractured-eventide-2
-      - at: 9625
-        id: fractured-eventide-2
-  fractured-eventide-1:
-    id: 35646
-    description: Placeholder description for Fractured Eventide
-  fractured-eventide-2:
-    id: 35762
-    description: Placeholder description for Fractured Eventide
+    mechanic: aoe
+    shape: line
+    description: "[boss] leans onto the arena. After some time, it blasts a [m:line] across the arena, slowly sweeping toward the other side."
   big-crunch:
-    id: 36146
-    damage: 42312
-    description: Placeholder description for Big Crunch
+    name: Big Crunch
+    mechanic: raidwide
+    type: magic
+    description: Same as [a:big-bang], but reverts the arena back to its original appearance and only inflicts [s:big-bounce].
     children:
-      - at: 133
-        id: big-crunch-1
-      - at: 312
-        id: big-crunch-1
-      - at: 534
-        id: big-crunch-1
-      - at: 713
-        id: big-crunch-1
-      - at: 980
-        id: big-crunch-1
-      - at: 1114
-        id: big-crunch-1
-      - at: 1293
-        id: big-crunch-1
-      - at: 1516
-        id: big-crunch-1
-      - at: 1695
-        id: big-crunch-1
-      - at: 1918
-        id: big-crunch-1
-      - at: 2098
-        id: big-crunch-1
-      - at: 4991
-        id: big-crunch-2
-  big-crunch-1:
+      - at: 4700
+        id: big-crunch-spread
+      - at: 5700
+        id: big-crunch-aoe
+      - at: 9700
+        id: big-crunch-hit
+  big-crunch-spread:
+    id: 36146
+    name: Big Crunch (Spread)
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 42312
+    description: A small spread AoE. Deals mild damage and inflicts a short [s:magic-vuln]. Being hit by another AoE is lethal.
+  big-crunch-aoe:
     id: 36145
-    description: Placeholder description for Big Crunch
-  big-crunch-2:
+    name: Big Bang (AoEs)
+    mechanic: aoe
+    shape: chariot
+    count: 18
+    description: Random AoEs appear in the arena.
+  big-crunch-hit:
     id: 35661
+    name: Big Crunch (Final Hit)
+    mechanic: raidwide.transition
     damage: 53802
-    description: Placeholder description for Big Crunch
+    description: The final hit of [a:big-crunch]. Deals heavy damage, changes the appearance of the arena, and inflicts all players with [s:big-bounce].
   branding-flare:
     id: 35679
-    description: Placeholder description for Branding Flare
+    description: |
+      Same as [a:flare], but the towers spawn side-by-side in the middle of the arena.
+      Additionally, adds two new mechanics afterwards:
+      * [a:nox], which marks two players and spawns two [m:aoe.chasing]s that pursue them.
+      * [a:branding-flare-hit], a [m:stack.partner] that targets either supports or DPS and resolves at the same time as [a:prominence-spine].
+      **The name of the cast determines whether the final hit is a stack or a spread. Compare [a:sparking-flare].**
+    children:
+    - at: 1091
+      id: flare-hit
+    - at: 3091
+      id: scald
+    - at: 6300
+      id: nox
+    - at: 8085
+      id: flare
+    - at: 8085
+      id: branding-flare-hit
+    - at: 8120
+      id: flare-implosion
+    - at: 8129
+      id: prominence-spine
   nox:
     id: 36136
-    description: Placeholder description for Nox
-  branding-flare-1:
+    mechanic: aoe.chasing
+    shape: chariot
+    description: Marks 2 players and spawns two large balls that pursue them. Deals massive damage to anyone in their path.
+  branding-flare-hit:
     id: 35685
+    name: Branding Flare (Hit)
     damage: 53132
-    description: Placeholder description for Branding Flare
-  nox-1:
-    id: 36138
-    damage: 67239
-    description: Placeholder description for Nox
-    children:
-      - at: 3163
-        id: nox-2
-      - at: 4720
-        id: nox-2
-      - at: 6279
-        id: nox-2
-  nox-2:
-    id: 36132
-    damage: 67239
-    description: Placeholder description for Nox
+    mechanic: stack.partner
+    shape: chariot
+    description: Very small circular AoE on either all supports or all DPS players. Deals lethal damage unless soaked with someone of the opposite role. Inflicts [s:fire-vuln], rendering overlap lethal.
   burst:
     id: 35687
     damage: 24437
@@ -439,140 +453,132 @@ actions:
     description: A player was hit by a [a:void-bio] orb. Inflicts [s:vuln] and [s:pollen].
   sparking-flare:
     id: 35678
-    description: Placeholder description for Sparking Flare
-  sparking-flare-1:
+    description: |
+      Same as [a:flare], but the towers spawn side-by-side in the middle of the arena.
+      Additionally, adds two new mechanics afterwards:
+      * [a:nox], which marks two players and spawns two [m:aoe.chasing]s that pursue them.
+      * [a:sparking-flare-hit], a [m:spread] that targets all players and resolves at the same time as [a:prominence-spine].
+      **The name of the cast determines whether the final hit is a stack or a spread. Compare [a:branding-flare].**
+    children:
+    - at: 1091
+      id: flare-hit
+    - at: 3091
+      id: scald
+    - at: 6300
+      id: nox
+    - at: 8085
+      id: flare
+    - at: 8085
+      id: sparking-flare-hit
+    - at: 8120
+      id: flare-implosion
+    - at: 8129
+      id: prominence-spine
+  sparking-flare-hit:
     id: 35684
     damage: 56050
-    description: Placeholder description for Sparking Flare
+    mechanic: spread
+    shape: chariot
+    description: Small circular AoE on all players. Inflicts [s:fire-vuln], rendering overlap lethal.
   rend-the-rift:
     id: 35853
     damage: 59551
-    description: Placeholder description for Rend the Rift
+    mechanic: raidwide.transition
+    compact: full
+    description: |
+      Heavy raidwide that transitions the arena into its final state and changes [boss]'s mechanics.
+      This action is not executed at a specific time. Instead, after the boss has been reduced to below 25% HP, its next cast will be replaced by [a:rend-the-rift].
+    children:
+    - at: 13400
+      id: dimensional-surge
+    - at: 13400
+      id: dimensional-surge
+    - at: 14426
+      id: dimensional-surge
+    - at: 15406
+      id: dimensional-surge
+    - at: 16430
+      id: dimensional-surge
+    - at: 17411
+      id: dimensional-surge
   dimensional-surge:
     id: 35710
-    description: Placeholder description for Dimensional Surge
-    children:
-      - at: 0
-        id: dimensional-surge-hit
-      - at: 1026
-        id: dimensional-surge-hit
-      - at: 2006
-        id: dimensional-surge-hit
-      - at: 3030
-        id: dimensional-surge-hit
-      - at: 4011
-        id: dimensional-surge-hit
-  dimensional-surge-hit:
-    id: 35710
-    damage: 38964
-    description: Placeholder description for Dimensional Surge
+    description: Spawns a set of 4 AoEs that explode shortly after.
+    mechanic: aoe
+    shape: chariot
+    count: 4
   nostalgia:
     id: 35691
-    description: Placeholder description for Nostalgia
+    mechanic: raidwide
+    compact: full
+    description: 7 back-to-back raidwides that deal sequentially more damage.
+    children:
+    - at: 400
+      id: bury
+    - at: 1400
+      id: bury
+    - at: 2400
+      id: bury
+    - at: 3400
+      id: bury
+    - at: 5400
+      id: roar
+    - at: 6400
+      id: roar
+    - at: 9400
+      id: primal-roar
   bury:
     id: 35693
+    mechanic: raidwide
     damage: 16012
-    description: Placeholder description for Bury
-    children:
-      - at: 1025
-        id: bury-1
-      - at: 2005
-        id: bury-2
-      - at: 3030
-        id: bury-3
-  bury-1:
-    id: 35694
-    damage: 15989
-    description: Placeholder description for Bury
-  bury-2:
-    id: 35695
-    damage: 16523
-    description: Placeholder description for Bury
-  bury-3:
-    id: 35696
-    damage: 17033
-    description: Placeholder description for Bury
+    description: "[boss] smashes the arena, dealing mild raidwide damage."
   roar:
     id: 35697
+    mechanic: raidwide
     damage: 39111
-    description: Placeholder description for Roar
-    children:
-      - at: 1023
-        id: roar-1
-  roar-1:
-    id: 35698
-    damage: 57604
-    description: Placeholder description for Roar
+    description: "[boss] roars, dealing moderate raidwide damage."
   primal-roar:
     id: 35699
+    mechanic: raidwide
     damage: 66590
-    description: Placeholder description for Primal Roar
+    description: "[boss] roars, dealing heavy raidwide damage."
   flow-of-the-abyss:
     id: 36090
-    description: Placeholder description for Flow of the Abyss
+    mechanic: aoe
+    shape: line
+    description: |
+      [boss] casts a tether to the outside of the arena and cracks the walls of reality in either the first, second, or third row of the arena.
+      This row will be hit by a [m:line] AoE at the end of the cast, inflicting [s:vuln].
+  akh-rhai:
+    id: 35700
+    mechanic: aoe.linger
+    damage: 19678
+    shape: chariot
+    description: Marks all players for an AoE that drops on their position, hits without delay, and lingers for multiple hits.
+    resolve: Spread, to minimize the damage from the first hit or the first few hits, then step out of the AoE as soon as it has dropped.
   umbral-prism:
     id: 35703
     damage: 56644
-    description: Placeholder description for Umbral Prism
-  dimensional-surge-1:
-    id: 35714
-    damage: 53660
-    description: Placeholder description for Dimensional Surge
-  chasmic-nails:
-    id: 35704
-    description: Placeholder description for Chasmic Nails
-    children:
-      - at: 667
-        id: chasmic-nails-1
-  chasmic-nails-1:
-    id: 35705
-    description: Placeholder description for Chasmic Nails
-  chasmic-nails-2:
-    id: 35706
-    description: Placeholder description for Chasmic Nails
-  chasmic-nails-3:
-    id: 35707
-    damage: 67623
-    description: Placeholder description for Chasmic Nails
-    children:
-      - at: 670
-        id: chasmic-nails-4
-      - at: 1382
-        id: chasmic-nails-5
-  chasmic-nails-4:
-    id: 35708
-    description: Placeholder description for Chasmic Nails
-  chasmic-nails-5:
-    id: 35709
-    description: Placeholder description for Chasmic Nails
+    mechanic: stack.enumeration
+    shape: chariot
+    description: An [m:stack.enumeration] on either all supports or all DPS players. Instantly kills the targeted players unless one player stacks with them.
   umbral-rays:
     id: 35702
-    description: Placeholder description for Umbral Rays
-  akh-rhai:
-    id: 35700
-    description: Placeholder description for Akh Rhai
-    children:
-      - at: 577
-        id: akh-rhai-1
-      - at: 1157
-        id: akh-rhai-1
-      - at: 1733
-        id: akh-rhai-1
-      - at: 2314
-        id: akh-rhai-1
-      - at: 2892
-        id: akh-rhai-1
-      - at: 3472
-        id: akh-rhai-1
-      - at: 4050
-        id: akh-rhai-1
-  akh-rhai-1:
-    id: 35701
-    damage: 19678
-    description: Placeholder description for Akh Rhai
+    damage: 50000
+    mechanic: stack.party
+    shape: chariot
+    description: A telegraphed stack on one player.
+  chasmic-nails:
+    id: 35704
+    mechanic: aoe.memory
+    shape: cone
+    description: Executes five conal AoEs of 36° each in a random (but telegraphed) order. Also executes [a:flow-of-the-abyss] at the same time. Inflicts [s:vuln] and [s:flesh-wound] on any player hit.
+    resolve: Stay out of the first AoE, then move into it after it resolves.
   big-bang-enrage:
     name: Big Bang
-    description: Placeholder description for Big Bang
+    description: |
+      [boss] enrages, wiping the party.
+      Note that this enrage is time-based, not mechanics-based, so it's possible to trigger [a:rend-the-rift] only to be met with the enrage immediately afterwards.
     mechanic: enrage
 timeline:
   - at: 11896
@@ -585,45 +591,31 @@ timeline:
     id: dark-matter
   - at: 79787
     id: visceral-whirl
-  - at: 88886
-    id: miasmic-blast
   - at: 103940
     id: flare
-  - at: 106031
-    id: scald
-  - at: 111025
-    id: flare
-  - at: 111069
-    id: prominence-spine
   - at: 121097
     id: void-bio
   - at: 135217
     id: visceral-whirl
-  - at: 144305
-    id: miasmic-blast
   - at: 149433
     id: big-bang
   - at: 174380
     id: void-meteor
-  - at: 204315
-    id: explosion
   - at: 216652
     id: visceral-whirl
-  - at: 225743
-    id: miasmic-blast
   - at: 229309
     id: the-dark-divides
   - at: 236309
     id: the-dark-beckons
+    link: and
   - at: 236309
     id: forked-lightning
+    link: and
   - at: 236487
     id: dark-matter
-  - at: 249844
+  - at: 261000
     id: black-hole
-  - at: 261961
-    id: fractured-eventide
-  - at: 285169
+  - at: 280169
     id: big-crunch
   - at: 305406
     id: abyssal-nox
@@ -633,129 +625,50 @@ timeline:
     id: sable-thread
   - at: 355522
     id: branding-flare
-  - at: 356504
-    id: flare
-  - at: 358600
-    id: scald
-  - at: 361628
-    id: nox
-  - at: 361808
-    id: scald
-  - at: 363546
-    id: branding-flare-1
-  - at: 363591
-    id: flare
-  - at: 363634
-    id: prominence-spine
-  - at: 369293
-    id: nox-1
-  - at: 382783
-    id: void-bio
-  - at: 392676
-    id: burst
-  - at: 396906
-    id: visceral-whirl
-  - at: 405997
-    id: miasmic-blast
-  - at: 417845
-    id: dark-matter
-  - at: 433212
+    link: or
+  - at: 355522
     id: sparking-flare
-  - at: 434193
-    id: flare
-  - at: 436285
-    id: scald
-  - at: 439313
-    id: nox
-  - at: 439492
-    id: scald
-  - at: 441233
-    id: sparking-flare-1
-  - at: 441277
-    id: flare
-  - at: 441321
-    id: prominence-spine
-  - at: 446980
-    id: nox-1
-  - at: 470505
-    id: abyssal-nox
-  - at: 486587
-    id: abyssal-echoes
+  - at: 382783
+    id: <loop>
+    description: The basic mechanics repeat until [boss] enrages or its HP is reduced below 25%.
   - at: 500673
     id: rend-the-rift
-  - at: 512802
-    id: dimensional-surge
+    push: true
   - at: 517837
     id: nostalgia
-  - at: 518593
-    id: bury
-  - at: 523586
-    id: roar
-  - at: 527595
-    id: primal-roar
   - at: 541983
     id: flow-of-the-abyss
+    link: and
+  - at: 543099
+    id: akh-rhai
+    link: or
   - at: 543099
     id: umbral-prism
+    link: or
+  - at: 543099
+    id: umbral-rays
   - at: 543946
-    id: dimensional-surge-1
+    id: dimensional-surge
   - at: 555130
     id: chasmic-nails
-  - at: 556110
-    id: dimensional-surge
-  - at: 556511
-    id: chasmic-nails-2
-  - at: 557134
-    id: dimensional-surge-1
-  - at: 557223
-    id: chasmic-nails-3
-  - at: 571255
-    id: dimensional-surge
+    link: and
+  - at: 556130
+    id: flow-of-the-abyss
   - at: 576291
     id: flow-of-the-abyss
+    link: and
+  - at: 577408
+    id: akh-rhai
+    link: or
+  - at: 577408
+    id: umbral-prism
+    link: or
   - at: 577408
     id: umbral-rays
   - at: 578255
-    id: dimensional-surge-1
+    id: dimensional-surge
   - at: 589443
-    id: chasmic-nails
-  - at: 590424
-    id: dimensional-surge
-  - at: 590823
-    id: chasmic-nails-2
-  - at: 591402
-    id: dimensional-surge-1
-  - at: 591535
-    id: chasmic-nails-3
-  - at: 604584
-    id: dimensional-surge
-  - at: 609622
-    id: nostalgia
-  - at: 610381
-    id: bury
-  - at: 615368
-    id: roar
-  - at: 619376
-    id: primal-roar
-  - at: 628732
-    id: dimensional-surge
-  - at: 633767
-    id: flow-of-the-abyss
-  - at: 635102
-    id: akh-rhai
-  - at: 635726
-    id: dimensional-surge-1
-  - at: 636261
-    id: akh-rhai-1
-  - at: 646913
-    id: chasmic-nails
-  - at: 647892
-    id: dimensional-surge
-  - at: 648291
-    id: chasmic-nails-2
-  - at: 648869
-    id: dimensional-surge-1
-  - at: 649004
-    id: chasmic-nails-3
+    id: <loop>
+    description: Loops all mechanics after [a:rend-the-rift] until the boss enrages.
   - at: 661211
     id: big-bang-enrage

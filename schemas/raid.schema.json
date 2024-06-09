@@ -225,6 +225,9 @@
         "aoe.expanding",
         "aoe.expanding.rings",
         "aoe.intercept",
+        "aoe.chasing",
+        "aoe.linger",
+        "aoe.memory",
         "spread",
         "spread.close",
         "spread.far",
@@ -755,6 +758,9 @@
         },
         {
           "$ref": "#/definitions/SpecialChildTimelineItem"
+        },
+        {
+          "$ref": "#/definitions/LoopItem"
         }
       ]
     },
@@ -791,6 +797,29 @@
         "at",
         "id",
         "name"
+      ],
+      "additionalProperties": false
+    },
+    "LoopItem": {
+      "type": "object",
+      "properties": {
+        "at": {
+          "type": "number",
+          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar.",
+          "minimum": 0
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the action as it happens at this point in the timeline. If not supplied, will default to the first line in the description of the referenced action."
+        },
+        "id": {
+          "type": "string",
+          "const": "<loop>"
+        }
+      },
+      "required": [
+        "at",
+        "id"
       ],
       "additionalProperties": false
     },
