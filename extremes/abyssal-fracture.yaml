@@ -146,10 +146,12 @@ actions:
     id: 35643
     name: Sable Thread (Hit)
     damage: 28000
+    mechanic: stack.intercept
     description: Individual [a:sable-thread] hit.
   dark-matter:
     id: 35715
     description: A three-hit two-target tankbuster.
+    compact: full
     mechanic: tb.double
     shape: chariot
     count: 2
@@ -163,6 +165,7 @@ actions:
   dark-matter-hit:
     id: 35716
     name: Dark Matter (Hit)
+    mechanic: tb.double
     damage: 53000
     count: 2
     description: Individual [a:dark-matter] hit.
@@ -199,8 +202,6 @@ actions:
       id: flare-hit
     - at: 3091
       id: scald
-    - at: 8085
-      id: flare
     - at: 8120
       id: flare-implosion
     - at: 8129
@@ -209,7 +210,6 @@ actions:
     id: 35680
     name: Flare (Hit)
     damage: 67791
-    type: magic
     mechanic: stack.tower
     shape: chariot
     count: 2
@@ -217,14 +217,13 @@ actions:
   flare-implosion:
     id: 35682
     name: Flare (Implosion)
-    type: magic
     mechanic: aoe
     shape: chariot
     count: 2
     description: The fireballs left behind by the stack towers implode, dealing massive damage to anyone within.
   scald:
     id: 35766
-    mechanic: mech.failure
+    mechanic: aoe.linger
     description: Continuous damage dealt to anyone who doesn't immediately exit the fireballs that appear during [a:flare].
   prominence-spine:
     id: 35683
@@ -237,12 +236,14 @@ actions:
     trivia: "*Prominence* is the scientific term for a massive loop of plasma that streams out from the sun."
   void-bio:
     id: 35686
+    mechanic: aoe.exaflares
     description: |
       [boss] generates a row of poison orbs that slowly travel across the arena in a random order.
       [a:void-bio] is always followed directly by [a:visceral-whirl], requiring you to dodge into the safe spot while avoiding the poison balls.
       [Being hit by an orb](a:burst) inflicts [s:vuln] and [s:pollen].
   big-bang:
     id: 35660
+    mechanic: raidwide.transition
     description: |
       Big raidwide that inflicts debuffs and transitions the arena.
       During the cast, [random AoEs](a:big-bang-aoe) start to appear in the arena while everyone is targeted for [a spread](a:big-bang-spread).
@@ -377,7 +378,7 @@ actions:
     id: 35644
     mechanic: aoe
     shape: line
-    description: "[boss] leans onto the arena. After some time, it blasts a [m:line] across the arena, slowly sweeping toward the other side."
+    description: "[boss] leans onto the arena. After some time, it blasts a [ms:line] across the arena, slowly sweeping toward the other side."
   big-crunch:
     name: Big Crunch
     mechanic: raidwide
@@ -413,6 +414,8 @@ actions:
     description: The final hit of [a:big-crunch]. Deals heavy damage, changes the appearance of the arena, and inflicts all players with [s:big-bounce].
   branding-flare:
     id: 35679
+    mechanic: stack.tower
+    shape: chariot
     description: |
       Same as [a:flare], but the towers spawn side-by-side in the middle of the arena.
       Additionally, adds two new mechanics afterwards:
@@ -426,8 +429,6 @@ actions:
       id: scald
     - at: 6300
       id: nox
-    - at: 8085
-      id: flare
     - at: 8085
       id: branding-flare-hit
     - at: 8120
@@ -453,6 +454,8 @@ actions:
     description: A player was hit by a [a:void-bio] orb. Inflicts [s:vuln] and [s:pollen].
   sparking-flare:
     id: 35678
+    mechanic: stack.tower
+    shape: chariot
     description: |
       Same as [a:flare], but the towers spawn side-by-side in the middle of the arena.
       Additionally, adds two new mechanics afterwards:
@@ -466,8 +469,6 @@ actions:
       id: scald
     - at: 6300
       id: nox
-    - at: 8085
-      id: flare
     - at: 8085
       id: sparking-flare-hit
     - at: 8120
@@ -548,7 +549,7 @@ actions:
     shape: line
     description: |
       [boss] casts a tether to the outside of the arena and cracks the walls of reality in either the first, second, or third row of the arena.
-      This row will be hit by a [m:line] AoE at the end of the cast, inflicting [s:vuln].
+      This row will be hit by a [ms:line] AoE at the end of the cast, inflicting [s:vuln].
   akh-rhai:
     id: 35700
     mechanic: aoe.linger
