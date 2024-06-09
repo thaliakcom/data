@@ -137,6 +137,18 @@ aoe.intercept:
     This type of mechanic often appears in the form of a tankbuster, where the attack deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
     These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
   is-raid-damage: true
+aoe.chasing:
+  name: chasing AoE
+  description: |
+    An attack that spawns a delayed AoE underneath a player's location, then begins to chase them. Any player in the path of the AoE (including the targeted player themselves) take heavy damage and debuffs.
+aoe.linger:
+  name: lingering AoE
+  description: |
+    An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
+aoe.memory:
+  name: multi-AoE
+  description: |
+    Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
