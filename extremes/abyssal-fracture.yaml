@@ -1,16 +1,17 @@
 id: 965
 patch: "6.5"
-date: 2023-10-12
-modified: 2023-10-12
+date: 2024-06-09
+modified: 2024-06-09
 by:
-  id: 27637301
-  role: author
+  - id: 27637301
+    role: author
+  - id: 33947410
+    role: editor
 tier: Endwalker
 boss: Zeromus
 HP: 40478540
 description: Endowed with the full power of Zodiark's Darkness, [boss] holds nothing back in this extreme deep within the Thirteenth's moon.
 spoiler: true
-wip: true
 status:
   vuln:
     id: 1789
@@ -126,6 +127,7 @@ actions:
   sable-thread:
     id: 35640
     mechanic: stack.intercept
+    compact: full
     shape: line
     description: Multi-hit line stack. Hits 6 times for heavy damage per hit. The first two targets take double damage.
     resolve: Have both tanks stand in front and pop tank cooldowns. Be aware that [a:dark-matter] directly follows the first Sable Thread, so well-timed tank cooldowns can cover both.
