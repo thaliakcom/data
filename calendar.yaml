@@ -560,7 +560,23 @@
   type: live letter
   url: https://www.youtube.com/watch?v=0JxPTIiDWtI
   at: 2024-06-14 11:00:00
+- name: Patch 7.0 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2024-06-26 09:00:00
+  to: 2024-06-28 09:00:00
 - name: Dawntrail (Patch 7.0)
   short: Patch 7.0
   type: patch
   at: 2024-06-28 09:00:00
+- name: Arcadion (Patch 7.01)
+  short: Patch 7.01
+  type: patch
+  at: 2024-07-16
+  allDay: true
+- name: Arcadion Savage (Patch 7.05)
+  short: Patch 7.05
+  type: patch
+  at: 2024-07-30
+  allDay: true

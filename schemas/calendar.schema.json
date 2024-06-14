@@ -21,6 +21,7 @@
                     "type": "string",
                     "enum": [
                         "patch",
+                        "maintenance",
                         "event",
                         "live letter",
                         "other"
