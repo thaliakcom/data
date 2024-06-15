@@ -69,11 +69,6 @@
           "minimum": 0,
           "description": "The average HP value of all party members *on content*. Used to deliver information about required mitigation and healing."
         },
-        "requiredDPS": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Can be used to override the amount of DPS required to beat the encounter. Note that the required DPS is automatically calculated from the `HP` value and the time of the enrage hit in the `timeline`, so usage of this field is strongly discouraged."
-        },
         "autos": {
           "type": "object",
           "properties": {
