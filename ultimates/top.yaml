@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
 date: 2023-01-24
-modified: 2024-05-19
+modified: 2024-06-14
 by:
   id: 27637301
   role: author
@@ -643,37 +643,39 @@ actions:
         name: LPDU
         common: true
     children:
-    - at: 9610
-      id: subject-simulation-m
-      link: and
-    - at: 9655
-      id: subject-simulation-f
-    - at: 10417
-      id: beyond-strength
-      link: or
-    - at: 10417
-      id: efficient-bladework
-      link: and
-    - at: 10417
-      id: superliminal-steel
-      link: or
-    - at: 10417
-      id: optimized-blizzard-iii
-    - at: 16896
-      id: optimized-fire-iii
-      count: 8
-      link: and
-    - at: 17208
-      id: optical-laser
-    - at: 24104
-      id: discharger
-    - at: 28354
-      id: spotlight
-      count: 2
-      link: and
-    - at: 28443
-      id: efficient-bladework
-      count: 5
+      - at: 3076
+        id: <untargetable>
+      - at: 9610
+        id: subject-simulation-m
+        link: and
+      - at: 9655
+        id: subject-simulation-f
+      - at: 10417
+        id: beyond-strength
+        link: or
+      - at: 10417
+        id: efficient-bladework
+        link: and
+      - at: 10417
+        id: superliminal-steel
+        link: or
+      - at: 10417
+        id: optimized-blizzard-iii
+      - at: 16896
+        id: optimized-fire-iii
+        count: 8
+        link: and
+      - at: 17208
+        id: optical-laser
+      - at: 24104
+        id: discharger
+      - at: 28354
+        id: spotlight
+        count: 2
+        link: and
+      - at: 28443
+        id: efficient-bladework
+        count: 5
   subject-simulation-m:
     id: 31516
     mechanic: mech.prepare
@@ -1360,6 +1362,8 @@ actions:
           After all [a:hello-near-distant-world] jumps resolve, the last remaining red-green tether pair must snap their tether, but they **must wait for all [s:twice-come-ruin] to expire first**.
         common: true
     children:
+      - at: 3076
+        id: <untargetable>
       - at: 21292
         id: patch
       - at: 23214
@@ -1519,6 +1523,8 @@ actions:
           * Waymark 3 takes the southwest 2-person tower, waymark 4 the southeast 2-person tower.
           * Waymarks A–D take the southern towers, with A taking the westmost tower and D taking the eastmost tower.
     children:
+      - at: 3076
+        id: <untargetable>
       - at: 17391
         id: subject-simulation-f
       - at: 22182
@@ -1967,6 +1973,8 @@ timeline:
     id: solar-ray
   - at: 163113
     id: party-synergy
+  - at: 195202
+    id: <targetable>
   - at: 204788
     id: synthetic-shield
   - at: 215027
@@ -2013,14 +2021,20 @@ timeline:
     id: double-solar-ray
   - at: 574102
     id: run-dynamis-(delta-version)
+  - at: 626197
+    id: <targetable>
   - at: 639583
     id: double-solar-ray
   - at: 656087
     id: run-dynamis-(sigma-version)
+  - at: 720681
+    id: <targetable>
   - at: 728955
     id: double-solar-ray
   - at: 745645
     id: run-dynamis-(omega-version)
+  - at: 803853
+    id: <targetable>
   - at: 812225
     id: double-solar-ray
   - at: 835472

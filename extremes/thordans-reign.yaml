@@ -1,7 +1,7 @@
 id: 91
 patch: "3.1"
 date: 2022-11-22
-modified: 2023-10-12
+modified: 2024-06-14
 by:
   id: 27637301
   role: author
@@ -140,13 +140,6 @@ actions:
     damage: 82995
     mechanic: tb.mt
     description: Stomps the main target, dealing heavy damage.
-  untargetable:
-    name: Untargetable
-    mechanic: mech.phase
-    description: |
-      [boss] becomes untargetable and a new phase begins.
-      The appearance of the arena changes and a limit break gauge appears underneath the duty timer that gradually fills. Each death increments the gauge slightly. Without deaths this gauge fills completely after approximately seven minutes spent in this phase.
-      If allowed to fill completely, [a:ultimate-end] will deal increased damage, though this damage can still be survived with sufficient shields, mitigation, or a tank limit break.
   knights-1:
     name: Charibert and Hermenost
     mechanic: mech.trio
@@ -208,8 +201,15 @@ actions:
       Reduce Ser Zephirin below 50% health as soon as possible to reduce the damage from [a:sacred-cross] to survivable levels, then position yourself on one of the two clock spots that the knights are not dashing through.
       Alternatively, simply position yourself at the edge of the arena right in-between two prongs of the star on the arena floor, as this position is always safe regardless of the knights' dashes.
     children:
+    - at: 0
+      id: <targetable>
+      description: Ser Zephirin becomes targetable.
     - at: 20000
       id: sacred-cross
+      link: and
+    - at: 20000
+      id: <untargetable>
+      description: Ser Zephirin becomes untargetable.
     - at: 26042
       id: spiral-thrust-x3
   sacred-cross:
@@ -254,6 +254,9 @@ actions:
       Once blue markers appear, place the first north, the second south, and the third north again, to ensure the other party members only take minimal damage from each jump.
       If you're tanking the knight with [s:sword-of-the-heavens] beware, as his [a:holy-bladedance] deals massive amounts of damage, requiring heavy mitigation or [t:invuln]s.
     children:
+    - at: 500
+      id: <targetable>
+      description: Ser Janleneoux and Ser Adelphel become targetable.
     - at: 10668
       id: divine-right
     - at: 19821
@@ -276,6 +279,11 @@ actions:
       id: holiest-of-holy
     - at: 72328
       id: heavenly-slash
+    - at: 72328
+      id: <loop>
+    - at: 72328
+      id: <untargetable>
+      push: true
   divine-right:
     id: 35282
     mechanic: mech
@@ -382,6 +390,9 @@ actions:
       Summons 1 Meteor Circle and 8 smaller Comet Circles.
       You have about 30 seconds to destroy the Comet Circles and 53 seconds to destroy the Meteor Circle. If any Comet Circles are not destroyed in time, they will [deal heavy but survivable raidwide damage](a:comet-impact) as long as not too many Comet Circles remain. If the Meteor Circle is not destroyed in time, it [wipes the party](a:meteor-impact).
     children:
+    - at: 2346
+      id: <targetable>
+      description: The Meteor and Comet Circles become targetable.
     - at: 9230
       id: comet
     - at: 12395
@@ -394,6 +405,9 @@ actions:
       id: comet-impact
     - at: 44673
       id: meteor-impact
+    - at: 44673
+      id: <untargetable>
+      push: true
   comet:
     id: 35316
     damage: 6000
@@ -653,7 +667,11 @@ timeline:
   - at: 80057
     id: ascalons-might
   - at: 82000
-    id: untargetable
+    id: <untargetable>
+    description: |
+      [boss] becomes untargetable and a new phase begins.
+      The appearance of the arena changes and a limit break gauge appears underneath the duty timer that gradually fills. Each death increments the gauge slightly. Without deaths this gauge fills completely after approximately seven minutes spent in this phase.
+      If allowed to fill completely, [a:ultimate-end] will deal increased damage, though this damage can still be survived with sufficient shields, mitigation, or a tank limit break.
   - at: 82000
     id: <phase>
     name: The Knights Twelve
@@ -676,6 +694,9 @@ timeline:
   - at: 321026
     id: <phase>
     name: Thordan + His Knights Twelve
+  - at: 325539
+    id: <targetable>
+    description: King Thordan becomes targetable.
   - at: 331703
     id: the-dragons-eye
     description: Applies [s:light-of-ascalon:2], increasing damage dealt.
