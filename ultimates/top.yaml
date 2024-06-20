@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
-date: 2023-01-24
-modified: 2024-06-14
+date: 2024-05-19
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -578,6 +578,7 @@ actions:
       Omega enrages, wiping the party.
       Note that, although party buffs come off cooldown here, it is strongly advised to hold them for the start of Phase 2.
     mechanic: enrage
+    damage: 9999999
   firewall:
     id: 31553
     mechanic: mech
@@ -719,7 +720,8 @@ actions:
   discharger:
     id: 31534
     mechanic: mech.knockback.unavoidable
-    description: A knockback from Omega-F. Deals minimal damage.
+    description: A knockback from Omega-F. Deals no damage.
+    damage: 0
   spotlight:
     id: 31536
     damage: 58812
@@ -1097,6 +1099,7 @@ actions:
     mechanic: towers.single
     shape: chariot
     description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
+    damage: 0
   critical-overflow-bug:
     id: 31575
     damage: 49290
@@ -1114,11 +1117,13 @@ actions:
     mechanic: towers.single
     shape: chariot
     description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
+    damage: 0
   cascading-latent-defect:
     id: 31583
     mechanic: towers.single
     shape: chariot
     description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
+    damage: 0
   patch:
     id: 31587
     damage: 21894
@@ -1132,12 +1137,14 @@ actions:
     mechanic: spread
     shape: chariot
     description: A small AoE around the player that resolves [s:cascading-latent-defect] and kills any other player hit.
+    damage: 0
   critical-performance-bug:
     id: 31579
     count: 2
     mechanic: spread
     shape: chariot
     description: A small AoE around the player that resolves [s:latent-performance-defect] and kills any other player hit.
+    damage: 0
   critical-error:
     id: 31588
     damage: 94464
@@ -1940,6 +1947,7 @@ actions:
   run-dynamis:
     id: 31648
     mechanic: enrage
+    damage: 9999999
     description: "[boss] has finished writing the Dynamis program and begins to run it. Cancel its execution or face the end."
 timeline:
   - at: 0

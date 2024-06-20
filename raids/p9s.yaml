@@ -1,7 +1,7 @@
 id: 937
 patch: "6.4"
-date: 2023-05-30
-modified: 2024-06-14
+date: 2023-10-08
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -169,6 +169,7 @@ actions:
     id: 33108
     description: "[boss] channels ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players."
     mechanic: stack.partner
+    shape: chariot
     type: magic
     compact: trim
     children:
@@ -208,6 +209,7 @@ actions:
     id: 33110
     description: The stack [ms:chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
     mechanic: stack.partner
+    shape: chariot
     damage: 57000
     count: 4
   thunder-iii:  # Thunder III
@@ -228,6 +230,7 @@ actions:
     name: Archaic Rockbreaker (Stack)
     description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a party member of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
     mechanic: stack.partner
+    shape: chariot
     damage: 58000
     count: 4
   rockbreaker-aoe:  # Archaic Rockbreaker
@@ -313,6 +316,7 @@ actions:
     description: A rock explodes underneath each healer, hitting them for heavy shareable damage and inflicting [s:magic-vuln]. If players are dead, this stack can still be easily survived with some mitigation.
     resolve: Establish light parties and have each light party stack with your healer.
     mechanic: stack.healers
+    shape: chariot
     type: magic
     element: earth
     damage: 74000
@@ -377,6 +381,7 @@ actions:
     id: 33143
     description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
     mechanic: stack.far
+    shape: chariot
     type: magic
     damage: 46000
     count: 1

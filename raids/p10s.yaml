@@ -1,7 +1,7 @@
 id: 939
 patch: "6.4"
-date: 2023-05-30
-modified: 2023-06-11
+date: 2023-10-08
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -168,15 +168,19 @@ actions:
       id: steel-web-hit
   steel-web:
     id: 34595
+    mechanic: stack.role
+    shape: chariot
+    raid-damage: false
     description: |
       A telegraphed three-person stack on a random party member. When the stack resolves, a web forms between all players in the stack, preventing movement. Every 1.5 seconds, these players receive a stack of [s:binding-soul-snare], killing them if it reaches 5 before they are freed. To free them, another player must run through the web to break it. Breaking a web inflicts [s:heavy-soul-snare], slowing movement speed and applying a [t:DoT] every 3 seconds. Each player is only able to break up to 3 webs; breaking more inflicts [s:poison], which is essentially a death sentence.
       Note that, if any two players within the stack are too close to each other, the web becomes *reinforced* (indicated by a pink tint) and these players receive [s:incapacitating-soul-snare], preventing actions in addition to movement. A reinforced web cannot be broken in any way, sealing these players' doom. It is therefore essential that the stacking players position themselves close to the edge of the stack circle.
       Be aware that including one of the small white posts that are present in the arena in the stack will also result in a reinforced web.
-    mechanic: stack.role
   dividing-wings-hit:
     id: 33432
     name: Dividing Wings (Hit)
     description: "[a:dividing-wings] resolves and shoots a wide conal [t:AoE] toward each tethered player that inflicts [s:bleeding] and [s:magic-vuln]."
+    damage: 34452
+    raid-damage: false
     mechanic: spread
     shape: cone
     count: 2
@@ -185,6 +189,8 @@ actions:
     name: Steel Web (Hit)
     description: "[a:steel-web] resolves, creating a web between the stacking players that must be broken by a free player."
     mechanic: stack.role
+    shape: chariot
+    damage: 72291
     count: 2
   pandæmons-holy:
     id: 33446
@@ -273,7 +279,7 @@ actions:
   unmitigated-explosion:
     id: 33411
     description: Raidwide affecting all players if one of [a:pandæmoniac-pillars] is left unsoaked. Inflicts [s:2935].
-    mechanic: raidwide
+    mechanic: mech.failure
   bury:
     id: 33409
     description: Damage event that happens when one of [a:pandæmoniac-pillars] is soaked.
@@ -356,18 +362,23 @@ actions:
     description: "[s:bonds] resolves. Requires everyone to be spread from each other."
     mechanic: spread
     shape: chariot
+    damage: 35600
     count: 8
   duodæmoniac-bonds-hit:
     id: 33443
     name: Duodæmoniac Bonds (Hit)
     description: "[s:duo-bonds] resolves. Requires all supports to stack with a DPS player."
     mechanic: stack.partner
+    shape: chariot
+    damage: 35600
     count: 4
   tetradæmoniac-bonds-hit:
     id: 34734
     name: Tetradæmoniac Bonds (Hit)
     description: "[s:tetra-bonds] resolves. Requires all supports and all DPS players to stack in separate groups."
     mechanic: stack.role
+    shape: chariot
+    damage: 35600
     count: 2
   pandæmoniac-turrets:
     id: 34735
@@ -413,6 +424,8 @@ actions:
     id: 33416
     description: An [m:stack.intercept] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
     mechanic: stack.intercept
+    shape: line
+    damage: 80817
     count: 2
   pandæmoniac-ray:
     id: 33419
@@ -441,6 +454,7 @@ actions:
       The last hit deals about 35% more damage and also knocks the entire party back. The distance of the knockback exceeds the length of the arena, so it is not possible to survive the knockback without establishing a wall in the back during [a:pandæmoniac-web]. If a wall **was** established, players will be stopped by the wall and are not killed.
       The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:feint] and [a:reprisal] is all but mandatory along with whatever mitigation your healers and tanks can offer.
     mechanic: stack.intercept
+    shape: line
     compact: full
     children:
       - at: 1219
@@ -466,6 +480,7 @@ actions:
     name: Harrowing Hell (Hit)
     description: Hard-hitting [m:stack.intercept]. The first two players receive about 120,000 damage.
     mechanic: stack.intercept
+    shape: line
     damage: 50000
   harrowing-hell-lasthit:
     id: 33428
@@ -478,10 +493,11 @@ actions:
   parted-plumes:
     id: 33429
     description: |
-      Sets of two line [AoEs](t:AoE) that start oppoosite, then rotate around the arena. The center is unsafe.
+      Sets of two line [AoEs](t:AoE) that start opposite, then rotate around the arena. The center is unsafe.
       Be aware that [a:pandæmoniac-ray] directly follows this mechanic, so you might want to consider using [s:sprint] if you end up on the wrong side following the AoEs.
       The AoEs rotate at a rate of about 3.3/s.
     mechanic: aoe.rotating
+    shape: line
     compact: full
     children:
       - at: 7798

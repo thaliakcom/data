@@ -1,7 +1,7 @@
 id: 943
 patch: "6.4"
-date: 2023-05-30
-modified: 2023-06-11
+date: 2023-10-08
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -415,12 +415,14 @@ actions:
     id: 33597
     name: Caloric Theory (Beacon)
     mechanic: stack.role
+    shape: chariot
     damage: 50000
     description: One of the two initially marked players explodes, hitting them for massive damage. This damage can be shared.
     resolve: 2 players is enough to reduce the damage to survivable levels with sufficient mitigation. 3+ makes it even safer but may require significant strategy adjustments since it affects your starting position for the main mechanic.
   pyre-pulse:
     id: 33594
     mechanic: stack.partner
+    shape: chariot
     damage: 64000
     description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
   dynamic-atmosphere:
@@ -465,6 +467,7 @@ actions:
   ekpyrosis-exa:
     id: 33568
     mechanic: aoe.exaflares
+    shape: chariot
     count: 4
     description: Exaflares travel through the arena.
   ekpyrosis-spread:
@@ -642,6 +645,7 @@ actions:
   ultima-blow:
     id: 33608
     mechanic: aoe.intercept
+    shape: line
     damage: 61000
     count: 4
     description: Each angel shoots a beam at their tethered target. The beam can be intercepted by another player to prevent the target from dying due to their [s:magic-vuln].

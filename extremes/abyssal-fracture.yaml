@@ -1,7 +1,7 @@
 id: 965
 patch: "6.5"
 date: 2024-06-09
-modified: 2024-06-09
+modified: 2024-06-20
 by:
   - id: 27637301
     role: author
@@ -150,6 +150,7 @@ actions:
     name: Sable Thread (Hit)
     damage: 28000
     mechanic: stack.intercept
+    shape: line
     description: Individual [a:sable-thread] hit.
   dark-matter:
     id: 35715
@@ -169,6 +170,7 @@ actions:
     id: 35716
     name: Dark Matter (Hit)
     mechanic: tb.double
+    shape: line
     damage: 53000
     count: 2
     description: Individual [a:dark-matter] hit.
@@ -227,6 +229,7 @@ actions:
   scald:
     id: 35766
     mechanic: aoe.linger
+    shape: chariot
     description: Continuous damage dealt to anyone who doesn't immediately exit the fireballs that appear during [a:flare].
   prominence-spine:
     id: 35683
@@ -239,7 +242,7 @@ actions:
     trivia: "*Prominence* is the scientific term for a massive loop of plasma that streams out from the sun."
   void-bio:
     id: 35686
-    mechanic: aoe.exaflares
+    mechanic: aoe.orbs
     description: |
       [boss] generates a row of poison orbs that slowly travel across the arena in a random order.
       [a:void-bio] is always followed directly by [a:visceral-whirl], requiring you to dodge into the safe spot while avoiding the poison balls.
@@ -333,6 +336,7 @@ actions:
     id: 35670
     mechanic: mech
     count: 4
+    damage: 10641
     description: 4 comets shoot at 4 tethered players, inflicting [s:blunt-vuln], killing the targeted player if their tether is too short, killing any players in their path, and wiping the party if they hit another comet.
   explosion:
     id: 36148
@@ -364,6 +368,7 @@ actions:
     id: 35668
     mechanic: spread
     shape: chariot
+    raid-damage: false
     description: "[s:forked-lightning] resolves. Does not affect the afflicted player themselves but deals heavy damage to all other players hit and inflicts them with [s:paralysis]."
     resolve: Afflicted players should make sure to stay away from all other players, particularly those in the [a:the-dark-beckons] stack.
   black-hole:

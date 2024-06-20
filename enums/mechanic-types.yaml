@@ -20,6 +20,7 @@ raidwide.transition:
 tb.tether:
   name: tankbuster (tether)
   description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive.
+  shapeful: true
 tb.mt:
   name: tankbuster (MT)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
@@ -66,33 +67,41 @@ stack.party:
   name: stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. As many other party members as possible must stack close to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.partner:
   name: partner stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.enumeration:
   name: enumeration
   description: Similar to a [m:stack.partner], but instead of splitting the damage between everyone in the stack, there is instead a required number of players in the stack (generally 2). If the wrong number of players are in the stack (less *or* more), it kills all stacking players instantly.
+  shapeful: true
 stack.role:
   name: role stack
   description: A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.healers:
   name: healer stack
   description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.targeted:
   name: targeted stack
   description: A heavy-hitting attack on a targeted player that cannot be survived alone.
   is-raid-damage: true
+  shapeful: true
 stack.far:
   name: far stack
   description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.close:
   name: close stack
   description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
   is-raid-damage: true
+  shapeful: true
 stack.ululation:
   name: ululation
   description: |
@@ -105,6 +114,7 @@ stack.intercept:
     In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
     Named after Imdugud's eponymous attack, [a:2134].
   is-raid-damage: true
+  shapeful: true
 stack.tower:
   name: stack tower
   description: |
@@ -116,17 +126,26 @@ aoe:
 aoe.baitable:
   name: baits
   description: An [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
+  shapeful: true
 aoe.exaflares:
   name: exaflares
   description: |
     A series of circular [AoEs](t:AoE) traveling in a specific direction through the arena until they reach the other side.
     Exaflares are a recurring attack throughout the Final Fantasy series. In Final Fantasy XIV they first appeared by that name in The Unending Coil of Bahamut (Ultimate), though the attack did appear before then by various other names.
+  shapeful: true
+aoe.orbs:
+  name: orbs
+  description: |
+    Orbs that slowly move through the arena. If a player touches these orbs, they "pop", dealing massive damage and inflicting debuffs.
+    In general, there are 3 types of orbs: orbs that travel towards a fixed point in the arena, orbs that chase a player, and orbs that take a player's position when they spawn and move towards that location, regardless of whether or not the player moves away.
 aoe.rotating:
   name: rotating AoEs
   description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
+  shapeful: true
 aoe.expanding:
   name: expanding AoE(s)
   description: This [t:AoE] or these AoEs gradually expand. Players must predict how large each AoE will become and identify the safespots based on this prediction and the AoE's original positions.
+  shapeful: true
 aoe.expanding.rings:
   name: expanding rings
   description: A ring-shaped ([ms:dynamo]) AoE that hits multiple times, where each hit features a larger ring that hits the area just outside the previous ring. These kinds of attacks only stop once the entire arena has been hit by the rings. Players must stand just outside one ring, then step into that ring once it resolves to avoid the next ring.
@@ -137,33 +156,41 @@ aoe.intercept:
     This type of mechanic often appears in the form of a tankbuster, where the attack deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
     These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
   is-raid-damage: true
+  shapeful: true
 aoe.chasing:
   name: chasing AoE
   description: |
     An attack that spawns a delayed AoE underneath a player's location, then begins to chase them. Any player in the path of the AoE (including the targeted player themselves) take heavy damage and debuffs.
+  shapeful: true
 aoe.linger:
   name: lingering AoE
   description: |
     An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
+  shapeful: true
 aoe.memory:
   name: multi-AoE
   description: |
     Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
+  shapeful: true
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+  shapeful: true
 spread.close:
   name: spread (close)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+  shapeful: true
 spread.far:
   name: spread (far)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the farthest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   is-raid-damage: true
+  shapeful: true
 spread.tethers:
   name: tether spread
   description: Tethers to some players. The tether may be able to be passed around. When the mechanic resolves, hits all tethered players with an unavoidable [t:AoE]. Tethered players should make sure they're not near any other player.
+  shapeful: true
 adds:
   name: adds
   description: An "adds phase," in which one or more non-boss enemies appear and become targetable. They must be defeated in time or they will usually enrage, wiping the party.
@@ -208,7 +235,6 @@ mech.limit:
 mech.failure:
   name: failure
   description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:2911] or [s:1789], or wipes the party altogether.
-  is-raid-damage: true
 mech.distance:
   name: distance
   description: Players must be at the correct distance to something else in order to avoid debuffs and/or death.

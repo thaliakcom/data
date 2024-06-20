@@ -1,7 +1,7 @@
 id: 943
 patch: "6.4"
-date: 2023-05-30
-modified: 2023-10-08
+date: 2023-10-08
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -699,6 +699,7 @@ actions:
   theoss-ultima-1:
     id: 34134
     mechanic: enrage
+    damage: 9999999
     description: "[boss] becomes untargetable and unleashes Ultima a second time, wiping the party."
 timeline:
   - at: 11854

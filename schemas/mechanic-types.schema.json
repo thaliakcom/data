@@ -19,6 +19,10 @@
             "is-raid-damage": {
                 "description": "Should be set to true if this type of mechanic is usually raidwide damage.",
                 "type": "boolean"
+            },
+            "shapeful": {
+                "description": "Should be set to true if this type of mechanic requires a shape to be specified.",
+                "type": "boolean"
             }
         },
         "required": ["name", "description"]

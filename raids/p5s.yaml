@@ -1,7 +1,7 @@
 id: 873
 patch: "6.2"
 date: 2022-10-03
-modified: 2022-11-24
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -101,6 +101,7 @@ actions:
     description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
   30490:  # Venom Pool
     mechanic: stack.healers
+    shape: chariot
     damage: 50000
     description: |
       Hits both healers with an untelegraphed [t:AoE] that should be shared by exactly 4 players.

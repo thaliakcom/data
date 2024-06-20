@@ -1,7 +1,7 @@
 id: 941
 patch: "6.4"
-date: 2023-05-30
-modified: 2023-09-30
+date: 2023-10-08
+modified: 2024-06-20
 by:
   id: 27637301
   role: author
@@ -130,12 +130,14 @@ actions:
   inevitable-law:
     id: 33276
     mechanic: stack.healers
+    shape: chariot
     damage: 66000
     count: 2
     description: A 4-player stack on both healers. Targets a random player if any healer is dead. Can be easily survived as a 3-stack.
   inevitable-sentence:
     id: 33277
     mechanic: stack.partner
+    shape: chariot
     damage: 50000
     count: 4
     description: A 2-player stack on all DPS players. Targets a random player if any DPS are dead. Cannot be survived alone.
@@ -165,6 +167,7 @@ actions:
     name: Upheld Overruling (Tankbuster)
     damage: 95000
     mechanic: tb.tether
+    shape: chariot
     compact: full
     description: |
       Dark ability. [boss] tethers to a random tank and jumps on them, dealing high damage, inflicting [s:stab-wound], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
@@ -180,6 +183,7 @@ actions:
     name: Upheld Overruling (Stack)
     damage: 38000
     mechanic: stack.party
+    shape: chariot
     compact: full
     description: |
       Light ability. [boss] tethers to a random party member and jumps on them, dealing high damage that must be shared by the rest of the party.
@@ -235,6 +239,7 @@ actions:
     id: 33303
     damage: 65882
     mechanic: stack.party
+    shape: chariot
     compact: full
     description: A full-party multi-hit stack. The first use of this ability hits 5 times. Each subsequent cast hits one additional time. The first hit deals significantly more damage than the rest.
     children:
@@ -250,6 +255,7 @@ actions:
     id: 33303
     damage: 65882
     mechanic: stack.party
+    shape: chariot
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -267,6 +273,7 @@ actions:
     id: 33303
     damage: 65882
     mechanic: stack.party
+    shape: chariot
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -286,6 +293,7 @@ actions:
     id: 33303
     damage: 65882
     mechanic: stack.party
+    shape: chariot
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -307,6 +315,7 @@ actions:
     id: 33304
     damage: 43515
     mechanic: stack.party
+    shape: chariot
     description: An initial hit of [a:styx-1].
   arcane-revelation:
     id: 33293
@@ -416,6 +425,7 @@ actions:
   lightstream:
     id: 33283
     mechanic: aoe.rotating
+    shape: line
     count: 3
     description: Summons three arcane cylinders that each shoot [ms:line]s through the arena as they rotate either clockwise or counter-clockwise.
     resolve: One possible trick to find the safe spot quickly is to identify the "odd one out" – two of the cylinders will always rotate the same way while one of them rotates the other way. Find this cylinder. The safe spot is the second triangle in the direction it is *not* rotating.
@@ -448,6 +458,7 @@ actions:
   dark-current:
     id: 33284
     mechanic: aoe.rotating
+    shape: chariot
     description: |
       Summons two [ms:chariot] on two opposite cardinals of the arena, then draws a line in the direction those [t:AoE]s will go.
       After a short time, the [t:AoE]s move circularly around the arena. After the second hit, [ms:chariot] [m:spread]s will resolve on all players. The middle of the arena is unsafe for the whole mechanic.
@@ -516,6 +527,7 @@ actions:
   heart-of-judgment:
     id: 33318
     mechanic: towers.double
+    damage: 4650
     description: "[boss] summons four towers at the intercardinals of the arena. If not soaked by two players before the descending orb reaches the tower, the tower explodes, dealing massive damage to the entire party and inflicting [s:sustained-damage]."
     resolve: Use standard [a:inevitable-sentence] partners. It is recommended to handle this mechanic [t:true north], allowing you to target a waymarker while you're waiting for the preceding [a:upheld-ruling] to resolve, then beeline for that marker once you've escaped [a:dark-perimeter].
   explosion:
