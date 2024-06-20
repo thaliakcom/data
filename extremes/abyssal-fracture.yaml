@@ -10,6 +10,7 @@ by:
 tier: Endwalker
 boss: Zeromus
 HP: 40478540
+party_hp: 80500
 description: Endowed with the full power of Zodiark's Darkness, [boss] holds nothing back in this extreme deep within the Thirteenth's moon.
 spoiler: true
 status:

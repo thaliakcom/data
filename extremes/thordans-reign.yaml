@@ -8,6 +8,7 @@ by:
 tier: Heavensward
 boss: King Thordan
 HP: 14109188
+party_hp: 48000
 description: |
   Armed with the power of Nidhogg's eye, the reincarnated King Thordan and his Knights Twelve bring the full weight of Ascalon to bear against the Warrior of Light and their compatriots.
   Note that all damage and health values are scaled to the Unreal version of the fight, active during patch 6.5.

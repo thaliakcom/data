@@ -8,7 +8,7 @@ by:
 tier: Anabaseios
 boss: Themis
 HP: 49884204
-average_hp: 73000
+party_hp: 73000
 autos:
   mechanic: auto.single
   type: physical

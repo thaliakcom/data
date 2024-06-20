@@ -8,7 +8,7 @@ by:
 tier: Anabaseios
 boss: Kokytos
 HP: 36660084
-average_hp: 73000
+party_hp: 73000
 autos:
   mechanic: auto.single
   type: mixed

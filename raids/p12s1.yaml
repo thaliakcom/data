@@ -9,7 +9,7 @@ tier: Anabaseios
 boss: Athena
 suffix: " Part 1"
 HP: 32790420
-average_hp: 73000
+party_hp: 73000
 autos:
   mechanic: auto.single
   type: magic

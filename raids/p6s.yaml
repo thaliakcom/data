@@ -9,7 +9,7 @@ by:
 tier: Abyssos
 boss: Hegemone
 HP: 29844576
-average_hp: 60000
+party_hp: 60000
 autos:
   mechanic: auto.single
   type: magic

@@ -8,7 +8,7 @@ by:
 tier: Abyssos
 boss: Proto-Carbuncle
 HP: 29844576
-average_hp: 60000
+party_hp: 60000
 wip: true
 autos:
   mechanic: auto.single

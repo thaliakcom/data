@@ -9,7 +9,7 @@ tier: Abyssos
 boss: Hephaistos
 suffix: " Part 2"
 HP: 29844576
-average_hp: 60000
+party_hp: 60000
 autos:
   mechanic: auto.single
   shape: chariot

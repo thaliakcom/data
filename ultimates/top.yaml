@@ -7,6 +7,7 @@ by:
   role: author
 boss: Alpha Omega
 HP: 0
+party_hp: 67993
 description: An alternate retelling of the Omega raid storyline in which Omega successfully ascertains and harnesses what lies at the heart of a mortal's strength.
 status:
   2911:  # Damage Down

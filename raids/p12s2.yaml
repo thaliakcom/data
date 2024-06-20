@@ -9,7 +9,7 @@ tier: Anabaseios
 boss: Pallas Athena
 suffix: " Part 2"
 HP: 40192744
-average_hp: 73000
+party_hp: 73000
 autos:
   mechanic: auto.single
   type: magic
