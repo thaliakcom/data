@@ -589,6 +589,8 @@ actions:
       [boss] enrages, wiping the party.
       Note that this enrage is time-based, not mechanics-based, so it's possible to trigger [a:rend-the-rift] only to be met with the enrage immediately afterwards.
     mechanic: enrage
+    type: dark
+    damage: 9999999
 timeline:
   - at: 11896
     id: abyssal-nox

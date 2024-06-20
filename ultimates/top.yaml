@@ -1453,6 +1453,7 @@ actions:
     name: Hello Near/Distant World
     mechanic: spread
     shape: chariot
+    raid-damage: false
     description: |
       [a:hello-near-world] and [a:hello-distant-world] executes here.
   hello-near-world:
