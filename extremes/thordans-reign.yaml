@@ -848,7 +848,6 @@ graphing:
       type: image
       size: 50
       image: /images/markers/stack.svg
-      planar: false
       visible: false
     gaze:
       type: image
