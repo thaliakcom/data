@@ -67,7 +67,7 @@
         "party_hp": {
           "type": "integer",
           "minimum": 0,
-          "description": "The approximate party number of hit points of  party members *on content*. Used to deliver information about required mitigation and healing.\n\nThis field should specify the HP value of the party member with the least hit points, but only if that party member is not undergeared.\n\nThis field is required if the timeline is not marked as `wip`."
+          "description": "The approximate number of hit points of party members *on content*. Used to deliver information about required mitigation and healing.\n\nThis field should specify the HP value of the squishiest non-undergeared party member.\n\nThis field is required if the timeline is not marked as `wip`."
         },
         "autos": {
           "type": "object",
