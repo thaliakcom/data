@@ -13,7 +13,7 @@ party_hp: 73000
 autos:
   mechanic: auto.single
   type: magic
-description: |
+description: >
   Athena is a difficult encounter. Featuring rapid combinations of mechanics by both Athena and her soul-transformed minions,
   players must react quickly and decisively to avoid certain doom.
 status:
@@ -506,6 +506,7 @@ actions:
     - at: 3942
       id: white-flame
       count: 2
+      link: and
     - at: 4074
       id: palladion-hit
       link: and
@@ -517,6 +518,7 @@ actions:
     - at: 6928
       id: white-flame
       count: 2
+      link: and
     - at: 7144
       id: palladion-hit
       link: and
@@ -528,6 +530,7 @@ actions:
     - at: 9013
       id: white-flame
       count: 2
+      link: and
     - at: 10223
       id: palladion-hit
       link: and
@@ -539,6 +542,7 @@ actions:
     - at: 12906
       id: white-flame
       count: 2
+      link: and
     - at: 13305
       id: palladion-hit
       link: and
@@ -550,6 +554,7 @@ actions:
     - at: 15041
       id: white-flame
       count: 2
+      link: and
     - at: 16381
       id: palladion-hit
       link: and
@@ -561,6 +566,7 @@ actions:
     - at: 18030
       id: white-flame
       count: 2
+      link: and
     - at: 19459
       id: palladion-hit
       link: and
@@ -572,6 +578,7 @@ actions:
     - at: 21918
       id: white-flame
       count: 2
+      link: and
     - at: 22539
       id: palladion-hit
       link: and

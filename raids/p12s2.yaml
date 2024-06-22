@@ -14,7 +14,7 @@ autos:
   mechanic: auto.single
   type: magic
 spoiler: true
-description: |
+description: >
   Embracing the Heart of Sabik, Athena attains the High Seraph's power to unmake reality and alter the laws of nature.
   To survive in this new reality and beat her, players must come to understand and disprove Athena's new laws as she writes them.
 status:
@@ -203,6 +203,7 @@ actions:
     cast: 4800
     mechanic: mech.tether.far
     count: 8
+    damage: 0
     description: |
       Chain symbols appear above all players. After roughly 5 seconds, all players receive a [s:missing-link] that tethers pairs of players together.
       The tethers will always pair a support with a DPS, unless players are dead.
@@ -213,6 +214,7 @@ actions:
     name: Missing Link (Hit)
     mechanic: mech.tether.far
     count: 8
+    damage: 0
     description: |
       If any chains are left unbroken by this time, they will begin dealing continuous damage to all players with [s:missing-link].
       Note that no additional status (such as [s:damage-down]) is inflicted.
@@ -319,7 +321,7 @@ actions:
         id: implode
   aspect-effect:
     id: 33588
-    mechanic: raidwide
+    mechanic: mech
     damage: 54000
     count: 8
     players: 1
@@ -371,6 +373,7 @@ actions:
     id: 33560
     mechanic: mech
     count: 2
+    damage: 0
     description: Inflicts one stack of [s:physical-vuln-stack], up to a maximum of 4 stacks.
   crush-helm-hit:
     id: 33561

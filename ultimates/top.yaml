@@ -352,28 +352,24 @@ actions:
     children:
       - at: 14010
         id: blaster-cast
-        count: 2
         link: and
       - at: 14050
         id: storage-violation
         count: 2
       - at: 23178
         id: blaster
-        count: 2
         link: and
       - at: 23223
         id: storage-violation
         count: 2
       - at: 32197
         id: blaster
-        count: 2
         link: and
       - at: 32247
         id: storage-violation
         count: 2
       - at: 41177
         id: blaster
-        count: 2
         link: and
       - at: 41221
         id: storage-violation
@@ -393,6 +389,7 @@ actions:
     type: magic
     mechanic: spread.tethers
     shape: defamation
+    count: 2
     description: "[a:blaster:d]"
   blaster:
     id: 31497
@@ -400,6 +397,7 @@ actions:
     type: magic
     mechanic: spread.tethers
     shape: defamation
+    count: 2
     description: |
       Deals medium damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
       Be aware that [s:hp-penalty] reduces max HP only *after* the damage is dealt; if a player's HP reaches 0 from the initial hit, their max HP won't be reduced; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
@@ -445,6 +443,7 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
+      mitigation: max
     - at: 12120
       id: guided-missile-kyrios
       count: 2
@@ -464,6 +463,7 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
+      mitigation: max
     - at: 18090
       id: guided-missile-kyrios
       count: 2
@@ -483,6 +483,7 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
+      mitigation: max
     - at: 24114
       id: guided-missile-kyrios
       count: 2
@@ -502,6 +503,7 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
+      mitigation: max
     - at: 30126
       id: guided-missile-kyrios
       count: 2
@@ -558,19 +560,25 @@ actions:
     children:
       - at: 0
         id: diffuse-wave-cannon-kyrios-hit
+        mitigation: max
       - at: 2047
         id: diffuse-wave-cannon-kyrios-hit
+        mitigation: max
       - at: 4145
         id: diffuse-wave-cannon-kyrios-hit
+        mitigation: max
       - at: 6195
         id: diffuse-wave-cannon-kyrios-hit
+        mitigation: max
       - at: 8289
         id: diffuse-wave-cannon-kyrios-hit
+        mitigation: max
   diffuse-wave-cannon-kyrios-hit:
     id: 31504
     name: Diffuse Wave Cannon Kyrios (Hit)
     count: 2
     mechanic: tb.far
+    damage: 60000
     shape: cone
     description: An individual hit from [a:diffuse-wave-cannon-kyrios].
   atomic-ray:
@@ -583,6 +591,7 @@ actions:
   firewall:
     id: 31553
     mechanic: mech
+    damage: 0
     description: Inflicts [s:packet-filter-f] on the four closest players to Omega-M and [s:packet-filter-m] on all remaining players (regardless of distance to Omega-F).
     resolve: |
       It is recommended to assign one light party to Omega-M and one to Omega-F. Make sure the four players assigned to Omega-M are *on or inside Omega-M's hitbox*, or they may be selected for Omega-F instead. The players assigned to Omega-F can be anywhere in the arena (as long as they're not on or inside Omega-M's hitbox), but should probably be close to Omega-F's hitbox to ensure they're in range for raid buffs.
@@ -790,12 +799,12 @@ actions:
         subsequent [a:pile-pitch] as well. The baiter who wasn't hit should join the
         party stack.
       link: then
-    - at: 27741
-      id: pile-pitch
-      link: and
     - at: 27427
       id: optimized-meteor
       count: 3
+      link: and
+    - at: 27741
+      id: pile-pitch
     - at: 39484
       id: cosmo-memory
   optimized-passage-of-arms:
@@ -880,12 +889,12 @@ actions:
         id: colossal-blow
       - at: 19127
         id: sniper-cannon
+        count: 2
+        link: and
+        mitigation: max
       - at: 19127
         id: high-powered-sniper-cannon
-      - at: 19127
-        id: sniper-cannon
-      - at: 19127
-        id: high-powered-sniper-cannon
+        count: 2
       - at: 19662
         id: colossal-blow
   wave-repeater:
@@ -1022,70 +1031,86 @@ actions:
         id: latent-defect
       - at: 24160
         id: critical-overflow-bug
+        link: and
       - at: 24160
         id: critical-synchronization-bug
-      - at: 24160
-        id: critical-overflow-bug
+        link: and
       - at: 24160
         id: latent-performance-defect
+        link: and
       - at: 24160
         id: cascading-latent-defect
-      - at: 26124
+      - at: 25300
+        id: patch
+      - at: 27300
         id: patch
       - at: 30124
         id: critical-underflow-bug
+        link: and
       - at: 30124
         id: critical-performance-bug
-      - at: 30124
-        id: critical-underflow-bug
+        link: and
       - at: 44192
         id: latent-defect
       - at: 45177
         id: latent-performance-defect
+        link: and
       - at: 45177
         id: cascading-latent-defect
+        link: and
       - at: 45222
         id: critical-overflow-bug
+        link: and
       - at: 45222
         id: critical-synchronization-bug
       - at: 46604
+        id: patch
+      - at: 48604
         id: patch
       - at: 52942
         id: critical-performance-bug
       - at: 53165
         id: critical-underflow-bug
+        link: and
       - at: 53342
         id: critical-performance-bug
       - at: 65263
         id: latent-defect
       - at: 66244
         id: latent-performance-defect
+        link: and
       - at: 66244
         id: cascading-latent-defect
+        link: and
       - at: 66288
         id: critical-synchronization-bug
+        link: and
       - at: 66288
         id: critical-overflow-bug
-      - at: 66288
-        id: critical-synchronization-bug
       - at: 67941
+        id: patch
+      - at: 69941
         id: patch
       - at: 73523
         id: critical-performance-bug
       - at: 74013
         id: critical-underflow-bug
-      - at: 86237
-        id: patch
       - at: 86325
         id: latent-defect
       - at: 87352
         id: critical-synchronization-bug
+        link: and
       - at: 87352
         id: critical-overflow-bug
+        link: and
       - at: 87352
         id: latent-performance-defect
+        link: and
       - at: 87352
         id: cascading-latent-defect
+        link: and
+      - at: 87352
+        id: patch
       - at: 90213
         id: patch
       - at: 94953
@@ -1106,6 +1131,7 @@ actions:
     id: 31575
     damage: 49290
     players: 2
+    count: 2
     mechanic: aoe
     shape: defamation
     description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone hit while applying [s:overflow-debugger] to themselves."
@@ -1114,17 +1140,20 @@ actions:
     damage: 40727
     mechanic: stack.partner
     shape: chariot
+    count: 2
     description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] to anyone stacking while applying [s:synchronization-debugger] to themselves."
   latent-performance-defect:
     id: 31584
     mechanic: towers.single
     shape: chariot
+    count: 2
     description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
     damage: 0
   cascading-latent-defect:
     id: 31583
     mechanic: towers.single
     shape: chariot
+    count: 2
     description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
     damage: 0
   patch:
@@ -1393,6 +1422,7 @@ actions:
         id: hyper-pulse
       - at: 33556
         id: oversampled-wave-cannon
+        count: 4
       - at: 34003
         id: pile-pitch
         players: 3
@@ -1447,11 +1477,13 @@ actions:
         link: and
       - at: 0
         id: hello-distant-world
+        link: then
       - at: 1026
         id: hello-near-world-jump
         link: and
       - at: 1026
         id: hello-distant-world-jump
+        link: then
       - at: 2009
         id: hello-near-world-jump
         link: and
@@ -1488,6 +1520,7 @@ actions:
   run-dynamis-(sigma-version):
     id: 32788
     damage: 139915
+    players: 8
     mechanic: mech.trio
     compact: trim
     major: true
@@ -1650,6 +1683,7 @@ actions:
         link: and
       - at: 35589
         id: oversampled-wave-cannon
+        count: 2
       - at: 51483
         id: blaster
       - at: 53135
@@ -1667,7 +1701,7 @@ actions:
     description: The death wall surrounding the arena disappears and Omega-F begins casting [a:blind-faith]. If she is not brought below 20% HP before the cast finishes, wipes the party.
   cosmo-memory-2:
     id: 31649
-    damage: 404130
+    damage: 80826
     mechanic: raidwide.lb
     description: |
       Heavy raidwide. Wipes the party unless a [i:tank] LB3 is used.
@@ -1893,10 +1927,12 @@ actions:
         id: cosmo-meteor-baits
       - at: 5211
         id: cosmo-meteor-spreads
+        link: then
       - at: 6235
         id: cosmo-meteor-spreads
       - at: 11226
         id: cosmo-meteor-spreads
+        link: then
       - at: 12252
         id: cosmo-meteor-spreads
       - at: 23256
@@ -1967,6 +2003,8 @@ timeline:
     id: pantokrator
   - at: 108044
     id: wave-cannon-kyrios
+    link: and
+    mitigation: max
   - at: 108044
     id: diffuse-wave-cannon-kyrios
   - at: 117089
@@ -2012,6 +2050,7 @@ timeline:
     id: critical-error
   - at: 454597
     id: oversampled-wave-cannon
+    count: 8
   - at: 470720
     id: ion-efflux
   - at: 470720

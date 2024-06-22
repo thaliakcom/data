@@ -336,11 +336,15 @@ actions:
     mechanic: mech
     description: Inflicts the 4 comet players with [s:bind].
   meteor-impact-cast:
-    id: 35670
+    id: 35672
     mechanic: mech
     count: 4
     damage: 10641
+    cast: 110
     players: 1
+    description: |
+      4 comets shoot at 4 tethered players, inflicting [s:blunt-vuln] if the tether is at the correct minimum length. If it's too short, kills that player instead.
+      Outside of its target, if the comet hits any other players, those players instantly die. If the comet hits another comet, wipes the party.
   explosion:
     id: 36148
     mechanic: aoe
@@ -356,6 +360,7 @@ actions:
     damage: 38378
     mechanic: spread
     shape: chariot
+    count: 8
     description: "[s:divisive-dark] resolves, dealing moderate damage and inflicting [s:magic-vuln]."
   the-dark-beckons:
     id: 36154
@@ -456,6 +461,7 @@ actions:
     name: Branding Flare (Hit)
     damage: 53132
     mechanic: stack.partner
+    count: 4
     shape: chariot
     description: Very small circular AoE on either all supports or all DPS players. Deals lethal damage unless soaked with someone of the opposite role. Inflicts [s:fire-vuln], rendering overlap lethal.
   burst:
@@ -491,6 +497,7 @@ actions:
     damage: 56050
     mechanic: spread
     shape: chariot
+    count: 8
     description: Small circular AoE on all players. Inflicts [s:fire-vuln], rendering overlap lethal.
   rend-the-rift:
     id: 35853
@@ -562,7 +569,7 @@ actions:
       [boss] casts a tether to the outside of the arena and cracks the walls of reality in either the first, second, or third row of the arena.
       This row will be hit by a [ms:line] AoE at the end of the cast, inflicting [s:vuln].
   akh-rhai:
-    id: 35700
+    id: 35701
     mechanic: aoe.linger
     damage: 19678
     count: 8

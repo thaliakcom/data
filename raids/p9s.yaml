@@ -305,12 +305,10 @@ actions:
     id: 33129
     description: "[boss] [t:stores] a half-arena cleave behind him, which he will execute during [a:swinging-kick-rear]."
     mechanic: mech.store
-    type: physical
   front-comb:
     id: 33127
     description: "[boss] [t:stores] a half-arena cleave in front of him, which he will execute during [a:swinging-kick-front]."
     mechanic: mech.store
-    type: physical
   demolish:  # Archaic Demolish
     id: 33133
     description: A rock explodes underneath each healer, hitting them for heavy shareable damage and inflicting [s:magic-vuln]. If players are dead, this stack can still be easily survived with some mitigation.
@@ -364,6 +362,7 @@ actions:
     mechanic: raidwide.proximity
     cast: 0
     count: 4
+    players: 8
     damage: 76000
   burst:  # Burst
     id: 33140
@@ -592,13 +591,11 @@ actions:
     description: Similar to [a:front-comb], [t:stores] a frontal [a:swinging-kick-cast-front] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on.
     resolve: After the jump, all players in the stack should move closer to the wall to face the [a:swinging-kick-cast-front] into the wall and avoid killing the [a:icemeld] players, who are too far away to dodge.
     mechanic: mech.distance
-    type: magic
   rear-firestrikes:
     id: 34703
     description: Similar to [a:rear-comb], [t:stores] a rear [a:swinging-kick-cast-rear] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on.
     resolve: After the jump, all players in the stack should move towards the center of the arena to face the [a:swinging-kick-cast-rear] into the wall and avoid killing the [a:icemeld] players, who are too far away to dodge.
     mechanic: mech.distance
-    type: magic
   pyremeld:  # Pyremeld
     id: 34708
     description: |

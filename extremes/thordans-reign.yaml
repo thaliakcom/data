@@ -1,7 +1,7 @@
 id: 91
 patch: "3.1"
 date: 2023-10-15
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -110,6 +110,7 @@ actions:
   the-dragons-eye:
     id: 35271
     mechanic: mech
+    damage: 0
     description: |
       Applies a stack of [s:light-of-ascalon], up to a maximum of [s:light-of-ascalon:6].
       After [a:ultimate-end], this also moves the massive dragon eye on the outside of the arena to a different location.
@@ -186,6 +187,7 @@ actions:
     id: 35292
     damage: 3830
     mechanic: towers.single
+    count: 4
     description: A tower resolves, dealing minimal damage to anyone inside. If no one is inside, casts [a:eternal-conviction] instead.
   eternal-conviction:
     id: 35293
@@ -291,7 +293,6 @@ actions:
     description: Grants the knight who cast it either [s:shield-of-the-heavens] or [s:sword-of-the-heavens]. If the caster already has one of the two, this gets rid of that buff and applies the other one.
   holy-bladedance:
     id: 35285
-    damage: 16212
     mechanic: tb.mt
     description: A heavy six-hit tankbuster. Note that the [t:snapshot] for *all six hits* happens at the end of the cast, so any mitigation or shields must be applied before then.
     compact: full
@@ -313,7 +314,7 @@ actions:
     id: 35285
     name: Holy Bladedance (Hit)
     mechanic: tb.mt
-    damage: 16212
+    damage: 2702
     description: One out of six tankbuster hits.
   skyward-leap:
     id: 35304
@@ -350,6 +351,8 @@ actions:
     - at: 10342
       id: spiral-pierce
       count: 3
+      link: and
+      mitigation: max
     - at: 10387
       id: hiemal-storm
       count: 5
@@ -420,6 +423,7 @@ actions:
     id: 35295
     damage: 29401
     mechanic: aoe.expanding.rings
+    players: 0
     shape: 270°
     description: A 270° arc that hits multiple times in a row. Each time the arc is bigger and farther from the origin of the attack.
     resolve: Step into the 90° cone that is safe from the AoE, or step into an AoE explosion after it has gone off.
@@ -505,7 +509,6 @@ actions:
       id: heavy-impact
     - at: 14138
       id: conviction
-      count: 4
     - at: 21163
       id: dimensional-collapse
       count: 8
@@ -526,8 +529,12 @@ actions:
       id: lightning-storm
     - at: 15156
       id: spiral-thrust
+      link: and
+      mitigation: max
     - at: 15379
       id: skyward-leap
+      link: and
+      mitigation: max
     - at: 15379
       id: spiral-pierce
     - at: 16980
@@ -593,6 +600,7 @@ actions:
     id: 35286
     mechanic: mech.status
     description: A random healer receives a green marker. Shortly thereafter two knights charge at them, inflicting [s:down-for-the-count] and [s:magic-vuln:2].
+    damage: 0
   spear-of-the-fury:
     id: 35281
     damage: 36000

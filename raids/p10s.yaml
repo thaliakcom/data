@@ -426,6 +426,7 @@ actions:
     shape: line
     damage: 80817
     count: 2
+    players: 2
   pandæmoniac-ray:
     id: 33419
     description: |

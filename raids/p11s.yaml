@@ -145,7 +145,6 @@ actions:
     description: A 2-player stack on all DPS players. Targets a random player if any DPS are dead. Cannot be survived alone.
   upheld-overruling:
     id: 34771
-    damage: 38166
     mechanic: mech
     compact: full
     description: |
