@@ -1,7 +1,7 @@
 id: 943
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -283,7 +283,7 @@ actions:
       For instance, if you're designated to intercept the link between an icosahedron and one of two surrounding cubes, you will likely find that one of the cubes is next to two icosahedra, but that the other cube is next to *only your icosahedron* and therefore has no other option than to tether to that one.
       Note that while you *can* "YOLO" the mechanic, it is **strongly recommended** to use a deterministic shape assignment for your players. The [s:alpha] and [s:beta] status effects and PlayStation icons help with this and have no mechanical effect whatsoever. Since each column spawns exactly one icosahedron, you may use the PlayStation markers to assign columns to pairs (e.g. [i:cross][i:square][i:circle][i:triangle] for columns 1–4), and the statuses to determine which player within the pair intercepts which shape (e.g. [s:alpha] for tetrahedron, [s:beta] for cube).
     damage: 105000
-    raid-damage: true
+    players: 8
     trivia: >
       This ability is a reference to the classical elements earth, fire, air, and water. Notably, the mechanic itself uses Platonic solids (the collective name of the five convex, regular polyhedra) as stand-ins for these elements. Plato was a Greek philosopher who first associated each of these polyhedra with a particular element: fire with the tetrahedron, earth with the cube, air with the octahedron, and water with the icosahedron. With the notable absence of the octahedron, Plato's interpretation matches the colours and names of the polyhedra in the arena.
     children:
@@ -299,7 +299,7 @@ actions:
     name: The Classical Concepts II
     mechanic: mech
     damage: 105000
-    raid-damage: true
+    players: 8
     description: |
       Like [a:classical-1], but with two major differences.
       * Just before the icosahedra tethers appear, the positions of all shapes are both horizontally and vertically flipped. Northwest shapes end up southeast, and so on.
@@ -322,6 +322,7 @@ actions:
     mechanic: raidwide
     damage: 54000
     count: 8
+    players: 1
     description: A cube or tetrahedron merges with a player, dealing medium damage.
   implode:
     id: 33587
@@ -383,7 +384,7 @@ actions:
     name: Caloric Theory I
     mechanic: mech
     damage: 43000
-    raid-damage: true
+    players: 8
     description: |
       Major mechanic.
       At the start of the cast, a grid appears on the arena. Additionally, 2 players (1 support and 1 DPS) are marked with a beacon. At the end of the cast, **one** of them explodes for massive damage that can be shared in addition to raidwide damage to every party member.
@@ -463,6 +464,7 @@ actions:
     mechanic: raidwide.proximity
     damage: 70000
     count: 2
+    players: 8
     description: Two [m:raidwide.proximity] explode on either the north/south or east/west of the arena.
   ekpyrosis-exa:
     id: 33568
@@ -481,6 +483,7 @@ actions:
     id: 33599
     mechanic: mech
     damage: 100000
+    players: 8
     description: |
       Tower-based major mechanic.
       [s:unstable-factor:2], 1× [s:astral-tilt] (20s), 1× [s:astral-tilt] (16s), 1× [s:umbral-tilt] (20s), 1× [s:umbral-tilt] (16s) on 4 random players
@@ -541,7 +544,6 @@ actions:
     shape: defamation
     damage: 81000
     count: 6
-    raid-damage: false
     description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [ms:defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
     resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
@@ -555,7 +557,7 @@ actions:
     name: Caloric Theory II
     mechanic: mech
     damage: 60000
-    raid-damage: true
+    players: 8
     compact: full
     description: |
       Hot Potato – The Mechanic.
@@ -648,6 +650,7 @@ actions:
     shape: line
     damage: 61000
     count: 4
+    players: 2
     description: Each angel shoots a beam at their tethered target. The beam can be intercepted by another player to prevent the target from dying due to their [s:magic-vuln].
   ignorabimus:
     id: 33609

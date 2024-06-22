@@ -1,7 +1,7 @@
 id: 941
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -119,6 +119,7 @@ actions:
     mechanic: aoe
     shape: chariot
     count: 8
+    players: 0
     description: "[Chariot AoEs](ms:chariot) left behind wherever players stood at the time of [a:jury-overruling]."
   illusory-gloom:
     id: 33259
@@ -126,6 +127,7 @@ actions:
     mechanic: aoe
     shape: dynamo
     count: 8
+    players: 0
     description: "[Dynamo AoEs](ms:dynamo) left behind wherever players stood at the time of [a:jury-overruling]."
   inevitable-law:
     id: 33276
@@ -377,6 +379,7 @@ actions:
     damage: 72910
     mechanic: aoe
     shape: chariot
+    players: 0
     description: "[boss] explodes in a burst of light, leaving his hitbox unsafe."
     resolve: Max melee and beyond is safe.
   outer-dark:
@@ -384,6 +387,7 @@ actions:
     damage: 69204
     mechanic: aoe
     shape: dynamo
+    players: 0
     description: Darkness explodes around [boss], leaving only his hitbox safe.
   shadowed-messengers:
     id: 33305

@@ -1,7 +1,7 @@
 id: 937
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -465,6 +465,7 @@ actions:
     mechanic: mech.distance
     shape: chariot
     damage: 53000
+    players: 1
   shock:  # Shock
     id: 33153
     description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [ms:chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
@@ -475,7 +476,6 @@ actions:
     description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2].
     mechanic: spread
     shape: defamation
-    raid-damage: false
     damage: 70000
   two-minds:  # Two Minds
     id: 33157

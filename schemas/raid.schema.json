@@ -466,9 +466,9 @@
           "minimum": 0,
           "description": "Specifies how many instances of this action come out at the same time. If not specified, defaults to `1` unless overridden in a timeline item."
         },
-        "raid-damage": {
-          "type": "boolean",
-          "description": "Whether the `damage` is *raidwide* damage or not. Used in mitigation calculation. Specifically, if multiple mechanics happen at the same time, the damage is considered cumulative if the attack is marked as raid damage. If it is not, the attack with the highest damge out of all simultaneous attacks is used.\n\nNote that this value is automatically derived from the `mechanic` type. You should specify it only if the action's mechanic type doesn't allow for a definitive conclusion on whether the damage is raidwide damage or not.\n\nAs an example, individual hits of a limit cut mechanic are usually *individual* damage, but not always. You could specify this attribute on limit cut mechanics that *are* raidwide damage to indicate that each limit cut hit needs to be mitigated more strongly, and that the party needs to be healed after each individual hit as opposed to only at the end of the mechanic."
+        "players": {
+          "type": "number",
+          "description": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to `0`. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage **by a single instance** of the action. For instance, for a spread-type mechanic, this field should be set to `1`, not `8`, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by *distinct* instances of the action, not the same instance. To specify the number of damage instances, use `count`."
         },
         "icon": {
           "type": "number",
@@ -568,6 +568,10 @@
           "minimum": 0,
           "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
         },
+        "players": {
+          "type": "number",
+          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
+        },
         "push": {
           "type": "boolean",
           "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
@@ -637,6 +641,10 @@
         "count": {
           "type": "number",
           "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
+        },
+        "players": {
+          "type": "number",
+          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
         },
         "push": {
           "type": "boolean",
@@ -727,6 +735,10 @@
           "type": "integer",
           "minimum": 0,
           "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
+        },
+        "players": {
+          "type": "number",
+          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
         },
         "push": {
           "type": "boolean",

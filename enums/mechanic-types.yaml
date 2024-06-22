@@ -1,77 +1,93 @@
 raidwide:
   name: raidwide
   description: Hits all party members with moderate to heavy damage.
-  is-raid-damage: true
+  players: 8
 raidwide.lb:
   name: raidwide (LB)
   description: A raidwide that must be mitigated with a [i:tank] limit break 3 to survive.
-  is-raid-damage: true
+  players: 8
 raidwide.proximity:
   name: proximity
   description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
-  is-raid-damage: true
+  players: 8
 raidwide.sethp:
   name: sets HP
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
+  players: 8
 raidwide.transition:
   name: ultimate attack
   description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
-  is-raid-damage: true
+  players: 8
 tb.tether:
   name: tankbuster (tether)
   description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive.
   shapeful: true
+  players: 1
 tb.mt:
   name: tankbuster (MT)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
+  players: 1
 tb.ot:
   name: tankbuster (OT)
   description: A heavy-hitting attack on the party member with the second-highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
+  players: 1
 tb.double:
   name: tankbuster (MT & OT)
   description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
+  players: 1
 tb.towers:
   name: tankbuster towers
   description: Two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking players should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
+  players: 1
 tb.stack:
   name: tankbuster (stack)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+  players: 2
 tb.far:
   name: tankbuster (far)
   description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns to survive.
+  players: 1
 tb.far.stack:
   name: tankbuster (far)
   description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+  players: 2
 tb.close:
   name: tankbuster (close)
   description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns to survive.
+  players: 1
 tb.close.stack:
   name: tankbuster (close)
   description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
+  players: 2
 auto.single:
   name: MT
   description: These auto-attacks target the player with the highest enmity.
+  players: 1
 auto.double:
   name: MT & OT
   description: These auto-attacks target the two players with the highest enmity.
+  players: 2
 auto.stack:
   name: MT & OT (stack)
   description: These auto-attacks target the player with the highest enmity and need to be shared by another tank to reduce the damage to survivable levels.
+  players: 2
 auto.close:
   name: closest
   description: These auto-attacks target the closest player to the boss.
+  players: 1
 auto.far:
   name: farthest
   description: These auto-attacks target the farthest player from the boss.
+  players: 1
 stack.party:
   name: stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. As many other party members as possible must stack close to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 8
   shapeful: true
 stack.partner:
   name: partner stack
   description: A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 2
   shapeful: true
 stack.enumeration:
   name: enumeration
@@ -80,27 +96,27 @@ stack.enumeration:
 stack.role:
   name: role stack
   description: A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 4
   shapeful: true
 stack.healers:
   name: healer stack
   description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 4
   shapeful: true
 stack.targeted:
   name: targeted stack
   description: A heavy-hitting attack on a targeted player that cannot be survived alone.
-  is-raid-damage: true
+  players: 8
   shapeful: true
 stack.far:
   name: far stack
   description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 8
   shapeful: true
 stack.close:
   name: close stack
   description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
-  is-raid-damage: true
+  players: 8
   shapeful: true
 stack.ululation:
   name: ululation
@@ -113,7 +129,7 @@ stack.intercept:
     A stack (almost always in the shape of a line) that deals heavy damage to the first player(s) hit and moderate damage to all subsequent players.
     In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
     Named after Imdugud's eponymous attack, [a:2134].
-  is-raid-damage: true
+  players: 6
   shapeful: true
 stack.tower:
   name: stack tower
@@ -155,7 +171,6 @@ aoe.intercept:
     An attack targeting a specific player that must be intercepted by another player or the first player will die.
     This type of mechanic often appears in the form of a tankbuster, where the attack deals heavy damage to the first player(s) hit and medium damage to all players behind them, generally requiring tanks to intercept the attack by standing in front of the party and using defensive cooldowns.
     These attacks often (but not always) target a specific but unmarked non-tank player, forcing you to treat the mechanic like a line stack with the whole party in the stack and the tanks in front, even though the damage is not actually reduced for having additional players in the hit.
-  is-raid-damage: true
   shapeful: true
 aoe.chasing:
   name: chasing AoE
@@ -175,21 +190,22 @@ aoe.memory:
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
-  is-raid-damage: true
+  players: 1
   shapeful: true
 spread.close:
   name: spread (close)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
-  is-raid-damage: true
+  players: 1
   shapeful: true
 spread.far:
   name: spread (far)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the farthest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
-  is-raid-damage: true
+  players: 1
   shapeful: true
 spread.tethers:
   name: tether spread
   description: Tethers to some players. The tether may be able to be passed around. When the mechanic resolves, hits all tethered players with an unavoidable [t:AoE]. Tethered players should make sure they're not near any other player.
+  players: 1
   shapeful: true
 adds:
   name: adds
@@ -217,7 +233,7 @@ mech.statusoff:
 mech.protean:
   name: spread or stack
   description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
-  is-raid-damage: true
+  players: 8
 mech.store:
   name: store
   description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to member *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
@@ -250,19 +266,19 @@ mech.tether.distance:
 mech.knockback:
   name: knockback
   description: Knocks back all players from a given location. Can be avoided using [a:surecast] or [a:arms-length].
-  is-raid-damage: true
+  players: 8
 mech.knockback.unavoidable:
   name: knockback
   description: Knocks back all players from a given location. Can *not* be avoided using [a:surecast] or [a:arms-length].
-  is-raid-damage: true
+  players: 8
 mech.pull:
   name: draw-in
   description: Draws in all players to a given location. Can be avoided using [a:surecast] or [a:arms-length].
-  is-raid-damage: true
+  players: 8
 mech.pull.unavoidable:
   name: draw-in
   description: Draws in all players to a given location. Can *not* be avoided using [a:surecast] or [a:arms-length].
-  is-raid-damage: true
+  players: 8
 mech.stillness:
   name: stillness
   description: If affected players are moving, auto-attacking, or executing an action when this mechanic is executed, they will take heavy damage and/or debuffs.
@@ -278,25 +294,27 @@ mech.prepare:
 towers.single:
   name: towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire  party instantly.
-  is-raid-damage: true
+  players: 1
 towers.double:
   name: 2P towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least two people. If less than two people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
-  is-raid-damage: true
+  players: 2
 towers.triple:
   name: 3P towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three people. If less than three people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
-  is-raid-damage: true
+  players: 3
 enrage:
   name: enrage
   description: Instantly kills all players and ends the fight. Ignores [s:transcendent] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
-  is-raid-damage: true
+  players: 8
 enrage.threshold:
   name: enrage (threshold)
   description: Instantly kills all players and ends the fight, *unless* the enemy or enemies are brought down past a certain HP threshold, in which case this attack does standard raidwide damage.
+  players: 8
 enrage.soft:
   name: soft enrage
   description: A "soft enrage" generally involves a sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.
+  players: 8
 hint:
   name: hint
   description: Not a mechanic, but merely a hint to players.

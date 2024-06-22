@@ -1,7 +1,7 @@
 id: 943
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -228,6 +228,7 @@ actions:
     id: 33518
     damage: 80868
     count: 2
+    players: 0
     mechanic: aoe
     shape: line
     description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:2911] to anyone caught inside.
@@ -472,6 +473,7 @@ actions:
     damage: 81997
     type: magic
     mechanic: mech.limit
+    players: 8
     compact: full
     description: |
       Each angel [boss] summoned flies up in a random order, then [boss] herself flies up and comes back down on a random corner of the hexagon as everyone is assigned a number between 1 and 8.
@@ -585,6 +587,7 @@ actions:
   palladion-hit:
     id: 33526
     damage: 81997
+    players: 2
     mechanic: aoe
     shape: chariot
     description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding]."
@@ -593,10 +596,12 @@ actions:
     damage: 9999999
     mechanic: aoe
     shape: rect
+    players: 0
     description: "[boss] cuts away the inner 4 platforms, killing anyone on them."
   shockwave:
     id: 33527
     damage: 6000
+    players: 2
     mechanic: mech.distance
     shape: line
     description: "[boss] dashes to the next player in the sequence, dealing damage to that player and all players in her path relative to how close they were to her starting position (the closer, the more damage)."

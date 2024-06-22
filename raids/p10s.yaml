@@ -1,7 +1,7 @@
 id: 939
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -170,7 +170,7 @@ actions:
     id: 34595
     mechanic: stack.role
     shape: chariot
-    raid-damage: false
+    players: 0
     description: |
       A telegraphed three-person stack on a random party member. When the stack resolves, a web forms between all players in the stack, preventing movement. Every 1.5 seconds, these players receive a stack of [s:binding-soul-snare], killing them if it reaches 5 before they are freed. To free them, another player must run through the web to break it. Breaking a web inflicts [s:heavy-soul-snare], slowing movement speed and applying a [t:DoT] every 3 seconds. Each player is only able to break up to 3 webs; breaking more inflicts [s:poison], which is essentially a death sentence.
       Note that, if any two players within the stack are too close to each other, the web becomes *reinforced* (indicated by a pink tint) and these players receive [s:incapacitating-soul-snare], preventing actions in addition to movement. A reinforced web cannot be broken in any way, sealing these players' doom. It is therefore essential that the stacking players position themselves close to the edge of the stack circle.
@@ -180,7 +180,6 @@ actions:
     name: Dividing Wings (Hit)
     description: "[a:dividing-wings] resolves and shoots a wide conal [t:AoE] toward each tethered player that inflicts [s:bleeding] and [s:magic-vuln]."
     damage: 34452
-    raid-damage: false
     mechanic: spread
     shape: cone
     count: 2

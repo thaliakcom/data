@@ -16,9 +16,11 @@
                 "description": "The description of the item.",
                 "type": "string"
             },
-            "is-raid-damage": {
-                "description": "Should be set to true if this type of mechanic is usually raidwide damage.",
-                "type": "boolean"
+            "players": {
+                "description": "How many players one instance of this type of mechanic usually damages at a time. If this attribute is omitted, the player count must be explicitly specified if a damage component is provided.",
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8
             },
             "shapeful": {
                 "description": "Should be set to true if this type of mechanic requires a shape to be specified.",

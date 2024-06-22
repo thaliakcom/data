@@ -1,7 +1,7 @@
 id: 965
 patch: "6.5"
 date: 2024-06-09
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   - id: 27637301
     role: author
@@ -218,6 +218,7 @@ actions:
     mechanic: stack.tower
     shape: chariot
     count: 2
+    players: 4
     description: The stack towers resolve.
   flare-implosion:
     id: 35682
@@ -273,6 +274,7 @@ actions:
     id: 35663
     mechanic: mech.stillness
     damage: 40000
+    players: 0
     description: "[s:acceleration-bomb] resolves. If afflicted players are moving, auto-attacking, or executing an action they take heavy damage, are knocked into the air and inflicted with [s:vuln]."
   big-bang-spread:
     id: 35806
@@ -325,6 +327,7 @@ actions:
     name: Meteor Impact (Initial Hit)
     damage: 19790
     count: 14
+    players: 2
     mechanic: raidwide.proximity
     description: The proximity hit of the first 14 comets.
   bind-application:
@@ -337,7 +340,7 @@ actions:
     mechanic: mech
     count: 4
     damage: 10641
-    description: 4 comets shoot at 4 tethered players, inflicting [s:blunt-vuln], killing the targeted player if their tether is too short, killing any players in their path, and wiping the party if they hit another comet.
+    players: 1
   explosion:
     id: 36148
     mechanic: aoe
@@ -368,7 +371,7 @@ actions:
     id: 35668
     mechanic: spread
     shape: chariot
-    raid-damage: false
+    damage: 0
     description: "[s:forked-lightning] resolves. Does not affect the afflicted player themselves but deals heavy damage to all other players hit and inflicts them with [s:paralysis]."
     resolve: Afflicted players should make sure to stay away from all other players, particularly those in the [a:the-dark-beckons] stack.
   black-hole:
@@ -562,6 +565,8 @@ actions:
     id: 35700
     mechanic: aoe.linger
     damage: 19678
+    count: 8
+    players: 1
     shape: chariot
     description: Marks all players for an AoE that drops on their position, hits without delay, and lingers for multiple hits.
     resolve: Spread, to minimize the damage from the first hit or the first few hits, then step out of the AoE as soon as it has dropped.
@@ -570,6 +575,8 @@ actions:
     damage: 56644
     mechanic: stack.enumeration
     shape: chariot
+    count: 4
+    players: 2
     description: An [m:stack.enumeration] on either all supports or all DPS players. Instantly kills the targeted players unless one player stacks with them.
   umbral-rays:
     id: 35702

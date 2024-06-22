@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
 date: 2024-05-19
-modified: 2024-06-20
+modified: 2024-06-22
 by:
   id: 27637301
   role: author
@@ -526,6 +526,7 @@ actions:
     damage: 58926
     mechanic: stack.targeted
     shape: line
+    players: 3
     description: Omega shoots a line beam toward the players targeted by [s:condensed-wave-cannon-kyrios] that deals lethal damage unless soaked by at least 2 other players.
   guided-missile-kyrios:
     id: 31502
@@ -929,6 +930,7 @@ actions:
     damage: 80879
     mechanic: mech
     compact: full
+    players: 8
     major: true
     description: |
       Heavy raidwide that begins the next major mechanic.
@@ -1103,6 +1105,7 @@ actions:
   critical-overflow-bug:
     id: 31575
     damage: 49290
+    players: 2
     mechanic: aoe
     shape: defamation
     description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone hit while applying [s:overflow-debugger] to themselves."
@@ -1148,6 +1151,7 @@ actions:
   critical-error:
     id: 31588
     damage: 94464
+    players: 8
     mechanic: mech.check
     description: |
       Major raidwide that inflicts [s:critical-overflow-bug] on all players. Can only be prevented through [s:overflow-debugger].
@@ -1156,6 +1160,7 @@ actions:
   oversampled-wave-cannon:
     id: 31596
     damage: 50785
+    players: 1
     type: magic
     mechanic: mech
     major: true
@@ -1269,6 +1274,7 @@ actions:
     mechanic: stack.targeted
     shape: line
     count: 2
+    players: 4
     damage: 60363
     description: A 4-player stack on two random telegraphed players. Can also be survived with only 3 players given heavy mitigation and shielding.
   blue-screen:
@@ -1312,6 +1318,7 @@ actions:
   run-dynamis-(delta-version):
     id: 31624
     damage: 136135
+    players: 8
     mechanic: mech.trio
     compact: trim
     major: true
@@ -1388,6 +1395,7 @@ actions:
         id: oversampled-wave-cannon
       - at: 34003
         id: pile-pitch
+        players: 3
       - at: 41497
         id: patch
       - at: 47158
@@ -1449,13 +1457,6 @@ actions:
         link: and
       - at: 2009
         id: hello-distant-world-jump
-  hello-near-far-world:
-    name: Hello Near/Distant World
-    mechanic: spread
-    shape: chariot
-    raid-damage: false
-    description: |
-      [a:hello-near-world] and [a:hello-distant-world] executes here.
   hello-near-world:
     id: 31625
     damage: 50000
@@ -1503,7 +1504,7 @@ actions:
       Note that all players are required to resolve the towers.
       **Hello World**
       Omega's Rear Power Unit (the ring) spawns in the center of the arena, shows a rotation indicator, and prepares to cast [a:rear-lasers]. At the same time, Omega-F spawns in-line with the Rear Power Unit and prepares to cast either [a:superliminal-steel] or [a:optimized-blizzard-iii]. Finally, the Right Arm Units from the first part of this mechanic return, but this time they're placed in the wall on the far side of Omega-F.
-      [a:rear-lasers] begins rotating, then [a:superliminal-steel]/[a:optimized-blizzard-iii] resolves while [a:rear-lasers] are still rotating, then [a:hello-near-far-world] and [a:far-hyper-pulse] resolve at the same time after [a:rear-lasers] have stopped firing.
+      [a:rear-lasers] begins rotating, then [a:superliminal-steel]/[a:optimized-blizzard-iii] resolves while [a:rear-lasers] are still rotating, then [a:hello-near-distant-world] and [a:far-hyper-pulse] resolve at the same time after [a:rear-lasers] have stopped firing.
     resolve: |
       As soon as the PlayStation symbols appear, the party should establish a 2-column [t:conga line] somewhere in the arena. It's common to line up in front of Omega-M. Don't line up in the center, as Final Omega's model will make it impossible to see the subsequent markers.
       Once markers appear, place the 2 unmarked players on the cardinals or intercardinals opposite the arms and the other 6 players on the other 6 cardinals or intercardinals. Each player should be opposite their tether partner. If it's [s:remote-glitch], all players should stand on the wall. If it's [s:mid-glitch], all players should stand on the fourth ring on the floor from the center of the arena.
@@ -1574,6 +1575,7 @@ actions:
   run-dynamis-(omega-version):
     id: 32789
     damage: 139666
+    players: 8
     mechanic: mech.trio
     compact: trim
     major: true
@@ -1611,7 +1613,7 @@ actions:
       omega:
         name: LPDU
         common: true
-        description: PF standard. Shows all possible dodge patterns during the initial AoEs. It is recommended to mark players who take the [a:hello-near-far-world] baits to remove the ambiguity about positioning.
+        description: PF standard. Shows all possible dodge patterns during the initial AoEs. It is recommended to mark players who take the [a:hello-near-distant-world] baits to remove the ambiguity about positioning.
     children:
       - at: 18399
         id: diffuse-wave-cannon
@@ -1771,6 +1773,7 @@ actions:
     name: Cosmo Dive (Stack)
     mechanic: stack.party
     shape: chariot
+    players: 6
     damage: 100100
     description: The stack of [a:cosmo-dive]. Hits the farthest target.
   cosmo-dive-tb:
@@ -1925,6 +1928,7 @@ actions:
     name: Cosmo Meteor (Flare)
     mechanic: raidwide.proximity
     count: 3
+    players: 1
     damage: 70000
     description: Deals approximately 70,000 damage to the targeted player and about 7,000 damage to everyone else, provided this player is far enough away.
   magic-number:
