@@ -481,6 +481,7 @@ actions:
     mechanic: stack.intercept
     shape: line
     damage: 50000
+    tank-damage: 120000
   harrowing-hell-lasthit:
     id: 33428
     name: Harrowing Hell (Knockback)

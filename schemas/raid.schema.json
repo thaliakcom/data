@@ -398,7 +398,12 @@
         "damage": {
           "type": "integer",
           "minimum": 0,
-          "description": "The amount of damage this attack inflicts *on-content*.\n\nNote that this field only applies to **unavoidable** damage. Damage that is only inflicted as a result of a mistake should *not* receive a damage number here, as this field determines what mechanics are included in the mitigation view for healing and mitigation planning."
+          "description": "The amount of damage this attack inflicts *on-content*.\n\nNote that if this damage is avoidable, you should set `players: 0` (if this type of mechanic isn't usually avoidable)."
+        },
+        "tank-damage": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The amount of damage this attack inflicts to tanks *on-content*.\n\nShould only be specified if this damage deals different amounts of damage to tanks and other players."
         },
         "description": {
           "type": "string",

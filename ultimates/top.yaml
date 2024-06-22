@@ -1863,7 +1863,9 @@ actions:
     mechanic: stack.intercept
     shape: line
     damage: 100000
-    description: A [m:stack.intercept] that hits the two closest targets for about 370,000 damage and all remaining targets for about 100,000 if the whole party is stacked. If not, the attack is unsurvivable.
+    tank-damage: 360000
+    compact: full
+    description: A [m:stack.intercept] that hits the two closest targets for about 360,000 damage and all remaining targets for about 100,000 if the whole party is stacked. If not, the attack is unsurvivable.
   cosmo-meteor:
     id: 31664
     compact: trim
