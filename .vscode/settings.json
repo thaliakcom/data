@@ -2,7 +2,9 @@
     "yaml.schemas": {
         "./schemas/raid.schema.json": "/{ultimates,raids,extremes}/*",
         "./schemas/common.schema.json": "/enums/common.yaml",
-        "./schemas/namedesc.schema.json": "/enums/{damage-types,mechanic-shapes,status-types}.yaml",
+        "./schemas/damage-types.schema.json": "/enums/damage-types.yaml",
+        "./schemas/status-types.schema.json": "/enums/status-types.yaml",
+        "./schemas/mechanic-shapes.schema.json": "/enums/mechanic-shapes.yaml",
         "./schemas/mechanic-types.schema.json": "/enums/mechanic-types.yaml",
         "./schemas/expansions.schema.json": "/enums/expansions.yaml",
         "./schemas/terms.schema.json": "/enums/terms.yaml",

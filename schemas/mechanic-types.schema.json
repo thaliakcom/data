@@ -1,32 +1,37 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://thaliak.com/mechanic-types.schema.json",
-    "title": "Mechanic types",
-    "description": "A dictionary of mechanic type objects.",
+  "$id": "https://thaliak.com/mechanic-types.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": {
     "type": "object",
-    "additionalProperties": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-            "name": {
-                "description": "The name of the item.",
-                "type": "string"
-            },
-            "description": {
-                "description": "The description of the item.",
-                "type": "string"
-            },
-            "players": {
-                "description": "How many players one instance of this type of mechanic usually damages at a time. If this attribute is omitted, the player count must be explicitly specified if a damage component is provided.",
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 8
-            },
-            "shapeful": {
-                "description": "Should be set to true if this type of mechanic requires a shape to be specified.",
-                "type": "boolean"
-            }
-        },
-        "required": ["name", "description"]
-    }
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The item's name."
+      },
+      "description": {
+        "type": "string",
+        "description": "The item's description."
+      },
+      "shapeful": {
+        "type": "boolean",
+        "const": true,
+        "description": "Whether the mechanic must define a shape."
+      },
+      "players": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "How many players one instance of this type of mechanic usually damages at a time. If this attribute is omitted, the player count must be explicitly specified if a damage component is provided.",
+        "maximum": 8
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "description",
+      "name"
+    ]
+  },
+  "description": "A list of mechanic types and what they mean.",
+  "title": "Mechanic types",
+  "definitions": {}
 }

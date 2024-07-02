@@ -1,25 +1,29 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://thaliak.com/common.schema.json",
-    "title": "Common actions/statuses",
-    "description": "Common actions and status effects. Any actions/status effects defined here serve as aliases in timelines.",
-    "type": "object",
-    "definitions": {
-        "IdSet": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "integer"
-            }
-        }
+  "$id": "https://thaliak.com/common.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
     },
-    "properties": {
-        "actions": {
-            "$ref": "#/definitions/IdSet"
-        },
-        "status": {
-            "$ref": "#/definitions/IdSet"
-        }
-    },
-    "required": ["actions", "status"],
-    "additionalProperties": false
+    "status": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  },
+  "required": [
+    "actions",
+    "status"
+  ],
+  "additionalProperties": false,
+  "description": "Aliases for ations and status effects that are likely to be referenced in multiple timelines.",
+  "title": "Common actions/statuses",
+  "definitions": {}
 }

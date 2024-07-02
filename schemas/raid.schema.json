@@ -1,160 +1,167 @@
 {
+  "$id": "https://thaliak.com/raid.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/UnprocessedRaidData",
-  "definitions": {
-    "UnprocessedRaidData": {
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The ID of the encounter. Must be a valid encounter in ContentFinderCondition. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See suffix .",
+      "markdownDescription": "The ID of the encounter. Must be a valid encounter in `ContentFinderCondition`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See `suffix` ."
+    },
+    "sort_id": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Normally, encounters are sorted by their id value in lists. However, sometimes an encounter has a higher ID than its successor encounter(s). In that case, you can use this field to override the id value for use in encounter sorts only.",
+      "markdownDescription": "Normally, encounters are sorted by their `id` value in lists. However, sometimes an encounter has a higher ID than its successor encounter(s). In that case, you can use this field to override the `id` value for use in encounter sorts only."
+    },
+    "patch": {
+      "type": "string",
+      "description": "Which patch the encounter was first released in."
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "The date this encounter page was first created."
+    },
+    "modified": {
+      "type": "string",
+      "format": "date",
+      "description": "The date this encounter page was last modified."
+    },
+    "by": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Contributor"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Contributor"
+          }
+        }
+      ],
+      "description": "The contributor or contributor data. Can't be an empty array."
+    },
+    "tier": {
+      "type": "string",
+      "description": "A text value representing the \"tier\" of the encounter. If supplied, all encounters with a matching tier value will be grouped."
+    },
+    "boss": {
+      "type": "string",
+      "description": "The English name of the main boss that is fought in this encounter."
+    },
+    "name": {
+      "type": "string",
+      "description": "Can be used to override the name of the encounter. Note that the encounter name is automatically retrieved from the API, so usage of this field is strongly discouraged."
+    },
+    "suffix": {
+      "type": "string",
+      "description": "A suffix that will be attached to the name of the encounter. Useful in two-part fights."
+    },
+    "HP": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The exact maximum HP value of the boss fought in this encounter."
+    },
+    "party_hp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The approximate number of hit points of party members on content. Used to deliver information about required mitigation and healing.\n\nThis field should specify the HP value of the squishiest non-undergeared party member.\n\nThis field is required if the timeline is not marked as wip.",
+      "markdownDescription": "The approximate number of hit points of party members *on content*. Used to deliver information about required mitigation and healing.\n\nThis field should specify the HP value of the squishiest non-undergeared party member.\n\nThis field is required if the timeline is not marked as `wip`."
+    },
+    "autos": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "The ID of the encounter. Must be a valid encounter in `ContentFinderCondition`. Note that multiple encounters can use the same encounter ID, for instance for two-phase fights (with a door boss). See  {@link  suffix } ."
+        "mechanic": {
+          "$ref": "#/definitions/MechanicType",
+          "description": "What target type the auto-attacks use. Must be one of the values from mechanic-types.yaml.",
+          "markdownDescription": "What target type the auto-attacks use. Must be one of the values from `mechanic-types.yaml`."
         },
-        "sort_id": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Normally, encounters are sorted by their `id` value in lists. However, sometimes an encounter has a higher ID than its successor encounter(s). In that case, you can use this field to override the `id` value for use in encounter sorts only."
+        "shape": {
+          "$ref": "#/definitions/ShapeType",
+          "description": "What shape the auto-attacks are. Must be one of the values from mechanic-shapes.yaml.",
+          "markdownDescription": "What shape the auto-attacks are. Must be one of the values from `mechanic-shapes.yaml`."
         },
-        "patch": {
-          "type": "string",
-          "description": "Which patch the encounter was first released in."
-        },
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "The date this encounter page was first created."
-        },
-        "modified": {
-          "type": "string",
-          "format": "date",
-          "description": "The date this encounter page was last modified."
-        },
-        "by": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/Contributor"
-            },
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Contributor"
-              }
-            }
-          ],
-          "description": "The contributor or contributor data. Can't be an empty array."
-        },
-        "tier": {
-          "type": "string",
-          "description": "A text value representing the \"tier\" of the encounter. If supplied, all encounters with a matching tier value will be grouped."
-        },
-        "boss": {
-          "type": "string",
-          "description": "The English name of the main boss that is fought in this encounter."
-        },
-        "name": {
-          "type": "string",
-          "description": "Can be used to override the name of the encounter. Note that the encounter name is automatically retrieved from the API, so usage of this field is strongly discouraged."
-        },
-        "suffix": {
-          "type": "string",
-          "description": "A suffix that will be attached to the name of the encounter. Useful in two-part fights."
-        },
-        "HP": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "The exact maximum HP value of the boss fought in this encounter."
-        },
-        "party_hp": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "The approximate number of hit points of party members *on content*. Used to deliver information about required mitigation and healing.\n\nThis field should specify the HP value of the squishiest non-undergeared party member.\n\nThis field is required if the timeline is not marked as `wip`."
-        },
-        "autos": {
-          "type": "object",
-          "properties": {
-            "mechanic": {
-              "$ref": "#/definitions/MechanicType",
-              "description": "What target type the auto-attacks use. Must be one of the values from `mechanic-types.yaml`."
-            },
-            "shape": {
-              "$ref": "#/definitions/ShapeType",
-              "description": "What shape the auto-attacks are. Must be one of the values from `mechanic-shapes.yaml`."
-            },
-            "type": {
-              "$ref": "#/definitions/DamageType",
-              "description": "What damage type the auto-attacks use. Must be one of the values from `damage-types.yaml`."
-            }
-          },
-          "required": [
-            "mechanic",
-            "type"
-          ],
-          "additionalProperties": false,
-          "description": "Information about the auto-attacks in this instance, if applicable."
-        },
-        "description": {
-          "type": "string",
-          "description": "A brief description of the encounter that will be displayed at the top of the page. Do not use this field to go into detail on mechanics."
-        },
-        "wip": {
-          "type": "boolean",
-          "description": "If set, this encounter will be included in encounter lists, but the actual encounter page will be replaced by a generic page informing users that the encounter guide is still a work-in-progress."
-        },
-        "status": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/UnprocessedStatusEffect"
-          },
-          "description": "The status effects that appear in this encounter. Each status effect is either its game data ID or (if there is no game data entry for it) a unique string representing the status effect, and a data object further describing it."
-        },
-        "actions": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/UnprocessedAction"
-          },
-          "description": "The actions (mechanics) that appear in this encounter. Each action is either its game data ID or (if there is no game data entry for it) a unique string representing the action, and a data object further describing it."
-        },
-        "timeline": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/UnprocessedTimelineItem"
-              },
-              {
-                "$ref": "#/definitions/SpecialTimelineItem"
-              }
-            ]
-          },
-          "description": "The entire timeline of the fight, referencing actions from `actions`."
-        },
-        "macros": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Macro"
-          },
-          "description": "Macros that can be copied and pasted into the FFXIV in-game macro editor and describe some set of strats."
-        },
-        "graphing": {
-          "$ref": "#/definitions/Graphing",
-          "description": "The graphing information. Can be supplied to create diagrams."
-        },
-        "spoiler": {
-          "type": "boolean",
-          "description": "If set, this encounter will be marked as a spoiler encounter. Spoiler encounters will have their image blurred in any listing in which it appears until the user hovers over the encounter or disables spoiler blurring in the settings menu."
+        "type": {
+          "$ref": "#/definitions/DamageType",
+          "description": "What damage type the auto-attacks use. Must be one of the values from damage-types.yaml.",
+          "markdownDescription": "What damage type the auto-attacks use. Must be one of the values from `damage-types.yaml`."
         }
       },
       "required": [
-        "id",
-        "patch",
-        "date",
-        "modified",
-        "by",
-        "boss",
-        "description"
+        "mechanic",
+        "type"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "Information about the auto-attacks in this instance, if applicable."
     },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the encounter that will be displayed at the top of the page. Do not use this field to go into detail on mechanics."
+    },
+    "wip": {
+      "type": "boolean",
+      "description": "If set, this encounter will be included in encounter lists, but the actual encounter page will be replaced by a generic page informing users that the encounter guide is still a work-in-progress."
+    },
+    "status": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/UnprocessedStatusEffect"
+      },
+      "description": "The status effects that appear in this encounter. Each status effect is either its game data ID or (if there is no game data entry for it) a unique string representing the status effect, and a data object further describing it."
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/UnprocessedAction"
+      },
+      "description": "The actions (mechanics) that appear in this encounter. Each action is either its game data ID or (if there is no game data entry for it) a unique string representing the action, and a data object further describing it."
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/UnprocessedTimelineItem"
+          },
+          {
+            "$ref": "#/definitions/SpecialTimelineItem"
+          }
+        ]
+      },
+      "description": "The entire timeline of the fight, referencing actions from actions.",
+      "markdownDescription": "The entire timeline of the fight, referencing actions from `actions`."
+    },
+    "macros": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Macro"
+      },
+      "description": "Macros that can be copied and pasted into the FFXIV in-game macro editor and describe some set of strats."
+    },
+    "graphing": {
+      "$ref": "#/definitions/Graphing",
+      "description": "The graphing information. Can be supplied to create diagrams."
+    },
+    "spoiler": {
+      "type": "boolean",
+      "description": "If set, this encounter will be marked as a spoiler encounter. Spoiler encounters will have their image blurred in any listing in which it appears until the user hovers over the encounter or disables spoiler blurring in the settings menu."
+    }
+  },
+  "required": [
+    "id",
+    "patch",
+    "date",
+    "modified",
+    "by",
+    "boss",
+    "description"
+  ],
+  "additionalProperties": false,
+  "description": "Timeline data for a specific encounter.",
+  "title": "Raid data",
+  "definitions": {
     "Contributor": {
       "type": "object",
       "properties": {
@@ -170,7 +177,8 @@
             "editor",
             "helper"
           ],
-          "description": "The role of the contributor.\n* Authors write large parts of the timeline themselves.\n* Editors are responsible for proofchecking a finished timeline and   making small corrections like fixing links, typos, damage numbers,   and mechanical inaccuracies.\n* Helpers help research the internals of the fight's mechanics but   are otherwise not involved in the writing process."
+          "description": "The role of the contributor.\n\n Authors write large parts of the timeline themselves.\n\n Editors are responsible for proofchecking a finished timeline and making small corrections like fixing links, typos, damage numbers, and mechanical inaccuracies.\n\n Helpers help research the internals of the fight's mechanics but are otherwise not involved in the writing process.",
+          "markdownDescription": "The role of the contributor.\n\n* Authors write large parts of the timeline themselves.\n\n* Editors are responsible for proofchecking a finished timeline and making small corrections like fixing links, typos, damage numbers, and mechanical inaccuracies.\n\n* Helpers help research the internals of the fight's mechanics but are otherwise not involved in the writing process."
         }
       },
       "required": [
@@ -322,7 +330,8 @@
         },
         "type": {
           "$ref": "#/definitions/StatusType",
-          "description": "The type of the status effect. Must be one of the values from `status-types.yaml`. Leave blank if none of these apply."
+          "description": "The type of the status effect. Must be one of the values from status-types.yaml. Leave blank if none of these apply.",
+          "markdownDescription": "The type of the status effect. Must be one of the values from `status-types.yaml`. Leave blank if none of these apply."
         },
         "description": {
           "type": "string",
@@ -381,15 +390,18 @@
         },
         "mechanic": {
           "$ref": "#/definitions/MechanicType",
-          "description": "What kind of a mechanic it is. Must be one of the values from `attack-types.yaml`.\n\nAside from being displayed in the timeline, the mechanic type also determines how the mechanic is treated in the mitigation timeline.\n\nIf a mechanic can be one of several types depending on which action is cast, make two actions and link them using `link: or` in the timeline.   If a mechanic can be one of several types but are not distinguished by the action that is cast, prefer to place the damage instances into a `children` list and link them using `link: or`.   If the mechanic has no associated damage instance or linking them in this way is otherwise impossible, consider creating a new entry in `attack-types.yaml`."
+          "description": "What kind of a mechanic it is. Must be one of the values from attack-types.yaml.\n\nAside from being displayed in the timeline, the mechanic type also determines how the mechanic is treated in the mitigation timeline.\n\nIf a mechanic can be one of several types depending on which action is cast, make two actions and link them using link: or in the timeline. If a mechanic can be one of several types but are not distinguished by the action that is cast, prefer to place the damage instances into a children list and link them using link: or. If the mechanic has no associated damage instance or linking them in this way is otherwise impossible, consider creating a new entry in attack-types.yaml.",
+          "markdownDescription": "What kind of a mechanic it is. Must be one of the values from `attack-types.yaml`.\n\nAside from being displayed in the timeline, the mechanic type also determines how the mechanic is treated in the mitigation timeline.\n\nIf a mechanic can be one of several types depending on which action is cast, make two actions and link them using `link: or` in the timeline. If a mechanic can be one of several types but are not distinguished by the action that is cast, prefer to place the damage instances into a `children` list and link them using `link: or`. If the mechanic has no associated damage instance or linking them in this way is otherwise impossible, consider creating a new entry in `attack-types.yaml`."
         },
         "shape": {
           "$ref": "#/definitions/ShapeType",
-          "description": "If the mechanic represents an AoE, what shape that AoE is. Must be one of the values from `mechanic-shapes.yaml`."
+          "description": "If the mechanic represents an AoE, what shape that AoE is. Must be one of the values from mechanic-shapes.yaml.",
+          "markdownDescription": "If the mechanic represents an AoE, what shape that AoE is. Must be one of the values from `mechanic-shapes.yaml`."
         },
         "type": {
           "$ref": "#/definitions/DamageType",
-          "description": "The type of damage applied. Must be one of the values from `damage-types.yaml`.\n\nNote that this field is automatically retrieved from game data, so explicitly specifying this field is strongly discouraged.\n\nOnly specify this field for actual *damage instances*, not casts of mechanics that involve damage instances in some way."
+          "description": "The type of damage applied. Must be one of the values from damage-types.yaml.\n\nNote that this field is automatically retrieved from game data, so explicitly specifying this field is strongly discouraged.\n\nOnly specify this field for actual damage instances, not casts of mechanics that involve damage instances in some way.",
+          "markdownDescription": "The type of damage applied. Must be one of the values from `damage-types.yaml`.\n\nNote that this field is automatically retrieved from game data, so explicitly specifying this field is strongly discouraged.\n\nOnly specify this field for actual *damage instances*, not casts of mechanics that involve damage instances in some way."
         },
         "element": {
           "$ref": "#/definitions/Element",
@@ -398,16 +410,19 @@
         "damage": {
           "type": "integer",
           "minimum": 0,
-          "description": "The amount of damage this attack inflicts *on-content*.\n\nNote that if this damage is avoidable, you should set `players: 0` (if this type of mechanic isn't usually avoidable)."
+          "description": "The amount of damage this attack inflicts on-content.\n\nNote that if this damage is avoidable, you should set players: 0 (if this type of mechanic isn't usually avoidable).",
+          "markdownDescription": "The amount of damage this attack inflicts *on-content*.\n\nNote that if this damage is avoidable, you should set `players: 0` (if this type of mechanic isn't usually avoidable)."
         },
         "tank-damage": {
           "type": "integer",
           "minimum": 0,
-          "description": "The amount of damage this attack inflicts to tanks *on-content*.\n\nShould only be specified if this damage deals different amounts of damage to tanks and other players."
+          "description": "The amount of damage this attack inflicts to tanks on-content.\n\nShould only be specified if this damage deals different amounts of damage to tanks and other players.",
+          "markdownDescription": "The amount of damage this attack inflicts to tanks *on-content*.\n\nShould only be specified if this damage deals different amounts of damage to tanks and other players."
         },
         "description": {
           "type": "string",
-          "description": "A detailed description of the action. Note that, unless there is only one way to solve the mechanic, you should not mention specific strategies here; instead use the `strategies` field for that.\n\nThis description will be shown when users hover over the action name anywhere on the page or when users expand timeline entries that reference this action.\n\nIf a timeline entry referencing this action does not supply its own description, the timeline entry will show the first line of this description in the row, and the rest when expanded. This means that the first line of this description should ideally be short and still make sense in isolation."
+          "description": "A detailed description of the action. Note that, unless there is only one way to solve the mechanic, you should not mention specific strategies here; instead use the strategies field for that.\n\nThis description will be shown when users hover over the action name anywhere on the page or when users expand timeline entries that reference this action.\n\nIf a timeline entry referencing this action does not supply its own description, the timeline entry will show the first line of this description in the row, and the rest when expanded. This means that the first line of this description should ideally be short and still make sense in isolation.",
+          "markdownDescription": "A detailed description of the action. Note that, unless there is only one way to solve the mechanic, you should not mention specific strategies here; instead use the `strategies` field for that.\n\nThis description will be shown when users hover over the action name anywhere on the page or when users expand timeline entries that reference this action.\n\nIf a timeline entry referencing this action does not supply its own description, the timeline entry will show the first line of this description in the row, and the rest when expanded. This means that the first line of this description should ideally be short and still make sense in isolation."
         },
         "major": {
           "type": "boolean",
@@ -421,7 +436,8 @@
         },
         "resolve": {
           "type": "string",
-          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used."
+          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a general description of how to resolve the mechanic and should be independent of any specific strategy used.",
+          "markdownDescription": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used."
         },
         "tips": {
           "type": "array",
@@ -446,7 +462,8 @@
           "additionalProperties": {
             "$ref": "#/definitions/Strategy"
           },
-          "description": "A map of unique strategy IDs to concrete strats or mechanical variations that can be used in this mechanic. Note that you can draw diagrams with multiple steps for a strategy under the `graphing` key."
+          "description": "A map of unique strategy IDs to concrete strats or mechanical variations that can be used in this mechanic. Note that you can draw diagrams with multiple steps for a strategy under the graphing key.",
+          "markdownDescription": "A map of unique strategy IDs to concrete strats or mechanical variations that can be used in this mechanic. Note that you can draw diagrams with multiple steps for a strategy under the `graphing` key."
         },
         "children": {
           "type": "array",
@@ -460,20 +477,24 @@
               }
             ]
           },
-          "description": "\"Sub-mechanics\" that are executed as part of this main mechanic. Child mechanics denoted here are initially hidden and only show up when the parent mechanic is expanded.\n\nNote that the `at` field is interpreted differently from the `at` field in the timeline proper: in the timeline it's interpreted relative to the start of the encounter, whereas this `at` field is interpreted relative to the time the parent action hits (so, generally speaking, `n` milliseconds after the cast)."
+          "description": "\"Sub-mechanics\" that are executed as part of this main mechanic. Child mechanics denoted here are initially hidden and only show up when the parent mechanic is expanded.\n\nNote that the at field is interpreted differently from the at field in the timeline proper: in the timeline it's interpreted relative to the start of the encounter, whereas this at field is interpreted relative to the time the parent action hits (so, generally speaking, n milliseconds after the cast).",
+          "markdownDescription": "\"Sub-mechanics\" that are executed as part of this main mechanic. Child mechanics denoted here are initially hidden and only show up when the parent mechanic is expanded.\n\nNote that the `at` field is interpreted differently from the `at` field in the timeline proper: in the timeline it's interpreted relative to the start of the encounter, whereas this `at` field is interpreted relative to the time the parent action hits (so, generally speaking, `n` milliseconds after the cast)."
         },
         "compact": {
           "$ref": "#/definitions/CompactMode",
-          "description": "If set to `trim`, all child timeline items will display directly underneath the parent ability name and will not display a description. As the description column will be empty for all children, the children do not need to be aligned underneath the parent's description. Useful for cases where the parent has a long description and the children merely serve to illustrate the sequence of events, not explain them.\n\nIf set to `full`, the description is still hidden, but the space between child elements is also minimized."
+          "description": "If set to trim, all child timeline items will display directly underneath the parent ability name and will not display a description. As the description column will be empty for all children, the children do not need to be aligned underneath the parent's description. Useful for cases where the parent has a long description and the children merely serve to illustrate the sequence of events, not explain them.\n\nIf set to full, the description is still hidden, but the space between child elements is also minimized.",
+          "markdownDescription": "If set to `trim`, all child timeline items will display directly underneath the parent ability name and will not display a description. As the description column will be empty for all children, the children do not need to be aligned underneath the parent's description. Useful for cases where the parent has a long description and the children merely serve to illustrate the sequence of events, not explain them.\n\nIf set to `full`, the description is still hidden, but the space between child elements is also minimized."
         },
         "count": {
           "type": "integer",
           "minimum": 0,
-          "description": "Specifies how many instances of this action come out at the same time. If not specified, defaults to `1` unless overridden in a timeline item."
+          "description": "Specifies how many instances of this action come out at the same time. If not specified, defaults to 1 unless overridden in a timeline item.",
+          "markdownDescription": "Specifies how many instances of this action come out at the same time. If not specified, defaults to `1` unless overridden in a timeline item."
         },
         "players": {
           "type": "number",
-          "description": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to `0`. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage **by a single instance** of the action. For instance, for a spread-type mechanic, this field should be set to `1`, not `8`, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by *distinct* instances of the action, not the same instance. To specify the number of damage instances, use `count`."
+          "description": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to 0. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage by a single instance of the action. For instance, for a spread-type mechanic, this field should be set to 1, not 8, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by distinct instances of the action, not the same instance. To specify the number of damage instances, use count.",
+          "markdownDescription": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to `0`. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage **by a single instance** of the action. For instance, for a spread-type mechanic, this field should be set to `1`, not `8`, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by *distinct* instances of the action, not the same instance. To specify the number of damage instances, use `count`."
         },
         "icon": {
           "type": "number",
@@ -533,7 +554,8 @@
         "at": {
           "type": "integer",
           "minimum": 0,
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar."
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "id": {
           "anyOf": [
@@ -545,7 +567,8 @@
               "type": "string"
             }
           ],
-          "description": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
+          "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
+          "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
         },
         "description": {
           "type": "string",
@@ -553,7 +576,8 @@
         },
         "resolve": {
           "type": "string",
-          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available."
+          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a general description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available.",
+          "markdownDescription": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available."
         },
         "link": {
           "type": "string",
@@ -562,16 +586,19 @@
             "or",
             "then"
           ],
-          "description": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of `or`, a reader _could_ infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag    | meaning                                                              | |--------|----------------------------------------------------------------------| | `and`  | This mechanic and the next one occur at the same time.               | | `or`   | The boss may use either this mechanic or the next one, but not both. | | `then` | This mechanic and the next one resolve in rapid succession.          |"
+          "description": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of or, a reader could infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag | meaning | |--------|----------------------------------------------------------------------| | and | This mechanic and the next one occur at the same time. | | or | The boss may use either this mechanic or the next one, but not both. | | then | This mechanic and the next one resolve in rapid succession. |",
+          "markdownDescription": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of `or`, a reader _could_ infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag | meaning | |--------|----------------------------------------------------------------------| | `and` | This mechanic and the next one occur at the same time. | | `or` | The boss may use either this mechanic or the next one, but not both. | | `then` | This mechanic and the next one resolve in rapid succession. |"
         },
         "mitigation": {
           "$ref": "#/definitions/MitigationMode",
-          "description": "If this field is specified, it essentially serves as an override to the `link` type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are `combine`, which takes the sum of this damage instance and the next, and `max`, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an `and` link defaults to `combine` and an `or` link defaults to `max`."
+          "description": "If this field is specified, it essentially serves as an override to the link type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are combine, which takes the sum of this damage instance and the next, and max, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an and link defaults to combine and an or link defaults to max.",
+          "markdownDescription": "If this field is specified, it essentially serves as an override to the `link` type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are `combine`, which takes the sum of this damage instance and the next, and `max`, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an `and` link defaults to `combine` and an `or` link defaults to `max`."
         },
         "count": {
           "type": "integer",
           "minimum": 0,
-          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
+          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated Action if specified there. If not specified, defaults to 1.",
+          "markdownDescription": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
         },
         "players": {
           "type": "number",
@@ -579,7 +606,8 @@
         },
         "push": {
           "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
+          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
         },
         "flatten": {
           "type": "boolean",
@@ -614,8 +642,9 @@
       "properties": {
         "at": {
           "type": "number",
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar.",
-          "minimum": 0
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "minimum": 0,
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "id": {
           "type": "string",
@@ -636,8 +665,9 @@
       "properties": {
         "at": {
           "type": "number",
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar.",
-          "minimum": 0
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "minimum": 0,
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "description": {
           "type": "string",
@@ -645,7 +675,8 @@
         },
         "count": {
           "type": "number",
-          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
+          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated Action if specified there. If not specified, defaults to 1.",
+          "markdownDescription": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
         },
         "players": {
           "type": "number",
@@ -653,7 +684,8 @@
         },
         "push": {
           "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
+          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
         },
         "flatten": {
           "type": "boolean",
@@ -701,7 +733,8 @@
         "at": {
           "type": "integer",
           "minimum": 0,
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar."
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "id": {
           "anyOf": [
@@ -713,7 +746,8 @@
               "type": "string"
             }
           ],
-          "description": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
+          "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
+          "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
         },
         "description": {
           "type": "string",
@@ -721,7 +755,8 @@
         },
         "resolve": {
           "type": "string",
-          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available."
+          "description": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a general description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available.",
+          "markdownDescription": "Describes how to resolve the mechanic, if it's not obvious from the description.\n\nNote that this should be a **general** description of how to resolve the mechanic and should be independent of any specific strategy used.\n\nAlso note that this is automatically derived from the associated action if available."
         },
         "link": {
           "type": "string",
@@ -730,16 +765,19 @@
             "or",
             "then"
           ],
-          "description": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of `or`, a reader _could_ infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag    | meaning                                                              | |--------|----------------------------------------------------------------------| | `and`  | This mechanic and the next one occur at the same time.               | | `or`   | The boss may use either this mechanic or the next one, but not both. | | `then` | This mechanic and the next one resolve in rapid succession.          |"
+          "description": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of or, a reader could infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag | meaning | |--------|----------------------------------------------------------------------| | and | This mechanic and the next one occur at the same time. | | or | The boss may use either this mechanic or the next one, but not both. | | then | This mechanic and the next one resolve in rapid succession. |",
+          "markdownDescription": "If this field is specified, this timeline item will be directly connected to the next one with the given link tag. With the exception of `or`, a reader _could_ infer these based on the timestamp of the mechanic, so those values merely serve to place extra emphasis on whatever the value denotes.\n\n| tag | meaning | |--------|----------------------------------------------------------------------| | `and` | This mechanic and the next one occur at the same time. | | `or` | The boss may use either this mechanic or the next one, but not both. | | `then` | This mechanic and the next one resolve in rapid succession. |"
         },
         "mitigation": {
           "$ref": "#/definitions/MitigationMode",
-          "description": "If this field is specified, it essentially serves as an override to the `link` type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are `combine`, which takes the sum of this damage instance and the next, and `max`, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an `and` link defaults to `combine` and an `or` link defaults to `max`."
+          "description": "If this field is specified, it essentially serves as an override to the link type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are combine, which takes the sum of this damage instance and the next, and max, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an and link defaults to combine and an or link defaults to max.",
+          "markdownDescription": "If this field is specified, it essentially serves as an override to the `link` type, allowing you to change the way this damage instance flows into the mitigation timeline without altering the way it's displayed.\n\nPossible options are `combine`, which takes the sum of this damage instance and the next, and `max`, which takes the damage value of either this damage instance or the next, whichever is higher.\n\nIf not specified, an `and` link defaults to `combine` and an `or` link defaults to `max`."
         },
         "count": {
           "type": "integer",
           "minimum": 0,
-          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
+          "description": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated Action if specified there. If not specified, defaults to 1.",
+          "markdownDescription": "Specifies how many instances of this action come out at the same time. Is automatically inherited from the associated `Action` if specified there. If not specified, defaults to `1`."
         },
         "players": {
           "type": "number",
@@ -747,7 +785,8 @@
         },
         "push": {
           "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
+          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
         },
         "flatten": {
           "type": "boolean",
@@ -782,12 +821,14 @@
       "properties": {
         "at": {
           "type": "number",
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar.",
-          "minimum": 0
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "minimum": 0,
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "push": {
           "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
+          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
         },
         "id": {
           "type": "string",
@@ -818,8 +859,9 @@
       "properties": {
         "at": {
           "type": "number",
-          "description": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that   damage and statuses are **snapshot** on the player(s).\n* If the action has a castbar but otherwise has no visible effect, it's   at the end of the castbar.",
-          "minimum": 0
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "minimum": 0,
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "description": {
           "type": "string",
@@ -859,7 +901,8 @@
       "properties": {
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
-          "description": "Which coordinate system to use. Possible values are 'polar' and 'cartesian'. The coordinate system changes how an element's position is interpreted. Note that the coordinate system can be overridden on a per-element basis. Default is `cartesian`."
+          "description": "Which coordinate system to use. Possible values are 'polar' and 'cartesian'. The coordinate system changes how an element's position is interpreted. Note that the coordinate system can be overridden on a per-element basis. Default is cartesian.",
+          "markdownDescription": "Which coordinate system to use. Possible values are 'polar' and 'cartesian'. The coordinate system changes how an element's position is interpreted. Note that the coordinate system can be overridden on a per-element basis. Default is `cartesian`."
         },
         "elements": {
           "type": "object",
@@ -881,7 +924,8 @@
               "$ref": "#/definitions/GraphStep"
             }
           },
-          "description": "An object defining the graphs themselves, along with each of their steps. The left-hand side is a unique identifier for the graph that must correspond with a strategy defined on any action within `actions`. The right-hand side is a list of steps, where each step is an object where each key corresponds to an element.\n\nThe first step of each graph defines the elements themselves and their base state. All subsequent steps define a *delta* for each element that changes the element's state compared to the previous step. As a result, **the first step for each graph must include every element you intend to use in later steps**."
+          "description": "An object defining the graphs themselves, along with each of their steps. The left-hand side is a unique identifier for the graph that must correspond with a strategy defined on any action within actions. The right-hand side is a list of steps, where each step is an object where each key corresponds to an element.\n\nThe first step of each graph defines the elements themselves and their base state. All subsequent steps define a delta for each element that changes the element's state compared to the previous step. As a result, the first step for each graph must include every element you intend to use in later steps.",
+          "markdownDescription": "An object defining the graphs themselves, along with each of their steps. The left-hand side is a unique identifier for the graph that must correspond with a strategy defined on any action within `actions`. The right-hand side is a list of steps, where each step is an object where each key corresponds to an element.\n\nThe first step of each graph defines the elements themselves and their base state. All subsequent steps define a *delta* for each element that changes the element's state compared to the previous step. As a result, **the first step for each graph must include every element you intend to use in later steps**."
         },
         "defs": {
           "type": "object",
@@ -927,11 +971,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -947,11 +993,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -963,7 +1011,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -979,7 +1028,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1076,11 +1126,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1096,11 +1148,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1112,7 +1166,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1128,7 +1183,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1171,11 +1227,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1191,11 +1249,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1207,7 +1267,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1223,7 +1284,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1266,11 +1328,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1286,11 +1350,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1302,7 +1368,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1318,7 +1385,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1333,7 +1401,8 @@
         },
         "rotation": {
           "type": "number",
-          "description": "Specifies an offset from north (in degrees). This is different from the standard property `rotate` in that this field touches the coordinates of the cone directly instead of simply applying a transform."
+          "description": "Specifies an offset from north (in degrees). This is different from the standard property rotate in that this field touches the coordinates of the cone directly instead of simply applying a transform.",
+          "markdownDescription": "Specifies an offset from north (in degrees). This is different from the standard property `rotate` in that this field touches the coordinates of the cone directly instead of simply applying a transform."
         }
       },
       "required": [
@@ -1365,11 +1434,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1385,11 +1456,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1401,7 +1474,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1417,7 +1491,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1437,7 +1512,8 @@
             "circle",
             "rectangle"
           ],
-          "description": "Whether the image should be rendered in full (`rectangle`) or only as a circular cutout."
+          "description": "Whether the image should be rendered in full (rectangle) or only as a circular cutout.",
+          "markdownDescription": "Whether the image should be rendered in full (`rectangle`) or only as a circular cutout."
         }
       },
       "required": [
@@ -1473,11 +1549,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1493,11 +1571,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1509,7 +1589,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1525,7 +1606,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1546,7 +1628,8 @@
       "properties": {
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "color": {
           "type": "string",
@@ -1602,11 +1685,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1622,11 +1707,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1638,7 +1725,8 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1654,7 +1742,8 @@
         },
         "planar": {
           "type": "boolean",
-          "description": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
+          "description": "Whether to render this element as a planar element. A planar element is affected by perspective. Default is true.",
+          "markdownDescription": "Whether to render this element as a *planar* element. A planar element is affected by perspective. Default is `true`."
         },
         "shadow": {
           "type": "boolean",
@@ -1679,7 +1768,8 @@
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/ElementDelta",
-        "description": "Each graph step uses as its key one of the unique element IDs defined in `elements` _or_ one of the following predefined IDs: `boss`, `arena`, `enemy`, `T1`, `T2`, `H1`, `H2`, `M1`, `M2`, `R1`, `R2`, `players`, `DPS`, `tanks`, `healers`, `supports`.\n\nThe data then describes a *delta* of all of the properties that should change compared to the previous step. You can either supply an object with element-specific data, or an array with either 2 or 3 numbers. If an array has 2 numbers, it is interpreted as position data. If an array has 3 numbers, it is interpreted as position data + a rotation (in degrees).\n\nYou can add an element type (defined in `elements`) multiple times to the graph by providing an ID unique to that element type within the step data. All of the following variations are valid:\n\n* `ELEMENT_TYPE: DELTA`: The simplest form of a step key. Allows you to add an element type only once.\n* `ELEMENT_TYPE#ELEMENT_ID: DELTA`: A step key followed by a hash and a unique sub-ID. Allows you to add multiple elements   per element type.\n* `ELEMENT_TYPE#PARTIAL_ELEMENT_*_ID: DELTA`: A step key with a unique sub-ID that includes a wildcard (`*`). Allows you to define a delta   for all elements where the sub-ID has any number of characters in place of the wildcard. For instance, `ELEMENT_TYPE#*`   matches *all* elements of a given type. Be aware that only a single wildcard is currently permitted, and only in the element portion   of the ID, not the element type. For more flexibility, use one of the other variations below.\n* `ELEMENT_TYPE#NUMBER..NUMBER: DELTA`: Allows you to define a delta for all elements in the range. For instance,   `my_element#1..3` matches `my_element#1`, `my_element#2`, and `my_element#3`.\n* `ELEMENT_TYPE#PARTIAL_[SUB_ID_1, SUB_ID_2, ...]: DELTA`: The most powerful form of an element key. Allows you to match multiple   elements by composing the element key with comma-separated values inside a bracket expression. Multiple brackets are valid too.   For instance, `my_element#[stack, spread]_[1, 2]` matches `my_element#stack_1`, `my_element#stack_2`, `my_element#spread_1`, and `my_element#spread_2`.\n* `ELEMENT_TYPE#PARTIAL_[NUMBER..NUMBER]: DELTA`: Same as the previous version, but allows you to input a range expression   within the brackets.\n* `ELEMENT_TYPE_1,ELEMENT_TYPE_2: DELTA`: Allows you to match multiple element types. Cannot be used with sub-IDs."
+        "description": "Each graph step uses as its key one of the unique element IDs defined in elements or one of the following predefined IDs: boss, arena, enemy, T1, T2, H1, H2, M1, M2, R1, R2, players, DPS, tanks, healers, supports.\n\nThe data then describes a delta of all of the properties that should change compared to the previous step. You can either supply an object with element-specific data, or an array with either 2 or 3 numbers. If an array has 2 numbers, it is interpreted as position data. If an array has 3 numbers, it is interpreted as position data + a rotation (in degrees).\n\nYou can add an element type (defined in elements) multiple times to the graph by providing an ID unique to that element type within the step data. All of the following variations are valid:\n\n ELEMENTTYPE: DELTA: The simplest form of a step key. Allows you to add an element type only once.\n\n ELEMENTTYPE#ELEMENTID: DELTA: A step key followed by a hash and a unique sub-ID. Allows you to add multiple elements per element type.\n\n ELEMENTTYPE#PARTIALELEMENTID: DELTA: A step key with a unique sub-ID that includes a wildcard (). Allows you to define a delta for all elements where the sub-ID has any number of characters in place of the wildcard. For instance, ELEMENTTYPE# matches all elements of a given type. Be aware that only a single wildcard is currently permitted, and only in the element portion of the ID, not the element type. For more flexibility, use one of the other variations below.\n\n ELEMENTTYPE#NUMBER..NUMBER: DELTA: Allows you to define a delta for all elements in the range. For instance, myelement#1..3 matches myelement#1, myelement#2, and myelement#3.\n\n ELEMENTTYPE#PARTIAL[SUBID1, SUBID2, ...]: DELTA: The most powerful form of an element key. Allows you to match multiple elements by composing the element key with comma-separated values inside a bracket expression. Multiple brackets are valid too. For instance, myelement#[stack, spread][1, 2] matches myelement#stack1, myelement#stack2, myelement#spread1, and myelement#spread2.\n\n ELEMENTTYPE#PARTIAL[NUMBER..NUMBER]: DELTA: Same as the previous version, but allows you to input a range expression within the brackets.\n\n ELEMENTTYPE1,ELEMENTTYPE2: DELTA: Allows you to match multiple element types. Cannot be used with sub-IDs.",
+        "markdownDescription": "Each graph step uses as its key one of the unique element IDs defined in `elements` _or_ one of the following predefined IDs: `boss`, `arena`, `enemy`, `T1`, `T2`, `H1`, `H2`, `M1`, `M2`, `R1`, `R2`, `players`, `DPS`, `tanks`, `healers`, `supports`.\n\nThe data then describes a *delta* of all of the properties that should change compared to the previous step. You can either supply an object with element-specific data, or an array with either 2 or 3 numbers. If an array has 2 numbers, it is interpreted as position data. If an array has 3 numbers, it is interpreted as position data + a rotation (in degrees).\n\nYou can add an element type (defined in `elements`) multiple times to the graph by providing an ID unique to that element type within the step data. All of the following variations are valid:\n\n* `ELEMENT_TYPE: DELTA`: The simplest form of a step key. Allows you to add an element type only once.\n\n* `ELEMENT_TYPE#ELEMENT_ID: DELTA`: A step key followed by a hash and a unique sub-ID. Allows you to add multiple elements per element type.\n\n* `ELEMENT_TYPE#PARTIAL_ELEMENT_*_ID: DELTA`: A step key with a unique sub-ID that includes a wildcard (`*`). Allows you to define a delta for all elements where the sub-ID has any number of characters in place of the wildcard. For instance, `ELEMENT_TYPE#*` matches *all* elements of a given type. Be aware that only a single wildcard is currently permitted, and only in the element portion of the ID, not the element type. For more flexibility, use one of the other variations below.\n\n* `ELEMENT_TYPE#NUMBER..NUMBER: DELTA`: Allows you to define a delta for all elements in the range. For instance, `my_element#1..3` matches `my_element#1`, `my_element#2`, and `my_element#3`.\n\n* `ELEMENT_TYPE#PARTIAL_[SUB_ID_1, SUB_ID_2, ...]: DELTA`: The most powerful form of an element key. Allows you to match multiple elements by composing the element key with comma-separated values inside a bracket expression. Multiple brackets are valid too. For instance, `my_element#[stack, spread]_[1, 2]` matches `my_element#stack_1`, `my_element#stack_2`, `my_element#spread_1`, and `my_element#spread_2`.\n\n* `ELEMENT_TYPE#PARTIAL_[NUMBER..NUMBER]: DELTA`: Same as the previous version, but allows you to input a range expression within the brackets.\n\n* `ELEMENT_TYPE_1,ELEMENT_TYPE_2: DELTA`: Allows you to match multiple element types. Cannot be used with sub-IDs."
       },
       "properties": {
         "cast": {
@@ -1767,11 +1857,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1787,11 +1879,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1803,22 +1897,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1828,13 +1926,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -1939,11 +2039,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -1959,11 +2061,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -1975,22 +2079,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -2000,13 +2108,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -2061,11 +2171,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -2081,11 +2193,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -2097,22 +2211,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -2122,13 +2240,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -2183,11 +2303,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -2203,11 +2325,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -2219,22 +2343,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -2244,13 +2372,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -2306,11 +2436,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -2326,11 +2458,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -2342,22 +2476,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -2367,13 +2505,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -2429,11 +2569,13 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
+          "description": "The scale of the element, either as a [scaleX, scaleY] array or a single number that specifies the scale on both axes. Can also use w or h as shorthands if only one axis should be modified.",
+          "markdownDescription": "The scale of the element, either as a `[scaleX, scaleY]` array or a single number that specifies the scale on both axes. Can also use `w` or `h` as shorthands if only one axis should be modified."
         },
         "origin": {
           "$ref": "#/definitions/Origin",
-          "description": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
+          "description": "The origin of the element as relative coordinates between 0 and 1 where (0.5, 0.5) would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted.",
+          "markdownDescription": "The origin of the element as relative coordinates between `0` and `1` where `(0.5, 0.5)` would represent the element's center (default). This essentially \"translates\" the element by that value and thus changes the way position and rotation data is interpreted."
         },
         "rotate": {
           "anyOf": [
@@ -2449,11 +2591,13 @@
               "type": "null"
             }
           ],
-          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
+          "description": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set null to keep the previous rotation.",
+          "markdownDescription": "The rotation of the element in degrees. If this is a string, it's interpreted as an ID for another element within the same step that this element should \"look at\". Set `null` to keep the previous rotation."
         },
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "size": {
           "anyOf": [
@@ -2465,22 +2609,26 @@
               "$ref": "#/definitions/PositivePoint"
             }
           ],
-          "description": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+          "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
+          "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
         "x": {
           "type": "number",
-          "description": "Sets the `x` position."
+          "description": "Sets the x position.",
+          "markdownDescription": "Sets the `x` position."
         },
         "y": {
           "type": "number",
-          "description": "Sets the `y` position."
+          "description": "Sets the y position.",
+          "markdownDescription": "Sets the `y` position."
         },
         "attach": {
           "type": [
             "string",
             "null"
           ],
-          "description": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
+          "description": "Attaches this element to the element with the specified ID. In this case, x and y are interpreted as offsets.",
+          "markdownDescription": "Attaches this element to the element with the specified ID. In this case, `x` and `y` are interpreted as offsets."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -2490,13 +2638,15 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
         "status": {
           "type": "array",
@@ -2529,7 +2679,8 @@
       "properties": {
         "visible": {
           "type": "boolean",
-          "description": "Whether the element is currently visible or not. Default is `true`."
+          "description": "Whether the element is currently visible or not. Default is true.",
+          "markdownDescription": "Whether the element is currently visible or not. Default is `true`."
         },
         "color": {
           "type": "string",
@@ -2571,7 +2722,8 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
+          "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
+          "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "scale": {
           "anyOf": [
