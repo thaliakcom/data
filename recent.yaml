@@ -1,6 +1,6 @@
-patch: "6.5"
+patch: "7.0"
 content:
-  - id: 963
-    url: /extremes/thordans-reign/
-  - id: 965
-    url: /extremes/abyssal-fracture/
+  - id: 833
+    url: /extremes/worqor-lar-dor/
+  - id: 996
+    url: /extremes/everkeep/
