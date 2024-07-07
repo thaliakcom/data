@@ -27,7 +27,7 @@ status:
     id: 3551
     name: Duodæmoniac Bonds
     description: |
-      Deals damage in the form of a [m:stack.partner] when the effect expires. The effect will only ever be applied to either supports or DPS players. Thus, each DPS player should have a preassigned support player to stack with when the effect expires.
+      Deals damage in the form of a [m:stack.partner] when the effect expires. The effect will only ever be inflicted on either supports or DPS players. Thus, each DPS player should have a preassigned support player to stack with when the effect expires.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated twofold to take damage when this effect expires.
     type: delay
@@ -35,7 +35,7 @@ status:
     id: 3696
     name: Tetradæmoniac Bonds
     description: |
-      Deals damage in the form of a [m:stack.role] when the effect expires. This effect will only ever be applied to one random support and one random DPS playre. Thus, all DPS players and all supports should stack separately.
+      Deals damage in the form of a [m:stack.role] when the effect expires. This effect will only ever be inflicted on one random support and one random DPS player. Thus, all DPS players and all supports should stack separately.
       Note that this status is *not* lost or reassigned when someone dies. The body will still receive the [t:AoE].
     gameDescription: Fated fourfold to take damage when this effect expires.
     type: delay
@@ -96,7 +96,7 @@ status:
   doom:
     id: 3364
     duration: 5000
-    description: Applied by [a:cannonspawn] and [a:imprisonment]. Can be cleansed.
+    description: Inflicted by [a:cannonspawn] and [a:imprisonment]. Can be cleansed.
     type: delay
   fetters:
     id: 3552
