@@ -1341,7 +1341,6 @@ actions:
     description: A Rocket Punch fist was baited into a fist of the opposite colour. The two fists destroy each other, preventing [a:unmitigated-explosion].
   unmitigated-explosion:
     id: 31483
-    damage: 500000
     mechanic: mech.failure
     description: A Rocket Punch fist was not baited into a fist of the opposite colour and explodes, wiping the raid.
   run-dynamis-(delta-version):
