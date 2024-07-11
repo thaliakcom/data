@@ -1834,20 +1834,20 @@ actions:
         name: PF Standard
         description: Stack middle, then follow the first exaflare that appeared.
     children:
+      - at: 5308
+        id: unlimited-wave-cannon-bait
       - at: 6984
         id: unlimited-wave-cannon-hit
-      - at: 5308
+      - at: 7308
         id: unlimited-wave-cannon-bait
       - at: 8008
         id: unlimited-wave-cannon-hit
       - at: 8983
         id: unlimited-wave-cannon-hit
-      - at: 10007
-        id: unlimited-wave-cannon-hit
-      - at: 7308
-        id: unlimited-wave-cannon-bait
       - at: 9308
         id: unlimited-wave-cannon-bait
+      - at: 10007
+        id: unlimited-wave-cannon-hit
       - at: 11308
         id: unlimited-wave-cannon-bait
       - at: 13308
