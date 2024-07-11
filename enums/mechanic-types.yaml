@@ -36,8 +36,10 @@ tb.double:
   description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
   players: 1
 tb.towers:
-  name: tankbuster towers
-  description: Two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking players should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
+  name: tankbuster tower(s)
+  description: |
+    One or two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking player(s) should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
+    In general, these towers appear in three variants: two towers appearing at the same time, requiring a tank in each one; one tower appearing that requires *both* tanks to soak and split the damage; or one tower appearing that hits multiple times and requires a different tank inside for each hit.
   players: 1
 tb.stack:
   name: tankbuster (stack)
