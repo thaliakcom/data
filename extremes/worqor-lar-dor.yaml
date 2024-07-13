@@ -10,9 +10,714 @@ boss: Valigarmanda
 HP: 0
 wip: true
 spoiler: true
-description: ""
+description: A relatively simple fight, Valigarmanda nonetheless requires a quick eye to spot the danger zone both within and without the arena, and also features one of the coolest tankbusters this game has ever seen.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 628
     type: impairment
-    duration: 30000
-    description: Reduces damage dealt by approximately 25%.
+    duration: [30000, 29380]
+    description: |
+      Reduces damage dealt by approximately 25% (multiplicative) per stack.
+      Inflicted by various abilities such as [a:spikesicle], [a:sphere-shatter], or [a:chilling-cataclysm].
+  burns:
+    id: 2082
+    duration: 12000
+    type: dot
+    tick: 13000
+    description: Light [t:DoT] inflicted by [a:skyruin].
+  burns-puddle:
+    id: 3065
+    duration: 15000
+    type: dot
+    tick: 66000
+    description: Heavy [t:DoT] inflicted by the fire puddles left behind by [a:empowered-scourge-of-fire].
+  burns-tb:
+    id: 2945
+    duration: 6000
+    description: Inflicted by [a:mountain-fire-hit]
+  burns-fail:
+    id: 3826
+    duration: 15000
+    description: A cleansable [t:DoT] inflicted by [a:mountain-fire] on players standing outside the safe cone (or inflicted on everyone if no one soaked the tower).
+  calamitys-inferno:
+    id: 3818
+    duration: 76000
+    description: |
+      Triggers [a:empowered-scourge-of-fire], a 3-hit 4-man [m:stack.healers], when the effect expires. Each hit leaves behind a [m:aoe.puddle] that inflicts a lethal [s:burns-fail]
+      Inflicted by [a:triscourge].
+  calamitys-embers:
+    id: 3819
+    duration: 11000
+    description: Inflicted by unknown
+  calamitys-bolt:
+    id: 3823
+    duration: [122000, 43000, 120000]
+    description: Triggers [a:scourge-of-thunder], a [ms:chariot] [m:spread], when the effect expires. Inflicted by [a:triscourge].
+  calamitys-chill:
+    id: 3822
+    duration: [29000, 91000]
+    description: Triggers [a:scourge-of-ice], a [m:mech.motion], when the effect expires. Inflicted by [a:triscourge].
+  calamitys-bite:
+    id: 3821
+    duration: 11000
+    description: Triggers [a:scourge-of-ice], a [m:mech.motion], when the effect expires. Inflicted by [a:triscourge].
+  calamitys-flames:
+    id: 3817
+    duration: 11000
+    description: Inflicted by unknown
+  calamitys-fulgur:
+    id: 3824
+    duration: [59000, 99000]
+    description: Inflicted by unknown
+  calamitys-frost:
+    id: 3820
+    duration: [99000, 59000]
+    description: Inflicted by unknown
+  sustained-damage:
+    id: 2935
+    duration: 15000
+    description: Inflicted by [a:slithering-strike], [a:susurrant-breath]
+  trauma:
+    id: 3796
+    duration: 90000
+    description: Inflicted by [a:slithering-strike], [a:susurrant-breath]
+  fire-resistance-down-ii:
+    id: 2937
+    duration: [1960, 7000, 960]
+    description: Inflicted by [a:charring-cataclysm], [a:mountain-fire-hit], [a:scourge-of-fire], [a:scourge-of-fire-1], [a:scourge-of-fire-2]
+  freezing-up:
+    id: 3523
+    duration: 2000
+    description: Inflicted by [a:freezing-dust]
+  weakness:
+    id: 43
+    duration: 100000
+    description: Inflicted by unknown
+  lightning-resistance-down-ii:
+    id: 2998
+    duration: 2960
+    description: Inflicted by [a:scourge-of-thunder], [a:scourge-of-thunder-1]
+  prey:
+    id: 2939
+    duration: [6000, 5000]
+    description: Inflicted by unknown
+  magic-vulnerability-up:
+    id: 2941
+    duration: 1960
+    description: Inflicted by [a:calamitous-cry-1]
+  vulnerability-up:
+    id: 1789
+    duration: 59960
+    description: Inflicted by [a:calamitous-echo], [a:northern-cross-1], [a:thunderous-breath]
+  perpetual-conflagration:
+    id: 4122
+    duration: 9999000
+    description: Inflicted by unknown
+  frostbite:
+    id: 2083
+    duration: [12000, 15000]
+    description: Inflicted by [a:skyruin], [a:scourge-of-ice], [a:ice-talon]
+  deep-freeze:
+    id: 4150
+    duration: 18000
+    description: Inflicted by [a:chilling-cataclysm]
+  electrocution:
+    id: 2086
+    duration: [12000, 9000]
+    description: Inflicted by [a:skyruin], [a:scourge-of-thunder-1]
+  paralysis:
+    id: 3463
+    duration: 12000
+    description: Inflicted by [a:thunderous-breath], [a:arcane-lightning]
+  damage-up:
+    id: 3975
+    duration: 8000
+    description: Granted by [a:calamitous-cry]
+  fury:
+    id: 3805
+    duration: 9999000
+    description: Granted by [a:wrath-unfurled]
+actions:
+  spikesicle:
+    id: 36850
+    mechanic: aoe
+    description: |
+      Telegraphs 10 subsequent ice curves. The curves always start towards either the left or right side of the middle of the arena and move towards the *far* side. Note that the curves are always angled towards the *far* side of the arena, so after the first curve, the curves will now curve towards the *other* side since that side is now farther away.
+      Each curve spawns an ice block somewhere along its trajectory. The first 4 curves spawn their ice block at the origin of the curve; the 5th at the *end* of the curve; and the 6th in the *middle* of the curve (which is really more of a line at this point), on the edge of the arena. The remaining 4 curves behave identically to the previous 4 but on the other side of the arena.
+      After the telegraphs are finished, fires the ice curves in the telegraphed order. Each curve represents a narrow [ms:line] [t:AoE] that inflicts [s:damage-down] to anyone in their path. The ice blocks they spawn are yet inactive, but approximately 7 seconds after an ice block spawns, it [explodes](a:sphere-shatter) in a large [ms:chariot] [t:AoE] that likewise inflicts [s:damage-down].
+    resolve: |
+      Determine which side of the arena the first curve appears on, then go *towards* that side, to the edge of the arena. Wait until after the *second* curve, then start chasing the curves until you end up just past the arrow on [boss]'s hitbox. Wait here until a curve cleaves the hitbox arrow, then plant yourself at the *end* of the hitbox arrow (opposite the tip). This spot is safe from every [a:sphere-shatter].
+    children:
+      - at: 1294
+        id: spikesicle-curve
+      - at: 2496
+        id: spikesicle-curve
+      - at: 3701
+        id: spikesicle-curve
+      - at: 4906
+        id: spikesicle-curve
+      - at: 6110
+        id: spikesicle-curve
+      - at: 7311
+        id: spikesicle-curve
+      - at: 8025
+        id: sphere-shatter
+      - at: 8515
+        id: spikesicle-curve
+      - at: 9228
+        id: sphere-shatter
+      - at: 9720
+        id: spikesicle-curve
+      - at: 10433
+        id: sphere-shatter
+      - at: 10923
+        id: spikesicle-curve
+      - at: 11635
+        id: sphere-shatter
+      - at: 12126
+        id: spikesicle-curve
+      - at: 12838
+        id: sphere-shatter
+      - at: 14040
+        id: sphere-shatter
+      - at: 15242
+        id: sphere-shatter
+      - at: 16448
+        id: sphere-shatter
+      - at: 17651
+        id: sphere-shatter
+      - at: 18853
+        id: sphere-shatter
+  spikesicle-curve:
+    id: 36851
+    mechanic: aoe
+    description: Fires a [a:spikesicle] curve and leaves behind an ice block. Does moderate damage and inflicts [s:damage-down].
+    damage: 32365
+    players: 0
+  sphere-shatter:
+    id: 39261
+    mechanic: aoe
+    shape: chariot
+    description: An ice block spawned by [a:spikesicle] explodes, dealing moderate damage and inflicting [s:damage-down].
+    damage: 54570
+    players: 0
+  skyruin:
+    id: 38340
+    damage: 79703
+    description: Placeholder description for Skyruin
+  triscourge:
+    id: 36839
+    damage: 89662
+    description: Placeholder description for Triscourge
+  volcanic-drop:
+    id: 36837
+    description: Placeholder description for Volcanic Drop
+    children:
+      - at: 666
+        id: volcanic-drop-1
+      - at: 1246
+        id: volcanic-drop-1
+      - at: 1824
+        id: volcanic-drop-1
+      - at: 2404
+        id: volcanic-drop-1
+      - at: 2492
+        id: volcanic-drop-2
+      - at: 2981
+        id: volcanic-drop-1
+      - at: 3516
+        id: volcanic-drop-2
+      - at: 4540
+        id: volcanic-drop-2
+  volcanic-drop-1:
+    id: 36838
+    description: Placeholder description for Volcanic Drop
+  volcanic-drop-2:
+    id: 36836
+    description: Placeholder description for Volcanic Drop
+  slithering-strike:
+    id: 36811
+    damage: 62970
+    description: Placeholder description for Slithering Strike
+  charring-cataclysm:
+    id: 36804
+    damage: 101985
+    description: Placeholder description for Charring Cataclysm
+  mountain-fire:
+    id: 36876
+    mechanic: tb.towers
+    description: |
+      A tower appears at the front of the arena. [boss] then shoots six consecutive fireballs at it.
+      If the tower is unsoaked, the fire will bathe the arena in flames that deal heavy but survivable damage and inflict [s:vulnerability-up] and a stacking cleansable [s:burns-fail] [t:DoT].
+      If the tower is soaked, deals heavy damage to the player to the tower and inflicts [s:fire-resistance-down-ii] and an uncleansable [s:burns-tb]. This damage can only realistically be survived by a tank with defensive cooldowns. Due to [s:fire-resistance-down-ii], soaking multiple consecutive hits is lethal.
+      Even with a soaked tower, the fire still bathes the arena in flames. However, the flames are "split" down the middle by the player in the tower, creating a narrow conal safe spot behind that player. Note that players outside of this safe spot do **not** take survivable damage and a [s:vulnerability-up] and [s:burns] as it would be if the tower were left unsoaked; they just die.
+      After each hit, [boss] repositions to the left, the middle, or the right. This has no bearing on the tower player but changes the angle of the safe cone for the other players.
+    resolve: |
+      Have one of your tanks soak the tower's first hit, then alternate tanks from there. The [s:fire-resistance-down-ii] only lasts for a single hit.
+      For the first hit, [boss] is always positioned center. Afterwards, each hit requires the party to move such that the tower is between them and [boss].
+      Note that using a tank [t:invuln] on multiple hits is inadvised, as the [s:fire-resistance-down-ii] from the first hit renders the next hit's [s:burns-tb] lethal. Additionally, the hits are spaced out just enough that an invuln cannot cover more than 2 hits. If you intend to invuln this tankbuster, make sure to time it as late as possible. If timed correctly, the invuln can cover two tower hits as well as the subsequent lethal [s:burns-tb] ticks, expiring just after the last [s:burns-tb] tick.
+    tips:
+      - As a non-tank, always move back to the middle after each hit; that way you only have to move either not at all or a maximum of 45 degrees. If you stay on the side after a hit, you may have to move a full 90 degrees, which is especially uncomfortable for casters.
+      - As a tank, make sure to cycle through mitigation as needed. Don't save any mitigation for other tankbusters; the other tankbusters can all be comfortably survived with only a tank's short cooldown.
+    children:
+      - at: 5612
+        id: mountain-fire-hit
+      - at: 10605
+        id: mountain-fire-hit
+      - at: 15638
+        id: mountain-fire-hit
+      - at: 20666
+        id: mountain-fire-hit
+      - at: 25700
+        id: mountain-fire-hit
+      - at: 30737
+        id: mountain-fire-hit
+  mountain-fire-hit:
+    id: 36889
+    damage: 182678
+    mechanic: tb.towers
+    description: Placeholder description for Mountain Fire
+  empowered-scourge-of-fire:
+    id: 36847
+    name: Scourge of Fire (Empowered)
+    damage: 103522
+    mechanic: stack.healers
+    shape: chariot
+    description: Placeholder description for Scourge of Fire
+    children:
+      - at: 0
+        id: scourge-of-fire
+      - at: 3077
+        id: scourge-of-fire
+      - at: 6158
+        id: scourge-of-fire
+  strangling-coil:
+    id: 36815
+    description: Placeholder description for Strangling Coil
+    children:
+      - at: 804
+        id: strangling-coil-1
+  strangling-coil-1:
+    id: 36816
+    description: Placeholder description for Strangling Coil
+  scourge-of-thunder:
+    id: 36842
+    damage: 66820
+    description: Placeholder description for Scourge of Thunder
+  disaster-zone:
+    id: 36825
+    damage: 84374
+    description: Placeholder description for Disaster Zone
+  ruin-foretold:
+    id: 38546
+    damage: 90857
+    description: Placeholder description for Ruin Foretold
+  calamitous-cry:
+    id: 36866
+    description: Placeholder description for Calamitous Cry
+  calamitous-echo:
+    id: 36870
+    damage: 135984
+    description: Placeholder description for Calamitous Echo
+  calamitous-cry-1:
+    id: 36869
+    damage: 195745
+    description: Placeholder description for Calamitous Cry
+    children:
+      - at: 5075
+        id: calamitous-cry-2
+  calamitous-cry-2:
+    id: 36867
+    description: Placeholder description for Calamitous Cry
+  tulidisaster:
+    id: 36872
+    description: Placeholder description for Tulidisaster
+    children:
+      - at: 3123
+        id: tulidisaster-1
+      - at: 11636
+        id: tulidisaster-2
+      - at: 19659
+        id: tulidisaster-3
+  tulidisaster-1:
+    id: 36874
+    damage: 78942
+    description: Placeholder description for Tulidisaster
+  tulidisaster-2:
+    id: 36875
+    damage: 87116
+    description: Placeholder description for Tulidisaster
+  tulidisaster-3:
+    id: 36873
+    damage: 90972
+    description: Placeholder description for Tulidisaster
+  skyruin-2:
+    id: 36817
+    damage: 73561
+    description: Placeholder description for Skyruin
+  scourge-of-ice:
+    id: 36844
+    damage: 168586
+    description: Placeholder description for Scourge of Ice
+  scourge-of-fire-1:
+    id: 36846
+    damage: 105986
+    description: Placeholder description for Scourge of Fire
+  northern-cross:
+    id: 36828
+    description: Placeholder description for Northern Cross
+  susurrant-breath:
+    id: 36806
+    damage: 68441
+    description: Placeholder description for Susurrant Breath
+  chilling-cataclysm:
+    id: 36803
+    damage: 31666
+    description: Placeholder description for Chilling Cataclysm
+  strangling-coil-2:
+    id: 36814
+    description: Placeholder description for Strangling Coil
+    children:
+      - at: 757
+        id: strangling-coil-1
+  northern-cross-1:
+    id: 36827
+    damage: 80240
+    description: Placeholder description for Northern Cross
+  freezing-dust:
+    id: 36848
+    description: Placeholder description for Freezing Dust
+  disaster-zone-2:
+    id: 36821
+    damage: 86970
+    description: Placeholder description for Disaster Zone
+  ice-talon:
+    id: 36858
+    damage: 142384
+    description: Placeholder description for Ice Talon
+  skyruin-4:
+    id: 38339
+    damage: 80938
+    description: Placeholder description for Skyruin
+  scourge-of-fire-2:
+    id: 36845
+    damage: 109348
+    description: Placeholder description for Scourge of Fire
+  hail-of-feathers:
+    id: 36829
+    description: Placeholder description for Hail of Feathers
+    children:
+      - at: 1737
+        id: hail-of-feathers-1
+      - at: 2002
+        id: hail-of-feathers-2
+      - at: 4762
+        id: hail-of-feathers-1
+      - at: 5029
+        id: hail-of-feathers-3
+      - at: 7746
+        id: hail-of-feathers-1
+      - at: 8011
+        id: hail-of-feathers-4
+      - at: 10769
+        id: hail-of-feathers-1
+      - at: 10991
+        id: hail-of-feathers-5
+      - at: 13749
+        id: hail-of-feathers-1
+      - at: 14016
+        id: hail-of-feathers-6
+      - at: 16776
+        id: hail-of-feathers-1
+      - at: 16998
+        id: hail-of-feathers-7
+  hail-of-feathers-1:
+    id: 36830
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-2:
+    id: 36893
+    damage: 42825
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-3:
+    id: 36894
+    damage: 42502
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-4:
+    id: 36895
+    damage: 44600
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-5:
+    id: 36896
+    damage: 43559
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-6:
+    id: 36897
+    damage: 44215
+    description: Placeholder description for Hail of Feathers
+  hail-of-feathers-7:
+    id: 36898
+    damage: 85801
+    description: Placeholder description for Hail of Feathers
+  blighted-bolt:
+    id: 36831
+    description: Placeholder description for Blighted Bolt
+    children:
+      - at: 803
+        id: blighted-bolt-1
+  blighted-bolt-1:
+    id: 36833
+    description: Placeholder description for Blighted Bolt
+  scourge-of-thunder-1:
+    id: 36841
+    damage: 94464
+    description: Placeholder description for Scourge of Thunder
+  susurrant-breath-2:
+    id: 36805
+    damage: 68441
+    description: Placeholder description for Susurrant Breath
+  crackling-cataclysm:
+    id: 36801
+    description: Placeholder description for Crackling Cataclysm
+  thunderous-breath:
+    id: 36834
+    damage: 112441
+    description: Placeholder description for Thunderous Breath
+  arcane-lightning:
+    id: 39002
+    damage: 53903
+    description: Placeholder description for Arcane Lightning
+  slithering-strike-2:
+    id: 36809
+    damage: 62970
+    description: Placeholder description for Slithering Strike
+  disaster-zone-4:
+    id: 36823
+    damage: 74829
+    description: Placeholder description for Disaster Zone
+  ruinfall:
+    id: 36860
+    description: Placeholder description for Ruinfall
+    children:
+      - at: 1606
+        id: ruinfall-1
+      - at: 4015
+        id: ruinfall-2
+      - at: 5533
+        id: ruinfall-3
+  ruinfall-1:
+    id: 36861
+    damage: 142441
+    description: Placeholder description for Ruinfall
+  ruinfall-2:
+    id: 36863
+    damage: 71784
+    description: Placeholder description for Ruinfall
+  ruinfall-3:
+    id: 39130
+    description: Placeholder description for Ruinfall
+  wrath-unfurled:
+    id: 36871
+    damage: 85776
+    description: Placeholder description for Wrath Unfurled
+  tulidisaster-4:
+    id: 37452
+    description: Placeholder description for Tulidisaster
+    children:
+      - at: 3150
+        id: tulidisaster-5
+      - at: 11690
+        id: tulidisaster-6
+      - at: 19669
+        id: tulidisaster-7
+  tulidisaster-5:
+    id: 37454
+    damage: 90350
+    description: Placeholder description for Tulidisaster
+  tulidisaster-6:
+    id: 37455
+    damage: 96324
+    description: Placeholder description for Tulidisaster
+  tulidisaster-7:
+    id: 37453
+    description: Placeholder description for Tulidisaster
+timeline:
+  - at: 19905
+    id: spikesicle
+  - at: 48067
+    id: skyruin
+  - at: 56703
+    id: triscourge
+  - at: 64814
+    id: volcanic-drop
+  - at: 78123
+    id: slithering-strike
+  - at: 78834
+    id: charring-cataclysm
+  - at: 93931
+    id: mountain-fire
+  - at: 133716
+    id: scourge-of-fire
+  - at: 157567
+    id: volcanic-drop
+  - at: 168089
+    id: strangling-coil
+  - at: 169609
+    id: charring-cataclysm
+  - at: 179724
+    id: scourge-of-thunder
+  - at: 188588
+    id: disaster-zone
+  - at: 196869
+    id: ruin-foretold
+  - at: 197807
+    id: <untargetable>
+  - at: 198877
+    id: <targetable>
+  - at: 198877
+    id: <targetable>
+  - at: 198877
+    id: <targetable>
+  - at: 205116
+    id: calamitous-cry
+  - at: 206052
+    id: calamitous-echo
+  - at: 206141
+    id: calamitous-cry-1
+  - at: 212152
+    id: calamitous-echo
+  - at: 212241
+    id: calamitous-cry-1
+  - at: 218257
+    id: calamitous-echo
+  - at: 218301
+    id: calamitous-cry-1
+  - at: 224318
+    id: calamitous-echo
+  - at: 224363
+    id: calamitous-cry-1
+  - at: 224941
+    id: <untargetable>
+  - at: 230385
+    id: calamitous-echo
+  - at: 230430
+    id: calamitous-cry-1
+  - at: 232567
+    id: <untargetable>
+  - at: 236450
+    id: calamitous-echo
+  - at: 236450
+    id: <untargetable>
+  - at: 236494
+    id: calamitous-cry-1
+  - at: 236805
+    id: <targetable>
+  - at: 250581
+    id: tulidisaster
+  - at: 285237
+    id: skyruin-2
+  - at: 293826
+    id: triscourge
+  - at: 305850
+    id: scourge-of-ice
+  - at: 305850
+    id: scourge-of-fire-1
+  - at: 305850
+    id: scourge-of-ice
+  - at: 322117
+    id: northern-cross
+  - at: 323408
+    id: susurrant-breath
+  - at: 329421
+    id: chilling-cataclysm
+  - at: 337832
+    id: scourge-of-thunder
+  - at: 353275
+    id: spikesicle
+  - at: 361292
+    id: sphere-shatter
+  - at: 361426
+    id: spikesicle-1
+  - at: 362538
+    id: sphere-shatter
+  - at: 362583
+    id: spikesicle-1
+  - at: 363742
+    id: sphere-shatter
+  - at: 364232
+    id: spikesicle-5
+  - at: 364944
+    id: sphere-shatter
+  - at: 365435
+    id: spikesicle-6
+  - at: 366147
+    id: sphere-shatter
+  - at: 366325
+    id: northern-cross
+  - at: 367350
+    id: sphere-shatter
+  - at: 388580
+    id: strangling-coil-2
+  - at: 395394
+    id: chilling-cataclysm
+  - at: 400156
+    id: northern-cross-1
+  - at: 404208
+    id: freezing-dust
+  - at: 408309
+    id: <targetable>
+  - at: 414851
+    id: scourge-of-thunder
+  - at: 422152
+    id: disaster-zone-2
+  - at: 431373
+    id: ice-talon
+  - at: 445937
+    id: skyruin-4
+  - at: 454536
+    id: triscourge
+  - at: 466550
+    id: scourge-of-fire-2
+  - at: 477812
+    id: hail-of-feathers
+  - at: 480568
+    id: <targetable>
+  - at: 483599
+    id: <targetable>
+  - at: 486579
+    id: <targetable>
+  - at: 489604
+    id: <targetable>
+  - at: 492585
+    id: <targetable>
+  - at: 495613
+    id: <targetable>
+  - at: 504025
+    id: blighted-bolt
+  - at: 514541
+    id: scourge-of-thunder-1
+  - at: 529463
+    id: susurrant-breath-2
+  - at: 532627
+    id: crackling-cataclysm
+  - at: 544160
+    id: thunderous-breath
+  - at: 544250
+    id: arcane-lightning
+  - at: 554537
+    id: scourge-of-thunder-1
+  - at: 557480
+    id: <targetable>
+  - at: 569782
+    id: slithering-strike-2
+  - at: 572947
+    id: crackling-cataclysm
+  - at: 579366
+    id: disaster-zone-4
+  - at: 589651
+    id: ruinfall
+  - at: 603023
+    id: wrath-unfurled
+  - at: 614845
+    id: mountain-fire
+  - at: 659243
+    id: tulidisaster-4

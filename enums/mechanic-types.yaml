@@ -184,6 +184,12 @@ aoe.linger:
   description: |
     An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
   shapeful: true
+aoe.puddle:
+  name: puddle
+  description: |
+    An attack that leaves behind a puddle in a specific location (often on a player's location), usually inflicting a (often lethal) [t:DoT] to any players who step onto this puddle at any point before it fades.
+    After the puddle is initially dropped, there is a grace period that provides enough time for the player(s) who dropped the puddle to step out of it before the puddle takes effect.
+  shapeful: true
 aoe.memory:
   name: multi-AoE
   description: |
