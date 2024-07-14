@@ -3,10 +3,10 @@ dot:
   description: Deals a certain amount of damage every tick (3 seconds) until the status effect falls off.
 vuln:
   name: Resistance Down
-  description: All damage of a certain type is greatly amplified (usually to the point of certain death).
+  description: Damage taken (either all damage or only damage from certain types of abilities) is greatly amplified (often to the point of certain death).
 resistance:
   name: Resistance Up
-  description: All damage of a certain type is greatly reduced.
+  description: Damage taken (either all damage or only damage from certain types of abilities) is greatly reduced.
 condition:
   name: condition
   description: Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
@@ -22,6 +22,9 @@ impairment:
 indicator:
   name: indicator
   description: Has no effect on its own but serves as a helper status to make mechanics easier to resolve by assigning everyone a letter or number.
+damage-up:
+  name: Damage Up
+  description: Increases all damage dealt.
 rot:
   name: rot
   description: A status effect that can be passed to other players by walking into them. The original player keeps the status effect when passed. Named after [s:333], a mechanic in The Binding Coil of Bahamut - Turn 2.

@@ -24,7 +24,19 @@ status:
     duration: 12000
     type: dot
     tick: 13000
-    description: Light [t:DoT] inflicted by [a:skyruin].
+    description: Light [t:DoT] inflicted by [a:skyruin-fire].
+  frostbite:
+    id: 2083
+    duration: [12000, 15000]
+    type: dot
+    tick: 13000
+    description: Light [t:DoT] inflicted by [a:skyruin-ice] and various other ice attacks such as [a:scourge-of-ice] and [a:ice-talon].
+  electrocution:
+    id: 2086
+    duration: [12000, 9000]
+    type: dot
+    tick: 13000
+    description: Light [t:DoT] inflicted by [a:skyruin-thunder] and various other ice attacks such as [a:scourge-of-thunder].
   burns-puddle:
     id: 3065
     duration: 15000
@@ -34,113 +46,181 @@ status:
   burns-tb:
     id: 2945
     duration: 6000
-    description: Inflicted by [a:mountain-fire-hit]
+    type: dot
+    tick: 27000
+    description: A heavy [t:DoT] inflicted on whoever soaks a tower during [a:mountain-fire].
   burns-fail:
     id: 3826
     duration: 15000
-    description: A cleansable [t:DoT] inflicted by [a:mountain-fire] on players standing outside the safe cone (or inflicted on everyone if no one soaked the tower).
+    type: dot
+    tick: 23000
+    description: A cleansable [t:DoT] inflicted on all players by [a:unmitigated-explosion] if no one soaked the tower during [a:mountain-fire].
   calamitys-inferno:
     id: 3818
     duration: 76000
+    type: delay
     description: |
-      Triggers [a:empowered-scourge-of-fire], a 3-hit 4-man [m:stack.healers], when the effect expires. Each hit leaves behind a [m:aoe.puddle] that inflicts a lethal [s:burns-fail]
+      Triggers [a:empowered-scourge-of-fire], a 3-hit 4-man [m:stack.healers], when the effect expires. Each hit leaves behind a [m:aoe.puddle] that inflicts a lethal [s:burns-fail].
       Inflicted by [a:triscourge].
   calamitys-embers:
     id: 3819
     duration: 11000
-    description: Inflicted by unknown
-  calamitys-bolt:
-    id: 3823
-    duration: [122000, 43000, 120000]
-    description: Triggers [a:scourge-of-thunder], a [ms:chariot] [m:spread], when the effect expires. Inflicted by [a:triscourge].
-  calamitys-chill:
-    id: 3822
-    duration: [29000, 91000]
-    description: Triggers [a:scourge-of-ice], a [m:mech.motion], when the effect expires. Inflicted by [a:triscourge].
-  calamitys-bite:
-    id: 3821
-    duration: 11000
-    description: Triggers [a:scourge-of-ice], a [m:mech.motion], when the effect expires. Inflicted by [a:triscourge].
+    type: delay
+    description: |
+      Triggers [a:scourge-of-fire], a 3-man [m:stack.healers], when the effect expires.
+      Inflicted by [a:triscourge] during Ice Phase.
   calamitys-flames:
     id: 3817
     duration: 11000
-    description: Inflicted by unknown
+    type: delay
+    description: |
+      Triggers [a:scourge-of-fire], a 4-man [m:stack.healers], when the effect expires.
+      Inflicted by [a:triscourge] during Thunder Phase.
+  calamitys-bolt:
+    id: 3823
+    duration: [122000, 43000, 120000]
+    type: delay
+    description: |
+      Triggers [a:scourge-of-thunder], a [ms:chariot] [m:spread], when the effect expires.
+      Inflicted by [a:triscourge] during Fire and Ice Phase.
   calamitys-fulgur:
     id: 3824
     duration: [59000, 99000]
-    description: Inflicted by unknown
+    type: delay
+    description: |
+      Triggers [a:empowered-scourge-of-thunder], a large [ms:chariot] [m:spread], when the effect expires.
+      Inflicted by [a:triscourge] during Thunder Phase.
+  calamitys-chill:
+    id: 3822
+    duration: [29000, 91000]
+    type: delay
+    description: |
+      Inflicts [s:freezing-up] when the effect expires, requiring players to keep moving or be inflicted with [s:deep-freeze].
+      Inflicted by [a:triscourge] during Fire Phase.
+  calamitys-bite:
+    id: 3821
+    duration: 11000
+    type: delay
+    description: |
+      Triggers [a:scourge-of-ice], a large [ms:defamation]-type [m:spread] on both tanks, when the effect expires.
+      Inflicted by [a:triscourge] during Ice Phase.
   calamitys-frost:
     id: 3820
-    duration: [99000, 59000]
-    description: Inflicted by unknown
+    duration: [59000, 99000]
+    type: delay
+    description: |
+      When the effect expires, encases the afflicted player in a block of ice, inflicting [s:deep-freeze].
+      To avoid, the player must be [levitating](s:levitate).
+      Inflicted by [a:triscourge] during Thunder Phase.
   sustained-damage:
     id: 2935
     duration: 15000
-    description: Inflicted by [a:slithering-strike], [a:susurrant-breath]
+    type: dot
+    tick: 16000
+    description: |
+      Afflicted players take damage over time.
+      Inflicted by [a:slithering-strike], [a:susurrant-breath] and [a:strangling-coil].
+  levitate:
+    id: 3974
+    type: form
+    description: |
+      Afflicted players are floating above the ground, allowing them to avoid [a:thunderous-breath] and [s:calamitys-frost].
+      Granted by stepping onto certain marked tiles during Thunder Phase, and automatically removed when stepping off.
   trauma:
     id: 3796
     duration: 90000
-    description: Inflicted by [a:slithering-strike], [a:susurrant-breath]
+    type: condition
+    description: |
+      Accumulating another stack inflicts [s:concussion].
+      Inflicted by [a:slithering-strike], [a:susurrant-breath] and [a:strangling-coil].
+  concussion:
+    id: 3513
+    duration: 6960
+    type: impairment
+    description: |
+      Afflicted players are stunned and cannot act or move. Can be cleansed.
+      Inflicted by accumulating 2 stacks of [s:trauma].
   fire-resistance-down-ii:
     id: 2937
     duration: [1960, 7000, 960]
-    description: Inflicted by [a:charring-cataclysm], [a:mountain-fire-hit], [a:scourge-of-fire], [a:scourge-of-fire-1], [a:scourge-of-fire-2]
-  freezing-up:
-    id: 3523
-    duration: 2000
-    description: Inflicted by [a:freezing-dust]
-  weakness:
-    id: 43
-    duration: 100000
-    description: Inflicted by unknown
+    type: vuln
+    description: |
+      Renders any fire damage taken lethal.
+      Inflicted by [a:charring-cataclysm], [a:mountain-fire-hit], and [a:scourge-of-fire].
   lightning-resistance-down-ii:
     id: 2998
     duration: 2960
-    description: Inflicted by [a:scourge-of-thunder], [a:scourge-of-thunder-1]
+    type: vuln
+    description: |
+      Renders any lightning damage taken lethal.
+      Inflicted by [a:scourge-of-thunder] and [a:empowered-scourge-of-thunder].
+  freezing-up:
+    id: 3523
+    duration: 2000
+    type: condition
+    description: |
+      Players must be in constant motion. If a player stops moving before this status expires, inflicts [s:deep-freeze].
+      Inflicted by [a:freezing-dust] and [s:calamitys-chill].
   prey:
     id: 2939
-    duration: [6000, 5000]
-    description: Inflicted by unknown
+    duration: [5000, 6000]
+    type: delay
+    description: |
+      Targeted for [a:calamitous-cry] during [a:ruin-foretold].
+      The first set of [s:prey]s have a duration of 6 seconds. Each subsequent [a:calamitous-cry] hits after only 5 seconds.
   magic-vulnerability-up:
     id: 2941
     duration: 1960
-    description: Inflicted by [a:calamitous-cry-1]
+    type: vuln
+    description: |
+      Renders any magic damage taken lethal.
+      Inflicted by [a:calamitous-cry].
   vulnerability-up:
     id: 1789
     duration: 59960
-    description: Inflicted by [a:calamitous-echo], [a:northern-cross-1], [a:thunderous-breath]
+    type: vuln
+    description: |
+      Increases damage taken by 25% (additive) per stack.
+      Inflicted by a number of mechanics such as [a:calamitous-echo], [a:northern-cross], or [a:thunderous-breath].
   perpetual-conflagration:
     id: 4122
-    duration: 9999000
-    description: Inflicted by unknown
-  frostbite:
-    id: 2083
-    duration: [12000, 15000]
-    description: Inflicted by [a:skyruin], [a:scourge-of-ice], [a:ice-talon]
+    type: dot
+    tick: 5000
+    description: |
+      Light [t:DoT] inflicted by the final hit of [a:tulidisaster]. Lasts until the end of the fight.
   deep-freeze:
     id: 4150
     duration: 18000
-    description: Inflicted by [a:chilling-cataclysm]
-  electrocution:
-    id: 2086
-    duration: [12000, 9000]
-    description: Inflicted by [a:skyruin], [a:scourge-of-thunder-1]
+    type: impairment
+    tick: 19000
+    description: |
+      Player is frozen alive and taking constant damage. Other players can free them by attacking the block of ice they're encased in.
+      Inflicted by [a:chilling-cataclysm], [s:calamitys-frost], and [s:freezing-up] (if a player stops moving).
   paralysis:
     id: 3463
     duration: 12000
-    description: Inflicted by [a:thunderous-breath], [a:arcane-lightning]
+    type: impairment
+    description: |
+      Randomly stuns the player for a brief moment, interrupting all actions.
+      Inflicted by lightning-aspected abilities such as [a:thunderous-breath] and [a:arcane-lightning].
   damage-up:
     id: 3975
-    duration: 8000
-    description: Granted by [a:calamitous-cry]
+    type: damage-up
+    description: |
+      A stacking damage buff to [boss] during [a:ruin-foretold].
+      Each [a:calamitous-cry] grants one stack of this buff and increases the damage of the next [a:calamitous-cry] by 6% and the damage of [a:calamitous-echo] by 4.5%.
+      Automatically falls off after the last beacon is destroyed.
   fury:
     id: 3805
-    duration: 9999000
-    description: Granted by [a:wrath-unfurled]
+    type: damage-up
+    description: |
+      Increases all damage dealt to players by approximately 10% until the end of the fight.
+      Granted by [a:wrath-unfurled].
 actions:
   spikesicle:
     id: 36850
     mechanic: aoe
+    compact: full
     description: |
       Telegraphs 10 subsequent ice curves. The curves always start towards either the left or right side of the middle of the arena and move towards the *far* side. Note that the curves are always angled towards the *far* side of the arena, so after the first curve, the curves will now curve towards the *other* side since that side is now farther away.
       Each curve spawns an ice block somewhere along its trajectory. The first 4 curves spawn their ice block at the origin of the curve; the 5th at the *end* of the curve; and the 6th in the *middle* of the curve (which is really more of a line at this point), on the edge of the arena. The remaining 4 curves behave identically to the previous 4 but on the other side of the arena.
@@ -201,54 +281,133 @@ actions:
     description: An ice block spawned by [a:spikesicle] explodes, dealing moderate damage and inflicting [s:damage-down].
     damage: 54570
     players: 0
-  skyruin:
+  skyruin-fire:
     id: 38340
+    name: Skyruin (Fire)
+    mechanic: raidwide.transition
+    cast: 10000
     damage: 79703
-    description: Placeholder description for Skyruin
+    description: |
+      Deals heavy damage, inflicts [s:burns] on all players, transitions the arena, and begins Fire Phase.
+      The first Skyruin always transitions the arena to fire.
+  skyruin-ice:
+    id: 36817
+    name: Skyruin (Ice)
+    mechanic: raidwide.transition
+    cast: 10000
+    damage: 79703
+    description: |
+      Deals heavy damage, inflicts [s:frostbite] on all players, transitions the arena, and begins Ice Phase.
+      Either follows or precedes [a:skyruin-thunder]. :unverified(This order will not change for the remainder of the instance.)
+  skyruin-thunder:
+    id: 38339
+    name: Skyruin (Thunder)
+    mechanic: raidwide.transition
+    cast: 10000
+    damage: 79703
+    description: |
+      Deals heavy damage, inflicts [s:electrocution] on all players, transitions the arena, and begins Thunder Phase.
+      Either follows or precedes [a:skyruin-ice]. :unverified(This order will not change for the remainder of the instance.)
   triscourge:
     id: 36839
     damage: 89662
-    description: Placeholder description for Triscourge
+    mechanic: raidwide
+    description: |
+      Deals heavy damage and inflicts various status effects depending on the arena's current dominant element.
+      **Fire**:
+      * [s:calamitys-inferno] (76s) → both healers
+      * [s:calamitys-bolt] (122s) → all players
+      * [s:calamitys-chill] (29s) → all supports or DPS
+      * [s:calamitys-chill] (91s) → opposite role of [s:calamitys-chill] (29s)
+      **Ice**:
+      * [s:calamitys-embers] (11s) → both healers
+      * [s:calamitys-bite] (11s) → both tanks
+      * [s:calamitys-bolt] (43s) → all supports or DPS
+      * [s:calamitys-bolt] (120s) → opposite role of [s:calamitys-bolt] (43s)
+      **Thunder**:
+      * [s:calamitys-flames] (11s) → both healers
+      * [s:calamitys-fulgur] (59s) → all supports or DPS
+      * [s:calamitys-frost] (99s) → same role as [s:calamitys-fulgur] (59s)
+      * [s:calamitys-frost] (59s) → opposite role of [s:calamitys-fulgur] (59s)
+      * [s:calamitys-fulgur] (99s) → same role as [s:calamitys-frost] (59s)
   volcanic-drop:
-    id: 36837
-    description: Placeholder description for Volcanic Drop
-    children:
-      - at: 666
-        id: volcanic-drop-1
-      - at: 1246
-        id: volcanic-drop-1
-      - at: 1824
-        id: volcanic-drop-1
-      - at: 2404
-        id: volcanic-drop-1
-      - at: 2492
-        id: volcanic-drop-2
-      - at: 2981
-        id: volcanic-drop-1
-      - at: 3516
-        id: volcanic-drop-2
-      - at: 4540
-        id: volcanic-drop-2
-  volcanic-drop-1:
     id: 36838
-    description: Placeholder description for Volcanic Drop
-  volcanic-drop-2:
+    mechanic: aoe.linger
+    shape: chariot
+    description: |
+      The message "A volcanic eruption is imminent." appears on screen.
+      At the same time, one of the volcanoes to the west or east of the arena begins to smolder. After a short time, it spews a massive [t:AoE] onto that side of the arena that lingers for about 2.5s, dealing massive damage and inflicting [s:vulnerability-up] to any players who enter the area during this time.
+      It also spawns 3 sets of [baited AoEs](m:aoe.baitable) under 3 random players, also dealing massive damage and inflicting [s:vulnerability-up].
+    resolve: |
+      Point your camera at one of the two volcanoes. If your volcano is smoldering, go to the opposite side. If it remains dark, go to that side.
+      As the space to dodge [a:volcanic-drop-baits] is limited, try to stack up and move together to make sure the AoEs are all in the same place. Casters may wish to stand off to the side and only move if they have to.
+    compact: trim
+    children:
+      - at: 1826
+        id: volcanic-drop-baits
+      - at: 2850
+        id: volcanic-drop-baits
+      - at: 3874
+        id: volcanic-drop-baits
+  volcanic-drop-baits:
     id: 36836
-    description: Placeholder description for Volcanic Drop
+    name: Volcanic Drop (Baits)
+    mechanic: aoe.baitable
+    count: 3
+    shape: chariot
+    description: A small [t:AoE] telegraph appears underneath 3 random players. After a brief moment, lava from the volcano rains down upon that spot, dealing massive damage and inflicting [s:vulnerability-up] to any players hit.
   slithering-strike:
-    id: 36811
-    damage: 62970
-    description: Placeholder description for Slithering Strike
+    id: 36812
+    mechanic: aoe
+    shape: chariot
+    damage: 68441
+    players: 0
+    description: |
+      [boss] flies forward and begins to glow, hovering over the arena with both claws raised.
+      After a short time he punches the front of the arena, leaving only the rear of the arena safe. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      Note that the [t:AoE] covers more than [t:max melee] range.
+      [a:aoe-common:d]
+  strangling-coil:
+    id: 36815
+    mechanic: aoe
+    shape: dynamo
+    damage: 68441
+    players: 0
+    description: |
+      [boss] flies around the arena, creating a wind effect around the outside of the arena.
+      After a short time the wind manifests, leaving only a [ms:dynamo]-shaped safe spot in the center of the arena. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      [a:aoe-common:d]
+  susurrant-breath:
+    id: 36806
+    mechanic: aoe
+    shape: cone
+    damage: 68441
+    players: 0
+    description: |
+      [boss] flies backwards and begins glowing.
+      After a short time, he fires a massive conal breath of fire across the arena, leaving only small triangles at the front left and right of the arena untouched. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      [a:aoe-common:d]
+  aoe-common:
+    mechanic: aoe
+    description: |
+      Afterwards, triggers one of three mechanics depending on the current dominant element of the arena:
+      * **Fire**: Triggers [a:charring-cataclysm], a [m:stack.partner] on all DPS or supports.
+      * **Ice**: Triggers [a:chilling-cataclysm], a "find the safe spot" mechanic.
+      * **Thunder**: Triggers [a:crackling-cataclysm], large invisible [baited AoEs](m:aoe.baitable) on all players.
   charring-cataclysm:
     id: 36804
     damage: 101985
-    description: Placeholder description for Charring Cataclysm
+    mechanic: stack.partner
+    shape: chariot
+    description: >
+      A [m:stack.partner] on all DPS or support players. Deals heavy damage and inflicts [s:fire-resistance-down-ii].
+      Triggered after [a:susurrant-breath], [a:strangling-coil], and [a:slithering-strike] while in Fire Phase.
   mountain-fire:
     id: 36876
     mechanic: tb.towers
     description: |
       A tower appears at the front of the arena. [boss] then shoots six consecutive fireballs at it.
-      If the tower is unsoaked, the fire will bathe the arena in flames that deal heavy but survivable damage and inflict [s:vulnerability-up] and a stacking cleansable [s:burns-fail] [t:DoT].
+      If the tower is unsoaked, the fire [bathes the arena in flames](a:unmitigated-explosion) that deal heavy but survivable damage and inflict [s:vulnerability-up] and a stacking cleansable [s:burns-fail] [t:DoT].
       If the tower is soaked, deals heavy damage to the player to the tower and inflicts [s:fire-resistance-down-ii] and an uncleansable [s:burns-tb]. This damage can only realistically be survived by a tank with defensive cooldowns. Due to [s:fire-resistance-down-ii], soaking multiple consecutive hits is lethal.
       Even with a soaked tower, the fire still bathes the arena in flames. However, the flames are "split" down the middle by the player in the tower, creating a narrow conal safe spot behind that player. Note that players outside of this safe spot do **not** take survivable damage and a [s:vulnerability-up] and [s:burns] as it would be if the tower were left unsoaked; they just die.
       After each hit, [boss] repositions to the left, the middle, or the right. This has no bearing on the tower player but changes the angle of the safe cone for the other players.
@@ -276,14 +435,25 @@ actions:
     id: 36889
     damage: 182678
     mechanic: tb.towers
-    description: Placeholder description for Mountain Fire
+    description: An individual [a:mountain-fire] hit. Inflicts [s:burns-tb] on the player inside the tower.
+  unmitigated-explosion:
+    id: 36891
+    damage: 90000
+    players: 0
+    mechanic: mech.failure
+    description: |
+      [boss] bathes the entire arena in flames as no one soaked the tower during [a:mountain-fire]. Deals massive damage and inflicts [s:burns-fail] and [s:vulnerability-up] on all players.
   empowered-scourge-of-fire:
     id: 36847
     name: Scourge of Fire (Empowered)
-    damage: 103522
     mechanic: stack.healers
     shape: chariot
-    description: Placeholder description for Scourge of Fire
+    compact: trim
+    description: |
+      3 subsequent [m:stack.healers]s, triggered by [s:calamitys-inferno].
+      Each stack deals heavy damage, inflicts a brief [s:fire-resistance-down-ii], and leaves behind a fire puddle. Remaining in the puddle for too long or stepping into it again inflicts [s:burns-puddle].
+    resolve: |
+      Use a predetermined starting position for both light parties in the center of the arena. The hitbox ring is a good indicator for where to start. After each hit, move *forward* until you reach the edge of the puddle. After the last hit, move sideways and wait for the puddles to dissipate.
     children:
       - at: 0
         id: scourge-of-fire
@@ -291,263 +461,259 @@ actions:
         id: scourge-of-fire
       - at: 6158
         id: scourge-of-fire
-  strangling-coil:
-    id: 36815
-    description: Placeholder description for Strangling Coil
-    children:
-      - at: 804
-        id: strangling-coil-1
-  strangling-coil-1:
-    id: 36816
-    description: Placeholder description for Strangling Coil
+  scourge-of-fire:
+    id: 36846
+    damage: 105986
+    mechanic: stack.healers
+    shape: chariot
+    description: |
+      [m:stack.healers] triggered by [s:calamitys-embers] or [s:calamitys-flames].
+  empowered-scourge-of-thunder:
+    id: 36841
+    name: Scourge of Thunder (Empowered)
+    mechanic: spread
+    damage: 94464
+    count: 4
+    shape: chariot
+    description: Like [a:scourge-of-thunder], but larger and deals more damage. Only appears during Thunder Phase.
   scourge-of-thunder:
     id: 36842
     damage: 66820
-    description: Placeholder description for Scourge of Thunder
+    mechanic: spread
+    shape: chariot
+    description: Standard spread on either 4 players (during Ice Phase) or all 8 players (during Fire Phase).
   disaster-zone:
     id: 36825
     damage: 84374
-    description: Placeholder description for Disaster Zone
+    mechanic: raidwide.transition
+    description: Heavy raidwide. Transitions the arena back to its original state, ending the elemental phase.
   ruin-foretold:
     id: 38546
     damage: 90857
-    description: Placeholder description for Ruin Foretold
+    mechanic: raidwide
+    description: |
+      Heavy raidwide that initiates a mini-phase.
+      During this mini-phase, [boss] becomes untargetable and instead spawns three targetable beacons: one flame-kissed beacon, one glacial beacon, and one thunderous beacon. The fight will not continue until all three beacons have been destroyed.
+      Additionally, telegraphs a series of [conal AoEs](a:calamitous-echo) originating from the boss. All AoEs are evenly spaced. After each set of cones resolves, the next set of cones appears where the previous set *wasn't*.
+      Finally, both healers are marked with [s:prey] and, after a short time, targeted by [a:calamitous-cry], a light party [m:stack.intercept]. After [a:calamitous-cry] resolves, [boss] is granted a stack of [s:damage-up], increasing the damage of the next [a:calamitous-cry] by 6% per stack. Subsequent [Calamitous Cries](a:calamitous-cry) alternate between targeting the tanks and healers.
+    children:
+    - at: 938
+      id: <untargetable>
+      description: "[boss] becomes untargetable."
+    - at: 2008
+      id: <targetable>
+      description: Three beacons (one per element) become targetable.
+    - at: 8247
+      id: calamitous-cry
+    - at: 9183
+      id: calamitous-echo
+      link: and
+    - at: 9272
+      id: calamitous-cry
+    - at: 15283
+      id: <loop>
+      description: >-
+        Continues to repeat [a:calamitous-cry] and [a:calamitous-echo] until either
+        the party has wiped or all three beacons have been destroyed.
   calamitous-cry:
     id: 36866
-    description: Placeholder description for Calamitous Cry
+    mechanic: stack.intercept
+    shape: line
+    count: 2
+    players: 4
+    damage: 60000
+    tank-damage: 80000
+    description: |
+      A line stack on the two players marked by [s:prey]. Alternates between healers and tanks.
+      Each [a:calamitous-cry] increases the damage of the next one by 6%.
   calamitous-echo:
     id: 36870
     damage: 135984
-    description: Placeholder description for Calamitous Echo
-  calamitous-cry-1:
-    id: 36869
-    damage: 195745
-    description: Placeholder description for Calamitous Cry
-    children:
-      - at: 5075
-        id: calamitous-cry-2
-  calamitous-cry-2:
-    id: 36867
-    description: Placeholder description for Calamitous Cry
+    mechanic: aoe
+    shape: cone
+    players: 0
+    description: Conal AoEs during [a:ruin-foretold].
   tulidisaster:
     id: 36872
-    description: Placeholder description for Tulidisaster
+    mechanic: raidwide
+    description: A three-step raidwide. The last hit inflicts [s:perpetual-conflagration], which lasts until the end of the fight.
     children:
       - at: 3123
-        id: tulidisaster-1
+        id: tulidisaster-ice
       - at: 11636
-        id: tulidisaster-2
+        id: tulidisaster-thunder
       - at: 19659
-        id: tulidisaster-3
-  tulidisaster-1:
+        id: tulidisaster-fire
+  tulidisaster-ice:
     id: 36874
+    name: Tulidisaster (Ice)
+    mechanic: raidwide
     damage: 78942
-    description: Placeholder description for Tulidisaster
-  tulidisaster-2:
+    description: The first of the three raidwides during [a:tulidisaster].
+  tulidisaster-thunder:
     id: 36875
+    name: Tulidisaster (Thunder)
+    mechanic: raidwide
     damage: 87116
-    description: Placeholder description for Tulidisaster
-  tulidisaster-3:
+    description: The second of the three raidwides during [a:tulidisaster].
+  tulidisaster-fire:
     id: 36873
+    name: Tulidisaster (Fire)
+    mechanic: raidwide
     damage: 90972
-    description: Placeholder description for Tulidisaster
-  skyruin-2:
-    id: 36817
-    damage: 73561
-    description: Placeholder description for Skyruin
+    description: The third of the three raidwides during [a:tulidisaster]. Inflicts [s:perpetual-conflagration].
   scourge-of-ice:
     id: 36844
     damage: 168586
-    description: Placeholder description for Scourge of Ice
-  scourge-of-fire-1:
-    id: 36846
-    damage: 105986
-    description: Placeholder description for Scourge of Fire
-  northern-cross:
-    id: 36828
-    description: Placeholder description for Northern Cross
-  susurrant-breath:
-    id: 36806
-    damage: 68441
-    description: Placeholder description for Susurrant Breath
+    mechanic: tb.double
+    shape: defamation
+    description: |
+      Two massive tankbusters on the two tanks. Triggered by [s:calamitys-bite]. Inflicts [s:frostbite].
   chilling-cataclysm:
     id: 36803
     damage: 31666
-    description: Placeholder description for Chilling Cataclysm
-  strangling-coil-2:
-    id: 36814
-    description: Placeholder description for Strangling Coil
-    children:
-      - at: 757
-        id: strangling-coil-1
-  northern-cross-1:
+    mechanic: aoe
+    players: 0
+    count: 4
+    description: |
+      4 frost circles appear in the arena, each preparing to shoot a [ms:line] [t:AoE] in 8 different directions, leaving only a small number of tiny safe spots.
+      Being hit by one of the lines deals moderate damage and inflicts [s:deep-freeze].
+    resolve: |
+      While identifying a safe spot may seem daunting at first, the ice circles (and by extension the lines) appear in the same spots every time. The only variation is that they may be horizontally mirrored. This means that one of two spots will always be safe. You can find those spots and place a waymark in each spot to make resolving this mechanic much easier. Check the diagram for a visualization.
+  northern-cross:
     id: 36827
     damage: 80240
-    description: Placeholder description for Northern Cross
+    mechanic: aoe
+    shape: line
+    players: 0
+    description: |
+      The message "A rumbling avalanche approaches from the southeast..." appears on-screen.
+      The avalanche is telegraphed by arrows on either the northeastern or southwestern side of the arena. Shortly afterwards the avalanche hits, dealing heavy damage, inflicting [s:vulnerability-up], and knocking back anyone hit, with a potential to knock them off the arena.
   freezing-dust:
     id: 36848
-    description: Placeholder description for Freezing Dust
-  disaster-zone-2:
-    id: 36821
-    damage: 86970
-    description: Placeholder description for Disaster Zone
+    mechanic: mech.motion
+    description: Inflicts [s:freezing-up] on all players. If any player isn't moving at this point or stops moving before [s:freezing-up] falls off, inflicts [s:deep-freeze].
   ice-talon:
     id: 36858
     damage: 142384
-    description: Placeholder description for Ice Talon
-  skyruin-4:
-    id: 38339
-    damage: 80938
-    description: Placeholder description for Skyruin
-  scourge-of-fire-2:
-    id: 36845
-    damage: 109348
-    description: Placeholder description for Scourge of Fire
+    mechanic: tb.double
+    shape: chariot
+    description: A telegraphed tankbuster on the two highest enmity targets. Inflicts [s:frostbite].
   hail-of-feathers:
     id: 36829
-    description: Placeholder description for Hail of Feathers
+    compact: full
+    description: |
+      Drops a feather on each non-levitating square.
+      Each feather drop deals moderate proximity damage, starting in the square on the west and moving counter-clockwise, or starting in the square on the east and moving clockwise.
+      Feathers become targetable after being dropped. After [a:hail-of-feathers], executes [a:blighted-bolt] which hits all feathers with a lightning strike that kills any players on the same square as the feather, and also hits all [levitating](s:levitate) players.
+    resolve: |
+      Move opposite the first feather, then rotate around the front of the arena. (Feathers always rotate around the rear first.) Stop in the rear corner next to the first feather, then kill the first feather and stand on its square while [a:blighted-bolt] resolves. Make sure you're not [levitating](s:levitate).
+    tips:
+      - If you're a melee, do not attempt to maintain melee uptime on the last feather impact unless you know what you're doing. The proximity damage has a steep falloff and you will likely die.
+    mechanic: raidwide.proximity
     children:
       - at: 1737
-        id: hail-of-feathers-1
-      - at: 2002
-        id: hail-of-feathers-2
+        id: hail-of-feathers-hit
       - at: 4762
-        id: hail-of-feathers-1
-      - at: 5029
-        id: hail-of-feathers-3
+        id: hail-of-feathers-hit
       - at: 7746
-        id: hail-of-feathers-1
-      - at: 8011
-        id: hail-of-feathers-4
+        id: hail-of-feathers-hit
       - at: 10769
-        id: hail-of-feathers-1
-      - at: 10991
-        id: hail-of-feathers-5
+        id: hail-of-feathers-hit
       - at: 13749
-        id: hail-of-feathers-1
-      - at: 14016
-        id: hail-of-feathers-6
+        id: hail-of-feathers-hit
       - at: 16776
-        id: hail-of-feathers-1
-      - at: 16998
-        id: hail-of-feathers-7
-  hail-of-feathers-1:
+        id: hail-of-feathers-hit
+  hail-of-feathers-hit:
     id: 36830
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-2:
-    id: 36893
     damage: 42825
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-3:
-    id: 36894
-    damage: 42502
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-4:
-    id: 36895
-    damage: 44600
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-5:
-    id: 36896
-    damage: 43559
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-6:
-    id: 36897
-    damage: 44215
-    description: Placeholder description for Hail of Feathers
-  hail-of-feathers-7:
-    id: 36898
-    damage: 85801
-    description: Placeholder description for Hail of Feathers
+    mechanic: raidwide.proximity
+    description: A feather hits the arena, dealing proximity damage to all players.
   blighted-bolt:
     id: 36831
-    description: Placeholder description for Blighted Bolt
-    children:
-      - at: 803
-        id: blighted-bolt-1
-  blighted-bolt-1:
-    id: 36833
-    description: Placeholder description for Blighted Bolt
-  scourge-of-thunder-1:
-    id: 36841
-    damage: 94464
-    description: Placeholder description for Scourge of Thunder
-  susurrant-breath-2:
-    id: 36805
-    damage: 68441
-    description: Placeholder description for Susurrant Breath
+    mechanic: aoe
+    shape: chariot
+    description: |
+      Targets all feathers with an AoE large enough to cover the entire square that they're on. Also targets all [levitating](s:levitate) players. Anyone hit is instantly killed.
   crackling-cataclysm:
     id: 36801
-    description: Placeholder description for Crackling Cataclysm
+    mechanic: aoe.baitable
+    shape: chariot
+    description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up] and [s:paralysis].
   thunderous-breath:
     id: 36834
     damage: 112441
-    description: Placeholder description for Thunderous Breath
+    description: Deals massive damage and inflicts [s:vulnerability-up] and [s:paralysis] on all players who are not [levitating](s:levitate).
   arcane-lightning:
     id: 39002
     damage: 53903
-    description: Placeholder description for Arcane Lightning
-  slithering-strike-2:
-    id: 36809
-    damage: 62970
-    description: Placeholder description for Slithering Strike
-  disaster-zone-4:
-    id: 36823
-    damage: 74829
-    description: Placeholder description for Disaster Zone
+    description: Lightning circles spawn on both sides of the arena, each preparing to fire a [ms:line] AoE across. Each AoE inflicts [s:vulnerability-up] and [s:paralysis]. Only one row in the arena has no circle on either side.
   ruinfall:
     id: 36860
-    description: Placeholder description for Ruinfall
+    mechanic: tb.towers
+    description: |
+      A tower appears in the center of the arena, dealing massive damage if left unsoaked. Soaking players take heavy damage that can be shared.
+      Afterwards, knocks back all players towards the rear of the arena, where 3 [ms:chariot] AoEs are about to explode.
+    resolve: |
+      Have both tanks soak the tower with light cooldowns.
+      All players should either use [s:arms-length]/[s:surecast] towards the end of the cast, or position themselves in such a way to get knocked back in-between the AoEs at the rear of the arena.
     children:
       - at: 1606
-        id: ruinfall-1
+        id: ruinfall-tb
       - at: 4015
-        id: ruinfall-2
+        id: ruinfall-kb
       - at: 5533
-        id: ruinfall-3
-  ruinfall-1:
+        id: ruinfall-circles
+  ruinfall-tb:
     id: 36861
+    name: Ruinfall (TB)
+    mechanic: tb.towers
     damage: 142441
-    description: Placeholder description for Ruinfall
-  ruinfall-2:
+    description: The [a:ruinfall] tower resolves.
+  ruinfall-kb:
     id: 36863
+    name: Ruinfall (Knockback)
+    mechanic: mech.knockback
     damage: 71784
-    description: Placeholder description for Ruinfall
-  ruinfall-3:
+    description: Deals moderate damage to all players and knocks them towards the rear of the arena.
+  ruinfall-circles:
     id: 39130
-    description: Placeholder description for Ruinfall
+    name: Ruinfall (Circles)
+    mechanic: aoe
+    shape: chariot
+    count: 3
+    description: AoEs at the rear of the arena explode, dealing massive damage to anyone inside.
   wrath-unfurled:
     id: 36871
     damage: 85776
-    description: Placeholder description for Wrath Unfurled
-  tulidisaster-4:
+    mechanic: raidwide
+    description: Standard raidwide.
+  tulidisaster-enrage:
     id: 37452
-    description: Placeholder description for Tulidisaster
+    mechanic: enrage.soft
+    description: |
+      Enrage sequence.
+      Behaves like the first [a:tulidisaster], but instead of inflicting another [s:perpetual-conflagration], the last hit wipes the party.
     children:
       - at: 3150
-        id: tulidisaster-5
+        id: tulidisaster-ice
       - at: 11690
-        id: tulidisaster-6
+        id: tulidisaster-thunder
       - at: 19669
-        id: tulidisaster-7
-  tulidisaster-5:
-    id: 37454
-    damage: 90350
-    description: Placeholder description for Tulidisaster
-  tulidisaster-6:
-    id: 37455
-    damage: 96324
-    description: Placeholder description for Tulidisaster
-  tulidisaster-7:
+        id: tulidisaster-enrage-fire
+  tulidisaster-enrage-fire:
     id: 37453
-    description: Placeholder description for Tulidisaster
+    mechanic: enrage
+    damage: 9999999
+    description: Kills all players.
 timeline:
   - at: 19905
     id: spikesicle
   - at: 48067
-    id: skyruin
+    id: skyruin-fire
   - at: 56703
     id: triscourge
-  - at: 64814
+  - at: 65480
     id: volcanic-drop
   - at: 78123
     id: slithering-strike
@@ -557,7 +723,7 @@ timeline:
     id: mountain-fire
   - at: 133716
     id: scourge-of-fire
-  - at: 157567
+  - at: 158191
     id: volcanic-drop
   - at: 168089
     id: strangling-coil
@@ -569,52 +735,19 @@ timeline:
     id: disaster-zone
   - at: 196869
     id: ruin-foretold
-  - at: 197807
-    id: <untargetable>
-  - at: 198877
-    id: <targetable>
-  - at: 198877
-    id: <targetable>
-  - at: 198877
-    id: <targetable>
-  - at: 205116
-    id: calamitous-cry
-  - at: 206052
-    id: calamitous-echo
-  - at: 206141
-    id: calamitous-cry-1
-  - at: 212152
-    id: calamitous-echo
-  - at: 212241
-    id: calamitous-cry-1
-  - at: 218257
-    id: calamitous-echo
-  - at: 218301
-    id: calamitous-cry-1
-  - at: 224318
-    id: calamitous-echo
-  - at: 224363
-    id: calamitous-cry-1
-  - at: 224941
-    id: <untargetable>
-  - at: 230385
-    id: calamitous-echo
-  - at: 230430
-    id: calamitous-cry-1
-  - at: 232567
-    id: <untargetable>
-  - at: 236450
-    id: calamitous-echo
-  - at: 236450
-    id: <untargetable>
-  - at: 236494
-    id: calamitous-cry-1
   - at: 236805
     id: <targetable>
+    push: true
+    description: |
+      [boss] becomes targetable again after all three beacons have been destroyed.
+      This timeline assumes it took 7× [a:calamitous-cry] until all beacons were destroyed. It may take your party more or less time, altering the overall timeline.
   - at: 250581
     id: tulidisaster
   - at: 285237
-    id: skyruin-2
+    id: skyruin-ice
+    link: or
+  - at: 285237
+    id: skyruin-thunder
   - at: 293826
     id: triscourge
   - at: 305850
@@ -672,7 +805,10 @@ timeline:
   - at: 431373
     id: ice-talon
   - at: 445937
-    id: skyruin-4
+    id: skyruin-thunder
+    link: or
+  - at: 445937
+    id: skyruin-ice
   - at: 454536
     id: triscourge
   - at: 466550
