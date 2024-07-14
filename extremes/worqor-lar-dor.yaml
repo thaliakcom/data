@@ -22,8 +22,8 @@ status:
   burns:
     id: 2082
     duration: 12000
-    type: dot
     tick: 13000
+    type: dot
     description: Light [t:DoT] inflicted by [a:skyruin-fire].
   frostbite:
     id: 2083
@@ -642,11 +642,17 @@ actions:
     description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up] and [s:paralysis].
   thunderous-breath:
     id: 36834
+    mechanic: aoe.condition
     damage: 112441
+    players: 0
     description: Deals massive damage and inflicts [s:vulnerability-up] and [s:paralysis] on all players who are not [levitating](s:levitate).
   arcane-lightning:
     id: 39002
+    mechanic: aoe
+    shape: line
+    count: 10
     damage: 53903
+    players: 0
     description: Lightning circles spawn on both sides of the arena, each preparing to fire a [ms:line] AoE across. Each AoE inflicts [s:vulnerability-up] and [s:paralysis]. Only one row in the arena has no circle on either side.
   ruinfall:
     id: 36860
