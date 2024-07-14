@@ -131,7 +131,7 @@ stack.intercept:
     A stack (almost always in the shape of a line) that deals heavy damage to the first player(s) hit and moderate damage to all subsequent players.
     In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
     Named after Imdugud's eponymous attack, [a:2134].
-  players: 6
+  players: 8
   shapeful: true
 stack.tower:
   name: stack tower
