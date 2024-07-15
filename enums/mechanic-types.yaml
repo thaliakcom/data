@@ -15,8 +15,12 @@ raidwide.sethp:
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
   players: 8
 raidwide.transition:
+  name: raidwide (transition)
+  description: Hits all party members with moderate to heavy damage and transitions the fight into another phase.
+  players: 8
+raidwide.ultimate:
   name: ultimate attack
-  description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
+  description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Sometimes used during a transition into another phase.
   players: 8
 tb.tether:
   name: tankbuster (tether)
@@ -195,6 +199,10 @@ aoe.memory:
   description: |
     Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
   shapeful: true
+aoe.condition:
+  name: conditional
+  description: |
+    An arena-wide AoE that hits any player who doesn't fulfill a specific condition.
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.

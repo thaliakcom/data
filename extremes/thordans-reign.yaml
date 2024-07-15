@@ -465,7 +465,7 @@ actions:
     description: Deals minimal damage and inflicts a small knockback on all players.
   ultimate-end:
     id: 35277
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     damage: 44915
     description: |
       [boss] buries you and your beliefs.
