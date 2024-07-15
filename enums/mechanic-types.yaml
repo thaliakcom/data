@@ -15,8 +15,12 @@ raidwide.sethp:
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
   players: 8
 raidwide.transition:
+  name: raidwide (transition)
+  description: Hits all party members with moderate to heavy damage and transitions the fight into another phase.
+  players: 8
+raidwide.ultimate:
   name: ultimate attack
-  description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Generally used during a transition into another phase.
+  description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Sometimes used during a transition into another phase.
   players: 8
 tb.tether:
   name: tankbuster (tether)
@@ -36,8 +40,10 @@ tb.double:
   description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
   players: 1
 tb.towers:
-  name: tankbuster towers
-  description: Two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking players should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
+  name: tankbuster tower(s)
+  description: |
+    One or two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking player(s) should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
+    In general, these towers appear in three variants: two towers appearing at the same time, requiring a tank in each one; one tower appearing that requires *both* tanks to soak and split the damage; or one tower appearing that hits multiple times and requires a different tank inside for each hit.
   players: 1
 tb.stack:
   name: tankbuster (stack)
@@ -129,7 +135,7 @@ stack.intercept:
     A stack (almost always in the shape of a line) that deals heavy damage to the first player(s) hit and moderate damage to all subsequent players.
     In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
     Named after Imdugud's eponymous attack, [a:2134].
-  players: 6
+  players: 8
   shapeful: true
 stack.tower:
   name: stack tower
@@ -182,11 +188,21 @@ aoe.linger:
   description: |
     An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
   shapeful: true
+aoe.puddle:
+  name: puddle
+  description: |
+    An attack that leaves behind a puddle in a specific location (often on a player's location), usually inflicting a (often lethal) [t:DoT] to any players who step onto this puddle at any point before it fades.
+    After the puddle is initially dropped, there is a grace period that provides enough time for the player(s) who dropped the puddle to step out of it before the puddle takes effect.
+  shapeful: true
 aoe.memory:
   name: multi-AoE
   description: |
     Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
   shapeful: true
+aoe.condition:
+  name: conditional
+  description: |
+    An arena-wide AoE that hits any player who doesn't fulfill a specific condition.
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.

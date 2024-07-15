@@ -222,19 +222,19 @@ status:
   synchronization-debugger:
     id: 3430
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-synchronization-bug]. The next time [s:critical-synchronization-bug] were to be inflicted, this buff is consumed and [s:critical-synchronization-bug] is *not* inflicted.
+    description: Automatically granted after the expiration of [s:critical-synchronization-bug]. The next time [s:critical-synchronization-bug] were to be inflicted, this buff is consumed and [s:critical-synchronization-bug] is *not* inflicted.
   overflow-debugger:
     id: 3431
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-overflow-bug]. The next time [s:critical-overflow-bug] were to be inflicted, this buff is consumed and [s:critical-overflow-bug] is *not* inflicted.
+    description: Automatically granted after the expiration of [s:critical-overflow-bug]. The next time [s:critical-overflow-bug] were to be inflicted, this buff is consumed and [s:critical-overflow-bug] is *not* inflicted.
   underflow-debugger:
     id: 3432
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-underflow-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-underflow-bug] to this player, making it paramount that every player only receives [s:critical-underflow-bug] once, before they take their tower.
+    description: Automatically granted after the expiration of [s:critical-underflow-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-underflow-bug] to this player, making it paramount that every player only receives [s:critical-underflow-bug] once, before they take their tower.
   performance-debugger:
     id: 3433
     type: resistance
-    description: Automatically applied after the expiration of [s:critical-performance-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-performance-bug] to this player, making it paramount that every player only receives [s:critical-performance-bug] once, before they take their tower.
+    description: Automatically granted after the expiration of [s:critical-performance-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-performance-bug] to this player, making it paramount that every player only receives [s:critical-performance-bug] once, before they take their tower.
   oversampled-wave-cannon-loading:
     id: 3452
     type: delay
@@ -975,7 +975,7 @@ actions:
       * [s:critical-underflow-bug]: a [st:rot] that inflicts [s:critical-underflow-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
       * [s:critical-performance-bug]: a [st:rot] that inflicts [s:critical-performance-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
     resolve: |
-      While the mechanic seems complicated, the debuffs applied at the start ensure that there is only one way to resolve the mechanic correctly.
+      While the mechanic seems complicated, the debuffs inflicted at the start ensure that there is only one way to resolve the mechanic correctly.
       First, in this description, the following terms will be used instead of the full ability names:
       * [s:critical-overflow-bug] will be called "defamation".
       * [s:critical-synchronization-bug] will be called "stack".
@@ -1341,7 +1341,6 @@ actions:
     description: A Rocket Punch fist was baited into a fist of the opposite colour. The two fists destroy each other, preventing [a:unmitigated-explosion].
   unmitigated-explosion:
     id: 31483
-    damage: 500000
     mechanic: mech.failure
     description: A Rocket Punch fist was not baited into a fist of the opposite colour and explodes, wiping the raid.
   run-dynamis-(delta-version):
@@ -1835,20 +1834,20 @@ actions:
         name: PF Standard
         description: Stack middle, then follow the first exaflare that appeared.
     children:
+      - at: 5308
+        id: unlimited-wave-cannon-bait
       - at: 6984
         id: unlimited-wave-cannon-hit
-      - at: 5308
+      - at: 7308
         id: unlimited-wave-cannon-bait
       - at: 8008
         id: unlimited-wave-cannon-hit
       - at: 8983
         id: unlimited-wave-cannon-hit
-      - at: 10007
-        id: unlimited-wave-cannon-hit
-      - at: 7308
-        id: unlimited-wave-cannon-bait
       - at: 9308
         id: unlimited-wave-cannon-bait
+      - at: 10007
+        id: unlimited-wave-cannon-hit
       - at: 11308
         id: unlimited-wave-cannon-bait
       - at: 13308

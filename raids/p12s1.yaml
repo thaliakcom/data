@@ -466,7 +466,7 @@ actions:
     id: 33523
     damage: 86300
     type: magic
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every party member and transform the arena into a hexagon."
   palladion:
     id: 33525
@@ -615,7 +615,7 @@ actions:
   theoss-ultima:
     id: 33530
     damage: 130138
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     description: "[boss] unleashes Ultima, dealing massive damage to all players and restoring the arena. Deals more damage the more players are dead."
   superchain-theory-iia:
     id: 34554

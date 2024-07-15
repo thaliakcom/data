@@ -250,7 +250,7 @@ actions:
       [Being hit by an orb](a:burst) inflicts [s:vuln] and [s:pollen].
   big-bang:
     id: 35660
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     description: |
       Big raidwide that inflicts debuffs and transitions the arena.
       During the cast, [random AoEs](a:big-bang-aoe) start to appear in the arena while everyone is targeted for [a spread](a:big-bang-spread).
@@ -288,7 +288,7 @@ actions:
     id: 35660
     name: Big Bang (Hit)
     damage: 53802
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     description: The final hit of [a:big-bang]. Deals heavy damage, changes the appearance of the arena, and inflicts all players with [s:big-bounce], [s:hp-penalty], [s:acceleration-bomb], [s:divisive-dark], one of the healers with [s:beckoning-dark], and 2 random players with [s:forked-lightning].
   void-meteor:
     id: 35671
@@ -425,7 +425,7 @@ actions:
   big-crunch-hit:
     id: 35661
     name: Big Crunch (Final Hit)
-    mechanic: raidwide.transition
+    mechanic: raidwide.ultimate
     damage: 53802
     description: The final hit of [a:big-crunch]. Deals heavy damage, changes the appearance of the arena, and inflicts all players with [s:big-bounce].
   branding-flare:

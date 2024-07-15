@@ -207,8 +207,8 @@ actions:
     description: |
       Chain symbols appear above all players. After roughly 5 seconds, all players receive a [s:missing-link] that tethers pairs of players together.
       The tethers will always pair a support with a DPS, unless players are dead.
-      The chains can be broken through distance, but the distance required is relative to the starting distance between the two partners at the time that [s:missing-link] is applied. If both players are standing on top of each other at that point, the required distance to break the tether is approximately the full diameter of the miniature arena.
-    resolve: All players should stack on top of each other in the center of the arena. Do *not* get baited by the chains appearing above players' heads; you **must** stay still until [s:missing-link] is applied. While waiting, identify the two positions on the edge of the arena that have no angel on or across from them. Once [s:missing-link] is applied, have all supports move to the safespot in the northwestern half of the arena, and all DPS to the safespot in the southeastern half of the arena (or vice-versa).
+      The chains can be broken through distance, but the distance required is relative to the starting distance between the two partners at the time that [s:missing-link] is inflicted. If both players are standing on top of each other at that point, the required distance to break the tether is approximately the full diameter of the miniature arena.
+    resolve: All players should stack on top of each other in the center of the arena. Do *not* get baited by the chains appearing above players' heads; you **must** stay still until [s:missing-link] is inflicted. While waiting, identify the two positions on the edge of the arena that have no angel on or across from them. Once [s:missing-link] is inflicted, have all supports move to the safespot in the northwestern half of the arena, and all DPS to the safespot in the southeastern half of the arena (or vice-versa).
   missing-link-resolve:
     id: 34182
     name: Missing Link (Hit)
@@ -352,8 +352,8 @@ actions:
     count: 2
     description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
     resolve: |
-      Wait for all 4 stacks to be applied, then cleanse them using [a:esuna] or [a:wardens-paean], or use [a:cover].
-      Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being applied.
+      Wait for all 4 stacks to be inflicted, then cleanse them using [a:esuna] or [a:wardens-paean], or use [a:cover].
+      Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being inflicted.
     children:
       - at: 800
         id: crush-helm-vulnup
