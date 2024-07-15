@@ -8,9 +8,11 @@ by:
 tier: Endwalker
 boss: Valigarmanda
 HP: 0
-wip: true
+party_hp: 115000
 spoiler: true
-description: A relatively simple fight, Valigarmanda nonetheless requires a quick eye to spot the danger zone both within and without the arena, and also features one of the coolest tankbusters this game has ever seen.
+description: |
+  A relatively simple fight, Valigarmanda nonetheless requires a quick eye to spot the danger zone both within and without the arena, and also features one of the coolest tankbusters this game has ever seen.
+  *Note: diagrams will be added once arena images become available.*
 status:
   damage-down:
     id: 628
@@ -403,7 +405,7 @@ actions:
     shape: chariot
     damage: 101985
     count: 4
-    description: >
+    description: |
       A [m:stack.partner] on all DPS or support players. Deals heavy damage and inflicts [s:fire-resistance-down-ii].
       Triggered after [a:susurrant-breath], [a:strangling-coil], and [a:slithering-strike] while in Fire Phase.
   mountain-fire:
@@ -731,6 +733,12 @@ timeline:
     name: Fire Phase
   - at: 56703
     id: triscourge
+    description: |
+      Deals heavy damage and inflicts a number of status effects.
+      * [s:calamitys-inferno] (76s) → both healers
+      * [s:calamitys-bolt] (122s) → all players
+      * [s:calamitys-chill] (29s) → all supports or DPS
+      * [s:calamitys-chill] (91s) → opposite role of [s:calamitys-chill] (29s)
   - at: 65480
     id: volcanic-drop
   - at: 78123
@@ -785,6 +793,12 @@ timeline:
     name: Ice Phase
   - at: 293826
     id: triscourge
+    description: |
+      Deals heavy damage and inflicts a number of status effects.
+      * [s:calamitys-embers] (11s) → both healers
+      * [s:calamitys-bite] (11s) → both tanks
+      * [s:calamitys-bolt] (43s) → all supports or DPS
+      * [s:calamitys-bolt] (120s) → opposite role of [s:calamitys-bolt] (43s)
   - at: 305850
     id: scourge-of-ice
     link: and
@@ -845,6 +859,13 @@ timeline:
     name: Thunder Phase
   - at: 454536
     id: triscourge
+    description: |
+      Deals heavy damage and inflicts a number of status effects.
+      * [s:calamitys-flames] (11s) → both healers
+      * [s:calamitys-fulgur] (59s) → all supports or DPS
+      * [s:calamitys-frost] (99s) → same role as [s:calamitys-fulgur] (59s)
+      * [s:calamitys-frost] (59s) → opposite role of [s:calamitys-fulgur] (59s)
+      * [s:calamitys-fulgur] (99s) → same role as [s:calamitys-frost] (59s)
   - at: 466550
     id: scourge-of-fire
     description: 4-man [m:stack.healers] triggered by [s:calamitys-flames].
