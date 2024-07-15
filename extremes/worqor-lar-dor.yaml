@@ -188,6 +188,7 @@ status:
     tick: 5000
     description: |
       Light [t:DoT] inflicted by the final hit of [a:tulidisaster]. Lasts until the end of the fight.
+      Note that the tick damage is unaffected by any kind of mitigation on [a:tulidisaster-fire].
   deep-freeze:
     id: 4150
     type: impairment
@@ -222,7 +223,8 @@ actions:
     mechanic: aoe
     compact: full
     description: |
-      Telegraphs 10 subsequent ice curves. The curves always start towards either the left or right side of the middle of the arena and move towards the *far* side. Note that the curves are always angled towards the *far* side of the arena, so after the first curve, the curves will now curve towards the *other* side since that side is now farther away.
+      Telegraphs 10 subsequent ice curves.
+      The curves always start towards either the left or right side of the middle of the arena and move towards the *far* side. Note that the curves are always angled towards the *far* side of the arena, so after the first curve, the curves will now curve towards the *other* side since that side is now farther away.
       Each curve spawns an ice block somewhere along its trajectory. The first 4 curves spawn their ice block at the origin of the curve; the 5th at the *end* of the curve; and the 6th in the *middle* of the curve (which is really more of a line at this point), on the edge of the arena. The remaining 4 curves behave identically to the previous 4 but on the other side of the arena.
       After the telegraphs are finished, fires the ice curves in the telegraphed order. Each curve represents a narrow [ms:line] [t:AoE] that inflicts [s:damage-down] to anyone in their path. The ice blocks they spawn are yet inactive, but approximately 7 seconds after an ice block spawns, it [explodes](a:sphere-shatter) in a large [ms:chariot] [t:AoE] that likewise inflicts [s:damage-down].
     resolve: |
@@ -269,7 +271,7 @@ actions:
       - at: 18853
         id: sphere-shatter
   spikesicle-curve:
-    id: 36851
+    id: 36854
     mechanic: aoe
     damage: 32365
     players: 0
@@ -282,7 +284,7 @@ actions:
     players: 0
     description: An ice block spawned by [a:spikesicle] explodes, dealing moderate damage and inflicting [s:damage-down].
   skyruin-fire:
-    id: 38340
+    id: 36818
     name: Skyruin (Fire)
     mechanic: raidwide.transition
     cast: 10000
@@ -291,7 +293,7 @@ actions:
       Deals heavy damage, inflicts [s:burns] on all players, transitions the arena, and begins Fire Phase.
       The first Skyruin always transitions the arena to fire.
   skyruin-ice:
-    id: 36817
+    id: 36818
     name: Skyruin (Ice)
     mechanic: raidwide.transition
     cast: 10000
@@ -300,7 +302,7 @@ actions:
       Deals heavy damage, inflicts [s:frostbite] on all players, transitions the arena, and begins Ice Phase.
       Either follows or precedes [a:skyruin-thunder]. :unverified(This order will not change for the remainder of the instance.)
   skyruin-thunder:
-    id: 38339
+    id: 36819
     name: Skyruin (Thunder)
     mechanic: raidwide.transition
     cast: 10000
@@ -368,7 +370,7 @@ actions:
       Note that the [t:AoE] covers more than [t:max melee] range.
       [a:aoe-common:d]
   strangling-coil:
-    id: 36815
+    id: 36816
     mechanic: aoe
     shape: dynamo
     damage: 68441
@@ -378,7 +380,7 @@ actions:
       After a short time the wind manifests, leaving only a [ms:dynamo]-shaped safe spot in the center of the arena. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
       [a:aoe-common:d]
   susurrant-breath:
-    id: 36806
+    id: 36808
     mechanic: aoe
     shape: cone
     damage: 68441
@@ -407,6 +409,7 @@ actions:
   mountain-fire:
     id: 36876
     mechanic: tb.towers
+    compact: trim
     description: |
       A tower appears at the front of the arena. [boss] then shoots six consecutive fireballs at it.
       If the tower is unsoaked, the fire [bathes the arena in flames](a:unmitigated-explosion) that deal heavy but survivable damage and inflict [s:vulnerability-up] and a stacking cleansable [s:burns-fail] [t:DoT].
@@ -470,7 +473,7 @@ actions:
     damage: 105986
     count: 2
     description: |
-      [m:stack.healers] triggered by [s:calamitys-embers] or [s:calamitys-flames].
+      [m:stack.healers:c] triggered by [s:calamitys-embers], [s:calamitys-flames], or [s:calamitys-inferno].
   empowered-scourge-of-thunder:
     id: 36841
     name: Scourge of Thunder (Empowered)
@@ -486,7 +489,7 @@ actions:
     damage: 66820
     description: Standard spread on either 4 players (during Ice Phase) or all 8 players (during Fire Phase).
   disaster-zone:
-    id: 36825
+    id: 36824
     mechanic: raidwide.transition
     damage: 84374
     description: Heavy raidwide. Transitions the arena back to its original state, ending the elemental phase.
@@ -507,8 +510,6 @@ actions:
     - at: 2008
       id: <targetable>
       description: Three beacons (one per element) become targetable.
-    - at: 8247
-      id: calamitous-cry
     - at: 9183
       id: calamitous-echo
       link: and
@@ -520,7 +521,7 @@ actions:
         Continues to repeat [a:calamitous-cry] and [a:calamitous-echo] until either
         the party has wiped or all three beacons have been destroyed.
   calamitous-cry:
-    id: 36866
+    id: 36869
     mechanic: stack.intercept
     shape: line
     damage: 60000
@@ -565,7 +566,9 @@ actions:
     name: Tulidisaster (Fire)
     mechanic: raidwide
     damage: 90972
-    description: The third of the three raidwides during [a:tulidisaster]. Inflicts [s:perpetual-conflagration].
+    description: |
+      The third of the three raidwides during [a:tulidisaster]. Inflicts [s:perpetual-conflagration].
+      Note that mitigating this attack only mitigates the initial raidwide damage. [s:perpetual-conflagration] cannot be mitigated.
   scourge-of-ice:
     id: 36844
     mechanic: tb.double
@@ -599,7 +602,7 @@ actions:
     mechanic: mech.motion
     description: Inflicts [s:freezing-up] on all players. If any player isn't moving at this point or stops moving before [s:freezing-up] falls off, inflicts [s:deep-freeze].
   ice-talon:
-    id: 36858
+    id: 36859
     mechanic: tb.double
     shape: chariot
     damage: 142384
@@ -631,7 +634,7 @@ actions:
       - at: 16776
         id: hail-of-feathers-hit
   hail-of-feathers-hit:
-    id: 36830
+    id: 36898
     mechanic: raidwide.proximity
     damage: 42825
     description: A feather hits the arena, dealing proximity damage to all players.
@@ -640,14 +643,14 @@ actions:
     mechanic: aoe
     shape: chariot
     description: |
-      Targets all feathers with an AoE large enough to cover the entire square that they're on. Also targets all [levitating](s:levitate) players. Anyone hit is instantly killed.
+      Targets all feathers with an AoE large enough to cover the entire square that they're on. Also targets all [levitating](s:levitate) players. Anyone hit is :unverified(instantly killed).
   crackling-cataclysm:
     id: 36801
     mechanic: aoe.baitable
     shape: chariot
     description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up] and [s:paralysis].
   thunderous-breath:
-    id: 36834
+    id: 36835
     mechanic: aoe.condition
     damage: 112441
     players: 0
@@ -746,13 +749,13 @@ timeline:
     id: empowered-scourge-of-fire
   - at: 158191
     id: volcanic-drop
-  - at: 168089
+  - at: 168895
     id: slithering-strike
     link: or
-  - at: 168089
+  - at: 168895
     id: susurrant-breath
     link: or
-  - at: 168089
+  - at: 168895
     id: strangling-coil
   - at: 169609
     id: charring-cataclysm
@@ -787,6 +790,7 @@ timeline:
     link: and
   - at: 305850
     id: scourge-of-fire
+    description: 3-man [m:stack.healers] triggered by [s:calamitys-embers].
     players: 3
   - at: 322117
     id: northern-cross
@@ -810,13 +814,13 @@ timeline:
     link: and
   - at: 366325
     id: northern-cross
-  - at: 388580
+  - at: 389375
     id: slithering-strike
     link: or
-  - at: 388580
+  - at: 389375
     id: susurrant-breath
     link: or
-  - at: 388580
+  - at: 389375
     id: strangling-coil
   - at: 395394
     id: chilling-cataclysm
@@ -843,6 +847,7 @@ timeline:
     id: triscourge
   - at: 466550
     id: scourge-of-fire
+    description: 4-man [m:stack.healers] triggered by [s:calamitys-flames].
   - at: 477812
     id: hail-of-feathers
     link: then
