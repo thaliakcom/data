@@ -876,6 +876,13 @@ timeline:
     id: blighted-bolt
   - at: 514541
     id: empowered-scourge-of-thunder
+    link: and
+  - at: 514541
+    id: <removestatus>
+    status: calamitys-frost
+    description: |
+      [s:calamitys-frost] expires, encasing any players who are not [levitating](s:levitate) in a block of ice.
+      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up].
   - at: 529463
     id: slithering-strike
     link: or
@@ -893,6 +900,13 @@ timeline:
     id: arcane-lightning
   - at: 554537
     id: empowered-scourge-of-thunder
+    link: and
+  - at: 554537
+    id: <removestatus>
+    status: calamitys-frost
+    description: |
+      [s:calamitys-frost] expires, encasing any players who are not [levitating](s:levitate) in a block of ice.
+      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up].
   - at: 569782
     id: slithering-strike
     link: or
