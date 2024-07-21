@@ -1846,6 +1846,16 @@
         "text": {
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2028,6 +2038,16 @@
         "text": {
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2161,6 +2181,16 @@
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
         },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
+        },
         "rotation": {
           "type": "number"
         }
@@ -2292,6 +2322,16 @@
         "text": {
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         },
         "image": {
           "type": "string"
@@ -2425,6 +2465,16 @@
         "text": {
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2558,6 +2608,16 @@
         "text": {
           "type": "string",
           "description": "Allows you to add some text on top of the element itself."
+        },
+        "transform": {
+          "type": "string",
+          "description": "Sets the CSS transform property on this element during this step.",
+          "markdownDescription": "Sets the CSS `transform` property on this element during this step."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element during this step.",
+          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
