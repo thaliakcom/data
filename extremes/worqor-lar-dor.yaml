@@ -1,7 +1,7 @@
 id: 833
 patch: "7.0"
 date: 2024-07-15
-modified: 2024-07-19
+modified: 2024-07-21
 by:
   id: 27637301
   role: author
@@ -12,7 +12,6 @@ party_hp: 115000
 spoiler: true
 description: |
   A relatively simple fight, Valigarmanda nonetheless requires a quick eye to spot the danger zone both within and without the arena, and also features one of the coolest tankbusters this game has ever seen.
-  *Note: diagrams will be added once arena images become available.*
 status:
   damage-down:
     id: 628
@@ -231,6 +230,10 @@ actions:
       After the telegraphs are finished, fires the ice curves in the telegraphed order. Each curve represents a narrow [ms:line] [t:AoE] that inflicts [s:damage-down] to anyone in their path. The ice blocks they spawn are yet inactive, but approximately 7 seconds after an ice block spawns, it [explodes](a:sphere-shatter) in a large [ms:chariot] [t:AoE] that likewise inflicts [s:damage-down].
     resolve: |
       Determine which side of the arena the first curve appears on, then go *towards* that side, to the edge of the arena. Wait until after the *second* curve, then start chasing the curves until you end up just past the arrow on [boss]'s hitbox. Wait here until a curve cleaves the hitbox arrow, then plant yourself at the *end* of the hitbox arrow (opposite the tip). This spot is safe from every [a:sphere-shatter].
+    strategies:
+      spikesicle:
+        name: Minimal Movement
+        description: This strategy dodges all AoEs with minimal movement.
     children:
       - at: 1294
         id: spikesicle-curve
@@ -582,14 +585,20 @@ actions:
   chilling-cataclysm:
     id: 36803
     mechanic: aoe
-    count: 4
+    count: 5
     damage: 31666
     players: 0
     description: |
-      4 frost circles appear in the arena, each preparing to shoot a [ms:line] [t:AoE] in 8 different directions, leaving only a small number of tiny safe spots.
-      Being hit by one of the lines deals moderate damage and inflicts [s:deep-freeze].
+      5 frost circles appear in the arena, each preparing to shoot a [ms:line] [t:AoE] in 8 different directions, leaving only a small number of tiny safe spots.
+      Being hit by one of the lines deals moderate damage and inflicts [s:deep-freeze] and [s:damage-down].
+      The circle positioning is not random. They always appear in the same places every time, though they may be horizontally mirrored, for a total of only 2 variations. Specifically, each circle is exactly the diameter of 1/6th of the arena's height. If one pictures the arena divided into an even grid with 6 rows and 8 columns, each circle is placed exactly into this grid, and each row and column only features at most 1 circle. This means that only 1 row and 3 columns do not have a circle inside them, and because of the diagonal [ms:line]s, this leaves only a single safe spot in the arena.
     resolve: |
-      While identifying a safe spot may seem daunting at first, the ice circles (and by extension the lines) appear in the same spots every time. The only variation is that they may be horizontally mirrored. This means that one of two spots will always be safe. You can find those spots and place a waymark in each spot to make resolving this mechanic much easier. Check the diagram for a visualization.
+      Identify the two frontmost ice circles. The safe spot is centered in-between them. (More specifically, the safe spot is in the grid row between the two frontmost circles, and in the diagonal between the two rearmost circles.)
+      It is not necessary to find this exact spot; there is a grace period of slightly more than a second after the line telegraphs appear before the AoEs resolve that allows for microadjustments. For additional ease, you can place waymarks in the two possible safe spots.
+    strategies:
+      chilling-cataclysm:
+        name: Visualization
+        description: A visualization of the line AoEs. This is the only pattern that can appear, though it can appear horizontally mirrored (with the safe spot on the right instead of the left).
   northern-cross:
     id: 36827
     mechanic: aoe
@@ -927,3 +936,254 @@ timeline:
     id: mountain-fire
   - at: 659243
     id: tulidisaster-enrage
+graphing:
+  defs:
+    aoe-gradient: "radial-gradient(0 #FFC86852 85% #FFC86852 100% #FFB657CC)"
+    line-gradient: "linear-gradient(0 #FEAF49CC 10% #FFC86872 90% #FFC86872 100% #FEAF49CC)"
+  coordinate-system: cartesian
+  elements:
+    arena:
+      type: image
+      shape: rectangle
+      image: /images/arenas/worqor-lar-dor.avif
+    boss:
+      size: 200
+      opacity: 0.5
+      coordinate-system: cartesian
+    tile:
+      type: rectangle
+      color: "#358788"
+      opacity: 0.7
+      size: [50, 48]
+      origin: [0.5, 0.47]
+    snow:
+      type: rectangle
+      size: [200, 145]
+      opacity: 0.8
+      color: "#D9D9D9"
+    spikesicle-thin:
+      type: image
+      image: /images/markers/spikesicle-thin.svg
+      size: [210, 210]
+      origin: [0.5, 0.05]
+      rotate: 90
+      shadow: false
+    spikesicle-thin-straight:
+      type: rectangle
+      color: "#7ad4faaa"
+      size: [1, 144]
+      origin: [0.5, 0]
+      visible: false
+      shadow: false
+    spikesicle:
+      type: image
+      image: /images/markers/spikesicle.svg
+      size: 210
+      origin: [0.5, 0.05]
+      rotate: 90
+      shadow: false
+    spikesicle-straight:
+      type: rectangle
+      color: "#dce8e8aa"
+      size: [15, 144]
+      origin: [0.5, 0]
+      visible: false
+      shadow: false
+    ice-block:
+      type: ellipse
+      color: "#dce8e8dd"
+      size: [10, 30]
+      visible: false
+    defamation:
+      type: ellipse
+      color: url(#aoe-gradient)
+      size: 130
+      visible: false
+      shadow: false
+    chilling-cataclysm:
+      type: image
+      image: /images/markers/chilling-cataclysm.svg
+      size: 37
+      opacity: 0.8
+      shadow: false
+    chilling-line:
+      type: rectangle
+      color: url(#line-gradient)
+      opacity: 1
+      size: [24, 400]
+      scale: [0, 1]
+      shadow: false
+  graphs:
+    spikesicle:
+      - boss: [0, -75, 0]
+        defamation#1: { attach: ice-block#1, x: -4 }
+        defamation#2: { attach: ice-block#2, x: -4 }
+        defamation#3: { attach: ice-block#3, x: -4 }
+        defamation#4: { attach: ice-block#4, x: -4 }
+        defamation#5: { attach: ice-block#5, x: -4 }
+        defamation#6: { attach: ice-block#6, x: -4 }
+        defamation#7: { attach: ice-block#7, x: -4 }
+        defamation#8: { attach: ice-block#8, x: -4 }
+        defamation#9: { attach: ice-block#9, x: -4 }
+        defamation#10: { attach: ice-block#10, x: -4 }
+        T1: [-12, -31]
+        T2: [12, -31]
+        H1: [-16, 3]
+        H2: [16, 3]
+        M1: [-21, -20]
+        M2: [21, -20]
+        R1: [-24, -7]
+        R2: [24, -7]
+        spikesicle-thin#1: { x: 15, y: 3 }
+        spikesicle-thin#2: { x: -15, y: 3, transform: scaleY(-1), visible: false }
+        spikesicle-thin#3: { x: -45, y: 3, transform: scaleY(-1), visible: false }
+        spikesicle-thin-straight: { x: -95, y: -72 }
+        spikesicle#1: { x: 15, y: 3, visible: false }
+        spikesicle#2: { x: -15, y: 3, transform: scaleY(-1), visible: false }
+        spikesicle#3: { x: -45, y: 3, transform: scaleY(-1), visible: false }
+        spikesicle-straight: { x: -95, y: -72 }
+        ice-block#1: [15, -71]
+        ice-block#2: [-15, -71]
+        ice-block#3: [-45, -71]
+        ice-block#4: [-75, -71]
+        ice-block#5: [-40, 55]
+        ice-block#6: [-95, 6]
+        ice-block#7: [45, -71]
+        ice-block#8: [75, -71]
+        ice-block#9: [40, 55]
+        ice-block#10: [95, 6]
+      - spikesicle-thin#1: { visible: false }
+        spikesicle-thin#2: { visible: true }
+        players: [89, -8]
+      - spikesicle-thin#1: { x: -75, transform: scaleY(-1) }
+        spikesicle-thin#2: { visible: false }
+        spikesicle-thin#3: { visible: true }
+      - spikesicle-thin#3: { visible: false }
+        spikesicle-thin#2: { x: -95 }
+        spikesicle-thin#1: { visible: true }
+      - spikesicle-thin#1: { visible: false }
+        spikesicle-thin#2: { visible: true }
+      - spikesicle-thin#1: { x: 45, transform: "" }
+        spikesicle-thin#2: { visible: false }
+        spikesicle-thin-straight: { visible: true }
+      - spikesicle-thin-straight: { visible: false }
+        spikesicle-thin#1: { visible: true }
+        spikesicle-thin#2: { x: 75, transform: "" }
+        spikesicle-thin#3: { x: 95, transform: "" }
+      - spikesicle-thin-straight: { x: 95 }
+        spikesicle-thin#1: { visible: false }
+        spikesicle-thin#2: { visible: true }
+      - spikesicle-thin#2: { visible: false }
+        spikesicle-thin#3: { visible: true }
+      - spikesicle-thin#3: { visible: false }
+        spikesicle-thin-straight: { visible: true }
+      - spikesicle-thin-straight: { visible: false }
+        spikesicle#1: { visible: true }
+      - spikesicle#1: { visible: false }
+        spikesicle#2: { visible: true }
+        ice-block#1: { visible: true }
+      - spikesicle#1: { x: -75, transform: scaleY(-1) }
+        spikesicle#2: { visible: false }
+        spikesicle#3: { visible: true }
+        ice-block#2: { visible: true }
+        players: [20, 20]
+      - spikesicle#3: { visible: false }
+        spikesicle#2: { x: -95 }
+        spikesicle#1: { visible: true }
+        ice-block#3: { visible: true }
+        players: [-10, 20]
+      - spikesicle#1: { visible: false }
+        spikesicle#2: { visible: true }
+        ice-block#4: { visible: true }
+        defamation#1: { visible: true }
+        players: [-20, 20]
+      - spikesicle#1: { x: 45, transform: "" }
+        spikesicle#2: { visible: false }
+        spikesicle-straight: { visible: true }
+        ice-block#5: { visible: true }
+        defamation#1: { visible: false }
+        ice-block#1: { visible: false }
+        defamation#2: { visible: true }
+      - spikesicle-straight: { visible: false }
+        spikesicle#1: { visible: true }
+        spikesicle#2: { x: 75, transform: "" }
+        spikesicle#3: { x: 95, transform: "" }
+        ice-block#6: { visible: true }
+        defamation#2: { visible: false }
+        ice-block#2: { visible: false }
+        defamation#3: { visible: true }
+      - spikesicle-straight: { x: 95 }
+        spikesicle#1: { visible: false }
+        spikesicle#2: { visible: true }
+        ice-block#7: { visible: true }
+        defamation#3: { visible: false }
+        ice-block#3: { visible: false }
+        defamation#4: { visible: true }
+        players: [0, 0]
+      - spikesicle#2: { visible: false }
+        spikesicle#3: { visible: true }
+        ice-block#8: { visible: true }
+        defamation#4: { visible: false }
+        ice-block#4: { visible: false }
+        defamation#5: { visible: true }
+      - spikesicle#3: { visible: false }
+        spikesicle-straight: { visible: true }
+        ice-block#9: { visible: true }
+        defamation#5: { visible: false }
+        ice-block#5: { visible: false }
+        defamation#6: { visible: true }
+      - ice-block#10: { visible: true }
+        defamation#6: { visible: false }
+        ice-block#6: { visible: false }
+        defamation#7: { visible: true }
+      - defamation#7: { visible: false }
+        ice-block#7: { visible: false }
+        defamation#8: { visible: true }
+      - defamation#8: { visible: false }
+        ice-block#8: { visible: false }
+        defamation#9: { visible: true }
+      - defamation#9: { visible: false }
+        ice-block#9: { visible: false }
+        defamation#10: { visible: true }
+      - defamation#10: { visible: false }
+        ice-block#10: { visible: false }
+    chilling-cataclysm:
+      - snow: [0, 0]
+        boss: [0, -75, 0]
+        chilling-line#1.[1..4]: { attach: chilling-cataclysm#1 }
+        chilling-line#2.[1..4]: { attach: chilling-cataclysm#2 }
+        chilling-line#3.[1..4]: { attach: chilling-cataclysm#3 }
+        chilling-line#4.[1..4]: { attach: chilling-cataclysm#4 }
+        chilling-line#5.[1..4]: { attach: chilling-cataclysm#5 }
+        chilling-line#[1..5].2: { rotate: 45 }
+        chilling-line#[1..5].3: { rotate: 90 }
+        chilling-line#[1..5].4: { rotate: -45 }
+        T1: [-12, -31]
+        T2: [12, -31]
+        H1: [-16, 3]
+        H2: [16, 3]
+        M1: [-21, -20]
+        M2: [21, -20]
+        R1: [-24, -7]
+        R2: [24, -7]
+        chilling-cataclysm#1: [-88, -11]
+        chilling-cataclysm#2: [40, -60]
+        chilling-cataclysm#3: [16, 37]
+        chilling-cataclysm#4: [64, 13.5]
+        chilling-cataclysm#5: [88, 61]
+      - players: [-27, -30]
+      - chilling-line#*: { scale: 1 }
+    # thunder:
+    #   - tile#1: [-75, -50]
+    #     tile#2: { x: -25, y: -50, opacity: 0.3 }
+    #     tile#3: { x: 25, y: -50, opacity: 0.3 }
+    #     tile#4: [75, -50]
+    #     tile#5: { x: -75, y: -2, opacity: 0.3 }
+    #     tile#6: [-25, -2]
+    #     tile#7: [25, -2]
+    #     tile#8: { x: 75, y: -2, opacity: 0.3 }
+    #     tile#9: [-75, 46]
+    #     tile#10: { x: -25, y: 46, opacity: 0.3 }
+    #     tile#11: { x: 25, y: 46, opacity: 0.3 }
+    #     tile#12: [75, 46]
+    #     boss: [0, -75, 0]
