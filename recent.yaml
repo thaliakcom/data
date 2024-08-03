@@ -1,6 +1,2 @@
-patch: "7.0"
-content:
-  - id: 833
-    url: /extremes/worqor-lar-dor/
-  - id: 996
-    url: /extremes/everkeep/
+patch: "7.05"
+content: []

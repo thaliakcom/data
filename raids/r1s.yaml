@@ -1,0 +1,21 @@
+id: 986
+patch: "7.05"
+date: 2024-08-03
+modified: 2024-08-03
+by:
+  id: 27637301
+  role: author
+tier: Light-heavyweight
+boss: Black Cat
+HP: 75867953
+party_hp: 120000
+wip: true
+description: |
+  A fight that revolves around memorization mechanics, destructible arena tiles, and many targeted spreads and stacks.
+status:
+  damage-down:
+    id: 628
+    type: impairment
+    duration: 30000
+    description: |
+      Reduces damage dealt by approximately ?% (multiplicative) per stack.

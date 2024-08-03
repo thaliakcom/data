@@ -1,0 +1,21 @@
+id: 990
+patch: "7.05"
+date: 2024-08-03
+modified: 2024-08-03
+by:
+  id: 27637301
+  role: author
+tier: Light-heavyweight
+boss: Brute Bomber
+HP: 96522586
+party_hp: 120000
+wip: true
+description: |
+  Our resident WWE champion, Brute Bomber combines classic wrestling moves with a barrage of bombs to blow his opponents away.
+status:
+  damage-down:
+    id: 628
+    type: impairment
+    duration: 30000
+    description: |
+      Reduces damage dealt by approximately ?% (multiplicative) per stack.

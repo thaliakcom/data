@@ -1,0 +1,21 @@
+id: 988
+patch: "7.05"
+date: 2024-08-03
+modified: 2024-08-03
+by:
+  id: 27637301
+  role: author
+tier: Light-heavyweight
+boss: Honey B Lovely
+HP: 83966736
+party_hp: 120000
+wip: true
+description: |
+  A deceptively simple but punishing second turn where resolving mechanics incorrectly grants Honey B Lovely a stacking damage buff and health regeneration. Also once again features memorization mechanics.
+status:
+  damage-down:
+    id: 628
+    type: impairment
+    duration: 30000
+    description: |
+      Reduces damage dealt by approximately ?% (multiplicative) per stack.

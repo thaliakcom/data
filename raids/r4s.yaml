@@ -1,0 +1,21 @@
+id: 992
+patch: "7.05"
+date: 2024-08-03
+modified: 2024-08-03
+by:
+  id: 27637301
+  role: author
+tier: Light-heavyweight
+boss: Wicked Thunder
+HP: 0
+party_hp: 120000
+wip: true
+description: |
+  The first final turn in more than 4 years without a checkpoint, Wicked Thunder uses electrope to transform both herself as well as her opponents into living armaments to use against them.
+status:
+  damage-down:
+    id: 628
+    type: impairment
+    duration: 30000
+    description: |
+      Reduces damage dealt by approximately ?% (multiplicative) per stack.
