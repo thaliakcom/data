@@ -26,27 +26,35 @@ status:
     id: 3130
     type: vuln
     duration: [1960, 3960, 19960]
-    description: Inflicted by [a:quadruple-crossing], [a:biscuit-maker], [a:leaping-quadruple-crossing], [a:splintering-nails], [a:raining-cats]
+    description: |
+      Renders and slashing damage lethal.
+      Inflicted by [a:quadruple-crossing], [a:biscuit-maker], [a:leaping-quadruple-crossing], [a:splintering-nails], and [a:raining-cats].
   physical-vulnerability-up:
     id: 2940
     type: vuln
     duration: 2000
-    description: Inflicted by [a:quadruple-swipe]
+    description: |
+      Renders any physical damage lethal.
+      Inflicted by [a:quadruple-swipe] and [a:double-swipe].
   stun:
     id: 2656
     type: impairment
     duration: 3000
-    description: Inflicted by unknown
+    description: Temporarily unable to act or move.
   down-for-the-count:
     id: 783
     type: impairment
     duration: 3000
-    description: Inflicted by [a:elevate-and-eviscerate]
+    description: |
+      Temporarily unable to act or move.
+      Inflicted by [a:elevate-and-eviscerate].
   magic-vulnerability-up:
     id: 2941
     type: vuln
     duration: [2000, 4000]
-    description: Inflicted by [a:grimalkin-gale], [a:tempestuous-tear], [a:nailchipper], [a:raining-cats]
+    description: |
+      Renders any magic damage lethal.
+      Inflicted by [a:grimalkin-gale], [a:tempestuous-tear], [a:nailchipper], and [a:raining-cats].
   sustained-damage:
     id: 2935
     type: dot
@@ -63,32 +71,38 @@ status:
     id: 4048
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored [a:one-two-paw].
   four-swipe-memory:
     id: 4052
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored [a:quadruple-swipe].
   two-swipe-memory:
     id: 4053
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored [a:double-swipe].
   rightward-memory:
     id: 4050
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored a rightward leap.
   leftward-memory:
     id: 4051
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored a leftward leap.
   four-crossed-memory:
     id: 4049
     type: form
     duration: 9999000
-    description: Granted by unknown
+    description: |
+      [boss] has stored [a:quadruple-crossing].
 actions:
   quadruple-crossing:
     id: 37948
