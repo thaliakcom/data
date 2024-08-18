@@ -9,13 +9,690 @@ tier: Light-heavyweight
 boss: Black Cat
 HP: 75867953
 party_hp: 120000
-wip: true
 description: |
   A fight that revolves around memorization mechanics, destructible arena tiles, and many targeted spreads and stacks.
+autos:
+  mechanic: auto.single
+  type: physical
 status:
   damage-down:
-    id: 628
+    id: 3304
     type: impairment
-    duration: 30000
+    duration: 29960
     description: |
-      Reduces damage dealt by approximately ?% (multiplicative) per stack.
+      Reduces damage dealt by approximately 25% (multiplicative) per stack.
+      Inflicted by AoEs such as [a:quadruple-crossing] and [a:mouser].
+  slashing-resistance-down:
+    id: 3130
+    type: vuln
+    duration: [1960, 3960, 19960]
+    description: Inflicted by [a:quadruple-crossing], [a:biscuit-maker], [a:leaping-quadruple-crossing], [a:splintering-nails], [a:raining-cats]
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
+    duration: 2000
+    description: Inflicted by [a:quadruple-swipe]
+  stun:
+    id: 2656
+    type: impairment
+    duration: 3000
+    description: Inflicted by unknown
+  down-for-the-count:
+    id: 783
+    type: impairment
+    duration: 3000
+    description: Inflicted by [a:elevate-and-eviscerate]
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [2000, 4000]
+    description: Inflicted by [a:grimalkin-gale], [a:tempestuous-tear], [a:nailchipper], [a:raining-cats]
+  sustained-damage:
+    id: 2935
+    type: dot
+    tick: 30000
+    duration: 15000
+    description: Heavy [t:DoT] inflicted by [a:one-two-paw].
+  nine-lives:
+    id: 3931
+    type: form
+    duration: 9999000
+    description: |
+      [boss] begins to glow. All mechanics executed while in this state are recorded within a [a:soulshade].
+  one-two-memory:
+    id: 4048
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+  four-swipe-memory:
+    id: 4052
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+  two-swipe-memory:
+    id: 4053
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+  rightward-memory:
+    id: 4050
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+  leftward-memory:
+    id: 4051
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+  four-crossed-memory:
+    id: 4049
+    type: form
+    duration: 9999000
+    description: Granted by unknown
+actions:
+  quadruple-crossing:
+    id: 37948
+    mechanic: spread.close
+    shape: cone
+    count: 4
+    description: A 4-step protean mechanic.
+    resolve: Have either all tanks and supports, or all DPS, take the first set of spreads by moving into the boss's hitbox while the other role stays outside and out of the way. Then swap. Avoid the baited AoEs after.
+    strategies:
+      same-bait:
+        name: Same Bait
+        description: |
+          The 4 DPS players take the first set of spreads on intercardinals while the support players stay on cardinals. Then swap their positions: DPS players move to cardinals, while support players move inside the hitbox on intercardinals to take the second set of spreads. Afterwards, support players move back to where the DPS players are. No further dodges are necessary.
+          This is a 1-step movement for the first baiters and a 2-step movement for the second baiters, and is therefore the preferred PF strategy. You can swap the roles, but making DPS players the first baiters is preferred as it means less movement for the caster.
+          You should also decide whether to handle protean positions [t:true north] or [t:boss relative].
+      protean-baits:
+        name: Protean Baits
+        description: |
+          Assign a [t:protean] position for every player. Have 4 players move inside the hitbox for the first set while the other 4 stay outside, then the 4 players who were inside the hitbox move out of the hitbox while the other 4 move in. Afterwards, the first baiters move on top of the second baiters, wait for the first baited AoEs, then move to where those AoEs fired.
+          This is a 3-step movement for all players.
+          You should also decide whether to handle protean positions [t:true north] or [t:boss relative].
+    children:
+      - at: 770
+        id: quadruple-crossing-spread
+      - at: 3855
+        id: quadruple-crossing-spread
+      - at: 6614
+        id: quadruple-crossing-aoe
+        description: Fires a conal AoE in the direction of the first set of spreads, dealing heavy damage and inflicting [s:damage-down].
+      - at: 9622
+        id: quadruple-crossing-aoe
+        description: Fires a conal AoE in the direction of the second set of spreads, dealing heavy damage and inflicting [s:damage-down].
+  quadruple-crossing-spread:
+    id: 37951
+    name: Quadruple Crossing (Spread)
+    mechanic: spread.close
+    shape: cone
+    count: 4
+    damage: 131234
+    description: Fires a conal AoE at the closest 4 players, dealing physical damage and inflicting [s:slashing-resistance-down].
+  quadruple-crossing-aoe:
+    id: 37952
+    name: Quadruple Crossing (AoE)
+    mechanic: aoe.baitable
+    shape: cone
+    description: Fires a conal AoE in the direction of the previous spreads, dealing heavy damage and inflicting [s:damage-down].
+  biscuit-maker:
+    id: 38037
+    mechanic: tb.mt
+    compact: trim
+    description: |
+      2-hit tankbuster. Each hit deals heavy damage and inflicts [s:physical-vulnerability-up].
+      This tankbuster does not cleave.
+    resolve: Tankswap after each hit. Make sure to swap back after the second hit or the next auto-attack is lethal.
+    children:
+      - at: 0
+        id: biscuit-maker-hit
+      - at: 2056
+        id: biscuit-maker-hit
+  biscuit-maker-hit:
+    id: 38038
+    mechanic: tb.mt
+    damage: 271921
+    description: Deals heavy damage and inflicts [s:physical-vulnerability-up].
+  nine-lives:
+    id: 37985
+    mechanic: mech.store
+    description: |
+      Grants [s:nine-lives] to [boss]. All mechanics executed while in this state are recorded and later stored within a [a:soulshade].
+      After execution of said mechanics, [boss] gets another status effect for the types of mechanic executed:
+      * [s:one-two-memory] for [a:one-two-paw]
+      * [s:four-crossed-memory] for [a:quadruple-crossing]
+      * [s:four-swipe-memory] for [a:quadruple-swipe]
+      * [s:two-swipe-memory] for [a:double-swipe]
+      * [s:rightward-memory] for a rightward leap
+      * [s:leftward-memory] for a leftward leap
+      Note that [a:soulshade] "transfers" these status effects to a clone. However, as the clones cannot be targeted, it is impossible to review the status effects (and therefore the mechanics executed) by a clone after [a:soulshade] is cast.
+  one-two-paw:
+    id: 37942
+    mechanic: aoe
+    shape: side
+    description: |
+      The claws on either [boss]'s left or right hand begin to glow, then the other.
+      When the cast bar resolves, cleaves those sides of the arena in order.
+    resolve: Wait on the non-glowing side, then move over.
+    children:
+      - at: 925
+        id: one-two-paw-hit
+      - at: 3941
+        id: one-two-paw-hit
+  one-two-paw-hit:
+    id: 37943
+    mechanic: aoe
+    shape: side
+    description: Cleaves half of the arena, inflicting [s:sustained-damage].
+  soulshade:
+    id: 37986
+    mechanic: mech.store
+    description: |
+      Transfers the memory of the last executed mechanic(s) to a newly created clone of [boss].
+      The clone starts out asleep. After it wakes up, it executes the stored mechanics in order.
+      Dispels [s:nine-lives], [s:one-two-memory], [s:four-crossed-memory], [s:four-swipe-memory], [s:two-swipe-memory], [s:leftward-memory], and [s:rightward-memory].
+  quadruple-swipe:
+    id: 37981
+    mechanic: stack.partner
+    shape: chariot
+    type: physical
+    count: 4
+    damage: 112381
+    description: Partner stack on all support or DPS players.
+  double-swipe:
+    id: 37983
+    mechanic: stack.healers
+    shape: chariot
+    type: physical
+    count: 2
+    damage: 112381
+    description: Light party stacks on both healers.
+  leaping-quadruple-crossing:
+    id: 37975
+    mechanic: spread.close
+    shape: cone
+    description: "[boss] leaps to either her left or right, then executes [a:quadruple-crossing]."
+    children:
+      - at: 1014
+        id: quadruple-crossing
+  bloody-scratch:
+    id: 38036
+    mechanic: raidwide
+    damage: 144849
+    description: Standard raidwide.
+  mouser:
+    id: 37953
+    mechanic: aoe.memory
+    shape: rect
+    description: |
+      Telegraphs a sequence of 28 AoEs across 10 steps, then executes that sequence.
+      Each AoE targets one tile (square) of the arena and damages that tile, inflicting [s:damage-down] to all players on it. A tile that is already damaged breaks when damaged again, causing all players on it to fall to their doom. A broken tile cannot be targeted by another AoE.
+      The arena is composed of 16 tiles (4x4), resulting in 32 tile "health states". [boss] executes 3 AoEs per step for the first 8 steps, then 2 AoEs for the remaining 2 steps. 28 AoEs in total means that at the end of the mechanic 4 damaged tiles remain. These tiles are always oriented from west to east in a "checker" pattern. The broken tiles in-between are then restored at full health, but the northern and southern rows of tiles remain broken.
+      Between the four centermost tiles, the southeast tile will always be hit first, followed (after 4 steps) by the southwest tile. Either the southwest or southeast tile is targeted for another hit and destroyed.
+    resolve: |
+      Since the centermost southeast tile is always targeted first, begin by standing on the centermost southwest tile, then moving onto the southeast tile when it gets hit. During the telegraphs pay attention to which of these two tiles gets hit twice, then either move back onto the southwest tile after it gets hit, or stay on the southeast tile.
+    children:
+      - at: 1465
+        id: mouser-hit
+        count: 3
+      - at: 2549
+        id: mouser-hit
+        count: 3
+      - at: 3459
+        id: mouser-hit
+        count: 3
+      - at: 4474
+        id: mouser-hit
+        count: 3
+      - at: 5474
+        id: mouser-hit
+        count: 3
+      - at: 6496
+        id: mouser-hit
+        count: 3
+      - at: 7538
+        id: mouser-hit
+        count: 3
+      - at: 8580
+        id: mouser-hit
+        count: 3
+      - at: 9490
+        id: mouser-hit
+        count: 2
+      - at: 10547
+        id: mouser-hit
+        count: 2
+  mouser-hit:
+    id: 38054
+    mechanic: aoe
+    shape: rect
+    description: |
+      Hits a tile within the arena, dealing heavy damage and inflicting [s:damage-down] to all players on that tile while reducing the health of that tile by 1. A tile starts with 2 health; if reduced to 0 health, a tile is destroyed.
+  copycat:
+    id: 37957
+    mechanic: mech
+    description: |
+      Creates a clone of [boss] at the western edge of the arena.
+      This clone then targets either all DPS players in sequence, or all support players in sequence, executing [a:elevate-and-eviscerate-knock] on 2 targets and [a:elevate-and-eviscerate-slam] on 2 targets.
+      The targeted player receives a paw marker atop their head.
+  elevate-and-eviscerate:
+    id: 37958
+    mechanic: mech
+    players: 1
+    description: |
+      [boss]'s clone jumps behind the targeted player and executes either [a:elevate-and-eviscerate-knock] or [a:elevate-and-eviscerate-slam].
+    strategies:
+      intended:
+        name: Intended
+        description: |
+          The intended strategy to handle this mechanic is to pay attention to the boss's stance and/or the glowing hand to determine whether [a:elevate-and-eviscerate-knock] or [a:elevate-and-eviscerate-slam] is about to be used. If it's [a:elevate-and-eviscerate-knock], stand on a *damaged* tile while facing an *undamaged* tile to get knocked back onto the undamaged tile. If it's [a:elevate-and-eviscerate-slam], simply stand on an *undamaged* tile.
+          All players not targeted should avoid standing on a tile in the same row or column as the targeted player's tile to avoid [a:shockwave]. Also, as there are 2 undamaged tiles in the center and 2 undamaged tiles at the far edge, make sure to leave the inner tiles for melees.
+      braindead:
+        name: Braindead
+        description: |
+          To avoid having to check which attack [boss]'s clone is about to use, situate yourself in the corner of an *undamaged* tile and look diagonally across to the opposite corner of the tile. This way, if it's [a:elevate-and-eviscerate-knock], you'll be knocked back onto the same tile you're already standing on.
+          Other players must still avoid [a:shockwave].
+    children:
+    - at: 0
+      id: elevate-and-eviscerate-knock
+      link: or
+    - at: 0
+      id: elevate-and-eviscerate-slam
+  elevate-and-eviscerate-knock:
+    id: 37958
+    name: Elevate and Eviscerate (Knockup)
+    mechanic: mech
+    players: 1
+    description: |
+      [boss]'s clone bows forward with her right hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count] and [a:shockwave], and knocking that player up and away. The knockback distance is slightly less than the diagonal length of a single tile. Inflicts [a:impact] on the tile the player lands on, damaging all players on that tile along with the tile itself. If the tile is at 1 health, destroys the tile and causes all players on it (including the knocked up player) to fall to their doom.
+    children:
+    - at: 917
+      id: shockwave
+      flatten: true
+    - at: 3697
+      id: impact
+      flatten: true
+  elevate-and-eviscerate-slam:
+    id: 37960
+    name: Elevate and Eviscerate (Slam)
+    mechanic: mech
+    players: 1
+    description: |
+      [boss]'s clone stands straight with her left hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count], [a:shockwave], and [a:impact] on the tile the player is standing on. If the tile is at 1 health, destroys the tile and causes the targeted player to fall to their doom.
+    children:
+    - at: 897
+      id: shockwave
+      flatten: true
+    - at: 1425
+      id: impact
+      flatten: true
+  shockwave:
+    id: 37962
+    mechanic: mech.knockback
+    shape: plus
+    damage: 22356
+    description: |
+      A plus-shaped AoE on the player targeted by [a:elevate-and-eviscerate], spanning all tiles in the same row and column as the tile the targeted player is on.
+      Any player hit by this attack is knocked off the arena.
+  impact:
+    id: 39252
+    mechanic: aoe
+    shape: rect
+    damage: 16215
+    players: 0
+    description: Damages a tile, reducing its health by 1, as well as dealing light damage to all players on that tile.
+  grimalkin-gale:
+    id: 39812
+    mechanic: spread
+    shape: chariot
+    damage: 120053
+    description: Moderately sized [ms:chariot] AoE on every player. Deals heavy damage and inflicts [s:magic-vulnerability-up].
+  shockwave-kb:
+    id: 37963
+    mechanic: mech.knockback.unavoidable
+    type: magic
+    damage: 7760
+    description: |
+      Knocks back all players from the center of the arena. The distance of the knockback is slightly less than half the full diagonal length of the arena.
+      At the same time, restores the outer tiles of the arena. However, the restoration is staggered: first the northwest and southeast tiles are restored, then the southwest and northeast tiles, or vice-versa. The first set of tiles is restored *before* the knockback, the second set *after* the knockback.
+      After the knockback, triggers [a:grimalkin-gale], a [m:spread] on all players.
+    resolve: |
+      Determine which tiles are restored first, then split into light parties: light party 1 gets knocked back to the northern tiles that are restored first, light party 2 to the southern tiles. This is to make the subsequent [m:spread] easier.
+      If you're a melee, don't be afraid to use your gapcloser to jump back to the boss. Just make sure everyone is clear on where they spread, for example by having melee DPS stay and tanks move clockwise to the next cardinal.
+    children:
+      - at: 3800
+        id: grimalkin-gale
+  leaping-one-two-paw:
+    id: 37967
+    mechanic: aoe
+    shape: side
+    description: "[boss] leaps to either her left or right, then executes [a:one-two-paw]."
+    children:
+      - at: 987
+        id: one-two-paw-hit
+      - at: 3808
+        id: one-two-paw-hit
+  tempestuous-tear:
+    id: 38019
+    mechanic: stack.healers
+    shape: line
+    type: magic
+    damage: 158844
+    description: "[ms:line:c] stacks on both healers, originating from the boss."
+  nailchipper:
+    id: 38022
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 96480
+    description: Targets all support or all DPS players with a visible marker. After a short delay, hits these players with a [ms:chariot] AoE that deals heavy damage and inflicts [s:magic-vulnerability-up].
+  splintering-nails:
+    id: 38042
+    mechanic: spread.role
+    shape: cone
+    count: 3
+    damage: 94942
+    description: |
+      A narrow conal AoE that randomly targets one tank, one support, and one DPS, dealing moderate damage to all players hit and inflicting [s:slashing-resistance-down].
+      This attack can never target the player targeted by [a:elevate-and-eviscerate].
+    resolve: |
+      As [a:elevate-and-eviscerate] is happening at the same time, significantly limiting the available safe space, the remaining players should split into roles, even though this attack is not actually a stack (damage is not reduced per player hit). Ensure that no player is near a player of a different role—you may get lucky and the cone targets one of the players in the correct position, but you may also get unlucky and kill multiple players, as overlapping any cones is fatal.
+  overshadow:
+    id: 38039
+    mechanic: stack.party
+    shape: line
+    damage: 118467
+    players: 7
+    description: |
+      Telegraphed [ms:line] stack on a random party member, dealing moderate damage.
+      This attack can never target the player targeted by [a:elevate-and-eviscerate].
+  raining-cats:
+    id: 39611
+    mechanic: mech
+    description: |
+      4 sets of 2 targeted cones and 2 stacks.
+      Spawns two passable tethers originating from the boss. In each set, both tethered players are targeted by [a:raining-cats-cone], a conal [m:spread] that inflicts [s:slashing-resistance-down].
+      Additionally, the *farthest* player from [boss] is targeted by [a:raining-cats-stack-far] and the *closest* player by [a:raining-cats-stack-close], [ms:chariot] stacks that inflict [s:magic-vulnerability-up].
+    strategies:
+      intended:
+        name: Intended
+        description: |
+          The intended strategy for this mechanic is to define an order for the tethers (for instance MTHR for melees, tanks, healers, rangeds), then have the players separate from the group and soak a tether in that order while the rest of the party splits into two light parties. These light parties should be different from the usual light parties: put melees and tanks into one light party and place it close to [boss], and put healers and rangeds into the other light party and place it far from [boss].
+      mttt:
+        name: MTTT
+        description: |
+          **Not recommended**.
+          A "cheese" strat whereby the first two sets of Raining Cats proceeds as in the intended strat, with melees soaking the first tethers and tanks soaking the second set, but instead of passing the tethers off to the healers or rangeds for the third set, tanks keep their tethers and pop [t:invuln]s. Additionally, since they're already invulnerable, one tanks positions themselves close to the boss and one tank far from the boss, to ensure both tanks get both stacks.
+          The reason this strategy is generally not recommended is because the positioning to make this work is extremely precise. In order for the tanks to take both stacks, all other party members have to be at a medium distance to [boss], i.e. farther away than the inner tank but closer than the outer tank. Since tanks are melee jobs, meaning that the maximum distance the outer tank can be is [t:max melee], this creates an extremely narrow space that all other party members must stay in.
+          If you run your own group, consider modifying this strat such that tanks still [t:invuln] the third and fourth sets, but instead of attempting to bait both stacks, have both tanks stand in the middle of [boss]'s hitbox such that they only bait the close stack while the party continues to bait the far stack.
+    children:
+      - at: 786
+        id: raining-cats-cone
+        link: and
+      - at: 786
+        id: raining-cats-stack-close
+        link: and
+      - at: 786
+        id: raining-cats-stack-far
+      - at: 6741
+        id: raining-cats-cone
+        link: and
+      - at: 6741
+        id: raining-cats-stack-close
+        link: and
+      - at: 6741
+        id: raining-cats-stack-far
+      - at: 12876
+        id: raining-cats-cone
+        link: and
+      - at: 12876
+        id: raining-cats-stack-close
+        link: and
+      - at: 12876
+        id: raining-cats-stack-far
+      - at: 18837
+        id: raining-cats-cone
+        link: and
+      - at: 18837
+        id: raining-cats-stack-close
+        link: and
+      - at: 18837
+        id: raining-cats-stack-far
+  raining-cats-stack-close:
+    id: 38047
+    name: Raining Cats (Close Stack)
+    mechanic: stack.close
+    shape: chariot
+    damage: 88352
+    players: 3
+    description: |
+      A stack targeting the closest player to [boss], inflicting [s:magic-vulnerability-up].
+      Intended to be soaked by 3 players, but with sufficient mitigation can be survived by 2.
+      A tank can soak this stack alone with sufficient mitigation.
+  raining-cats-stack-far:
+    id: 38047
+    name: Raining Cats (Far Stack)
+    mechanic: stack.far
+    shape: chariot
+    damage: 88352
+    players: 3
+    description: |
+      A stack targeting the farthest player from [boss], inflicting [s:magic-vulnerability-up].
+      Intended to be soaked by 3 players, but with sufficient mitigation can be survived by 2.
+      A tank can soak this stack alone with sufficient mitigation.
+  raining-cats-cone:
+    id: 38045
+    name: Raining Cats (Cone)
+    mechanic: spread.tethers
+    shape: cone
+    count: 2
+    damage: 146992
+    description: |
+      Two passable tethers emerge from [boss]. Deals heavy damage to the targeted players and anyone nearby and inflicts [s:slashing-resistance-down].
+  predaceous-pounce:
+    id: 39635
+    mechanic: aoe.memory
+    shape: chariot
+    compact: full
+    description: |
+      [boss]'s clone telegrahps a number of large [ms:chariot] AoEs as she dashes around the arena.
+      Note that the path she takes to get from one AoE to another is a [ms:line] AoE and also deals damage.
+    resolve: |
+      As [boss] uses [a:one-two-paw] at the same time as the clone executes [a:predaceous-pounce], it is necessary to find a safespot somewhere in the center of the arena.
+    children:
+      - at: 536
+        id: predaceous-pounce-hit
+      - at: 1024
+        id: predaceous-pounce-hit
+      - at: 1647
+        id: predaceous-pounce-hit
+      - at: 2136
+        id: predaceous-pounce-hit
+      - at: 2627
+        id: predaceous-pounce-hit
+      - at: 3114
+        id: predaceous-pounce-hit
+      - at: 3516
+        id: predaceous-pounce-hit
+      - at: 4271
+        id: predaceous-pounce-hit
+      - at: 4714
+        id: predaceous-pounce-hit
+      - at: 5158
+        id: predaceous-pounce-hit
+  predaceous-pounce-hit:
+    id: 39704
+    mechanic: aoe
+    shape: chariot
+    description: Individual hit of [a:predaceous-pounce]. Inflicts [s:damage-down].
+  mouser-enrage:
+    id: 37953
+    mechanic: enrage.soft
+    description: |
+      Like [a:mouser], but this time executes 32 AoEs across 8 steps (4 per step).
+      This means that every tile gets hit twice, destroying the entire arena.
+      The final set of AoEs always hits the four inner tiles.
+    resolve: |
+      It is important to pay attention to the order of AoEs, as the previous dodge pattern of "southwest inner tile to southeast inner tile" no longer works here.
+    children:
+    - at: 1475
+      id: mouser-hit
+      count: 4
+    - at: 2501
+      id: mouser-hit
+      count: 4
+    - at: 3527
+      id: mouser-hit
+      count: 4
+    - at: 4553
+      id: mouser-hit
+      count: 4
+    - at: 5579
+      id: mouser-hit
+      count: 4
+    - at: 6605
+      id: mouser-hit
+      count: 4
+    - at: 7631
+      id: mouser-hit
+      count: 4
+    - at: 8657
+      id: mouser-hit
+      count: 4
+      description: Destroys the 4 inner tiles, killing all remaining players.
+timeline:
+  - at: 14328
+    id: quadruple-crossing
+  - at: 33379
+    id: biscuit-maker
+  - at: 50590
+    id: nine-lives
+  - at: 57683
+    id: one-two-paw
+  - at: 65660
+    id: soulshade
+  - at: 80106
+    id: nine-lives
+  - at: 83114
+    id: one-two-paw
+    count: 2
+    description: |
+      Both clones execute [a:one-two-paw] in the same order as [boss] did before.
+      The two clones always spawn in the same configuration, so the dodge is always the same. The only thing that changes is whether the dodge is from the left side of clone A to the right side of clone B, or from the right side of clone B to the left side of clone A.
+  - at: 89145
+    id: quadruple-swipe
+    link: or
+  - at: 89145
+    id: double-swipe
+  - at: 94203
+    id: soulshade
+  - at: 101284
+    id: leaping-quadruple-crossing
+    link: then
+  - at: 112707
+    id: quadruple-swipe
+    link: or
+    description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].
+  - at: 112707
+    id: double-swipe
+    description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].
+  - at: 123240
+    id: bloody-scratch
+  - at: 146475
+    id: mouser
+  - at: 167576
+    id: copycat
+  - at: 179784
+    id: elevate-and-eviscerate
+  - at: 190894
+    id: elevate-and-eviscerate
+  - at: 202025
+    id: elevate-and-eviscerate
+  - at: 213058
+    id: elevate-and-eviscerate
+  - at: 224621
+    id: biscuit-maker
+  - at: 237711
+    id: shockwave-kb
+  - at: 256888
+    id: nine-lives
+  - at: 263940
+    id: leaping-one-two-paw
+  - at: 272889
+    id: soulshade
+  - at: 277976
+    id: nine-lives
+  - at: 285153
+    id: leaping-quadruple-crossing
+  - at: 300078
+    id: soulshade
+  - at: 326036
+    id: leaping-one-two-paw
+    description: |
+      The clone executes the previously stored [a:leaping-one-two-paw].
+      Note that the other clone may be chosen instead, thus executing [a:leaping-quadruple-crossing] first.
+    link: and
+  - at: 326036
+    id: tempestuous-tear
+  - at: 351196
+    id: leaping-quadruple-crossing
+    link: and
+  - at: 351335
+    id: nailchipper
+    link: then
+  - at: 359971
+    id: nailchipper
+  - at: 371408
+    id: bloody-scratch
+  - at: 394698
+    id: mouser
+  - at: 415737
+    id: copycat
+  - at: 427848
+    id: elevate-and-eviscerate
+    link: and
+  - at: 429780
+    id: splintering-nails
+    link: or
+  - at: 429780
+    id: overshadow
+  - at: 440034
+    id: elevate-and-eviscerate
+    link: and
+  - at: 441376
+    id: splintering-nails
+    link: or
+  - at: 441376
+    id: overshadow
+  - at: 452493
+    id: elevate-and-eviscerate
+    link: and
+  - at: 454341
+    id: splintering-nails
+    link: or
+  - at: 454341
+    id: overshadow
+  - at: 464686
+    id: elevate-and-eviscerate
+    link: and
+  - at: 465972
+    id: splintering-nails
+    link: or
+  - at: 465972
+    id: overshadow
+  - at: 476033
+    id: biscuit-maker
+  - at: 490166
+    id: shockwave-kb
+  - at: 513532
+    id: raining-cats
+  - at: 543687
+    id: copycat
+    description: Creates a clone of [boss] that prepares to execute [a:predaceous-pounce].
+  - at: 561225
+    id: predaceous-pounce
+    link: and
+  - at: 566827
+    id: one-two-paw
+  - at: 593525
+    id: mouser-enrage

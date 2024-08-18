@@ -146,8 +146,8 @@ aoe:
   name: AoE
   description: Leaves only a specific section of the arena safe.
 aoe.baitable:
-  name: baits
-  description: An [t:AoE] that spawns on players but does not move with them. Players should move out of the AoE as soon as possible to avoid taking damage.
+  name: baited AoE
+  description: An [t:AoE] that spawns on player's (past) position but does not resolve until later. Players should move out of the AoE before it resolves to avoid taking damage.
   shapeful: true
 aoe.exaflares:
   name: exaflares
@@ -170,7 +170,9 @@ aoe.expanding:
   shapeful: true
 aoe.expanding.rings:
   name: expanding rings
-  description: A ring-shaped ([ms:dynamo]) AoE that hits multiple times, where each hit features a larger ring that hits the area just outside the previous ring. These kinds of attacks only stop once the entire arena has been hit by the rings. Players must stand just outside one ring, then step into that ring once it resolves to avoid the next ring.
+  description: |
+    A ring-shaped ([ms:dynamo]) AoE that hits multiple times, where each hit features a larger ring that hits the area just outside the previous ring. These kinds of attacks only stop once the entire arena has been hit by the rings. Players must stand just outside one ring, then step into that ring once it resolves to avoid the next ring.
+    Also sometimes called *quakes*, *exadonuts*, or *exarings*.
 aoe.intercept:
   name: interceptable attack
   description: |
@@ -216,6 +218,11 @@ spread.close:
 spread.far:
   name: spread (far)
   description: An unavoidable player-targeted [t:AoE] that deals damage to the farthest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
+  players: 1
+  shapeful: true
+spread.role:
+  name: spread (roles)
+  description: An unavoidable player-targeted [t:AoE] that deals damage to a random player of each role (usually tanks, healers, DPS) and all players around them. All players should spread away from the other roles and stack only within their own role, as clipping players of another role is usually lethal.
   players: 1
   shapeful: true
 spread.tethers:
