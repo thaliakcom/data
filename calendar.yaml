@@ -580,3 +580,9 @@
   type: patch
   at: 2024-07-30
   allDay: true
+- name: Moonfire Faire 2024
+  type: event
+  color: "#832d2d"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/Moonfire_Faire/vk09iygn4m
+  from: 2024-08-08 08:00:00
+  to: 2024-08-26 14:59:00
