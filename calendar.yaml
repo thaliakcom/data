@@ -586,3 +586,9 @@
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/Moonfire_Faire/vk09iygn4m
   from: 2024-08-08 08:00:00
   to: 2024-08-26 14:59:00
+- name: The Rising 2024
+  type: event
+  color: "#83762d"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2024/The_Rising/kx9ry8yeix
+  from: 2024-08-27 08:00:00
+  to: 2024-09-11 14:59:00
