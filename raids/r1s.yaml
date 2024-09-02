@@ -296,7 +296,7 @@ actions:
     description: |
       [boss]'s clone jumps behind the targeted player and executes either [a:elevate-and-eviscerate-knock] or [a:elevate-and-eviscerate-slam].
     strategies:
-      intended:
+      intended-elevate:
         name: Intended
         description: |
           The intended strategy to handle this mechanic is to pay attention to the boss's stance and/or the glowing hand to determine whether [a:elevate-and-eviscerate-knock] or [a:elevate-and-eviscerate-slam] is about to be used. If it's [a:elevate-and-eviscerate-knock], stand on a *damaged* tile while facing an *undamaged* tile to get knocked back onto the undamaged tile. If it's [a:elevate-and-eviscerate-slam], simply stand on an *undamaged* tile.
