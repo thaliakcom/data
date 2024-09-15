@@ -59,30 +59,37 @@ status:
   light-of-ascalon:
     id: 943
     type: form
+    affects: enemy
     description: A stacking damage buff to [boss]. Stacks increase each time [boss] uses [a:the-dragons-eye]. Each stack increases all of [boss]'s damage by approximately 5%, up to a maximum of 6 stacks (30%).
   area-of-influence:
     id: 618
     type: form
+    affects: enemy
     description: A stacking buff on Ser Grinnaux that increases the size of his [a:dimensional-collapse] AoEs.
   shield-of-the-heavens:
     id: 945
     type: resistance
+    affects: enemy
     description: Automatically applies [s:vuln-down] to self and any nearby knights.
   sword-of-the-heavens:
     id: 944
     type: resistance
+    affects: enemy
     description: Automatically applies [s:damage-up] to self and any nearby knights.
   vuln-down:
     id: 350
     type: resistance
+    affects: enemy
     description: Decreases all damage taken by 90%.
   damage-up:
     id: 290
     type: form
+    affects: enemy
     description: Increases all damage done by approximately 50%.
   invincibility:
     id: 325
     type: resistance
+    affects: enemy
     description: "Shielded by a holy knight and impervious to damage."
   hp-penalty:
     id: 1089

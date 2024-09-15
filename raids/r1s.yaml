@@ -64,42 +64,49 @@ status:
   nine-lives:
     id: 3931
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] begins to glow. All mechanics executed while in this state are recorded within a [a:soulshade].
   one-two-memory:
     id: 4048
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored [a:one-two-paw].
   four-swipe-memory:
     id: 4052
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored [a:quadruple-swipe].
   two-swipe-memory:
     id: 4053
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored [a:double-swipe].
   rightward-memory:
     id: 4050
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored a rightward leap.
   leftward-memory:
     id: 4051
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored a leftward leap.
   four-crossed-memory:
     id: 4049
     type: form
+    affects: enemy
     duration: 9999000
     description: |
       [boss] has stored [a:quadruple-crossing].

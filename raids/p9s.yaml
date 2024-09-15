@@ -59,19 +59,23 @@ status:
     type: vuln
   mage-soul:
     id: 3542
+    affects: enemy
     description: In this form, [boss] uses magical elemental abilities such as [a:dualspell] and [a:two-minds]. It is also the only form in which [boss] has magical auto-attacks.
     type: form
   monk-soul:
     id: 3543
+    affects: enemy
     description: In this form, [boss] uses physical and earth-aspected magical abilities such as [a:rockbreaker-1] and [a:swinging-kick-front].
     type: form
   beast-soul:
     id: 3544
+    affects: enemy
     description: In this form, [boss] uses the classic behemoth's abilities [a:charybdis] and [a:ecliptic].
     type: form
   chimeric:  # Chimeric Soul
     id: 3545
     name: Chimeric Soul
+    affects: enemy
     description: An amalgamation of [s:mage-soul] and [s:monk-soul]. In this form, [boss] combines his physical and magical abilities into one, for instance in the form of [a:firemeld] and [a:lc1].
     gameDescription: Wielding the power of multiple ancient souls.
     type: form

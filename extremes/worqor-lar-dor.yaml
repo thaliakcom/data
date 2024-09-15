@@ -207,6 +207,7 @@ status:
   damage-up:
     id: 3975
     type: damage-up
+    affects: enemy
     description: |
       A stacking damage buff to [boss] during [a:ruin-foretold].
       Each [a:calamitous-cry] grants one stack of this buff and increases the damage of the next [a:calamitous-cry] by 6% and the damage of [a:calamitous-echo] by 4.5%.
@@ -214,6 +215,7 @@ status:
   fury:
     id: 3805
     type: damage-up
+    affects: enemy
     description: |
       Increases all damage dealt to players by approximately 10% until the end of the fight.
       Granted by [a:wrath-unfurled].

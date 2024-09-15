@@ -281,25 +281,32 @@ status:
   invincibility:
     id: 671
     type: resistance
+    affects: enemy
     description: Omega-F is protected by Omega-M and cannot be damaged.
   omega-m:
     id: 1674
     type: form
+    affects: enemy
     description: Omega-M always has this effect. Has no effect, but can be used to identify whether you're hitting the correct target ([s:packet-filter-m]).
   omega-f:
     id: 1675
+    type: form
+    affects: enemy
     description: Omega-F always has this effect. Has no effect, but can be used to identify whether you're hitting the correct target ([s:packet-filter-f]).
   superfluid:
     id: 1676
     type: form
+    affects: enemy
     description: Omega-F and Omega-M have this status effect while they are liquid puddles that are transforming into the opposite-gendered form.
   infinite-limit:
     id: 3450
     type: form
+    affects: enemy
     description: Final Omega has this status effect for the duration of Phase 4. Has no effect and merely serves as flair.
   code-dynamis:
     id: 3447
     type: form
+    affects: enemy
     description: Alpha-Omega has this status effect for the duration of Phase 6. Has no effect and merely serves as flair.
 actions:
   program-loop:
