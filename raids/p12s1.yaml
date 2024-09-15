@@ -23,19 +23,19 @@ status:
     description: Reduces damage dealt by approximately 38%.
   magic-vuln:
     id: 2941
-    description: Makes any additional magic damage received lethal.
     type: vuln
+    description: Makes any additional magic damage received lethal.
   concussion:
     id: 2944
-    duration: 9000
-    tick: 40000
     type: dot
+    tick: 40000
+    duration: 9000
   bleeding:
     id: 2951
-    duration: 30000
-    tick: 100000
-    description: Inflicted by stepping into the fire puddles during limit cut.
     type: dot
+    tick: 100000
+    duration: 30000
+    description: Inflicted by stepping into the fire puddles during limit cut.
   astral-tilt:
     id: 3577
     name: Astral Tilt
@@ -82,8 +82,8 @@ status:
 actions:
   on-the-soul:
     id: 33540
-    damage: 92080
     mechanic: raidwide
+    damage: 92080
     description: Standard raidwide. Restores any missing platforms.
   paradeigma-1:
     id: 33517
@@ -137,9 +137,9 @@ actions:
     description: A cleave from [a:trinity-of-souls]. Inflicts [s:2911].
   white-flame:
     id: 33520
-    damage: 65723
     mechanic: spread.close
     shape: line
+    damage: 65723
     description: Beam of light fired by an angel. Inflicts [s:magic-vuln] for 6 seconds, preventing anyone from being hit by two consecutive beams.
   paradeigma-2:
     id: 33517
@@ -183,61 +183,62 @@ actions:
       id: ray-of-light
   engravement-of-souls:
     id: 33541
-    description: Applies the aforementioned status effects.
     mechanic: mech.status
+    description: Applies the aforementioned status effects.
   searing-radiance:
     id: 33521
-    damage: 62439
     mechanic: spread
     shape: line
+    damage: 62439
     description: An umbral (light) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:umbral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   shadowsear:
     id: 33522
-    damage: 65063
     mechanic: spread
     shape: line
+    damage: 65063
     description: An astral (dark) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:astral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   umbral-glow:
     id: 33548
-    damage: 63954
     mechanic: spread
     shape: chariot
+    damage: 63954
     description: Drops an umbral (light) tower on the position of a player with [s:umbralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:umbral-tilt].
   astral-glow:
     id: 33549
-    damage: 62352
     mechanic: spread
     shape: chariot
+    damage: 62352
     description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:astral-tilt].
   umbral-advance:
     id: 33550
-    damage: 26729
     mechanic: towers.single
+    damage: 26729
     description: An umbral (light) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:astral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
   astral-advance:
     id: 33551
-    damage: 26899
     mechanic: towers.single
+    damage: 26899
     description: An astral (dark) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:umbral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
   unmitigated-explosion:
     id: 33552
-    damage: 9999999
     mechanic: mech.failure
+    damage: 9999999
+    players: 8
     description: An unsoaked tower explodes, wiping the party.
   ray-of-light:
     id: 33518
-    damage: 80868
-    count: 2
-    players: 0
     mechanic: aoe
     shape: line
+    damage: 80868
+    players: 0
+    count: 2
     description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:2911] to anyone caught inside.
   glaukopis:
     id: 33532
-    description: Two-hit line tankbuster on the main target. Each hit inflicts [s:magic-vuln].
     mechanic: tb.mt
     shape: line
     compact: full
+    description: Two-hit line tankbuster on the main target. Each hit inflicts [s:magic-vuln].
     children:
       - at: 0
         id: glaukopis-hit
@@ -245,8 +246,8 @@ actions:
         id: glaukopis-hit
   glaukopis-hit:
     id: 33533
-    damage: 190000
     mechanic: tb.mt
+    damage: 190000
     shape: line
     description: An individual tankbuster hit. Inflicts [s:magic-vuln].
     resolve: The main tank should take the first hit, the off-tank the second. If the main tank were to take the second hit, the [s:magic-vuln] would cause the next auto-attack to kill them.
@@ -316,16 +317,16 @@ actions:
       id: astral-advance
   superchain-radiation:
     id: 33501
-    damage: 60000
     mechanic: spread
     shape: cone
+    damage: 60000
     count: 8
     description: Conal spreads on each player around the chain source. Inflicts [s:magic-vuln]. Note that if any players are dead, the cones will still target their dead bodies.
   superchain-emission:
     id: 33502
-    damage: 60000
     mechanic: stack.partner
     shape: cone
+    damage: 60000
     count: 4
     description: Conal [m:stack.partner] around the chain source. Inflicts [s:magic-vuln]. Note that if any players are dead, the cones will still target their dead bodies.
   superchain-burst:
@@ -340,39 +341,39 @@ actions:
     description: A [ms:dynamo] centered on the chain source. Inflicts [s:2911].
   umbral-impact:
     id: 33544
-    damage: 71765
     mechanic: stack.party
     shape: line
+    damage: 71765
     description: "[s:umbralstrong] resolves, causing [boss] to fire a light beam at the player that must be shared by other players. Inflicts [s:umbral-tilt] to anyone hit. The beam is lethal to anyone under the effect of [s:umbral-tilt]."
     resolve: All [s:astral-tilt] players should stack with the debuffed player. [s:astralbright] should also stack, as their tower will kill them if they are hit by the dark beam.
   astral-impact:
     id: 33545
-    damage: 68901
     mechanic: stack.party
     shape: line
+    damage: 68901
     description: "[s:astralstrong] resolves, causing [boss] to fire a dark beam at the player that must be shared by other players. Inflicts [s:astral-tilt] to anyone hit. The beam is lethal to anyone under the effect of [s:astral-tilt]."
     resolve: All [s:umbral-tilt] players should stack with the debuffed player. [s:umbralbright] should also stack, as their tower will kill them if they are hit by the light beam.
   theoss-holy:
     id: 33542
-    damage: 58287
     mechanic: spread
     shape: chariot
+    damage: 58287
     count: 4
     description: "[s:heavensflame-soul] resolves, dealing damage within a [ms:chariot] [m:spread] around the player. Inflicts [s:magic-vuln]."
   apodialogos:
     id: 33534
-    damage: 148212
     type: magic
     mechanic: tb.far.stack
     shape: chariot
+    damage: 148212
     description: Hits the farthest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the closest target with an [ms:chariot] party stack.
     resolve: Party in the center of the hitbox, tanks outside.
   peridialogos:
     id: 33535
-    damage: 148212
+    type: magic
     mechanic: tb.close.stack
     shape: chariot
-    type: magic
+    damage: 148212
     description: Hits the closest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the farthest target with an [ms:chariot] party stack.
     resolve: Party at the south at max melee, tanks in the center of the hitbox.
   paradeigma-3:
@@ -449,8 +450,9 @@ actions:
     description: An unaspected tower explodes, dealing mild damage to anyone inside.
   electrify:
     id: 33555
-    damage: 650000
     mechanic: mech.failure
+    damage: 650000
+    players: 8
     description: An unaspected tower explodes after being left unsoaked, wiping the party.
   theoss-cross:
     id: 33546
@@ -464,15 +466,15 @@ actions:
     description: The X-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
   ultima-blade:
     id: 33523
-    damage: 86300
     type: magic
     mechanic: raidwide.ultimate
+    damage: 86300
     description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every party member and transform the arena into a hexagon."
   palladion:
     id: 33525
-    damage: 81997
     type: magic
     mechanic: mech.limit
+    damage: 81997
     players: 8
     compact: full
     description: |
@@ -593,29 +595,29 @@ actions:
     description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:2911] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
   palladion-hit:
     id: 33526
+    mechanic: aoe
     damage: 81997
     players: 2
-    mechanic: aoe
     shape: chariot
     description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding]."
   palladion-platforms:
     id: 22529
-    damage: 9999999
     mechanic: aoe
-    shape: rect
+    damage: 9999999
     players: 0
+    shape: rect
     description: "[boss] cuts away the inner 4 platforms, killing anyone on them."
   shockwave:
     id: 33527
+    mechanic: mech.distance
     damage: 6000
     players: 2
-    mechanic: mech.distance
     shape: line
     description: "[boss] dashes to the next player in the sequence, dealing damage to that player and all players in her path relative to how close they were to her starting position (the closer, the more damage)."
   theoss-ultima:
     id: 33530
-    damage: 130138
     mechanic: raidwide.ultimate
+    damage: 130138
     description: "[boss] unleashes Ultima, dealing massive damage to all players and restoring the arena. Deals more damage the more players are dead."
   superchain-theory-iia:
     id: 34554

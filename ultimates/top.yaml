@@ -383,27 +383,27 @@ actions:
         count: 2
   storage-violation:
     id: 31492
-    damage: 35847
     mechanic: towers.single
+    damage: 35847
     description: |
       Deals medium damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
       Does not apply to players who don't have [s:looper].
       If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all party members, likely causing [s:doom].
   blaster-cast:
     id: 31497
-    cast: 7600
-    damage: 35847
     type: magic
     mechanic: spread.tethers
     shape: defamation
+    damage: 35847
+    cast: 7600
     count: 2
     description: "[a:blaster:d]"
   blaster:
     id: 31497
-    damage: 35847
     type: magic
     mechanic: spread.tethers
     shape: defamation
+    damage: 35847
     count: 2
     description: |
       Deals medium damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
@@ -411,8 +411,8 @@ actions:
   pantokrator:
     id: 31499
     mechanic: mech
-    compact: full
     major: true
+    compact: full
     description: |
       Major mechanic with high movement and healing requirements.
       Inflicts the following effects on players:
@@ -532,16 +532,16 @@ actions:
     description: Omega shoots a cone of fire toward two random opposite spots in the arena, then rotates those cones either clockwise or counter-clockwise in 2 second intervals. Being hit is lethal to anyone but tanks, who can get away with [s:2911].
   condensed-wave-cannon-kyrios:
     id: 31503
-    damage: 58926
     mechanic: stack.targeted
     shape: line
+    damage: 58926
     players: 3
     description: Omega shoots a line beam toward the players targeted by [s:condensed-wave-cannon-kyrios] that deals lethal damage unless soaked by at least 2 other players.
   guided-missile-kyrios:
     id: 31502
-    damage: 58926
     mechanic: spread
     shape: chariot
+    damage: 58926
     description: Omega fires a barrage of missiles at the players targeted by [s:guided-missile] that deals medium damage to the player themselves and knocks any nearby players into the death wall.
   ballistic-impact:
     id: 31500
@@ -550,17 +550,17 @@ actions:
     description: A telegraphed baited AoE dropped by all players on their current position. Resolves a few seconds later. Being inside one when it resolves deals massive damage and inflicts [s:2911].
   wave-cannon-kyrios:
     id: 31505
-    damage: 36713
-    count: 3
     mechanic: spread
     shape: line
+    damage: 36713
+    count: 3
     description: A line beam that fires at 3 random non-tanks. The targeted players are marked before the hit. Inflicts [s:magic-vuln].
     resolve: As this ability hits twice in a row, you can either designate three positions for the marked players to take their beam at, or you can simply have all players spread in fixed positions. This is easier if your tanks invuln [a:diffuse-wave-cannon-kyrios]. Make sure all non-tank players are inside the hitbox during this, to avoid accidentally baiting a tankbuster toward the party.
   diffuse-wave-cannon-kyrios:
     id: 31504
-    count: 2
     mechanic: tb.far
     shape: cone
+    count: 2
     compact: full
     description: A wide conal tankbuster on the farthest 2 players from Omega. Lethal to non-tanks. Hits 5 times in quick succession.
     resolve: All non-tank players should be inside the hitbox while tanks should be outside. If tanks invuln this tankbuster, they can stack together, greatly increasing the space available for the rest of the party to spread for [a:wave-cannon-kyrios].
@@ -583,18 +583,18 @@ actions:
   diffuse-wave-cannon-kyrios-hit:
     id: 31504
     name: Diffuse Wave Cannon Kyrios (Hit)
-    count: 2
     mechanic: tb.far
-    damage: 60000
     shape: cone
+    damage: 60000
+    count: 2
     description: An individual hit from [a:diffuse-wave-cannon-kyrios].
   atomic-ray:
     id: 31480
+    mechanic: enrage
+    damage: 9999999
     description: |
       Omega enrages, wiping the party.
       Note that, although party buffs come off cooldown here, it is strongly advised to hold them for the start of Phase 2.
-    mechanic: enrage
-    damage: 9999999
   firewall:
     id: 31553
     mechanic: mech
@@ -605,16 +605,16 @@ actions:
       Note that you get 2 GCDs worth of cleaves until [a:firewall] is cast, during which it is strongly recommended to use abilities like [a:shadowbringer] or [a:phlegma] that can cleave both targets.
   solar-ray:
     id: 32362
-    damage: 196246
     mechanic: tb.mt
     shape: chariot
+    damage: 196246
     count: 2
     description: A heavy-hitting tankbuster from Omega-M and Omega-F.
   party-synergy:
     id: 31551
     mechanic: mech
-    compact: trim
     major: true
+    compact: trim
     description: |
       Omega-M and Omega-F disappear and tether each player to another player, inflicting either [s:mid-glitch] or [s:remote-glitch] on all players, and show a matching PlayStation headmarker above all players and their partners.
       Omega-M and Omega-F then reappear and prepare a deadly AoE combination. Each of them also spawns a *fake* clone of themselves that does nothing and merely serves to misdirect players. The true and fake copies each follow a set of strict rules that makes identifying the true bosses simple:
@@ -725,9 +725,9 @@ actions:
     description: With staff in hand, Omega-F performs a [ms:plus] AoE in the direction she's facing.
   optimized-fire-iii:
     id: 31535
-    damage: 32077
     mechanic: spread
     shape: chariot
+    damage: 32077
     description: A spread AoE on all players that deals lethal damage if players are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   optical-laser:
     id: 31521
@@ -737,13 +737,13 @@ actions:
   discharger:
     id: 31534
     mechanic: mech.knockback.unavoidable
-    description: A knockback from Omega-F. Deals no damage.
     damage: 0
+    description: A knockback from Omega-F. Deals no damage.
   spotlight:
     id: 31536
-    damage: 58812
     mechanic: stack.targeted
     shape: chariot
+    damage: 58812
     description: A stack that deals lethal damage if taken with less than 4 players, or if any of the players inside are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
   synthetic-shield:
     id: 32369
@@ -752,9 +752,9 @@ actions:
       Omega-M creates a synthetic shield. This shield is used in the following mechanics: [a:optimized-passage-of-arms], [a:beyond-defense], or [a:pile-pitch].
   limitless-synergy:
     id: 31544
-    compact: trim
     mechanic: mech
     major: true
+    compact: trim
     description: |
       Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
       Additionally, several clones spawn outside of the arena:
@@ -820,10 +820,10 @@ actions:
     description: Omega-M uses an optimized version of [a:passage] that renders all friendly targets behind Omega-M invulnerable. Omega-M must be eliminated to dispel this effect.
   optimized-bladedance:
     id: 31540
-    damage: 220381
     type: physical
     mechanic: tb.tether
     shape: cone
+    damage: 220381
     description: An optimized version of the standard melee LB2. Massive 90° conal tankbusters with essentially infinite radius, targeting two tethered players.
     resolve: The tethers should be taken directly clockwise or counter-clockwise of their respective clone to create a small gap for the rest of the party to hide in.
   optimized-sagittarius-arrow:
@@ -835,33 +835,33 @@ actions:
       Be aware that the damage of this attack snapshots as soon as the telegraph disappears, but the damage is not actually applied until the animation has finished nearly 5 seconds later. If someone randomly falls over dead, they were likely hit by Optimized Sagittarius Arrow.
   beyond-defense:
     id: 31527
-    damage: 19463
     type: physical
     mechanic: spread.close
     shape: chariot
+    damage: 19463
     description: At the end of the cast, Omega-M dashes to one of the two closest players and hits them with a small AoE that deals light damage, inflicts [s:twice-come-ruin], and knocks any other players hit into the death wall. The same Omega-M then prepares [a:pile-pitch].
   pile-pitch:
     id: 31529
-    damage: 50189
     mechanic: stack.party
     shape: chariot
+    damage: 50189
     description: A standard stack on one of the 2 closest players from the Omega-M who just used [a:beyond-defense]. Inflicts [s:twice-come-ruin], preventing the player hit by [a:beyond-defense] from stacking.
   optimized-meteor:
     id: 31538
-    damage: 115301
     mechanic: raidwide.proximity
+    damage: 115301
     description: Three random players are targeted with the standard flare marker.
     resolve: Have these players leave the [a:pile-pitch] stack. Alternatively, some parties prefer to place all three flares in the middle of the stack and simply apply heavy mitigation and shielding, which makes the flares survivable even when they are stacked with the party.
   cosmo-memory:
     id: 31522
-    damage: 86602
-    mechanic: raidwide
     type: magic
+    mechanic: raidwide
+    damage: 86602
     description: A heavy-hitting raidwide from Omega's eye on the outside of the arena.
   laser-shower:
     id: 31557
-    damage: 9999999
     mechanic: enrage
+    damage: 9999999
     description: |
       Omega-F finishes her enrage cast and wipes the party.
       Note that, although party buffs come off cooldown here, it is strongly advised to hold as many of them as possible for the start of Phase 3.
@@ -906,9 +906,9 @@ actions:
         id: colossal-blow
   wave-repeater:
     id: 31567
-    description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
     mechanic: aoe.expanding.rings
     compact: full
+    description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
     children:
       - at: 2098
         id: wave-repeater-hit
@@ -931,23 +931,23 @@ actions:
     description: A large AoE around a mechanical hand on the arena.
   sniper-cannon:
     id: 31571
-    damage: 80511
     mechanic: spread
     shape: chariot
+    damage: 80511
     description: "[s:sniper-cannon-fodder] resolves into a [m:spread]."
   high-powered-sniper-cannon:
     id: 31572
-    damage: 72688
     mechanic: stack.partner
     shape: chariot
+    damage: 72688
     description: "[s:high-powered-sniper-cannon-fodder] resolves into a [m:stack.partner]."
   hello-world:
     id: 31573
-    damage: 80879
     mechanic: mech
-    compact: full
+    damage: 80879
     players: 8
     major: true
+    compact: full
     description: |
       Heavy raidwide that begins the next major mechanic.
       Please note that, while this mechanic is technically quite complicated, resolving it is actually quite simple. If reading all the technical specifications on how the mechanic works confuses you, try skipping to the "Resolve" section below.
@@ -1132,73 +1132,73 @@ actions:
     id: 31599
     mechanic: towers.single
     shape: chariot
-    description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
     damage: 0
+    description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
   critical-overflow-bug:
     id: 31575
-    damage: 49290
-    players: 2
-    count: 2
     mechanic: aoe
     shape: defamation
+    damage: 49290
+    count: 2
+    players: 2
     description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone hit while applying [s:overflow-debugger] to themselves."
   critical-synchronization-bug:
     id: 31574
-    damage: 40727
     mechanic: stack.partner
     shape: chariot
+    damage: 40727
     count: 2
     description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] to anyone stacking while applying [s:synchronization-debugger] to themselves."
   latent-performance-defect:
     id: 31584
     mechanic: towers.single
     shape: chariot
+    damage: 0
     count: 2
     description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
-    damage: 0
   cascading-latent-defect:
     id: 31583
     mechanic: towers.single
     shape: chariot
+    damage: 0
     count: 2
     description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
-    damage: 0
   patch:
     id: 31587
-    damage: 21894
     mechanic: raidwide
+    damage: 21894
     description: |
       A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
       Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
   critical-underflow-bug:
     id: 31578
-    count: 2
     mechanic: spread
     shape: chariot
-    description: A small AoE around the player that resolves [s:cascading-latent-defect] and kills any other player hit.
     damage: 0
+    count: 2
+    description: A small AoE around the player that resolves [s:cascading-latent-defect] and kills any other player hit.
   critical-performance-bug:
     id: 31579
-    count: 2
     mechanic: spread
     shape: chariot
-    description: A small AoE around the player that resolves [s:latent-performance-defect] and kills any other player hit.
     damage: 0
+    count: 2
+    description: A small AoE around the player that resolves [s:latent-performance-defect] and kills any other player hit.
   critical-error:
     id: 31588
+    mechanic: mech.check
     damage: 94464
     players: 8
-    mechanic: mech.check
     description: |
       Major raidwide that inflicts [s:critical-overflow-bug] on all players. Can only be prevented through [s:overflow-debugger].
       If any [Critical Overflow Bugs](s:critical-overflow-bug) are successfully inflicted, the next mechanic is unresolvable, necessitating that all players have [s:overflow-debugger] at the end of [a:hello-world].
       **Note**: All players should also have [s:underflow-debugger] and [s:performance-debugger], and most players should have [s:synchronization-debugger] at this point. However, these debuffs are not relevant for [a:critical-error] and will persist even past this cast, only expiring at the start of Phase 5.
   oversampled-wave-cannon:
     id: 31596
-    damage: 50785
-    players: 1
     type: magic
     mechanic: mech
+    damage: 50785
+    players: 1
     major: true
     description: |
       Monitors appear on either the left or right side of Omega as well as the left or right side of three random players (through [s:oversampled-wave-cannon-loading]).
@@ -1233,8 +1233,8 @@ actions:
           * Non-monitor 5 positions themselves max melee below the C marker (south).
   ion-efflux:
     id: 31560
-    damage: 9999999
     mechanic: enrage
+    damage: 9999999
     description: Omega enrages and wipes the party.
   wave-cannon:
     id: 31617
@@ -1277,9 +1277,9 @@ actions:
         flatten: true
   wave-cannon-set:
     id: 31617
-    description: An individual set of Wave Cannon.
     mechanic: mech
     compact: full
+    description: An individual set of Wave Cannon.
     children:
       - at: 624
         id: wave-cannon-spread
@@ -1290,12 +1290,12 @@ actions:
         id: wave-cannon-stack
   wave-cannon-spread:
     id: 32534
+    type: magic
     name: Wave Cannon (Spread)
     mechanic: spread
     shape: line
-    count: 8
     damage: 38988
-    type: magic
+    count: 8
     description: Omega fires lasers at all players. These lasers leave behind [an "afterimage"](a:wave-cannon-lines) that resolves 5 seconds later, at the same time as the stack.
   wave-cannon-lines:
     id: 31616
@@ -1309,15 +1309,15 @@ actions:
     name: Wave Cannon (Stack)
     mechanic: stack.targeted
     shape: line
+    damage: 60363
     count: 2
     players: 4
-    damage: 60363
     description: A 4-player stack on two random telegraphed players. Can also be survived with only 3 players given heavy mitigation and shielding.
   blue-screen:
     id: 31611
-    damage: 80243
-    mechanic: enrage.threshold
     type: magic
+    mechanic: enrage.threshold
+    damage: 80243
     description: Kills all players if the boss is not brought below 20% health, otherwise deals moderate damage and advances the fight to Phase 5.
     resolve: |
       If you used your 2 minutes at the end of Phase 3, use [i:melee] LB3 here to beat the DPS check.
@@ -1352,11 +1352,11 @@ actions:
     description: A Rocket Punch fist was not baited into a fist of the opposite colour and explodes, wiping the raid.
   run-dynamis-(delta-version):
     id: 31624
+    mechanic: mech.trio
     damage: 136135
     players: 8
-    mechanic: mech.trio
-    compact: trim
     major: true
+    compact: trim
     description: |
       Heavy raidwide that initiates the first of three [trios](t:trio).
       After the raidwide, Omega-M becomes untargetable and tethers all players to another player: two pairs via [s:remote-code-smell] and two pairs via [s:local-code-smell]. Additionally, one player is inflicted with [s:hello-near-world] and one player with [s:hello-distant-world]. At the same time, Beetle Omega and Final Omega spawn on two random opposite cardinals, and an Optical Unit on one of the two remaining cardinals.
@@ -1497,39 +1497,39 @@ actions:
         id: hello-distant-world-jump
   hello-near-world:
     id: 31625
-    damage: 50000
     mechanic: spread
     shape: chariot
+    damage: 50000
     description: |
       The player with [s:hello-near-world] explodes in a large [ms:chariot] AoE. A smaller AoE jumps onto whoever is closest to them, then jumps to the closest player one last time. Each AoE applies a stack of [s:quickening-dynamis] to the targeted player, but [wipes the raid](a:hello-world-fail) if any other player is clipped by any of the AoEs.
       Each hit also inflicts [s:magic-vuln], preventing players from receiving multiple [s:quickening-dynamis] stacks during the same [a:hello-near-distant-world] mechanic without dying.
   hello-distant-world:
     id: 33040
-    damage: 50000
     mechanic: spread
     shape: chariot
+    damage: 50000
     description: |
       The player with [s:hello-distant-world] explodes in a large [ms:chariot] AoE. A smaller AoE jumps onto whoever is farthest from them, then jumps to the farthest player one last time. Each AoE applies a stack of [s:quickening-dynamis:1] to the targeted player, but [wipes the raid](a:hello-world-fail) if any other player is clipped by any of the AoEs.
       Each hit also inflicts [s:magic-vuln], preventing players from receiving multiple [s:quickening-dynamis] stacks during the same [a:hello-near-distant-world] mechanic without dying.
   hello-near-world-jump:
     id: 31626
-    damage: 50000
     mechanic: spread
     shape: chariot
+    damage: 50000
     description: One of the jumps of [a:hello-near-world]. A smaller AoE than [a:hello-near-world], but otherwise shares the same properties.
   hello-distant-world-jump:
     id: 33041
-    damage: 50000
     mechanic: spread
     shape: chariot
+    damage: 50000
     description: One of the jumps of [a:hello-distant-world]. A smaller AoE than [a:hello-distant-world], but otherwise shares the same properties.
   run-dynamis-(sigma-version):
     id: 32788
+    mechanic: mech.trio
     damage: 139915
     players: 8
-    mechanic: mech.trio
-    compact: trim
     major: true
+    compact: trim
     description: |
       Heavy raidwide that initiates the second of three [trios](t:trio).
       Also inflicts one player with [s:hello-near-world] and another player with [s:hello-distant-world].
@@ -1597,27 +1597,27 @@ actions:
     description: Final Omega's ring detaches, perches itself in the center of the arena, and begins to rotate clockwise or counter-clockwise while firing continuous laser AoEs that deal massive damage and inflict [s:2911].
   far-hyper-pulse:
     id: 31602
-    damage: 68556
-    count: 2
     mechanic: spread.far
     shape: line
+    damage: 68556
+    count: 2
     description: |
       Two Rear Arm Units spawn and each target the farthest player with a small [ms:line] AoE that inflicts [s:magic-vuln].
       Each arm indicates which player is currently being targeted via a narrow silver tether. This tether is only an indicator; it automatically switches targets when a different player moves farther away than the currently tethered player.
   wave-cannon-marked:
     id: 31604
-    damage: 70865
-    count: 6
     mechanic: spread
     shape: line
+    damage: 70865
+    count: 6
     description: Marks 6 players with a red marker above their heads and, after a delay, fires a [ms:line] AoE at each of them that inflicts [s:magic-vuln].
   run-dynamis-(omega-version):
     id: 32789
+    mechanic: mech.trio
     damage: 139666
     players: 8
-    mechanic: mech.trio
-    compact: trim
     major: true
+    compact: trim
     description: |
       Heavy raidwide that initiates the third of three [trios](t:trio).
       Also inflicts **two** players with [s:hello-near-world] and two other players with [s:hello-distant-world]. These players are marked with [s:first-in-line] or [s:second-in-line] to indicate which set of [a:hello-near-distant-world] debuffs resolves first.
@@ -1701,14 +1701,14 @@ actions:
     description: Final Omega consolidates the ring on its back, *may* turn the ring by 90°, then shoots massive conal AoEs in either direction of the ring that inflict [s:2911].
   blind-faith:
     id: 31623
-    damage: 69891
-    mechanic: enrage.threshold
     type: magic
+    mechanic: enrage.threshold
+    damage: 69891
     description: The death wall surrounding the arena disappears and Omega-F begins casting [a:blind-faith]. If she is not brought below 20% HP before the cast finishes, wipes the party.
   cosmo-memory-2:
     id: 31649
-    damage: 80826
     mechanic: raidwide.lb
+    damage: 80826
     description: |
       Heavy raidwide. Wipes the party unless a [i:tank] LB3 is used.
       Upgrades [s:quickening-dynamis:3] into [s:brilliant-dynamis] and gives [boss] [s:code-dynamis].
@@ -1724,10 +1724,10 @@ actions:
       * **Any death before [a:cosmo-meteor] is an automatic wipe** as that player loses their [s:brilliant-dynamis]/[s:spark-of-dynamis], meaning that even if raised they will just die again to the next damage instance. The only time players are allowed to die is to the last hit(s) of [a:cosmo-meteor], and only if they're a [i:dps], otherwise they'll lose their free LB3 (but only supports should still have any LB3s left here).
   flash-gale:
     id: 32223
-    damage: 39838
     mechanic: auto.far
-    count: 2
     shape: chariot
+    damage: 39838
+    count: 2
     description: |
       [boss]'s auto-attacks. Targets the main target and the farthest player from [boss].
       Note that both hits *can* target the same player if the main target is simultaneously farthest from [boss].
@@ -1735,9 +1735,9 @@ actions:
       After every mechanic (such as [a:wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
   cosmo-arrow:
     id: 31650
-    compact: full
     mechanic: aoe.exaflares
     major: true
+    compact: full
     shape: rect
     description: |
       Exasquares.
@@ -1813,23 +1813,23 @@ actions:
     name: Cosmo Dive (Stack)
     mechanic: stack.party
     shape: chariot
-    players: 6
     damage: 100100
+    players: 6
     description: The stack of [a:cosmo-dive]. Hits the farthest target.
   cosmo-dive-tb:
     id: 31655
     name: Cosmo Dive (TB)
-    count: 2
     mechanic: tb.close
     shape: chariot
     damage: 272617
+    count: 2
     description: The tankbusters of [a:cosmo-dive]. Hits the closest 2 targets.
   unlimited-wave-cannon:
     id: 31660
     mechanic: aoe.exaflares
     shape: chariot
-    compact: full
     major: true
+    compact: full
     description: |
       A circle with arrows appears on a random cardinal or intercardinal about half a second before the end of the cast. Three more circles then appear clockwise or counter-clockwise, each with a slight delay.
       Five seconds after the cast, big telegraphed AoEs spawn underneath each party member that resolve 2.7 seconds later. They do not follow players. More AoEs spawn underneath each party member every 2 seconds. At the same time, the first of the arrow circles on the outside of the arena resolves into exaflares that travel across the arena in the indicated direction, then the next, and so on.
@@ -1863,16 +1863,16 @@ actions:
         id: unlimited-wave-cannon-bait
   unlimited-wave-cannon-hit:
     id: 31661
+    name: Wave Cannon (Exaflare)
     mechanic: aoe.exaflares
     shape: chariot
-    name: Wave Cannon (Exaflare)
     description: The first hit of an exaflare that spawns on a random cardinal or intercardinal and begins traveling through the center of the arena, killing anyone in its path.
   unlimited-wave-cannon-bait:
     id: 31663
-    mechanic: aoe.baitable
-    count: 8
-    shape: chariot
     name: Wave Cannon (Baits)
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
     description: Telegraphed AoEs appear underneath each player that explode 2.7 seconds later, killing anyone still in them by that point.
   cosmo-wave-cannon:
     id: 31657
@@ -1895,8 +1895,8 @@ actions:
     id: 31659
     mechanic: spread
     shape: line
-    count: 4
     damage: 90000
+    count: 4
     description: Fires lasers at 4 random party members, then lasers at the remaining 4. Each laser deals heavy damage and inflicts [s:magic-vuln].
   cosmo-wave-cannon-wc:
     id: 31658
@@ -1908,9 +1908,9 @@ actions:
     description: A [m:stack.intercept] that hits the two closest targets for about 360,000 damage and all remaining targets for about 100,000 if the whole party is stacked. If not, the attack is unsurvivable.
   cosmo-meteor:
     id: 31664
-    compact: trim
     mechanic: adds
     major: true
+    compact: trim
     description: |
       First, spawns massive baited AoEs underneath every party member.
       A short while later, spawns eight adds around the hitbox: 6× Cosmo Comet and 2× Cosmo Meteor. The meteors always spawn north and south while the remaining ones spawn on the other cardinals and intercardinals. If not killed within 15 seconds, they will wipe the party.
@@ -1971,14 +1971,14 @@ actions:
     id: 31668
     name: Cosmo Meteor (Flare)
     mechanic: raidwide.proximity
+    damage: 70000
     count: 3
     players: 1
-    damage: 70000
     description: Deals approximately 70,000 damage to the targeted player and about 7,000 damage to everyone else, provided this player is far enough away.
   magic-number:
     id: 31670
-    damage: 310607
     mechanic: raidwide.lb
+    damage: 310607
     description: |
       Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all party members, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
       Note that [a:cover] *prevents* the targeted player from being inflicted with [s:magic-number]. This can be used to essentially "skip" one [a:magic-number] if one of your healers has died and lost their free LB3. (Have the non-PLD use [i:tank] LB3 while the PLD [a:cover]s the healer who still has [s:brilliant-dynamis], then have the PLD click off their LB3 buff immediately to ensure they die to the cast without having to wait for [s:magic-number] to expire. The healer raises the PLD, the PLD uses [i:tank] LB3 and the healer uses [i:healer] LB3 to raise the rest of the party.)

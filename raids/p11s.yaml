@@ -20,31 +20,31 @@ status:
     description: Reduces damage dealt by approximately 39%.
   bleed:
     id: 2088
-    duration: 12000
     type: dot
     tick: 25000
+    duration: 12000
   sustained-damage:
     id: 2935
-    duration: 29960
     type: dot
     tick: 17000
+    duration: 29960
   dark-vuln:
     id: 3619
-    duration: 5000
     type: vuln
+    duration: 5000
   light-vuln:
     id: 2278
-    duration: 5000
     type: vuln
+    duration: 5000
   blunt-vuln:
     id: 3132
-    duration: 2960
     type: vuln
+    duration: 2960
   stab-wound:
     id: 2080
-    duration: 12000
     type: dot
     tick: 24000
+    duration: 12000
   dark-accord:
     id: 3554
     type: condition
@@ -68,13 +68,13 @@ status:
 actions:
   eunomia:
     id: 33323
-    damage: 70000
     mechanic: raidwide
+    damage: 70000
     description: Medium raidwide. Inflicts [s:bleed].
   dike:
     id: 33325
-    description: High damage tankbuster. Invuln or [t:tankswap].
     mechanic: tb.double
+    description: High damage tankbuster. Invuln or [t:tankswap].
     children:
       - at: 0
         id: dike-hit
@@ -82,16 +82,16 @@ actions:
         id: dike-hit
   dike-hit:
     id: 33330
-    damage: 145000
     mechanic: tb.double
+    damage: 145000
     description: Pierces first-in-enmity with light damage, inflicting [s:light-vuln], and second-in-enmity with dark damage, inflicting [s:dark-vuln].
   jury-overruling:
     id: 33254
     mechanic: spread
     shape: line
+    damage: 56000
     compact: full
     count: 8
-    damage: 56000
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
       Light: [a:jury-overruling] ([ms:line] [m:spread]) > [a:illusory-glare] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
@@ -105,27 +105,27 @@ actions:
       - at: 4084
         id: illusory-glare
         link: and
-      - at: 4173
+      - at: 4084
         id: inevitable-law
         link: or
       - at: 4084
         id: illusory-gloom
         link: and
-      - at: 4173
+      - at: 4084
         id: inevitable-sentence
   illusory-glare:
     id: 33258
-    damage: 68000
     mechanic: aoe
     shape: chariot
+    damage: 68000
     count: 8
     players: 0
     description: "[Chariot AoEs](ms:chariot) left behind wherever players stood at the time of [a:jury-overruling]."
   illusory-gloom:
     id: 33259
-    damage: 68000
     mechanic: aoe
     shape: dynamo
+    damage: 68000
     count: 8
     players: 0
     description: "[Dynamo AoEs](ms:dynamo) left behind wherever players stood at the time of [a:jury-overruling]."
@@ -152,13 +152,13 @@ actions:
       Light: [a:upheld-overruling-stack] > [a:lightburst] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
       Dark: [a:upheld-overruling-tb] > [a:dark-perimeter] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
     children:
-    - at: 4100
+    - at: 4189
       id: lightburst
       link: and
     - at: 4189
       id: inevitable-law
       link: or
-    - at: 4100
+    - at: 4189
       id: dark-perimeter
       link: and
     - at: 4189
@@ -166,9 +166,9 @@ actions:
   upheld-overruling-tb:
     id: 33267
     name: Upheld Overruling (Tankbuster)
-    damage: 95000
     mechanic: tb.tether
     shape: chariot
+    damage: 95000
     compact: full
     description: |
       Dark ability. [boss] tethers to a random tank and jumps on them, dealing high damage, inflicting [s:stab-wound], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
@@ -182,9 +182,9 @@ actions:
   upheld-overruling-stack:
     id: 33266
     name: Upheld Overruling (Stack)
-    damage: 38000
     mechanic: stack.party
     shape: chariot
+    damage: 38000
     compact: full
     description: |
       Light ability. [boss] tethers to a random party member and jumps on them, dealing high damage that must be shared by the rest of the party.
@@ -225,22 +225,22 @@ actions:
       Dark: [a:divisive-overruling] ([m:aoe] [ms:sides]) > [a:ripples-of-gloom] ([m:aoe] [ms:line]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, [boss] dashes, leaving either the inside or outside of the dash safe.
     children:
-    - at: 4496
+    - at: 4585
       id: divine-ruination
       link: and
     - at: 4585
       id: inevitable-law
       link: or
-    - at: 4496
+    - at: 4585
       id: ripples-of-gloom
       link: and
     - at: 4585
       id: inevitable-sentence
   styx-1:
     id: 33303
-    damage: 65882
     mechanic: stack.party
     shape: chariot
+    damage: 65882
     compact: full
     description: A full-party multi-hit stack. The first use of this ability hits 5 times. Each subsequent cast hits one additional time. The first hit deals significantly more damage than the rest.
     children:
@@ -254,9 +254,9 @@ actions:
       id: styx-hit
   styx-2:
     id: 33303
-    damage: 65882
     mechanic: stack.party
     shape: chariot
+    damage: 65882
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -272,9 +272,9 @@ actions:
       id: styx-hit
   styx-3:
     id: 33303
-    damage: 65882
     mechanic: stack.party
     shape: chariot
+    damage: 65882
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -292,9 +292,9 @@ actions:
       id: styx-hit
   styx-4:
     id: 33303
-    damage: 65882
     mechanic: stack.party
     shape: chariot
+    damage: 65882
     compact: full
     description: A full-party multi-hit stack. The first hit deals significantly more damage than the rest.
     children:
@@ -314,9 +314,9 @@ actions:
       id: styx-hit
   styx-hit:
     id: 33304
-    damage: 43515
     mechanic: stack.party
     shape: chariot
+    damage: 43515
     description: An initial hit of [a:styx-1].
   arcane-revelation:
     id: 33293
@@ -346,8 +346,8 @@ actions:
     description: The spheres explodes in a huge [t:AoE]. Inflicts [s:2911].
   dismissal-overruling:
     id: 34693
-    damage: 22285
     mechanic: mech.knockback
+    damage: 22285
     compact: full
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
@@ -356,13 +356,13 @@ actions:
       After the cast, [boss] inflicts a knockback slightly smaller than the radius of the arena.
     resolve: Either use [a:surecast] or [a:arms-length] or position yourself close to the boss's center to avoid being knocked into the wall, then go in with your partner or out with your light party, depending on the boss's colour.
     children:
-    - at: 4991
+    - at: 5081
       id: inner-light
       link: and
     - at: 5081
       id: inevitable-law
       link: or
-    - at: 4991
+    - at: 5081
       id: outer-dark
       link: and
     - at: 5081
@@ -375,17 +375,17 @@ actions:
     description: The mirrors on the side of the arena corresponding to [boss]'s colour shoot a [ms:line] through the arena.
   inner-light:
     id: 34696
-    damage: 72910
     mechanic: aoe
     shape: chariot
+    damage: 72910
     players: 0
     description: "[boss] explodes in a burst of light, leaving his hitbox unsafe."
     resolve: Max melee and beyond is safe.
   outer-dark:
     id: 34697
-    damage: 69204
     mechanic: aoe
     shape: dynamo
+    damage: 69204
     players: 0
     description: Darkness explodes around [boss], leaving only his hitbox safe.
   shadowed-messengers:
@@ -500,9 +500,9 @@ actions:
     description: The [t:AoE]s circle around the arena one step.
   blinding-light:
     id: 33322
-    damage: 57630
     mechanic: spread
     shape: chariot
+    damage: 57630
     count: 8
     description: Spread [t:AoE]s on all eight players.
   letter-of-the-law:
@@ -535,14 +535,14 @@ actions:
     resolve: Use standard [a:inevitable-sentence] partners. It is recommended to handle this mechanic [t:true north], allowing you to target a waymarker while you're waiting for the preceding [a:upheld-ruling] to resolve, then beeline for that marker once you've escaped [a:dark-perimeter].
   explosion:
     id: 33319
-    damage: 4650
     mechanic: towers.double
+    damage: 4650
     count: 4
     description: Towers explode, dealing minimal damage to all players soaking them. If any towers do not have 2 players soaking them, deals massive damage and inflicts [s:sustained-damage] to the whole party. This damage is survivable if only one player is missing from a tower, but lethal if both players are missing.
   ultimate-verdict:
     id: 33324
-    damage: 9999999
     mechanic: enrage
+    damage: 9999999
     description: "[boss] judges the party unworthy, instantly killing all players."
 timeline:
   - at: 15908
