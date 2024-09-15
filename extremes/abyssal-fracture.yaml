@@ -658,7 +658,7 @@ timeline:
     description: The basic mechanics repeat until [boss] enrages or its HP is reduced below 25%.
   - at: 500673
     id: rend-the-rift
-    push: true
+    timing: push
   - at: 517837
     id: nostalgia
   - at: 541983

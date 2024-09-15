@@ -785,7 +785,7 @@ timeline:
     id: ruin-foretold
   - at: 236805
     id: <targetable>
-    push: true
+    timing: push
     description: |
       [boss] becomes targetable again after all three beacons have been destroyed.
       This timeline assumes it took 7× [a:calamitous-cry] until all beacons were destroyed. It may take your party more or less time, altering the overall timeline.

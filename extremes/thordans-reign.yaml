@@ -286,7 +286,7 @@ actions:
       id: <loop>
     - at: 72328
       id: <untargetable>
-      push: true
+      timing: push
   divine-right:
     id: 35282
     mechanic: mech
@@ -411,7 +411,7 @@ actions:
       id: meteor-impact
     - at: 44673
       id: <untargetable>
-      push: true
+      timing: push
   comet:
     id: 35316
     damage: 6000
@@ -692,12 +692,12 @@ timeline:
     id: knights-3
   - at: 220000
     id: knights-4
-    push: true
+    timing: push
   - at: 237000
     id: holy-meteor
   - at: 303150
     id: the-light-of-ascalon
-    push: true
+    timing: push
   - at: 321026
     id: ultimate-end
   - at: 321026

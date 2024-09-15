@@ -2019,7 +2019,7 @@ timeline:
     hp: 8629240
   - at: 135061
     id: <targetable>
-    push: true
+    timing: push
   - at: 138537
     id: firewall
   - at: 146673
@@ -2040,7 +2040,7 @@ timeline:
     hp: 11125976
   - at: 292328
     id: p3-transition
-    push: true
+    timing: push
   - at: 315693
     id: <targetable>
   - at: 324657
@@ -2059,7 +2059,7 @@ timeline:
     maxhp: 979085
   - at: 478067
     id: <targetable>
-    push: true
+    timing: push
   - at: 492229
     id: wave-cannon
   - at: 533987
