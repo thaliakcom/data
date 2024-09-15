@@ -49,6 +49,7 @@ tb.stack:
   name: tankbuster (stack)
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns and shared by another tank to survive.
   players: 2
+  shapeful: true
 tb.far:
   name: tankbuster (far)
   description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns to survive.
