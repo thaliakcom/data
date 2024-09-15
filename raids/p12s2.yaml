@@ -131,7 +131,7 @@ status:
     id: 3617
     name: Entropy Resistance
     description: x
-    gameDescription: Invulnerable to [s:entropifaction].
+    gameDescription: Invulnerable to [s:entropification].
     type: resistance
   fourfold-come-ruin:
     id: 3695
