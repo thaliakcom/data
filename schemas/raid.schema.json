@@ -254,9 +254,13 @@
           "minimum": 0,
           "description": "If the status effect can be stacked, the maximum number of stacks. Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
         },
-        "isPlayerSource": {
-          "type": "boolean",
-          "description": "Whether the status effect originates from a player or an enemy. Note that this value is automatically retrieved from game data, so explicitly defining it here is strongly discouraged."
+        "affects": {
+          "type": "string",
+          "enum": [
+            "player",
+            "enemy"
+          ],
+          "description": "Whether the status effect affects players or enemies.\n\nIf not specified, assumes that a status affects players."
         }
       },
       "additionalProperties": false
@@ -491,10 +495,9 @@
           "type": "number",
           "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
         },
-        "push": {
-          "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
-          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+        "timing": {
+          "$ref": "#/definitions/Timing",
+          "description": "Allows specifying additional information about the timing of the action."
         },
         "flatten": {
           "type": "boolean",
@@ -512,6 +515,13 @@
       "enum": [
         "combine",
         "max"
+      ]
+    },
+    "Timing": {
+      "type": "string",
+      "enum": [
+        "push",
+        "player"
       ]
     },
     "SpecialChildTimelineItem": {
@@ -569,10 +579,9 @@
           "type": "number",
           "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
         },
-        "push": {
-          "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
-          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+        "timing": {
+          "$ref": "#/definitions/Timing",
+          "description": "Allows specifying additional information about the timing of the action."
         },
         "flatten": {
           "type": "boolean",
@@ -670,10 +679,9 @@
           "type": "number",
           "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
         },
-        "push": {
-          "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
-          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+        "timing": {
+          "$ref": "#/definitions/Timing",
+          "description": "Allows specifying additional information about the timing of the action."
         },
         "flatten": {
           "type": "boolean",
@@ -696,6 +704,9 @@
           "$ref": "#/definitions/PhaseShiftItem"
         },
         {
+          "$ref": "#/definitions/EndPhaseItem"
+        },
+        {
           "$ref": "#/definitions/SpecialChildTimelineItem"
         },
         {
@@ -712,10 +723,9 @@
           "minimum": 0,
           "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
-        "push": {
-          "type": "boolean",
-          "description": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a health push, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight.",
-          "markdownDescription": "If true, indicates that the exact timing of this timeline item may vary, as it is based on a *health push*, i.e. it occurs when the health of the enemy or enemies on the field is reduced past a certain threshold and not at a fixed time in the fight."
+        "timing": {
+          "$ref": "#/definitions/Timing",
+          "description": "Allows specifying additional information about the timing of the action."
         },
         "id": {
           "type": "string",
@@ -738,6 +748,30 @@
         "at",
         "id",
         "name"
+      ],
+      "additionalProperties": false
+    },
+    "EndPhaseItem": {
+      "type": "object",
+      "properties": {
+        "at": {
+          "type": "number",
+          "description": "The time in milliseconds relative to the at value of the parent ability that this ability hits.\n\nA mechanic \"hitting\" is defined as follows:\n\n If the action inflicts damage or statuses, it's at the time that that damage and statuses are snapshot on the player(s).\n\n If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar.",
+          "minimum": 0,
+          "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
+        },
+        "timing": {
+          "$ref": "#/definitions/Timing",
+          "description": "Allows specifying additional information about the timing of the action."
+        },
+        "id": {
+          "type": "string",
+          "const": "<endphase>"
+        }
+      },
+      "required": [
+        "at",
+        "id"
       ],
       "additionalProperties": false
     },
