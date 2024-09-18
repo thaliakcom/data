@@ -1,7 +1,7 @@
 id: 988
 patch: "7.05"
 date: 2024-09-15
-modified: 2024-09-15
+modified: 2024-09-18
 by:
   id: 27637301
   role: author
@@ -26,36 +26,32 @@ status:
   infatuated:
     id: 3923
     type: dot
-    tick: 10000
-    duration: 9999000
+    tick: 6000
     description: |
       Player has 1 heart stack. If they accumulate 3 more stacks, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
-      Additionally, player takes mild [t:DoT] damage every 3 seconds. The damage does not increase per heart stack.
+      Additionally, player takes mild [t:DoT] damage every 3 seconds.
   head-over-heels:
     id: 3924
     type: dot
-    tick: 10000
-    duration: 9999000
+    tick: 9000
     description: |
       Player has 2 heart stacks. If they accumulate 2 more stacks, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
-      Additionally, player takes mild [t:DoT] damage every 3 seconds. The damage does not increase per heart stack.
+      Additionally, player takes mild [t:DoT] damage every 3 seconds.
   hopeless-devotion:
     id: 3925
     type: dot
-    tick: 10000
-    duration: 9999000
+    tick: 12000
     description: |
       Player has 3 heart stacks. If they accumulate 1 more stack, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
-      Additionally, player takes mild [t:DoT] damage every 3 seconds. The damage does not increase per heart stack.
+      Additionally, player takes moderate [t:DoT] damage every 3 seconds.
   honey-bee-mine:
     id: 3926
     type: dot
-    tick: 10000
-    duration: 9999000
+    tick: 15000
     description: |
       Player has 4 heart stacks. They are inflicted with [s:drone], heal [boss]'s HP by 1%, and grant her 1 stack of [s:queen-bee].
       When [s:drone] expires, this debuff along with all heart stacks will be cleansed.
-      Additionally, player takes mild [t:DoT] damage every 3 seconds. The damage does not increase per heart stack.
+      Additionally, player takes moderate [t:DoT] damage every 3 seconds (for 2 ticks, until [s:drone] expires).
   drone:
     id: 3921
     type: impairment
@@ -108,7 +104,6 @@ status:
     id: 3915
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has either [a:drop-of-venom-hit] or [a:splash-of-venom-hit] stored, to be executed during the next [a:honey-beeline] or [a:tempting-twist].
       The effect itself gives no information on which of the two was stored, so it's still essential to pay attention to and memorize the name of the cast.
@@ -117,7 +112,6 @@ status:
     id: 4143
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       Granted by [a:beat-1], [a:beat-2], and [a:beat-3].
       In this state, [boss] does not attack with honey that inflicts [s:damage-down]; instead she attacks with "love" that inflicts a stack of [s:infatuated], up to a maximum of [s:honey-bee-mine]. Reaching 4 stacks inflicts [s:drone] for 6 seconds, restores [boss]'s HP by 1% of her maximum HP, and grants her a stack of [s:queen-bee].
@@ -125,7 +119,6 @@ status:
     id: 3936
     type: damage-up
     affects: enemy
-    duration: 9999000
     description: |
       Increases all of [boss]'s damage dealt by 3% per stack.
       Granted when a player accumulates [s:honey-bee-mine].
@@ -133,7 +126,6 @@ status:
     id: 3937
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has either [a:spread-love-hit] or [a:drop-of-love-hit] stored, to be executed during the next [a:honey-beeline] or [a:tempting-twist].
       The effect itself gives no information on which of the two was stored, so it's still essential to pay attention to and memorize the name of the cast.
@@ -148,7 +140,6 @@ status:
     id: 4145
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       Transforms the arena into a corrupted, rotten version of itself. Has no other effect.
       Granted by [a:rotten-heart].
@@ -156,7 +147,6 @@ status:
     id: 3953
     type: damage-up
     affects: enemy
-    duration: 9999000
     description: Significantly increases [boss]'s damage dealt, rendering any attack lethal.
 actions:
   call-me-honey:
