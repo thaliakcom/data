@@ -89,6 +89,7 @@ status:
   beeloved-venom-alpha:
     id: 3932
     type: rot.pass
+    tick: 6000
     duration: [12000, 28000, 44000, 62000]
     description: |
       Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-beta], cleansing both effects and inflicting [s:magic-vulnerability-up]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
@@ -96,6 +97,7 @@ status:
   beeloved-venom-beta:
     id: 3933
     type: rot.pass
+    tick: 6000
     duration: [12000, 28000, 44000, 62000]
     description: |
       Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-alpha], cleansing both effects and inflicting [s:magic-vulnerability-up]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
@@ -503,10 +505,11 @@ actions:
     damage: 157663
     description: |
       Raidwide that deals heavy damage, transitions the arena into its final state, and begins the enrage sequence.
-      Grants [boss] [s:rotten-honey] (which has no effect) and 4 players [s:beeloved-venom-alpha] and 4 players [s:beeloved-venom-beta]. Each [s:beeloved-venom-alpha] has a different duration that corresponds with one [s:beeloved-venom-beta]. If a player with [s:beeloved-venom-alpha] touches a player with [s:beeloved-venom-beta], or if the debuffs are left to expire, [they explode](a:rotten-big-burst), dealing raidwide damage and inflicting [s:magic-vulnerability-up].
+      Grants [boss] [s:rotten-honey] (which has no effect) and 4 players [s:beeloved-venom-alpha] and 4 players [s:beeloved-venom-beta]. Each [s:beeloved-venom-alpha] has a different duration that corresponds with one [s:beeloved-venom-beta]. If a player with [s:beeloved-venom-alpha] touches a player with [s:beeloved-venom-beta], they explode, dealing raidwide damage and inflicting [s:magic-vulnerability-up]. If any debuffs are allowed to expire instead, those players are instantly killed, but without affecting anyone else.
     resolve: |
       Have all players spread to clock positions to avoid accidentally touching another player. After each [a:call-me-honey], wait for both heals and for [s:magic-vulnerability-up] to expire, then have the next Beeloved Venoms to expire go in the center of [boss]'s hitbox to resolve their debuffs.
-      Be aware that the [s:magic-vulnerability-up] inflicted by [a:rotten-big-burst] lasts for 7 seconds. This means that if the debuffs are resolved at 3s or less, or if they're left to expire, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
+      Be aware that the [s:magic-vulnerability-up] inflicted by [a:rotten-big-burst] lasts for 7 seconds. This means that if the debuffs are resolved at 3s or less, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
+      If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the affected players die instead. This will not cause a wipe.
     children:
     - at: 7857
       id: rotten-big-burst
@@ -629,6 +632,7 @@ timeline:
     id: heartsore
   - at: 287424
     id: fracture
+    count: 2
   - at: 296461
     id: tempting-twist-heart
     link: or
@@ -671,6 +675,7 @@ timeline:
     id: big-burst
   - at: 442847
     id: fracture
+    count: 4
   - at: 447068
     id: outerstage-combo
     link: or
@@ -680,6 +685,7 @@ timeline:
     id: big-burst
   - at: 462482
     id: fracture
+    count: 4
   - at: 472171
     id: honey-beeline-heart
     link: or
