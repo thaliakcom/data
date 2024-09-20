@@ -93,7 +93,7 @@ status:
     duration: [12000, 28000, 44000, 62000]
     description: |
       Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-beta], cleansing both effects and inflicting [s:magic-vulnerability-up]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
-      If this effect is allowed to expire instead, that player is instantly killed.
+      If this effect is allowed to expire instead, that player is inflicted with [s:paralysis].
   beeloved-venom-beta:
     id: 3933
     type: rot.pass
