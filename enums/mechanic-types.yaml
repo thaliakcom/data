@@ -254,10 +254,12 @@ mech.status:
 mech.statusoff:
   name: status expiration
   description: One or more status effects fall off from players.
-mech.protean:
+mech.spread-or-stack:
   name: spread or stack
-  description: A classic spread-or-stack mechanic. Depending on some boss telegraph, you will have to either spread away from everyone else or stack with some other members of your party.
-  players: 8
+  description: A mechanic with 2 variations. Players must either spread or stack with a partner. The only way to tell which variation the boss is using is some boss or arena tell like a specific stance, VFX, or animation.
+mech.close-or-far:
+  name: close or far
+  description: A mechanic with 2 variations. Players must either get close to a specific point in the arena (usually due to a knockback originating from that point) or go as far as possible (usually because of a massive AoE or proximity damage). The only way to tell which variation the boss is using is some boss or arena tell like a specific stance, VFX, or animation.
 mech.store:
   name: store
   description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to member *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
@@ -321,12 +323,15 @@ towers.single:
   players: 1
 towers.double:
   name: 2P towers
-  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least two people. If less than two people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least two players. If less than two players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
   players: 2
 towers.triple:
   name: 3P towers
-  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three people. If less than three people occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three players. If less than three players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
   players: 3
+towers.kb:
+  name: knockback towers
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by a certain number of players. If less than three players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly. Additionally, each tower knocks back all players inside away from its center.
 enrage:
   name: enrage
   description: Instantly kills all players and ends the fight. Ignores [s:transcendent] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).

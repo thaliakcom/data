@@ -1,7 +1,7 @@
 id: 990
 patch: "7.05"
-date: 2024-08-03
-modified: 2024-08-03
+date: 2024-10-11
+modified: 2024-10-11
 by:
   id: 27637301
   role: author
@@ -9,7 +9,7 @@ tier: Light-heavyweight
 boss: Brute Bomber
 HP: 96522586
 party_hp: 120000
-wip: true
+wip: [guide, damage, diagrams]
 description: |
   Our resident WWE champion, Brute Bomber combines classic wrestling moves with a barrage of bombs to blow his opponents away.
 status:
@@ -18,4 +18,780 @@ status:
     type: impairment
     duration: 30000
     description: |
-      Reduces damage dealt by approximately ?% (multiplicative) per stack.
+      Reduces damage dealt by approximately 38% (multiplicative) per stack.
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
+    duration: 960
+    description: Inflicted by [a:blazing-lariat-spread], [a:diveboom-spread], [a:bombariboom-spread]
+  poison:
+    id: 2089
+    type: dot
+    duration: 15000
+    description: Inflicted by [a:murderous-mist], [a:murderous-mist-mandatory]
+  chain-deathmatch:
+    id: 4019
+    type: condition
+    duration: [11000, 16000]
+    description: Inflicted by unknown
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [5960, 1960]
+    description: Inflicted by [a:explosion-player], [a:explosion-player], [a:mana-explosion]
+  bombarium:
+    id: 4020
+    type: condition
+    duration: [44000, 26000]
+    description: Inflicted by unknown
+  dangerously-doped:
+    id: 4022
+    type: damage-up
+    duration: 9999000
+    description: Granted by [a:doping-draught-1]
+  fusefield:
+    id: 3289
+    type: form
+    duration: 9999000
+    description: Granted by unknown_93f0
+  doped-and-detonative:
+    id: 4023
+    type: damage-up
+    duration: 34000
+    description: Granted by [a:doping-draught-2], [a:doping-draught-3]
+actions:
+  brutal-impact-1:
+    id: 37925
+    mechanic: raidwide
+    description: Placeholder description for Brutal Impact
+    compact: full
+    children:
+      - at: 0
+        id: brutal-impact-1-hit
+      - at: 1111
+        id: brutal-impact-1-hit
+      - at: 2181
+        id: brutal-impact-1-hit
+      - at: 3250
+        id: brutal-impact-1-hit
+  brutal-impact-2:
+    id: 37925
+    mechanic: raidwide
+    description: Placeholder description for Brutal Impact
+    compact: full
+    children:
+      - at: 0
+        id: brutal-impact-2-hit
+      - at: 1111
+        id: brutal-impact-2-hit
+      - at: 2181
+        id: brutal-impact-2-hit
+      - at: 3250
+        id: brutal-impact-2-hit
+      - at: 4323
+        id: brutal-impact-2-hit
+      - at: 5392
+        id: brutal-impact-2-hit
+  brutal-impact-3:
+    id: 37925
+    mechanic: raidwide
+    description: Placeholder description for Brutal Impact
+    compact: full
+    children:
+      - at: 0
+        id: brutal-impact-3-hit
+      - at: 1111
+        id: brutal-impact-3-hit
+      - at: 2181
+        id: brutal-impact-3-hit
+      - at: 3250
+        id: brutal-impact-3-hit
+      - at: 4323
+        id: brutal-impact-3-hit
+      - at: 5392
+        id: brutal-impact-3-hit
+      - at: 6467
+        id: brutal-impact-3-hit
+      - at: 7538
+        id: brutal-impact-3-hit
+  brutal-impact-1-hit:
+    id: 37926
+    name: Brutal Impact (Hit)
+    mechanic: raidwide
+    damage: 32000
+    description: Placeholder description for Brutal Impact
+  brutal-impact-2-hit:
+    id: 37926
+    name: Brutal Impact (Hit)
+    mechanic: raidwide
+    damage: 37000
+    description: Placeholder description for Brutal Impact
+  brutal-impact-3-hit:
+    id: 37926
+    name: Brutal Impact (Hit)
+    mechanic: raidwide
+    damage: 41000
+    description: Placeholder description for Brutal Impact
+  knuckle-sandwich-1:
+    id: 37923
+    mechanic: tb.stack
+    shape: chariot
+    damage: 230373
+    description: Placeholder description for Knuckle Sandwich
+    compact: full
+    children:
+      - at: 0
+        id: knuckle-sandwich-hit
+      - at: 1114
+        id: knuckle-sandwich-hit
+      - at: 2183
+        id: knuckle-sandwich-hit
+      - at: 3254
+        id: knuckle-sandwich-hit
+  knuckle-sandwich-2:
+    id: 37923
+    mechanic: tb.stack
+    shape: chariot
+    damage: 230373
+    description: Placeholder description for Knuckle Sandwich
+    compact: full
+    children:
+      - at: 0
+        id: knuckle-sandwich-hit
+      - at: 1114
+        id: knuckle-sandwich-hit
+      - at: 2183
+        id: knuckle-sandwich-hit
+      - at: 3254
+        id: knuckle-sandwich-hit
+      - at: 4321
+        id: knuckle-sandwich-hit
+      - at: 5392
+        id: knuckle-sandwich-hit
+  knuckle-sandwich-3:
+    id: 37923
+    mechanic: tb.stack
+    shape: chariot
+    damage: 230373
+    description: Placeholder description for Knuckle Sandwich
+    compact: full
+    children:
+      - at: 0
+        id: knuckle-sandwich-hit
+      - at: 1114
+        id: knuckle-sandwich-hit
+      - at: 2183
+        id: knuckle-sandwich-hit
+      - at: 3254
+        id: knuckle-sandwich-hit
+      - at: 4321
+        id: knuckle-sandwich-hit
+      - at: 5392
+        id: knuckle-sandwich-hit
+      - at: 6461
+        id: knuckle-sandwich-hit
+      - at: 7532
+        id: knuckle-sandwich-hit
+  knuckle-sandwich-hit:
+    id: 37924
+    name: Knuckle Sandwich (Hit)
+    mechanic: tb.stack
+    shape: chariot
+    damage: 217018
+    description: Placeholder description for Knuckle Sandwich
+  octuple-lariat:
+    id: 37848
+    mechanic: spread
+    shape: cone
+    count: 8
+    description: Placeholder description for Octuple Lariat
+    children:
+      - at: 0
+        id: blazing-lariat-spread
+  quadruple-lariat:
+    id: 37851
+    mechanic: stack.partner
+    shape: cone
+    count: 4
+    description: Placeholder description for Quadruple Lariat
+    children:
+      - at: 0
+        id: blazing-lariat-stack
+  blazing-lariat-spread:
+    id: 37852
+    mechanic: spread
+    shape: cone
+    damage: 122157
+    description: Placeholder description for Blazing Lariat
+  blazing-lariat-stack:
+    id: 37853
+    mechanic: stack.partner
+    shape: cone
+    damage: 122157
+    description: Placeholder description for Blazing Lariat
+  octoboom-dive:
+    id: 37855
+    mechanic: mech.close-or-far
+    players: 8
+    damage: 31992
+    description: Placeholder description for Octoboom Dive
+    children:
+      - at: 3303
+        id: diveboom-spread
+  quadroboom-dive:
+    id: 37856
+    mechanic: mech.close-or-far
+    players: 8
+    damage: 31992
+    description: Placeholder description for Quadroboom Dive
+    children:
+      - at: 3303
+        id: diveboom-stack
+  diveboom-spread:
+    id: 37859
+    mechanic: spread
+    shape: chariot
+    damage: 122157
+    description: Placeholder description for Diveboom
+  diveboom-stack:
+    id: 37859
+    mechanic: stack.partner
+    shape: chariot
+    damage: 122157
+    description: Placeholder description for Diveboom
+  barbarous-barrage-1:
+    id: 37883
+    mechanic: towers.kb
+    major: true
+    description: Placeholder description for Barbarous Barrage
+    children:
+      - at: 11118
+        id: explosion-tower-quad
+        count: 2
+      - at: 14145
+        id: explosion-tower-double
+        count: 4
+      - at: 17129
+        id: explosion-tower-single
+        count: 1
+      - at: 19223
+        id: murderous-mist
+  barbarous-barrage-2:
+    id: 37883
+    mechanic: towers.kb
+    major: true
+    description: Placeholder description for Barbarous Barrage
+    children:
+      - at: 11118
+        id: explosion-tower-quad
+        count: 2
+      - at: 14145
+        id: explosion-tower-double
+        count: 4
+      - at: 17129
+        id: explosion-tower-single
+        count: 1
+      - at: 19160
+        id: lariat-combo-avoidable
+  explosion-tower-quad:
+    id: 38542
+    mechanic: towers.kb
+    players: 4
+    damage: 46480
+    description: Placeholder description for Explosion
+  explosion-tower-double:
+    id: 37884
+    mechanic: towers.kb
+    players: 2
+    damage: 46480
+    description: Placeholder description for Explosion
+  explosion-tower-single:
+    id: 38543
+    mechanic: towers.kb
+    players: 8
+    damage: 46480
+    description: Placeholder description for Explosion
+  murderous-mist:
+    id: 37886
+    mechanic: aoe
+    shape: 270°
+    description: Placeholder description for Murderous Mist
+  doping-draught-1:
+    id: 37895
+    mechanic: mech.prepare
+    description: Placeholder description for Doping Draught
+  tag-team-1:
+    id: 37863
+    mechanic: mech
+    major: true
+    description: Placeholder description for Tag Team
+    children:
+    - at: 9220
+      id: chain-deathmatch
+    - at: 18447
+      id: lariat-combo
+  chain-deathmatch:
+    id: 37861
+    mechanic: mech.status
+    description: Placeholder description for Chain Deathmatch
+  lariat-combo:
+    id: 39733
+    mechanic: aoe
+    shape: side
+    description: Placeholder description for Lariat Combo
+    children:
+      - at: 0
+        id: lariat-combo-hit
+        count: 2
+      - at: 4323
+        id: lariat-combo-hit-avoidable
+        count: 2
+  lariat-combo-hit:
+    id: 39732
+    mechanic: aoe
+    shape: side
+    players: 4
+    damage: 39794
+    description: Placeholder description for Lariat Combo
+  final-fusedown:
+    id: 37894
+    mechanic: mech
+    description: Placeholder description for Final Fusedown
+    children:
+      - at: 12150
+        id: self-destruct
+        link: and
+      - at: 12194
+        id: explosion-player
+      - at: 17140
+        id: self-destruct
+        link: and
+      - at: 17177
+        id: explosion-player
+  self-destruct:
+    id: 37889
+    mechanic: aoe
+    shape: chariot
+    description: Placeholder description for Self-destruct
+  explosion-player:
+    id: 37892
+    mechanic: spread
+    shape: chariot
+    damage: 96486
+    description: Placeholder description for Explosion
+  fusefield:
+    id: 37870
+    mechanic: mech
+    description: Placeholder description for Fusefield
+    compact: full
+    children:
+      - at: 6152
+        id: bombarian-flame
+  bombarian-flame:
+    id: 37871
+    mechanic: mech
+    description: Placeholder description for Bombarian Flame
+    children:
+      - at: 4000
+        id: mana-explosion
+        timing: player
+      - at: 8000
+        id: mana-explosion
+        timing: player
+      - at: 12000
+        id: mana-explosion
+        timing: player
+      - at: 16000
+        id: mana-explosion
+        timing: player
+      - at: 20000
+        id: mana-explosion
+        timing: player
+      - at: 24000
+        id: mana-explosion
+        timing: player
+      - at: 28000
+        id: mana-explosion
+        timing: player
+      - at: 32000
+        id: mana-explosion
+        timing: player
+  mana-explosion:
+    id: 37875
+    mechanic: raidwide
+    damage: 107189
+    description: Placeholder description for Mana Explosion
+  doping-draught-2:
+    id: 37927
+    mechanic: mech.prepare
+    description: Placeholder description for Doping Draught
+  octoboom-bombarian-special:
+    id: 38738
+    mechanic: mech
+    description: Placeholder description for Octoboom Bombarian Special
+    compact: full
+    children:
+      - at: 991
+        id: bombarian-special-1
+      - at: 2498
+        id: bombarian-special-2
+      - at: 4501
+        id: bombarian-special-3
+      - at: 6684
+        id: bombarian-special-4
+      - at: 8021
+        id: bombarian-special-5
+      - at: 9810
+        id: bombarian-special-6
+      - at: 12298
+        id: bombarian-special-7
+      - at: 13991
+        id: bombarian-special-8
+      - at: 20505
+        id: bombarian-special-9
+      - at: 24109
+        id: bombariboom-spread
+  quadroboom-bombarian-special:
+    id: 37898
+    mechanic: mech
+    description: Placeholder description for Quadroboom Bombarian Special
+    compact: full
+    children:
+      - at: 991
+        id: bombarian-special-1
+      - at: 2498
+        id: bombarian-special-2
+      - at: 4501
+        id: bombarian-special-3
+      - at: 6684
+        id: bombarian-special-4
+      - at: 8021
+        id: bombarian-special-5
+      - at: 9810
+        id: bombarian-special-6
+      - at: 12298
+        id: bombarian-special-7
+      - at: 13991
+        id: bombarian-special-8
+      - at: 20505
+        id: bombarian-special-9
+      - at: 24109
+        id: bombariboom-stack
+  bombarian-special-1:
+    id: 37899
+    mechanic: raidwide
+    damage: 60735
+    description: Placeholder description for Bombarian Special
+  bombarian-special-2:
+    id: 37900
+    mechanic: raidwide
+    damage: 94749
+    description: Placeholder description for Bombarian Special
+  bombarian-special-3:
+    id: 37901
+    mechanic: raidwide
+    damage: 62950
+    description: Placeholder description for Bombarian Special
+  bombarian-special-4:
+    id: 37902
+    mechanic: raidwide
+    damage: 63069
+    description: Placeholder description for Bombarian Special
+  bombarian-special-5:
+    id: 37903
+    mechanic: raidwide
+    damage: 63052
+    description: Placeholder description for Bombarian Special
+  bombarian-special-6:
+    id: 37904
+    mechanic: aoe
+    shape: chariot
+    description: Placeholder description for Bombarian Special
+  bombarian-special-7:
+    id: 37905
+    mechanic: aoe
+    shape: dynamo
+    description: Placeholder description for Bombarian Special
+  bombarian-special-8:
+    id: 37906
+    mechanic: raidwide
+    damage: 48693
+    description: Placeholder description for Bombarian Special
+  bombarian-special-9:
+    id: 37908
+    mechanic: mech.knockback.unavoidable
+    damage: 96146
+    description: Placeholder description for Bombarian Special
+  bombariboom-spread:
+    id: 38740
+    mechanic: spread
+    shape: chariot
+    damage: 98219
+    description: Placeholder description for Bombariboom
+  bombariboom-stack:
+    id: 38740
+    mechanic: stack.partner
+    shape: chariot
+    damage: 98219
+    description: Placeholder description for Bombariboom
+  fuses-of-fury:
+    id: 37887
+    mechanic: mech
+    description: Placeholder description for Fuses of Fury
+    children:
+      - at: 6105
+        id: tag-team-2
+      - at: 19151
+        id: self-destruct
+      - at: 24151
+        id: self-destruct
+  tag-team-2:
+    id: 37863
+    mechanic: mech
+    major: true
+    description: Placeholder description for Tag Team
+    children:
+    - at: 10241
+      id: chain-deathmatch
+    - at: 24974
+      id: murderous-mist-mandatory
+    - at: 25071
+      id: lariat-combo
+  murderous-mist-mandatory:
+    id: 39895
+    mechanic: aoe
+    shape: 270°
+    players: 8
+    damage: 28084
+    description: Placeholder description for Murderous Mist
+  fuse-or-foe:
+    id: 37891
+    mechanic: mech
+    major: true
+    description: Placeholder description for Fuse or Foe
+    children:
+      - at: 9039
+        id: infernal-spin
+      - at: 9541
+        id: explosive-rain
+        count: 2
+      - at: 13550
+        id: explosive-rain
+        count: 2
+      - at: 17109
+        id: explosive-rain
+        count: 2
+      - at: 20717
+        id: explosion-player
+      - at: 21116
+        id: explosive-rain
+        count: 2
+      - at: 25701
+        id: explosion-player
+  infernal-spin:
+    id: 37917
+    mechanic: aoe.rotating
+    shape: cone
+    description: Placeholder description for Infernal Spin
+    compact: full
+    children:
+      - at: 535
+        id: infernal-spin-hit
+      - at: 1025
+        id: infernal-spin-hit
+      - at: 1569
+        id: infernal-spin-hit
+      - at: 2007
+        id: infernal-spin-hit
+      - at: 2544
+        id: infernal-spin-hit
+      - at: 2989
+        id: infernal-spin-hit
+  explosive-rain:
+    id: 37910
+    mechanic: aoe
+    shape: dynamo
+    description: Placeholder description for Explosive Rain
+  infernal-spin-hit:
+    id: 37918
+    mechanic: aoe
+    shape: cone
+    description: Placeholder description for Infernal Spin
+  lariat-combo-avoidable:
+    id: 39659
+    mechanic: aoe
+    shape: side
+    description: Placeholder description for Lariat Combo
+    children:
+      - at: 1199
+        id: lariat-combo-hit-avoidable
+      - at: 5468
+        id: lariat-combo-hit-avoidable
+  lariat-combo-hit-avoidable:
+    id: 39665
+    mechanic: aoe
+    shape: side
+    description: Placeholder description for Lariat Combo
+  doping-draught-3:
+    id: 39320
+    mechanic: mech.prepare
+    description: Placeholder description for Doping Draught
+  special-bombarian-special:
+    id: 37931
+    mechanic: enrage.soft
+    description: Placeholder description for Special Bombarian Special
+    compact: full
+    children:
+      - at: 1018
+        id: special-bombarian-special-1
+      - at: 2492
+        id: special-bombarian-special-2
+      - at: 4499
+        id: special-bombarian-special-3
+      - at: 6692
+        id: special-bombarian-special-4
+      - at: 7985
+        id: special-bombarian-special-5
+      - at: 9806
+        id: special-bombarian-special-6
+      - at: 12313
+        id: special-bombarian-special-7
+      - at: 14006
+        id: special-bombarian-special-8
+      - at: 14006
+        id: <untargetable>
+      - at: 20519
+        id: special-bombarian-special-9
+  special-bombarian-special-1:
+    id: 37932
+    mechanic: raidwide
+    damage: 65662
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-2:
+    id: 37933
+    mechanic: raidwide
+    damage: 64058
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-3:
+    id: 37934
+    mechanic: raidwide
+    damage: 65311
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-4:
+    id: 37935
+    mechanic: raidwide
+    damage: 66800
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-5:
+    id: 37936
+    mechanic: raidwide
+    damage: 65298
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-6:
+    id: 37937
+    mechanic: aoe
+    shape: chariot
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-7:
+    id: 37938
+    mechanic: aoe
+    shape: dynamo
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-8:
+    id: 37939
+    mechanic: raidwide
+    damage: 55544
+    description: Placeholder description for Special Bombarian Special
+  special-bombarian-special-9:
+    id: 37941
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description for Special Bombarian Special
+timeline:
+  - at: 12094
+    id: brutal-impact-1
+  - at: 21443
+    id: knuckle-sandwich-1
+  - at: 38513
+    id: octuple-lariat
+    description: A close-range AoE combined with a conal spread on all players.
+    link: or
+  - at: 38513
+    id: quadruple-lariat
+    description: A close-range AoE combined with a conal partner stack on all DPS or supports.
+  - at: 49400
+    id: octoboom-dive
+    description: "[boss] faces a direction and jumps there, dealing proximity damage followed by a circular spread on all players."
+    link: or
+  - at: 49400
+    id: quadroboom-dive
+    description: "[boss] faces a direction and jumps there, dealing proximity damage followed by a circular partner stack on all players."
+  - at: 60867
+    id: brutal-impact-1
+  - at: 77269
+    id: barbarous-barrage-1
+  - at: 110283
+    id: doping-draught-1
+  - at: 143698
+    id: octuple-lariat
+    link: or
+  - at: 143698
+    id: quadruple-lariat
+  - at: 155372
+    id: octoboom-dive
+    link: or
+  - at: 155372
+    id: quadroboom-dive
+  - at: 166860
+    id: brutal-impact-2
+  - at: 178355
+    id: knuckle-sandwich-2
+  - at: 196540
+    id: tag-team-1
+  - at: 226762
+    id: octuple-lariat
+    link: or
+  - at: 226762
+    id: quadruple-lariat
+  - at: 234899
+    id: brutal-impact-2
+  - at: 254518
+    id: final-fusedown
+  - at: 278875
+    id: octoboom-dive
+    link: or
+  - at: 278875
+    id: quadroboom-dive
+  - at: 298734
+    id: fusefield
+  - at: 355207
+    id: knuckle-sandwich-2
+  - at: 372357
+    id: doping-draught-2
+  - at: 391703
+    id: quadroboom-bombarian-special
+  - at: 427545
+    id: fuses-of-fury
+  - at: 472303
+    id: octoboom-dive
+    link: or
+  - at: 472303
+    id: quadroboom-dive
+  - at: 484836
+    id: brutal-impact-3
+  - at: 498482
+    id: knuckle-sandwich-3
+  - at: 517792
+    id: fuse-or-foe
+  - at: 548262
+    id: quadruple-lariat
+  - at: 556396
+    id: brutal-impact-3
+  - at: 576081
+    id: barbarous-barrage-2
+  - at: 616084
+    id: knuckle-sandwich-3
+  - at: 638873
+    id: doping-draught-3
+  - at: 658190
+    id: special-bombarian-special
