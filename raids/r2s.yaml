@@ -9,6 +9,7 @@ tier: Light-heavyweight
 boss: Honey B Lovely
 HP: 83966736
 party_hp: 120000
+wip: [diagrams]
 description: |
   A deceptively simple but punishing second turn revolving around memorization mechanics and 3 "Beats" mechanics that transform the arena while adding the mechanic of "heart stacks" to the fight. During these mechanics, any improperly resolved mechanic adds a heart stack to players. Reach 4 stacks and not only is the player stunned for 6 seconds, they also grant [boss] a stacking damage buff and heal her by 1% of her maximum HP, making the DPS check significantly harder. This makes this turn one of the most punishing second turn savages in history.
 status:

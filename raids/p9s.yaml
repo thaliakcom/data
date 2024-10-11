@@ -1,7 +1,7 @@
 id: 937
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-22
+modified: 2024-10-11
 by:
   id: 27637301
   role: author
@@ -139,7 +139,7 @@ actions:
   dualspell:  # Dualspell
     id: 33108
     type: magic
-    mechanic: mech.protean
+    mechanic: mech.spread-or-stack
     compact: trim
     description: |
       [boss] channels either ice and lightning, or ice and fire. After the cast, one of the two elements flashes on the screen for all players, which indicates that this element will be *enlarged*. The mechanic itself executes several seconds after the element is shown to players.
@@ -485,7 +485,7 @@ actions:
   two-minds:  # Two Minds
     id: 33157
     type: magic
-    mechanic: mech.protean
+    mechanic: mech.spread-or-stack
     compact: full
     description: "Identical to [a:dualspell] except for one thing: [a:dualspell] executes both the telegraph for the empowered element and the mechanic with a significant delay *after* the cast finishes, while [a:two-minds] shows the element *during* the cast and executes the mechanic immediately at the end of the cast. To make up for this, [a:two-minds] has a longer cast time."
     children:

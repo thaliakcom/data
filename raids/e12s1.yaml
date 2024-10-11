@@ -9,7 +9,7 @@ tier: Eden's Promise
 boss: Eden's Promise
 suffix: " Part 1"
 HP: 0
-wip: true
+wip: full
 description: ""
 status:
   2911:  # Damage Down

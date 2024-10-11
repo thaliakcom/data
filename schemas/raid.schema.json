@@ -101,8 +101,20 @@
       "description": "A brief description of the encounter that will be displayed at the top of the page. Do not use this field to go into detail on mechanics."
     },
     "wip": {
-      "type": "boolean",
-      "description": "If set, this encounter will be included in encounter lists, but the actual encounter page will be replaced by a generic page informing users that the encounter guide is still a work-in-progress."
+      "anyOf": [
+        {
+          "type": "string",
+          "const": "full"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WipKind"
+          }
+        }
+      ],
+      "description": "If set, this encounter will be included in encounter lists, but the actual encounter page will be modified based on the type of value:\n\n full or timeline: The page is replaced by a generic page informing readers that the page is still a work-in-progress.\n\n guide: Only displays the first three columns (Hit, Ability, Type) while hiding the Description column.\n\n damage: Hides all damage values.\n\n diagrams: Hides all diagrams.\n\nA banner is also displayed at the top that explains what kind of work is still left, along with information on how to help.",
+      "markdownDescription": "If set, this encounter will be included in encounter lists, but the actual encounter page will be modified based on the type of value:\n\n* `full` or `timeline`: The page is replaced by a generic page informing readers that the page is still a work-in-progress.\n\n* `guide`: Only displays the first three columns (Hit, Ability, Type) while hiding the Description column.\n\n* `damage`: Hides all damage values.\n\n* `diagrams`: Hides all diagrams.\n\nA banner is also displayed at the top that explains what kind of work is still left, along with information on how to help."
     },
     "status": {
       "type": "object",
@@ -171,12 +183,7 @@
           "description": "The lodestone ID of the contributor."
         },
         "role": {
-          "type": "string",
-          "enum": [
-            "author",
-            "editor",
-            "helper"
-          ],
+          "$ref": "#/definitions/ContributorRole",
           "description": "The role of the contributor.\n\n Authors write large parts of the timeline themselves.\n\n Editors are responsible for proofchecking a finished timeline and making small corrections like fixing links, typos, damage numbers, and mechanical inaccuracies.\n\n Helpers help research the internals of the fight's mechanics but are otherwise not involved in the writing process.",
           "markdownDescription": "The role of the contributor.\n\n* Authors write large parts of the timeline themselves.\n\n* Editors are responsible for proofchecking a finished timeline and making small corrections like fixing links, typos, damage numbers, and mechanical inaccuracies.\n\n* Helpers help research the internals of the fight's mechanics but are otherwise not involved in the writing process."
         }
@@ -187,6 +194,14 @@
       ],
       "additionalProperties": false
     },
+    "ContributorRole": {
+      "type": "string",
+      "enum": [
+        "author",
+        "editor",
+        "helper"
+      ]
+    },
     "MechanicType": {
       "type": "string"
     },
@@ -195,6 +210,15 @@
     },
     "DamageType": {
       "type": "string"
+    },
+    "WipKind": {
+      "type": "string",
+      "enum": [
+        "timeline",
+        "guide",
+        "damage",
+        "diagrams"
+      ]
     },
     "UnprocessedStatusEffect": {
       "type": "object",
