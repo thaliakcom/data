@@ -23,6 +23,9 @@ cone:
 line:
   name: line
   description: Affects targets who are in-line with the source. Hits both in front and behind the source. To avoid, stay far enough to either side of the source.
+grid:
+  name: grid
+  description: Affects targets who are in-line with several sources at the edges of the arena.
 plus:
   name: plus-shaped
   description: Affects targets who are on one of the source's four cardinals. To avoid, stay at the source's intercardinals.

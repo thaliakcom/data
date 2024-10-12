@@ -260,6 +260,9 @@ mech.spread-or-stack:
 mech.close-or-far:
   name: close or far
   description: A mechanic with 2 variations. Players must either get close to a specific point in the arena (usually due to a knockback originating from that point) or go as far as possible (usually because of a massive AoE or proximity damage). The only way to tell which variation the boss is using is some boss or arena tell like a specific stance, VFX, or animation.
+mech.center-or-sides:
+  name: center or sides
+  description: A mechanic with 2 variations. Players must either get to the sides of the arena (due to a line AoE through the center) or to the center of the arena (due to two line AoEs on the sides). The only way to tell which variation the boss is using is some boss or arena tell like a specific stance, VFX, or animation.
 mech.store:
   name: store
   description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to member *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
