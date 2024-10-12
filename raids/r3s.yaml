@@ -1,7 +1,7 @@
 id: 990
 patch: "7.05"
 date: 2024-10-11
-modified: 2024-10-11
+modified: 2024-10-12
 by:
   id: 27637301
   role: author
@@ -11,7 +11,7 @@ HP: 96522586
 party_hp: 120000
 wip: [guide, damage, diagrams]
 description: |
-  Our resident WWE champion, Brute Bomber combines classic wrestling moves with a barrage of bombs to blow his opponents away.
+  An avid WWE enthusiast who also likes explosions, Brute Bomber combines classic wrestling moves with a barrage of bombs to blow his opponents away.
 status:
   damage-down:
     id: 628
