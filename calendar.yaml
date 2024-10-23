@@ -450,7 +450,7 @@
   color: "#3f6e67"
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/Heavensturn/t03u4zqkln
   from: 2023-12-31 08:00:00
-  to: 2024-01-15 14:59:00
+  to: 2024-01-15 14:59:59
 - name: Fan Fest Tokyo
   type: event
   color: "#383642"
@@ -466,19 +466,19 @@
   color: "#872e1c"
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/The_Maidens_Rhapsody/flf9m2g38k
   from: 2024-01-22 08:00:00
-  to: 2024-02-05 14:59:00
+  to: 2024-02-05 14:59:59
 - name: Moogle Treasure Trove - The First Hunt for Genesis
   type: event
   color: "#9e7123"
   url: https://eu.finalfantasyxiv.com/lodestone/special/mogmog-collection/202401/8degg9wgnk
   from: 2024-01-30 08:00:00
-  to: 2024-03-11 14:59:00
+  to: 2024-03-11 14:59:59
 - name: Valentione's Day
   type: event
   color: "#912777"
   url: https://eu.finalfantasyxiv.com/lodestone/special/2024/Valentiones_Day/ob5mppsb6x
   from: 2024-02-07 08:00:00
-  to: 2024-02-21 14:59:00
+  to: 2024-02-21 14:59:59
 - name: Patch 6.57
   type: patch
   url: https://na.finalfantasyxiv.com/lodestone/topics/detail/5178db4decaeb4dc6cd7d6843b6ab0798abe2b00
@@ -488,13 +488,13 @@
   color: "#322a73"
   url: https://na.finalfantasyxiv.com/lodestone/special/ffxv/9tkdm9tw1g/
   from: 2024-02-28 08:00:00
-  to: 2024-03-13 14:59:00
+  to: 2024-03-13 14:59:59
 - name: Little Ladies' Day & Hatching-tide
   type: event
   color: "#578f35"
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/Little_Ladies_Day_Hatching_tide/fnvycqn3ol
   from: 2024-03-14 08:00:00
-  to: 2024-04-01 14:59:00
+  to: 2024-04-01 14:59:59
 - name: Patch 6.58
   type: patch
   url: https://na.finalfantasyxiv.com/lodestone/topics/detail/f679ab8855882f6c1d2415fb79067160ef629d31
@@ -504,7 +504,7 @@
   color: "#b83404"
   url: https://na.finalfantasyxiv.com/lodestone/special/ffxvi/
   from: 2024-04-02 08:00:00
-  to: 2024-05-08 14:59:00
+  to: 2024-05-08 14:59:59
 - name: Letter from the Producer Live Part LXXX
   short: PLL LXXX
   type: live letter
@@ -585,15 +585,46 @@
   color: "#832d2d"
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/Moonfire_Faire/vk09iygn4m
   from: 2024-08-08 08:00:00
-  to: 2024-08-26 14:59:00
+  to: 2024-08-26 14:59:59
 - name: The Rising 2024
   type: event
   color: "#83762d"
   url: https://na.finalfantasyxiv.com/lodestone/special/2024/The_Rising/kx9ry8yeix
   from: 2024-08-27 08:00:00
-  to: 2024-09-11 14:59:00
+  to: 2024-09-11 14:59:59
 - name: Letter from the Producer Live Part LXXXIII
   short: PLL LXXXIII
   type: live letter
   url: https://www.youtube.com/live/Hf79RkD_bG8
   at: 2024-09-29 05:50:00
+- name: Free Login Campaign
+  type: event
+  color: "#267b38"
+  url: https://sqex.to/lS5zG
+  from: 2024-10-11
+  to: 2024-10-31
+  allDay: true
+- name: Moogle Treasure Trove - The First Hunt for Genesis
+  type: event
+  color: "#9e7123"
+  url: https://sqex.to/qZYJU
+  from: 2024-10-15 08:00:00
+  to: 2024-11-12 14:59:00
+- name: All Saints' Wake
+  type: event
+  color: "#1f5a61"
+  url: https://sqex.to/TsL9G
+  from: 2024-10-18 08:00:00
+  to: 2024-11-04 14:59:59
+  allDay: true
+- name: Fall Guys Collaboration
+  type: event
+  color: "#7d2885"
+  url: https://sqex.to/T2hEf
+  from: 2024-10-23 08:00:00
+  to: 2024-11-12 14:59:59
+- name: Letter from the Producer Live Part LXXXIV
+  short: PLL LXXXIV
+  type: live letter
+  url: https://sqex.to/SCd7R
+  at: 2024-11-01 11:00:00
