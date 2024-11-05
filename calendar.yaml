@@ -642,3 +642,13 @@
   short: Patch 7.11
   type: patch
   at: 2024-11-26 10:00:00
+- name: Patch 7.15
+  type: patch
+  at: 2024-12-17 10:00:00
+- name: Cloud of Darkness (Chaotic)
+  short: Chaotic
+  type: patch
+  at: 2024-12-24 10:00:00
+- name: Patch 7.16
+  type: patch
+  at: 2025-01-21 10:00:00
