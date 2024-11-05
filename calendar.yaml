@@ -628,3 +628,17 @@
   type: live letter
   url: https://sqex.to/SCd7R
   at: 2024-11-01 11:00:00
+- name: Patch 7.1 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2024-11-11 10:00:00
+  to: 2024-11-12 10:00:00
+- name: Crossroads (Patch 7.1)
+  short: Patch 7.1
+  type: patch
+  at: 2024-11-12 10:00:00
+- name: Futures Rewritten Ultimate (Patch 7.11)
+  short: Patch 7.11
+  type: patch
+  at: 2024-11-26 10:00:00
