@@ -1,2 +1,4 @@
-patch: "7.05"
-content: []
+patch: "7.1"
+content:
+  - id: 1017
+    url: /extremes/sphenes-burden/
