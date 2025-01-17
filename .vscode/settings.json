@@ -1,6 +1,6 @@
 {
     "yaml.schemas": {
-        "./schemas/raid.schema.json": "/{ultimates,raids,extremes}/*",
+        "./schemas/raid.schema.json": "/{ultimates,raids,extremes,chaotics}/*",
         "./schemas/common.schema.json": "/enums/common.yaml",
         "./schemas/damage-types.schema.json": "/enums/damage-types.yaml",
         "./schemas/status-types.schema.json": "/enums/status-types.yaml",
@@ -8,6 +8,7 @@
         "./schemas/mechanic-types.schema.json": "/enums/mechanic-types.yaml",
         "./schemas/expansions.schema.json": "/enums/expansions.yaml",
         "./schemas/terms.schema.json": "/enums/terms.yaml",
+        "./schemas/mitigation.schema.json": "/api/mitigation.yaml",
         "./schemas/metadata.schema.json": "/metadata.yaml",
         "./schemas/recent.schema.json": "/recent.yaml",
         "./schemas/calendar.schema.json": "/calendar.yaml"

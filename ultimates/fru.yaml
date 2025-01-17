@@ -1,0 +1,343 @@
+id: 1006
+patch: "7.11"
+date: 2024-11-26
+modified: 2024-11-26
+by:
+  id: 27637301
+  role: author
+boss: Pandora
+HP: 0
+party_hp: 142328
+description: An alternate retelling of the Eden raid storyline in which Mitron gains control of Ryne during her attempts to materialize the power of Shiva.
+wip: full
+status:
+  damage-down:
+    id: 628
+    type: impairment
+    duration: 180000
+    description: |
+      Reduces all damage dealt by 90%.
+      Due to the extremely punishing nature of the damage reduction and the long duration of this debuff, it is recommended to [wall](t:wall) yourself at the earliest convenience where no mechanics require your input to replace [s:damage-down] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
+      Under no circumstances should you use any kind of damage cooldown while [s:damage-down] is active, even during the 2m buff window. Raid buffs are the only exception, since they are unaffected by the damage reduction.
+      Inflicted by many mechanics, including [a:unmitigated-explosion].
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
+    duration: [1960, 14000]
+    description: Inflicted by [a:cyclonic-break-proteans], [a:powder-mark-trail]
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [1960, 3950]
+    description: Inflicted by [a:sinsmoke], [a:sinbound-fire-iii], [a:sinsmoke-tether], [a:sinsmite], [a:bow-shock], [a:sinblaze]
+  powder-mark-trail:
+    id: 4166
+    name: Powder Mark Trail
+    type: delay
+    duration: 16000
+    description: Inflicted by [a:powder-mark-trail]. When the duration expires, or when the player dies, both the player as well as the player closest to them explode in a [a:burn-mark], dealing massive damage to themselves and everyone around them.
+  prey:
+    id: 1051
+    type: delay
+    duration: 9999000
+    description: Inflicted by unknown
+  fated-burn-mark:
+    id: 4165
+    name: Fated Burn Mark
+    type: condition
+    duration: 15000
+    description: Inflicted by unknown
+  floating-fetters:
+    id: 2304
+    type: impairment
+    duration: 3950
+    description: Inflicted by [a:floating-fetters]
+  bleeding:
+    id: 2951
+    type: dot
+    tick: 40000
+    duration: 15000
+    description: Inflicted by [a:burnished-glory]
+  mark-of-mortality:
+    id: 4372
+    type: impairment
+    duration: 180000
+    description: |
+      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, accumulating :unverified(another stack) of this debuff instantly kills the player.
+      In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside a [m:stack.healers] if an incorrect number of players (either too many or too few) soaked the stack.
+actions:
+  cyclonic-break:
+    id: 40144
+    mechanic: mech.spread-or-stack
+    description: |
+      [t:protean] [m:spread]s into [m:stack.partner] or [m:spread], depending on the element Fatebreaker channels.
+      * If Fatebreaker is channeling fire (red), it's [m:spread] into [m:stack.partner] ([a:sinsmoke]).
+      * If Fatebreaker is channeling lightning (blue), it's [m:spread] into [m:spread] ([a:sinsmite]).
+      This is followed by conal AoEs on the players' previous positions.
+    children:
+      - at: 624
+        id: cyclonic-break-proteans
+      - at: 2674
+        id: cyclonic-break-baits
+      - at: 2717
+        id: sinsmoke
+      - at: 4724
+        id: cyclonic-break-baits
+      - at: 6772
+        id: cyclonic-break-baits
+  cyclonic-break-proteans:
+    id: 40145
+    name: Cyclonic Break (Proteans)
+    mechanic: spread
+    shape: cone
+    damage: 96521
+    description: Hits all players with a conal spread.
+  cyclonic-break-baits:
+    id: 40146
+    name: Cyclonic Break (Baits)
+    mechanic: aoe.baitable
+    shape: cone
+    description: A conal AoE that hits on all players' positions during the previous set of cones. Inflicts [s:damage-down].
+  sinsmoke:
+    id: 40147
+    mechanic: stack.partner
+    shape: chariot
+    damage: 148740
+    description: A [m:stack.partner] on all supports or all DPS. Inflicts [s:magic-vulnerability-up].
+  sinsmite:
+    id: 40142
+    mechanic: spread
+    shape: chariot
+    damage: 119999
+    description: A [m:spread] on all supports or all DPS. Inflicts [s:magic-vulnerability-up].
+  powder-mark-trail:
+    id: 40168
+    mechanic: tb.mt
+    shape: chariot
+    damage: 675000
+    description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up].
+    resolve: Use heavy mitigation. Requires a [t:tankswap].
+  utopian-sky:
+    id: 40154
+    mechanic: mech
+    description: |
+      Fatebreaker surrounds himself with an aura of either fire or lightning, then disappears as the arena becomes wreathed in fog.
+      A Fatebreaker's Image spawns at the edge of every cardinal and intercardinal. They can only be seen by players close to them. Three of those Images *raise* their sword and begin casting [a:blasting-zone], a wide [ms:line] AoE covering the entire cardinal or intercardinal. The other Images remain inactive.
+      [Blasting zones](a:blasting-zone) can never completely overlap. In other words: if an Image casts [a:blasting-zone], it is not possible for the Image across to also cast [a:blasting-zone].
+      In addition, when [a:blasting-zone] resolves Fatebreaker also executes the following mechanic:
+      * If he was channeling fire (red) during the initial Utopian Sky cast, both healers are targeted by [a:sinbound-fire-iii], a [m:stack.supports].
+      * If he was channeling lightning (blue) during the initial Utopian Sky cast, all players are targeted by [a:sinbound-thunder-iii], a [m:spread].
+    resolve: |
+      Designate a [t:protean] for every player and have every player move to the edge of their protean position after the Utopian Sky cast, but ensure that **both tanks take adjacent protean positions** to resolve [s:powder-mark-trail]. They must also use heavy mitigation here.
+      Have each player look at their clone. If the clone is raising its sword, or if the **player across from them** moves forward, the player also moves forward. If done correctly, there must now be two players who haven't moved from their initial protean position at the edge of the arena. Those two positions, and only those two positions, are **safe** from [a:blasting-zone].
+      To resolve [a:sinbound-fire-iii]/[a:sinbound-thunder-iii], both safe spots must contain at most 4 players and at most 1 healer. In accordance, separate your group into 2 light parties and move each light party into one safe spot. If [a:sinbound-fire-iii] is stocked, no further action needs to be taken; just ensure all 4 players are in the safe spot. If [a:sinbound-thunder-iii] is stocked, players must spread within the safe spot in a triangle formation.
+    children:
+      - at: 5485
+        id: burn-mark
+      - at: 15101
+        id: sinbound-fire-iii
+        link: or
+      - at: 15101
+        id: sinbound-thunder-iii
+        link: and
+      - at: 15101
+        id: blasting-zone
+  burn-mark:
+    id: 40169
+    mechanic: tb.double
+    shape: chariot
+    damage: 287258
+    description: The player inflicted with [s:powder-mark-trail] and the player closest to them explode, dealing heavy damage to themselves and everyone around them.
+  blasting-zone:
+    id: 40157
+    mechanic: aoe
+    shape: line
+    count: 3
+    description: Wide [ms:line] AoE fired by one of Fatebreaker's Images during [a:utopian-sky], covering 6 out of 8 [t:protean] positions.
+  sinbound-fire-iii:
+    id: 40159
+    mechanic: stack.supports
+    shape: chariot
+    damage: 119185
+    description: A [m:stack.supports] on either both tanks or both healers. Inflicts [s:magic-vulnerability-up]. Also Inflicts [s:mark-of-mortality] if taken with less than 4 players.
+  sinbound-thunder-iii:
+    id: 40160
+    mechanic: spread
+    shape: chariot
+    damage: 119185
+    description: A [m:spread] on all players. Inflicts [s:magic-vulnerability-up].
+  turn-of-the-heavens:
+    id: 40150
+    mechanic: mech
+    description: |
+      Fatebreaker's Image near the center of the arena channels either fire or lightning, then disappears.
+      Blue and red circles appear at every cardinal and intercardinal. All circles from north to southwest are one colour, and the 4 remaining circles are the other colour.
+    children:
+      - at: 652
+        id: burnt-strike-lightning
+      - at: 6986
+        id: burnt-strike-fire
+      - at: 14736
+        id: sinsmoke-tether
+  brightfire:
+    id: 40152
+    mechanic: aoe
+    shape: chariot
+    count: 8
+    description: The circles during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down].
+  burnt-strike:
+    id: 40133
+    mechanic: aoe
+    shape: line
+    description: |
+      Fatebreaker channels an element and executes a line AoE at the end.
+      The line AoE has one of two additional effects, see below.
+    children:
+      - at: 1739
+        id: burnout
+        link: or
+      - at: 1739
+        id: blastburn
+  burnt-strike-lightning:
+    id: 40133
+    name: Burnt Strike (Lightning)
+    mechanic: aoe
+    shape: line
+    description: A [ms:line] AoE that expands, hitting again two seconds later.
+    children:
+      - at: 1739
+        id: burnout
+  burnt-strike-fire:
+    id: 40133
+    name: Burnt Strike (Fire)
+    mechanic: aoe
+    shape: line
+    description: A [ms:line] AoE that knocks players back from the center of the line two seconds later.
+    children:
+      - at: 1739
+        id: blastburn
+  burnout:
+    id: 40164
+    mechanic: aoe
+    shape: line
+    description: The [a:burnt-strike-lightning] expands, dealing damage to all players in its path and inflicting [s:damage-down].
+  blastburn:
+    id: 40162
+    mechanic: mech.knockback.unavoidable
+    shape: line
+    damage: 0
+    description: The [a:burnt-strike-fire] explodes again, knocking back all players from the center of the line.
+  sinsmoke-tether:
+    id: 40167
+    mechanic: stack.targeted
+    shape: chariot
+    players: 4
+    damage: 124086
+    description: |
+      A [m:stack.targeted] on a tethered player. Inflicts [s:mark-of-mortality] if taken with less than 4 players.
+  burnished-glory:
+    id: 40170
+    mechanic: raidwide
+    damage: 146513
+    description: Placeholder description for Burnished Glory
+  fall-of-faith:
+    id: 40140
+    mechanic: mech
+    major: true
+    description: Placeholder description for Fall of Faith
+  floating-fetters:
+    id: 40171
+    mechanic: mech
+    description: Placeholder description for Floating Fetters
+  solemn-charge:
+    id: 40141
+    mechanic: mech
+    description: Placeholder description for Solemn Charge
+  bow-shock:
+    id: 40143
+    mechanic: spread.close
+    shape: cone
+    damage: 120353
+    description: Placeholder description for Bow Shock
+  sinblaze:
+    id: 40156
+    mechanic: stack.party
+    shape: chariot
+    damage: 118494
+    description: Placeholder description for Sinblaze
+  explosion:
+    id: 40126
+    mechanic: towers.single
+    damage: 45088
+    description: Placeholder description for Explosion
+  explosion-1:
+    id: 40125
+    mechanic: towers.single
+    damage: 43093
+    description: Placeholder description for Explosion
+  explosion-2:
+    id: 40135
+    mechanic: towers.single
+    damage: 46196
+    description: Placeholder description for Explosion
+  unmitigated-explosion:
+    id: 40136
+    mechanic: mech.failure
+    players: 8
+    damage: 140296
+    description: Placeholder description for Unmitigated Explosion
+  burnished-glory-enrage:
+    id: 40128
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description for Burnished Glory
+timeline:
+  - at: 14617
+    id: cyclonic-break
+  - at: 25088
+    id: powder-mark-trail
+  - at: 35697
+    id: utopian-sky
+    link: and
+  - at: 35697
+    id: <untargetable>
+  - at: 57120
+    id: cyclonic-break
+  - at: 64800
+    id: turn-of-the-heavens
+  - at: 80869
+    id: <targetable>
+  - at: 87112
+    id: burnished-glory
+  - at: 102661
+    id: fall-of-faith
+  - at: 103417
+    id: floating-fetters
+  - at: 105467
+    id: solemn-charge
+  - at: 106803
+    id: sinsmite
+  - at: 107114
+    id: bow-shock
+  - at: 109790
+    id: sinblaze
+  - at: 112240
+    id: sinsmite
+  - at: 112555
+    id: bow-shock
+  - at: 114782
+    id: sinblaze
+  - at: 122623
+    id: burnished-glory
+  - at: 131134
+    id: powder-mark-trail
+  - at: 142629
+    id: burnt-strike
+  - at: 146638
+    id: explosion
+  - at: 147261
+    id: burn-mark
+  - at: 148730
+    id: unmitigated-explosion
+  - at: 161787
+    id: burnished-glory-enrage

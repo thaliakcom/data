@@ -1,0 +1,19 @@
+id: 1010
+sort_id: 1018
+patch: "7.1"
+date: 2025-01-17
+modified: 2025-01-17
+by:
+  id: 27637301
+  role: author
+tier: Dawntrail
+boss: Cloud of Darkness
+HP: 294173553
+wip: full
+description: |
+  The first Chaotic Alliance Raid in the game blends elements of Eden's Promise: Umbra and World of Darkness in a unique 24-man fight featuring Extreme-level mechanics.
+status:
+  2911:  # Damage Down
+    type: impairment
+    duration: 30000
+    description: Reduces damage dealt by approximately 25%.

@@ -110,6 +110,11 @@ stack.healers:
   description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
   players: 4
   shapeful: true
+stack.supports:
+  name: light-party stack
+  description: A heavy-hitting attack on either both healers or both tanks that cannot be survived alone. The party must be divided into light parties, and those light parties must stack on top of each other to divide the damage amongst themselves and make it survivable.
+  players: 4
+  shapeful: true
 stack.targeted:
   name: targeted stack
   description: A heavy-hitting attack on a targeted player that cannot be survived alone.
