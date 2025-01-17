@@ -23,93 +23,118 @@ status:
     id: 2940
     type: vuln
     duration: [12960, 19000, 1960]
-    description: Inflicted by [a:electrifying-witch-hunt], [a:witch-hunt], [a:soaring-soulpress], [a:soaring-soulpress], [a:laceration]
+    description: |
+      Renders any subsequent physical damage taken lethal.
+      Inflicted by [a:witch-hunt] hits, [a:soaring-soulpress] towers, and [a:laceration].
   forked-lightning:
     id: 587
     type: delay
     duration: 8000
-    description: Inflicted by [a:electrifying-witch-hunt]
+    description: |
+      A [a:forked-lightning] will resolve on the player when this debuff expires.
+      Inflicted by [a:electrifying-witch-hunt].
   magic-vulnerability-up:
     id: 2941
     type: vuln
     duration: [3960, 5000, 1960, 5960, 960]
-    description: Inflicted by [a:four-star], [a:wicked-jolt], [a:axe-current], [a:spinning-current], [a:conduction-point], [a:wicked-blaze], [a:wicked-flare], [a:wicked-spark]
+    description: |
+      Renders any subsequent magic damage taken lethal.
+      Inflicted by [a:four-star], [a:wicked-jolt], [a:axe-current], [a:spinning-current], [a:conduction-point], [a:wicked-blaze], [a:wicked-flare], and [a:wicked-spark].
   electrical-condenser:
     id: 3999
     name: Electrical Condenser
     type: delay
     duration: [42000, 22000]
-    description: Inflicted by unknown
+    description: |
+      Player is a target to lightning. When the effect expires, player will unleash a Spark, with its radius equal to the number of lightning stacks they have.
+      Note that lightning stacks are not visible and are inflicted by any lightning-aspected damage taken, including [a:witchgleam-player], [a:spark-ii], [a:spark-iii], [a:four-star], or [a:eight-star].
+      * 1 stack: [a:spark] (not possible to achieve via normal means)
+      * 2 stacks: [a:spark-ii]
+      * 3 stacks: [a:spark-iii]
+      * 4 stacks: [a:unmigitated-explosion]
+      Inflicted by [a:electrope-edge-2].
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
     duration: [1960, 18960]
-    description: Inflicted by [a:spark-iii], [a:spark-ii], [a:forked-fissures], [a:positron-stream], [a:negatron-stream]
+    description: |
+      Renders any subsequent lightning damage taken lethal.
+      Inflicted by [a:spark-ii], [a:spark-iii], [a:forked-fissures], [a:positron-stream], [a:negatron-stream].
+  sustained-damage:
+    id: 4149
+    type: dot
+    duration: 14960
+    description: Heavy stacking DoT inflicted by [a:spark-ii] and [a:spark-iii].
   positron:
     id: 4000
     name: Positron
     type: condition
     duration: [62000, 23000, 38000]
-    description: A stack can be cleansed by being hit by an attack with a negative charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
+    description: Player is positively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a negative charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   negatron:
     id: 4001
     name: Negatron
     type: condition
     duration: [62000, 23000, 38000]
-    description: A stack can be cleansed by being hit by an attack with a positive charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
+    description: Player is negatively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a positive charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   collider-conductor:
     id: 4006
     name: Collider Conductor
     type: delay
     duration: 7000
-    description: Inflicted by unknown
+    description: Can be cleansed by being hit by [a:axe-current]. If it is not cleansed before the effect expires, unleashes [a:collider-current], dealing heavy damage and inflicting [s:damage-down] on all players.
   roundhouse-conductor:
     id: 4005
     name: Roundhouse Conductor
     type: delay
     duration: 5000
-    description: Inflicted by unknown
+    description: Player unleashes [a:roundhouse-current], a large [ms:dynamo] AoE when the effect expires.
   spinning-conductor:
     id: 4004
     name: Spinning Conductor
     type: delay
     duration: 5000
-    description: Inflicted by unknown
+    description: Player unleashes [a:spinning-current], a small [ms:chariot] AoE when the effect expires.
   proximate-current:
     id: 4003
     name: Proximate Current
     type: delay
     duration: 5000
-    description: Inflicted by unknown
+    description: Player shoots an [a:axe-current] towards the closest player when this effect expires.
   remote-current:
     id: 4002
     name: Remote Current
     type: delay
     duration: 5000
-    description: Inflicted by unknown
+    description: Player shoots an [a:axe-current] towards the farthest player when this effect expires.
   fire-resistance-down-ii:
     id: 2937
     type: vuln
     duration: [10960, 1960]
-    description: Inflicted by [a:kindling-cauldron], [a:mustard-bomb]
+    description: |
+      Renders any subsequent fire damage taken lethal.
+      Inflicted by [a:kindling-cauldron] and [a:mustard-bomb].
   mustard-bomb:
     id: 4007
     name: Mustard Bomb
     type: rot.pass
     duration: [9000, 7230, 5310]
-    description: Inflicted by [a:mustard-bomb]
+    description: |
+      [a:mustard-bomb-echo] resolves on the player's position when the effect expires.
+      Deals only moderate damage, but is lethal if the player suffers from [s:fire-resistance-down-ii] as a result of the first hit of [a:mustard-bomb]. Instead, this debuff can be passed to another player by touching them. This inflicts [s:mustard-bombproof] on the passing player, preventing them from accidentally taking it back straight away.
+      Inflicted by the first hit of [a:mustard-bomb].
   mustard-bombproof:
     id: 4008
     name: Mustard Bombproof
     type: rot.immunity
     duration: [7230, 5310]
-    description: Inflicted by unknown
+    description: Player is immune to [s:mustard-bomb] until this effect expires. Inflicted when a player passes [s:mustard-bomb] to another player, and merely serves the purpose of preventing them from accidentally taking it back immediately.
 actions:
   wrath-of-zeus:
     id: 38383
     mechanic: raidwide
     damage: 202006
-    description: Placeholder description for Wrath of Zeus
+    description: Standard raidwide. Deals heavy damage.
   bewitching-flight:
     id: 38377
     mechanic: aoe
@@ -427,7 +452,7 @@ actions:
     mechanic: spread
     shape: rect
     damage: 105031
-    description: Placeholder description for Spark II
+    description: Inflicts [s:sustained-damage].
   spark-ii-electromine:
     id: 38347
     name: Spark II
@@ -440,7 +465,12 @@ actions:
     mechanic: spread
     shape: rect
     damage: 107531
-    description: Placeholder description for Spark III
+    description: Inflicts [s:sustained-damage].
+  unmigitated-explosion:
+    id: 38349
+    name: Unmitigated Explosion
+    mechanic: mech.failure
+    description: Placeholder description for Unmitigated Explosion
   wicked-bolt:
     id: 37570
     mechanic: stack.party
@@ -560,6 +590,11 @@ actions:
     damage: 150000
     tank-damage: 250000
     description: Placeholder description for Positron Stream
+  collider-current:
+    id: 38365
+    name: Collider Current
+    mechanic: mech.failure
+    description: Deals heavy damage and inflicts [s:damage-down] on all players.
   roundhouse-current:
     id: 38364
     name: Roundhouse Current
