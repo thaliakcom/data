@@ -87,6 +87,10 @@
           "$ref": "#/definitions/DamageType",
           "description": "What damage type the auto-attacks use. Must be one of the values from damage-types.yaml.",
           "markdownDescription": "What damage type the auto-attacks use. Must be one of the values from `damage-types.yaml`."
+        },
+        "damage": {
+          "type": "number",
+          "description": "The average damage per auto-attack. If there are multiple types of auto-attacks, leave this blank."
         }
       },
       "required": [
