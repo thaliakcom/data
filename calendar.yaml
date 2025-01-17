@@ -642,6 +642,12 @@
   short: Patch 7.11
   type: patch
   at: 2024-11-26 10:00:00
+- name: Starlight Celebration
+  type: event
+  color: "#467bd5"
+  url: https://sqex.to/oigVe
+  from: 2024-12-16 08:00:00
+  to: 2024-12-31 14:59:00
 - name: Patch 7.15
   type: patch
   at: 2024-12-17 10:00:00
@@ -649,6 +655,12 @@
   short: Chaotic
   type: patch
   at: 2024-12-24 10:00:00
+- name: Heavensturn
+  type: event
+  color: "#3f6e67"
+  url: https://sqex.to/YEY7T
+  from: 2024-12-31 15:00:00
+  to: 2025-01-16 14:59:59
 - name: Patch 7.16
   type: patch
   at: 2025-01-21 10:00:00
