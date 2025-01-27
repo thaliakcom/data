@@ -664,3 +664,14 @@
 - name: Patch 7.16
   type: patch
   at: 2025-01-21 10:00:00
+- name: Letter from the Producer Live Part LXXXV
+  short: PLL LXXXV
+  type: live letter
+  url: https://sqex.to/cuwKW
+  at: 2025-02-07 11:00:00
+- name: Valentione's Day
+  type: event
+  color: "#912777"
+  url: https://sqex.to/0It7V
+  from: 2024-02-03 08:00:00
+  to: 2024-02-17 14:59:59
