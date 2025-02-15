@@ -337,6 +337,10 @@ towers.triple:
   name: 3P towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three players. If less than three players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
   players: 3
+towers.random:
+  name: towers (random)
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by a random number of players, generally totaling 8. If less than the required number of players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  players: 3
 towers.kb:
   name: knockback towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by a certain number of players. If less than three players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly. Additionally, each tower knocks back all players inside away from its center.
@@ -355,3 +359,7 @@ enrage.soft:
 hint:
   name: hint
   description: Not a mechanic, but merely a hint to players.
+damage:
+  name: damage
+  description: Deals targeted damage to a specific player. Cannot be avoided or shared and must usually be mitigated instead. Similar to a tankbuster, but doesn't cleave and can target any player, and therefore deals less damage overall.
+  players: 1

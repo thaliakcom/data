@@ -12,14 +12,14 @@ description: An alternate retelling of the Eden raid storyline in which Mitron g
 wip: full
 status:
   damage-down:
-    id: 628
+    id: 2911
     type: impairment
     duration: 180000
     description: |
       Reduces all damage dealt by 90%.
       Due to the extremely punishing nature of the damage reduction and the long duration of this debuff, it is recommended to [wall](t:wall) yourself at the earliest convenience where no mechanics require your input to replace [s:damage-down] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
       Under no circumstances should you use any kind of damage cooldown while [s:damage-down] is active, even during the 2m buff window. Raid buffs are the only exception, since they are unaffected by the damage reduction.
-      Inflicted by many mechanics, including [a:unmitigated-explosion].
+      Note that this debuff stacks with [s:mark-of-mortality], reducing damage dealt by a total of 99% if a player holds both debuffs at the same time.
   physical-vulnerability-up:
     id: 2940
     type: vuln
@@ -33,25 +33,33 @@ status:
   powder-mark-trail:
     id: 4166
     name: Powder Mark Trail
+    gameDescription: Emblazoned with a gunpowder mark that will cause you and the nearest ally to explode when this effect expires.
     type: delay
     duration: 16000
-    description: Inflicted by [a:powder-mark-trail]. When the duration expires, or when the player dies, both the player as well as the player closest to them explode in a [a:burn-mark], dealing massive damage to themselves and everyone around them.
+    description: Inflicted by [a:powder-mark-trail]. When the duration expires, or when the player dies, both the player as well as the player closest to them explode ([a:burn-mark]), dealing massive damage to themselves and everyone around them.
   prey:
     id: 1051
     type: delay
     duration: 9999000
-    description: Inflicted by unknown
+    description: |
+      Targeted by a specific mechanic.
+      Inflicted on all tethered players during Phase 1 ([a:turn-of-the-heavens], [a:fall-of-faith]).
   fated-burn-mark:
     id: 4165
     name: Fated Burn Mark
+    gameDescription: Emblazoned with a fateful burn mark that will cause you to explode with a vengeance when you are KO'd.
     type: condition
     duration: 15000
-    description: Inflicted by unknown
+    description: |
+      Inflicted on 2 players during [a:turn-of-the-heavens]. If these two players die by any means before their stack resolves their burn mark explodes, instantly killing all party members.
   floating-fetters:
     id: 2304
     type: impairment
     duration: 3950
-    description: Inflicted by [a:floating-fetters]
+    description: |
+      The player is lifted up into the air and enclosed within a bubble that prevents movement.
+      Note that the bubble cannot be placed within the hitbox of the Fatebreaker who creates it, since this would make that Fatebreaker unable to dash to his target. If the player is within Fatebreaker's hitbox when [s:floating-fetters] is inflicted, that player is displaced to the edge of the boss's hitbox. If the player is currently casting, this will interrupt their cast. This is only relevant for the first tether during [a:fall-of-faith]. All subsequent bubbles can be placed within Fatebreaker's hitbox.
+      Inflicted by [a:floating-fetters], which is used during [a:fall-of-faith].
   bleeding:
     id: 2951
     type: dot
@@ -63,22 +71,30 @@ status:
     type: impairment
     duration: 180000
     description: |
-      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, accumulating :unverified(another stack) of this debuff instantly kills the player.
-      In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside a [m:stack.healers] if an incorrect number of players (either too many or too few) soaked the stack.
+      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, being inflicted with another stack of this debuff instantly kills the player.
+      In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside some [m:stack.healers] if too few players soaked the stack.
 actions:
   cyclonic-break:
     id: 40144
     mechanic: mech.spread-or-stack
+    compact: full
     description: |
       [t:protean] [m:spread]s into [m:stack.partner] or [m:spread], depending on the element Fatebreaker channels.
       * If Fatebreaker is channeling fire (red), it's [m:spread] into [m:stack.partner] ([a:sinsmoke]).
       * If Fatebreaker is channeling lightning (blue), it's [m:spread] into [m:spread] ([a:sinsmite]).
-      This is followed by conal AoEs on the players' previous positions.
+      This is followed by avoidable conal AoEs on wherever the players stood when they took [a:cyclonic-break-proteans]. The spread/stack resolves during the first set of baited AoEs. There are 2 more sets afterwards in intervals of 2 seconds. After the first set, the conal AoEs always rotate by exactly 22.5° before the next set.
+    resolve: |
+      1. Spread in [t:protean] positions while paying attention to Fatebreaker's colour.
+      2. Move into the space in-between the markers – if you're a DPS, move clockwise, otherwise counter-clockwise. If it's blue and you're a ranged player, move out as well (a more diagonal movement).
+      3. Move into the baited cones after they resolve and repeat this step 2 more times.
+    tips:
+      - You can rotate counter-clockwise as well; just make sure everyone rotates the same way or there will likely be collisions.
+      - Contrary to popular belief, the baited AoEs **are not** baited during every set. Only the **first** set is baited by players; each subsequent set simply rotates clockwise by 22.5°, which means that positioning yourself precisely on your protean position only matters during the initial protean spreads.
     children:
       - at: 624
         id: cyclonic-break-proteans
       - at: 2674
-        id: cyclonic-break-baits
+        id: cyclonic-break-first-baits
       - at: 2717
         id: sinsmoke
       - at: 4724
@@ -92,30 +108,47 @@ actions:
     shape: cone
     damage: 96521
     description: Hits all players with a conal spread.
+  cyclonic-break-first-baits:
+    id: 40146
+    name: Cyclonic Break (Baits)
+    mechanic: aoe.baitable
+    shape: cone
+    description: Conal AoEs hit where the players took their spreads. Inflicts [s:damage-down].
   cyclonic-break-baits:
     id: 40146
     name: Cyclonic Break (Baits)
     mechanic: aoe.baitable
     shape: cone
-    description: A conal AoE that hits on all players' positions during the previous set of cones. Inflicts [s:damage-down].
+    description: Conal AoEs hit 22.5° clockwise from the previous set of AoEs. Inflicts [s:damage-down].
   sinsmoke:
     id: 40147
     mechanic: stack.partner
     shape: chariot
     damage: 148740
-    description: A [m:stack.partner] on all supports or all DPS. Inflicts [s:magic-vulnerability-up].
+    description: |
+      A [m:stack.partner] on all supports or all DPS. Inflicts [s:magic-vulnerability-up].
+      Can be survived alone with sufficient mitigation.
   sinsmite:
-    id: 40142
+    id: 40149
     mechanic: spread
     shape: chariot
     damage: 119999
-    description: A [m:spread] on all supports or all DPS. Inflicts [s:magic-vulnerability-up].
+    description: A [m:spread] on all players. Inflicts [s:magic-vulnerability-up].
+  sinsmite-fof:
+    id: 40142
+    mechanic: damage
+    damage: 80000
+    description: |
+      Deals damage to the [fettered](s:floating-fetters) player in the case of a blue tether. Inflicts [s:magic-vulnerability-up].
+      Not to be confused with the identically-named [a:sinsmite], which is the circular spread AoE during [a:cyclonic-break].
+    trivia: |
+      The only real purpose of this ability is to deal damage to and inflict [s:magic-vulnerability-up] on any [blue-fettered](s:floating-fetters) players, since [a:bow-shock] only hits the 3 closest players and not the fettered player themselves.
   powder-mark-trail:
     id: 40168
     mechanic: tb.mt
     shape: chariot
     damage: 675000
-    description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up].
+    description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up], rendering any subsequent auto-attack lethal.
     resolve: Use heavy mitigation. Requires a [t:tankswap].
   utopian-sky:
     id: 40154
@@ -123,7 +156,7 @@ actions:
     description: |
       Fatebreaker surrounds himself with an aura of either fire or lightning, then disappears as the arena becomes wreathed in fog.
       A Fatebreaker's Image spawns at the edge of every cardinal and intercardinal. They can only be seen by players close to them. Three of those Images *raise* their sword and begin casting [a:blasting-zone], a wide [ms:line] AoE covering the entire cardinal or intercardinal. The other Images remain inactive.
-      [Blasting zones](a:blasting-zone) can never completely overlap. In other words: if an Image casts [a:blasting-zone], it is not possible for the Image across to also cast [a:blasting-zone].
+      [Blasting Zones](a:blasting-zone) can never completely overlap. In other words: if an Image casts [a:blasting-zone], it is not possible for the Image across to also cast [a:blasting-zone].
       In addition, when [a:blasting-zone] resolves Fatebreaker also executes the following mechanic:
       * If he was channeling fire (red) during the initial Utopian Sky cast, both healers are targeted by [a:sinbound-fire-iii], a [m:stack.supports].
       * If he was channeling lightning (blue) during the initial Utopian Sky cast, all players are targeted by [a:sinbound-thunder-iii], a [m:spread].
@@ -131,7 +164,11 @@ actions:
       Designate a [t:protean] for every player and have every player move to the edge of their protean position after the Utopian Sky cast, but ensure that **both tanks take adjacent protean positions** to resolve [s:powder-mark-trail]. They must also use heavy mitigation here.
       Have each player look at their clone. If the clone is raising its sword, or if the **player across from them** moves forward, the player also moves forward. If done correctly, there must now be two players who haven't moved from their initial protean position at the edge of the arena. Those two positions, and only those two positions, are **safe** from [a:blasting-zone].
       To resolve [a:sinbound-fire-iii]/[a:sinbound-thunder-iii], both safe spots must contain at most 4 players and at most 1 healer. In accordance, separate your group into 2 light parties and move each light party into one safe spot. If [a:sinbound-fire-iii] is stocked, no further action needs to be taken; just ensure all 4 players are in the safe spot. If [a:sinbound-thunder-iii] is stocked, players must spread within the safe spot in a triangle formation.
+      **Note**: Both tanks **must** be assigned *adjacent* protean positions for this mechanic, otherwise a non-tank will be hit by [a:burn-mark].
     children:
+      - at: 0
+        id: <untargetable>
+        description: Fatebreaker becomes untargetable.
       - at: 5485
         id: burn-mark
       - at: 15101
@@ -153,13 +190,15 @@ actions:
     mechanic: aoe
     shape: line
     count: 3
-    description: Wide [ms:line] AoE fired by one of Fatebreaker's Images during [a:utopian-sky], covering 6 out of 8 [t:protean] positions.
+    players: 0
+    damage: 9999999
+    description: Wide [ms:line] AoE fired by one of Fatebreaker's Images during [a:utopian-sky], covering 6 out of 8 [t:principal] positions.
   sinbound-fire-iii:
     id: 40159
     mechanic: stack.supports
     shape: chariot
     damage: 119185
-    description: A [m:stack.supports] on either both tanks or both healers. Inflicts [s:magic-vulnerability-up]. Also Inflicts [s:mark-of-mortality] if taken with less than 4 players.
+    description: A [m:stack.supports] on either both tanks or both healers. Inflicts [s:magic-vulnerability-up]. If taken with less than 4 players, inflicts [s:mark-of-mortality].
   sinbound-thunder-iii:
     id: 40160
     mechanic: spread
@@ -169,22 +208,52 @@ actions:
   turn-of-the-heavens:
     id: 40150
     mechanic: mech
+    compact: trim
     description: |
-      Fatebreaker's Image near the center of the arena channels either fire or lightning, then disappears.
-      Blue and red circles appear at every cardinal and intercardinal. All circles from north to southwest are one colour, and the 4 remaining circles are the other colour.
+      Several things happen in succession.
+      * A Fatebreaker's Image spawns on the west of the arena and begins casting [a:burnt-strike-lightning] through the middle of the arena.
+      * Fatebreaker's Image near the center of the arena channels either fire or lightning as he casts Turn of the Heavens. At the end of the cast he disappears.
+      * Blue and red circles appear at every cardinal and intercardinal. All circles from north to southwest are one colour, and the 4 remaining circles are the other colour.
+      * One Fatebreaker's Image spawns north of the arena and begins casting [a:burnt-strike-fire] through the middle of the arena.
+      * Two Fatebreaker's Images spawn outside the arena and cast [a:bound-of-faith]. They tether to two random players and inflict [s:prey] and [s:fated-burn-mark] on them.
+      * The [a:burnt-strike-lightning] resolves.
+      * The [a:burnt-strike-fire] resolves 6 seconds later.
+      * All circles explode ([a:brightfire]), dealing massive damage and inflicting [s:damage-down] on all players inside them. The circles **matching** the center clone's colour during the Turn of the Heavens cast expand before they explode.
+      * The two tether clones [charge](a:solemn-charge) towards the two tethered players and hit them with a 4-man stack ([a:sinsmoke-tether]).
+    resolve: |
+      1. Check the colour of the center clone and remember it for later. (Alternatively, remember the *opposite* colour, if you prefer going *to* the colour you remember instead of away from it.)
+      2. Get out of the middle of the arena. Group 1 moves north, group 2 south. (Alternatively, you can simply move to the side closest after your [a:cyclonic-break] dodge and stay there for now, but this may make adjusts more difficult later.)
+      3. Find the side that has the circles *not* matching the colour of the central clone. This is either east or west. Move toward that side.
+      4. Position yourself in light parties for the knockback.
+      5. While waiting for the knockback (or earlier), check if an adjust is necessary. Both groups must contain exactly 4 players, and only one of those 4 may have a tether. The general adjust priority is TMRH, meaning that tanks adjust most of the time and healers never adjust.
+      6. Get knocked back into one of the gaps between the circles. Move back into middle through those gaps.
+      7. Stop moving once the tethered player in your group is inflicted with [s:floating-fetters] and wait for the stack to resolve.
     children:
       - at: 652
         id: burnt-strike-lightning
+      - at: 900
+        id: bound-of-faith
       - at: 6986
         id: burnt-strike-fire
+      - at: 11051
+        id: brightfire
+        count: 4
+      - at: 11587
+        id: floating-fetters
+        count: 2
       - at: 14736
         id: sinsmoke-tether
+        count: 2
+  bound-of-faith:
+    id: 40165
+    mechanic: mech.status
+    description: Two Fatebreaker clones each tether to a random player and inflict them with [s:prey] and [s:fated-burn-mark].
   brightfire:
     id: 40152
     mechanic: aoe
     shape: chariot
     count: 8
-    description: The circles during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down].
+    description: The circles (Halo of Levin) during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down].
   burnt-strike:
     id: 40133
     mechanic: aoe
@@ -239,58 +308,105 @@ actions:
     id: 40170
     mechanic: raidwide
     damage: 146513
-    description: Placeholder description for Burnished Glory
+    description: Heavy raidwide. Inflicts [s:bleeding].
   fall-of-faith:
     id: 40140
     mechanic: mech
     major: true
-    description: Placeholder description for Fall of Faith
+    compact: full
+    description: |
+      Fatebreaker glows red or blue and tethers to a random player. 3 more Fatebreaker Images spawn on the northern outside of the arena and do the same, glowing red or blue and tethering to a random player. A player cannot be tethered by more than one Fatebreaker.
+      At the end of the cast, Fatebreaker [charges](a:solemn-charge) to the first tethered player and executes either [a:sinblaze] (red tether) or [a:bow-shock] (blue tether). Then the first Fatebreaker Image does the same to its tethered target, and so on, until all tethers are resolved.
+      Two seconds before [a:solemn-charge], [s:floating-fetters] is inflicted on the tethered player, preventing further movement.
+    children:
+    - at: 756
+      id: floating-fetters
+    - at: 2806
+      id: solemn-charge
+    - at: 3743
+      id: floating-fetters
+    - at: 4142
+      id: sinblaze
+      link: or
+    - at: 4142
+      id: bow-shock
+    - at: 5793
+      id: solemn-charge
+    - at: 6193
+      id: floating-fetters
+    - at: 7129
+      id: sinblaze
+      link: or
+    - at: 7129
+      id: bow-shock
+    - at: 8243
+      id: solemn-charge
+    - at: 8735
+      id: floating-fetters
+    - at: 9579
+      id: sinblaze
+      link: or
+    - at: 9579
+      id: bow-shock
+    - at: 10785
+      id: solemn-charge
+    - at: 12121
+      id: sinblaze
+      link: or
+    - at: 12121
+      id: bow-shock
   floating-fetters:
     id: 40171
     mechanic: mech
-    description: Placeholder description for Floating Fetters
+    description: Inflicts [s:floating-fetters] on the tethered player.
   solemn-charge:
     id: 40141
     mechanic: mech
-    description: Placeholder description for Solemn Charge
+    description: Fatebreaker (or his Image) dashes to the tethered player and executes either [a:bow-shock] or [a:sinblaze].
   bow-shock:
     id: 40143
     mechanic: spread.close
     shape: cone
+    players: 3
     damage: 120353
-    description: Placeholder description for Bow Shock
+    description: |
+      Hits the 3 players closest to the [fettered](s:floating-fetters) player with a wide conal AoE that inflicts [s:magic-vulnerability-up].
+      The [fettered](s:floating-fetters) player themselves is hit with [a:sinsmite-fof].
   sinblaze:
     id: 40156
     mechanic: stack.party
-    shape: chariot
+    shape: cone
     damage: 118494
-    description: Placeholder description for Sinblaze
+    description: Hits the closest player to the [fettered](s:floating-fetters) player with a conal AoE that must be shared by 2 other party members. Inflicts [s:magic-vulnerability-up]. If less than 2 party members soak this stack, inflicts [s:mark-of-mortality] on all players hit.
+  p1-towers:
+    name: Towers
+    mechanic: towers.random
+    damage: 0
+    description: |
+      Three towers appear in a line on either the west or east of the arena. Each tower requires between one to four players inside it when it resolves, always totaling up to six players. If less players than required occupy the tower, triggers [a:unmitigated-explosion], dealing massive damage and inflicting [s:damage-down] on all players.
+    resolve: |
+      The easiest way to resolve this mechanic is by assigning one "fixed" player to each tower, from north to south. This player will always take that tower no matter what. Then assign one more player to each tower. This player adjusts to a different tower if their tower is a one-person tower.
+      The adjust is quite simple: check if your tower is a 1-person tower. If it is, find the tower that requires three or four players. There can never be more than one tower that requires more than two players, so no priority system is necessary for this mechanic.
+      Make sure to pay attention to the [a:burnt-strike] that happens right before the towers resolve. If it's blue, go to your tower immediately; otherwise get knocked into your tower.
+      Tanks never take towers, as their [s:powder-mark-trail] resolves at the same time as the towers do.
   explosion:
     id: 40126
-    mechanic: towers.single
+    mechanic: damage
     damage: 45088
-    description: Placeholder description for Explosion
-  explosion-1:
-    id: 40125
-    mechanic: towers.single
-    damage: 43093
-    description: Placeholder description for Explosion
-  explosion-2:
-    id: 40135
-    mechanic: towers.single
-    damage: 46196
-    description: Placeholder description for Explosion
+    description: |
+      The towers resolve.
+      If any towers were missing players, the [a:explosion] is replaced by an [a:unmitigated-explosion] instead, dealing massive damage and inflicting [s:damage-down] on all players.
   unmitigated-explosion:
     id: 40136
     mechanic: mech.failure
     players: 8
     damage: 140296
-    description: Placeholder description for Unmitigated Explosion
+    description: A tower was missing one or more players, dealing massive raidwide damage and inflicting [s:damage-down] on all players.
   burnished-glory-enrage:
     id: 40128
     mechanic: enrage
     damage: 9999999
-    description: Placeholder description for Burnished Glory
+    description: Kills all players instantly if Fatebreaker's HP is not reduced to 0% before this cast finishes.
 timeline:
   - at: 14617
     id: cyclonic-break
@@ -298,46 +414,29 @@ timeline:
     id: powder-mark-trail
   - at: 35697
     id: utopian-sky
-    link: and
-  - at: 35697
-    id: <untargetable>
   - at: 57120
     id: cyclonic-break
   - at: 64800
     id: turn-of-the-heavens
   - at: 80869
     id: <targetable>
+    description: Fatebreaker becomes targetable.
   - at: 87112
     id: burnished-glory
   - at: 102661
     id: fall-of-faith
-  - at: 103417
-    id: floating-fetters
-  - at: 105467
-    id: solemn-charge
-  - at: 106803
-    id: sinsmite
-  - at: 107114
-    id: bow-shock
-  - at: 109790
-    id: sinblaze
-  - at: 112240
-    id: sinsmite
-  - at: 112555
-    id: bow-shock
-  - at: 114782
-    id: sinblaze
   - at: 122623
     id: burnished-glory
   - at: 131134
     id: powder-mark-trail
+  - at: 136129
+    id: p1-towers
   - at: 142629
     id: burnt-strike
   - at: 146638
     id: explosion
+    link: and
   - at: 147261
     id: burn-mark
-  - at: 148730
-    id: unmitigated-explosion
   - at: 161787
     id: burnished-glory-enrage

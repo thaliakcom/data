@@ -6,11 +6,14 @@ AoE: Refers to an area of effect attack, i.e. an attack that can hit multiple en
 HoT: A status effect that heals over time. One healing tick happens approximately every three seconds.
 DoT: A status effect that deals damage over time. One damage tick happens approximately every three seconds.
 protean: |
-  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss.
+  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss, generally with one player per [t:principal] position.
   Named after Living Liquid's eponymous attack, [a:3829].
 proteans: |
-  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss.
+  "Protean positions", also known as "clock spots", require all players to be spread out evenly around the boss, generally with one player per [t:principal] position.
   Named after Living Liquid's eponymous attack, [a:3829].
+principal: |
+  Refers to the eight "principal winds", which are composed of all cardinal and intercardinal directions: north, northeast, east, southeast, south, southwest, west, and northwest.
+  Fight mechanics with random elements frequently randomize which principal position the mechanic appears on.
 knockback circle: A knockback circle is a telegraphed circle that is pulsing purple. Being inside the circle when it resolves results in lethal damage; being outside of it knocks players away from the circle. It is generally recommended to be just on the outside of the circle to avoid being knocked outside of the arena.
 color partners: A common strategy whereby markers are placed on each cardinal and intercard (generally with two adjacent markers being the same color), then assigns each marker to a player. The two players that share a marker color are considered partners for any mechanic that requires a partner stack.
 stores: If a mechanic is "stored", it isn't executed immediately but is instead executed at some arbitrary point in the future, after other mechanics have been executed first.
