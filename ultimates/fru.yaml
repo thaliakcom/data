@@ -79,7 +79,7 @@ actions:
     mechanic: mech.spread-or-stack
     compact: full
     description: |
-      [t:protean] [m:spread]s into [m:stack.partner] or [m:spread], depending on the element Fatebreaker channels.
+      [t:protean:c] [m:spread]s into [m:stack.partner] or [m:spread], depending on the element Fatebreaker channels.
       * If Fatebreaker is channeling fire (red), it's [m:spread] into [m:stack.partner] ([a:sinsmoke]).
       * If Fatebreaker is channeling lightning (blue), it's [m:spread] into [m:spread] ([a:sinsmite]).
       This is followed by avoidable conal AoEs on wherever the players stood when they took [a:cyclonic-break-proteans]. The spread/stack resolves during the first set of baited AoEs. There are 2 more sets afterwards in intervals of 2 seconds. After the first set, the conal AoEs always rotate by exactly 22.5° before the next set.
