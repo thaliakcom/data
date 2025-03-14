@@ -1,7 +1,7 @@
 id: 992
 patch: "7.05"
 date: 2024-10-12
-modified: 2024-10-12
+modified: 2025-03-14
 by:
   id: 27637301
   role: author
@@ -42,7 +42,6 @@ status:
       Inflicted by [a:four-star], [a:wicked-jolt], [a:axe-current], [a:spinning-current], [a:conduction-point], [a:wicked-blaze], [a:wicked-flare], and [a:wicked-spark].
   electrical-condenser:
     id: 3999
-    name: Electrical Condenser
     type: delay
     duration: [42000, 22000]
     description: |
@@ -67,43 +66,36 @@ status:
     description: Heavy stacking DoT inflicted by [a:spark-ii] and [a:spark-iii].
   positron:
     id: 4000
-    name: Positron
     type: condition
     duration: [62000, 23000, 38000]
     description: Player is positively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a negative charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   negatron:
     id: 4001
-    name: Negatron
     type: condition
     duration: [62000, 23000, 38000]
     description: Player is negatively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a positive charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   collider-conductor:
     id: 4006
-    name: Collider Conductor
     type: delay
     duration: 7000
     description: Can be cleansed by being hit by [a:axe-current]. If it is not cleansed before the effect expires, unleashes [a:collider-current], dealing heavy damage and inflicting [s:damage-down] on all players.
   roundhouse-conductor:
     id: 4005
-    name: Roundhouse Conductor
     type: delay
     duration: 5000
     description: Player unleashes [a:roundhouse-current], a large [ms:dynamo] AoE when the effect expires.
   spinning-conductor:
     id: 4004
-    name: Spinning Conductor
     type: delay
     duration: 5000
     description: Player unleashes [a:spinning-current], a small [ms:chariot] AoE when the effect expires.
   proximate-current:
     id: 4003
-    name: Proximate Current
     type: delay
     duration: 5000
     description: Player shoots an [a:axe-current] towards the closest player when this effect expires.
   remote-current:
     id: 4002
-    name: Remote Current
     type: delay
     duration: 5000
     description: Player shoots an [a:axe-current] towards the farthest player when this effect expires.
@@ -116,7 +108,6 @@ status:
       Inflicted by [a:kindling-cauldron] and [a:mustard-bomb].
   mustard-bomb:
     id: 4007
-    name: Mustard Bomb
     type: rot.pass
     duration: [9000, 7230, 5310]
     description: |
@@ -125,7 +116,6 @@ status:
       Inflicted by the first hit of [a:mustard-bomb].
   mustard-bombproof:
     id: 4008
-    name: Mustard Bombproof
     type: rot.immunity
     duration: [7230, 5310]
     description: Player is immune to [s:mustard-bomb] until this effect expires. Inflicted when a player passes [s:mustard-bomb] to another player, and merely serves the purpose of preventing them from accidentally taking it back immediately.
@@ -164,13 +154,11 @@ actions:
         id: forked-lightning
   electray:
     id: 38379
-    name: Electray
     mechanic: aoe
     shape: grid
     description: Placeholder description for Electray
   electrifying-witch-hunt:
     id: 38373
-    name: Electrifying Witch Hunt
     type: physical
     mechanic: mech.close-or-far
     shape: chariot
@@ -185,7 +173,6 @@ actions:
     description: Placeholder description for Burst
   witch-hunt:
     id: 38366
-    name: Witch Hunt
     type: physical
     mechanic: mech.close-or-far
     shape: chariot
@@ -194,7 +181,6 @@ actions:
     description: Placeholder description for Witch Hunt
   forked-lightning:
     id: 38375
-    name: Forked Lightning
     mechanic: spread
     shape: chariot
     count: 4
@@ -202,7 +188,6 @@ actions:
     description: Placeholder description for Forked Lightning
   widening-witch-hunt:
     id: 38368
-    name: Widening Witch Hunt
     mechanic: mech
     major: true
     compact: trim
@@ -234,7 +219,6 @@ actions:
         count: 2
   narrowing-witch-hunt:
     id: 38369
-    name: Narrowing Witch Hunt
     mechanic: mech
     major: true
     compact: trim
@@ -266,19 +250,16 @@ actions:
         count: 2
   lightning-vortex:
     id: 19729
-    name: Lightning Vortex
     mechanic: aoe
     shape: chariot
     description: Placeholder description for Lightning Vortex
   thundering:
     id: 19730
-    name: Thundering
     mechanic: aoe
     shape: dynamo
     description: Placeholder description for Thundering
   electrope-edge-1:
     id: 38341
-    name: Electrope Edge I
     mechanic: mech
     major: true
     compact: full
@@ -321,14 +302,12 @@ actions:
         id: eight-star
   witchgleam-electromine:
     id: 38343
-    name: Witchgleam
     mechanic: aoe
     shape: line
     count: 2
     description: Placeholder description for Witchgleam
   symphony-fantastique:
     id: 38344
-    name: Symphony Fantastique
     mechanic: mech.prepare
     description: Triggers the electromines, who will begin casting [a:spark]/[a:spark-ii-electromine].
   sidewise-spark:
@@ -338,7 +317,6 @@ actions:
     description: Placeholder description for Sidewise Spark
   four-star:
     id: 38352
-    name: Four Star
     mechanic: stack.partner
     shape: chariot
     count: 4
@@ -346,7 +324,6 @@ actions:
     description: Placeholder description for Four Star
   eight-star:
     id: 38353
-    name: Eight Star
     mechanic: spread
     shape: chariot
     count: 8
@@ -370,7 +347,6 @@ actions:
     description: Placeholder description for Wicked Jolt
   electrope-edge-2:
     id: 38341
-    name: Electrope Edge II
     mechanic: mech
     major: true
     compact: full
@@ -422,7 +398,6 @@ actions:
         id: lightning-cage
   witchgleam-player:
     id: 38790
-    name: Witchgleam
     mechanic: spread
     shape: line
     count: 4
@@ -430,7 +405,6 @@ actions:
     description: Placeholder description for Witchgleam
   lightning-cage-cast:
     id: 38350
-    name: Lightning Cage
     mechanic: mech.prepare
     description: Placeholder description for Lightning Cage
   lightning-cage:
@@ -442,33 +416,28 @@ actions:
     description: Placeholder description for Lightning Cage
   spark:
     id: 38346
-    name: Spark
     mechanic: aoe
     shape: rect
     description: Placeholder description for Spark
   spark-ii:
     id: 38347
-    name: Spark II
     mechanic: spread
     shape: rect
     damage: 105031
     description: Inflicts [s:sustained-damage].
   spark-ii-electromine:
     id: 38347
-    name: Spark II
     mechanic: aoe
     shape: rect
     description: Placeholder description for Spark II
   spark-iii:
     id: 38348
-    name: Spark III
     mechanic: spread
     shape: rect
     damage: 107531
     description: Inflicts [s:sustained-damage].
   unmigitated-explosion:
     id: 38349
-    name: Unmitigated Explosion
     mechanic: mech.failure
     description: Placeholder description for Unmitigated Explosion
   wicked-bolt:
@@ -499,7 +468,6 @@ actions:
     description: Placeholder description for Wicked Bolt
   ion-cluster:
     id: 38356
-    name: Ion Cluster
     mechanic: mech.status
     description: Placeholder description for Ion Cluster
   stampeding-thunder:
@@ -540,7 +508,6 @@ actions:
     description: Placeholder description for Stampeding Thunder
   electron-stream:
     id: 38358
-    name: Electron Stream
     mechanic: mech
     major: true
     compact: trim
@@ -554,7 +521,6 @@ actions:
         id: electron-stream-inner
   electron-stream-inner:
     id: 38358
-    name: Electron Stream
     mechanic: stack.intercept
     shape: rect
     damage: 0
@@ -576,7 +542,6 @@ actions:
         id: axe-current
   negatron-stream:
     id: 38361
-    name: Negatron Stream
     mechanic: stack.intercept
     shape: rect
     damage: 150000
@@ -584,7 +549,6 @@ actions:
     description: Placeholder description for Negatron Stream
   positron-stream:
     id: 38360
-    name: Positron Stream
     mechanic: stack.intercept
     shape: rect
     damage: 150000
@@ -592,19 +556,16 @@ actions:
     description: Placeholder description for Positron Stream
   collider-current:
     id: 38365
-    name: Collider Current
     mechanic: mech.failure
     description: Deals heavy damage and inflicts [s:damage-down] on all players.
   roundhouse-current:
     id: 38364
-    name: Roundhouse Current
     mechanic: aoe
     shape: dynamo
     count: 4
     description: Placeholder description for Roundhouse Current
   axe-current:
     id: 38362
-    name: Axe Current
     mechanic: mech.close-or-far
     shape: cone
     count: 2
@@ -613,7 +574,6 @@ actions:
     description: Placeholder description for Axe Current
   spinning-current:
     id: 38363
-    name: Spinning Current
     mechanic: spread
     shape: chariot
     count: 4
@@ -621,12 +581,10 @@ actions:
     description: Placeholder description for Spinning Current
   ionic-discharge:
     id: 38357
-    name: Ionic Discharge
     mechanic: mech.failure
     description: A player failed to cleanse all their [s:positron] or [s:negatron] stacks and is killed instantly.
   electrope-transplant:
     id: 39123
-    name: Electrope Transplant
     mechanic: mech.phase
     major: true
     compact: full
@@ -674,14 +632,12 @@ actions:
         id: fulminous-field
   fulminous-field:
     id: 37118
-    name: Fulminous Field
     mechanic: aoe
     shape: cone
     count: 8
     description: Placeholder description for Fulminous Field
   conduction-point:
     id: 39118
-    name: Conduction Point
     mechanic: spread
     shape: chariot
     count: 4
@@ -689,7 +645,6 @@ actions:
     description: Placeholder description for Conduction Point
   forked-fissures:
     id: 39119
-    name: Forked Fissures
     mechanic: aoe.intercept
     shape: line
     count: 4
@@ -698,7 +653,6 @@ actions:
     description: Placeholder description for Forked Fissures
   soulshock:
     id: 20033
-    name: Soulshock
     mechanic: raidwide
     damage: 142953
     compact: trim
@@ -712,20 +666,17 @@ actions:
         id: cannonbolt
   impact:
     id: 20034
-    name: Impact
     mechanic: raidwide
     damage: 66422
     description: Placeholder description for Impact
   cannonbolt:
     id: 39120
-    name: Cannonbolt
     mechanic: mech.arena
     players: 8
     damage: 155255
     description: Placeholder description for Cannonbolt
   cross-tail-switch:
     id: 38386
-    name: Cross Tail Switch
     mechanic: raidwide.lb
     compact: full
     description: Placeholder description for Cross Tail Switch
@@ -764,7 +715,6 @@ actions:
     description: Placeholder description for Cross Tail Switch
   wicked-blaze:
     id: 38391
-    name: Wicked Blaze
     mechanic: stack.healers
     shape: chariot
     count: 2
@@ -800,7 +750,6 @@ actions:
     description: Placeholder description for Wicked Blaze
   sabertail:
     id: 38389
-    name: Sabertail
     mechanic: aoe.exaflares
     shape: chariot
     compact: full
@@ -832,12 +781,10 @@ actions:
     description: Placeholder description for Sabertail
   wicked-special:
     id: 38419
-    name: Wicked Special
     mechanic: mech.center-or-sides
     description: Placeholder description for Wicked Special
   mustard-bomb:
     id: 38430
-    name: Mustard Bomb
     mechanic: spread
     shape: chariot
     compact: trim
@@ -852,7 +799,6 @@ actions:
         id: mustard-bomb-echo
   mustard-bomb-tb:
     id: 38431
-    name: Mustard Bomb
     mechanic: tb.double
     shape: chariot
     count: 2
@@ -860,7 +806,6 @@ actions:
     description: Placeholder description for Mustard Bomb
   kindling-cauldron:
     id: 38432
-    name: Kindling Cauldron
     mechanic: spread
     shape: chariot
     count: 6
@@ -868,7 +813,6 @@ actions:
     description: Placeholder description for Kindling Cauldron
   mustard-bomb-echo:
     id: 38433
-    name: Mustard Bomb
     mechanic: spread
     shape: chariot
     count: 2
@@ -876,12 +820,10 @@ actions:
     description: Placeholder description for Mustard Bomb
   aetherial-conversion:
     id: 38402
-    name: Aetherial Conversion
     mechanic: mech.prepare
     description: Placeholder description for Aetherial Conversion
   tail-thrust-aoe:
     id: 38406
-    name: Tail Thrust
     mechanic: aoe
     shape: defamation
     description: Placeholder description for Tail Thrust
@@ -892,7 +834,6 @@ actions:
         id: tail-thrust-hit
   tail-thrust-kb:
     id: 38406
-    name: Tail Thrust
     mechanic: mech.knockback.unavoidable
     description: Placeholder description for Tail Thrust
     children:
@@ -908,19 +849,16 @@ actions:
         id: switch-of-tides
   tail-thrust-hit:
     id: 38414
-    name: Tail Thrust
     mechanic: mech.close-or-far
     description: Placeholder description for Tail Thrust
   azure-thunder:
     id: 38447
-    name: Azure Thunder
     mechanic: mech.arena
     players: 8
     damage: 220921
     description: Placeholder description for Azure Thunder
   twilight-sabbath:
     id: 38435
-    name: Twilight Sabbath
     mechanic: mech
     major: true
     compact: trim
@@ -937,7 +875,6 @@ actions:
         id: sidewise-spark
   wicked-fire:
     id: 38448
-    name: Wicked Fire
     mechanic: aoe.baitable
     shape: chariot
     count: 8
@@ -954,7 +891,6 @@ actions:
     description: Placeholder description for Wicked Fire
   midnight-sabbath:
     id: 39609
-    name: Midnight Sabbath
     mechanic: mech
     major: true
     compact: trim
@@ -990,21 +926,18 @@ actions:
         count: 4
   concentrated-burst:
     id: 38443
-    name: Concentrated Burst
     mechanic: stack.partner
     shape: chariot
     damage: 0
     description: Placeholder description for Concentrated Burst
   scattered-burst:
     id: 38444
-    name: Scattered Burst
     mechanic: spread
     shape: chariot
     damage: 0
     description: Placeholder description for Scattered Burst
   wicked-flare:
     id: 38446
-    name: Wicked Flare
     mechanic: stack.partner
     shape: chariot
     count: 4
@@ -1012,7 +945,6 @@ actions:
     description: Placeholder description for Wicked Flare
   wicked-spark:
     id: 38445
-    name: Wicked Spark
     mechanic: spread
     shape: chariot
     count: 8
@@ -1020,33 +952,28 @@ actions:
     description: Placeholder description for Wicked Spark
   wicked-cannon:
     id: 38436
-    name: Wicked Cannon
     mechanic: aoe
     shape: chariot
     count: 4
     description: Placeholder description for Wicked Cannon
   wicked-thunder:
     id: 38043
-    name: Wicked Thunder
     mechanic: raidwide
     damage: 159116
     description: Placeholder description for Wicked Thunder
   flame-slash:
     id: 38420
-    name: Flame Slash
     mechanic: mech.arena
     shape: line
     description: Placeholder description for Flame Slash
   raining-swords:
     id: 38422
-    name: Raining Swords
     mechanic: towers.single
     count: 8
     damage: 25488
     description: Placeholder description for Raining Swords
   chain-lightning:
     id: 38425
-    name: Chain Lightning
     mechanic: aoe.memory
     shape: chariot
     compact: full
@@ -1070,25 +997,21 @@ actions:
         id: chain-lightning-hit
   chain-lightning-hit:
     id: 38427
-    name: Chain Lightning
     mechanic: aoe
     shape: chariot
     count: 6
     description: Placeholder description for Chain Lightning
   switch-of-tides:
     id: 38415
-    name: Switch of Tides
     mechanic: mech.knockback.unavoidable
     damage: 41875
     description: Placeholder description for Switch of Tides
   ion-cluster-sunrise:
     id: 38434
-    name: Ion Cluster
     mechanic: mech.status
     description: Placeholder description for Ion Cluster
   sunrise-sabbath:
     id: 39610
-    name: Sunrise Sabbath
     mechanic: mech
     major: true
     compact: trim
@@ -1114,14 +1037,12 @@ actions:
         id: negatron-stream-sunrise
   soaring-soulpress:
     id: 38440
-    name: Soaring Soulpress
     mechanic: towers.double
     count: 2
     damage: 98424
     description: Placeholder description for Soaring Soulpress
   positron-stream-sunrise:
     id: 38437
-    name: Positron Stream
     mechanic: spread
     shape: line
     count: 2
@@ -1129,7 +1050,6 @@ actions:
     description: Placeholder description for Positron Stream
   negatron-stream-sunrise:
     id: 38438
-    name: Negatron Stream
     mechanic: spread
     shape: line
     count: 2
@@ -1137,7 +1057,6 @@ actions:
     description: Placeholder description for Negatron Stream
   sword-quiver:
     id: 38395
-    name: Sword Quiver
     mechanic: raidwide
     description: Placeholder description for Sword Quiver
     children:
@@ -1166,14 +1085,12 @@ actions:
     description: A slash across, dealing raidwide damage and leaving an AoE behind that resolves later.
   burst-sword-quiver:
     id: 38400
-    name: Burst
     mechanic: aoe
     shape: line
     count: 4
     description: Placeholder description for Burst
   laceration:
     id: 38401
-    name: Laceration
     mechanic: stack.partner
     shape: line
     count: 4
@@ -1181,7 +1098,6 @@ actions:
     description: Placeholder description for Laceration
   wicked-thunder-enrage:
     id: 38450
-    name: Wicked Thunder
     mechanic: enrage
     damage: 9999999
     description: Placeholder description for Wicked Thunder

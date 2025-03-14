@@ -1,7 +1,7 @@
 id: 988
 patch: "7.05"
 date: 2024-09-15
-modified: 2024-09-18
+modified: 2025-03-14
 by:
   id: 27637301
   role: author
@@ -493,7 +493,7 @@ actions:
         description: All players dodge [a:centerstage-combo]/[a:outerstage-combo] on the two markers that have the same colour as their clock position marker. After the last dodge, defamations simply move out to the edge wherever they last dodged (i.e. intercardinals on [a:centerstage-combo] and cardinals on [a:outerstage-combo]).
   big-burst:
     id: 37302
-    mechanic: spread.role
+    mechanic: spread
     shape: defamation
     damage: 96512
     count: 4
