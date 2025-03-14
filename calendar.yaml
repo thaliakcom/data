@@ -678,18 +678,30 @@
 - name: Patch 7.18
   type: patch
   at: 2025-02-25 10:00:00
-- name: Patch 7.2 (predicted release)
-  short: Patch 7.2
-  type: patch
-  at: 2025-03-25 10:00:00
+- name: Letter from the Producer Live Part LXXXVI
+  short: PLL LXXXVI
+  type: live letter
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/8344f09b9127c2ae3b0af3485d970b56b8d801d9
+  at: 2025-03-14 10:00:00
 - name: Little Ladies' Day
   type: event
   color: "#cf5cc6"
   url: https://na.finalfantasyxiv.com/lodestone/special/2025/Little_Ladies_Day/7eeibemc8p
   from: 2025-03-03 08:00:00
   to: 2025-03-17 14:59:59
-- name: Letter from the Producer Live Part LXXXVI
-  short: PLL LXXXVI
-  type: live letter
-  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/8344f09b9127c2ae3b0af3485d970b56b8d801d9
-  at: 2025-03-14 10:00:00
+- name: Seekers of Eternity (Patch 7.2)
+  short: Patch 7.2
+  type: patch
+  at: 2025-03-25 10:00:00
+- name: Cruiserweight Savage
+  short: Savage
+  type: patch
+  at: 2025-04-01 10:00:00
+- name: Patch 7.21 (Cosmic Exploration)
+  short: Patch 7.21
+  type: patch
+  at: 2025-04-22 10:00:00
+- name: Patch 7.25 (Occult Crescent)
+  short: Patch 7.25
+  type: patch
+  at: 2025-05-27 10:00:00
