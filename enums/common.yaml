@@ -21,6 +21,8 @@ actions:
 
   # Healing/Mitigation
   reprisal: 7535
+  second-wind: 7541
+  bloodbath: 7542
   feint: 7549
   addle: 7560
   rampart: 7531
@@ -29,16 +31,34 @@ actions:
   dark-mind: 3634
   dark-missionary: 16471
   shadow-wall: 3636
+  shadowed-vigil: 36927
   living-dead: 3638
+  sheltron: 3542
   holy-sheltron: 25746
   intervention: 7382
   divine-veil: 3540
   passage: 7385
   bulwark: 22
   sentinel: 17
+  guardian: 36920
   hallowed-ground: 30
   cover: 27
+  clemency: 3541
+  thrill-of-battle: 40
+  equilibrium: 3552
+  shake-it-off: 7388
+  raw-intuition: 3551
+  bloodwhetting: 25751
+  nascent-flash: 16464
+  vengeance: 44
+  damnation: 36923
+  holmgang: 43
+  heart-of-stone: 16161
   heart-of-corundum: 25758
+  heart-of-light: 16160
+  camouflage: 16140
+  nebula: 16148
+  great-nebula: 36935
   aurora: 16151
   superbolide: 16152
   eukrasian-prognosis: 24292
@@ -50,6 +70,9 @@ actions:
   aquaveil: 25861
   liturgy: 25862
   temperance: 16538
+  synastry: 3612
+  collective-unconscious: 3613
+  macrocosmos: 25874
   riddle-of-earth: 7394
   shade-shift: 2241
   troubadour: 7405
@@ -83,6 +106,7 @@ status:
   brotherhood: 1185
   
   # Healing/Mitigation
+  bloodbath: 84
   transcendent: 418
   reprisal: 1193
   feint: 1195
@@ -93,14 +117,43 @@ status:
   dark-mind: 746
   dark-missionary: 1894
   shadow-wall: 747
+  shadowed-vigil: 3835
+  vigilant: 3902
   living-dead: 810
+  sheltron: 1856
   holy-sheltron: 2674
+  knights-resolve: 2675
+  knights-benediction: 2676
   intervention: 1174
   divine-veil: 1362
   passage: 1175
   bulwark: 77
   sentinel: 74
+  guardian: 3829
+  guardians-will: 3830
+  cover: 81
   hallowed-ground: 82
+  thrill-of-battle: 87
+  equilibrium: 2681
+  shake-it-off: 1457
+  shake-it-off-over-time: 2108
+  raw-intuition: 735
+  bloodwhetting: 2678
+  stem-the-flow: 2679
+  stem-the-tide: 2680
+  nascent-flash: 1857
+  nascent-glint: 1858
+  vengeance: 89
+  damnation: 2832
+  primeval-impulse: 3900
+  nebula: 1834
+  great-nebula: 3838
+  holmgang: 88
+  heart-of-stone: 1840
+  heart-of-corundum: 2683
+  clarity-of-corundum: 2684
+  heart-of-light: 1839
+  camouflage: 1832
   superbolide: 1836
   eukrasian-prognosis: 2609
   taurochole: 2619
@@ -111,6 +164,10 @@ status:
   aquaveil: 2708
   liturgy: 2709
   temperance: 1872
+  synastry: 846
+  collective-unconscious: 849
+  wheel-of-fortune: 956
+  macrocosmos: 2718
   riddle-of-earth: 1179
   shade-shift: 488
   troubadour: 1934
@@ -124,3 +181,5 @@ status:
   weakness: 43
   brink-of-death: 44
   paralysis: 17
+  twice-come-ruin: 2483
+  doom: 2516
