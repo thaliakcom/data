@@ -1724,6 +1724,7 @@ actions:
       * **Any death before [a:cosmo-meteor] is an automatic wipe** as that player loses their [s:brilliant-dynamis]/[s:spark-of-dynamis], meaning that even if raised they will just die again to the next damage instance. The only time players are allowed to die is to the last hit(s) of [a:cosmo-meteor], and only if they're a [i:dps], otherwise they'll lose their free LB3 (but only supports should still have any LB3s left here).
   flash-gale:
     id: 32223
+    name: Flash Gale
     mechanic: auto.far
     shape: chariot
     damage: 39838
