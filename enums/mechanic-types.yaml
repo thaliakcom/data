@@ -158,7 +158,7 @@ aoe.baitable:
 aoe.exaflares:
   name: exaflares
   description: |
-    A series of circular [AoEs](t:AoE) traveling in a specific direction through the arena until they reach the other side.
+    A series of [AoEs](t:AoE) traveling in a specific direction through the arena until they reach the other side.
     Exaflares are a recurring attack throughout the Final Fantasy series. In Final Fantasy XIV they first appeared by that name in The Unending Coil of Bahamut (Ultimate), though the attack did appear before then by various other names.
   shapeful: true
 aoe.orbs:

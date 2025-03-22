@@ -129,7 +129,7 @@ status:
     id: 4163
     name: Stun
     type: impairment
-    duration: 10000
+    duration: [10000, 4000, 9000]
     description: Player is unable to move or execute actions.
   vulnerability-down:
     id: 4436
@@ -189,6 +189,56 @@ status:
     type: vuln
     duration: 12000
     description: The next instance of fire damage (from [a:dark-fire-iii] or [a:sinbound-meltdown]) is lethal.
+
+  # Phase 4
+  refulgent-chain:
+    id: 2253
+    type: delay
+    duration: 7000
+    description: |
+      Player is tethered to two other players, but the tether is still inactive.
+      When the effect expires, the tether activates and this status effect turns into [s:refulgent-fate].
+      Note that, even though the tether is not yet "active", dying with this debuff still triggers [a:refulgent-fate], wiping the raid.
+      This effect is functionally identical to [s:chains-of-everlasting-light].
+  refulgent-fate:
+    id: 2255
+    type: condition
+    duration: 14000
+    description: |
+      Player is tethered to two other players. If this player dies, or the length of the tether exceeds the maximum distance or falls below the minimum distance (both of which is approximately the distance between the two towers), triggers [a:refulgent-fate], wiping the raid.
+      This effect is functionally identical to [s:curse-of-everlasting-light], with the exception that while [s:curse-of-everlasting-light] detonates when players are too close, [s:refulgent-fate] detonates when players are too close or too far from each other.
+  spell-in-waiting:-dark-aero-iii:
+    id: 2463
+    type: delay
+    duration: 14000
+    description: When the effect expires, [a:dark-aero-iii] will detonate on the player's position.
+  wyrmclaw:
+    id: 3263
+    type: condition
+    duration: [17000, 40000]
+    description: If the effect is allowed to expire, kills the player instantly. Can be cleansed by standing in the path of a dragon head to trigger [a:longing-of-the-lost].
+  wyrmfang:
+    id: 3264
+    type: condition
+    duration: 40000
+    description: If the effect is allowed to expire, kills the player instantly. Can be cleansed by standing atop one of the puddles left behind by [a:longing-of-the-lost].
+  lights-design:
+    id: 4160
+    name: Light's Design
+    type: vuln
+    duration: 4000
+    description: Renders any dark damage taken lethal. Inflicted by Usurper of Frost's light [a:akh-morn].
+  darknesss-design:
+    id: 4161
+    name: Darkness's Design
+    type: vuln
+    duration: 4000
+    description: Renders any light damage taken lethal. Inflicted by Oracle of Darkness's dark [a:akh-morn].
+  spell-in-waiting:-quietus:
+    id: 4174
+    type: delay
+    duration: 31000
+    description: Triggers [a:quietus] when the effect expires.
 actions:
   # Phase 1
   cyclonic-break:
@@ -1019,6 +1069,10 @@ actions:
     id: 40293
     mechanic: mech.prepare
     description: Tethers to five hourglasses, [quickening](a:quicken) 3 (via a yellow tether) while [slowing](a:slow) 2 (via a purple tether).
+  speed-ct:
+    id: 40293
+    mechanic: mech.prepare
+    description: Tethers to four hourglasses, [quickening](a:quicken) 2 (via a yellow tether) while [slowing](a:slow) 2 (via a purple tether).
   quicken:
     id: 40294
     mechanic: mech.prepare
@@ -1084,6 +1138,242 @@ actions:
     mechanic: enrage.threshold
     damage: 201726
     description: Placeholder description
+
+  # Phase 4
+  edge-of-oblivion:
+    id: 40174
+    name: Edge of Oblivion
+    mechanic: raidwide
+    damage: 62825
+    description: Simple raidwide cast by Fragment of Fate.
+  drachen-armor:
+    id: 40186
+    mechanic: aoe.baitable
+    shape: chariot
+    description: |
+      Usurper of Frost summons Hraesvelgr, changing form.
+      Towards the end of the animation, as soon as she spreads her wings, she snapshots all players' positions. 2.5 seconds later, those positions are hit by [a:akh-rhai].
+    resolve: Stack at the start of the animation and move out of the stack as soon as Usurper spreads her wings.
+  the-path-of-light:
+    id: 40190
+    mechanic: spread.close
+    shape: cone
+    count: 4
+    damage: 109551
+    description: Same as [a:the-house-of-light] – hits the 4 closest players to Usurper of Frost. The only difference is that this action additionally inflicts [s:lightsteeped].
+  hallowed-wings:
+    id: 40228
+    mechanic: aoe
+    shape: side
+    description: Standard half-room cleave on the side of Usurper's glowing wing.
+  akh-rhai:
+    id: 40237
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down].
+  darklit-dragonsong:
+    id: 40239
+    name: Darklit Dragonsong
+    mechanic: mech
+    major: true
+    compact: trim
+    players: 8
+    damage: 204558
+    description: |
+      Major mechanic.
+      Note that, while both bosses cast the mechanic, the damage originates from Usurper of Frost.
+    children:
+    - at: 11187
+      id: bright-hunger
+      count: 2
+    - at: 12037
+      id: the-path-of-light
+    - at: 14579
+      id: spirit-taker
+    - at: 19125
+      id: dark-water-iii
+      count: 2
+    - at: 19259
+      id: hallowed-wings
+    - at: 22376
+      id: somber-dance
+  longing-of-the-lost:
+    id: 40241
+    mechanic: spread
+    shape: defamation
+    damage: 126301
+    description: A dragonhead detonates as a result of a player coming into contact with it. Cleanses [s:wyrmclaw] and leaves behind a puddle that cleanses [s:wyrmfang].
+  materialization:
+    id: 40246
+    mechanic: mech.arena
+    description: |
+      Summons Fragment of Fate, a crystal containing Gaia's memories. Throughout this phase, this crystal takes several instances of unavoidable damage from Oracle of Darkness and Usurper of Frost, ultimately leaving it at 1 HP at the end of the phase.
+      However, the crystal may also be hit by player-targeted mechanics, including spreads, stacks, and tankbusters. Since the unavoidable damage leaves the crystal at 1 HP at the end of the phase, if the crystal takes a single instance of avoidable damage, it is guaranteed to be destroyed. If the crystal is not alive by the end of Phase 4, Mitron successfully fuses with Loghrif to create Eden's Promise and cast [a:paradise-lost], wiping the party. Only if the crystal is still alive does the fusion fail, creating [boss] instead and allowing players to progress to Phase 5.
+      Note that, if any Crystal of Dark was destroyed during Intermission, this cast does not happen, thus guaranteeing a wipe at the end of the phase.
+  akh-morn:
+    id: 40248
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    players: 4
+    damage: 160000
+    description: |
+      Light party stack targeting both Usurper of Frost's and Oracle of Darkness's main targets. Hits 4 times in quick succession.
+      Usurper of Frost's light Akh Morn inflicts [s:lights-design], rendering Oracle of Darkness's dark Akh Morn lethal.
+      Oracle of Darkness's dark Akh Morn inflicts [s:darknesss-design], rendering Usurper of Frost's light Akh Morn lethal.
+      Ignores [s:transcendent] and [t:invuln]s.
+  morn-afah:
+    id: 40249
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 180000
+    description: |
+      Full party stack targeting Usurper of Frost's main target.
+      Deals lethal damage if the bosses are not within 5% HP of each other. This is indicated by a dark or light tether between them.
+      Ignores [s:transcendent] and [t:invuln]s.
+      Note that, while both bosses cast the mechanic, the damage originates from Usurper of Frost.
+    tips:
+      - If more than one player is dead at the end of [a:akh-morn] or the bosses' HP is not balanced, it may be preferable to sacrifice the main target by letting them solo the stack.
+  tidal-light:
+    id: 40251
+    mechanic: aoe.exaflares
+    shape: line
+    description: Placeholder description
+  dark-aero-iii:
+    id: 40280
+    mechanic: mech.knockback
+    count: 2
+    players: 0
+    damage: 0
+    description: Placeholder description
+  quietus:
+    id: 40281
+    mechanic: raidwide
+    count: 3
+    players: 8
+    damage: 40423
+    description: Placeholder description
+  somber-dance:
+    id: 40283
+    mechanic: tb.far
+    shape: chariot
+    description: Placeholder description
+    children:
+    - at: 312
+      id: somber-dance-far
+    - at: 3570
+      id: somber-dance-close
+  somber-dance-far:
+    id: 40284
+    mechanic: tb.far
+    shape: chariot
+    damage: 290000
+    description: Placeholder description
+  somber-dance-close:
+    id: 40285
+    mechanic: tb.close
+    shape: chariot
+    damage: 290000
+    description: Placeholder description
+  crystallize-time:
+    id: 40298
+    name: Crystallize Time
+    mechanic: mech.trio
+    major: true
+    compact: full
+    players: 8
+    damage: 225675
+    description: |
+      Major mechanic.
+      Note that, while both bosses cast the mechanic, the damage originates from Oracle of Darkness.
+    children:
+    - at: 3072
+      id: <untargetable>
+    - at: 6057
+      id: edge-of-oblivion
+    - at: 9706
+      id: speed-ct
+    - at: 11969
+      id: maelstrom
+    - at: 12905
+      id: dark-water-iii
+    - at: 14506
+      id: longing-of-the-lost
+      count: 2
+      timing: player
+    - at: 14908
+      id: dark-eruption
+      link: and
+    - at: 14908
+      id: dark-blizzard-iii
+      link: and
+    - at: 14908
+      id: dark-aero-iii
+    - at: 17492
+      id: maelstrom
+      link: and
+    - at: 17892
+      id: unholy-darkness
+    - at: 19406
+      id: longing-of-the-lost
+      count: 2
+      timing: player
+    - at: 21320
+      id: tidal-light
+    - at: 22487
+      id: maelstrom
+    - at: 27701
+      id: tidal-light
+    - at: 31891
+      id: quietus
+    - at: 37411
+      id: spirit-taker
+    - at: 40845
+      id: <removestatus>
+      status: return
+    - at: 40845
+      id: <addstatus>
+      status: stun
+    - at: 43203
+      id: hallowed-wings-kb
+    - at: 47694
+      id: hallowed-wings-kb
+    - at: 49875
+      id: <removestatus>
+      status: stun
+    - at: 52990
+      id: <targetable>
+  maelstrom:
+    id: 40299
+    mechanic: aoe
+    shape: defamation
+    count: 2
+    description: A Sorrow's Hourglass detonates in a large circle, inflicting [s:damage-down] on anyone hit.
+  hallowed-wings-kb:
+    id: 40332
+    mechanic: mech.knockback
+    damage: 151018
+    description: Placeholder description
+  memorys-end-enrage:
+    id: 40305
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description
+  absolute-zero-enrage:
+    id: 40245
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description
+
+  # Phase 5
+  paradise-lost:
+    id: 0
+    name: Paradise Lost
+    mechanic: enrage
+    type: dark
+    damage: 9999999
+    description: Enrage.
 timeline:
   - at: 0
     id: <phase>
@@ -1125,6 +1415,7 @@ timeline:
     id: <phase>
     name: "Phase 2: Usurper of Frost"
     hp: 25151231
+    maxhp: 5030246
   - at: 163861
     id: <targetable>
     timing: push
@@ -1169,6 +1460,7 @@ timeline:
     id: <phase>
     name: "Intermission: Ice Veil"
     hp: 8996985  # 1620795 per Light Crystal, 2513805 for the Ice Veil
+    maxhp: 1256902
   - at: 374534
     id: <targetable>
   - at: 383938
@@ -1220,6 +1512,7 @@ timeline:
     id: <phase>
     name: "Phase 3: Oracle of Darkness"
     hp: 30909445
+    maxhp: 6181889
   - at: 441060
     id: <targetable>
   - at: 445125
@@ -1244,11 +1537,46 @@ timeline:
     id: memorys-end
   - at: 602707
     id: <untargetable>
-  - at: 608118
+  - at: 614396
     id: <phase>
     name: "Phase 4: Shiva & Gaia"
     hp: 23887738
-  - at: 608118
+  - at: 614396
+    id: <targetable>
+  - at: 622606
+    id: materialization
+  - at: 633850
+    id: drachen-armor
+  - at: 636306
+    id: akh-rhai
+  - at: 638846
+    id: edge-of-oblivion
+  - at: 639828
+    id: <targetable>
+  - at: 648482
+    id: darklit-dragonsong
+  - at: 677896
+    id: edge-of-oblivion
+  - at: 684262
+    id: akh-morn
+  - at: 694409
+    id: morn-afah
+  - at: 709939
+    id: crystallize-time
+  - at: 766981
+    id: akh-morn
+  - at: 775045
+    id: edge-of-oblivion
+  - at: 777139
+    id: morn-afah
+  - at: 790327
+    id: memorys-end-enrage
+    link: and
+  - at: 790327
+    id: absolute-zero-enrage
+  - at: 790327
+    id: <untargetable>
+  - at: 790327
     id: <phase>
     name: "Phase 5: Pandora"
     hp: 48541857
