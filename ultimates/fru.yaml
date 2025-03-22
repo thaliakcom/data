@@ -9,7 +9,7 @@ boss: Pandora
 HP: 0
 party_hp: 142328
 description: An alternate retelling of the Eden raid storyline in which Mitron hijacks Ryne's body during her attempts to materialize the power of Shiva and uses it to unlock Gaia's memories as Loghrif and fulfill their old promise.
-wip: full
+wip: [guide, diagrams]
 status:
   # All Phases
   damage-down:
@@ -136,6 +136,59 @@ status:
     type: resistance
     duration: 9999000
     description: Inflicted on the Ice Veil if it is hit by a [a:sinbound-blizzard-iii]. Significantly reduces its damage taken, making it nigh-impossible to beat its enrage timer.
+
+  # Phase 3
+  return:
+    id: 2452
+    type: delay
+    duration: [24000, 14000]
+    description: Player will be rewound to their placed rewind marker when the effect expires. During the rewind, they will be [stunned](s:stun).
+  spell-in-waiting:-unholy-darkness:
+    id: 2454
+    type: delay
+    duration: [11000, 31000, 21000]
+    description: When the effect expires, [a:unholy-darkness] will detonate on the player's position.
+  spell-in-waiting:-dark-fire-iii:
+    id: 2455
+    type: delay
+    duration: [21000, 31000, 11000]
+    description: When the effect expires, [a:dark-fire-iii] will detonate on the player's position.
+  spell-in-waiting:-shadoweye:
+    id: 2456
+    type: delay
+    duration: 43000
+    description: When the effect expires, [a:shadoweye] will take effect on the player's position.
+  spell-in-waiting:-dark-eruption:
+    id: 2460
+    type: delay
+    duration: 43000
+    description: When the effect expires, [a:dark-eruption] will detonate on the player's position.
+  spell-in-waiting:-dark-water-iii:
+    id: 2461
+    type: delay
+    duration: [43000, 38000, 10000, 29000]
+    description: When the effect expires, [a:dark-water-iii] will detonate on the player's position.
+  spell-in-waiting:-dark-blizzard-iii:
+    id: 2462
+    type: delay
+    duration: 21000
+    description: When the effect expires, [a:dark-blizzard-iii] will detonate on the player's position.
+  spell-in-waiting:-return:
+    id: 2464
+    type: delay
+    duration: [26000, 16000]
+    description: >
+      Player will place a rewind marker on their current position when the effect expires.
+      This effect will then turn into [s:return].
+  spell-in-waiting-refrain:
+    id: 4373
+    type: form
+    description: The next spell the boss casts (which is [a:dark-water-iii-cast]) will have staggered effect timers in the form of [s:spell-in-waiting:-dark-water-iii] for each party member.
+  fire-resistance-down-ii:
+    id: 4383
+    type: vuln
+    duration: 12000
+    description: The next instance of fire damage (from [a:dark-fire-iii] or [a:sinbound-meltdown]) is lethal.
 actions:
   # Phase 1
   cyclonic-break:
@@ -798,6 +851,239 @@ actions:
     mechanic: enrage.threshold
     damage: 199359
     description: Placeholder description
+  junction:
+    id: 40226
+    mechanic: raidwide
+    damage: 180000
+    description: Simple raidwide.
+
+  # Phase 3
+  darkest-dance:
+    id: 40181
+    mechanic: tb.far
+    shape: chariot
+    description: Placeholder description
+    children:
+    - at: 357
+      id: darkest-dance-hit
+    - at: 3171
+      id: darkest-dance-kb
+  darkest-dance-hit:
+    id: 40182
+    mechanic: tb.far
+    shape: chariot
+    damage: 680000
+    description: Placeholder description
+  darkest-dance-kb:
+    id: 40183
+    mechanic: mech.knockback
+    damage: 16000
+    description: Placeholder description
+  sinbound-meltdown:
+    id: 40235
+    mechanic: aoe.rotating
+    shape: line
+    players: 1
+    damage: 127010
+    description: |
+      A rotating laser originating from a Delight's Hourglass.
+      Targets the closest player to the hourglass and fires one laser at them. After a two-second delay it fires 9 additional lasers in one-second intervals, each AoE slightly angled clockwise or counter-clockwise to the previous one. This direction is indicated by the standard rotation marker.
+      Each laser deals moderate damage and inflicts [s:fire-resistance-down-ii], unless the player already suffers from [s:fire-resistance-down-ii], in which case the laser is lethal.
+  hells-judgment:
+    id: 40265
+    mechanic: raidwide.sethp
+    description: Placeholder description
+  ultimate-relativity:
+    id: 40266
+    mechanic: raidwide
+    major: true
+    damage: 200520
+    compact: full
+    description: Placeholder description
+    children:
+    - at: 9648
+      id: speed
+    - at: 11927
+      id: dark-fire-iii
+      count: 3
+      link: and
+    - at: 11927
+      id: unholy-darkness
+    - at: 17067
+      id: sinbound-meltdown
+      count: 3
+    - at: 21937
+      id: dark-blizzard-iii
+      link: and
+    - at: 21937
+      id: dark-fire-iii
+      count: 2
+    - at: 21937
+      id: unholy-darkness
+    - at: 27078
+      id: sinbound-meltdown
+      count: 3
+    - at: 31903
+      id: dark-fire-iii
+      count: 2
+      link: and
+    - at: 31903
+      id: unholy-darkness
+    - at: 38068
+      id: sinbound-meltdown
+      count: 2
+    - at: 40839
+      id: <removestatus>
+      status: return
+    - at: 40839
+      id: <addstatus>
+      status: stun
+    - at: 43917
+      id: dark-eruption
+      count: 4
+      link: and
+    - at: 43917
+      id: shadoweye
+      link: and
+    - at: 43917
+      id: dark-water-iii
+    - at: 44857
+      id: <removestatus>
+      status: stun
+  spell-in-waiting-refrain:
+    id: 40269
+    mechanic: mech.prepare
+    description: Placeholder description
+  dark-water-iii-cast:
+    id: 40270
+    mechanic: mech.status
+    description: Placeholder description
+  dark-water-iii:
+    id: 40271
+    mechanic: stack.party
+    shape: chariot
+    damage: 95658
+    description: 4-player stack. Inflicts [s:mark-of-mortality] if soaked by less than 4 players.
+  dark-eruption:
+    id: 40274
+    mechanic: spread
+    shape: chariot
+    damage: 75007
+    description: Simple spread. Inflicts [s:magic-vulnerability-up].
+  dark-fire-iii:
+    id: 40276
+    mechanic: spread
+    shape: chariot
+    damage: 158773
+    description: Simple spread. Inflicts [s:fire-resistance-down-ii].
+  unholy-darkness:
+    id: 40277
+    mechanic: stack.party
+    shape: chariot
+    damage: 126743
+    description: Simple stack. Inflicts [s:mark-of-mortality] if soaked by less than 5 players.
+  shadoweye:
+    id: 40278
+    mechanic: mech.gaze
+    count: 3
+    description: Gaze attacks originating from the players with [s:spell-in-waiting:-shadoweye]. Any player facing these 3 players when their Shadoweye resolves are inflicted with [s:doom].
+  dark-blizzard-iii:
+    id: 40279
+    mechanic: aoe
+    shape: dynamo
+    description: Placeholder description
+  shockwave-pulsar:
+    id: 40282
+    mechanic: raidwide
+    damage: 165080
+    description: Placeholder description
+  shell-crusher:
+    id: 40287
+    mechanic: stack.party
+    shape: chariot
+    damage: 124393
+    description: Full party stack. Does not inflict [s:mark-of-mortality].
+  spirit-taker:
+    id: 40289
+    mechanic: spread
+    shape: chariot
+    damage: 70369
+    description: Oracle of Darkness leaps onto a random player. Any player too close to them is knocked into the wall.
+  black-halo:
+    id: 40290
+    mechanic: tb.stack
+    shape: cone
+    damage: 373386
+    description: Placeholder description
+  speed:
+    id: 40293
+    mechanic: mech.prepare
+    description: Tethers to five hourglasses, [quickening](a:quicken) 3 (via a yellow tether) while [slowing](a:slow) 2 (via a purple tether).
+  quicken:
+    id: 40294
+    mechanic: mech.prepare
+    count: 3
+    description: Placeholder description
+  slow:
+    id: 40295
+    mechanic: mech.prepare
+    count: 2
+    description: Placeholder description
+  apocalypse:
+    id: 40296
+    mechanic: mech
+    major: true
+    compact: full
+    description: Placeholder description
+    children:
+    - at: 3485
+      id: dark-water-iii
+      count: 2
+      link: then
+    - at: 5449
+      id: spirit-taker
+    - at: 13941
+      id: apocalypse-hit
+      count: 4
+      link: then
+    - at: 15954
+      id: apocalypse-hit
+      count: 6
+    - at: 16580
+      id: dark-eruption
+      count: 8
+    - at: 17963
+      id: apocalypse-hit
+      count: 6
+      link: then
+    - at: 19976
+      id: apocalypse-hit
+      count: 6
+      link: then
+    - at: 21986
+      id: apocalypse-hit
+      count: 6
+    - at: 22522
+      id: dark-water-iii
+      count: 2
+    - at: 23996
+      id: apocalypse-hit
+      count: 6
+    - at: 24219
+      id: darkest-dance
+    - at: 31506
+      id: dark-water-iii
+      count: 2
+  apocalypse-hit:
+    id: 40297
+    mechanic: aoe.rotating
+    shape: chariot
+    description: Placeholder description
+  memorys-end:
+    id: 40335
+    mechanic: enrage.threshold
+    damage: 201726
+    description: Placeholder description
 timeline:
   - at: 0
     id: <phase>
@@ -841,6 +1127,7 @@ timeline:
     hp: 25151231
   - at: 163861
     id: <targetable>
+    timing: push
   - at: 175075
     id: quadruple-slap
   - at: 188697
@@ -926,15 +1213,42 @@ timeline:
     id: endless-ice-age
   - at: 415540
     id: <untargetable>
-  - at: 416000
+    timing: push
+  - at: 426823
+    id: junction
+  - at: 441060
     id: <phase>
     name: "Phase 3: Oracle of Darkness"
     hp: 30909445
-  - at: 416000
+  - at: 441060
+    id: <targetable>
+  - at: 445125
+    id: hells-judgment
+  - at: 459370
+    id: ultimate-relativity
+  - at: 507710
+    id: shell-crusher
+  - at: 515800
+    id: shockwave-pulsar
+  - at: 524294
+    id: black-halo
+  - at: 533453
+    id: spell-in-waiting-refrain
+  - at: 541625
+    id: dark-water-iii-cast
+  - at: 548770
+    id: apocalypse
+  - at: 585461
+    id: shockwave-pulsar
+  - at: 599222
+    id: memorys-end
+  - at: 602707
+    id: <untargetable>
+  - at: 608118
     id: <phase>
     name: "Phase 4: Shiva & Gaia"
     hp: 23887738
-  - at: 416000
+  - at: 608118
     id: <phase>
     name: "Phase 5: Pandora"
     hp: 48541857
