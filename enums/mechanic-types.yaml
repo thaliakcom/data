@@ -248,8 +248,11 @@ mech.phase:
 mech.trio:
   name: trio
   description: |
-    Several untargetable enemies (not necessarily three) appear and execute a series of simultaneous mechanics.
-    Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mini-phase first appeared.
+    Named after the eponymous actions in <a href="/ultimates/ucob/">The Unending Coil of Bahamut (Ultimate)</a> (such as [a:9954], [a:9955], or [a:9956]), in which this kind of mechanic first appeared. Nowadays, a "trio" mechanic doesn't necessarily have anything to do with "three" and is instead usually marked by one or multiple of the following characteristics:
+    * a complex mechanic with several moving parts layered on top of each other
+    * the individual parts of the mechanic execute in quick succession
+    * those individual parts are often executed by different bosses
+    * all enemies are untargetable for the duration of the mechanic
 mech.check:
   name: check
   description: Checks if certain conditions are met. If they are met, nothing happens and the players pass. If they are not met, the offending players suffer heavy penalties such as massive damage, debuffs, or even instant death.
@@ -284,7 +287,7 @@ mech.limit:
     Named after Cruise Chaser's eponymous attack, [a:7916].
 mech.failure:
   name: failure
-  description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:2911] or [s:1789], or wipes the party altogether.
+  description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:2911] or [s:1789], or wipes the party altogether. These kinds of failures generally can't be bypassed using [s:transcendent], [t:invuln], or similar cheeses.
 mech.distance:
   name: distance
   description: Players must be at the correct distance to something else in order to avoid debuffs and/or death.
@@ -337,6 +340,10 @@ towers.triple:
   name: 3P towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least three players. If less than three players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
   players: 3
+towers.quadruple:
+  name: 4P towers
+  description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least four players. If less than four players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.
+  players: 4
 towers.random:
   name: towers (random)
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by a random number of players, generally totaling 8. If less than the required number of players occupy the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire party instantly.

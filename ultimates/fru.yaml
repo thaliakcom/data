@@ -8,9 +8,10 @@ by:
 boss: Pandora
 HP: 0
 party_hp: 142328
-description: An alternate retelling of the Eden raid storyline in which Mitron gains control of Ryne during her attempts to materialize the power of Shiva.
+description: An alternate retelling of the Eden raid storyline in which Mitron hijacks Ryne's body during her attempts to materialize the power of Shiva and uses it to unlock Gaia's memories as Loghrif and fulfill their old promise.
 wip: full
 status:
+  # All Phases
   damage-down:
     id: 2911
     type: impairment
@@ -24,12 +25,21 @@ status:
     id: 2940
     type: vuln
     duration: [1960, 14000]
-    description: Inflicted by [a:cyclonic-break-proteans], [a:powder-mark-trail]
+    description: Doubles all physical damage taken. Inflicted by [a:cyclonic-break-proteans], [a:powder-mark-trail], and [a:quadruple-slap].
   magic-vulnerability-up:
     id: 2941
     type: vuln
     duration: [1960, 3950]
-    description: Inflicted by [a:sinsmoke], [a:sinbound-fire-iii], [a:sinsmoke-tether], [a:sinsmite], [a:bow-shock], [a:sinblaze]
+    description: Renders magic damage lethal. Prevents any one player from resolving multiple mechanics simultaneously.
+  mark-of-mortality:
+    id: 4372
+    type: impairment
+    duration: 180000
+    description: |
+      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, being inflicted with another stack of this debuff instantly kills the player.
+      In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside some [m:stack.healers] if too few players soaked the stack.
+      Unlike [s:twice-come-ruin], being inflicted with another stack of this debuff does *not* turn the debuff into [s:doom]. Instead, the afflicted player simply dies with no delay.
+  # Phase 1
   powder-mark-trail:
     id: 4166
     name: Powder Mark Trail
@@ -65,15 +75,69 @@ status:
     type: dot
     tick: 40000
     duration: 15000
-    description: Inflicted by [a:burnished-glory]
-  mark-of-mortality:
-    id: 4372
+    description: Inflicted by [a:burnished-glory].
+  bleeding-puddle:
+    id: 3077
+    type: dot
+    tick: 330814
+    duration: 30000
+    description: Inflicted by puddles if a player stays in them for too long, such as those during [a:light-rampant] or Intermission.
+
+  # Phase 2
+  invincibility:
+    id: 775
+    type: resistance
+    description: The Ice Veil is invincible until all Crystals of Light are eliminated.
+  thin-ice:
+    id: 911
     type: impairment
-    duration: 180000
+    description: Moving in any direction makes the player slide across the length of the entire arena.
+  deep-freeze:
+    id: 1150
+    type: impairment
+    description: Renders the player temporarily unable to act or move. Inflicted by [a:swelling-frost].
+  lightsteeped:
+    id: 2257
+    type: condition
+    duration: 36000
     description: |
-      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, being inflicted with another stack of this debuff instantly kills the player.
-      In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside some [m:stack.healers] if too few players soaked the stack.
+      If any player accumulates 5 stacks of this debuff, they will explode ([a:lightsteep]) and wipe the raid.
+      6 stacks are randomly distributed among players at the start of [a:light-rampant], with a maximum of 2 stacks per player. Additional stacks are inflicted by [a:bright-hunger], [a:the-house-of-light], and [a:powerful-light].
+  chains-of-everlasting-light:
+    id: 4157
+    name: Chains of Everlasting Light
+    type: delay
+    duration: 10000
+    description: |
+      Player is tethered to two other players, but the tether is still inactive.
+      When the effect expires, the tether activates and this status effect turns into [s:curse-of-everlasting-light].
+      Note that, even though the tether is not yet "active", dying with this debuff still triggers [a:refulgent-fate], wiping the raid.
+  curse-of-everlasting-light:
+    id: 4158
+    name: Curse of Everlasting Light
+    type: condition
+    duration: 9000
+    description: |
+      Player is tethered to two other players. If this player dies, or the length of the tether falls below the minimum distance (which is slightly less than the diameter of the arena), triggers [a:refulgent-fate], wiping the raid.
+  the-weight-of-light:
+    id: 4159
+    name: The Weight of Light
+    type: delay
+    duration: 16000
+    description: Triggers [a:powerful-light] on the affected players when the effect expires.
+  stun:
+    id: 4163
+    name: Stun
+    type: impairment
+    duration: 10000
+    description: Player is unable to move or execute actions.
+  vulnerability-down:
+    id: 4436
+    type: resistance
+    duration: 9999000
+    description: Inflicted on the Ice Veil if it is hit by a [a:sinbound-blizzard-iii]. Significantly reduces its damage taken, making it nigh-impossible to beat its enrage timer.
 actions:
+  # Phase 1
   cyclonic-break:
     id: 40144
     mechanic: mech.spread-or-stack
@@ -146,7 +210,6 @@ actions:
   powder-mark-trail:
     id: 40168
     mechanic: tb.mt
-    shape: chariot
     damage: 675000
     description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up], rendering any subsequent auto-attack lethal.
     resolve: Use heavy mitigation. Requires a [t:tankswap].
@@ -407,7 +470,339 @@ actions:
     mechanic: enrage
     damage: 9999999
     description: Kills all players instantly if Fatebreaker's HP is not reduced to 0% before this cast finishes.
+
+  # Phase 2
+  mirror-mirror:
+    id: 40179
+    mechanic: mech.prepare
+    description: |
+      Summons two red mirrors and one blue mirror.
+      The blue mirror executes the same mechanics Usurper of Frost executes at the same time. The red mirrors execute those mechanics with a slight delay.
+  mirror-image:
+    id: 40180
+    mechanic: mech.prepare
+    description: Summons an untargetable Oracle's Reflection (the unarmoured version of Usurper of Frost).
+  frost-armor:
+    id: 40184
+    mechanic: mech.gaze
+    description: Oracle's Reflection dons her ice armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
+  shining-armor:
+    id: 40185
+    mechanic: mech.gaze
+    description: Usurper of Frost dons her light armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
+  the-house-of-light-protean:
+    id: 40188
+    mechanic: spread
+    shape: cone
+    count: 8
+    damage: 125894
+    description: |
+      Hits all 8 players with a conal spread. Inflicts [s:magic-vulnerability-up] and [s:lightsteeped].
+      This is the only instance of The House of Light which hits all 8 players regardless of distance, and merely serves as a "mechanics check" to ensure that no player has more than [s:lightsteeped:3]. If any player has [s:lightsteeped:4] at this point, the resulting [a:lightsteep] immediately wipes the party.
+  quadruple-slap:
+    id: 40191
+    mechanic: tb.mt
+    damage: 0
+    description: Heavy two-hit tankbuster. Each hit inflicts a cleansable [s:physical-vulnerability-up].
+    resolve: Either [a:esuna] the debuff or use [t:invuln]. PF prefers to invuln. Be aware that you still need to [a:esuna] the debuff or [t:tankswap] afterwards, as Usurper of Frost's auto-attacks deal physical damage.
+    children:
+      - at: 0
+        id: quadruple-slap-hit
+      - at: 4137
+        id: quadruple-slap-hit
+  quadruple-slap-hit:
+    id: 40192
+    name: Quadruple Slap (Hit)
+    mechanic: tb.mt
+    damage: 522000
+    description: An individual hit of the tankbuster. Inflicts [s:physical-vulnerability-up].
+  diamond-dust:
+    id: 40197
+    mechanic: mech.trio
+    major: true
+    players: 8
+    damage: 197512
+    compact: trim
+    description: |
+      Deals heavy raidwide damage and begins a complex trio-like mechanic.
+      The mechanic begins with four simultaneous elements:
+      * Usurper of Frost disappears from the arena.
+      * Oracle's Reflection shouts "Cleave!" or "Reap!" and begins casting either [a:axe-kick] or [a:scythe-kick], respectively. She is always positioned in the center of the arena.
+      * Two big [a:icicle-impact] AoEs appear on two random opposite [principals](t:principal) of the arena.
+      * Either all supports or all damage dealers are targeted by [a:frigid-stone].
+      Shortly afterwards, four more [a:icicle-impact]s appear next to the two existing ones, followed by a last set in the two remaining safe spots.
+      [a:axe-kick]/[a:scythe-kick] resolves at approximately the same time as [a:the-house-of-light], which targets the four *closest* players with conal AoEs that inflict [s:magic-vulnerability-up]. The first set of [a:icicle-impact] resolves shortly after, followed by [a:frigid-stone]. [a:frigid-stone] also inflicts [s:magic-vulnerability-up] and leaves behind star-shaped AoEs in the form of [a:frigid-needle].
+      Next, Oracle's Reflection teleports to a random [t:principal] and Usurper of Frost takes her place, executing [a:heavenly-strike], knocking players back a moderate distance. At the same time, Oracle's Reflection begins casting [a:sinbound-holy], an untelegraphed [m:stack.healers] on both healers that hits four times in a row, with each hit leaving behind a puddle that inflicts a lethal [s:bleeding-puddle] if players linger within for too long. The first hit roughly coincides with [a:frigid-needle] resolving. Usurper of Frost also moves to a random [t:principal] at this point, but while Oracle's Reflection is on the *inside* of the arena, Usurper of Frost teleports *outside* of the arena.
+      After all 4 hits of [a:sinbound-holy] are done, both Oracle's Reflection and Usurper of Frost change, with Oracle's Reflection changing into [a:frost-armor] while Usurper of Frost changes into [a:shining-armor]. Both of these outfit changes are [m:mech.gaze] attacks, [stunning](s:stun) players who face either boss when they finish. It also turns the arena to ice, inflicting [s:thin-ice] on all players.
+      If any player is [stunned](s:stun), they are guaranteed to die without [a:rescue] intervention, as Oracle's Reflection (now appearing as the Usurper of Frost originally did) shouts "In stillness freeze!" or "Sink into silence!" and begins casting either [a:twin-stillness] or [a:twin-silence], respectively, a two-step attack that requires movement in-between the two hits to avoid the attack.
+    resolve: |
+      Starting off, it is strongly recommended for all players to preposition on standard [t:protean] positions, with supports on cardinals and damage dealers on intercardinals (or vice-versa). The goal of the first part of this mechanic is to ensure that all [a:frigid-needle]s are placed adjacent to the first set of [a:icicle-impact]. This is because the first [a:icicle-impact] locations are the two target [t:principal]s for the [a:heavenly-strike] knockback, and placing the [a:frigid-needle] next to those principals renders them safe.
+      To accomplish this, it is recommended to use [t:color partners]. At the start of the mechanic, when players are selected by [a:frigid-stone], check 1) whether the boss is casting [a:axe-kick] ("Cleave!") or [a:scythe-kick] ("Reap!"), 2) where the first [a:icicle-impact]s spawned, and 3) whether you were selected by [a:frigid-stone] or not. If you've been selected by [a:frigid-stone] but you're *not* next to an [a:icicle-impact], switch positions with your color partner. The same goes if you've *not* been selected by [a:frigid-stone] but you're next to an [a:icicle-impact]. Do all this while either moving in our out (depending on [a:scythe-kick]/[a:axe-kick]).
+      If you do *not* have a [a:frigid-stone] on you, make sure you're closer to the boss than the players that do, *regardless* of whether it's [a:scythe-kick] or [a:axe-kick].
+      If it's [a:axe-kick], the non-[a:frigid-stone] players need to pay extra attention, as they may be standing within the first set of [a:icicle-impact]s. Gapclosers are recommended to quickly get out of its impact zone after taking your [a:the-house-of-light]. If you don't have a gapcloser, use the [a:scythe-kick] or [a:axe-kick] castbar as an indicator of when to move. *Do not wait for [a:the-house-of-light] to visually execute. This will be too late to escape the [a:icicle-impact]. Move the __instant__ the castbar fills.*
+      If it's [a:scythe-kick], the [a:frigid-stone] players need to pay extra attention, as they'll need to stand on the edge of the [a:scythe-kick] AoE, then move out slightly after [a:scythe-kick] resolves to place their [a:frigid-stone]s on the inner circle of the arena. For [a:axe-kick], [a:frigid-stone]s should be placed on the edge of the arena.
+      After placing [a:frigid-stone]s, players should split into light parties and get knocked back into where the first [a:icicle-impact]s were. Typically, group 1 wants to get knocked back on a red or purple marker and group 2 on a blue or yellow marker. If someone went to the wrong light party, don't panic, as a 3-stack is entirely survivable with proper healing and mitigation.
+      [a:sinbound-holy] is a fairly simple mechanic: just keep moving in a group. There is one caveat, however – as each hit of the multi-stack leaves behind a puddle that instantly kills any who enter, it is essential not to place any puddles aside from the first directly behind Oracle's Reflection, as this would place a puddle in the only safe spot for the subsequent [a:twin-stillness]/[a:twin-silence]. To accomplish this, the generally accepted strategy is to always move **clockwise**, *unless* Oracle's Reflection is positioned 45° clockwise from the initial knockback position. Do not move through the center of the arena under any circumstances, as the resulting puddles will obstruct the dodge path for [a:twin-stillness]/[a:twin-silence].
+      After the 4 stack hits are done, move out of the last puddle and look away from both bosses. **Do not move** as this is the point where [s:thin-ice] will be inflicted, which will likely instantly kill any player who is moving at that moment. Find Oracle's Reflection (now clad in frost armour) and try to either slide to be directly *behind* or *opposite* her. Wait for her to cast [a:twin-stillness] or [a:twin-silence] (or listen to the voiceline; either approach works) and slide again – be in front of her if she casts [a:twin-silence] and behind her if she casts [a:twin-stillness]. After the end of the cast, slide across the arena to the opposite position. **The snapshot for this mechanic takes place significantly before the visual animation, so do not wait for the attack to visually hit before you slide.**
+    children:
+    - at: 3121
+      id: <untargetable>
+    - at: 8914
+      id: axe-kick
+      link: or
+    - at: 8914
+      id: scythe-kick
+    - at: 9718
+      id: the-house-of-light
+    - at: 11233
+      id: frigid-stone
+      link: and
+    - at: 11635
+      id: icicle-impact
+      count: 2
+    - at: 15557
+      id: heavenly-strike
+      link: and
+    - at: 15691
+      id: icicle-impact
+      count: 4
+    - at: 18318
+      id: frigid-needle
+    - at: 19610
+      id: sinbound-holy
+      link: and
+    - at: 19654
+      id: icicle-impact
+      count: 2
+    - at: 21170
+      id: sinbound-holy
+      link: then
+    - at: 22729
+      id: sinbound-holy
+      link: then
+    - at: 24289
+      id: sinbound-holy
+    - at: 27986
+      id: frost-armor
+      link: and
+    - at: 27986
+      id: shining-armor
+    - at: 34513
+      id: twin-stillness
+      link: or
+    - at: 34513
+      id: twin-silence
+      link: then
+    - at: 36616
+      id: twin-stillness
+      link: or
+    - at: 36616
+      id: twin-silence
+    - at: 40110
+      id: <targetable>
+  icicle-impact:
+    id: 40198
+    mechanic: aoe
+    shape: chariot
+    description: Massive circle AoE.
+  frigid-stone:
+    id: 40199
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 118736
+    description: Player-targeted AoE that leaves behind a [a:frigid-needle]. Inflicts [s:magic-vulnerability-up]. Spawns on either all supports or all DPS.
+  frigid-needle:
+    id: 40200
+    mechanic: aoe
+    shape: star
+    count: 4
+    description: An eight-pronged star-shaped AoE emerging from where players dropped their [Frigid Stones](a:frigid-stone).
+  twin-stillness:
+    id: 40196
+    mechanic: aoe
+    shape: cone
+    description: Cleaves a 270° arc in front of Oracle's Reflection, then cleaves a 90° arc behind her. Either hit means instant death.
+  twin-silence:
+    id: 40194
+    mechanic: aoe
+    shape: cone
+    description: Cleaves a 90° arc behind Oracle's Reflection, then cleaves a 270° arc in front of her. Either hit means instant death.
+  axe-kick:
+    id: 40202
+    mechanic: aoe
+    shape: chariot
+    description: A massive circle AoE centered on the boss. Leaves only the edges of the arena safe.
+  scythe-kick:
+    id: 40203
+    mechanic: aoe
+    shape: dynamo
+    description: A narrow donut AoE centered on the boss. Leaves only the center of the boss safe.
+  reflected-scythe-kick:
+    id: 40205
+    mechanic: aoe
+    shape: dynamo
+    description: Same as [a:scythe-kick], but centered on a mirror.
+  the-house-of-light:
+    id: 40206
+    mechanic: spread.close
+    shape: cone
+    count: 4
+    damage: 126800
+    description: Conal AoEs on the 4 closest players to the boss or one of the mirrors. Inflicts [s:magic-vulnerability-up].
+  heavenly-strike:
+    id: 40207
+    mechanic: mech.knockback.unavoidable
+    damage: 0
+    description: Knockback for about two thirds of the arena's radius in distance, emerging from the boss.
+  sinbound-holy:
+    id: 40209
+    mechanic: stack.healers
+    shape: chariot
+    count: 2
+    damage: 87473
+    description: |
+      4-hit stacks on both healers.
+      Unlike most stacks in this fight, this stack does **not** inflict [s:mark-of-mortality] if taken with less than 4 players and can be survived with sufficient mitigation and healing.
+  hallowed-ray:
+    id: 40211
+    mechanic: stack.targeted
+    shape: line
+    damage: 190804
+    description: |
+      A simple line stack on a random player.
+      Does not inflict [s:mark-of-mortality] if taken with less than 8 players and can be survived with sufficient mitigation.
+  light-rampant:
+    id: 40212
+    mechanic: mech.trio
+    major: true
+    players: 8
+    damage: 203476
+    compact: full
+    description: Placeholder description
+    children:
+    - at: 3076
+      id: <untargetable>
+    - at: 7933
+      id: luminous-hammer
+      link: then
+    - at: 9493
+      id: luminous-hammer
+      link: then
+    - at: 11051
+      id: luminous-hammer
+    - at: 11184
+      id: bright-hunger
+      count: 6
+    - at: 12610
+      id: luminous-hammer
+      link: then
+    - at: 14168
+      id: luminous-hammer
+    - at: 16928
+      id: powerful-light
+    - at: 25832
+      id: bright-hunger
+    - at: 29036
+      id: banish-iii
+      link: or
+    - at: 29036
+      id: banish-iii-divided
+    - at: 32015
+      id: <targetable>
+  refulgent-fate:
+    id: 40215
+    mechanic: mech.failure
+    players: 0
+    damage: 9999999
+    description: A player explodes as a result of their tether snapping. A tether snaps when its length falls below the minimum or when any tethered player dies.
+  lightsteep:
+    id: 40216
+    mechanic: mech.failure
+    players: 0
+    damage: 9999999
+    description: A player explodes as a result of accumulating [s:lightsteeped:5], wiping the raid.
+  bright-hunger:
+    id: 40213
+    mechanic: towers.single
+    damage: 63518
+    description: A tower resolves, either dealing moderate damage to the player(s) inside or killing all players ([a:unmitigated-explosion]) if unoccupied. Inflicts [s:lightsteeped].
+  bright-hunger-4:
+    id: 40213
+    mechanic: towers.quadruple
+    damage: 63518
+    description: A tower resolves, either dealing moderate damage to the players inside or killing all players ([a:unmitigated-explosion]) if not occupied by enough players. Inflicts [s:lightsteeped].
+  powerful-light:
+    id: 40217
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    players: 4
+    damage: 135167
+    description: |
+      A 4-player stack on the player with [s:the-weight-of-light].
+      If the stack is soaked by less than 4 players, inflicts all stacking players with [s:mark-of-mortality].
+  luminous-hammer:
+    id: 40218
+    mechanic: aoe.puddle
+    shape: chariot
+    count: 2
+    players: 1
+    damage: 21242
+    description: Placeholder description
+  banish-iii:
+    id: 40222
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 91076
+    description: Placeholder description
+  banish-iii-divided:
+    id: 40223
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 90118
+    description: Placeholder description
+  swelling-frost:
+    id: 40225
+    mechanic: mech.knockback
+    damage: 0
+    description: Placeholder description
+  hiemal-storm:
+    id: 40255
+    mechanic: aoe.puddle
+    shape: chariot
+    count: 4
+    description: Placeholder description
+  hiemal-ray:
+    id: 40257
+    mechanic: spread.tethers
+    shape: chariot
+    count: 4
+    damage: 41596
+    description: Placeholder description
+  sinbound-blizzard-iii:
+    id: 40258
+    mechanic: aoe.baitable
+    shape: cone
+    count: 4
+    description: Placeholder description
+  endless-ice-age:
+    id: 40259
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description
+  absolute-zero:
+    id: 40333
+    mechanic: enrage.threshold
+    damage: 199359
+    description: Placeholder description
 timeline:
+  - at: 0
+    id: <phase>
+    name: "Phase 1: Fatebreaker"
+    hp: 22289071
   - at: 14617
     id: cyclonic-break
   - at: 25088
@@ -440,3 +835,106 @@ timeline:
     id: burn-mark
   - at: 161787
     id: burnished-glory-enrage
+  - at: 163861
+    id: <phase>
+    name: "Phase 2: Usurper of Frost"
+    hp: 25151231
+  - at: 163861
+    id: <targetable>
+  - at: 175075
+    id: quadruple-slap
+  - at: 188697
+    id: mirror-image
+  - at: 195827
+    id: diamond-dust
+  - at: 243723
+    id: hallowed-ray
+  - at: 252862
+    id: mirror-mirror
+  - at: 266984
+    id: scythe-kick
+  - at: 267073
+    id: reflected-scythe-kick
+  - at: 267699
+    id: the-house-of-light
+    count: 8
+  - at: 277049
+    id: reflected-scythe-kick
+  - at: 277674
+    id: the-house-of-light
+    count: 8
+  - at: 283232
+    id: banish-iii
+    link: or
+  - at: 283232
+    id: banish-iii-divided
+  - at: 292529
+    id: light-rampant
+  - at: 330506
+    id: the-house-of-light-protean
+  - at: 348772
+    id: <untargetable>
+  - at: 349665
+    id: absolute-zero
+  - at: 351979
+    id: swelling-frost
+  - at: 374534
+    id: <phase>
+    name: "Intermission: Ice Veil"
+    hp: 8996985  # 1620795 per Light Crystal, 2513805 for the Ice Veil
+  - at: 374534
+    id: <targetable>
+  - at: 383938
+    id: sinbound-blizzard-iii
+  - at: 385050
+    id: hiemal-storm
+  - at: 388392
+    id: hiemal-storm
+  - at: 389285
+    id: sinbound-blizzard-iii
+  - at: 391647
+    id: hiemal-storm
+  - at: 391735
+    id: hiemal-ray
+  - at: 393784
+    id: hiemal-ray
+  - at: 394675
+    id: sinbound-blizzard-iii
+  - at: 394987
+    id: hiemal-storm
+  - at: 395834
+    id: hiemal-ray
+  - at: 398242
+    id: hiemal-storm
+  - at: 400026
+    id: sinbound-blizzard-iii
+  - at: 401587
+    id: hiemal-storm
+  - at: 404843
+    id: hiemal-storm
+  - at: 405422
+    id: sinbound-blizzard-iii
+  - at: 408186
+    id: hiemal-storm
+  - at: 410775
+    id: sinbound-blizzard-iii
+  - at: 411442
+    id: hiemal-storm
+  - at: 414780
+    id: hiemal-storm
+  - at: 415540
+    id: endless-ice-age
+  - at: 415540
+    id: <untargetable>
+  - at: 416000
+    id: <phase>
+    name: "Phase 3: Oracle of Darkness"
+    hp: 30909445
+  - at: 416000
+    id: <phase>
+    name: "Phase 4: Shiva & Gaia"
+    hp: 23887738
+  - at: 416000
+    id: <phase>
+    name: "Phase 5: Pandora"
+    hp: 48541857

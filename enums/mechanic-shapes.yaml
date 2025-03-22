@@ -47,3 +47,6 @@ rear:
 side:
   name: side
   description: Affects anyone on the west or east side of the source. Cannot be outranged. To avoid, the only option is to stay on the other side.
+star:
+  name: star
+  description: Spawns multiple line AoEs from a central point, usually one line per [t:principal].
