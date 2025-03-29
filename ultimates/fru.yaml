@@ -1,7 +1,7 @@
 id: 1006
 patch: "7.11"
 date: 2024-11-26
-modified: 2024-11-26
+modified: 2025-03-22
 by:
   id: 27637301
   role: author
@@ -239,6 +239,18 @@ status:
     type: delay
     duration: 31000
     description: Triggers [a:quietus] when the effect expires.
+  
+  # Phase 5
+  dark-resistance-down-ii:
+    id: 3323
+    type: vuln
+    duration: 16000
+    description: Inflicted by [a:cruel-path-of-darkness], [a:the-path-of-darkness]
+  light-resistance-down-ii:
+    id: 4164
+    type: vuln
+    duration: 16000
+    description: Inflicted by [a:cruel-path-of-light], [a:the-path-of-light]
 actions:
   # Phase 1
   cyclonic-break:
@@ -1210,7 +1222,7 @@ actions:
     description: |
       Summons Fragment of Fate, a crystal containing Gaia's memories. Throughout this phase, this crystal takes several instances of unavoidable damage from Oracle of Darkness and Usurper of Frost, ultimately leaving it at 1 HP at the end of the phase.
       However, the crystal may also be hit by player-targeted mechanics, including spreads, stacks, and tankbusters. Since the unavoidable damage leaves the crystal at 1 HP at the end of the phase, if the crystal takes a single instance of avoidable damage, it is guaranteed to be destroyed. If the crystal is not alive by the end of Phase 4, Mitron successfully fuses with Loghrif to create Eden's Promise and cast [a:paradise-lost], wiping the party. Only if the crystal is still alive does the fusion fail, creating [boss] instead and allowing players to progress to Phase 5.
-      Note that, if any Crystal of Dark was destroyed during Intermission, this cast does not happen, thus guaranteeing a wipe at the end of the phase.
+      Note that, if any Crystal of Dark was destroyed during Intermission, the Fragment still spawns but has reduced maximum HP, thus guaranteeing a wipe at the end of the phase.
   akh-morn:
     id: 40248
     mechanic: stack.targeted
@@ -1367,8 +1379,158 @@ actions:
     description: Placeholder description
 
   # Phase 5
+  wings-dark-and-light-in-out:
+    id: 39879
+    name: Wings Dark and Light
+    mechanic: tb.close-or-far
+    damage: 456163
+    description: Placeholder description
+  the-path-of-darkness:
+    id: 40118
+    name: the Path of Darkness
+    mechanic: aoe.exaflares
+    shape: line
+    count: 2
+    description: Placeholder description
+  the-path-of-light-exa:
+    id: 40307
+    name: the Path of Light
+    mechanic: aoe.exaflares
+    shape: line
+    count: 2
+    description: Placeholder description
+  polarizing-paths:
+    id: 40234
+    name: Polarizing Paths
+    mechanic: aoe
+    shape: line
+    description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down] on anyone inside.
+  fulgent-blade:
+    id: 40306
+    name: Fulgent Blade
+    mechanic: mech
+    compact: trim
+    players: 8
+    damage: 200557
+    description: Placeholder description
+    children:
+    - at: 11067
+      id: the-path-of-darkness
+      link: and
+    - at: 11067
+      id: the-path-of-light-exa
+    - at: 15085
+      id: the-path-of-darkness
+      link: and
+    - at: 15085
+      id: the-path-of-light-exa
+    - at: 19100
+      id: the-path-of-darkness
+      link: and
+    - at: 19100
+      id: the-path-of-light-exa
+    - at: 26951
+      id: akh-morn-p5
+  akh-morn-p5:
+    id: 40312
+    name: Akh Morn
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    players: 4
+    damage: 197550
+    description: Placeholder description
+  wings-dark-and-light-cleave:
+    id: 40314
+    name: Wings Dark and Light
+    mechanic: tb.mt
+    shape: side
+    damage: 452250
+    description: Placeholder description
+  polarizing-strikes:
+    id: 40316
+    name: Polarizing Strikes
+    mechanic: mech
+    compact: full
+    description: Placeholder description
+    children:
+    - at: 2675
+      id: cruel-path-of-light
+      link: and
+    - at: 2675
+      id: cruel-path-of-darkness
+    - at: 4636
+      id: polarizing-paths
+    - at: 7310
+      id: cruel-path-of-light
+      link: and
+    - at: 7310
+      id: cruel-path-of-darkness
+    - at: 9269
+      id: polarizing-paths
+    - at: 11940
+      id: cruel-path-of-light
+      link: and
+    - at: 11940
+      id: cruel-path-of-darkness
+    - at: 13903
+      id: polarizing-paths
+    - at: 16581
+      id: cruel-path-of-light
+      link: and
+    - at: 16581
+      id: cruel-path-of-darkness
+  cruel-path-of-light:
+    id: 40317
+    name: Cruel Path of Light
+    mechanic: stack.intercept
+    shape: line
+    damage: 120443
+    description: Placeholder description
+  cruel-path-of-darkness:
+    id: 40318
+    name: Cruel Path of Darkness
+    mechanic: stack.intercept
+    shape: line
+    damage: 120685
+    description: Placeholder description
+  paradise-regained:
+    id: 40319
+    name: Paradise Regained
+    mechanic: mech
+    compact: trim
+    description: Placeholder description
+    children:
+    - at: 10298
+      id: wings-dark-and-light-cleave
+      link: and
+    - at: 10431
+      id: paradise-explosion
+    - at: 11102
+      id: wings-dark-and-light-in-out
+    - at: 13912
+      id: paradise-explosion
+      link: and
+    - at: 14002
+      id: wings-dark-and-light-cleave
+    - at: 14805
+      id: wings-dark-and-light-in-out
+    - at: 17437
+      id: paradise-explosion
+  paradise-explosion:
+    id: 40320
+    name: Explosion
+    mechanic: towers.double
+    damage: 47226
+    description: Placeholder description
+  pandoras-box:
+    id: 40326
+    name: Pandora's Box
+    mechanic: raidwide.lb
+    damage: 824919
+    description: Placeholder description
   paradise-lost:
-    id: 0
+    id: 40328
     name: Paradise Lost
     mechanic: enrage
     type: dark
@@ -1553,6 +1715,7 @@ timeline:
     id: edge-of-oblivion
   - at: 639828
     id: <targetable>
+    description: Oracle of Darkness becomes targetable.
   - at: 648482
     id: darklit-dragonsong
   - at: 677896
@@ -1576,7 +1739,29 @@ timeline:
     id: absolute-zero-enrage
   - at: 790327
     id: <untargetable>
-  - at: 790327
+    timing: push
+  - at: 867480
     id: <phase>
     name: "Phase 5: Pandora"
     hp: 48541857
+  - at: 867480
+    id: <targetable>
+  - at: 878716
+    id: fulgent-blade
+  - at: 913865
+    id: paradise-regained
+  - at: 945220
+    id: polarizing-strikes
+  - at: 979586
+    id: pandoras-box
+  - at: 991769
+    id: fulgent-blade
+  - at: 1031134
+    id: paradise-regained
+  - at: 1057477
+    id: polarizing-strikes
+  - at: 1082654
+    id: fulgent-blade
+  - at: 1139575
+    id: paradise-lost
+  
