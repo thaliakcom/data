@@ -142,8 +142,8 @@ stack.ululation:
 stack.intercept:
   name: Wild Charge
   description: |
-    A stack (almost always in the shape of a line) that deals heavy damage to the first player(s) hit and moderate damage to all subsequent players.
-    In practice, this generally means that both tanks should stand in front and use tank cooldowns, with the rest of the party behind.
+    A stack (almost always in the shape of a line) that has a different effect on the first player(s) hit than the players behind them.
+    In practice, this usually translates to the first target(s) taking massive damage and requiring the use of tank cooldowns to live, with non-tanks behind them. In some cases, however, the first target(s) may simply be inflicted with a special status effect.
     Named after Imdugud's eponymous attack, [a:2134].
   players: 8
   shapeful: true
@@ -301,6 +301,9 @@ mech.tether.far:
 mech.tether.close:
   name: close tethers
   description: Players are tethered to something else (usually another player). If they ever get farther from each other than a certain distance threshold, they will take heavy debuffs and/or damage.
+mech.tether.snappable:
+  name: snappable tethers
+  description: Players are tethered to something else (usually another player). The tether must be broken by increasing the length of the tether until it snaps within a given amount of time, or the player (and their partner) take heavy damage and debuffs. Note that, with this type of tether, the required length to snap the tether is based on the tether's initial length, so it is recommended to have all players stack before the tether is applied, otherwise it may be impossible to establish sufficient distance to snap the tether.
 mech.tether.distance:
   name: distance tethers
   description: Players are tethered to something else and must be at least a certain distance away from the source of their tether. If they are far enough away, their tether appears as a yellow line, otherwise as red-purple arrows pointing out from the center of the tether.

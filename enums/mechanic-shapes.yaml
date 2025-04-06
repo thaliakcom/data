@@ -14,6 +14,9 @@ dynamo:
     Affects targets outside the inner radius of an inverted circle. Or, in other words, a ring or donut that affects targets outside of it.
     Some dynamo AoEs have an unlimited outer radius, while some can be avoided by being far enough away.
     Named after Nael deus Darnus's eponymous attack, [a:2010].
+in-or-out:
+  name: in or out
+  description: Either an in ([ms:dynamo]) or an out ([ms:chariot]), followed immediately by the opposite.
 cone:
   name: cone
   description: Affects targets within a cone-shaped AoE. A cone can be anywhere from just a few degrees to 179° large.

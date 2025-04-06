@@ -1,0 +1,503 @@
+id: 1031
+patch: '7.2'
+date: 2025-03-29
+modified: 2025-03-29
+by:
+  id: 27637301
+  role: author
+tier: Dawntrail
+boss: Zelenia
+party_hp: 172123
+HP: 85834672
+autos:
+  mechanic: auto.single
+  type: physical
+  damage: 49211
+description: ''
+wip: [guide, diagrams]
+status:
+  thorny-vine:
+    id: 445
+    type: condition
+    duration: 15000
+    description: Player is chained to a player of the opposite role. Deals massive damage to both players if the chain is not broken by establishing sufficient distance between the pair.
+  vulnerability-up:
+    id: 1789
+    type: vuln
+    duration: 60000
+    description: |
+      Increases damage taken by 8% per stack.
+      Inflicted by a number of mechanics, including [a:holy-hazard-hit], [a:alexandrian-thunder-iv], [a:valorous-ascension-4], [a:alexandrian-thunder-iv-1], [a:thunder-slash], [a:alexandrian-thunder-ii].
+  lightning-resistance-down-ii:
+    id: 2998
+    type: vuln
+    duration: 2000
+    description: |
+      Renders lightning damage lethal.
+      Inflicted by [a:alexandrian-thunder-iii].
+  slashing-resistance-down:
+    id: 3130
+    type: vuln
+    duration: 4960
+    description: |
+      Renders slashing damage lethal.
+      Inflicted by [a:escelons-fall-hit]
+  magic-vulnerability-up:
+    id: 3414
+    type: vuln
+    duration: 8950
+    description: |
+      Renders magic damage lethal.
+      Inflicted by [a:emblazon].
+  bleeding:
+    id: 4137
+    type: dot
+    tick: 139184
+    description: A lethal, unhealable [t:DoT] inflicted when players run through the middle during any Bloom mechanic.
+  light-resistance-down-ii:
+    id: 4164
+    type: vuln
+    duration: 1960
+    description: |
+      Renders any light damage lethal.
+      Inflicted by [a:explosion], [a:shock-chariot].
+actions:
+  emblazon:
+    id: 43040
+    mechanic: spread
+    shape: cone
+    count: 4
+    damage: 39364
+    description: Emblazons the conal tile the player is standing on. Inflicts [s:magic-vulnerability-up].
+  alexandrian-thunder-ii:
+    id: 43064
+    mechanic: aoe.rotating
+    shape: cone
+    count: 3
+    description: Placeholder description
+  holy-hazard:
+    id: 43065
+    mechanic: aoe
+    shape: sides
+    description: An AoE that leave only four conal tiles safe. Is immediately followed by another AoE that is rotated directly clockwise or counter-clockwise of the first.
+    children:
+    - at: 668
+      id: holy-hazard-hit
+    - at: 3738
+      id: holy-hazard-hit
+  explosion:
+    id: 43068
+    mechanic: towers.single
+    damage: 71095
+    description: Placeholder description
+  thorned-catharsis:
+    id: 43166
+    mechanic: raidwide
+    damage: 158002
+    description: Placeholder description
+  specter-of-the-lost:
+    id: 43168
+    mechanic: tb.double
+    shape: cone
+    count: 2
+    damage: 521317
+    description: Placeholder description
+  shock-dynamo:
+    id: 43170
+    name: Shock (Dynamo)
+    mechanic: aoe.linger
+    shape: dynamo
+    description: Placeholder description
+  shock-chariot:
+    id: 43171
+    name: Shock (Chariot)
+    mechanic: aoe.linger
+    shape: chariot
+    description: Placeholder description
+  escelons-fall:
+    id: 43181
+    mechanic: mech.close-or-far
+    shape: cone
+    description: Placeholder description
+    children:
+    - at: 893
+      id: escelons-fall-hit
+    - at: 4010
+      id: escelons-fall-hit
+    - at: 7079
+      id: escelons-fall-hit
+    - at: 10150
+      id: escelons-fall-hit
+  escelons-fall-hit:
+    id: 43183
+    mechanic: spread
+    shape: cone
+    count: 4
+    damage: 158232
+    description: Placeholder description
+  bud-of-valor:
+    id: 43186
+    mechanic: mech.prepare
+    description: Placeholder description
+  spearpoint-push:
+    id: 43187
+    mechanic: aoe
+    shape: side
+    description: Placeholder description
+  blessed-barricade:
+    id: 43189
+    mechanic: mech.arena
+    description: Placeholder description
+    children:
+    - at: 890
+      id: <untargetable>
+    - at: 11455
+      id: spearpoint-push
+      count: 2
+      link: and
+    - at: 12155
+      id: explosion
+      count: 2
+    - at: 23455
+      id: spearpoint-push
+      count: 2
+      link: and
+    - at: 24188
+      id: explosion
+      count: 2
+    - at: 35555
+      id: spearpoint-push
+      count: 2
+      link: and
+    - at: 36222
+      id: explosion
+      count: 2
+    - at: 47555
+      id: spearpoint-push
+      count: 2
+    - at: 53197
+      id: <targetable>
+  roseblood-bloom:
+    id: 43193
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1114
+      id: queens-crusade
+    - at: 8555
+      id: alexandrian-thunder-ii
+    - at: 29045
+      id: alexandrian-thunder-iii
+      count: 8
+  queens-crusade:
+    id: 43194
+    mechanic: aoe.linger
+    shape: chariot
+    description: Places a lingering AoE in the center of the arena that inflicts a lethal [s:bleeding] DoT when stepped into.
+  emblazon-cast:
+    id: 43195
+    mechanic: mech.status
+    description: Placeholder description
+  alexandrian-holy:
+    id: 43200
+    mechanic: towers.single
+    damage: 0
+    description: Placeholder description
+  encircling-thorns:
+    id: 43203
+    mechanic: mech.tether.snappable
+    description: Placeholder description
+  rose-red:
+    id: 43205
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description
+  valorous-ascension:
+    id: 43206
+    mechanic: raidwide
+    description: Placeholder description
+    children:
+    - at: 713
+      id: valorous-ascension-1
+    - at: 1114
+      id: valorous-ascension-2
+    - at: 2586
+      id: valorous-ascension-3
+  valorous-ascension-1:
+    id: 43207
+    mechanic: raidwide
+    damage: 11828
+    description: Placeholder description
+  valorous-ascension-2:
+    id: 43208
+    mechanic: raidwide
+    damage: 11569
+    description: Placeholder description
+  valorous-ascension-3:
+    id: 43209
+    mechanic: raidwide
+    damage: 20579
+    description: Placeholder description
+  valorous-ascension-4:
+    id: 43210
+    mechanic: aoe
+    shape: line
+    count: 2
+    description: Placeholder description
+  perfumed-quietus:
+    id: 43213
+    mechanic: raidwide.ultimate
+    damage: 161538
+    description: Placeholder description
+  thunder-slash:
+    id: 43216
+    mechanic: aoe
+    shape: cone
+    description: Placeholder description
+  alexandrian-banish-ii:
+    id: 43218
+    mechanic: stack.role
+    shape: chariot
+    count: 2
+    damage: 121541
+    description: Placeholder description
+  stock-break:
+    id: 43221
+    mechanic: stack.party
+    shape: chariot
+    description: Placeholder description
+    children:
+    - at: 1158
+      id: stock-break-1
+    - at: 2226
+      id: stock-break-2
+    - at: 3296
+      id: stock-break-3
+    - at: 4366
+      id: stock-break-4
+  stock-break-1:
+    id: 43222
+    mechanic: stack.party
+    shape: chariot
+    damage: 152640
+    description: Placeholder description
+  stock-break-2:
+    id: 43223
+    mechanic: stack.party
+    shape: chariot
+    damage: 141211
+    description: Placeholder description
+  stock-break-3:
+    id: 43224
+    mechanic: stack.party
+    shape: chariot
+    damage: 139862
+    description: Placeholder description
+  stock-break-4:
+    id: 43225
+    mechanic: stack.party
+    shape: chariot
+    damage: 79677
+    description: Placeholder description
+  holy-hazard-hit:
+    id: 43234
+    mechanic: aoe
+    shape: sides
+    count: 2
+    description: Placeholder description
+  alexandrian-thunder-iii:
+    id: 43236
+    mechanic: spread
+    shape: chariot
+    damage: 138944
+    description: Placeholder description
+  alexandrian-banish-iii:
+    id: 43241
+    mechanic: stack.role
+    shape: chariot
+    damage: 129000
+    description: Placeholder description
+  alexandrian-thunder-iv:
+    id: 43450
+    mechanic: aoe
+    shape: in-or-out
+    description: Placeholder description
+    children:
+    - at: 3030
+      id: alexandrian-thunder-iv-1
+  alexandrian-thunder-iv-1:
+    id: 43451
+    mechanic: aoe
+    shape: in-or-out
+    description: Placeholder description
+  roseblood-2nd-bloom:
+    id: 43540
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1116
+      id: queens-crusade
+    - at: 9529
+      id: thunder-slash
+    - at: 10241
+      id: alexandrian-thunder-iv
+  roseblood-3rd-bloom:
+    id: 43541
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1070
+      id: queens-crusade
+    - at: 6549
+      id: bud-of-valor
+    - at: 14699
+      id: emblazon-cast
+    - at: 22278
+      id: emblazon
+    - at: 26643
+      id: explosion
+  roseblood-4th-bloom:
+    id: 43542
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1111
+      id: queens-crusade
+    - at: 6550
+      id: emblazon-cast
+    - at: 14120
+      id: emblazon
+    - at: 14788
+      id: alexandrian-thunder-iii
+    - at: 18712
+      id: encircling-thorns
+    - at: 27667
+      id: alexandrian-banish-iii
+  roseblood-5th-bloom:
+    id: 43543
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1114
+      id: queens-crusade
+    - at: 6547
+      id: valorous-ascension
+    - at: 17688
+      id: thunder-slash
+    - at: 18222
+      id: valorous-ascension-4
+    - at: 18400
+      id: alexandrian-thunder-iv
+    - at: 21252
+      id: valorous-ascension-4
+  roseblood-6th-bloom:
+    id: 43544
+    mechanic: mech.arena
+    major: true
+    description: Placeholder description
+    children:
+    - at: 1067
+      id: queens-crusade
+    - at: 6544
+      id: bud-of-valor
+    - at: 12686
+      id: emblazon-cast
+    - at: 20264
+      id: emblazon
+    - at: 22845
+      id: holy-hazard
+    - at: 26628
+      id: explosion
+  roseblood-withering:
+    id: 43545
+    mechanic: mech.arena
+    description: Placeholder description
+    children:
+    - at: 1117
+      id: queens-crusade
+timeline:
+  - at: 11985
+    id: thorned-catharsis
+  - at: 22408
+    id: shock-chariot
+    count: 4
+    link: and
+  - at: 22408
+    id: shock-dynamo
+    count: 4
+  - at: 28554
+    id: alexandrian-holy
+  - at: 32563
+    id: explosion
+    count: 4
+  - at: 45471
+    id: specter-of-the-lost
+  - at: 65117
+    id: escelons-fall
+  - at: 84484
+    id: stock-break
+  - at: 94863
+    id: blessed-barricade
+  - at: 157326
+    id: perfumed-quietus
+  - at: 172165
+    id: roseblood-bloom
+  - at: 208649
+    id: thorned-catharsis
+  - at: 218678
+    id: roseblood-2nd-bloom
+  - at: 244109
+    id: specter-of-the-lost
+  - at: 253374
+    id: roseblood-3rd-bloom
+  - at: 288254
+    id: thorned-catharsis
+  - at: 299656
+    id: bud-of-valor
+  - at: 315649
+    id: shock-dynamo
+    count: 4
+  - at: 316718
+    id: alexandrian-banish-ii
+  - at: 321885
+    id: escelons-fall
+  - at: 341258
+    id: stock-break
+  - at: 353232
+    id: roseblood-4th-bloom
+  - at: 392265
+    id: thorned-catharsis
+  - at: 403662
+    id: bud-of-valor
+  - at: 419793
+    id: escelons-fall
+  - at: 439159
+    id: stock-break
+  - at: 453151
+    id: roseblood-5th-bloom
+  - at: 486745
+    id: specter-of-the-lost
+  - at: 498016
+    id: roseblood-6th-bloom
+  - at: 535994
+    id: roseblood-bloom
+  - at: 572538
+    id: thorned-catharsis
+  - at: 583456
+    id: specter-of-the-lost
+  - at: 597104
+    id: stock-break
+  - at: 610245
+    id: stock-break
+  - at: 623382
+    id: stock-break
+  - at: 632140
+    id: roseblood-withering
+  - at: 645685
+    id: rose-red
+  
