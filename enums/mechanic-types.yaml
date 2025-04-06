@@ -66,6 +66,10 @@ tb.close.stack:
   name: tankbuster (close)
   description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
   players: 2
+tb.close-or-far:
+  name: tankbuster (distance)
+  description: A heavy-hitting attack that targets either the closest or farthest player to the boss and must be heavily mitigated with tank cooldowns to survive.
+  players: 1
 auto.single:
   name: MT
   description: These auto-attacks target the player with the highest enmity.
