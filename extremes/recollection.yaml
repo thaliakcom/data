@@ -142,7 +142,7 @@ actions:
   spearpoint-push:
     id: 43187
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Placeholder description
   blessed-barricade:
     id: 43189

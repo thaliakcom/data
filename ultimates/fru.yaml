@@ -290,13 +290,13 @@ actions:
   cyclonic-break-first-baits:
     id: 40146
     name: Cyclonic Break (Baits)
-    mechanic: aoe.baitable
+    mechanic: aoe.aftershock
     shape: cone
     description: Conal AoEs hit where the players took their spreads. Inflicts [s:damage-down].
   cyclonic-break-baits:
     id: 40146
     name: Cyclonic Break (Baits)
-    mechanic: aoe.baitable
+    mechanic: aoe.aftershock
     shape: cone
     description: Conal AoEs hit 22.5° clockwise from the previous set of AoEs. Inflicts [s:damage-down].
   sinsmoke:
@@ -1176,7 +1176,7 @@ actions:
   hallowed-wings:
     id: 40228
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Standard half-room cleave on the side of Usurper's glowing wing.
   akh-rhai:
     id: 40237
@@ -1444,7 +1444,7 @@ actions:
     id: 40314
     name: Wings Dark and Light
     mechanic: tb.mt
-    shape: side
+    shape: halfroom
     damage: 452250
     description: Placeholder description
   polarizing-strikes:

@@ -5,7 +5,7 @@ modified: 2024-10-12
 by:
   id: 27637301
   role: author
-tier: Light-heavyweight
+tier: AAC Light-heavyweight
 boss: Brute Bomber
 HP: 96522586
 party_hp: 120000
@@ -337,7 +337,7 @@ actions:
   lariat-combo:
     id: 39733
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Placeholder description for Lariat Combo
     children:
       - at: 0
@@ -349,7 +349,7 @@ actions:
   lariat-combo-hit:
     id: 39732
     mechanic: aoe
-    shape: side
+    shape: halfroom
     players: 4
     damage: 39794
     description: Placeholder description for Lariat Combo
@@ -620,7 +620,7 @@ actions:
   lariat-combo-avoidable:
     id: 39659
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Placeholder description for Lariat Combo
     children:
       - at: 1199
@@ -630,7 +630,7 @@ actions:
   lariat-combo-hit-avoidable:
     id: 39665
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Placeholder description for Lariat Combo
   doping-draught-3:
     id: 39320

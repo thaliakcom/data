@@ -5,7 +5,7 @@ modified: 2024-09-03
 by:
   id: 27637301
   role: author
-tier: Light-heavyweight
+tier: AAC Light-heavyweight
 boss: Black Cat
 HP: 75867953
 party_hp: 120000
@@ -191,7 +191,7 @@ actions:
   one-two-paw:
     id: 37942
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: |
       The claws on either [boss]'s left or right hand begin to glow, then the other.
       When the cast bar resolves, cleaves those sides of the arena in order.
@@ -204,7 +204,7 @@ actions:
   one-two-paw-hit:
     id: 37943
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Cleaves half of the arena, inflicting [s:sustained-damage].
   soulshade:
     id: 37986
@@ -387,7 +387,7 @@ actions:
   leaping-one-two-paw:
     id: 37967
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: "[boss] leaps to either her left or right, then executes [a:one-two-paw]."
     children:
       - at: 987

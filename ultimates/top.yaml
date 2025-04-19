@@ -1465,7 +1465,7 @@ actions:
   swivel-cannon:
     id: 31636
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: |
       Beetle Omega cleaves the entire side of the arena to either its left or right. Which side is cleaved is telegraphed by blue lights on that side of Omega. The AoE area is also telegraphed shortly before the cleave.
       Be aware that the AoE is not exactly a 180° half-arena cleave. It's closer to 210°.

@@ -1,0 +1,824 @@
+id: 1020
+patch: '7.2'
+date: 2025-04-10
+modified: 2025-04-10
+by:
+  id: 27637301
+  role: author
+tier: AAC Cruiserweight
+boss: Dancing Green
+party_hp: 172180
+autos:
+  mechanic: auto.single
+  type: physical
+  damage: 55068
+description: ''
+wip: [guide, diagrams]
+status:
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: [22420, 30000]
+    description: |
+      Reduces damage by 25%.
+      Inflicted by [a:funky-floor], [a:inside-out], [a:ride-the-waves], [a:lets-dance!].
+  bleeding:
+    id: 2088
+    type: dot
+    tick: 36225
+    duration: 15000
+    description: A moderate [t:DoT] inflicted by [a:deep-cut].
+  sustained-damage:
+    id: 2935
+    type: dot
+    tick: 35143
+    duration: 15000
+    description: A moderate [t:DoT] inflicted by [a:freak-out].
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [9000, 13950, 1960]
+    description: Inflicted by [a:deep-cut], [a:play-a-side], [a:quarter-beats], [a:get-down-cone], [a:play-b-side], [a:eighth-beats], [a:minor-freak-out]
+  frogtourage-fan:
+    id: 3998
+    type: vuln
+    name: Frogtourage Fan
+    duration: 17960
+    description: Inflicted by [a:back-up-dance]. Renders the next [a:back-up-dance] lethal.
+  needle-poised:
+    id: 4459
+    type: form
+    name: Needle Poised
+    description: "[boss] has stocked [a:flip-to-a-side] or [a:flip-to-b-side]."
+  burn-baby-burn:
+    id: 4461
+    type: condition
+    name: Burn Baby Burn
+    duration: [9500, 19500, 23500, 31500]
+    description: When the effect expires, player must be standing inside a spotlight to turn this debuff into [s:in-the-spotlight]. If the player does not stand inside a spotlight at the end of the effect's duration, instantly kills the player.
+  wavelength-î±:
+    id: 4462
+    type: condition
+    name: Wavelength Î±
+    duration: [40500, 30500, 25500]
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î²] player whose debuff is also expiring at the same time. Doing so deals minor damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+  wavelength-î²:
+    id: 4463
+    type: condition
+    name: Wavelength Î²
+    duration: [43000, 28000, 23000, 18000]
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î±] player whose debuff is also expiring at the same time. Doing so deals minor damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+  in-the-spotlight:
+    id: 4471
+    type: impairment
+    description: Momentarily stunned while dancing. Taking damage in this state instantly kills the player.
+  perfect-groove:
+    id: 4464
+    type: damage-up
+    duration: 20000
+    description: Increases damage by 3% for 20 seconds as a reward for correctly resolving [s:wavelength-î±]/[s:wavelength-î²] and avoiding all [a:lets-dance!].
+actions:
+  inside-out:
+    id: 37826
+    name: Inside Out
+    mechanic: aoe
+    shape: chariot
+    description: A [ms:chariot] followed by a [ms:dynamo].
+    children:
+    - at: 2452
+      id: inside-out-1
+  inside-out-1:
+    id: 37827
+    name: Inside Out
+    mechanic: aoe
+    shape: dynamo
+    description: The followup [ms:dynamo].
+  outside-in:
+    id: 37828
+    name: Outside In
+    mechanic: aoe
+    shape: dynamo
+    description: A [ms:dynamo] followed by a [ms:chariot].
+    children:
+    - at: 2452
+      id: outside-in-1
+  outside-in-1:
+    id: 37829
+    name: Outside In
+    mechanic: aoe
+    shape: chariot
+    description: The followup [ms:chariot].
+  ensemble-assemble:
+    id: 39474
+    mechanic: mech.prepare
+    description: Assembles a row of frogs at the northern edge of the arena.
+  minor-freak-out:
+    id: 39475
+    name: Minor Freak Out
+    mechanic: spread
+    shape: chariot
+    damage: 33596
+    description: |
+      Deals minor damage to all stacking players as their [s:wavelength-î±]/[s:wavelength-î²] is properly resolved.
+      If players of not identically timed Wavelengths stack, triggers [a:freak-out] instead.
+  lets-dance-group:
+    name: Let's Dance!
+    mechanic: aoe
+    shape: halfroom
+    compact: full
+    description: |
+      Multiple telegraphed AoEs in a row. The frogs in the backrow indicate (by pointing towards it) which side [boss] will cleave.
+      Additionally, [s:wavelength-î±] and [s:wavelength-î²] expire during this mechanic. Each Wavelength requires a player to be stacked tightly with a player of the opposite Wavelength whose debuff expires at the same time.
+      Successfully dodging one of the [halfroom cleaves](ms:halfroom) increases the duty gauge. Successfully resolving a Wavelength debuff also increases the duty gauge.
+    children:
+    - at: 1024
+      id: lets-dance!
+    - at: 3472
+      id: lets-dance!
+      link: and
+    - at: 3516
+      id: minor-freak-out
+    - at: 5925
+      id: lets-dance!
+    - at: 8375
+      id: lets-dance!
+      link: and
+    - at: 8510
+      id: minor-freak-out
+    - at: 10826
+      id: lets-dance!
+    - at: 13275
+      id: lets-dance!
+      link: and
+    - at: 13542
+      id: minor-freak-out
+    - at: 15728
+      id: lets-dance!
+    - at: 18183
+      id: lets-dance!
+      link: and
+    - at: 18540
+      id: minor-freak-out
+  lets-dance!:
+    id: 39901
+    mechanic: aoe
+    shape: halfroom
+    description: |
+      Originating from Dancing Green, hits the side of the arena with a [ms:halfroom] that the corresponding frog on the northern edge is pointing towards.
+      Deals heavy damage, inflicts [s:damage-down], and renders this player ineligible to receive [s:perfect-groove].
+      This cleave can only hit the west or east of the arena.
+  arcady-night-encore:
+    id: 41840
+    name: Arcady Night Encore
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Same as [a:arcady-night-fever], but doesn't inflict [s:wavelength-î±]/[s:wavelength-î²] on players.
+      Instead, the frog [half-room cleaves](ms:halfroom) during the second part are more difficult. The interval between cleaves is significantly reduced, and the cleaves can now hit the north and south in addition to the west and east.
+    children:
+    - at: 401
+      id: get-down-chariot
+    - at: 714
+      id: get-down-cone
+    - at: 3163
+      id: get-down-cone
+    - at: 3163
+      id: get-down-dynamo
+    - at: 3296
+      id: get-down-aftershock
+    - at: 5653
+      id: get-down-cone
+    - at: 5653
+      id: get-down-chariot
+    - at: 5743
+      id: get-down-aftershock
+    - at: 8100
+      id: get-down-cone
+    - at: 8100
+      id: get-down-dynamo
+    - at: 8233
+      id: get-down-aftershock
+    - at: 10548
+      id: get-down-cone
+    - at: 10548
+      id: get-down-chariot
+    - at: 10681
+      id: get-down-aftershock
+    - at: 12994
+      id: get-down-cone
+    - at: 12994
+      id: get-down-dynamo
+    - at: 13127
+      id: get-down-aftershock
+    - at: 15444
+      id: get-down-cone
+    - at: 15444
+      id: get-down-chariot
+    - at: 15577
+      id: get-down-aftershock
+    - at: 17893
+      id: get-down-cone
+    - at: 17893
+      id: get-down-dynamo
+    - at: 18027
+      id: get-down-aftershock
+    - at: 20474
+      id: get-down-aftershock
+  lets-dance-remix-group:
+    name: Let's Dance! Remix
+    mechanic: aoe
+    shape: halfroom
+    compact: full
+    description: Placeholder description
+    children:
+    - at: 1026
+      id: lets-dance-remix
+    - at: 2501
+      id: lets-dance-remix
+    - at: 3972
+      id: lets-dance-remix
+    - at: 5445
+      id: lets-dance-remix
+    - at: 6917
+      id: lets-dance-remix
+    - at: 8386
+      id: lets-dance-remix
+    - at: 9861
+      id: lets-dance-remix
+    - at: 11335
+      id: lets-dance-remix
+  lets-dance-remix:
+    id: 41877
+    name: Let's Dance! Remix
+    mechanic: aoe
+    shape: halfroom
+    description: |
+      Originating from Dancing Green, hits the side of the arena with a [ms:halfroom] that the corresponding frog on the northern edge is pointing towards.
+      Deals heavy damage, inflicts [s:damage-down], and renders this player ineligible to receive [s:perfect-groove].
+      This cleave can hit the north, south, west, or east of the arena.
+  frogtourage-finale:
+    id: 42209
+    name: Frogtourage Finale
+    mechanic: mech.prepare
+    description: Summons another ensemble of frogs at the northern edge of the arena in preparation for the [m:enrage].
+  deep-cut:
+    id: 42786
+    mechanic: tb.double
+    shape: line
+    count: 2
+    damage: 302564
+    description: Standard [ms:line] tankbuster on the two highest-enmity targets.
+  celebrate-good-times:
+    id: 42787
+    mechanic: raidwide
+    damage: 180189
+    description: Standard raidwide.
+  do-the-hustle:
+    id: 42788
+    mechanic: aoe
+    shape: halfroom
+    description: Hits the indicated side with a [ms:halfroom].
+  2-snap-twist-&-drop-the-needle:
+    id: 42797
+    name: 2-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    compact: full
+    description: Hits the indicated side with 2 back-to-back [half-room cleaves](ms:halfroom), then a [ms:halfroom] on the other side, followed by the previously stocked [a:play-a-side] or [a:play-b-side].
+    children:
+    - at: 0
+      id: 2-snap-twist-&-drop-the-needle-0
+    - at: 1562
+      id: 2-snap-twist-&-drop-the-needle-1
+    - at: 3569
+      id: 2-snap-twist-&-drop-the-needle-2
+    - at: 5309
+      id: play-a-side
+      link: or
+    - at: 5309
+      id: play-b-side
+  2-snap-twist-&-drop-the-needle-0:
+    id: 42798
+    name: 2-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The first [ms:halfroom] on the indicated side.
+  2-snap-twist-&-drop-the-needle-1:
+    id: 42798
+    name: 2-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The second [ms:halfroom] on the indicated side.
+  2-snap-twist-&-drop-the-needle-2:
+    id: 42799
+    name: 2-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The last [ms:halfroom] on the opposite side.
+  3-snap-twist-&-drop-the-needle:
+    id: 42205
+    name: 3-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    compact: full
+    description: Hits the indicated side with 3 back-to-back [half-room cleaves](ms:halfroom), then a [ms:halfroom] on the other side, followed by the previously stocked [a:play-a-side] or [a:play-b-side].
+    children:
+    - at: 0
+      id: 3-snap-twist-&-drop-the-needle-1
+    - at: 1248
+      id: 3-snap-twist-&-drop-the-needle-2
+    - at: 1962
+      id: 3-snap-twist-&-drop-the-needle-3
+    - at: 3567
+      id: 3-snap-twist-&-drop-the-needle-4
+    - at: 5307
+      id: play-a-side
+      link: or
+    - at: 5307
+      id: play-b-side
+  3-snap-twist-&-drop-the-needle-1:
+    id: 42800
+    name: 3-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: Placeholder description
+  3-snap-twist-&-drop-the-needle-2:
+    id: 42806
+    name: 3-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: Placeholder description
+  3-snap-twist-&-drop-the-needle-3:
+    id: 42807
+    name: 3-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: Placeholder description
+  3-snap-twist-&-drop-the-needle-4:
+    id: 42808
+    name: 3-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: Placeholder description
+  4-snap-twist-&-drop-the-needle:
+    id: 42809
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    compact: full
+    description: Hits the indicated side with 4 back-to-back [half-room cleaves](ms:halfroom), then a [ms:halfroom] on the other side, followed by the previously stocked [a:play-a-side] or [a:play-b-side].
+    children:
+    - at: 0
+      id: 4-snap-twist-&-drop-the-needle-0
+    - at: 1073
+      id: 4-snap-twist-&-drop-the-needle-1
+    - at: 1560
+      id: 4-snap-twist-&-drop-the-needle-2
+    - at: 2051
+      id: 4-snap-twist-&-drop-the-needle-3
+    - at: 3564
+      id: 4-snap-twist-&-drop-the-needle-4
+    - at: 5304
+      id: play-a-side
+      link: or
+    - at: 5304
+      id: play-b-side
+  4-snap-twist-&-drop-the-needle-0:
+    id: 42815
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The first [ms:halfroom] on the indicated side.
+  4-snap-twist-&-drop-the-needle-1:
+    id: 42815
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The second [ms:halfroom] on the indicated side.
+  4-snap-twist-&-drop-the-needle-2:
+    id: 42816
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The third [ms:halfroom] on the indicated side.
+  4-snap-twist-&-drop-the-needle-3:
+    id: 42817
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The fourth [ms:halfroom] on the indicated side.
+  4-snap-twist-&-drop-the-needle-4:
+    id: 42818
+    name: 4-snap Twist & Drop the Needle
+    mechanic: aoe
+    shape: halfroom
+    description: The last [ms:halfroom] on the opposite side.
+  funky-floor:
+    id: 42834
+    mechanic: mech.arena
+    description: |
+      Begins alternating AoEs within the arena tiles.
+      If the arena were a chessboard, the resulting AoEs would always alternate between hitting all white squares and all dark squares.
+  ride-the-waves:
+    id: 42836
+    mechanic: aoe.exaflares
+    shape: rect
+    description: |
+      Spawns a continuous row of AoEs at the northern edge of the arena that travels south.
+      The row leaves two gaps for players within it.
+      Being hit by the "wave" deals heavy damage and inflicts [s:damage-down].
+  disco-infernal:
+    id: 42838
+    mechanic: mech
+    major: true
+    players: 8
+    damage: 131533
+    description: Placeholder description
+  quarter-beats:
+    id: 42844
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 131556
+    description: Placeholder description
+  eighth-beats:
+    id: 42846
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 130005
+    description: Placeholder description
+  frogtourage:
+    id: 42847
+    mechanic: mech
+    description: Placeholder description
+  arcady-night-fever:
+    id: 42848
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      A mechanic with eight-and-a-half steps.
+      There is a [ms:chariot] originating from the boss, which then alternates between a [ms:chariot] and [ms:dynamo] every subsequent step. Only the initial [ms:chariot] is telegraphed.
+      Additionally, each step involves one player being targeted by [a:get-down-cone], a [ms:cone] that inflicts [s:magic-vulnerability-up] and either [s:wavelength-î±] or [s:wavelength-î²]. This targeted cone alternates between targeting a damage dealer and a support. All damage dealers will have the same Wavelength debuff (but with different durations), and supports will have the other Wavelength. The cones target each player only once, unless another player dies.
+      After being hit by a cone, an [m:aoe.aftershock] will hit the same area again in the next step. The last (half) step merely features this [m:aoe.aftershock] without the [ms:chariot] or [ms:dynamo].
+      At the start of the mechanic, [boss] disables positionals on his hitbox.
+      A duty gauge will appear at the start of this mechanic. The duty gauge increments by a random amount each time players successfully avoid an AoE. This applies to [a:get-down-dynamo], [a:get-down-chariot], and [a:get-down-aftershock]. If a player gets hit by any of these mechanics, the duty gauge increases by a reduced amount.
+    resolve: |
+      Spread loosely within two groups: damage dealers and supports. The preferred strategy is north for supports and south for damage dealers, but west/east works just as well.
+      Start out. After the [ms:chariot] resolves, move into the hitbox. Wait until the [ms:dynamo] resolves, then move back out.
+      Rinse and repeat until you get hit by a cone, at which point move *diagonally* – move in/out just as before, but this time move laterally as well, to the spot of your neighbouring damage dealer/support. Since the cones always alternate between damage dealers and supports, there is no risk of the person you're moving on top of being targeted by a cone as well, as long as you don't move atop someone of a different role. After your [m:aoe.aftershock] resolves, move diagonally back to your original position.
+    children:
+    - at: 402
+      id: get-down-chariot
+      link: and
+    - at: 715
+      id: get-down-cone
+    - at: 3165
+      id: get-down-cone
+      link: and
+    - at: 3165
+      id: get-down-dynamo
+      link: and
+    - at: 3298
+      id: get-down-aftershock
+    - at: 5614
+      id: get-down-cone
+      link: and
+    - at: 5614
+      id: get-down-chariot
+      link: and
+    - at: 5748
+      id: get-down-aftershock
+    - at: 8064
+      id: get-down-cone
+      link: and
+    - at: 8064
+      id: get-down-dynamo
+      link: and
+    - at: 8198
+      id: get-down-aftershock
+    - at: 10512
+      id: get-down-cone
+      link: and
+    - at: 10512
+      id: get-down-chariot
+      link: and
+    - at: 10645
+      id: get-down-aftershock
+    - at: 12962
+      id: get-down-cone
+      link: and
+    - at: 12963
+      id: get-down-dynamo
+      link: and
+    - at: 13095
+      id: get-down-aftershock
+    - at: 15413
+      id: get-down-cone
+      link: and
+    - at: 15413
+      id: get-down-chariot
+      link: and
+    - at: 15546
+      id: get-down-aftershock
+    - at: 17862
+      id: get-down-cone
+      link: and
+    - at: 17862
+      id: get-down-dynamo
+      link: and
+    - at: 17995
+      id: get-down-aftershock
+    - at: 20448
+      id: get-down-aftershock
+  get-down-chariot:
+    id: 42850
+    name: Get Down! (Chariot)
+    mechanic: aoe
+    shape: chariot
+    description: Placeholder description
+  get-down-dynamo:
+    id: 42851
+    name: Get Down! (Dynamo)
+    mechanic: aoe
+    shape: dynamo
+    description: Placeholder description
+  get-down-cone:
+    id: 42852
+    name: Get Down! (Cone)
+    mechanic: spread
+    shape: cone
+    damage: 97550
+    description: Placeholder description
+  get-down-aftershock:
+    id: 42853
+    name: Get Down! (Aftershock)
+    mechanic: aoe.aftershock
+    shape: cone
+    description: Placeholder description
+  freak-out:
+    id: 42854
+    name: Freak Out
+    mechanic: mech.failure
+    shape: chariot
+    players: 1
+    damage: 108514
+    description: Placeholder description
+  freak-out-1:
+    id: 42855
+    name: Freak Out
+    mechanic: mech.failure
+    shape: chariot
+    players: 1
+    damage: 98328
+    description: Placeholder description
+  lets-pose!:
+    id: 42863
+    mechanic: mech.check
+    players: 0
+    damage: 157831
+    description: |
+      Grants [s:perfect-groove] to any player who successfully resolved their [s:wavelength-î±]/[s:wavelength-î²] and avoided all of [a:lets-dance!].
+      These players don't take any damage. All other players take heavy damage.
+      If the duty gauge is full at this point (which requires all mechanics to be resolved perfectly), the party is granted one full bar of limit break.
+  moonburn:
+    id: 42867
+    mechanic: aoe
+    shape: rect
+    description: Frogs draw a rectangular shape throughout the arena. Once the drawing is complete, that area explodes, dealing massive damage and inflicting [s:damage-down].
+  back-up-dance:
+    id: 42872
+    name: Back-up Dance
+    mechanic: spread.close
+    shape: cone
+    count: 4
+    damage: 97414
+    description: Placeholder description
+  hi-nrg-fever:
+    id: 42873
+    name: Hi-NRG Fever
+    mechanic: enrage
+    damage: 9999999
+    description: Placeholder description
+  flip-to-a-side:
+    id: 42880
+    name: Flip to A-side
+    mechanic: mech.prepare
+    description: Stocks a [m:stack.role]. Grants [s:needle-poised] to [boss].
+  flip-to-b-side:
+    id: 42881
+    name: Flip to B-side
+    mechanic: mech.prepare
+    description: Stocks a [m:stack.healers]. Grants [s:needle-poised] to [boss].
+  play-a-side:
+    id: 42883
+    name: Play A-side
+    mechanic: stack.role
+    shape: cone
+    count: 3
+    players: 8
+    damage: 97547
+    description: Plays the previously stocked [m:stack.role].
+  play-b-side:
+    id: 42884
+    name: Play B-side
+    mechanic: stack.healers
+    shape: line
+    count: 2
+    damage: 131048
+    description: Plays the previously stocked [m:stack.healers].
+timeline:
+  - at: 15558
+    id: deep-cut
+  - at: 27276
+    id: flip-to-a-side
+    link: or
+  - at: 27276
+    id: flip-to-b-side
+  - at: 34372
+    id: 2-snap-twist-&-drop-the-needle
+    link: or
+  - at: 34372
+    id: 3-snap-twist-&-drop-the-needle
+    link: or
+  - at: 34372
+    id: 4-snap-twist-&-drop-the-needle
+  - at: 46594
+    id: flip-to-a-side
+    link: or
+  - at: 46594
+    id: flip-to-b-side
+  - at: 53728
+    id: 2-snap-twist-&-drop-the-needle
+    link: or
+  - at: 53728
+    id: 3-snap-twist-&-drop-the-needle
+    link: or
+  - at: 53728
+    id: 4-snap-twist-&-drop-the-needle
+  - at: 64963
+    id: celebrate-good-times
+  - at: 77313
+    id: disco-infernal
+  - at: 81953
+    id: funky-floor
+  - at: 90692
+    id: inside-out
+    link: or
+  - at: 90692
+    id: outside-in
+  - at: 99565
+    id: flip-to-a-side
+    link: or
+  - at: 99565
+    id: flip-to-b-side
+  - at: 117225
+    id: 2-snap-twist-&-drop-the-needle
+    link: or
+  - at: 117225
+    id: 3-snap-twist-&-drop-the-needle
+    link: or
+  - at: 117225
+    id: 4-snap-twist-&-drop-the-needle
+  - at: 122530
+    id: play-a-side
+    link: or
+  - at: 122530
+    id: play-b-side
+  - at: 128461
+    id: celebrate-good-times
+  - at: 136262
+    id: deep-cut
+  - at: 147190
+    id: ensemble-assemble
+  - at: 155132
+    id: arcady-night-fever
+  - at: 182931
+    id: lets-dance-group
+  - at: 209307
+    id: lets-pose!
+  - at: 227530
+    id: flip-to-b-side
+  - at: 233138
+    id: ride-the-waves
+  - at: 243293
+    id: eighth-beats
+    link: or
+  - at: 243293
+    id: quarter-beats
+  - at: 251449
+    id: quarter-beats
+    link: or
+  - at: 251449
+    id: eighth-beats
+  - at: 262004
+    id: inside-out
+    link: or
+  - at: 262004
+    id: outside-in
+  - at: 271889
+    id: 2-snap-twist-&-drop-the-needle
+    link: or
+  - at: 271889
+    id: 3-snap-twist-&-drop-the-needle
+    link: or
+  - at: 271889
+    id: 4-snap-twist-&-drop-the-needle
+  - at: 277187
+    id: play-a-side
+    link: or
+  - at: 277187
+    id: play-b-side
+  - at: 284799
+    id: deep-cut
+  - at: 291251
+    id: celebrate-good-times
+  - at: 302606
+    id: frogtourage
+  - at: 316781
+    id: quarter-beats
+    link: or
+  - at: 316781
+    id: eighth-beats
+  - at: 317316
+    id: moonburn
+    count: 2
+  - at: 324883
+    id: disco-infernal
+  - at: 336681
+    id: back-up-dance
+  - at: 346127
+    id: flip-to-a-side
+    link: or
+  - at: 346127
+    id: flip-to-a-side
+  - at: 346798
+    id: back-up-dance
+  - at: 353257
+    id: 2-snap-twist-&-drop-the-needle
+    link: or
+  - at: 353257
+    id: 3-snap-twist-&-drop-the-needle
+    link: or
+  - at: 353257
+    id: 4-snap-twist-&-drop-the-needle
+  - at: 358564
+    id: play-a-side
+    link: or
+  - at: 358564
+    id: play-b-side
+  - at: 364490
+    id: celebrate-good-times
+  - at: 376075
+    id: ensemble-assemble
+  - at: 384003
+    id: arcady-night-encore
+  - at: 411793
+    id: lets-dance-remix-group
+  - at: 430315
+    id: lets-pose!
+  - at: 449736
+    id: frogtourage
+  - at: 464996
+    id: do-the-hustle
+  - at: 481856
+    id: moonburn
+    link: and
+  - at: 481989
+    id: back-up-dance
+  - at: 497874
+    id: moonburn
+    link: and
+  - at: 498008
+    id: back-up-dance
+  - at: 507313
+    id: do-the-hustle
+  - at: 515061
+    id: deep-cut
+  - at: 525300
+    id: funky-floor
+  - at: 533455
+    id: quarter-beats
+    link: or
+  - at: 533455
+    id: eighth-beats
+  - at: 541660
+    id: outside-in
+    link: or
+  - at: 541660
+    id: inside-out
+  - at: 553552
+    id: eighth-beats
+    link: or
+  - at: 553552
+    id: quarter-beats
+  - at: 560680
+    id: celebrate-good-times
+  - at: 570813
+    id: celebrate-good-times
+  - at: 591302
+    id: frogtourage-finale
+  - at: 606447
+    id: hi-nrg-fever

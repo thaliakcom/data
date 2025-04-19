@@ -426,7 +426,7 @@ actions:
   pandæmoniac-ray:
     id: 33419
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: |
       [boss] detaches its head and gets ready to cleave the side of the arena it's facing.
       Being hit by this cleave applies [s:2911] and [s:hysteria].

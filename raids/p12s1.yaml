@@ -117,7 +117,7 @@ actions:
   trinity-of-souls:
     id: 33511
     mechanic: aoe
-    shape: side
+    shape: halfroom
     compact: full
     description: |
       One of [boss]'s wings begins to glow, then another, and finally a third. The glows indicate which side of the arena [boss] will cleave.
@@ -133,7 +133,7 @@ actions:
     id: 33514
     name: Trinity of Souls (Hit)
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: A cleave from [a:trinity-of-souls]. Inflicts [s:2911].
   white-flame:
     id: 33520

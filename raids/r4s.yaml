@@ -5,7 +5,7 @@ modified: 2025-03-14
 by:
   id: 27637301
   role: author
-tier: Light-heavyweight
+tier: AAC Light-heavyweight
 boss: Wicked Thunder
 HP: 114525943
 party_hp: 120000
@@ -313,7 +313,7 @@ actions:
   sidewise-spark:
     id: 38380
     mechanic: aoe
-    shape: side
+    shape: halfroom
     description: Placeholder description for Sidewise Spark
   four-star:
     id: 38352

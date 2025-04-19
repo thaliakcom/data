@@ -562,25 +562,25 @@ actions:
     id: 33314
     name: Swinging Kick (Front)
     mechanic: aoe
-    shape: frontal
+    shape: halfroom
     description: Executes the previously stored frontward cleave. Inflicts [s:concussion].
   swinging-kick-rear:  # Swinging Kick
     id: 33315
     name: Swinging Kick (Rear)
     mechanic: aoe
-    shape: rear
+    shape: halfroom
     description: Executes the previously stored rearward cleave. Inflicts [s:concussion].
   swinging-kick-cast-front:  # Swinging Kick (with castbar)
     id: 34709
     name: Swinging Kick (Front)
     mechanic: mech
-    shape: frontal
+    shape: halfroom
     description: Executes the previously stored frontward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
   swinging-kick-cast-rear:  # Swinging Kick (with castbar)
     id: 34710
     name: Swinging Kick (Rear)
     mechanic: mech
-    shape: rear
+    shape: halfroom
     description: Executes the previously stored rearward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
   roundhouse-in:  # Inside Roundhouse
     id: 33336

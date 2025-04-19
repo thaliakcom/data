@@ -41,15 +41,9 @@ sides:
 rect:
   name: rectangle
   description: Affects targets within a rectangular area.
-frontal:
-  name: frontal
-  description: Affects anyone in front of the source. Cannot be outranged. To avoid, the only option is to stay behind the source.
-rear:
-  name: rear
-  description: Affects anyone behind the source. Cannot be outranged. To avoid, the only option is to stay in front of the source.
-side:
-  name: side
-  description: Affects anyone on the west or east side of the source. Cannot be outranged. To avoid, the only option is to stay on the other side.
+halfroom:
+  name: half-room cleave
+  description: Affects anyone on the unsafe side of the source. Cannot be outranged. To avoid, the only option is to stay on the other side.
 star:
   name: star
   description: Spawns multiple line AoEs from a central point, usually one line per [t:principal].

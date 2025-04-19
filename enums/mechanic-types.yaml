@@ -106,7 +106,9 @@ stack.enumeration:
   shapeful: true
 stack.role:
   name: role stack
-  description: A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
+  description: |
+    A heavy-hitting attack on one DPS and one support that cannot be survived alone. The members of their own role must stack close to divide the damage amongst themselves and make it survivable.
+    Sometimes the stack is also split between DPS, tanks, and healers.
   players: 4
   shapeful: true
 stack.healers:
@@ -192,13 +194,11 @@ aoe.intercept:
   shapeful: true
 aoe.chasing:
   name: chasing AoE
-  description: |
-    An attack that spawns a delayed AoE underneath a player's location, then begins to chase them. Any player in the path of the AoE (including the targeted player themselves) take heavy damage and debuffs.
+  description: An attack that spawns a delayed AoE underneath a player's location, then begins to chase them. Any player in the path of the AoE (including the targeted player themselves) take heavy damage and debuffs.
   shapeful: true
 aoe.linger:
   name: lingering AoE
-  description: |
-    An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
+  description: An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
   shapeful: true
 aoe.puddle:
   name: puddle
@@ -208,13 +208,15 @@ aoe.puddle:
   shapeful: true
 aoe.memory:
   name: multi-AoE
-  description: |
-    Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
+  description: Telegraphs multiple AoEs in a sequence that then resolve in fast succession. Players must memorize in which order these AoEs are executed in and stay out of the first AoE, then move into the second, and so on, as the combined sum of these AoEs generally cover the entire arena.
   shapeful: true
 aoe.condition:
   name: conditional
-  description: |
-    An arena-wide AoE that hits any player who doesn't fulfill a specific condition.
+  description: An arena-wide [t:AoE] that hits any player who doesn't fulfill a specific condition.
+aoe.aftershock:
+  name: aftershock
+  description: An [t:AoE] that hits the same area as a previous AoE. Usually the first AoE is player-targeted, and so players need to move to avoid this aftershock AoE.
+  shapeful: true
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
