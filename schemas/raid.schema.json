@@ -256,6 +256,7 @@
         "aoe.puddle",
         "aoe.memory",
         "aoe.condition",
+        "aoe.aftershock",
         "spread",
         "spread.close",
         "spread.far",
@@ -317,9 +318,7 @@
         "cross",
         "sides",
         "rect",
-        "frontal",
-        "rear",
-        "side",
+        "halfroom",
         "star"
       ]
     },
