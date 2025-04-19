@@ -605,12 +605,12 @@ actions:
   flip-to-a-side:
     id: 42880
     name: Flip to A-side
-    mechanic: mech.prepare
+    mechanic: mech.store
     description: Stocks a [m:stack.role]. Grants [s:needle-poised] to [boss].
   flip-to-b-side:
     id: 42881
     name: Flip to B-side
-    mechanic: mech.prepare
+    mechanic: mech.store
     description: Stocks a [m:stack.healers]. Grants [s:needle-poised] to [boss].
   play-a-side:
     id: 42883
@@ -699,6 +699,9 @@ timeline:
     id: lets-dance-group
   - at: 209307
     id: lets-pose!
+  - at: 227530
+    id: flip-to-a-side
+    link: or
   - at: 227530
     id: flip-to-b-side
   - at: 233138
