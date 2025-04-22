@@ -1,0 +1,17 @@
+id: 1026
+patch: "7.2"
+date: 2025-04-10
+modified: 2025-04-10
+by:
+  id: 27637301
+  role: author
+tier: AAC Cruiserweight
+boss: Howling Blade
+HP: 0
+wip: full
+description: ""
+status:
+  2911:  # Damage Down
+    type: impairment
+    duration: 30000
+    description: Reduces damage dealt by approximately 25%.
