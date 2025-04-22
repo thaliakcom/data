@@ -8,6 +8,7 @@ by:
 tier: AAC Cruiserweight
 boss: Dancing Green
 party_hp: 172180
+HP: 105549682
 autos:
   mechanic: auto.single
   type: physical
