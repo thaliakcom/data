@@ -14,4 +14,4 @@ status:
   2911:  # Damage Down
     type: impairment
     duration: 30000
-    description: Reduces damage dealt by approximately 25%.
+    description: Reduces damage dealt by 35%.
