@@ -9,7 +9,9 @@ resistance:
   description: Damage taken (either all damage or only damage from certain types of abilities) is greatly reduced.
 condition:
   name: condition
-  description: Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
+  description: |
+    Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
+    For enemies, it's the opposite: players must fulfill a condition to remove this effect from the enemy, else party-wide damage or death is imminent.
 delay:
   name: delayed execution
   description: Represents a mechanic that will be executed when the status effect expires.

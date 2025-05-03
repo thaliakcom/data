@@ -159,7 +159,9 @@ aoe:
   description: Leaves only a specific section of the arena safe.
 aoe.baitable:
   name: baited AoE
-  description: An [t:AoE] that spawns on player's (past) position but does not resolve until later. Players should move out of the AoE before it resolves to avoid taking damage.
+  description: |
+    An [t:AoE] that spawns on player's (past) position but does not resolve until later. Players should move out of the AoE before it resolves to avoid taking damage.
+    These mechanics are also sometimes called "twister"-type mechanics, in reference to Twintania's signature ability.
   shapeful: true
 aoe.exaflares:
   name: exaflares
