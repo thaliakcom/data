@@ -697,6 +697,18 @@
   short: Savage
   type: patch
   at: 2025-04-01 10:00:00
+- name: Hatching-tide
+  type: event
+  color: "#578f35"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2025/Hatching_tide/ta6u6e9be7
+  from: 2025-04-09 08:00:00
+  to: 2025-04-24 14:59:59
+- name: Make It Rain
+  type: event
+  color: "#a8a82d"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2025/the_make_it_rain_campaign/pP1HUSgIHI
+  from: 2025-05-19 08:00:00
+  to: 2025-06-11 14:59:59
 - name: Patch 7.21 (Cosmic Exploration)
   short: Patch 7.21
   type: patch
@@ -705,3 +717,8 @@
   short: Patch 7.25
   type: patch
   at: 2025-05-27 10:00:00
+- name: Letter from the Producer Live Part LXXXVII
+  short: PLL LXXXVI
+  type: live letter
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/16c64329e58f9b771791cdf87ae3185f1ba80deb
+  at: 2025-06-20 10:00:00
