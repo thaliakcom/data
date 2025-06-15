@@ -1,12 +1,15 @@
 dot:
   name: damage over time
   description: Deals a certain amount of damage every tick (3 seconds) until the status effect falls off.
+  type: debuff
 vuln:
   name: Resistance Down
   description: Damage taken (either all damage or only damage from certain types of abilities) is greatly amplified (often to the point of certain death).
+  type: debuff
 resistance:
   name: Resistance Up
   description: Damage taken (either all damage or only damage from certain types of abilities) is greatly reduced.
+  type: buff
 condition:
   name: condition
   description: |
@@ -18,21 +21,27 @@ delay:
 form:
   name: form
   description: A form or "stance" that changes certain abilities and mechanics.
+  type: buff
 impairment:
   name: impairment
   description: Impairs the player's movement or actions in some way.
+  type: debuff
 indicator:
   name: indicator
   description: Has no effect on its own but serves as a helper status to make mechanics easier to resolve by assigning everyone a letter or number.
 damage-up:
   name: Damage Up
   description: Increases all damage dealt.
+  type: buff
 rot:
   name: rot
   description: A status effect that can be passed to other players by walking into them. The original player keeps the status effect when passed. Named after [s:333], a mechanic in The Binding Coil of Bahamut - Turn 2. Often triggers some kind of effect when the status expires.
+  type: debuff
 rot.pass:
   name: rot
   description: A status effect that can be passed to other players by walking into them. The original player loses the status effect when passed. Named after [s:333], a mechanic in The Binding Coil of Bahamut - Turn 2. Often triggers some kind of effect when the status expires.
+  type: debuff
 rot.immunity:
   name: rot immunity
   description: A status effect that renders the player unable to have another [t:rot] effect passed to them. Is usually inflicted after passing their rot status effect to another player, to prevent repeatedly passing it back and forth.
+  type: debuff
