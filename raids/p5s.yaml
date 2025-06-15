@@ -1,7 +1,7 @@
 id: 873
 patch: "6.2"
 date: 2022-10-03
-modified: 2024-06-20
+modified: 2025-06-15
 by:
   id: 27637301
   role: author
@@ -17,36 +17,58 @@ description: |
   Featuring mechanics with unforgiving snapshots that demand good team coordination and a quick eye, [fight] is one of the most dangerous first floor encounters the game has ever had.
   [boss]'s auto-attacks are physical, but its abilities feature a wide variety of magical and physical attacks. The fight also features a special Satiety Duty Gauge that gradually drains over the course of the fight, but you can essentially ignore it entirely.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 25%.
-  2940:  # Physical Vulnerability Up
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
     duration: 15000
-    description: Makes any physical damage received lethal.
-  3390:  # Poison
+    description: Renders any physical damage received lethal.
+  poison:
+    id: 3390
+    type: dot
+    tick: 30000
     duration: 12000
-    description: Ticks 4 times for about 30,000 damage each tick. Note that each tick's damage is directly relative to how much damage the source tankbuster inflicted.
-  3082:  # Toxicosis
+    description: A heavy [t:DoT] inflicted by [a:venomous-mass] and [a:toxic-crunch]. Note that each tick's damage is directly relative to how much damage the source tankbuster inflicted.
+  toxicosis:
+    id: 3082
+    type: dot
+    tick: 24000
     duration: 15000
-    description: Ticks 5 times for approximately 24,000 damage each tick.
-  3407:  # Toxicosis (from puddles)
+    description: Heavy [t:DoT].
+  toxicosis-puddle:
+    id: 3407
+    type: dot
+    tick: 18000
     duration: 999999.0
     description: Ticks for approximately 18,000 damage each tick for as long as the affected player is standing inside the caustic pool.
 actions:
-  30496:  # Sonic Howl
+  sonic-howl:
+    id: 30496
+    mechanic: raidwide
     damage: 45800
-    description: Medium-damage raidwide. [boss] always follows it up with [a:30452]. Well-timed mitigation can cover both (except for the second Ruby Glow).
-  30452:  # Ruby Glow
+    description: Medium-damage raidwide. [boss] always follows it up with [a:ruby-glow]. Well-timed mitigation can cover both (except for the second Ruby Glow).
+  ruby-glow:
+    id: 30452
+    mechanic: mech.arena
+    players: 8
     damage: 65300
     description: High-damage raidwide. Sets up reflective ruby walls around the arena for the next mechanic.
-  30457:  # Ruby Reflection
-    description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of high damage. Inflicts [s:2911].
-  30461:  # Topaz Stones
+  ruby-reflection:
+    id: 30457
+    mechanic: aoe
+    shape: rect
+    description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of high damage. Inflicts [s:damage-down].
+  topaz-stones:
+    id: 30461
+    mechanic: mech
     description: |
       Places topaz and emeralds around the arena. After some time, both types of stones will release an effect:
-      **Topaz** will always be placed next to a ruby wall, which will reflect their [t:AoE] when they explode and bathe the entire square in [a:30457] that inflict [s:2911]. Note that this is a **lingering** effect that lasts for 3 ticks. Do not step into an affected square until the visual effect has dissipated.
-      **Emeralds** do not interact with ruby walls. They release a poison puddle that gradually grows. The maximum size of these puddles is slightly smaller than the total length of the arena. Stepping into a puddle inflicts [s:3082] for 15 seconds.
+      **Topaz** will always be placed next to a ruby wall, which will reflect their [t:AoE] when they explode and bathe the entire square in [a:ruby-reflection] that inflict [s:damage-down]. Note that this is a **lingering** effect that lasts for 3 ticks. Do not step into an affected square until the visual effect has dissipated.
+      **Emeralds** do not interact with ruby walls. They release a poison puddle that gradually grows. The maximum size of these puddles is slightly smaller than the total length of the arena. Stepping into a puddle inflicts [s:toxicosis] for 15 seconds.
     strategies:
       ruby-glow-1-1:
         name: Tight pattern
@@ -54,30 +76,38 @@ actions:
       ruby-glow-1-2:
         name: Wide pattern
         description: If a topaz shares a square with an emerald, there will be one square with neither topaz nor emerald in it. Half of this square is safe.
-  30493:  # Venomous Mass
+  venomous-mass:
+    id: 30493
     mechanic: tb.mt
     damage: 71200
     type: magic
     description: |
-      High-damage tankbuster. Inflicts [s:2940] and [s:3390]. Immediately follows up with [a:30794], which deals physical damage and thus requires a tankswap.
+      High-damage tankbuster. Inflicts [s:physical-vulnerability-up] and [s:poison]. Immediately follows up with [a:toxic-crunch], which deals physical damage and thus requires a tankswap.
       **Note that this hit of the tankbuster is an [t:AoE]. Stay away from the main tank during this cast!**
-  30794:  # Toxic Crunch
+  toxic-crunch:
+    id: 30794
     mechanic: tb.mt
     damage: 76700
     type: physical
     description: |
-      High-damage tankbuster. Inflicts [s:3390]. Note that this tankbuster **cannot be invulned** if you have [s:2940], as the resulting [s:3390] effect is directly relative to how much damage the initial hit inflicted. With [s:2940] each tick of the DoT will be lethal. Due to the DoT's long duration, it is not possible to cover all 4 ticks with invulnerability either.
-      Be aware that [s:2940] will fade before the boss starts auto-attacking again, so there is no need to swap back after this hit.
-  30476:  # Venom
+      High-damage tankbuster. Inflicts [s:poison]. Note that this tankbuster **cannot be invulned** if you have [s:physical-vulnerability-up], as the resulting [s:poison] effect is directly relative to how much damage the initial hit inflicted. With [s:physical-vulnerability-up] each tick of the DoT will be lethal. Due to the DoT's long duration, it is not possible to cover all 4 ticks with invulnerability either.
+      Be aware that [s:physical-vulnerability-up] will fade before the boss starts auto-attacking again, so there is no need to swap back after this hit.
+  venom:
+    id: 30476
     mechanic: tb.close.stack
+    damage: 75000
     description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
-  30477:  # Scatterbait
-    description: High-damage raidwide that inflicts [s:2911] on every living party member.
+  scatterbait:
+    id: 30477
+    mechanic: mech.failure
+    description: High-damage raidwide that inflicts [s:damage-down] on every living party member.
   caustic-pools:
     name: Caustic Pools
+    mechanic: towers.double
+    damage: 0
     description: |
-      Spawns 4 caustic pools on the circular engravings in the arena floor – two on the inside, two on the outside. 10 orbs slowly encircle the puddle. After the tenth orb appears, the puddle will "resolve". At that time, there must be two players inside the puddle or [a:30476] will hit the closest player to the puddle, likely killing them and anyone nearby, and spawning a [n:11441] which will begin to cast [a:30477].
-      Entering the puddle inflicts [s:3407], so it is recommended to stand on the outside of the pool and only enter your designated pool when there are only 1 or 2 missing orbs around the pool.
+      Spawns 4 caustic pools on the circular engravings in the arena floor – two on the inside, two on the outside. 10 orbs slowly encircle the puddle. After the tenth orb appears, the puddle will "resolve". At that time, there must be two players inside the puddle or [a:venom] will hit the closest player to the puddle, likely killing them and anyone nearby, and spawning an enemy which will begin to cast [a:scatterbait].
+      Entering the puddle inflicts [s:toxicosis-puddle], so it is recommended to stand on the outside of the pool and only enter your designated pool when there are only 1 or 2 missing orbs around the pool.
     strategies:
       caustic-cw-ccw-prio:
         name: Clockwise/counter-clockwise priority
@@ -85,89 +115,123 @@ actions:
           Assign partners at the start of the fight. Tanks should always be paired with each other; the remaining partners can be assigned freely, but it is common to use role partners (melees with melees, healers with healers, ranged with ranged). Designate two pairs that always take outside pools and two pairs that always take inside pools. It is recommended to make the tanks and melee DPS take the inside pools, but the boss's hitbox is large enough that even melees can maintain full melee uptime from an outside pool.
           One inside pair always starts north and goes clockwise until it finds a pool (most commonly tanks). The other inside pair does the opposite, starting west and going counter-clockwise until they find a pool. The same goes for the two outside pairs, but they start northeast and northwest, respectively.
           If you put markers on each of the pool spawn points (letters on the inside, numbers on the outside), another way to think about it is that you always take the first pooled marker in the sequence if you're the clockwise pair, and the last pooled marker in the sequence if you're the counter-clockwise pair. For instance, if there are pools on the B and C markers, the north pair would choose B, as it comes before C in the alphabet, and the other pair chooses C.
-  30492:
+  rush:
+    id: 30492
+    mechanic: mech.knockback
     damage: 58000
     description: |
-      [boss] faces one of two directions and rushes the arena twice, applying a knockback and heavy damage to anything in its path. Since [boss] always starts in the center, the first rush can and should be avoided by simply standing behind [boss]. The second rush cannot be avoided and should be mitigated. You can use [a:7548] and [a:7559] to negate the knockback.
+      [boss] faces one of two directions and rushes the arena twice, applying a knockback and heavy damage to anything in its path. Since [boss] always starts in the center, the first rush can and should be avoided by simply standing behind [boss]. The second rush cannot be avoided and should be mitigated. You can use [a:arms-length] and [a:surecast] to negate the knockback.
       This attack forces downtime on melee players. With good ping, you may be able to get a [t:GCD] in as [boss] rushes past the second time, but your [t:GCD] may easily be [ghosted](t:ghosting).
-  30488:  # Venom Rain
+  venom-rain:
+    id: 30488
+    mechanic: spread
+    shape: chariot
     damage: 64000
     description: Hits every party member with a high-damage [t:AoE].
     strategies:
       clock-spots:
         name: Clock spots
         description: Assign clock spots at the start of the fight and use them here.
-  30489:  # Venom Drops
-    description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:2911] otherwise.
-  30490:  # Venom Pool
+  venom-drops:  # Venom Drops
+    id: 30489
+    mechanic: aoe.baitable
+    shape: chariot
+    description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:damage-down] otherwise.
+  venom-pool:
+    id: 30490
     mechanic: stack.healers
     shape: chariot
     damage: 50000
     description: |
       Hits both healers with an untelegraphed [t:AoE] that should be shared by exactly 4 players.
       This attack has a special interaction with topaz stones. If dropped within the [t:AoE] circle of a topaz stone before it explodes, it will *swap* that topaz to an emerald.
-  30486:  # Venom Squall
-    description: "Uses the following sequence of attacks: [a:30488] → [a:30489] → [a:30490] (or: spread → bait → stack)."
+  venom-squall:
+    id: 30486
+    mechanic: mech
+    description: "Uses the following sequence of attacks: [a:venom-rain] → [a:venom-drops] → [a:venom-pool] (or: spread → bait → stack)."
     strategies:
       stay-after-spread:
         name: Stay after spread
         description: Healers spread far away from [boss], close to the edge of the arena. Everyone elses is in their designated clock position. Afterwards all players remain in position where they spread. Once the baited puddles appear, everyone moves to one of the two safe spots on [boss]'s sides, where healer stacks will happen. This minimizes movement for casters.
       center-after-spread:
         name: Center after spread
-        description: After the initial spreads, everyone moves dead-center of [boss]'s hitbox. Once all [a:30489] puddles are baited in the center, everyone moves to their healer's stack spot.
-  30487:  # Venom Surge
-    description: "Uses the following sequence of attacks: [a:30490] → [a:30489] → [a:30488] (or: stack → bait → spread)."
+        description: After the initial spreads, everyone moves dead-center of [boss]'s hitbox. Once all [a:venom-drops] puddles are baited in the center, everyone moves to their healer's stack spot.
+  venom-surge:
+    id: 30487
+    mechanic: mech
+    description: "Uses the following sequence of attacks: [a:venom-pool] → [a:venom-drops] → [a:venom-rain] (or: stack → bait → spread)."
     strategies:
       stay-after-stack:
         name: Stay after stack
         description: Healer stacks happen close to [boss], inside the monster's hitbox. Afterwards all players remain in position where they stacked. Once the baited puddles appear, everyone moves to their designated clock positions. Healers move out past the baited puddles in the direction of their clock spots. This minimizes movement for casters.
       center-after-stack:
         name: Center after stack
-        description: After the initial stacks, everyone moves dead-center of [boss]'s hitbox. Once all [a:30489] puddles are baited in the center, everyone moves to their designated clock spots.
-  30479:  # Raging Claw
-    description: "[boss] cleaves the arena in front of it with seven deadly hits that inflict [s:2911]. This attack does not interact with ruby walls. The safe zone is always behind [boss]."
-  30481:  # Raging Tail
-    description: "[boss] cleaves the arena behind it with a heavy hit that inflicts [s:2911]. The safe zone is always in front of [boss]."
-  30455:  # Searing Ray
+        description: After the initial stacks, everyone moves dead-center of [boss]'s hitbox. Once all [a:venom-drops] puddles are baited in the center, everyone moves to their designated clock spots.
+  raging-claw:
+    id: 30479
+    mechanic: aoe
+    shape: halfroom
+    description: "[boss] cleaves the arena in front of it with seven deadly hits that inflict [s:damage-down]. This attack does not interact with ruby walls. The safe zone is always behind [boss]."
+  raging-tail:
+    id: 30481
+    mechanic: aoe
+    shape: halfroom
+    description: "[boss] cleaves the arena behind it with a heavy hit that inflicts [s:damage-down]. The safe zone is always in front of [boss]."
+  searing-ray:
+    id: 30455
+    mechanic: aoe
+    shape: halfroom
     description: |
-      [boss] cleaves the arena in front of it with a heavy hit that inflicts [s:2911]. If the attack hits a ruby wall, the entire square will be bathed in [a:30457].
+      [boss] cleaves the arena in front of it with a heavy hit that inflicts [s:damage-down]. If the attack hits a ruby wall, the entire square will be bathed in [a:ruby-reflection].
       In Savage, this attack is only ever used in combination with a ruby wall, so stay away from [boss] during this cast.
-  30482:
+  raging-tail-sequence:
+    id: 30482
+    mechanic: aoe
+    shape: halfroom
     description: |
-      Uses the following sequence of attacks: [a:30481] → 7 hits of [a:30479] (or: get in front → get behind).
-      Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind him just as [a:30481] comes out.
-  30478:
+      Uses the following sequence of attacks: [a:raging-tail] → 7 hits of [a:raging-claw] (or: get in front → get behind).
+      Both [a:raging-tail] and [a:raging-claw] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind him just as [a:raging-tail] comes out.
+  raging-claw-sequence:
+    id: 30478
+    mechanic: aoe
+    shape: halfroom
     description: |
-      Uses the following sequence of attacks: 7 hits of [a:30479] → [a:30481] (or: get behind → wait → get in front). The last hit of the [a:30479] sequence is the double claw finisher. This is your cue to switch sides, as [a:30481] will hit the rear immediately after, with no additional cast time.
-      Both [a:30481] and [a:30479] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind it just as (or even *before*) the last hit of [a:30479] comes out.
-  30793:  # Devour
-    description: "[boss] lowers itself to all fours and prepares to "
-  30497:  # Sonic Shatter
+      Uses the following sequence of attacks: 7 hits of [a:raging-claw] → [a:raging-tail] (or: get behind → wait → get in front). The last hit of the [a:raging-claw] sequence is the double claw finisher. This is your cue to switch sides, as [a:raging-tail] will hit the rear immediately after, with no additional cast time.
+      Both [a:raging-tail] and [a:raging-claw] have very unforgiving snapshots. Try to make sure you are as close to [boss] as possible so you can move behind it just as (or even *before*) the last hit of [a:raging-claw] comes out.
+  devour:
+    id: 30793
+    mechanic: mech
+    description: "[boss] lowers itself to all fours and prepares to pounce."
+  sonic-shatter:
+    id: 30497
+    mechanic: raidwide
     damage: 40000
     description: Medium damage raidwide used five times in quick succession.
-  30499:  # Acidic Slaver
+  acidic-slaver:
+    id: 30499
+    mechanic: enrage
     damage: 9999999
-    description: This is the [t:enrage].
+    description: This is the [m:enrage].
 timeline:
   - at: 10000
-    id: 30496
+    id: sonic-howl
   - at: 17000
-    id: 30452
+    id: ruby-glow
     description: Divides the arena into quarters.
   - at: 25000
-    id: 30461
+    id: topaz-stones
     description: Spawns 2 topaz and 2 emeralds. Only one square is safe.
     # strategies: [ruby-glow-1-1, ruby-glow-1-2]
   - at: 51000
-    id: 30493
+    id: venomous-mass
   - at: 58000
-    id: 30794
+    id: toxic-crunch
   - at: 85000
     id: caustic-pools
   - at: 89000
-    id: 30493
+    id: venomous-mass
   - at: 96000
-    id: 30794
+    id: toxic-crunch
 graphing:
   elements:
     arena:
@@ -188,20 +252,19 @@ graphing:
       type: ellipse
       size: 40
       color: "#4CD2A3"
-      description: An emerald that initially has no effect, but soon spawns an expanding poison puddle around it. Inflicts [s:3082] if stepped in.
-    # topaz:
-    #   graphic:
-    #     - type: radial-half
-    #       width: 5
-    #       height: 10
-    #       color: yellow
-    #   description: A topaz placed on a ruby wall that will soon shatter, bathing its entire walled-off section with [a:30457].
+      description: An emerald that initially has no effect, but soon spawns an expanding poison puddle around it. Inflicts [s:toxicosis] if stepped in.
+    topaz:
+      type: cone
+      angle: 180
+      size: [5, 10]
+      color: yellow
+      description: A topaz placed on a ruby wall that will soon shatter, bathing its entire walled-off section with [a:ruby-reflection].
     topaz-explosion:
       type: rectangle
       size: 50
       color: "#FCFCFF"
       # effect: pulse 1s
-      description: The square is being bathed in the light of [a:30457].
+      description: The square is being bathed in the light of [a:ruby-reflection].
   graphs:
     ruby-glow-1-1:
       - ruby-wall-short#1: [50, 50]
