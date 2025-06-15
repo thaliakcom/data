@@ -1,7 +1,7 @@
 id: 1022
 patch: "7.2"
 date: 2025-05-03
-modified: 2025-05-03
+modified: 2025-06-15
 by:
   id: 27637301
   role: author
@@ -121,6 +121,7 @@ status:
     id: 4457
     name: Huffy Cat
     type: condition
+    affects: enemy
     description: |
       The cat gains a stack of this buff every time it casts [a:i-crave-violence] without hitting any player. After reaching [s:huffy-cat:3] the cat casts [a:hangry-hiss], instantly killing all players.
       The cat casts the first [a:i-crave-violence] 10s after spawning, and thereafter casts one [a:i-crave-violence] every 15s, thus enraging approximately 40s after spawning. However, this enrage can be delayed by deliberately letting one player be hit by [a:i-crave-violence], which prevents the cat from gaining a stack of [s:huffy-cat]. Please note, however, that the penalties for being hit by [a:i-crave-violence] are extremely harsh; see [a:i-crave-violence] for more information.
@@ -133,6 +134,7 @@ status:
   damage-up:
     id: 3129
     type: damage-up
+    affects: enemy
     description: Renders [a:mousse-mural] lethal to all players.
 actions:
   double-style:
