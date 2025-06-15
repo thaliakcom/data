@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
 date: 2024-05-19
-modified: 2024-06-22
+modified: 2025-06-15
 by:
   id: 27637301
   role: author
@@ -10,13 +10,14 @@ HP: 0
 party_hp: 67993
 description: An alternate retelling of the Omega raid storyline in which Omega successfully ascertains and harnesses what lies at the heart of a mortal's strength.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 180000
     description: |
       Reduces all damage dealt by 90%.
-      Due to the tight nature of this fight's DPS checks, it is paramount that this debuff is avoided at all costs. If that is not possible, consider [walling](t:wall) yourself to replace [s:2911] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
-      Under no circumstances should you use any kind of damage cooldown while [s:2911] is active, even during the 2m buff window.
+      Due to the tight nature of this fight's DPS checks, it is paramount that this debuff is avoided at all costs. If that is not possible, consider [walling](t:wall) yourself to replace [s:damage-down] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
+      Under no circumstances should you use any kind of damage cooldown while [s:damage-down] is active, even during the 2m buff window.
   looper:
     id: 3456
     type: condition
@@ -222,18 +223,22 @@ status:
   synchronization-debugger:
     id: 3430
     type: resistance
+    isBuff: true
     description: Automatically granted after the expiration of [s:critical-synchronization-bug]. The next time [s:critical-synchronization-bug] were to be inflicted, this buff is consumed and [s:critical-synchronization-bug] is *not* inflicted.
   overflow-debugger:
     id: 3431
     type: resistance
+    isBuff: true
     description: Automatically granted after the expiration of [s:critical-overflow-bug]. The next time [s:critical-overflow-bug] were to be inflicted, this buff is consumed and [s:critical-overflow-bug] is *not* inflicted.
   underflow-debugger:
     id: 3432
     type: resistance
+    isBuff: true
     description: Automatically granted after the expiration of [s:critical-underflow-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-underflow-bug] to this player, making it paramount that every player only receives [s:critical-underflow-bug] once, before they take their tower.
   performance-debugger:
     id: 3433
     type: resistance
+    isBuff: true
     description: Automatically granted after the expiration of [s:critical-performance-bug]. Unlike [s:synchronization-debugger] and [s:overflow-debugger], this debugger prevents *all* future passes of [s:critical-performance-bug] to this player, making it paramount that every player only receives [s:critical-performance-bug] once, before they take their tower.
   oversampled-wave-cannon-loading:
     id: 3452
@@ -256,6 +261,7 @@ status:
   quickening-dynamis:
     id: 3444
     type: condition
+    isBuff: true
     description: |
       Accumulated by being hit with either [a:hello-near-world] or [a:hello-distant-world], up to a maximum of [s:quickening-dynamis:3].
       Accumulating [s:quickening-dynamis:3] upgrades this status effect into [s:brilliant-dynamis] when [a:cosmo-memory-2] is cast. By the end of Phase 5, all players must be in possession of [s:quickening-dynamis:3] or a wipe is guaranteed.
@@ -529,7 +535,7 @@ actions:
     id: 32368
     mechanic: aoe.rotating
     shape: cone
-    description: Omega shoots a cone of fire toward two random opposite spots in the arena, then rotates those cones either clockwise or counter-clockwise in 2 second intervals. Being hit is lethal to anyone but tanks, who can get away with [s:2911].
+    description: Omega shoots a cone of fire toward two random opposite spots in the arena, then rotates those cones either clockwise or counter-clockwise in 2 second intervals. Being hit is lethal to anyone but tanks, who can get away with [s:damage-down].
   condensed-wave-cannon-kyrios:
     id: 31503
     mechanic: stack.targeted
@@ -547,7 +553,7 @@ actions:
     id: 31500
     mechanic: aoe.baitable
     shape: chariot
-    description: A telegraphed baited AoE dropped by all players on their current position. Resolves a few seconds later. Being inside one when it resolves deals massive damage and inflicts [s:2911].
+    description: A telegraphed baited AoE dropped by all players on their current position. Resolves a few seconds later. Being inside one when it resolves deals massive damage and inflicts [s:damage-down].
   wave-cannon-kyrios:
     id: 31505
     mechanic: spread
@@ -908,7 +914,7 @@ actions:
     id: 31567
     mechanic: aoe.expanding.rings
     compact: full
-    description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:2911]).
+    description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:damage-down]).
     children:
       - at: 2098
         id: wave-repeater-hit
@@ -1127,7 +1133,7 @@ actions:
   hello-world-fail:
     id: 31627
     mechanic: mech.failure
-    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Deals lethal damage to all party members. Can be [t:invuln]ed, but inflicts [s:2911] in that case.
+    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Deals lethal damage to all party members. Can be [t:invuln]ed, but inflicts [s:damage-down] in that case.
   latent-defect:
     id: 31599
     mechanic: towers.single
@@ -1594,7 +1600,7 @@ actions:
     name: Rear Lasers
     mechanic: aoe.rotating
     shape: line
-    description: Final Omega's ring detaches, perches itself in the center of the arena, and begins to rotate clockwise or counter-clockwise while firing continuous laser AoEs that deal massive damage and inflict [s:2911].
+    description: Final Omega's ring detaches, perches itself in the center of the arena, and begins to rotate clockwise or counter-clockwise while firing continuous laser AoEs that deal massive damage and inflict [s:damage-down].
   far-hyper-pulse:
     id: 31602
     mechanic: spread.far
@@ -1641,7 +1647,7 @@ actions:
       If executed correctly, everyone should now have [s:quickening-dynamis:3], paving the way for Phase 6.
       If anyone doesn't have [s:quickening-dynamis:3] at this point you are guaranteed to wipe early into Phase 6, so it's recommended to wipe the pull immediately.
     tips:
-      - It's recommended to use most of your remaining party mitigation after the initial cast of [a:run-dynamis-(omega-version)]. This will allow players (even non-tanks) to survive a hit during the first part of the mechanic, thus keeping the pull alive (though the player will be inflicted with [s:2911]). If this happens, it is **strongly recommended** to [t:wall] yourself at the earliest opportunity to get rid of [s:2911]. The [a:blind-faith] DPS check may not be possible to beat otherwise. Make absolutely sure to only wall yourself if a) you do **not** have [s:hello-near-world] or [s:hello-distant-world] and the first set of [a:hello-near-distant-world] has finished executing, or b) the second set of [a:hello-near-distant-world] has finished executing. In other words, do not wall yourself if you have a mechanical responsibility in the next 10 seconds.
+      - It's recommended to use most of your remaining party mitigation after the initial cast of [a:run-dynamis-(omega-version)]. This will allow players (even non-tanks) to survive a hit during the first part of the mechanic, thus keeping the pull alive (though the player will be inflicted with [s:damage-down]). If this happens, it is **strongly recommended** to [t:wall] yourself at the earliest opportunity to get rid of [s:damage-down]. The [a:blind-faith] DPS check may not be possible to beat otherwise. Make absolutely sure to only wall yourself if a) you do **not** have [s:hello-near-world] or [s:hello-distant-world] and the first set of [a:hello-near-distant-world] has finished executing, or b) the second set of [a:hello-near-distant-world] has finished executing. In other words, do not wall yourself if you have a mechanical responsibility in the next 10 seconds.
       - "Generally, you can categorize each dodge into one of three categories: a close dodge ([a:superliminal-steel] + [a:beyond-strength]/[a:efficient-bladework]), a mid dodge ([a:optimized-blizzard-iii] + [a:beyond-strength]), and a far dodge ([a:optimized-blizzard-iii] + [a:efficient-bladework]). As the main condition for which type of dodge it is lies in Omega-F's attack, it is her stance that you should identify first. If she has blade legs, you already know it'll be a close dodge. Otherwise, check Omega-M to determine whether it's a mid or a far dodge."
     mistakes:
       - Not reading Omega-F's or Omega-M's stance correctly.
@@ -1698,7 +1704,7 @@ actions:
     id: 31609
     mechanic: aoe
     shape: cone
-    description: Final Omega consolidates the ring on its back, *may* turn the ring by 90°, then shoots massive conal AoEs in either direction of the ring that inflict [s:2911].
+    description: Final Omega consolidates the ring on its back, *may* turn the ring by 90°, then shoots massive conal AoEs in either direction of the ring that inflict [s:damage-down].
   blind-faith:
     id: 31623
     type: magic
@@ -2401,14 +2407,14 @@ graphing:
       - cast: { text: "Program Loop", progress: 1, visible: true }
         tower#1: { visible: true }
         tower#7: { visible: true }
-        T1: { status: [3006, 3456] }
-        T2: { status: [3005, 3456] }
-        M1: { status: [3004, 3456] }
-        M2: { status: [3004, 3456] }
-        R1: { status: [3006, 3456] }
-        R2: { status: [3451, 3456] }
-        H1: { status: [3451, 3456] }
-        H2: { status: [3005, 3456] }
+        T1: { status: [third-in-line, looper] }
+        T2: { status: [second-in-line, looper] }
+        M1: { status: [first-in-line, looper] }
+        M2: { status: [first-in-line, looper] }
+        R1: { status: [third-in-line, looper] }
+        R2: { status: [fourth-in-line, looper] }
+        H1: { status: [fourth-in-line, looper] }
+        H2: { status: [second-in-line, looper] }
       - cast: { progress: 1, visible: false }
         T2: [55, 180]
         M1: [55, 180]
@@ -2441,10 +2447,10 @@ graphing:
         tower-filled#7: { visible: false }
         tower-filled#3: { visible: true }
         tower#5: { visible: true }
-        T1: { status: [3006, 3456, 3401, 2534] }
-        R1: { status: [3006, 3456, 3401, 2534] }
-        M1: { status: [2534] }
-        M2: { status: [2534] }
+        T1: { status: [third-in-line, looper, hp-penalty, twice-come-ruin] }
+        R1: { status: [third-in-line, looper, hp-penalty, twice-come-ruin] }
+        M1: { status: [twice-come-ruin] }
+        M2: { status: [twice-come-ruin] }
       - cast: { visible: false }
         T1: [34, 101]
         R1: [34, -171]
@@ -2470,12 +2476,12 @@ graphing:
         tower-filled#5: { visible: false }
         tower-filled#4: { visible: true }
         tower#8: { visible: true }
-        R2: { status: [3451, 3456, 3401, 2534] }
-        H1: { status: [3451, 3456, 3401, 2534] }
-        T1: { status: [3006, 3456] }
-        R1: { status: [3006, 3456] }
-        T2: { status: [2534] }
-        H2: { status: [2534] }
+        R2: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
+        H1: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
+        T1: { status: [third-in-line, looper] }
+        R1: { status: [third-in-line, looper] }
+        T2: { status: [twice-come-ruin] }
+        H2: { status: [twice-come-ruin] }
         M1: { status: [] }
         M2: { status: [] }
       - tower#8: { visible: false }
@@ -2502,12 +2508,12 @@ graphing:
         tower-filled#8: { visible: false }
         tower#2: { visible: true }
         tower#6: { visible: true }
-        R2: { status: [3451, 3456] }
-        H1: { status: [3451, 3456] }
-        M1: { status: [3401, 2534] }
-        M2: { status: [3401, 2534] }
-        T1: { status: [2534] }
-        R1: { status: [2534] }
+        R2: { status: [fourth-in-line, looper] }
+        H1: { status: [fourth-in-line, looper] }
+        M1: { status: [hp-penalty, twice-come-ruin] }
+        M2: { status: [hp-penalty, twice-come-ruin] }
+        T1: { status: [twice-come-ruin] }
+        R1: { status: [twice-come-ruin] }
         T2: { status: [] }
         H2: { status: [] }
       - tower#2: { visible: false }
@@ -2535,14 +2541,14 @@ graphing:
         blaster-tether#*: { visible: false }
         tower-filled#2: { visible: false }
         tower-filled#6: { visible: false }
-        R2: { status: [2534] }
-        H1: { status: [2534] }
+        R2: { status: [twice-come-ruin] }
+        H1: { status: [twice-come-ruin] }
         R1: { status: [] }
         T1: { status: [] }
         M1: { status: [] }
         M2: { status: [] }
-        T2: { status: [3401, 2534] }
-        H2: { status: [3401, 2534] }
+        T2: { status: [hp-penalty, twice-come-ruin] }
+        H2: { status: [hp-penalty, twice-come-ruin] }
       - blaster#*: { visible: false }
     pantokrator:
       - marker-a: [60, 0]
@@ -2569,14 +2575,14 @@ graphing:
         wave-cannon#1..2: [0, 0]
         spread#1..2: [0, 0]
         boss: [0, 0]
-        R1: { x: 30, y: -135, status: [3004] }
-        T2: { x: 30, y: 45, status: [3005] }
-        T1: { x: 30, y: 0, status: [3006] }
-        H1: { x: 30, y: -90, status: [3451] }
-        M1: { x: 30, y: 180, status: [3004] }
-        R2: { x: 30, y: -45, status: [3005] }
-        H2: { x: 30, y: 90, status: [3006] }
-        M2: { x: 30, y: 135, status: [3451] }
+        R1: { x: 30, y: -135, status: [first-in-line] }
+        T2: { x: 30, y: 45, status: [second-in-line] }
+        T1: { x: 30, y: 0, status: [third-in-line] }
+        H1: { x: 30, y: -90, status: [fourth-in-line] }
+        M1: { x: 30, y: 180, status: [first-in-line] }
+        R2: { x: 30, y: -45, status: [second-in-line] }
+        H2: { x: 30, y: 90, status: [third-in-line] }
+        M2: { x: 30, y: 135, status: [fourth-in-line] }
       - R1: [40, -45]
         T2: [45, -45]
         T1: [50, -45]
@@ -3310,14 +3316,14 @@ graphing:
         M2: { x: 28.57, y: 55, coordinate-system: cartesian }
         R2: { x: 40, y: 55, coordinate-system: cartesian }
       - circle#1: { visible: true }
-        R1: { y: 65, status: [3425] }
-        M1: { y: 45, status: [3426] }
-        T1: { y: 65, status: [3425] }
+        R1: { y: 65, status: [sniper-cannon-fodder] }
+        M1: { y: 45, status: [high-powered-sniper-cannon-fodder] }
+        T1: { y: 65, status: [sniper-cannon-fodder] }
         H1: { status: [] }
-        H2: { y: 65, status: [3425] }
-        T2: { y: 65, status: [3425] }
+        H2: { y: 65, status: [sniper-cannon-fodder] }
+        T2: { y: 65, status: [sniper-cannon-fodder] }
         M2: { status: [] }
-        R2: { y: 45, status: [3426] }
+        R2: { y: 45, status: [high-powered-sniper-cannon-fodder] }
       - boss#1..3: { visible: true }
       - circle#1: { visible: false }
         circle#2: { visible: true }
@@ -3403,16 +3409,16 @@ graphing:
         label: { text: "Fast-forwarding to last set...", visible: false, y: -90 }
       - arena: { image: /images/arenas/top-p3-hw.avif }
         cast: { progress: 1 }
-        [T1, H2]: { status: [3503, 3441, 3434] }
-        [T2, M2]: { status: [3503, 3441, 3434, 3437, 3438] }
-        [H1, M1]: { status: [3503, 3441, 3434, 3527] }
-        [R1, R2]: { status: [3503, 3441, 3434, 3436, 3439] }
+        [T1, H2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug] }
+        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-code-smell, underflow-code-smell] }
+        [H1, M1]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, latent-defect] }
+        [R1, R2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, synchronization-code-smell, performance-code-smell] }
         far-tether#1: { visible: true }
         close-tether#1: { visible: true }
         circle#[performance,underflow]-1.[1,2]: { visible: true }
       - cast: { visible: false }
-        [T2, M2]: { status: [3503, 3441, 3434, 3525, 3526] }
-        [R1, R2]: { status: [3503, 3441, 3434, 3524, 3429] }
+        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        [R1, R2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, critical-synchronization-bug, critical-performance-bug] }
       - cast: { progress: 0, text: Latent Defect, visible: true }
         circle#tower-*: { visible: true }
       - cast: { progress: 0.3 }
@@ -3437,24 +3443,24 @@ graphing:
         close-tether#2: { visible: true }
         circle#[stack,defam]-[1,2]: { scale: 1 }
         circle#tower-*: { scale: 0 }
-        [T1, H2]: { status: [3503, 3530, 3434] }
-        [T2, M2]: { status: [3503, 3441, 3434, 3431, 3526, 3528] }
-        [H1, M1]: { status: [3529, 3441, 3434, 3525] }
-        [R1, R2]: { status: [3503, 3441, 3430, 3429, 3435] }
+        [T1, H2]: { status: [local-code-smell, remote-regression, latent-synchronization-bug] }
+        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
+        [H1, M1]: { status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug] }
+        [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
       - cast: { visible: false }
         boss: { rotate: T1 }
-        M1: { x: 73, y: -135, status: [3529, 3441, 3434, 3525, 3526] }
-        H1: { x: 73, y: -45, status: [3529, 3441, 3434, 3525, 3526] }
-        T1: { x: 49, y: 65, status: [3503, 3524, 3434] }
-        H2: { x: 49, y: 116, status: [3503, 3524, 3434] }
+        M1: { x: 73, y: -135, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        H1: { x: 73, y: -45, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        T1: { x: 49, y: 65, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug] }
+        H2: { x: 49, y: 116, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug] }
         close-tether#1: { visible: false }
         circle#[stack,defam]-[1,2]: { visible: false }
         circle#[performance,underflow]-2.[1,2]: { visible: true }
         circle#link-1: { scale: 1, visible: false }
       - T1: [60, 16]
         H2: [60, 158]
-        M1: { x: 27, y: -110, status: [3441, 3434, 3525, 3526] }
-        H1: { x: 27, y: -45, status: [3441, 3434, 3525, 3526] }
+        M1: { x: 27, y: -110, status: [remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        H1: { x: 27, y: -45, status: [remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
         far-tether#1: { visible: false }
         circle#link-2: { scale: 1, visible: false }
       - circle#latent-*: { scale: 1 }
@@ -3466,8 +3472,8 @@ graphing:
         circle#tower-3: { y: 180, color: url(#blue-tower) }
         circle#tower-4: { y: -90, color: url(#blue-tower) }
         circle#[performance,underflow]-1.[1,2]: { visible: false }
-        [T2, M2]: { status: [3503, 3441, 3434, 3431, 3433] }
-        [R1, R2]: { status: [3503, 3441, 3430, 3432] }
+        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, performance-debugger] }
+        [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, underflow-debugger] }
         H1: [61, -16]
         M1: [53, -159]
       - label: { visible: true }
@@ -3480,10 +3486,10 @@ graphing:
         close-tether#2: { visible: false }
         circle#performance-2.[1,2]: { color: url(#underflow-gradient) }
         circle#underflow-2.[1,2]: { color: url(#performance-gradient) }
-        [T1, H2]: { status: [3430, 3432, 3525, 3526] }
-        [H1, M1]: { status: [3434, 3431, 3433, 3429, 3524] }
-        [R1, R2]: { status: [3441, 3430, 3432, 3431, 3433] }
-        [T2, M2]: { status: [3503, 3430, 3432, 3431, 3433] }
+        [T1, H2]: { status: [synchronization-debugger, underflow-debugger, critical-overflow-bug, critical-underflow-bug] }
+        [H1, M1]: { status: [latent-synchronization-bug, overflow-debugger, performance-debugger, critical-performance-bug, critical-synchronization-bug] }
+        [R1, R2]: { status: [remote-code-smell, synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
+        [T2, M2]: { status: [local-code-smell, synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
       - circle#tower-*: { visible: true }
         cast: { visible: true }
         label: { visible: false }
@@ -3510,26 +3516,26 @@ graphing:
         circle#tower-*: { scale: 0 }
         circle#link-1: { scale: 1, visible: false }
         circle#latent-*: { scale: 0 }
-        [T1, H2]: { status: [3430, 3432, 3431, 3526, 3528] }
-        [H1, M1]: { status: [3431, 3433, 3430, 3429, 3435] }
-        [R1, R2]: { status: [3530, 3432, 3431, 3433] }
-        [T2, M2]: { status: [3432, 3431, 3433] }
+        [T1, H2]: { status: [synchronization-debugger, underflow-debugger, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
+        [H1, M1]: { status: [overflow-debugger, performance-debugger, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
+        [R1, R2]: { status: [remote-regression, underflow-debugger, overflow-debugger, performance-debugger] }
+        [T2, M2]: { status: [underflow-debugger, overflow-debugger, performance-debugger] }
       - cast: { visible: false }
         boss: { rotate: T1 }
         circle#[stack,defam]-[1,2]: { visible: false }
         circle#link-2: { scale: 1, visible: false }
         close-tether#1: { visible: false }
         M2: [18, -161]
-        R1: { x: 58, y: -58, status: [3432, 3431, 3433] }
+        R1: { x: 58, y: -58, status: [underflow-debugger, overflow-debugger, performance-debugger] }
         T2: [21, -116]
-        R2: { x: 53, y: 169, status: [3432, 3431, 3433] }
+        R2: { x: 53, y: 169, status: [underflow-debugger, overflow-debugger, performance-debugger] }
         circle#latent-1: { attach: H1, visible: true }
         circle#latent-2: { attach: H2, visible: true }
         circle#latent-3: { attach: T1, visible: true }
         circle#latent-4: { attach: M1, visible: true }
       - circle#latent-*: { scale: 1 }
-        [T1, H2]: { status: [3430, 3432, 3431, 3433] }
-        [H1, M1]: { status: [3431, 3433, 3430, 3432] }
+        [T1, H2]: { status: [synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
+        [H1, M1]: { status: [overflow-debugger, performance-debugger, synchronization-debugger, underflow-debugger] }
         circle#[performance,underflow]-2.[1,2]: { visible: false }
     monitors:
       - arena: { image: /images/arenas/top-p3.avif }
@@ -3568,7 +3574,7 @@ graphing:
       - boss: { rotate: 180 }
         cast: { visible: true }
         monitor#*: { visible: true }
-        [T2,M1,R2]: { status: [3452] }
+        [T2,M1,R2]: { status: [oversampled-wave-cannon-loading] }
       - cast: { progress: 0.4 }
         T2: [68, 40]
         M1: [61, -48]
@@ -3784,12 +3790,12 @@ graphing:
         close-tether#1: { from: T2, to: H2, visible: true, opacity: 0.5 }
         close-tether#2: { from: H1, to: M2, visible: true, opacity: 0.5 }
         T1: [30, -30]
-        T2: { x: 30, y: 30, status: [3442] }
+        T2: { x: 30, y: 30, status: [hello-near-world] }
         R1: [22, -130]
         R2: [22, 130]
         M1: [17, -90]
         M2: [17, 90]
-        H1: { x: 22, y: -47, status: [3443] }
+        H1: { x: 22, y: -47, status: [hello-distant-world] }
         H2: [22, 47]
         blue-fist#[1..4]: { visible: false }
         orange-fist#[1..4]: { visible: false }
@@ -3870,8 +3876,8 @@ graphing:
       - rotate-cw#*: { visible: false }
         rotate-ccw#*: { visible: false }
       - monitor#M2: { visible: true }
-        M2: { status: [3452] }
-        H2: { status: [2534] }
+        M2: { status: [oversampled-wave-cannon-loading] }
+        H2: { status: [twice-come-ruin] }
         rect#arm-[1..6]: { visible: true, rotate: null }
         circle#BD: { visible: true }
         arm#1: { rotate: T1 }
@@ -3905,9 +3911,9 @@ graphing:
         monitor#boss: { visible: false }
         monitor#M2: { visible: false }
         M2: { status: [] }
-        [M1, M2, R2, T1, R1]: { status: [2534] }
-        T2: { status: [3442, 2534] }
-        H1: { status: [3443, 2534] }
+        [M1, M2, R2, T1, R1]: { status: [twice-come-ruin] }
+        T2: { status: [hello-near-world, twice-come-ruin] }
+        H1: { status: [hello-distant-world, twice-come-ruin] }
         rect#arm-1: { rotate: 220 }
         rect#arm-2: { rotate: -220 }
         rect#arm-3: { rotate: -160 }
@@ -3935,8 +3941,8 @@ graphing:
         T2: [28, 87]
         R2: [53, -33]
         T1: [64, 45]
-      - T2: { status: [3442] }
-        H1: { status: [3443] }
+      - T2: { status: [hello-near-world] }
+        H1: { status: [hello-distant-world] }
         M2: { status: [] }
       - R2: [49, 20]
         far-tether#1: { visible: false }
@@ -3944,17 +3950,17 @@ graphing:
       - rect#swivel: { visible: true }
       - circle#hello-[far,near]-1: { visible: true }
         rect#swivel: { visible: false }
-        [H1, T2]: { status: [3444, 2941] }
+        [H1, T2]: { status: [quickening-dynamis, magic-vuln] }
       - circle#hello-[far,near]-2: { visible: true }
         circle#hello-[far,near]-1: { visible: false }
-        [M1, R2]: { status: [3444, 2941] }
+        [M1, R2]: { status: [quickening-dynamis, magic-vuln] }
       - circle#hello-[far,near]-3: { visible: true }
         circle#hello-[far,near]-2: { visible: false }
-        [R1, T1]: { status: [3444, 2941] }
+        [R1, T1]: { status: [quickening-dynamis, magic-vuln] }
       - circle#hello-[far,near]-3: { visible: false }
         boss#m: { visible: true }
         boss#beetle: { visible: false }
-        [H1, T2]: { status: [3444] }
+        [H1, T2]: { status: [quickening-dynamis] }
         T1: [33, -1]
         T2: [27, 40]
         R2: [18, 169]
@@ -3963,7 +3969,7 @@ graphing:
         M2: [18, 122]
         M1: [31, -83]
         R1: [48, 116]
-      - [M1, R2, R1, T1]: { status: [3444] }
+      - [M1, R2, R1, T1]: { status: [quickening-dynamis] }
       - M1: [15, -111]
         R1: [15, 98]
         circle#link-2: { scale: 1, visible: false }
@@ -4028,14 +4034,14 @@ graphing:
         glitch-link#4: { from: H1, to: R1 }
         glitch-link#5: { from: M1, to: T2 }
         glitch-link#6: { from: H2, to: R2 }
-        T1: { x: 30, y: 1, status: [3444] }
-        H1: { x: 17, y: -77, status: [3444] }
-        M1: { x: 21, y: -116, status: [3444] }
-        R1: { x: 33, y: -147, status: [3444] }
-        T2: { x: 21, y: -180, status: [3444, 3442] }
+        T1: { x: 30, y: 1, status: [quickening-dynamis] }
+        H1: { x: 17, y: -77, status: [quickening-dynamis] }
+        M1: { x: 21, y: -116, status: [quickening-dynamis] }
+        R1: { x: 33, y: -147, status: [quickening-dynamis] }
+        T2: { x: 21, y: -180, status: [quickening-dynamis, hello-near-world] }
         H2: { x: 17, y: 77 }
-        M2: { x: 21, y: 116, status: [3443] }
-        R2: { x: 33, y: 147, status: [3444] }
+        M2: { x: 21, y: 116, status: [hello-distant-world] }
+        R2: { x: 33, y: 147, status: [quickening-dynamis] }
         arm#1: { x: 45, y: 45, rotate: M1, visible: false }
         arm#2: { x: 45, y: 135, rotate: H1, visible: false }
         rotate-cw: { attach: boss#final, size: 75 }
@@ -4045,13 +4051,13 @@ graphing:
         boss#m: { visible: false }
         arm#*: { visible: true }
         glitch-link#*: { visible: true }
-        T1: { status: [3444, square] }
-        M2: { status: [3443, square] }
-        [H1, R1]: { status: [3444, triangle] }
-        M1: { status: [3444, cross] }
-        T2: { status: [3444, cross, 3442] }
+        T1: { status: [quickening-dynamis, square] }
+        M2: { status: [hello-distant-world, square] }
+        [H1, R1]: { status: [quickening-dynamis, triangle] }
+        M1: { status: [quickening-dynamis, cross] }
+        T2: { status: [quickening-dynamis, cross, hello-near-world] }
         H2: { status: [circle] }
-        R2: { status: [3444, circle] }
+        R2: { status: [quickening-dynamis, circle] }
         boss#mf: { visible: true }
       - M1: [80, -84]
         T2: [81, -96]
@@ -4067,9 +4073,9 @@ graphing:
         arm#2: { rotate: M1 }
       - boss#[beetle, final]: { visible: true }
         circle#target-[1..6]: { visible: true }
-        [T1, H1, R1, R2, M1]: { status: [3444] }
-        M2: { status: [3443] }
-        T2: { status: [3444, 3442] }
+        [T1, H1, R1, R2, M1]: { status: [quickening-dynamis] }
+        M2: { status: [hello-distant-world] }
+        T2: { status: [quickening-dynamis, hello-near-world] }
         H2: { status: [] }
       - T2: [90, -135]
         M1: [90, 45]
@@ -4134,12 +4140,12 @@ graphing:
         label: { visible: false }
         T2: [60, 164]
         H1: [60, 137]
-        M1: { x: 60, y: -112, status: [mark4, 3444] }
-        R2: { x: 60, y: -58, status: [mark2, 3444] }
+        M1: { x: 60, y: -112, status: [mark4, quickening-dynamis] }
+        R2: { x: 60, y: -58, status: [mark2, quickening-dynamis] }
         M2: [60, 9]
         H2: { x: 60, y: 44, status: [mark1] }
         R1: [60, 73]
-        T1: { x: 60, y: 111, status: [mark3, 3444] }
+        T1: { x: 60, y: 111, status: [mark3, quickening-dynamis] }
         arm#1: { x: 90, y: -45, rotate: H1 }
         arm#2: { x: 90, y: -135, rotate: H2 }
         glitch-link#1: { to: H1 }

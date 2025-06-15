@@ -91,6 +91,7 @@ status:
   stable-system:
     id: 3618
     type: resistance
+    isBuff: true
     duration: [10000, 2000]
     description: Player is unable to merge with another player to divide their [Unstable Factors](s:unstable-factor).
   shackled-together:
@@ -103,6 +104,7 @@ status:
   entropy-resistance:
     id: 3617
     type: resistance
+    isBuff: true
   fourfold-come-ruin:
     id: 3695
     type: condition

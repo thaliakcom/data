@@ -14,7 +14,8 @@ autos:
   type: physical
 description: Elidibus faces the players yet again, yet this time not as the Warrior of Light of eld but as the Emissary, who balances the powers of both Light and Dark.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 39%.
@@ -323,7 +324,7 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 4 dark mirrors and 4 light mirrors on the sides of the arena.
-      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:2911].
+      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:damage-down].
     children:
     - at: 7623
       id: dismissal-overruling
@@ -334,7 +335,7 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 2 dark spheres and 2 light spheres on the arena's cardinals.
-      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [ms:chariot], dealing massive damage to anyone hit and inflicting [s:2911].
+      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [ms:chariot], dealing massive damage to anyone hit and inflicting [s:damage-down].
     children:
     - at: 9635
       id: unlucky-lot
@@ -343,7 +344,7 @@ actions:
     mechanic: aoe
     shape: chariot
     count: 2
-    description: The spheres explodes in a huge [t:AoE]. Inflicts [s:2911].
+    description: The spheres explodes in a huge [t:AoE]. Inflicts [s:damage-down].
   dismissal-overruling:
     id: 34693
     mechanic: mech.knockback

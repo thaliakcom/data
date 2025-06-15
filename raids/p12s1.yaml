@@ -17,7 +17,8 @@ description: >
   Athena is a difficult encounter. Featuring rapid combinations of mechanics by both Athena and her soul-transformed minions,
   players must react quickly and decisively to avoid certain doom.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 38%.
@@ -134,7 +135,7 @@ actions:
     name: Trinity of Souls (Hit)
     mechanic: aoe
     shape: halfroom
-    description: A cleave from [a:trinity-of-souls]. Inflicts [s:2911].
+    description: A cleave from [a:trinity-of-souls]. Inflicts [s:damage-down].
   white-flame:
     id: 33520
     mechanic: spread.close
@@ -232,7 +233,7 @@ actions:
     damage: 80868
     players: 0
     count: 2
-    description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:2911] to anyone caught inside.
+    description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:damage-down] to anyone caught inside.
   glaukopis:
     id: 33532
     mechanic: tb.mt
@@ -333,12 +334,12 @@ actions:
     id: 33499
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] centered on the chain source. Inflicts [s:2911].
+    description: A [ms:chariot] centered on the chain source. Inflicts [s:damage-down].
   superchain-coil:
     id: 33500
     mechanic: aoe
     shape: dynamo
-    description: A [ms:dynamo] centered on the chain source. Inflicts [s:2911].
+    description: A [ms:dynamo] centered on the chain source. Inflicts [s:damage-down].
   umbral-impact:
     id: 33544
     mechanic: stack.party
@@ -592,7 +593,7 @@ actions:
     id: 33531
     mechanic: aoe
     shape: 270°
-    description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:2911] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
+    description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:damage-down] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
   palladion-hit:
     id: 33526
     mechanic: aoe

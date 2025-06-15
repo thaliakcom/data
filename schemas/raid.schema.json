@@ -125,14 +125,14 @@
       "additionalProperties": {
         "$ref": "#/definitions/UnprocessedStatusEffect"
       },
-      "description": "The status effects that appear in this encounter. Each status effect is either its game data ID or (if there is no game data entry for it) a unique string representing the status effect, and a data object further describing it."
+      "description": "The status effects that appear in this encounter.\n\nEach status effect's key should be a unique but otherwise arbitrary string that can be used to refer back to this status in timeline items and in-text references."
     },
     "actions": {
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/UnprocessedAction"
       },
-      "description": "The actions (mechanics) that appear in this encounter. Each action is either its game data ID or (if there is no game data entry for it) a unique string representing the action, and a data object further describing it."
+      "description": "The actions that appear in this encounter.\n\nEach action's key should be a unique but otherwise arbitrary string that can be used to refer back to this action in timeline items and in-text references."
     },
     "timeline": {
       "type": "array",
@@ -344,8 +344,10 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "number",
-          "description": "If specified, will use this ID to retrieve additional information about the status from game data. If not specified, will use the key of this status instead.\n\nNote that timeline items and in-text references still use the key of the status to retrieve additional action data.\n\nWhile not necessary, using this field is generally recommended to \"alias\" statuses used in the fight to make the timeline easier to read and maintain."
+          "type": "integer",
+          "minimum": 0,
+          "description": "The ID of the status in the game's files. This iD is used to retrieve additional information about the status from within the game's files.\n\nNote that timeline items and in-text references use the status effect's key in the status object to refer back to this status effect.",
+          "markdownDescription": "The ID of the status in the game's files. This iD is used to retrieve additional information about the status from within the game's files.\n\nNote that timeline items and in-text references use the status effect's key in the `status` object to refer back to this status effect."
         },
         "name": {
           "type": "string",
@@ -407,6 +409,9 @@
           "description": "Whether the status effect affects players or enemies.\n\nIf not specified, assumes that a status affects players."
         }
       },
+      "required": [
+        "id"
+      ],
       "additionalProperties": false
     },
     "StatusType": {
@@ -430,8 +435,10 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "number",
-          "description": "If specified, will use this ID to retrieve additional information about the action from game data. If not specified, will use the key of this action instead.\n\nNote that timeline items and in-text references still use the key of the action to retrieve additional action data.\n\nWhile not necessary, using this field is strongly recommended to \"alias\" actions used in the fight to make the timeline easier to read and maintain."
+          "type": "integer",
+          "minimum": 0,
+          "description": "If specified, will use this ID to retrieve additional information about the action from game data.\n\nNote that timeline items and in-text references use the action's key in the actions object to refer back to this action.\n\nUnlike status effects, actions allow you to omit this ID. If the ID is omitted, no data about this action is retrieved from the game's files. This can be useful for \"fake\" actions that are just used to group multiple related actions using the action's children.",
+          "markdownDescription": "If specified, will use this ID to retrieve additional information about the action from game data.\n\nNote that timeline items and in-text references use the action's key in the `actions` object to refer back to this action.\n\nUnlike status effects, actions allow you to omit this ID. If the ID is omitted, no data about this action is retrieved from the game's files. This can be useful for \"fake\" actions that are just used to group multiple related actions using the action's `children`."
         },
         "name": {
           "type": "string",
@@ -607,15 +614,7 @@
           "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "id": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0
-            },
-            {
-              "type": "string"
-            }
-          ],
+          "type": "string",
           "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
           "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
         },
@@ -651,7 +650,7 @@
         },
         "players": {
           "type": "number",
-          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
+          "description": "The number of players damaged by this action. Should only be specified if this timeline item's player count differs from the player count defined within the action itself."
         },
         "timing": {
           "$ref": "#/definitions/Timing",
@@ -735,7 +734,7 @@
         },
         "players": {
           "type": "number",
-          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
+          "description": "The number of players damaged by this action. Should only be specified if this timeline item's player count differs from the player count defined within the action itself."
         },
         "timing": {
           "$ref": "#/definitions/Timing",
@@ -791,15 +790,7 @@
           "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
         "id": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0
-            },
-            {
-              "type": "string"
-            }
-          ],
+          "type": "string",
           "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
           "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
         },
@@ -835,7 +826,7 @@
         },
         "players": {
           "type": "number",
-          "description": "The number of players damaged by this action. Should only be specified if the this timeline item's player count differs from the player count defined within the action itself."
+          "description": "The number of players damaged by this action. Should only be specified if this timeline item's player count differs from the player count defined within the action itself."
         },
         "timing": {
           "$ref": "#/definitions/Timing",
@@ -2023,9 +2014,6 @@
                 "type": "string"
               },
               {
-                "type": "number"
-              },
-              {
                 "$ref": "#/definitions/SpecialStatus"
               },
               {
@@ -2215,9 +2203,6 @@
                 "type": "string"
               },
               {
-                "type": "number"
-              },
-              {
                 "$ref": "#/definitions/SpecialStatus"
               },
               {
@@ -2357,9 +2342,6 @@
                 "type": "string"
               },
               {
-                "type": "number"
-              },
-              {
                 "$ref": "#/definitions/SpecialStatus"
               },
               {
@@ -2497,9 +2479,6 @@
             "anyOf": [
               {
                 "type": "string"
-              },
-              {
-                "type": "number"
               },
               {
                 "$ref": "#/definitions/SpecialStatus"
@@ -2642,9 +2621,6 @@
                 "type": "string"
               },
               {
-                "type": "number"
-              },
-              {
                 "$ref": "#/definitions/SpecialStatus"
               },
               {
@@ -2783,9 +2759,6 @@
             "anyOf": [
               {
                 "type": "string"
-              },
-              {
-                "type": "number"
               },
               {
                 "$ref": "#/definitions/SpecialStatus"

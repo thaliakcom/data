@@ -13,7 +13,8 @@ wip: full
 description: |
   The first Chaotic Alliance Raid in the game blends elements of Eden's Promise: Umbra and World of Darkness in a unique 24-man fight featuring Extreme-level mechanics.
 status:
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 25%.

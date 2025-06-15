@@ -10,8 +10,3 @@ boss: Zodiark
 HP: 0
 wip: full
 description: ""
-status:
-  2911:  # Damage Down
-    type: impairment
-    duration: 30000
-    description: Reduces damage dealt by approximately 25%.

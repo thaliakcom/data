@@ -106,12 +106,14 @@ status:
     type: impairment
     duration: 6000
     description: Affected players lose the ability to control their own character and instead move autonomously, aimlessly. This is very likely to lead to the player walking off the edge or into poison.
-  2935:  # Sustained Damage
+  sustained-damage:
+    id: 2935
     type: dot
     tick: 20000
     duration: 15000
     description: A heavy [t:DoT] inflicted by [a:unmitigated-explosion].
-  2911:  # Damage Down
+  damage-down:
+    id: 2911
     type: impairment
     duration: 30000
     description: Reduces damage dealt by approximately 31%.
@@ -274,7 +276,7 @@ actions:
   unmitigated-explosion:
     id: 33411
     mechanic: mech.failure
-    description: Raidwide affecting all players if one of [a:pandæmoniac-pillars] is left unsoaked. Inflicts [s:2935].
+    description: Raidwide affecting all players if one of [a:pandæmoniac-pillars] is left unsoaked. Inflicts [s:sustained-damage].
   bury:
     id: 33409
     type: physical
@@ -429,13 +431,13 @@ actions:
     shape: halfroom
     description: |
       [boss] detaches its head and gets ready to cleave the side of the arena it's facing.
-      Being hit by this cleave applies [s:2911] and [s:hysteria].
+      Being hit by this cleave applies [s:damage-down] and [s:hysteria].
       The cleave also summons either 7 or 8 orbs (or "bits") on the side that was cleaved. Each of these will fire a beam.
   jade-passage:
     id: 33420
     mechanic: aoe
     shape: line
-    description: Beam fired by the "bits" spawned by [a:pandæmoniac-ray]. Inflicts [s:2911]. To avoid, simply step between the bits.
+    description: Beam fired by the "bits" spawned by [a:pandæmoniac-ray]. Inflicts [s:damage-down]. To avoid, simply step between the bits.
   pandæmoniac-web:
     id: 34596
     mechanic: mech
