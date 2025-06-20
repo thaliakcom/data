@@ -508,6 +508,7 @@
 - name: Letter from the Producer Live Part LXXX
   short: PLL LXXX
   type: live letter
+  color: "#ef2424"
   url: https://www.youtube.com/watch?v=OxVWTktvt_M
   at: 2024-04-13 04:00:00
 - name: Yo-kai Watch
@@ -539,6 +540,7 @@
 - name: Letter from the Producer Live Part LXXXI
   short: PLL LXXXI
   type: live letter
+  color: "#ef2424"
   url: https://sqex.to/oX18H
   at: 2024-05-16 11:00:00
 - name: Fall Guys Collaboration
@@ -558,6 +560,7 @@
 - name: Letter from the Producer Live Part LXXXII
   short: PLL LXXXII
   type: live letter
+  color: "#ef2424"
   url: https://www.youtube.com/watch?v=0JxPTIiDWtI
   at: 2024-06-14 11:00:00
 - name: Patch 7.0 Maintenance
@@ -569,6 +572,7 @@
 - name: Dawntrail (Patch 7.0)
   short: Patch 7.0
   type: patch
+  color: "#6e9cec"
   at: 2024-06-28 09:00:00
 - name: Arcadion (Patch 7.01)
   short: Patch 7.01
@@ -595,6 +599,7 @@
 - name: Letter from the Producer Live Part LXXXIII
   short: PLL LXXXIII
   type: live letter
+  color: "#ef2424"
   url: https://www.youtube.com/live/Hf79RkD_bG8
   at: 2024-09-29 05:50:00
 - name: Free Login Campaign
@@ -626,6 +631,7 @@
 - name: Letter from the Producer Live Part LXXXIV
   short: PLL LXXXIV
   type: live letter
+  color: "#ef2424"
   url: https://sqex.to/SCd7R
   at: 2024-11-01 11:00:00
 - name: Patch 7.1 Maintenance
@@ -637,6 +643,7 @@
 - name: Crossroads (Patch 7.1)
   short: Patch 7.1
   type: patch
+  color: "#6e9cec"
   at: 2024-11-12 10:00:00
 - name: Futures Rewritten Ultimate (Patch 7.11)
   short: Patch 7.11
@@ -650,6 +657,7 @@
   to: 2024-12-31 14:59:00
 - name: Patch 7.15
   type: patch
+  color: "#6e9cec"
   at: 2024-12-17 10:00:00
 - name: Cloud of Darkness (Chaotic)
   short: Chaotic
@@ -667,6 +675,7 @@
 - name: Letter from the Producer Live Part LXXXV
   short: PLL LXXXV
   type: live letter
+  color: "#ef2424"
   url: https://sqex.to/cuwKW
   at: 2025-02-07 11:00:00
 - name: Valentione's Day
@@ -681,6 +690,7 @@
 - name: Letter from the Producer Live Part LXXXVI
   short: PLL LXXXVI
   type: live letter
+  color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/8344f09b9127c2ae3b0af3485d970b56b8d801d9
   at: 2025-03-14 10:00:00
 - name: Little Ladies' Day
@@ -692,6 +702,7 @@
 - name: Seekers of Eternity (Patch 7.2)
   short: Patch 7.2
   type: patch
+  color: "#6e9cec"
   at: 2025-03-25 10:00:00
 - name: Cruiserweight Savage
   short: Savage
@@ -712,6 +723,7 @@
 - name: Patch 7.21 (Cosmic Exploration)
   short: Patch 7.21
   type: patch
+  color: "#6e9cec"
   at: 2025-04-22 10:00:00
 - name: Patch 7.25 Maintenance
   short: Maintenance
@@ -722,6 +734,7 @@
 - name: Patch 7.25 (Occult Crescent)
   short: Patch 7.25
   type: patch
+  color: "#6e9cec"
   at: 2025-05-27 10:00:00
 - name: Patch 7.25.1 Maintenance
   short: Maintenance
@@ -736,6 +749,7 @@
 - name: Letter from the Producer Live Part LXXXVII
   short: PLL LXXXVI
   type: live letter
+  color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/16c64329e58f9b771791cdf87ae3185f1ba80deb
   at: 2025-06-20 11:00:00
 - name: Patch 7.25.2 Maintenance
