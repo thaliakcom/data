@@ -713,6 +713,12 @@
   short: Patch 7.21
   type: patch
   at: 2025-04-22 10:00:00
+- name: Patch 7.25 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2025-05-27 00:00:00
+  to: 2025-05-27 10:00:00
 - name: Patch 7.25 (Occult Crescent)
   short: Patch 7.25
   type: patch
