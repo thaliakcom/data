@@ -738,3 +738,13 @@
   type: live letter
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/16c64329e58f9b771791cdf87ae3185f1ba80deb
   at: 2025-06-20 10:00:00
+- name: Patch 7.25.2 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2025-06-24 06:00:00
+  to: 2025-06-24 10:00:00
+- name: Patch 7.25.2 (Hotfix)
+  short: Patch 7.25.2
+  type: patch
+  at: 2025-06-24 10:00:00
