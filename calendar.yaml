@@ -762,3 +762,13 @@
   short: Patch 7.25.2
   type: patch
   at: 2025-06-24 10:00:00
+- name: Patch 7.25.3 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2025-07-03 06:00:00
+  to: 2025-07-03 10:00:00
+- name: Patch 7.25.3 (Hotfix)
+  short: Patch 7.25.3
+  type: patch
+  at: 2025-07-03 10:00:00
