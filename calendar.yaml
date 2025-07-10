@@ -772,3 +772,9 @@
   short: Patch 7.25.3
   type: patch
   at: 2025-07-03 10:00:00
+- name: Letter from the Producer Live Part LXXXVIII
+  short: PLL LXXXVIII
+  type: live letter
+  color: "#ef2424"
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b825bb4042caf2a87597a374ead4832297c95cf7
+  at: 2025-07-24 10:00:00
