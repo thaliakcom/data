@@ -783,3 +783,25 @@
   type: patch
   color: "#6e9cec"
   at: 2025-08-05 10:00:00
+- name: Moonfire Faire 2025
+  type: event
+  color: "#832d2d"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2025/Moonfire_Faire/mldbn7bcai
+  from: 2025-08-13 08:00:00
+  to: 2025-08-26 14:59:59
+- name: The Rising 2025
+  type: event
+  color: "#83762d"
+  url: https://na.finalfantasyxiv.com/lodestone/special/2025/The_Rising/6s3bvkhk74
+  from: 2025-27-08 08:00:00
+  to: 2025-09-11 14:59:59
+- name: Patch 7.31 (Cosmic Exploration)
+  short: Patch 7.31
+  type: patch
+  color: "#6e9cec"
+  at: 2025-09-02 10:00:00
+- name: Patch 7.35 (Pilgrim's Traverse)
+  short: Patch 7.35
+  type: patch
+  color: "#6e9cec"
+  at: 2025-09-30 10:00:00
