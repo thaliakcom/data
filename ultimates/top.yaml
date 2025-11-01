@@ -361,7 +361,7 @@ actions:
     strategies:
       looper:
         name: LPDU
-        description: Uses (N) M1 ← M2 ← MT ← OT ← R1 ← R2 ← H1 ← H2 (S) priority.
+        description: Uses (N -> CW) M1 ← M2 ← MT ← OT ← R1 ← R2 ← H1 ← H2 (W -> CCW) priority.
     children:
       - at: 14010
         id: blaster-cast
@@ -632,7 +632,7 @@ actions:
       * Omega-F with a staff: a plus-shaped AoE in the direction she is facing ([a:optimized-blizzard-iii])
       * Omega-F with blade legs: cleaves her sides, leaving a safe line toward Omega-M ([a:superliminal-steel])
       * Omega-M with a sword: a [ms:chariot] AoE on his position ([a:efficient-bladework])
-      * Omega-F with a sword and shield: a [ms:dynamo] AoE on his position ([a:beyond-strength])
+      * Omega-M with a sword and shield: a [ms:dynamo] AoE on his position ([a:beyond-strength])
       While this is happening, a massive synthetic eye (Optical Unit) spawns on a random cardinal or intercardinal outside the arena. Some time after Omega-M and Omega-F have executed their respective AoEs, this eye will fire a deadly [a:optical-laser] line AoE through the center of the arena. At the same time, [a:optimized-fire-iii] (a [ms:chariot] [m:spread]) resolves on each player. This AoE is deadly if the correct distance between each tethered pair (defined by [s:mid-glitch] or [s:remote-glitch]) is not maintained.
       Finally, Omega-F appears in the center of the arena while 5 clones of Omega-M appear close to the edge of the arena. Two random players are marked with stacks, Omega-F executes a knockback from the center, and all Omega-Ms execute a large [ms:chariot] AoE from their position. There are always 3 Omega-Ms spawning directly beside one another, with a gap between every other Omega-M.
       If your party is still alive at this point, [s:mid-glitch]/[s:remote-glitch] expires, and the Omega-M that is sandwiched between the two other Omega-Ms, and the Omega-F in the center become targetable again and the next mechanical sequence commences.
