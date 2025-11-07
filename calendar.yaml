@@ -818,3 +818,12 @@
   color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b3726d73c8a3d4100dd46a2713eef4f99a4efb99
   at: 2025-10-31 11:00:00
+- name: Into the Mist (Patch 7.4)
+  short: Patch 7.4
+  type: patch
+  color: "#6e9cec"
+  at: 2025-12-16 11:00:00
+- name: Heavyweight Savage
+  short: Savage
+  type: patch
+  at: 2025-01-06 11:00:00
