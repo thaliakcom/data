@@ -51,6 +51,10 @@
       "type": "string",
       "description": "The English name of the main boss that is fought in this encounter."
     },
+    "short": {
+      "type": "string",
+      "description": "A shortened version of the name, used as a caption in the top bar dialog."
+    },
     "name": {
       "type": "string",
       "description": "Can be used to override the name of the encounter. Note that the encounter name is automatically retrieved from the API, so usage of this field is strongly discouraged."
@@ -212,6 +216,7 @@
         "raidwide",
         "raidwide.lb",
         "raidwide.proximity",
+        "raidwide.proximity.fake",
         "raidwide.sethp",
         "raidwide.transition",
         "raidwide.ultimate",
@@ -226,6 +231,7 @@
         "tb.close",
         "tb.close.stack",
         "tb.close-or-far",
+        "tb.flare",
         "auto.single",
         "auto.double",
         "auto.stack",
