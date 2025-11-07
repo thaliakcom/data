@@ -1,2 +1,6 @@
-patch: "7.2"
-content: []
+patch: "7.35"
+content:
+  - id: 1044
+    url: /extremes/windward-wilds/
+  - id: 1063
+    url: /other/final-verse/

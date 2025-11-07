@@ -1,0 +1,20 @@
+id: 1063
+patch: "7.35"
+date: 2025-11-07
+modified: 2025-11-07
+by:
+  id: 27637301
+  role: author
+tier: Quantum
+boss: "Unholy Union: Eminent Grief and Devoured Eater"
+short: Final Verse
+HP: 0
+wip: full
+description: |
+  This guide represents the version of The Final Verse fought at Q40 (40 offerings used).
+status:
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: 30000
+    description: Reduces damage dealt by approximately 25%.
