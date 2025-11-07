@@ -15,6 +15,7 @@ autos:
   damage: 55068
 description: ''
 wip: [guide, diagrams]
+alias: [r5s]
 status:
   damage-down:
     id: 2911

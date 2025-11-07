@@ -10,6 +10,7 @@ boss: Brute Bomber
 HP: 96522586
 party_hp: 120000
 wip: [guide, damage, diagrams]
+alias: [r3s]
 description: |
   An avid WWE enthusiast who also likes explosions, Brute Bomber combines classic wrestling moves with a barrage of bombs to blow his opponents away.
 status:

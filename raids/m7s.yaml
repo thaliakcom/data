@@ -10,6 +10,7 @@ boss: Brute Abombinator
 HP: 118583808
 wip: full
 description: ""
+alias: [r7s]
 status:
   damage-down:
     id: 2911

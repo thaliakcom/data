@@ -10,6 +10,7 @@ boss: Black Cat
 HP: 75867953
 party_hp: 120000
 wip: [diagrams]
+alias: [r1s]
 description: |
   A fight that revolves around memorization mechanics, destructible arena tiles, and many targeted spreads and stacks.
 autos:

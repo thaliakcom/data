@@ -11,6 +11,7 @@ HP: 93010785
 party_hp: 172180
 wip: [diagrams]
 description: ""
+alias: [r6s]
 status:
   damage-down:
     id: 2911
