@@ -1,13 +1,13 @@
 id: 1010
-sort_id: 1018
 patch: "7.1"
 date: 2025-01-17
 modified: 2025-01-17
 by:
   id: 27637301
   role: author
-tier: Dawntrail
+tier: Chaotic
 boss: Cloud of Darkness
+short: CoD
 HP: 294173553
 wip: full
 description: |
