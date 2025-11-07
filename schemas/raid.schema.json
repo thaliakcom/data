@@ -55,6 +55,13 @@
       "type": "string",
       "description": "A shortened version of the name, used as a caption in the top bar dialog."
     },
+    "alias": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of aliases. These are alternative URLs that will redirect to this page."
+    },
     "name": {
       "type": "string",
       "description": "Can be used to override the name of the encounter. Note that the encounter name is automatically retrieved from the API, so usage of this field is strongly discouraged."
