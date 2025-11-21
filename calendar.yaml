@@ -818,6 +818,12 @@
   color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b3726d73c8a3d4100dd46a2713eef4f99a4efb99
   at: 2025-10-31 11:00:00
+- name: Letter from the Producer Live Part XC
+  short: PLL XC
+  type: live letter
+  color: "#ef2424"
+  url: https://sqex.to/iunyG
+  at: 2025-12-05 11:00:00
 - name: Into the Mist (Patch 7.4)
   short: Patch 7.4
   type: patch
