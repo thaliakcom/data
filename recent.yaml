@@ -1,6 +1,4 @@
-patch: "7.35"
+patch: "7.4"
 content:
-  - id: 1044
-    url: /extremes/windward-wilds/
-  - id: 1063
-    url: /other/final-verse/
+  - id: 1077
+    url: /extremes/hell-on-rails/

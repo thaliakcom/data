@@ -1,0 +1,659 @@
+id: 1077
+patch: "7.4"
+date: 2025-12-21
+modified: 2025-12-21
+by:
+  id: 27637301
+  role: author
+tier: Dawntrail
+boss: Doomtrain
+party_hp: 192220
+HP: 98895160
+description: ""
+autos:
+  mechanic: auto.single
+  type: magic
+  damage: 56000
+status:
+  vulnerability-up:
+    id: 1789
+    type: vuln
+    duration: 60000
+    description: |
+      Increases damage taken per stack.
+      Inflicted by various mechanics, including [a:hail-of-thunder], [a:plasma-beam], [a:dead-mans-blastpipe], [a:third-rail], and [a:headlight].
+  system-lock:
+    id: 2578
+    type: impairment
+    duration: 1000
+    description: Players affected by this have just used a teleporter. This debuff prevents them from accidentally teleporting back immediately.
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
+    duration: 2000
+    description: |
+      Renders physical damage lethal.
+      Inflicted by [a:plummet].
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [1960, 960]
+    description: |
+      Renders magic damage lethal.
+      Inflicted by [a:hyperexplosive-plasma], [a:plasma], [a:aetherochar], [a:hyperconductive-plasma], [a:aetherosote].
+  designated-conductor:
+    id: 4719
+    type: delay
+    description: Affects a tank and a healer. Those players generate a [a:hyperconductive-plasma] every [a:hail-of-thunder] during [a:arcane-revelation].
+  dead-mans-overdraught:
+    id: 4720
+    type: form
+    description: "[boss] has either [a:hyperexplosive-plasma] or [a:plasma] stored. See [a:dead-mans-overdraught]."
+actions:
+  turret-crossing:
+    id: 45628
+    mechanic: mech.prepare
+    description: Spawns turrets at the side of the train car. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up].
+  turret-crossing-hit:
+    id: 45628
+    name: Turret Crossing (Hit)
+    mechanic: aoe
+    shape: line
+    description: The turrets at the side of the train car fire. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up].
+  runaway-train:
+    id: 45638
+    mechanic: mech.phase
+    description: |
+      Boss summons an orb of aether that transports players into an aetherial realm.
+      The aetherial realm is represented by a small circular arena with a singular add (the orb of aether previously summoned by the [boss]). While the add is alive, a duty gauge rapidly fills. If the duty gauge reaches 100 or the add is killed, [boss] executes [a:runaway-train-raidwide]. This attack is only survivable if the duty gauge did not reach 100.
+      During this phase, two trains circle the outside of the arena: one small train and one big one. Approximately every 15 seconds these two trains execute a combined attack:
+      The small train executes [a:aetherial-ray], a potent conal tankbuster on the two targets with the most enmity.
+      The big train emits either two or three puffs of smoke from its exhaust, then executes either [a:aetherosote] (a [m:stack.healers]) or [a:aetherochar] (a [m:spread]) respectively, depending on the number of puffs.
+    resolve: |
+      To handle [a:aetherial-ray], tanks should briefly disengage from the add and move to the sides of the arena relative to the small train to give the other players as much space as possible. Heavy mitigation is required to survive each tankbuster. If DPS is particularly low, tanks are likely to run out of mitigation cooldowns and die.
+      The other players must determine if the big train emits two or three puffs of smoke. You can either listen for the audio tell (though it is quite quiet) or visually find the train in the background. If it's two puffs, simply stack in light parties (excluding tanks) on the north/south of the add relative to the small train. If it's three puffs, it's recommended to place healers and melees close to the add and ranged DPS far from the add, at the northern/southern wall relative to the small train. In this case, only ranged DPS must adjust their position based on the small train's position.
+      It is not recommended to save raid buffs and other 2-minute damage cooldowns for this phase, as this would likely lose you a use throughout the fight.
+    children:
+    - at: 3210
+      id: overdraught
+  overdraught:
+    id: 45639
+    mechanic: mech.arena
+    description: Transports players into an aetherial realm.
+  runaway-train-raidwide:
+    id: 45645
+    mechanic: raidwide.ultimate
+    damage: 243427
+    description: |
+      Heavy raidwide. If the duty gauge reached 100, this wipes the party.
+      **Note:** This attack deals **physical** damage. Magical jobs such as casters or healers have inherently reduced physical defense compared to other jobs. This means that these players take significantly more damage from this attack than other players. Tanks may wish to use their short cooldown on these players to help out.
+  shockwave:
+    id: 45699
+    mechanic: raidwide
+    damage: 151117
+    description: |
+      [boss] grows arms and unleashes a moderate raidwide.
+  hail-of-thunder:
+    id: 45656
+    mechanic: aoe
+    shape: defamation
+    description: |
+      The lightning traveling on the diamond summoned by [a:arcane-revelation] explodes. Inflicts [s:vulnerability-up].
+  lightning-burst:
+    id: 45715
+    mechanic: tb.double
+    shape: chariot
+    count: 2
+    damage: 451249
+    description: Heavy tankbuster on the two highest-enmity targets.
+  dead-mans-overdraught:
+    id: 45663
+    mechanic: mech.store
+    description: |
+      [boss] stores either [a:hyperexplosive-plasma] (a [m:stack.partner]) or [a:plasma] (a [m:spread]), as indicated by the number of lightning orbs floating around [boss] during the cast.
+      Grants [boss] [s:dead-mans-overdraught].
+  third-rail:
+    id: 45665
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    description: |
+      [boss] snaps its fingers, spawning invisible AoEs underneath all players that resolve 4 seconds later.
+      **This attack does not have a cast bar.**
+    resolve: |
+      Stack as tightly as possible, wait for the snap, then move away.
+    children:
+    - at: 3973
+      id: third-rail-hit
+  third-rail-hit:
+    id: 45666
+    name: Third Rail (Hit)
+    mechanic: aoe.baitable
+    shape: chariot
+    description: The AoEs summoned by [a:third-rail] explode, inflicting [s:vulnerability-up].
+  psychokinesis:
+    id: 45668
+    mechanic: mech.arena
+    description: |
+      [boss] removes some blocks from the train car.
+  plummet:
+    id: 45669
+    mechanic: spread
+    shape: defamation
+    damage: 189342
+    description: |
+      Big spreads on random players. Inflicts [s:physical-vulnerability-up].
+  dead-mans-express:
+    id: 45670
+    mechanic: mech.knockback
+    damage: 19682
+    description: |
+      Minor raidwide that knocks all players back. Is coupled with [ms:line] [m:aoe]s that render some lanes of the train car unsafe.
+      Getting hit by one inflicts [s:vulnerability-up].
+      Executes the previously stored [a:dead-mans-overdraught] right after.
+  plasma-beam:
+    id: 45671
+    mechanic: aoe
+    shape: line
+    count: 4
+    description: Lightning [ms:line] [m:aoe] fired by one of the Leving Signals during [a:dead-mans-express]. Inflicts [s:vulnerability-up].
+  plasma:
+    id: 45675
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 172341
+    description: Spreads on all party members. Inflicts [s:magic-vulnerability-up].
+  hyperexplosive-plasma:
+    id: 45676
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 152830
+    description: Stacks on all supports or damage dealers. Inflicts [s:magic-vulnerability-up].
+  dead-mans-windpipe:
+    id: 45677
+    mechanic: mech.pull
+    damage: 0
+    description: |
+      Minor raidwide that pulls all players in. Is coupled with [ms:line] [m:aoe]s that render some lanes of the train car unsafe.
+      Players who get pulled to the front of the train car are hit by [a:dead-mans-blastpipe] and inflicted with [s:vulnerability-up].
+      Executes the previously stored [a:dead-mans-overdraught] right after.
+    children:
+    - at: 2060
+      id: dead-mans-blastpipe
+  dead-mans-blastpipe:
+    id: 45679
+    mechanic: aoe
+    shape: rect
+    description: A rectangular AoE at the front of the train car after [a:dead-mans-windpipe].
+  unlimited-express:
+    id: 45680
+    mechanic: mech.arena
+    players: 8
+    damage: 215771
+    description: |
+      [boss] destroys the current train car and knocks all players to the next train car.
+  thunderous-breath:
+    id: 45689
+    mechanic: aoe
+    description: Hits all players on ground level, inflicting [s:vulnerability-up].
+  headlight:
+    id: 45692
+    mechanic: aoe
+    description: Hits all players on top of a block, inflicting [s:vulnerability-up].
+  aetherial-ray:
+    id: 45693
+    mechanic: tb.double
+    shape: cone
+    count: 2
+    damage: 292682
+    description: Conal tankbusters on the two primary targets.
+    resolve: Point them as far to the outside as possible.
+  aetherochar:
+    id: 45697
+    mechanic: spread
+    shape: chariot
+    count: 3
+    damage: 151115
+    description: A spread on three random non-tanks.
+  aetherosote:
+    id: 45698
+    mechanic: stack.healers
+    shape: chariot
+    count: 2
+    damage: 151015
+    description: A 3-man stack on healers.
+  derailment-siege-x3:
+    id: 45648
+    mechanic: stack.tower
+    count: 1
+    description: |
+      A three-hit [m:stack.tower] appears at the front of the arena and must be soaked to avoid a party wipe.
+      The final hit deals double damage and causes a jump pad to appear at the rear of the train car. Players who fail to take the jump before the end of the [a:derail] cast are instantly killed.
+      Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] the next two Derailment Sieges.
+    compact: full
+    children:
+    - at: 1115
+      id: derailment-siege-hit
+    - at: 2094
+      id: derailment-siege-hit
+    - at: 3568
+      id: derailment-siege-hit-final
+  derailment-siege-x4:
+    id: 45700
+    mechanic: stack.tower
+    count: 1
+    description: |
+      A four-hit [m:stack.tower] appears at the front of the arena and must be soaked to avoid a party wipe.
+      The final hit deals double damage and causes a jump pad to appear at the rear of the train car. Players who fail to take the jump before the end of the [a:derail] cast are instantly killed.
+      Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] this and the next [a:derailment-siege-x5].
+    compact: full
+    children:
+    - at: 1113
+      id: derailment-siege-hit
+    - at: 2092
+      id: derailment-siege-hit
+    - at: 3073
+      id: derailment-siege-hit
+    - at: 4547
+      id: derailment-siege-hit-final
+  derailment-siege-x5:
+    id: 45701
+    mechanic: stack.tower
+    count: 1
+    description: |
+      A five-hit [m:stack.tower] appears at the front of the arena and must be soaked to avoid a party wipe.
+      The final hit deals double damage and causes a jump pad to appear at the rear of the train car. Players who fail to take the jump before the end of the [a:derail] cast are instantly killed.
+      Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] this Derailment Siege.
+    compact: full
+    children:
+    - at: 1111
+      id: derailment-siege-hit
+    - at: 2091
+      id: derailment-siege-hit
+    - at: 3070
+      id: derailment-siege-hit
+    - at: 4052
+      id: derailment-siege-hit
+    - at: 5520
+      id: derailment-siege-hit-final
+  derailment-siege-x6:
+    id: 45702
+    mechanic: stack.tower
+    count: 1
+    description: |
+      A six-hit [m:stack.tower] appears at the front of the arena and must be soaked to avoid a party wipe.
+      The final hit deals double damage and is immediately followed by [a:derail-enrage], wiping the party.
+    compact: full
+    children:
+    - at: 1111
+      id: derailment-siege-hit
+    - at: 2092
+      id: derailment-siege-hit
+    - at: 3072
+      id: derailment-siege-hit
+    - at: 4052
+      id: derailment-siege-hit
+    - at: 5036
+      id: derailment-siege-hit
+    - at: 6504
+      id: derailment-siege-hit-final
+  derailment-siege-hit:
+    id: 45706
+    name: Derailment Siege (Hit)
+    mechanic: stack.tower
+    count: 1
+    players: 8
+    damage: 57000
+    description: An individual hit of [a:derailment-siege-x3].
+  derailment-siege-hit-final:
+    id: 45707
+    name: Derailment Siege (Final Hit)
+    mechanic: stack.tower
+    count: 1
+    players: 8
+    damage: 120000
+    description: The final hit of [a:derailment-siege-x3]. Deals double damage.
+  derail:
+    id: 45709
+    mechanic: mech.arena
+    description: |
+      [boss] destroys the current train car. Any players still on it when the cast ends are instantly killed.
+  derail-enrage:
+    id: 45710
+    mechanic: enrage
+    damage: 9999999
+    type: dark
+    description: |
+      [boss] destroys the last train car, sending players to their doom.
+  hyperconductive-plasma:
+    id: 45714
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    players: 4
+    damage: 140000
+    description: The two players indicated by [s:designated-conductor] explode in a [m:stack.targeted].
+  arcane-revelation:
+    id: 47527
+    mechanic: mech
+    description: |
+      Boss summons a diamond in the center of the train car. A beam of lightning periodically travels around this diamond. Also inflicts one tank and one healer with [s:designated-conductor].
+      At the same time, [boss] slowly moves its open palms towards each other. When its hands touch, the beam of lightning explodes in a massive [ms:defamation] AoE ([a:hail-of-thunder]) wherever it currently is. At the same time, both players indicated by [s:designated-conductor] explode ([a:hyperconductive-plasma]).
+      **When the beam moves for the last time** before it explodes, [boss]'s hands audibly and visibly crackle with lightning.
+    resolve: |
+      For the first Arcane Revelation:
+      Regardless of the final position of the lightning beam, there are always only two safe spots (one per [s:designated-conductor]). As [s:designated-conductor] always targets one healer and one tank, divide your party into two groups: a melee group (consisting of both tanks and both melees) and a ranged group (consisting of both healers and both ranged damage dealers).
+      Before an explosion, the melee group should always preposition on top of the rightmost elevated block, which is closer to the boss, and the ranged group on the leftmost elevated block. This is because, in order to reach the safe spot you may need to travel across the elevated block, but taking the teleporter pad to ascend locks you in place for an extended period of time. It's faster to jump down from the elevated position if necessary than to take the teleporter pad.
+      With both groups prepositioned on top of each of the two blocks, all that's left is to watch for when [boss]'s hands begin to crackle, then move to the closest safe spot from that. Note that the melee group **never** has to drop down to the rear of the train car outside of melee range, as a frontmost explosion still leaves a safe spot on the rear of their elevated block.
+      For the second Arcane Revelation movement is simpler due to the difference in train car layout.
+timeline:
+  - at: 0
+    id: <phase>
+    name: Car 1
+  - at: 12851
+    id: dead-mans-overdraught
+  - at: 20896
+    id: dead-mans-express
+    link: and
+  - at: 22957
+    id: plasma-beam
+    link: then
+  - at: 26075
+    id: hyperexplosive-plasma
+    link: or
+  - at: 26075
+    id: plasma
+  - at: 31917
+    id: dead-mans-overdraught
+  - at: 40969
+    id: dead-mans-windpipe
+    link: then
+  - at: 45121
+    id: plasma
+    link: or
+  - at: 45121
+    id: hyperexplosive-plasma
+  - at: 52874
+    id: unlimited-express
+  - at: 53093
+    id: <untargetable>
+  - at: 58884
+    id: <phase>
+    name: Car 2
+  - at: 58884
+    id: <targetable>
+  - at: 64986
+    id: dead-mans-overdraught
+  - at: 70017
+    id: turret-crossing
+  - at: 80000
+    id: turret-crossing-hit
+  - at: 81061
+    id: dead-mans-windpipe
+    link: or
+  - at: 81061
+    id: dead-mans-express
+  - at: 85205
+    id: plasma
+    link: or
+  - at: 85205
+    id: hyperexplosive-plasma
+  - at: 91082
+    id: dead-mans-overdraught
+  - at: 98701
+    id: lightning-burst
+  - at: 108228
+    id: dead-mans-express
+    link: or
+  - at: 108228
+    id: dead-mans-windpipe
+    link: and
+  - at: 110271
+    id: plasma-beam
+    link: then
+  - at: 113389
+    id: hyperexplosive-plasma
+    link: or
+  - at: 113389
+    id: plasma
+  - at: 121284
+    id: unlimited-express
+  - at: 121504
+    id: <untargetable>
+  - at: 127297
+    id: <targetable>
+  - at: 136966
+    id: lightning-burst
+  - at: 149618
+    id: runaway-train
+  - at: 153272
+    id: <untargetable>
+  - at: 160229
+    id: <phase>
+    name: Intermission
+  - at: 160229
+    id: <targetable>
+  - at: 174925
+    id: aetherosote
+    link: or
+  - at: 174925
+    id: aetherochar
+    link: and
+  - at: 175058
+    id: aetherial-ray
+  - at: 191050
+    id: aetherosote
+    link: or
+  - at: 191050
+    id: aetherochar
+    link: and
+  - at: 191181
+    id: aetherial-ray
+  - at: 204509
+    id: aetherosote
+    link: or
+  - at: 204509
+    id: aetherochar
+    link: and
+  - at: 204643
+    id: aetherial-ray
+  - at: 219352
+    id: aetherosote
+    link: or
+  - at: 219352
+    id: aetherochar
+    link: and
+  - at: 219485
+    id: aetherial-ray
+  - at: 244791
+    id: runaway-train-raidwide
+  - at: 245100
+    id: <phase>
+    name: Car 3
+  - at: 245100
+    id: <targetable>
+  - at: 263008
+    id: shockwave
+  - at: 272994
+    id: lightning-burst
+  - at: 280522
+    id: derailment-siege-x3
+    link: then
+  - at: 289742
+    id: derail
+  - at: 295000
+    id: <phase>
+    name: Car 4
+  - at: 300922
+    id: third-rail
+  - at: 315098
+    id: thunderous-breath
+    link: or
+  - at: 315098
+    id: headlight
+    link: then
+  - at: 317589
+    id: headlight
+    link: or
+  - at: 317589
+    id: thunderous-breath
+  - at: 322939
+    id: arcane-revelation
+  - at: 337601
+    id: hail-of-thunder
+    link: and
+  - at: 337685
+    id: hyperconductive-plasma
+  - at: 351678
+    id: hail-of-thunder
+    link: and
+  - at: 351767
+    id: hyperconductive-plasma
+  - at: 362828
+    id: hail-of-thunder
+    link: and
+  - at: 362914
+    id: hyperconductive-plasma
+  - at: 375556
+    id: headlight
+    link: or
+  - at: 375556
+    id: thunderous-breath
+    link: then
+  - at: 378051
+    id: thunderous-breath
+    link: or
+  - at: 378051
+    id: headlight
+  - at: 380414
+    id: third-rail
+  - at: 393028
+    id: lightning-burst
+  - at: 402610
+    id: derailment-siege-x4
+    link: then
+  - at: 413973
+    id: derail
+  - at: 418973
+    id: <phase>
+    name: Car 5
+  - at: 431178
+    id: psychokinesis
+    link: and
+  - at: 432200
+    id: plummet
+    count: 2
+  - at: 433219
+    id: third-rail
+  - at: 446274
+    id: psychokinesis
+    link: and
+  - at: 447301
+    id: plummet
+    count: 3
+  - at: 453898
+    id: lightning-burst
+  - at: 462411
+    id: psychokinesis
+    link: and
+  - at: 463484
+    id: plummet
+    count: 5
+  - at: 464463
+    id: third-rail
+  - at: 479536
+    id: derailment-siege-x5
+    link: then
+  - at: 491293
+    id: derail
+  - at: 496293
+    id: <phase>
+    name: Car 6
+  - at: 505499
+    id: dead-mans-overdraught
+  - at: 510536
+    id: turret-crossing
+  - at: 520723
+    id: turret-crossing-hit
+    link: then
+  - at: 523723
+    id: headlight
+    link: or
+  - at: 523723
+    id: thunderous-breath
+    link: then
+  - at: 526219
+    id: thunderous-breath
+    link: or
+  - at: 526219
+    id: headlight
+  - at: 538571
+    id: psychokinesis
+    link: and
+  - at: 539651
+    id: plummet
+    count: 4
+    link: then
+  - at: 540618
+    id: third-rail
+  - at: 553653
+    id: turret-crossing-hit
+  - at: 554653
+    id: dead-mans-express
+    link: and
+  - at: 556709
+    id: plasma-beam
+    link: then
+  - at: 559819
+    id: hyperexplosive-plasma
+    link: or
+  - at: 559819
+    id: plasma
+  - at: 567312
+    id: lightning-burst
+  - at: 574754
+    id: dead-mans-overdraught
+  - at: 578763
+    id: arcane-revelation
+  - at: 593420
+    id: hail-of-thunder
+    link: and
+  - at: 593505
+    id: hyperconductive-plasma
+  - at: 604559
+    id: hail-of-thunder
+    link: and
+  - at: 604646
+    id: hyperconductive-plasma
+  - at: 607101
+    id: third-rail
+  - at: 621941
+    id: dead-mans-windpipe
+  - at: 626079
+    id: plasma
+    link: or
+  - at: 626079
+    id: hyperexplosive-plasma
+  - at: 635073
+    id: headlight
+    link: or
+  - at: 635073
+    id: thunderous-breath
+    link: then
+  - at: 637572
+    id: thunderous-breath
+    link: or
+  - at: 637572
+    id: headlight
+  - at: 646542
+    id: lightning-burst
+  - at: 648091
+    id: third-rail
+  - at: 662045
+    id: derailment-siege-x6
+    link: then
+  - at: 684283
+    id: derail-enrage
+  
