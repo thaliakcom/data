@@ -261,6 +261,7 @@
         "aoe.exaflares",
         "aoe.orbs",
         "aoe.rotating",
+        "aoe.alternating",
         "aoe.expanding",
         "aoe.expanding.rings",
         "aoe.intercept",

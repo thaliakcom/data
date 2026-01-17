@@ -18,6 +18,7 @@ knockback circle: A knockback circle is a telegraphed circle that is pulsing pur
 color partners: A common strategy whereby markers are placed on each cardinal and intercard (generally with two adjacent markers being the same color), then assigns each marker to a player. The two players that share a marker color are considered partners for any mechanic that requires a partner stack.
 stores: If a mechanic is "stored", it isn't executed immediately but is instead executed at some arbitrary point in the future, after other mechanics have been executed first.
 body check: A type of mechanic that immediately follows another mechanic and is meant to punish parties that did not resolve the first mechanic cleanly (that is, without deaths), as all players are required to be alive to resolve this mechanic cleanly. If some players are dead, it may inevitably result in either more players dying, or the entire party wiping.
+tankbuster: An attack on one or two targets that deals massive damage and can only be survived by tanks using defensive cooldowns.
 tankswap: A strategy whereby the two tanks "swap" their enmity values. The main tank becomes the off-tank and vice-versa. Generally accomplished via the off-tank using [a:provoke] and, optionally, the main tank using [a:shirk] afterwards.
 max melee: The maximum distance outside an enemy's hitbox at which melee GCDs can still be used on the enemy.
 kitchen sink: Refers to a tank using all of their defensive cooldowns (except invulnerability) on one attack to drastically reduce damage taken.
@@ -27,7 +28,7 @@ boss relative: When a mechanic is handled "boss relative," all positions are rel
 collapse: When multiple players "collapse" onto each other, this means they stack right on top of each other for subsequent mechanics or movement.
 snapshot: |
   In Final Fantasy XIV, whenever damage is applied, one must distinguish between its *damage instance* (the point where the player actually takes damage and their health bar is reduced) and its *snapshot* (the point where the server calculates the damage). The snapshot for an attack usually takes place several hundreds of a second, or sometimes even several seconds, before the damage instance (and the animation) itself. After this point, applying any additional mitigation or shielding no longer has an effect, even if the shield is applied before the damage actually comes out.
-  The same also goes for status effects. For instance, moving out of an AoE *after* the snapshot but before the AoE actually explodes and deals damage, will still inflict [s:2911] or [s:1789] on you, even though it visually looked like you were out of the AoE before it exploded.
+  The same also goes for status effects. For instance, moving out of an AoE *after* the snapshot but before the AoE actually explodes and deals damage, will still inflict [s:damage-down] or [s:1789] on you, even though it visually looked like you were out of the AoE before it exploded.
   Every attack in the game has a different snapshot. As a general rule of thumb, the snapshot for attacks with cast bars takes place at the end of the cast, and the snapshot for attacks with markers takes place when the marker disappears, but that's not always the case. Unless noted otherwise, all timestamps within Thaliak timelines note when the snapshot for this mechanic takes place.
 comet: |
   In Final Fantasy XIV, *comets* are a commonly used fight mechanic and are used in many different ways. However, they always come down from the sky, deal some damage, and leave behind a rock with a distinctive appearance that has not changed since A Realm Reborn. This rock is generally used in subsequent mechanics, for instance to line-of-sight an attack.
@@ -42,3 +43,14 @@ conga line: |
   For instance, a mechanic may require 4 players to stack and 4 players to spread in one of only 4 possible spread positions. To avoid players going to the same spread position (thus overlapping and killing each other), everyone lines up, and the 4 spread players step forward, thus forming a new line composed of only those 4 players. Of those 4 players, the first one takes the first spread position, the second one takes the second, and so on.
 trio: |
   Named after the eponymous trios in The Unending Coil of Bahamut (Ultimate) where this type of mechanic first appeared, a trio-type mechanic is generally characterized by having multiple untargetable bosses appear and execute multiple mechanics at the same time.
+stack: |
+  "Stacking" refers to the act of standing on top of another player.
+  A "stack attack" is an enemy attack that deals massive damage to an isolated player. To render the attack survivable, other players must share the damage by "stacking" on top of them. Some of these types of attacks simply split the total amount of damage between the stacking players evenly, but this is not always the case. Sometimes the attack simply does a fixed amount of damage depending on the number of players in the stack, and sometimes the damage only scales down to a certain number of players, after which the damage isn't reduced any further, even if more players stack.
+wall boss: |
+  A "wall boss" is a boss that is located *outside* of the arena, past the wall of death. Their hitbox is large enough that players can still hit the boss from within the arena, but they may need to get close to the death wall in order to do so. Wall bosses cannot be positioned or rotated by tanks.
+3-to-1: |
+  A "3-to-1" dodge is a type of movement that can be utilized in mechanics that spawn three sets of AoEs, which is a surprisingly common kind of mechanic. This type of dodge involves players waiting inside one of the AoEs belonging to the third set, waiting for the first set of AoEs to resolve, then dodging into one of the (now resolved) AoEs.
+  A 3-to-1 dodge requires at least one of the third set of AoEs to be adjacent to one AoE of the first set.
+starburst: |
+  Sometimes used to refer to the standard eight-pronged [ms:star]-shaped AoE that appears in certain duties, where eight line AoEs emerge from a central point.
+  The term "starburst" is never actually used in-game to describe this kind of mechanic, so its origin is unclear.

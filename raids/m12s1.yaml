@@ -1,0 +1,20 @@
+id: 1075
+patch: "7.4"
+date: 2025-01-13
+modified: 2025-01-13
+by:
+  id: 27637301
+  role: author
+tier: AAC Heavyweight
+boss: The Lindwurm
+HP: 0
+wip: full
+description: ""
+alias: [r12s1]
+suffix: " Part 1"
+status:
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: 30000
+    description: Reduces damage dealt by 50%.

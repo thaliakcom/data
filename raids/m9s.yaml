@@ -1,0 +1,679 @@
+id: 1069
+patch: "7.4"
+date: 2025-01-13
+modified: 2025-01-13
+by:
+  id: 27637301
+  role: author
+tier: AAC Heavyweight
+boss: Vamp Fatale
+HP: 110594239
+party_hp: 197011
+wip: [diagrams]
+description: ""
+alias: [r9s]
+status:
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: 30000
+    description: Reduces damage dealt by 25%. Inflicted by a multitude of attacks, including [a:coffinfiller], [a:pulping-pulse], [a:sanguine-scratch], [a:explosion], or [a:blast-beat-bat].
+  curse-of-the-bombpyre:
+    id: 4729
+    type: condition
+    name: Curse of the Bombpyre
+    description: Upon coming into contact with the expanding ring in the center of the arena, triggers [a:blast-beat-bat], a standard [m:spread].
+    gameDescription: Being fed upon by a vampette bat, which will explode in response to certain attacks.
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [1960, 960]
+    description: Renders any other magic damage taken during the duration lethal. Inflicted by [a:blast-beat-bat] and [a:ultrasonic-spread].
+  satisfied:
+    id: 4727
+    type: damage-up
+    description: |
+      Increases all of [boss]'s damage dealt per stack. Each [a:crowd-kill] grants [boss] [s:satisfied:4]. Additionally, any players getting hit by any of [boss]'s avoidable attacks also grant her one stack of [s:satisfied].
+      At [s:satisfied:8] and above, all of [boss]'s [a:half-moon-1]s and [a:hardcore]s dramatically increase in size.
+      This buff caps at [s:satisfied:16].
+  flesh-wound:
+    id: 2942
+    type: dot
+    tick: 76342
+    duration: 15000
+    description: Heavy [t:DoT] inflicted by the buzzsaws during the second narrow arena phase.
+  electrocution:
+    id: 3074
+    type: dot
+    tick: 49418
+    duration: 15000
+    description: Heavy [t:DoT] inflicted by the nails during the second narrow arena phase.
+  sustained-damage:
+    id: 4149
+    type: dot
+    tick: 90000
+    duration: 15000
+    description: Heavy [t:DoT] inflicted by failing to soak a tower during [a:flails-and-nails] or [a:hell-in-a-cell].
+  hell-awaits:
+    id: 4730
+    type: vuln
+    name: Hell Awaits
+    duration: 25000
+    description: Inflicted by [a:bloody-bondage] whenever a player soaks a [a:hell-in-a-cell] tower. Soaking another [a:hell-in-a-cell] results in instant death.
+    gameDescription: Wounded by contact with a charnel cell. Taking damage from the same attack again will result in instant death.
+  hell-in-a-cell:
+    id: 4734
+    type: impairment
+    name: Hell in a Cell
+    description: Player's movement speed is slowed and they are unable to leave their cell until they destroy it.
+    gameDescription: Trapped in a mortal struggle. Will be freed upon destruction of the charnel cell.
+  heel-of-the-cell:
+    id: 4742
+    type: resistance
+    name: Heel of the Cell
+    description: Nullifies all damage dealt to the cell by any player who is not in said cell.
+    gameDescription: Damage from those other than designated opponent is nullified.
+  more-than-satisfied:
+    id: 4728
+    type: damage-up
+    name: More than Satisfied
+    description: Renders the next [a:finale-fatale] lethal.
+    gameDescription: Greatly empowered by aether drained, perhaps in excess, from the not-so-innocent.
+actions:
+  killer-voice:
+    id: 45956
+    mechanic: raidwide
+    damage: 171435
+    description: Standard raidwide. Deals moderate damage.
+  hardcore:
+    id: 45951
+    mechanic: tb.double
+    shape: chariot
+    count: 2
+    damage: 398781
+    description: |
+      [ms:chariot:c] [t:tankbuster] on the two targets at the top of the enmity list.
+      At [s:satisfied:8] or more, these AoEs are *significantly* larger and can no longer be taken in melee range.
+  vamp-stomp:
+    id: 45940
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Inflicts [s:curse-of-the-bombpyre] on all players and spawns a number of bats and an expanding circle.
+      The circle begins expanding from the center of the arena. When the circle touches a bat, the bat explodes ([a:blast-beat-bat]), dealing moderate damage and inflicting [s:magic-vulnerability-up] and [s:damage-down] on all nearby players. When the circle touches a player, cleanses [s:curse-of-the-bombpyre] and triggers another explosion ([a:blast-beat-cleanse]) that also deals moderate damage and inflicts [s:magic-vulnerability-up].
+      Players who already cleansed [s:curse-of-the-bombpyre] do not trigger [a:blast-beat-cleanse] if they touch the circle again.
+      As both [a:blast-beat-bat] and [a:blast-beat-cleanse] inflict [s:magic-vulnerability-up], touching the circle shortly before or after being hit by an exploding bat, or clipping another player with [a:blast-beat-cleanse], deals lethal damage.
+    resolve: |
+      It is generally recommended for tanks and melees to cleanse [s:curse-of-the-bombpyre] first so they can get back into melee range of [boss] sooner. Rangeds can wait until the circle reaches them. Either way all players should be spread out, for instance by positioning one melee and one ranged player on each cardinal.
+    children:
+    - at: 4190
+      id: blast-beat-bat
+    - at: 5484
+      id: blast-beat-cleanse
+      timing: player
+    - at: 7669
+      id: blast-beat-bat
+    - at: 8915
+      id: blast-beat-cleanse
+      timing: player
+    - at: 11183
+      id: blast-beat-bat
+  blast-beat-bat:
+    id: 45941
+    name: Blast Beat (Bat)
+    mechanic: aoe
+    shape: chariot
+    damage: 134927
+    players: 0
+    description: A bat explodes during [a:vamp-stomp] after being hit by the expanding circle, dealing moderate damage to all nearby players and inflicting [s:magic-vulnerability-up] and [s:damage-down] on them.
+  blast-beat-cleanse:
+    id: 45942
+    name: Blast Beat (Cleanse)
+    mechanic: spread
+    shape: chariot
+    damage: 118918
+    description: A player explodes after cleansing their [s:curse-of-the-bombpyre] on the expanding circle, dealing moderate damage to them and all nearby players and inflicting [s:magic-vulnerability-up] on them.
+  brutal-rain-1:
+    id: 45917
+    mechanic: stack.party
+    shape: chariot
+    compact: full
+    description: |
+      A simple multi-hit stack. Hits 3 times.
+      Each subsequent [a:brutal-rain-1] increases the number of hits by one.
+    children:
+    - at: 1248
+      id: brutal-rain-hit
+    - at: 2317
+      id: brutal-rain-hit
+    - at: 3386
+      id: brutal-rain-hit
+  brutal-rain-2:
+    id: 45917
+    mechanic: stack.party
+    shape: chariot
+    compact: full
+    description: |
+      A simple multi-hit stack. Hits 4 times.
+      Each subsequent [a:brutal-rain-1] increases the number of hits by one.
+    children:
+    - at: 1248
+      id: brutal-rain-hit
+    - at: 2317
+      id: brutal-rain-hit
+    - at: 3386
+      id: brutal-rain-hit
+    - at: 4486
+      id: brutal-rain-hit
+  brutal-rain-3:
+    id: 45917
+    mechanic: stack.party
+    shape: chariot
+    compact: full
+    description: A simple multi-hit stack. Hits 5 times.
+    children:
+    - at: 1248
+      id: brutal-rain-hit
+    - at: 2317
+      id: brutal-rain-hit
+    - at: 3386
+      id: brutal-rain-hit
+    - at: 4486
+      id: brutal-rain-hit
+    - at: 5586
+      id: brutal-rain-hit
+  brutal-rain-hit:
+    id: 45955
+    name: Brutal Rain (Hit)
+    mechanic: stack.party
+    shape: chariot
+    damage: 104948
+    description: An individual hit of [a:brutal-rain-1].
+  sadistic-screech:
+    id: 45926
+    mechanic: mech.arena
+    damage: 204422
+    players: 8
+    description: Moderate raidwide that transforms the arena.
+  dead-wake:
+    id: 45927
+    mechanic: aoe
+    shape: rect
+    description: Coffinmaker moves forward by a quarter of the arena, dealing heavy damage and knocking all players in its path back.
+  half-moon-1:
+    id: 45943
+    mechanic: aoe
+    shape: halfroom
+    description: |
+      A [ms:halfroom] [t:AoE] in the direction of [boss]'s blood orb.
+      If [boss] is at [s:satisfied:8] or more, this [ms:halfroom] cleave will cover the entirety of [boss]'s hitbox, not just half of it.
+  half-moon-2:
+    id: 45948
+    name: Half Moon (Follow-up)
+    mechanic: aoe
+    shape: halfroom
+    description: The followup to [a:half-moon-1], which hits the other half of the arena.
+  coffinfiller:
+    id: 45928
+    mechanic: aoe
+    shape: rect
+    count: 2
+    damage: 75772
+    players: 0
+    description: Two of the Coffinmaker's saws begin to glow, then plunge forward, dealing damage and inflicting [s:damage-down] to all players in their path.
+  coffinfiller-1:
+    id: 45929
+    name: Coffinfiller (Follow-up)
+    mechanic: aoe
+    shape: rect
+    count: 2
+    damage: 75772
+    players: 0
+    description: The other two of the Coffinmaker's saws plunge forward, dealing damage and inflicting [s:damage-down] to all players in their path.
+  crowd-kill:
+    id: 45933
+    mechanic: raidwide
+    damage: 225252
+    description: Moderate raidwide. Grants [s:satisfied:4] to [boss].
+  crowd-kill-enrage:
+    id: 45933
+    mechanic: raidwide
+    damage: 225252
+    description: Like [a:crowd-kill], but instead of granting [boss] [s:satisfied:4], it grants her [s:more-than-satisfied], triggering the enrage.
+  finale-fatale:
+    id: 45935
+    mechanic: raidwide
+    damage: 207918
+    description: Moderate raidwide. Spawns a number of [a:pulping-pulse] AoEs.
+  pulping-pulse:
+    id: 45939
+    mechanic: aoe
+    shape: chariot
+    damage: 127441
+    players: 0
+    description: Small AoE. Deals moderate damage and inflicts [s:damage-down].
+  aetherletting:
+    id: 45967
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Telegraphed conal [m:aoe.rotating] originate from [boss].
+      At the same time, 2 players per set are marked and are shortly thereafter hit by a small [m:spread] AoE. This AoE leaves behind a plus- or cross-shaped AoE that resolves after all players have dropped their AoE.
+    strategies:
+      center-safe:
+        name: Center Safe
+        description: |
+          A simple braindead strategy that leaves the center safe. Each player is assigned a clock spot. When a player gets marked, they move out to the wall exactly halfway between their own clock spot and the clock spot counter-clockwise to them. Each player drops their AoE in this position, then at the end everyone stacks dead-center in the middle of the arena, under the boss. If all AoEs were placed correctly, the center will be completely safe, regardless of whether anyone's AoE was a cross or a plus.
+          This strategy also allows you to essentially ignore the rotating cones, as halfway between each marker is where one cone ends and another begins, allowing players to dodge a cone by simply taking a small step sideways.
+    children:
+    - at: 711
+      id: aetherletting-cone
+    - at: 2713
+      id: aetherletting-player
+      link: and
+    - at: 2713
+      id: aetherletting-cone
+    - at: 4718
+      id: aetherletting-player
+      link: and
+    - at: 4718
+      id: aetherletting-cone
+    - at: 6722
+      id: aetherletting-player
+      link: and
+    - at: 6722
+      id: aetherletting-cone
+    - at: 8726
+      id: aetherletting-player
+    - at: 17195
+      id: aetherletting-cross
+      link: then
+    - at: 19200
+      id: aetherletting-cross
+      link: then
+    - at: 21208
+      id: aetherletting-cross
+      link: then
+    - at: 23213
+      id: aetherletting-cross
+  aetherletting-cone:
+    id: 45969
+    name: Aetherletting (Cone)
+    mechanic: aoe.rotating
+    shape: cone
+    count: 2
+    description: One of the rotating cones during [a:aetherletting].
+  aetherletting-player:
+    id: 45970
+    name: Aetherletting (Spread)
+    mechanic: spread
+    shape: chariot
+    count: 2
+    damage: 137755
+    description: |
+      A small spread AoE on a player that leaves behind an [a:aetherletting-cross] that resolves later.
+      If this AoE is dropped too close to another player's they explode immediately, likely killing both players.
+  aetherletting-cross:
+    id: 45971
+    name: Aetherletting (Cross/Plus)
+    mechanic: aoe
+    shape: cross
+    count: 2
+    description: A [ms:cross] or [ms:plus] AoE originating from where a player dropped their [a:aetherletting-player] spread. Inflicts [s:damage-down].
+  insatiable-thirst:
+    id: 45938
+    mechanic: raidwide
+    damage: 166693
+    description: Standard raidwide.
+  gravegrazer:
+    id: 45931
+    mechanic: aoe
+    shape: rect
+    damage: 37913
+    players: 0
+    description: One of the moving chainsaws touches a player, dealing mild damage and inflicting [s:flesh-wound] on them.
+  flails-and-nails:
+    name: Flails and Nails
+    mechanic: hint
+    description: |
+      A mini-phase that involves two large buzzsaws and two small chakrams constantly moving back and forth throughout the arena. Any player touching these saws ([a:gravegrazer]) is inflicted with [s:flesh-wound].
+      There are three sets of adds. Each set begins with a tank tower in the northern and southern half of the arena that must be soaked ([a:plummet]) or they explode ([a:massive-impact]), inflicting [s:sustained-damage]. Afterwards, spawns three adds: 2 Fatal Flails where the two towers were soaked, and 1 Deadly Doornail.
+      The Flatal Fails immediately begin casting [a:barbed-burst], a 16 second cast that must be canceled by destroying the flail or it will deal heavy damage and inflict [s:damage-down] on all players.
+      The Deadly Doornail spawns with a small purple puddle underneath it that gradually [expands](m:aoe.expanding). Any player who steps into this puddle is inflicted with [s:electrocution], a heavy DoT. If the doornail is not killed in time, it will likely cover the entirety of the next [a:plummet] tower with its puddle and make crossing through the middle difficult or impossible.
+    resolve: |
+      Have the main tank soak the northern [a:plummet] tower and the off-tank soak the southern [a:plummet] tower. Melees can get a [t:GCD] or two off on the Deadly Doornail before switching to the Fatal Flails. Tanks cannot kill these alone outside of burst and will likely need help. Ranged damage dealers focus on the Deadly Doornail.
+  plummet:
+    id: 45963
+    mechanic: tb.towers
+    count: 2
+    damage: 155139
+    description: |
+      A tank tower spawns on the north and south side of the arena and must be soaked or it will explode ([a:massive-impact]).
+      These towers deal very little damage to tanks and can be safely soaked without defensives. If a tank is dead, these towers can also be safely soaked by a healthy non-tank, though tanks are still the preferred option.
+  massive-impact:
+    id: 45964
+    mechanic: mech.failure
+    description: A Fatal Flail was left unsoaked, dealing heavy damage and inflicting [s:sustained-damage] on all players.
+  barbed-burst:
+    id: 45965
+    mechanic: mech.failure
+    description: A Fatal Flail was not killed in time, dealing heavy damage and inflicting [s:damage-down] on all players.
+  hell-in-a-cell:
+    id: 45973
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Four towers spawn around the arena. Each tower must be soaked by one person ([a:bloody-bondage]).
+      After being soaked, the tower turns into a charnel cell. Each charnel cell has the status effect [s:heel-of-the-cell]. The soakee is inflicted with [s:hell-in-a-cell] and [s:hell-awaits] and cannot leave the cell until the cell is destroyed. Only the initial soakee (and inmate) can deal damage to the cell. While in the cell, they take constant damage every 3 seconds ([a:blood-lash]).
+      Meanwhile, the 4 players outside the cells have to deal with [a:ultrasonic-amp] and [a:ultrasonic-spread]. [boss] casts both mechanics, the only variance is which one the boss casts first. Care must be taken to ensure the ultrasonic cones don't hit any players in a cell. This is always possible as two, and only two, towers are always guaranteed to spawn directly side-by-side, meaning there are always 3 gaps available (2 smaller gaps and 1 large gap).
+      After this is done, 4 more towers spawn and the mechanic repeats.
+    resolve: |
+      Standard light party split. Light party 1 soaks the first set of towers while light party 2 stays outside. Then light party 2 soaks the second set of towers while light party 1 stays outside. Due to [a:ultrasonic-spread] (a tankbuster) it is vital that there is a tank available outside a cell during both sets.
+    children:
+    - at: 1203
+      id: bloody-bondage
+    - at: 2763
+      id: <targetable>
+      description: The charnel cells become targetable.
+    - at: 9088
+      id: ultrasonic-spread
+      link: or
+    - at: 9088
+      id: ultrasonic-amp
+    - at: 16211
+      id: ultrasonic-amp
+      link: or
+    - at: 16211
+      id: ultrasonic-spread
+  bloody-bondage:
+    id: 45974
+    mechanic: towers.single
+    count: 4
+    damage: 39450
+    description: The towers resolve, turning into charnel cells and inflicting [s:hell-in-a-cell] and [s:hell-awaits] to the soakees.
+  blood-lash:
+    id: 45977
+    mechanic: auto.single
+    damage: 72475
+    description: Constant damage dealt to the inmate of a [a:hell-in-a-cell] while the cell is active.
+  ultrasonic-spread:
+    id: 45982
+    name: Ultrasonic Spread
+    mechanic: spread.role
+    shape: cone
+    count: 3
+    damage: 137381
+    players: 4
+    tank-damage: 370411
+    description: Two smaller spread cones on the healer and the damage dealers outside a charnel cell and a larger cone dealing tankbuster-levels of damage on the tank outside any cell.
+    resolve: |
+      Due to the pseudo-random cell spawn positions, there are always 3 gaps available between cells: 2 smaller gaps and 1 large gap. The large gap belongs to the tank. Their cone cannot fit into the smaller gaps. Based on the larger gap, place the healer cone in the gap clockwise to the tank gap and the damage dealer cone in the gap counter-clockwise of the tank gap.
+  ultrasonic-amp:
+    id: 45983
+    name: Ultrasonic Amp
+    mechanic: stack.targeted
+    shape: cone
+    damage: 205812
+    description: A 4-player stack on a random non-cell player. The cone has the same size as the tank cone during [a:ultrasonic-spread].
+    resolve: Place the cone in the large gap.
+  undead-deathmatch:
+    id: 45984
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Two [stack towers](m:stack.tower) spawn.
+      After resolving, each tower spawns a bat. Each bat will attempt to chain itself to the closest 4 players.* The bat then begins moving either clockwise or counter-clockwise around the arena until they complete a 180 degree rotation, at which point they perform either [a:breakdown-drop] ([ms:chariot]) or [a:breakwing-beat] ([ms:dynamo]) as indicated by an icon above the bat during its rotation. They may flip direction at this point, or they may not, and begin moving back to their point of origin, at which point they again perform either [a:breakdown-drop] or [a:breakwing-beat]. A bat may perform the same or opposite types of AoE each time. Whichever AoE the first bat performs, the other bat performs the opposite type of AoE.
+      Players may not move too far away from the bat they are chained to. If they do, they are inflicted with [s:damage-down] and dealt a massive amount of damage ([a:explosion]).
+      At the same time [boss] casts [a:sanguine-scratch], a set of [m:aoe.alternating].
+      * If 4 players soak each tower as intended, each bat will simply tether to the 4 players who soaked the tower. If someone goes to the wrong tower and the towers are soaked in a 5/3 split, one of the players in the 5-stack will be tethered to the bat across the arena, resulting in an instant [s:damage-down] and damage from being too far away from their bat.
+    children:
+    - at: 1206
+      id: bloody-bondage-deathmatch
+    - at: 7621
+      id: sanguine-scratch
+    - at: 20907
+      id: breakdown-drop
+      link: and
+    - at: 20907
+      id: breakwing-beat
+    - at: 25986
+      id: sanguine-scratch
+    - at: 39259
+      id: breakdown-drop
+      link: and
+    - at: 39260
+      id: breakwing-beat
+  bloody-bondage-deathmatch:
+    id: 45985
+    mechanic: stack.tower
+    count: 2
+    damage: 210176
+    players: 4
+    description: The [stack towers](m:stack.tower) resolve and bats tether to the 4 closest players, see [a:undead-deathmatch].
+  sanguine-scratch:
+    id: 45988
+    mechanic: aoe.alternating
+    shape: cone
+    compact: full
+    description: Executes a series of alternating conal AoEs. Getting hit deals damage and inflicts [s:damage-down].
+    resolve: Be aware that the safe zones are much smaller cones than the danger zones. It is not sufficient to dodge into one of the conal AoEs when they resolve. You must dodge into *the center* of a danger cone or the next set will likely hit you.
+    children:
+    - at: 714
+      id: sanguine-scratch-hit
+    - at: 3121
+      id: sanguine-scratch-hit
+    - at: 5529
+      id: sanguine-scratch-hit
+    - at: 7936
+      id: sanguine-scratch-hit
+    - at: 10343
+      id: sanguine-scratch-hit
+  sanguine-scratch-hit:
+    id: 45989
+    name: Sanguine Scratch (Hit)
+    mechanic: aoe.alternating
+    shape: cone
+    count: 8
+    description: The cones hit. See [a:sanguine-scratch].
+  explosion:
+    id: 45987
+    mechanic: mech.failure
+    damage: 142804
+    players: 0
+    description: A player has exceeded the maximum distance permitted for their chain and are dealt heavy damage and inflicted with [s:damage-down].
+  breakdown-drop:
+    id: 45992
+    mechanic: aoe
+    shape: chariot
+    description: The bat executes a [ms:chariot] AoE on its position.
+  breakwing-beat:
+    id: 45993
+    mechanic: aoe
+    shape: dynamo
+    description: The bat executes a [ms:dynamo] AoE on its position.
+  finale-fatale-enrage:
+    id: 45937
+    mechanic: enrage
+    damage: 9999999
+    description: "[boss] enrages, killing all players."
+timeline:
+  - at: 10873
+    id: killer-voice
+  - at: 21028
+    id: hardcore
+  - at: 31185
+    id: vamp-stomp
+  - at: 46113
+    id: brutal-rain-1
+  - at: 61573
+    id: sadistic-screech
+  - at: 68260
+    id: <untargetable>
+    description: "[boss] becomes untargetable."
+  - at: 68484
+    id: <phase>
+    name: Coffinmaker Phase
+  - at: 68484
+    id: <targetable>
+    description: The Coffinmaker becomes targetable.
+  - at: 68841
+    id: dead-wake
+  - at: 76056
+    id: half-moon-1
+    link: and
+  - at: 76056
+    id: coffinfiller
+    link: then
+  - at: 79047
+    id: half-moon-2
+    link: and
+  - at: 79090
+    id: coffinfiller
+  - at: 86212
+    id: dead-wake
+  - at: 93474
+    id: half-moon-1
+    link: and
+  - at: 93474
+    id: coffinfiller-1
+    link: then
+  - at: 96459
+    id: half-moon-2
+    link: and
+  - at: 96504
+    id: coffinfiller-1
+  - at: 103627
+    id: dead-wake
+  - at: 110891
+    id: half-moon-1
+    link: and
+  - at: 110891
+    id: coffinfiller
+    link: then
+  - at: 113875
+    id: half-moon-2
+    link: and
+  - at: 113920
+    id: coffinfiller-1
+  - at: 121048
+    id: half-moon-1
+    link: and
+  - at: 121048
+    id: coffinfiller
+    link: then
+  - at: 124035
+    id: half-moon-2
+    link: and
+  - at: 124035
+    id: coffinfiller-1
+  - at: 133000
+    id: dead-wake
+    description: If the Coffinmaker is not destroyed before this point, it knocks all players off the arena.
+  - at: 133000
+    id: <endphase>
+    timing: push
+  - at: 133000
+    id: <targetable>
+    description: "[boss] becomes targetable again immediately after Coffinmaker is destroyed."
+    timing: push
+  - at: 139147
+    id: sadistic-screech
+  - at: 153587
+    id: crowd-kill
+  - at: 172523
+    id: finale-fatale
+  - at: 177382
+    id: pulping-pulse
+    count: 6
+  - at: 190840
+    id: aetherletting
+  - at: 220999
+    id: hardcore
+  - at: 225991
+    id: pulping-pulse
+    count: 6
+  - at: 231155
+    id: vamp-stomp
+  - at: 247334
+    id: half-moon-1
+  - at: 250321
+    id: half-moon-2
+  - at: 256250
+    id: brutal-rain-2
+  - at: 271665
+    id: insatiable-thirst
+  - at: 284804
+    id: sadistic-screech
+  - at: 284804
+    id: <phase>
+    name: Flails and Nails
+  - at: 284804
+    id: flails-and-nails
+  - at: 297061
+    id: plummet
+  - at: 297196
+    id: <targetable>
+    description: A Deadly Doornail and two Fatal Flails become targetable.
+  - at: 306063
+    id: killer-voice
+  - at: 315185
+    id: plummet
+  - at: 315318
+    id: <targetable>
+    description: A Deadly Doornail and two Fatal Flails become targetable.
+  - at: 324231
+    id: killer-voice
+  - at: 333368
+    id: plummet
+  - at: 333502
+    id: <targetable>
+    description: A Deadly Doornail and two Fatal Flails become targetable.
+  - at: 357298
+    id: sadistic-screech
+  - at: 357298
+    id: <endphase>
+  - at: 371727
+    id: crowd-kill
+  - at: 390711
+    id: finale-fatale
+  - at: 395516
+    id: pulping-pulse
+    count: 8
+  - at: 400506
+    id: hell-in-a-cell
+  - at: 422911
+    id: hell-in-a-cell
+  - at: 444263
+    id: pulping-pulse
+    count: 8
+  - at: 448274
+    id: pulping-pulse
+    count: 8
+  - at: 453349
+    id: undead-deathmatch
+  - at: 498218
+    id: brutal-rain-3
+  - at: 512643
+    id: vamp-stomp
+  - at: 528813
+    id: half-moon-1
+  - at: 531799
+    id: half-moon-2
+  - at: 538928
+    id: hardcore
+  - at: 543922
+    id: pulping-pulse
+    count: 10
+  - at: 550515
+    id: sanguine-scratch
+  - at: 571678
+    id: insatiable-thirst
+  - at: 586026
+    id: crowd-kill-enrage
+  - at: 605843
+    id: finale-fatale-enrage
+  

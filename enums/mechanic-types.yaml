@@ -10,6 +10,10 @@ raidwide.proximity:
   name: proximity
   description: Proximity damage originates from some spot in the arena or an entity (like the boss) and does more damage to players the closer to its origin they are.
   players: 8
+raidwide.proximity.fake:
+  name: proximity (fake)
+  description: A "fake proximity" attack. Usually, proximity attacks deal more damage to players the closer they are to its origin. Picture this attack instead more as a massive invisible [ms:chariot] [t:AoE] where being inside of the AoE deals unsurvivable amounts of damage, but being outside of the AoE only deals moderate raidwide damage.
+  players: 8
 raidwide.sethp:
   name: sets HP
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
@@ -70,6 +74,10 @@ tb.close-or-far:
   name: tankbuster (distance)
   description: A heavy-hitting attack that targets either the closest or farthest player to the boss and must be heavily mitigated with tank cooldowns to survive.
   players: 1
+tb.flare:
+  name: tankbuster (flare)
+  description: A tankbuster on either the first or second player on the enmity list. The selected player is indicated by a headmarker and must heavily mitigate the attack using defensive cooldowns to survive. All other players must move as far away from the player as possible, as the tankbuster deals proximity damage to all other players.
+  players: 8
 auto.single:
   name: MT
   description: These auto-attacks target the player with the highest enmity.
@@ -97,7 +105,9 @@ stack.party:
   shapeful: true
 stack.partner:
   name: partner stack
-  description: A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
+  description: |
+    A heavy-hitting attack on one party member that cannot be survived alone. One other party member must stack close to divide the damage amongst themselves and make it survivable.
+    This type of mechanic frequently targets either all supports or all damage dealers.
   players: 2
   shapeful: true
 stack.enumeration:
@@ -177,6 +187,10 @@ aoe.orbs:
 aoe.rotating:
   name: rotating AoEs
   description: These [AoEs](t:AoE) rotate around the arena. Players must identify which direction the AoEs will rotate in to avoid standing in its immediate path, then follow the AoEs as they rotate.
+  shapeful: true
+aoe.alternating:
+  name: alternating AoEs
+  description: These [AoEs](t:AoE) alternate, meaning that whichever space is safe from the AoE initially is a danger zone the second time around while the initial danger zone is now the safe zone. Some alternating AoEs only alternate once; others alternate constantly until another mechanic has concluded.
   shapeful: true
 aoe.expanding:
   name: expanding AoE(s)
@@ -281,7 +295,7 @@ mech.center-or-sides:
   description: A mechanic with 2 variations. Players must either get to the sides of the arena (due to a line AoE through the center) or to the center of the arena (due to two line AoEs on the sides). The only way to tell which variation the boss is using is some boss or arena tell like a specific stance, VFX, or animation.
 mech.store:
   name: store
-  description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to member *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
+  description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to remember *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
 mech.gaze:
   name: gaze
   description: Players must look away from a given target (often the boss). Failing to do so usually inflicts a debilitating debuff like [s:210].
@@ -295,7 +309,7 @@ mech.limit:
     Named after Cruise Chaser's eponymous attack, [a:7916].
 mech.failure:
   name: failure
-  description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:2911] or [s:1789], or wipes the party altogether. These kinds of failures generally can't be bypassed using [s:transcendent], [t:invuln], or similar cheeses.
+  description: A mechanic was incorrectly executed. This is your punishment. Usually either deals high damage to all party members, inflicts debuffs such as [s:damage-down] or [s:1789], or wipes the party altogether. These kinds of failures generally can't be bypassed using [s:transcendent], [t:invuln], or similar cheeses.
 mech.distance:
   name: distance
   description: Players must be at the correct distance to something else in order to avoid debuffs and/or death.
