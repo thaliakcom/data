@@ -12,6 +12,7 @@ wip: full
 description: ""
 alias: [r12s1]
 suffix: " Part 1"
+spoiler: true
 status:
   damage-down:
     id: 2911
