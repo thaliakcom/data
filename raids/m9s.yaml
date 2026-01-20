@@ -1,7 +1,7 @@
 id: 1069
 patch: "7.4"
 date: 2025-01-13
-modified: 2025-01-13
+modified: 2025-01-20
 by:
   id: 27637301
   role: author
@@ -32,6 +32,7 @@ status:
   satisfied:
     id: 4727
     type: damage-up
+    affects: enemy
     description: |
       Increases all of [boss]'s damage dealt per stack. Each [a:crowd-kill] grants [boss] [s:satisfied:4]. Additionally, any players getting hit by any of [boss]'s avoidable attacks also grant her one stack of [s:satisfied].
       At [s:satisfied:8] and above, all of [boss]'s [a:half-moon-1]s and [a:hardcore]s dramatically increase in size.
@@ -70,12 +71,14 @@ status:
   heel-of-the-cell:
     id: 4742
     type: resistance
+    affects: enemy
     name: Heel of the Cell
     description: Nullifies all damage dealt to the cell by any player who is not in said cell.
     gameDescription: Damage from those other than designated opponent is nullified.
   more-than-satisfied:
     id: 4728
     type: damage-up
+    affects: enemy
     name: More than Satisfied
     description: Renders the next [a:finale-fatale] lethal.
     gameDescription: Greatly empowered by aether drained, perhaps in excess, from the not-so-innocent.
