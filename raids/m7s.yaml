@@ -7,6 +7,7 @@ by:
   role: author
 tier: AAC Cruiserweight
 boss: Brute Abombinator
+party_hp: 168807
 HP: 118583808
 wip: full
 description: ""
@@ -17,3 +18,629 @@ status:
     type: impairment
     duration: 30000
     description: Reduces damage dealt by 35%.
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [7000, 2000]
+    description: Renders all magic damage lethal. Inflicted by [a:strange-seeds-drop], [a:electrogenetic-force], [a:sinister-seeds-stars], [a:killer-seeds], [a:impact], [a:the-unpotted].
+  thorns-of-death-i:
+    id: 4466
+    name: Thorns of Death I
+    type: dot
+    tick: 10000
+    description: Player is tethered to a wall. The tether is kept short, resulting in a mild [t:DoT]. If the player moves too far away from the wall, this debuff turns into [s:thorns-of-death-ii], then [s:thorns-of-death-iii], and finally [s:thorns-of-death-iv].
+  thorns-of-death-ii:
+    id: 4467
+    name: Thorns of Death II
+    type: dot
+    tick: 25000
+    description: Player is tethered to a wall. The tether is still somewhat short, resulting in a moderate [t:DoT], but the player should get a bit closer to the wall to reduce this debuff to [s:thorns-of-death-i]. Moving even farther away from the wall turns this debuff into [s:thorns-of-death-iii] and finally [s:thorns-of-death-iv].
+  thorns-of-death-iii:
+    id: 4468
+    name: Thorns of Death III
+    type: dot
+    tick: 76000
+    description: Player is tethered to a wall. The tether is rather long, resulting in a heavy [t:DoT]. The player must return to the wall as soon as possible to reduce the debuff to [s:thorns-of-death-ii] or ideally [s:thorns-of-death-i], or they will likely die. Moving even farther away turns this debuff into [s:thorns-of-death-iv].
+  thorns-of-death-iv:
+    id: 4469
+    name: Thorns of Death IV
+    type: dot
+    tick: 150000
+    description: Player is tethered to a wall, but the tether is far too long, resulting in a massive [t:DoT] that will instantly kill the player if the DoT is allowed to tick even once.
+  stone-curse:
+    id: 4537
+    type: impairment
+    duration: 20000
+    description: |
+      Player is petrified and thus unable to act or move. Any damage instance results in instant death. Inflicted by [a:quarry-swamp]. Due to the unavoidable damage immediately following [a:quarry-swamp], this debuff is a death sentence.
+      In Phase 3, adds can also be inflicted with this debuff, which is why it is recommended not to hit the Phase 3 adds at all until after [a:quarry-swamp], at which point a single point of damage will kill them instantly.
+actions:
+  brutal-impact-6x:
+    id: 42331
+    mechanic: raidwide
+    description: |
+      Standard raidwide.
+      Each successive use increases the number of hits by 1, up to a maximum of 8.
+    children:
+    - at: 224
+      id: brutal-impact-hit
+    - at: 1296
+      id: brutal-impact-hit
+    - at: 2369
+      id: brutal-impact-hit
+    - at: 3439
+      id: brutal-impact-hit
+    - at: 4510
+      id: brutal-impact-hit
+    - at: 5584
+      id: brutal-impact-hit
+  brutal-impact-7x:
+    id: 42331
+    mechanic: raidwide
+    description: Placeholder description
+    children:
+    - at: 224
+      id: brutal-impact-hit
+    - at: 1296
+      id: brutal-impact-hit
+    - at: 2369
+      id: brutal-impact-hit
+    - at: 3439
+      id: brutal-impact-hit
+    - at: 4510
+      id: brutal-impact-hit
+    - at: 5584
+      id: brutal-impact-hit
+    - at: 6657
+      id: brutal-impact-hit
+  brutal-impact-8x:
+    id: 42331
+    mechanic: raidwide
+    description: Placeholder description
+    children:
+    - at: 224
+      id: brutal-impact-hit
+    - at: 1296
+      id: brutal-impact-hit
+    - at: 2369
+      id: brutal-impact-hit
+    - at: 3439
+      id: brutal-impact-hit
+    - at: 4510
+      id: brutal-impact-hit
+    - at: 5584
+      id: brutal-impact-hit
+    - at: 6657
+      id: brutal-impact-hit
+    - at: 7730
+      id: brutal-impact-hit
+  brutal-impact-hit:
+    id: 42332
+    mechanic: raidwide
+    damage: 57492
+    description: Individual hit of [a:brutal-impact-6x].
+  stoneringer:
+    id: 42333
+    mechanic: mech.prepare
+    description: |
+      [boss] summons either a blade or a club.
+      When the boss casts [a:smash-here], [a:smash-there], or jumps to another wall, he will additionally use:
+      * a ([ms:dynamo]) if he's wielding a blade or
+      * a ([ms:chariot]) if he's wielding a club.
+  smash-here:
+    id: 42335
+    name: Smash Here
+    mechanic: tb.close
+    description: |
+      Executes the previously stored [t:AoE] followed immediately by a [t:tankbuster] on the closest target.
+    resolve: |
+      If [boss] wields a blade, the party must be inside, then move out immediately after [a:brutish-swing] or they'll bait the tankbuster. The tank remains inside for the entire mechanic.
+      If [boss] wields a club, the party must remain outside for the entire mechanic. The tank must gapclose in immediately after [a:brutish-swing]. Melees may not do the same or they'll bait the tankbuster.
+    children:
+    - at: 981
+      id: brutish-swing
+    - at: 2145
+      id: brutal-smash
+  smash-there:
+    id: 42336
+    name: Smash There
+    mechanic: tb.far
+    description: |
+      Executes the previously stored [t:AoE] followed immediately by a [t:tankbuster] on the farthest target.
+    resolve: |
+      If [boss] wields a blade, the party must remain inside for the entire mechanic. The tank must move out immediately after [a:brutish-swing].
+      If [boss] wields a club, the party must stay out, then move in immediately after [a:brutish-swing]. The tank must remain outside to bait the tankbuster.
+    tips:
+      - Be aware that the snapshot for the in/out **does not** coincide with the end of the cast **nor** the disappearance of the AoE telegraph. The snapshot happens about slightly afterwards, so do not move out/in too early!
+    children:
+    - at: 981
+      id: brutish-swing
+    - at: 2145
+      id: brutal-smash
+  brutish-swing:
+    id: 42338
+    mechanic: aoe
+    shape: in-or-out
+    description: A [ms:chariot] if [boss] wields a club, or a [ms:dynamo] if he wields a blade. Inflicts [s:damage-down].
+  brutal-smash:
+    id: 42341
+    mechanic: tb.stack
+    shape: chariot
+    damage: 358126
+    description: A [distance-based](m:tb.close-or-far) [shared](m:tb.stack) tankbuster on either the closest or farthest target, depending on the name of the cast ([a:smash-here] or [a:smash-there]).
+  spore-sac:
+    id: 42346
+    mechanic: aoe
+    shape: chariot
+    count: 4
+    description: 4 AoEs in one of two predefined patterns that determines where the Blooming Abominations will spawn. Inflicts [s:damage-down].
+  pollen:
+    id: 42347
+    mechanic: aoe
+    shape: chariot
+    count: 12
+    description: After [a:spore-sac], 3 tendrils begin to grow from each spore. The ends of each tendril then detonate in a [ms:chariot] AoE. Inflicts [s:damage-down].
+  sinister-seeds-1:
+    id: 42349
+    mechanic: mech
+    major: true
+    description: |
+      Major mechanic.
+      There are two types of responsibilities for this mechanic: [a:sinister-seeds-stars] and [a:sinister-seeds-aoes]. At the end of the cast, the closest 4 players are designated for one of these mechanics while the other 4 receive the other mechanic.
+      [a:sinister-seeds-stars]: 4 players receive a headmarker along with a telegraphed AoE. After a significant delay, the AoE resolves, dealing moderate damage and leaving behind [a:tendrils-of-terror]; star-shaped AoEs where the AoE was dropped.
+      [a:sinister-seeds-aoes]: several rounds of AoEs appear underneath the other 4 players. Any player hit by these is inflicted with [s:damage-down]. At the end of the mechanic, all dropped AoEs explode again with a much bigger radius ([a:roots-of-evil]).
+    children:
+    - at: 1202
+      id: pollen
+    - at: 3340
+      description: 4 Blooming Abominations become targetable.
+      id: <targetable>
+    - at: 4142
+      id: sinister-seeds-aoes
+    - at: 6147
+      id: sinister-seeds-aoes
+    - at: 8151
+      id: sinister-seeds-stars
+      link: and
+    - at: 8151
+      id: sinister-seeds-aoes
+    - at: 10153
+      id: sinister-seeds-aoes
+    - at: 12697
+      id: impact
+      link: and
+    - at: 12787
+      id: tendrils-of-terror
+      count: 4
+    - at: 18180
+      id: roots-of-evil
+  sinister-seeds-stars:
+    id: 42350
+    name: Sinister Seeds (Star)
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 125535
+    description: The AoEs on the 4 players with headmarkers resolve. Shortly afterwards, [a:tendrils-of-terror] appear in that location. Inflicts [s:magic-vulnerability-up].
+  tendrils-of-terror:
+    id: 42351
+    mechanic: aoe
+    shape: star
+    description: A [ms:star]-shaped AoE that detonates wherever [a:sinister-seeds-stars] were dropped. Inflicts [s:damage-down].
+  sinister-seeds-aoes:
+    id: 42353
+    name: Sinister Seeds (AoE)
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 4
+    description: Multiple rounds of AoEs that are baited on either the closest or farthest 4 players. The locations of these drops determines the locations of [a:roots-of-evil]. Inflicts [s:damage-down].
+  roots-of-evil:
+    id: 42354
+    mechanic: aoe.aftershock
+    shape: chariot
+    count: 16
+    description: Massive AoEs that detonate wherever [a:sinister-seeds-aoes] were dropped. Inflicts [s:damage-down].
+  sinister-seeds-2:
+    id: 42349
+    mechanic: mech
+    major: true
+    description: No description yet
+  impact:
+    id: 42355
+    mechanic: stack.healers
+    shape: chariot
+    count: 2
+    damage: 180518
+    description: Both healers are targeted by a [t:stack].
+  quarry-swamp:
+    id: 42357
+    mechanic: mech.los
+    description: Inflicts [s:stone-curse] on all players in line of sight with [boss].
+    resolve: Hide behind a Blooming Abomination. It does not matter whether the Blooming Abomination is alive or dead.
+  explosion:
+    id: 42358
+    mechanic: raidwide.proximity.fake
+    damage: 70000
+    description: Three back-to-back [m:raidwide.proximity.fake] AoEs.
+    resolve: |
+      Do not rotate around the outside of the arena. The AoEs detonate too fast; it's not possible to make it.
+      Instead, stand on the third proximity indicator, wait until the first detonates, then move in a straight line to where it just detonated.
+  pulp-smash:
+    id: 42361
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 165650
+    description: Boss jumps to a targeted player and deals [t:stack] damage to them.
+  it-came-from-the-dirt:
+    id: 42362
+    mechanic: aoe
+    shape: chariot
+    description: Close-range AoE originating from [boss] after [a:pulp-smash]. Inflicts [s:damage-down].
+  the-unpotted:
+    id: 42363
+    mechanic: spread
+    shape: cone
+    count: 8
+    damage: 79310
+    description: Narrow conal spreads on each player.
+  neo-bombarian-special:
+    id: 42364
+    mechanic: raidwide.transition
+    damage: 181968
+    description: |
+      [boss] smashes the arena, knocking all players high up and away. Any player not landing on a platform is instantly killed.
+    resolve: Stand in the center on the northern edge of the arena to be knocked onto the second arena. Failure to do so leads to death.
+  grappling-ivy:
+    id: 42365
+    mechanic: mech.prepare
+    description: |
+      [boss] grapples to one of the three walls in the second arena. For the rest of this phase, [boss] becomes a [t:wall boss].
+  glower-power:
+    id: 42373
+    mechanic: aoe
+    shape: line
+    description: A wide line AoE originating from the boss, aimed straight ahead. Inflicts [s:damage-down].
+  electrogenetic-force:
+    id: 42374
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 129015
+    description: Moderate-size spreads. Inflicts [s:magic-vulnerability-up].
+  revenge-of-the-vines:
+    id: 42375
+    mechanic: raidwide
+    damage: 196357
+    description: Heavy raidwide.
+  thorny-deathmatch:
+    id: 42376
+    mechanic: mech.tether.close
+    description: |
+      [boss] tethers the highest enmity player player with [s:thorns-of-death-i].
+      This tether is not *fixed*, meaning that using [a:provoke] or any other means of shifting enmity around results in the tether switching players.
+    resolve: |
+      Nothing needs to be done initially, but a few seconds later the boss uses [a:abominable-blink], targeting either the highest enmity target or the second-highest. To prevent the main target from having to deal with both the damage from the tether and the flare at the same time, it is recommended to have the off-tank [a:provoke] if the main tank is targeted by [a:abominable-blink].
+  sporesplosion:
+    id: 42378
+    mechanic: aoe
+    shape: chariot
+    description: |
+      3 sets of random equidistant AoEs spawn throughout the arena.
+      In total, the 3 sets cover the entire arena.
+    resolve: |
+      A [t:3-to-1] dodge is recommended but not required. Not all third set AoEs are guaranteed to be adjacent to a first set AoE. Without a [t:3-to-1] dodge it is recommended to use [a:sprint] instead.
+    compact: full
+    children:
+    - at: 6123
+      id: sporesplosion-hit
+    - at: 8133
+      id: sporesplosion-hit
+    - at: 10144
+      id: sporesplosion-hit
+  sporesplosion-hit:
+    id: 42379
+    mechanic: aoe
+    shape: chariot
+    count: 6
+    description: A [a:sporesplosion] AoE explodes.
+  demolition-deathmatch:
+    id: 42390
+    mechanic: mech.tether.close
+    description: |
+      All 3 vine walls tether to the closest player.
+      Unlike [a:thorny-deathmatch], these tethers are not immediately active. Instead, they can be passed around by passing through them for about five seconds, at which point they lock in and inflict [s:thorns-of-death-i] on the tethered player.
+  strange-seeds:
+    id: 42391
+    mechanic: mech
+    major: true
+    description: |
+      Two players at a time drop [starbursts](t:starburst) until all party members have dropped one.
+      Each drop inflicts [s:magic-vulnerability-up] that lasts until after the *next* drop. This means that if any player is hit by the [a:tendrils-of-terror] immediately following their drop, or the next set of [a:strange-seeds-drop], they will instantly die.
+  strange-seeds-drop:
+    id: 42392
+    name: Strange Seeds (Drop)
+    mechanic: spread
+    shape: chariot
+    damage: 96648
+    count: 2
+    description: Simple targeted AoE. Inflicts [s:magic-vulnerability-up]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+  killer-seeds:
+    id: 42395
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 106298
+    description: Telegraphed [m:stack.partner] on either all supports or all damage dealers. Inflicts [s:magic-vulnerability-up]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+    resolve: Players are still tethered here, so fixed spots near the walls should be used for the stack locations. This also helps make the resulting [starbursts](t:starburst) more predictable.
+  powerslam:
+    id: 42398
+    mechanic: raidwide.transition
+    damage: 213112
+    description: Massive raidwide damage. Blows a hole in the roof and transitions the fight to the next phase.
+  stoneringer-2:-stoneringers:
+    id: 42400
+    mechanic: mech
+    description: |
+      [boss] summons both a blade and a club and prepares to use both.
+      Whichever weapon he uses first will glow. It is random whether the blade spawns in his left hand or his right, and vice-versa for the club.
+      He tethers to one of the four walls, then jumps there, using the glowing weapon in a standard [a:brutish-swing]. This is immediately followed by a [a:revenge-of-the-vines-instant] without a cast bar and a [a:lashing-lariat]. The [a:lashing-lariat] is always on the side of his empty hand (where the first weapon used to be).
+      After the Lariat, [boss] tethers to another wall and jumps there, using the second weapon in another [a:brutish-swing]. This is followed by a very fast [a:glower-power] and [a:electrogenetic-force] (significantly faster than in Phase 2) and a [a:slaminator].
+  lashing-lariat:
+    id: 42407
+    mechanic: aoe
+    shape: halfroom
+    description: |
+      Cleaves the side of the arena that [boss]'s empty hand is on.
+      The AoE is slightly larger than half the arena.
+  slaminator:
+    id: 42414
+    mechanic: stack.tower
+    description: |
+      Boss spawns a tower in the middle of the arena, then slams down on it.
+      Reduces damage dealt for each player in the tower. Wipes the party if the tower is unsoaked.
+    resolve: There are only 2 [Slaminators](a:slaminator) in the fight, so it is recommended to have each tank [t:invuln] one while the rest of the party stays out of it.
+  debris-deathmatch:
+    id: 42416
+    mechanic: mech
+    major: true
+    description: Placeholder description
+  special-bombarian-special:
+    id: 42417
+    mechanic: enrage
+    damage: 9999999
+    description: Boss slams the middle of the arena, knocking all players into the wall.
+  revenge-of-the-vines-instant:
+    id: 42553
+    mechanic: raidwide
+    damage: 196594
+    description: Heavy raidwide, but without a cast bar.
+  abominable-blink:
+    id: 43156
+    mechanic: tb.flare
+    damage: 120000
+    tank-damage: 329366
+    description: |
+      A flare on either the first or second target on the enmity list.
+      Similar to [a:explosion], this is a [m:raidwide.proximity.fake] attack. It deals massive [t:tankbuster]-level damage to targets in the immediate vicinity and heavy raidwide-level damage to all targets outside of its immediate radius, regardless of distance.
+  strange-seeds-2:
+    id: 43274
+    description: Placeholder description
+timeline:
+  - at: 0
+    id: <phase>
+    name: Phase 1
+  - at: 10766
+    id: brutal-impact-6x
+  - at: 23487
+    id: stoneringer
+  - at: 32344
+    id: smash-here
+    link: or
+  - at: 32344
+    id: smash-there
+  - at: 48791
+    id: spore-sac
+  - at: 53202
+    id: sinister-seeds-1
+  - at: 94040
+    id: quarry-swamp
+  - at: 106086
+    id: explosion
+  - at: 108583
+    id: explosion
+  - at: 109160
+    id: stoneringer
+  - at: 111117
+    id: explosion
+  - at: 118031
+    id: smash-there
+  - at: 127879
+    id: pulp-smash
+  - at: 129839
+    id: it-came-from-the-dirt
+  - at: 129884
+    id: the-unpotted
+  - at: 148515
+    id: neo-bombarian-special
+  - at: 148515
+    id: <untargetable>
+  - at: 158985
+    id: grappling-ivy
+  - at: 163596
+    id: <phase>
+    name: Phase 2
+  - at: 163596
+    id: <targetable>
+  - at: 170711
+    id: stoneringer
+  - at: 184657
+    id: brutish-swing
+  - at: 189381
+    id: electrogenetic-force
+  - at: 189515
+    id: glower-power
+  - at: 195357
+    id: revenge-of-the-vines
+  - at: 206563
+    id: thorny-deathmatch
+  - at: 210668
+    id: stoneringer
+  - at: 222806
+    id: abominable-blink
+  - at: 231908
+    id: sporesplosion
+  - at: 247192
+    id: brutish-swing
+  - at: 251922
+    id: electrogenetic-force
+  - at: 252055
+    id: glower-power
+  - at: 257898
+    id: revenge-of-the-vines
+  - at: 267097
+    id: demolition-deathmatch
+  - at: 281537
+    id: abominable-blink
+  - at: 288618
+    id: strange-seeds
+  - at: 294774
+    id: strange-seeds-drop
+  - at: 295755
+    id: stoneringer
+  - at: 299419
+    id: tendrils-of-terror
+    count: 2
+  - at: 299775
+    id: strange-seeds-drop
+  - at: 304422
+    id: tendrils-of-terror
+    count: 2
+  - at: 304733
+    id: strange-seeds-drop
+  - at: 309379
+    id: tendrils-of-terror
+    count: 2
+  - at: 309733
+    id: strange-seeds-drop
+  - at: 314373
+    id: tendrils-of-terror
+    count: 2
+  - at: 319636
+    id: killer-seeds
+  - at: 324275
+    id: tendrils-of-terror
+    count: 4
+  - at: 329772
+    id: brutish-swing
+  - at: 334506
+    id: electrogenetic-force
+  - at: 334639
+    id: glower-power
+  - at: 340486
+    id: revenge-of-the-vines
+  - at: 352684
+    id: powerslam
+  - at: 352684
+    id: <untargetable>
+  - at: 370113
+    id: <phase>
+    name: Phase 3
+  - at: 370113
+    id: <targetable>
+  - at: 382200
+    id: brutal-impact-7x
+  - at: 396043
+    id: stoneringer-2:-stoneringers
+  - at: 408652
+    id: brutish-swing
+  - at: 409806
+    id: revenge-of-the-vines-instant
+  - at: 415898
+    id: lashing-lariat
+  - at: 424175
+    id: brutish-swing
+  - at: 427124
+    id: electrogenetic-force
+  - at: 427258
+    id: glower-power
+  - at: 433106
+    id: slaminator
+  - at: 442225
+    id: brutal-impact-8x
+  - at: 455028
+    id: stoneringer
+  - at: 463873
+    id: smash-there
+  - at: 477203
+    id: debris-deathmatch
+  - at: 487460
+    id: spore-sac
+  - at: 493125
+    id: pollen
+  - at: 495267
+    description: Adds become targetable.
+    id: <targetable>
+  - at: 496604
+    id: killer-seeds
+  - at: 501239
+    id: tendrils-of-terror
+    count: 4
+  - at: 513551
+    id: quarry-swamp
+  - at: 524698
+    id: sinister-seeds-2
+  - at: 528849
+    id: sinister-seeds-aoes
+  - at: 530855
+    id: sinister-seeds-aoes
+  - at: 532824
+    id: sinister-seeds-stars
+  - at: 532868
+    id: sinister-seeds-aoes
+  - at: 534870
+    id: sinister-seeds-aoes
+  - at: 539507
+    id: tendrils-of-terror
+    count: 4
+  - at: 539686
+    id: roots-of-evil
+  - at: 542937
+    id: pulp-smash
+  - at: 544895
+    id: it-came-from-the-dirt
+  - at: 544941
+    id: the-unpotted
+  - at: 551275
+    id: brutal-impact-8x
+  - at: 569181
+    id: stoneringer-2:-stoneringers
+  - at: 581134
+    id: strange-seeds-2
+  - at: 587252
+    id: strange-seeds-drop
+    count: 4
+  - at: 591841
+    id: brutish-swing
+  - at: 592424
+    id: tendrils-of-terror
+    count: 4
+  - at: 596930
+    id: lashing-lariat
+  - at: 601493
+    id: strange-seeds-drop
+    count: 4
+  - at: 606269
+    id: brutish-swing
+  - at: 606629
+    id: tendrils-of-terror
+    count: 4
+  - at: 612965
+    id: slaminator
+  - at: 619080
+    id: stoneringer
+  - at: 627959
+    id: smash-there
+  - at: 639224
+    id: brutal-impact-8x
+  - at: 668155
+    id: special-bombarian-special
