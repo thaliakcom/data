@@ -1,7 +1,7 @@
 id: 1077
 patch: "7.4"
 date: 2025-12-21
-modified: 2025-12-21
+modified: 2026-01-22
 by:
   id: 27637301
   role: author
@@ -156,7 +156,7 @@ actions:
     mechanic: aoe
     shape: line
     count: 4
-    description: Lightning [ms:line] [m:aoe] fired by one of the Leving Signals during [a:dead-mans-express]. Inflicts [s:vulnerability-up].
+    description: Lightning [ms:line] [m:aoe] fired by one of the Levin Signals during [a:dead-mans-express]. Inflicts [s:vulnerability-up].
   plasma:
     id: 45675
     mechanic: spread
