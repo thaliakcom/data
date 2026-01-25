@@ -833,3 +833,14 @@
   short: Savage
   type: patch
   at: 2026-01-06 10:00:00
+- name: Patch 7.41 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-01-27 04:00:00
+  to: 2026-01-27 10:00:00
+- name: Patch 7.41 (Cosmic Exploration)
+  short: Patch 7.41
+  type: patch
+  color: "#6e9cec"
+  at: 2026-01-27 10:00:00
