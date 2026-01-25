@@ -1,14 +1,15 @@
 id: 1073
 patch: "7.4"
-date: 2025-01-13
-modified: 2025-01-13
+date: 2025-01-25
+modified: 2025-01-25
 by:
   id: 27637301
   role: author
 tier: AAC Heavyweight
-boss: The Tyrant
-HP: 0
-wip: full
+boss: the Tyrant
+HP: 154287371
+party_hp: 197477
+wip: [diagrams]
 description: ""
 alias: [r11s]
 status:
@@ -17,3 +18,1028 @@ status:
     type: impairment
     duration: 30000
     description: Reduces damage dealt by 35%.
+  physical-vulnerability-up:
+    id: 2940
+    type: vuln
+    duration: [1960, 19960]
+    description: Renders any physical damage taken lethal. Inflicted by [a:heavy-hitter], [a:raw-steel-scythe], [a:sweeping-victory], [a:heavy-weight], [a:sharp-taste], [a:raw-steel-axe], [a:impact], [a:cosmic-kiss].
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [3000, 960]
+    description: |
+      Renders any magic damage taken lethal (184% more damage taken from magic attacks).
+      Inflicted by [a:comet], [a:eye-of-the-hurricane], [a:powerful-gust], [a:fearsome-fireball], [a:foregone-fatality], [a:fire-breath], [a:majestic-meteowrath], [a:massive-meteor-hit], [a:two-way-fireball].
+  fire-resistance-down-ii:
+    id: 2937
+    type: vuln
+    duration: 7000
+    description: Renders any fire damage taken lethal. Inflicted by [a:majestic-meteowrath-ecliptic] and [a:great-wall-of-fire].
+  burns:
+    id: 3065
+    type: dot
+    tick: 180000
+    description: A [t:DoT] inflicted for as long as a player remains in the fire puddles left behind by [a:atomic-impact]. Transforms into [s:burns-1] upon exiting the puddle.
+  burns-1:
+    id: 3066
+    type: dot
+    tick: 94886
+    duration: 15000
+    description: A [t:DoT] inflicted after a player leaves a fire puddle left behind by [a:atomic-impact].
+  sustained-damage:
+    id: 4149
+    type: dot
+    tick: 46000
+    duration: 15000
+    description: Heavy [t:DoT] inflicted after missing a tower. Each player missing from a tower inflicts one stack of [s:sustained-damage]. Each stack deals about 46,000 *unique* damage (meaning it cannot be mitigated against and deals the same amount of damage to all players, including tanks, but barriers do work).
+  damage-up:
+    id: 2550
+    type: damage-up
+    affects: enemy
+    description: |
+      Increases [a:heartbreak-kick-1]'s damage dealt.
+      **Note**: we could find no evidence supporting the idea that this buff actually increases [a:heartbreak-kick-1]'s damage. Based on log analysis, each hit dealt approximately the same amount of damage per player, regardless of the number of [s:damage-up] stacks. Therefore, it's possible that this buff is merely flair and has no actual effect, or that the effect is so minimal (less than 5%) that standard damage variance obscures this damage increase.
+actions:
+  crown-of-arcadia:
+    id: 46086
+    mechanic: raidwide
+    damage: 226347
+    description: Standard raidwide.
+  raw-steel-trophy-scythe:
+    id: 46115
+    name: Raw Steel Trophy (Scythe)
+    mechanic: combination
+    shape: cone
+    description: A [tankbuster](m:tb.double) on each of the two highest enmity party members and a [m:stack.party] on a random other party member.
+    children:
+    - at: 7473
+      id: raw-steel-scythe
+      link: and
+    - at: 7473
+      id: heavy-hitter
+  raw-steel-scythe:
+    id: 46095
+    mechanic: tb.double
+    shape: cone
+    count: 2
+    damage: 439200
+    description: Conal tankbusters on the two highest enmity party members. Inflicts [s:physical-vulnerability-up].
+  heavy-hitter:
+    id: 46096
+    mechanic: stack.party
+    shape: cone
+    damage: 161699
+    description: A conal stack on a random party member who is *not* one of the first two targets in enmity. Inflicts [s:physical-vulnerability-up].
+  raw-steel-trophy-axe:
+    id: 46114
+    name: Raw Steel Trophy (Axe)
+    mechanic: combination
+    shape: chariot
+    description: |
+      A shared [tankbuster](m:tb.stack) on either of the two highest-enmity party members and a [m:spread] on all other party members.
+      **Note**: To reiterate, the tankbuster randomly targets either the player with the most enmity or the player with the second-most enmity. **You cannot have your main tank take this tankbuster solo with [t:invuln]** for this reason.
+    children:
+    - at: 6312
+      id: raw-steel-axe
+      link: and
+    - at: 7465
+      id: impact
+  raw-steel-axe:
+    id: 46091
+    mechanic: tb.stack
+    shape: chariot
+    damage: 450855
+    description: Heavy-hitting tankbuster on either of the two highest-enmity party members that deals lethal damage unless shared by another player. Inflicts [s:physical-vulnerability-up].
+  impact:
+    id: 46092
+    mechanic: spread
+    shape: chariot
+    count: 6
+    damage: 157622
+    description: Spreads on all party members who are not first or second in enmity. Inflicts [s:physical-vulnerability-up].
+  trophy-weapons:
+    id: 46102
+    mechanic: mech.prepare
+    description: "[boss:c] summons an axe, scythe, and blade in a triangular pattern around the arena."
+  assault-evolved:
+    id: 46103
+    mechanic: mech
+    major: true
+    description: |
+      [boss:c] dashes to each of the summoned weapons in turn and executes their mechanic.
+      At the start of the cast, [boss] turns towards a random of the three weapons. After dashing to it and executing its mechanic, he dashes to the remaining weapons in a clockwise order.
+      There can be no duplicate mechanics.
+      The possible mechanics are:
+      * Axe: [a:heavy-weight] ([ms:chariot] + [m:stack.party])
+      * Blade: [a:sharp-taste] ([ms:plus] + [m:stack.healers])
+      * Scythe: [a:sweeping-victory] ([ms:dynamo] + [m:spread])
+    children:
+    - at: 268
+      id: assault-evolved-dash
+      link: then
+    - at: 2097
+      id: assault-evolved-mech
+    - at: 5390
+      id: assault-evolved-dash
+      link: then
+    - at: 7214
+      id: assault-evolved-mech
+    - at: 10514
+      id: assault-evolved-dash
+      link: then
+    - at: 12342
+      id: assault-evolved-mech
+  assault-evolved-dash:
+    id: 46404
+    name: Assault Evolved (Dash)
+    mechanic: mech
+    description: "[boss:c] dashes to the next weapon."
+  assault-evolved-mech:
+    name: Assault Evolved (Hit)
+    mechanic: mech
+    type: physical
+    description: One of [a:sweeping-victory], [a:heavy-weight], or [a:sharp-taste].
+    children:
+      - at: 133
+        id: assault-evolved-aoe
+  assault-evolved-aoe:
+    name: Assault Evolved (AoE)
+    mechanic: aoe
+    type: physical
+    description: One of [a:sweeping-victory-aoe], [a:heavy-weight-aoe], or [a:sharp-taste-aoe].
+  sweeping-victory:
+    id: 46108
+    mechanic: spread
+    shape: cone
+    count: 8
+    damage: 145473
+    description: "[Conal](ms:cone) spreads within a small [ms:dynamo] safe zone around the scythe. Inflicts [s:physical-vulnerability-up]."
+  sweeping-victory-aoe:
+    id: 46105
+    name: Sweeping Victory (AoE)
+    mechanic: aoe
+    shape: dynamo
+    damage: 83440
+    players: 0
+    description: Hits everything outside of a small radius around the scythe. Inflicts [s:damage-down].
+  heavy-weight:
+    id: 46107
+    mechanic: stack.party
+    shape: chariot
+    damage: 159748
+    description: "[ms:chariot:c] full party stack on a random player, with a [point-blank AoE](ms:chariot) around the axe. Inflicts [s:physical-vulnerability-up]."
+  heavy-weight-aoe:
+    id: 46104
+    name: Heavy Weight (AoE)
+    mechanic: aoe
+    shape: chariot
+    damage: 83440
+    players: 0
+    description: "[Point-blank AoE](ms:chariot) around the axe. Inflicts [s:damage-down]."
+  sharp-taste:
+    id: 46109
+    mechanic: stack.healers
+    shape: line
+    count: 2
+    damage: 184025
+    description: "[ms:line:c] [stack](m:stack.healers) on each healer with a [ms:plus] AoE in the direction of the blade. Inflicts [s:physical-vulnerability-up]."
+  sharp-taste-aoe:
+    id: 46106
+    name: Sharp Taste (AoE)
+    mechanic: aoe
+    shape: plus
+    damage: 83440
+    players: 0
+    description: "[ms:plus:c] AoE in the direction of the blade. Inflicts [s:damage-down]."
+  void-stardust:
+    id: 46098
+    mechanic: aoe.baitable
+    shape: chariot
+    compact: full
+    description: |
+      Three sets of AoEs spawn under players' positions, followed by [a:comet] or [a:crushing-comet].
+      After [a:assault-evolved], this repeats, finishing on whichever of the two mechanics ([a:comet] or [a:crushing-comet]) wasn't used the first time.
+    children:
+    - at: 4140
+      id: cometite
+    - at: 6140
+      id: cometite
+    - at: 8137
+      id: cometite
+    - at: 10138
+      id: comet
+      link: or
+    - at: 10138
+      id: crushing-comet
+  void-stardust-followup:
+    name: Void Stardust (Part 2)
+    mechanic: aoe.baitable
+    shape: chariot
+    compact: full
+    description: |
+      The second set of [a:void-stardust], which is always opposite of the first.
+    children:
+    - at: 4140
+      id: cometite
+    - at: 6140
+      id: cometite
+    - at: 8137
+      id: cometite
+    - at: 10138
+      id: comet
+      link: or
+    - at: 10138
+      id: crushing-comet
+  cometite:
+    id: 46099
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    description: A delayed-execution AoE spawns under every player. Inflicts [s:damage-down].
+  comet:
+    id: 46100
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 114391
+    description: "[m:spread:c]s on every player. Inflicts [s:magic-vulnerability-up]."
+  crushing-comet:
+    id: 46101
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 115548
+    description: "[m:stack.targeted:c] on a random (telegraphed) player."
+  dance-of-domination-trophy:
+    id: 47035
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Boss summons a blade as his weapon.
+      This is followed by a heavy multi-hit [m:raidwide], after which [boss] spawns thin white lines on the arena floor. One random edge does not have a line on it.
+      Each line indicates where a wide [ms:line] AoE will hit after only a few seconds. At the same time, a [m:stack.partner] goes off on all supports or all damage dealers.
+    children:
+    - at: 7250
+      id: dance-of-domination-hit
+    - at: 7831
+      id: dance-of-domination-hit
+    - at: 8410
+      id: dance-of-domination-hit
+    - at: 8990
+      id: dance-of-domination-hit
+    - at: 9569
+      id: dance-of-domination-hit
+    - at: 10725
+      id: dance-of-domination-finale
+    - at: 15668
+      id: eye-of-the-hurricane
+      link: and
+    - at: 15889
+      id: explosion
+  dance-of-domination-hit:
+    id: 46113
+    mechanic: raidwide
+    damage: 60048
+    description: Moderate raidwide.
+  dance-of-domination-finale:
+    id: 47082
+    name: Dance of Domination (Finale)
+    mechanic: raidwide
+    damage: 121008
+    description: Heavy raidwide. Summons white lines on the arena floor, see [a:dance-of-domination-trophy].
+  eye-of-the-hurricane:
+    id: 46116
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 144862
+    description: Partner stacks on either all supports or damage dealers.
+  explosion:
+    id: 46112
+    mechanic: aoe
+    shape: line
+    count: 12
+    description: The white lines on the floor resolve as wide line AoEs.
+  charybdistopia:
+    id: 46117
+    mechanic: raidwide.sethp
+    description: Sets all players' HP to 1 and engulfs the arena in a whirling tornado.
+  charybdis:
+    id: 46118
+    mechanic: mech.failure
+    description: Kills any player entering a tornado during [a:ultimate-trophy-weapons].
+  ultimate-trophy-weapons:
+    id: 47085
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Summons 6 weapons in a row and executes their mechanics.
+      The weapons themselves function identically to [a:trophy-weapons]. However, the way they're spawned is completely different.
+      The first weapon always spawns to the south and either slightly to the west or to the east. If the first weapon spawned slightly to the west, the next weapon spawns northwest and all subsequent weapons spawn clockwise as well. If the first weapon spawned slightly to the east, the next weapon spawns northeast and all subsequent weapons spawn counter-clockwise as well. All weapons except the first two are spawned directly on a cardinal.
+      All weapons are executed in the order they spawn in. Unlike [a:trophy-weapons], [boss] does not wait until all weapons have spawned until he dashes to the first weapon.
+      The first two weapons are executed without any special effect. The last four weapons leave behind a small tornado when their mechanic resolves. Six seconds after the last weapon mechanic resolves, each of the four tornadoes shoots a conal AoE at the two closest players.
+    resolve: |
+      Resolve the weapons as normal, then position two players on the outside of each tornado to bait the tornado's cones away from the center of the arena.
+      For tornado assignments, your tornado is at your clock spot or (if you're at an intercardinal) at the cardinal clockwise to your clock spot.
+      The cones resolve approximately three quarters of the way through the [a:immortal-reign] cast.
+      **Do not dash back to [boss] right after the cones.** The tornadoes remain active and dangerous for about a second after the cones resolve, so either wait a moment or position yourself such that your dash does not intersect the tornado.
+    children:
+    - at: 7808
+      id: assault-apex
+    - at: 8076
+      id: assault-evolved-dash
+    - at: 9903
+      id: assault-evolved-mech
+    - at: 13202
+      id: assault-evolved-dash
+    - at: 15029
+      id: assault-evolved-mech
+    - at: 18327
+      id: assault-evolved-dash
+    - at: 20159
+      id: assault-evolved-mech
+    - at: 23463
+      id: assault-evolved-dash
+    - at: 25292
+      id: assault-evolved-mech
+    - at: 28587
+      id: assault-evolved-dash
+    - at: 30416
+      id: assault-evolved-mech
+    - at: 33712
+      id: assault-evolved-dash
+    - at: 35541
+      id: assault-evolved-mech
+    - at: 41962
+      id: powerful-gust
+  assault-apex:
+    id: 47086
+    mechanic: mech
+    description: Like [a:assault-evolved], but even more evolved.
+  powerful-gust:
+    id: 46119
+    mechanic: spread.close
+    shape: cone
+    count: 8
+    damage: 116009
+    description: All 4 tornadoes fire a conal AoE at the two closest players. Inflicts [s:magic-vulnerability-up].
+  immortal-reign:
+    id: 46120
+    mechanic: mech
+    description: "[boss:c]'s hair begins glowing red."
+  one-and-only:
+    id: 46122
+    mechanic: raidwide.transition
+    damage: 248919
+    description: Heavy raidwide. Engulfs the arena in flames.
+  great-wall-of-fire:
+    id: 46123
+    mechanic: tb.stack
+    shape: line
+    description: |
+      [ms:line:c] tankbuster on whoever is first in enmity. Deals lethal damage unless shared by another tank. Inflicts [s:fire-resistance-down-ii] to the first player in line.
+      Leaves behind a delayed [ms:line] explosion that deals heavy damage and inflicts [s:damage-down] if not stepped out of.
+      This repeats one more time. The second hit deals lethal damage to the tank with [s:fire-resistance-down-ii] unless that tank is behind another player.
+    resolve: |
+      To resolve the mechanic correctly, both tanks soak both hits while swapping their position after the first hit so that the tank who now has [s:fire-resistance-down-ii] is now behind the other tank, otherwise they die.
+      To simplify, you can simply have one tank [t:invuln] this tankbuster and soak both hits solo. Remember to still dodge the AoE left behind.
+    children:
+    - at: 222
+      id: great-wall-of-fire-hit
+    - at: 3432
+      id: great-wall-of-fire-hit
+    - at: 4012
+      id: great-wall-of-fire-explosion
+    - at: 7216
+      id: great-wall-of-fire-explosion
+  great-wall-of-fire-hit:
+    id: 46124
+    name: Great Wall of Fire (Hit)
+    mechanic: tb.stack
+    shape: line
+    damage: 365000
+    description: Individual hit of [a:great-wall-of-fire].
+  great-wall-of-fire-explosion:
+    id: 46126
+    name: Great Wall of Fire (AoE)
+    mechanic: aoe
+    shape: line
+    description: AoE left behind by a [a:great-wall-of-fire-hit]. Inflicts [s:damage-down].
+  orbital-omen:
+    id: 46130
+    mechanic: aoe.memory
+    shape: line
+    compact: full
+    description: |
+      Spawns 4 portals at the north wall and 4 portals at the east wall in a random order.
+      Each northern portal spawns alongside an eastern portal. Each portal casts a white line outside of it. This line has no function and merely serves to make the mechanic easier.
+      After the third portals have spawned, [boss] begins to cast [a:fire-and-fury], a front-and-back conal cleave originating from [boss].
+      At the end of the [a:fire-and-fury] cast, the first two portals fire a meteor straight ahead. Each meteor is a wide [ms:line] AoE covering exactly a quarter of the arena's width. Getting hit deals heavy damage and inflicts [s:damage-down].
+      The sum of all meteors covers the entire arena, so a specific dodge is necessary in order to avoid [s:damage-down].
+      The portals spawn in specific patterns. One constant is that the second portal is always guaranteed to be be inside (covering part of the center of the arena).
+    resolve: |
+      The simplest way to resolve this mechanic is to keep [boss] in the center, facing north, and then to perform all dodges in the center of the arena. This works by virtue of the second portal being guaranteed to be an inside portal.
+      The simplest ways of dodging are:
+      * If the first two portals intersect near the center, wait diagonally across from the intersection, then move into the intersection when the [a:fire-and-fury] cast finishes. No further steps are necessary.
+      * If the first two portals intersect elsewhere, wait for the second set of portals (which always intersect near center), then *stand in that intersection*. Wait until the [a:fire-and-fury] cast has gone off, then dodge diagonally across, then back again.
+      * (Optional) If the first two portals intersect at a corner of the arena, wait for the second set of portals and stand diagonally across from the intersection, then move into the intersection when their line AoEs go off. This is less movement than the second bullet point, but otherwise functionally identical. If you prefer to keep things simple and only memorize two dodge patterns, you can ignore this bullet point.
+    children:
+    - at: 9114
+      id: fire-and-fury
+      link: and
+    - at: 9114
+      id: orbital-omen-hit
+    - at: 10670
+      id: orbital-omen-hit
+    - at: 12224
+      id: orbital-omen-hit
+    - at: 13731
+      id: orbital-omen-hit
+  orbital-omen-hit:
+    id: 46131
+    mechanic: aoe
+    shape: line
+    count: 2
+    damage: 138637
+    players: 0
+    description: Line AoE from a portal. Deals heavy damage and inflicts [s:damage-down].
+  fire-and-fury:
+    id: 46129
+    mechanic: aoe
+    shape: cone
+    cast: 4000
+    count: 2
+    damage: 139135
+    players: 0
+    description: A front-and-back conal cleave originating from [boss]. Inflicts [s:damage-down].
+  meteorain:
+    id: 46132
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Major mechanic involving a lot of meteors and comets.
+      At the end of the cast, the two closest players to [boss] are marked for [a:cosmic-kiss] and will drop a comet after a few seconds.
+      A random other non-tank is selected for [a:fearsome-fireball], a [ms:line] [m:stack.intercept].
+      This cycle repeats three more times, with some slight variations:
+      * After the first set, all subsequent sets also feature 2× [a:foregone-fatality], a tether-based [t:tankbuster] that tethers itself to one of the available comets by default.
+      * After the third set, no more players are marked for [a:cosmic-kiss], resulting in a maximum of 6 comets.
+      After the fourth set, [boss] casts [a:triple-tyrannhilation], a sequence of 3 back-to-back [m:mech.los] attacks that instantly kill any player or destroy any comet not hiding behind a comet.
+    resolve: |
+      Decide on a [a:cosmic-kiss] priority. Every player (except tanks) must bait one comet, as each comet inflicts [s:physical-vulnerability-up] for the remainder of the mechanic, making it impossible for one player to bait more than one. MHR (melees, healers, rangeds) is a commonly used priority. Whichever players you choose, ensure they're in the boss hitbox when the [a:meteorain] cast ends, and all players outside.
+      Also, decide which players place the [a:fearsome-fireball] comets and which players place the [a:triple-tyrannhilation] comets. Light party 1 players usually place [a:fearsome-fireball] comets and light party 2 [a:triple-tyrannhilation].
+      [a:triple-tyrannhilation] requires three comets, placed back-to-back, but not too close to each other or they'll explode. These comets are generally placed in a line between [boss] and the southwest corner of the arena.
+      [a:fearsome-fireball] comets should all be placed in melee range, so that melees can hide maintain uptime while hiding behind the comet for the stack. To facilitate this, place the first of these comets northeast (in melee range but not [t:max melee]) and take the stack northwest, then alternate on each subsequent stack (so the second set takes the stack northeast, behind the previously placed comet, and the comet is placed northwest).
+      Tanks either decide on a priority system (e.g. MT checks for meteors clockwise from north and OT counter-clockwise from west) or just eyeball it. There's enough time between tethers appearing and the tankbusters resolving that eyeballing is a valid and safe strategy.
+      After all four sets, all of the northern comets should now be gone (used for [a:fearsome-fireball]) and all 3 southern comets should still exist. Wait for the [a:triple-tyrannhilation] cast to nearly finish, then hide behind the rearmost comet. Yes, this comet is far outside of melee range. No, there is no way to maintain melee uptime here. Unlike normal mode, the individual hits of [a:triple-tyrannhilation] are executed in rapid succession and instantly kill any player in line of sight.
+    mistakes:
+      - If one of the [a:fearsome-fireball] comets is placed too close to another and explodes, **under no circumstances** should you use one of the southern comets for the stack instead, as this will destroy *all 3 comets* (or all comets placed there at that point) and guarantee a wipe. Instead, choose a player to sacrifice themselves to the [m:stack.intercept].
+    children:
+    - at: 7945
+      id: fearsome-fireball
+      link: then
+    - at: 9190
+      id: cosmic-kiss
+    - at: 17103
+      id: foregone-fatality
+      link: and
+    - at: 17947
+      id: fearsome-fireball
+      link: then
+    - at: 19194
+      id: cosmic-kiss
+      link: then
+    - at: 21727
+      id: explosion-comet
+    - at: 27111
+      id: foregone-fatality
+      link: and
+    - at: 27955
+      id: fearsome-fireball
+      link: then
+    - at: 29200
+      id: cosmic-kiss
+      link: then
+    - at: 31737
+      id: explosion-comet
+    - at: 37117
+      id: foregone-fatality
+      link: and
+    - at: 37961
+      id: fearsome-fireball
+      link: then
+    - at: 41735
+      id: explosion-comet
+    - at: 50536
+      id: triple-tyrannhilation
+  fearsome-fireball:
+    id: 46138
+    mechanic: stack.intercept
+    shape: line
+    cast: 5000
+    damage: 233599
+    description: |
+      [m:stack.intercept] on a random player not marked for [a:cosmic-kiss] who is not a tank. Inflicts [s:magic-vulnerability-up].
+      The first entity in line roughly takes double damage from the attack, which is lethal for most non-tanks.
+      This wording ("entity") is deliberate, as the double damage can be soaked by either a tank or a comet. Any comet in line with the stack is destroyed and cannot be used for subsequent stacks.
+    resolve: |
+      The first [a:fearsome-fireball] must be intercepted by a tank, as no comets are available yet. All other [a:fearsome-fireball]s must be intercepted by a comet, as both tanks are busy with [a:foregone-fatality] at that time.
+  cosmic-kiss:
+    id: 46133
+    mechanic: mech.comet
+    count: 2
+    damage: 55264
+    description: |
+      Deals mild damage and places a comet on the marked player's position. Inflicts [s:physical-vulnerability-up] for 20s.
+      The comet explodes in a moderate-size [ms:chariot] AoE if it's placed too close to another comet, or if it is hit by [a:fearsome-fireball] or [a:foregone-fatality]. [a:triple-tyrannhilation] also destroys any comet in direct [m:mech.los] to it, albeit without any subsequent [ms:chariot] explosion.
+      The comet can be used to soak the [m:stack.intercept] component of [a:fearsome-fireball]. Hiding behind a comet is also the only way to survive [a:triple-tyrannhilation].
+  foregone-fatality:
+    id: 46134
+    mechanic: tb.tether
+    count: 2
+    damage: 360215
+    description: |
+      Two portals spawn on two random cardinals and each cast a tether toward the closest comet. Any player can pick up and pass these tethers. At the end of the cast, if a comet is tethered, that comet is destroyed. If a player is tethered, that player is subject to a [t:tankbuster] that deals heavy damage and doesn't cleave or [t:splash]. Inflicts [s:magic-vulnerability-up].
+  explosion-comet:
+    id: 46136
+    mechanic: aoe
+    shape: chariot
+    description: A comet explodes in a moderately sized [ms:chariot] AoE.
+  triple-tyrannhilation:
+    id: 46140
+    name: Triple Tyrannhilation
+    mechanic: mech.los
+    description: Three hits in rapid succession, each of which instantly kills any player and destroys any comet in line of sight.
+    children:
+    - at: 1157
+      id: shockwave
+      link: then
+    - at: 2717
+      id: shockwave
+      link: then
+    - at: 4274
+      id: shockwave
+  shockwave:
+    id: 46141
+    mechanic: mech.los
+    description: Instantly kills any player and destroys any comet in line of sight.
+  flatliner:
+    id: 47760
+    mechanic: mech.arena
+    damage: 226123
+    players: 8
+    description: |
+      Knocks all players up and away from the center and destroys a vertical line from north to south, splitting the arena in two.
+      **Note:** While the soon-to-be-destroyed part of the arena is telegraphed with a standard yellow AoE indicator, this is not actually an AoE and is safe to stand in. It does not deal any damage.
+  majestic-meteor:
+    id: 46144
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Spawns 4 meteor portals and 4 [m:towers.double].
+      There will always be 2 meteor portals and 2 towers per side. The towers spawn in fixed positions on the north and south of the platform. The portals may either both spawn outside or inside. If the western portals spawn outside, the eastern portals spawn inside, and vice-versa.
+      Each meteor portal tethers to a random player, with an even 2-2 split (meaning each platform has exactly two tethered players). This is a [distance tether](m:mech.tether.distance) and cannot be passed.
+      In addition to these east/west meteor portals, two meteor portals will also spawn on the north of the arena (one per platform). This portal does not tether to a player and is instead equivalent to the portals during [a:orbital-omen] (a [ms:line] AoE in the direction of the portal). Each of these portals renders one half of the arena unsafe, either the half close to [boss] or the half far from him. Like the east/west portals, these two portals are also inverted per platform (so if the west platform features the close portal, the east platform features the far portal).
+      Towers resolve when their meteor touches the ground, knocking all soakees up and away from the center of the tower. If a player is missing from a tower, deals heavy damage and inflicts [s:sustained-damage] on all party members. If a tower is missed completely, deals heavy damage and inflicts [s:sustained-damage:2] on all party members.
+      Shortly after players touch the ground again, the four closest players to [boss] are marked for [a:fire-breath]. This is directly followed by three sets of delayed AoEs that spawn underneath each player ([a:majestic-meteor-puddle]). After the third set spawns the portal tethers ([a:majestic-meteowrath]), the player markers ([a:fire-breath]), and the north portals ([a:majestic-meteorain]) resolve simultaneously.
+      This entire sequence, starting with the towers, repeats one more time in full. Any player who was tethered to a portal is now untethered and vice-versa.
+      After this repeat one last set of towers spawns, but this time without any portals. Instead [boss] faces a random platform and begins casting [a:arcadion-avalanche]. After towers resolve, he picks up the platform he is facing, killing all players on it, then throws it towards the other platform, killing all players hit. See [a:arcadion-avalanche] for hints on how to spot the AoE.
+    resolve: |
+      There are many different strategies on which players take which towers in the start and where to stand for the subsequent [a:majestic-meteowrath] and [a:fire-breath]. Consult your data center's raidplans for more information. In general, each data center has intercardinal waymarks that indicate where [a:fire-breath] need to stand.
+      The following steps are required and will never change between strategies:
+      * Each tower always requires 2 players to soak it.
+      * If you are tethered to a portal next to your platform, you must use the tower to get knocked to the other platform or it will not be possible to stretch the tether enough. This is the only situation in which you want to get knocked to the other platform. In all other cases, you should position to get knocked onto the same platform you're already on.
+      * After each tower knockup, all untethered players must move into [boss]'s hitbox to get marked for [a:fire-breath].
+      * After [a:fire-breath] have gone out, all players stack inside [boss]'s hitbox to bait [a:majestic-meteor-puddle]. At this point, 2 players split to the left and 2 players to the right.
+      * If you're tethered, you *must* go to the side that your meteor portal is *not* on, so that your tether stretches diagonally through the center. Failing to do so results in instant death due to an insufficiently stretched tether.
+      * If you're untethered, the side you go to does not matter, but you can't go to the same side as the other [a:fire-breath] player on your platform. To coordinate sides between yourself and the other player, the first untethered player who arrives in the hitbox slightly inches towards the side they want to go to. The other player inches towards the other side to indicate that they understand.
+      * After taking your line AoEs, take the tower on the side that you took your line AoE on. Fixed tower assignments are impossible here since players may have been knocked across.
+      **Warning**: There is a pattern that prevents the [a:fire-breath] players from taking their spreads at the side, on the usual waymarks. This pattern (also known as the "cursed pattern") happens when the far half of the platform is safe and the [a:majestic-meteowrath] portals spawned on the outside. In this case, aim to break away for the far west/east after the second [a:majestic-meteor-puddle] and taking your [a:fire-breath] there.
+    children:
+    - at: 13147
+      id: explosion-towers
+    - at: 24142
+      id: majestic-meteor-puddle
+    - at: 26196
+      id: majestic-meteor-puddle
+    - at: 27932
+      id: majestic-meteowrath
+      link: and
+    - at: 27934
+      id: majestic-meteorain
+      link: and
+    - at: 27934
+      id: fire-breath
+      link: and
+    - at: 28155
+      id: majestic-meteor-puddle
+    - at: 45228
+      id: explosion-towers
+    - at: 56204
+      id: majestic-meteor-puddle
+    - at: 58247
+      id: majestic-meteor-puddle
+    - at: 60070
+      id: majestic-meteowrath
+      link: and
+    - at: 60070
+      id: majestic-meteorain
+      link: and
+    - at: 60070
+      id: fire-breath
+      link: and
+    - at: 60248
+      id: majestic-meteor-puddle
+  explosion-towers:
+    id: 46148
+    name: Explosion (Towers)
+    mechanic: towers.double
+    count: 4
+    damage: 58415
+    description: Towers explode. Each tower knocks all soakees up and away from their center. Any missing player inflicts [s:sustained-damage] on the entire party.
+  majestic-meteor-puddle:
+    id: 46145
+    name: Majestic Meteor (AoE)
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    description: One of three sets of delayed AoEs left behind by players just before [a:fire-breath] and [a:majestic-meteowrath] resolve. Inflicts [s:damage-down].
+  majestic-meteowrath:
+    id: 46147
+    mechanic: mech.tether.distance
+    shape: line
+    count: 4
+    damage: 185606
+    players: 1
+    description: Wide line AoE on a tethered player. Deals lethal damage unless the tether is sufficiently stretched. Inflicts [s:magic-vulnerability-up].
+  majestic-meteorain:
+    id: 46146
+    mechanic: aoe
+    shape: line
+    count: 2
+    description: Functionally equivalent to [a:orbital-omen-hit]. Covers either the front of a platform or the rear of a platform, rendering it unsafe. Inflicts [s:damage-down].
+  fire-breath:
+    id: 46151
+    mechanic: spread
+    shape: line
+    count: 4
+    damage: 183928
+    description: The 4 marked players are hit by a narrow [ms:line] AoE originating from [boss]. Inflicts [s:magic-vulnerability-up].
+  massive-meteor:
+    id: 46152
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    players: 4
+    compact: full
+    description: 5-hit stack on one random player per platform.
+    children:
+    - at: 1158
+      id: massive-meteor-hit
+    - at: 2628
+      id: massive-meteor-hit
+    - at: 4098
+      id: massive-meteor-hit
+    - at: 5569
+      id: massive-meteor-hit
+    - at: 7039
+      id: massive-meteor-hit
+  massive-meteor-hit:
+    id: 46153
+    name: Massive Meteor (Hit)
+    mechanic: stack.targeted
+    shape: chariot
+    count: 2
+    damage: 122160
+    players: 4
+    description: Individual hit of [a:massive-meteor]. Briefly inflicts [s:magic-vulnerability-up].
+  arcadion-avalanche:
+    id: 46161
+    mechanic: aoe
+    shape: rect
+    description: |
+      [boss:c] turns towards one of the two platforms and picks it up after the towers explode, killing any player still on that platform.
+      He then throws the platform onto the other platform, leaving a small triangular safe zone in one corner of the platform and killing all players not in that safe zone.
+    resolve: |
+      Unlike normal mode, the throw AoE is *not* telegraphed until right before the throw, at which point it is too late to dodge. To know where the platform will be thrown, watch [boss] closely. His animation has several tells that indicate where he will throw the platform. Some of the indicators are:
+      * When picking up the platform, he leaves one arm underneath and puts one arm on top. Whichever side has the arm on top is the **safe side**.
+      * After picking up the platform, he bends one knee in preparation for the throw. Whichever knee he bends is the side he'll throw towards and is **unsafe**.
+  ecliptic-stampede:
+    id: 46162
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      The last major mechanic of the fight.
+      At the end of the cast, spawns two proximity AoEs in two opposite intercardinal corners of the arena ([a:mammoth-meteor]). At the same time, randomly marks two of the four *farthest* players from [boss] for [a:atomic-impact], a 6-hit AoE that deals heavy damage and leaves behind a fire puddle after each hit. All other players bait 6 consecutive [a:majestic-meteor-aoe]s underneath them.
+      After baiting the last [a:majestic-meteor-aoe], four towers spawn at intercardinals around [boss]'s hitbox. Two of these towers are solo tank towers ([a:cosmic-kiss-tb]). The other two are 2-player towers ([a:weighty-impact]). Which are which is completely random.
+      After towers have been soaked, four meteor portals spawn at each cardinal outside the arena and the *closest* player to the *center* of each tower is tethered to one of these portals at random. These tethers are functionally identical to those during [a:majestic-meteor] ([a:majestic-meteowrath]) and inflict [s:fire-resistance-down-ii].
+      After [a:majestic-meteowrath-ecliptic] has resolved, [boss] begins casting either [a:two-way-fireball] or [a:four-way-fireball].
+      * [a:two-way-fireball]: A [ms:line] [m:stack.intercept] on the 2 closest players to [boss] that deals increased damage to the first two players in line. This increased damage is lethal to any player with [s:fire-resistance-down-ii].
+      * [a:four-way-fireball]: A [ms:line] [m:stack.intercept] on the 4 closest players to [boss] that deals increased damage to the first player in line. This increased damage is lethal to any player with [s:fire-resistance-down-ii].
+    resolve: |
+      To begin with, tanks and melees should remain inside the hitbox to avoid baiting [a:atomic-impact]. All rangeds and healers should remain outside. Whichever two players get marked for [a:atomic-impact] drop these puddles at different edges of the arena while not covering the corners of the arena.
+      The two ranged players who did not get selected for [a:atomic-impact] join the other players in [boss]'s hitbox. Stack center to bait the first [a:majestic-meteor-aoe]s, then exit the hitbox north and rotate clockwise until all 6 sets have been baited.
+      Use [t:snake prio] to find your tower (see strategies below for more information). Afterwards, every tethered player takes their tether directly opposite their portal, then clockwise into the next corner (in other words: go across and right).
+      After towers, the two untethered players remaining in middle each choose an intercardinal for [a:four-way-fireball] (stand on that intercardinal to indicate it's yours). The two [a:atomic-impact] players rejoin the players in middle and also each choose an intercardinal.
+      If it's [a:four-way-fireball], everyone is already in the correct position. Everyone in the center remains in the center (in the hitbox). [a:majestic-meteowrath-ecliptic] players can gapclose back to [boss] but should avoid entering the hitbox.
+      If it's [a:two-way-fireball], all players in the northern half of the arena collapse into a stack directly north, while all players in the southern half of the arena collapse into a stack directly south. **Make sure that only one of the two non-[a:majestic-meteowrath-ecliptic] players is inside the hitbox for each stack**, otherwise you may end up baiting two stacks on top of each other. Having one player inside the hitbox, one player on the hitbox ring, and the two [a:majestic-meteowrath-ecliptic] outside the hitbox is a good rule.
+    strategies:
+      normal-ecliptic:
+        name: Role-based Ecliptic
+        description: |
+          Towers are selected based on role. There will always be two tanks, two melees, and two rangeds/healers available for towers. The melees both soak the first tower clockwise from north, the rangeds/healers the second tower.
+          After towers, the untethered players remaining in middle spread out inside the hitbox, with one player per intercardinal, thereby choosing their [a:four-way-fireball] position ahead of time.
+      fixed-ecliptic:
+        name: Fixed Ecliptic
+        description: |
+          Towers are selected based on a priority system. The two melees do *not* soak the same tower. Instead, M1 soaks the first tower clockwise from north and M2 the second tower.
+          As for rangeds/healers, the priority is (from north clockwise to counter-clockwise) H1/H2/R1/R2, meaning H1 always takes the first tower clockwise and R2 always the second tower, with H2 and R1 adjusting based on which other ranged player is with them in the middle.
+          Importantly, the ranged/healer stands in the center of their tower while the melee stands at the edge of it. This ensures that the ranged/healer gets the tether, preventing melee uptime loss.
+    children:
+    - at: 7121
+      id: mammoth-meteor
+      link: and
+    - at: 7166
+      id: atomic-impact
+      link: then
+    - at: 10148
+      id: majestic-meteor-aoe
+      link: and
+    - at: 10192
+      id: atomic-impact
+      link: then
+    - at: 12155
+      id: majestic-meteor-aoe
+      link: then
+    - at: 13178
+      id: atomic-impact
+      link: then
+    - at: 14155
+      id: majestic-meteor-aoe
+      link: then
+    - at: 16153
+      id: majestic-meteor-aoe
+      link: and
+    - at: 16197
+      id: atomic-impact
+      link: then
+    - at: 18153
+      id: majestic-meteor-aoe
+      link: then
+    - at: 19175
+      id: atomic-impact
+      link: then
+    - at: 20152
+      id: majestic-meteor-aoe
+      link: then
+    - at: 22195
+      id: atomic-impact
+      link: then
+    - at: 23174
+      id: cosmic-kiss-tb
+      link: and
+    - at: 23174
+      id: weighty-impact
+    - at: 32740
+      id: majestic-meteowrath-ecliptic
+    - at: 36962
+      id: two-way-fireball
+      link: or
+    - at: 36962
+      id: four-way-fireball
+  mammoth-meteor:
+    id: 46163
+    mechanic: raidwide.proximity
+    count: 2
+    damage: 10970
+    players: 8
+    description: Two proximity AoEs spawn in two opposite intercardinal corners of the arena.
+  atomic-impact:
+    id: 46164
+    mechanic: aoe.puddle
+    shape: chariot
+    count: 2
+    damage: 82577
+    players: 1
+    description: Deals heavy damage to the targeted player and leaves behind a puddle. Failing to step out of this puddle in time or stepping into it later inflicts [s:burns].
+  majestic-meteor-aoe:
+    id: 46165
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 6
+    description: A delayed AoE that spawns underneath all non-[a:atomic-impact] players.
+  cosmic-kiss-tb:
+    id: 46166
+    name: Cosmic Kiss (Tower)
+    mechanic: tb.towers
+    count: 2
+    damage: 399580
+    description: A one-person tower that deals heavy damage. Deals heavy damage and inflicts [s:sustained-damage] on all party members if not soaked.
+  weighty-impact:
+    id: 46167
+    mechanic: towers.double
+    count: 2
+    damage: 94170
+    description: A two-person tower that deals moderate damage. Deals heavy damage and inflicts [s:sustained-damage] per player missing from the tower.
+  majestic-meteowrath-ecliptic:
+    id: 46169
+    mechanic: spread
+    shape: line
+    count: 4
+    damage: 148737
+    description: |
+      Like [a:majestic-meteowrath], but with two differences.
+      First, the tethers aren't randomly assigned. Instead, they're assigned to the centermost player of each tower ([a:cosmic-kiss-tb], [a:weighty-impact]).
+      Second, players are not inflicted with [s:magic-vulnerability-up] but [s:fire-resistance-down-ii].
+  two-way-fireball:
+    id: 47038
+    name: Two-way Fireball
+    mechanic: stack.intercept
+    shape: line
+    cast: 6000
+    count: 2
+    damage: 164336
+    players: 4
+    description: Line stack. Deals more damage to the first two players in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
+    resolve: Ensure that in both stacks, all 4 players with [s:fire-resistance-down-ii] are the last two players in line.
+  four-way-fireball:
+    id: 46171
+    name: Four-way Fireball
+    mechanic: stack.intercept
+    shape: line
+    cast: 6000
+    count: 4
+    damage: 164336
+    players: 2
+    description: Line stack. Deals more damage to the first player in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
+    resolve: Ensure that in all 4 stacks stacks, all 4 players with [s:fire-resistance-down-ii] are the second player in line.
+  heartbreak-kicks:
+    name: Heartbreak Kicks
+    mechanic: hint
+    description: |
+      The soft enrage sequence begins here. [boss] obtains [s:damage-up] and spawns a tower in the center of the arena. The damage of this tower can be shared and it hits 5 times.
+      [boss:c] then repeats this tower two more times, each time getting an additional stack of [s:damage-up] and increasing the number of hits of the tower by 1.
+    resolve: |
+      The towers can be handled in a multitude of ways. You can have your entire party stack for all three towers; this will, however, spread you extremely thin on party mitigation by the time the third tower spawns. It is instead recommended to have at least one tower be handled exlusively by tanks, either by [invulning](t:invuln) a tower solo or by having both tanks take the tower alone and [t:kitchen sink].
+      Note that only the first tower can be [invulned](t:invuln) in its entirety as all 5 hits fall within a span of less than ten seconds (but only barely). Both subsequent towers cannot be covered by a single [t:invuln] alone. A dark knight can cover the entire first tower for free by virtue of [a:living-dead]. Other tanks must time their [t:invuln] extremely precisely or risk wiping the party.
+      Kitchen sinking a tower is only possible if both tanks have all their cooldowns available. As such, any party with a warrior will likely be unable to utilize this strategy, as they would need to use their cooldowns during [a:ecliptic-stampede] or risk dying to the [m:tb.towers]. Even then, healers would need to apply constant spot heals to both tanks as they will both take heavy damage throughout the tower, even with full [t:kitchen sink]. The healing requirements for the tanks are virtually indistinguishable from the healing requirements to the whole party if the entire party stacked, making this strat questionable in its usefulness.
+      Another strategy, if both tank invulns are available, is to have one tank [t:invuln] the first half of the tower and the second tank [t:invuln] the second half of the tower (with the non-invulning tank, respectively, stepping out of the tower until their [t:invuln] is active). In this case timing the [t:invuln] is no longer an issue. It's a fairly risk-free strat.
+      **Recommendation**: This guide's general recommendation that works in all party comps is to take the first tower as a full party, have tanks use the aforementioned double [t:invuln] strat on the second tower, and have the entire party stack for the last tower, with tanks using short cooldowns such as [a:tbn] or [a:intervention] on low-defense party members (such as physical rangeds and healers).
+  heartbreak-kick-1:
+    id: 46173
+    mechanic: stack.tower
+    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 5 times. Deals heavy damage.
+    children:
+    - at: 1154
+      id: heartbreak-kick-hit
+    - at: 3158
+      id: heartbreak-kick-hit
+    - at: 5159
+      id: heartbreak-kick-hit
+    - at: 7163
+      id: heartbreak-kick-hit
+    - at: 9205
+      id: heartbreak-kick-hit
+  heartbreak-kick-2:
+    id: 46173
+    mechanic: stack.tower
+    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 6 times. Deals heavy damage.
+    children:
+    - at: 1154
+      id: heartbreak-kick-hit
+    - at: 3158
+      id: heartbreak-kick-hit
+    - at: 5159
+      id: heartbreak-kick-hit
+    - at: 7163
+      id: heartbreak-kick-hit
+    - at: 9205
+      id: heartbreak-kick-hit
+    - at: 11206
+      id: heartbreak-kick-hit
+  heartbreak-kick-3:
+    id: 46173
+    mechanic: stack.tower
+    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 7 times. Deals heavy damage.
+    children:
+    - at: 1154
+      id: heartbreak-kick-hit
+    - at: 3158
+      id: heartbreak-kick-hit
+    - at: 5159
+      id: heartbreak-kick-hit
+    - at: 7163
+      id: heartbreak-kick-hit
+    - at: 9205
+      id: heartbreak-kick-hit
+    - at: 11206
+      id: heartbreak-kick-hit
+    - at: 13249
+      id: heartbreak-kick-hit
+  heartbreak-kick-hit:
+    id: 46174
+    name: Heartbreak Kick (Hit)
+    mechanic: stack.tower
+    damage: 121414
+    players: 8
+    description: Individual hit of [a:heartbreak-kick-1]. Each hit deals approximately 900,000 raw damage (500,000 to a tank). This damage is evenly split across all players in the tower, meaning that if both tanks take the hit together, it'll deal 250,000 raw damage to each per hit. If all 8 party members stack together, it'll deal about 120,000 damage to each player per hit.
+  heartbreaker:
+    id: 46178
+    mechanic: enrage
+    type: dark
+    damage: 9999999
+    description: Kills all party members.
+timeline:
+  - at: 10874
+    id: crown-of-arcadia
+  - at: 18030
+    id: raw-steel-trophy-scythe
+    link: or
+  - at: 18030
+    id: raw-steel-trophy-axe
+  - at: 38947
+    id: trophy-weapons
+  - at: 48787
+    id: assault-evolved
+  - at: 73567
+    id: trophy-weapons
+  - at: 80721
+    id: void-stardust
+  - at: 93392
+    id: assault-evolved
+  - at: 106863
+    id: void-stardust-followup
+  - at: 123009
+    id: crown-of-arcadia
+  - at: 135504
+    id: dance-of-domination-trophy
+  - at: 157265
+    id: raw-steel-trophy-axe
+    link: or
+  - at: 157265
+    id: raw-steel-trophy-scythe
+  - at: 179951
+    id: charybdistopia
+  - at: 185581
+    id: ultimate-trophy-weapons
+  - at: 228524
+    id: immortal-reign
+  - at: 241679
+    id: one-and-only
+  - at: 241679
+    id: <phase>
+    name: Fire Phase
+  - at: 253886
+    id: great-wall-of-fire
+  - at: 267418
+    id: orbital-omen
+  - at: 293495
+    id: meteorain
+  - at: 363415
+    id: flatliner
+  - at: 377604
+    id: majestic-meteor
+  - at: 447033
+    id: massive-meteor
+  - at: 460822
+    id: explosion-towers
+  - at: 471383
+    id: arcadion-avalanche
+  - at: 482045
+    id: crown-of-arcadia
+    description: Standard raidwide. Restores the arena.
+  - at: 493230
+    id: great-wall-of-fire
+  - at: 506773
+    id: orbital-omen
+  - at: 524626
+    id: crown-of-arcadia
+  - at: 537044
+    id: ecliptic-stampede
+  - at: 582359
+    id: crown-of-arcadia
+  - at: 589845
+    id: <addstatus>
+    status: damage-up
+    description: Grants [s:damage-up] to [boss].
+  - at: 595646
+    id: heartbreak-kicks
+  - at: 595646
+    id: heartbreak-kick-1
+  - at: 609018
+    id: <addstatus>
+    status: damage-up
+    description: Grants [s:damage-up:2] to [boss].
+  - at: 614798
+    id: heartbreak-kick-2
+  - at: 630230
+    id: <addstatus>
+    status: damage-up
+    description: Grants [s:damage-up:3] to [boss].
+  - at: 636019
+    id: heartbreak-kick-3
+  - at: 662232
+    id: heartbreaker

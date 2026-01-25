@@ -304,6 +304,7 @@
         "mech.motion",
         "mech.arena",
         "mech.prepare",
+        "mech.comet",
         "towers.single",
         "towers.double",
         "towers.triple",
@@ -314,7 +315,8 @@
         "enrage.threshold",
         "enrage.soft",
         "hint",
-        "damage"
+        "damage",
+        "combination"
       ]
     },
     "ShapeType": {

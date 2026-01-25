@@ -29,7 +29,6 @@ raidwide.ultimate:
 tb.tether:
   name: tankbuster (tether)
   description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive.
-  shapeful: true
   players: 1
 tb.mt:
   name: tankbuster (MT)
@@ -171,7 +170,8 @@ aoe.baitable:
   name: baited AoE
   description: |
     An [t:AoE] that spawns on player's (past) position but does not resolve until later. Players should move out of the AoE before it resolves to avoid taking damage.
-    These mechanics are also sometimes called "twister"-type mechanics, in reference to Twintania's signature ability.
+    Sometimes this type of AoE is untelegraphed and not visible until it explodes; sometimes it leaves behind the standard yellow AoE indicator.
+    These mechanics are also sometimes called "twister"-type mechanics, in reference to Twintania's signature ability, though this terminology is usually only used for the invisible variant of this AoE.
   shapeful: true
 aoe.exaflares:
   name: exaflares
@@ -353,6 +353,13 @@ mech.arena:
 mech.prepare:
   name: preparation
   description: The enemy or enemies change their form or otherwise prepare for an upcoming mechanic in a certain way.
+mech.comet:
+  name: comet
+  description: |
+    A comet drops from the sky and is placed on the player's (or another entity's) current position, usually dealing mild damage to players in the process.
+    Depending on the fight, these comets may be used for a variety of purposes. A common usecase is for players to hide behind to [m:mech.los] a certain mechanic.
+    Comets usually explode automatically if they're placed too close to one another. This is almost always undesirable as it may deal heavy damage, inflict [s:2911], or simply make it impossible to resolve the next mechanic.
+  players: 1
 towers.single:
   name: towers
   description: Towers (in the form of circular areas on the ground) appear in the arena. Each tower must be occupied by at least one person. If no player occupies the tower when it resolves, it will deal heavy damage and inflict debuffs on every party member, often killing the entire  party instantly.
@@ -395,3 +402,6 @@ damage:
   name: damage
   description: Deals targeted damage to a specific player. Cannot be avoided or shared and must usually be mitigated instead. Similar to a tankbuster, but doesn't cleave and can target any player, and therefore deals less damage overall.
   players: 1
+combination:
+  name: combination
+  description: Multiple different mechanics happen at the same time.

@@ -54,3 +54,8 @@ wall boss: |
 starburst: |
   Sometimes used to refer to the standard eight-pronged [ms:star]-shaped AoE that appears in certain duties, where eight line AoEs emerge from a central point.
   The term "starburst" is never actually used in-game to describe this kind of mechanic, so its origin is unclear.
+splash: |
+  "Splash damage" is a type of damage that primarily targets a specific object or player, but also deals damage to all players too close to them. Sometimes the splash damage is only a portion of the original damage; in Final Fantasy XIV, almost all damage that could be referred to as "splash damage" deals the full damage amount to all nearby players.
+snake prio: |
+  A common priority system used when players must resolve several mechanics around the arena, but which player resolves which isn't fixed, meaning players must choose themselves which mechanic they wish to resolve.
+  Snake priority systems generally work by having one group of players search for an eligible mechanic clockwise from north, then having another group of players search for an eligible mechanic counter-clockwise from northwest. For many mechanics, this kind of priority system ensures that two players don't accidentally select the same mechanic (leaving another mechanic unresolved, most likely wiping the party).
