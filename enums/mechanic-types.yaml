@@ -233,6 +233,10 @@ aoe.aftershock:
   name: aftershock
   description: An [t:AoE] that hits the same area as a previous AoE. Usually the first AoE is player-targeted, and so players need to move to avoid this aftershock AoE.
   shapeful: true
+aoe.facing:
+  name: player gaze
+  description: An [t:AoE] (usually conal) that originates from a player and is relative to where the player is facing.
+  shapeful: true
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.

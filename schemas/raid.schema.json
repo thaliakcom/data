@@ -271,6 +271,7 @@
         "aoe.memory",
         "aoe.condition",
         "aoe.aftershock",
+        "aoe.facing",
         "spread",
         "spread.close",
         "spread.far",
@@ -694,7 +695,8 @@
       "type": "string",
       "enum": [
         "push",
-        "player"
+        "player",
+        "skippable"
       ]
     },
     "SpecialChildTimelineItem": {

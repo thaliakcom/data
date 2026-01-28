@@ -59,3 +59,4 @@ splash: |
 snake prio: |
   A common priority system used when players must resolve several mechanics around the arena, but which player resolves which isn't fixed, meaning players must choose themselves which mechanic they wish to resolve.
   Snake priority systems generally work by having one group of players search for an eligible mechanic clockwise from north, then having another group of players search for an eligible mechanic counter-clockwise from northwest. For many mechanics, this kind of priority system ensures that two players don't accidentally select the same mechanic (leaving another mechanic unresolved, most likely wiping the party).
+  The name "snake prio" is derived from <a href="https://thaliak.com/raids/p8s1/">Abyssos: The Eighth Circle (Savage)</a>, where this priority system was first popularized to solve the snakes mechanic in the fight.
