@@ -6,10 +6,10 @@ by:
   id: 27637301
   role: author
 tier: AAC Heavyweight
-boss: The Lindwurm
-HP: 0
+boss: the Lindwurm
+HP: 104593118
 party_hp: 197477
-wip: full
+wip: [diagrams]
 description: ""
 alias: [r12s1]
 suffix: " Part 1"
@@ -19,4 +19,720 @@ status:
     id: 2911
     type: impairment
     duration: 30000
-    description: Reduces damage dealt by 50%.
+    description: Reduces damage dealt by 50%. Inflicted by various actions, including [a:phagocyte-spotlight] and [a:cell-death].
+  poison-resistance-down-ii:
+    id: 3935
+    type: vuln
+    duration: [11960, 25000, 3960, 1960]
+    description: |
+      Renders any poison damage taken lethal.
+      Note that this does not refer to a literal poison [t:DoT] but simply poison-aspected damage. Most damage dealt by [boss] is poison-aspected.
+      Inflicted by various actions, including [a:mortal-slayer-ball], [a:mortal-slayer-tb], [a:roiling-mass-alpha], [a:roiling-mass-beta], [a:dramatic-lysis-mitotic-phase], and [a:cell-shedding].
+  shared-grotesquerie:
+    id: 4762
+    type: delay
+    duration: 17000
+    description: Triggers [a:fourth-wall-fusion] on the player when the effect expires.
+  bursting-grotesquerie:
+    id: 4761
+    type: delay
+    duration: [17000, 14000]
+    description: Triggers [a:dramatic-lysis] on the player when the effect expires.
+  directed-grotesquerie:
+    id: 4976
+    type: delay
+    duration: 17000
+    description: Triggers [a:hemorrhagic-projection] in the direction of the snake head when the effect expires.
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [1960, 8960, 4960]
+    description: Renders any magic damage taken lethal. Inflicted by various actions, including [a:dramatic-lysis], [a:fourth-wall-fusion], [a:fourth-wall-fusion-random], [a:dramatic-lysis-tether-break], [a:split-scourge], [a:venomous-scourge], [a:fourth-wall-fusion-slaughtershed], and [a:dramatic-lysis-spread].
+  bonds-of-flesh-alpha:
+    id: 4752
+    name: Bonds of Flesh α
+    type: delay
+    duration: [26000, 31000, 36000, 41000, 19000]
+    description: Turns into [s:unbreakable-flesh-alpha] when the effect expires.
+    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-alpha] when this effect expires.
+  bonds-of-flesh-beta:
+    id: 4754
+    name: Bonds of Flesh β
+    type: delay
+    duration: [26000, 31000, 36000, 41000]
+    description: Turns into [s:unbreakable-flesh-beta] when the effect expires.
+    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-beta] when this effect expires.
+  first-in-line:
+    id: 3004
+    type: indicator
+    description: Marked as the first player whose debuff expires.
+  second-in-line:
+    id: 3005
+    type: indicator
+    description: Marked as the second player whose debuff expires.
+  third-in-line:
+    id: 3006
+    type: indicator
+    description: Marked as the third player whose debuff expires.
+  fourth-in-line:
+    id: 3451
+    type: indicator
+    description: Marked as the fourth player whose debuff expires.
+  bind:
+    id: 2518
+    type: impairment
+    duration: [5000, 3000]
+    description: Player is unable to move or execute gapcloser actions.
+  unbreakable-flesh-alpha:
+    id: 4753
+    name: Unbreakable Flesh α
+    type: condition
+    duration: 18000
+    description: |
+      During [a:grotesquerie-act-2], player is tethered to the corresponding player with [s:unbreakable-flesh-beta]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
+      During [a:grotesquerie-curtain-call], player is tethered to a random player of the opposite role.
+      Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
+    gameDescription: Chained by alpha-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
+  unbreakable-flesh-beta:
+    id: 4755
+    name: Unbreakable Flesh β
+    type: condition
+    duration: 18000
+    description: |
+      Player is tethered to the corresponding player with [s:unbreakable-flesh-alpha]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
+      Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
+    gameDescription: Chained by beta-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
+  mitotic-phase:
+    id: 4764
+    type: delay
+    duration: 10000
+    description: |
+      Accompanied by a snake head appearing in a fixed cardinal on the player's body.
+      The snake head does not rotate along with the player's body.
+      At the end of the effect's duration, spawns a tower a certain distance in the indicated direction, [binds](s:bind) the player, and triggers an explosion around the player.
+  fate-of-the-wurm:
+    id: 4772
+    type: impairment
+    description: Player cannot jump.
+  rotting-flesh:
+    id: 4763
+    type: condition
+    duration: 16000
+    description: |
+      Allowing this effect to expire triggers [a:cell-death], dealing heavy damage and inflicting [s:damage-down].
+      This effect renders players immune to being inflicted with [s:damage-down], but to cleanse this status effect, players must take damage from an action that would normally inflict [s:damage-down]. The only action available for this purpose is [a:ravenous-reach].
+      Cleansing this status effect triggers [a:cell-shedding], a spread AoE roughly the same size as [a:dramatic-lysis].
+actions:
+  the-fixer:
+    id: 46295
+    mechanic: raidwide
+    damage: 420074
+    description: Heavy raidwide.
+  mortal-slayer:
+    id: 46229
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      During the cast, [boss] spawns 4 orbs from top to bottom on his left hands and 4 orbs on his right hands.
+      Exactly 2 of these orbs will be purple. The rest will be green.
+      [boss:c] always spawns 2 orbs at a time. These two orbs may either both spawn on the same side or on different sides. Purple and green orbs can spawn alongside each other, even when both orbs spawn on the same side.
+      At the end of the cast, [boss] begins to chuck the spawned orbs at players in the order they were created. The orbs target the players closest to the center of [boss]'s hitbox, with one caveat: the western orbs only target players on the west side of the arena and the eastern orbs only target players on the east side of the arena.
+      If two orbs spawned simultaneously on the same side, they target the closest and second-closest player on that side. If a purple and green orb spawned simultaneously on the same side, the topmost orb targets the closest player and the bottom-most orb the second-closest.
+      Both purple orbs are guaranteed to always spawn on the same side. It is not possible for a purple orb to spawn west and another purple orb to spawn east.
+      It is possible for all sets of orbs to spawn in same-side pairs. It is also possible for all orbs to spawn in opposite-side pairs. A mix of both is most common, in which case the number of same-side pairs and opposite-side pairs is equal on both sides.
+      All orbs are [spread AoEs](a:mortal-slayer-ball) that deal heavy damage. The [purple orbs](a:mortal-slayer-tb) deal [t:tankbuster]-levels of damage. All orbs inflict [s:poison-resistance-down-ii].
+    resolve: |
+      Wait outside the hitbox until it's your turn to take an orb (see strategies below to decide when whose turn is), then position yourself at the edge of the arena close to [boss], but not too close to the center to avoid clipping any player on the other side.
+      If you are soaking a same-side pair, the second player positions themselves just inside the hitbox to the south. Note that this will clip the hitbox ring, which is why it's important for all players who are not currently baiting an orb to stand dead-center at [t:max melee].
+      After soaking an orb, exit the hitbox on the west or east and remain at [t:max melee]. Do not attempt to make your way back to the center of the arena as you will likely get clipped by the next set of orbs in the process.
+      [Kitchen sink](t:kitchen sink) is recommended for the tankbuster orbs.
+    strategies:
+      role-orbs:
+        name: Role Orbs
+        recommended: true
+        description: |
+          This strategy leverages the fact that both purple orbs always spawn on the same side. Wait for the first purple orb to appear and you know what side you're on.
+          H1 and H2 (in that order) soak the green orbs on the side with the purple orbs, with tanks slotting in (MT then OT) as needed.
+          M1, M2, R1, R2 soak the orbs on the other side, in that order.
+      light-party-orbs:
+        name: Light Party Orbs
+        description: |
+          Light party 1 always soaks the green orbs on the west side, light party 2 always soaks the green orbs on the east side, in the order: healers, melees, ranged.
+          Because the purple orbs always spawn on the same side, one side will have one player too few and the other side one player too many. Whichever ranged damage dealer is on the purple orb side swaps sides and slots themselves in for the last green orb on the other side.
+          Alternatively, swap the order of melees and rangeds and have melees adjust instead.
+    children:
+    - at: 90
+      id: mortal-slayer-set
+    - at: 3122
+      id: mortal-slayer-set
+    - at: 6102
+      id: mortal-slayer-set
+    - at: 9091
+      id: mortal-slayer-set
+  mortal-slayer-tb:
+    id: 46232
+    name: Mortal Slayer (Purple)
+    mechanic: tb.close
+    shape: chariot
+    damage: 619351
+    description: Heavy [t:tankbuster] on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii].
+  mortal-slayer-ball:
+    id: 46230
+    name: Mortal Slayer (Green)
+    mechanic: spread.close
+    shape: chariot
+    damage: 203822
+    description: Heavy spread AoE on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii].
+  mortal-slayer-set:
+    name: Mortal Slayer (Hit)
+    mechanic: spread.close
+    type: magic
+    shape: chariot
+    damage: 203822
+    description: Two balls resolve (either [a:mortal-slayer-ball] or [a:mortal-slayer-tb]).
+  grotesquerie-act-1:
+    id: 48829
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Inflicts all players with [s:directed-grotesquerie], all supports or damage dealers with [s:bursting-grotesquerie], and one player of the opposite role with [s:shared-grotesquerie].
+      * [s:directed-grotesquerie] spawns a snake head on a random cardinal on the player's body. The snake head turns alongside the player. At the end of the effect's duration, the snake head shoots a conal AoE wherever it is facing ([a:hemorrhagic-projection]).
+      * [s:bursting-grotesquerie] triggers a simple spread AoE at the end of the effect's duration ([a:dramatic-lysis]).
+      * [s:shared-grotesquerie] triggers a 4-player stack at the end of the effect's duration ([a:fourth-wall-fusion]).
+      [boss:c] then sends out his arm for [a:ravenous-reach] while spawning 4 sets of [a:phagocyte-spotlight] AoEs underneath all players. All debuffs resolve at the same time as [a:ravenous-reach].
+    resolve: |
+      Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie] snake head is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
+      The role with [s:bursting-grotesquerie] should spread alongside the edge of the [a:ravenous-reach] conal AoE, with M1/MT, M2/OT, R1/H1, R2/H2 from north to south. The role with [s:shared-grotesquerie] stacks in the northeast corner of the arena. You can maintain melee uptime safely here.
+      Remember to turn around if necessary to point your snake head towards the outside of the arena (or into the [a:ravenous-reach] AoE).
+    children:
+    - at: 9225
+      id: phagocyte-spotlight
+      link: then
+    - at: 11227
+      id: phagocyte-spotlight
+      link: then
+    - at: 13236
+      id: phagocyte-spotlight
+      link: then
+    - at: 15196
+      id: phagocyte-spotlight
+    - at: 17910
+      id: ravenous-reach
+      link: and
+    - at: 18225
+      id: hemorrhagic-projection
+      link: and
+    - at: 18225
+      id: fourth-wall-fusion
+      link: and
+    - at: 18225
+      id: dramatic-lysis
+    - at: 26862
+      id: burst
+      link: then
+    - at: 27442
+      id: visceral-burst
+      link: and
+    - at: 27442
+      id: fourth-wall-fusion-random
+  phagocyte-spotlight:
+    id: 46238
+    mechanic: aoe.baitable
+    shape: chariot
+    count: 8
+    damage: 229465
+    players: 0
+    description: Drops a delayed AoE underneath all players. Inflicts [s:damage-down].
+  ravenous-reach:
+    id: 46237
+    mechanic: aoe
+    shape: cone
+    damage: 215086
+    players: 0
+    description: |
+      [boss:c] dispatches his snake arm, which slithers across the arena and then executes a wide conal AoE towards the far side. Inflicts [s:damage-down].
+      Cleanses [s:rotting-flesh].
+  hemorrhagic-projection:
+    id: 46255
+    mechanic: aoe.facing
+    shape: cone
+    count: 8
+    description: The snake head attached to players via [s:directed-grotesquerie] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down].
+  fourth-wall-fusion:
+    id: 46254
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 327383
+    description: "[s:shared-grotesquerie] resolves, triggering a small 4-person stack on that player. Inflicts [s:magic-vulnerability-up]."
+  dramatic-lysis:
+    id: 46250
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 315201
+    description: "[s:bursting-grotesquerie] resolves, triggering a moderately-sized spread on that player. Inflicts [s:magic-vulnerability-up]."
+  burst:
+    id: 46239
+    mechanic: aoe
+    shape: chariot
+    count: 5
+    description: A massive [ms:chariot] AoE is triggered by a bulbous mass of flesh sitting in the arena. Inflicts [s:damage-down].
+  visceral-burst:
+    id: 46294
+    mechanic: tb.double
+    shape: chariot
+    count: 2
+    damage: 452598
+    description: Heavy [t:tankbuster] on the first and second in enmity.
+    resolve: |
+      [a:burst] leaves a small safe zone on one side and a slightly larger safe zone on the other side. You're intended to place both tanks in the large safe zone (to avoid overlap) and place the rest of the party in the small safe zone to take [a:fourth-wall-fusion-random] together.
+      However, this is not necessary at all. [a:visceral-burst] does not inflict [s:magic-vulnerability-up] or [s:poison-resistance-down-ii]. Because of this, you can safely stack these tankbusters with sufficient mitigation (or [t:invuln]). This allows you to have the tanks *always* move to the other side, regardless of the size of the safe spot there, while the party stays where you resolved [a:grotesquerie-act-1].
+      Additionally, because of [a:fourth-wall-fusion-random], you likely have a significant amount of party mitigation active when this tankbuster happens, significantly decreasing the mitigation requirements. Depending on your party's mitigation, you may even be able to take this tankbuster raw (only if you don't stack them).
+      **Tip**: [a:burst] resolves slightly earlier than [a:visceral-burst], so it's possible to designate one tank to always gapclose back to [boss] immediately while the other tank waits half a second before gapclosing. This causes the tankbusters to *never* be stacked on top of each other when they resolve.
+  fourth-wall-fusion-random:
+    id: 47545
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 233347
+    description: Stack on a :unverified(random player who is not first or second in enmity). Inflicts [s:magic-vulnerability-up].
+  grotesquerie-act-2:
+    id: 48830
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      Inflicts all supports with [s:bonds-of-flesh-alpha] and all DPS with [s:bonds-of-flesh-beta] or vice-versa.
+      Next, spawns 4 [a:phagocyte-spotlight-blob] AoEs in a specific order. All AoEs spawn on intercardinals. The first two AoEs spawn close to the center of the arena, the last two close to the outside. The placement of the first AoE determines the placement of all remaining AoEs. If the first AoE is northwest, the second AoE is southeast, the third northeast, and the fourth southwest. Each AoE leaves behind a blob on the ground. This blob has no effect for now, but approximately 20 seconds after the AoE resolves a tower ([a:roiling-mass-alpha]) spawns on that position.
+      Finally, [boss] casts [a:cruel-coil], trapping all players within the center of the arena as he coils around them. The only way to exit the coil is through a narrow gap on a random intercardinal. Every five seconds, [boss] spins, which rotates this gap 90° counter-clockwise.
+      **Debuffs**
+      Each individual [s:bonds-of-flesh-alpha] has a different debuff timer, ranging from 26 to 41 seconds, and pairs with a corresponding [s:bonds-of-flesh-beta] with the same timer. All players are also granted a [s:first-in-line], [s:second-in-line], [s:third-in-line], or [s:fourth-in-line] based on the timer of their debuff (from shortest to longest).
+      When a set of [s:bonds-of-flesh-alpha] and [s:bonds-of-flesh-beta] debuffs expires, those debuffs turn into [s:unbreakable-flesh-alpha] and [s:unbreakable-flesh-beta] respectively, causing both players to be tethered to each other. The new debuffs have a duration of 20 seconds. Failing to cleanse the debuff by breaking the tether causes :unverified(both players to die). A tether can be broken by establishing sufficient distance between the two of them compared to the initial distance when the tether went into effect. The distance needed is roughly equal to the total diameter of the coil that players are trapped within.
+      Breaking the tether triggers a [a:dramatic-lysis-tether-break] (a small spread AoE inflicting [s:magic-vulnerability-up]) on both players and spawns a tower on the [s:unbreakable-flesh-beta] player which resolves shortly after.
+    resolve: |
+      All players remain stacked in the center of the arena (ideally, do not move after being pulled there during [a:cruel-coil]). Any time Bonds of Flesh turns into Unbreakable Flesh, the [s:unbreakable-flesh-alpha] player exits the coil through the gap and the [s:unbreakable-flesh-beta] moves into the opposite direction until the tether breaks.
+      At this point, the [s:unbreakable-flesh-alpha] players [s:first-in-line] and [s:second-in-line] move to the first and second outer [a:roiling-mass-alpha] blobs that spawned, respectively. The [s:third-in-line] and [s:fourth-in-line] players are responsible for the first and second *inner* [a:roiling-mass-alpha] blobs. This job will already be complete by the time these players break their tether and exit the coil, so [s:third-in-line] and [s:fourth-in-line] have no extra duties after exiting the coil.
+      Each [s:unbreakable-flesh-beta] player is responsible for soaking the tower dropped by the [s:unbreakable-flesh-beta] two sets removed (meaning [s:first-in-line] soaks [s:third-in-line]'s tower, [s:fourth-in-line] soaks [s:second-in-line]'s tower, and so on). After soaking your tower, exit the coil at your convenience, but beware of any remaining [s:unbreakable-flesh-alpha] players, as being clipped by their [a:dramatic-lysis-tether-break] results in instant death. If in doubt, wait until after the last [a:dramatic-lysis-tether-break], at which point there will be another [a:skinsplitter] giving you one last opportunity to exit the coil before [a:constrictor] kills all players still within.
+    children:
+    - at: 9220
+      id: phagocyte-spotlight-blob
+    - at: 11225
+      id: phagocyte-spotlight-blob
+    - at: 13229
+      id: phagocyte-spotlight-blob
+    - at: 15189
+      id: phagocyte-spotlight-blob
+      link: and
+    - at: 15189
+      id: cruel-coil
+    - at: 21206
+      id: skinsplitter
+    - at: 21256
+      id: <removestatus>
+      status: bind
+    - at: 26155
+      id: skinsplitter
+    - at: 27155
+      id: <addstatus>
+      status:
+      - unbreakable-flesh-alpha
+      - unbreakable-flesh-beta
+    - at: 30342
+      id: dramatic-lysis-tether-break
+      timing: player
+    - at: 31140
+      id: skinsplitter
+    - at: 32140
+      id: <addstatus>
+      status:
+      - unbreakable-flesh-alpha
+      - unbreakable-flesh-beta
+    - at: 33013
+      id: roiling-mass-alpha
+      description: The [s:third-in-line] blob tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 34439
+      id: roiling-mass-beta
+      description: The [s:third-in-line] ß tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 35329
+      id: dramatic-lysis-tether-break
+      timing: player
+    - at: 36086
+      id: skinsplitter
+    - at: 37086
+      id: <addstatus>
+      status:
+      - unbreakable-flesh-alpha
+      - unbreakable-flesh-beta
+    - at: 38002
+      id: roiling-mass-alpha
+      description: The [s:fourth-in-line] blob tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 39428
+      id: roiling-mass-beta
+      description: The [s:fourth-in-line] ß tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 39428
+      id: dramatic-lysis-tether-break
+      timing: player
+    - at: 41074
+      id: skinsplitter
+    - at: 42074
+      id: <addstatus>
+      status:
+      - unbreakable-flesh-alpha
+      - unbreakable-flesh-beta
+    - at: 42992
+      id: roiling-mass-alpha
+      description: The [s:first-in-line] blob tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 43483
+      id: roiling-mass-beta
+      description: The [s:first-in-line] ß tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 44483
+      id: dramatic-lysis-tether-break
+      timing: player
+    - at: 46019
+      id: skinsplitter
+    - at: 47937
+      id: roiling-mass-alpha
+      description: The [s:second-in-line] blob tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+      link: and
+    - at: 48937
+      id: roiling-mass-beta
+      description: The [s:second-in-line] ß tower resolves, dealing heavy damage and inflicting a potent [t:DoT] if not soaked.
+    - at: 50966
+      id: skinsplitter
+    - at: 56894
+      id: constrictor
+  phagocyte-spotlight-blob:
+    id: 46262
+    mechanic: aoe
+    shape: chariot
+    description: Standard AoE. Leaves behind a [a:roiling-mass-alpha] blob on the ground.
+  cruel-coil:
+    id: 46267
+    mechanic: mech
+    description: |
+      Pulls all players into the center of the arena and [binds](s:bind) them, then [boss] coils around them.
+      [boss:c]'s body forms a wall that prevents players from exiting the coil. There is a narrow gap between [boss]'s tail and head that permits passage. This gap is always on cardinals.
+      After a few seconds, [boss] spins ([a:skinsplitter]), which rotates the gap *90° counter-clockwise*. If any player is touching [boss]'s body when [a:skinsplitter] happens, inflicts [s:damage-down] on them.
+  skinsplitter:
+    id: 46268
+    mechanic: aoe
+    type: physical
+    description: Deals heavy damage and inflicts a small knockback and [s:damage-down] on players touching [boss]'s body as he spins once.
+  dramatic-lysis-tether-break:
+    id: 46260
+    name: Dramatic Lysis (Tether)
+    mechanic: spread
+    shape: chariot
+    count: 2
+    damage: 142225
+    description: A tether is snapped, dealing moderate damage to both players and anyone around them, and inflicting [s:magic-vulnerability-up].
+  roiling-mass-alpha:
+    id: 46263
+    name: Roiling Mass (α)
+    mechanic: towers.single
+    damage: 36948
+    description: A tower spawns about 20 seconds after [a:phagocyte-spotlight-blob] and resolves. Inflicts [s:poison-resistance-down-ii]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+  roiling-mass-beta:
+    id: 46259
+    name: Roiling Mass (ß)
+    mechanic: towers.single
+    damage: 38125
+    description: A tower spawns and resolves as a result of a [a:dramatic-lysis-tether-break] tether break. Inflicts [s:poison-resistance-down-ii]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+  constrictor:
+    id: 46274
+    mechanic: aoe
+    shape: chariot
+    description: Instantly kills any player still within the coil.
+  splattershed:
+    id: 47558
+    mechanic: raidwide
+    damage: 200321
+    description: Moderate raidwide. [boss:c] sheds his arms and regrows them.
+  grotesquerie-act-3:
+    id: 48831
+    mechanic: mech
+    major: true
+    compact: full
+    description: |
+      All players are inflicted with [s:mitotic-phase].
+      This spawns a snake head on their body that always faces a specific cardinal, independent of character rotation. There are always two players whose snake head faces the same direction.
+      Additionally, snakes spawn and burrow through the arena in specific locations. One always spawns center. Four more spawn in either all intercardinals or all cardinals. Shortly afterwards, they destroy that section of the arena, plunging players who are still there to their deaths.
+      Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's snake head is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's snake head faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
+      Towers resolve while players are still [bound](s:bind). All players also deal damage and inflict [s:magic-vulnerability-up] in a radius around them ([a:dramatic-lysis-mitotic-phase]) while this happens.
+      [s:bind] then dissipates and the center of the arena is restored, but not the other destroyed sections.
+    resolve: |
+      Two players per platform. Which platform players are assigned is based on the way their snake head is facing. Each snake head must face another platform. Additionally, both players must situate themselves on opposite corners of their platform (otherwise they'll clip each other with [a:dramatic-lysis-mitotic-phase] and die), and the players on the platform they're facing must also be positioned in the exact same way.
+    children:
+    - at: 3119
+      id: <untargetable>
+    - at: 5172
+      id: feral-fission
+    - at: 12794
+      id: dramatic-lysis-mitotic-phase
+      link: and
+    - at: 13016
+      id: metamitosis
+    - at: 15416
+      id: <targetable>
+    - at: 22859
+      id: split-scourge
+      link: then
+    - at: 25303
+      id: venomous-scourge
+  feral-fission:
+    id: 48649
+    mechanic: mech.arena
+    description: |
+      Spawns 5 snakes in various locations around the arena, each destroying a portion of the arena.
+      A snake always spawns in the center of the arena. The remaining 4 snakes either spawn in all intercardinals or cardinals.
+      There is a small period of time between the snakes spawning ([a:grand-entrance]) and breaking the arena ([a:bring-down-the-house]). During this time the front and back of the snake has a hitbox, meaning players cannot pass through the snake at those locations.
+    children:
+    - at: 1517
+      id: grand-entrance
+    - at: 5170
+      id: bring-down-the-house
+  grand-entrance:
+    id: 46243
+    mechanic: aoe
+    shape: chariot
+    count: 10
+    description: Tiny chariot AoE where a snake breaks through the arena.
+  bring-down-the-house:
+    id: 46244
+    mechanic: aoe
+    shape: rect
+    count: 5
+    description: Destroys a rectangular section of the arena and kills any player currently within it.
+  dramatic-lysis-mitotic-phase:
+    id: 46256
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 38450
+    description: All players explode with moderate-size AoEs that inflict [s:poison-resistance-down-ii].
+  metamitosis:
+    id: 47395
+    mechanic: towers.single
+    count: 8
+    damage: 20595
+    description: All towers placed by [s:mitotic-phase] resolve.
+  split-scourge:
+    id: 46251
+    mechanic: tb.close
+    shape: line
+    count: 2
+    damage: 459257
+    description: Two giant snake heads rise from the depths and each fire a line tankbuster at the closest player. Inflicts [s:magic-vulnerability-up].
+  venomous-scourge:
+    id: 46248
+    mechanic: spread
+    shape: chariot
+    count: 6
+    damage: 185574
+    description: All players (except for first and second in enmity) are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up].
+  grotesquerie-curtain-call:
+    id: 48832
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      All supports are inflicted with [s:rotting-flesh] and all damage dealers with [s:bursting-grotesquerie] or vice-versa.
+      Additionally, all players are inflicted with [s:bonds-of-flesh-alpha].
+      This mechanic begins similarly to [a:grotesquerie-act-1] (5 back-to-back [a:phagocyte-spotlight]s followed by a [a:ravenous-reach]). There are two major differences:
+      * The arena is still partially broken as a result of [a:grotesquerie-act-3].
+      * Instead of half the players being required to stack for [s:shared-grotesquerie] in the [a:ravenous-reach] safe spot, the non-[s:bursting-grotesquerie] are now required to stand *in* the [a:ravenous-reach] AoE to cleanse [s:rotting-flesh]. Like [s:bursting-grotesquerie], this is also a spread. Failing to cleanse [s:rotting-flesh] inflicts [s:damage-down].
+      The arena is restored the moment [a:ravenous-reach] hits. Five [a:burst] blobs drop in various locations on the now-restored arena and [s:bonds-of-flesh-alpha] are activated into [s:unbreakable-flesh-alpha] here, which tethers all players to a random player of the opposite role. Tethers can be broken like before, by establishing sufficient distance relative to the initial distance when the tether activated.
+    resolve: |
+      Stack and move together for [a:phagocyte-spotlight]. Like before during [a:grotesquerie-act-1], it is strongly recommended to drop the final [a:phagocyte-spotlight] near the center of the arena, so that players are equidistant to both sides of the arena, allowing them to dodge [a:ravenous-reach] regardless of where it hits.
+      The [s:bursting-grotesquerie] should spread in the exact same way as during [a:grotesquerie-act-1]. The [s:rotting-flesh] players can use fixed spread positions within the [a:ravenous-reach] cone (meaning that everyone always spreads in the same location regardless of whether [a:ravenous-reach] hits west or east). Since the cone is so large, it's also easily possible to wing these spreads however.
+      After both debuffs resolve, immediately rush to the center of the arena, to stack with all other party members while waiting for tethers to activate. Once tethers have activated supports rush west, DPS east to break the tether. Be aware that breaking a tether triggers a spread AoE on your position, so select a fixed position on the wall for every player to head towards. It's recommended to order players the same way from north to south as for [s:bursting-grotesquerie].
+      [a:burst] triggers shortly afterwards. There is always one wide safe spot in the front and an equivalent safe spot in the rear of the arena on the opposite corner. Rangeds and healers (being closer to the rear than the front) can simply dodge towards the closest safe spot. Melees and tanks are advised rush towards the front safe spot, even if it's on the opposite side of the arena. It is strongly recommended to use [a:sprint] when tethers activate in order to easily make it regardless of where the safe spot is.
+    children:
+    - at: 4008
+      id: phagocyte-spotlight
+      link: then
+    - at: 6011
+      id: phagocyte-spotlight
+      link: then
+    - at: 8016
+      id: phagocyte-spotlight
+      link: then
+    - at: 9978
+      id: phagocyte-spotlight
+      link: then
+    - at: 11983
+      id: phagocyte-spotlight
+    - at: 14791
+      id: ravenous-reach
+      link: and
+    - at: 14969
+      id: cell-shedding
+      link: and
+    - at: 15237
+      id: dramatic-lysis
+    - at: 24371
+      id: dramatic-lysis-tether-break
+      count: 8
+      timing: player
+    - at: 27801
+      id: burst
+  cell-shedding:
+    id: 46252
+    name: Cell Shedding
+    mechanic: spread
+    shape: chariot
+    count: 3
+    damage: 81075
+    description: Small spread AoE as a result of cleansing [s:rotting-flesh] by taking damage. Inflicts [s:poison-resistance-down-ii].
+  cell-death:
+    id: 46253
+    name: Cell Death
+    mechanic: mech.failure
+    damage: 130407
+    players: 0
+    description: Deals heavy damage and inflicts [s:damage-down] as a result of a player failing to cleanse [s:rotting-flesh].
+  slaughtershed:
+    id: 44489
+    mechanic: mech
+    damage: 274481
+    players: 8
+    compact: trim
+    description: |
+      Moderate raidwide. [boss:c] sheds his arms and spawns several blobs, spreads, and a stack.
+      All players of one role (supports or DPS) are selected for [a:dramatic-lysis-spread], a telegraphed spread AoE. A random player of the other role is selected for [a:fourth-wall-fusion-slaughtershed], a simple 4-player stack.
+      Blood vessel blobs drop from the sky in certain locations, leaving exactly two safe spots on opposite sides of the arena. One of these safe spots is tiny, the other is large enough for four [a:dramatic-lysis-spread] AoEs.
+      While these AoEs resolve, boss is regrowing his arms into either snake head arms or normal hands. After AoEs resolve, each type of arm executes a mechanic in the order the arm was grown.
+      * Snake head arms: [a:serpentine-scourge] (back-to-back halfroom cleaves)
+      * Normal hands: [a:raptor-knuckles] (back-to-back knockbacks)
+    resolve: |
+      During the [a:slaughtershed] cast, split into two light parties: supports left and DPS right. This will make it easier to determine who gets the spreads and who gets the stack.
+      The role with the stack dodges towards the small safe spot. The role with the spreads dodges into the large safe spot. Consult your data center's raid plans to determine how exactly to spread in the safe spot.
+      While this is happening, pay attention to [boss]; specifically the order in which he regrows his arms. For snake heads, get on the side of the second arm grown. For normal hands, get to the corner on the side of the first arm grown.
+      Note that the knockback does not originate exactly from the corner of the platform but slightly in front of it. Use [a:arms-length] or [a:surecast] when in doubt.
+    children:
+    - at: 8688
+      id: dramatic-lysis-spread
+      link: and
+    - at: 8688
+      id: fourth-wall-fusion-slaughtershed
+      link: and
+    - at: 9134
+      id: burst
+    - at: 14266
+      id: serpentine-scourge
+      link: or
+    - at: 14266
+      id: raptor-knuckles
+  dramatic-lysis-spread:
+    id: 46292
+    name: Dramatic Lysis (Spread)
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 192792
+    description: Telegraphed spread AoE on all damage dealers or supports (opposite of the role selected for [a:fourth-wall-fusion-slaughtershed]).
+  fourth-wall-fusion-slaughtershed:
+    id: 46293
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 226326
+    players: 4
+    description: Telegraphed stack on a random damage dealer or support (opposite of the role selected for [a:dramatic-lysis-spread]).
+  serpentine-scourge:
+    id: 46289
+    mechanic: aoe
+    shape: halfroom
+    description: |
+      A standard left-right or right-left halfroom AoE. Inflicts [s:damage-down].
+      This AoE is untelegraphed. The order in which the snake head arms grew is the order in which the halfroom AoEs resolve.
+    children:
+    - at: 979
+      id: serpentine-scourge-hit
+    - at: 5528
+      id: serpentine-scourge-hit
+  serpentine-scourge-hit:
+    id: 47548
+    name: Serpentine Scourge (Hit)
+    mechanic: aoe
+    shape: halfroom
+    description: An individual hit of [a:serpentine-scourge].
+  raptor-knuckles:
+    id: 46288
+    name: Raptor Knuckles
+    mechanic: mech.knockback
+    description: |
+      A knockback from either the northwest or northeast corner, followed by a knockback from the other corner.
+      The knockback is untelegraphed. The order in which the arms grew is the order in which the knockbacks resolve.
+      Note that the knockbacks do not originate exactly from the corner of the platform but slightly in front of it.
+      Can be immuned using [a:arms-length] or [a:surecast].
+    children:
+    - at: 759
+      id: raptor-knuckles-hit
+    - at: 5346
+      id: raptor-knuckles-hit
+  raptor-knuckles-hit:
+    id: 47559
+    name: Raptor Knuckles (Hit)
+    mechanic: mech.knockback
+    damage: 38667
+    description: An individual hit of [a:raptor-knuckles].
+  the-fixer-enrage:
+    id: 45767
+    mechanic: enrage
+    damage: 9999999
+    description: If [boss] is not brought below 15%, it goes untargetable here and wipes the party.
+  refreshing-overkill:
+    id: 46394
+    name: Refreshing Overkill
+    mechanic: enrage.threshold
+    cast: 10000
+    damage: 60000
+    description: |
+      [boss:c] becomes untargetable and self-destructs. If brought to 1 HP before this point this deals mild damage to all players, otherwise wipes the party.
+timeline:
+  - at: 16025
+    id: the-fixer
+  - at: 41378
+    id: mortal-slayer
+  - at: 70775
+    id: grotesquerie-act-1
+  - at: 108287
+    id: the-fixer
+  - at: 120541
+    id: grotesquerie-act-2
+  - at: 189097
+    id: splattershed
+    description: Moderate raidwide. [boss:c] sheds his arms and regrows them with two snake heads.
+  - at: 206841
+    id: grotesquerie-act-3
+  - at: 241499
+    id: the-fixer
+  - at: 253665
+    id: grotesquerie-curtain-call
+  - at: 290648
+    id: splattershed
+    description: Moderate raidwide. [boss:c] sheds his arms and regrows them with two hands.
+  - at: 316461
+    id: mortal-slayer
+  - at: 343232
+    id: slaughtershed
+  - at: 372115
+    id: slaughtershed
+  - at: 401071
+    id: slaughtershed
+  - at: 428936
+    id: <untargetable>
+    description: If [boss] is not brought below 15% HP by this point, it goes untargetable and casts [a:the-fixer-enrage].
+    link: then
+  - at: 434018
+    id: the-fixer-enrage
+    timing: skippable
+  - at: 439416
+    id: refreshing-overkill
