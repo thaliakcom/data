@@ -331,10 +331,8 @@ actions:
     children:
     - at: 917
       id: shockwave
-      flatten: true
     - at: 3697
       id: impact
-      flatten: true
   elevate-and-eviscerate-slam:
     id: 37960
     name: Elevate and Eviscerate (Slam)
@@ -345,10 +343,8 @@ actions:
     children:
     - at: 897
       id: shockwave
-      flatten: true
     - at: 1425
       id: impact
-      flatten: true
   shockwave:
     id: 37962
     mechanic: mech.knockback
