@@ -9,6 +9,10 @@ tier: AAC Heavyweight
 boss: the Lindwurm
 HP: 104593118
 party_hp: 197477
+autos:
+  mechanic: auto.double
+  type: magic
+  damage: 66640
 wip: [diagrams]
 description: ""
 alias: [r12s1]

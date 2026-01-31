@@ -9,6 +9,10 @@ tier: AAC Heavyweight
 boss: Vamp Fatale
 HP: 110594239
 party_hp: 197011
+autos:
+  mechanic: auto.single
+  type: physical
+  damage: 70000
 wip: [diagrams]
 description: ""
 alias: [r9s]

@@ -9,6 +9,10 @@ tier: AAC Heavyweight
 boss: Deep Blue and Red Hot
 HP: 118983004
 party_hp: 197477
+autos:
+  mechanic: auto.single
+  type: physical
+  damage: 70000
 wip: [diagrams]
 description: ""
 alias: [r10s]
