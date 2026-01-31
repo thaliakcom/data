@@ -551,7 +551,7 @@ actions:
     description: Omega fires a barrage of missiles at the players targeted by [s:guided-missile] that deals medium damage to the player themselves and knocks any nearby players into the death wall.
   ballistic-impact:
     id: 31500
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: A telegraphed baited AoE dropped by all players on their current position. Resolves a few seconds later. Being inside one when it resolves deals massive damage and inflicts [s:damage-down].
   wave-cannon-kyrios:
@@ -834,7 +834,7 @@ actions:
     resolve: The tethers should be taken directly clockwise or counter-clockwise of their respective clone to create a small gap for the rest of the party to hide in.
   optimized-sagittarius-arrow:
     id: 31539
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     description: |
       An optimized version of [a:sagittarius-arrow] that deals lethal damage to anyone inside the line. This attack is telegraphed and can be easily avoided.
@@ -1306,7 +1306,7 @@ actions:
   wave-cannon-lines:
     id: 31616
     name: Wave Cannon (Lines)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     count: 8
     description: The afterimage left behind by [a:wave-cannon-spread]. Not survivable.
@@ -1349,7 +1349,7 @@ actions:
     description: An individual hit of [a:double-solar-ray].
   explosion:
     id: 31482
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: A Rocket Punch fist was baited into a fist of the opposite colour. The two fists destroy each other, preventing [a:unmitigated-explosion].
   unmitigated-explosion:
@@ -1877,7 +1877,7 @@ actions:
   unlimited-wave-cannon-bait:
     id: 31663
     name: Wave Cannon (Baits)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: Telegraphed AoEs appear underneath each player that explode 2.7 seconds later, killing anyone still in them by that point.
@@ -1956,7 +1956,7 @@ actions:
   cosmo-meteor-baits:
     id: 31666
     name: Cosmo Meteor (Baits)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: defamation
     description: Spawns massive baited AoEs underneath every party member that resolve about 4 seconds later. Each AoE is almost the size of [boss]'s hitbox.
   cosmo-meteor-spreads:

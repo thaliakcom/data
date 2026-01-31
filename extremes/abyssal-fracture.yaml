@@ -381,7 +381,7 @@ actions:
     resolve: Afflicted players should make sure to stay away from all other players, particularly those in the [a:the-dark-beckons] stack.
   black-hole:
     id: 35689
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: |
       A marker appears above one player. When it resolves, they drop a black hole on their location that rapidly expands, consuming everything in its wake.

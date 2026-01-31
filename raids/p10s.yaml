@@ -222,10 +222,10 @@ actions:
     description: "[boss] steps down on the tower, dealing heavy damage, inflicting [s:stab-wound], and knocking everyone inside up and away."
   entangling-web:
     id: 34594
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: |
-      Multiple players are targeted by a telegraphed [ms:chariot] [m:aoe.baitable]. This [t:AoE] will initially follow the player but will soon "lock in", after which players should move out of it to avoid damage.
+      Multiple players are targeted by a telegraphed [ms:chariot] [m:aoe.delayed]. This [t:AoE] will initially follow the player but will soon "lock in", after which players should move out of it to avoid damage.
       Like [a:steel-web], these AoEs form webs when dropped. While webs will attach to players, they will also attach to the small posts around the arena. This can be used to *connect* two posts, which requires this AoE to be placed in such a way as to encompass a post as well as intersect with another AoE that also encompasses a post.
       When a web is formed in this way between the two posts at the edge of each poison segment, it will form a *bridge* instead of a usual breakable web. Bridges can be used to cross the poison without being afflicted with [s:poison]. Every [a:wicked-step] will be followed by an [a:entangling-web] on one healer, one DPS player, and both tanks. As tanks are expected to be on the side platforms at this point, it always allows you to form a bridge to bring both tanks back to the central platform.
     children:
@@ -235,7 +235,7 @@ actions:
         id: entangling-web-hit
   entangling-web-lock:
     name: Entangling Web (Lock)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     count: 4
     shape: chariot
     description: The [a:entangling-web] "locks in". In other words, it no longer follows the player it spawned on.

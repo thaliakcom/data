@@ -876,7 +876,7 @@ actions:
         id: sidewise-spark
   wicked-fire:
     id: 38448
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: Placeholder description for Wicked Fire
@@ -886,7 +886,7 @@ actions:
   wicked-fire-hit:
     id: 38449
     name: Wicked Fire (Hit)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: Placeholder description for Wicked Fire

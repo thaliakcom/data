@@ -329,7 +329,7 @@ actions:
     description: Heavy raidwide that dispels [s:top-of-the-hive] and all players' heart stacks and returns the arena to its original state.
   alarm-pheromones-1:
     id: 37245
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     description: |
       Continuously spawns bees on the outside of the arena.
@@ -347,7 +347,7 @@ actions:
       - Use [a:arms-length] or [a:surecast] if you're in a tough spot and think you might get hit. You'll take the [s:damage-down], but you won't be knocked into the wall and killed.
   blinding-love:
     id: 39525
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     description: A groupbee executes a line AoE through the arena. Inflicts [s:damage-down] and [s:piercing-resistance-down] and knocks affected players back.
   alarm-pheromones-2:
@@ -403,7 +403,7 @@ actions:
       Each stack distributes 2 stacks of [s:infatuated] among all players hit.
   heart-struck:
     id: 37287
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 2
     description: A baited AoE on 1 support and 1 DPS with [s:infatuated] during [a:beat-2]. Being hit inflicts [s:infatuated].

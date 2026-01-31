@@ -217,7 +217,7 @@ actions:
     description: "[ms:plus:c] AoE in the direction of the blade. Inflicts [s:damage-down]."
   void-stardust:
     id: 46098
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     compact: full
     description: |
@@ -237,7 +237,7 @@ actions:
       id: crushing-comet
   void-stardust-followup:
     name: Void Stardust (Part 2)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     compact: full
     description: |
@@ -256,7 +256,7 @@ actions:
       id: crushing-comet
   cometite:
     id: 46099
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: A delayed-execution AoE spawns under every player. Inflicts [s:damage-down].
@@ -666,7 +666,7 @@ actions:
   majestic-meteor-puddle:
     id: 46145
     name: Majestic Meteor (AoE)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: One of three sets of delayed AoEs left behind by players just before [a:fire-breath] and [a:majestic-meteowrath] resolve. Inflicts [s:damage-down].
@@ -831,7 +831,7 @@ actions:
     description: Deals heavy damage to the targeted player and leaves behind a puddle. Failing to step out of this puddle in time or stepping into it later inflicts [s:burns].
   majestic-meteor-aoe:
     id: 46165
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 6
     description: A delayed AoE that spawns underneath all non-[a:atomic-impact] players.

@@ -327,7 +327,7 @@ actions:
   taste-of-thunder-twister:
     id: 42653
     name: Taste of Thunder (Twister)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: The screen flashes, which places an invisible AoE underneath each player that resolves shortly after and inflicts [s:damage-down].

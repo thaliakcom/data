@@ -104,7 +104,7 @@ actions:
     description: Untelegraphed tankbuster on the main target.
   meteorain:
     id: 35267
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: Avoidable AoEs appear underneath each player.
@@ -173,7 +173,7 @@ actions:
     description: The [s:burning-chains] continuously explode, dealing some damage with each explosion.
   heavensflame:
     id: 35306
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 3
     description: Summons a series of fire [t:AoE]s under random players.
@@ -190,7 +190,7 @@ actions:
   heavensflame-hit:
     id: 35307
     name: Heavensflame (Hit)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: A set of fire [t:AoE]s summoned by [a:heavensflame] detonates.
   conviction:

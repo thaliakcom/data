@@ -457,12 +457,12 @@ actions:
     description: An unaspected tower explodes after being left unsoaked, wiping the party.
   theoss-cross:
     id: 33546
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     description: The cross-shaped [ms:line]s placed by [s:quartered-soul] resolve.
   theoss-saltire:
     id: 33547
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: line
     description: The X-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
   ultima-blade:

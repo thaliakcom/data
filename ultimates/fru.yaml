@@ -899,7 +899,7 @@ actions:
     description: Placeholder description
   sinbound-blizzard-iii:
     id: 40258
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: cone
     count: 4
     description: Placeholder description
@@ -1160,7 +1160,7 @@ actions:
     description: Simple raidwide cast by Fragment of Fate.
   drachen-armor:
     id: 40186
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: |
       Usurper of Frost summons Hraesvelgr, changing form.
@@ -1180,7 +1180,7 @@ actions:
     description: Standard half-room cleave on the side of Usurper's glowing wing.
   akh-rhai:
     id: 40237
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down].

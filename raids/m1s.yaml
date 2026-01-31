@@ -155,7 +155,7 @@ actions:
   quadruple-crossing-aoe:
     id: 37952
     name: Quadruple Crossing (AoE)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: cone
     description: Fires a conal AoE in the direction of the previous spreads, dealing heavy damage and inflicting [s:damage-down].
   biscuit-maker:

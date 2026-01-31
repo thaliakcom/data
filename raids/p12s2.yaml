@@ -531,8 +531,8 @@ actions:
     players: 8
     description: |
       Hot Potato – The Mechanic.
-      Similar to [a:caloric-theory], but while [a:caloric-theory] focused on limited movement to properly resolve stacks/spreads, [a:caloric-theory-2] is instead a much simpler "hot potato" type mechanic. One person is inflicted with [s:entropification:8], which "pulses" periodically, creating a telegraphed [chariot AoE](m:aoe.baitable) underneath the player that must be moved out of. Each of these pulses reduces the stacks of the status effect by one, until it disappears completely.
-      [s:entropification:8] can be passed to another player. This is necessary because movement is still limited, so no one player has enough movement to move out of every one of the [chariot AoEs](m:aoe.baitable).
+      Similar to [a:caloric-theory], but while [a:caloric-theory] focused on limited movement to properly resolve stacks/spreads, [a:caloric-theory-2] is instead a much simpler "hot potato" type mechanic. One person is inflicted with [s:entropification:8], which "pulses" periodically, creating a telegraphed [chariot AoE](m:aoe.delayed) underneath the player that must be moved out of. Each of these pulses reduces the stacks of the status effect by one, until it disappears completely.
+      [s:entropification:8] can be passed to another player. This is necessary because movement is still limited, so no one player has enough movement to move out of every one of the [chariot AoEs](m:aoe.delayed).
       Additionally, at the start of the mechanic 7 players receive a green marker above their heads and 1 player receives a red marker. These are all [ms:chariot] [m:spread], but all green marker players start with [s:caloric:2] while the red marker player starts with [s:caloric:3]. Only green marker players can be selected for [s:entropification:8].
       Everyone also receives [s:atmosfaction], which releases a [ms:chariot] [m:spread] at the end of the mechanic.
     resolve: |
@@ -567,8 +567,8 @@ actions:
       Consider <a href="https://www.wikipedia.com/en/File:Newtons_cradle_animation_book_2.gif">Newton's cradle</a>: in theory all the momentum is conserved, so the balls should keep swinging forever. In practice they stop completely after some time, because a part of that kinetic energy disperses during each swing until there is nothing left.
       In any system (including the universe itself) entropy is constantly increasing. The end result is the <a href="https://www.wikipedia.com/en/Heat_death_of_the_universe">heat death of the universe</a>, a state wherein all energy in the universe has completely dispersed. There is no single concentrated cluster of energy anywhere; every single cubic centimeter in the entire universe has the exact same amount of energy in it. In this state stars can no longer exist, so it is also the end of life as we know it.
       This mechanic demonstrates this concept quite well; at the start of the mechanic entropy is extremely low as all 8 stacks of [s:entropification:8] are initially concentrated on one player, but each pulse irreversibly loses one stack until there is no heat left.
-    mechanic: aoe.baitable
-    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.baitable) which reduces the stack of the status effect by one.
+    mechanic: aoe.delayed
+    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.delayed) which reduces the stack of the status effect by one.
     shape: chariot
   summon-darkness-2:
     id: 33583

@@ -257,7 +257,7 @@
         "stack.intercept",
         "stack.tower",
         "aoe",
-        "aoe.baitable",
+        "aoe.delayed",
         "aoe.exaflares",
         "aoe.orbs",
         "aoe.rotating",

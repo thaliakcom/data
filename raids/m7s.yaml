@@ -230,7 +230,7 @@ actions:
   sinister-seeds-aoes:
     id: 42353
     name: Sinister Seeds (AoE)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 4
     description: Multiple rounds of AoEs that are baited on either the closest or farthest 4 players. The locations of these drops determines the locations of [a:roots-of-evil]. Inflicts [s:damage-down].

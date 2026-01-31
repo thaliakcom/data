@@ -166,8 +166,8 @@ stack.tower:
 aoe:
   name: AoE
   description: Leaves only a specific section of the arena safe.
-aoe.baitable:
-  name: baited AoE
+aoe.delayed:
+  name: delayed AoE
   description: |
     An [t:AoE] that spawns on player's (past) position but does not resolve until later. Players should move out of the AoE before it resolves to avoid taking damage.
     Sometimes this type of AoE is untelegraphed and not visible until it explodes; sometimes it leaves behind the standard yellow AoE indicator.
@@ -214,7 +214,7 @@ aoe.chasing:
   shapeful: true
 aoe.linger:
   name: lingering AoE
-  description: An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.baitable], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
+  description: An attack that spawns in a specific location (often on a player's location) and lingers for some time, dealing heavy damage to any players entering this area. Similar to a [m:aoe.delayed], the general solution is to drop this AoE away from other players, then step out of its area of effect as quickly as possible to minimize damage taken.
   shapeful: true
 aoe.puddle:
   name: puddle

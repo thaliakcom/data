@@ -346,7 +346,7 @@ actions:
     description: |
       The message "A volcanic eruption is imminent." appears on screen.
       At the same time, one of the volcanoes to the west or east of the arena begins to smolder. After a short time, it spews a massive [t:AoE] onto that side of the arena that lingers for about 2.5s, dealing massive damage and inflicting [s:vulnerability-up] to any players who enter the area during this time.
-      It also spawns 3 sets of [baited AoEs](m:aoe.baitable) under 3 random players, also dealing massive damage and inflicting [s:vulnerability-up].
+      It also spawns 3 sets of [baited AoEs](m:aoe.delayed) under 3 random players, also dealing massive damage and inflicting [s:vulnerability-up].
     resolve: |
       Point your camera at one of the two volcanoes. If your volcano is smoldering, go to the opposite side. If it remains dark, go to that side.
       As the space to dodge [a:volcanic-drop-baits] is limited, try to stack up and move together to make sure the AoEs are all in the same place. Casters may wish to stand off to the side and only move if they have to.
@@ -360,7 +360,7 @@ actions:
   volcanic-drop-baits:
     id: 36836
     name: Volcanic Drop (Baits)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 3
     description: A small [t:AoE] telegraph appears underneath 3 random players. After a brief moment, lava from the volcano rains down upon that spot, dealing massive damage and inflicting [s:vulnerability-up] to any players hit.
@@ -402,7 +402,7 @@ actions:
       Afterwards, triggers one of three mechanics depending on the current dominant element of the arena:
       * **Fire**: Triggers [a:charring-cataclysm], a [m:stack.partner] on all DPS or supports.
       * **Ice**: Triggers [a:chilling-cataclysm], a "find the safe spot" mechanic.
-      * **Thunder**: Triggers [a:crackling-cataclysm], large invisible [baited AoEs](m:aoe.baitable) on all players.
+      * **Thunder**: Triggers [a:crackling-cataclysm], large invisible [baited AoEs](m:aoe.delayed) on all players.
   charring-cataclysm:
     id: 36804
     mechanic: stack.partner
@@ -658,7 +658,7 @@ actions:
       Targets all feathers with an AoE large enough to cover the entire square that they're on. Also targets all [levitating](s:levitate) players. Anyone hit is :unverified(instantly killed).
   crackling-cataclysm:
     id: 36801
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up] and [s:paralysis].
   thunderous-breath:

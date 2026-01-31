@@ -134,7 +134,7 @@ actions:
         description: Assign clock spots at the start of the fight and use them here.
   venom-drops:  # Venom Drops
     id: 30489
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: Places baited [AoEs](t:AoE) underneath each player that will resolve after three seconds, likely killing anyone inside and inflicting [s:damage-down] otherwise.
   venom-pool:

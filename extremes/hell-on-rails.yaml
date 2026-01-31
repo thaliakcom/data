@@ -114,7 +114,7 @@ actions:
       Grants [boss] [s:dead-mans-overdraught].
   third-rail:
     id: 45665
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     count: 8
     description: |
@@ -128,7 +128,7 @@ actions:
   third-rail-hit:
     id: 45666
     name: Third Rail (Hit)
-    mechanic: aoe.baitable
+    mechanic: aoe.delayed
     shape: chariot
     description: The AoEs summoned by [a:third-rail] explode, inflicting [s:vulnerability-up].
   psychokinesis:
