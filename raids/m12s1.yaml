@@ -1,7 +1,7 @@
 id: 1075
 patch: "7.4"
 date: 2026-01-28
-modified: 2026-01-31
+modified: 2026-02-16
 by:
   id: 27637301
   role: author
@@ -146,6 +146,7 @@ actions:
       Both purple orbs are guaranteed to always spawn on the same side. It is not possible for a purple orb to spawn west and another purple orb to spawn east.
       It is possible for all sets of orbs to spawn in same-side pairs. It is also possible for all orbs to spawn in opposite-side pairs. A mix of both is most common, in which case the number of same-side pairs and opposite-side pairs is equal on both sides.
       All orbs are [spread AoEs](a:mortal-slayer-ball) that deal heavy damage. The [purple orbs](a:mortal-slayer-tb) deal [t:tankbuster]-levels of damage. All orbs inflict [s:poison-resistance-down-ii].
+      If any orb is **left unsoaked** (i.e. there is no living player on the west side when a west orb resolve or vice-versa) the orb explodes, wiping the party.
     resolve: |
       Wait outside the hitbox until it's your turn to take an orb (see strategies below to decide when whose turn is), then position yourself at the edge of the arena close to [boss], but not too close to the center to avoid clipping any player on the other side.
       If you are soaking a same-side pair, the second player positions themselves just inside the hitbox to the south. Note that this will clip the hitbox ring, which is why it's important for all players who are not currently baiting an orb to stand dead-center at [t:max melee].
@@ -165,6 +166,10 @@ actions:
           Light party 1 always soaks the green orbs on the west side, light party 2 always soaks the green orbs on the east side, in the order: healers, melees, ranged.
           Because the purple orbs always spawn on the same side, one side will have one player too few and the other side one player too many. Whichever ranged damage dealer is on the purple orb side swaps sides and slots themselves in for the last green orb on the other side.
           Alternatively, swap the order of melees and rangeds and have melees adjust instead.
+      kindred-orbs:
+        name: Kindred Orbs
+        description: |
+          A hyperoptimized strat to minimize caster movement, this strategy is like Role Orbs, but instead of pairing healers with tanks, it instead pairs melees with tanks. This side handles the mechanic as normal. The other side has all four players (both healers and both rangeds) preposition in specific positions directly next to the midline. After soaking an orb, these players only have to move a few pixels to the other side to avoid being targeted by any other orbs.
     children:
     - at: 90
       id: mortal-slayer-set
@@ -210,6 +215,9 @@ actions:
       Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie] snake head is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
       The role with [s:bursting-grotesquerie] should spread alongside the edge of the [a:ravenous-reach] conal AoE, with M1/MT, M2/OT, R1/H1, R2/H2 from north to south. The role with [s:shared-grotesquerie] stacks in the northeast corner of the arena. You can maintain melee uptime safely here.
       Remember to turn around if necessary to point your snake head towards the outside of the arena (or into the [a:ravenous-reach] AoE).
+    strategies:
+      grotesquerie-act-1:
+        name: Example
     children:
     - at: 9225
       id: phagocyte-spotlight
@@ -318,6 +326,9 @@ actions:
       All players remain stacked in the center of the arena (ideally, do not move after being pulled there during [a:cruel-coil]). Any time Bonds of Flesh turns into Unbreakable Flesh, the [s:unbreakable-flesh-alpha] player exits the coil through the gap and the [s:unbreakable-flesh-beta] moves into the opposite direction until the tether breaks.
       At this point, the [s:unbreakable-flesh-alpha] players [s:first-in-line] and [s:second-in-line] move to the first and second outer [a:roiling-mass-alpha] blobs that spawned, respectively. The [s:third-in-line] and [s:fourth-in-line] players are responsible for the first and second *inner* [a:roiling-mass-alpha] blobs. This job will already be complete by the time these players break their tether and exit the coil, so [s:third-in-line] and [s:fourth-in-line] have no extra duties after exiting the coil.
       Each [s:unbreakable-flesh-beta] player is responsible for soaking the tower dropped by the [s:unbreakable-flesh-beta] two sets removed (meaning [s:first-in-line] soaks [s:third-in-line]'s tower, [s:fourth-in-line] soaks [s:second-in-line]'s tower, and so on). After soaking your tower, exit the coil at your convenience, but beware of any remaining [s:unbreakable-flesh-alpha] players, as being clipped by their [a:dramatic-lysis-tether-break] results in instant death. If in doubt, wait until after the last [a:dramatic-lysis-tether-break], at which point there will be another [a:skinsplitter] giving you one last opportunity to exit the coil before [a:constrictor] kills all players still within.
+    strategies:
+      grotesquerie-act-2:
+        name: Example
     children:
     - at: 9220
       id: phagocyte-spotlight-blob
@@ -471,8 +482,15 @@ actions:
       Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's snake head is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's snake head faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
       Towers resolve while players are still [bound](s:bind). All players also deal damage and inflict [s:magic-vulnerability-up] in a radius around them ([a:dramatic-lysis-mitotic-phase]) while this happens.
       [s:bind] then dissipates and the center of the arena is restored, but not the other destroyed sections.
+      Afterward, two giant snake heads rise from the ground in predetermined positions and fire a line [t:tankbuster] at the closest player ([a:split-scourge]). This is immediately followed by circular spread AoEs on the 3 westmost and the 3 eastmost players ([a:venomous-scourge]).
     resolve: |
       Two players per platform. Which platform players are assigned is based on the way their snake head is facing. Each snake head must face another platform. Additionally, both players must situate themselves on opposite corners of their platform (otherwise they'll clip each other with [a:dramatic-lysis-mitotic-phase] and die), and the players on the platform they're facing must also be positioned in the exact same way.
+      When the cardinal platforms remain safe, it is imperative that the players on the north/south platforms vertically mirror their positions. This is because, in this pattern, 2 of each platform's corners touch another platform's corner. If every platform used the same player positions, it would mean that 4 players would clip each other with their [a:dramatic-lysis-mitotic-phase] across platform boundaries and die.
+    strategies:
+      grotesquerie-act-3-cardinals:
+        name: Cardinal Platforms
+      grotesquerie-act-3-intercardinals:
+        name: Intercardinal Platforms
     children:
     - at: 3119
       id: <untargetable>
@@ -540,7 +558,7 @@ actions:
     shape: chariot
     count: 6
     damage: 185574
-    description: All players (except for first and second in enmity) are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up].
+    description: The three westmost and three eastmost players are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up].
   grotesquerie-curtain-call:
     id: 48832
     mechanic: mech
@@ -558,6 +576,11 @@ actions:
       The [s:bursting-grotesquerie] should spread in the exact same way as during [a:grotesquerie-act-1]. The [s:rotting-flesh] players can use fixed spread positions within the [a:ravenous-reach] cone (meaning that everyone always spreads in the same location regardless of whether [a:ravenous-reach] hits west or east). Since the cone is so large, it's also easily possible to wing these spreads however.
       After both debuffs resolve, immediately rush to the center of the arena, to stack with all other party members while waiting for tethers to activate. Once tethers have activated supports rush west, DPS east to break the tether. Be aware that breaking a tether triggers a spread AoE on your position, so select a fixed position on the wall for every player to head towards. It's recommended to order players the same way from north to south as for [s:bursting-grotesquerie].
       [a:burst] triggers shortly afterwards. There is always one wide safe spot in the front and an equivalent safe spot in the rear of the arena on the opposite corner. Rangeds and healers (being closer to the rear than the front) can simply dodge towards the closest safe spot. Melees and tanks are advised rush towards the front safe spot, even if it's on the opposite side of the arena. It is strongly recommended to use [a:sprint] when tethers activate in order to easily make it regardless of where the safe spot is.
+    strategies:
+      grotesquerie-curtain-call-cardinals:
+        name: Cardinal Platforms
+      grotesquerie-curtain-call-intercardinals:
+        name: Intercardinal Platforms
     children:
     - at: 4008
       id: phagocyte-spotlight
@@ -620,6 +643,11 @@ actions:
       The role with the stack dodges towards the small safe spot. The role with the spreads dodges into the large safe spot. Consult your data center's raid plans to determine how exactly to spread in the safe spot.
       While this is happening, pay attention to [boss]; specifically the order in which he regrows his arms. For snake heads, get on the side of the second arm grown. For normal hands, get to the corner on the side of the first arm grown.
       Note that the knockback does not originate exactly from the corner of the platform but slightly in front of it. Use [a:arms-length] or [a:surecast] when in doubt.
+    strategies:
+      slaughtershed-halfroom:
+        name: Snake Arms (Halfroom)
+      slaughtershed-hands:
+        name: Hands (Knockback)
     children:
     - at: 8688
       id: dramatic-lysis-spread
