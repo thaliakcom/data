@@ -850,3 +850,9 @@
   url: https://eu.finalfantasyxiv.com/lodestone/special/2026/Valentiones_Day/wenbvnlh6s
   from: 2026-02-02 08:00:00
   to: 2026-02-16 14:59:59
+- name: Little Ladies' Day
+  type: event
+  color: "#cf5cc6"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2026/Little_Ladies_Day/ivf88rc2gm
+  from: 2026-02-26 08:00:00
+  to: 2026-03-12 14:59:59
