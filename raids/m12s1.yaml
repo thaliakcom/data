@@ -768,3 +768,259 @@ timeline:
     timing: skippable
   - at: 439416
     id: refreshing-overkill
+graphing:
+  coordinate-system: cartesian
+  defs:
+    aoe-gradient: "radial-gradient(0 #8a080855 10% #8a080855 100% #fcca6ecc)"
+    green-orb-gradient: "radial-gradient(0 #1E8A0855 10% #1E8A0855 100% #6EFC86CC)"
+    purple-orb-gradient: "radial-gradient(0 #4F088A55 10% #4F088A55 100% #A96EFCCC)"
+  elements:
+    arena:
+      type: image
+      shape: rectangle
+      image: /images/arenas/m12s1.avif
+    boss:
+      size: 140
+      opacity: 0.4
+      coordinate-system: cartesian
+    circle:
+      type: ellipse
+      size: 45
+      color: url(#aoe-gradient)
+      visible: false
+      shadow: false
+    green-orb:
+      type: ellipse
+      size: 8
+      color: url(#green-orb-gradient)
+      visible: false
+      shadow: false
+    purple-orb:
+      type: ellipse
+      size: 8
+      color: url(#purple-orb-gradient)
+      visible: false
+      shadow: false
+    hint:
+      type: rectangle
+      planar: false
+      size: [120, 25]
+      color: "#111111bb"
+      visible: false
+      shadow: false
+  graphs:
+    role-orbs:
+      - marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        green-orb#w1: { x: -61, y: -70, visible: true }
+        green-orb#w2: [-59, -57]
+        green-orb#w3: [-58, -46]
+        green-orb#w4: [-53, -35]
+        purple-orb#e1: { x: 61, y: -70, visible: true }
+        green-orb#e2: [59, -57]
+        purple-orb#e3: [58, -46]
+        green-orb#e4: [53, -35]
+        H2: [7, 10]
+        H1: [7, 0]
+        R2: [-7, 10]
+        R1: [-7, 0]
+        M2: [-7, -10]
+        M1: [-7, -20]
+        T2: [7, -10]
+        T1: [7, -20]
+        cast: { text: Mortal Slayer, progress: 0 }
+        hint: { x: 63, y: 60, text: "Wait until the first purple orb appears, then:\nsupports on that side, DPS other side.", visible: true }
+      - cast: { progress: 0.25 }
+        green-orb#w2: { visible: true }
+        green-orb#e2: { visible: true }
+        T1: [33, -69]
+        M1: [-33, -69]
+      - cast: { progress: 0.5 }
+        purple-orb#e3: { visible: true }
+        green-orb#e4: { visible: true }
+        M2: [-27, -32]
+        H1: [27, -32]
+        H2: [0, -8]
+        R2: [0, -8]
+        R1: [0, -8]
+        T2: [0, -8]
+        hint: { text: "DPS order: M1 M2 R1 R2<br />Tank order: MT OT<br />Healer order: H1 H2" }
+      - cast: { progress: 0.75 }
+        green-orb#w3: { visible: true }
+        green-orb#w4: { visible: true }
+      - cast: { progress: 1 }
+        green-orb#w1: { x: 0, y: 0, attach: M1, scale: 6 }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
+      - cast: { visible: false }
+        green-orb#w1: { visible: false }
+        purple-orb#e1: { visible: false }
+        T1: [80, -69]
+        M1: [-80, -69]
+        M2: [-33, -69]
+        H1: [33, -69]
+        R1: [-27, -32]
+        T2: [27, -32]
+      - green-orb#w2: { x: 0, y: 0, attach: M2, scale: 6 }
+        green-orb#e2: { x: 0, y: 0, attach: H1, scale: 6 }
+      - green-orb#w2: { visible: false }
+        green-orb#e2: { visible: false }
+        H1: [80, -69]
+        M2: [-80, -69]
+        R1: [-33, -69]
+        T2: [33, -69]
+        R2: [-27, -32]
+        H2: [27, -32]
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
+        green-orb#e4: { x: 0, y: 0, attach: H2, scale: 6 }
+      - purple-orb#e3: { visible: false }
+        green-orb#e4: { visible: false }
+        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
+    light-party-orbs:
+      - marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        green-orb#w1: { x: -61, y: -70, visible: true }
+        green-orb#w2: [-59, -57]
+        green-orb#w3: [-58, -46]
+        green-orb#w4: [-53, -35]
+        purple-orb#e1: { x: 61, y: -70, visible: true }
+        green-orb#e2: [59, -57]
+        purple-orb#e3: [58, -46]
+        green-orb#e4: [53, -35]
+        H1: [-33, -69]
+        H2: [33, -69]
+        T1: [-17, -11]
+        R2: [7, 0]
+        R1: [-7, 0]
+        M1: [-7, -10]
+        T2: [17, -11]
+        M2: [7, -10]
+        cast: { text: Mortal Slayer, progress: 0 }
+        hint: { x: 63, y: 60, text: "Healers can preposition immediately, but may need to \"unpreposition\" if a purple orb is first.", visible: true }
+      - cast: { progress: 0.25 }
+        green-orb#w2: { visible: true }
+        green-orb#e2: { visible: true }
+        T1: [33, -69]
+        H2: [7, -20]
+      - cast: { progress: 0.5 }
+        purple-orb#e3: { visible: true }
+        green-orb#e4: { visible: true }
+        M1: [-27, -32]
+        H2: [27, -32]
+        R2: [0, -8]
+        R1: [0, -8]
+        T2: [0, -8]
+        M2: [0, -8]
+        hint: { text: "West order: H1 M1 R1<br />East order: H2 M2 R2<br />Tanks slot in as needed." }
+      - cast: { progress: 0.75 }
+        green-orb#w3: { visible: true }
+        green-orb#w4: { visible: true }
+      - cast: { progress: 1 }
+        green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6 }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
+      - cast: { visible: false }
+        green-orb#w1: { visible: false }
+        purple-orb#e1: { visible: false }
+        H1: [-80, -69]
+        T1: [80, -69]
+        M1: [-33, -69]
+        H2: [33, -69]
+        R1: [-27, -32]
+        T2: [27, -32]
+      - green-orb#w2: { x: 0, y: 0, attach: M1, scale: 6 }
+        green-orb#e2: { x: 0, y: 0, attach: H2, scale: 6 }
+      - green-orb#w2: { visible: false }
+        green-orb#e2: { visible: false }
+        M1: [-80, -69]
+        H2: [80, -69]
+        R1: [-33, -69]
+        T2: [33, -69]
+        R2: [-27, -32]
+        M2: [27, -32]
+        hint: { text: "R2 goes west because east already has all green orbs assigned and west does not.<br/>One ranged will always swap sides." }
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
+        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
+      - purple-orb#e3: { visible: false }
+        green-orb#e4: { visible: false }
+        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
+    kindred-orbs:
+      - marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        green-orb#w1: { x: -61, y: -70, visible: true }
+        green-orb#w2: [-59, -57]
+        green-orb#w3: [-58, -46]
+        green-orb#w4: [-53, -35]
+        purple-orb#e1: { x: 61, y: -70, visible: true }
+        green-orb#e2: [59, -57]
+        purple-orb#e3: [58, -46]
+        green-orb#e4: [53, -35]
+        H2: [-7, -10]
+        H1: [-7, -20]
+        R2: [-7, 10]
+        R1: [-7, 0]
+        M2: [7, 10]
+        M1: [7, 0]
+        T2: [7, -10]
+        T1: [7, -20]
+        cast: { text: Mortal Slayer, progress: 0 }
+        hint: { x: 63, y: 60, text: "Wait until the first purple orb appears, then:\ntanks and melees on that side, everyone else other side.", visible: true }
+      - cast: { progress: 0.25 }
+        green-orb#w2: { visible: true }
+        green-orb#e2: { visible: true }
+        T1: [33, -69]
+        H1: [-2, -52]
+        H2: [-2, 25]
+        R1: [-2, 69]
+        R2: [-36, 69]
+        hint: { text: "Healers and rangeds preposition using these exact positions on the non-purple side. Tanks and melees handle the mechanic the same as Role Orbs." }
+      - cast: { progress: 0.5 }
+        purple-orb#e3: { visible: true }
+        green-orb#e4: { visible: true }
+        M1: [27, -32]
+        M2: [8, -8]
+        T2: [8, -8]
+      - cast: { progress: 0.75 }
+        green-orb#w3: { visible: true }
+        green-orb#w4: { visible: true }
+      - cast: { progress: 1 }
+        green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6 }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
+      - cast: { visible: false }
+        green-orb#w1: { visible: false }
+        purple-orb#e1: { visible: false }
+        T1: [80, -69]
+        M1: [33, -69]
+        T2: [27, -32]
+        H1: [2, -52]
+        hint: { text: "When a healer or ranged gets hit, they just take a small step onto the other side." }
+      - green-orb#w2: { x: 0, y: 0, attach: H2, scale: 6 }
+        green-orb#e2: { x: 0, y: 0, attach: M1, scale: 6 }
+      - green-orb#w2: { visible: false }
+        green-orb#e2: { visible: false }
+        M1: [80, -69]
+        T2: [33, -69]
+        M2: [27, -32]
+        H2: [2, 25]
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
+        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
+        hint: { text: "Tanks and melees make sure not to clip H1." }
+      - purple-orb#e3: { visible: false }
+        green-orb#e4: { visible: false }
+        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
