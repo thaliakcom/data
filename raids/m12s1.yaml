@@ -1039,18 +1039,18 @@ graphing:
       - cast: { progress: 0.25 }
         green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
-        T1: [33, -69]
-        H1: [-2, -52]
+        T1: [5, -70]
+        H1: [-2, -19]
         H2: [-2, 25]
         R1: [-2, 69]
         R2: [-36, 69]
-        hint: { text: "Healers and rangeds preposition using these exact positions on the non-purple side. Tanks and melees handle the mechanic the same as Role Orbs." }
+        hint: { text: "Healers and rangeds preposition using these exact positions on the non-purple side." }
       - cast: { progress: 0.5 }
         purple-orb#e3: { visible: true }
         green-orb#e4: { visible: true }
-        M1: [27, -32]
-        M2: [8, -8]
-        T2: [8, -8]
+        M1: [41, -70]
+        M2: [62, -27]
+        T2: [62, -27]
       - cast: { progress: 0.75 }
         green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
@@ -1061,21 +1061,21 @@ graphing:
         green-orb#w1: { visible: false }
         purple-orb#e1: { visible: false }
         T1: [80, -69]
-        M1: [33, -69]
-        T2: [27, -32]
-        H1: [2, -52]
+        M1: [5, -70]
+        T2: [41, -70]
+        H1: [2, -19]
         hint: { text: "When a healer or ranged gets hit, they just take a small step onto the other side." }
       - green-orb#w2: { x: 0, y: 0, attach: H2, scale: 6 }
         green-orb#e2: { x: 0, y: 0, attach: M1, scale: 6 }
       - green-orb#w2: { visible: false }
         green-orb#e2: { visible: false }
         M1: [80, -69]
-        T2: [33, -69]
-        M2: [27, -32]
+        T2: [5, -70]
+        M2: [41, -70]
         H2: [2, 25]
       - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
         green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
-        hint: { text: "Tanks and melees make sure not to clip H1." }
+        hint: { visible: false }
       - purple-orb#e3: { visible: false }
         green-orb#e4: { visible: false }
         green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
