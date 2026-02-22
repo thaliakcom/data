@@ -46,7 +46,7 @@ status:
     id: 4976
     type: delay
     duration: 17000
-    description: Triggers [a:hemorrhagic-projection] in the direction of the snake head when the effect expires.
+    description: Triggers [a:hemorrhagic-projection] in the direction of the blob when the effect expires.
   magic-vulnerability-up:
     id: 2941
     type: vuln
@@ -111,8 +111,8 @@ status:
     type: delay
     duration: 10000
     description: |
-      Accompanied by a snake head appearing in a fixed cardinal on the player's body.
-      The snake head does not rotate along with the player's body.
+      Accompanied by a blob appearing in a fixed cardinal on the player's body.
+      The blob does not rotate along with the player's body.
       At the end of the effect's duration, spawns a tower a certain distance in the indicated direction, [binds](s:bind) the player, and triggers an explosion around the player.
   fate-of-the-wurm:
     id: 4772
@@ -207,14 +207,19 @@ actions:
     compact: full
     description: |
       Inflicts all players with [s:directed-grotesquerie], all supports or damage dealers with [s:bursting-grotesquerie], and one player of the opposite role with [s:shared-grotesquerie].
-      * [s:directed-grotesquerie] spawns a snake head on a random cardinal on the player's body. The snake head turns alongside the player. At the end of the effect's duration, the snake head shoots a conal AoE wherever it is facing ([a:hemorrhagic-projection]).
+      * [s:directed-grotesquerie] spawns a blob on a random cardinal on the player's body. The blob turns alongside the player. At the end of the effect's duration, the blob shoots a conal AoE wherever it is facing ([a:hemorrhagic-projection]).
       * [s:bursting-grotesquerie] triggers a simple spread AoE at the end of the effect's duration ([a:dramatic-lysis]).
       * [s:shared-grotesquerie] triggers a 4-player stack at the end of the effect's duration ([a:fourth-wall-fusion]).
       [boss:c] then sends out his arm for [a:ravenous-reach] while spawning 4 sets of [a:phagocyte-spotlight] AoEs underneath all players. All debuffs resolve at the same time as [a:ravenous-reach].
+      As they resolve, spawns 5 blobs around the arena that rapidly expand and explode ([a:burst]). At the same time, a telegraphed stack appears on a :unverified(random healer) ([a:fourth-wall-fusion-random]) and a tankbuster on both the first and second player in enmity ([a:visceral-burst]).
     resolve: |
-      Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie] snake head is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
+      Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie] blob is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
       The role with [s:bursting-grotesquerie] should spread alongside the edge of the [a:ravenous-reach] conal AoE, with M1/MT, M2/OT, R1/H1, R2/H2 from north to south. The role with [s:shared-grotesquerie] stacks in the northeast corner of the arena. You can maintain melee uptime safely here.
-      Remember to turn around if necessary to point your snake head towards the outside of the arena (or into the [a:ravenous-reach] AoE).
+      Remember to turn around if necessary to point your blob towards the outside of the arena (or into the [a:ravenous-reach] AoE).
+      After this resolves, the party stays on whatever side they currently are and seeks the [a:burst] safe spot on that side. Tanks move to the other side to resolve [a:visceral-burst]. Note that [a:visceral-burst] does not inflict [s:poison-resistance-down-ii] or [s:magic-vulnerability-up], so it can safely be stacked (given sufficient mitigation).
+    tips:
+      - The correct way to resolve [a:visceral-burst] would be for tanks to seek out the larger of the two safe spots (the other one is not large enough for the two tankbusters and is clearly intended to be used to house [a:fourth-wall-fusion-random]) but it just adds an unnecessary amount of mental effort and movement when tanks can just heavily mitigate or [t:invuln] the tankbuster.
+      - If you *really* don't want to stack the tankbuster, you can designate one tank to always use their gapcloser to return to [boss] right after [a:burst] resolves while the other tank waits a second until [a:visceral-burst] has resolved. There is a small window between [a:burst] and [a:visceral-burst] resolving which is why this works, but it's tight.
     strategies:
       grotesquerie-act-1:
         name: Example
@@ -271,7 +276,7 @@ actions:
     mechanic: aoe.facing
     shape: cone
     count: 8
-    description: The snake head attached to players via [s:directed-grotesquerie] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down].
+    description: The blob attached to players via [s:directed-grotesquerie] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down].
   fourth-wall-fusion:
     id: 46254
     mechanic: stack.targeted
@@ -308,7 +313,7 @@ actions:
     mechanic: stack.targeted
     shape: chariot
     damage: 233347
-    description: Stack on a :unverified(random player who is not first or second in enmity). Inflicts [s:magic-vulnerability-up].
+    description: Stack on a :unverified(random healer). Inflicts [s:magic-vulnerability-up].
   grotesquerie-act-2:
     id: 48830
     mechanic: mech
@@ -477,14 +482,14 @@ actions:
     compact: full
     description: |
       All players are inflicted with [s:mitotic-phase].
-      This spawns a snake head on their body that always faces a specific cardinal, independent of character rotation. There are always two players whose snake head faces the same direction.
+      This spawns a blob on their body that always faces a specific cardinal, independent of character rotation. There are always two players whose blob faces the same direction.
       Additionally, snakes spawn and burrow through the arena in specific locations. One always spawns center. Four more spawn in either all intercardinals or all cardinals. Shortly afterwards, they destroy that section of the arena, plunging players who are still there to their deaths.
-      Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's snake head is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's snake head faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
+      Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's blob is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's blob faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
       Towers resolve while players are still [bound](s:bind). All players also deal damage and inflict [s:magic-vulnerability-up] in a radius around them ([a:dramatic-lysis-mitotic-phase]) while this happens.
       [s:bind] then dissipates and the center of the arena is restored, but not the other destroyed sections.
       Afterward, two giant snake heads rise from the ground in predetermined positions and fire a line [t:tankbuster] at the closest player ([a:split-scourge]). This is immediately followed by circular spread AoEs on the 3 westmost and the 3 eastmost players ([a:venomous-scourge]).
     resolve: |
-      Two players per platform. Which platform players are assigned is based on the way their snake head is facing. Each snake head must face another platform. Additionally, both players must situate themselves on opposite corners of their platform (otherwise they'll clip each other with [a:dramatic-lysis-mitotic-phase] and die), and the players on the platform they're facing must also be positioned in the exact same way.
+      Two players per platform. Which platform players are assigned is based on the way their blob is facing. Each blob must face another platform. Additionally, both players must situate themselves on opposite corners of their platform (otherwise they'll clip each other with [a:dramatic-lysis-mitotic-phase] and die), and the players on the platform they're facing must also be positioned in the exact same way.
       When the cardinal platforms remain safe, it is imperative that the players on the north/south platforms vertically mirror their positions. This is because, in this pattern, 2 of each platform's corners touch another platform's corner. If every platform used the same player positions, it would mean that 4 players would clip each other with their [a:dramatic-lysis-mitotic-phase] across platform boundaries and die.
     strategies:
       grotesquerie-act-3-cardinals:
@@ -772,8 +777,11 @@ graphing:
   coordinate-system: cartesian
   defs:
     aoe-gradient: "radial-gradient(0 #8a080855 10% #8a080855 100% #fcca6ecc)"
+    spread-gradient: "linear-gradient(0 #8a080855 10% #8a080855 100% #FC6E6ECC)"
     green-orb-gradient: "radial-gradient(0 #1E8A0855 10% #1E8A0855 100% #6EFC86CC)"
     purple-orb-gradient: "radial-gradient(0 #4F088A55 10% #4F088A55 100% #A96EFCCC)"
+    attached-snake-gradient: "radial-gradient(0 #AD0000CD 80% #AD0000CD 100% #610101CD)"
+    tb-gradient: "radial-gradient(0 #D839391E 95% #D839391E 100% #D83939AB)"
   elements:
     arena:
       type: image
@@ -785,8 +793,30 @@ graphing:
       coordinate-system: cartesian
     circle:
       type: ellipse
-      size: 45
+      size: 60
       color: url(#aoe-gradient)
+      visible: false
+      shadow: false
+    cone-arm:
+      type: cone
+      angle: 105
+      size: [195, 0]
+      origin: [0.5, 1]
+      color: url(#aoe-gradient)
+      visible: false
+      shadow: false
+    cone-gaze:
+      type: cone
+      angle: 30
+      size: [195, 0]
+      origin: [0.5, 1]
+      color: url(#spread-gradient)
+      visible: false
+      shadow: false
+    spread:
+      type: ellipse
+      size: 54
+      color: url(#spread-gradient)
       visible: false
       shadow: false
     green-orb:
@@ -801,6 +831,32 @@ graphing:
       color: url(#purple-orb-gradient)
       visible: false
       shadow: false
+    attached-snake:
+      type: ellipse
+      size: [5, 3]
+      color: url(#attached-snake-gradient)
+      visible: false
+      shadow: false
+    tb:
+      type: image
+      size: 15
+      image: /images/markers/tankbuster.svg
+      opacity: 0.7
+      shadow: false
+      visible: false
+    tb-circle:
+      type: ellipse
+      size: 50
+      color: url(#tb-gradient)
+      visible: false
+      shadow: false
+    stack:
+      type: image
+      size: 50
+      image: /images/markers/stack.svg
+      opacity: 0.7
+      shadow: false
+      visible: false
     hint:
       type: rectangle
       planar: false
@@ -1024,3 +1080,127 @@ graphing:
         green-orb#e4: { visible: false }
         green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
         green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
+    grotesquerie-act-1:
+      - circle#spotlight-1: [-67, -65]
+        circle#spotlight-2: [-33, -65]
+        circle#spotlight-3: [0, -65]
+        circle#spotlight-4: [0, -32]
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        enemy#arm: { x: 43, y: -80, rotate: 0, scale: 0.8, opacity: 0.5, visible: false, coordinate-system: cartesian }
+        cone-arm: { x: -67, y: 0, rotate: 90 }
+        cone-gaze#T1: { attach: T1, rotate: 0 }
+        cone-gaze#T2: { attach: T2, rotate: 0 }
+        cone-gaze#H1: { attach: H1, rotate: -90 }
+        cone-gaze#H2: { attach: H2, rotate: 0 }
+        cone-gaze#R1: { attach: R1, rotate: -90 }
+        cone-gaze#R2: { attach: R2, rotate: 90 }
+        cone-gaze#M1: { attach: M1, rotate: 90 }
+        cone-gaze#M2: { attach: M2, rotate: 90 }
+        circle#blob-1: { x: -54, y: 0, size: 20 }
+        circle#blob-2: { x: 44, y: 48, size: 20 }
+        circle#blob-3: { x: -27, y: -44, size: 20 }
+        circle#blob-4: { x: 53, y: -53, size: 20 }
+        circle#blob-5: { x: -54, y: 60, size: 20 }
+        spread#stack: { attach: H2 }
+        spread#spread-1: { attach: M1 }
+        spread#spread-2: { attach: M2 }
+        spread#spread-3: { attach: R1 }
+        spread#spread-4: { attach: R2 }
+        tb#T1: { attach: T1 }
+        tb#T2: { attach: T2 }
+        tb-circle#T1: { attach: T1 }
+        tb-circle#T2: { attach: T2 }
+        stack: { attach: H2 }
+        T1: [-60, -43]
+        T2: [-55, -30]
+        H1: [-80, -71]
+        H2: [-88, -65]
+        M1: [-55, -62]
+        M2: [-70, -32]
+        R1: [-77, -46]
+        R2: [-67, -68]
+        attached-snake#H1: { attach: H1, rotate: 90, x: 5, y: 0 }
+        attached-snake#H2: { attach: H2, rotate: 0, x: 0, y: 5 }
+        attached-snake#T1: { attach: T1, rotate: 90, x: -5, y: 0 }
+        attached-snake#T2: { attach: T2, rotate: 0, x: 0, y: -5 }
+        attached-snake#M1: { attach: M1, rotate: 90, x: 5, y: 0 }
+        attached-snake#M2: { attach: M2, rotate: 0, x: 0, y: 5 }
+        attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
+        attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
+        cast: { text: "Grotesquerie: Act 1", progress: 0.75 }
+        hint: { x: 63, y: 60, text: "Spread out a bit to make it easier to see where your blob is.", visible: true }
+      - attached-snake#*: { visible: true }
+        cast: { progress: 1, visible: false }
+        DPS: { status: [bursting-grotesquerie] }
+        H2: { status: [shared-grotesquerie] }
+      - cast: { text: Ravenous Reach, progress: 0 }
+        players: { x: -67, y: -65, status: [] }
+        attached-snake#*: { visible: false }
+        hint: { visible: false }
+      - cast: { visible: true }
+        attached-snake#*: { visible: false }
+        circle#spotlight-1: { visible: true }
+        players: [-33, -65]
+      - cast: { progress: 0.2 }
+        enemy#arm: { visible: true }
+        circle#spotlight-2: { visible: true }
+        players: [0, -65]
+      - cast: { progress: 0.4 }
+        enemy#arm: [17, -51, 45]
+        circle#spotlight-1: { visible: false }
+        circle#spotlight-3: { visible: true }
+        players: [0, -32]
+      - cast: { progress: 0.6 }
+        enemy#arm: [-33, -27, 60]
+        circle#spotlight-2: { visible: false }
+        circle#spotlight-4: { visible: true }
+        attached-snake#*: { visible: true }
+        DPS: { status: [bursting-grotesquerie] }
+        H2: { x: -95, y: -70, status: [shared-grotesquerie] }
+        R2: [-17, 72]
+        R1: [-50, 35]
+        M2: [-50, -35]
+        M1: [-17, -70]
+        H1: [-95, -59]
+        T2: [-80, -70]
+        T1: [-72, -70]
+      - cast: { progress: 0.8 }
+        enemy#arm: [-67, 0, -90]
+        circle#spotlight-3: { visible: false }
+        attached-snake#[M2,R2]: { rotate: -90, x: 5, y: 0 }
+        attached-snake#H1: { x: -5, y: 0 }
+        attached-snake#H2: { x: 0, y: -5 }
+        attached-snake#T1: { x: 0, y: -5, rotate: 180 }
+        hint: { visible: true, text: Turn your character to ensure your blob isn't facing another player. }
+      - cast: { progress: 1 }
+        cone-arm: { visible: true }
+        cone-gaze#*: { visible: true }
+        circle#spotlight-4: { visible: false }
+        players: { status: [] }
+        attached-snake#*: { visible: false }
+        spread#*: { visible: true }
+        hint: { visible: false }
+      - cast: { visible: false }
+        cone-arm: { visible: false }
+        cone-gaze#*: { visible: false }
+        spread#*: { visible: false }
+        circle#blob-*: { visible: true }
+      - stack: { visible: true }
+        tb#*: { visible: true }
+        tb-circle#*: { visible: true }
+        players: [-95, -70]
+        T1: [97, -5]
+        T2: [94, 3]
+      - circle#blob-*: { scale: 6.2 }
+        spread#stack: { visible: true }
+        stack: { visible: false }
+      - circle#*: { visible: false }
+        spread#*: { visible: false }
+        tb#*: { visible: false }
+        tb-circle#*: { visible: false }
