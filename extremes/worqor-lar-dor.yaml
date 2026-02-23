@@ -1017,16 +1017,16 @@ graphing:
   graphs:
     spikesicle:
       - boss: [0, -75, 0]
-        defamation#1: { attach: ice-block#1, x: -4 }
-        defamation#2: { attach: ice-block#2, x: -4 }
-        defamation#3: { attach: ice-block#3, x: -4 }
-        defamation#4: { attach: ice-block#4, x: -4 }
-        defamation#5: { attach: ice-block#5, x: -4 }
-        defamation#6: { attach: ice-block#6, x: -4 }
-        defamation#7: { attach: ice-block#7, x: -4 }
-        defamation#8: { attach: ice-block#8, x: -4 }
-        defamation#9: { attach: ice-block#9, x: -4 }
-        defamation#10: { attach: ice-block#10, x: -4 }
+        defamation#1: { attach: ice-block#1 }
+        defamation#2: { attach: ice-block#2 }
+        defamation#3: { attach: ice-block#3 }
+        defamation#4: { attach: ice-block#4 }
+        defamation#5: { attach: ice-block#5 }
+        defamation#6: { attach: ice-block#6 }
+        defamation#7: { attach: ice-block#7 }
+        defamation#8: { attach: ice-block#8 }
+        defamation#9: { attach: ice-block#9 }
+        defamation#10: { attach: ice-block#10 }
         T1: [-12, -31]
         T2: [12, -31]
         H1: [-16, 3]
