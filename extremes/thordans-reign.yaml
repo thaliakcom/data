@@ -772,7 +772,6 @@ timeline:
     id: ancient-quaga-enrage
 graphing:
   defs:
-    heavensflame-gradient: "radial-gradient(0 #e3be4433 95% #e3be4433 97% #e07b28 100% #e07b28)"
     hiemal-storm-gradient: "radial-gradient(97% #aae3f033 100% #aae3f0)"
     dimensional-collapse-gradient: "radial-gradient(90% #000 100% #ec2a55)"
     edge-gradient: "radial-gradient(0 #a8e5ff 91% #a8e5ff 94% #022526 100% #022526)"
@@ -788,9 +787,9 @@ graphing:
       size: 28
       opacity: 0.7
     heavensflame:
-      type: ellipse
+      type: image
       size: 50
-      color: url(#heavensflame-gradient)
+      image: /images/markers/aoe-circle.svg
       origin: [0.5, 0.5]
       visible: false
     hiemal-storm:
@@ -870,6 +869,18 @@ graphing:
       size: 50
       image: /images/markers/stack.svg
       visible: false
+    tower:
+      type: image
+      image: /images/markers/tower.svg
+      size: 23
+      scale: 0
+      opacity: 0.9
+    kb:
+      type: image
+      image: /images/markers/circle-kb.svg
+      size: 130
+      visible: false
+      opacity: 0.6
     gaze:
       type: image
       size: 10
@@ -999,6 +1010,7 @@ graphing:
         enemy#1.2: { x: 10, y: 135, scale: 0.5, visible: true, rotate: T2 }
         enemy#1.3: { x: 10, y: -135, scale: 0.5, visible: true, rotate: M1 }
         enemy#grinnaux: { x: 0, y: 0, scale: 0.5, visible: true, rotate: 0 }
+        kb: { attach: enemy#grinnaux }
       - dimensional-collapse#*: { scale: 0.4 }
       - dimensional-collapse#*: { scale: 0.6 }
         hiemal-storm#*: { x: 30, visible: true }
@@ -1027,7 +1039,7 @@ graphing:
         M2: [10, 90]
         R1: [10, -80]
         R2: [10, 80]
-      - enemy#grinnaux: { scale: 0.7 }
+      - kb: { visible: true }
         players: { x: 80 }
     kotr2:
       - edge: [0, 0]
@@ -1049,6 +1061,7 @@ graphing:
         tower#4: [72, 45]
         boss: { x: 70, y: 0, rotate: T1 }
         enemy#grinnaux: { x: 75, y: 135, scale: 0.5, visible: false, rotate: 135 }
+        kb: { attach: enemy#grinnaux }
         T1: [80, 0]
         T2: [60, 0]
         H1: [40, -20]
@@ -1117,7 +1130,7 @@ graphing:
         R2: [2, -85]
         stack: [2, -85]
         cast: { progress: 0.6 }
-      - enemy#grinnaux: { scale: 1.2 }
+      - kb: { visible: true }
         T1: [-45, -45, "cartesian"]
         T2: [-40, -50, "cartesian"]
         M1: [-40, -45, "cartesian"]
@@ -1128,6 +1141,6 @@ graphing:
         R2: [-35, -45, "cartesian"]
         stack: [-35, -45, "cartesian"]
         cast: { progress: 0.9 }
-      - enemy#grinnaux: { scale: 0.5 }
+      - kb: { visible: false }
         cast: { progress: 1, visible: false }
         stack: { visible: false }

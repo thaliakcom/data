@@ -939,7 +939,6 @@ timeline:
     id: tulidisaster-enrage
 graphing:
   defs:
-    aoe-gradient: "radial-gradient(0 #FFC86852 85% #FFC86852 100% #FFB657CC)"
     line-gradient: "linear-gradient(0 #FEAF49CC 10% #FFC86872 90% #FFC86872 100% #FEAF49CC)"
   coordinate-system: cartesian
   elements:
@@ -996,8 +995,9 @@ graphing:
       size: [10, 30]
       visible: false
     defamation:
-      type: ellipse
-      color: url(#aoe-gradient)
+      type: image
+      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
       size: 130
       visible: false
       shadow: false
