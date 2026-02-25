@@ -326,7 +326,8 @@ actions:
       **Debuffs**
       Each individual [s:bonds-of-flesh-alpha] has a different debuff timer, ranging from 26 to 41 seconds, and pairs with a corresponding [s:bonds-of-flesh-beta] with the same timer. All players are also granted a [s:first-in-line], [s:second-in-line], [s:third-in-line], or [s:fourth-in-line] based on the timer of their debuff (from shortest to longest).
       When a set of [s:bonds-of-flesh-alpha] and [s:bonds-of-flesh-beta] debuffs expires, those debuffs turn into [s:unbreakable-flesh-alpha] and [s:unbreakable-flesh-beta] respectively, causing both players to be tethered to each other. The new debuffs have a duration of 20 seconds. Failing to cleanse the debuff by breaking the tether causes :unverified(both players to die). A tether can be broken by establishing sufficient distance between the two of them compared to the initial distance when the tether went into effect. The distance needed is roughly equal to the total diameter of the coil that players are trapped within.
-      Breaking the tether triggers a [a:dramatic-lysis-tether-break] (a small spread AoE inflicting [s:magic-vulnerability-up]) on both players and spawns a tower on the [s:unbreakable-flesh-beta] player which resolves shortly after.
+      Breaking the tether triggers a [a:dramatic-lysis-tether-break] (a small spread AoE inflicting [s:magic-vulnerability-up] for 10 seconds) on both players and spawns a tower on the [s:unbreakable-flesh-beta] player which resolves shortly after.
+      Soaking a tower inflicts [s:poison-resistance-down-ii] for 25 seconds. Note that [Dramatic Lysis](a:dramatic-lysis-tether-break) (breaking a tether) deals magic damage but not poison damage, while [Roiling Mass](a:roiling-mass-alpha) (a tower resolving) deals poison *and* magic damage. Because of the durations of [s:poison-resistance-down-ii] and [s:magic-vulnerability-up], this yields two conclusions: first, each player may only soak a single tower during this mechanic, and second, each player must wait at least 10 seconds after breaking their tether before soaking a tower. There are no restrictions apart from this.
     resolve: |
       All players remain stacked in the center of the arena (ideally, do not move after being pulled there during [a:cruel-coil]). Any time Bonds of Flesh turns into Unbreakable Flesh, the [s:unbreakable-flesh-alpha] player exits the coil through the gap and the [s:unbreakable-flesh-beta] moves into the opposite direction until the tether breaks.
       At this point, the [s:unbreakable-flesh-alpha] players [s:first-in-line] and [s:second-in-line] move to the first and second outer [a:roiling-mass-alpha] blobs that spawned, respectively. The [s:third-in-line] and [s:fourth-in-line] players are responsible for the first and second *inner* [a:roiling-mass-alpha] blobs. This job will already be complete by the time these players break their tether and exit the coil, so [s:third-in-line] and [s:fourth-in-line] have no extra duties after exiting the coil.
@@ -776,12 +777,12 @@ timeline:
 graphing:
   coordinate-system: cartesian
   defs:
-    aoe-gradient: "radial-gradient(0 #8a080855 10% #8a080855 100% #fcca6ecc)"
-    spread-gradient: "linear-gradient(0 #8a080855 10% #8a080855 100% #FC6E6ECC)"
+    spread-gradient-radial: "radial-gradient(0 #8a080855 10% #8a080855 100% #FC6E6ECC)"
     green-orb-gradient: "radial-gradient(0 #1E8A0855 10% #1E8A0855 100% #6EFC86CC)"
     purple-orb-gradient: "radial-gradient(0 #4F088A55 10% #4F088A55 100% #A96EFCCC)"
     attached-snake-gradient: "radial-gradient(0 #AD0000CD 80% #AD0000CD 100% #610101CD)"
     tb-gradient: "radial-gradient(0 #D839391E 95% #D839391E 100% #D83939AB)"
+    aoe-pulse: "image(/images/markers/aoe-circle.svg)"
   elements:
     arena:
       type: image
@@ -792,9 +793,10 @@ graphing:
       opacity: 0.4
       coordinate-system: cartesian
     circle:
-      type: ellipse
+      type: image
       size: 60
-      color: url(#aoe-gradient)
+      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
       visible: false
       shadow: false
     cone-arm:
@@ -802,7 +804,8 @@ graphing:
       angle: 105
       size: [195, 0]
       origin: [0.5, 1]
-      color: url(#aoe-gradient)
+      color: url(#aoe-pulse)
+      opacity: 0.85
       visible: false
       shadow: false
     cone-gaze:
@@ -810,13 +813,28 @@ graphing:
       angle: 30
       size: [195, 0]
       origin: [0.5, 1]
-      color: url(#spread-gradient)
+      color: url(#aoe-pulse)
+      filter: hue-rotate(330deg) contrast(1.2)
       visible: false
       shadow: false
     spread:
-      type: ellipse
+      type: image
       size: 54
-      color: url(#spread-gradient)
+      image: /images/markers/aoe-circle.svg
+      filter: hue-rotate(330deg) contrast(1.2)
+      visible: false
+      shadow: false
+    spread-small:
+      type: image
+      size: 30
+      image: /images/markers/aoe-circle.svg
+      filter: hue-rotate(330deg) contrast(1.2)
+      visible: false
+      shadow: false
+    blob-tower:
+      type: ellipse
+      size: 10
+      color: url(#spread-gradient-radial)
       visible: false
       shadow: false
     green-orb:
@@ -837,6 +855,15 @@ graphing:
       color: url(#attached-snake-gradient)
       visible: false
       shadow: false
+    cruel-coil:
+      type: cone
+      angle: 320
+      size: [46, 62]
+      rotate: 180
+      visible: false
+      opacity: 0.8
+      color: url(#spread-gradient-radial)
+      extrude: 5px url(#spread-gradient-radial)
     tb:
       type: image
       size: 15
@@ -857,6 +884,16 @@ graphing:
       opacity: 0.7
       shadow: false
       visible: false
+    tether:
+      type: link
+      color: "#610101CD"
+      visible: false
+    tower:
+      type: image
+      image: /images/markers/tower.svg
+      size: 23
+      scale: 0
+      opacity: 0.9
     hint:
       type: rectangle
       planar: false
@@ -1204,3 +1241,179 @@ graphing:
         spread#*: { visible: false }
         tb#*: { visible: false }
         tb-circle#*: { visible: false }
+    grotesquerie-act-2:
+      - circle#spotlight-1: { attach: blob-tower#1, size: 50 }
+        circle#spotlight-2: { attach: blob-tower#2, size: 50 }
+        circle#spotlight-3: { attach: blob-tower#3, size: 50 }
+        circle#spotlight-4: { attach: blob-tower#4, size: 50 }
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        cruel-coil: [0, 0]
+        spread-small#M1: { attach: M1 }
+        spread-small#M2: { attach: M2 }
+        spread-small#T1: { attach: T1 }
+        spread-small#T2: { attach: T2 }
+        spread-small#H1: { attach: H1 }
+        spread-small#H2: { attach: H2 }
+        spread-small#R1: { attach: R1 }
+        spread-small#R2: { attach: R2 }
+        blob-tower#1: [22, -22]
+        blob-tower#2: [-22, 22]
+        blob-tower#3: [-75, -50]
+        blob-tower#4: [75, 50]
+        tower#a1: { attach: blob-tower#1 }
+        tower#a2: { attach: blob-tower#2 }
+        tower#a3: { attach: blob-tower#3 }
+        tower#a4: { attach: blob-tower#4 }
+        tower#b1: [0, -40]
+        tower#b2: [-40, 0]
+        tower#b3: [0, 40]
+        tower#b4: [40, 0]
+        tether#1: { from: T1, to: R1 }
+        tether#2: { from: T2, to: M2 }
+        tether#3: { from: H2, to: M1 }
+        tether#4: { from: H1, to: R2 }
+        T1: [0, -30]
+        T2: [21, -21]
+        H1: [-21, 21]
+        H2: [0, 30]
+        M1: [-21, -21]
+        M2: [-30, 0]
+        R1: [30, 0]
+        R2: [21, 21]
+        cast: { text: "Grotesquerie: Act 2", progress: 0.75 }
+        hint: { x: -63, y: 60, text: "", visible: false }
+      - cast: { progress: 1 }
+        T1: { status: [first-in-line, bonds-of-flesh-alpha] }
+        T2: { status: [second-in-line, bonds-of-flesh-alpha] }
+        H2: { status: [third-in-line, bonds-of-flesh-alpha] }
+        H1: { status: [fourth-in-line, bonds-of-flesh-alpha] }
+        R1: { status: [first-in-line, bonds-of-flesh-beta] }
+        M2: { status: [second-in-line, bonds-of-flesh-beta] }
+        M1: { status: [third-in-line, bonds-of-flesh-beta] }
+        R2: { status: [fourth-in-line, bonds-of-flesh-beta] }
+        hint: { text: "Players are assigned debuffs. Alphas go out and soak blob towers. Betas stay in and soak player towers.", visible: true }
+      - cast: { visible: false }
+        circle#spotlight-1: { visible: true }
+        players: { x: 0, y: 0, status: [] }
+        hint: { text: "Alpha players keep an eye on the AoEs as they appear. The order determines which tower they soak." }
+      - cast: { text: "Cruel Coil", progress: 0 }
+        circle#spotlight-2: { visible: true }
+      - circle#spotlight-1: { visible: false }
+        blob-tower#1: { visible: true }
+        circle#spotlight-2: { visible: true }
+      - circle#spotlight-2: { visible: false }
+        blob-tower#2: { visible: true }
+        circle#spotlight-3: { visible: true }
+        cast: { visible: true }
+      - circle#spotlight-3: { visible: false }
+        blob-tower#3: { visible: true }
+        circle#spotlight-4: { visible: true }
+        cast: { progress: 0.5 }
+      - circle#spotlight-4: { visible: false }
+        blob-tower#4: { visible: true }
+        cast: { progress: 1 }
+      - cast: { visible: false }
+        boss: { x: 0, y: 0, visible: false }
+        cruel-coil: { visible: true }
+      - cruel-coil: { rotate: 90 }
+      - cruel-coil: { rotate: 0 }
+        T1: { y: 40, status: [first-in-line, unbreakable-flesh-alpha] }
+        R1: { y: -40, status: [first-in-line, unbreakable-flesh-beta] }
+        tether#1: { visible: true }
+        spread-small#[T1,R1]: { visible: true }
+        hint: { text: "First tethers activate. Alpha goes out, beta stays in." }
+      - tether#1: { visible: false }
+        spread-small#[T1,R1]: { visible: false }
+        blob-tower#1: { visible: false }
+        tower#[a,b]1: { scale: 1 }
+        T1: { y: 60, status: [magic-vulnerability-up] }
+        R1: { status: [magic-vulnerability-up] }
+        hint: { text: "First towers appear." }
+      - cruel-coil: { rotate: -90 }
+        R1: { y: 0 }
+        H2: { attach: tower#a1, status: [third-in-line, bonds-of-flesh-alpha] }
+        M1: { attach: tower#b1, status: [third-in-line, bonds-of-flesh-beta] }
+        T2: { x: 40, status: [second-in-line, unbreakable-flesh-alpha] }
+        M2: { x: -40, status: [second-in-line, unbreakable-flesh-beta] }
+        T1: [-46, 55]
+        tether#2: { visible: true }
+        spread-small#[T2,M2]: { visible: true }
+        hint: { text: "Second tethers activate. Third-in-lines soak first towers." }
+      - tether#2: { visible: false }
+        spread-small#[T2,M2]: { visible: false }
+        blob-tower#2: { visible: false }
+        tower#[a,b]1: { visible: false }
+        tower#[a,b]2: { scale: 1 }
+        T1: [-68, 2]
+        T2: { x: 60, status: [magic-vulnerability-up] }
+        M2: { status: [magic-vulnerability-up] }
+        H2: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
+        M1: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
+        hint: { text: "Second towers appear." }
+      - cruel-coil: { rotate: -180 }
+        M2: { x: 0 }
+        H1: { attach: tower#a2, status: [fourth-in-line, bonds-of-flesh-alpha] }
+        R2: { attach: tower#b2, status: [fourth-in-line, bonds-of-flesh-beta] }
+        H2: { y: -40, status: [third-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
+        M1: { y: 40, status: [third-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
+        T1: [-69, -46]
+        T2: [66, 45]
+        tether#3: { visible: true }
+        spread-small#[H2,M1]: { visible: true }
+        hint: { text: "Third tethers activate. Fourth-in-lines soak second towers." }
+      - tether#3: { visible: false }
+        spread-small#[H2,M1]: { visible: false }
+        blob-tower#3: { visible: false }
+        tower#[a,b]2: { visible: false }
+        tower#[a,b]3: { scale: 1 }
+        R1: { status: [] }
+        T1: { x: -69, y: -46, status: [] }
+        H2: { y: -60, status: [magic-vulnerability-up, poison-resistance-down-ii] }
+        M1: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
+        H1: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
+        R2: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
+        hint: { text: "Third towers appear." }
+      - cruel-coil: { rotate: 90 }
+        M2: { x: 0 }
+        H2: [53, -62]
+        R1: [0, 40]
+        M1: [0, 0]
+        H1: { x: -40, status: [fourth-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
+        R2: { x: 40, status: [fourth-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
+        tether#4: { visible: true }
+        spread-small#[H1,R2]: { visible: true }
+        hint: { text: "Fourth tethers activate. First-in-lines soak third towers." }
+      - tether#4: { visible: false }
+        spread-small#[H1,R2]: { visible: false }
+        blob-tower#4: { visible: false }
+        tower#[a,b]3: { visible: false }
+        tower#[a,b]4: { scale: 1 }
+        [M2,T2]: { status: [] }
+        H1: { x: -60, status: [magic-vulnerability-up, poison-resistance-down-ii] }
+        R2: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
+        R1: { x: 0, y: 0, status: [poison-resistance-down-ii] }
+        T1: { status: [poison-resistance-down-ii] }
+        hint: { text: "Fourth towers appear." }
+      - cruel-coil: { rotate: 0 }
+        R2: { x: 19 }
+        M2: { x: 40 }
+        [R1,M1]: [19, 0]
+        H1: [-71, -22]
+        hint: { text: "Second-in-lines soak fourth towers." }
+      - tower#[a,b]4: { visible: false }
+        [M2,T2,H2,M1]: { status: [poison-resistance-down-ii] }
+        hint: { text: "The exit is always on the fourth tower. Everyone still inside prepares to exit." }
+      - cruel-coil: { rotate: -90 }
+        hint: { visible: false }
+      - [M2,R2,R1,M1]: [78, -19]
+        [H1,R2]: { status: [poison-resistance-down-ii] }
+      - cruel-coil: { scale: 0.3, rotate: 180, visible: false }
+        boss: { visible: true, y: -80 }
+        T2: [53, -7]
+        
