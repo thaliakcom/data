@@ -813,7 +813,7 @@
   to: 2025-11-04 14:59:59
   allDay: true
 - name: Letter from the Producer Live Part LXXXIX
-  short: PLL LXXXVIII
+  short: PLL LXXXIX
   type: live letter
   color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b3726d73c8a3d4100dd46a2713eef4f99a4efb99
@@ -861,3 +861,9 @@
   type: patch
   color: "#6e9cec"
   at: 2026-03-03 10:00:00
+- name: Letter from the Producer Live Part XCI
+  short: PLL XCI
+  type: live letter
+  color: "#ef2424"
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/9f30169a908c1632bff5153a8e8367f179db0608
+  at: 2026-03-13 11:00:00
