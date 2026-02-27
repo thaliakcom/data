@@ -856,6 +856,12 @@
   url: https://eu.finalfantasyxiv.com/lodestone/special/2026/Little_Ladies_Day/ivf88rc2gm
   from: 2026-02-26 08:00:00
   to: 2026-03-12 14:59:59
+- name: Patch 7.45 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-03-03 03:00:00
+  to: 2026-03-03 10:00:00
 - name: Patch 7.45 (Criterion)
   short: Patch 7.45
   type: patch
