@@ -484,7 +484,7 @@ actions:
     description: |
       All players are inflicted with [s:mitotic-phase].
       This spawns a blob on their body that always faces a specific cardinal, independent of character rotation. There are always two players whose blob faces the same direction.
-      Additionally, snakes spawn and burrow through the arena in specific locations. One always spawns center. Four more spawn in either all intercardinals or all cardinals. Shortly afterwards, they destroy that section of the arena, plunging players who are still there to their deaths.
+      Additionally, [boss] plunges its two snake arms down, which then burrow through the arena in specific locations ([a:feral-fission]). One always burrows through the center. Four more burrow through either all intercardinals or all cardinals. Shortly afterwards, they destroy that section of the arena, plunging players who are still there to their deaths.
       Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's blob is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's blob faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
       Towers resolve while players are still [bound](s:bind). All players also deal damage and inflict [s:magic-vulnerability-up] in a radius around them ([a:dramatic-lysis-mitotic-phase]) while this happens.
       [s:bind] then dissipates and the center of the arena is restored, but not the other destroyed sections.
@@ -518,9 +518,9 @@ actions:
     id: 48649
     mechanic: mech.arena
     description: |
-      Spawns 5 snakes in various locations around the arena, each destroying a portion of the arena.
-      A snake always spawns in the center of the arena. The remaining 4 snakes either spawn in all intercardinals or cardinals.
-      There is a small period of time between the snakes spawning ([a:grand-entrance]) and breaking the arena ([a:bring-down-the-house]). During this time the front and back of the snake has a hitbox, meaning players cannot pass through the snake at those locations.
+      [boss]'s snake arms plunge down and burrow through the arena in five specific locations. Each segment of an arm that is "above ground" then destroys that portion of the arena.
+      One arm always burrows through the center of the arena. The remaining 4 snakes either burrow through all intercardinals or cardinals.
+      There is a small period of time between the arms rising/plunging back below ([a:grand-entrance]) and breaking the arena ([a:bring-down-the-house]). During this time the front and back of the arms have a hitbox, meaning players cannot pass through the arms at those locations.
     children:
     - at: 1517
       id: grand-entrance
@@ -531,7 +531,7 @@ actions:
     mechanic: aoe
     shape: chariot
     count: 10
-    description: Tiny chariot AoE where a snake breaks through the arena.
+    description: Tiny chariot AoE where a snake breaks through the arena. :unverified(Inflicts [s:damage-down].)
   bring-down-the-house:
     id: 46244
     mechanic: aoe
@@ -799,6 +799,12 @@ graphing:
       opacity: 0.85
       visible: false
       shadow: false
+    rect:
+      type: image
+      image: /images/markers/aoe-rectangle.svg
+      opacity: 0.85
+      scale: [1, 0]
+      shadow: false
     cone-arm:
       type: cone
       angle: 105
@@ -822,7 +828,7 @@ graphing:
       size: 54
       image: /images/markers/aoe-circle.svg
       filter: hue-rotate(330deg) contrast(1.2)
-      visible: false
+      scale: 0
       shadow: false
     spread-small:
       type: image
@@ -1221,12 +1227,12 @@ graphing:
         circle#spotlight-4: { visible: false }
         players: { status: [] }
         attached-snake#*: { visible: false }
-        spread#*: { visible: true }
+        spread#spread-*: { scale: 1 }
         hint: { visible: false }
       - cast: { visible: false }
         cone-arm: { visible: false }
         cone-gaze#*: { visible: false }
-        spread#*: { visible: false }
+        spread#spread-*: { visible: false }
         circle#blob-*: { visible: true }
       - stack: { visible: true }
         tb#*: { visible: true }
@@ -1235,10 +1241,10 @@ graphing:
         T1: [97, -5]
         T2: [94, 3]
       - circle#blob-*: { scale: 6.2 }
-        spread#stack: { visible: true }
+        spread#stack: { scale: 1 }
         stack: { visible: false }
       - circle#*: { visible: false }
-        spread#*: { visible: false }
+        spread#stack: { visible: false }
         tb#*: { visible: false }
         tb-circle#*: { visible: false }
     grotesquerie-act-2:
@@ -1416,4 +1422,282 @@ graphing:
       - cruel-coil: { scale: 0.3, rotate: 180, visible: false }
         boss: { visible: true, y: -80 }
         T2: [53, -7]
-        
+    grotesquerie-act-3-cardinals:
+      - arena: { image: /images/arenas/m12s1.avif }
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        enemy#1: { x: -73, y: -50, scale: 1.5, opacity: 0.5, visible: false, rotate: 0, text: Snake, coordinate-system: cartesian }
+        enemy#2: { x: 73, y: -50, scale: 1.5, opacity: 0.5, visible: false, rotate: 0, text: Snake, coordinate-system: cartesian }
+        rect#bring-down-the-house-[1..4]: { size: [75, 50] }
+        rect#bring-down-the-house-1: [-62, -50]
+        rect#bring-down-the-house-2: [-62, 50]
+        rect#bring-down-the-house-3: [62, -50]
+        rect#bring-down-the-house-4: [62, 50]
+        rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
+        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        circle#grand-entrance-[1..10]: { size: 20 }
+        circle#grand-entrance-1: [-87, -62]
+        circle#grand-entrance-2: [-87, 37]
+        circle#grand-entrance-3: [37, -62]
+        circle#grand-entrance-4: [87, 62]
+        circle#grand-entrance-5: [-37, -37]
+        circle#grand-entrance-6: [-37, 62]
+        circle#grand-entrance-7: [37, 37]
+        circle#grand-entrance-8: [37, -12]
+        circle#grand-entrance-9: [87, -37]
+        circle#grand-entrance-10: [-37, 13]
+        spread#M1: { attach: M1, size: 90 }
+        spread#M2: { attach: M2, size: 90 }
+        spread#T1: { attach: T1, size: 90 }
+        spread#T2: { attach: T2, size: 90 }
+        spread#H1: { attach: H1, size: 90 }
+        spread#H2: { attach: H2, size: 90 }
+        spread#R1: { attach: R1, size: 90 }
+        spread#R2: { attach: R2, size: 90 }
+        tower#M1: { attach: M1 }
+        tower#M2: { attach: M2 }
+        tower#T1: { attach: T1 }
+        tower#T2: { attach: T2 }
+        tower#H1: { attach: H1 }
+        tower#H2: { attach: H2 }
+        tower#R1: { attach: R1 }
+        tower#R2: { attach: R2 }
+        T1: [0, -30]
+        T2: [21, -21]
+        H1: [-21, 21]
+        H2: [0, 30]
+        M1: [-21, -21]
+        M2: [-30, 0]
+        R1: [30, 0]
+        R2: [21, 21]
+        attached-snake#H1: { attach: H1, rotate: 90, x: 5, y: 0 }
+        attached-snake#H2: { attach: H2, rotate: 0, x: 0, y: 5 }
+        attached-snake#T1: { attach: T1, rotate: 90, x: -5, y: 0 }
+        attached-snake#T2: { attach: T2, rotate: 0, x: 0, y: -5 }
+        attached-snake#M1: { attach: M1, rotate: 90, x: 5, y: 0 }
+        attached-snake#M2: { attach: M2, rotate: 0, x: 0, y: 5 }
+        attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
+        attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
+        cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
+        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+      - cast: { progress: 1 }
+        attached-snake#*: { visible: true }
+        hint: { text: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character." }
+        boss: { visible: false }
+        players: { status: [mitotic-phase] }
+      - R1: [47, -7]
+        T1: [47, 7]
+        R2: [7, 47]
+        T2: [-7, 47]
+        M1: [-47, -7]
+        H1: [-47, 7]
+        M2: [7, -47]
+        H2: [-7, -47]
+        hint: { text: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise." }
+      - cast: { text: "Feral Fission", progress: 0.5 }
+        circle#*: { visible: true }
+        R1: [93, -18]
+        T1: [57, 18]
+        R2: [18, 68]
+        T2: [-18, 32]
+        M1: [-57, -18]
+        H1: [-93, 18]
+        M2: [-18, -68]
+        H2: [18, -32]
+        hint: { text: "N/S platforms position differently so the players can't clip each other across platforms." }
+      - rect#bring-down-the-house-*: { scale: 1 }
+        circle#*: { visible: false }
+        cast: { progress: 1, visible: false }
+      - rect#bring-down-the-house-*: { visible: false }
+        circle#*: { visible: false }
+        players: { status: [mitotic-phase, fate-of-the-wurm] }
+        arena: { image: /images/arenas/m12s1_split_cardinals.avif }
+        hint: { visible: false }
+      - players: { status: [bind, fate-of-the-wurm] }
+        attached-snake#H1: { attach: T1 }
+        attached-snake#H2: { attach: R2 }
+        attached-snake#T1: { attach: H1 }
+        attached-snake#T2: { attach: M2 }
+        attached-snake#M1: { attach: R1 }
+        attached-snake#M2: { attach: T2 }
+        attached-snake#R1: { attach: M1 }
+        attached-snake#R2: { attach: H2 }
+        attached-snake#*: { x: 0, y: 0, visible: false }
+        tower#*: { scale: 1 }
+        spread#*: { scale: 1, visible: true  }
+      - tower#*: { visible: false }
+        spread#*: { visible: false }
+        players: { status: [bind, fate-of-the-wurm, poison-resistance-down-ii] }
+      - arena: { image: /images/arenas/m12s1_cardinals.avif }
+        players: { status: [poison-resistance-down-ii] }
+      - boss: { visible: true }
+        enemy#[1,2]: { visible: true }
+        T1: [-43, -68]
+        T2: [43, -68]
+        M1: [-5, -12]
+        M2: [5, -12]
+        H1: [-57, 18]
+        H2: [57, 18]
+        R2: [43, 68]
+        R1: [-43, 68]
+        players: { status: [] }
+        hint: { text: "MT takes left TB in the corner, OT right. Rangeds can preposition.", visible: true }
+      - enemy#1: { rotate: T1 }
+        enemy#2: { rotate: T2 }
+        rect#split-scourge-*: { scale: 1 }
+        spread#*: { size: 54, scale: 0 }
+        [T1, T2]: { status: [magic-vulnerability-up] }
+      - rect#split-scourge-*: { visible: false }
+        spread#*: { visible: true }
+        [T1, T2]: [0, 0]
+        M1: [-43, -68]
+        M2: [43, -68]
+        enemy#[1,2]: { rotate: 0 }
+        hint: { text: "Tanks hurry middle so they don't get clipped by the melee spreads." }
+      - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
+        players: { status: [magic-vulnerability-up] }
+    grotesquerie-act-3-intercardinals:
+      - arena: { image: /images/arenas/m12s1.avif }
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        enemy#1: { x: -75, y: 0, scale: 1.5, opacity: 0.5, visible: false, rotate: 0, text: Snake, coordinate-system: cartesian }
+        enemy#2: { x: 75, y: 0, scale: 1.5, opacity: 0.5, visible: false, rotate: 0, text: Snake, coordinate-system: cartesian }
+        rect#bring-down-the-house-1: { x: 0, y: -50, size: [100, 50] }
+        rect#bring-down-the-house-2: { x: 0, y: 50, size: [100, 50] }
+        rect#bring-down-the-house-3: { x: -75, y: 0, size: [50, 50] }
+        rect#bring-down-the-house-4: { x: 75, y: 0, size: [50, 50] }
+        rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
+        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        circle#grand-entrance-[1..10]: { size: 20 }
+        circle#grand-entrance-1: [-37, -62]
+        circle#grand-entrance-2: [-62, 14]
+        circle#grand-entrance-3: [37, 14]
+        circle#grand-entrance-4: [-37, 38]
+        circle#grand-entrance-5: [-87, -12]
+        circle#grand-entrance-6: [37, 62]
+        circle#grand-entrance-7: [87, 14]
+        circle#grand-entrance-8: [62, -12]
+        circle#grand-entrance-9: [37, -37]
+        circle#grand-entrance-10: [-37, -12]
+        spread#M1: { attach: M1, size: 90 }
+        spread#M2: { attach: M2, size: 90 }
+        spread#T1: { attach: T1, size: 90 }
+        spread#T2: { attach: T2, size: 90 }
+        spread#H1: { attach: H1, size: 90 }
+        spread#H2: { attach: H2, size: 90 }
+        spread#R1: { attach: R1, size: 90 }
+        spread#R2: { attach: R2, size: 90 }
+        tower#M1: { attach: M1 }
+        tower#M2: { attach: M2 }
+        tower#T1: { attach: T1 }
+        tower#T2: { attach: T2 }
+        tower#H1: { attach: H1 }
+        tower#H2: { attach: H2 }
+        tower#R1: { attach: R1 }
+        tower#R2: { attach: R2 }
+        T1: [0, -30]
+        T2: [21, -21]
+        H1: [-21, 21]
+        H2: [0, 30]
+        M1: [-21, -21]
+        M2: [-30, 0]
+        R1: [30, 0]
+        R2: [21, 21]
+        attached-snake#H1: { attach: H1, rotate: 90, x: 5, y: 0 }
+        attached-snake#H2: { attach: H2, rotate: 0, x: 0, y: 5 }
+        attached-snake#T1: { attach: T1, rotate: 90, x: -5, y: 0 }
+        attached-snake#T2: { attach: T2, rotate: 0, x: 0, y: -5 }
+        attached-snake#M1: { attach: M1, rotate: 90, x: 5, y: 0 }
+        attached-snake#M2: { attach: M2, rotate: 0, x: 0, y: 5 }
+        attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
+        attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
+        cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
+        hint: { x: 63, y: 60, text: "Intercardinal pattern", visible: true }
+      - cast: { progress: 1 }
+        attached-snake#*: { visible: true }
+        hint: { text: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character." }
+        boss: { visible: false }
+        players: { status: [mitotic-phase] }
+      - R1: [47, -7]
+        T1: [47, 7]
+        R2: [7, 47]
+        T2: [-7, 47]
+        M1: [-47, -7]
+        H1: [-47, 7]
+        M2: [7, -47]
+        H2: [-7, -47]
+        hint: { text: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise." }
+      - cast: { text: "Feral Fission", progress: 0.5 }
+        circle#*: { visible: true }
+        R1: [95, 30]
+        T1: [55, 69]
+        R2: [-54, 30]
+        T2: [-95, 69]
+        M1: [-54, -70]
+        H1: [-95, -32]
+        M2: [95, -70]
+        H2: [55, -32]
+        hint: { text: "N/S platforms position differently so the players can't clip each other across platforms." }
+      - rect#bring-down-the-house-*: { scale: 1 }
+        circle#*: { visible: false }
+        cast: { progress: 1, visible: false }
+      - rect#bring-down-the-house-*: { visible: false }
+        circle#*: { visible: false }
+        players: { status: [mitotic-phase, fate-of-the-wurm] }
+        arena: { image: /images/arenas/m12s1_split_intercardinals.avif }
+        hint: { visible: false }
+      - players: { status: [bind, fate-of-the-wurm] }
+        attached-snake#H1: { attach: H2 }
+        attached-snake#H2: { attach: T1 }
+        attached-snake#T1: { attach: T2 }
+        attached-snake#T2: { attach: H1 }
+        attached-snake#M1: { attach: M2 }
+        attached-snake#M2: { attach: R1 }
+        attached-snake#R1: { attach: R2 }
+        attached-snake#R2: { attach: M1 }
+        attached-snake#*: { x: 0, y: 0, visible: false }
+        tower#*: { scale: 1 }
+        spread#*: { scale: 1, visible: true }
+      - tower#*: { visible: false }
+        spread#*: { visible: false }
+        players: { status: [bind, fate-of-the-wurm, poison-resistance-down-ii] }
+      - arena: { image: /images/arenas/m12s1_intercardinals.avif }
+        players: { status: [poison-resistance-down-ii] }
+      - boss: { visible: true }
+        enemy#[1,2]: { visible: true }
+        H1: [-43, 18]
+        H2: [43, 18]
+        T1: [-45, -32]
+        T2: [45, -32]
+        M1: [-80, -69]
+        M2: [80, -69]
+        R1: [-57, 68]
+        R2: [57, 68]
+        players: { status: [] }
+        hint: { text: "MT takes left TB, OT right. Rangeds can preposition.", visible: true }
+      - enemy#1: { rotate: T1 }
+        enemy#2: { rotate: T2 }
+        rect#split-scourge-*: { scale: 1 }
+        spread#*: { size: 54, scale: 0 }
+        [T1, T2]: { status: [magic-vulnerability-up] }
+      - rect#split-scourge-*: { visible: false }
+        spread#*: { visible: true }
+        [T1, T2]: [0, 0]
+        M1: [-43, -68]
+        M2: [43, -68]
+        enemy#[1,2]: { rotate: 0 }
+        hint: { text: "Tanks hurry middle so they don't get clipped by the melee spreads." }
+      - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
+        players: { status: [magic-vulnerability-up] }
