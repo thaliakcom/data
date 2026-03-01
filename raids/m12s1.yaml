@@ -1,7 +1,7 @@
 id: 1075
 patch: "7.4"
 date: 2026-01-28
-modified: 2026-02-16
+modified: 2026-03-01
 by:
   id: 27637301
   role: author
@@ -13,7 +13,6 @@ autos:
   mechanic: auto.double
   type: magic
   damage: 66640
-wip: [diagrams]
 description: ""
 alias: [r12s1]
 suffix: " Part 1"
