@@ -779,6 +779,7 @@ graphing:
     spread-gradient-radial: "radial-gradient(0 #8a080855 10% #8a080855 100% #FC6E6ECC)"
     green-orb-gradient: "radial-gradient(0 #1E8A0855 10% #1E8A0855 100% #6EFC86CC)"
     purple-orb-gradient: "radial-gradient(0 #4F088A55 10% #4F088A55 100% #A96EFCCC)"
+    aoe-gradient: "radial-gradient(0 #8A080855 10% #8A080855 100% #FC6E6ECC)"
     attached-snake-gradient: "radial-gradient(0 #AD0000CD 80% #AD0000CD 100% #610101CD)"
     tb-gradient: "radial-gradient(0 #D839391E 95% #D839391E 100% #D83939AB)"
     aoe-pulse: "image-cone(/images/markers/aoe-circle.svg)"
@@ -813,7 +814,7 @@ graphing:
     cone-arm:
       type: cone
       angle: 105
-      size: [195, 0]
+      size: [185, 0]
       origin: [0.5, 1]
       color: url(#aoe-pulse)
       opacity: 0.85
@@ -824,8 +825,7 @@ graphing:
       angle: 30
       size: [195, 0]
       origin: [0.5, 1]
-      color: url(#aoe-pulse)
-      filter: hue-rotate(330deg) contrast(1.2)
+      color: url(#aoe-gradient)
       visible: false
       shadow: false
     spread:
@@ -1889,7 +1889,7 @@ graphing:
         supports: { status: [bursting-grotesquerie, bonds-of-flesh-alpha] }
         H1: [-29, 52]
         H2: [-74, 31]
-        T2: [-63, -35]
+        T2: [-66, -35]
         T1: [-29, -69]
         M1: [0, -19]
         M2: [45, 0]
