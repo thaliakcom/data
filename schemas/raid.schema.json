@@ -1102,6 +1102,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1257,6 +1262,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1358,6 +1368,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1458,6 +1473,11 @@
           ],
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1564,6 +1584,11 @@
           ],
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1679,6 +1704,11 @@
           ],
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1815,6 +1845,11 @@
           ],
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
+        },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
         },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
@@ -1988,6 +2023,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2049,11 +2089,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2177,6 +2212,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2238,11 +2278,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2316,6 +2351,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2377,11 +2417,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         },
         "rotation": {
           "type": "number"
@@ -2455,6 +2490,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2516,11 +2556,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         },
         "image": {
           "type": "string"
@@ -2595,6 +2630,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2656,11 +2696,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
@@ -2735,6 +2770,11 @@
           "description": "The initial size of the element. Can either be an array of [width, height] or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the scale property, otherwise animations won't work.",
           "markdownDescription": "The initial size of the element. Can either be an array of `[width, height]` or a single number, in which case both width and height will be the same. In subsequent steps, the element's size should only be changed through the `scale` property, otherwise animations won't work."
         },
+        "filter": {
+          "type": "string",
+          "description": "Sets the CSS filter property on this element.",
+          "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2796,11 +2836,6 @@
           "type": "string",
           "description": "Sets the CSS transform property on this element during this step.",
           "markdownDescription": "Sets the CSS `transform` property on this element during this step."
-        },
-        "filter": {
-          "type": "string",
-          "description": "Sets the CSS filter property on this element during this step.",
-          "markdownDescription": "Sets the CSS `filter` property on this element during this step."
         }
       }
     },
