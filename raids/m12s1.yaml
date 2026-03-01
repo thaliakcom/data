@@ -805,6 +805,12 @@ graphing:
       opacity: 0.85
       scale: [1, 0]
       shadow: false
+    kb:
+      type: image
+      image: /images/markers/circle-kb.svg
+      size: 130
+      scale: 0
+      opacity: 0.6
     cone-arm:
       type: cone
       angle: 105
@@ -828,6 +834,12 @@ graphing:
       size: 54
       image: /images/markers/aoe-circle.svg
       filter: hue-rotate(330deg) contrast(1.2)
+      scale: 0
+      shadow: false
+    targeted-spread:
+      type: image
+      size: 54
+      image: /images/markers/spread-circle.svg
       scale: 0
       shadow: false
     spread-small:
@@ -1924,3 +1936,131 @@ graphing:
         tether#*: { visible: false }
       - circle#blob-*: { scale: 6.2 }
         hint: { text: "This AoE pattern may also be flipped.", visible: true }
+    slaughtershed-halfroom:
+      - marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        circle#blob-1: { x: -54, y: -22, size: 20 }
+        circle#blob-2: { x: 10, y: 31, size: 20 }
+        circle#blob-3: { x: 4, y: -40, size: 20 }
+        circle#blob-4: { x: 93, y: 28, size: 20 }
+        circle#blob-5: { x: -67, y: 28, size: 20 }
+        rect#east: { origin: [0, 0], y: -75, size: [100, 150], filter: hue-rotate(330deg) contrast(1.2) }
+        rect#west: { origin: [1, 0], y: -75, size: [100, 150], filter: hue-rotate(330deg) contrast(1.2) }
+        targeted-spread#M1: { attach: M1 }
+        targeted-spread#M2: { attach: M2 }
+        targeted-spread#R1: { attach: R1 }
+        targeted-spread#R2: { attach: R2 }
+        stack#H1: { attach: H1 }
+        T1: [-21, -13]
+        T2: [-14, -13]
+        H1: [-21, -4]
+        H2: [-14, -4]
+        M1: [14, -13]
+        M2: [21, -13]
+        R1: [14, -4]
+        R2: [21, -4]
+        cast: { text: "Slaughtershed", progress: 0.5 }
+        hint: { x: 63, y: 60, text: "Split into two groups like this to more easily see who gets spreads and who gets stack.", visible: true }
+        hint#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
+        hint#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
+      - cast: { progress: 1 }
+        stack#H1: { visible: true }
+        targeted-spread#*: { scale: 1 }
+        circle#blob-*: { visible: true }
+        hint#east: { scale: 1 }
+      - cast: { visible: false }
+        M1: [60, -73]
+        M2: [68, -33]
+        R1: [98, -73]
+        R2: [98, -37]
+        supports: [-97, -71]
+        circle#blob-*: { scale: 6.2 }
+        hint#west: { scale: 1 }
+        hint: { text: "AoE pattern can be flipped." }
+      - players: { status: [magic-vulnerability-up] }
+        circle#blob-*: { visible: false }
+        targeted-spread#*: { visible: false }
+        stack#H1: { visible: false }
+        hint: { visible: false }
+        T1: [-5, -42]
+        T2: [-14, -37]
+        H1: [-5, -31]
+        H2: [-14, -26]
+        M1: [-5, -20]
+        M2: [-14, -13]
+        R1: [-5, -8]
+        R2: [-14, 0]
+      - rect#east: { scale: 1 }
+        players: { status: [] }
+      - T1: [5, -42]
+        T2: [14, -37]
+        H1: [5, -31]
+        H2: [14, -26]
+        M1: [5, -20]
+        M2: [14, -13]
+        R1: [5, -8]
+        R2: [14, 0]
+        rect#east: { visible: false }
+        rect#west: { scale: 1 }
+    slaughtershed-hands:
+      - marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        circle#blob-1: { x: -54, y: -22, size: 20 }
+        circle#blob-2: { x: 10, y: 31, size: 20 }
+        circle#blob-3: { x: 4, y: -40, size: 20 }
+        circle#blob-4: { x: 93, y: 28, size: 20 }
+        circle#blob-5: { x: -67, y: 28, size: 20 }
+        kb#east: { x: 95, y: -56 }
+        kb#west: { x: -95, y: -56 }
+        targeted-spread#M1: { attach: M1 }
+        targeted-spread#M2: { attach: M2 }
+        targeted-spread#R1: { attach: R1 }
+        targeted-spread#R2: { attach: R2 }
+        stack#H1: { attach: H1 }
+        T1: [-21, -13]
+        T2: [-14, -13]
+        H1: [-21, -4]
+        H2: [-14, -4]
+        M1: [14, -13]
+        M2: [21, -13]
+        R1: [14, -4]
+        R2: [21, -4]
+        cast: { text: "Slaughtershed", progress: 0.5 }
+        hint: { x: 63, y: 60, text: "Split into two groups like this to more easily see who gets spreads and who gets stack.", visible: true }
+        hint#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Hand", visible: true, opacity: 0.7 }
+        hint#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Hand", visible: true, opacity: 0.7 }
+      - cast: { progress: 1 }
+        stack#H1: { visible: true }
+        targeted-spread#*: { scale: 1 }
+        circle#blob-*: { visible: true }
+        hint#east: { scale: 1 }
+      - cast: { visible: false }
+        M1: [60, -73]
+        M2: [68, -33]
+        R1: [98, -73]
+        R2: [98, -37]
+        supports: [-97, -71]
+        circle#blob-*: { scale: 6.2 }
+        hint#west: { scale: 1 }
+        hint: { text: "AoE pattern can be flipped." }
+      - players: { x: 75, y: -57, status: [magic-vulnerability-up] }
+        circle#blob-*: { visible: false }
+        targeted-spread#*: { visible: false }
+        stack#H1: { visible: false }
+        hint: { visible: false }
+      - kb#east: { scale: 1 }
+        players: { x: -64, y: -45, status: [] }
+      - players: [-75, -57]
+        kb#east: { visible: false }
+      - kb#west: { scale: 1 }
+        players: { x: 64, y: -45, status: [] }
