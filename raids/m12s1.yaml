@@ -782,7 +782,7 @@ graphing:
     purple-orb-gradient: "radial-gradient(0 #4F088A55 10% #4F088A55 100% #A96EFCCC)"
     attached-snake-gradient: "radial-gradient(0 #AD0000CD 80% #AD0000CD 100% #610101CD)"
     tb-gradient: "radial-gradient(0 #D839391E 95% #D839391E 100% #D83939AB)"
-    aoe-pulse: "image(/images/markers/aoe-circle.svg)"
+    aoe-pulse: "image-cone(/images/markers/aoe-circle.svg)"
   elements:
     arena:
       type: image
@@ -1192,16 +1192,17 @@ graphing:
         players: [-33, -65]
       - cast: { progress: 0.2 }
         enemy#arm: { visible: true }
+        circle#spotlight-1: { visible: false }
         circle#spotlight-2: { visible: true }
         players: [0, -65]
       - cast: { progress: 0.4 }
         enemy#arm: [17, -51, 45]
-        circle#spotlight-1: { visible: false }
+        circle#spotlight-2: { visible: false }
         circle#spotlight-3: { visible: true }
         players: [0, -32]
       - cast: { progress: 0.6 }
         enemy#arm: [-33, -27, 60]
-        circle#spotlight-2: { visible: false }
+        circle#spotlight-3: { visible: false }
         circle#spotlight-4: { visible: true }
         attached-snake#*: { visible: true }
         DPS: { status: [bursting-grotesquerie] }
@@ -1215,7 +1216,7 @@ graphing:
         T1: [-72, -70]
       - cast: { progress: 0.8 }
         enemy#arm: [-67, 0, -90]
-        circle#spotlight-3: { visible: false }
+        circle#spotlight-4: { visible: false }
         attached-snake#[M2,R2]: { rotate: -90, x: 5, y: 0 }
         attached-snake#H1: { x: -5, y: 0 }
         attached-snake#H2: { x: 0, y: -5 }
@@ -1224,13 +1225,13 @@ graphing:
       - cast: { progress: 1 }
         cone-arm: { visible: true }
         cone-gaze#*: { visible: true }
-        circle#spotlight-4: { visible: false }
         players: { status: [] }
         attached-snake#*: { visible: false }
         spread#spread-*: { scale: 1 }
         hint: { visible: false }
       - cast: { visible: false }
         cone-arm: { visible: false }
+        enemy#arm: { visible: false }
         cone-gaze#*: { visible: false }
         spread#spread-*: { visible: false }
         circle#blob-*: { visible: true }
@@ -1701,3 +1702,225 @@ graphing:
         hint: { text: "Tanks hurry middle so they don't get clipped by the melee spreads." }
       - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
         players: { status: [magic-vulnerability-up] }
+    grotesquerie-curtain-call-cardinals:
+      - arena: { image: /images/arenas/m12s1_cardinals.avif }
+        circle#spotlight-1: [-46, -71]
+        circle#spotlight-2: [-16, -71]
+        circle#spotlight-3: [14, -71]
+        circle#spotlight-4: [45, -37]
+        circle#spotlight-5: [0, -37]
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        enemy#arm: { x: 43, y: -80, rotate: 0, scale: 0.8, opacity: 0.5, visible: false, coordinate-system: cartesian }
+        cone-arm: { x: -67, y: 0, rotate: 90 }
+        circle#blob-1: { x: -80, y: 0, size: 20 }
+        circle#blob-2: { x: 80, y: 0, size: 20 }
+        circle#blob-3: { x: 0, y: 0, size: 20 }
+        circle#blob-4: { x: 50, y: -65, size: 20 }
+        circle#blob-5: { x: -50, y: 65, size: 20 }
+        spread#M1: { attach: M1 }
+        spread#M2: { attach: M2 }
+        spread#R1: { attach: R1 }
+        spread#R2: { attach: R2 }
+        spread#T1: { attach: T1 }
+        spread#T2: { attach: T2 }
+        spread#H1: { attach: H1 }
+        spread#H2: { attach: H2 }
+        tether#1: { from: T1, to: M2 }
+        tether#2: { from: T2, to: R1 }
+        tether#3: { from: H2, to: R2 }
+        tether#4: { from: H1, to: M1 }
+        players: { x: 0, y: 0, attach: circle#spotlight-1 }
+        cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
+        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+      - cast: { progress: 1, visible: false }
+      - cast: { text: Ravenous Reach, progress: 0 }
+        hint: { visible: false }
+        circle#spotlight-1: { visible: true }
+        players: { attach: circle#spotlight-2 }
+      - cast: { visible: true }
+        circle#spotlight-1: { visible: false }
+        circle#spotlight-2: { visible: true }
+        players: { attach: circle#spotlight-3 }
+      - cast: { progress: 0.2 }
+        enemy#arm: { visible: true }
+        circle#spotlight-2: { visible: false }
+        circle#spotlight-3: { visible: true }
+        players: { attach: circle#spotlight-4 }
+      - cast: { progress: 0.4 }
+        enemy#arm: [17, -51, 45]
+        circle#spotlight-3: { visible: false }
+        circle#spotlight-4: { visible: true }
+        players: { attach: circle#spotlight-5 }
+      - cast: { progress: 0.6 }
+        enemy#arm: [-33, -27, 60]
+        circle#spotlight-4: { visible: false }
+        circle#spotlight-5: { visible: true }
+        players: { attach: null }
+        DPS: { status: [rotting-flesh, bonds-of-flesh-alpha] }
+        supports: { status: [bursting-grotesquerie, bonds-of-flesh-alpha] }
+        H1: [-80, 0]
+        H2: [-43, 38]
+        T2: [-46, -35]
+        T1: [-17, -70]
+        M1: [38, -68]
+        M2: [33, -7]
+        R1: [-7, 17]
+        R2: [29, 63]
+        hint: { text: "Players within the AoE have more space to work with and don't need to use these exact positions, as long as the same order of players from north to south is maintained.", visible: true }
+      - cast: { progress: 0.8 }
+        circle#spotlight-5: { visible: false }
+        enemy#arm: [-67, 0, -90]
+      - cast: { progress: 1 }
+        cone-arm: { visible: true }
+        players: { status: [bonds-of-flesh-alpha] }
+        spread#*: { scale: 1 }
+      - arena: { image: /images/arenas/m12s1.avif }
+        cast: { visible: false }
+        cone-arm: { visible: false }
+        enemy#arm: { visible: false }
+        spread#*: { visible: false }
+        circle#blob-*: { visible: true }
+        players: { x: 0, y: 0, status: [] }
+        T1: { status: [bonds-of-flesh-alpha] }
+        hint: { visible: false }
+      - T1: { status: [unbreakable-flesh-alpha] }
+        tether#*: { visible: true }
+        spread#*: { scale: 0 }
+      - T1: [-71, -66]
+        T2: [-71, -22]
+        H1: [-71, 22]
+        H2: [-71, 66]
+        M1: [71, -66]
+        M2: [71, -22]
+        R1: [71, 22]
+        R2: [71, 66]
+        players: { status: [unbreakable-flesh-alpha] }
+        spread#*: { scale: 0.7, visible: true }
+      - T1: [-71, -68]
+        T2: [-62, -65]
+        H1: [-52, -68]
+        H2: [-43, -66]
+        M1: [-19, -68]
+        M2: [-27, -65]
+        R1: [64, 66]
+        players: { status: [magic-vulnerability-up] }
+        spread#*: { visible: false }
+        tether#*: { visible: false }
+      - circle#blob-*: { scale: 6.2 }
+        hint: { text: "This AoE pattern may also be flipped.", visible: true }
+    grotesquerie-curtain-call-intercardinals:
+      - arena: { image: /images/arenas/m12s1_intercardinals.avif }
+        circle#spotlight-1: [-36, -25]
+        circle#spotlight-2: [-36, -69]
+        circle#spotlight-3: [-67, -69]
+        circle#spotlight-4: [-67, -31]
+        circle#spotlight-5: [-36, -25]
+        marker-a: [0, -65]
+        marker-1: [-80, -62]
+        marker-b: [62, 0]
+        marker-2: [80, -62]
+        marker-c: [0, 65]
+        marker-d: [-62, 0]
+        boss: [0, -80, 0]
+        enemy#arm: { x: 43, y: -80, rotate: 0, scale: 0.8, opacity: 0.5, visible: false, coordinate-system: cartesian }
+        cone-arm: { x: -67, y: 0, rotate: 90 }
+        circle#blob-1: { x: -80, y: 0, size: 20 }
+        circle#blob-2: { x: 80, y: 0, size: 20 }
+        circle#blob-3: { x: 0, y: 0, size: 20 }
+        circle#blob-4: { x: 50, y: -65, size: 20 }
+        circle#blob-5: { x: -50, y: 65, size: 20 }
+        spread#M1: { attach: M1 }
+        spread#M2: { attach: M2 }
+        spread#R1: { attach: R1 }
+        spread#R2: { attach: R2 }
+        spread#T1: { attach: T1 }
+        spread#T2: { attach: T2 }
+        spread#H1: { attach: H1 }
+        spread#H2: { attach: H2 }
+        tether#1: { from: T1, to: M2 }
+        tether#2: { from: T2, to: R1 }
+        tether#3: { from: H2, to: R2 }
+        tether#4: { from: H1, to: M1 }
+        players: { x: 0, y: 0, attach: circle#spotlight-1 }
+        cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
+        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+      - cast: { progress: 1, visible: false }
+      - cast: { text: Ravenous Reach, progress: 0 }
+        hint: { visible: false }
+        circle#spotlight-1: { visible: true }
+        players: { attach: circle#spotlight-2 }
+      - cast: { visible: true }
+        circle#spotlight-1: { visible: false }
+        circle#spotlight-2: { visible: true }
+        players: { attach: circle#spotlight-3 }
+      - cast: { progress: 0.2 }
+        enemy#arm: { visible: true }
+        circle#spotlight-2: { visible: false }
+        circle#spotlight-3: { visible: true }
+        players: { attach: circle#spotlight-4 }
+      - cast: { progress: 0.4 }
+        enemy#arm: [17, -51, 45]
+        circle#spotlight-3: { visible: false }
+        circle#spotlight-4: { visible: true }
+        players: { attach: circle#spotlight-5 }
+      - cast: { progress: 0.6 }
+        enemy#arm: [-33, -27, 60]
+        circle#spotlight-4: { visible: false }
+        circle#spotlight-5: { visible: true }
+        players: { attach: null }
+        DPS: { status: [rotting-flesh, bonds-of-flesh-alpha] }
+        supports: { status: [bursting-grotesquerie, bonds-of-flesh-alpha] }
+        H1: [-29, 52]
+        H2: [-74, 31]
+        T2: [-63, -35]
+        T1: [-29, -69]
+        M1: [0, -19]
+        M2: [45, 0]
+        R1: [0, 19]
+        R2: [-45, 0]
+      - cast: { progress: 0.8 }
+        circle#spotlight-5: { visible: false }
+        enemy#arm: [-67, 0, -90]
+      - cast: { progress: 1 }
+        cone-arm: { visible: true }
+        players: { status: [bonds-of-flesh-alpha] }
+        spread#*: { scale: 1 }
+      - arena: { image: /images/arenas/m12s1.avif }
+        cast: { visible: false }
+        cone-arm: { visible: false }
+        enemy#arm: { visible: false }
+        spread#*: { visible: false }
+        circle#blob-*: { visible: true }
+        players: { x: 0, y: 0, status: [] }
+        T1: { status: [bonds-of-flesh-alpha] }
+      - T1: { status: [unbreakable-flesh-alpha] }
+        tether#*: { visible: true }
+        spread#*: { scale: 0 }
+      - T1: [-71, -66]
+        T2: [-71, -22]
+        H1: [-71, 22]
+        H2: [-71, 66]
+        M1: [71, -66]
+        M2: [71, -22]
+        R1: [71, 22]
+        R2: [71, 66]
+        players: { status: [unbreakable-flesh-alpha] }
+        spread#*: { scale: 0.7, visible: true }
+      - T1: [-71, -68]
+        T2: [-62, -65]
+        H1: [-52, -68]
+        H2: [-43, -66]
+        M1: [-19, -68]
+        M2: [-27, -65]
+        R1: [64, 66]
+        players: { status: [magic-vulnerability-up] }
+        spread#*: { visible: false }
+        tether#*: { visible: false }
+      - circle#blob-*: { scale: 6.2 }
+        hint: { text: "This AoE pattern may also be flipped.", visible: true }
