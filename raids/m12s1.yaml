@@ -1,7 +1,7 @@
 id: 1075
 patch: "7.4"
 date: 2026-01-28
-modified: 2026-03-01
+modified: 2026-03-05
 by:
   id: 27637301
   role: author
@@ -146,11 +146,12 @@ actions:
       It is possible for all sets of orbs to spawn in same-side pairs. It is also possible for all orbs to spawn in opposite-side pairs. A mix of both is most common, in which case the number of same-side pairs and opposite-side pairs is equal on both sides.
       All orbs are [spread AoEs](a:mortal-slayer-ball) that deal heavy damage. The [purple orbs](a:mortal-slayer-tb) deal [t:tankbuster]-levels of damage. All orbs inflict [s:poison-resistance-down-ii].
       If any orb is **left unsoaked** (i.e. there is no living player on the west side when a west orb resolve or vice-versa) the orb explodes, wiping the party.
+      **Note**: **All** orbs (both green and purple) ignore the effects of invulnerabilities such as [s:transcendent], [s:living-dead], [s:hallowed-ground], [s:superbolide], or [s:holmgang].
     resolve: |
       Wait outside the hitbox until it's your turn to take an orb (see strategies below to decide when whose turn is), then position yourself at the edge of the arena close to [boss], but not too close to the center to avoid clipping any player on the other side.
       If you are soaking a same-side pair, the second player positions themselves just inside the hitbox to the south. Note that this will clip the hitbox ring, which is why it's important for all players who are not currently baiting an orb to stand dead-center at [t:max melee].
       After soaking an orb, exit the hitbox on the west or east and remain at [t:max melee]. Do not attempt to make your way back to the center of the arena as you will likely get clipped by the next set of orbs in the process.
-      [Kitchen sink](t:kitchen sink) is recommended for the tankbuster orbs.
+      [Kitchen sink](t:kitchen sink) is recommended for the tankbuster orbs. [Invulns](t:invuln) do not work.
     strategies:
       role-orbs:
         name: Role Orbs
