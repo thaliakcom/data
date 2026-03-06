@@ -2169,7 +2169,6 @@ graphing:
     aoe-pulse-circle: "image(/images/markers/aoe-circle.svg)"
     aoe-pulse-cone: "image-cone(/images/markers/aoe-circle.svg)"
     aoe-pulse-rect: "image(/images/markers/aoe-rectangle.svg)"
-    aoe-rect: "image(/images/markers/aoe-square.svg)"
   elements:
     arena:
       type: image
@@ -2247,7 +2246,7 @@ graphing:
     rect-color:
       type: rectangle
       size: 45
-      color: url(#aoe-rect)
+      color: url(#aoe-pulse-rect)
       opacity: 0.85
       scale: 0
       visible: false
