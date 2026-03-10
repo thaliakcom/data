@@ -873,3 +873,9 @@
   color: "#ef2424"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/9f30169a908c1632bff5153a8e8367f179db0608
   at: 2026-03-13 11:00:00
+- name: Hotfix Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-03-11 06:00:00
+  to: 2026-03-11 10:00:00
