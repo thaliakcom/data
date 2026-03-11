@@ -1861,7 +1861,7 @@ graphing:
         tether#4: { from: H1, to: M1 }
         players: { x: 0, y: 0, attach: circle#spotlight-1 }
         cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+        hint: { x: 63, y: 60, text: "Intercardinal pattern", visible: true }
       - cast: { progress: 1, visible: false }
       - cast: { text: Ravenous Reach, progress: 0 }
         hint: { visible: false }
