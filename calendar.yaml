@@ -891,3 +891,29 @@
   color: "#5a8696"
   from: 2026-03-24 06:00:00
   to: 2026-03-24 10:00:00
+- name: Fan Fest Anaheim
+  type: event
+  color: "#383642"
+  url: https://fanfest-na.finalfantasyxiv.com/2026
+  from: 2026-04-24
+  to: 2026-04-25
+  allDay: true
+- name: Trail to the Heavens (Patch 7.5)
+  short: Patch 7.5
+  type: patch
+  color: "#6e9cec"
+  at: 2026-04-28 12:00:00
+- name: Fan Fest Berlin
+  type: event
+  color: "#383642"
+  url: https://fanfest-eu.finalfantasyxiv.com/2026
+  from: 2026-07-25
+  to: 2026-07-26
+  allDay: true
+- name: Fan Fest Tokyo
+  type: event
+  color: "#383642"
+  url: https://fanfest-jp.finalfantasyxiv.com/2026
+  from: 2026-10-31
+  to: 2026-11-01
+  allDay: true
