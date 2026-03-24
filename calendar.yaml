@@ -898,6 +898,13 @@
   from: 2026-04-24
   to: 2026-04-25
   allDay: true
+- name: Moogle Treasure Trove - The Hunt for Aphorism
+  short: Treasure Trove
+  type: event
+  color: "#9e7123"
+  url: https://sqex.to/5xCfn
+  from: 2026-03-31 08:00:00
+  to: 2026-04-28 11:59:59
 - name: Trail to the Heavens (Patch 7.5)
   short: Patch 7.5
   type: patch
