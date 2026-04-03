@@ -898,6 +898,12 @@
   from: 2026-04-24
   to: 2026-04-25
   allDay: true
+- name: Fan Fest Keynote
+  short: Keynote
+  type: live letter
+  color: "#ef2424"
+  url: https://sqex.to/sw04o
+  at: 2026-04-24 17:00:00
 - name: Moogle Treasure Trove - The Hunt for Aphorism
   short: Treasure Trove
   type: event
