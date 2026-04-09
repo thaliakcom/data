@@ -7,5 +7,1021 @@ by:
   role: author
 boss: The Ultima Weapon
 HP: 0
+party_hp: 19038
 wip: full
-description: ""
+description: Reexperience the fight against the Ultima Weapon, but without Hydaelyn's assistance, you can but rely on your own strength to prevail against the overwhelming power of the Ultima Weapon...
+status:
+  stun:
+    id: 149
+    type: impairment
+    duration: [10000, 2000]
+    description: Inflicted by [a:slipstream] (10 seconds) and [a:upheaval] (2 seconds).
+  thermal-low:
+    id: 1525
+    type: condition
+    description: |
+      Inflicted by [a:cyclone] and [a:friction]. Grants resistance to [a:mesohigh]. Without this status effect, [a:mesohigh] deals lethal damage to the player who takes the tether.
+      This effect can be cleansed by taking a [a:mesohigh] tether, standing near a player who takes a [a:mesohigh] tether, or by entering the bubble left behind by the Spiny Plume to trigger [a:super-cyclone-1].
+      Note that cleansing this effect deals raidwide damage. Cleansing [s:thermal-low] deals mild raidwide damage, cleansing [s:thermal-low:2] deals significant raidwide damage, and cleansing [s:thermal-low:3] deals unsurvivable raidwide damage.
+      Every time a [s:thermal-low:2] is cleansed, Garuda gains one stack of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] transforms into [s:woken].
+      [s:thermal-low] stacks persist through death.
+  aetherially-charged:
+    id: 1528
+    type: indicator
+    description: |
+      A "transitional" state. Has no effect on its own, but indicates that the primal (Garuda, Ifrit, or Titan) are in the process of becoming [s:woken].
+      The primal becomes [s:woken] when this buff accumulates at least 4 stacks.
+      Each primal has a different set of conditions for accumulating stacks of [s:aetherially-charged].
+      * Garuda gains a stack of [s:aetherially-charged] each time a [s:thermal-low:2] is cleansed.
+      * Ifrit gains a stack of [s:aetherially-charged] each time an Infernal Nail with [s:damage-up:2] and [s:vulnerability-down:2] is destroyed.
+      * Titan gains a stack of [s:aetherially-charged] for every 3 seconds he remains within a sludge puddle left behind by a Granite Gaol exploding via [a:rock-throw] or [a:freefire].
+  windburn:
+    id: 235
+    type: dot
+    tick: 6084
+    duration: 18000
+    description: Inflicted on players hit by [a:feather-rain].
+  sleep:
+    id: 1510
+    type: impairment
+    duration: 30000
+    description: Inflicted on all party members when a Satin Plume isn't killed in time and executes [a:thermal-tumult]. Taking damage dispels the effect early.
+  beyond-limits:
+    id: 1530
+    type: form
+    description: |
+      If a player with this effect uses limit break, all utilized limit break bars are instantly refilled after a short delay. This status effect is consumed in the process.
+      Note that this "refund" only applies to "full" limit break bars, not partial ones.
+      This effect is gained from stepping into a light puddle gained from defeating a [s:woken] primal.
+      [s:beyond-limits] persists through death.
+  thermal-high:
+    id: 1526
+    type: resistance
+    description: |
+      Grants moderate resistance to all wind damage.
+      Granted on players inside the Spiny Plume's bubble, and on players who have soaked a [a:mesohigh] tether (for 3 seconds). In the case of the latter, this buff simply ensures that the player who soaked the tether does not die from the subsequent [a:super-cyclone-1](s).
+  woken:
+    id: 1529
+    type: form
+    description: |
+      A primal (Garuda, Ifrit, or Titan) becomes [s:woken] when it accrues at least 4 stacks of [s:aetherially-charged]. See [s:aetherially-charged] for more information on how each primal accrues stacks of this buff.
+      While [s:woken], the primal glows blue and certain abilities that they use are "upgraded" and have additional effects. Additionally, when a [s:woken] primal is defeated, they leave behind a small puddle of light. When a player steps inside this puddle, the puddle disappears and the player gains [s:beyond-limits].
+      Progressing into the final phase of the fight requires exactly 3 players with [s:beyond-limits], so awakening the primals (despite its negative effects) is not optional.
+      What follows is a list of all abilities that change when a primal is [s:woken]:
+      * [a:wicked-wheel] is now immediately followed up with [a:wicked-tornado].
+      * [a:downburst] stops being a [single-target tankbuster](m:tb.mt) and becomes a [shared tankbuster](m:tb.stack) instead.
+      * [a:crimson-cyclone] is now immediately followed up with two additional [a:crimson-cyclone]s at a 45° angle to either side of the first one. Note that this only applies to the "true" Ifrit, not any of his clones. Look for the blue glow to identify the true Ifrit by his [s:woken] aura.
+      * When [s:woken], [s:searing-wind] has a duration of 30 seconds, not 18.
+      * [a:flaming-crush] now inflicts [s:accursed-flame], a [t:DoT] on all players hit. The duration of [s:accursed-flame] is reduced for each player hit.
+      * When [a:weight-of-the-land] is used, now spawns 3 sets of AoEs under players, not just 2.
+      * [a:landslide] is now immediately followed up with a second set of (untelegraphed) [a:landslide]s which hit in-between the first AoEs.
+  infernal-fetters:
+    id: 377
+    type: impairment
+    tick: 3862
+    duration: 21000
+    description: |
+      Tethers a random DPS to the current off-tank. At any given point, the distance between the two players determines the number of [s:infernal-fetters] stacks. Each stack reduces damage dealt and increases the potency of a [t:DoT] on those two players.
+      Inflicted by the action of the same name, [a:infernal-fetters].
+  searing-wind:
+    id: 1578
+    type: dot
+    tick: 3490
+    duration: [18000, 30000]
+    description: |
+      Every 6 seconds, afflicted players explode in a large [ms:chariot] AoE that knocks all players caught into the wall.
+      This effect has a duration of 30 seconds if Ifrit is [s:woken] and 18 seconds otherwise.
+      Inflicted by [a:inferno-howl].
+  damage-up:
+    id: 1544
+    type: damage-up
+    description: Granted to Infernal Nails when hit by an [a:eruption], up to a maximum of [s:damage-up:2]. Increases damage dealt by [a:infernal-surge].
+  vulnerability-down:
+    id: 1545
+    type: resistance
+    description: Granted to Infernal Nails when hit by an [a:eruption], up to a maximum of [s:vulnerability-down:2]. Decreases damage taken.
+  vulnerability-up:
+    id: 202
+    type: vuln
+    duration: 1000
+    description: Brief stacking vulnerability inflicted by [a:infernal-surge]. Avoid destroying multiple Infernal Nails at the same time to keep this debuff in check.
+  accursed-flame:
+    id: 1527
+    type: dot
+    tick: 1263
+    duration: [3000, 48000]
+    description: Moderate [t:DoT] on all players hit by [a:flaming-crush] when Ifrit is [s:woken]. The duration of the [t:DoT] ranges from 3 seconds to 60 seconds depending on how many players are hit by [a:flaming-crush].
+  fire-resistance-down-ii:
+    id: 1255
+    type: vuln
+    duration: 5000
+    description: Renders subsequent fire damage taken lethal. Inflicted by [a:incinerate].
+  fetters:
+    id: 292
+    type: impairment
+    description: Player is trapped inside a Granite Gaol and cannot move or act until they are freed. While in this state they are fully immune to all effects, including damage or knockback effects from [a:landslide], [a:tumult], or [a:burst], as well as healing and raid buffs.
+  sludge:
+    id: 287
+    type: dot
+    tick: 999999
+    description: Lethal [t:DoT] inflicted when a player steps into the puddles left behind by Granite Gaols that are destroyed by [a:rock-throw] or [a:freefire].
+actions:
+  slipstream:
+    id: 11091
+    mechanic: aoe
+    shape: cone
+    damage: 15868
+    players: 0
+    description: Deals heavy damage and inflicts [s:stun] on all players in front of Garuda.
+    resolve: Wait for the cast to begin, then step behind Garuda.
+  mistral-song-healer:
+    id: 11074
+    mechanic: aoe.intercept
+    shape: line
+    tank-damage: 30000
+    damage: 12000
+    players: 7
+    description: |
+      Marks a random healer. After a short delay, Garuda fires a [ms:line] AoE towards that healer, dealing massive damage to the first player in line and moderate damage to all remaining players.
+      A [a:great-whirlwind] spawns 6 seconds later wherever the first player in line stood when they took the hit. This [a:great-whirlwind] repeats again two more times in the same location.
+    children:
+    - at: 6109
+      id: great-whirlwind
+    - at: 12268
+      id: great-whirlwind
+    - at: 18419
+      id: great-whirlwind
+  great-whirlwind:
+    id: 11073
+    mechanic: aoe
+    shape: chariot
+    description: |
+      A feather appears and drops to the ground, spawning a massive [ms:chariot] AoE that kills all players inside of it.
+      [a:great-whirlwind]s always spawn on the locations of the first player in line of [a:mistral-song-healer].
+  downburst:
+    id: 11088
+    mechanic: tb.mt
+    shape: cone
+    damage: 17919
+    description: Single-target tankbuster on the primary target. Becomes [a:downburst-woken] when Garuda is [s:woken].
+  downburst-woken:
+    id: 11088
+    name: Downburst (Woken)
+    mechanic: tb.stack
+    shape: cone
+    damage: 17919
+    description: Shared (two-player) tankbuster on the primary target.
+  cyclone:
+    id: 11077
+    mechanic: tb.mt
+    damage: 19229
+    description: Heavy tankbuster on the target tethered to the Spiny Plume. Inflicts [s:thermal-low].
+  feather-rain:
+    id: 11085
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 5
+    damage: 7256
+    players: 0
+    description: |
+      Small invisible AoEs under 5 random players' past positions. The only warning you get is Garuda or her sisters (Chirada and Suparna) screaming approximately 2.5 seconds earlier and flying away.
+      Any player hit takes significant damage and is inflicted with [s:windburn].
+  thermal-tumult:
+    id: 11076
+    mechanic: enrage
+    damage: 0
+    description: If the Satin Plumes are not killed by this point, they enrage here. Deals no damage but inflicts [s:sleep] on all players.
+  mistral-shriek:
+    id: 11092
+    mechanic: raidwide
+    damage: 16458
+    description: Heavy raidwide.
+  gigastorm:
+    id: 11078
+    mechanic: aoe
+    shape: chariot
+    description: |
+      The Spiny Plume explodes a short while after being killed. Kills all players caught in its radius, then leaves behind a bubble.
+      Players in the bubble are afflicted with [s:thermal-high] and take reduced wind damage. Stacks of [s:thermal-low] are instantly cleansed from a player once they step inside the bubble, triggering [a:super-cyclone-1]. The bubble lasts for approximately 23 seconds.
+    resolve: |
+      Kill the Spiny Plume sometime between its second and third [a:cyclone]. If you kill it too early, you will be missing a crucial [s:thermal-low] stack and, more importantly, the bubble will fade before you've had the chance to cleanse enough [s:thermal-low] stacks, making it impossible to [awaken](s:woken) Garuda and guaranteeing a wipe. Kill it too late and the Spiny Plume tank will be inflicted with [s:thermal-low:3], which cannot be cleansed without causing a wipe.
+      All players should enter the bubble initially except for the Spiny Plume tank, who should wait until the damage from [a:mistral-shriek] is healed before stepping into the bubble. This triggers the first [a:super-cyclone-2] and grants Garuda her first stack of [s:aetherially-charged].
+      Afterwards, before the first [a:friction] both melees (as is standard for PF, but you may choose any two players) and the Spiny Plume tank should exit the bubble while still stacking with the rest of the party. The first [a:friction] takes place and inflicts [s:thermal-low] on the three players outside the bubble while immediately cleansing the [s:thermal-low] stacks of anyone inside the bubble, triggering 5× [a:super-cyclone-1]. Heal this damage up before the second [a:friction].
+      All players now exit the bubble before the second [a:friction]. If done correctly, all players should end up with [s:thermal-low], while the melees and tank end up with [s:thermal-low:2]. What follows is most likely the toughest heal check in the fight – both melees must now consecutively cleanse their [s:thermal-low:2]. They must do so by stepping into the bubble in the brief amount of time before it disappears, but since each cleanse triggers a heavy [a:super-cyclone-2], all players must be nearly fully healed in-between each cleanse. If the melees play it too safe, waiting for heals for too long, the bubble will fade and a wipe is guaranteed. If the healers don't heal the party back up quickly enough, the melees are either forced to cleanse with the party too low to survive it (causing a wipe) or forced to wait until the bubble disappears, again guaranteeing a wipe. Use whatever mitigation and personal healing tools you can afford here. Personal cooldowns such as [a:second-wind], [a:curing-waltz], [a:riddle-of-earth], or [a:bloodbath] are particularly valuable here.
+      If done correctly, you should end up with 5 players with [s:thermal-low], 2 players with nothing, and 1 player with [s:thermal-low:2], as well as [s:aetherially-charged:3] on Garuda.
+    children:
+    - at: 4587
+      id: super-cyclone-2
+      description: Tank cleanses [s:thermal-low:2], triggering a heavy raidwide and granting Garuda [s:aetherially-charged].
+      timing: player
+    - at: 8105
+      id: friction
+    - at: 9579
+      id: super-cyclone-1
+      description: All 5 players still in the bubble automatically cleanse [s:thermal-low], triggering 5 mild raidwides.
+      count: 5
+      timing: player
+    - at: 14423
+      id: friction
+    - at: 22089
+      id: super-cyclone-2
+      description: The first melee cleanses [s:thermal-low:2], triggering a heavy raidwide and granting Garuda [s:aetherially-charged:2].
+      timing: player
+    - at: 24455
+      id: super-cyclone-2
+      description: The second melee cleanses [s:thermal-low:2], triggering a heavy raidwide and granting Garuda [s:aetherially-charged:3].
+      timing: player
+  super-cyclone-1:
+    id: 11079
+    mechanic: raidwide
+    damage: 1651
+    description: Mild raidwide as a result of cleansing [s:thermal-low].
+  super-cyclone-2:
+    id: 11189
+    mechanic: raidwide
+    damage: 14279
+    description: Heavy raidwide as a result of cleansing [s:thermal-low:2].
+  friction:
+    id: 11080
+    mechanic: aoe
+    shape: chariot
+    damage: 13478
+    players: 8
+    description: Circular AoE centered on a random unmarked player. Inflicts [s:thermal-low] on all players hit.
+    resolve: |
+      To resolve later mechanics, it is necessary to accrue as many [s:thermal-low] stacks as possible, so simply make sure all players are stacking tightly to avoid anyone missing the AoE.
+      Be aware that any player inside the bubble produced by the Spiny Plume will immediately cleanse their [s:thermal-low] stack.
+  aerial-blast:
+    id: 11093
+    mechanic: raidwide.ultimate
+    damage: 18874
+    description: Heavy raidwide.
+  aerial-blast-enrage:
+    id: 11093
+    mechanic: enrage
+    damage: 999999
+    description: Garuda enrages, killing all players.
+  mistral-song:
+    id: 11083
+    mechanic: aoe.intercept
+    shape: line
+    count: 2
+    tank-damage: 17000
+    damage: 6000
+    players: 7
+    description: |
+      Marks a random DPS and healer. After a short delay, Chirada and Suparna (who spawn on random cardinals outside the arena) each fire a [ms:line] AoE towards their marked player, dealing heavy damage to the first player in line and mild damage to all remaining players.
+      A [a:great-whirlwind] then spawns wherever the first players in line stood when they took the hit.
+  eye-of-the-storm:
+    id: 11090
+    mechanic: aoe
+    shape: dynamo
+    description: Wide [ms:dynamo] around the center of the arena.
+  wicked-wheel:
+    id: 11086
+    mechanic: aoe
+    shape: chariot
+    description: Moderate [ms:chariot] AoE centered on Garuda.
+  wicked-wheel-woken:
+    id: 11086
+    name: Wicked Wheel (Woken)
+    mechanic: aoe
+    shape: chariot
+    description: Moderate [ms:chariot] AoE centered on Garuda. Is immediately followed up by [a:wicked-tornado]. Only when Garuda is [s:woken].
+    children:
+    - at: 2099
+      id: wicked-tornado
+  mesohigh:
+    id: 11081
+    mechanic: spread.tethers
+    shape: chariot
+    count: 2
+    damage: 3905
+    description: Chirada and Suparna spawn east and west and tether to a random player. The tether can be passed. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
+    resolve: |
+      Have your tank (with [s:thermal-low:2]) soak the east tether and your caster (with [s:thermal-low]) the west tether. This grants Garuda her last [s:aetherially-charged] stack, granting her [s:woken].
+      At this point only your healers, physical ranged DPS, and one tank should still have a [s:thermal-low] stack. Your physical ranged DPS and one random healer (hence why both healers need [s:thermal-low]) will need them to resolve [a:mesohigh] tethers during [a:ultimate-annihilation]. Your tank will need it to resolve a [a:mesohigh] tether during [a:ultimate-suppression].
+    trivia: |
+      [a:mesohigh] tethers cleansing [s:thermal-low] is intended, as [s:thermal-low] is required to soak [a:mesohigh] and the developers didn't want the same player to be able to soak [a:mesohigh] twice. However, this cleanse being able to grant [s:aetherially-charged] if a [s:thermal-low:2] is cleansed is likely a bug, or at least an unintended strategy, as it completely deviates from the way you accumulate [s:aetherially-charged] during Titan and Ifrit, not to mention the fact that, by [awakening](s:woken) Garuda so late, you're skipping every single [s:woken] mechanic. You're likely meant to cleanse 4× [s:thermal-low:2] with the Spiny Plume bubble, but this is an *extremely* tight heal check and results in you seeing the [s:woken] mechanics much sooner, so it is not recommended.
+  wicked-tornado:
+    id: 11087
+    mechanic: aoe
+    shape: dynamo
+    description: Moderate [ms:dynamo] AoE centered on Garuda. Same size as [a:wicked-wheel], but inverted. Always directly follows [a:wicked-wheel], but only when Garuda is [s:woken].
+  kill-time:
+    name: Target Kill Time
+    mechanic: hint
+    major: true
+    description: |
+      With current gear and job kits, most experienced parties can kill the boss at around this time.
+      **For Garuda, do not attempt to kill the boss sooner than this** or a wipe is guaranteed. Garuda is currently the only primal that can be killed before you get the chance to [awaken](s:woken) them.
+  ifrit-transition:
+    name: Ifrit Transition
+    mechanic: mech
+    compact: trim
+    description: |
+      Ifrit jumps into the arena on a random cardinal and prepares to cast [a:crimson-cyclone], a dash through the middle of the arena that deals massive damage to anyone caught in its wake.
+      Just before [a:crimson-cyclone] resolves, the entire arena gets covered in [a:radiant-plume]s except for one safe spot at either the east or west and one safe spot at either the north or south.
+    resolve: |
+      After Garuda dies, spin your camera around, looking for Ifrit. Once you've spotted him, turn your camera 90° to either side, looking at one of the two adjacent cardinals. Use [a:sprint] preemptively here or you'll need inhuman reflexes to make it to the safe spot in time.
+      When [a:radiant-plume]s spawn:
+      * If the cardinal you're looking at has no [a:radiant-plume] on it, sprint towards it.
+      * If the cardinal you're looking at has a [a:radiant-plume] on it, sprint backwards, as the opposite cardinal does not have a [a:radiant-plume] covering it.
+    children:
+    - at: 6980
+      id: crimson-cyclone
+    - at: 8005
+      id: radiant-plume
+      description: AoEs that cover the entire arena except a small safe spot in either
+          the west or east, and north or south.
+      count: 10
+  crimson-cyclone:
+    id: 11103
+    mechanic: aoe
+    shape: line
+    damage: 21404
+    players: 0
+    description: |
+      Ifrit or a clone of his dashes across the arena, dealing massive damage to anyone caught in the dash.
+      When [s:woken], is immediately followed up by another two [a:crimson-cyclone]s at a 45° angle to either side of the first dash.
+  radiant-plume:
+    id: 11105
+    mechanic: aoe
+    shape: chariot
+    description: Pseudo-random AoEs.
+  hellfire:
+    id: 11102
+    mechanic: raidwide.ultimate
+    damage: 19856
+    description: Heavy raidwide.
+  hellfire-nails:
+    id: 11102
+    mechanic: raidwide.ultimate
+    damage: 19856
+    description: Heavy raidwide. Deals lethal damage if any Infernal Nail was left alive.
+  hellfire-enrage:
+    id: 11102
+    mechanic: enrage
+    damage: 999999
+    description: Ifrit becomes untargetable and casts Hellfire again, wiping the party.
+  vulcan-burst:
+    id: 11095
+    mechanic: mech.knockback
+    damage: 1000
+    description: |
+      Deals mild damage and knocks all players back a moderate distance.
+      If this attack is fully mitigated (i.e. dealing no damage to anyone's health) the knockback is not applied.
+    resolve: A simple [a:eukrasian-prognosis] or [a:succor] is enough to fully mitigate the damage and skip the knockback.
+  incinerate:
+    id: 11094
+    mechanic: tb.mt
+    shape: cone
+    damage: 22269
+    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
+  infernal-nails:
+    id: 461
+    name: Infernal Nails
+    mechanic: mech
+    major: true
+    description: |
+      Spawns 4 Infernal Nails in a randomly rotated trapezoid pattern. Destroying a nail deals moderate damage ([a:infernal-surge]) and inflicts a stacking [s:vulnerability-up] on all players. All four nails must be destroyed before Ifrit jumps away or the subsequent [a:hellfire] deals lethal damage.
+      When an Infernal Nail is hit by an [a:eruption] it grows, gaining [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks. If a nail is destroyed at two stacks, Ifrit gains one stack of [s:aetherially-charged].
+      Additionally, the order in which the nails are destroyed determines the order of the subsequent [a:crimson-cyclone] dashes.
+    resolve: |
+      To finish the fight, Ifrit must be [s:woken]. To do this, all nails must be hit by at least 2 [a:eruption]s. [a:eruption]s are baited on the two farthest players from Ifrit, so have your two ranged DPS position themselves between the edge of the arena and the two outer nails. Communicate before the pull which ranged DPS takes which of the two nails. The main tank drags Ifrit to in-between the two inner nails to allow players to cleave both inner nails and Ifrit with AoEs while also ensuring [a:eruption]s are baited on the correct players.
+      One random healer is targeted by [a:inferno-howl] when nails spawn. If the boss's new position in-between the inner nails is relative north, this healer moves to the very edge of the arena at relative south, between the two outer nails. They will periodically explode in a big AoE ([a:searing-wind]), instantly killing any players caught in the explosion. The explosion is large enough to clip the two outer nails, so melees must be extra careful when dealing damage to those two nails.
+      Avoid using any heavy attacks on the nails. They do not have a lot of health, so it is very easy to accidentally destroy one before it has grown two times if you fail to take into account potential crits and direct hits.
+      The nails' recommended kill order is the "reverse Z pattern": i.e. relative southeast, then relative southwest, then relative northeast, then relative northwest. This maximizes the time you have to dodge the subsequent [a:crimson-cyclone]s. (Note that, if the party has good damage, it is possible to skip those [a:crimson-cyclone]s, essentially rendering the nail kill order irrelevant. However, you should always expect to see the [a:crimson-cyclone]s.)
+    children:
+    - at: 4100
+      id: <targetable>
+      description: Four Infernal Nails become targetable.
+    - at: 9131
+      id: infernal-fetters
+    - at: 11089
+      id: inferno-howl
+    - at: 16745
+      id: eruption
+    - at: 17057
+      id: searing-wind
+    - at: 21205
+      id: infernal-surge
+      timing: push
+    - at: 21965
+      id: infernal-surge
+      timing: push
+    - at: 23078
+      id: searing-wind
+    - at: 26959
+      id: infernal-surge
+      timing: push
+    - at: 29099
+      id: searing-wind
+    - at: 32172
+      id: infernal-surge
+      timing: push
+  infernal-fetters:
+    id: 11289
+    mechanic: mech.tether.close
+    damage: 3283
+    players: 2
+    description: |
+      The player second-in-enmity is tethered to a random DPS and inflicted with [s:infernal-fetters].
+      The farther those two players stray from each other, the more stacks of [s:infernal-fetters] they accrue. The more stacks they have, the less damage they deal, and the more damage they take from their [t:DoT].
+  inferno-howl:
+    id: 11099
+    mechanic: damage
+    damage: 2524
+    description: |
+      Inflicts a random healer with [s:searing-wind], causing them to periodically explode and kill all nearby players.
+      If a healer is already inflicted with [s:searing-wind], this is guaranteed to target the other healer.
+  eruption:
+    id: 11097
+    mechanic: aoe.delayed
+    shape: chariot
+    description: |
+      Selects the two farthest players from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
+      If these AoEs touch an Infernal Nail, the nail grows and is granted [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks.
+    children:
+    - at: 491
+      id: eruption-hit
+    - at: 2456
+      id: eruption-hit
+    - at: 4460
+      id: eruption-hit
+    - at: 6468
+      id: eruption-hit
+  searing-wind:
+    id: 11100
+    mechanic: mech.knockback.unavoidable
+    damage: 0
+    description: A player with [s:searing-wind] explodes, knocking all players (apart from themselves) caught in the explosion into the wall.
+  eruption-hit:
+    id: 11098
+    name: Eruption (Hit)
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 2
+    description: Individual hit of [a:eruption].
+  infernal-surge:
+    id: 11096
+    mechanic: raidwide
+    damage: 7332
+    description: An Infernal Nail is defeated, dealing moderate raidwide damage and inflicting [s:vulnerability-up] on all players.
+  flaming-crush:
+    id: 11101
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 12644
+    description: |
+      Targeted stack on a random, marked player. Can never target a healer.
+      If Ifrit is [s:woken], this inflicts a [t:DoT] ([s:accursed-flame]) on all players inside the stack.
+  crimson-cyclone-echo:
+    id: 11104
+    name: Crimson Cyclone (Followup)
+    mechanic: aoe
+    shape: line
+    count: 2
+    description: "[a:crimson-cyclone] hits again 45° offset from the initial dash. Only when Ifrit is [s:woken]."
+  geocrush-initial:
+    id: 11517
+    mechanic: raidwide.proximity
+    damage: 11199
+    description: Titan drops into the center of the arena, dealing heavy damage that drops off with distance.
+    resolve: Hug the edge of the arena or the damage is unsurvivable.
+  earthen-fury:
+    id: 11152
+    mechanic: raidwide.ultimate
+    damage: 18831
+    description: Heavy raidwide.
+  rock-buster:
+    id: 11106
+    mechanic: tb.mt
+    shape: cone
+    damage: 24270
+    description: Deals heavy damage to the primary target and any players near them. Is immediately followed up with [a:mountain-buster].
+    children:
+    - at: 3117
+      id: mountain-buster
+  mountain-buster:
+    id: 11107
+    mechanic: tb.mt
+    shape: cone
+    damage: 36446
+    description: Deals massive damage to the primary target and any players near them.
+  weight-of-the-land:
+    id: 11108
+    mechanic: aoe.delayed
+    shape: chariot
+    description: Spawns 2 (3 when [s:woken]) back-to-back sets of AoEs under 4 random players' feet.
+    children:
+    - at: 491
+      id: weight-of-the-land-hit
+    - at: 3515
+      id: weight-of-the-land-hit
+  weight-of-the-land-woken:
+    id: 11108
+    name: Weight of the Land (Woken)
+    mechanic: aoe.delayed
+    shape: chariot
+    description: Spawns 3 back-to-back sets of AoEs under 4 random players' feet. Only when [s:woken].
+    children:
+    - at: 490
+      id: weight-of-the-land-hit
+    - at: 3518
+      id: weight-of-the-land-hit
+    - at: 6496
+      id: weight-of-the-land-hit
+  weight-of-the-land-hit:
+    id: 11109
+    name: Weight of the Land (Hit)
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 4
+    damage: 16781
+    players: 0
+    description: Individual hit of [a:weight-of-the-land].
+  geocrush:
+    id: 11110
+    mechanic: raidwide.proximity
+    damage: 6758
+    description: Titan turns toward a random cardinal before jumping away. A short time later he drops back into the arena on the cardinal he previously turned towards, dealing massive damage that drops off with distance.
+    resolve: |
+      Check which cardinal Titan turns towards, then quickly hug the edge of the safe area at the opposite side of the arena.
+      The main tank should attempt to drag Titan towards the center of the arena before he jumps away, to make it easier to see which cardinal he turns towards.
+  upheaval:
+    id: 11111
+    mechanic: mech.knockback.unavoidable
+    damage: 5365
+    description: Deals mild damage, briefly inflicts [s:stun], and knocks all players away from Titan. The knockback distance is approximately the full length of the safe area of the arena.
+    resolve: Check behind to see where the rocks (spawned by [a:rock-throw]) are. Either the left or the right side will be missing a rock. To correctly position for the knockback, stand directly on the front of Titan's hitbox, then slightly inch towards the left or right.
+  rock-throw:
+    id: 11115
+    mechanic: mech.status
+    count: 3
+    description: Titan marks three random players. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
+  rock-throw-healer:
+    id: 11115
+    mechanic: mech.status
+    description: Titan marks a random healer. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
+  rock-throw-eruption:
+    id: 11115
+    mechanic: mech.status
+    description: Titan marks a random player baiting [a:eruption]. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
+  granite-impact:
+    id: 11448
+    mechanic: enrage
+    damage: 999999
+    description: A Granite Gaol enrages, wiping the party.
+  bury:
+    id: 11113
+    mechanic: aoe
+    shape: chariot
+    description: A bomb boulder drops from the sky, instantly killing any player in a moderate radius around where it touches down. It then begins casting [a:burst].
+  burst:
+    id: 11114
+    mechanic: aoe
+    shape: chariot
+    description: |
+      A bomb boulder explodes, dealing massive damage in a moderate telegraphed radius around it.
+      If a Granite Gaol is clipped by [a:burst], triggers [a:freefire], which causes the Granite Gaol to be instantly destroyed, freeing the trapped player and leaving behind a [s:sludge] puddle. [a:freefire] functions exactly like [a:burst] otherwise, meaning it can destroy other Granite Gaols and thus lead to a chain reaction.
+  landslide:
+    id: 11119
+    mechanic: aoe
+    shape: line
+    count: 5
+    description: Five telegraphed [ms:line] AoEs originate from Titan, targeting a random player. Anyone hit is knocked into the wall. Turns into [a:landslide-woken] when [s:woken].
+  landslide-woken:
+    id: 11121
+    name: Landslide (Woken)
+    mechanic: aoe
+    shape: line
+    count: 5
+    description: Five telegraphed [ms:line] AoEs originate from Titan, targeting a random player. Anyone hit is knocked into the wall. Is immediately followed up with [a:landslide-followup], which hits in-between the first set of Landslides.
+    children:
+    - at: 2043
+      id: landslide-followup
+  landslide-followup:
+    id: 11298
+    name: Landslide (Followup)
+    mechanic: aoe
+    shape: line
+    count: 5
+    description: Five untelegraphed [ms:line] AoEs originating from Titan that hit in-between [the first set](a:landslide-woken). Anyone hit is knocked into the wall.
+  freefire:
+    id: 11118
+    mechanic: aoe
+    shape: chariot
+    description: A Granite Gaol detonates as a result of getting clipped by [a:burst] or [a:freefire], instantly killing any nearby players. Leaves behind a [s:sludge] puddle and detonates any nearby Granite Gaols.
+  gaols:
+    name: Gaols
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Titan returns to the arena and immediately begins casting [a:upheaval]. At the same time, five bomb boulders drop onto the opposite side of the arena with [a:bury] and begin casting [a:burst]. There is always one empty spot slightly to the left or to the right where a bomb boulder is missing.
+      When the [a:upheaval] cast completes, all players are [stunned](s:stun) and knocked away from Titan's position. The knockback is approximately the entire diameter of the safe zone of the arena, minus the radius of Titan's hitbox. [a:burst] resolves shortly after players' [s:stun] expires, leaving time for only a small microadjustment.
+      Afterwards, three random players are visibly targeted for [a:rock-throw] as Titan casts [a:landslide]. Another bomb boulder drops into the empty spot from before at this time, killing any player still there ([a:bury]) and begins casting [a:burst]. The three selected players are encased in a Granite Gaol immediately after [a:landslide]. Titan then casts another [a:landslide], which the Granite Gaol players are now immune to.
+      The Granite Gaols immediately begin casting [a:granite-impact]. If this cast is permitted to complete, the party wipes. However, if a Granite Gaol is hit by the last bomb boulder's [a:burst], it is destroyed immediately and the encased player freed. At the same time, the bomb boulder drops a puddle of [s:sludge] and destroys any other bomb boulder in its proximity, leading to the same result.
+      The puddles inflict [s:sludge] if players dwell within it after being freed. [s:sludge] is a lethal DoT whose ticks cannot be survived. If Titan dwells within a [s:sludge] puddle, he gains one stack of [s:aetherially-charged] every tick (3 seconds) until 4 stacks, at which point he becomes [s:woken]. This is the only point in the fight where a [s:sludge] puddle can be created.
+    resolve: |
+      After [a:geocrush], immediately run towards Titan to avoid being hit by any of the bomb boulders' [a:bury]s. Center yourself on Titan's frontal hitbox arrow, then look backwards to see if the safe spot (where a bomb boulder is missing) is left or right, then *slightly* inch towards that side while remaining on the edge of Titan's hitbox. If positioned correctly, [a:upheaval] will knock you directly into the safe spot. After being unstunned, walk forward out of the safe spot immediately to avoid being hit by the [a:bury] of the next bomb boulder that drops directly into this safe spot. **Walk directly forward** on the side that you're on; do not walk towards Titan through the center of the arena, as this has the chance to bait a [a:landslide] directly through the center of the arena, which will make it difficult for the [a:rock-throw] players to position themselves correctly.
+      To awaken Titan, it is now necessary for the three players targeted by [a:rock-throw] to form a straight line between the last bomb boulder and Titan. The player closest to the bomb boulder must ensure they get gaoled within the radius of [a:burst]. The second player must ensure they're within the radius of the first player's Granite Gaol, and the third player must ensure they're within the radius of the second player's Granite Gaol while also ensuring Titan is within the radius of their own Granite Gaol.
+      Resolving this presents three difficulties:
+      First, a very small amount of time passes between players being targeted for [a:rock-throw] and being encased in their Granite Gaol. This means that players cannot spend any time thinking about what to do or where to go. It must be a snap judgment.
+      Second, since the [a:rock-throw] assignment is completely random and not role-based, the party must establish a system whereby there is no ambiguity between who goes to which of the three possible spots, as there is no time to communicate or coordinate in any meaningful way here. It is strongly recommended to use a macro that applies a number marker to yourself if you get targeted by [a:rock-throw]. A correctly written macro will apply the first number to your head that is not already taken by another player or enemy. However, Party Finder generally uses third-party tools to assign a number to each player.
+      Third, the positioning is very tight. Party Finder generally uses waymarks for assistance here. However, the player farthest from Titan cannot blindly use any waymark; they must inch slightly left or slightly right to ensure they're hit by [a:burst]. Failing to position yourself ensures a very delayed wipe, as it is nigh impossible to kill all three Gaols before they're able to cast [a:granite-impact], and the encased players are invulnerable until then. Even if the three players are freed by [a:burst] and [a:freefire], Titan must already be standing in the third [s:sludge] puddle as he is cast-locked until the [s:sludge] puddles have disappeared. It is not enough for Titan's hitbox to be clipped by the puddle; a significant portion of his hitbox must intersect the puddle.
+    tips:
+      - Do not use raid buffs until after all three players are freed from their Granite Gaol as they are immune to all status effects, including raid buffs, while trapped within the gaol.
+      - If a [a:landslide] is baited through the center, the [a:rock-throw] players should wait until the [a:landslide] telegraph disappears, then *jump* into their waymark. If a player is gaoled mid-jump, their forward momentum is not halted until they touch the ground again, essentially extending their range of movement.
+      - But ideally, just don't bait that [a:landslide] through the center of the arena (or in other words, through the gaol markers).
+    children:
+    - at: 2527
+      id: bury
+      count: 5
+    - at: 5564
+      id: upheaval
+    - at: 7741
+      id: rock-throw
+    - at: 8142
+      id: burst
+      count: 5
+    - at: 10593
+      id: bury
+    - at: 12097
+      id: landslide
+    - at: 14769
+      id: <targetable>
+      description: Three players are [fettered](s:fetters), trapping them inside targetable Granite Gaols.
+    - at: 16065
+      id: burst
+      link: and
+    - at: 16465
+      id: freefire
+      timing: skippable
+      link: and
+    - at: 16554
+      id: landslide
+      link: then
+    - at: 17175
+      id: freefire
+      timing: skippable
+      link: then
+    - at: 17977
+      id: freefire
+      timing: skippable
+  tumult-x6:
+    id: 11288
+    mechanic: raidwide
+    compact: full
+    description: Titan casts six back-to-back raidwides, each dealing moderate damage.
+    children:
+    - at: 0
+      id: tumult
+    - at: 1114
+      id: tumult
+    - at: 2229
+      id: tumult
+    - at: 3341
+      id: tumult
+    - at: 4458
+      id: tumult
+    - at: 5572
+      id: tumult
+  tumult-x8:
+    id: 11288
+    mechanic: raidwide
+    compact: full
+    description: Titan casts eight back-to-back raidwides, each dealing moderate damage.
+    children:
+    - at: 0
+      id: tumult
+    - at: 1110
+      id: tumult
+    - at: 2222
+      id: tumult
+    - at: 3334
+      id: tumult
+    - at: 4445
+      id: tumult
+    - at: 5556
+      id: tumult
+    - at: 6667
+      id: tumult
+    - at: 7777
+      id: tumult
+  tumult:
+    id: 11288
+    mechanic: raidwide
+    damage: 6984
+    description: An individual hit of Titan's multi-hit raidwide.
+  earthen-fury-enrage:
+    id: 11152
+    mechanic: enrage
+    damage: 999999
+    description: Titan enrages, killing all party members.
+  awakening:
+    name: Awakening
+    mechanic: hint
+    description: |
+      Expand this row to show a comprehensive explanation of how the fight's puzzle mechanic works.
+      In the first three phases of the fight, you will face Garuda, Ifrit, and Titan (in that order). Prevailing against the respective primal is relatively simple, but each primal features a hidden puzzle mechanic that requires certain mechanics in this phase to be solved in a specific way. Failing to do so leads to an inevitable wipe in the intermission phase of the fight (after Titan), which requires four back-to-back limit break 3s.
+      The key to unleashing those four required limit break 3s is a buff called [s:beyond-limits]. Any player with this buff can unleash a limit break "for free", meaning that however many limit break bars are used for their limit break, these bars will immediately be refunded after the limit break has finished executing. For example, if a player with [s:beyond-limits] uses limit break while at 2.5 limit break bars, they will execute a limit break 2, depleting all 2.5 limit break bars. The game then refunds the party 2 bars of limit break. [s:beyond-limits] is consumed in the process.
+      In order to obtain [s:beyond-limits], a primal (Garuda, Ifrit, Titan) must be defeated while they are [s:woken]. This leaves behind a small light puddle on the floor wherever they were defeated. When a player steps into this puddle, they gain [s:beyond-limits] (assuming they don't already have one) and the puddle disappears.
+      Since there are three primals in total before reaching intermission and four required limit break 3s, this means that all three primals must be [s:woken] to get 3× [s:beyond-limits], allowing the limit break bars to be refunded 3 times. The last limit break will not be refunded.
+      Unfortunately, [awakening](s:woken) a primal also upgrades their moveset, giving some of their abilities additional effects or follow-ups. A full list of these enhancements can be found [here](s:woken).
+      As previously mentioned, [awakening](s:woken) a primal requires certain mechanics to be resolved in a specific, non-obvious way to gradually grant them stacks of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] upgrades into [s:woken].
+      * Garuda obtains stacks of [s:aetherially-charged] whenever a [s:thermal-low:2] is cleansed. This also triggers a heavy raidwide ([a:super-cyclone-2]), so cleansing multiple [s:thermal-low:2]s at the same time is impossible. [s:thermal-low] can be cleansed in one of two ways: by having players step into the bubble left behind by the Spiny Plume, or by soaking a [a:mesohigh] tether. There are two [a:mesohigh] tethers in Garuda's phase, but they resolve at the same time, so we can only cleanse one [s:thermal-low:2] there because otherwise, as mentioned, the raidwide damage would turn lethal. This means that the other 3 [s:thermal-low:2] cleanses need to come from the Spiny Plume bubble.
+      * Ifrit obtains stacks of [s:aetherially-charged] whenever an Infernal Nail is hit at least twice by an [a:eruption], then destroyed. This also makes the Infernal Nail grow and gain [s:damage-up] and [s:vulnerability-down], so it is recommended to get their health low (but not too low) *before* hitting them with [a:eruption]. There are only 4 Infernal Nails during Ifrit's phase, so if any Nail is missed or destroyed too early, [s:woken] can no longer be achieved.
+      * Titan obtains stacks of [s:aetherially-charged] for every 3 seconds that he dwells within a [s:sludge] puddle. [s:sludge] puddles only spawn when a Granite Gaol detonates by means other than player attacks. Granite Gaols occur twice in Titan's phase, but only the first instance affords players the opportunity to instantly detonate a Gaol by means of clipping it with [a:burst]. However, [a:burst] always takes place on the opposite side of the arena from Titan and Titan cannot be moved until the resulting [s:sludge] puddles dissipate. The only way to force Titan to stand in a [s:sludge] puddle, therefore, is to bring the [s:sludge] to him by triggering a chain reaction of multiple back-to-back Granite Gaols which detonate each other in a line from one side of the arena to the other, where Titan stands.
+      The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit. Titan primarily deals melee physical damage, just like a melee DPS.
+      After getting through intermission, you reach the final phase of the fight, where you face off against the Ultima Weapon. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from the Ultima Weapon, so you will not only be facing off against an Ultima Weapon that is fully powered by all three primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
+timeline:
+  - at: 0
+    id: awakening
+  - at: 0
+    id: <phase>
+    name: Garuda
+  - at: 8383
+    id: slipstream
+  - at: 10928
+    id: mistral-song-healer
+  - at: 20000
+    id: <targetable>
+    description: |
+      Four Satin Plumes spawn and each tether to a different DPS player. A Spiny Plume also spawns and tethers to the first player that deals damage to it. After a short delay, all plumes move toward the player they're tethered to.
+      Satin Plumes are purple and largely unthreatening, but if left alive for too long they will cast [a:thermal-tumult], putting all players to [s:sleep] and guaranteeing a wipe. Group these up and AoE them down.
+      The Spiny Plume must be picked up (i.e. attacked first) by the off-tank. This is because every 9 seconds the Spiny Plume attacks the tethered player with [a:cyclone], a heavy tankbuster that cannot be survived by a non-tank. While the Spiny Plume does not have a "proper" enrage, [a:cyclone] gives it its own enrage (of sorts), as each [a:cyclone] inflicts a stack of [s:thermal-low] and any player reaching [s:thermal-low:3] all but ensures a wipe.
+  - at: 23733
+    id: slipstream
+  - at: 27211
+    id: downburst
+  - at: 27344
+    id: cyclone
+  - at: 34549
+    id: <untargetable>
+    description: |
+      Garuda screams and flies away, becoming untargetable.
+      The Satin Plumes should be dead by this point, but **not** the Spiny Plume. It *must* be allowed to cast its second [a:cyclone] first or a wipe is all but guaranteed. It is recommended to leave the Spiny Plume alive until [a:mistral-shriek]. The earlier you kill it, the less time you have for [s:thermal-low:2] cleanses.
+  - at: 36463
+    id: cyclone
+  - at: 37130
+    id: feather-rain
+  - at: 38823
+    id: <targetable>
+    description: Garuda returns to the arena.
+  - at: 40336
+    id: thermal-tumult
+  - at: 41898
+    id: mistral-shriek
+  - at: 43202
+    id: gigastorm
+    timing: push
+  - at: 69755
+    id: <untargetable>
+    description: Garuda screams and flies away, becoming untargetable.
+  - at: 72346
+    id: feather-rain
+  - at: 74044
+    id: <targetable>
+    description: Garuda returns to the arena.
+  - at: 77122
+    id: aerial-blast
+    description: Heavy raidwide. Garuda summons her sisters (Chirada and Suparna) afterwards.
+  - at: 93321
+    id: feather-rain
+  - at: 100174
+    id: mistral-song
+    link: and
+  - at: 100530
+    id: eye-of-the-storm
+    link: and
+  - at: 100662
+    id: wicked-wheel
+  - at: 104763
+    id: feather-rain
+    link: then
+  - at: 106279
+    id: great-whirlwind
+  - at: 122201
+    id: slipstream
+    link: then
+  - at: 123536
+    id: eye-of-the-storm
+  - at: 125627
+    id: mesohigh
+    link: and
+  - at: 125671
+    id: downburst
+    link: then
+  - at: 126652
+    id: super-cyclone-1
+    description: Mild raidwide as a result of your caster cleansing their [s:thermal-low] using [a:mesohigh].
+    link: and
+  - at: 126652
+    id: super-cyclone-2
+    description: Heavy raidwide as a result of your tank cleansing their [s:thermal-low:2] using [a:mesohigh].
+  - at: 130211
+    id: feather-rain
+    link: and
+  - at: 130211
+    id: kill-time
+  - at: 142646
+    id: slipstream
+  - at: 151123
+    id: wicked-wheel-woken
+  - at: 155988
+    id: downburst-woken
+  - at: 163895
+    id: slipstream
+  - at: 173273
+    id: <untargetable>
+    description: Garuda screams and flies away, becoming untargetable and casting her enrage.
+  - at: 175856
+    id: feather-rain
+  - at: 180623
+    id: aerial-blast-enrage
+  - at: 180623
+    id: <phase>
+    name: Ifrit
+  - at: 185000
+    id: ifrit-transition
+  - at: 196164
+    id: <targetable>
+  - at: 199237
+    id: hellfire
+  - at: 207422
+    id: vulcan-burst
+  - at: 210223
+    id: incinerate
+    link: then
+  - at: 213337
+    id: incinerate
+    link: then
+  - at: 217433
+    id: incinerate
+  - at: 220560
+    id: infernal-nails
+  - at: 254698
+    id: <untargetable>
+    description: Ifrit jumps away, becoming untargetable.
+  - at: 258985
+    id: <targetable>
+    description: Ifrit returns to the arena.
+  - at: 262055
+    id: hellfire-nails
+  - at: 270383
+    id: inferno-howl
+  - at: 276040
+    id: eruption
+  - at: 276350
+    id: searing-wind
+  - at: 282368
+    id: searing-wind
+  - at: 283569
+    id: crimson-cyclone
+    description: Ifrit's clones dash across the arena, dealing massive damage to anyone caught in the dash.
+    count: 2
+  - at: 288385
+    id: searing-wind
+  - at: 288474
+    id: inferno-howl
+  - at: 294410
+    id: searing-wind
+    count: 2
+  - at: 296000
+    id: kill-time
+  - at: 298694
+    id: flaming-crush
+  - at: 300435
+    id: searing-wind
+    count: 2
+  - at: 302706
+    id: <untargetable>
+    description: Ifrit jumps away, becoming untargetable.
+  - at: 306489
+    id: searing-wind
+  - at: 310105
+    id: crimson-cyclone
+    link: then
+  - at: 311535
+    id: crimson-cyclone
+    link: then
+  - at: 312517
+    id: searing-wind
+    link: and
+  - at: 312919
+    id: crimson-cyclone
+    link: then
+  - at: 314306
+    id: crimson-cyclone
+  - at: 318505
+    id: <targetable>
+    description: Ifrit returns to the arena.
+  - at: 318549
+    id: searing-wind
+  - at: 322643
+    id: incinerate
+    link: then
+  - at: 325768
+    id: incinerate
+    link: then
+  - at: 329871
+    id: incinerate
+  - at: 338466
+    id: eruption
+  - at: 348042
+    id: flaming-crush
+  - at: 351063
+    id: <untargetable>
+    description: Ifrit becomes untargetable and prepares to cast its enrage.
+  - at: 358400
+    id: hellfire-enrage
+  - at: 358400
+    id: <phase>
+    name: Titan
+  - at: 360663
+    id: geocrush-initial
+  - at: 363017
+    id: <targetable>
+    description: Titan becomes targetable.
+  - at: 366086
+    id: earthen-fury
+  - at: 374268
+    id: rock-buster
+  - at: 381967
+    id: weight-of-the-land
+  - at: 385837
+    id: <untargetable>
+    description: Titan faces a random cardinal and jumps away.
+  - at: 391054
+    id: geocrush
+  - at: 393425
+    id: <targetable>
+    description: Titan becomes targetable again.
+  - at: 394000
+    id: gaols
+  - at: 412689
+    id: tumult-x8
+  - at: 415769
+    id: granite-impact
+    description: If any Granite Gaols are still alive by this point, they enrage and wipe the party.
+    timing: skippable
+  - at: 428092
+    id: weight-of-the-land
+  - at: 433609
+    id: landslide-woken
+  - at: 439793
+    id: <untargetable>
+    description: Titan faces a random cardinal and jumps away, becoming untargetable.
+  - at: 445007
+    id: geocrush
+  - at: 447363
+    id: <targetable>
+    description: Titan becomes targetable again.
+  - at: 447452
+    id: rock-throw
+  - at: 454491
+    id: <targetable>
+    description: A healer is trapped in a Granite Gaol, which becomes targetable.
+  - at: 461491
+    id: granite-impact
+    description: If the Granite Gaol is still alive by this point, it enrages and wipes the party.
+  - at: 462016
+    id: landslide-woken
+  - at: 467217
+    id: tumult-x6
+  - at: 474925
+    id: rock-buster
+  - at: 484225
+    id: bury
+  - at: 485698
+    id: weight-of-the-land-woken
+  - at: 486225
+    id: bury
+  - at: 488225
+    id: bury
+  - at: 489825
+    id: burst
+  - at: 490225
+    id: bury
+  - at: 491537
+    id: landslide-woken
+  - at: 491825
+    id: burst
+  - at: 493825
+    id: burst
+  - at: 495825
+    id: burst
+  - at: 499729
+    id: rock-buster
+  - at: 508405
+    id: weight-of-the-land-woken
+  - at: 516545
+    id: tumult-x8
+  - at: 532362
+    id: <untargetable>
+    description: Titan becomes untargetable and prepares to cast his enrage.
+  - at: 539734
+    id: earthen-fury-enrage
+  
