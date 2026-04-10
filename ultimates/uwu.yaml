@@ -5,11 +5,11 @@ modified: 2022-11-18
 by:
   id: 27637301
   role: author
-boss: The Ultima Weapon
+boss: the Ultima Weapon
 HP: 0
 party_hp: 19038
-wip: full
-description: Reexperience the fight against the Ultima Weapon, but without Hydaelyn's assistance, you can but rely on your own strength to prevail against the overwhelming power of the Ultima Weapon...
+wip: [diagrams]
+description: Reexperience the fight against [boss], but without Hydaelyn's assistance, you can but rely on your own strength to prevail against the overwhelming power of [boss]...
 status:
   stun:
     id: 149
@@ -51,7 +51,7 @@ status:
     type: form
     description: |
       If a player with this effect uses limit break, all utilized limit break bars are instantly refilled after a short delay. This status effect is consumed in the process.
-      Note that this "refund" only applies to "full" limit break bars, not partial ones.
+      Note that this refund only applies to "full" limit break bars, not partial ones, so for example if limit break 2 is used at 2.5 bars, it only refills 2 bars, not 2.5 bars.
       This effect is gained from stepping into a light puddle gained from defeating a [s:woken] primal.
       [s:beyond-limits] persists through death.
   thermal-high:
@@ -125,6 +125,33 @@ status:
     type: dot
     tick: 999999
     description: Lethal [t:DoT] inflicted when a player steps into the puddles left behind by Granite Gaols that are destroyed by [a:rock-throw] or [a:freefire].
+  doom:
+    id: 210
+    type: condition
+    duration: 7960
+    description: Kills the player if the debuff isn't cleansed in time. Can only be cleansed by a [i:healer] limit break 3. Inflicted by [a:blight].
+  down-for-the-count:
+    id: 783
+    type: impairment
+    duration: 3960
+    description: Renders the player briefly unable to act or move. Inflicted by [a:blight].
+  sabik-stun:
+    id: 201
+    type: impairment
+    description: Player is stunned and pulled into the center of the arena, where they are lifted into the air, [s:stun] turns into [s:airbound], and they are instantly killed.
+  airbound:
+    id: 1533
+    type: impairment
+    description: Player cannot act as they are lifted into the air and instantly killed ([a:citadel-siege]).
+  viscous-aetheroplasm:
+    id: 1532
+    type: delay
+    duration: [10, 12, 32, 52]
+    description: Player explodes ([a:aetheroplasm]) when the debuff expires. The explosion is a shared damage that should be stacked for.
+  damage-up-ultima:
+    id: 290
+    type: damage-up
+    description: Increases all of [boss]'s damage and begins its enrage sequence as soon as it has concluded whatever it is currently doing when the duty gauge reaches 100.
 actions:
   slipstream:
     id: 11091
@@ -272,6 +299,27 @@ actions:
     description: |
       Marks a random DPS and healer. After a short delay, Chirada and Suparna (who spawn on random cardinals outside the arena) each fire a [ms:line] AoE towards their marked player, dealing heavy damage to the first player in line and mild damage to all remaining players.
       A [a:great-whirlwind] then spawns wherever the first players in line stood when they took the hit.
+    resolve: |
+      [a:mistral-song] must be intercepted by tanks. To simplify things, have your party always stack on the same location (using a waymark is a good idea) and use a simple priority system to determine which tanks intercepts which of the sisters.
+  mistral-song-suppression:
+    id: 11083
+    mechanic: aoe.intercept
+    shape: line
+    count: 2
+    tank-damage: 17000
+    damage: 6000
+    players: 7
+    description: |
+      Marks two random players who are not baiting [a:eruption]s. After a short delay, Chirada and Suparna (who spawn on the northwest and southeast of the arena) each fire a [ms:line] AoE towards their marked player, dealing heavy damage to the first player in line and mild damage to all remaining players.
+      A [a:great-whirlwind] then spawns wherever the first players in line stood when they took the hit.
+    resolve: |
+      When [a:ultimate-suppression] starts, have your tanks preposition in the same location every time. The two players selected for [a:mistral-song-suppression] can then simply go to stand behind the tanks.
+  mistral-song-cone:
+    id: 11150
+    name: Mistral Song (Cone)
+    mechanic: aoe
+    shape: cone
+    description: Huge cone-shaped AoE originating from Garuda.
   eye-of-the-storm:
     id: 11090
     mechanic: aoe
@@ -303,6 +351,20 @@ actions:
       At this point only your healers, physical ranged DPS, and one tank should still have a [s:thermal-low] stack. Your physical ranged DPS and one random healer (hence why both healers need [s:thermal-low]) will need them to resolve [a:mesohigh] tethers during [a:ultimate-annihilation]. Your tank will need it to resolve a [a:mesohigh] tether during [a:ultimate-suppression].
     trivia: |
       [a:mesohigh] tethers cleansing [s:thermal-low] is intended, as [s:thermal-low] is required to soak [a:mesohigh] and the developers didn't want the same player to be able to soak [a:mesohigh] twice. However, this cleanse being able to grant [s:aetherially-charged] if a [s:thermal-low:2] is cleansed is likely a bug, or at least an unintended strategy, as it completely deviates from the way you accumulate [s:aetherially-charged] during Titan and Ifrit, not to mention the fact that, by [awakening](s:woken) Garuda so late, you're skipping every single [s:woken] mechanic. You're likely meant to cleanse 4× [s:thermal-low:2] with the Spiny Plume bubble, but this is an *extremely* tight heal check and results in you seeing the [s:woken] mechanics much sooner, so it is not recommended.
+  mesohigh-annihilation:
+    id: 11081
+    mechanic: spread.tethers
+    shape: chariot
+    count: 1
+    damage: 3905
+    description: Garuda (at the south of the arena) tethers to a random party member. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
+  mesohigh-suppression:
+    id: 11081
+    mechanic: spread.tethers
+    shape: chariot
+    count: 1
+    damage: 3905
+    description: Garuda (at the northwest of the arena) tethers to a random party member. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
   wicked-tornado:
     id: 11087
     mechanic: aoe
@@ -332,8 +394,7 @@ actions:
       id: crimson-cyclone
     - at: 8005
       id: radiant-plume
-      description: AoEs that cover the entire arena except a small safe spot in either
-          the west or east, and north or south.
+      description: AoEs that cover the entire arena except a small safe spot in either the west or east, and north or south.
       count: 10
   crimson-cyclone:
     id: 11103
@@ -344,6 +405,19 @@ actions:
     description: |
       Ifrit or a clone of his dashes across the arena, dealing massive damage to anyone caught in the dash.
       When [s:woken], is immediately followed up by another two [a:crimson-cyclone]s at a 45° angle to either side of the first dash.
+  crimson-cyclone-woken:
+    id: 11103
+    name: Crimson Cyclone (Woken)
+    mechanic: aoe
+    shape: line
+    damage: 21404
+    players: 0
+    description: |
+      Ifrit or a clone of his dashes across the arena, dealing massive damage to anyone caught in the dash.
+      Is immediately followed up by another two [a:crimson-cyclone]s at a 45° angle to either side of the first dash.
+    children:
+    - at: 2139
+      id: crimson-cyclone-echo
   radiant-plume:
     id: 11105
     mechanic: aoe
@@ -450,6 +524,30 @@ actions:
     - at: 4460
       id: eruption-hit
     - at: 6468
+      id: eruption-hit
+  eruption-suppression:
+    id: 11097
+    mechanic: aoe.delayed
+    shape: chariot
+    description: |
+      Selects three random non-tanks and spawns 4 back-to-back AoEs beneath their feet.
+      One of the selected players will be targeted by [a:rock-throw-suppression]. The other two will not be targeted by any other mechanic.
+    children:
+    - at: 491
+      id: eruption-hit
+    - at: 2456
+      id: eruption-hit
+    - at: 4460
+      id: eruption-hit
+    - at: 6468
+      id: eruption-hit
+  eruption-roulette:
+    id: 11097
+    mechanic: aoe.delayed
+    shape: chariot
+    description: Selects three random players and spawns a single AoE beneath their feet.
+    children:
+    - at: 491
       id: eruption-hit
   searing-wind:
     id: 11100
@@ -564,7 +662,7 @@ actions:
     id: 11115
     mechanic: mech.status
     description: Titan marks a random healer. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
-  rock-throw-eruption:
+  rock-throw-suppression:
     id: 11115
     mechanic: mech.status
     description: Titan marks a random player baiting [a:eruption]. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
@@ -672,6 +770,7 @@ actions:
       timing: skippable
   tumult-x6:
     id: 11288
+    name: 6× Tumults
     mechanic: raidwide
     compact: full
     description: Titan casts six back-to-back raidwides, each dealing moderate damage.
@@ -688,8 +787,30 @@ actions:
       id: tumult
     - at: 5572
       id: tumult
+  tumult-x7:
+    id: 11288
+    name: 7× Tumults
+    mechanic: raidwide
+    compact: full
+    description: Titan casts seven back-to-back raidwides, each dealing moderate damage.
+    children:
+    - at: 0
+      id: tumult
+    - at: 1110
+      id: tumult
+    - at: 2222
+      id: tumult
+    - at: 3334
+      id: tumult
+    - at: 4445
+      id: tumult
+    - at: 5556
+      id: tumult
+    - at: 6667
+      id: tumult
   tumult-x8:
     id: 11288
+    name: 8× Tumults
     mechanic: raidwide
     compact: full
     description: Titan casts eight back-to-back raidwides, each dealing moderate damage.
@@ -735,13 +856,526 @@ actions:
       * Ifrit obtains stacks of [s:aetherially-charged] whenever an Infernal Nail is hit at least twice by an [a:eruption], then destroyed. This also makes the Infernal Nail grow and gain [s:damage-up] and [s:vulnerability-down], so it is recommended to get their health low (but not too low) *before* hitting them with [a:eruption]. There are only 4 Infernal Nails during Ifrit's phase, so if any Nail is missed or destroyed too early, [s:woken] can no longer be achieved.
       * Titan obtains stacks of [s:aetherially-charged] for every 3 seconds that he dwells within a [s:sludge] puddle. [s:sludge] puddles only spawn when a Granite Gaol detonates by means other than player attacks. Granite Gaols occur twice in Titan's phase, but only the first instance affords players the opportunity to instantly detonate a Gaol by means of clipping it with [a:burst]. However, [a:burst] always takes place on the opposite side of the arena from Titan and Titan cannot be moved until the resulting [s:sludge] puddles dissipate. The only way to force Titan to stand in a [s:sludge] puddle, therefore, is to bring the [s:sludge] to him by triggering a chain reaction of multiple back-to-back Granite Gaols which detonate each other in a line from one side of the arena to the other, where Titan stands.
       The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit. Titan primarily deals melee physical damage, just like a melee DPS.
-      After getting through intermission, you reach the final phase of the fight, where you face off against the Ultima Weapon. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from the Ultima Weapon, so you will not only be facing off against an Ultima Weapon that is fully powered by all three primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
+      After getting through intermission, you reach the final phase of the fight, where you face off against [boss]. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from [boss], so you will not only be facing off against an Ultima Weapon that is fully powered by all three primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
+  magitek-freefire:
+    id: 11509
+    mechanic: raidwide.proximity
+    count: 4
+    damage: 4000
+    players: 8
+    description: A large proximity AoE resolves on all four cardinals, each dealing moderate damage to a player in the center of the arena.
+    resolve: Stand in the center of the arena.
+  self-detonate:
+    id: 11122
+    mechanic: enrage
+    damage: 999999
+    description: If any magitek bits are still alive by this point, they enrage and wipe the party.
+    resolve: Use a [i:caster] limit break 3 to destroy the magitek bits. Ensure the caster using the limit break has [s:beyond-limits].
+  blight:
+    id: 11123
+    mechanic: mech.status
+    description: |
+      Lahabrea appears, inflicting a 4s [s:down-for-the-count] and 8s [s:doom] on all players. [s:doom] can only be cleansed by a [i:healer] limit break 3.
+      This attack also deals damage, but the damage dealt is equal to each individual player's current HP minus one, which means it is not possible for this attack to deal lethal damage. Ordinarily this type of attack would simply be described as "sets all players' HP to 1", but this isn't quite true either. Unlike most other instances of [m:raidwide.sethp] type attacks, this attack does *not* ignore shields, which means that if a player has a shield, their HP is not set to 1 but to (1 + shield value). The shield is consumed in the process.
+    resolve: Use a [i:healer] limit break 3 to cleanse [s:doom]. Ensure the healer using the limit break has [s:beyond-limits].
+  dark-iv:
+    id: 11124
+    mechanic: enrage
+    damage: 999999
+    description: Lahabrea enrages, wiping the party.
+    resolve: Use a [i:melee] limit break 3 to defeat Lahabrea and prevent him from enraging. Ensure the melee using the limit break has [s:beyond-limits].
+  ultima:
+    id: 11147
+    mechanic: raidwide.lb
+    damage: 86430
+    description: |
+      [boss:c] unleashes devastation. Kills all party members not under the effect of a [i:tank] limit break 3.
+    resolve: Use a [i:tank] limit break 3.
+  ultima-aether:
+    name: Ultima Aether
+    mechanic: hint
+    description: |
+      A duty gauge subtitled "Ultima Aether" appears as the phase begins. When this gauge reaches 100, [boss] gains [s:damage-up-ultima] and begins its enrage sequence as soon as possible, after it has concluded whatever it is currently doing. This means that your ultimate goal should be to keep this gauge as low as possible to delay the enrage.
+      The background around the arena changes at 20, 40, 60, 80, and 100 duty gauge points.
+      The duty gauge climbs under the following conditions:
+      * At certain moments in the fight, the duty gauge climbs by 4. This is not tied to any particular ability being cast. In total, the duty gauge climbs this way 11 times (by 44 points).
+      * Whenever a player dies, the duty gauge climbs by 4.
+      * Whenever an [a:aetheroplasm] orb is soaked, the duty gauge climbs by an amount equal to the number of players who soaked the orb. This only affects the orbs during [a:ultimate-annihilation], not [a:aetheric-boom].
+      * At the end of the fight, if the duty gauge is not yet at 100, [boss] begins channeling aether at a rate of 2 points per second until the duty gauge is at 100.
+  tank-purge:
+    id: 11143
+    mechanic: raidwide
+    damage: 17090
+    description: Heavy raidwide.
+  viscous-aetheroplasm:
+    id: 11129
+    mechanic: spread
+    shape: chariot
+    damage: 2975
+    description: Deals mild damage to the highest enmity player and everyone near them, and inflicts [s:viscous-aetheroplasm] on everyone hit.
+  homing-lasers:
+    id: 11131
+    mechanic: tb.ot
+    shape: chariot
+    damage: 35530
+    description: |
+      [boss:c] turns towards the second player in enmity and unleashes a heavy AoE tankbuster on them.
+      Note that the target for this attack locks in when the cast **begins**, not when it ends. If you wish to perform a [t:tankswap] to change the target of this attack, it is only possible to do so before [boss] has begun casting.
+  viscous-aetheroplasm-stack:
+    id: 11130
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 13588
+    description: A player's [s:viscous-aetheroplasm] expires, triggering an explosion that can be shared to reduce the damage.
+  ceruleum-vent:
+    id: 11132
+    mechanic: aoe
+    shape: chariot
+    description: |
+      [boss:c] explodes in a big AoE, dealing lethal damage to any nearby player.
+  landslide-ultima:
+    id: 11135
+    mechanic: aoe
+    shape: line
+    count: 3
+    description: |
+      [boss:c] uses [a:landslide]. This version of the attack only features three lines instead of five. There is no follow-up.
+  aetheroplasm:
+    id: 11137
+    mechanic: aoe
+    shape: chariot
+    damage: 10804
+    players: 3
+    description: One of the orbs spawned during [a:ultimate-annihilation] is soaked, triggering a moderately sized AoE that increases the duty gauge by 1 per player who soaked it, tethers all of those players to [boss], and increases the length of the tether between the corresponding set of orbs during [a:aetheric-boom].
+  light-pillar:
+    id: 11138
+    mechanic: aoe.chasing
+    shape: chariot
+    description: |
+      A pillar of light spawns and begins to chase a targeted player. Anyone in the path of the pillar takes lethal damage.
+      [a:light-pillar] hits six times. Each time it does, it hits where the targeted player was approximately three seconds before that hit.
+      [a:light-pillar] always targets the player who does not bait [a:eruption]s and is not targeted by [a:mistral-song-suppression].
+    children:
+    - at: 3114
+      id: light-pillar-hit
+    - at: 4140
+      id: light-pillar-hit
+    - at: 5121
+      id: light-pillar-hit
+    - at: 6146
+      id: light-pillar-hit
+    - at: 7126
+      id: light-pillar-hit
+    - at: 8152
+      id: light-pillar-hit
+  light-pillar-hit:
+    id: 11139
+    name: Light Pillar (Hit)
+    mechanic: aoe.delayed
+    shape: chariot
+    description: An individual hit of [a:light-pillar].
+  aetherochemical-laser:
+    id: 11140
+    mechanic: aoe.delayed
+    shape: line
+    description: |
+      [boss:c] fires a laser towards another player that resolves 4 seconds later, dealing lethal damage to anyone in its path.
+    children:
+    - at: 4140
+      id: aetherochemical-laser-hit
+  aetherochemical-laser-hit:
+    id: 11142
+    name: Aetherochemical Laser (Hit)
+    mechanic: aoe
+    shape: line
+    description: The laser fired by [a:aetherochemical-laser] resolves, dealing lethal damage to anyone in its path.
+  aetheric-boom:
+    id: 11144
+    mechanic: mech.knockback
+    major: true
+    damage: 2543
+    description: |
+      Knocks all players away from [boss] and spawns four sets of orbs.
+      Each set consists of two orbs that are tethered to each other and begin slowly converging on each other. If the orbs touch, they explode and wipe the party. If either orb in a set is touched, it explodes ([a:aetheroplasm-boom]), dealing massive damage in a radius. The damage dealt by this attack is reduced by each player who is within the radius of the explosion. After soaking an orb in this way, both it and the orb it is tethered to disappear.
+      The length of each tether is based on the [a:aetheroplasm] soaks during [a:ultimate-annihilation]. The more players soak each orb during [a:ultimate-annihilation], the longer the tether for the corresponding orb pair.
+      An orb pair spawns on each intercardinal. The northwest orb pair corresponds to the first orb during [a:ultimate-annihilation] and the rest are situated in a clockwise manner, so the northeast orb pair corresponds to the second orb, the southeast pair to the third orb, and the southwest pair to the fourth orb.
+    resolve: |
+      Each soak deals massive amounts of damage, and there is very little time to heal in-between before you have to soak the next set. For this reason, it is recommended to split into two groups, but not light parties; soaking an orb with only 4 players would deal nigh-unsurvivable damage even with mitigation. Instead, Party Finder generally splits into a group that consists of both tanks and a group that consists of everyone else. The tank group soaks the southwest pair with defensive cooldowns, then the northwest pair. The other group soaks the southeast pair, then the northeast pair. Remember to wait for heals in-between.
+      This strategy is why the 3-3-1-1 soaks are recommended during [a:ultimate-annihilation]. By having 3 players soak the first two orbs and only one player soak the last two orbs, the first two orb pairs that are soaked during [a:aetheric-boom] have the shortest possible tether. This is fine, since both groups will soak these orbs immediately by virtue of being knocked back directly into those orbs. The tethers for the second sets of orb pairs are slightly longer to allow for healing in-between.
+      Keeping the tethers short also ensures that, no matter which of the two orbs of a given pair any individual player decide to soak, they will still be in range of the other orb's explosion in case someone touched the other orb first.
+      It is also generally recommended to use a [i:tank] limit break here, regardless of how many limit break bars you have, to make the mitigation and healing slightly easier. The heavy raidwides during [a:primal-roulette] all but ensure that you'll have another limit break 3 before the end of the fight no matter what.
+    children:
+    - at: 4143
+      id: aetheroplasm-boom
+      timing: player
+      link: then
+    - at: 7398
+      id: aetheroplasm-boom
+      timing: player
+  aetheroplasm-boom:
+    id: 11145
+    mechanic: stack.targeted
+    shape: chariot
+    damage: 25261
+    description: An orb belonging to an orb pair during [a:aetheric-boom] explodes as a result of a player stepping into it, dealing heavy damage that is split between all players who soak the orb.
+  viscous-aetheroplasm-random:
+    id: 11151
+    mechanic: mech.status
+    description: |
+      Inflicts three random players with [s:viscous-aetheroplasm].
+      One debuff has a duration of 12 seconds, another 32 seconds, and the last 52 seconds.
+  diffractive-laser:
+    id: 11128
+    mechanic: tb.mt
+    shape: chariot
+    damage: 13680
+    description: Moderate tankbuster.
+  ultimate-predation:
+    id: 11126
+    mechanic: mech.trio
+    major: true
+    compact: trim
+    description: |
+      [boss:c] becomes untargetable and teleports to a random intercardinal at the edge of the arena.
+      Garuda spawns on a random intercardinal close to the center of the arena.
+      Ifrit spawns on a random intercardinal at the edge of the arena, like [boss].
+      Titan spawns on a random cardinal at the edge of the arena. He's slightly offset to either side.
+      After several seconds, all three primals and [boss] execute a mechanic:
+      * Garuda uses [a:wicked-wheel-woken] and follows up with [a:wicked-tornado].
+      * Titan aims a [a:landslide-woken] in the direction that he's facing and follows up with [a:landslide-followup]. Notably, this [a:landslide] is *not* baited towards a player.
+      * Ifrit uses [a:crimson-cyclone-woken] and follows up with [a:crimson-cyclone-echo].
+      * [boss:c] uses [a:ceruleum-vent], a close-range AoE that kills anyone close to [boss].
+      All mechanics are executed simultaneously, except for [a:ceruleum-vent] which is executed two seconds later.
+      Afterwards, Garuda screams for [a:feather-rain] and [boss] teleports back to the center of the arena, where it becomes targetable again.
+    resolve: |
+      While dodging all these mechanics at the same time may seem daunting, there is a simple strategy that requires very little thought and can be executed regardless of the exact pattern. The only downside is that it is quite precise.
+      For this strategy, we exploit the fact that [a:wicked-tornado] has a finite range to outrange it, allowing us to ignore Garuda entirely and focus on Ifrit and Titan. To do this, identify which intercardinal Garuda has spawned on. The two cardinals farthest from her are now the "target cardinals". If one of those two cardinals has Titan on it, ignore it and go to the other cardinal. If neither cardinal has Titan on it, then either cardinal is safe. If possible, you may wish to select the cardinal perpendicular from Ifrit. This way you don't have to worry about [a:crimson-cyclone-woken].
+      For this strategy, we're going to use the runes behind the edge on the outside of the arena. The pattern just behind the death wall on the outside of the arena features two rows of various runes that circle the arena, excluding the cardinals themselves.
+      After going to the cardinal, find the *fourth* rune from the cardinal, either clockwise or counter-clockwise. Every fourth rune is safe from [a:wicked-tornado], [a:landslide-followup], and [a:crimson-cyclone-echo], *but not* [a:ceruleum-vent], so make sure the rune you choose is not near [boss].
+      Before going to that rune, check if the rune will be hit by the first [a:crimson-cyclone-woken] hit or a [a:landslide]. If yes, wait until the first hit is done, then go to the rune. If not, you can go to the rune right away and wait there until you hear Garuda scream.
+    tips:
+      - Since this is a purely individual mechanic, the only way you can cause a wipe here is if you move too early at the end and bait [a:feather-rain] in a bad location. Even then a wipe is unlikely.
+      - If you're not feeling confident, you can simply follow someone else until you've gotten a feel for the logic and the positioning.
+      - This strategy has only one "cursed" pattern. In this pattern, [boss], Ifrit, and Titan are all on the half of the arena safe from Garuda. If this happens, the only safe rune is directly under Ifrit, meaning you have to wait until the first hit of [a:crimson-cyclone-woken] has executed and then quickly move to the rune.
+    children:
+    - at: 4455
+      id: <untargetable>
+      description: |
+        [boss:c] becomes untargetable and teleports to a random position on the edge of the arena.
+    - at: 14837
+      id: landslide-woken
+      link: and
+    - at: 14837
+      id: crimson-cyclone-woken
+      link: and
+    - at: 14837
+      id: wicked-wheel-woken
+    - at: 16843
+      id: ceruleum-vent
+    - at: 22188
+      id: feather-rain
+  ultimate-annihilation:
+    id: 11596
+    mechanic: mech.trio
+    major: true
+    compact: trim
+    description: |
+      [boss:c] becomes untargetable and teleports to the north of the arena, where it becomes targetable again.
+      At the same time, Garuda spawns at the south of the arena, Titan southwest, and Ifrit southeast (or vice-versa).
+      First, three back-to-back [a:weight-of-the-land-woken] are baited underneath random players while one player is targeted for [a:flaming-crush] and another for [a:mesohigh-annihilation]. The [a:mesohigh-annihilation] tether can be passed.
+      After [a:flaming-crush] Garuda uses [a:eye-of-the-storm] and the first of four [a:aetheroplasm] orbs spawns. Each orb spawns at the northwest of [boss]'s hitbox and begins moving toward a random party member. When a player touches it, the orb explodes, dealing moderate damage to any nearby player and briefly tethering all nearby players to [boss]. For every player tethered the duty gauge climbs by one point, and the length of the tethers between orbs during [a:aetheric-boom] is increased.
+      After the first [a:mesohigh-annihilation] resolves, Ifrit uses [a:inferno-howl] to inflict [s:searing-wind] on a random healer. After a [a:feather-rain] another [a:aetheroplasm] orb spawns. Titan now begins casting an unbaited [a:landslide-woken] and Ifrit [a:crimson-cyclone-woken]. Another [a:aetheroplasm] orb spawns, another [a:eye-of-the-storm] happens, and the final [a:aetheroplasm] orb spawns while Garuda casts out a second [a:mesohigh-annihilation] tether.
+      There's a [a:tank-purge], another [a:feather-rain], and then [boss] briefly becomes untargetable as it teleports into the center of the arena for a last [a:eye-of-the-storm].
+    resolve: |
+      A lot happens during this mechanic and it may all seem rather unstructured and borderline random on first glance, but the resolution is relatively straightforward.
+      First, stack at the northeast of [boss]'s hitbox (which, since [boss] is facing the center of the arena, is towards the southwest of the arena). When the first [a:weight-of-the-land] appears, move directly across to [boss]'s northwest to bait another [a:weight-of-the-land], then back again. After the third [a:weight-of-the-land], have everyone split into one of four directions:
+      * Both your tanks and a designated melee go back to the northwest to soak the [a:aetheroplasm] orb that has just spawned there. We want this orb to be soaked by three players for a future mechanic ([a:aetheric-boom]). These three players stay there for the second orb as well. After soaking the second orb, they move up and stack directly north.
+      * One of your rangeds (ordinarily the physical ranged; they must still have a [s:thermal-low] stack from Phase 1) goes south to pick up and soak the [a:mesohigh-annihilation] tether. After [a:mesohigh-annihilation] resolves, they hurry to join the party north. Be aware that this player has no reason to go all the way south. They just need to avoid stacking with other players and avoid being too close to the [s:searing-wind] healer. Moving too far south will make it difficult to rejoin the party before [a:crimson-cyclone-woken].
+      * Your healers go directly west, away from everyone else. One of them will now be inflicted with [s:searing-wind]. They stay west. The other healer joins the rest of the group at the southeast of [boss]'s hitbox. The healer with [s:searing-wind] waits until the [a:mesohigh-annihilation] player has soaked the [a:mesohigh-annihilation] tether and moved away from south, then this healer replaces their spot south.
+      * Everyone else moves up, towards the southeast of [boss]'s hitbox. They wait there until the [a:feather-rain] has happened, then move north.
+      At this point everyone should be directly north, except the healer with [s:searing-wind], who should be directly south. Wait for [a:crimson-cyclone] and then move clockwise to the next intercardinal to dodge [a:crimson-cyclone-echo]. Only the tank designated to soak the last two orbs moves counter-clockwise instead. If you do this dodge, you can ignore Titan's [a:landslide-woken] entirely.
+      Move in to avoid [a:eye-of-the-storm] and have the tank who moved counter-clockwise soak the last two orbs solo. The [s:searing-wind] healer moves back south (inside the [a:eye-of-the-storm]) and picks up the [a:mesohigh-annihilation] tether. Since [s:searing-wind] can randomly target either healer here, it's important that both healers still have their [s:thermal-low] stack.
+      Mitigate the [a:tank-purge], avoid the [a:feather-rain], step in for another [a:eye-of-the-storm], and the mechanic is over. Make sure your [s:searing-wind] healer doesn't rejoin the party until their debuff has expired a short while after [a:eye-of-the-storm].
+    children:
+    - at: 4453
+      id: <untargetable>
+    - at: 8728
+      id: <targetable>
+    - at: 11309
+      id: weight-of-the-land-woken
+    - at: 13845
+      id: flaming-crush
+    - at: 14960
+      id: eye-of-the-storm
+    - at: 16476
+      id: aetheroplasm
+      timing: player
+    - at: 17010
+      id: mesohigh-annihilation
+    - at: 17901
+      id: inferno-howl
+    - at: 21596
+      id: feather-rain
+    - at: 22042
+      id: aetheroplasm
+      timing: player
+    - at: 23864
+      id: searing-wind
+    - at: 26135
+      id: crimson-cyclone-woken
+    - at: 26938
+      id: landslide-woken
+    - at: 29878
+      id: searing-wind
+    - at: 31972
+      id: eye-of-the-storm
+    - at: 32061
+      id: aetheroplasm
+      timing: player
+    - at: 34243
+      id: aetheroplasm
+      timing: player
+    - at: 34421
+      id: mesohigh-annihilation
+    - at: 35893
+      id: searing-wind
+    - at: 37180
+      id: tank-purge
+    - at: 39005
+      id: feather-rain
+    - at: 41230
+      id: <untargetable>
+      description: |
+        [boss:c] disappears as it teleports into the center of the arena.
+    - at: 41900
+      id: searing-wind
+    - at: 45508
+      id: <targetable>
+      description: |
+        [boss:c] reappears in the center of the arena.
+    - at: 47778
+      id: searing-wind
+    - at: 48804
+      id: eye-of-the-storm
+  post-predation-boulders:
+    name: Bomb Boulders
+    mechanic: aoe.rotating
+    shape: chariot
+    compact: full
+    description: |
+      Six back-to-back bomb boulders spawn on the inside of the arena in a rotating pattern.
+      Their behaviour is identical to the ones during Titan's phase, spawning in with [a:bury] and then exploding via [a:burst].
+    children:
+    - at: 0
+      id: bury
+    - at: 2003
+      id: bury
+    - at: 4008
+      id: bury
+    - at: 5565
+      id: burst
+    - at: 6011
+      id: bury
+    - at: 7573
+      id: burst
+    - at: 8018
+      id: bury
+    - at: 9577
+      id: burst
+    - at: 10024
+      id: bury
+    - at: 11583
+      id: burst
+    - at: 13586
+      id: burst
+    - at: 15592
+      id: burst
+  ultimate-suppression:
+    id: 11597
+    mechanic: mech.trio
+    major: true
+    compact: trim
+    description: |
+      [boss:c] becomes untargetable and every previously encountered enemy spawns in the arena at the same time.
+      * [boss:c] spawns on the outside of the arena northeast.
+      * Garuda spawns at the outside of the arena northwest.
+      * Ifrit spawns at the outside of the arena southeast.
+      * Titan spawns at the outside of the arena southwest.
+      * Suparna spawns close to the center of the arena northwest.
+      * Chirada spawns close to the center of the arena southeast.
+      Shortly afterwards:
+      * Three random players bait four back-to-back [a:eruption-suppression]s.
+      * One of those three players is targeted for [a:rock-throw-suppression]. They will be encased in a Granite Gaol immediately after the last [a:eruption-suppression] has been baited, but before it explodes. The [a:eruption] deals no damage to the Granite Gaol or the player within.
+      * Two random non-[a:eruption-suppression] players are marked for [a:mistral-song-suppression] by Chirada and Suparna.
+      * The player who is not baiting [a:eruption-suppression]s, is not a tank, and is not marked for [a:mistral-song-suppression] is targeted by [a:light-pillar]. [a:light-pillar] has no target marker of any kind.
+      Tanks are never targeted for any of these mechanics.
+      At the same time as all these mechanics resolve, four Featherlances spawn near the edge of the arena and begin to circle the arena counter-clockwise. If any player gets too close to the edge of the arena and touch one of these Featherlances they will explode, instantly killing them and all nearby players.
+      Many AoEs happen during this mini-phase. There are three [a:feather-rain]s, one [a:mistral-song-cone] (which has nothing to do with [a:mistral-song-suppression] and is merely a large conal AoE originating from Garuda), three [a:aetherochemical-laser]s, a [a:landslide-woken] toward a random player, one last [a:mesohigh-suppression] tether from Garuda at the northwest, a [a:flaming-crush], and a [a:tank-purge].
+    resolve: |
+      Tanks preposition at the southwest of the arena, roughly as close to the center of the arena as Chirada and Suparna. One tank is slightly inched towards Chirada, the other towards Suparna.
+      Everyone else should begin the mechanic at an arbitrary location on the edge of the arena somewhere between the west and north. It is vital that no two players are stacked at this point. This is because of [a:light-pillar] which, as mentioned, targets the player who isn't targeted by anything else. To identify the [a:light-pillar] player, it is therefore necessary to identify every [a:eruption-suppression] player, which is not possible if two players are stacked.
+      After [a:eruption-suppression]s start, all players (except the tanks) begin to move directly across to the southeast of the arena. Avoid baiting an [a:eruption-suppression] too close to either tank at all costs. While moving across, each player identifies the mechanic they have. There are only three possibilities:
+      * You are baiting an [a:eruption-suppression], in which case you go all the way across to the southeast, then (if you're not also the target for [a:rock-throw-suppression]) you rotate clockwise to avoid the last [a:eruption] and [a:feather-rain], then move back to hit the Granite Gaol.
+      * You have a [a:mistral-song-suppression] marker above your head, in which case you immediately begin heading towards the tanks at the southwest as soon as you realize it, and stand directly in-between both tanks. After the tanks have soaked [a:mistral-song-suppression], all four players at the southwest move southeast to help out with killing the Granite Gaol. Dodge [a:great-whirlwind] if necessary.
+      * You have nothing, in which case you have [a:light-pillar]. Pretend you have [a:eruption-suppression]s and follow the other players to the southeast, then break off from the rest of the party and begin to move counter-clockwise around the arena (don't go too far out to avoid Featherlances) to safely bait [a:light-pillar] away from the party.
+      After the Granite Gaol is destroyed, the remaining tank with [s:thermal-low] moves to intercept [a:mesohigh-suppression] at the northwest of the arena. All other players stack together close to where the Granite Gaol used to be. This baits the [a:landslide-woken] towards the stack. Dodge the [a:landslide-woken], then move back to where you previously stacked to soak [a:flaming-crush] and bait [a:feather-rain]. Mitigate and heal for [a:tank-purge].
+    children:
+    - at: 4453
+      id: <untargetable>
+    - at: 10866
+      id: rock-throw-suppression
+    - at: 11310
+      id: eruption-suppression
+    - at: 14915
+      id: mistral-song-suppression
+    - at: 16826
+      id: light-pillar
+    - at: 17126
+      id: mistral-song-cone
+    - at: 19540
+      id: feather-rain
+    - at: 21056
+      id: great-whirlwind
+      count: 2
+    - at: 21458
+      id: feather-rain
+    - at: 26090
+      id: aetherochemical-laser
+    - at: 29518
+      id: landslide-woken
+    - at: 32322
+      id: mesohigh-suppression
+    - at: 33079
+      id: flaming-crush
+    - at: 33346
+      id: super-cyclone-1
+    - at: 37969
+      id: feather-rain
+    - at: 38370
+      id: tank-purge
+  primal-roulette:
+    name: Primal Roulette
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      [boss:c] inflicts [s:viscous-aetheroplasm] on three random party members, then each of the three primals briefly appears to execute one mechanic and a raidwide before leaving again.
+      The order in which the primals appear is random, but Ifrit can never appear last and Titan can never appear in the middle. This means that there are only three possible patterns: Ifrit -> Garuda -> Titan, Garuda -> Ifrit -> Titan, or Titan -> Ifrit -> Garuda.
+      Garuda executes a [a:wicked-wheel-woken], an [a:aerial-blast], and leaves with a [a:feather-rain].
+      Ifrit executes [a:eruption-roulette]s, two [a:crimson-cyclone]s covering all cardinals, and concludes with a [a:hellfire].
+      Titan executes [a:weight-of-the-land-woken] and an [a:earthen-fury].
+    resolve: |
+      Primal Roulette is relatively trivial to resolve as long as sufficient healing and mitigation is present for the raidwides. Since Ifrit's [a:crimson-cyclone] always leaves the intercardinals safe, try to always preposition north until you know what primal you're getting, so that you don't end up baiting an [a:eruption-roulette] on top of the intercardinal safe spot.
+    children:
+    - at: 0
+      id: viscous-aetheroplasm-random
+    - at: 10820
+      id: primal-roulette-ifrit
+      link: or
+    - at: 10820
+      id: primal-roulette-garuda
+      link: or
+    - at: 10820
+      id: primal-roulette-titan
+    - at: 31472
+      id: primal-roulette-garuda
+      link: or
+    - at: 31472
+      id: primal-roulette-ifrit
+    - at: 49047
+      id: primal-roulette-titan
+      link: or
+    - at: 49047
+      id: primal-roulette-garuda
+  primal-roulette-garuda:
+    name: Primal Roulette (Garuda)
+    mechanic: mech
+    description: Garuda executes a [a:wicked-wheel-woken], an [a:aerial-blast], and leaves with a [a:feather-rain].
+    children:
+    - at: 0
+      id: wicked-wheel-woken
+    - at: 1334
+      id: viscous-aetheroplasm-stack
+    - at: 6858
+      id: aerial-blast
+    - at: 14519
+      id: feather-rain
+  primal-roulette-ifrit:
+    name: Primal Roulette (Ifrit)
+    mechanic: mech
+    description: Ifrit executes [a:eruption-roulette]s, two [a:crimson-cyclone]s covering all cardinals, and concludes with a [a:hellfire].
+    children:
+    - at: 0
+      id: eruption-roulette
+    - at: 446
+      id: crimson-cyclone
+      description: Ifrit clones dash through the arena in a plus shape, leaving only the intercardinals safe.
+      count: 2
+    - at: 2004
+      id: viscous-aetheroplasm-stack
+    - at: 8455
+      id: hellfire
+  primal-roulette-titan:
+    name: Primal Roulette (Titan)
+    mechanic: mech
+    description: Titan executes [a:weight-of-the-land-woken] and an [a:earthen-fury].
+    children:
+    - at: 0
+      id: weight-of-the-land-woken
+    - at: 3761
+      id: viscous-aetheroplasm-stack
+    - at: 9594
+      id: earthen-fury
+  channel:
+    name: Aether Channel
+    mechanic: mech
+    description: |
+      [boss:c] begins to channel aether at a rate of 2 points per second until the duty gauge has reached 100.
+  citadel-siege:
+    id: 11149
+    mechanic: enrage.soft
+    damage: 0
+    compact: trim
+    description: |
+      The enrage sequence begins whenever the duty gauge has reached 100.
+      Every three seconds whichever player is still alive and has dealt the least damage to [boss] in total is [stunned](s:stun), pulled into the middle of the arena, [lifted](s:airbound), and instantly killed ([a:citadel-siege-hit]).
+      Once only one player is left, that player is pulled dead center and lifted like the others, but isn't killed immediately. Instead, [boss] steps forward and eats them alive while unleashing all its absorbed aether in a magical explosion several times more destructive than [a:ultima], wiping the party.
+    children:
+    - at: 0
+      id: citadel-siege-hit
+    - at: 3000
+      id: citadel-siege-hit
+    - at: 6000
+      id: citadel-siege-hit
+    - at: 9000
+      id: citadel-siege-hit
+    - at: 12000
+      id: citadel-siege-hit
+    - at: 15000
+      id: citadel-siege-hit
+    - at: 18000
+      id: citadel-siege-hit
+    - at: 26000
+      id: sabik
+  citadel-siege-hit:
+    id: 11149
+    mechanic: damage
+    damage: 999999
+    description: |
+      [boss:c] [stuns](s:stun) a player while pulling them middle, then [lifts](s:airbound) them and kills them instantly, absorbing their aether.
+  sabik:
+    id: 11155
+    mechanic: enrage
+    damage: 999999
+    description: |
+      [boss:c] [stuns](s:stun) the last living player while pulling them dead center, then [lifts](s:airbound) them and steps forward to eat them alive while unleashing all its absorbed aether in a magical explosion several times more destructive than [a:ultima].
 timeline:
   - at: 0
     id: awakening
   - at: 0
     id: <phase>
     name: Garuda
+    hp: 1664845
   - at: 8383
     id: slipstream
   - at: 10928
@@ -844,6 +1478,7 @@ timeline:
   - at: 180623
     id: <phase>
     name: Ifrit
+    hp: 1408008
   - at: 185000
     id: ifrit-transition
   - at: 196164
@@ -940,6 +1575,7 @@ timeline:
   - at: 358400
     id: <phase>
     name: Titan
+    hp: 1449210
   - at: 360663
     id: geocrush-initial
   - at: 363017
@@ -987,12 +1623,15 @@ timeline:
   - at: 461491
     id: granite-impact
     description: If the Granite Gaol is still alive by this point, it enrages and wipes the party.
+    timing: skippable
   - at: 462016
     id: landslide-woken
   - at: 467217
     id: tumult-x6
   - at: 474925
     id: rock-buster
+  - at: 476000
+    id: kill-time
   - at: 484225
     id: bury
   - at: 485698
@@ -1024,4 +1663,130 @@ timeline:
     description: Titan becomes untargetable and prepares to cast his enrage.
   - at: 539734
     id: earthen-fury-enrage
-  
+  - at: 539734
+    id: <phase>
+    name: Intermission
+  - at: 548820
+    id: magitek-freefire
+  - at: 551820
+    id: <targetable>
+    description: |
+      Six magitek bits spawn around the arena and begin casting [a:self-detonate], which wipes the party if permitted to complete.
+      The magitek bits take minuscule damage from anything other than a [i:caster] limit break 3.
+  - at: 563847
+    id: self-detonate
+    timing: skippable
+  - at: 575840
+    id: blight
+  - at: 584875
+    id: <targetable>
+  - at: 597765
+    id: <untargetable>
+  - at: 601878
+    id: dark-iv
+    timing: skippable
+  - at: 607864
+    id: ultima
+  - at: 651641
+    id: <phase>
+    name: The Ultima Weapon
+    hp: 3746181
+  - at: 651641
+    id: ultima-aether
+  - at: 651641
+    id: <targetable>
+    description: |
+      [boss:c] becomes targetable.
+      Note that while [boss] has the [s:woken] buff and can cast primal abilities like [a:landslide], it will never cast the [s:woken] versions of those abilities. Only the primals themselves can use [s:woken] abilities.
+  - at: 655702
+    id: tank-purge
+  - at: 657930
+    id: viscous-aetheroplasm
+  - at: 664078
+    id: homing-lasers
+  - at: 669112
+    id: viscous-aetheroplasm-stack
+  - at: 675262
+    id: ultimate-predation
+  - at: 699409
+    id: <targetable>
+    description: |
+      [boss:c] reappears in the center of the arena.
+  - at: 711312
+    id: eruption
+  - at: 716795
+    id: infernal-fetters
+  - at: 722816
+    id: radiant-plume
+    description: AoEs that cover the outside of the arena.
+  - at: 722994
+    id: post-predation-boulders
+  - at: 726334
+    id: landslide-woken
+  - at: 727048
+    id: landslide-ultima
+  - at: 731500
+    id: tumult-x7
+  - at: 734265
+    id: viscous-aetheroplasm
+  - at: 739345
+    id: wicked-wheel-woken
+  - at: 741351
+    id: mistral-shriek
+  - at: 744688
+    id: feather-rain
+  - at: 745445
+    id: viscous-aetheroplasm-stack
+  - at: 746513
+    id: homing-lasers
+  - at: 748205
+    id: feather-rain
+  - at: 753721
+    id: ultimate-annihilation
+  - at: 806348
+    id: homing-lasers
+  - at: 814536
+    id: eye-of-the-storm
+  - at: 817567
+    id: radiant-plume
+    description: AoEs that cover the inside of the arena.
+    count: 4
+  - at: 819925
+    id: diffractive-laser
+  - at: 824059
+    id: vulcan-burst
+  - at: 826058
+    id: eye-of-the-storm
+  - at: 831708
+    id: homing-lasers
+  - at: 835888
+    id: vulcan-burst
+  - at: 838065
+    id: eye-of-the-storm
+  - at: 839532
+    id: diffractive-laser
+  - at: 845674
+    id: ultimate-suppression
+    timing: push
+  - at: 890365
+    id: <targetable>
+  - at: 895440
+    id: ultima
+  - at: 905637
+    id: aetheric-boom
+  - at: 926853
+    id: primal-roulette
+  - at: 989326
+    id: <untargetable>
+    description: |
+      [boss:c] briefly disappears as it teleports north.
+  - at: 993602
+    id: <targetable>
+    description: |
+      [boss:c] reappears north.
+  - at: 994602
+    id: channel
+  - at: 1020602
+    id: citadel-siege
+    timing: player
+    
