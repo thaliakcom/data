@@ -21,20 +21,21 @@ status:
     type: condition
     description: |
       Inflicted by [a:cyclone] and [a:friction]. Grants resistance to [a:mesohigh]. Without this status effect, [a:mesohigh] deals lethal damage to the player who takes the tether.
-      This effect can be cleansed by taking a [a:mesohigh] tether, standing near a player who takes a [a:mesohigh] tether, or by entering the bubble left behind by the Spiny Plume to trigger [a:super-cyclone-1].
+      This effect can be cleansed by taking a [a:mesohigh] tether, standing near a player who takes a [a:mesohigh] tether, or by entering the bubble left behind by the Spiny Plume to trigger [a:super-cyclone].
       Note that cleansing this effect deals raidwide damage. Cleansing [s:thermal-low] deals mild raidwide damage, cleansing [s:thermal-low:2] deals significant raidwide damage, and cleansing [s:thermal-low:3] deals unsurvivable raidwide damage.
       Every time a [s:thermal-low:2] is cleansed, Garuda gains one stack of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] transforms into [s:woken].
       [s:thermal-low] stacks persist through death.
   aetherially-charged:
     id: 1528
     type: indicator
+    affects: enemy
     description: |
-      A "transitional" state. Has no effect on its own, but indicates that the primal (Garuda, Ifrit, or Titan) are in the process of becoming [s:woken].
+      A "transitional" state. Has no effect on its own, but indicates that the primal (Garuda, Ifrit, or Titan) is in the process of becoming [s:woken].
       The primal becomes [s:woken] when this buff accumulates at least 4 stacks.
       Each primal has a different set of conditions for accumulating stacks of [s:aetherially-charged].
       * Garuda gains a stack of [s:aetherially-charged] each time a [s:thermal-low:2] is cleansed.
       * Ifrit gains a stack of [s:aetherially-charged] each time an Infernal Nail with [s:damage-up:2] and [s:vulnerability-down:2] is destroyed.
-      * Titan gains a stack of [s:aetherially-charged] for every 3 seconds he remains within a sludge puddle left behind by a Granite Gaol exploding via [a:rock-throw] or [a:freefire].
+      * Titan gains a stack of [s:aetherially-charged] for every 3 seconds he remains within a sludge puddle left behind by a Granite Gaol exploding via [a:burst] or [a:freefire].
   windburn:
     id: 235
     type: dot
@@ -49,6 +50,7 @@ status:
   beyond-limits:
     id: 1530
     type: form
+    affects: player
     description: |
       If a player with this effect uses limit break, all utilized limit break bars are instantly refilled after a short delay. This status effect is consumed in the process.
       Note that this refund only applies to "full" limit break bars, not partial ones, so for example if limit break 2 is used at 2.5 bars, it only refills 2 bars, not 2.5 bars.
@@ -59,7 +61,7 @@ status:
     type: resistance
     description: |
       Grants moderate resistance to all wind damage.
-      Granted on players inside the Spiny Plume's bubble, and on players who have soaked a [a:mesohigh] tether (for 3 seconds). In the case of the latter, this buff simply ensures that the player who soaked the tether does not die from the subsequent [a:super-cyclone-1](s).
+      Granted on players inside the Spiny Plume's bubble, and on players who have soaked a [a:mesohigh] tether (for 3 seconds). In the case of the latter, this buff simply ensures that the player who soaked the tether does not die from the subsequent [a:super-cyclone](s).
   woken:
     id: 1529
     type: form
@@ -104,7 +106,8 @@ status:
     id: 202
     type: vuln
     duration: 1000
-    description: Brief stacking vulnerability inflicted by [a:infernal-surge]. Avoid destroying multiple Infernal Nails at the same time to keep this debuff in check.
+    description: |
+      Brief stacking vulnerability inflicted by [a:infernal-surge]. Unlike most instances of this debuff in modern content, this does not represent a mechanical failure in The Weapon's Refrain and cannot, in fact, be avoided. It's merely a means for the fight to trigger a wipe (or at least several deaths) if you destroy too many nails at the same time. Try to wait one second in-between each nail kill and this debuff will have no effect.
   accursed-flame:
     id: 1527
     type: dot
@@ -115,7 +118,7 @@ status:
     id: 1255
     type: vuln
     duration: 5000
-    description: Renders subsequent fire damage taken lethal. Inflicted by [a:incinerate].
+    description: Renders subsequent fire damage taken lethal. Inflicted by [a:incinerate-hit].
   fetters:
     id: 292
     type: impairment
@@ -168,6 +171,7 @@ actions:
     tank-damage: 30000
     damage: 12000
     players: 7
+    compact: full
     description: |
       Marks a random healer. After a short delay, Garuda fires a [ms:line] AoE towards that healer, dealing massive damage to the first player in line and moderate damage to all remaining players.
       A [a:great-whirlwind] spawns 6 seconds later wherever the first player in line stood when they took the hit. This [a:great-whirlwind] repeats again two more times in the same location.
@@ -211,31 +215,91 @@ actions:
     damage: 7256
     players: 0
     description: |
-      Small invisible AoEs under 5 random players' past positions. The only warning you get is Garuda or her sisters (Chirada and Suparna) screaming approximately 2.5 seconds earlier and flying away.
-      Any player hit takes significant damage and is inflicted with [s:windburn].
+      Garuda or her sisters (Chirada and Suparna) scream and fly away. Approximately 2.5 seconds later, small AoEs hit where 5 random players were at the time of the scream.
+      The AoEs remain invisible until shortly before they resolve, too late to react to. Any player hit sustains significant damage and is inflicted with [s:windburn].
+    resolve: |
+      Try to stack with as many players as possible before the scream happens, then move away after. Since there is no cast bar, this necessitates knowing the fight's timeline to know exactly when each scream happens. Most of the fight is spent stacked with other players, so when in doubt simply stay stacked.
+      Avoid moving early, as this is likely to place an AoE in the path of another player when they move to dodge.
   thermal-tumult:
     id: 11076
     mechanic: enrage
     damage: 0
-    description: If the Satin Plumes are not killed by this point, they enrage here. Deals no damage but inflicts [s:sleep] on all players.
+    description: If any Satin Plume is still alive by this point, it enrages here. Deals no damage but inflicts [s:sleep] on all players.
   mistral-shriek:
     id: 11092
     mechanic: raidwide
     damage: 16458
     description: Heavy raidwide.
+  plumes:
+    name: Plumes
+    mechanic: adds
+    major: true
+    compact: trim
+    description: |
+      Four Satin Plumes spawn and each tether to a different DPS player. A Spiny Plume also spawns and tethers to the first player that deals damage to it. After a short delay, all plumes move toward the player they're tethered to.
+      Satin Plumes are purple and largely unthreatening, but if left alive for too long they will cast [a:thermal-tumult], putting all players to [s:sleep] and guaranteeing a wipe.
+      The Spiny Plume (green and larger than the Satin Plume) attacks the tethered player with [a:cyclone], a heavy tankbuster that cannot be survived by a non-tank. Each [a:cyclone] inflicts one stack of [s:thermal-low] on the tethered player.
+      The Spiny Plume must be picked up (i.e. attacked first) by the off-tank. This is because every 9 seconds the Spiny Plume attacks the tethered player with [a:cyclone], a heavy tankbuster that cannot be survived by a non-tank. While the Spiny Plume does not have a "proper" enrage, [a:cyclone] gives it its own enrage (of sorts), as each [a:cyclone] inflicts a stack of [s:thermal-low] and any player reaching [s:thermal-low:3] all but ensures a wipe.
+      When the Spiny Plume dies, it explodes with a moderate AoE ([a:gigastorm]) and leaves behind a bubble in the shape of that same AoE. Stepping into the bubble grants [s:thermal-high] and cleanses all [s:thermal-low] stacks. See [a:gigastorm] for more information.
+    resolve: |
+      Once the plumes spawn, the off-tank should attack the Spiny Plume immediately to force the Spiny Plume to tether them. [a:provoke] works as well. If the off-tank is too slow to attack it, a stray AoE from one of the other players is likely to hit it, causing it to tether to them instead and guaranteeing a wipe.
+      The main tank tanks Garuda away from the party while all other party members (including the off-tank) stack behind Garuda and wait for the Satin Plumes to gather. AoE the Satin Plumes down as fast as possible. *Stop AoEing* the moment the last Satin Plume has died. Do *not* defeat the Spiny Plume until after Garuda has flown away for [a:feather-rain] or the resulting bubble does not last enough to resolve all mechanics.
+    children:
+    - at: 0
+      id: <targetable>
+      description: 1 Spiny Plume and 4 Satin Plumes spawn.
+    - at: 3733
+      id: slipstream
+    - at: 7211
+      id: downburst
+    - at: 7344
+      id: cyclone
+      timing: skippable
+    - at: 14549
+      id: <untargetable>
+      description: |
+          Garuda screams and flies away, becoming untargetable.
+          The Satin Plumes should be dead by this point, but **not** the Spiny Plume. It *must* be allowed to cast its second [a:cyclone] first or a wipe is all but guaranteed. It is recommended to leave the Spiny Plume alive until [a:mistral-shriek]. The earlier you kill it, the less time you have for [s:thermal-low:2] cleanses.
+    - at: 16463
+      id: cyclone
+      timing: skippable
+    - at: 17130
+      id: feather-rain
+    - at: 18823
+      id: <targetable>
+      description: Garuda returns to the arena.
+    - at: 20336
+      id: thermal-tumult
+      timing: skippable
   gigastorm:
     id: 11078
     mechanic: aoe
+    major: true
     shape: chariot
+    compact: trim
     description: |
       The Spiny Plume explodes a short while after being killed. Kills all players caught in its radius, then leaves behind a bubble.
-      Players in the bubble are afflicted with [s:thermal-high] and take reduced wind damage. Stacks of [s:thermal-low] are instantly cleansed from a player once they step inside the bubble, triggering [a:super-cyclone-1]. The bubble lasts for approximately 23 seconds.
+      When a player steps into the bubble, all stacks of [s:thermal-low] are cleansed from them, triggering [a:super-cyclone]. They are also granted [s:thermal-high] for as long as they remain within the bubble, reducing all wind damage taken (primarily affecting [a:super-cyclone] and [a:friction]).
+      If a player is inflicted with [s:thermal-low] while inside the bubble, [s:thermal-low] is instantly cleansed, triggering [a:super-cyclone-1].
+      The bubble lasts for approximately 23 seconds. During this time (assuming the Spiny Plume is not killed too early or too late), Garuda casts 2× [a:friction], a small AoE targeting a random player that deals heavy damage and inflicts a stack of [s:thermal-low] on all players hit.
+      The more stacks of [s:thermal-low] a player has when they enter the bubble, the more damage [a:super-cyclone] deals from the resulting cleanse. At [s:thermal-low:3], [a:super-cyclone] deals lethal damage to all players.
     resolve: |
-      Kill the Spiny Plume sometime between its second and third [a:cyclone]. If you kill it too early, you will be missing a crucial [s:thermal-low] stack and, more importantly, the bubble will fade before you've had the chance to cleanse enough [s:thermal-low] stacks, making it impossible to [awaken](s:woken) Garuda and guaranteeing a wipe. Kill it too late and the Spiny Plume tank will be inflicted with [s:thermal-low:3], which cannot be cleansed without causing a wipe.
-      All players should enter the bubble initially except for the Spiny Plume tank, who should wait until the damage from [a:mistral-shriek] is healed before stepping into the bubble. This triggers the first [a:super-cyclone-2] and grants Garuda her first stack of [s:aetherially-charged].
-      Afterwards, before the first [a:friction] both melees (as is standard for PF, but you may choose any two players) and the Spiny Plume tank should exit the bubble while still stacking with the rest of the party. The first [a:friction] takes place and inflicts [s:thermal-low] on the three players outside the bubble while immediately cleansing the [s:thermal-low] stacks of anyone inside the bubble, triggering 5× [a:super-cyclone-1]. Heal this damage up before the second [a:friction].
-      All players now exit the bubble before the second [a:friction]. If done correctly, all players should end up with [s:thermal-low], while the melees and tank end up with [s:thermal-low:2]. What follows is most likely the toughest heal check in the fight – both melees must now consecutively cleanse their [s:thermal-low:2]. They must do so by stepping into the bubble in the brief amount of time before it disappears, but since each cleanse triggers a heavy [a:super-cyclone-2], all players must be nearly fully healed in-between each cleanse. If the melees play it too safe, waiting for heals for too long, the bubble will fade and a wipe is guaranteed. If the healers don't heal the party back up quickly enough, the melees are either forced to cleanse with the party too low to survive it (causing a wipe) or forced to wait until the bubble disappears, again guaranteeing a wipe. Use whatever mitigation and personal healing tools you can afford here. Personal cooldowns such as [a:second-wind], [a:curing-waltz], [a:riddle-of-earth], or [a:bloodbath] are particularly valuable here.
-      If done correctly, you should end up with 5 players with [s:thermal-low], 2 players with nothing, and 1 player with [s:thermal-low:2], as well as [s:aetherially-charged:3] on Garuda.
+      The bubble left behind by the Spiny Plume is key to granting [s:woken] to Garuda. The recommended order of operations is this:
+      1. All players except the Spiny Plume tank (who should be the only player with [s:thermal-low:2]) enter the bubble immediately.
+      2. After all players have entered the bubble and the damage from [a:mistral-shriek] has been healed, the Spiny Plume tank enters the bubble to cleanse their stacks, triggering [a:super-cyclone-2] and granting Garuda her first stack of [s:aetherially-charged].
+      3. The Spiny Plume tank and both melees exit the bubble. Note that everyone should remain stacked here. Even the players who are now outside the bubble should remain stacked with the players inside the bubble, else [a:friction] may miss some players.
+      4. Garuda casts [a:friction]. If everyone is properly stacked, this grants the players outside the bubble (i.e. the Spiny Plume tank and both melees) [s:thermal-low] and triggers 5× [a:super-cyclone-1] (from the players inside the bubble whose [s:thermal-low] stack is instantly cleansed).
+      5. All players exit the bubble. Just like before, remain stacked. Heal the damage.
+      6. Garuda casts [a:friction], granting the Spiny Plume tank and the two melees [s:thermal-low:2] and everyone else [s:thermal-low].
+      7. Wait for heals, then the first melee briefly steps into the bubble and back out, cleansing their [s:thermal-low:2], triggering [a:super-cyclone-2], and granting Garuda [s:aetherially-charged:2].
+      8. Wait for heals, then the second melee briefly steps into the bubble and back out, cleansing their [s:thermal-low:2], triggering [a:super-cyclone-2], and granting Garuda [s:aetherially-charged:3].
+      For this strategy to work, killing the Spiny Plume at the correct time (roughly in-between Garuda flying away and casting [a:mistral-shriek]) is essential. Kill it too early and the bubble fades before the second melee has had the chance to cleanse their [s:thermal-low:2], guaranteeing a wipe as it is no longer possible to awaken Garuda. Kill the Spiny Plume too late and the Spiny Plume tank doesn't have time to cleanse their [s:thermal-low:2] before the first [a:friction], or they wind up with the wrong number of [s:thermal-low] stacks.
+      By the time the bubble fades, Garuda should be at [s:aetherially-charged:3], one tank should be at [s:thermal-low:2], and all other players but the melees should be at [s:thermal-low]. Garuda is not yet [s:woken] here. We'll be awakening Garuda later by having the [s:thermal-low:2] tank soak [a:mesohigh].
+      **For healers**: Depending on how early the Spiny Plume dies, there may be a very limited amount of time for the melees' [s:thermal-low:2] cleanses before the bubble fades. Therefore, try precasting your heals so that the heal cast finishes just as the damage is applied to reduce the time that melees have to wait before the next one can cleanse.
+      **For melees**: Using [a:second-wind] and [a:bloodbath] after [a:friction] is a must, as you will be taking the most damage out of anyone. At the start of the fight, discuss which of you will cleanse first.
+    trivia: |
+      The developers likely intended for all four [s:thermal-low:2] cleanses to take place during the bubble, awakening Garuda immediately. However, since that would represent a very tight heal check and an alternative exists, virtually no party does it this way. It is possible, however, to awaken Garuda during the bubble, in which case the phase completely changes since you'll be facing [s:woken] mechanics immediately. (Or at all, since most parties defeat Garuda just after awakening her, which serves as more evidence that this is a dev-unintended strategy since you skip all of her [s:woken] mechanics this way.)
+      The alternative in question (namely [a:mesohigh]) is likely a "bug" – in a way. [a:mesohigh] cleansing [s:thermal-low] is definitely intended since [s:thermal-low] is required to survive it, and if [a:mesohigh] did not cleanse [s:thermal-low] it would mean that you could simply designate a single player to soak all [a:mesohigh] tethers during the fight. However, the developers likely did not intend for [a:mesohigh] to be able to grant [s:aetherially-charged].
     children:
     - at: 4587
       id: super-cyclone-2
@@ -258,6 +322,20 @@ actions:
       id: super-cyclone-2
       description: The second melee cleanses [s:thermal-low:2], triggering a heavy raidwide and granting Garuda [s:aetherially-charged:3].
       timing: player
+  super-cyclone:
+    id: 11079
+    mechanic: raidwide
+    description: |
+      Raidwide as a result of a player cleansing their [s:thermal-low] stacks. Deals more damage the more stacks are cleansed.
+      At [s:thermal-low], deals mild damage.
+      At [s:thermal-low:2], deals heavy damage.
+      At [s:thermal-low:3], deals lethal damage.
+    children:
+      - at: 0
+        id: super-cyclone-1
+        link: or
+      - at: 0
+        id: super-cyclone-2
   super-cyclone-1:
     id: 11079
     mechanic: raidwide
@@ -300,7 +378,7 @@ actions:
       Marks a random DPS and healer. After a short delay, Chirada and Suparna (who spawn on random cardinals outside the arena) each fire a [ms:line] AoE towards their marked player, dealing heavy damage to the first player in line and mild damage to all remaining players.
       A [a:great-whirlwind] then spawns wherever the first players in line stood when they took the hit.
     resolve: |
-      [a:mistral-song] must be intercepted by tanks. To simplify things, have your party always stack on the same location (using a waymark is a good idea) and use a simple priority system to determine which tanks intercepts which of the sisters.
+      [a:mistral-song] must be intercepted by tanks. To simplify things, have your party always stack on the same location (using a waymark is a good idea) and use a simple priority system to determine which tank intercepts which of the sisters.
   mistral-song-suppression:
     id: 11083
     mechanic: aoe.intercept
@@ -349,8 +427,7 @@ actions:
     resolve: |
       Have your tank (with [s:thermal-low:2]) soak the east tether and your caster (with [s:thermal-low]) the west tether. This grants Garuda her last [s:aetherially-charged] stack, granting her [s:woken].
       At this point only your healers, physical ranged DPS, and one tank should still have a [s:thermal-low] stack. Your physical ranged DPS and one random healer (hence why both healers need [s:thermal-low]) will need them to resolve [a:mesohigh] tethers during [a:ultimate-annihilation]. Your tank will need it to resolve a [a:mesohigh] tether during [a:ultimate-suppression].
-    trivia: |
-      [a:mesohigh] tethers cleansing [s:thermal-low] is intended, as [s:thermal-low] is required to soak [a:mesohigh] and the developers didn't want the same player to be able to soak [a:mesohigh] twice. However, this cleanse being able to grant [s:aetherially-charged] if a [s:thermal-low:2] is cleansed is likely a bug, or at least an unintended strategy, as it completely deviates from the way you accumulate [s:aetherially-charged] during Titan and Ifrit, not to mention the fact that, by [awakening](s:woken) Garuda so late, you're skipping every single [s:woken] mechanic. You're likely meant to cleanse 4× [s:thermal-low:2] with the Spiny Plume bubble, but this is an *extremely* tight heal check and results in you seeing the [s:woken] mechanics much sooner, so it is not recommended.
+    trivia: As explained in [a:gigastorm], [a:mesohigh] cleanses are most likely not intended to be able to grant [s:aetherially-charged].
   mesohigh-annihilation:
     id: 11081
     mechanic: spread.tethers
@@ -373,7 +450,6 @@ actions:
   kill-time:
     name: Target Kill Time
     mechanic: hint
-    major: true
     description: |
       With current gear and job kits, most experienced parties can kill the boss at around this time.
       **For Garuda, do not attempt to kill the boss sooner than this** or a wipe is guaranteed. Garuda is currently the only primal that can be killed before you get the chance to [awaken](s:woken) them.
@@ -396,6 +472,45 @@ actions:
       id: radiant-plume
       description: AoEs that cover the entire arena except a small safe spot in either the west or east, and north or south.
       count: 10
+  ifrit-dashes:
+    name: Ifrit Dashes
+    mechanic: mech
+    major: true
+    compact: trim
+    description: |
+      Ifrit becomes untargetable and jumps away. A short while later, he reappears outside the arena along with three of his clones.
+      The exact positions of the four Ifrits are based on the positions of the Infernal Nails you previously destroyed. Each nail was positioned on either a cardinal or an intercardinal, and the positions of the Ifrits mirror the nails exactly, spawning an Ifrit on a cardinal or intercardinal that previously seated a nail.
+      Each Ifrit now prepares to cast [a:crimson-cyclone]. If Ifrit is [s:woken] by this point, his [a:crimson-cyclone] will be the [woken](a:crimson-cyclone-woken) version (with a follow-up). The other three Ifrits will only use the normal version of [a:crimson-cyclone] without the follow-up.
+      The *order* that the Ifrits use their [a:crimson-cyclone] in is *also* based on the Infernal Nails – specifically their kill order. As an example, if there was a nail east, southeast, southwest, and north, and they were killed in the recommended order (in this case southwest, north, southeast, east), then the first Ifrit using [a:crimson-cyclone] will be southwest, the second one north, the third southeast, and the last one east. One of them will randomly be the real ([s:woken]) Ifrit.
+    resolve: |
+      Start at the position of the last nail to be killed (therefore also the last Ifrit to dash across the arena). Ideally, your tank should have already dragged the boss to this position after [a:hellfire-nails].
+      To identify which Ifrit is the real one and will use the follow-up, find the Ifrit with the blue glow. The goal is to end up on the same position as the [s:woken] Ifrit, across from him, or at a 90° angle from him, after he dashes.
+      If the glowing Ifrit is the first or third Ifrit (to your left), you wait for the first dash, then move one position counter-clockwise and stop there.
+      If the glowing Ifrit is the second (to your right) or fourth (behind you) Ifrit, you wait for the first dash, then quickly move two positions counter-clockwise. If you're extra fast, you may have to wait for the second dash before moving into it, but since dashes resolve very quickly this should generally not be necessary.
+      Your [s:searing-wind] healer will perform the same dodge, but directly across from the party on the opposite side of the arena.
+    children:
+    - at: 0
+      id: <untargetable>
+      description: Ifrit jumps away, becoming untargetable.
+    - at: 3783
+      id: searing-wind
+    - at: 7399
+      id: crimson-cyclone
+      link: then
+    - at: 8829
+      id: crimson-cyclone
+      link: then
+    - at: 9811
+      id: searing-wind
+      link: and
+    - at: 10213
+      id: crimson-cyclone
+      link: then
+    - at: 11600
+      id: crimson-cyclone
+    - at: 15799
+      id: <targetable>
+      description: Ifrit returns to the arena.
   crimson-cyclone:
     id: 11103
     mechanic: aoe
@@ -450,6 +565,22 @@ actions:
     id: 11094
     mechanic: tb.mt
     shape: cone
+    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
+    resolve: Despite the fact that [a:incinerate] is [dt:dark] damage [invulns](t:invuln) do work, so just invuln all three hits.
+    children:
+    - at: 0
+      id: incinerate-hit
+      link: then
+    - at: 3114
+      id: incinerate-hit
+      link: then
+    - at: 7210
+      id: incinerate-hit
+  incinerate-hit:
+    id: 11094
+    name: Incinerate (Hit)
+    mechanic: tb.mt
+    shape: cone
     damage: 22269
     description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
   infernal-nails:
@@ -465,7 +596,7 @@ actions:
       To finish the fight, Ifrit must be [s:woken]. To do this, all nails must be hit by at least 2 [a:eruption]s. [a:eruption]s are baited on the two farthest players from Ifrit, so have your two ranged DPS position themselves between the edge of the arena and the two outer nails. Communicate before the pull which ranged DPS takes which of the two nails. The main tank drags Ifrit to in-between the two inner nails to allow players to cleave both inner nails and Ifrit with AoEs while also ensuring [a:eruption]s are baited on the correct players.
       One random healer is targeted by [a:inferno-howl] when nails spawn. If the boss's new position in-between the inner nails is relative north, this healer moves to the very edge of the arena at relative south, between the two outer nails. They will periodically explode in a big AoE ([a:searing-wind]), instantly killing any players caught in the explosion. The explosion is large enough to clip the two outer nails, so melees must be extra careful when dealing damage to those two nails.
       Avoid using any heavy attacks on the nails. They do not have a lot of health, so it is very easy to accidentally destroy one before it has grown two times if you fail to take into account potential crits and direct hits.
-      The nails' recommended kill order is the "reverse Z pattern": i.e. relative southeast, then relative southwest, then relative northeast, then relative northwest. This maximizes the time you have to dodge the subsequent [a:crimson-cyclone]s. (Note that, if the party has good damage, it is possible to skip those [a:crimson-cyclone]s, essentially rendering the nail kill order irrelevant. However, you should always expect to see the [a:crimson-cyclone]s.)
+      The nails' recommended kill order is the "reverse Z pattern", i.e. if you're facing the two close nails: relative southeast, then relative southwest, then relative northeast, then relative northwest. This maximizes the time you have to dodge the subsequent [a:crimson-cyclone]s. (Note that, if the party has good damage, it is possible to skip those [a:crimson-cyclone]s, essentially rendering the nail kill order irrelevant. However, you should always expect to see the [a:crimson-cyclone]s.)
     children:
     - at: 4100
       id: <targetable>
@@ -513,6 +644,7 @@ actions:
     id: 11097
     mechanic: aoe.delayed
     shape: chariot
+    type: magic
     description: |
       Selects the two farthest players from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
       If these AoEs touch an Infernal Nail, the nail grows and is granted [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks.
@@ -850,12 +982,12 @@ actions:
       The key to unleashing those four required limit break 3s is a buff called [s:beyond-limits]. Any player with this buff can unleash a limit break "for free", meaning that however many limit break bars are used for their limit break, these bars will immediately be refunded after the limit break has finished executing. For example, if a player with [s:beyond-limits] uses limit break while at 2.5 limit break bars, they will execute a limit break 2, depleting all 2.5 limit break bars. The game then refunds the party 2 bars of limit break. [s:beyond-limits] is consumed in the process.
       In order to obtain [s:beyond-limits], a primal (Garuda, Ifrit, Titan) must be defeated while they are [s:woken]. This leaves behind a small light puddle on the floor wherever they were defeated. When a player steps into this puddle, they gain [s:beyond-limits] (assuming they don't already have one) and the puddle disappears.
       Since there are three primals in total before reaching intermission and four required limit break 3s, this means that all three primals must be [s:woken] to get 3× [s:beyond-limits], allowing the limit break bars to be refunded 3 times. The last limit break will not be refunded.
-      Unfortunately, [awakening](s:woken) a primal also upgrades their moveset, giving some of their abilities additional effects or follow-ups. A full list of these enhancements can be found [here](s:woken).
-      As previously mentioned, [awakening](s:woken) a primal requires certain mechanics to be resolved in a specific, non-obvious way to gradually grant them stacks of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] upgrades into [s:woken].
-      * Garuda obtains stacks of [s:aetherially-charged] whenever a [s:thermal-low:2] is cleansed. This also triggers a heavy raidwide ([a:super-cyclone-2]), so cleansing multiple [s:thermal-low:2]s at the same time is impossible. [s:thermal-low] can be cleansed in one of two ways: by having players step into the bubble left behind by the Spiny Plume, or by soaking a [a:mesohigh] tether. There are two [a:mesohigh] tethers in Garuda's phase, but they resolve at the same time, so we can only cleanse one [s:thermal-low:2] there because otherwise, as mentioned, the raidwide damage would turn lethal. This means that the other 3 [s:thermal-low:2] cleanses need to come from the Spiny Plume bubble.
+      Unfortunately, awakening a primal also upgrades their moveset, giving some of their abilities additional effects or follow-ups. A full list of these enhancements can be found under [s:woken].
+      As previously mentioned, awakening a primal requires certain mechanics to be resolved in a specific, non-obvious way to gradually grant them stacks of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] upgrades into [s:woken].
+      * Garuda obtains stacks of [s:aetherially-charged] whenever a [s:thermal-low:2] is cleansed. This also triggers a heavy raidwide ([a:super-cyclone-2]), so cleansing multiple [s:thermal-low:2]s at the same time is highly discouraged. [s:thermal-low] can be cleansed in one of two ways: by having players step into the bubble left behind by the Spiny Plume, or by soaking a [a:mesohigh] tether. There are two [a:mesohigh] tethers in Garuda's phase, but they resolve at the same time, so we can only cleanse one [s:thermal-low:2] there because otherwise, as mentioned, the raidwide damage would turn lethal. This means that the other 3 [s:thermal-low:2] cleanses need to come from the Spiny Plume bubble.
       * Ifrit obtains stacks of [s:aetherially-charged] whenever an Infernal Nail is hit at least twice by an [a:eruption], then destroyed. This also makes the Infernal Nail grow and gain [s:damage-up] and [s:vulnerability-down], so it is recommended to get their health low (but not too low) *before* hitting them with [a:eruption]. There are only 4 Infernal Nails during Ifrit's phase, so if any Nail is missed or destroyed too early, [s:woken] can no longer be achieved.
       * Titan obtains stacks of [s:aetherially-charged] for every 3 seconds that he dwells within a [s:sludge] puddle. [s:sludge] puddles only spawn when a Granite Gaol detonates by means other than player attacks. Granite Gaols occur twice in Titan's phase, but only the first instance affords players the opportunity to instantly detonate a Gaol by means of clipping it with [a:burst]. However, [a:burst] always takes place on the opposite side of the arena from Titan and Titan cannot be moved until the resulting [s:sludge] puddles dissipate. The only way to force Titan to stand in a [s:sludge] puddle, therefore, is to bring the [s:sludge] to him by triggering a chain reaction of multiple back-to-back Granite Gaols which detonate each other in a line from one side of the arena to the other, where Titan stands.
-      The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit. Titan primarily deals melee physical damage, just like a melee DPS.
+      The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit, therefore Ifrit belongs to casters. Titan primarily deals physical damage, just like a melee DPS.
       After getting through intermission, you reach the final phase of the fight, where you face off against [boss]. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from [boss], so you will not only be facing off against an Ultima Weapon that is fully powered by all three primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
   magitek-freefire:
     id: 11509
@@ -1381,31 +1513,7 @@ timeline:
   - at: 10928
     id: mistral-song-healer
   - at: 20000
-    id: <targetable>
-    description: |
-      Four Satin Plumes spawn and each tether to a different DPS player. A Spiny Plume also spawns and tethers to the first player that deals damage to it. After a short delay, all plumes move toward the player they're tethered to.
-      Satin Plumes are purple and largely unthreatening, but if left alive for too long they will cast [a:thermal-tumult], putting all players to [s:sleep] and guaranteeing a wipe. Group these up and AoE them down.
-      The Spiny Plume must be picked up (i.e. attacked first) by the off-tank. This is because every 9 seconds the Spiny Plume attacks the tethered player with [a:cyclone], a heavy tankbuster that cannot be survived by a non-tank. While the Spiny Plume does not have a "proper" enrage, [a:cyclone] gives it its own enrage (of sorts), as each [a:cyclone] inflicts a stack of [s:thermal-low] and any player reaching [s:thermal-low:3] all but ensures a wipe.
-  - at: 23733
-    id: slipstream
-  - at: 27211
-    id: downburst
-  - at: 27344
-    id: cyclone
-  - at: 34549
-    id: <untargetable>
-    description: |
-      Garuda screams and flies away, becoming untargetable.
-      The Satin Plumes should be dead by this point, but **not** the Spiny Plume. It *must* be allowed to cast its second [a:cyclone] first or a wipe is all but guaranteed. It is recommended to leave the Spiny Plume alive until [a:mistral-shriek]. The earlier you kill it, the less time you have for [s:thermal-low:2] cleanses.
-  - at: 36463
-    id: cyclone
-  - at: 37130
-    id: feather-rain
-  - at: 38823
-    id: <targetable>
-    description: Garuda returns to the arena.
-  - at: 40336
-    id: thermal-tumult
+    id: plumes
   - at: 41898
     id: mistral-shriek
   - at: 43202
@@ -1489,12 +1597,6 @@ timeline:
     id: vulcan-burst
   - at: 210223
     id: incinerate
-    link: then
-  - at: 213337
-    id: incinerate
-    link: then
-  - at: 217433
-    id: incinerate
   - at: 220560
     id: infernal-nails
   - at: 254698
@@ -1515,7 +1617,7 @@ timeline:
     id: searing-wind
   - at: 283569
     id: crimson-cyclone
-    description: Ifrit's clones dash across the arena, dealing massive damage to anyone caught in the dash.
+    description: Ifrit's clones dash across the arena, dealing massive damage to anyone caught in the dash. This always hits cardinals.
     count: 2
   - at: 288385
     id: searing-wind
@@ -1532,36 +1634,10 @@ timeline:
     id: searing-wind
     count: 2
   - at: 302706
-    id: <untargetable>
-    description: Ifrit jumps away, becoming untargetable.
-  - at: 306489
-    id: searing-wind
-  - at: 310105
-    id: crimson-cyclone
-    link: then
-  - at: 311535
-    id: crimson-cyclone
-    link: then
-  - at: 312517
-    id: searing-wind
-    link: and
-  - at: 312919
-    id: crimson-cyclone
-    link: then
-  - at: 314306
-    id: crimson-cyclone
-  - at: 318505
-    id: <targetable>
-    description: Ifrit returns to the arena.
+    id: ifrit-dashes
   - at: 318549
     id: searing-wind
   - at: 322643
-    id: incinerate
-    link: then
-  - at: 325768
-    id: incinerate
-    link: then
-  - at: 329871
     id: incinerate
   - at: 338466
     id: eruption
