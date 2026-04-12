@@ -397,7 +397,10 @@ enrage.threshold:
   players: 8
 enrage.soft:
   name: soft enrage
-  description: A "soft enrage" generally involves a sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.
+  description: |
+    A "soft enrage" generally involves one of two things:
+    * A sequence of rapid-fire raidwides that gradually increase in potency, serving as a heal check – until the final raidwide, which serves as the true enrage and kills all party members instantly.
+    * A prolonged enrage sequence that kills all living players one-by-one until all players are dead. Oftentimes the last player alive is killed in a more dramatic way than the others.
   players: 8
 hint:
   name: hint
