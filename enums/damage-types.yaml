@@ -1,12 +1,14 @@
 physical:
   name: physical
-  description: Inflicts physical damage. Cannot be mitigated by abilities that target magic damage.
+  description: Inflicts physical damage. Cannot be mitigated by abilities that reduce magic damage.
 magic:
   name: magical
-  description: Inflicts magical damage. Cannot be mitigated by abilities that target physical damage.
+  description: Inflicts magical damage. Cannot be mitigated by abilities that reduce physical damage.
 dark:
-  name: darkness
-  description: Inflicts darkness damage. Ignores all types of mitigation, including invulnerabilities.
+  name: unique
+  description: |
+    Inflicts unique (or "darkness") damage. Cannot be mitigated by abilities that specifically reduce physical or magic damage.
+    In some cases unique damage can be mitigated by abilities that reduce all damage dealt while in other cases unique damage cannot be mitigated at all. Unique damage also frequently ignores the effects of invulnerabilities such as [s:transcendent] or tank [invulns](t:invuln) like [a:hallowed-ground] or [a:holmgang].
 mixed:
   name: mixed
   description: Inflicts a mix of physical and magical damage.
