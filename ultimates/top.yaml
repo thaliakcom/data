@@ -318,7 +318,7 @@ actions:
   program-loop:
     id: 31491
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       A major mechanic revolving around towers and tethers.
@@ -417,7 +417,7 @@ actions:
   pantokrator:
     id: 31499
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Major mechanic with high movement and healing requirements.
@@ -619,7 +619,7 @@ actions:
   party-synergy:
     id: 31551
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Omega-M and Omega-F disappear and tether each player to another player, inflicting either [s:mid-glitch] or [s:remote-glitch] on all players, and show a matching PlayStation headmarker above all players and their partners.
@@ -759,7 +759,7 @@ actions:
   limitless-synergy:
     id: 31544
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
@@ -877,7 +877,7 @@ actions:
   p3-transition:
     name: Transition
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       When the transition starts, the following debuffs are inflicted on players:
@@ -952,7 +952,7 @@ actions:
     mechanic: mech
     damage: 80879
     players: 8
-    major: true
+    emphasis: more
     compact: full
     description: |
       Heavy raidwide that begins the next major mechanic.
@@ -1205,7 +1205,7 @@ actions:
     mechanic: mech
     damage: 50785
     players: 1
-    major: true
+    emphasis: more
     description: |
       Monitors appear on either the left or right side of Omega as well as the left or right side of three random players (through [s:oversampled-wave-cannon-loading]).
       At the end of the cast all monitors resolve, hitting two random players on the indicated side with large [ms:chariot] AoEs that inflict [s:magic-vuln] and [s:twice-come-ruin].
@@ -1361,7 +1361,7 @@ actions:
     mechanic: mech.trio
     damage: 136135
     players: 8
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Heavy raidwide that initiates the first of three [trios](t:trio).
@@ -1534,7 +1534,7 @@ actions:
     mechanic: mech.trio
     damage: 139915
     players: 8
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Heavy raidwide that initiates the second of three [trios](t:trio).
@@ -1622,7 +1622,7 @@ actions:
     mechanic: mech.trio
     damage: 139666
     players: 8
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Heavy raidwide that initiates the third of three [trios](t:trio).
@@ -1743,7 +1743,7 @@ actions:
   cosmo-arrow:
     id: 31650
     mechanic: aoe.exaflares
-    major: true
+    emphasis: more
     compact: full
     shape: rect
     description: |
@@ -1835,7 +1835,7 @@ actions:
     id: 31660
     mechanic: aoe.exaflares
     shape: chariot
-    major: true
+    emphasis: more
     compact: full
     description: |
       A circle with arrows appears on a random cardinal or intercardinal about half a second before the end of the cast. Three more circles then appear clockwise or counter-clockwise, each with a slight delay.
@@ -1916,7 +1916,7 @@ actions:
   cosmo-meteor:
     id: 31664
     mechanic: adds
-    major: true
+    emphasis: more
     compact: trim
     description: |
       First, spawns massive baited AoEs underneath every party member.
@@ -1994,7 +1994,7 @@ actions:
       For instance, if you saw an expression like "8 × 8760", you'd probably have no idea what this expression calculates. However, if you instead rewrite it as "8 × HOURS_PER_YEAR", now you know exactly that this expression calculates the number of hours in 8 years.
   limit-break:
     name: Limit Break
-    mechanic: hint
+    mechanic: hint.timed
     isPlayerSource: true
     description: |
       Use 2× [i:melee] LB3s here.
@@ -2395,6 +2395,7 @@ graphing:
         marker-3: [60, -135]
         marker-d: [60, -90]
         marker-4: [60, -45]
+        boss: [0, 0, 45]
         tower#1: [57, 15]
         tower#2: [57, 75]
         tower#3: [57, 105]
@@ -2423,7 +2424,6 @@ graphing:
         R2: [65, 170]
         H1: [60, 180]
         H2: [70, 180]
-        boss: [0, 0, 45]
         cast: { text: "Program Loop", progress: 0, visible: true }
       - cast: { text: "Program Loop", progress: 1, visible: true }
         tower#1: { visible: true }

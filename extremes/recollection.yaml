@@ -180,7 +180,7 @@ actions:
   roseblood-bloom:
     id: 43193
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1114
@@ -334,7 +334,7 @@ actions:
   roseblood-2nd-bloom:
     id: 43540
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1116
@@ -346,7 +346,7 @@ actions:
   roseblood-3rd-bloom:
     id: 43541
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1070
@@ -362,7 +362,7 @@ actions:
   roseblood-4th-bloom:
     id: 43542
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1111
@@ -380,7 +380,7 @@ actions:
   roseblood-5th-bloom:
     id: 43543
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1114
@@ -398,7 +398,7 @@ actions:
   roseblood-6th-bloom:
     id: 43544
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Placeholder description
     children:
     - at: 1067

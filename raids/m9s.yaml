@@ -104,7 +104,7 @@ actions:
   vamp-stomp:
     id: 45940
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Inflicts [s:curse-of-the-bombpyre] on all players and spawns a number of bats and an expanding circle.
@@ -263,7 +263,7 @@ actions:
   aetherletting:
     id: 45967
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Telegraphed conal [m:aoe.rotating] originate from [boss].
@@ -343,7 +343,7 @@ actions:
     description: One of the moving chainsaws touches a player, dealing mild damage and inflicting [s:flesh-wound] on them.
   flails-and-nails:
     name: Flails and Nails
-    mechanic: hint
+    mechanic: adds
     description: |
       A mini-phase that involves two large buzzsaws and two small chakrams constantly moving back and forth throughout the arena. Any player touching these saws ([a:gravegrazer]) is inflicted with [s:flesh-wound].
       There are three sets of adds. Each set begins with a tank tower in the northern and southern half of the arena that must be soaked ([a:plummet]) or they explode ([a:massive-impact]), inflicting [s:sustained-damage]. Afterwards, spawns three adds: 2 Fatal Flails where the two towers were soaked, and 1 Deadly Doornail.
@@ -370,7 +370,7 @@ actions:
   hell-in-a-cell:
     id: 45973
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Four towers spawn around the arena. Each tower must be soaked by one person ([a:bloody-bondage]).
@@ -429,7 +429,7 @@ actions:
   undead-deathmatch:
     id: 45984
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Two [stack towers](m:stack.tower) spawn.

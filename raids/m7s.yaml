@@ -183,7 +183,7 @@ actions:
   sinister-seeds-1:
     id: 42349
     mechanic: mech
-    major: true
+    emphasis: more
     description: |
       Major mechanic.
       There are two types of responsibilities for this mechanic: [a:sinister-seeds-stars] and [a:sinister-seeds-aoes]. At the end of the cast, the closest 4 players are designated for one of these mechanics while the other 4 receive the other mechanic.
@@ -243,7 +243,7 @@ actions:
   sinister-seeds-2:
     id: 42349
     mechanic: mech
-    major: true
+    emphasis: more
     description: No description yet
   impact:
     id: 42355
@@ -352,7 +352,7 @@ actions:
   strange-seeds:
     id: 42391
     mechanic: mech
-    major: true
+    emphasis: more
     description: |
       Two players at a time drop [starbursts](t:starburst) until all party members have dropped one.
       Each drop inflicts [s:magic-vulnerability-up] that lasts until after the *next* drop. This means that if any player is hit by the [a:tendrils-of-terror] immediately following their drop, or the next set of [a:strange-seeds-drop], they will instantly die.
@@ -402,7 +402,7 @@ actions:
   debris-deathmatch:
     id: 42416
     mechanic: mech
-    major: true
+    emphasis: more
     description: Placeholder description
   special-bombarian-special:
     id: 42417

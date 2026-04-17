@@ -128,7 +128,7 @@ actions:
   assault-evolved:
     id: 46103
     mechanic: mech
-    major: true
+    emphasis: more
     description: |
       [boss:c] dashes to each of the summoned weapons in turn and executes their mechanic.
       At the start of the cast, [boss] turns towards a random of the three weapons. After dashing to it and executing its mechanic, he dashes to the remaining weapons in a clockwise order.
@@ -276,7 +276,7 @@ actions:
   dance-of-domination-trophy:
     id: 47035
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Boss summons a blade as his weapon.
@@ -335,7 +335,7 @@ actions:
   ultimate-trophy-weapons:
     id: 47085
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Summons 6 weapons in a row and executes their mechanics.
@@ -480,7 +480,7 @@ actions:
   meteorain:
     id: 46132
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Major mechanic involving a lot of meteors and comets.
@@ -599,7 +599,7 @@ actions:
   majestic-meteor:
     id: 46144
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Spawns 4 meteor portals and 4 [m:towers.double].
@@ -733,7 +733,7 @@ actions:
   ecliptic-stampede:
     id: 46162
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       The last major mechanic of the fight.
@@ -867,8 +867,10 @@ actions:
     count: 2
     damage: 164336
     players: 4
-    description: Line stack. Deals more damage to the first two players in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
+    description: Line stack on the 2 closest players. Deals more damage to the first two players in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
     resolve: Ensure that in both stacks, all 4 players with [s:fire-resistance-down-ii] are the last two players in line.
+    mistakes:
+      - "A **very** common mistake is the second player in line being closer than the first player in line on the opposite side. In other words: the two non-[s:fire-resistance-down-ii] players on one side are both the two closest players to the boss. This causes both line stacks to be baited onto the same side, thus overlapping and killing the entire light party."
   four-way-fireball:
     id: 46171
     name: Four-way Fireball
@@ -878,11 +880,11 @@ actions:
     count: 4
     damage: 164336
     players: 2
-    description: Line stack. Deals more damage to the first player in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
+    description: Line stack on the 4 closest players. Deals more damage to the first player in line. This extra damage is lethal to any player with [s:fire-resistance-down-ii].
     resolve: Ensure that in all 4 stacks stacks, all 4 players with [s:fire-resistance-down-ii] are the second player in line.
   heartbreak-kicks:
     name: Heartbreak Kicks
-    mechanic: hint
+    mechanic: hint.timed
     description: |
       The soft enrage sequence begins here. [boss] obtains [s:damage-up] and spawns a tower in the center of the arena. The damage of this tower can be shared and it hits 5 times.
       [boss:c] then repeats this tower two more times, each time getting an additional stack of [s:damage-up] and increasing the number of hits of the tower by 1.

@@ -134,7 +134,7 @@ actions:
   mortal-slayer:
     id: 46229
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       During the cast, [boss] spawns 4 orbs from top to bottom on his left hands and 4 orbs on his right hands.
@@ -203,7 +203,7 @@ actions:
   grotesquerie-act-1:
     id: 48829
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Inflicts all players with [s:directed-grotesquerie], all supports or damage dealers with [s:bursting-grotesquerie], and one player of the opposite role with [s:shared-grotesquerie].
@@ -317,7 +317,7 @@ actions:
   grotesquerie-act-2:
     id: 48830
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Inflicts all supports with [s:bonds-of-flesh-alpha] and all DPS with [s:bonds-of-flesh-beta] or vice-versa.
@@ -479,7 +479,7 @@ actions:
   grotesquerie-act-3:
     id: 48831
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       All players are inflicted with [s:mitotic-phase].
@@ -568,7 +568,7 @@ actions:
   grotesquerie-curtain-call:
     id: 48832
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       All supports are inflicted with [s:rotting-flesh] and all damage dealers with [s:bursting-grotesquerie] or vice-versa.

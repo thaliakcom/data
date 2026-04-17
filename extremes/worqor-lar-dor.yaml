@@ -502,7 +502,7 @@ actions:
   ruin-foretold:
     id: 38546
     mechanic: raidwide
-    major: true
+    emphasis: more
     damage: 90857
     description: |
       Heavy raidwide that initiates a mini-phase.

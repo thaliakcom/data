@@ -490,7 +490,7 @@ actions:
   fall-of-faith:
     id: 40140
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Fatebreaker glows red or blue and tethers to a random player. 3 more Fatebreaker Images spawn on the northern outside of the arena and do the same, glowing red or blue and tethering to a random player. A player cannot be tethered by more than one Fatebreaker.
@@ -634,7 +634,7 @@ actions:
   diamond-dust:
     id: 40197
     mechanic: mech.trio
-    major: true
+    emphasis: more
     players: 8
     damage: 197512
     compact: trim
@@ -790,7 +790,7 @@ actions:
   light-rampant:
     id: 40212
     mechanic: mech.trio
-    major: true
+    emphasis: more
     players: 8
     damage: 203476
     compact: full
@@ -958,7 +958,7 @@ actions:
   ultimate-relativity:
     id: 40266
     mechanic: raidwide
-    major: true
+    emphasis: more
     damage: 200520
     compact: full
     description: Placeholder description
@@ -1098,7 +1098,7 @@ actions:
   apocalypse:
     id: 40296
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: Placeholder description
     children:
@@ -1188,7 +1188,7 @@ actions:
     id: 40239
     name: Darklit Dragonsong
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     players: 8
     damage: 204558
@@ -1292,7 +1292,7 @@ actions:
     id: 40298
     name: Crystallize Time
     mechanic: mech.trio
-    major: true
+    emphasis: more
     compact: full
     players: 8
     damage: 225675

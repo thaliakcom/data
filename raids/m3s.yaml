@@ -263,7 +263,7 @@ actions:
   barbarous-barrage-1:
     id: 37883
     mechanic: towers.kb
-    major: true
+    emphasis: more
     description: Placeholder description for Barbarous Barrage
     children:
       - at: 11118
@@ -280,7 +280,7 @@ actions:
   barbarous-barrage-2:
     id: 37883
     mechanic: towers.kb
-    major: true
+    emphasis: more
     description: Placeholder description for Barbarous Barrage
     children:
       - at: 11118
@@ -324,7 +324,7 @@ actions:
   tag-team-1:
     id: 37863
     mechanic: mech
-    major: true
+    emphasis: more
     description: Placeholder description for Tag Team
     children:
     - at: 9220
@@ -549,7 +549,7 @@ actions:
   tag-team-2:
     id: 37863
     mechanic: mech
-    major: true
+    emphasis: more
     description: Placeholder description for Tag Team
     children:
     - at: 10241
@@ -568,7 +568,7 @@ actions:
   fuse-or-foe:
     id: 37891
     mechanic: mech
-    major: true
+    emphasis: more
     description: Placeholder description for Fuse or Foe
     children:
       - at: 9039

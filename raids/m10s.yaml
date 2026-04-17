@@ -119,7 +119,7 @@ actions:
   flame-floater:
     id: 46522
     mechanic: mech
-    major: true
+    emphasis: more
     description: |
       Inflicts [s:first-in-line], [s:second-in-line], [s:third-in-line], and [s:fourth-in-line] on 4 random players and tethers to them.
       At the end of the cast, Red Hot dashes towards each player in order, dealing high damage and leaving behind a persistent rectangular fire puddle that inflicts [s:burns] on any who enter. Each player must be a sufficient distance from Red Hot by the time he dashes to them (as indicated by the tether changing colour) or they take lethal damage.
@@ -324,7 +324,7 @@ actions:
   insane-air-initial:
     id: 47255
     mechanic: mech
-    major: true
+    emphasis: more
     count: 2
     description: |
       The two brothers jump to opposite corners of the arena and begin casting.
@@ -394,7 +394,7 @@ actions:
     id: 45953
     name: Firesnaking
     mechanic: mech
-    major: true
+    emphasis: more
     players: 8
     damage: 213888
     description: |
@@ -440,7 +440,7 @@ actions:
     id: 45954
     name: Watersnaking
     mechanic: mech
-    major: true
+    emphasis: more
     players: 8
     damage: 213888
     description: See [a:firesnaking].
@@ -481,7 +481,7 @@ actions:
   deep-aerial:
     id: 46564
     mechanic: towers.double
-    major: true
+    emphasis: more
     damage: 92565
     description: |
       A two-man tower spawns in the middle of the arena.
@@ -575,7 +575,7 @@ actions:
     id: 46510
     name: Xtreme Firesnaking
     mechanic: mech
-    major: true
+    emphasis: more
     players: 8
     damage: 199705
     compact: trim
@@ -607,7 +607,7 @@ actions:
     id: 46511
     name: Xtreme Watersnaking
     mechanic: mech
-    major: true
+    emphasis: more
     players: 8
     damage: 198995
     description: See [a:xtreme-firesnaking].

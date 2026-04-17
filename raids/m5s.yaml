@@ -173,7 +173,7 @@ actions:
     id: 41840
     name: Arcady Night Encore
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       Same as [a:arcady-night-fever], but doesn't inflict [s:wavelength-î±]/[s:wavelength-î²] on players.
@@ -433,7 +433,7 @@ actions:
   disco-infernal:
     id: 42838
     mechanic: mech
-    major: true
+    emphasis: more
     players: 8
     damage: 131533
     description: Placeholder description
@@ -458,7 +458,7 @@ actions:
   arcady-night-fever:
     id: 42848
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: |
       A mechanic with eight-and-a-half steps.

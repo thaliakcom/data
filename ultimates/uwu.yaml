@@ -233,7 +233,7 @@ actions:
   plumes:
     name: Plumes
     mechanic: adds
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Four Satin Plumes spawn and each tether to a different DPS player. A Spiny Plume also spawns and tethers to the first player that deals damage to it. After a short delay, all plumes move toward the player they're tethered to.
@@ -475,7 +475,7 @@ actions:
   ifrit-dashes:
     name: Ifrit Dashes
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Ifrit becomes untargetable and jumps away. A short while later, he reappears outside the arena along with three of his clones.
@@ -587,7 +587,7 @@ actions:
     id: 461
     name: Infernal Nails
     mechanic: mech
-    major: true
+    emphasis: more
     description: |
       Spawns 4 Infernal Nails in a randomly rotated trapezoid pattern. Destroying a nail deals moderate damage ([a:infernal-surge]) and inflicts a stacking [s:vulnerability-up] on all players. All four nails must be destroyed before Ifrit jumps away or the subsequent [a:hellfire] deals lethal damage.
       When an Infernal Nail is hit by an [a:eruption] it grows, gaining [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks. If a nail is destroyed at two stacks, Ifrit gains one stack of [s:aetherially-charged].
@@ -846,7 +846,7 @@ actions:
   gaols:
     name: Gaols
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Titan returns to the arena and immediately begins casting [a:upheaval]. At the same time, five bomb boulders drop onto the opposite side of the arena with [a:bury] and begin casting [a:burst]. There is always one empty spot slightly to the left or to the right where a bomb boulder is missing.
@@ -1124,7 +1124,7 @@ actions:
   aetheric-boom:
     id: 11144
     mechanic: mech.knockback
-    major: true
+    emphasis: more
     damage: 2543
     description: |
       Knocks all players away from [boss] and spawns four sets of orbs.
@@ -1165,7 +1165,7 @@ actions:
   ultimate-predation:
     id: 11126
     mechanic: mech.trio
-    major: true
+    emphasis: more
     compact: trim
     description: |
       [boss:c] becomes untargetable and teleports to a random intercardinal at the edge of the arena.
@@ -1209,7 +1209,7 @@ actions:
   ultimate-annihilation:
     id: 11596
     mechanic: mech.trio
-    major: true
+    emphasis: more
     compact: trim
     description: |
       [boss:c] becomes untargetable and teleports to the north of the arena, where it becomes targetable again.
@@ -1325,7 +1325,7 @@ actions:
   ultimate-suppression:
     id: 11597
     mechanic: mech.trio
-    major: true
+    emphasis: more
     compact: trim
     description: |
       [boss:c] becomes untargetable and every previously encountered enemy spawns in the arena at the same time.
@@ -1388,7 +1388,7 @@ actions:
   primal-roulette:
     name: Primal Roulette
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       [boss:c] inflicts [s:viscous-aetheroplasm] on three random party members, then each of the three primals briefly appears to execute one mechanic and a raidwide before leaving again.

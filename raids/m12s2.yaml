@@ -129,7 +129,7 @@ actions:
     id: 46296
     name: Replication I
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Spawns one Lindschrat clone on each cardinal. Each clone casts a different mechanic. It is not possible to determine which clone casts what.
@@ -261,7 +261,7 @@ actions:
     id: 46296
     name: Replication II
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Six Lindschrat clones spawn and tether to a random player each. The tether can be passed.
@@ -285,6 +285,13 @@ actions:
       * [a:hemorrhagic-projection-clone] fires conal AoEs in the direction the respective clones are looking (i.e. towards the center of the arena).
     resolve: |
       During the first part of the mechanic you're essentially "setting up" the second part, making this a "Make Your Own Mechanic" type of mechanic. Because of this, there is a significant degree of freedom and flexibility for how and where to take certain mechanics. Check your data center's raidplans for more information.
+    strategies:
+      replication-ii-bc:
+        name: Banana Codex
+        description: D is new north. One group (assigned by mechanics) handles both clone stacks, the other group [a:firefall-splash-clone].
+      replication-ii-dn:
+        name: DN
+        description: A is north. [a:firefall-splash-clone] resolves first, then melees handle one clone stack, rangeds the other.
     children:
     - at: 22439
       id: firefall-splash-player
@@ -471,7 +478,7 @@ actions:
     id: 46331
     name: Blood Mana
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: |
       Spawns two miniature black holes east and west.
@@ -608,7 +615,7 @@ actions:
     id: 46345
     name: Idyllic Dream
     mechanic: mech.arena
-    major: true
+    emphasis: more
     damage: 323330
     players: 8
     description: |
@@ -658,7 +665,7 @@ actions:
     id: 48098
     name: Twisted Vision
     mechanic: mech.arena
-    major: true
+    emphasis: more
     description: Shifts realities, pausing any mechanics in the source reality and resuming any in-progress mechanics in the destination reality.
   twisted-vision-i:
     id: 48098

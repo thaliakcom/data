@@ -130,7 +130,7 @@ actions:
     id: 38377
     mechanic: aoe
     shape: grid
-    major: true
+    emphasis: more
     description: Placeholder description for Bewitching Flight
     children:
       - at: 0
@@ -190,7 +190,7 @@ actions:
   widening-witch-hunt:
     id: 38368
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Placeholder description for Widening Witch Hunt
     children:
@@ -221,7 +221,7 @@ actions:
   narrowing-witch-hunt:
     id: 38369
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Placeholder description for Widening Witch Hunt
     children:
@@ -262,7 +262,7 @@ actions:
   electrope-edge-1:
     id: 38341
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: Placeholder description for Electrope Edge
     children:
@@ -349,7 +349,7 @@ actions:
   electrope-edge-2:
     id: 38341
     mechanic: mech
-    major: true
+    emphasis: more
     compact: full
     description: Placeholder description for Electrope Edge
     children:
@@ -510,7 +510,7 @@ actions:
   electron-stream:
     id: 38358
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Make a note of [a:ionic-discharge].
     children:
@@ -587,7 +587,7 @@ actions:
   electrope-transplant:
     id: 39123
     mechanic: mech.phase
-    major: true
+    emphasis: more
     compact: full
     description: "[boss] begins to take vast quantities of electrope into her own body..."
     children:
@@ -861,7 +861,7 @@ actions:
   twilight-sabbath:
     id: 38435
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Placeholder description for Twilight Sabbath
     children:
@@ -893,7 +893,7 @@ actions:
   midnight-sabbath:
     id: 39609
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Placeholder description for Midnight Sabbath
     children:
@@ -1014,7 +1014,7 @@ actions:
   sunrise-sabbath:
     id: 39610
     mechanic: mech
-    major: true
+    emphasis: more
     compact: trim
     description: Placeholder description for Sunrise Sabbath
     children:
