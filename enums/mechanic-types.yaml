@@ -405,6 +405,9 @@ enrage.soft:
 hint:
   name: hint
   description: Not a mechanic, but merely a hint to players.
+hint.timed:
+  name: hint
+  description: Not a mechanic, but merely a hint to players.
 damage:
   name: damage
   description: Deals targeted damage to a specific player. Cannot be avoided or shared and must usually be mitigated instead. Similar to a tankbuster, but doesn't cleave and can target any player, and therefore deals less damage overall.
