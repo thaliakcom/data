@@ -12,13 +12,16 @@
       "description": {
         "type": "string",
         "description": "The item's description."
+      },
+      "icon": {
+        "type": "string"
       }
     },
+    "additionalProperties": false,
     "required": [
-      "name",
-      "description"
-    ],
-    "additionalProperties": false
+      "description",
+      "name"
+    ]
   },
   "description": "A list of available AoE shapes.",
   "title": "Mechanic shapes",
