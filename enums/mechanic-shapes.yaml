@@ -1,19 +1,19 @@
 chariot:
-  name: chariot
+  name: circle
   description: |
     A standard point-blank circle affecting targets within its radius.
-    Named after Neul deus Darnus's eponymous attack, [a:2008].
+    Sometimes called a "chariot AoE" after Neul deus Darnus's eponymous attack, [a:2008].
 defamation:
   name: defamation
   description: |
-    Circular like [chariots](ms:chariot), but *significantly* larger, often the size of the whole arena.
+    Circular like [point-blank AoEs](ms:chariot), but *significantly* larger, often the size of the whole arena.
     Named after the eponymous attack in Alexander: Soul of the Creator (Savage).
 dynamo:
-  name: dynamo
+  name: donut
   description: |
     Affects targets outside the inner radius of an inverted circle. Or, in other words, a ring or donut that affects targets outside of it.
-    Some dynamo AoEs have an unlimited outer radius, while some can be avoided by being far enough away.
-    Named after Nael deus Darnus's eponymous attack, [a:2010].
+    Some donut AoEs have an unlimited outer radius, while some can be avoided by being far enough away.
+    Sometimes called a "dynamo AoE" after Nael deus Darnus's eponymous attack, [a:2010].
 in-or-out:
   name: in or out
   description: Either an in ([ms:dynamo]) or an out ([ms:chariot]), followed immediately by the opposite.
@@ -25,15 +25,15 @@ cone:
   description: Affects targets who are within three quarters of a circle. Leaves a safespot behind the circle.
 line:
   name: line
-  description: Affects targets who are in-line with the source. Hits both in front and behind the source. To avoid, stay far enough to either side of the source.
+  description: Affects targets who are in-line with the source. Sometimes it hits both in front and behind, other times only in front of the source. To avoid, stay far enough to either side of the source.
 grid:
   name: grid
   description: Affects targets who are in-line with several sources at the edges of the arena.
 plus:
-  name: plus-shaped
+  name: plus
   description: Affects targets who are on one of the source's four cardinals. To avoid, stay at the source's intercardinals.
 cross:
-  name: cross-shaped
+  name: cross
   description: Affects targets who are on one of the source's four intercardinals. To avoid, stay at the source's cardinals.
 sides:
   name: sides
@@ -42,7 +42,7 @@ rect:
   name: rectangle
   description: Affects targets within a rectangular area.
 halfroom:
-  name: half-room cleave
+  name: halfroom
   description: Affects anyone on the unsafe side of the source. Cannot be outranged. To avoid, the only option is to stay on the other side.
 star:
   name: star

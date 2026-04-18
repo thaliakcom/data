@@ -18,8 +18,14 @@ raidwide.sethp:
   name: sets HP
   description: Sets HP to a specific value (often 1) instead of dealing damage. Because attacks of this kind don't deal actual damage, they ignore any kind of mitigation or shielding.
   players: 8
+raidwide.percentual:
+  name: percentual raidwide
+  description: |
+    A raidwide that deals "relative" damage to all party members. Relative damage means that, instead of dealing a fixed damage value to players, it instead deals a relative portion of each players' maximum or current health in damage. These raidwides usually can't be mitigated with anything but shields – but on the other hand, these raidwides also don't require good gear to survive since they'll always deal the same amount of damage regardless of defense.
+    The best examples for these types of attacks can be found in Eden's Gate: Resurrection, where most instances of damage deal percentage-based damage, like [a:15728]. This is especially noticeable nowadays since, despite most players outgearing the fight significantly at this point, it still deals significant damage to players since both gear and mitigation are ignored for these attacks.
+  players: 8
 raidwide.transition:
-  name: raidwide (transition)
+  name: transitional raidwide
   description: Hits all party members with moderate to heavy damage and transitions the fight into another phase.
   players: 8
 raidwide.ultimate:
@@ -27,54 +33,54 @@ raidwide.ultimate:
   description: The "ultimate attack" of the boss, a heavy hitting raidwide that must be mitigated to survive. Sometimes used during a transition into another phase.
   players: 8
 tb.tether:
-  name: tankbuster (tether)
-  description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive.
+  name: tether tankbuster
+  description: A heavy-hitting attack on 1 or 2 tethered party members that must be heavily mitigated with tank cooldowns to survive. The tether is usually passable, so whoever gets it initially must pass it to a tank as soon as possible.
   players: 1
 tb.mt:
-  name: tankbuster (MT)
+  name: main tankbuster
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
   players: 1
 tb.ot:
-  name: tankbuster (OT)
+  name: off tankbuster
   description: A heavy-hitting attack on the party member with the second-highest enmity that must be heavily mitigated with tank cooldowns to survive, and generally necessitates a [t:tankswap] afterward.
   players: 1
 tb.double:
-  name: tankbuster (MT & OT)
+  name: double tankbuster
   description: A heavy-hitting attack on the two party members with the highest enmity that must be heavily mitigated with tank cooldowns to survive, and often necessitates a [t:tankswap] afterward.
   players: 1
 tb.towers:
-  name: tankbuster tower(s)
+  name: tankbuster tower
   description: |
     One or two towers appear that deal heavy damage to anyone inside when they resolve, so the soaking player(s) should be tanks under the effect of heavy defensive cooldowns. If left empty, these towers usually wipe the raid.
     In general, these towers appear in three variants: two towers appearing at the same time, requiring a tank in each one; one tower appearing that requires *both* tanks to soak and split the damage; or one tower appearing that hits multiple times and requires a different tank inside for each hit.
   players: 1
 tb.stack:
-  name: tankbuster (stack)
+  name: shared tankbuster
   description: A heavy-hitting attack on the party member with the highest enmity that must be heavily mitigated with tank cooldowns and shared by another tank to survive.
   players: 2
   shapeful: true
 tb.far:
-  name: tankbuster (far)
+  name: far tankbuster
   description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns to survive.
   players: 1
 tb.far.stack:
-  name: tankbuster (far)
+  name: shared far tankbuster
   description: A heavy-hitting attack that targets the farthest player from the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
   players: 2
 tb.close:
-  name: tankbuster (close)
+  name: close tankbuster
   description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns to survive.
   players: 1
 tb.close.stack:
-  name: tankbuster (close)
+  name: shared close tankbuster
   description: A heavy-hitting attack that targets the closest player to the boss and must be heavily mitigated with tank cooldowns and shared by another tank to survive.
   players: 2
 tb.close-or-far:
-  name: tankbuster (distance)
+  name: distance tankbuster
   description: A heavy-hitting attack that targets either the closest or farthest player to the boss and must be heavily mitigated with tank cooldowns to survive.
   players: 1
 tb.flare:
-  name: tankbuster (flare)
+  name: flare tankbuster
   description: A tankbuster on either the first or second player on the enmity list. The selected player is indicated by a headmarker and must heavily mitigate the attack using defensive cooldowns to survive. All other players must move as far away from the player as possible, as the tankbuster deals proximity damage to all other players.
   players: 8
 auto.single:
@@ -165,7 +171,7 @@ stack.tower:
     Unlike regular tower mechanics, however, this type of mechanic does not do fixed but shareable damage, meaning that as many party members as possible should be in each stack to reduce the damage taken.
 aoe:
   name: AoE
-  description: Leaves only a specific section of the arena safe.
+  description: "[t:AoE:d]"
 aoe.delayed:
   name: delayed AoE
   description: |
@@ -193,7 +199,7 @@ aoe.alternating:
   description: These [AoEs](t:AoE) alternate, meaning that whichever space is safe from the AoE initially is a danger zone the second time around while the initial danger zone is now the safe zone. Some alternating AoEs only alternate once; others alternate constantly until another mechanic has concluded.
   shapeful: true
 aoe.expanding:
-  name: expanding AoE(s)
+  name: expanding AoE
   description: This [t:AoE] or these AoEs gradually expand. Players must predict how large each AoE will become and identify the safespots based on this prediction and the AoE's original positions.
   shapeful: true
 aoe.expanding.rings:
@@ -243,17 +249,17 @@ spread:
   players: 1
   shapeful: true
 spread.close:
-  name: spread (close)
+  name: close spread
   description: An unavoidable player-targeted [t:AoE] that deals damage to the closest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   players: 1
   shapeful: true
 spread.far:
-  name: spread (far)
+  name: far spread
   description: An unavoidable player-targeted [t:AoE] that deals damage to the farthest player(s) and all players around them. Targeted players should spread out from each other, as clipping each other is usually lethal.
   players: 1
   shapeful: true
 spread.role:
-  name: spread (roles)
+  name: role spread
   description: An unavoidable player-targeted [t:AoE] that deals damage to a random player of each role (usually tanks, healers, DPS) and all players around them. All players should spread away from the other roles and stack only within their own role, as clipping players of another role is usually lethal.
   players: 1
   shapeful: true
@@ -392,7 +398,7 @@ enrage:
   description: Instantly kills all players and ends the fight. Ignores [s:transcendent] and other invulnerabilities. After this cast, the screen will fade to black even if some party members are still alive (for example through a well-timed raise).
   players: 8
 enrage.threshold:
-  name: enrage (threshold)
+  name: threshold enrage
   description: Instantly kills all players and ends the fight, *unless* the enemy or enemies are brought down past a certain HP threshold, in which case this attack does standard raidwide damage.
   players: 8
 enrage.soft:

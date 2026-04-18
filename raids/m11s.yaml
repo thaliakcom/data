@@ -433,7 +433,7 @@ actions:
   orbital-omen:
     id: 46130
     mechanic: aoe.memory
-    shape: line
+    shape: grid
     compact: full
     description: |
       Spawns 4 portals at the north wall and 4 portals at the east wall in a random order.
@@ -463,7 +463,7 @@ actions:
   orbital-omen-hit:
     id: 46131
     mechanic: aoe
-    shape: line
+    shape: grid
     count: 2
     damage: 138637
     players: 0

@@ -225,6 +225,7 @@
         "raidwide.proximity",
         "raidwide.proximity.fake",
         "raidwide.sethp",
+        "raidwide.percentual",
         "raidwide.transition",
         "raidwide.ultimate",
         "tb.tether",

@@ -104,13 +104,13 @@ actions:
     description: Placeholder description
   shock-dynamo:
     id: 43170
-    name: Shock (Dynamo)
+    name: Shock (Donut)
     mechanic: aoe.linger
     shape: dynamo
     description: Placeholder description
   shock-chariot:
     id: 43171
-    name: Shock (Chariot)
+    name: Shock (Point-blank)
     mechanic: aoe.linger
     shape: chariot
     description: Placeholder description

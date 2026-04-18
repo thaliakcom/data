@@ -537,13 +537,13 @@ actions:
       id: get-down-aftershock
   get-down-chariot:
     id: 42850
-    name: Get Down! (Chariot)
+    name: Get Down! (Point-blank)
     mechanic: aoe
     shape: chariot
     description: Placeholder description
   get-down-dynamo:
     id: 42851
-    name: Get Down! (Dynamo)
+    name: Get Down! (Donut)
     mechanic: aoe
     shape: dynamo
     description: Placeholder description
