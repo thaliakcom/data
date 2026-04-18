@@ -269,10 +269,10 @@ actions:
     description: "[m:spread:c]s on every player. Inflicts [s:magic-vulnerability-up]."
   crushing-comet:
     id: 46101
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 115548
-    description: "[m:stack.targeted:c] on a random (telegraphed) player."
+    description: "[m:stack:c] on a random (telegraphed) player."
   dance-of-domination-trophy:
     id: 47035
     mechanic: mech
@@ -693,7 +693,7 @@ actions:
     description: The 4 marked players are hit by a narrow [ms:line] AoE originating from [boss]. Inflicts [s:magic-vulnerability-up].
   massive-meteor:
     id: 46152
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4
@@ -713,7 +713,7 @@ actions:
   massive-meteor-hit:
     id: 46153
     name: Massive Meteor (Hit)
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     damage: 122160

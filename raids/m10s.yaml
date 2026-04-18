@@ -567,7 +567,7 @@ actions:
     description: Telegraphed [m:stack.partner] on all supports or damage dealers. Leaves behind a puddle.
   awesome-slab:
     id: 46544
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 139060
     description: A stack on a random non-[s:firesnaking] player.

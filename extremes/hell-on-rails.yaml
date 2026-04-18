@@ -329,12 +329,12 @@ actions:
       [boss] destroys the last train car, sending players to their doom.
   hyperconductive-plasma:
     id: 45714
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4
     damage: 140000
-    description: The two players indicated by [s:designated-conductor] explode in a [m:stack.targeted].
+    description: The two players indicated by [s:designated-conductor] explode in a [m:stack].
   arcane-revelation:
     id: 47527
     mechanic: mech

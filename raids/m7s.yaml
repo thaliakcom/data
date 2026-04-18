@@ -267,7 +267,7 @@ actions:
       Instead, stand on the third proximity indicator, wait until the first detonates, then move in a straight line to where it just detonated.
   pulp-smash:
     id: 42361
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 165650
     description: Boss jumps to a targeted player and deals [t:stack] damage to them.

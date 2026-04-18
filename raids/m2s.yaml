@@ -306,7 +306,7 @@ actions:
       The center hearts travel on a predetermined path towards the outside of the arena. The outer hearts target a random player and travel towards where that player was when the heart spawned.
   heartsick:
     id: 37280
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 62448
     players: 4

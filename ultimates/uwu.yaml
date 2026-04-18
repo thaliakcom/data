@@ -700,7 +700,7 @@ actions:
     description: An Infernal Nail is defeated, dealing moderate raidwide damage and inflicting [s:vulnerability-up] on all players.
   flaming-crush:
     id: 11101
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 12644
     description: |
@@ -1055,7 +1055,7 @@ actions:
       Note that the target for this attack locks in when the cast **begins**, not when it ends. If you wish to perform a [t:tankswap] to change the target of this attack, it is only possible to do so before [boss] has begun casting.
   viscous-aetheroplasm-stack:
     id: 11130
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 13588
     description: A player's [s:viscous-aetheroplasm] expires, triggering an explosion that can be shared to reduce the damage.
@@ -1146,7 +1146,7 @@ actions:
       timing: player
   aetheroplasm-boom:
     id: 11145
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 25261
     description: An orb belonging to an orb pair during [a:aetheric-boom] explodes as a result of a player stepping into it, dealing heavy damage that is split between all players who soak the orb.

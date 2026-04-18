@@ -421,7 +421,7 @@ actions:
   ultrasonic-amp:
     id: 45983
     name: Ultrasonic Amp
-    mechanic: stack.targeted
+    mechanic: stack
     shape: cone
     damage: 205812
     description: A 4-player stack on a random non-cell player. The cone has the same size as the tank cone during [a:ultrasonic-spread].

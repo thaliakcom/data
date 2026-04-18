@@ -538,7 +538,7 @@ actions:
     description: Omega shoots a cone of fire toward two random opposite spots in the arena, then rotates those cones either clockwise or counter-clockwise in 2 second intervals. Being hit is lethal to anyone but tanks, who can get away with [s:damage-down].
   condensed-wave-cannon-kyrios:
     id: 31503
-    mechanic: stack.targeted
+    mechanic: stack
     shape: line
     damage: 58926
     players: 3
@@ -747,7 +747,7 @@ actions:
     description: A knockback from Omega-F. Deals no damage.
   spotlight:
     id: 31536
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 58812
     description: A stack that deals lethal damage if taken with less than 4 players, or if any of the players inside are not at the correct distance to their tether partner (based on [s:mid-glitch] or [s:remote-glitch]).
@@ -1313,7 +1313,7 @@ actions:
   wave-cannon-stack:
     id: 31615
     name: Wave Cannon (Stack)
-    mechanic: stack.targeted
+    mechanic: stack
     shape: line
     damage: 60363
     count: 2

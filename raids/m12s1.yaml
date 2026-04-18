@@ -279,7 +279,7 @@ actions:
     description: The blob attached to players via [s:directed-grotesquerie] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down].
   fourth-wall-fusion:
     id: 46254
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 327383
     description: "[s:shared-grotesquerie] resolves, triggering a small 4-person stack on that player. Inflicts [s:magic-vulnerability-up]."
@@ -310,7 +310,7 @@ actions:
       **Tip**: [a:burst] resolves slightly earlier than [a:visceral-burst], so it's possible to designate one tank to always gapclose back to [boss] immediately while the other tank waits half a second before gapclosing. This causes the tankbusters to *never* be stacked on top of each other when they resolve.
   fourth-wall-fusion-random:
     id: 47545
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 233347
     description: Stack on a :unverified(random healer). Inflicts [s:magic-vulnerability-up].
@@ -577,6 +577,7 @@ actions:
       * The arena is still partially broken as a result of [a:grotesquerie-act-3].
       * Instead of half the players being required to stack for [s:shared-grotesquerie] in the [a:ravenous-reach] safe spot, the non-[s:bursting-grotesquerie] are now required to stand *in* the [a:ravenous-reach] AoE to cleanse [s:rotting-flesh]. Like [s:bursting-grotesquerie], this is also a spread. Failing to cleanse [s:rotting-flesh] inflicts [s:damage-down].
       The arena is restored the moment [a:ravenous-reach] hits. Five [a:burst] blobs drop in various locations on the now-restored arena and [s:bonds-of-flesh-alpha] are activated into [s:unbreakable-flesh-alpha] here, which tethers all players to a random player of the opposite role. Tethers can be broken like before, by establishing sufficient distance relative to the initial distance when the tether activated.
+      **Note**: Tether partners are assigned after the [a:grotesquerie-curtain-call] cast and do not redirect. If a player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha] activates, this debuff does not simply disappear; they will, in essence, have an unbreakable tether, guaranteeing [s:damage-down] and death.
     resolve: |
       Stack and move together for [a:phagocyte-spotlight]. Like before during [a:grotesquerie-act-1], it is strongly recommended to drop the final [a:phagocyte-spotlight] near the center of the arena, so that players are equidistant to both sides of the arena, allowing them to dodge [a:ravenous-reach] regardless of where it hits.
       The [s:bursting-grotesquerie] should spread in the exact same way as during [a:grotesquerie-act-1]. The [s:rotting-flesh] players can use fixed spread positions within the [a:ravenous-reach] cone (meaning that everyone always spreads in the same location regardless of whether [a:ravenous-reach] hits west or east). Since the cone is so large, it's also easily possible to wing these spreads however.
@@ -678,7 +679,7 @@ actions:
     description: Telegraphed spread AoE on all damage dealers or supports (opposite of the role selected for [a:fourth-wall-fusion-slaughtershed]).
   fourth-wall-fusion-slaughtershed:
     id: 46293
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 226326
     players: 4

@@ -251,7 +251,7 @@
         "stack.role",
         "stack.healers",
         "stack.supports",
-        "stack.targeted",
+        "stack",
         "stack.far",
         "stack.close",
         "stack.ululation",

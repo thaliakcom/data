@@ -266,7 +266,7 @@ actions:
     description: |
       Six Lindschrat clones spawn and tether to a random player each. The tether can be passed.
       Just like during [a:replication-i], each clone embodies a different mechanic, only this time the mechanic is not baited by proximity but is assigned to whichever player has that clone's tether when it locks in. The embodied mechanic is displayed as an icon near the start of the tether. There are three types of mechanics:
-      * A [light party stack](m:stack.targeted), indicated by 4 dots ([a:heavy-slam])
+      * A [light party stack](m:stack), indicated by 4 dots ([a:heavy-slam])
       * A [ms:defamation], indicated by a single dot ([a:mana-burst-player])
       * A [m:aoe.facing] AoE, indicated by a cone ([a:hemorrhagic-projection-player])
       Additionally, [boss] also casts out a tether. The player with this tether will be targeted by [a:firefall-splash-player] (see below).
@@ -336,7 +336,7 @@ actions:
       A massive [ms:defamation] on targeted players that knocks any player nearby off the platform.
   heavy-slam:
     id: 46312
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     damage: 146118
@@ -520,7 +520,7 @@ actions:
   bloody-burst:
     id: 46334
     name: Bloody Burst
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 165809
     description: A player touched one of the [a:blood-mana] shapes, triggering an explosion that deals damage split evenly between all players hit.
@@ -606,7 +606,7 @@ actions:
   wailing-wave:
     id: 46381
     name: Wailing Wave
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 207456
     players: 4
@@ -834,7 +834,7 @@ actions:
     description: "[a:mana-burst-player:d]"
   heavy-slam-idyllic:
     id: 46361
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     damage: 192321

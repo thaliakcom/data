@@ -476,12 +476,12 @@ actions:
     description: The [a:burnt-strike-fire] explodes again, knocking back all players from the center of the line.
   sinsmoke-tether:
     id: 40167
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     players: 4
     damage: 124086
     description: |
-      A [m:stack.targeted] on a tethered player. Inflicts [s:mark-of-mortality] if taken with less than 4 players.
+      A [m:stack] on a tethered player. Inflicts [s:mark-of-mortality] if taken with less than 4 players.
   burnished-glory:
     id: 40170
     mechanic: raidwide
@@ -781,7 +781,7 @@ actions:
       Unlike most stacks in this fight, this stack does **not** inflict [s:mark-of-mortality] if taken with less than 4 players and can be survived with sufficient mitigation and healing.
   hallowed-ray:
     id: 40211
-    mechanic: stack.targeted
+    mechanic: stack
     shape: line
     damage: 190804
     description: |
@@ -849,7 +849,7 @@ actions:
     description: A tower resolves, either dealing moderate damage to the players inside or killing all players ([a:unmitigated-explosion]) if not occupied by enough players. Inflicts [s:lightsteeped].
   powerful-light:
     id: 40217
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4
@@ -1225,7 +1225,7 @@ actions:
       Note that, if any Crystal of Dark was destroyed during Intermission, the Fragment still spawns but has reduced maximum HP, thus guaranteeing a wipe at the end of the phase.
   akh-morn:
     id: 40248
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4
@@ -1237,7 +1237,7 @@ actions:
       Ignores [s:transcendent] and [t:invuln]s.
   morn-afah:
     id: 40249
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 180000
     description: |
@@ -1434,7 +1434,7 @@ actions:
   akh-morn-p5:
     id: 40312
     name: Akh Morn
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4

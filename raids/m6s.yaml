@@ -74,7 +74,7 @@ status:
     name: Burning Up
     type: delay
     duration: 43000
-    description: Triggers [a:crowd-brulee] on this player at the end of the effect's duration, causing that player to explode in a moderately sized 6-player [m:stack.targeted].
+    description: Triggers [a:crowd-brulee] on this player at the end of the effect's duration, causing that player to explode in a moderately sized 6-player [m:stack].
     gameDescription: Getting hotter by the moment, resulting in damage to those nearby when this effect expires.
   sweltering:
     id: 4449
@@ -105,7 +105,7 @@ status:
     name: Mousse Mine
     type: delay
     duration: 5000
-    description: Player cannot move but can still act. At the end of the effect's duration, triggers [a:burst] on this player, a 4-player [m:stack.targeted]. Inflicted by [a:sticky-mousse].
+    description: Player cannot move but can still act. At the end of the effect's duration, triggers [a:burst] on this player, a 4-player [m:stack]. Inflicted by [a:sticky-mousse].
     gameDescription: Covered in mousse and unable to move. Will detonate when this effect expires.
   heating-up:
     id: 4454
@@ -163,10 +163,10 @@ actions:
     description: A cactus explodes, dealing heavy damage and inflicting [s:damage-down] on those nearby.
   crowd-brulee:
     id: 39469
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     damage: 111114
-    description: "[s:burning-up] resolves, triggering a moderately sized [m:stack.targeted] on that player. Inflicts [s:fire-resistance-down-ii]."
+    description: "[s:burning-up] resolves, triggering a moderately sized [m:stack] on that player. Inflicts [s:fire-resistance-down-ii]."
   unlimited-craving:
     id: 39479
     mechanic: mech
@@ -302,8 +302,8 @@ actions:
     damage: 94917
     description: |
       Hits two random players with a [ms:chariot] that deals moderate damage and inflicts [s:mousse-mine] and [s:magic-vulnerability-up].
-      At the end of the status effect, triggers [a:sticky-mousse-burst], a [m:stack.targeted] on the [s:mousse-mine] players.
-      Note that, if multiple players are hit by the same [a:sticky-mousse], *all* players hit will be inflicted with [s:mousse-mine], rendering the mechanic unsurvivable as all those players will be hit with [stacks](m:stack.targeted) while they're on top of each other and cannot move.
+      At the end of the status effect, triggers [a:sticky-mousse-burst], a [m:stack] on the [s:mousse-mine] players.
+      Note that, if multiple players are hit by the same [a:sticky-mousse], *all* players hit will be inflicted with [s:mousse-mine], rendering the mechanic unsurvivable as all those players will be hit with [stacks](m:stack) while they're on top of each other and cannot move.
     resolve: |
       Have players spread at standard [t:protean] positions. Once two players are inflicted with [s:mousse-mine], stack with the *closest* [s:mousse-mine] player. If both [s:mousse-mine] players are equidistant to you, rotate to the [s:mousse-mine] player clockwise from you.
       The mechanic is intended for an even 4-4 split, but a 3-stack *is* survivable with enough mitigation. A 2-stack is not survivable under any circumstances outside of [i:tank] limit break.
@@ -312,7 +312,7 @@ actions:
       id: sticky-mousse-burst
   sticky-mousse-burst:
     id: 42647
-    mechanic: stack.targeted
+    mechanic: stack
     shape: chariot
     count: 2
     players: 4
