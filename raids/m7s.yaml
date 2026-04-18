@@ -193,8 +193,9 @@ actions:
     - at: 1202
       id: pollen
     - at: 3340
-      description: 4 Blooming Abominations become targetable.
       id: <targetable>
+      target: Blooming Abominations
+      description: 4 Blooming Abominations become targetable.
     - at: 4142
       id: sinister-seeds-aoes
     - at: 6147
@@ -464,6 +465,7 @@ timeline:
     id: neo-bombarian-special
   - at: 148515
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 158985
     id: grappling-ivy
   - at: 163596
@@ -471,6 +473,7 @@ timeline:
     name: Phase 2
   - at: 163596
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 170711
     id: stoneringer
   - at: 184657
@@ -542,11 +545,13 @@ timeline:
     id: powerslam
   - at: 352684
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 370113
     id: <phase>
     name: Phase 3
   - at: 370113
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 382200
     id: brutal-impact-7x
   - at: 396043
@@ -578,8 +583,9 @@ timeline:
   - at: 493125
     id: pollen
   - at: 495267
-    description: Adds become targetable.
     id: <targetable>
+    target: Blooming Abominations
+    description: 4 Blooming Abominations become targetable.
   - at: 496604
     id: killer-seeds
   - at: 501239

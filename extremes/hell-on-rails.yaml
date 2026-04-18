@@ -379,11 +379,13 @@ timeline:
     id: unlimited-express
   - at: 53093
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 58884
     id: <phase>
     name: Car 2
   - at: 58884
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 64986
     id: dead-mans-overdraught
   - at: 70017
@@ -422,19 +424,24 @@ timeline:
     id: unlimited-express
   - at: 121504
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 127297
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 136966
     id: lightning-burst
   - at: 149618
     id: runaway-train
   - at: 153272
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 160229
     id: <phase>
     name: Intermission
   - at: 160229
     id: <targetable>
+    target: Aether Orb
+    description: The orb of aether becomes targetable.
   - at: 174925
     id: aetherosote
     link: or
@@ -474,6 +481,7 @@ timeline:
     name: Car 3
   - at: 245100
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 263008
     id: shockwave
   - at: 272994

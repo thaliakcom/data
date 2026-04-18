@@ -1139,11 +1139,13 @@ timeline:
     id: soulshock
   - at: 387528
     id: <untargetable>
+    description: "[boss:c] becomes untargetable."
   - at: 399526
     id: <phase>
     name: Phase 2
   - at: 399526
     id: <targetable>
+    description: "[boss:c] becomes untargetable."
   - at: 411649
     id: cross-tail-switch
   - at: 429804

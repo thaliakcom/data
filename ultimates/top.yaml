@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
 date: 2024-05-19
-modified: 2025-06-15
+modified: 2026-04-18
 by:
   id: 27637301
   role: author
@@ -670,6 +670,8 @@ actions:
     children:
       - at: 3076
         id: <untargetable>
+        target: Omega-M and F
+        description: Omega-M and F become untargetable.
       - at: 9610
         id: subject-simulation-m
         link: and
@@ -1420,6 +1422,7 @@ actions:
     children:
       - at: 3076
         id: <untargetable>
+        target: Omega-M
       - at: 21292
         id: patch
       - at: 23214
@@ -1580,6 +1583,7 @@ actions:
     children:
       - at: 3076
         id: <untargetable>
+        target: Omega-M
       - at: 17391
         id: subject-simulation-f
       - at: 22182
@@ -1690,6 +1694,7 @@ actions:
         id: efficient-bladework
       - at: 23600
         id: <untargetable>
+        target: Omega-F
       - at: 35143
         id: hello-near-distant-world
         link: and
@@ -1801,7 +1806,7 @@ actions:
     description: A hit of the outwards or inwards moving exasquares.
   cosmo-dive:
     id: 31654
-    mechanic: mech
+    mechanic: combination
     shape: chariot
     description: |
       Hits the two closest targets with tankbusters and the farthest target with a stack.
@@ -2033,6 +2038,8 @@ timeline:
     hp: 8629240
   - at: 135061
     id: <targetable>
+    target: Omega-M and F
+    description: Omega-M and F become targetable.
     timing: push
   - at: 138537
     id: firewall
@@ -2042,6 +2049,8 @@ timeline:
     id: party-synergy
   - at: 195202
     id: <targetable>
+    target: Omega-M and F
+    description: Omega-M and F become targetable.
   - at: 204788
     id: synthetic-shield
   - at: 215027
@@ -2057,6 +2066,7 @@ timeline:
     timing: push
   - at: 315693
     id: <targetable>
+    target: Final Omega
   - at: 324657
     id: hello-world
   - at: 433147
@@ -2073,6 +2083,7 @@ timeline:
     maxhp: 979085
   - at: 478067
     id: <targetable>
+    target: Final Omega
     timing: push
   - at: 492229
     id: wave-cannon
@@ -2085,24 +2096,28 @@ timeline:
     maxhp: 2741427
   - at: 549565
     id: <targetable>
+    target: Omega-M
   - at: 557569
     id: double-solar-ray
   - at: 574102
     id: run-dynamis-(delta-version)
   - at: 626197
     id: <targetable>
+    target: Omega-M
   - at: 639583
     id: double-solar-ray
   - at: 656087
     id: run-dynamis-(sigma-version)
   - at: 720681
     id: <targetable>
+    target: Omega-F
   - at: 728955
     id: double-solar-ray
   - at: 745645
     id: run-dynamis-(omega-version)
   - at: 803853
     id: <targetable>
+    target: Omega-F
   - at: 812225
     id: double-solar-ray
   - at: 835472
@@ -2113,6 +2128,7 @@ timeline:
     hp: 20530948
   - at: 890725
     id: <targetable>
+    target: Alpha-Omega
   - at: 903280
     id: cosmo-memory-2
   - at: 917619

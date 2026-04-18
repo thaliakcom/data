@@ -205,6 +205,7 @@ actions:
       id: sick-swell-kb
     - at: 11207
       id: <targetable>
+      target: Deep Blue
       description: Deep Blue reenters the arena.
       link: then
     - at: 11696
@@ -503,6 +504,7 @@ actions:
       link: and
     - at: 3247
       id: <targetable>
+      target: Watery Grave
       description: The Watery Grave becomes targetable.
     - at: 11376
       id: xtreme-wave
@@ -648,12 +650,14 @@ timeline:
     id: divers-dare
   - at: 89267
     id: <untargetable>
+    target: Red Hot
     description: Red Hot leaves the arena.
   - at: 90957
     id: <phase>
     name: Deep Blue
   - at: 90957
     id: <targetable>
+    target: Deep Blue
     description: Deep Blue enters the arena at the north.
   - at: 97311
     id: sick-swell
@@ -673,6 +677,7 @@ timeline:
     name: Double Bosses
   - at: 152505
     id: <targetable>
+    target: Red Hot
     description: |
       Red Hot enters the arena.
       From now on, both bosses are targetable at the same time. Each boss has the [s:brotherly-love] buff, which prevents the HP of either from being reduced below 1 HP until the other has reached 1 HP.

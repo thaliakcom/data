@@ -217,13 +217,13 @@ actions:
     children:
     - at: 0
       id: <targetable>
-      description: Ser Zephirin becomes targetable.
+      target: Ser Zephirin
     - at: 20000
       id: sacred-cross
       link: and
     - at: 20000
       id: <untargetable>
-      description: Ser Zephirin becomes untargetable.
+      target: Ser Zephirin
     - at: 26042
       id: spiral-thrust-x3
   sacred-cross:
@@ -270,6 +270,7 @@ actions:
     children:
     - at: 500
       id: <targetable>
+      target: Ser Janleneoux and Ser Adelphel
       description: Ser Janleneoux and Ser Adelphel become targetable.
     - at: 10668
       id: divine-right
@@ -297,6 +298,8 @@ actions:
       id: <loop>
     - at: 72328
       id: <untargetable>
+      target: Ser Janleneoux and Ser Adelphel
+      description: Ser Janleneoux and Ser Adelphel become untargetable.
       timing: push
   divine-right:
     id: 35282
@@ -407,6 +410,7 @@ actions:
     children:
     - at: 2346
       id: <targetable>
+      target: Meteors
       description: The Meteor and Comet Circles become targetable.
     - at: 9230
       id: comet
@@ -420,9 +424,6 @@ actions:
       id: comet-impact
     - at: 44673
       id: meteor-impact
-    - at: 44673
-      id: <untargetable>
-      timing: push
   comet:
     id: 35316
     mechanic: spread

@@ -417,6 +417,7 @@ actions:
     children:
       - at: 0
         id: <untargetable>
+        description: "[boss:c] becomes untargetable."
       - at: 4951
         id: firemeld
         link: and
@@ -665,6 +666,7 @@ timeline:
     id: lc1
   - at: 257523
     id: <targetable>
+    description: "[boss:c] becomes targetable."
   - at: 264682
     id: two-minds
     link: then

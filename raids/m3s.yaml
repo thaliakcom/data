@@ -661,6 +661,7 @@ actions:
         id: special-bombarian-special-8
       - at: 14006
         id: <untargetable>
+        description: "[boss:c] becomes untargetable."
       - at: 20519
         id: special-bombarian-special-9
   special-bombarian-special-1:

@@ -151,6 +151,7 @@ actions:
     children:
     - at: 890
       id: <untargetable>
+      description: "[boss:c] becomes untargetable."
     - at: 11455
       id: spearpoint-push
       count: 2
@@ -177,6 +178,7 @@ actions:
       count: 2
     - at: 53197
       id: <targetable>
+      description: "[boss:c] becomes targetable."
   roseblood-bloom:
     id: 43193
     mechanic: mech.arena

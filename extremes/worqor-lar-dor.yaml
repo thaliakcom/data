@@ -512,9 +512,10 @@ actions:
     children:
     - at: 938
       id: <untargetable>
-      description: "[boss] becomes untargetable."
+      target: "[boss:c]"
     - at: 2008
       id: <targetable>
+      target: "Beacons"
       description: Three beacons (one per element) become targetable.
     - at: 9183
       id: calamitous-echo
@@ -788,6 +789,7 @@ timeline:
   - at: 236805
     id: <targetable>
     timing: push
+    target: "[boss:c]"
     description: |
       [boss] becomes targetable again after all three beacons have been destroyed.
       This timeline assumes it took 7× [a:calamitous-cry] until all beacons were destroyed. It may take your party more or less time, altering the overall timeline.

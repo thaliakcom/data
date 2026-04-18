@@ -346,7 +346,7 @@ actions:
     children:
       - at: 0
         id: <untargetable>
-        description: Fatebreaker becomes untargetable.
+        target: Fatebreaker
       - at: 5485
         id: burn-mark
       - at: 15101
@@ -662,6 +662,7 @@ actions:
     children:
     - at: 3121
       id: <untargetable>
+      target: Usurper of Frost
     - at: 8914
       id: axe-kick
       link: or
@@ -715,6 +716,7 @@ actions:
       id: twin-silence
     - at: 40110
       id: <targetable>
+      target: Usurper of Frost
   icicle-impact:
     id: 40198
     mechanic: aoe
@@ -798,6 +800,7 @@ actions:
     children:
     - at: 3076
       id: <untargetable>
+      target: Usurper of Frost
     - at: 7933
       id: luminous-hammer
       link: then
@@ -825,6 +828,7 @@ actions:
       id: banish-iii-divided
     - at: 32015
       id: <targetable>
+      target: Usurper of Frost
   refulgent-fate:
     id: 40215
     mechanic: mech.failure
@@ -1302,6 +1306,7 @@ actions:
     children:
     - at: 3072
       id: <untargetable>
+      description: Both Usurper of Frost and Oracle of Darkness become untargetable.
     - at: 6057
       id: edge-of-oblivion
     - at: 9706
@@ -1356,6 +1361,7 @@ actions:
       status: stun
     - at: 52990
       id: <targetable>
+      description: Both Usurper of Frost and Oracle of Darkness become targetable.
   maelstrom:
     id: 40299
     mechanic: aoe
@@ -1553,7 +1559,7 @@ timeline:
     id: turn-of-the-heavens
   - at: 80869
     id: <targetable>
-    description: Fatebreaker becomes targetable.
+    target: Fatebreaker
   - at: 87112
     id: burnished-glory
   - at: 102661
@@ -1580,6 +1586,7 @@ timeline:
     maxhp: 5030246
   - at: 163861
     id: <targetable>
+    target: Usurper of Frost
     timing: push
   - at: 175075
     id: quadruple-slap
@@ -1614,6 +1621,7 @@ timeline:
     id: the-house-of-light-protean
   - at: 348772
     id: <untargetable>
+    target: Usurper of Frost
   - at: 349665
     id: absolute-zero
   - at: 351979
@@ -1625,6 +1633,8 @@ timeline:
     maxhp: 1256902
   - at: 374534
     id: <targetable>
+    target: Ice Veil
+    description: The Ice Veil, Light Crystals, and Dark Crystals become targetable.
   - at: 383938
     id: sinbound-blizzard-iii
   - at: 385050
@@ -1667,6 +1677,7 @@ timeline:
     id: endless-ice-age
   - at: 415540
     id: <untargetable>
+    target: Ice Veil
     timing: push
   - at: 426823
     id: junction
@@ -1677,6 +1688,7 @@ timeline:
     maxhp: 6181889
   - at: 441060
     id: <targetable>
+    target: Oracle of Darkness
   - at: 445125
     id: hells-judgment
   - at: 459370
@@ -1699,12 +1711,14 @@ timeline:
     id: memorys-end
   - at: 602707
     id: <untargetable>
+    target: Oracle of Darkness
   - at: 614396
     id: <phase>
     name: "Phase 4: Shiva & Gaia"
     hp: 23887738
   - at: 614396
     id: <targetable>
+    target: Usurper of Frost
   - at: 622606
     id: materialization
   - at: 633850
@@ -1715,7 +1729,7 @@ timeline:
     id: edge-of-oblivion
   - at: 639828
     id: <targetable>
-    description: Oracle of Darkness becomes targetable.
+    target: Oracle of Darkness
   - at: 648482
     id: darklit-dragonsong
   - at: 677896
@@ -1739,6 +1753,7 @@ timeline:
     id: absolute-zero-enrage
   - at: 790327
     id: <untargetable>
+    description: If the enrage was beaten, both bosses become untargetable here.
     timing: push
   - at: 867480
     id: <phase>
@@ -1746,6 +1761,7 @@ timeline:
     hp: 48541857
   - at: 867480
     id: <targetable>
+    target: Pandora
   - at: 878716
     id: fulgent-blade
   - at: 913865

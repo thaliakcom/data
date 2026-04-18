@@ -384,6 +384,7 @@ actions:
       id: bloody-bondage
     - at: 2763
       id: <targetable>
+      target: Charnel Cells
       description: The charnel cells become targetable.
     - at: 9088
       id: ultrasonic-spread
@@ -526,6 +527,7 @@ timeline:
     name: Coffinmaker Phase
   - at: 68484
     id: <targetable>
+    target: Coffinmaker
     description: The Coffinmaker becomes targetable.
   - at: 68841
     id: dead-wake
@@ -624,6 +626,7 @@ timeline:
     id: plummet
   - at: 297196
     id: <targetable>
+    target: Doornail and Flails
     description: A Deadly Doornail and two Fatal Flails become targetable.
   - at: 306063
     id: killer-voice
@@ -631,6 +634,7 @@ timeline:
     id: plummet
   - at: 315318
     id: <targetable>
+    target: Doornail and Flails
     description: A Deadly Doornail and two Fatal Flails become targetable.
   - at: 324231
     id: killer-voice
@@ -638,6 +642,7 @@ timeline:
     id: plummet
   - at: 333502
     id: <targetable>
+    target: Doornail and Flails
     description: A Deadly Doornail and two Fatal Flails become targetable.
   - at: 357298
     id: sadistic-screech

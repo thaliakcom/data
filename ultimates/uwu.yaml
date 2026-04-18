@@ -247,6 +247,7 @@ actions:
     children:
     - at: 0
       id: <targetable>
+      target: Plumes
       description: 1 Spiny Plume and 4 Satin Plumes spawn.
     - at: 3733
       id: slipstream
@@ -257,6 +258,7 @@ actions:
       timing: skippable
     - at: 14549
       id: <untargetable>
+      target: Garuda
       description: |
           Garuda screams and flies away, becoming untargetable.
           The Satin Plumes should be dead by this point, but **not** the Spiny Plume. It *must* be allowed to cast its second [a:cyclone] first or a wipe is all but guaranteed. It is recommended to leave the Spiny Plume alive until [a:mistral-shriek]. The earlier you kill it, the less time you have for [s:thermal-low:2] cleanses.
@@ -267,6 +269,7 @@ actions:
       id: feather-rain
     - at: 18823
       id: <targetable>
+      target: Garuda
       description: Garuda returns to the arena.
     - at: 20336
       id: thermal-tumult
@@ -882,6 +885,7 @@ actions:
       id: landslide
     - at: 14769
       id: <targetable>
+      target: Granite Gaols
       description: Three players are [fettered](s:fetters), trapping them inside targetable Granite Gaols.
     - at: 16065
       id: burst
@@ -1231,8 +1235,10 @@ actions:
     children:
     - at: 4453
       id: <untargetable>
+      target: "[boss:c]"
     - at: 8728
       id: <targetable>
+      target: "[boss:c]"
     - at: 11309
       id: weight-of-the-land-woken
     - at: 13845
@@ -1277,12 +1283,14 @@ actions:
       id: feather-rain
     - at: 41230
       id: <untargetable>
+      target: "[boss:c]"
       description: |
         [boss:c] disappears as it teleports into the center of the arena.
     - at: 41900
       id: searing-wind
     - at: 45508
       id: <targetable>
+      target: "[boss:c]"
       description: |
         [boss:c] reappears in the center of the arena.
     - at: 47778
@@ -1354,6 +1362,7 @@ actions:
     children:
     - at: 4453
       id: <untargetable>
+      target: "[boss:c]"
     - at: 10866
       id: rock-throw-suppression
     - at: 11310
@@ -1521,11 +1530,13 @@ timeline:
     timing: push
   - at: 69755
     id: <untargetable>
+    target: Garuda
     description: Garuda screams and flies away, becoming untargetable.
   - at: 72346
     id: feather-rain
   - at: 74044
     id: <targetable>
+    target: Garuda
     description: Garuda returns to the arena.
   - at: 77122
     id: aerial-blast
@@ -1578,6 +1589,7 @@ timeline:
     id: slipstream
   - at: 173273
     id: <untargetable>
+    target: Garuda
     description: Garuda screams and flies away, becoming untargetable and casting her enrage.
   - at: 175856
     id: feather-rain
@@ -1591,6 +1603,7 @@ timeline:
     id: ifrit-transition
   - at: 196164
     id: <targetable>
+    target: Ifrit
   - at: 199237
     id: hellfire
   - at: 207422
@@ -1601,9 +1614,11 @@ timeline:
     id: infernal-nails
   - at: 254698
     id: <untargetable>
+    target: Ifrit
     description: Ifrit jumps away, becoming untargetable.
   - at: 258985
     id: <targetable>
+    target: Ifrit
     description: Ifrit returns to the arena.
   - at: 262055
     id: hellfire-nails
@@ -1611,16 +1626,19 @@ timeline:
     id: inferno-howl
   - at: 276040
     id: eruption
+    link: and
   - at: 276350
     id: searing-wind
   - at: 282368
     id: searing-wind
+    link: then
   - at: 283569
     id: crimson-cyclone
     description: Ifrit's clones dash across the arena, dealing massive damage to anyone caught in the dash. This always hits cardinals.
     count: 2
   - at: 288385
     id: searing-wind
+    link: and
   - at: 288474
     id: inferno-howl
   - at: 294410
@@ -1645,6 +1663,7 @@ timeline:
     id: flaming-crush
   - at: 351063
     id: <untargetable>
+    target: Ifrit
     description: Ifrit becomes untargetable and prepares to cast its enrage.
   - at: 358400
     id: hellfire-enrage
@@ -1656,6 +1675,7 @@ timeline:
     id: geocrush-initial
   - at: 363017
     id: <targetable>
+    target: Titan
     description: Titan becomes targetable.
   - at: 366086
     id: earthen-fury
@@ -1665,11 +1685,13 @@ timeline:
     id: weight-of-the-land
   - at: 385837
     id: <untargetable>
+    target: Titan
     description: Titan faces a random cardinal and jumps away.
   - at: 391054
     id: geocrush
   - at: 393425
     id: <targetable>
+    target: Titan
     description: Titan becomes targetable again.
   - at: 394000
     id: gaols
@@ -1685,16 +1707,19 @@ timeline:
     id: landslide-woken
   - at: 439793
     id: <untargetable>
+    target: Titan
     description: Titan faces a random cardinal and jumps away, becoming untargetable.
   - at: 445007
     id: geocrush
   - at: 447363
     id: <targetable>
+    target: Titan
     description: Titan becomes targetable again.
   - at: 447452
     id: rock-throw
   - at: 454491
     id: <targetable>
+    target: Granite Gaol
     description: A healer is trapped in a Granite Gaol, which becomes targetable.
   - at: 461491
     id: granite-impact
@@ -1736,6 +1761,7 @@ timeline:
     id: tumult-x8
   - at: 532362
     id: <untargetable>
+    target: Titan
     description: Titan becomes untargetable and prepares to cast his enrage.
   - at: 539734
     id: earthen-fury-enrage
@@ -1746,6 +1772,7 @@ timeline:
     id: magitek-freefire
   - at: 551820
     id: <targetable>
+    target: Magitek Bits
     description: |
       Six magitek bits spawn around the arena and begin casting [a:self-detonate], which wipes the party if permitted to complete.
       The magitek bits take minuscule damage from anything other than a [i:caster] limit break 3.
@@ -1756,8 +1783,10 @@ timeline:
     id: blight
   - at: 584875
     id: <targetable>
+    target: Lahabrea
   - at: 597765
     id: <untargetable>
+    target: Lahabrea
   - at: 601878
     id: dark-iv
     timing: skippable
@@ -1771,6 +1800,7 @@ timeline:
     id: ultima-aether
   - at: 651641
     id: <targetable>
+    target: "[boss:c]"
     description: |
       [boss:c] becomes targetable.
       Note that while [boss] has the [s:woken] buff and can cast primal abilities like [a:landslide], it will never cast the [s:woken] versions of those abilities. Only the primals themselves can use [s:woken] abilities.
@@ -1786,6 +1816,7 @@ timeline:
     id: ultimate-predation
   - at: 699409
     id: <targetable>
+    target: "[boss:c]"
     description: |
       [boss:c] reappears in the center of the arena.
   - at: 711312
@@ -1846,6 +1877,7 @@ timeline:
     timing: push
   - at: 890365
     id: <targetable>
+    target: "[boss:c]"
   - at: 895440
     id: ultima
   - at: 905637
@@ -1854,10 +1886,12 @@ timeline:
     id: primal-roulette
   - at: 989326
     id: <untargetable>
+    target: "[boss:c]"
     description: |
       [boss:c] briefly disappears as it teleports north.
   - at: 993602
     id: <targetable>
+    target: "[boss:c]"
     description: |
       [boss:c] reappears north.
   - at: 994602
