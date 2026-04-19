@@ -803,6 +803,12 @@ graphing:
       color: "#F2E99C"
       origin: [0.5, 0]
       scale: [1, 0]
+    tower:
+      type: image
+      image: /images/markers/tower.svg
+      size: 23
+      scale: 0
+      opacity: 0.9
   graphs:
     dualspell-thunder-l:
       - thunder-l#1: [0, 0, 0]
