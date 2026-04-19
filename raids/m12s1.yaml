@@ -913,7 +913,7 @@ graphing:
       size: 23
       scale: 0
       opacity: 0.9
-    hint:
+    label:
       type: rectangle
       planar: false
       size: [120, 25]
@@ -946,7 +946,7 @@ graphing:
         T2: [7, -10]
         T1: [7, -20]
         cast: { text: Mortal Slayer, progress: 0 }
-        hint: { x: 63, y: 60, text: "Wait until the first purple orb appears, then:\nsupports on that side, DPS other side.", visible: true }
+        hint: "Wait until the first purple orb appears, then:\nsupports on that side, DPS other side."
       - cast: { progress: 0.25 }
         green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
@@ -961,7 +961,7 @@ graphing:
         R2: [0, -8]
         R1: [0, -8]
         T2: [0, -8]
-        hint: { text: "DPS order: M1 M2 R1 R2<br />Tank order: MT OT<br />Healer order: H1 H2" }
+        hint: "DPS order: M1 M2 R1 R2<br />Tank order: MT OT<br />Healer order: H1 H2"
       - cast: { progress: 0.75 }
         green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
@@ -1018,7 +1018,7 @@ graphing:
         T2: [17, -11]
         M2: [7, -10]
         cast: { text: Mortal Slayer, progress: 0 }
-        hint: { x: 63, y: 60, text: "Healers can preposition immediately, but may need to \"unpreposition\" if a purple orb is first.", visible: true }
+        hint: "Healers can preposition immediately, but may need to \"unpreposition\" if a purple orb is first."
       - cast: { progress: 0.25 }
         green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
@@ -1033,7 +1033,7 @@ graphing:
         R1: [0, -8]
         T2: [0, -8]
         M2: [0, -8]
-        hint: { text: "West order: H1 M1 R1<br />East order: H2 M2 R2<br />Tanks slot in as needed." }
+        hint: "West order: H1 M1 R1<br />East order: H2 M2 R2<br />Tanks slot in as needed."
       - cast: { progress: 0.75 }
         green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
@@ -1059,7 +1059,7 @@ graphing:
         T2: [33, -69]
         R2: [-27, -32]
         M2: [27, -32]
-        hint: { text: "R2 goes west because east already has all green orbs assigned and west does not.<br/>One ranged will always swap sides." }
+        hint: "R2 goes west because east already has all green orbs assigned and west does not.<br/>One ranged will always swap sides."
       - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
         green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
       - purple-orb#e3: { visible: false }
@@ -1091,7 +1091,7 @@ graphing:
         T2: [7, -10]
         T1: [7, -20]
         cast: { text: Mortal Slayer, progress: 0 }
-        hint: { x: 63, y: 60, text: "Wait until the first purple orb appears, then:\ntanks and melees on that side, everyone else other side.", visible: true }
+        hint: "Wait until the first purple orb appears, then:\ntanks and melees on that side, everyone else other side."
       - cast: { progress: 0.25 }
         green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
@@ -1100,7 +1100,7 @@ graphing:
         H2: [-2, 25]
         R1: [-2, 69]
         R2: [-36, 69]
-        hint: { text: "Healers and rangeds preposition using these exact positions on the non-purple side." }
+        hint: "Healers and rangeds preposition using these exact positions on the non-purple side."
       - cast: { progress: 0.5 }
         purple-orb#e3: { visible: true }
         green-orb#e4: { visible: true }
@@ -1120,7 +1120,7 @@ graphing:
         M1: [5, -70]
         T2: [41, -70]
         H1: [2, -19]
-        hint: { text: "When a healer or ranged gets hit, they just take a small step onto the other side." }
+        hint: "When a healer or ranged gets hit, they just take a small step onto the other side."
       - green-orb#w2: { x: 0, y: 0, attach: H2, scale: 6 }
         green-orb#e2: { x: 0, y: 0, attach: M1, scale: 6 }
       - green-orb#w2: { visible: false }
@@ -1131,7 +1131,7 @@ graphing:
         H2: [2, 25]
       - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
         green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
-        hint: { visible: false }
+        hint: ""
       - purple-orb#e3: { visible: false }
         green-orb#e4: { visible: false }
         green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
@@ -1190,7 +1190,7 @@ graphing:
         attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 1", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Spread out a bit to make it easier to see where your blob is.", visible: true }
+        hint: "Spread out a bit to make it easier to see where your blob is."
       - attached-snake#*: { visible: true }
         cast: { progress: 1, visible: false }
         DPS: { status: [bursting-grotesquerie] }
@@ -1198,7 +1198,7 @@ graphing:
       - cast: { text: Ravenous Reach, progress: 0 }
         players: { x: -67, y: -65, status: [] }
         attached-snake#*: { visible: false }
-        hint: { visible: false }
+        hint: ""
       - cast: { visible: true }
         attached-snake#*: { visible: false }
         circle#spotlight-1: { visible: true }
@@ -1234,14 +1234,14 @@ graphing:
         attached-snake#H1: { x: -5, y: 0 }
         attached-snake#H2: { x: 0, y: -5 }
         attached-snake#T1: { x: 0, y: -5, rotate: 180 }
-        hint: { visible: true, text: Turn your character to ensure your blob isn't facing another player. }
+        hint: "Turn your character to ensure your blob isn't facing another player."
       - cast: { progress: 1 }
         cone-arm: { visible: true }
         cone-gaze#*: { visible: true }
         players: { status: [] }
         attached-snake#*: { visible: false }
         spread#spread-*: { scale: 1 }
-        hint: { visible: false }
+        hint: ""
       - cast: { visible: false }
         cone-arm: { visible: false }
         enemy#arm: { visible: false }
@@ -1307,7 +1307,6 @@ graphing:
         R1: [30, 0]
         R2: [21, 21]
         cast: { text: "Grotesquerie: Act 2", progress: 0.75 }
-        hint: { x: -63, y: 60, text: "", visible: false }
       - cast: { progress: 1 }
         T1: { status: [first-in-line, bonds-of-flesh-alpha] }
         T2: { status: [second-in-line, bonds-of-flesh-alpha] }
@@ -1317,11 +1316,11 @@ graphing:
         M2: { status: [second-in-line, bonds-of-flesh-beta] }
         M1: { status: [third-in-line, bonds-of-flesh-beta] }
         R2: { status: [fourth-in-line, bonds-of-flesh-beta] }
-        hint: { text: "Players are assigned debuffs. Alphas go out and soak blob towers. Betas stay in and soak player towers.", visible: true }
+        hint: "Players are assigned debuffs. Alphas go out and soak blob towers. Betas stay in and soak player towers."
       - cast: { visible: false }
         circle#spotlight-1: { visible: true }
         players: { x: 0, y: 0, status: [] }
-        hint: { text: "Alpha players keep an eye on the AoEs as they appear. The order determines which tower they soak." }
+        hint: "Alpha players keep an eye on the AoEs as they appear. The order determines which tower they soak."
       - cast: { text: "Cruel Coil", progress: 0 }
         circle#spotlight-2: { visible: true }
       - circle#spotlight-1: { visible: false }
@@ -1347,14 +1346,14 @@ graphing:
         R1: { y: -40, status: [first-in-line, unbreakable-flesh-beta] }
         tether#1: { visible: true }
         spread-small#[T1,R1]: { visible: true }
-        hint: { text: "First tethers activate. Alpha goes out, beta stays in." }
+        hint: "First tethers activate. Alpha goes out, beta stays in."
       - tether#1: { visible: false }
         spread-small#[T1,R1]: { visible: false }
         blob-tower#1: { visible: false }
         tower#[a,b]1: { scale: 1 }
         T1: { y: 60, status: [magic-vulnerability-up] }
         R1: { status: [magic-vulnerability-up] }
-        hint: { text: "First towers appear." }
+        hint: "First towers appear."
       - cruel-coil: { rotate: -90 }
         R1: { y: 0 }
         H2: { attach: tower#a1, status: [third-in-line, bonds-of-flesh-alpha] }
@@ -1364,7 +1363,7 @@ graphing:
         T1: [-46, 55]
         tether#2: { visible: true }
         spread-small#[T2,M2]: { visible: true }
-        hint: { text: "Second tethers activate. Third-in-lines soak first towers." }
+        hint: "Second tethers activate. Third-in-lines soak first towers."
       - tether#2: { visible: false }
         spread-small#[T2,M2]: { visible: false }
         blob-tower#2: { visible: false }
@@ -1375,7 +1374,7 @@ graphing:
         M2: { status: [magic-vulnerability-up] }
         H2: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
         M1: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
-        hint: { text: "Second towers appear." }
+        hint: "Second towers appear."
       - cruel-coil: { rotate: -180 }
         M2: { x: 0 }
         H1: { attach: tower#a2, status: [fourth-in-line, bonds-of-flesh-alpha] }
@@ -1386,7 +1385,7 @@ graphing:
         T2: [66, 45]
         tether#3: { visible: true }
         spread-small#[H2,M1]: { visible: true }
-        hint: { text: "Third tethers activate. Fourth-in-lines soak second towers." }
+        hint: "Third tethers activate. Fourth-in-lines soak second towers."
       - tether#3: { visible: false }
         spread-small#[H2,M1]: { visible: false }
         blob-tower#3: { visible: false }
@@ -1398,7 +1397,7 @@ graphing:
         M1: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
         H1: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
         R2: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
-        hint: { text: "Third towers appear." }
+        hint: "Third towers appear."
       - cruel-coil: { rotate: 90 }
         M2: { x: 0 }
         H2: [53, -62]
@@ -1408,7 +1407,7 @@ graphing:
         R2: { x: 40, status: [fourth-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
         tether#4: { visible: true }
         spread-small#[H1,R2]: { visible: true }
-        hint: { text: "Fourth tethers activate. First-in-lines soak third towers." }
+        hint: "Fourth tethers activate. First-in-lines soak third towers."
       - tether#4: { visible: false }
         spread-small#[H1,R2]: { visible: false }
         blob-tower#4: { visible: false }
@@ -1419,18 +1418,18 @@ graphing:
         R2: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
         R1: { x: 0, y: 0, status: [poison-resistance-down-ii] }
         T1: { status: [poison-resistance-down-ii] }
-        hint: { text: "Fourth towers appear." }
+        hint: "Fourth towers appear."
       - cruel-coil: { rotate: 0 }
         R2: { x: 19 }
         M2: { x: 40 }
         [R1,M1]: [19, 0]
         H1: [-71, -22]
-        hint: { text: "Second-in-lines soak fourth towers." }
+        hint: "Second-in-lines soak fourth towers."
       - tower#[a,b]4: { visible: false }
         [M2,T2,H2,M1]: { status: [poison-resistance-down-ii] }
-        hint: { text: "The exit is always on the fourth tower. Everyone still inside prepares to exit." }
+        hint: "The exit is always on the fourth tower. Everyone still inside prepares to exit."
       - cruel-coil: { rotate: -90 }
-        hint: { visible: false }
+        hint: ""
       - [M2,R2,R1,M1]: [78, -19]
         [H1,R2]: { status: [poison-resistance-down-ii] }
       - cruel-coil: { scale: 0.3, rotate: 180, visible: false }
@@ -1499,10 +1498,10 @@ graphing:
         attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+        hint: "Cardinal pattern"
       - cast: { progress: 1 }
         attached-snake#*: { visible: true }
-        hint: { text: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character." }
+        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
         boss: { visible: false }
         players: { status: [mitotic-phase] }
       - R1: [47, -7]
@@ -1513,7 +1512,7 @@ graphing:
         H1: [-47, 7]
         M2: [7, -47]
         H2: [-7, -47]
-        hint: { text: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise." }
+        hint: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise."
       - cast: { text: "Feral Fission", progress: 0.5 }
         circle#*: { visible: true }
         R1: [93, -18]
@@ -1524,7 +1523,7 @@ graphing:
         H1: [-93, 18]
         M2: [-18, -68]
         H2: [18, -32]
-        hint: { text: "N/S platforms position differently so the players can't clip each other across platforms." }
+        hint: "N/S platforms position differently so the players can't clip each other across platforms."
       - rect#bring-down-the-house-*: { scale: 1 }
         circle#*: { visible: false }
         cast: { progress: 1, visible: false }
@@ -1532,7 +1531,7 @@ graphing:
         circle#*: { visible: false }
         players: { status: [mitotic-phase, fate-of-the-wurm] }
         arena: { image: /images/arenas/m12s1_split_cardinals.avif }
-        hint: { visible: false }
+        hint: ""
       - players: { status: [bind, fate-of-the-wurm] }
         attached-snake#H1: { attach: T1 }
         attached-snake#H2: { attach: R2 }
@@ -1561,7 +1560,7 @@ graphing:
         R2: [43, 68]
         R1: [-43, 68]
         players: { status: [] }
-        hint: { text: "MT takes left TB in the corner, OT right. Rangeds can preposition.", visible: true }
+        hint: "MT takes left TB in the corner, OT right. Rangeds can preposition."
       - enemy#1: { rotate: T1 }
         enemy#2: { rotate: T2 }
         rect#split-scourge-*: { scale: 1 }
@@ -1573,7 +1572,7 @@ graphing:
         M1: [-43, -68]
         M2: [43, -68]
         enemy#[1,2]: { rotate: 0 }
-        hint: { text: "Tanks hurry middle so they don't get clipped by the melee spreads." }
+        hint: "Tanks hurry middle so they don't get clipped by the melee spreads."
       - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
         players: { status: [magic-vulnerability-up] }
     grotesquerie-act-3-intercardinals:
@@ -1638,10 +1637,10 @@ graphing:
         attached-snake#R1: { attach: R1, rotate: 90, x: -5, y: 0 }
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Intercardinal pattern", visible: true }
+        hint: "Intercardinal pattern"
       - cast: { progress: 1 }
         attached-snake#*: { visible: true }
-        hint: { text: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character." }
+        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
         boss: { visible: false }
         players: { status: [mitotic-phase] }
       - R1: [47, -7]
@@ -1652,7 +1651,7 @@ graphing:
         H1: [-47, 7]
         M2: [7, -47]
         H2: [-7, -47]
-        hint: { text: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise." }
+        hint: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise."
       - cast: { text: "Feral Fission", progress: 0.5 }
         circle#*: { visible: true }
         R1: [95, 30]
@@ -1663,7 +1662,7 @@ graphing:
         H1: [-95, -32]
         M2: [95, -70]
         H2: [55, -32]
-        hint: { text: "N/S platforms position differently so the players can't clip each other across platforms." }
+        hint: "N/S platforms position differently so the players can't clip each other across platforms."
       - rect#bring-down-the-house-*: { scale: 1 }
         circle#*: { visible: false }
         cast: { progress: 1, visible: false }
@@ -1671,7 +1670,7 @@ graphing:
         circle#*: { visible: false }
         players: { status: [mitotic-phase, fate-of-the-wurm] }
         arena: { image: /images/arenas/m12s1_split_intercardinals.avif }
-        hint: { visible: false }
+        hint: ""
       - players: { status: [bind, fate-of-the-wurm] }
         attached-snake#H1: { attach: H2 }
         attached-snake#H2: { attach: T1 }
@@ -1700,7 +1699,7 @@ graphing:
         R1: [-57, 68]
         R2: [57, 68]
         players: { status: [] }
-        hint: { text: "MT takes left TB, OT right. Rangeds can preposition.", visible: true }
+        hint: "MT takes left TB, OT right. Rangeds can preposition."
       - enemy#1: { rotate: T1 }
         enemy#2: { rotate: T2 }
         rect#split-scourge-*: { scale: 1 }
@@ -1712,7 +1711,7 @@ graphing:
         M1: [-43, -68]
         M2: [43, -68]
         enemy#[1,2]: { rotate: 0 }
-        hint: { text: "Tanks hurry middle so they don't get clipped by the melee spreads." }
+        hint: "Tanks hurry middle so they don't get clipped by the melee spreads."
       - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
         players: { status: [magic-vulnerability-up] }
     grotesquerie-curtain-call-cardinals:
@@ -1750,10 +1749,10 @@ graphing:
         tether#4: { from: H1, to: M1 }
         players: { x: 0, y: 0, attach: circle#spotlight-1 }
         cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Cardinal pattern", visible: true }
+        hint: "Cardinal pattern"
       - cast: { progress: 1, visible: false }
       - cast: { text: Ravenous Reach, progress: 0 }
-        hint: { visible: false }
+        hint: ""
         circle#spotlight-1: { visible: true }
         players: { attach: circle#spotlight-2 }
       - cast: { visible: true }
@@ -1785,7 +1784,7 @@ graphing:
         M2: [33, -7]
         R1: [-7, 17]
         R2: [29, 63]
-        hint: { text: "Players within the AoE have more space to work with and don't need to use these exact positions, as long as the same order of players from north to south is maintained.", visible: true }
+        hint: "Players within the AoE have more space to work with and don't need to use these exact positions, as long as the same order of players from north to south is maintained."
       - cast: { progress: 0.8 }
         circle#spotlight-5: { visible: false }
         enemy#arm: [-67, 0, -90]
@@ -1801,7 +1800,7 @@ graphing:
         circle#blob-*: { visible: true }
         players: { x: 0, y: 0, status: [] }
         T1: { status: [bonds-of-flesh-alpha] }
-        hint: { visible: false }
+        hint: ""
       - T1: { status: [unbreakable-flesh-alpha] }
         tether#*: { visible: true }
         spread#*: { scale: 0 }
@@ -1826,7 +1825,7 @@ graphing:
         spread#*: { visible: false }
         tether#*: { visible: false }
       - circle#blob-*: { scale: 6.2 }
-        hint: { text: "This AoE pattern may also be flipped.", visible: true }
+        hint: "This AoE pattern may also be flipped."
     grotesquerie-curtain-call-intercardinals:
       - arena: { image: /images/arenas/m12s1_intercardinals.avif }
         circle#spotlight-1: [-36, -25]
@@ -1862,10 +1861,10 @@ graphing:
         tether#4: { from: H1, to: M1 }
         players: { x: 0, y: 0, attach: circle#spotlight-1 }
         cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
-        hint: { x: 63, y: 60, text: "Intercardinal pattern", visible: true }
+        hint: "Intercardinal pattern"
       - cast: { progress: 1, visible: false }
       - cast: { text: Ravenous Reach, progress: 0 }
-        hint: { visible: false }
+        hint: ""
         circle#spotlight-1: { visible: true }
         players: { attach: circle#spotlight-2 }
       - cast: { visible: true }
@@ -1936,7 +1935,7 @@ graphing:
         spread#*: { visible: false }
         tether#*: { visible: false }
       - circle#blob-*: { scale: 6.2 }
-        hint: { text: "This AoE pattern may also be flipped.", visible: true }
+        hint: "This AoE pattern may also be flipped."
     slaughtershed-halfroom:
       - marker-a: [0, -65]
         marker-1: [-80, -62]
@@ -1966,14 +1965,14 @@ graphing:
         R1: [14, -4]
         R2: [21, -4]
         cast: { text: "Slaughtershed", progress: 0.5 }
-        hint: { x: 63, y: 60, text: "Split into two groups like this to more easily see who gets spreads and who gets stack.", visible: true }
-        hint#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
-        hint#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
+        hint: "Split into two groups like this to more easily see who gets spreads and who gets stack."
+        label#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
+        label#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
       - cast: { progress: 1 }
         stack#H1: { visible: true }
         targeted-spread#*: { scale: 1 }
         circle#blob-*: { visible: true }
-        hint#east: { scale: 1 }
+        label#east: { scale: 1 }
       - cast: { visible: false }
         M1: [60, -73]
         M2: [68, -33]
@@ -1981,13 +1980,13 @@ graphing:
         R2: [98, -37]
         supports: [-97, -71]
         circle#blob-*: { scale: 6.2 }
-        hint#west: { scale: 1 }
-        hint: { text: "AoE pattern can be flipped." }
+        label#west: { scale: 1 }
+        hint: "AoE pattern can be flipped."
       - players: { status: [magic-vulnerability-up] }
         circle#blob-*: { visible: false }
         targeted-spread#*: { visible: false }
         stack#H1: { visible: false }
-        hint: { visible: false }
+        hint: ""
         T1: [-5, -42]
         T2: [-14, -37]
         H1: [-5, -31]
@@ -2037,14 +2036,14 @@ graphing:
         R1: [14, -4]
         R2: [21, -4]
         cast: { text: "Slaughtershed", progress: 0.5 }
-        hint: { x: 63, y: 60, text: "Split into two groups like this to more easily see who gets spreads and who gets stack.", visible: true }
-        hint#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Hand", visible: true, opacity: 0.7 }
-        hint#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Hand", visible: true, opacity: 0.7 }
+        hint: "Split into two groups like this to more easily see who gets spreads and who gets stack."
+        label#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Hand", visible: true, opacity: 0.7 }
+        label#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Hand", visible: true, opacity: 0.7 }
       - cast: { progress: 1 }
         stack#H1: { visible: true }
         targeted-spread#*: { scale: 1 }
         circle#blob-*: { visible: true }
-        hint#east: { scale: 1 }
+        label#east: { scale: 1 }
       - cast: { visible: false }
         M1: [60, -73]
         M2: [68, -33]
@@ -2052,13 +2051,13 @@ graphing:
         R2: [98, -37]
         supports: [-97, -71]
         circle#blob-*: { scale: 6.2 }
-        hint#west: { scale: 1 }
-        hint: { text: "AoE pattern can be flipped." }
+        label#west: { scale: 1 }
+        hint: "AoE pattern can be flipped."
       - players: { x: 75, y: -57, status: [magic-vulnerability-up] }
         circle#blob-*: { visible: false }
         targeted-spread#*: { visible: false }
         stack#H1: { visible: false }
-        hint: { visible: false }
+        hint: ""
       - kb#east: { scale: 1 }
         players: { x: -64, y: -45, status: [] }
       - players: [-75, -57]

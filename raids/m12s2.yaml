@@ -1030,13 +1030,6 @@ graphing:
       opacity: 0.7
       visible: false
       shadow: false
-    hint:
-      type: rectangle
-      planar: false
-      size: [120, 25]
-      color: "#111111bb"
-      visible: false
-      shadow: false
   graphs:
     normal-rep-1:
       - marker-a: [40, 0]
@@ -1080,7 +1073,6 @@ graphing:
         R1: [34, 67]
         R2: [34, 23]
         cast: { text: Replication, progress: 0.5 }
-        hint: { x: 63, y: 80, text: "Players position themselves on the corners of the waymarks. The corners are in max melee range.", coordinate-system: cartesian }
       # Players move to the waymark corners.
       - cast: { progress: 1, visible: false }
         boss: { rotate: T1 }
@@ -1093,10 +1085,10 @@ graphing:
         R2: [41, 36]
         M1: [41, 126]
         M2: [41, 144]
-        hint: { visible: true }
+        hint: "Players position themselves on the corners of the waymarks. The corners are in max melee range."
       # Cones become visible. Players dodge.
       - cone#c[1,2]-[1,2]: { visible: true }
-        hint: { text: "Players in the path of the cones take a quick step out. The cones may be N/S as well." }
+        hint: "Players in the path of the cones take a quick step out. The cones may be N/S as well."
         T2: [47, -45]
         R1: [47, 45]
         M1: [47, 135]
@@ -1108,7 +1100,7 @@ graphing:
         enemy#f1: { attach: H2, rotate: 135 }
         [T1, T2, R1, R2]: { status: [dark-resistance-down-ii] }
         [H1, H2]: { status: [fire-resistance-down-ii] }
-        hint: { text: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire." }
+        hint: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire."
         cast: { text: "Snaking Kick", progress: 0 }
       # Snaking Kick.
       - cone#c[1,2]-[1,2]: { visible: false }
@@ -1118,7 +1110,7 @@ graphing:
         cast: { visible: true }
         boss: { rotate: M2 }
         kick: { rotate: 144 }
-        hint: { text: "Boss turns towards a random player and casts Snaking Kick." }
+        hint: "Boss turns towards a random player and casts Snaking Kick."
       # Players dodge Snaking Kick.
       - boss: { rotate: null }
         kick: { rotate: null }
@@ -1133,7 +1125,7 @@ graphing:
         dark#[1,2]: { scale: 0, attach: enemy#d1 }
         fire#1: { scale: 0, attach: enemy#f1 }
         cast: { progress: 0.75 }
-        hint: { visible: false }
+        hint: ""
       # Snaking Kick finishes casting and becomes visible.
       - kick: { visible: true }
         dark#[1,2]: { visible: true }
@@ -1149,36 +1141,36 @@ graphing:
         enemy#[c3,c4]: { x: 73 }
         enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
         enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
-        hint: { text: "Each clone splits in two. The new clones keep the same attack.", visible: true }
+        hint: "Each clone splits in two. The new clones keep the same attack."
       # Darks and fires seem to always move first.
       - enemy#d1: { x: 33, y: 135, coordinate-system: polar }
         enemy#d2: { x: 63, y: -45, coordinate-system: polar }
         enemy#f1: [33, -45, 0]
         enemy#f2: [63, 135, 0]
-        hint: { text: "All dark and fire clones move to opposite intercardinals." }
+        hint: "All dark and fire clones move to opposite intercardinals."
       # Cones move next.
       - enemy#c1: [33, 45]
         enemy#c2: [33, -135]
         enemy#c3: [63, -135]
         enemy#c4: [63, 45]
-        hint: { text: "All cone clones also move to opposite intercardinals." }
+        hint: "All cone clones also move to opposite intercardinals."
       # Shows the names.
       - enemy#c[1..4]: { text: "Cone" }
         enemy#f[1..2]: { text: "Fire" }
         enemy#d[1..2]: { text: "Dark" }
-        hint: { text: "Dark and fire clones always alternate." }
+        hint: "Dark and fire clones always alternate."
       # Tanks/melees move into position.
       - enemy#*: { text: "" }
         tanks: [17, -45]
         M2: [21, 108]
         M1: [21, 162]
-        hint: { text: "Melees take the inner clones. Avoid going dead center. Just use these positions." }
+        hint: "Melees take the inner clones. Avoid going dead center. Just use these positions."
       # Healers/ranged move into position.
       - enemy#*: { text: "" }
         H1: [77, -25]
         H2: [57, -25]
         [R1, R2]: [68, 160]
-        hint: { text: "Rangeds have to remember which way the cones went. In this case cones went E/W, so only N/S is safe." }
+        hint: "Rangeds have to remember which way the cones went. In this case cones went E/W, so only N/S is safe."
       # Cones become visible. Players dodge.
       - cone#c[1..4]-[1,2]: { visible: true }
         H1: [81, -25]
@@ -1186,7 +1178,7 @@ graphing:
         [R1, R2]: [74, 158]
         M1: [31, -171]
         tanks: [16, -54]
-        hint: { text: "Players in the path of the cones take a quick step out." }
+        hint: "Players in the path of the cones take a quick step out."
       # Second set of AoEs.
       - dark#1: { attach: M1, scale: 1 }
         dark#2: { attach: M2, scale: 1 }
@@ -1198,7 +1190,7 @@ graphing:
         enemy#f2: { attach: R1, rotate: 45 }
         [T1, T2, R1, R2, H1, H2]: { status: [dark-resistance-down-ii, fire-resistance-down-ii] }
         [M1, M2]: { status: [dark-resistance-down-ii] }
-        hint: { visible: false }
+        hint: ""
     static-rep-1:
       - marker-a: [40, 0]
         marker-1: [40, 45]
@@ -1241,7 +1233,6 @@ graphing:
         R1: [34, 67]
         R2: [34, 23]
         cast: { text: Replication, progress: 0.5 }
-        hint: { x: 63, y: 80, text: "Players position themselves on the corners of the waymarks. The corners are in max melee range.", coordinate-system: cartesian }
       # Players move to the waymark corners.
       - cast: { progress: 1, visible: false }
         boss: { rotate: T1 }
@@ -1254,10 +1245,10 @@ graphing:
         R2: [41, 36]
         M1: [41, 126]
         M2: [41, 144]
-        hint: { visible: true }
+        hint: "Players position themselves on the corners of the waymarks. The corners are in max melee range."
       # Cones become visible. Players dodge.
       - cone#c[1,2]-[1,2]: { visible: true }
-        hint: { text: "Players in the path of the cones take a quick step out. The cones may be N/S as well." }
+        hint: "Players in the path of the cones take a quick step out. The cones may be N/S as well."
         T2: [47, -45]
         R1: [47, 45]
         M1: [47, 135]
@@ -1269,7 +1260,7 @@ graphing:
         enemy#f1: { attach: H2, rotate: 135 }
         [T1, T2, R1, R2]: { status: [dark-resistance-down-ii] }
         [H1, H2]: { status: [fire-resistance-down-ii] }
-        hint: { text: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire." }
+        hint: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire."
         cast: { text: "Snaking Kick", progress: 0 }
       # Snaking Kick.
       - cone#c[1,2]-[1,2]: { visible: false }
@@ -1279,7 +1270,7 @@ graphing:
         cast: { visible: true }
         boss: { rotate: M2 }
         kick: { rotate: 144 }
-        hint: { text: "Boss turns towards a random player and casts Snaking Kick." }
+        hint: "Boss turns towards a random player and casts Snaking Kick."
       # Players dodge Snaking Kick.
       - boss: { rotate: null }
         kick: { rotate: null }
@@ -1294,7 +1285,7 @@ graphing:
         dark#[1,2]: { scale: 0, attach: enemy#d1 }
         fire#1: { scale: 0, attach: enemy#f1 }
         cast: { progress: 0.75 }
-        hint: { text: "Dodge Snaking Kick. Find the dark clone (north in this case)." }
+        hint: "Dodge Snaking Kick. Find the dark clone (north in this case)."
       # Snaking Kick finishes casting and becomes visible.
       - kick: { visible: true }
         dark#[1,2]: { visible: true }
@@ -1310,24 +1301,24 @@ graphing:
         enemy#[c3,c4]: { x: 73 }
         enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
         enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
-        hint: { text: "Each clone splits in two. The new clones keep the same attack." }
+        hint: "Each clone splits in two. The new clones keep the same attack."
       # Darks and fires seem to always move first.
       - enemy#d1: { x: 33, y: 135, coordinate-system: polar }
         enemy#d2: { x: 63, y: -45, coordinate-system: polar }
         enemy#f1: [33, -45, 0]
         enemy#f2: [63, 135, 0]
-        hint: { text: "All dark and fire clones move to opposite intercardinals." }
+        hint: "All dark and fire clones move to opposite intercardinals."
       # Cones move next.
       - enemy#c1: [33, 45]
         enemy#c2: [33, -135]
         enemy#c3: [63, -135]
         enemy#c4: [63, 45]
-        hint: { text: "All cone clones also move to opposite intercardinals." }
+        hint: "All cone clones also move to opposite intercardinals."
       # Shows the names.
       - enemy#c[1..4]: { text: "Cone" }
         enemy#f[1..2]: { text: "Fire" }
         enemy#d[1..2]: { text: "Dark" }
-        hint: { text: "Dark and fire clones always alternate. All positions are relative to the dark clone on the wall." }
+        hint: "Dark and fire clones always alternate. All positions are relative to the dark clone on the wall."
       # Tanks/melees move into position.
       - enemy#*: { text: "" }
         H1: [57, -90]
@@ -1336,10 +1327,10 @@ graphing:
         M1: [29, -156]
         M2: [29, 66]
         tanks: [6, -48]
-        hint: { text: "NW is new north in this case." }
+        hint: "NW is new north in this case."
       # Cones become visible. Players dodge.
       - cone#c[1..4]-[1,2]: { visible: true }
-        hint: { text: "You can ignore the cones in this strat." }
+        hint: "You can ignore the cones in this strat."
       # Second set of AoEs.
       - dark#1: { attach: M1, scale: 1 }
         dark#2: { attach: M2, scale: 1 }
@@ -1351,4 +1342,4 @@ graphing:
         enemy#f2: { attach: R1, rotate: 45 }
         [T1, T2, R1, R2, H1, H2]: { status: [dark-resistance-down-ii, fire-resistance-down-ii] }
         [M1, M2]: { status: [dark-resistance-down-ii] }
-        hint: { visible: false }
+        hint: ""

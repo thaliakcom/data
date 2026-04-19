@@ -1931,6 +1931,17 @@
         "cast": {
           "$ref": "#/definitions/Cast",
           "description": "Allows you to specify a castbar."
+        },
+        "hint": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Hint"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "Allows you to specify a hint."
         }
       }
     },
@@ -1947,6 +1958,33 @@
         },
         "visible": {
           "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Hint": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "alignment": {
+          "type": "string",
+          "enum": [
+            "top-left",
+            "top-right",
+            "bottom-right",
+            "bottom-left"
+          ]
+        },
+        "fontSize": {
+          "type": "string"
+        },
+        "padding": {
+          "type": "string"
+        },
+        "background": {
+          "type": "string"
         }
       },
       "additionalProperties": false
@@ -1982,6 +2020,31 @@
         },
         {
           "$ref": "#/definitions/RotatedPoint"
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Cast"
+            },
+            {
+              "not": {}
+            }
+          ],
+          "description": "Allows you to specify a castbar."
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Hint"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "not": {}
+            }
+          ],
+          "description": "Allows you to specify a hint."
         }
       ]
     },
