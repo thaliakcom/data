@@ -149,8 +149,9 @@ status:
   viscous-aetheroplasm:
     id: 1532
     type: delay
-    duration: [10, 12, 32, 52]
-    description: Player explodes ([a:aetheroplasm]) when the debuff expires. The explosion is a shared damage that should be stacked for.
+    duration: [10000, 12000, 32000, 52000]
+    description: |
+      Player explodes ([a:viscous-aetheroplasm-stack]) when the debuff expires. The explosion is shared damage that should be stacked for.
   damage-up-ultima:
     id: 290
     type: damage-up
