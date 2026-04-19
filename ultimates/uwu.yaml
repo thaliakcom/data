@@ -315,7 +315,7 @@ actions:
   gigastorm:
     id: 11078
     mechanic: aoe
-    major: true
+    emphasis: more
     shape: chariot
     compact: trim
     description: |
@@ -519,7 +519,7 @@ actions:
     description: Moderate [ms:dynamo] AoE centered on Garuda. Same size as [a:wicked-wheel], but inverted. Always directly follows [a:wicked-wheel], but only when Garuda is [s:woken].
   kill-time:
     name: Target Kill Time
-    mechanic: hint
+    mechanic: hint.timed
     description: |
       With current gear and job kits, most experienced parties can kill the boss at around this time.
       **For Garuda, do not attempt to kill the boss sooner than this** or a wipe is guaranteed. Garuda is currently the only primal that can be killed before you get the chance to [awaken](s:woken) them.
@@ -715,6 +715,7 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     type: magic
+    compact: full
     description: |
       Selects the two farthest players from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
       If these AoEs touch an Infernal Nail, the nail grows and is granted [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks.
@@ -754,6 +755,7 @@ actions:
   searing-wind:
     id: 11100
     mechanic: mech.knockback.unavoidable
+    emphasis: less
     damage: 0
     description: A player with [s:searing-wind] explodes, knocking all players (apart from themselves) caught in the explosion into the wall.
   eruption-hit:
@@ -813,6 +815,7 @@ actions:
     id: 11108
     mechanic: aoe.delayed
     shape: chariot
+    compact: full
     description: Spawns 2 (3 when [s:woken]) back-to-back sets of AoEs under 4 random players' feet.
     children:
     - at: 491
@@ -824,6 +827,7 @@ actions:
     name: Weight of the Land (Woken)
     mechanic: aoe.delayed
     shape: chariot
+    compact: full
     description: Spawns 3 back-to-back sets of AoEs under 4 random players' feet. Only when [s:woken].
     children:
     - at: 490
@@ -877,11 +881,13 @@ actions:
     id: 11113
     mechanic: aoe
     shape: chariot
+    emphasis: less
     description: A bomb boulder drops from the sky, instantly killing any player in a moderate radius around where it touches down. It then begins casting [a:burst].
   burst:
     id: 11114
     mechanic: aoe
     shape: chariot
+    emphasis: less
     description: |
       A bomb boulder explodes, dealing massive damage in a moderate telegraphed radius around it.
       If a Granite Gaol is clipped by [a:burst], triggers [a:freefire], which causes the Granite Gaol to be instantly destroyed, freeing the trapped player and leaving behind a [s:sludge] puddle. [a:freefire] functions exactly like [a:burst] otherwise, meaning it can destroy other Granite Gaols and thus lead to a chain reaction.
@@ -1079,6 +1085,7 @@ actions:
   awakening:
     name: Awakening
     mechanic: hint
+    emphasis: more
     description: |
       Expand this row to show a comprehensive explanation of how the fight's puzzle mechanic works.
       In the first three phases of the fight, you will face Garuda, Ifrit, and Titan (in that order). Prevailing against the respective primal is relatively simple, but each primal features a hidden puzzle mechanic that requires certain mechanics in this phase to be solved in a specific way. Failing to do so leads to an inevitable wipe in the intermission phase of the fight (after Titan), which requires four back-to-back limit break 3s.
@@ -1295,6 +1302,7 @@ actions:
     children:
     - at: 4455
       id: <untargetable>
+      target: "[boss:c]"
       description: |
         [boss:c] becomes untargetable and teleports to a random position on the edge of the arena.
     - at: 14837
