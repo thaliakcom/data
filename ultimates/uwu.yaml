@@ -1838,7 +1838,9 @@ timeline:
   - at: 734265
     id: viscous-aetheroplasm
   - at: 739345
-    id: wicked-wheel-woken
+    id: wicked-wheel
+    description: Chirada and Suparna both use [a:wicked-wheel]. There is no follow-up.
+    count: 2
   - at: 741351
     id: mistral-shriek
   - at: 744688
