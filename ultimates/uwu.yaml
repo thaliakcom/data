@@ -93,7 +93,9 @@ status:
     description: |
       Every 6 seconds, afflicted players explode in a large [ms:chariot] AoE that knocks all players caught into the wall.
       This effect has a duration of 30 seconds if Ifrit is [s:woken] and 18 seconds otherwise.
-      Inflicted by [a:inferno-howl].
+      **Persists through death.** Beware of the corpses of dead healers. They will continue to explode.
+      Inflicted by [a:inferno-howl] and can normally only target healers, unless all available healers are dead, in which case a random DPS is chosen.
+      During Ifrit's phase, if Ifrit is defeated while a player still has [s:searing-wind], [s:searing-wind] is removed from that player early, **but only if the player is alive**. If the player is dead, [s:searing-wind] persists into Titan's phase and runs for its full duration.
   damage-up:
     id: 1544
     type: damage-up
@@ -127,7 +129,7 @@ status:
     id: 287
     type: dot
     tick: 999999
-    description: Lethal [t:DoT] inflicted when a player steps into the puddles left behind by Granite Gaols that are destroyed by [a:rock-throw] or [a:freefire].
+    description: Lethal [t:DoT] inflicted when a player steps into the puddles left behind by Granite Gaols that are destroyed by [a:burst] or [a:freefire].
   doom:
     id: 210
     type: condition
@@ -152,6 +154,7 @@ status:
     duration: [10000, 12000, 32000, 52000]
     description: |
       Player explodes ([a:viscous-aetheroplasm-stack]) when the debuff expires. The explosion is shared damage that should be stacked for.
+      **Note**: Despite the in-game description stating that "a stack of 5 will result in instant death", it is not possible for any player to have more than one stack of this debuff. It's possible that [s:viscous-aetheroplasm] worked more like its The Minstrel's Ballad: Ultima's Bane counterpart in the fight's original draft but was later changed to its current version, and the description was never updated to reflect its new function. In The Minstrel's Ballad: Ultima's Bane, [s:viscous-aetheroplasm] constantly accumulates stacks on the main tank and is meant to force a [t:tankswap] at 3 or 4 stacks, as 5 stacks triggers a lethal explosion.
   damage-up-ultima:
     id: 290
     type: damage-up
@@ -176,6 +179,7 @@ actions:
     description: |
       Marks a random healer. After a short delay, Garuda fires a [ms:line] AoE towards that healer, dealing massive damage to the first player in line and moderate damage to all remaining players.
       A [a:great-whirlwind] spawns 6 seconds later wherever the first player in line stood when they took the hit. This [a:great-whirlwind] repeats again two more times in the same location.
+      All future [a:mistral-song-healer] casts feature only a single [a:great-whirlwind].
     children:
     - at: 6109
       id: great-whirlwind
@@ -468,6 +472,7 @@ actions:
     mechanic: aoe
     shape: cone
     description: Huge cone-shaped AoE originating from Garuda.
+    trivia: This action is completely unrelated to [a:mistral-song].
   eye-of-the-storm:
     id: 11090
     mechanic: aoe
@@ -561,6 +566,7 @@ actions:
     children:
     - at: 0
       id: <untargetable>
+      target: Ifrit
       description: Ifrit jumps away, becoming untargetable.
     - at: 3783
       id: searing-wind
@@ -580,6 +586,7 @@ actions:
       id: crimson-cyclone
     - at: 15799
       id: <targetable>
+      target: Ifrit
       description: Ifrit returns to the arena.
   crimson-cyclone:
     id: 11103
@@ -658,6 +665,7 @@ actions:
     name: Infernal Nails
     mechanic: mech
     emphasis: more
+    compact: full
     description: |
       Spawns 4 Infernal Nails in a randomly rotated trapezoid pattern. Destroying a nail deals moderate damage ([a:infernal-surge]) and inflicts a stacking [s:vulnerability-up] on all players. All four nails must be destroyed before Ifrit jumps away or the subsequent [a:hellfire] deals lethal damage.
       When an Infernal Nail is hit by an [a:eruption] it grows, gaining [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks. If a nail is destroyed at two stacks, Ifrit gains one stack of [s:aetherially-charged].
@@ -670,6 +678,7 @@ actions:
     children:
     - at: 4100
       id: <targetable>
+      target: Infernal Nails
       description: Four Infernal Nails become targetable.
     - at: 9131
       id: infernal-fetters
@@ -709,7 +718,7 @@ actions:
     damage: 2524
     description: |
       Inflicts a random healer with [s:searing-wind], causing them to periodically explode and kill all nearby players.
-      If a healer is already inflicted with [s:searing-wind], this is guaranteed to target the other healer.
+      If a healer is already inflicted with [s:searing-wind], this is guaranteed to target the other healer. If all available healers are dead, targets a random DPS instead.
   eruption:
     id: 11097
     mechanic: aoe.delayed
@@ -717,8 +726,9 @@ actions:
     type: magic
     compact: full
     description: |
-      Selects the two farthest players from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
+      Selects two random players far from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
       If these AoEs touch an Infernal Nail, the nail grows and is granted [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks.
+      **Regarding the targeting**: All targets outside of a certain range (approximately [t:max melee]) are eligible to be selected for [a:eruption]. If more than two players are outside of this "safe" range, the selection is random between those players. :unverified(Players with [s:searing-wind] can never be selected for [a:eruption].)
     children:
     - at: 491
       id: eruption-hit
@@ -849,7 +859,7 @@ actions:
     id: 11110
     mechanic: raidwide.proximity
     damage: 6758
-    description: Titan turns toward a random cardinal before jumping away. A short time later he drops back into the arena on the cardinal he previously turned towards, dealing massive damage that drops off with distance.
+    description: Titan turns toward a random cardinal before jumping away. A short time later he drops back into the arena on the cardinal he previously turned towards, dealing massive damage that drops off with distance and shrinking the arena.
     resolve: |
       Check which cardinal Titan turns towards, then quickly hug the edge of the safe area at the opposite side of the arena.
       The main tank should attempt to drag Titan towards the center of the arena before he jumps away, to make it easier to see which cardinal he turns towards.
@@ -962,6 +972,7 @@ actions:
       Afterwards, three random players are visibly targeted for [a:rock-throw] as Titan casts [a:landslide]. Another bomb boulder drops into the empty spot from before at this time, killing any player still there ([a:bury]) and begins casting [a:burst]. The three selected players are encased in a Granite Gaol immediately after [a:landslide]. Titan then casts another [a:landslide], which the Granite Gaol players are now immune to.
       The Granite Gaols immediately begin casting [a:granite-impact]. If this cast is permitted to complete, the party wipes. However, if a Granite Gaol is hit by the last bomb boulder's [a:burst], it is destroyed immediately and the encased player freed. At the same time, the bomb boulder drops a puddle of [s:sludge] and destroys any other bomb boulder in its proximity, leading to the same result.
       The puddles inflict [s:sludge] if players dwell within it after being freed. [s:sludge] is a lethal DoT whose ticks cannot be survived. If Titan dwells within a [s:sludge] puddle, he gains one stack of [s:aetherially-charged] every tick (3 seconds) until 4 stacks, at which point he becomes [s:woken]. This is the only point in the fight where a [s:sludge] puddle can be created.
+      The main tank cannot be targeted by [a:rock-throw].
     resolve: |
       After [a:geocrush], immediately run towards Titan to avoid being hit by any of the bomb boulders' [a:bury]s. Center yourself on Titan's frontal hitbox arrow, then look backwards to see if the safe spot (where a bomb boulder is missing) is left or right, then *slightly* inch towards that side while remaining on the edge of Titan's hitbox. If positioned correctly, [a:upheaval] will knock you directly into the safe spot. After being unstunned, walk forward out of the safe spot immediately to avoid being hit by the [a:bury] of the next bomb boulder that drops directly into this safe spot. **Walk directly forward** on the side that you're on; do not walk towards Titan through the center of the arena, as this has the chance to bait a [a:landslide] directly through the center of the arena, which will make it difficult for the [a:rock-throw] players to position themselves correctly.
       To awaken Titan, it is now necessary for the three players targeted by [a:rock-throw] to form a straight line between the last bomb boulder and Titan. The player closest to the bomb boulder must ensure they get gaoled within the radius of [a:burst]. The second player must ensure they're within the radius of the first player's Granite Gaol, and the third player must ensure they're within the radius of the second player's Granite Gaol while also ensuring Titan is within the radius of their own Granite Gaol.
@@ -1095,10 +1106,43 @@ actions:
       Unfortunately, awakening a primal also upgrades their moveset, giving some of their abilities additional effects or follow-ups. A full list of these enhancements can be found under [s:woken].
       As previously mentioned, awakening a primal requires certain mechanics to be resolved in a specific, non-obvious way to gradually grant them stacks of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] upgrades into [s:woken].
       * Garuda obtains stacks of [s:aetherially-charged] whenever a [s:thermal-low:2] is cleansed. This also triggers a heavy raidwide ([a:super-cyclone-2]), so cleansing multiple [s:thermal-low:2]s at the same time is highly discouraged. [s:thermal-low] can be cleansed in one of two ways: by having players step into the bubble left behind by the Spiny Plume, or by soaking a [a:mesohigh] tether. There are two [a:mesohigh] tethers in Garuda's phase, but they resolve at the same time, so we can only cleanse one [s:thermal-low:2] there because otherwise, as mentioned, the raidwide damage would turn lethal. This means that the other 3 [s:thermal-low:2] cleanses need to come from the Spiny Plume bubble.
-      * Ifrit obtains stacks of [s:aetherially-charged] whenever an Infernal Nail is hit at least twice by an [a:eruption], then destroyed. This also makes the Infernal Nail grow and gain [s:damage-up] and [s:vulnerability-down], so it is recommended to get their health low (but not too low) *before* hitting them with [a:eruption]. There are only 4 Infernal Nails during Ifrit's phase, so if any Nail is missed or destroyed too early, [s:woken] can no longer be achieved.
+      * Ifrit obtains stacks of [s:aetherially-charged] whenever an Infernal Nail is hit at least twice by an [a:eruption], then destroyed. This also makes the Infernal Nail grow and gain [s:damage-up:2] and [s:vulnerability-down:2], so it is recommended to get their health low (but not too low) *before* hitting them with [a:eruption]. There are only 4 Infernal Nails during Ifrit's phase, so if any Nail is missed or destroyed too early, [s:woken] can no longer be achieved.
       * Titan obtains stacks of [s:aetherially-charged] for every 3 seconds that he dwells within a [s:sludge] puddle. [s:sludge] puddles only spawn when a Granite Gaol detonates by means other than player attacks. Granite Gaols occur twice in Titan's phase, but only the first instance affords players the opportunity to instantly detonate a Gaol by means of clipping it with [a:burst]. However, [a:burst] always takes place on the opposite side of the arena from Titan and Titan cannot be moved until the resulting [s:sludge] puddles dissipate. The only way to force Titan to stand in a [s:sludge] puddle, therefore, is to bring the [s:sludge] to him by triggering a chain reaction of multiple back-to-back Granite Gaols which detonate each other in a line from one side of the arena to the other, where Titan stands.
-      The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit, therefore Ifrit belongs to casters. Titan primarily deals physical damage, just like a melee DPS.
-      After getting through intermission, you reach the final phase of the fight, where you face off against [boss]. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from [boss], so you will not only be facing off against an Ultima Weapon that is fully powered by all three primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
+      The intermission requires a mandatory caster limit break 3, healer limit break 3, melee limit break 3, and tank limit break 3, in that order, so you'll need a caster, healer, and melee with [s:beyond-limits]. In general, the pick-up order for [s:beyond-limits] is that the healer picks up the Garuda puddle, caster picks up the Ifrit puddle, and melee the Titan puddle. You can use the following mental helper to remember the order: Garuda is green, as are healers. A summoner (SMN) can use all three primals in their rotation, but the only one with significant cast times is Ifrit, therefore Ifrit belongs to casters. Titan has fists you don't want to come in contact with, similar to monk (MNK), a melee DPS.
+      After getting through intermission, you reach the final phase of the fight, where you face off against [boss]. But in this alternate timeline there is no Hydaelyn to wrest the primals' powers from [boss], so you will not only be facing off against an Ultima Weapon that is fully powered by three ordinary primals; you will face off against an Ultima Weapon that is fully powered by three *[s:woken]* primals.
+  lb-gain:
+    name: About LB Gain
+    mechanic: hint
+    emphasis: more
+    description: |
+      Expand this row for info and advice regarding limit break gain.
+      At certain points in the fight (namely, after defeating Titan and after [a:ultimate-suppression]) you are required to execute limit break 3. However, due to current kill times, it is possible to reach those points in the fight without three full limit break bars. If this happens, it's an automatic party wipe, even though no one necessarily did anything wrong (on the contrary, as mitigating damage *too well* is usually the cause of this issue).
+      To prevent this problem, follow these steps:
+      * Only use abilities that reduce **incoming** damage. Do **not** use abilities that reduce **outgoing** damage such as [a:feint], [a:addle], [a:reprisal], or [a:dismantle]. This may seem counter-intuitive, but this fight primarily deals in healing checks, not mitigation checks, so lacking these mitigative abilities is not an issue. For a detailed explanation on why this is necessary, see below.
+      * Abilities like [a:feint], [a:addle], [a:reprisal], or [a:dismantle] can be used once the limit break gauge is full.
+      * Try to execute an "LB cheese" after [a:ultima] during Intermission. See below for details.
+      **Details**
+      As soon as combat begins, the limit break gauge begins to passively accumulate points every server tick (3 seconds). However, there are a number of special occurrences that reward **bonus limit break points**. These are:
+      * Correctly resolving certain mechanics or defeating certain enemies. Mainly used in duties that necessitate a [i:tank] limit break 3 like The Final Day. This fight is not one of them.
+      * Surviving despite sustaining lethal damage.
+      * Recovering health through healing actions while at 10% HP or less.
+      For the purposes of this fight, only the last two are of interest to us. Critical health recovery should be obvious enough, but the other one requires some explanation.
+      **Sustaining lethal damage**
+      In order to accumulate bonus limit break points in this way, an enemy's action must deal enough damage to reduce a player's HP to 0 or past 0 *before mitigation and shielding is factored in*. Applying mitigation or shielding allows this player to survive despite sustaining what the game considers to be "lethal damage".
+      Unfortunately, [tank invulns](t:invuln) do not count as "mitigation" in this sense, so sustaining lethal damage through a tank invuln does not grant any bonus points. Additionally (and more importantly), actions like [a:feint] or [a:addle] reduce an enemy's damage *before* it checks whether this damage would be lethal to a player. This means that using these actions can result in otherwise "lethal" damage to not be considered "lethal" anymore and is therefore discouraged.
+      Bonus limit break points are accrued per player per damage instance, so actions like [a:tumult-x8] are more valuable than single raidwides since [a:tumult-x8] can potentially reward up to **64** instances of bonus points (8 damage instances times 8 players).
+      **LB cheese**
+      For the LB cheese after [a:ultima], we leverage this exact phenomenon to accrue a large number of bonus points to the first raidwide in the phase ([a:tank-purge]). Every party member must contribute to the LB cheese, though it is mainly the shield healer's responsibility. To do this:
+      * Do **not** heal up the party after [a:ultima]. The only one casting any healing actions here should be your shield healer (see below).
+      * Do not use [a:second-wind] or similar actions to heal yourself. Let your shield healer handle your HP.
+      * The shield healer should apply the strongest shields they can via [a:deployment-tactics]/[a:zoe].
+      * The shield healer checks if every party member has at least 9,400 HP. (Be aware that the game doesn't include shields in the displayed HP, so we're checking the shieldless value here, even if shields have already been applied.)
+      * If most party members have less than 9,400 HP, cast a small additional heal.
+      * If only a small number of party members have less than 9,400 HP, use small heals like [a:physick] if possible. Don't worry about it if you happen to heal too much. A dead player accrues no limit break gauge.
+      * For [a:tank-purge], every party member uses as many party and personal defensives as possible. [a:shade-shift], [a:manaward], [a:tactician], [a:shield-samba], [a:divine-veil], [a:dark-missionary], [a:kerachole], [a:collective-unconscious] – all of these actions should be used. (If an action also has a regenerative component attached to it like with [a:shake-it-off], wait until [boss] is targetable before using it.)
+      * Just as before, do **not** use any targeted mitigation like [a:feint], [a:addle], or [a:reprisal].
+      If done properly, you should be at about 1.25 LB bars after [a:ultima] (since [a:ultima] is always lethal damage no matter what) and at 2 or more LB bars after [a:tank-purge]. The remaining LB bar is naturally accumulated over the course of the fight, even if zero additional bonus points are accumulated.
+      If you fail to properly execute the LB cheese and you end up with less than ~2.8 LB bars after [a:ultimate-annihilation], stop hitting [boss] and wait until [a:ultimate-suppression] naturally executes.
   magitek-freefire:
     id: 11509
     mechanic: raidwide.proximity
@@ -1137,8 +1181,8 @@ actions:
     name: Ultima Aether
     mechanic: hint
     description: |
-      A duty gauge subtitled "Ultima Aether" appears as the phase begins. When this gauge reaches 100, [boss] gains [s:damage-up-ultima] and begins its enrage sequence as soon as possible, after it has concluded whatever it is currently doing. This means that your ultimate goal should be to keep this gauge as low as possible to delay the enrage.
-      The background around the arena changes at 20, 40, 60, 80, and 100 duty gauge points.
+      A duty gauge subtitled "Ultima Aether" appears as the phase begins. When this gauge reaches 100 [boss] gains [s:damage-up-ultima] and begins its enrage sequence as soon as it has concluded whatever it is currently doing. This means that your ultimate goal should be to keep this gauge as low as possible to delay the enrage.
+      The background around the arena changes at 20, 40, 60, 80, and 100 duty gauge points, getting more and more orange-saturated until the arena turns fully blue at 100 (the same hue as is used by the weapons from this fight).
       The duty gauge climbs under the following conditions:
       * At certain moments in the fight, the duty gauge climbs by 4. This is not tied to any particular ability being cast. In total, the duty gauge climbs this way 11 times (by 44 points).
       * Whenever a player dies, the duty gauge climbs by 4.
@@ -1271,7 +1315,7 @@ actions:
     mechanic: tb.mt
     shape: chariot
     damage: 13680
-    description: Moderate tankbuster.
+    description: Moderate tankbuster. Cleaves.
   ultimate-predation:
     id: 11126
     mechanic: mech.trio
@@ -1324,7 +1368,7 @@ actions:
     compact: trim
     description: |
       [boss:c] becomes untargetable and teleports to the north of the arena, where it becomes targetable again.
-      At the same time, Garuda spawns at the south of the arena, Titan southwest, and Ifrit southeast (or vice-versa).
+      At the same time, Garuda spawns at the south of the arena. Titan spawns southwest and Ifrit southeast, or vice-versa.
       First, three back-to-back [a:weight-of-the-land-woken] are baited underneath random players while one player is targeted for [a:flaming-crush] and another for [a:mesohigh-annihilation]. The [a:mesohigh-annihilation] tether can be passed.
       After [a:flaming-crush] Garuda uses [a:eye-of-the-storm] and the first of four [a:aetheroplasm] orbs spawns. Each orb spawns at the northwest of [boss]'s hitbox and begins moving toward a random party member. When a player touches it, the orb explodes, dealing moderate damage to any nearby player and briefly tethering all nearby players to [boss]. For every player tethered the duty gauge climbs by one point, and the length of the tethers between orbs during [a:aetheric-boom] is increased.
       After the first [a:mesohigh-annihilation] resolves, Ifrit uses [a:inferno-howl] to inflict [s:searing-wind] on a random healer. After a [a:feather-rain] another [a:aetheroplasm] orb spawns. Titan now begins casting an unbaited [a:landslide-woken] and Ifrit [a:crimson-cyclone-woken]. Another [a:aetheroplasm] orb spawns, another [a:eye-of-the-storm] happens, and the final [a:aetheroplasm] orb spawns while Garuda casts out a second [a:mesohigh-annihilation] tether.
@@ -1334,10 +1378,11 @@ actions:
       First, stack at the northeast of [boss]'s hitbox (which, since [boss] is facing the center of the arena, is towards the southwest of the arena). When the first [a:weight-of-the-land] appears, move directly across to [boss]'s northwest to bait another [a:weight-of-the-land], then back again. After the third [a:weight-of-the-land], have everyone split into one of four directions:
       * Both your tanks and a designated melee go back to the northwest to soak the [a:aetheroplasm] orb that has just spawned there. We want this orb to be soaked by three players for a future mechanic ([a:aetheric-boom]). These three players stay there for the second orb as well. After soaking the second orb, they move up and stack directly north.
       * One of your rangeds (ordinarily the physical ranged; they must still have a [s:thermal-low] stack from Phase 1) goes south to pick up and soak the [a:mesohigh-annihilation] tether. After [a:mesohigh-annihilation] resolves, they hurry to join the party north. Be aware that this player has no reason to go all the way south. They just need to avoid stacking with other players and avoid being too close to the [s:searing-wind] healer. Moving too far south will make it difficult to rejoin the party before [a:crimson-cyclone-woken].
-      * Your healers go directly west, away from everyone else. One of them will now be inflicted with [s:searing-wind]. They stay west. The other healer joins the rest of the group at the southeast of [boss]'s hitbox. The healer with [s:searing-wind] waits until the [a:mesohigh-annihilation] player has soaked the [a:mesohigh-annihilation] tether and moved away from south, then this healer replaces their spot south.
+      * Your healers go directly west, away from everyone else. One of them will now be inflicted with [s:searing-wind]. They head towards south, where the [a:mesohigh-annihilation] player was. The other healer joins the rest of the group at the southeast of [boss]'s hitbox.
       * Everyone else moves up, towards the southeast of [boss]'s hitbox. They wait there until the [a:feather-rain] has happened, then move north.
-      At this point everyone should be directly north, except the healer with [s:searing-wind], who should be directly south. Wait for [a:crimson-cyclone] and then move clockwise to the next intercardinal to dodge [a:crimson-cyclone-echo]. Only the tank designated to soak the last two orbs moves counter-clockwise instead. If you do this dodge, you can ignore Titan's [a:landslide-woken] entirely.
-      Move in to avoid [a:eye-of-the-storm] and have the tank who moved counter-clockwise soak the last two orbs solo. The [s:searing-wind] healer moves back south (inside the [a:eye-of-the-storm]) and picks up the [a:mesohigh-annihilation] tether. Since [s:searing-wind] can randomly target either healer here, it's important that both healers still have their [s:thermal-low] stack.
+      At this point everyone should be directly north, except the healer with [s:searing-wind], who should be directly south. Wait for [a:crimson-cyclone-woken] and then move clockwise to the next intercardinal to dodge [a:crimson-cyclone-echo]. Only the tank designated to soak the last two orbs moves counter-clockwise instead. If you do this dodge, you can ignore Titan's [a:landslide-woken] entirely.
+      Note that the [s:searing-wind] healer cannot simply dodge [a:crimson-cyclone-woken] by moving clockwise. Instead, they must dodge to the southern intercardinal that **doesn't** have Titan on it. This can be either southwest or southeast.
+      Move in to avoid [a:eye-of-the-storm] and have the tank who moved counter-clockwise soak the last two orbs solo. The [s:searing-wind] healer moves back south (inside the [a:eye-of-the-storm]) and picks up the [a:mesohigh-annihilation] tether. Since [s:searing-wind] can randomly target either healer here, it's important that both healers still have their [s:thermal-low] stack. This also means that, should the [s:searing-wind] healer die, the other healer can pick up the tether instead.
       Mitigate the [a:tank-purge], avoid the [a:feather-rain], step in for another [a:eye-of-the-storm], and the mechanic is over. Make sure your [s:searing-wind] healer doesn't rejoin the party until their debuff has expired a short while after [a:eye-of-the-storm].
     children:
     - at: 4453
@@ -1443,13 +1488,15 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      [boss:c] becomes untargetable and every previously encountered enemy spawns in the arena at the same time.
-      * [boss:c] spawns on the outside of the arena northeast.
-      * Garuda spawns at the outside of the arena northwest.
-      * Ifrit spawns at the outside of the arena southeast.
-      * Titan spawns at the outside of the arena southwest.
-      * Suparna spawns close to the center of the arena northwest.
-      * Chirada spawns close to the center of the arena southeast.
+      [boss:c] becomes untargetable and all primals, plus Garuda's sisters, spawn in the arena at the same time.
+      If [boss] reaches 49.9% HP or less before [a:ultimate-suppression] would naturally be cast, [boss] finishes its current action, then skips all remaining actions in its timeline and skips straight to [a:ultimate-suppression]. This cannot happen before the first [a:homing-lasers] after [a:ultimate-annihilation].
+      After [a:ultimate-suppression] is cast:
+      * [boss:c] spawns to the northeast on the outside of the arena.
+      * Garuda spawns to the northwest on the outside of the arena.
+      * Ifrit spawns to the southeast on the outside of the arena.
+      * Titan spawns to the southwest on the outside of the arena.
+      * Suparna spawns to the northwest, close to the center of the arena.
+      * Chirada spawns to the southeast, close to the center of the arena.
       Shortly afterwards:
       * Three random players bait four back-to-back [a:eruption-suppression]s.
       * One of those three players is targeted for [a:rock-throw-suppression]. They will be encased in a Granite Gaol immediately after the last [a:eruption-suppression] has been baited, but before it explodes. The [a:eruption] deals no damage to the Granite Gaol or the player within.
@@ -1464,8 +1511,8 @@ actions:
       After [a:eruption-suppression]s start, all players (except the tanks) begin to move directly across to the southeast of the arena. Avoid baiting an [a:eruption-suppression] too close to either tank at all costs. While moving across, each player identifies the mechanic they have. There are only three possibilities:
       * You are baiting an [a:eruption-suppression], in which case you go all the way across to the southeast, then (if you're not also the target for [a:rock-throw-suppression]) you rotate clockwise to avoid the last [a:eruption] and [a:feather-rain], then move back to hit the Granite Gaol.
       * You have a [a:mistral-song-suppression] marker above your head, in which case you immediately begin heading towards the tanks at the southwest as soon as you realize it, and stand directly in-between both tanks. After the tanks have soaked [a:mistral-song-suppression], all four players at the southwest move southeast to help out with killing the Granite Gaol. Dodge [a:great-whirlwind] if necessary.
-      * You have nothing, in which case you have [a:light-pillar]. Pretend you have [a:eruption-suppression]s and follow the other players to the southeast, then break off from the rest of the party and begin to move counter-clockwise around the arena (don't go too far out to avoid Featherlances) to safely bait [a:light-pillar] away from the party.
-      After the Granite Gaol is destroyed, the remaining tank with [s:thermal-low] moves to intercept [a:mesohigh-suppression] at the northwest of the arena. All other players stack together close to where the Granite Gaol used to be. This baits the [a:landslide-woken] towards the stack. Dodge the [a:landslide-woken], then move back to where you previously stacked to soak [a:flaming-crush] and bait [a:feather-rain]. Mitigate and heal for [a:tank-purge].
+      * You have nothing, in which case you have [a:light-pillar]. Pretend you have [a:mistral-song-suppression] and follow the two other players to the tanks. Wait for [a:mistral-song-suppression], then move northwards to escape the [a:great-whirlwind] while the other players move eastwards to the Granite Gaol. Alternatively, you can pretend you're an [a:eruption-suppression] player and go north at the end of the movement. The end goal is really just that you end up north, away from everyone else; how you get there doesn't really matter.
+      After the Granite Gaol is destroyed, the remaining tank with [s:thermal-low] moves to intercept [a:mesohigh-suppression] at the northwest of the arena. All other players stack together close to where the Granite Gaol used to be. This baits the [a:landslide-woken] towards the stack. Dodge the [a:landslide-woken], then move back to where you just stacked to soak [a:flaming-crush] and bait [a:feather-rain]. Mitigate and heal for [a:tank-purge].
     children:
     - at: 4453
       id: <untargetable>
@@ -1620,6 +1667,8 @@ actions:
 timeline:
   - at: 0
     id: awakening
+  - at: 0
+    id: lb-gain
   - at: 0
     id: <phase>
     name: Garuda
@@ -1835,7 +1884,7 @@ timeline:
     target: Magitek Bits
     description: |
       Six magitek bits spawn around the arena and begin casting [a:self-detonate], which wipes the party if permitted to complete.
-      The magitek bits take minuscule damage from anything other than a [i:caster] limit break 3.
+      The magitek bits are too spread out to AoE down, so destroying them is only realistically possible with a [i:caster] limit break 3.
   - at: 563847
     id: self-detonate
     timing: skippable
@@ -1863,7 +1912,7 @@ timeline:
     target: "[boss:c]"
     description: |
       [boss:c] becomes targetable.
-      Note that while [boss] has the [s:woken] buff and can cast primal abilities like [a:landslide], it will never cast the [s:woken] versions of those abilities. Only the primals themselves can use [s:woken] abilities.
+      Note that while [boss] has the [s:woken] buff and can cast primal abilities like [a:landslide], it will never cast the [s:woken] versions of those abilities itself. Only the primals themselves (after being summoned by [boss]) can cast [s:woken] abilities.
   - at: 655702
     id: tank-purge
   - at: 657930
