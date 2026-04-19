@@ -275,6 +275,43 @@ actions:
     - at: 20336
       id: thermal-tumult
       timing: skippable
+  plumes-2:
+    name: Plumes II
+    mechanic: adds
+    emphasis: more
+    compact: trim
+    description: |
+      Another set of Satin Plumes spawn and attach to each damage dealer, combined with two [a:mesohigh] tethers.
+      There is no Spiny Plume this time.
+    resolve: |
+      The main tank tanks Garuda towards north. Keep her off-center to avoid cleaving the party with [a:downburst] or [a:slipstream].
+      Group up the Satin Plumes in the center of the arena when they spawn. Chirada and Suparna appear east and west, each with a [a:mesohigh] tether that attaches to a random party member and can be passed. The caster takes the west tether, the tank with [s:thermal-low:2] takes the east tether. This will grant Garuda [s:aetherially-charged] and therefore [s:woken], but it will also deal heavy damage since it triggers one mild [a:super-cyclone-1] and one heavy [a:super-cyclone-2], with the caster taking the most damage. Personal mitigation is recommended for said caster.
+      **Important**: If Garuda is already low by this point (less than ~10% HP when plumes spawn), the main tank drags Garuda far north, to the edge of the arena. If Garuda dies before [a:mesohigh] tethers resolve it's a guaranteed wipe (unless she's already [s:woken]). This keeps Garuda away from player AoEs.
+    children:
+    - at: 0
+      id: <targetable>
+      target: Satin Plumes
+      description: Satin Plumes become targetable and attach to damage dealers.
+    - at: 8665
+      id: slipstream
+      link: then
+    - at: 10000
+      id: eye-of-the-storm
+    - at: 12091
+      id: mesohigh
+      link: and
+    - at: 12135
+      id: downburst
+      link: then
+    - at: 13116
+      id: super-cyclone-1
+      description: Mild raidwide as a result of your caster cleansing their
+          [s:thermal-low] using [a:mesohigh].
+      link: and
+    - at: 13116
+      id: super-cyclone-2
+      description: Heavy raidwide as a result of your tank cleansing their
+          [s:thermal-low:2] using [a:mesohigh].
   gigastorm:
     id: 11078
     mechanic: aoe
@@ -370,6 +407,35 @@ actions:
     mechanic: enrage
     damage: 999999
     description: Garuda enrages, killing all players.
+  double-mistral-song:
+    name: Double Mistral Song
+    mechanic: mech
+    emphasis: more
+    compact: trim
+    description: |
+      [a:feather-rain] into [a:wicked-wheel] + [a:eye-of-the-storm] + 2× [a:mistral-song] into another [a:feather-rain].
+    resolve: |
+      Wait until Chirada and Suparna scream and fly away after [a:aerial-blast], then move southeast (melees can remain in melee range for a moment longer).
+      Tanks pay attention to where Chirada and Suparna show up at the edge of the arena (always on cardinals) and move to intercept. It is sufficient to be in the safe spot on the respective cardinal. The [ms:line] AoE is large enough that you don't need to be exactly centered between the cardinal and southeast.
+      [a:wicked-wheel] and [a:eye-of-the-storm] telegraphs appear, which is where melees join the rest of the party in the southeast safe spot. The [a:mistral-song] markers on the two random players can be ignored, since everyone is stacked anyway. Tanks intercept [a:mistral-song].
+      Wait for Chirada and Suparna to scream again before returning to Garuda, then make sure to move *away* from where the tanks just intercepted [a:mistral-song] as a [a:great-whirlwind] is about to spawn on both locations.
+      For instance, if Chirada spawned south and Suparna spawned north, party moves counter-clockwise after the scream. Most of the time this works out fine. The only "tricky" pattern is if Chirada and Suparna spawned south and east. In this case neither clockwise nor counter-clockwise is a safe movement, so either backpedal towards the outer southeast edge of the arena or go in, rushing towards the center of the arena.
+    children:
+    - at: 0
+      id: feather-rain
+    - at: 6853
+      id: mistral-song
+      link: and
+    - at: 7209
+      id: eye-of-the-storm
+      link: and
+    - at: 7341
+      id: wicked-wheel
+    - at: 11442
+      id: feather-rain
+      link: then
+    - at: 12958
+      id: great-whirlwind
   mistral-song:
     id: 11083
     mechanic: aoe.intercept
@@ -819,6 +885,38 @@ actions:
     description: |
       A bomb boulder explodes, dealing massive damage in a moderate telegraphed radius around it.
       If a Granite Gaol is clipped by [a:burst], triggers [a:freefire], which causes the Granite Gaol to be instantly destroyed, freeing the trapped player and leaving behind a [s:sludge] puddle. [a:freefire] functions exactly like [a:burst] otherwise, meaning it can destroy other Granite Gaols and thus lead to a chain reaction.
+  boulders:
+    name: Boulders
+    mechanic: mech
+    emphasis: more
+    compact: full
+    description: |
+      Bomb boulders begin to drop in the middle of the arena in a rotating pattern.
+      A [a:weight-of-the-land-woken] happens at the same time, followed by a [a:landslide-woken].
+    resolve: |
+      After [a:mountain-buster], all melees and tanks stack north and all rangeds and healers stack south to prepare for [a:weight-of-the-land-woken] and avoid the bomb boulders that drop in the middle of the arena.
+      Move as a unit for [a:weight-of-the-land-woken]. Afterwards, dodge the [a:landslide-woken]. Depending on where the [a:landslide-woken] is baited, this could be a very uncomfortable dodge since the last [a:weight-of-the-land-hit] has not yet resolved when the [a:landslide-woken] happens, significantly limiting the safe spots. Use of [a:sprint] is recommended.
+    children:
+    - at: 0
+      id: bury
+    - at: 1473
+      id: weight-of-the-land-woken
+    - at: 2000
+      id: bury
+    - at: 4000
+      id: bury
+    - at: 5600
+      id: burst
+    - at: 6000
+      id: bury
+    - at: 7312
+      id: landslide-woken
+    - at: 7600
+      id: burst
+    - at: 9600
+      id: burst
+    - at: 11600
+      id: burst
   landslide:
     id: 11119
     mechanic: aoe
@@ -1543,38 +1641,9 @@ timeline:
     id: aerial-blast
     description: Heavy raidwide. Garuda summons her sisters (Chirada and Suparna) afterwards.
   - at: 93321
-    id: feather-rain
-  - at: 100174
-    id: mistral-song
-    link: and
-  - at: 100530
-    id: eye-of-the-storm
-    link: and
-  - at: 100662
-    id: wicked-wheel
-  - at: 104763
-    id: feather-rain
-    link: then
-  - at: 106279
-    id: great-whirlwind
-  - at: 122201
-    id: slipstream
-    link: then
-  - at: 123536
-    id: eye-of-the-storm
-  - at: 125627
-    id: mesohigh
-    link: and
-  - at: 125671
-    id: downburst
-    link: then
-  - at: 126652
-    id: super-cyclone-1
-    description: Mild raidwide as a result of your caster cleansing their [s:thermal-low] using [a:mesohigh].
-    link: and
-  - at: 126652
-    id: super-cyclone-2
-    description: Heavy raidwide as a result of your tank cleansing their [s:thermal-low:2] using [a:mesohigh].
+    id: double-mistral-song
+  - at: 113536
+    id: plumes-2
   - at: 130211
     id: feather-rain
     link: and
@@ -1735,25 +1804,7 @@ timeline:
   - at: 476000
     id: kill-time
   - at: 484225
-    id: bury
-  - at: 485698
-    id: weight-of-the-land-woken
-  - at: 486225
-    id: bury
-  - at: 488225
-    id: bury
-  - at: 489825
-    id: burst
-  - at: 490225
-    id: bury
-  - at: 491537
-    id: landslide-woken
-  - at: 491825
-    id: burst
-  - at: 493825
-    id: burst
-  - at: 495825
-    id: burst
+    id: boulders
   - at: 499729
     id: rock-buster
   - at: 508405
