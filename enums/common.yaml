@@ -62,6 +62,9 @@ actions:
   aurora: 16151
   superbolide: 16152
   succor: 186
+  deployment-tactics: 3585
+  zoe: 24300
+  physick: 190
   eukrasian-prognosis: 24292
   taurochole: 24303
   kerachole: 24298
@@ -77,8 +80,12 @@ actions:
   riddle-of-earth: 7394
   curing-waltz: 16015
   shade-shift: 2241
+  manaward: 157
   troubadour: 7405
   magick-barrier: 25857
+  tactician: 16889
+  shield-samba: 16012
+  dismantle: 2887
 
   # Other
   ten-chi-jin: 7403
