@@ -95,6 +95,7 @@ status:
       During [a:grotesquerie-act-2], player is tethered to the corresponding player with [s:unbreakable-flesh-beta]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
       During [a:grotesquerie-curtain-call], player is tethered to a random player of the opposite role.
       Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
+      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down] and repeated instances of heavy damage until they die.
     gameDescription: Chained by alpha-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
   unbreakable-flesh-beta:
     id: 4755
@@ -104,6 +105,7 @@ status:
     description: |
       Player is tethered to the corresponding player with [s:unbreakable-flesh-alpha]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
       Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
+      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-beta] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down] and repeated instances of heavy damage until they die.
     gameDescription: Chained by beta-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
   mitotic-phase:
     id: 4764
