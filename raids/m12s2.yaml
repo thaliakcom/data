@@ -54,7 +54,7 @@ status:
     duration: [17000, 28000]
     description: |
       If this player takes **any** damage before the effect expires, inflicts [s:damage-down]. This includes damage from auto attacks.
-      The first mutation effect briefly turns into [s:mutating-cells] when it expires before becoming [s:mutation-beta].
+      If this player has not yet been under the effect of [s:mutating-cells], then after expiring this status effect briefly turns into [s:mutating-cells], then [s:mutation-alpha].
     gameDescription: Infected by cells with the alpha mutation. Taking damage before this effect expires will result in heavy damage upon its expiration.
   mutation-beta:
     id: 4771
@@ -63,7 +63,7 @@ status:
     duration: [17000, 28000]
     description: |
       If this player does **not** take damage before the effect expires, inflicts [s:damage-down].
-      The first mutation effect briefly turns into [s:mutating-cells] when it expires before becoming [s:mutation-alpha].
+      If this player has not yet been under the effect of [s:mutating-cells], then after expiring this status effect briefly turns into [s:mutating-cells], then [s:mutation-beta].
     gameDescription: Infected by cells with the beta mutation. Failing to take damage before this effect expires will result in heavy damage upon its expiration.
   mutating-cells:
     id: 4770
@@ -71,8 +71,9 @@ status:
     type: indicator
     duration: 2000
     description: |
-      The player's mutation is in the process of switching between [s:mutation-alpha] and [s:mutation-beta]. Has no other effect. Neither mutation's effect is active during this time.
-      This only happens once when the player's mutation expires for the first time. The second mutation that expires simply dissipates.
+      Brief transitional state. After expiring, this status effect turns into [s:mutation-alpha] or [s:mutation-beta] (whichever status effect the player did not yet have).
+      While this effect is active, neither [s:mutation-alpha] nor [s:mutation-beta] is in effect, so damage can be taken freely.
+      This status effect is a one-time occurrence. After expiring, the player is immune to [s:mutating-cells] for the rest of the pull, so their second mutation will not turn back into the first.
     gameDescription: Infected by cells that will change to a different mutation when this effect expires.
   light-resistance-down-ii:
     id: 4164
@@ -614,10 +615,9 @@ actions:
   idyllic-dream:
     id: 46345
     name: Idyllic Dream
-    mechanic: mech.arena
+    mechanic: raidwide.transition
     emphasis: more
     damage: 323330
-    players: 8
     description: |
       Heavy raidwide that splits reality in two.
       The two realities coexist, but only one of the two realities is *active* at any given time. [boss:c] periodically casts [a:twisted-vision], which *shifts* reality, reactivating it. Whichever reality is not currently active is *in stasis*, meaning that all mechanics within (including in-progress Lindschrat casts) are paused until that reality is reactivated.
@@ -656,9 +656,8 @@ actions:
   idyllic-dream-end:
     id: 46345
     name: Idyllic Dream
-    mechanic: mech.arena
+    mechanic: raidwide.transition
     damage: 323330
-    players: 8
     description: |
       Heavy raidwide that fuses the two realities back together to restore the original reality.
   twisted-vision:
@@ -782,7 +781,7 @@ actions:
       count: 2
   snaking-kick-chariot:
     id: 48789
-    name: Snaking Kick (Chariot)
+    name: Snaking Kick (Circle)
     mechanic: aoe
     shape: chariot
     description: A [ms:chariot] AoE executed by a Lindschrat clone. Inflicts [s:damage-down].
