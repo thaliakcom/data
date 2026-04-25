@@ -292,7 +292,7 @@ actions:
         description: D is new north. One group (assigned by mechanics) handles both clone stacks, the other group [a:firefall-splash-clone].
       replication-ii-dn:
         name: DN
-        description: A is north. [a:firefall-splash-clone] resolves first, then melees handle one clone stack, rangeds the other.
+        description: A is north. [a:firefall-splash-clone] resolves first, then melees handle one clone stack, rangeds the other. See <a href="https://raidplan.io/plan/SFa6J6wDrU9PlCJ4">external raidplan</a>.
     children:
     - at: 22439
       id: firefall-splash-player
@@ -633,6 +633,10 @@ actions:
       * In the blue reality (after resolving towers), whether the northmost clone or the southmost clone jumped into the [a:temporal-curtain] portal. This determines the safe spot after [a:reenactment-ii] as well as the safe spot after the subsequent [a:twisted-vision].
       * In the blue reality, which platform the middle clone jumped to. This determines the safe spot when next returning to the blue reality.
       As memorizing all of these things on your own is extremely difficult, it is strongly recommended for one member of your party to create a set of chat macros that post the non-personal mechanics into chat (e.g. which player clones spawned first, whether the northmost clone embodies a north/south clone or east/west, and whether stack or defamation resolves first).
+    strategies:
+      caro-kann-idyllic-dream:
+        name: Caro Kann (EU)
+        description: See <a href="https://raidplan.io/plan/9zpa6vu5kxgtuwqc">external raidplan</a>.
   replication-iii:
     id: 46296
     name: Replication III
