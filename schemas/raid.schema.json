@@ -1150,6 +1150,10 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         }
       },
       "additionalProperties": false
@@ -1311,6 +1315,10 @@
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "type": {
           "type": "string",
           "const": "donut"
@@ -1417,6 +1425,10 @@
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "type": {
           "type": "string",
           "const": "ellipse"
@@ -1522,6 +1534,10 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1633,6 +1649,10 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1763,6 +1783,10 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1904,6 +1928,10 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
