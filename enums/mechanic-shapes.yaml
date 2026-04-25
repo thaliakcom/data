@@ -1,7 +1,8 @@
 chariot:
   name: circle
   description: |
-    A standard point-blank circle affecting targets within its radius.
+    A standard circular [t:AoE] affecting targets within its radius.
+    When the center of the circle is also the center of an enemy's hitbox, this is often called a "point-blank [t:AoE]" or ("PBAoE").
     Sometimes called a "chariot AoE" after Neul deus Darnus's eponymous attack, [a:2008].
   icon: /images/shapes/circle.svg
 defamation:
