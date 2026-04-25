@@ -502,6 +502,7 @@ actions:
     children:
     - at: 3119
       id: <untargetable>
+      description: "[boss:c] becomes untargetable."
     - at: 5172
       id: feral-fission
     - at: 12794
@@ -511,6 +512,7 @@ actions:
       id: metamitosis
     - at: 15416
       id: <targetable>
+      description: "[boss:c] becomes targetable."
     - at: 22859
       id: split-scourge
       link: then
