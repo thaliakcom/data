@@ -180,6 +180,12 @@ actions:
       Marks a random healer. After a short delay, Garuda fires a [ms:line] AoE towards that healer, dealing massive damage to the first player in line and moderate damage to all remaining players.
       A [a:great-whirlwind] spawns 6 seconds later wherever the first player in line stood when they took the hit. This [a:great-whirlwind] repeats again two more times in the same location.
       All future [a:mistral-song-healer] casts feature only a single [a:great-whirlwind].
+    strategies:
+      mistral-song-lpdu:
+        name: LPDU
+        description: |
+          Main tank keeps Garuda where she spawns (north). Rest of the party positions themselves in a line between Garuda and south. The off-tank must be the first player to be hit by [a:mistral-song-healer], so melees make sure to stay at [t:max melee].
+          After [a:mistral-song-healer], drag Garuda south for [a:plumes] and to avoid [a:great-whirlwind].
     children:
     - at: 6109
       id: great-whirlwind
@@ -424,6 +430,10 @@ actions:
       [a:wicked-wheel] and [a:eye-of-the-storm] telegraphs appear, which is where melees join the rest of the party in the southeast safe spot. The [a:mistral-song] markers on the two random players can be ignored, since everyone is stacked anyway. Tanks intercept [a:mistral-song].
       Wait for Chirada and Suparna to scream again before returning to Garuda, then make sure to move *away* from where the tanks just intercepted [a:mistral-song] as a [a:great-whirlwind] is about to spawn on both locations.
       For instance, if Chirada spawned south and Suparna spawned north, party moves counter-clockwise after the scream. Most of the time this works out fine. The only "tricky" pattern is if Chirada and Suparna spawned south and east. In this case neither clockwise nor counter-clockwise is a safe movement, so either backpedal towards the outer southeast edge of the arena or go in, rushing towards the center of the arena.
+    strategies:
+      double-mistral-song-lpdu:
+        name: LPDU
+        description: Party stacks southeast. Tanks intercept, with the main tank prioritizing north -> west -> east, in that order, and off-tank prioritizing south -> east -> west.
     children:
     - at: 0
       id: feather-rain
@@ -2010,4 +2020,125 @@ timeline:
   - at: 1020602
     id: citadel-siege
     timing: player
-    
+graphing:
+  coordinate-system: polar
+  elements:
+    arena:
+      type: image
+      shape: circle
+      image: /images/arenas/uwu-p1.avif
+    boss:
+      size: 45
+      opacity: 0.5
+    feather-rain:
+      type: image
+      size: 30
+      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
+      scale: 0
+      shadow: false
+    wicked-wheel:
+      type: image
+      size: 80
+      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
+      scale: 0
+      shadow: false
+    great-whirlwind:
+      type: ellipse
+      size: 85
+      color: "#067F0A"
+      opacity: 0.6
+      visible: false
+      shadow: false
+      blink: true
+    eye-of-the-storm:
+      type: donut
+      size: [200, 100]
+      color: "#43A0D5"
+      opacity: 0.7
+      visible: false
+      shadow: false
+      blink: true
+    mistral-song:
+      type: rectangle
+      size: [50, 185]
+      scale: [1, 0]
+      origin: [0.5, 1]
+      color: "#067F0A"
+      opacity: 0.6
+      shadow: false
+      blink: true
+  graphs:
+    double-mistral-song-lpdu:
+      - wicked-wheel: { attach: boss }
+        eye-of-the-storm: [0, 0]
+        great-whirlwind#1: { attach: T1 }
+        great-whirlwind#2: { attach: T2 }
+        feather-rain#1: { attach: T1 }
+        feather-rain#2: { attach: M1 }
+        feather-rain#3: { attach: M2 }
+        feather-rain#4: { attach: H1 }
+        feather-rain#5: { attach: R2 }
+        marker-a: [32, 0]
+        marker-1: [88, 0]
+        marker-b: [32, 90]
+        marker-2: [88, -45]
+        marker-c: [32, 180]
+        marker-3: [44, 128]
+        marker-d: [32, -90]
+        marker-4: [0, 0]
+        boss: { scale: 0.4, rotate: T1 }
+        enemy#chirada: { x: 30, y: -90, scale: 0.7, opacity: 0.4, rotate: 0, text: Chirada, visible: false }
+        enemy#suparna: { x: 30, y: 90, scale: 0.7, opacity: 0.4, rotate: 0, text: Suparna, visible: false }
+        mistral-song#chirada: { attach: enemy#chirada, rotate: H1 }
+        mistral-song#suparna: { attach: enemy#suparna, rotate: R2 }
+        players: [12, 180]
+      - enemy#*: { visible: true }
+        feather-rain#*: { attach: null }
+        hint: Chirada and Suparna spawn.
+      - enemy#*: { visible: false }
+        [T1, T2]: [15, 0]
+        [M1, M2]: [15, 90]
+        [H1, H2, R1, R2]: [44, 128]
+        hint: Chirada and Suparna scream and fly away.
+      - feather-rain#*: { scale: 1 }
+        enemy#chirada: [93, -90, -90]
+        enemy#suparna: [93, 90, 90]
+        hint: Feather Rain resolves.
+      - enemy#*: { visible: true }
+        feather-rain#*: { visible: false }
+        hint: Chirada and Suparna reappear on random cardinals. Tanks take note.
+      - wicked-wheel: { scale: 1 }
+        feather-rain#*: { scale: 0 }
+        feather-rain#1: { attach: T1 }
+        feather-rain#2: { attach: M1 }
+        feather-rain#3: { attach: M2 }
+        feather-rain#4: { attach: H1 }
+        feather-rain#5: { attach: R2 }
+        boss: { rotate: null }
+        cast: { text: Wicked Wheel, visible: true }
+        T1: [44, -90]
+        T2: [44, 90]
+        [M1, M2]: [44, 128]
+        eye-of-the-storm: { visible: true }
+        hint: Melees join the party, tanks move to intercept.
+      - mistral-song#*: { scale: 1 }
+        feather-rain#*: { visible: true }
+        cast: { progress: 1 }
+        hint: Everything resolves at the same time.
+      - wicked-wheel: { visible: false }
+        eye-of-the-storm: { visible: false }
+        mistral-song#*: { visible: false }
+        great-whirlwind#*: { attach: null }
+        cast: { visible: false }
+        [T1, T2, M1, M2]: { x: 15 }
+        hint: Wait for Feather Rain. (Melees rarely wait for Feather Rain.)
+      - enemy#*: { visible: false }
+        feather-rain#*: { attach: null }
+        [T1, T2, M1, M2]: { y: 0 }
+        [H1, H2, R1, R2]: { y: 180 }
+        hint: Suparna and Chirada scream and fly away.
+      - feather-rain#*: { scale: 1 }
+        great-whirlwind#*: { visible: true }
+        hint: Feather Rain and Great Whirlwind resolve.
