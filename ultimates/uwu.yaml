@@ -2652,6 +2652,11 @@ graphing:
         landslide-followup#4: { rotate: set-landslide-followup#1+156 }
         landslide-followup#5: { rotate: set-landslide-followup#1+-156 }
         ceruleum-vent: { attach: enemy#ultima }
+        feather-rain#1: { attach: R1 }
+        feather-rain#2: { attach: H2 }
+        feather-rain#3: { attach: T1 }
+        feather-rain#4: { attach: M1 }
+        feather-rain#5: { attach: T2 }
         marker-a: [23, 0]
         marker-1: [80, 0]
         marker-b: [29, 90]
@@ -2682,26 +2687,38 @@ graphing:
         ceruleum-vent: { visible: true }
       - players: { opacity: 0.05 }
         hint: Fading the player icons to show just how small the safe spot is.
-      - hint: Example 2
-        players: { x: 0, y: 0, opacity: 1 }
-        enemy#ifrit: [82, 45, 45]
-        enemy#garuda: [25, 135, 135]
-        enemy#titan: [82, 85, 90]
-        enemy#ultima: [82, 135, 135]
-        enemy#*: { visible: false }
+      - players: { x: 60, opacity: 1 }
+        feather-rain#*: { attach: null, scale: 1 }
+        enemy#garuda: { visible: false }
         crimson-cyclone-followup#*: { visible: false }
         landslide-followup#*: { visible: false }
         wicked-tornado: { visible: false }
         ceruleum-vent: { visible: false }
+        enemy#*: { visible: false }
+        hint: Garuda screams and flies away.
+      - hint: Example 2
+        players: [0, 0]
+        enemy#ifrit: [82, 45, 45]
+        enemy#garuda: [25, 135, 135]
+        enemy#titan: [82, 85, 90]
+        enemy#ultima: [82, 135, 135]
         wicked-wheel: { scale: 0 }
+        feather-rain#*: { visible: false }
         crimson-cyclone#*: { h: 0 }
       - enemy#*: { visible: true }
         wicked-tornado: { scale: 0 }
         wicked-wheel: { visible: true }
+        feather-rain#*: { scale: 0 }
+        feather-rain#1: { attach: R1 }
+        feather-rain#2: { attach: H2 }
+        feather-rain#3: { attach: T1 }
+        feather-rain#4: { attach: M1 }
+        feather-rain#5: { attach: T2 }
         crimson-cyclone#*: { visible: true }
         crimson-cyclone-followup#*: { h: 0 }
       - players: [87, -69]
         wicked-tornado: { visible: true }
+        feather-rain#*: { visible: true }
         T1: { x: 75, y: -8, status: [50] }
         T2: [85, -102]
         H2: [86, -21]
@@ -2720,26 +2737,38 @@ graphing:
         landslide-followup#*: { visible: true }
         wicked-tornado: { scale: 1 }
         ceruleum-vent: { visible: true }
+      - players: { x: 60, opacity: 1 }
+        feather-rain#*: { attach: null, scale: 1 }
+        enemy#garuda: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: false }
+        wicked-tornado: { visible: false }
+        ceruleum-vent: { visible: false }
+        enemy#*: { visible: false }
+        hint: Garuda screams and flies away.
       - hint: Example 3 (Cursed)
         players: { x: 0, y: 0, status: [] }
         enemy#ifrit: [82, 45, 45]
         enemy#garuda: [25, -135, -135]
         enemy#titan: [82, 5, 0]
         enemy#ultima: [82, 135, 135]
-        enemy#*: { visible: false }
-        crimson-cyclone-followup#*: { visible: false }
-        landslide-followup#*: { visible: false }
-        wicked-tornado: { visible: false }
-        ceruleum-vent: { visible: false }
+        feather-rain#*: { visible: false }
         wicked-wheel: { scale: 0 }
         crimson-cyclone#*: { h: 0 }
       - enemy#*: { visible: true }
         wicked-tornado: { scale: 0 }
         wicked-wheel: { visible: true }
+        feather-rain#*: { scale: 0 }
+        feather-rain#1: { attach: R1 }
+        feather-rain#2: { attach: H2 }
+        feather-rain#3: { attach: T1 }
+        feather-rain#4: { attach: M1 }
+        feather-rain#5: { attach: T2 }
         crimson-cyclone#*: { visible: true }
         crimson-cyclone-followup#*: { h: 0 }
       - players: [85, 90]
         wicked-tornado: { visible: true }
+        feather-rain#*: { visible: true }
         crimson-cyclone-followup#*: { visible: true }
         hint: Example 3 (Cursed)<br />This is the worst possible pattern. The only possible dodge is a very uncomfortable one.
       - players: [70, 99]
@@ -2755,3 +2784,13 @@ graphing:
         landslide-followup#*: { visible: true }
         wicked-tornado: { scale: 1 }
         ceruleum-vent: { visible: true }
+      - players: { x: 60, opacity: 1 }
+        feather-rain#*: { attach: null, scale: 1 }
+        enemy#garuda: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: false }
+        wicked-tornado: { visible: false }
+        ceruleum-vent: { visible: false }
+        enemy#*: { visible: false }
+        hint: Garuda screams and flies away.
+      - feather-rain#*: { visible: false }
