@@ -2075,6 +2075,15 @@ graphing:
       opacity: 0.6
       shadow: false
       blink: true
+    crimson-cyclone:
+      type: rectangle
+      size: [80, 185]
+      scale: [1, 0]
+      origin: [0.5, 0.9]
+      color: "#B3480E"
+      opacity: 0.6
+      shadow: false
+      blink: true
     eruption:
       type: ellipse
       size: 75
@@ -2245,3 +2254,135 @@ graphing:
       - enemy#nail-1: { visible: false }
         boss: { status: [woken] }
         [M1, M2, T2]: [16, 90]
+    ifrit-dashes:
+      - arena: { image: /images/arenas/uwu-p2.avif }
+        inferno-howl: { attach: H1 }
+        crimson-cyclone#1: { attach: boss#4, rotate: 90 }
+        crimson-cyclone#2: { attach: boss#3, rotate: -135 }
+        crimson-cyclone#3: { attach: boss#1, rotate: 0 }
+        crimson-cyclone#4: { attach: boss#2, rotate: -45 }
+        crimson-cyclone#5: [95, -45, 135]
+        crimson-cyclone#6: [95, 45, -135]
+        marker-a: [32, 0]
+        marker-1: [88, 0]
+        marker-b: [32, 90]
+        marker-2: [88, -45]
+        marker-c: [32, 180]
+        marker-3: [44, 128]
+        marker-d: [32, -90]
+        marker-4: [0, 0]
+        boss#1: { x: 95, y: 0, rotate: 0, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#2: [95, -45, -45]
+        boss#3: [95, -135, -135]
+        boss#4: [95, 90, 90]
+        players: [88, -45]
+        H1: { y: 135, status: [searing-wind] }
+        hint: Variation 1 (one move)<br />Always start on the last Ifrit (#4)
+      - boss#4: { y: -90, visible: false }
+        crimson-cyclone#1: { h: 1.2 }
+      - crimson-cyclone#1: { h: 0 }
+        boss#3: { y: 45, visible: false }
+        crimson-cyclone#2: { h: 1.2 }
+        players: { y: -90 }
+        H1: { y: 90 }
+      - crimson-cyclone#2: { h: 0 }
+        boss#1: { y: 180, visible: false }
+        crimson-cyclone#3: { h: 1.2 }
+      - crimson-cyclone#3: { h: 0 }
+        boss#2: { y: 135, visible: false }
+        crimson-cyclone#4: { h: 1.2 }
+        inferno-howl: { visible: true }
+      - crimson-cyclone#4: { h: 0 }
+        crimson-cyclone#[5,6]: { h: 1.2 }
+        inferno-howl: { visible: false }
+        # Variation 2
+      - crimson-cyclone#[5,6]: { visible: false }
+        boss#1: { y: 0, visible: true, filter: "" }
+        boss#2: { y: -45, visible: true }
+        boss#3: { y: -135, visible: true }
+        boss#4: { y: 90, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        players: { y: -45 }
+        H1: { y: 135 }
+        hint: Variation 2 (one move)
+      - boss#4: { y: -90, visible: false }
+        crimson-cyclone#[5,6]: { h: 0 }
+        crimson-cyclone#1: { h: 1.2 }
+      - crimson-cyclone#1: { h: 0 }
+        crimson-cyclone#[5,6]: { visible: true }
+        boss#3: { y: 45, visible: false }
+        crimson-cyclone#2: { h: 1.2 }
+        players: { y: -90 }
+        H1: { y: 90 }
+      - crimson-cyclone#2: { h: 0 }
+        boss#1: { y: 180, visible: false }
+        crimson-cyclone#3: { h: 1.2 }
+        crimson-cyclone#[5,6]: { h: 1.2 }
+        inferno-howl: { visible: true }
+      - crimson-cyclone#3: { h: 0 }
+        boss#2: { y: 135, visible: false }
+        crimson-cyclone#4: { h: 1.2 }
+        crimson-cyclone#[5,6]: { visible: false }
+        inferno-howl: { visible: false }
+        # Variation 3
+      - crimson-cyclone#4: { h: 0 }
+        crimson-cyclone#[5,6]: { h: 0 }
+        crimson-cyclone#5: { y: -90, rotate: 90 }
+        crimson-cyclone#6: { y: 0, rotate: 180 }
+        boss#1: { y: 0, visible: true }
+        boss#2: { y: -45, visible: true }
+        boss#3: { y: -135, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#4: { y: 90, visible: true, filter: "" }
+        players: { y: -45 }
+        H1: { y: 135 }
+        hint: Variation 3 (two moves)
+      - boss#4: { y: -90, visible: false }
+        crimson-cyclone#[5,6]: { visible: true }
+        crimson-cyclone#1: { h: 1.2 }
+      - crimson-cyclone#1: { h: 0 }
+        boss#3: { y: 45, visible: false }
+        crimson-cyclone#2: { h: 1.2 }
+        players: { y: -90 }
+        H1: { y: 90 }
+      - crimson-cyclone#2: { h: 0 }
+        boss#1: { y: 180, visible: false }
+        crimson-cyclone#3: { h: 1.2 }
+        inferno-howl: { visible: true }
+        players: { y: -135 }
+        H1: { y: 45 }
+      - crimson-cyclone#3: { h: 0 }
+        boss#2: { y: 135, visible: false }
+        crimson-cyclone#4: { h: 1.2 }
+        inferno-howl: { visible: false }
+        crimson-cyclone#[5,6]: { h: 1.2 }
+        # Variation 4
+      - crimson-cyclone#4: { h: 0 }
+        crimson-cyclone#[5,6]: { h: 0 }
+        crimson-cyclone#5: { y: -90, rotate: 90, visible: false }
+        crimson-cyclone#6: { y: 0, rotate: 180, visible: false }
+        boss#1: { y: 0, visible: true }
+        boss#2: { y: -45, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#3: { y: -135, visible: true, filter: "" }
+        boss#4: { y: 90, visible: true }
+        players: { y: -45 }
+        H1: { y: 135 }
+        hint: Variation 4 (two moves)
+      - boss#4: { y: -90, visible: false }
+        crimson-cyclone#[5,6]: { visible: true }
+        crimson-cyclone#1: { h: 1.2 }
+      - crimson-cyclone#1: { h: 0 }
+        boss#3: { y: 45, visible: false }
+        crimson-cyclone#2: { h: 1.2 }
+        players: { y: -90 }
+        H1: { y: 90 }
+      - crimson-cyclone#2: { h: 0 }
+        boss#1: { y: 180, visible: false }
+        crimson-cyclone#3: { h: 1.2 }
+        inferno-howl: { visible: true }
+        players: { y: -135 }
+        H1: { y: 45 }
+      - crimson-cyclone#3: { h: 0 }
+        boss#2: { y: 135, visible: false }
+        crimson-cyclone#4: { h: 1.2 }
+        inferno-howl: { visible: false }
+      - crimson-cyclone#4: { h: 0 }
+      - crimson-cyclone#[5,6]: { h: 1.2 }
