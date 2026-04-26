@@ -573,6 +573,9 @@ actions:
       If the glowing Ifrit is the first or third Ifrit (to your left), you wait for the first dash, then move one position counter-clockwise and stop there.
       If the glowing Ifrit is the second (to your right) or fourth (behind you) Ifrit, you wait for the first dash, then quickly move two positions counter-clockwise. If you're extra fast, you may have to wait for the second dash before moving into it, but since dashes resolve very quickly this should generally not be necessary.
       Your [s:searing-wind] healer will perform the same dodge, but directly across from the party on the opposite side of the arena.
+    strategies:
+      ifrit-dashes:
+        name: Examples
     children:
     - at: 0
       id: <untargetable>
@@ -887,7 +890,9 @@ actions:
     id: 11115
     mechanic: mech.status
     count: 3
-    description: Titan marks three random players. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
+    description: |
+      Titan marks three random players. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
+      The main tank can never be marked for [a:rock-throw].
   rock-throw-healer:
     id: 11115
     mechanic: mech.status
@@ -998,6 +1003,13 @@ actions:
       - Do not use raid buffs until after all three players are freed from their Granite Gaol as they are immune to all status effects, including raid buffs, while trapped within the gaol.
       - If a [a:landslide] is baited through the center, the [a:rock-throw] players should wait until the [a:landslide] telegraph disappears, then *jump* into their waymark. If a player is gaoled mid-jump, their forward momentum is not halted until they touch the ground again, essentially extending their range of movement.
       - But ideally, just don't bait that [a:landslide] through the center of the arena (or in other words, through the gaol markers).
+    mistakes:
+      - If a player does not get knocked back correctly by [a:upheaval], it's often a wipe, as the [a:rock-throw] assignment goes out before [a:burst], meaning that if a player dies to [a:burst] who was selected for [a:rock-throw], the Granite Gaol instead targets a random, unmarked player.
+      - The third player in line must not be exactly center (on the marker) but slightly off to the side, or the [a:burst] will fail to detonate their Granite Gaol.
+      - A [a:landslide] is baited through the center and one of the [a:rock-throw] players doesn't make it to their marker in time before it goes off, so their Gaol is no longer in range to detonate.
+    strategies:
+      titan-gaols:
+        name: Example
     children:
     - at: 2527
       id: bury
@@ -2028,6 +2040,7 @@ graphing:
   coordinate-system: polar
   defs:
     eruption: "radial-gradient(0% #FFF9BF 30% #FF876C9B 97% #FF876C9B 98% #FF915E 100% #FF915E)"
+    weight: "radial-gradient(0% #FFF9BF 30% #7E593E9B 100% #75593A)"
   elements:
     arena:
       type: image
@@ -2099,6 +2112,64 @@ graphing:
       visible: false
       shadow: false
       blink: true
+    sludge:
+      type: ellipse
+      size: 65
+      color: "#9F9045"
+      opacity: 0.7
+      visible: false
+      shadow: false
+    bury:
+      type: ellipse
+      size: 65
+      color: "#C64224"
+      opacity: 0.8
+      visible: false
+      shadow: false
+      blink: true
+    weight:
+      type: ellipse
+      size: 65
+      color: url(#weight)
+      opacity: 0.4
+      visible: false
+      shadow: false
+    burst:
+      type: image
+      size: 65
+      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
+      visible: false
+      shadow: false
+    landslide:
+      type: rectangle
+      origin: [0.5, 1]
+      size: [32, 185]
+      color: "#945B3C"
+      opacity: 0.8
+      visible: false
+      shadow: false
+    landslide-followup:
+      type: rectangle
+      origin: [0.5, 1]
+      size: [32, 185]
+      color: "#945B3C"
+      opacity: 0.8
+      visible: false
+      shadow: false
+      blink: true
+    titan-edge:
+      type: donut
+      size: [190, 165]
+      color: "#E1DB6D"
+      opacity: 0.7
+      shadow: false
+    kb:
+      type: image
+      image: /images/markers/circle-kb.svg
+      size: 130
+      visible: false
+      opacity: 0.6
   graphs:
     double-mistral-song-lpdu:
       - wicked-wheel: { attach: boss }
@@ -2386,3 +2457,143 @@ graphing:
         inferno-howl: { visible: false }
       - crimson-cyclone#4: { h: 0 }
       - crimson-cyclone#[5,6]: { h: 1.2 }
+    titan-gaols:
+      - arena: { image: /images/arenas/uwu-p3.avif }
+        titan-edge: { }
+        sludge#1: { attach: R1 }
+        sludge#2: { attach: H2 }
+        sludge#3: { attach: M1 }
+        landslide#[1..10]: { attach: boss }
+        landslide#1: { rotate: R2 }
+        landslide#2: { rotate: set-landslide#1+45 }
+        landslide#3: { rotate: set-landslide#1+-45 }
+        landslide#4: { rotate: set-landslide#1+135 }
+        landslide#5: { rotate: set-landslide#1+-135 }
+        landslide#6: { rotate: H1 }
+        landslide#7: { rotate: set-landslide#6+45 }
+        landslide#8: { rotate: set-landslide#6+-45 }
+        landslide#9: { rotate: set-landslide#6+135 }
+        landslide#10: { rotate: set-landslide#6+-135 }
+        landslide-followup#[1..5]: { attach: boss }
+        landslide-followup#1: { rotate: set-landslide#1+-180 }
+        landslide-followup#2: { rotate: set-landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set-landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set-landslide-followup#1+157 }
+        landslide-followup#5: { rotate: set-landslide-followup#1+-157 }
+        weight#[1,2].1: { attach: M1 }
+        weight#[1,2].2: { attach: R1 }
+        weight#[1,2].3: { attach: T2 }
+        weight#[1,2].4: { attach: H2 }
+        bury#1: [34, 136]
+        bury#2: [79, 137]
+        bury#3: [34, -136]
+        bury#4: [79, -137]
+        bury#5: [61, -160]
+        bury#6: [61, 160]
+        burst#1: { attach: bury#1 }
+        burst#2: { attach: bury#2 }
+        burst#3: { attach: bury#3 }
+        burst#4: { attach: bury#4 }
+        burst#5: { attach: bury#5 }
+        burst#6: { attach: bury#6 }
+        kb: { attach: boss }
+        marker-a: [32, 0]
+        marker-1: [88, 0]
+        marker-b: [32, 90]
+        marker-2: [88, -45]
+        marker-c: [32, 180]
+        marker-3: [44, 128]
+        marker-d: [32, -90]
+        marker-4: [0, 0]
+        boss: { x: 80, y: 0, rotate: 0, visible: false }
+        players: [80, 180]
+      - boss: { visible: true }
+        players: [60, 0]
+        cast: { text: Upheaval, visible: true }
+      - bury#[1..5]: { visible: true }
+        cast: { progress: 0.25 }
+        hint: Bomb boulders drop, killing anyone within the red areas.
+      - bury#[1..5]: { visible: false }
+        burst#[1..5]: { visible: true }
+        players: { y: 2 }
+        hint: Get knocked back into the safe spot. It can be either left or right.
+        cast: { progress: 0.8 }
+      - kb: { visible: true }
+        players: [78, 166]
+        cast: { progress: 1, visible: false }
+      - kb: { visible: false }
+        burst#[1..5]: { visible: false }
+        M1: { x: 27, y: 80, status: [mark1] }
+        H2: { x: 16, y: 102, status: [mark2] }
+        R1: { x: 16, y: 142, status: [mark3] }
+        H1: [24, 98]
+        R2: [22, 124]
+        [T1, T2, M2]: [79, -20]
+        hint: Titan marks three random players (except the MT). Move forward to avoid Bury.
+      - landslide#[1..5]: { visible: true }
+        landslide#1: { rotate: null }
+        boss: { rotate: set-landslide#1 }
+        bury#6: { visible: true }
+        R2: [33, -102]
+        H1: [25, -69]
+        R1: [30, -168]
+        H2: [6, -90]
+        M1: [29, -18]
+        hint: Landslide is baited towards a random player.
+      - bury#6: { visible: false }
+        burst#6: { visible: true }
+        landslide#[1..5]: { visible: false }
+        R1: { x: 32, y: 173, status: [fetters], opacity: 0.7 }
+        H2: { x: 0, y: 90, status: [fetters], opacity: 0.7 }
+        M1: { x: 32, y: 0, status: [fetters], opacity: 0.7 }
+        hint: Marked players are fettered.
+      - boss: { rotate: set-landslide#6 }
+        landslide#[6..10]: { rotate: null, visible: true }
+        [T1, T2, M2]: [52, -42]
+        H1: [46, -63]
+        R2: [48, -79]
+        hint: Fettered players don't need to worry about this Landslide.
+      - R1: { x: 41, y: -90, opacity: 1, status: [] }
+        sludge#1: { attach: null, visible: true }
+        burst#6: { visible: false }
+        landslide#[6..10]: { visible: false }
+        [T1, T2, M2, R2, H1]: [78, -20]
+        hint: ""
+      - H2: { x: 44, y: -53, opacity: 1, status: [] }
+        sludge#2: { attach: null, visible: true }
+        R1: [78, -20]
+      - M1: { x: 78, y: -20, opacity: 1, status: [] }
+        sludge#3: { attach: null, visible: true }
+        H2: [78, -20]
+      - boss: { status: [aetherially-charged] }
+        hint: Tumults.
+      - boss: { rotate: T1, status: [aetherially-charged:2] }
+        hint: ""
+      - boss: { rotate: null, status: [aetherially-charged:3] }
+        cast: { progress: 0, text: Weight of the Land, visible: true }
+        weight#1.[1..4]: { visible: true, attach: null }
+        [T1, T2, M1, M2]: [78, 8]
+        [R1, R2, H1, H2]: [77, -49]
+        landslide#1: { rotate: T1 }
+      - boss: { x: 59, y: 0, rotate: T1, status: [woken] }
+        cast: { progress: 1, visible: false }
+        weight#1.[1..4]: { visible: false }
+        weight#2.[1..4]: { visible: true, attach: null }
+        sludge#*: { visible: false }
+        T1: [29, 0]
+        [T2, M1, M2]: [78, -20]
+        [R1, R2, H1, H2]: [67, -78]
+        hint: MT tries to drag the boss closer to middle to make the Landslide a bit easier to avoid.
+      - weight#2.[1..4]: { visible: false }
+        boss: { rotate: set-landslide#1 }
+        hint: "Warning: this Landslide is woken."
+        landslide#[1..5]: { visible: true }
+        landslide#1: { rotate: null }
+        [H1, H2, R1, R2]: [72, -71]
+        [M1, M2, T2]: [67, -28]
+        T1: [23, -65]
+      - landslide#[1..5]: { visible: false }
+        [H1, H2, R1, R2]: [69, -79]
+        [M1, M2, T1, T2]: [50, -45]
+      - landslide-followup#*: { visible: true }
+        
