@@ -63,3 +63,5 @@ snake prio: |
 headmarker: |
   A "headmarker" is one of the many markers that appear over player characters' heads whenever certain mechanics happen to indicate which players get targeted by those mechanics. Classic examples include the red spread arrow that is common in many casual duties, the green meteor marker that appears when a player is about to have a comet dropped on their head, the plus and minus markers whenever a polarity mechanic happens (for instance in A3N), the blue jump markers that can be found in Thordan's trial and DSR, and many more.
   A headmarker is always assigned by the game itself. Player-assigned markers (such as "target to attack", "target to ignore", or "bind") are generally not considered headmarkers.
+cheese: |
+  A strategy unintended by the developers that exploits the way some mechanics or the game works in order to ignore part of the mechanic.

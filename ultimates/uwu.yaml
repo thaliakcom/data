@@ -811,7 +811,7 @@ actions:
     mechanic: aoe
     shape: line
     count: 2
-    description: "[a:crimson-cyclone] hits again 45° offset from the initial dash. Only when Ifrit is [s:woken]."
+    description: "[a:crimson-cyclone] hits again 45° offset from the initial dash. Only when Ifrit is [s:woken]. Note that these lines are significantly smaller than the initial hit."
   geocrush-initial:
     id: 11517
     mechanic: raidwide.proximity
@@ -1361,7 +1361,7 @@ actions:
       Afterwards, Garuda screams for [a:feather-rain] and [boss] teleports back to the center of the arena, where it becomes targetable again.
     resolve: |
       While dodging all these mechanics at the same time may seem daunting, there is a simple strategy that requires very little thought and can be executed regardless of the exact pattern. The only downside is that it is quite precise.
-      For this strategy, we exploit the fact that [a:wicked-tornado] has a finite range to outrange it, allowing us to ignore Garuda entirely and focus on Ifrit and Titan. To do this, identify which intercardinal Garuda has spawned on. The two cardinals farthest from her are now the "target cardinals". If one of those two cardinals has Titan on it, ignore it and go to the other cardinal. If neither cardinal has Titan on it, then either cardinal is safe. If possible, you may wish to select the cardinal perpendicular from Ifrit. This way you don't have to worry about [a:crimson-cyclone-woken].
+      For this strategy, we use the fact that [a:wicked-tornado] has a finite range (exactly equal to the size of the arena) to outrange it, allowing us to ignore Garuda entirely and focus on Ifrit and Titan. To do this, identify which intercardinal Garuda has spawned on. The two cardinals farthest from her are now the "target cardinals". If one of those two cardinals has Titan on it, ignore it and go to the other cardinal. If neither cardinal has Titan on it, then either cardinal is safe. If possible, you may wish to select the cardinal perpendicular from Ifrit. This way you don't have to worry about [a:crimson-cyclone-woken].
       For this strategy, we're going to use the runes behind the edge on the outside of the arena. The pattern just behind the death wall on the outside of the arena features two rows of various runes that circle the arena, excluding the cardinals themselves.
       After going to the cardinal, find the *fourth* rune from the cardinal, either clockwise or counter-clockwise. Every fourth rune is safe from [a:wicked-tornado], [a:landslide-followup], and [a:crimson-cyclone-echo], *but not* [a:ceruleum-vent], so make sure the rune you choose is not near [boss].
       Before going to that rune, check if the rune will be hit by the first [a:crimson-cyclone-woken] hit or a [a:landslide]. If yes, wait until the first hit is done, then go to the rune. If not, you can go to the rune right away and wait there until you hear Garuda scream.
@@ -1369,6 +1369,17 @@ actions:
       - Since this is a purely individual mechanic, the only way you can cause a wipe here is if you move too early at the end and bait [a:feather-rain] in a bad location. Even then a wipe is unlikely.
       - If you're not feeling confident, you can simply follow someone else until you've gotten a feel for the logic and the positioning.
       - This strategy has only one "cursed" pattern. In this pattern, [boss], Ifrit, and Titan are all on the half of the arena safe from Garuda. If this happens, the only safe rune is directly under Ifrit, meaning you have to wait until the first hit of [a:crimson-cyclone-woken] has executed and then quickly move to the rune.
+    trivia: |
+      On first glance it may seem as though outranging [a:wicked-tornado] is a [t:cheese], but it's likely this is actually the intended strategy. There are two reasons for this:
+      * [a:wicked-tornado] is exactly as large as the arena. If the developers intended for you to dodge inside Garuda, there would be no reason for them to place Garuda offset from center. Without that offset, there would be no way to outrange [a:wicked-tornado].
+      * Dodging inside [a:wicked-tornado] is not always possible. In all available patterns, the majority of the safe spot inside [a:wicked-tornado] is covered by [a:crimson-cyclone-echo], leaving only a small triangular safe spot inside. But in many patterns, that triangular safe spot is covered by a [a:landslide-followup].
+    strategies:
+      braindead-predation:
+        name: Braindead
+        description: Uses the fourth rune from a cardinal for an easy dodge.
+      risky-predation:
+        name: Risky Dodge
+        description: Goes in for [a:wicked-tornado]. Impossible on some patterns.
     children:
     - at: 4455
       id: <untargetable>
@@ -2063,6 +2074,14 @@ graphing:
       opacity: 0.85
       scale: 0
       shadow: false
+    wicked-tornado:
+      type: donut
+      size: [178, 80]
+      scale: 0
+      color: "#067F0A"
+      opacity: 0.5
+      shadow: false
+      blink: true
     great-whirlwind:
       type: ellipse
       size: 85
@@ -2090,7 +2109,16 @@ graphing:
       blink: true
     crimson-cyclone:
       type: rectangle
-      size: [80, 185]
+      size: [83, 185]
+      scale: [1, 0]
+      origin: [0.5, 0.9]
+      color: "#B3480E"
+      opacity: 0.6
+      shadow: false
+      blink: true
+    crimson-cyclone-followup:
+      type: rectangle
+      size: [58, 185]
       scale: [1, 0]
       origin: [0.5, 0.9]
       color: "#B3480E"
@@ -2170,6 +2198,14 @@ graphing:
       size: 130
       visible: false
       opacity: 0.6
+    ceruleum-vent:
+      type: ellipse
+      size: 100
+      color: "#249BC6"
+      opacity: 0.8
+      visible: false
+      shadow: false
+      blink: true
   graphs:
     double-mistral-song-lpdu:
       - wicked-wheel: { attach: boss }
@@ -2332,8 +2368,8 @@ graphing:
         crimson-cyclone#2: { attach: boss#3, rotate: -135 }
         crimson-cyclone#3: { attach: boss#1, rotate: 0 }
         crimson-cyclone#4: { attach: boss#2, rotate: -45 }
-        crimson-cyclone#5: [95, -45, 135]
-        crimson-cyclone#6: [95, 45, -135]
+        crimson-cyclone-followup#1: [95, -45, 135]
+        crimson-cyclone-followup#2: [95, 45, -135]
         marker-a: [32, 0]
         marker-1: [88, 0]
         marker-b: [32, 90]
@@ -2364,10 +2400,10 @@ graphing:
         crimson-cyclone#4: { h: 1.2 }
         inferno-howl: { visible: true }
       - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone#[5,6]: { h: 1.2 }
+        crimson-cyclone-followup#*: { h: 1.2 }
         inferno-howl: { visible: false }
         # Variation 2
-      - crimson-cyclone#[5,6]: { visible: false }
+      - crimson-cyclone-followup#*: { visible: false }
         boss#1: { y: 0, visible: true, filter: "" }
         boss#2: { y: -45, visible: true }
         boss#3: { y: -135, visible: true }
@@ -2376,10 +2412,10 @@ graphing:
         H1: { y: 135 }
         hint: Variation 2 (one move)
       - boss#4: { y: -90, visible: false }
-        crimson-cyclone#[5,6]: { h: 0 }
+        crimson-cyclone-followup#*: { h: 0 }
         crimson-cyclone#1: { h: 1.2 }
       - crimson-cyclone#1: { h: 0 }
-        crimson-cyclone#[5,6]: { visible: true }
+        crimson-cyclone-followup#*: { visible: true }
         boss#3: { y: 45, visible: false }
         crimson-cyclone#2: { h: 1.2 }
         players: { y: -90 }
@@ -2387,18 +2423,18 @@ graphing:
       - crimson-cyclone#2: { h: 0 }
         boss#1: { y: 180, visible: false }
         crimson-cyclone#3: { h: 1.2 }
-        crimson-cyclone#[5,6]: { h: 1.2 }
+        crimson-cyclone-followup#*: { h: 1.2 }
         inferno-howl: { visible: true }
       - crimson-cyclone#3: { h: 0 }
         boss#2: { y: 135, visible: false }
         crimson-cyclone#4: { h: 1.2 }
-        crimson-cyclone#[5,6]: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
         inferno-howl: { visible: false }
         # Variation 3
       - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone#[5,6]: { h: 0 }
-        crimson-cyclone#5: { y: -90, rotate: 90 }
-        crimson-cyclone#6: { y: 0, rotate: 180 }
+        crimson-cyclone-followup#*: { h: 0 }
+        crimson-cyclone-followup#1: { y: -90, rotate: 90 }
+        crimson-cyclone-followup#2: { y: 0, rotate: 180 }
         boss#1: { y: 0, visible: true }
         boss#2: { y: -45, visible: true }
         boss#3: { y: -135, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
@@ -2407,7 +2443,7 @@ graphing:
         H1: { y: 135 }
         hint: Variation 3 (two moves)
       - boss#4: { y: -90, visible: false }
-        crimson-cyclone#[5,6]: { visible: true }
+        crimson-cyclone-followup#*: { visible: true }
         crimson-cyclone#1: { h: 1.2 }
       - crimson-cyclone#1: { h: 0 }
         boss#3: { y: 45, visible: false }
@@ -2424,12 +2460,12 @@ graphing:
         boss#2: { y: 135, visible: false }
         crimson-cyclone#4: { h: 1.2 }
         inferno-howl: { visible: false }
-        crimson-cyclone#[5,6]: { h: 1.2 }
+        crimson-cyclone-followup#*: { h: 1.2 }
         # Variation 4
       - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone#[5,6]: { h: 0 }
-        crimson-cyclone#5: { y: -90, rotate: 90, visible: false }
-        crimson-cyclone#6: { y: 0, rotate: 180, visible: false }
+        crimson-cyclone-followup#*: { h: 0 }
+        crimson-cyclone-followup#1: { y: -90, rotate: 90, visible: false }
+        crimson-cyclone-followup#2: { y: 0, rotate: 180, visible: false }
         boss#1: { y: 0, visible: true }
         boss#2: { y: -45, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
         boss#3: { y: -135, visible: true, filter: "" }
@@ -2438,7 +2474,7 @@ graphing:
         H1: { y: 135 }
         hint: Variation 4 (two moves)
       - boss#4: { y: -90, visible: false }
-        crimson-cyclone#[5,6]: { visible: true }
+        crimson-cyclone-followup#*: { visible: true }
         crimson-cyclone#1: { h: 1.2 }
       - crimson-cyclone#1: { h: 0 }
         boss#3: { y: 45, visible: false }
@@ -2456,7 +2492,7 @@ graphing:
         crimson-cyclone#4: { h: 1.2 }
         inferno-howl: { visible: false }
       - crimson-cyclone#4: { h: 0 }
-      - crimson-cyclone#[5,6]: { h: 1.2 }
+      - crimson-cyclone-followup#*: { h: 1.2 }
     titan-gaols:
       - arena: { image: /images/arenas/uwu-p3.avif }
         titan-edge: { }
@@ -2596,4 +2632,126 @@ graphing:
         [H1, H2, R1, R2]: [69, -79]
         [M1, M2, T1, T2]: [50, -45]
       - landslide-followup#*: { visible: true }
-        
+    braindead-predation:
+      - arena: { image: /images/arenas/uwu-p5-1.avif }
+        wicked-wheel: { attach: enemy#garuda }
+        wicked-tornado: { attach: enemy#garuda }
+        crimson-cyclone#1: { attach: enemy#ifrit, rotate: set-enemy#ifrit }
+        crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 180 }
+        crimson-cyclone-followup#2: { x: 82, y: 90, rotate: -90 }
+        landslide#[1..5]: { attach: enemy#titan }
+        landslide#1: { rotate: set-enemy#titan+180 }
+        landslide#2: { rotate: set-landslide#1+45 }
+        landslide#3: { rotate: set-landslide#1+-45 }
+        landslide#4: { rotate: set-landslide#1+135 }
+        landslide#5: { rotate: set-landslide#1+-135 }
+        landslide-followup#[1..5]: { attach: enemy#titan }
+        landslide-followup#1: { rotate: set-landslide#1+-180 }
+        landslide-followup#2: { rotate: set-landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set-landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set-landslide-followup#1+156 }
+        landslide-followup#5: { rotate: set-landslide-followup#1+-156 }
+        ceruleum-vent: { attach: enemy#ultima }
+        marker-a: [23, 0]
+        marker-1: [80, 0]
+        marker-b: [29, 90]
+        marker-2: [80, -45]
+        marker-c: [29, 180]
+        marker-3: [41, 128]
+        marker-d: [29, -90]
+        marker-4: [0, 0]
+        enemy#garuda: { x: 25, y: 45, rotate: 45, scale: 0.8, visible: false, text: Garuda }
+        enemy#titan: { x: 82, y: -95, rotate: -90, scale: 1.2, visible: false, text: Titan }
+        enemy#ifrit: { x: 82, y: 45, rotate: 45, scale: 1.2, visible: false, text: Ifrit }
+        enemy#ultima: { x: 82, y: -135, rotate: -135, scale: 1.6, visible: false, text: Ultima Weapon }
+        players: [0, 0]
+        hint: Example 1
+      - enemy#*: { visible: true }
+      - players: [87, 160]
+        hint: Example 1<br />We go away from Garuda (west or south), but Titan covers west, so we go south.
+      - wicked-wheel: { scale: 1 }
+        landslide#*: { visible: true }
+      - wicked-wheel: { visible: false }
+        landslide#*: { visible: false }
+        crimson-cyclone#1: { h: 1.2 }
+        enemy#ifrit: { y: -135, visible: false }
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#*: { h: 1.2 }
+        landslide-followup#*: { visible: true }
+        wicked-tornado: { scale: 1 }
+        ceruleum-vent: { visible: true }
+      - players: { opacity: 0.05 }
+        hint: Fading the player icons to show just how small the safe spot is.
+      - hint: Example 2
+        players: { x: 0, y: 0, opacity: 1 }
+        enemy#ifrit: [82, 45, 45]
+        enemy#garuda: [25, 135, 135]
+        enemy#titan: [82, 85, 90]
+        enemy#ultima: [82, 135, 135]
+        enemy#*: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: false }
+        wicked-tornado: { visible: false }
+        ceruleum-vent: { visible: false }
+        wicked-wheel: { scale: 0 }
+        crimson-cyclone#*: { h: 0 }
+      - enemy#*: { visible: true }
+        wicked-tornado: { scale: 0 }
+        wicked-wheel: { visible: true }
+        crimson-cyclone#*: { visible: true }
+        crimson-cyclone-followup#*: { h: 0 }
+      - players: [87, -69]
+        wicked-tornado: { visible: true }
+        T1: { x: 75, y: -8, status: [50] }
+        T2: [85, -102]
+        H2: [86, -21]
+        crimson-cyclone-followup#*: { visible: true }
+        hint: Example 2<br />There are multiple possible dodges here, but the tanks' dodges are harder, since you'll need to wait for Crimson Cyclone before moving to the rune.
+      - wicked-wheel: { scale: 1 }
+        landslide#*: { visible: true }
+      - wicked-wheel: { visible: false }
+        landslide#*: { visible: false }
+        crimson-cyclone#1: { h: 1.2 }
+        enemy#ifrit: { y: -135, visible: false }
+        T1: [87, 21]
+        T2: [86, -110]
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#[1,2]: { h: 1.2 }
+        landslide-followup#*: { visible: true }
+        wicked-tornado: { scale: 1 }
+        ceruleum-vent: { visible: true }
+      - hint: Example 3 (Cursed)
+        players: { x: 0, y: 0, status: [] }
+        enemy#ifrit: [82, 45, 45]
+        enemy#garuda: [25, -135, -135]
+        enemy#titan: [82, -5, 0]
+        enemy#ultima: [82, 135, 135]
+        enemy#*: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: false }
+        wicked-tornado: { visible: false }
+        ceruleum-vent: { visible: false }
+        wicked-wheel: { scale: 0 }
+        crimson-cyclone#*: { h: 0 }
+      - enemy#*: { visible: true }
+        wicked-tornado: { scale: 0 }
+        wicked-wheel: { visible: true }
+        crimson-cyclone#*: { visible: true }
+        crimson-cyclone-followup#*: { h: 0 }
+      - players: [85, 90]
+        wicked-tornado: { visible: true }
+        crimson-cyclone-followup#*: { visible: true }
+        hint: Example 3 (Cursed)<br />This is the worst possible pattern. The only possible dodge is a very uncomfortable one.
+      - players: [87, 79]
+        wicked-wheel: { scale: 1 }
+        landslide#*: { visible: true }
+      - wicked-wheel: { visible: false }
+        landslide#*: { visible: false }
+        crimson-cyclone#1: { h: 1.2 }
+        enemy#ifrit: { y: -135, visible: false }
+        players: [87, 70]
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#[1,2]: { h: 1.2 }
+        landslide-followup#*: { visible: true }
+        wicked-tornado: { scale: 1 }
+        ceruleum-vent: { visible: true }
