@@ -1181,14 +1181,10 @@
       "items": [
         {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "title": "x"
         },
         {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "title": "y"
         }
       ],
@@ -2176,15 +2172,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
@@ -2368,15 +2360,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
@@ -2510,15 +2498,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
@@ -2652,15 +2636,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
@@ -2805,15 +2785,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
@@ -2948,15 +2924,11 @@
         },
         "w": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the width, not the height, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the width, not the height, you can use this field instead of `scale`."
         },
         "h": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
           "description": "If you only need to supply a new scale for the height, not the width, you can use this field instead of scale.",
           "markdownDescription": "If you only need to supply a new scale for the height, not the width, you can use this field instead of `scale`."
         },
