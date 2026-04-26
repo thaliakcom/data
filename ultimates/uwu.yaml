@@ -2724,7 +2724,7 @@ graphing:
         players: { x: 0, y: 0, status: [] }
         enemy#ifrit: [82, 45, 45]
         enemy#garuda: [25, -135, -135]
-        enemy#titan: [82, -5, 0]
+        enemy#titan: [82, 5, 0]
         enemy#ultima: [82, 135, 135]
         enemy#*: { visible: false }
         crimson-cyclone-followup#*: { visible: false }
@@ -2742,7 +2742,7 @@ graphing:
         wicked-tornado: { visible: true }
         crimson-cyclone-followup#*: { visible: true }
         hint: Example 3 (Cursed)<br />This is the worst possible pattern. The only possible dodge is a very uncomfortable one.
-      - players: [87, 79]
+      - players: [70, 99]
         wicked-wheel: { scale: 1 }
         landslide#*: { visible: true }
       - wicked-wheel: { visible: false }
