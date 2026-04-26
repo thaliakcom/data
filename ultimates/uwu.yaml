@@ -685,6 +685,10 @@ actions:
       One random healer is targeted by [a:inferno-howl] when nails spawn. If the boss's new position in-between the inner nails is relative north, this healer moves to the very edge of the arena at relative south, between the two outer nails. They will periodically explode in a big AoE ([a:searing-wind]), instantly killing any players caught in the explosion. The explosion is large enough to clip the two outer nails, so melees must be extra careful when dealing damage to those two nails.
       Avoid using any heavy attacks on the nails. They do not have a lot of health, so it is very easy to accidentally destroy one before it has grown two times if you fail to take into account potential crits and direct hits.
       The nails' recommended kill order is the "reverse Z pattern", i.e. if you're facing the two close nails: relative southeast, then relative southwest, then relative northeast, then relative northwest. This maximizes the time you have to dodge the subsequent [a:crimson-cyclone]s. (Note that, if the party has good damage, it is possible to skip those [a:crimson-cyclone]s, essentially rendering the nail kill order irrelevant. However, you should always expect to see the [a:crimson-cyclone]s.)
+    strategies:
+      reverse-z:
+        name: Reverse Z
+        description: Destroy the nails in a Reverse Z order.
     children:
     - at: 4100
       id: <targetable>
@@ -2022,6 +2026,8 @@ timeline:
     timing: player
 graphing:
   coordinate-system: polar
+  defs:
+    eruption: "radial-gradient(0% #FFF9BF 30% #FF876C9B 97% #FF876C9B 98% #FF915E 100% #FF915E)"
   elements:
     arena:
       type: image
@@ -2069,6 +2075,21 @@ graphing:
       opacity: 0.6
       shadow: false
       blink: true
+    eruption:
+      type: ellipse
+      size: 75
+      color: "url(#eruption)"
+      opacity: 0.6
+      visible: false
+      shadow: false
+    inferno-howl:
+      type: ellipse
+      size: 170
+      color: "#FFE396"
+      opacity: 0.6
+      visible: false
+      shadow: false
+      blink: true
   graphs:
     double-mistral-song-lpdu:
       - wicked-wheel: { attach: boss }
@@ -2080,6 +2101,8 @@ graphing:
         feather-rain#3: { attach: M2 }
         feather-rain#4: { attach: H1 }
         feather-rain#5: { attach: R2 }
+        mistral-song#chirada: { attach: enemy#chirada, rotate: H1 }
+        mistral-song#suparna: { attach: enemy#suparna, rotate: R2 }
         marker-a: [32, 0]
         marker-1: [88, 0]
         marker-b: [32, 90]
@@ -2091,8 +2114,6 @@ graphing:
         boss: { scale: 0.4, rotate: T1 }
         enemy#chirada: { x: 30, y: -90, scale: 0.7, opacity: 0.4, rotate: 0, text: Chirada, visible: false }
         enemy#suparna: { x: 30, y: 90, scale: 0.7, opacity: 0.4, rotate: 0, text: Suparna, visible: false }
-        mistral-song#chirada: { attach: enemy#chirada, rotate: H1 }
-        mistral-song#suparna: { attach: enemy#suparna, rotate: R2 }
         players: [12, 180]
       - enemy#*: { visible: true }
         feather-rain#*: { attach: null }
@@ -2142,3 +2163,85 @@ graphing:
       - feather-rain#*: { scale: 1 }
         great-whirlwind#*: { visible: true }
         hint: Feather Rain and Great Whirlwind resolve.
+    reverse-z:
+      - arena: { image: /images/arenas/uwu-p2.avif }
+        eruption#[1..4]: { attach: R1 }
+        eruption#[5..8]: { attach: R2 }
+        inferno-howl: { attach: H2 }
+        marker-a: [32, 0]
+        marker-1: [88, 0]
+        marker-b: [32, 90]
+        marker-2: [88, -45]
+        marker-c: [32, 180]
+        marker-3: [44, 128]
+        marker-d: [32, -90]
+        marker-4: [0, 0]
+        enemy#nail-1: { x: 45, y: 90, rotate: 90, scale: 0.4, opacity: 0.7, text: Nail, visible: false }
+        enemy#nail-2: { x: 45, y: 135, rotate: 135, scale: 0.4, opacity: 0.7, text: Nail, visible: false }
+        enemy#nail-3: { x: 45, y: 0, rotate: 0, scale: 0.4, opacity: 0.7, text: Nail, visible: false }
+        enemy#nail-4: { x: 45, y: -135, rotate: -135, scale: 0.4, opacity: 0.7, text: Nail, visible: false }
+        boss: { scale: 1, opacity: 0.4, rotate: T1 }
+        players: [24, 0]
+        T1: [30, 180]
+        hint: In this fight, almost all bosses spawn in facing south and start off with a tankbuster. To avoid cleaving the party, PF strat is to avoid turning the boss when it spawns in and just have party stacking behind it.
+      - enemy#nail-*: { visible: true }
+        T1: [69, 113]
+        boss: [41, 113]
+        [M1, M2, T2]: [16, 101]
+        H1: [26, 32]
+        H2: [13, -154]
+        R1: [60, -6]
+        R2: [60, -132]
+        hint: Nails spawn in a random orientation, but always in this exact formation. The two "close" nails are new north. MT drags the boss in-between them.
+      - boss: { rotate: H2 }
+        cast: { text: Inferno Howl, progress: 0.5 }
+        hint: Boss turns towards a random healer and spits Searing Wind at them. They go relative south.
+      - H2: { x: 90, y: -67, status: [searing-wind] }
+        H1: [16, 101]
+        boss: { rotate: T1 }
+        cast: { progress: 1, visible: false }
+      - eruption#[1,5]: { visible: true, attach: null }
+        cast: { text: Eruption, progress: 0, visible: true }
+        R2: [48, -172]
+        R1: [55, 35]
+        hint: Rangeds begin baiting Eruptions. Each must hit a nail.
+      - eruption#[2,6]: { visible: true, attach: null }
+        cast: { progress: 0.5 }
+        R2: [70, 150]
+        R1: [70, 75]
+        inferno-howl: { visible: true }
+      # Eruptions 1
+      - eruption#[1,5]: { visible: false }
+        enemy#nail-[3,4]: { scale: 0.6, status: [vulnerability-down, damage-up] }
+        eruption#[3,7]: { visible: true, attach: null }
+        inferno-howl: { visible: false }
+        [R1, R2]: [65, 113]
+        cast: { progress: 1, visible: false }
+      # Eruptions 2
+      - eruption#[2,6]: { visible: false }
+        enemy#nail-[3,4]: { scale: 0.8, status: [vulnerability-down:2, damage-up:2] }
+        eruption#[4,8]: { visible: true, attach: null }
+        [R1, R2, T1]: [16, 101]
+        [M1, M2, T2]: [31, -147]
+        hint: After the second Eruptions, players can kill the rear nails.
+      # Eruptions 3
+      - eruption#[3,7]: { visible: false }
+        enemy#nail-[1,2]: { scale: 0.6, status: [vulnerability-down, damage-up] }
+        enemy#nail-4: { visible: false }
+        boss: { status: [aetherially-charged] }
+        [M1, M2, T2]: [31, 23]
+      # Eruptions 4
+      - eruption#[4,8]: { visible: false }
+        enemy#nail-[1,2]: { scale: 0.8, status: [vulnerability-down:2, damage-up:2] }
+        inferno-howl: { visible: true }
+        T1: [69, 113]
+        enemy#nail-3: { visible: false }
+        boss: { status: [aetherially-charged:2] }
+        [M1, M2, T2]: [30, 139]
+      - inferno-howl: { visible: false }
+        enemy#nail-2: { visible: false }
+        boss: { status: [aetherially-charged:3] }
+        [M1, M2, T2]: [36, 96]
+      - enemy#nail-1: { visible: false }
+        boss: { status: [woken] }
+        [M1, M2, T2]: [16, 90]
