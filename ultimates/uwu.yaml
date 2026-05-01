@@ -2171,6 +2171,11 @@ graphing:
       visible: false
       shadow: false
       blink: true
+    infernal-fetters:
+      type: link
+      color: "#FFE396"
+      opacity: 0.6
+      visible: false
     sludge:
       type: ellipse
       size: 65
@@ -2315,6 +2320,7 @@ graphing:
         eruption#[1..4]: { attach: R1 }
         eruption#[5..8]: { attach: R2 }
         inferno-howl: { attach: H2 }
+        infernal-fetters: { from: T2, to: R1 }
         marker-a: [32, 0]
         marker-1: [88, 0]
         marker-b: [32, 90]
@@ -2342,6 +2348,7 @@ graphing:
         hint: Nails spawn in a random orientation, but always in this exact formation. The two "close" nails are new north. MT drags the boss in-between them.
       - boss: { rotate: H2 }
         cast: { text: Inferno Howl, progress: 0.5 }
+        infernal-fetters: { visible: true }
         hint: Boss turns towards a random healer and spits Searing Wind at them. They go relative south.
       - H2: { x: 90, y: -67, status: [searing-wind] }
         H1: [16, 101]
