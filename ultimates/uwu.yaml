@@ -1375,11 +1375,8 @@ actions:
       * Dodging inside [a:wicked-tornado] is not always possible. In all available patterns, the majority of the safe spot inside [a:wicked-tornado] is covered by [a:crimson-cyclone-echo], leaving only a small triangular safe spot inside. But in many patterns, that triangular safe spot is covered by a [a:landslide-followup].
     strategies:
       braindead-predation:
-        name: Braindead
+        name: Examples
         description: Uses the fourth rune from a cardinal for an easy dodge.
-      risky-predation:
-        name: Risky Dodge
-        description: Goes in for [a:wicked-tornado]. Impossible on some patterns.
     children:
     - at: 4455
       id: <untargetable>
