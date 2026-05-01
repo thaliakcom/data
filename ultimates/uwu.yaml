@@ -1396,6 +1396,67 @@ actions:
       id: ceruleum-vent
     - at: 22188
       id: feather-rain
+  post-predation:
+    name: Post-Predation
+    mechanic: combination
+    emphasis: more
+    compact: full
+    description: |
+      A sequence of primal mechanics.
+      * [boss:c] summons Ifrit at the north of the arena, who then casts [a:eruption] and [a:infernal-fetters]. Like before, [a:eruption]s are baited on the two farthest players.
+      * During this, [boss] summons Titan at the *farthest intercardinal* from [boss].
+      * After [a:eruption]s, [boss] casts [a:radiant-plume], covering everything but the center of the arena.
+      * Immediately after [a:radiant-plume]s resolve, [a:post-predation-boulders] begin to spawn in the center of the arena, rotating clockwise.
+      * At the same time, both [boss] and Titan cast [a:landslide] at the same time. Only Titan's [Landslide](a:landslide-woken) is woken.
+      * After Titan's [a:landslide-followup] resolves, [boss] summons Garuda in the center of the arena and her sisters on the east and west. Meanwhile, Titan uses [a:tumult-x7].
+      * During [Tumults](a:tumult-x7), [boss] uses [a:viscous-aetheroplasm] on the main tank.
+      * Immediately after Titan's [Tumults](a:tumult-x7) are finished, Garuda's sisters use [a:wicked-wheel].
+      * Immediately after [a:wicked-wheel], Garuda uses [a:mistral-shriek], Garuda's sisters scream and fly away, baiting [a:feather-rain]s, and [boss] casts [a:homing-lasers].
+      * As the [a:homing-lasers] cast completes, Garuda also screams and flies away, baiting [a:feather-rain]s.
+      After this, [boss] casts [a:ultimate-annihilation].
+    resolve: |
+      While a lot happens, resolving it is quite easy.
+      * After [a:ultimate-predation], have your main tank drag [boss] slightly north and your rangeds go south to bait [a:eruption]s.
+      * Rangeds converge with the rest of the party north, just outside of [a:radiant-plume]s.
+      * After [a:radiant-plume], immediately backpedal north to avoid the first [a:bury] in the middle. This also baits [boss]'s [a:landslide] north, and Titan's [a:landslide] (who should have spawned either southwest or southeast) should be directly on top of it. Dodge both sets of [a:landslide]s on the Titan side, which has a bigger safe spot.
+      * In theory, [a:landslide-followup] should not be able to hit you where you dodged initially, but just to be safe go back directly north.
+      * After [a:landslide-followup], the MT goes northeast and the rest of the party northwest of [boss]. Heal through [Tumults](a:tumult-x7), dodge [a:feather-rain], then dodge [a:feather-rain] again. That's it. You don't deal with any of the other mechanics ([a:post-predation-boulders], [a:wicked-wheel]) as long as you stay on the edge of the arena.
+      * In Party Finder, the off-tank usually uses [a:provoke] after [a:viscous-aetheroplasm] so the main tank can [t:invuln] to solo [a:viscous-aetheroplasm-stack] and [a:homing-lasers] at the same time.
+    strategies:
+      post-predation:
+        name: Example
+    children:
+    - at: 0
+      id: eruption
+    - at: 5483
+      id: infernal-fetters
+    - at: 11504
+      id: radiant-plume
+      description: AoEs that cover the outside of the arena.
+    - at: 11682
+      id: post-predation-boulders
+    - at: 15022
+      id: landslide-woken
+    - at: 15736
+      id: landslide-ultima
+    - at: 20188
+      id: tumult-x7
+    - at: 22953
+      id: viscous-aetheroplasm
+    - at: 28033
+      id: wicked-wheel
+      description: Chirada and Suparna both use [a:wicked-wheel]. There is no follow-up.
+      count: 2
+    - at: 30039
+      id: mistral-shriek
+    - at: 33376
+      id: feather-rain
+    - at: 34133
+      id: viscous-aetheroplasm-stack
+    - at: 35201
+      id: homing-lasers
+    - at: 36893
+      id: feather-rain
   ultimate-annihilation:
     id: 11596
     mechanic: mech.trio
@@ -1490,7 +1551,7 @@ actions:
     shape: chariot
     compact: full
     description: |
-      Six back-to-back bomb boulders spawn on the inside of the arena in a rotating pattern.
+      Six back-to-back bomb boulders spawn on the inside of the arena in a clockwise-rotating pattern.
       Their behaviour is identical to the ones during Titan's phase, spawning in with [a:bury] and then exploding via [a:burst].
     children:
     - at: 0
@@ -1964,36 +2025,7 @@ timeline:
     description: |
       [boss:c] reappears in the center of the arena.
   - at: 711312
-    id: eruption
-  - at: 716795
-    id: infernal-fetters
-  - at: 722816
-    id: radiant-plume
-    description: AoEs that cover the outside of the arena.
-  - at: 722994
-    id: post-predation-boulders
-  - at: 726334
-    id: landslide-woken
-  - at: 727048
-    id: landslide-ultima
-  - at: 731500
-    id: tumult-x7
-  - at: 734265
-    id: viscous-aetheroplasm
-  - at: 739345
-    id: wicked-wheel
-    description: Chirada and Suparna both use [a:wicked-wheel]. There is no follow-up.
-    count: 2
-  - at: 741351
-    id: mistral-shriek
-  - at: 744688
-    id: feather-rain
-  - at: 745445
-    id: viscous-aetheroplasm-stack
-  - at: 746513
-    id: homing-lasers
-  - at: 748205
-    id: feather-rain
+    id: post-predation
   - at: 753721
     id: ultimate-annihilation
   - at: 806348
