@@ -922,6 +922,13 @@
   type: patch
   color: "#6e9cec"
   at: 2026-04-28 12:00:00
+- name: The Maiden's Rhapsody (FFXI Crossover)
+  short: Maiden's Rhapsody
+  type: event
+  color: "#872e1c"
+  url: https://sqex.to/9BrGm
+  from: 2026-05-08 08:00:00
+  to: 2026-05-25 14:59:00
 - name: Fan Fest Berlin
   type: event
   color: "#383642"
