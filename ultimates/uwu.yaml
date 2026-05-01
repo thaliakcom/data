@@ -1235,6 +1235,7 @@ actions:
       Note that the target for this attack locks in when the cast **begins**, not when it ends. If you wish to perform a [t:tankswap] to change the target of this attack, it is only possible to do so before [boss] has begun casting.
   viscous-aetheroplasm-stack:
     id: 11130
+    name: Viscous Aetheroplasm (Stack)
     mechanic: stack
     shape: chariot
     damage: 13588
