@@ -2082,6 +2082,7 @@ graphing:
   defs:
     eruption: "radial-gradient(0% #FFF9BF 30% #FF876C9B 97% #FF876C9B 98% #FF915E 100% #FF915E)"
     weight: "radial-gradient(0% #FFF9BF 30% #7E593E9B 100% #75593A)"
+    landslide: "linear-gradient(0% #597BC4 2% #7E593ED4 50% #7E6F3E72 98% #7E593ED4 100% #3E4E8D)"
   elements:
     arena:
       type: image
@@ -2203,7 +2204,7 @@ graphing:
       type: rectangle
       origin: [0.5, 1]
       size: [32, 185]
-      color: "#945B3C"
+      color: url(#landslide)
       opacity: 0.8
       visible: false
       shadow: false
