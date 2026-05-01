@@ -2113,6 +2113,14 @@ graphing:
       opacity: 0.5
       shadow: false
       blink: true
+    wicked-wheel-sister:
+      type: ellipse
+      size: 120
+      color: "#067F0A"
+      opacity: 0.6
+      visible: false
+      shadow: false
+      blink: true
     great-whirlwind:
       type: ellipse
       size: 85
@@ -2163,6 +2171,14 @@ graphing:
       opacity: 0.6
       visible: false
       shadow: false
+    radiant-plume:
+      type: ellipse
+      size: 80
+      scale: 0
+      color: "#B3480E"
+      opacity: 0.6
+      shadow: false
+      blink: true
     inferno-howl:
       type: ellipse
       size: 170
@@ -2239,6 +2255,22 @@ graphing:
       size: 100
       color: "#249BC6"
       opacity: 0.8
+      visible: false
+      shadow: false
+      blink: true
+    homing-lasers:
+      type: ellipse
+      size: 50
+      color: "#249BC6"
+      opacity: 0.8
+      visible: false
+      shadow: false
+      blink: true
+    viscous-aetheroplasm:
+      type: ellipse
+      size: 25
+      color: "#7826AF"
+      opacity: 0.6
       visible: false
       shadow: false
       blink: true
@@ -2832,3 +2864,207 @@ graphing:
         enemy#*: { visible: false }
         hint: Garuda screams and flies away.
       - feather-rain#*: { visible: false }
+    post-predation:
+      - # Step 1
+        arena: { image: /images/arenas/uwu-p5-1.avif }
+        wicked-wheel-sister#1: { attach: enemy#chirada }
+        wicked-wheel-sister#2: { attach: enemy#suparna }
+        radiant-plume#[1,3,5,7]: { x: 78 }
+        radiant-plume#[2,4,6,8]: { x: 66 }
+        radiant-plume#1: { y: 0 }
+        radiant-plume#2: { y: 45 }
+        radiant-plume#3: { y: 90 }
+        radiant-plume#4: { y: 135 }
+        radiant-plume#5: { y: 180 }
+        radiant-plume#6: { y: -135 }
+        radiant-plume#7: { y: -90 }
+        radiant-plume#8: { y: -45 }
+        eruption#[1..4]: { attach: R1 }
+        eruption#[5..8]: { attach: R2 }
+        bury#[1..6]: { x: 25 }
+        bury#1: { y: 90 }
+        bury#2: { y: 150 }
+        bury#3: { y: -150 }
+        bury#4: { y: -90 }
+        bury#5: { y: -30 }
+        bury#6: { y: 30 }
+        burst#1: { attach: bury#1 }
+        burst#2: { attach: bury#2 }
+        burst#3: { attach: bury#3 }
+        burst#4: { attach: bury#4 }
+        burst#5: { attach: bury#5 }
+        burst#6: { attach: bury#6 }
+        landslide#[1..5]: { attach: enemy#titan }
+        landslide#1: { rotate: set:enemy#titan+180 }
+        landslide#2: { rotate: set:landslide#1+45 }
+        landslide#3: { rotate: set:landslide#1+-45 }
+        landslide#4: { rotate: set:landslide#1+135 }
+        landslide#5: { rotate: set:landslide#1+-135 }
+        landslide#[6..8]: { attach: boss }
+        landslide#6: { rotate: set:boss+180 }
+        landslide#7: { rotate: set:landslide#6+45 }
+        landslide#8: { rotate: set:landslide#6+-45 }
+        landslide-followup#[1..5]: { attach: enemy#titan }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+156 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
+        feather-rain#[1,6]: { attach: R1 }
+        feather-rain#[2,7]: { attach: H2 }
+        feather-rain#[3,8]: { attach: T1 }
+        feather-rain#[4,9]: { attach: M1 }
+        feather-rain#[5,10]: { attach: T2 }
+        homing-lasers: { attach: T1 }
+        viscous-aetheroplasm: { attach: T1 }
+        marker-a: [23, 0]
+        marker-1: [80, 0]
+        marker-b: [29, 90]
+        marker-2: [80, -45]
+        marker-c: [29, 180]
+        marker-3: [41, 128]
+        marker-d: [29, -90]
+        marker-4: [0, 0]
+        boss: { x: 0, y: 0, rotate: 0, scale: 1.4 }
+        enemy#chirada: { x: 70, y: -90, rotate: -90, scale: 0.8, opacity: 0.5, visible: false, text: Chirada }
+        enemy#suparna: { x: 70, y: 90, rotate: 90, scale: 0.8, opacity: 0.5, visible: false, text: Suparna }
+        enemy#titan: { x: 90, y: 135, rotate: 135, scale: 1.2, opacity: 0.5, visible: false, text: Titan }
+        enemy#ifrit: { x: 90, y: 0, rotate: 0, scale: 1.2, opacity: 0.5, visible: false, text: Ifrit }
+        enemy#garuda: { x: 10, y: 0, rotate: 0, opacity: 0.4, visible: false, text: Garuda }
+        infernal-fetters: { from: T2, to: R2 }
+        players: [0, 0]
+        T1: [39, 0]
+        R1: [80, -171]
+        R2: [80, 171]
+        hint: Rangeds preposition south. They can stack too and go the same way, it doesn't matter.
+      - # Step 2
+        T1: [54, 0]
+        boss: [15, 0, 180]
+        hint: MT drags the boss a little towards the north.
+      - # Step 3 (Eruption 1)
+        [T1, T2, H1, H2, M1, M2]: [34, 0]
+        enemy#ifrit: { visible: true }
+        eruption#[1,5]: { visible: true, attach: null }
+        R1: [68, -129]
+        R2: [68, 129]
+        hint: Begin baiting Eruptions. Everyone else stacks north.
+      - # Step 4 (Eruption 2)
+        R1: [62, -86]
+        R2: [62, 86]
+        eruption#[2,6]: { visible: true, attach: null }
+        eruption#[1,5]: { visible: false }
+        hint: ""
+      - # Step 5 (Eruption 3)
+        R1: [65, -46]
+        R2: [65, 46]
+        eruption#[3,7]: { visible: true, attach: null }
+        eruption#[2,6]: { visible: false }
+      - # Step 6 (Eruption 4)
+        [R1, R2]: [34, 0]
+        eruption#[4,8]: { visible: true, attach: null }
+        eruption#[3,7]: { visible: false }
+      - # Step 7
+        eruption#[4,8]: { visible: false }
+        radiant-plume#*: { scale: 1 }
+        infernal-fetters: { visible: true }
+        enemy#titan: { visible: true, rotate: 150 }
+        enemy#ifrit: { visible: false }
+        cast: { text: Radiant Plume, progress: 0.5, visible: true }
+      - # Step 8
+        radiant-plume#*: { visible: false }
+        players: [70, 0]
+        boss: [37, 0]
+        landslide#[1..5]: { visible: true }
+        bury#1: { visible: true }
+        cast: { progress: 1, visible: false }
+      - # Step 9
+        landslide#[6..8]: { visible: true }
+        bury#1: { visible: false }
+        burst#1: { visible: true }
+        bury#2: { visible: true }
+        players: [86, 12]
+        cast: { text: Landslide, progress: 0.5, visible: true }
+      - # Step 9 (Landslide resolves)
+        landslide#*: { visible: false }
+        bury#2: { visible: false }
+        burst#2: { visible: true }
+        bury#3: { visible: true }
+        cast: { progress: 1, visible: false }
+        players: [71, 0]
+      - # Step 10 (Landslide Followup resolves)
+        landslide-followup#*: { visible: true }
+        bury#3: { visible: false }
+        burst#3: { visible: true }
+        burst#1: { visible: false }
+        bury#4: { visible: true }
+        players: [66, -28]
+        T1: [66, 28]
+      - # Step 11
+        landslide-followup#*: { visible: false }
+        bury#4: { visible: false }
+        burst#4: { visible: true }
+        burst#2: { visible: false }
+        bury#5: { visible: true }
+        hint: Tumults begin. Heal through this.
+      - # Step 12
+        bury#5: { visible: false }
+        burst#5: { visible: true }
+        burst#3: { visible: false }
+        bury#6: { visible: true }
+        hint: ""
+      - # Step 13
+        bury#6: { visible: false }
+        burst#6: { visible: true }
+        burst#4: { visible: false }
+        enemy#garuda: { visible: true }
+        enemy#chirada: { visible: true }
+        enemy#suparna: { visible: true }
+        viscous-aetheroplasm: { visible: true }
+        boss: { rotate: T1 }
+        T1: { status: [viscous-aetheroplasm] }
+        hint: Boss turns towards the MT and gives them Viscous Aetheroplasm.
+      - # Step 14
+        burst#5: { visible: false }
+        boss: { rotate: T2 }
+        viscous-aetheroplasm: { visible: false }
+        hint: Off-tank provokes for Homing Lasers.
+      - # Step 15
+        burst#6: { visible: false }
+        infernal-fetters: { visible: false }
+      - # Step 16
+        wicked-wheel-sister#*: { visible: true }
+        enemy#titan: { visible: false }
+        hint: Tumults end. Mistral Shriek happens (big raidwide damage).
+      - # Step 17
+        wicked-wheel-sister#*: { visible: false }
+        enemy#chirada: { visible: false }
+        enemy#suparna: { visible: false }
+        feather-rain#[1..5]: { attach: null }
+        players: [37, -60]
+        T1: { x: 37, y: 60, status: [viscous-aetheroplasm, 82] }
+        hint: Sisters scream.
+      - # Step 18 (Feather Rain 1)
+        feather-rain#[1..5]: { scale: 1 }
+        hint: Feather Rain resolves. Homing Lasers happen at the same time as Viscous Aetheroplasm, so invuln this. MT vokes back.
+        boss: { rotate: T1 }
+        cast: { progress: 0, text: Homing Lasers, visible: true }
+      - # Step 19
+        enemy#garuda: { visible: false }
+        feather-rain#[1..5]: { visible: false }
+        feather-rain#[6..10]: { attach: null }
+        hint: Garuda screams.
+        players: [66, -28]
+        T1: { x: 66, y: 28, status: [82] }
+        cast: { progress: 1, visible: false }
+        homing-lasers: { visible: true }
+      - # Step 19
+        feather-rain#[6..10]: { scale: 1 }
+        hint: Feather Rain resolves.
+        homing-lasers: { visible: false }
+        T1: { status: [] }
+        boss: { rotate: null }
+      - # Step 20
+        feather-rain#[6..10]: { visible: false }
+        players: [37, -60]
+        cast: { progress: 0, text: Ultimate Annihilation, visible: true }
+        hint: ""
