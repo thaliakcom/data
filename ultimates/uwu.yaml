@@ -2539,21 +2539,21 @@ graphing:
         sludge#3: { attach: M1 }
         landslide#[1..10]: { attach: boss }
         landslide#1: { rotate: R2 }
-        landslide#2: { rotate: set-landslide#1+45 }
-        landslide#3: { rotate: set-landslide#1+-45 }
-        landslide#4: { rotate: set-landslide#1+135 }
-        landslide#5: { rotate: set-landslide#1+-135 }
+        landslide#2: { rotate: set:landslide#1+45 }
+        landslide#3: { rotate: set:landslide#1+-45 }
+        landslide#4: { rotate: set:landslide#1+135 }
+        landslide#5: { rotate: set:landslide#1+-135 }
         landslide#6: { rotate: H1 }
-        landslide#7: { rotate: set-landslide#6+45 }
-        landslide#8: { rotate: set-landslide#6+-45 }
-        landslide#9: { rotate: set-landslide#6+135 }
-        landslide#10: { rotate: set-landslide#6+-135 }
+        landslide#7: { rotate: set:landslide#6+45 }
+        landslide#8: { rotate: set:landslide#6+-45 }
+        landslide#9: { rotate: set:landslide#6+135 }
+        landslide#10: { rotate: set:landslide#6+-135 }
         landslide-followup#[1..5]: { attach: boss }
-        landslide-followup#1: { rotate: set-landslide#1+-180 }
-        landslide-followup#2: { rotate: set-landslide-followup#1+90 }
-        landslide-followup#3: { rotate: set-landslide-followup#1+-90 }
-        landslide-followup#4: { rotate: set-landslide-followup#1+157 }
-        landslide-followup#5: { rotate: set-landslide-followup#1+-157 }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+157 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-157 }
         weight#[1,2].1: { attach: M1 }
         weight#[1,2].2: { attach: R1 }
         weight#[1,2].3: { attach: T2 }
@@ -2606,7 +2606,7 @@ graphing:
         hint: Titan marks three random players (except the MT). Move forward to avoid Bury.
       - landslide#[1..5]: { visible: true }
         landslide#1: { rotate: null }
-        boss: { rotate: set-landslide#1 }
+        boss: { rotate: set:landslide#1 }
         bury#6: { visible: true }
         R2: [33, -102]
         H1: [25, -69]
@@ -2621,7 +2621,7 @@ graphing:
         H2: { x: 0, y: 90, status: [fetters], opacity: 0.7 }
         M1: { x: 32, y: 0, status: [fetters], opacity: 0.7 }
         hint: Marked players are fettered.
-      - boss: { rotate: set-landslide#6 }
+      - boss: { rotate: set:landslide#6 }
         landslide#[6..10]: { rotate: null, visible: true }
         [T1, T2, M2]: [52, -42]
         H1: [46, -63]
@@ -2659,7 +2659,7 @@ graphing:
         [R1, R2, H1, H2]: [67, -78]
         hint: MT tries to drag the boss closer to middle to make the Landslide a bit easier to avoid.
       - weight#2.[1..4]: { visible: false }
-        boss: { rotate: set-landslide#1 }
+        boss: { rotate: set:landslide#1 }
         hint: "Warning: this Landslide is woken."
         landslide#[1..5]: { visible: true }
         landslide#1: { rotate: null }
@@ -2674,21 +2674,21 @@ graphing:
       - arena: { image: /images/arenas/uwu-p5-1.avif }
         wicked-wheel: { attach: enemy#garuda }
         wicked-tornado: { attach: enemy#garuda }
-        crimson-cyclone#1: { attach: enemy#ifrit, rotate: set-enemy#ifrit }
+        crimson-cyclone#1: { attach: enemy#ifrit, rotate: set:enemy#ifrit }
         crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 180 }
         crimson-cyclone-followup#2: { x: 82, y: 90, rotate: -90 }
         landslide#[1..5]: { attach: enemy#titan }
-        landslide#1: { rotate: set-enemy#titan+180 }
-        landslide#2: { rotate: set-landslide#1+45 }
-        landslide#3: { rotate: set-landslide#1+-45 }
-        landslide#4: { rotate: set-landslide#1+135 }
-        landslide#5: { rotate: set-landslide#1+-135 }
+        landslide#1: { rotate: set:enemy#titan+180 }
+        landslide#2: { rotate: set:landslide#1+45 }
+        landslide#3: { rotate: set:landslide#1+-45 }
+        landslide#4: { rotate: set:landslide#1+135 }
+        landslide#5: { rotate: set:landslide#1+-135 }
         landslide-followup#[1..5]: { attach: enemy#titan }
-        landslide-followup#1: { rotate: set-landslide#1+-180 }
-        landslide-followup#2: { rotate: set-landslide-followup#1+90 }
-        landslide-followup#3: { rotate: set-landslide-followup#1+-90 }
-        landslide-followup#4: { rotate: set-landslide-followup#1+156 }
-        landslide-followup#5: { rotate: set-landslide-followup#1+-156 }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+156 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
         ceruleum-vent: { attach: enemy#ultima }
         feather-rain#1: { attach: R1 }
         feather-rain#2: { attach: H2 }
