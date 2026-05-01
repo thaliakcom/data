@@ -743,9 +743,9 @@ actions:
     type: magic
     compact: full
     description: |
-      Selects two random players far from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
+      Selects the two farthest players from Ifrit and spawns 4 back-to-back AoEs beneath their feet.
       If these AoEs touch an Infernal Nail, the nail grows and is granted [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks.
-      **Regarding the targeting**: All targets outside of a certain range (approximately [t:max melee]) are eligible to be selected for [a:eruption]. If more than two players are outside of this "safe" range, the selection is random between those players. :unverified(Players with [s:searing-wind] can never be selected for [a:eruption].)
+      Players with [s:searing-wind] can never be selected for [a:eruption], even if they're farther than anyone else.
     children:
     - at: 491
       id: eruption-hit
