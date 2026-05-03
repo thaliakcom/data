@@ -1130,6 +1130,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1150,10 +1154,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         }
       },
       "additionalProperties": false
@@ -1290,6 +1290,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1310,10 +1314,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1400,6 +1400,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1420,10 +1424,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1510,6 +1510,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1530,10 +1534,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1625,6 +1625,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1645,10 +1649,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1759,6 +1759,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1779,10 +1783,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -1904,6 +1904,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "coordinate-system": {
           "$ref": "#/definitions/CoordinateSystem",
           "description": "An override for the coordinate system for this element."
@@ -1924,10 +1928,6 @@
         "shadow": {
           "type": "boolean",
           "description": "Whether the element should drop a shadow."
-        },
-        "blink": {
-          "type": "boolean",
-          "description": "Whether the element should repeatedly fade in and out."
         },
         "type": {
           "type": "string",
@@ -2148,6 +2148,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2336,6 +2340,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2474,6 +2482,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2611,6 +2623,10 @@
           "type": "string",
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "x": {
           "type": "number",
@@ -2761,6 +2777,10 @@
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
         },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
+        },
         "x": {
           "type": "number",
           "description": "Sets the x position.",
@@ -2899,6 +2919,10 @@
           "type": "string",
           "description": "Sets the CSS filter property on this element.",
           "markdownDescription": "Sets the CSS `filter` property on this element."
+        },
+        "blink": {
+          "type": "boolean",
+          "description": "Whether the element should repeatedly fade in and out."
         },
         "x": {
           "type": "number",
