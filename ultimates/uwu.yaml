@@ -1460,7 +1460,7 @@ actions:
     id: 11596
     mechanic: mech.trio
     emphasis: more
-    compact: trim
+    compact: full
     description: |
       [boss:c] becomes untargetable and teleports to the north of the arena, where it becomes targetable again.
       At the same time, Garuda spawns at the south of the arena. Titan spawns southwest and Ifrit southeast, or vice-versa.
@@ -1584,7 +1584,7 @@ actions:
     id: 11597
     mechanic: mech.trio
     emphasis: more
-    compact: trim
+    compact: full
     description: |
       [boss:c] becomes untargetable and all primals, plus Garuda's sisters, spawn in the arena at the same time.
       If [boss] reaches 49.9% HP or less before [a:ultimate-suppression] would naturally be cast, [boss] finishes its current action, then skips all remaining actions in its timeline and skips straight to [a:ultimate-suppression]. This cannot happen before the first [a:homing-lasers] after [a:ultimate-annihilation].
@@ -2173,6 +2173,7 @@ graphing:
       image: /images/markers/target-green.svg
       size: 20
       visible: false
+      shadow: false
     mistral-song-cone:
       type: cone
       angle: 110
@@ -3391,7 +3392,6 @@ graphing:
         landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
         aetherochemical-laser#1: { attach: enemy#ultima, rotate: 180 }
         aetherochemical-laser#2: { attach: enemy#ultima, rotate: -135 }
-        aetherochemical-laser#3: { attach: enemy#ultima, rotate: -90 }
         mistral-song#chirada: { attach: enemy#chirada, rotate: M1 }
         mistral-song#suparna: { attach: enemy#suparna, rotate: H2 }
         mistral-song-cone: { attach: enemy#garuda, rotate: set:enemy#garuda+180 }
@@ -3483,6 +3483,7 @@ graphing:
         aetherochemical-laser#1: { visible: false }
         enemy#ultima: { rotate: 45 }
         light-pillar#[1,2]: { scale: 1 }
+        hint: ""
       - # Step 9
         R2: [29, 89]
         light-pillar#[1,2]: { visible: false }
@@ -3511,6 +3512,7 @@ graphing:
       - # Step 14
         mesohigh: { visible: true }
         flaming-crush: { visible: true }
+        [H1, H2, R1, R2, M1, M2, T2]: { status: [accursed-flame] }
         mesohigh-tether: { visible: false }
         landslide-followup#*: { visible: false }
       - # Step 15
@@ -3520,6 +3522,7 @@ graphing:
         hint: Garuda screams and flies away.
       - # Step 16
         feather-rain#[6..10]: { scale: 1, attach: null }
+        [H1, H2, R1, R2, M1, M2, T2]: { status: [] }
         players: [6, 167]
         T1: [35, -54]
         hint: ""
