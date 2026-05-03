@@ -1,0 +1,834 @@
+id: 1116
+patch: "7.5"
+date: 2026-05-03
+modified: 2026-05-03
+by:
+  id: 27637301
+  role: author
+tier: Dawntrail
+boss: Enuo
+party_hp: 222857
+HP: 107935443
+description: ""
+wip: full
+autos:
+  type: magic
+  damage: 60000
+  mechanic: auto.single
+status:
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [960, 4960]
+    description: Inflicted by [a:great-return-to-nothing], [a:meltdown-2], [a:airy-emptiness-1], [a:return-to-nothing], [a:violent-burst], [a:burst], [a:dense-emptiness-1], [a:shrouded-holy-1]
+  chains-of-condemnation:
+    id: 4562
+    type: condition
+    duration: 2000
+    description: Inflicted by [a:meltdown]
+  vulnerability-up:
+    id: 1789
+    type: vuln
+    duration: [60000, 59510]
+    description: Inflicted by [a:gaze-of-the-void-3], [a:naught-grows-4], [a:passage-of-naught-1], [a:vacuum-1], [a:meltdown-1], [a:passage-of-naught], [a:endless-chase-1]
+  freezing-up:
+    id: 3523
+    type: condition
+    duration: 2000
+    description: Inflicted by [a:deep-freeze]
+  deep-freeze:
+    id: 4150
+    type: impairment
+    duration: 9000
+    description: Inflicted by [a:deep-freeze]
+  unbecoming:
+    id: 4882
+    type: dot
+    tick: 6000
+    description: Placeholder description
+  dark-resistance-down-ii:
+    id: 3323
+    type: vuln
+    duration: 2000
+    description: Inflicted by [a:empty-shadow], [a:voidal-turbulence-1]
+  gauntlet-taken:
+    id: 5357
+    type: impairment
+    description: Placeholder description
+  quantum-entanglement:
+    id: 4884
+    type: dot
+    tick: 6000
+    description: Placeholder description
+  disease:
+    id: 3943
+    type: impairment
+    duration: 60000
+    description: Inflicted by [a:curse-of-the-flesh-1]
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: 30000
+    description: Inflicted by [a:big-burst]
+  petrification:
+    id: 3007
+    type: impairment
+    duration: 9000
+    description: Inflicted by [a:demon-eye-1]
+actions:
+  meteorain:
+    id: 50049
+    damage: 189407
+    description: Placeholder description
+  naught-grows:
+    id: 49975
+    description: Placeholder description
+  naught-grows-2:
+    id: 49977
+    description: Placeholder description
+  great-return-to-nothing:
+    id: 49984
+    damage: 394229
+    description: Placeholder description
+  naught-wakes:
+    id: 49973
+    description: Placeholder description
+  meltdown:
+    id: 50040
+    description: Placeholder description
+  meltdown-1:
+    id: 50041
+    count: 8
+    damage: 152699
+    description: Placeholder description
+  meltdown-2:
+    id: 50042
+    damage: 146535
+    description: Placeholder description
+  airy-emptiness:
+    id: 50032
+    description: Placeholder description
+  airy-emptiness-1:
+    id: 50034
+    count: 4
+    damage: 147478
+    description: Placeholder description
+  naught-grows-3:
+    id: 49978
+    description: Placeholder description
+  return-to-nothing:
+    id: 49983
+    count: 2
+    damage: 436856
+    description: Placeholder description
+  gaze-of-the-void:
+    id: 50002
+    description: Placeholder description
+  gaze-of-the-void-3:
+    id: 50005
+    damage: 106416
+    description: Placeholder description
+  gaze-of-the-void-1:
+    id: 50003
+    description: Placeholder description
+  violent-burst:
+    id: 50007
+    damage: 179359
+    description: Placeholder description
+  burst:
+    id: 50006
+    damage: 124658
+    description: Placeholder description
+  vacuum:
+    id: 49994
+    description: Placeholder description
+  silent-torrent-1:
+    id: 49996
+    count: 4
+    description: Placeholder description
+  silent-torrent-2:
+    id: 49997
+    count: 3
+    description: Placeholder description
+  silent-torrent:
+    id: 49995
+    description: Placeholder description
+  silent-torrent-4:
+    id: 49999
+    count: 4
+    description: Placeholder description
+  silent-torrent-5:
+    id: 50000
+    count: 3
+    description: Placeholder description
+  silent-torrent-3:
+    id: 49998
+    description: Placeholder description
+  vacuum-1:
+    id: 50001
+    count: 8
+    damage: 137505
+    description: Placeholder description
+  dense-emptiness:
+    id: 50033
+    description: Placeholder description
+  dense-emptiness-1:
+    id: 50035
+    count: 2
+    damage: 205476
+    description: Placeholder description
+  deep-freeze:
+    id: 50043
+    description: Placeholder description
+  deep-freeze-1:
+    id: 50044
+    count: 2
+    damage: 337671
+    description: Placeholder description
+  all-for-naught:
+    id: 50010
+    description: Placeholder description
+  looming-emptiness-2:
+    id: 50011
+    description: Placeholder description
+  looming-emptiness:
+    id: 49369
+    description: Placeholder description
+  looming-emptiness-1:
+    id: 49982
+    description: Placeholder description
+  voidal-turbulence:
+    id: 50036
+    description: Placeholder description
+  empty-shadow:
+    id: 50013
+    count: 4
+    damage: 20368
+    description: Placeholder description
+  voidal-turbulence-1:
+    id: 50038
+    count: 4
+    damage: 61478
+    description: Placeholder description
+  enhanced-vitality:
+    id: 50012
+    name: Enhanced Vitality
+    description: Placeholder description
+  enhanced-vitality-iii:
+    id: 50016
+    name: Enhanced Vitality III
+    damage: 47444
+    description: Placeholder description
+  demon-eye:
+    id: 50022
+    count: 4
+    description: Placeholder description
+  demon-eye-1:
+    id: 50023
+    count: 4
+    description: Placeholder description
+  apeiron:
+    id: 48478
+    count: 2
+    description: Placeholder description
+  self-destruct:
+    id: 50028
+    description: Placeholder description
+  enhanced-foresight:
+    id: 50015
+    name: Enhanced Foresight
+    description: Placeholder description
+  curse-of-the-flesh:
+    id: 50024
+    count: 2
+    description: Placeholder description
+  curse-of-the-flesh-1:
+    id: 50025
+    count: 2
+    description: Placeholder description
+  weight-of-nothing:
+    id: 50020
+    description: Placeholder description
+  weight-of-nothing-1:
+    id: 50021
+    damage: 341677
+    description: Placeholder description
+  lightless-world:
+    id: 50029
+    description: Placeholder description
+  lightless-world-1:
+    id: 50030
+    damage: 92006
+    description: Placeholder description
+  lightless-world-2:
+    id: 50031
+    damage: 48284
+    description: Placeholder description
+  almagest:
+    id: 49972
+    damage: 191569
+    description: Placeholder description
+  naught-grows-1:
+    id: 49976
+    description: Placeholder description
+  naught-grows-4:
+    id: 49979
+    damage: 158225
+    description: Placeholder description
+  passage-of-naught-1:
+    id: 49986
+    damage: 161625
+    description: Placeholder description
+  passage-of-naught:
+    id: 49985
+    damage: 221731
+    description: Placeholder description
+  passage-of-naught-2:
+    id: 49987
+    description: Placeholder description
+  shrouded-holy:
+    id: 50045
+    description: Placeholder description
+  shrouded-holy-1:
+    id: 50046
+    count: 2
+    damage: 156251
+    description: Placeholder description
+  dimension-zero:
+    id: 50047
+    description: Placeholder description
+  dimension-zero-1:
+    id: 50048
+    damage: 143819
+    description: Placeholder description
+  gaze-of-the-void-2:
+    id: 50004
+    description: Placeholder description
+  naught-hunts:
+    id: 49992
+    description: Placeholder description
+  endless-chase:
+    id: 48475
+    count: 2
+    description: Placeholder description
+  endless-chase-1:
+    id: 49993
+    count: 2
+    damage: 111874
+    description: Placeholder description
+  almagest-1:
+    id: 50050
+    description: Placeholder description
+timeline:
+  - at: 14849
+    id: meteorain
+  - at: 29200
+    id: naught-grows
+  - at: 30233
+    id: naught-grows-2
+  - at: 31115
+    id: great-return-to-nothing
+  - at: 38340
+    id: naught-wakes
+  - at: 44443
+    id: meltdown
+  - at: 49926
+    id: meltdown-1
+  - at: 51003
+    id: meltdown-2
+    count: 8
+  - at: 56791
+    id: airy-emptiness
+  - at: 57813
+    id: airy-emptiness-1
+  - at: 67173
+    id: naught-grows
+  - at: 68251
+    id: naught-grows-3
+  - at: 68957
+    id: return-to-nothing
+  - at: 83576
+    id: gaze-of-the-void
+  - at: 84594
+    id: gaze-of-the-void-3
+  - at: 84594
+    id: gaze-of-the-void-1
+  - at: 85036
+    id: gaze-of-the-void-3
+  - at: 85437
+    id: gaze-of-the-void-3
+  - at: 85839
+    id: gaze-of-the-void-3
+    count: 2
+  - at: 86601
+    id: gaze-of-the-void-3
+  - at: 87004
+    id: gaze-of-the-void-3
+    count: 2
+  - at: 87806
+    id: gaze-of-the-void-3
+  - at: 88210
+    id: gaze-of-the-void-3
+  - at: 93469
+    id: violent-burst
+  - at: 94271
+    id: burst
+  - at: 94893
+    id: burst
+  - at: 97877
+    id: burst
+  - at: 99840
+    id: violent-burst
+  - at: 100948
+    id: burst
+  - at: 101530
+    id: burst
+  - at: 103351
+    id: burst
+  - at: 109719
+    id: vacuum
+  - at: 115331
+    id: silent-torrent-1
+  - at: 115332
+    id: silent-torrent-2
+  - at: 115332
+    id: silent-torrent
+  - at: 115819
+    id: silent-torrent-4
+  - at: 115819
+    id: silent-torrent-5
+  - at: 115819
+    id: silent-torrent-3
+  - at: 117917
+    id: vacuum-1
+  - at: 122156
+    id: dense-emptiness
+  - at: 123177
+    id: dense-emptiness-1
+  - at: 133345
+    id: deep-freeze
+  - at: 134331
+    id: deep-freeze-1
+  - at: 141500
+    id: meteorain
+  - at: 155142
+    id: all-for-naught
+  - at: 155319
+    id: <untargetable>
+  - at: 174435
+    id: looming-emptiness-2
+  - at: 175419
+    id: looming-emptiness
+  - at: 175419
+    id: looming-emptiness-1
+  - at: 175544
+    id: <targetable>
+  - at: 183659
+    id: voidal-turbulence
+  - at: 184599
+    id: empty-shadow
+  - at: 184950
+    id: voidal-turbulence-1
+  - at: 185705
+    id: enhanced-vitality
+    count: 4
+  - at: 186151
+    id: <targetable>
+  - at: 186151
+    id: <targetable>
+  - at: 186151
+    id: <targetable>
+  - at: 186151
+    id: <targetable>
+  - at: 186561
+    id: enhanced-vitality-iii
+  - at: 189584
+    id: enhanced-vitality-iii
+  - at: 190788
+    id: demon-eye
+  - at: 191819
+    id: demon-eye-1
+  - at: 192623
+    id: enhanced-vitality-iii
+  - at: 195647
+    id: enhanced-vitality-iii
+  - at: 198687
+    id: enhanced-vitality-iii
+  - at: 201706
+    id: enhanced-vitality-iii
+  - at: 210566
+    id: voidal-turbulence
+  - at: 211421
+    id: empty-shadow
+  - at: 211859
+    id: voidal-turbulence-1
+  - at: 212571
+    id: enhanced-vitality
+    count: 4
+  - at: 213018
+    id: <targetable>
+  - at: 213018
+    id: <targetable>
+  - at: 213018
+    id: <targetable>
+  - at: 213018
+    id: <targetable>
+  - at: 213374
+    id: enhanced-vitality-iii
+  - at: 214220
+    id: enhanced-foresight
+  - at: 215644
+    id: curse-of-the-flesh
+  - at: 216405
+    id: enhanced-vitality-iii
+  - at: 216676
+    id: curse-of-the-flesh-1
+  - at: 219441
+    id: enhanced-vitality-iii
+  - at: 222459
+    id: enhanced-vitality-iii
+  - at: 223704
+    id: enhanced-foresight
+  - at: 224735
+    id: weight-of-nothing
+  - at: 225493
+    id: enhanced-vitality-iii
+  - at: 225707
+    id: enhanced-foresight
+  - at: 225841
+    id: weight-of-nothing-1
+  - at: 228513
+    id: enhanced-vitality-iii
+  - at: 231550
+    id: enhanced-vitality-iii
+  - at: 234577
+    id: enhanced-vitality-iii
+  - at: 237602
+    id: enhanced-vitality-iii
+  - at: 240627
+    id: enhanced-vitality-iii
+  - at: 243657
+    id: enhanced-vitality-iii
+  - at: 246689
+    id: enhanced-vitality-iii
+  - at: 249715
+    id: enhanced-vitality-iii
+  - at: 256444
+    id: enhanced-vitality
+    count: 8
+  - at: 268748
+    id: <targetable>
+  - at: 278809
+    id: lightless-world
+  - at: 279826
+    id: lightless-world-1
+  - at: 280360
+    id: lightless-world-1
+  - at: 280849
+    id: lightless-world-1
+  - at: 281339
+    id: lightless-world-1
+  - at: 281829
+    id: lightless-world-1
+  - at: 282362
+    id: lightless-world-2
+  - at: 294005
+    id: almagest
+  - at: 306694
+    id: naught-grows-1
+  - at: 307684
+    id: naught-grows-4
+  - at: 307729
+    id: naught-grows-3
+  - at: 308613
+    id: return-to-nothing
+  - at: 315840
+    id: naught-wakes
+  - at: 323894
+    id: passage-of-naught-1
+  - at: 323894
+    id: passage-of-naught
+  - at: 323894
+    id: passage-of-naught-2
+  - at: 335221
+    id: passage-of-naught-1
+    count: 2
+  - at: 335221
+    id: passage-of-naught-2
+    count: 2
+  - at: 340214
+    id: shrouded-holy
+  - at: 341183
+    id: shrouded-holy-1
+  - at: 355713
+    id: naught-grows-1
+  - at: 356742
+    id: naught-grows-4
+  - at: 356781
+    id: naught-grows-3
+  - at: 357541
+    id: return-to-nothing
+  - at: 367887
+    id: dimension-zero
+  - at: 368320
+    id: dimension-zero-1
+  - at: 369703
+    id: dimension-zero-1
+  - at: 371082
+    id: dimension-zero-1
+  - at: 380747
+    id: vacuum
+  - at: 386367
+    id: silent-torrent-1
+  - at: 386367
+    id: silent-torrent-2
+  - at: 386367
+    id: silent-torrent
+  - at: 386859
+    id: meltdown
+  - at: 386859
+    id: silent-torrent-4
+  - at: 386859
+    id: silent-torrent-5
+  - at: 386859
+    id: silent-torrent-3
+  - at: 388956
+    id: vacuum-1
+  - at: 392380
+    id: meltdown-1
+  - at: 393406
+    id: meltdown-2
+    count: 7
+  - at: 406104
+    id: gaze-of-the-void
+  - at: 407135
+    id: gaze-of-the-void-3
+  - at: 407135
+    id: gaze-of-the-void-2
+  - at: 407537
+    id: gaze-of-the-void-3
+  - at: 407938
+    id: gaze-of-the-void-3
+  - at: 408339
+    id: gaze-of-the-void-3
+  - at: 408740
+    id: gaze-of-the-void-3
+    count: 2
+  - at: 409541
+    id: gaze-of-the-void-3
+  - at: 409943
+    id: gaze-of-the-void-3
+  - at: 410344
+    id: gaze-of-the-void-3
+    count: 2
+  - at: 415677
+    id: violent-burst
+  - at: 416837
+    id: burst
+  - at: 417641
+    id: burst
+    count: 2
+  - at: 417729
+    id: violent-burst
+  - at: 422588
+    id: burst
+  - at: 423568
+    id: burst
+    count: 2
+  - at: 439306
+    id: almagest
+  - at: 449697
+    id: naught-wakes
+  - at: 457841
+    id: naught-hunts
+  - at: 458874
+    id: passage-of-naught-1
+    count: 2
+  - at: 458874
+    id: passage-of-naught-2
+    count: 2
+  - at: 458956
+    id: endless-chase
+  - at: 459713
+    id: endless-chase-1
+  - at: 460380
+    id: endless-chase-1
+  - at: 461094
+    id: endless-chase-1
+  - at: 461762
+    id: endless-chase-1
+  - at: 462472
+    id: endless-chase-1
+  - at: 463141
+    id: endless-chase-1
+  - at: 463854
+    id: endless-chase-1
+  - at: 464523
+    id: endless-chase-1
+  - at: 465235
+    id: endless-chase-1
+  - at: 465904
+    id: endless-chase-1
+  - at: 466616
+    id: endless-chase-1
+  - at: 467284
+    id: endless-chase-1
+  - at: 467999
+    id: endless-chase-1
+  - at: 468664
+    id: endless-chase-1
+  - at: 469376
+    id: endless-chase-1
+  - at: 470046
+    id: endless-chase-1
+  - at: 470763
+    id: endless-chase-1
+  - at: 471430
+    id: endless-chase-1
+  - at: 472144
+    id: endless-chase-1
+  - at: 472811
+    id: endless-chase-1
+  - at: 473524
+    id: endless-chase-1
+  - at: 474193
+    id: endless-chase-1
+  - at: 474907
+    id: endless-chase-1
+  - at: 475576
+    id: endless-chase-1
+  - at: 480174
+    id: passage-of-naught
+    count: 2
+  - at: 485157
+    id: dense-emptiness
+  - at: 486183
+    id: dense-emptiness-1
+  - at: 497426
+    id: naught-hunts
+  - at: 498447
+    id: passage-of-naught-1
+    count: 2
+  - at: 498447
+    id: passage-of-naught-2
+    count: 2
+  - at: 498540
+    id: endless-chase
+  - at: 499290
+    id: endless-chase-1
+  - at: 499958
+    id: endless-chase-1
+  - at: 500671
+    id: endless-chase-1
+  - at: 501338
+    id: endless-chase-1
+  - at: 502053
+    id: endless-chase-1
+  - at: 502722
+    id: endless-chase-1
+  - at: 503434
+    id: endless-chase-1
+  - at: 504102
+    id: endless-chase-1
+  - at: 504814
+    id: endless-chase-1
+  - at: 505484
+    id: endless-chase-1
+  - at: 506196
+    id: endless-chase-1
+  - at: 506864
+    id: endless-chase-1
+  - at: 507576
+    id: endless-chase-1
+  - at: 508246
+    id: endless-chase-1
+  - at: 508957
+    id: endless-chase-1
+  - at: 509627
+    id: endless-chase-1
+  - at: 510340
+    id: endless-chase-1
+  - at: 511009
+    id: endless-chase-1
+  - at: 511723
+    id: endless-chase-1
+  - at: 512390
+    id: endless-chase-1
+  - at: 513103
+    id: endless-chase-1
+  - at: 513771
+    id: endless-chase-1
+  - at: 514485
+    id: endless-chase-1
+  - at: 515150
+    id: endless-chase-1
+  - at: 519738
+    id: passage-of-naught
+    count: 2
+  - at: 524727
+    id: dense-emptiness
+  - at: 525794
+    id: dense-emptiness-1
+  - at: 534882
+    id: dimension-zero
+  - at: 535284
+    id: dimension-zero-1
+  - at: 536665
+    id: dimension-zero-1
+  - at: 538047
+    id: dimension-zero-1
+  - at: 539429
+    id: dimension-zero-1
+  - at: 549904
+    id: almagest
+  - at: 562776
+    id: naught-grows-1
+  - at: 563748
+    id: naught-grows-4
+  - at: 563797
+    id: naught-grows-3
+  - at: 564506
+    id: return-to-nothing
+  - at: 571911
+    id: naught-wakes
+  - at: 579973
+    id: passage-of-naught-1
+  - at: 579973
+    id: passage-of-naught
+  - at: 579973
+    id: passage-of-naught-2
+  - at: 591284
+    id: passage-of-naught-1
+    count: 2
+  - at: 591284
+    id: passage-of-naught-2
+    count: 2
+  - at: 596316
+    id: deep-freeze
+  - at: 597297
+    id: deep-freeze-1
+  - at: 610925
+    id: naught-grows-1
+  - at: 611911
+    id: naught-grows-4
+  - at: 611951
+    id: naught-grows-3
+  - at: 612665
+    id: great-return-to-nothing
+  - at: 623091
+    id: dimension-zero
+  - at: 623448
+    id: dimension-zero-1
+  - at: 624829
+    id: dimension-zero-1
+  - at: 626212
+    id: dimension-zero-1
+  - at: 627593
+    id: dimension-zero-1
+  - at: 638068
+    id: meteorain
+  - at: 648221
+    id: meteorain
+  - at: 665827
+    id: almagest-1
+  
