@@ -1551,9 +1551,9 @@ graphing:
         T2#player: { x: 32, y: -41, status: [] }
         H2#player: { x: 32, y: -139, status: [] }
         R1#player: { x: 34, y: -153, status: [] }
-        T1#player: { x: 32, y: -41, status: []  }
-        M1#player: { x: 32, y: -139, status: []  }
-        R2#player: { x: 32, y: -139, status: []  }
+        T1#player: { x: 32, y: -41, status: [] }
+        M1#player: { x: 32, y: -139, status: [] }
+        R2#player: { x: 32, y: -139, status: [] }
         defamation#*: { visible: false, attach: null }
         cast: { progress: 0, text: Snaking Kick }
         hint: Stacks go off third, followed immediately by cones.
