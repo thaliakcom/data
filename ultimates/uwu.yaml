@@ -1292,7 +1292,7 @@ actions:
     mechanic: aoe.delayed
     shape: line
     description: |
-      [boss:c] fires a laser towards another player that resolves 4 seconds later, dealing lethal damage to anyone in its path.
+      [boss:c] fires a laser towards Ifrit, Garuda, or Titan that resolves 4 seconds later, dealing lethal damage to anyone in its path.
     children:
     - at: 4140
       id: aetherochemical-laser-hit
@@ -1603,7 +1603,7 @@ actions:
       * The player who is not baiting [a:eruption-suppression]s, is not a tank, and is not marked for [a:mistral-song-suppression] is targeted by [a:light-pillar]. [a:light-pillar] has no target marker of any kind.
       Tanks are never targeted for any of these mechanics.
       At the same time as all these mechanics resolve, four Featherlances spawn near the edge of the arena and begin to circle the arena counter-clockwise. If any player gets too close to the edge of the arena and touch one of these Featherlances they will explode, instantly killing them and all nearby players.
-      Many AoEs happen during this mini-phase. There are three [a:feather-rain]s, one [a:mistral-song-cone] (which has nothing to do with [a:mistral-song-suppression] and is merely a large conal AoE originating from Garuda), three [a:aetherochemical-laser]s, a [a:landslide-woken] toward a random player, one last [a:mesohigh-suppression] tether from Garuda at the northwest, a [a:flaming-crush], and a [a:tank-purge].
+      Many AoEs happen during this mini-phase. There are three [a:feather-rain]s, one [a:mistral-song-cone] (which has nothing to do with [a:mistral-song-suppression] and is merely a large conal AoE originating from Garuda), two [a:aetherochemical-laser]s, a [a:landslide-woken] toward a random player, one last [a:mesohigh-suppression] tether from Garuda at the northwest, a [a:flaming-crush], and a [a:tank-purge].
     resolve: |
       Tanks preposition at the southwest of the arena, roughly as close to the center of the arena as Chirada and Suparna. One tank is slightly inched towards Chirada, the other towards Suparna.
       Everyone else should begin the mechanic at an arbitrary location on the edge of the arena somewhere between the west and north. It is vital that no two players are stacked at this point. This is because of [a:light-pillar] which, as mentioned, targets the player who isn't targeted by anything else. To identify the [a:light-pillar] player, it is therefore necessary to identify every [a:eruption-suppression] player, which is not possible if two players are stacked.
@@ -1612,6 +1612,10 @@ actions:
       * You have a [a:mistral-song-suppression] marker above your head, in which case you immediately begin heading towards the tanks at the southwest as soon as you realize it, and stand directly in-between both tanks. After the tanks have soaked [a:mistral-song-suppression], all four players at the southwest move southeast to help out with killing the Granite Gaol. Dodge [a:great-whirlwind] if necessary.
       * You have nothing, in which case you have [a:light-pillar]. Pretend you have [a:mistral-song-suppression] and follow the two other players to the tanks. Wait for [a:mistral-song-suppression], then move northwards to escape the [a:great-whirlwind] while the other players move eastwards to the Granite Gaol. Alternatively, you can pretend you're an [a:eruption-suppression] player and go north at the end of the movement. The end goal is really just that you end up north, away from everyone else; how you get there doesn't really matter.
       After the Granite Gaol is destroyed, the remaining tank with [s:thermal-low] moves to intercept [a:mesohigh-suppression] at the northwest of the arena. All other players stack together close to where the Granite Gaol used to be. This baits the [a:landslide-woken] towards the stack. Dodge the [a:landslide-woken], then move back to where you just stacked to soak [a:flaming-crush] and bait [a:feather-rain]. Mitigate and heal for [a:tank-purge].
+      It is highly recommended to dodge [a:landslide-woken] towards where the Granite Gaol was, as this location will always be safe from [a:aetherochemical-laser] in case [boss] fires towards Titan.
+    strategies:
+      ultimate-suppression:
+        name: Example
     children:
     - at: 4453
       id: <untargetable>
@@ -1637,6 +1641,9 @@ actions:
       id: aetherochemical-laser
     - at: 29518
       id: landslide-woken
+      link: and
+    - at: 29518
+      id: aetherochemical-laser
     - at: 32322
       id: mesohigh-suppression
     - at: 33079
@@ -2162,6 +2169,20 @@ graphing:
       opacity: 0.6
       shadow: false
       blink: true
+    mistral-song-target:
+      type: image
+      image: /images/markers/target-green.svg
+      size: 20
+      visible: false
+    mistral-song-cone:
+      type: cone
+      angle: 110
+      size: [0, 100]
+      color: "#2EA632"
+      opacity: 0.6
+      visible: false
+      shadow: false
+      blink: false
     crimson-cyclone:
       type: rectangle
       size: [83, 185]
@@ -2208,6 +2229,13 @@ graphing:
       color: "#FFE396"
       opacity: 0.6
       visible: false
+    flaming-crush:
+      type: ellipse
+      size: 50
+      color: "#BF380F"
+      opacity: 0.7
+      visible: false
+      shadow: false
     sludge:
       type: ellipse
       size: 65
@@ -2282,6 +2310,14 @@ graphing:
       visible: false
       shadow: false
       blink: true
+    light-pillar:
+      type: ellipse
+      size: 30
+      scale: 0
+      color: "#249BC6"
+      opacity: 0.8
+      shadow: false
+      blink: true
     viscous-aetheroplasm:
       type: ellipse
       size: 25
@@ -2308,6 +2344,21 @@ graphing:
       color: "#d536db"
       opacity: 0.6
       visible: false
+    aetherochemical-laser:
+      type: rectangle
+      origin: [0.5, 1]
+      size: [40, 200]
+      color: "#BDB144"
+      opacity: 0.6
+      visible: false
+      shadow: false
+    featherlance:
+      type: donut
+      size: [130, 180]
+      color: "#68FD75"
+      opacity: 0.3
+      shadow: false
+      blink: true
   graphs:
     double-mistral-song-lpdu:
       - wicked-wheel: { attach: boss }
@@ -2321,6 +2372,8 @@ graphing:
         feather-rain#5: { attach: R2 }
         mistral-song#chirada: { attach: enemy#chirada, rotate: H1 }
         mistral-song#suparna: { attach: enemy#suparna, rotate: R2 }
+        mistral-song-target#1: { attach: M1, y: -20 }
+        mistral-song-target#2: { attach: H1, y: -20 }
         marker-a: [32, 0]
         marker-1: [88, 0]
         marker-b: [32, 90]
@@ -2347,6 +2400,7 @@ graphing:
         hint: Feather Rain resolves.
       - enemy#*: { visible: true }
         feather-rain#*: { visible: false }
+        mistral-song-target#*: { visible: true }
         hint: Chirada and Suparna reappear on random cardinals. Tanks take note.
       - wicked-wheel: { scale: 1 }
         feather-rain#*: { scale: 0 }
@@ -2363,6 +2417,7 @@ graphing:
         eye-of-the-storm: { visible: true }
         hint: Melees join the party, tanks move to intercept.
       - mistral-song#*: { scale: 1 }
+        mistral-song-target#*: { visible: false }
         eye-of-the-storm: { blink: true }
         feather-rain#*: { visible: true }
         cast: { progress: 1 }
@@ -3132,6 +3187,7 @@ graphing:
         feather-rain#[3,8]: { attach: T1 }
         feather-rain#[4,9]: { attach: M2 }
         feather-rain#[5,10]: { attach: R2 }
+        flaming-crush: { attach: M1 }
         mesohigh-tether: { from: enemy#garuda, to: R1 }
         mesohigh: { attach: R1 }
         marker-a: [23, 0]
@@ -3163,12 +3219,14 @@ graphing:
         weight#1.*: { visible: false }
         players: [28, -57]
         mesohigh-tether: { visible: true }
+        flaming-crush: { visible: true }
         hint: ""
       - # Step 4
         weight#3.*: { visible: true, attach: null }
         weight#2.*: { visible: false }
         orb: { visible: true }
         players: { status: [accursed-flame] }
+        flaming-crush: { visible: false, attach: null }
         R2: [71, -37]
         M2: [65, -30]
         H1: [65, -72]
@@ -3309,3 +3367,165 @@ graphing:
       - # Step 23
         homing-lasers: { visible: true }
         cast: { progress: 1, visible: false }
+    ultimate-suppression:
+      - # Step 1
+        arena: { image: /images/arenas/uwu-p5-2.avif }
+        featherlance: {}
+        crimson-cyclone: { attach: enemy#ifrit, rotate: set:enemy#ifrit+180 }
+        eruption#[1..4]: { attach: H1 }
+        eruption#[5..8]: { attach: R1 }
+        eruption#[9..12]: { attach: M2 }
+        great-whirlwind#1: { attach: T1 }
+        great-whirlwind#2: { attach: T2 }
+        flaming-crush: { attach: M1 }
+        landslide#[1..5]: { attach: enemy#titan }
+        landslide#1: { rotate: set:enemy#titan+180 }
+        landslide#2: { rotate: set:landslide#1+45 }
+        landslide#3: { rotate: set:landslide#1+-45 }
+        landslide#4: { rotate: set:landslide#1+135 }
+        landslide#5: { rotate: set:landslide#1+-135 }
+        landslide-followup#[1..5]: { attach: enemy#titan }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+156 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
+        aetherochemical-laser#1: { attach: enemy#ultima, rotate: 180 }
+        aetherochemical-laser#2: { attach: enemy#ultima, rotate: -135 }
+        aetherochemical-laser#3: { attach: enemy#ultima, rotate: -90 }
+        mistral-song#chirada: { attach: enemy#chirada, rotate: M1 }
+        mistral-song#suparna: { attach: enemy#suparna, rotate: H2 }
+        mistral-song-cone: { attach: enemy#garuda, rotate: set:enemy#garuda+180 }
+        feather-rain#[1,6]: { attach: R1 }
+        feather-rain#[2,7]: { attach: H1 }
+        feather-rain#[3,8]: { attach: T1 }
+        feather-rain#[4,9]: { attach: H2 }
+        feather-rain#[5,10]: { attach: R2 }
+        light-pillar#1: [63, -45]
+        light-pillar#2: [50, -41]
+        light-pillar#3: [43, -42]
+        light-pillar#4: [29, -41]
+        light-pillar#5: [14, -37]
+        light-pillar#6: [10, 6]
+        mesohigh-tether: { from: enemy#garuda, to: T1 }
+        mesohigh: { attach: T1 }
+        marker-a: [23, 0]
+        marker-1: [80, 0]
+        marker-b: [29, 90]
+        marker-2: [80, -45]
+        marker-c: [29, 180]
+        marker-3: [41, 128]
+        marker-d: [29, -90]
+        marker-4: [0, 0]
+        enemy#ultima: { x: 90, y: 45, rotate: 45, scale: 1.4, opacity: 0.5, text: Ultima }
+        enemy#titan: { x: 90, y: -135, rotate: -135, scale: 1.2, opacity: 0.5, text: Titan }
+        enemy#ifrit: { x: 90, y: 135, rotate: 135, scale: 1.2, opacity: 0.5, text: Ifrit }
+        enemy#garuda: { x: 90, y: -45, rotate: -45, opacity: 0.5, text: Garuda }
+        enemy#suparna: { x: 39, y: -45, rotate: -45, scale: 0.8, opacity: 0.5, text: Suparna }
+        enemy#chirada: { x: 39, y: 135, rotate: 135, scale: 0.8, opacity: 0.5, text: Chirada }
+        H1: [85, 0]
+        H2: [85, -15]
+        R1: [85, -30]
+        R2: [85, -45]
+        M1: [85, -60]
+        M2: [85, -75]
+        T1: [41, -144]
+        T2: [40, -166]
+        mistral-song-target#1: { attach: M1, y: -20 }
+        mistral-song-target#2: { attach: H2, y: -20 }
+        hint: Tanks preposition southwest. Everyone else prepositions between west and north. Make sure to spread.<br />Featherlances circle around the outside of the arena. They are represented by the ring on the outside. Entering this ring at any point is essentially lethal.
+      - # Step 2
+        eruption#[1,5,9]: { visible: true, attach: null }
+        mistral-song-target#*: { visible: true }
+        [H1, H2, R1, R2, M1, M2]: { x: 44 }
+        hint: 3 players get Eruption and go to 3. 2 players get Mistral Song and go in-between the tanks. Last player gets Light Pillar and also goes in-between the tanks.
+      - # Step 3
+        eruption#[1,5,9]: { visible: false }
+        eruption#[2,6,10]: { visible: true, attach: null }
+        [H1, R1, M2]: { x: 5 }
+        [H2, R2, M1]: [44, -156]
+        hint: ""
+      - # Step 4
+        eruption#[2,6,10]: { visible: false }
+        eruption#[3,7,11]: { visible: true, attach: null }
+        [H1, R1, M2]: [40, 127]
+      - # Step 5
+        eruption#[3,7,11]: { visible: false }
+        eruption#[4,8,12]: { visible: true, attach: null }
+        mistral-song#*: { scale: 1 }
+        enemy#chirada: { rotate: M1 }
+        enemy#suparna: { rotate: H2 }
+        mistral-song-cone: { visible: true }
+        mistral-song-target#*: { visible: false }
+        [H1, R1]: [49, 63]
+        hint: The Granite Gaol player stays on 3. The Eruptions under them will not harm them.
+      - # Step 6
+        M2: { opacity: 0.6, status: [fetters] }
+        eruption#[4,8,12]: { visible: false }
+        mistral-song#*: { visible: false }
+        mistral-song-cone: { visible: false }
+        enemy#[chirada, suparna]: { visible: false }
+        feather-rain#[1..5]: { attach: null }
+        great-whirlwind#*: { attach: null }
+        hint: Suparna and Chirada scream and fly away.
+      - # Step 7
+        [T1, T2, H2, M1]: [51, 131]
+        [H1, R1]: [39, 110]
+        R2: [62, -45]
+        feather-rain#[1..5]: { scale: 1 }
+        great-whirlwind#*: { visible: true }
+        enemy#ultima: { rotate: 0 }
+        aetherochemical-laser#1: { visible: true }
+        hint: Everyone except the Light Pillar goes to kill the Granite Gaol.
+      - # Step 8
+        R2: [16, -1]
+        feather-rain#[1..5]: { visible: false }
+        great-whirlwind#*: { visible: false }
+        aetherochemical-laser#1: { visible: false }
+        enemy#ultima: { rotate: 45 }
+        light-pillar#[1,2]: { scale: 1 }
+      - # Step 9
+        R2: [29, 89]
+        light-pillar#[1,2]: { visible: false }
+        light-pillar#[3,4]: { scale: 1 }
+        M2: { status: [], opacity: 1 }
+      - # Step 10
+        light-pillar#[3,4]: { visible: false }
+        light-pillar#[5,6]: { scale: 1 }
+        players: [29, 89]
+      - # Step 11
+        light-pillar#[5,6]: { visible: false }
+        enemy#titan: { rotate: M1 }
+      - # Step 12
+        enemy#titan: { rotate: null }
+        aetherochemical-laser#2: { visible: true }
+        landslide#*: { visible: true }
+        mesohigh-tether: { visible: true }
+        players: [41, 128]
+        T1: [44, 3]
+      - # Step 13
+        aetherochemical-laser#2: { visible: false }
+        landslide#*: { visible: false }
+        landslide-followup#*: { visible: true }
+        players: [29, 89]
+        T1: [61, -49]
+      - # Step 14
+        mesohigh: { visible: true }
+        flaming-crush: { visible: true }
+        mesohigh-tether: { visible: false }
+        landslide-followup#*: { visible: false }
+      - # Step 15
+        mesohigh: { visible: false }
+        flaming-crush: { visible: false }
+        enemy#[titan, ifrit, garuda]: { visible: false }
+        hint: Garuda screams and flies away.
+      - # Step 16
+        feather-rain#[6..10]: { scale: 1, attach: null }
+        players: [6, 167]
+        T1: [35, -54]
+        hint: ""
+      - # Step 17
+        feather-rain#[6..10]: { visible: false }
+        enemy#ultima: { visible: false }
+        players: [25, 135]
+        [T1, T2]: [25, -135]
