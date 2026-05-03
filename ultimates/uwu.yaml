@@ -1,14 +1,13 @@
 id: 539
 patch: "4.31"
-date: 2022-11-18
-modified: 2022-11-18
+date: 2026-05-03
+modified: 2026-05-03
 by:
   id: 27637301
   role: author
 boss: the Ultima Weapon
 HP: 0
 party_hp: 19038
-wip: [diagrams]
 description: Reexperience the fight against [boss], but without Hydaelyn's assistance, you can but rely on your own strength to prevail against the overwhelming power of [boss]...
 status:
   stun:
