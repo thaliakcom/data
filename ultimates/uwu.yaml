@@ -1480,6 +1480,9 @@ actions:
       Note that the [s:searing-wind] healer cannot simply dodge [a:crimson-cyclone-woken] by moving clockwise. Instead, they must dodge to the southern intercardinal that **doesn't** have Titan on it. This can be either southwest or southeast.
       Move in to avoid [a:eye-of-the-storm] and have the tank who moved counter-clockwise soak the last two orbs solo. The [s:searing-wind] healer moves back south (inside the [a:eye-of-the-storm]) and picks up the [a:mesohigh-annihilation] tether. Since [s:searing-wind] can randomly target either healer here, it's important that both healers still have their [s:thermal-low] stack. This also means that, should the [s:searing-wind] healer die, the other healer can pick up the tether instead.
       Mitigate the [a:tank-purge], avoid the [a:feather-rain], step in for another [a:eye-of-the-storm], and the mechanic is over. Make sure your [s:searing-wind] healer doesn't rejoin the party until their debuff has expired a short while after [a:eye-of-the-storm].
+    strategies:
+      ultimate-annihilation:
+        name: Example
     children:
     - at: 4453
       id: <untargetable>
@@ -2082,6 +2085,7 @@ graphing:
   defs:
     eruption: "radial-gradient(0% #FFF9BF 30% #FF876C9B 97% #FF876C9B 98% #FF915E 100% #FF915E)"
     weight: "radial-gradient(0% #FFF9BF 30% #7E593E9B 100% #75593A)"
+    orb: "radial-gradient(0% #000000 30% #000000 100% #5eccb3)"
     landslide: "linear-gradient(0% #597BC4 2% #7E593ED4 50% #7E6F3E72 98% #7E593ED4 100% #3E4E8D)"
   elements:
     arena:
@@ -2136,6 +2140,18 @@ graphing:
       opacity: 0.7
       visible: false
       shadow: false
+    mesohigh-tether:
+      type: link
+      color: "#1D9A16"
+      opacity: 0.6
+      visible: false
+    mesohigh:
+      type: ellipse
+      size: 20
+      color: "#1D9A16"
+      opacity: 0.6
+      visible: false
+      shadow: false
       blink: true
     mistral-song:
       type: rectangle
@@ -2181,7 +2197,7 @@ graphing:
       blink: true
     inferno-howl:
       type: ellipse
-      size: 170
+      size: 110
       color: "#FFE396"
       opacity: 0.6
       visible: false
@@ -2274,6 +2290,24 @@ graphing:
       visible: false
       shadow: false
       blink: true
+    orb:
+      type: ellipse
+      size: 8
+      color: url(#orb)
+      visible: false
+    orb-explosion:
+      type: ellipse
+      size: 60
+      color: "#5eccb3"
+      opacity: 0.6
+      visible: false
+      shadow: false
+      blink: true
+    orb-tether:
+      type: link
+      color: "#d536db"
+      opacity: 0.6
+      visible: false
   graphs:
     double-mistral-song-lpdu:
       - wicked-wheel: { attach: boss }
@@ -2329,6 +2363,7 @@ graphing:
         eye-of-the-storm: { visible: true }
         hint: Melees join the party, tanks move to intercept.
       - mistral-song#*: { scale: 1 }
+        eye-of-the-storm: { blink: true }
         feather-rain#*: { visible: true }
         cast: { progress: 1 }
         hint: Everything resolves at the same time.
@@ -2866,7 +2901,7 @@ graphing:
       - feather-rain#*: { visible: false }
     post-predation:
       - # Step 1
-        arena: { image: /images/arenas/uwu-p5-1.avif }
+        arena: { image: /images/arenas/uwu-p5-1.avif, filter: saturate(1) contrast(1) }
         wicked-wheel-sister#1: { attach: enemy#chirada }
         wicked-wheel-sister#2: { attach: enemy#suparna }
         radiant-plume#[1,3,5,7]: { x: 78 }
@@ -3041,23 +3076,24 @@ graphing:
         enemy#suparna: { visible: false }
         feather-rain#[1..5]: { attach: null }
         players: [37, -60]
-        T1: { x: 37, y: 60, status: [viscous-aetheroplasm, 82] }
+        T1: { x: 37, y: 60, status: [viscous-aetheroplasm, hallowed-ground] }
         hint: Sisters scream.
       - # Step 18 (Feather Rain 1)
         feather-rain#[1..5]: { scale: 1 }
         hint: Feather Rain resolves. Homing Lasers happen at the same time as Viscous Aetheroplasm, so invuln this. MT vokes back.
         boss: { rotate: T1 }
         cast: { progress: 0, text: Homing Lasers, visible: true }
-      - # Step 19
+        arena: { filter: saturate(1.3) contrast(1.2) }
+      - # Step 19 (Homing Lasers)
         enemy#garuda: { visible: false }
         feather-rain#[1..5]: { visible: false }
         feather-rain#[6..10]: { attach: null }
         hint: Garuda screams.
         players: [66, -28]
-        T1: { x: 66, y: 28, status: [82] }
+        T1: { x: 66, y: 28, status: [hallowed-ground] }
         cast: { progress: 1, visible: false }
         homing-lasers: { visible: true }
-      - # Step 19
+      - # Step 19 (Feather Rain 2)
         feather-rain#[6..10]: { scale: 1 }
         hint: Feather Rain resolves.
         homing-lasers: { visible: false }
@@ -3068,3 +3104,208 @@ graphing:
         players: [37, -60]
         cast: { progress: 0, text: Ultimate Annihilation, visible: true }
         hint: ""
+    ultimate-annihilation:
+      - # Step 1
+        arena: { image: /images/arenas/uwu-p5-2.avif }
+        eye-of-the-storm: [0, 0]
+        crimson-cyclone: { attach: enemy#ifrit, rotate: set:enemy#ifrit+180 }
+        crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 180 }
+        crimson-cyclone-followup#2: { x: 82, y: 90, rotate: -90 }
+        landslide#[1..5]: { attach: enemy#titan }
+        landslide#1: { rotate: set:enemy#titan+180 }
+        landslide#2: { rotate: set:landslide#1+45 }
+        landslide#3: { rotate: set:landslide#1+-45 }
+        landslide#4: { rotate: set:landslide#1+135 }
+        landslide#5: { rotate: set:landslide#1+-135 }
+        landslide-followup#[1..5]: { attach: enemy#titan }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+156 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
+        weight#[1..3].1: { attach: M1 }
+        weight#[1..3].2: { attach: R1 }
+        weight#[1..3].3: { attach: T2 }
+        weight#[1..3].4: { attach: H2 }
+        feather-rain#[1,6]: { attach: R1 }
+        feather-rain#[2,7]: { attach: H1 }
+        feather-rain#[3,8]: { attach: T1 }
+        feather-rain#[4,9]: { attach: M2 }
+        feather-rain#[5,10]: { attach: R2 }
+        mesohigh-tether: { from: enemy#garuda, to: R1 }
+        mesohigh: { attach: R1 }
+        marker-a: [23, 0]
+        marker-1: [80, 0]
+        marker-b: [29, 90]
+        marker-2: [80, -45]
+        marker-c: [29, 180]
+        marker-3: [41, 128]
+        marker-d: [29, -90]
+        marker-4: [0, 0]
+        boss: { x: 45, y: 0, rotate: 0, scale: 1.4 }
+        inferno-howl: { attach: H1 }
+        homing-lasers: { attach: T2 }
+        orb-explosion: { attach: orb }
+        orb-tether#1: { from: boss, to: M1 }
+        orb-tether#2: { from: boss, to: T1 }
+        orb-tether#3: { from: boss, to: T2 }
+        enemy#titan: { x: 90, y: -135, rotate: -135, scale: 1.2, opacity: 0.5, text: Titan }
+        enemy#ifrit: { x: 90, y: 135, rotate: 135, scale: 1.2, opacity: 0.5, text: Ifrit }
+        enemy#garuda: { x: 81, y: 180, rotate: 180, opacity: 0.4, text: Garuda }
+        players: [28, -57]
+        orb: [23, 40]
+      - # Step 2
+        weight#1.*: { visible: true, attach: null }
+        players: [28, 57]
+        hint: Weight of the Land spawns (3×). Just go back and forth like this.
+      - # Step 3
+        weight#2.*: { visible: true, attach: null }
+        weight#1.*: { visible: false }
+        players: [28, -57]
+        mesohigh-tether: { visible: true }
+        hint: ""
+      - # Step 4
+        weight#3.*: { visible: true, attach: null }
+        weight#2.*: { visible: false }
+        orb: { visible: true }
+        players: { status: [accursed-flame] }
+        R2: [71, -37]
+        M2: [65, -30]
+        H1: [65, -72]
+        H2: [71, -60]
+        R1: [38, 180]
+        [T1, T2, M1]: [21, 33]
+        hint: Split here.<br />Healers go west to check which of them gets Searing.<br />Tanks and one melee go back to soak the orb.<br />R1 takes the Mesohigh tether south.<br />Everyone else goes northwards.
+      - # Step 5 (Orb 1)
+        weight#3.*: { visible: false }
+        players: { status: [] }
+        orb: { visible: false }
+        orb-explosion: { visible: true }
+        orb-tether#*: { visible: true }
+        mesohigh-tether: { visible: false }
+        mesohigh: { visible: true, attach: null }
+        H1: { status: [searing-wind] }
+        hint: A random healer gets Searing Wind.
+      - # Step 6
+        orb-explosion: { visible: false }
+        mesohigh: { visible: false }
+        [T1, T2, M1]: [42, 34]
+        H1: [75, -118]
+        R1: [7, -13]
+        hint: ""
+      - # Step 7
+        players: [86, -0]
+        H1: [82, 180]
+        [T1, T2, M1]: [21, 33]
+        feather-rain#[1..5]: { attach: null }
+        orb-tether#*: { visible: false }
+        enemy#garuda: { visible: false }
+        orb: { visible: true }
+        hint: Garuda screams.
+      - # Step 8
+        feather-rain#[1..5]: { scale: 1 }
+        orb: { visible: false }
+        orb-explosion: { visible: true }
+        orb-tether#*: { visible: true }
+        hint: ""
+      - # Step 9
+        [T1, T2, M1]: [86, -0]
+        feather-rain#[1..5]: { visible: false }
+        orb-explosion: { visible: false }
+        inferno-howl: { visible: true }
+      - # Step 10
+        landslide#*: { visible: true }
+        inferno-howl: { visible: false }
+        orb-tether#*: { visible: false }
+      - # Step 11
+        landslide#*: { visible: false }
+        crimson-cyclone: { h: 1.2, attach: null }
+        enemy#ifrit: { y: -45, visible: false }
+        enemy#garuda: { visible: true }
+        mesohigh-tether: { to: R1 }
+      - # Step 12
+        landslide-followup#*: { visible: true }
+        crimson-cyclone: { visible: false }
+        crimson-cyclone-followup#*: { h: 1.2 }
+        eye-of-the-storm: { visible: true }
+        mesohigh-tether: { visible: true }
+        orb: { visible: true }
+        players: [86, -45]
+        H1: [86, 135]
+        T1: [86, 45]
+        hint: Searing healer goes where Ifrit was, <strong>not</strong> opposite the party.<br />MT goes NE in preparation to soak the third orb solo.
+      - # Step 13
+        eye-of-the-storm: { blink: true }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: false }
+        inferno-howl: { visible: true }
+        players: { x: 46 }
+        hint: ""
+      - # Step 14
+        inferno-howl: { visible: false }
+        eye-of-the-storm: { visible: false }
+        H1: { y: -166 }
+        T1: [24, 40]
+        mesohigh-tether: { to: H1 }
+        orb-explosion: { visible: true }
+        orb-tether#2: { visible: true }
+        orb: { visible: false }
+      - # Step 15
+        H1: [75, 180]
+        orb-explosion: { visible: false }
+        orb-tether#2: { visible: false }
+        orb: { visible: true }
+        mesohigh: { attach: H1 }
+        cast: { progress: 0, text: Tank Purge }
+      - # Step 16
+        orb-explosion: { visible: true }
+        orb-tether#2: { visible: true }
+        orb: { visible: false }
+        mesohigh: { visible: true }
+        inferno-howl: { visible: true }
+        mesohigh-tether: { visible: false }
+        cast: { progress: 0.5 }
+      - # Step 17
+        mesohigh: { visible: false }
+        inferno-howl: { visible: false }
+        orb-explosion: { visible: false }
+        orb-tether#2: { visible: false }
+        cast: { progress: 1, visible: false }
+        enemy#garuda: { visible: false }
+        hint: Garuda screams and flies away.
+      - # Step 18
+        feather-rain#[6..10]: { scale: 1, attach: null }
+        players: [73, -25]
+        T1: [73, 25]
+        H1: [83, 161]
+        hint: ""
+      - # Step 19
+        boss: { visible: false, x: 0, y: 0 }
+        feather-rain#[6..10]: { visible: false }
+        inferno-howl: { visible: true }
+        hint: The Ultima Weapon briefly becomes untargetable.
+      - # Step 20
+        boss: { visible: true }
+        inferno-howl: { visible: false }
+        eye-of-the-storm: { visible: true, blink: false }
+        players: [44, -37]
+        T1: [44, 37]
+        H1: [44, 180]
+      - # Step 21
+        [T1, T2]: [44, 0]
+        boss: { rotate: T1 }
+        eye-of-the-storm: { blink: true }
+        inferno-howl: { visible: true, attach: null }
+        H1: { status: [] }
+      - # Step 22
+        eye-of-the-storm: { visible: false }
+        inferno-howl: { visible: false }
+        boss: { rotate: null }
+        cast: { text: Homing Lasers, progress: 0, visible: true }
+        T1: [44, -37]
+        T2: [44, 37]
+        H1: [44, -37]
+        hint: OT should be taking this buster due to having more cooldowns available. No tankswap.
+      - # Step 23
+        homing-lasers: { visible: true }
+        cast: { progress: 1, visible: false }
