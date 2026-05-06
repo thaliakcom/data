@@ -929,6 +929,11 @@
   url: https://sqex.to/9BrGm
   from: 2026-05-08 08:00:00
   to: 2026-05-25 14:59:00
+- name: Patch 7.51 (Ultimate)
+  short: Patch 7.51
+  type: patch
+  color: "#6e9cec"
+  at: 2026-06-02 10:00:00
 - name: Fan Fest Berlin
   type: event
   color: "#383642"
@@ -936,6 +941,16 @@
   from: 2026-07-25
   to: 2026-07-26
   allDay: true
+- name: Patch 7.55 (Occult Crescent)
+  short: Patch 7.55
+  type: patch
+  color: "#6e9cec"
+  at: 2026-07-28 10:00:00
+- name: Patch 7.56 (Beastmaster)
+  short: Patch 7.56
+  type: patch
+  color: "#6e9cec"
+  at: 2026-09-08 10:00:00
 - name: Fan Fest Tokyo
   type: event
   color: "#383642"
