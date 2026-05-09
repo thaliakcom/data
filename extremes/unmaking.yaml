@@ -10,7 +10,6 @@ boss: Enuo
 party_hp: 222857
 HP: 107935443
 description: ""
-wip: full
 autos:
   type: magic
   damage: 60000
@@ -20,815 +19,779 @@ status:
     id: 2941
     type: vuln
     duration: [960, 4960]
-    description: Inflicted by [a:great-return-to-nothing], [a:meltdown-2], [a:airy-emptiness-1], [a:return-to-nothing], [a:violent-burst], [a:burst], [a:dense-emptiness-1], [a:shrouded-holy-1]
+    description: Renders further magic damage taken lethal. Inflicted by most actions in the fight that deal magic damage, including [a:great-return-to-nothing], [a:meltdown-spread], [a:airy-emptiness], [a:return-to-nothing], [a:violent-burst], [a:burst], [a:dense-emptiness], [a:shrouded-holy].
   chains-of-condemnation:
     id: 4562
-    type: condition
+    type: impairment.pyretic
     duration: 2000
-    description: Inflicted by [a:meltdown]
+    description: Any movement while this status is in effect deals heavy damage to the player. Actions that don't move the character don't trigger this effect. Inflicted by [a:meltdown].
   vulnerability-up:
     id: 1789
     type: vuln
-    duration: [60000, 59510]
-    description: Inflicted by [a:gaze-of-the-void-3], [a:naught-grows-4], [a:passage-of-naught-1], [a:vacuum-1], [a:meltdown-1], [a:passage-of-naught], [a:endless-chase-1]
+    duration: 60000
+    description: |
+      Increases damage taken by 8% per stack.
+      Inflicted by various sources of avoidable damage, such as [a:gaze-of-the-void-cone], [a:naught-grows-p2], [a:passage-of-naught], [a:vacuum-hit], [a:meltdown-twister], [a:passage-of-naught], [a:endless-chase-hit].
   freezing-up:
     id: 3523
     type: condition
     duration: 2000
-    description: Inflicted by [a:deep-freeze]
+    description: Player must keep moving or they will be inflicted with [s:deep-freeze]. Inflicted by [a:deep-freeze].
   deep-freeze:
     id: 4150
     type: impairment
     duration: 9000
-    description: Inflicted by [a:deep-freeze]
+    description: Player failed to keep moving during [s:freezing-up] and is frozen as a result, leaving them unable to act or move for 9 seconds.
   unbecoming:
     id: 4882
     type: dot
     tick: 6000
-    description: Placeholder description
+    description: Light [t:DoT] active for the entirety of adds phase.
   dark-resistance-down-ii:
     id: 3323
     type: vuln
     duration: 2000
-    description: Inflicted by [a:empty-shadow], [a:voidal-turbulence-1]
+    description: Renders any subsequent dark damage taken lethal. Inflicted by [a:empty-shadow] and [a:voidal-turbulence].
   gauntlet-taken:
     id: 5357
     type: impairment
-    description: Placeholder description
+    description: Player has taken a tower and is now tethered to the add it spawned. The tethered player is the only player who is able to harm the add. Other players' attacks will bounce off, dealing no damage. If the player attempts to move too far away from the tethered add, they are forcibly pulled back towards it.
   quantum-entanglement:
     id: 4884
     type: dot
     tick: 6000
-    description: Placeholder description
+    description: A mild [t:DoT] inflicted on healers when they take a tower and spawn a Soothing Shadow.
   disease:
     id: 3943
     type: impairment
     duration: 60000
-    description: Inflicted by [a:curse-of-the-flesh-1]
+    description: Reduces movement speed and healing on self. Inflicted on healers by [a:curse-of-the-flesh]. Can be cleansed.
   damage-down:
     id: 2911
     type: impairment
     duration: 30000
-    description: Inflicted by [a:big-burst]
+    description: Reduces all damage dealt. Inflicted when a tower is permitted to explode ([a:big-burst-tower]).
   petrification:
     id: 3007
     type: impairment
     duration: 9000
-    description: Inflicted by [a:demon-eye-1]
+    description: A player was hit by [a:demon-eye]'s gaze attack and is momentarily petrified, leaving them unable to act or move.
+  sustained-damage:
+    id: 4149
+    type: dot
+    tick: 80000
+    description: Heavy [t:DoT] inflicted by [a:big-burst-orb] as a result of failing to soak a black hole during [a:gaze-of-the-void].
 actions:
   meteorain:
     id: 50049
+    mechanic: raidwide
     damage: 189407
-    description: Placeholder description
+    description: Moderate raidwide.
   naught-grows:
-    id: 49975
-    description: Placeholder description
-  naught-grows-2:
-    id: 49977
-    description: Placeholder description
+    id: 49978
+    mechanic: aoe
+    players: 0
+    damage: 158225
+    description: |
+      Either a [ms:dynamo] or [ms:chariot] AoE on the location of a black hole on the outside of the arena.
+      Which of the two it is is determined by the icon over the arrow that emerges from [boss], pointing towards the black hole in question.
+      This attack is always combined with either [a:return-to-nothing] or [a:great-return-to-nothing].
+    children:
+    - at: 882
+      id: great-return-to-nothing
+      link: or
+    - at: 882
+      id: return-to-nothing
   great-return-to-nothing:
     id: 49984
-    damage: 394229
-    description: Placeholder description
-  naught-wakes:
-    id: 49973
-    description: Placeholder description
-  meltdown:
-    id: 50040
-    description: Placeholder description
-  meltdown-1:
-    id: 50041
-    count: 8
-    damage: 152699
-    description: Placeholder description
-  meltdown-2:
-    id: 50042
-    damage: 146535
-    description: Placeholder description
-  airy-emptiness:
-    id: 50032
-    description: Placeholder description
-  airy-emptiness-1:
-    id: 50034
-    count: 4
-    damage: 147478
-    description: Placeholder description
-  naught-grows-3:
-    id: 49978
-    description: Placeholder description
+    mechanic: stack.intercept
+    shape: line
+    tank-damage: 400000
+    damage: 150000
+    description: |
+      Line [m:stack] on a random healer that deals significantly increased damage to the first two targets hit. Inflicts [s:magic-vulnerability-up].
+      A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+    resolve: Both tanks use defensive cooldowns and move to intercept the stack, ensuring they're the first two players hit.
   return-to-nothing:
     id: 49983
+    mechanic: stack.intercept
+    shape: line
     count: 2
-    damage: 436856
-    description: Placeholder description
-  gaze-of-the-void:
-    id: 50002
-    description: Placeholder description
-  gaze-of-the-void-3:
-    id: 50005
-    damage: 106416
-    description: Placeholder description
-  gaze-of-the-void-1:
-    id: 50003
-    description: Placeholder description
-  violent-burst:
-    id: 50007
-    damage: 179359
-    description: Placeholder description
-  burst:
-    id: 50006
-    damage: 124658
-    description: Placeholder description
-  vacuum:
-    id: 49994
-    description: Placeholder description
-  silent-torrent-1:
-    id: 49996
-    count: 4
-    description: Placeholder description
-  silent-torrent-2:
-    id: 49997
-    count: 3
-    description: Placeholder description
-  silent-torrent:
-    id: 49995
-    description: Placeholder description
-  silent-torrent-4:
-    id: 49999
-    count: 4
-    description: Placeholder description
-  silent-torrent-5:
-    id: 50000
-    count: 3
-    description: Placeholder description
-  silent-torrent-3:
-    id: 49998
-    description: Placeholder description
-  vacuum-1:
-    id: 50001
+    players: 4
+    tank-damage: 400000
+    damage: 150000
+    description: |
+      Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up].
+      A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+    resolve: Both tanks use defensive cooldowns and move to intercept the stacks, ensuring they're the first player hit for each stack.
+  naught-wakes:
+    id: 49973
+    mechanic: mech.prepare
+    description: Moves the black hole(s) on the outside of the arena somewhere else.
+  meltdown:
+    id: 50040
+    mechanic: combination
+    shape: chariot
+    description: |
+      Inflicts [s:chains-of-condemnation] for 2 seconds and spawns invisible AoEs underneath each player at the end of the cast that resolve five seconds later, along with a [m:spread].
+      [s:chains-of-condemnation] is a [st:impairment.pyretic]-like effect that deals heavy damage if the player moves while the effect is active. It does not affect actions.
+    resolve: |
+      Get underneath the boss before the cast finishes, then wait 2 seconds until [s:chains-of-condemnation] expires (you may continue to attack as long as those attacks don't move your character). After it expires, move out to [t:clock spots] to take [a:meltdown-spread].
+    children:
+    - at: 5483
+      id: meltdown-twister
+    - at: 6560
+      id: meltdown-spread
+  meltdown-twister:
+    id: 50041
+    caption: AoE
+    mechanic: aoe.delayed
+    shape: chariot
     count: 8
-    damage: 137505
-    description: Placeholder description
+    players: 0
+    damage: 152699
+    description: An AoE left behind by a player at the end of the cast explodes. Inflicts [s:vulnerability-up].
+  meltdown-spread:
+    id: 50042
+    caption: Spread
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 146535
+    description: "[m:spread:c] on all players. Inflicts [s:magic-vulnerability-up]."
+  airy-emptiness:
+    id: 50034
+    mechanic: stack.partner
+    shape: cone
+    count: 4
+    damage: 147478
+    description: Moderately wide conal stacks on all supports.
+    tips: [If necessary (people are dead), tanks can comfortably solo their stack.]
   dense-emptiness:
-    id: 50033
-    description: Placeholder description
-  dense-emptiness-1:
     id: 50035
+    mechanic: stack.healers
+    shape: cone
     count: 2
     damage: 205476
-    description: Placeholder description
+    description: Wide conal stacks on both healers.
+  gaze-of-the-void:
+    id: 50002
+    mechanic: mech
+    compact: full
+    emphasis: more
+    description: |
+      Miniature black holes appear in a rotating manner around [boss].
+      There are 10 in total, with the last two overlapping with the first two. When the cast completes, the black holes fire a cone out towards the edge of the arena in the order in which they appeared, creating new black holes at the edge of the arena where the cone hits. Each cone inflicts [s:vulnerability-up].
+      The last two cones each hit an existing black hole, causing it to grow bigger.
+      Once all cones have resolved, each resulting black hole tethers to [boss] and begin traveling towards him. Four tethers are purple and four yellow, and of the two big black holes, there is always one per tether. The yellow-tethered black holes move much faster than the purple ones. If any of them reach [boss], it triggers [a:big-burst-orb], dealing massive damage and inflicting [s:sustained-damage] on all party members.
+      When a player touches a black hole as it moves towards [boss], the black hole is nullified, dealing heavy damage in a radius around it ([a:burst]) and inflicting [s:magic-vulnerability-up] for 5 seconds. If the explosion only hits a single player, that player is knocked off the platform. Knockback immunity is ineffective against this.
+      The two big black holes deal significantly more damage in a much bigger radius than the others when touched ([a:violent-burst]).
+    resolve: |
+      Dodge the cones as normal. After dodging, rotate your camera towards the last two cones, as these will be the locations of the two big black holes. These two big black holes must be soaked by the tanks. For the remaining black holes, use a simple [t:snake prio]: healers take the first set of small black holes clockwise from the big ones, melees the second, and rangeds the third. Always soak the yellow black hole first, then the purple ones after your [s:magic-vulnerability-up] has expired.
+      Be careful of soaking a black hole next to another black hole of the same tether colour, as the two soaks can easily clip each other, especially if one of them is the tanks'.
+    children:
+    - at: 1018
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 1460
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 1861
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 2263
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 2663
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 3025
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 3428
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 3828
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 4230
+      id: gaze-of-the-void-cone
+      link: then
+    - at: 4634
+      id: gaze-of-the-void-cone
+    - at: 9893
+      id: violent-burst
+      timing: player
+      link: and
+    - at: 9893
+      id: burst
+      timing: player
+    - at: 16264
+      id: violent-burst
+      timing: player
+      link: and
+    - at: 16264
+      id: burst
+      timing: player
+  gaze-of-the-void-cone:
+    id: 50005
+    caption: Hit
+    mechanic: aoe.rotating
+    shape: cone
+    emphasis: less
+    players: 0
+    damage: 106416
+    description: Individual rotating cone during [a:gaze-of-the-void].
+  violent-burst:
+    id: 50007
+    mechanic: aoe.orbs
+    shape: chariot
+    players: 2
+    damage: 179359
+    description: |
+      A player touches a big black hole, dealing massive damage and inflicting [s:magic-vulnerability-up] on them and any nearby players.
+      If no other player was hit by the AoE, knocks the player off the platform.
+  big-burst-tower:
+    id: 50014
+    caption: Tower
+    mechanic: mech.failure
+    players: 0
+    damage: 187536
+    description: A tower wasn't soaked, dealing massive damage and inflicting [s:damage-down] on all party members.
+  big-burst-orb:
+    id: 50014
+    mechanic: mech.failure
+    players: 0
+    damage: 100000
+    description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to Enuo, dealing heavy damage and inflicting [s:sustained-damage] on all party members.
+  burst:
+    id: 50006
+    mechanic: aoe.orbs
+    shape: chariot
+    count: 3
+    players: 2
+    damage: 124658
+    description: |
+      A player touches a small black hole, dealing heavy damage and inflicting [s:magic-vulnerability-up] on them and any nearby players.
+      If no other player was hit by the AoE, knocks the player off the platform.
+  vacuum:
+    id: 49994
+    mechanic: aoe
+    compact: trim
+    description: |
+      Shows AoE telegraphs for 8 slightly curved arc AoEs originating from [boss] that resolve 6 seconds later ([a:silent-torrent]), inflicting [s:vulnerability-up].
+      The arcs vary in length. There are exactly:
+      * 1 short arc
+      * 4 medium arcs
+      * 3 long arcs
+      After they resolve, a small black hole spawns at the end of each arc and explodes 2 seconds later, inflicting [s:vulnerability-up].
+    resolve: |
+      The only relevant arc is the short one. Find the short arc, then position yourself just outside of the intersection of two arcs of which *neither arc is the short one or adjacent to the short one*. This will always be safe, with no additional movement necessary after [a:silent-torrent].
+    children:
+    - at: 6100
+      id: silent-torrent
+      link: then
+    - at: 8198
+      id: vacuum-hit
+  vacuum-meltdown:
+    id: 49994
+    mechanic: aoe
+    compact: trim
+    description: Same as [a:vacuum], but this time immediately follows up with [a:meltdown], forcing players to already be in a safe spot *before* [a:silent-torrent] resolves.
+    children:
+    - at: 0
+      id: vacuum
+      flatten: omit-parent
+    - at: 6112
+      id: meltdown
+      caption: Cast
+      flatten: true
+  silent-torrent:
+    id: 50000
+    mechanic: aoe
+    count: 8
+    description: An arc created by [a:vacuum] detonates, dealing heavy damage and inflicting [s:vulnerability-up] on anyone hit.
+  vacuum-hit:
+    id: 50001
+    caption: Hit
+    mechanic: aoe
+    shape: chariot
+    count: 8
+    players: 0
+    damage: 137505
+    description: A [ms:chariot] created by [a:silent-torrent] detonates, dealing heavy damage and inflicting [s:vulnerability-up] on anyone hit.
   deep-freeze:
     id: 50043
-    description: Placeholder description
-  deep-freeze-1:
+    mechanic: combination
+    compact: trim
+    description: Inflicts [s:freezing-up] on all players for 2 seconds and hits two highest-enmity players with a [m:tb.flare].
+    children:
+    - at: 0
+      id: <addstatus>
+      status: freezing-up
+    - at: 986
+      id: deep-freeze-tankbuster
+  deep-freeze-tankbuster:
     id: 50044
+    mechanic: tb.flare
     count: 2
-    damage: 337671
-    description: Placeholder description
+    players: 8
+    tank-damage: 337671
+    damage: 80000
+    description: Heavy tankbuster on the first and second in enmity. Deals proximity damage.
   all-for-naught:
     id: 50010
-    description: Placeholder description
-  looming-emptiness-2:
-    id: 50011
-    description: Placeholder description
+    mechanic: mech.arena
+    description: |
+      [boss] enters a voidgate and submerges the arena in darkness.
+      There is no longer a platform; the arena no longer has a clearly defined size and stretches nigh infinitely.
   looming-emptiness:
-    id: 49369
-    description: Placeholder description
-  looming-emptiness-1:
     id: 49982
-    description: Placeholder description
-  voidal-turbulence:
-    id: 50036
-    description: Placeholder description
+    mechanic: aoe.knockback
+    shape: chariot
+    damage: 0
+    description: |
+      A blue knockback circle appears in the center of the new arena. After a short while, a Looming Shadow emerges from it, instantly killing any player within the circle and knocking everyone else back. This mini-phase ends once the Looming Shadow has been defeated.
+      Throughout the whole phase, the Looming Shadow continuously auto-attacks the main tank ([a:enhanced-vitality-iii]).
   empty-shadow:
     id: 50013
+    mechanic: towers.single
     count: 4
     damage: 20368
-    description: Placeholder description
-  voidal-turbulence-1:
+    description: |
+      2 towers spawn on the west of the arena and 2 towers on the east.
+      After being soaked, each tower inflicts [s:gauntlet-taken] and [s:dark-resistance-down-ii] on the player who soaked it and spawns an add. The add is tethered to the player, can only take damage from that player, and if the player attempts to move too far away from their add, they are forcibly pulled back.
+      The add's name and mechanics depend on the role of the player who is tethered to it.
+      * Tanks spawn a Protective Shadow. It casts an interruptible tankbuster called [a:drain-touch], followed by a non-interruptible tankbuster called [a:weight-of-nothing].
+      * Healers spawn a Soothing Shadow. It immediately inflicts [s:quantum-entanglement] on the corresponding healer, which lasts until the shadow is killed. It then casts [a:curse-of-the-flesh], which inflicts a cleansable [s:disease] on the healer.
+      * DPS spawn an Aggressive Shadow. It casts [a:demon-eye], a gaze attack that players must face away from.
+      **Note**: If a player targeted to a Shadow dies, that Shadow's damage immunity is lifted, meaning any player can damage it now.
+  drain-touch:
+    id: 50018
+    mechanic: interruptible
+    type: magic
+    count: 2
+    players: 0
+    damage: 340000
+    description: Heavy tankbuster on the tanks tethered to a Protective Shadow. Can be interrupted.
+  voidal-turbulence:
     id: 50038
+    mechanic: spread
+    shape: cone
     count: 4
     damage: 61478
-    description: Placeholder description
-  enhanced-vitality:
-    id: 50012
-    name: Enhanced Vitality
-    description: Placeholder description
+    description: Wide conal spreads on either all DPS or all supports. Inflicts [s:dark-resistance-down-ii].
   enhanced-vitality-iii:
     id: 50016
     name: Enhanced Vitality III
+    mechanic: auto.single
     damage: 47444
-    description: Placeholder description
+    description: The Looming Shadow auto-attacks the main tank.
   demon-eye:
-    id: 50022
-    count: 4
-    description: Placeholder description
-  demon-eye-1:
     id: 50023
+    mechanic: mech.gaze
     count: 4
-    description: Placeholder description
+    description: |
+      A gaze attack originating from all Aggressive Shadows. Failing to face away inflicts [s:petrification].
+      Note that this gaze attack affects not only the [s:gauntlet-taken] DPS but any player who fails to face away in time. However, this gaze attack has a limited radius of attack and can be outranged. In the middle of the arena (directly underneath the Looming Shadow) is always safe from all gazes.
   apeiron:
     id: 48478
-    count: 2
-    description: Placeholder description
+    mechanic: enrage
+    count: 8
+    players: 1
+    damage: 9999999
+    compact: full
+    description: If the duty gauge reaches 100 points before the Beacon in the Dark is destroyed, all players are instantly killed here.
+    children:
+    - at: 0
+      id: self-destruct
   self-destruct:
     id: 50028
-    description: Placeholder description
-  enhanced-foresight:
-    id: 50015
-    name: Enhanced Foresight
-    description: Placeholder description
+    mechanic: enrage
+    damage: 0
+    description: The duty gauge has reached 100 points, killing all players.
+  nothingness:
+    id: 50017
+    mechanic: aoe.delayed
+    shape: line
+    count: 3
+    description: Three untargetable Shadows surrounding the Beacon in the Dark fire a delayed line AoE at a random player. Inflicts [s:vulnerability-up].
   curse-of-the-flesh:
-    id: 50024
-    count: 2
-    description: Placeholder description
-  curse-of-the-flesh-1:
     id: 50025
+    mechanic: mech.status
     count: 2
-    description: Placeholder description
+    description: Inflicts a cleansable [s:disease] on both healers.
   weight-of-nothing:
-    id: 50020
-    description: Placeholder description
-  weight-of-nothing-1:
     id: 50021
+    mechanic: tb.tether
+    shape: line
     damage: 341677
-    description: Placeholder description
+    description: Heavy tankbuster. Cannot be interjected, but with sufficient damage the Protective Shadow can be defeated before it can finish this cast.
   lightless-world:
     id: 50029
-    description: Placeholder description
-  lightless-world-1:
+    mechanic: raidwide.ultimate
+    compact: full
+    description: Heavy raidwide. Hits 6×, with each hit dealing heavy damage.
+    children:
+    - at: 1017
+      id: lightless-world-hit
+    - at: 1551
+      id: lightless-world-hit
+    - at: 2040
+      id: lightless-world-hit
+    - at: 2530
+      id: lightless-world-hit
+    - at: 3020
+      id: lightless-world-hit
+    - at: 3553
+      id: lightless-world-hit-final
+  lightless-world-hit:
     id: 50030
+    caption: Hit
+    mechanic: raidwide.ultimate
     damage: 92006
-    description: Placeholder description
-  lightless-world-2:
+    description: Individual hit of [a:lightless-world].
+  lightless-world-hit-final:
     id: 50031
+    caption: Final Hit
+    mechanic: raidwide.ultimate
     damage: 48284
-    description: Placeholder description
+    description: Last hit of [a:lightless-world]. Does less damage than the previous hits.
   almagest:
     id: 49972
+    mechanic: raidwide
     damage: 191569
-    description: Placeholder description
-  naught-grows-1:
-    id: 49976
-    description: Placeholder description
-  naught-grows-4:
+    description: Heavy raidwide.
+  naught-grows-p2:
     id: 49979
+    caption: Double
+    mechanic: combination
+    players: 0
     damage: 158225
-    description: Placeholder description
-  passage-of-naught-1:
-    id: 49986
-    damage: 161625
-    description: Placeholder description
+    description: |
+      Similar to [a:naught-grows], but this time there are *two* black holes on the outside of the arena.
+      One arrow always originates from [boss] and points at a black hole. The other arrow originates from the other black hole and points at [boss]. The shape displayed above the corresponding will resolve in the form of an AoE wherever the arrow points to. This results in the following possible AoE combinations:
+      * [ms:dynamo:c] on [boss] and [ms:dynamo] on a black hole
+      * [ms:dynamo:c] on [boss] and [point-blank AoE](ms:chariot) on a black hole
+      * [Point-blank AoE](ms:chariot) on [boss] and [ms:dynamo] on a black hole
+      * [Point-blank AoE](ms:chariot) on [boss] and [point-blank AoE](ms:chariot) on a black hole
+      Like before, this attack is always combined with either [a:return-to-nothing] or [a:great-return-to-nothing].
+    children:
+    - at: 929
+      id: great-return-to-nothing
+      link: or
+    - at: 929
+      id: return-to-nothing
   passage-of-naught:
-    id: 49985
-    damage: 221731
-    description: Placeholder description
-  passage-of-naught-2:
-    id: 49987
-    description: Placeholder description
+    id: 49986
+    mechanic: aoe
+    shape: line
+    count: 2
+    players: 0
+    damage: 161625
+    description: |
+      The two black holes on the outside of the arena shift, begin charging, and fire a line AoE through the middle of the arena. Inflicts [s:vulnerability-up].
+      One or both of the black holes may also split in two. In this case they fire two smaller line AoEs through the sides of the arena, leaving the middle safe.
+      The type of AoEs fired is, in most cases, only pseudo-random. It uses the following logic:
+      * The first instance of this mechanic after [a:lightless-world] is either a big line through the middle + two small lines on the outside, or four small lines on the outside.
+      * The second instance of this mechanic is whichever of those two options the first wasn't.
+      * Every instance of this mechanic at the start of [a:naught-hunts] is always four small lines on the outside, leaving the middle safe.
+      * Every instance of this mechanic at the end of [a:naught-hunts] is always two big lines through the middle, leaving only the intercardinals or cardinals safe.
+      Note that, for all instances of this mechanic outside of [a:naught-hunts], the two black holes are not guaranteed to be at a 90° angle towards each other. They cannot be directly opposite, but they *can* be at an angle of 45° to each other.
   shrouded-holy:
-    id: 50045
-    description: Placeholder description
-  shrouded-holy-1:
     id: 50046
+    mechanic: stack.healers
+    shape: chariot
     count: 2
     damage: 156251
-    description: Placeholder description
-  dimension-zero:
+    description: Telegraphed light party stacks on both healers. Inflicts [s:magic-vulnerability-up].
+  dimension-zero-i:
     id: 50047
-    description: Placeholder description
-  dimension-zero-1:
+    mechanic: stack
+    shape: line
+    compact: full
+    description: |
+      Telegraphed line stack on a random player. Hits 3 times, with each hit dealing massive damage.
+      All subsequent [a:dimension-zero-ii]s hit 4 times.
+    children:
+    - at: 433
+      id: dimension-zero-hit
+    - at: 1816
+      id: dimension-zero-hit
+    - at: 3195
+      id: dimension-zero-hit
+  dimension-zero-ii:
+    id: 50047
+    mechanic: stack
+    shape: line
+    compact: full
+    description: Telegraphed line stack on a random player. Hits 4 times, with each hit dealing massive damage.
+    children:
+    - at: 402
+      id: dimension-zero-hit
+    - at: 1783
+      id: dimension-zero-hit
+    - at: 3165
+      id: dimension-zero-hit
+    - at: 4547
+      id: dimension-zero-hit
+  dimension-zero-hit:
     id: 50048
+    mechanic: stack
+    shape: line
     damage: 143819
-    description: Placeholder description
-  gaze-of-the-void-2:
-    id: 50004
-    description: Placeholder description
+    description: Individual hit of [a:dimension-zero-i], dealing massive damage.
   naught-hunts:
     id: 49992
-    description: Placeholder description
+    mechanic: aoe.chasing
+    shape: chariot
+    compact: trim
+    emphasis: more
+    description: |
+      At the start of the cast, spawns two small black holes at opposite [principals](t:principal) and begins charging a [a:passage-of-naught] that leaves the middle safe.
+      Each black hole tethers to a random player via an arrow. When the cast ends, [a:passage-of-naught] resolves and both mini black holes use [a:endless-chase], which causes them to begin chasing the tethered player. Each black hole emits a moderately large [ms:chariot] AoE every ¾ of a second, dealing heavy damage and inflicting [s:vulnerability-up] ([a:endless-chase-hit]).
+      Each black hole hits 24 times in total before it stops and disappears. After the first 5 hits another arrow appears, tethering itself to a different player. 7 hits later, each black hole abruptly switches targets to this new player and begins chasing them instead.
+      After the black holes stop chasing, another [a:passage-of-naught] takes place, with both line AoEs hitting the center this time.
+      **Other notes**:
+      * [a:naught-hunts] takes place twice in succession. Throughout both casts of this mechanic, each player will be chased by exactly one black hole.
+      * If a player who is being chased dies, that black hole instantly switches targets to a random, untelegraphed player and begins chasing them instead.
+      * The speed of the black holes while chasing narrowly exceeds the default speed of player characters. This means that the black hole will slowly catch up to players, and if it does (e.g. because the player briefly stopped) it is no longer possible to escape it by any means, even with [a:sprint].
+    resolve: |
+      Each targeted player takes their black hole clockwise around the arena. Do not try to maintain melee uptime if the rest of the party doesn't expect you to, as you will clip the players in the middle.
+      Some strategies prefer for the second set of chasers during each [a:naught-hunts] to take their black hole counter-clockwise instead to minimize movement while prepositioning. Please be aware that the entire party must be on board with this if you decide to do this, as two players who each rotate a different way is almost guaranteed to cause a wipe.
+      [a:sprint] is strongly recommended to give yourself more leeway and prevent the black hole from being able to catch up to you.
+    children:
+    - at: 0
+      id: passage-of-naught
+      link: and
+    - at: 82
+      id: endless-chase
+      flatten: omit-children
+    - at: 22312
+      id: passage-of-naught
   endless-chase:
     id: 48475
+    mechanic: aoe.chasing
+    compact: full
+    shape: chariot
     count: 2
-    description: Placeholder description
-  endless-chase-1:
+    description: A small black hole spawned by [a:naught-hunts] begins chasing a player.
+    children:
+    - at: 757
+      id: endless-chase-hit
+    - at: 1424
+      id: endless-chase-hit
+    - at: 2138
+      id: endless-chase-hit
+    - at: 2806
+      id: endless-chase-hit
+    - at: 3516
+      id: endless-chase-hit
+    - at: 4185
+      id: endless-chase-hit
+    - at: 4898
+      id: endless-chase-hit
+    - at: 5567
+      id: endless-chase-hit
+    - at: 6279
+      id: endless-chase-hit
+    - at: 6948
+      id: endless-chase-hit
+    - at: 7660
+      id: endless-chase-hit
+    - at: 8328
+      id: endless-chase-hit
+    - at: 9043
+      id: endless-chase-hit
+    - at: 9708
+      id: endless-chase-hit
+    - at: 10420
+      id: endless-chase-hit
+    - at: 11090
+      id: endless-chase-hit
+    - at: 11807
+      id: endless-chase-hit
+    - at: 12474
+      id: endless-chase-hit
+    - at: 13188
+      id: endless-chase-hit
+    - at: 13855
+      id: endless-chase-hit
+    - at: 14568
+      id: endless-chase-hit
+    - at: 15237
+      id: endless-chase-hit
+    - at: 15951
+      id: endless-chase-hit
+    - at: 16620
+      id: endless-chase-hit
+  endless-chase-hit:
     id: 49993
+    caption: Hit
+    mechanic: aoe.chasing
+    shape: chariot
+    emphasis: less
     count: 2
+    players: 0
     damage: 111874
-    description: Placeholder description
-  almagest-1:
+    description: Individual hit of [a:endless-chase]. Inflicts [s:vulnerability-up].
+  almagest-enrage:
     id: 50050
-    description: Placeholder description
+    mechanic: enrage
+    damage: 9999999
+    description: Kills all players.
 timeline:
+  - at: 0
+    id: <phase>
+    name: Phase 1
   - at: 14849
     id: meteorain
-  - at: 29200
-    id: naught-grows
   - at: 30233
-    id: naught-grows-2
-  - at: 31115
-    id: great-return-to-nothing
+    id: naught-grows
   - at: 38340
     id: naught-wakes
   - at: 44443
     id: meltdown
-  - at: 49926
-    id: meltdown-1
-  - at: 51003
-    id: meltdown-2
-    count: 8
-  - at: 56791
-    id: airy-emptiness
   - at: 57813
-    id: airy-emptiness-1
-  - at: 67173
-    id: naught-grows
+    id: dense-emptiness
+    link: or
+  - at: 57813
+    id: airy-emptiness
   - at: 68251
-    id: naught-grows-3
-  - at: 68957
-    id: return-to-nothing
+    id: naught-grows
   - at: 83576
     id: gaze-of-the-void
-  - at: 84594
-    id: gaze-of-the-void-3
-  - at: 84594
-    id: gaze-of-the-void-1
-  - at: 85036
-    id: gaze-of-the-void-3
-  - at: 85437
-    id: gaze-of-the-void-3
-  - at: 85839
-    id: gaze-of-the-void-3
-    count: 2
-  - at: 86601
-    id: gaze-of-the-void-3
-  - at: 87004
-    id: gaze-of-the-void-3
-    count: 2
-  - at: 87806
-    id: gaze-of-the-void-3
-  - at: 88210
-    id: gaze-of-the-void-3
-  - at: 93469
-    id: violent-burst
-  - at: 94271
-    id: burst
-  - at: 94893
-    id: burst
-  - at: 97877
-    id: burst
-  - at: 99840
-    id: violent-burst
-  - at: 100948
-    id: burst
-  - at: 101530
-    id: burst
-  - at: 103351
-    id: burst
   - at: 109719
     id: vacuum
-  - at: 115331
-    id: silent-torrent-1
-  - at: 115332
-    id: silent-torrent-2
-  - at: 115332
-    id: silent-torrent
-  - at: 115819
-    id: silent-torrent-4
-  - at: 115819
-    id: silent-torrent-5
-  - at: 115819
-    id: silent-torrent-3
-  - at: 117917
-    id: vacuum-1
-  - at: 122156
-    id: dense-emptiness
   - at: 123177
-    id: dense-emptiness-1
+    id: airy-emptiness
+    link: or
+  - at: 123177
+    id: dense-emptiness
   - at: 133345
     id: deep-freeze
-  - at: 134331
-    id: deep-freeze-1
   - at: 141500
     id: meteorain
   - at: 155142
+    id: <untargetable>
+    description: "[boss] becomes untargetable."
+    link: and
+  - at: 155142
     id: all-for-naught
   - at: 155319
-    id: <untargetable>
-  - at: 174435
-    id: looming-emptiness-2
-  - at: 175419
-    id: looming-emptiness
-  - at: 175419
-    id: looming-emptiness-1
+    id: <phase>
+    name: Adds Phase
   - at: 175544
     id: <targetable>
-  - at: 183659
-    id: voidal-turbulence
+    target: Looming Shadow
+    link: and
+  - at: 175544
+    id: looming-emptiness
   - at: 184599
     id: empty-shadow
+    link: and
   - at: 184950
-    id: voidal-turbulence-1
-  - at: 185705
-    id: enhanced-vitality
-    count: 4
+    id: voidal-turbulence
   - at: 186151
     id: <targetable>
-  - at: 186151
-    id: <targetable>
-  - at: 186151
-    id: <targetable>
-  - at: 186151
-    id: <targetable>
-  - at: 186561
-    id: enhanced-vitality-iii
-  - at: 189584
-    id: enhanced-vitality-iii
+    target: Shadows (Set 1)
   - at: 190788
     id: demon-eye
-  - at: 191819
-    id: demon-eye-1
-  - at: 192623
-    id: enhanced-vitality-iii
-  - at: 195647
-    id: enhanced-vitality-iii
-  - at: 198687
-    id: enhanced-vitality-iii
-  - at: 201706
-    id: enhanced-vitality-iii
-  - at: 210566
-    id: voidal-turbulence
   - at: 211421
     id: empty-shadow
+    link: and
   - at: 211859
-    id: voidal-turbulence-1
-  - at: 212571
-    id: enhanced-vitality
-    count: 4
+    id: voidal-turbulence
   - at: 213018
     id: <targetable>
-  - at: 213018
-    id: <targetable>
-  - at: 213018
-    id: <targetable>
-  - at: 213018
-    id: <targetable>
-  - at: 213374
-    id: enhanced-vitality-iii
-  - at: 214220
-    id: enhanced-foresight
-  - at: 215644
-    id: curse-of-the-flesh
-  - at: 216405
-    id: enhanced-vitality-iii
+    target: Shadows (Set 2)
   - at: 216676
-    id: curse-of-the-flesh-1
-  - at: 219441
-    id: enhanced-vitality-iii
-  - at: 222459
-    id: enhanced-vitality-iii
-  - at: 223704
-    id: enhanced-foresight
-  - at: 224735
-    id: weight-of-nothing
-  - at: 225493
-    id: enhanced-vitality-iii
-  - at: 225707
-    id: enhanced-foresight
+    id: curse-of-the-flesh
   - at: 225841
-    id: weight-of-nothing-1
-  - at: 228513
-    id: enhanced-vitality-iii
-  - at: 231550
-    id: enhanced-vitality-iii
-  - at: 234577
-    id: enhanced-vitality-iii
-  - at: 237602
-    id: enhanced-vitality-iii
-  - at: 240627
-    id: enhanced-vitality-iii
-  - at: 243657
-    id: enhanced-vitality-iii
-  - at: 246689
-    id: enhanced-vitality-iii
-  - at: 249715
-    id: enhanced-vitality-iii
-  - at: 256444
-    id: enhanced-vitality
-    count: 8
-  - at: 268748
+    id: weight-of-nothing
+  - at: 273654
     id: <targetable>
-  - at: 278809
+    description: The Beacon in the Dark becomes targetable immediately after the Looming Shadow is defeated. The duty gauge continues to accumulate until the Beacon is destroyed.
+    timing: player
+  - at: 276654
+    id: nothingness
+    link: then
+  - at: 279654
+    id: nothingness
+    link: then
+  - at: 282654
+    id: nothingness
+  - at: 282654
+    id: apeiron
+    timing: skippable
+  - at: 284758
+    id: <phase>
+    name: Phase 2
+    timing: player
+  - at: 284758
+    id: <targetable>
+    description: "[boss] becomes targetable again. Note that the timing of the rest of the timeline varies based on how quickly you defeated the Beacon in the Dark."
+  - at: 294819
     id: lightless-world
-  - at: 279826
-    id: lightless-world-1
-  - at: 280360
-    id: lightless-world-1
-  - at: 280849
-    id: lightless-world-1
-  - at: 281339
-    id: lightless-world-1
-  - at: 281829
-    id: lightless-world-1
-  - at: 282362
-    id: lightless-world-2
-  - at: 294005
+  - at: 310015
     id: almagest
-  - at: 306694
-    id: naught-grows-1
-  - at: 307684
-    id: naught-grows-4
-  - at: 307729
-    id: naught-grows-3
-  - at: 308613
-    id: return-to-nothing
-  - at: 315840
+  - at: 323694
+    id: naught-grows-p2
+  - at: 331850
     id: naught-wakes
-  - at: 323894
-    id: passage-of-naught-1
-  - at: 323894
+  - at: 339904
     id: passage-of-naught
-  - at: 323894
-    id: passage-of-naught-2
-  - at: 335221
-    id: passage-of-naught-1
-    count: 2
-  - at: 335221
-    id: passage-of-naught-2
-    count: 2
-  - at: 340214
+  - at: 351231
+    id: passage-of-naught
+  - at: 357193
     id: shrouded-holy
-  - at: 341183
-    id: shrouded-holy-1
-  - at: 355713
-    id: naught-grows-1
-  - at: 356742
-    id: naught-grows-4
-  - at: 356781
-    id: naught-grows-3
-  - at: 357541
-    id: return-to-nothing
-  - at: 367887
-    id: dimension-zero
-  - at: 368320
-    id: dimension-zero-1
-  - at: 369703
-    id: dimension-zero-1
-  - at: 371082
-    id: dimension-zero-1
-  - at: 380747
-    id: vacuum
-  - at: 386367
-    id: silent-torrent-1
-  - at: 386367
-    id: silent-torrent-2
-  - at: 386367
-    id: silent-torrent
-  - at: 386859
-    id: meltdown
-  - at: 386859
-    id: silent-torrent-4
-  - at: 386859
-    id: silent-torrent-5
-  - at: 386859
-    id: silent-torrent-3
-  - at: 388956
-    id: vacuum-1
-  - at: 392380
-    id: meltdown-1
-  - at: 393406
-    id: meltdown-2
-    count: 7
-  - at: 406104
+  - at: 372752
+    id: naught-grows-p2
+  - at: 383897
+    id: dimension-zero-i
+  - at: 396757
+    id: vacuum-meltdown
+  - at: 422114
     id: gaze-of-the-void
-  - at: 407135
-    id: gaze-of-the-void-3
-  - at: 407135
-    id: gaze-of-the-void-2
-  - at: 407537
-    id: gaze-of-the-void-3
-  - at: 407938
-    id: gaze-of-the-void-3
-  - at: 408339
-    id: gaze-of-the-void-3
-  - at: 408740
-    id: gaze-of-the-void-3
-    count: 2
-  - at: 409541
-    id: gaze-of-the-void-3
-  - at: 409943
-    id: gaze-of-the-void-3
-  - at: 410344
-    id: gaze-of-the-void-3
-    count: 2
-  - at: 415677
-    id: violent-burst
-  - at: 416837
-    id: burst
-  - at: 417641
-    id: burst
-    count: 2
-  - at: 417729
-    id: violent-burst
-  - at: 422588
-    id: burst
-  - at: 423568
-    id: burst
-    count: 2
-  - at: 439306
+  - at: 455316
     id: almagest
-  - at: 449697
+  - at: 465707
     id: naught-wakes
-  - at: 457841
+  - at: 473851
     id: naught-hunts
-  - at: 458874
-    id: passage-of-naught-1
-    count: 2
-  - at: 458874
-    id: passage-of-naught-2
-    count: 2
-  - at: 458956
-    id: endless-chase
-  - at: 459713
-    id: endless-chase-1
-  - at: 460380
-    id: endless-chase-1
-  - at: 461094
-    id: endless-chase-1
-  - at: 461762
-    id: endless-chase-1
-  - at: 462472
-    id: endless-chase-1
-  - at: 463141
-    id: endless-chase-1
-  - at: 463854
-    id: endless-chase-1
-  - at: 464523
-    id: endless-chase-1
-  - at: 465235
-    id: endless-chase-1
-  - at: 465904
-    id: endless-chase-1
-  - at: 466616
-    id: endless-chase-1
-  - at: 467284
-    id: endless-chase-1
-  - at: 467999
-    id: endless-chase-1
-  - at: 468664
-    id: endless-chase-1
-  - at: 469376
-    id: endless-chase-1
-  - at: 470046
-    id: endless-chase-1
-  - at: 470763
-    id: endless-chase-1
-  - at: 471430
-    id: endless-chase-1
-  - at: 472144
-    id: endless-chase-1
-  - at: 472811
-    id: endless-chase-1
-  - at: 473524
-    id: endless-chase-1
-  - at: 474193
-    id: endless-chase-1
-  - at: 474907
-    id: endless-chase-1
-  - at: 475576
-    id: endless-chase-1
-  - at: 480174
-    id: passage-of-naught
-    count: 2
-  - at: 485157
+  - at: 502193
     id: dense-emptiness
-  - at: 486183
-    id: dense-emptiness-1
-  - at: 497426
+    link: or
+  - at: 502193
+    id: airy-emptiness
+  - at: 513436
     id: naught-hunts
-  - at: 498447
-    id: passage-of-naught-1
-    count: 2
-  - at: 498447
-    id: passage-of-naught-2
-    count: 2
-  - at: 498540
-    id: endless-chase
-  - at: 499290
-    id: endless-chase-1
-  - at: 499958
-    id: endless-chase-1
-  - at: 500671
-    id: endless-chase-1
-  - at: 501338
-    id: endless-chase-1
-  - at: 502053
-    id: endless-chase-1
-  - at: 502722
-    id: endless-chase-1
-  - at: 503434
-    id: endless-chase-1
-  - at: 504102
-    id: endless-chase-1
-  - at: 504814
-    id: endless-chase-1
-  - at: 505484
-    id: endless-chase-1
-  - at: 506196
-    id: endless-chase-1
-  - at: 506864
-    id: endless-chase-1
-  - at: 507576
-    id: endless-chase-1
-  - at: 508246
-    id: endless-chase-1
-  - at: 508957
-    id: endless-chase-1
-  - at: 509627
-    id: endless-chase-1
-  - at: 510340
-    id: endless-chase-1
-  - at: 511009
-    id: endless-chase-1
-  - at: 511723
-    id: endless-chase-1
-  - at: 512390
-    id: endless-chase-1
-  - at: 513103
-    id: endless-chase-1
-  - at: 513771
-    id: endless-chase-1
-  - at: 514485
-    id: endless-chase-1
-  - at: 515150
-    id: endless-chase-1
-  - at: 519738
-    id: passage-of-naught
-    count: 2
-  - at: 524727
+  - at: 541804
     id: dense-emptiness
-  - at: 525794
-    id: dense-emptiness-1
-  - at: 534882
-    id: dimension-zero
-  - at: 535284
-    id: dimension-zero-1
-  - at: 536665
-    id: dimension-zero-1
-  - at: 538047
-    id: dimension-zero-1
-  - at: 539429
-    id: dimension-zero-1
-  - at: 549904
+    link: or
+  - at: 541804
+    id: airy-emptiness
+  - at: 550892
+    id: dimension-zero-ii
+  - at: 565914
     id: almagest
-  - at: 562776
-    id: naught-grows-1
-  - at: 563748
-    id: naught-grows-4
-  - at: 563797
-    id: naught-grows-3
-  - at: 564506
-    id: return-to-nothing
-  - at: 571911
+  - at: 579758
+    id: naught-grows-p2
+  - at: 587921
     id: naught-wakes
-  - at: 579973
-    id: passage-of-naught-1
-  - at: 579973
+  - at: 595983
     id: passage-of-naught
-  - at: 579973
-    id: passage-of-naught-2
-  - at: 591284
-    id: passage-of-naught-1
-    count: 2
-  - at: 591284
-    id: passage-of-naught-2
-    count: 2
-  - at: 596316
+  - at: 607294
+    id: passage-of-naught
+  - at: 612326
     id: deep-freeze
-  - at: 597297
-    id: deep-freeze-1
-  - at: 610925
-    id: naught-grows-1
-  - at: 611911
-    id: naught-grows-4
-  - at: 611951
-    id: naught-grows-3
-  - at: 612665
-    id: great-return-to-nothing
-  - at: 623091
-    id: dimension-zero
-  - at: 623448
-    id: dimension-zero-1
-  - at: 624829
-    id: dimension-zero-1
-  - at: 626212
-    id: dimension-zero-1
-  - at: 627593
-    id: dimension-zero-1
-  - at: 638068
+  - at: 627921
+    id: naught-grows-p2
+  - at: 639101
+    id: dimension-zero-ii
+  - at: 654078
     id: meteorain
-  - at: 648221
+  - at: 664231
     id: meteorain
-  - at: 665827
-    id: almagest-1
-  
+  - at: 681837
+    id: almagest-enrage

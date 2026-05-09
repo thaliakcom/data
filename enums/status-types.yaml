@@ -13,7 +13,7 @@ resistance:
 condition:
   name: condition
   description: |
-    Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to death or severe party-wide damage.
+    Players with this status effect must fulfill a certain condition to resolve this status effect. Failing to do so usually leads to debuffs, death or severe party-wide damage.
     For enemies, it's the opposite: players must fulfill a condition to remove this effect from the enemy, else party-wide damage or death is imminent.
 delay:
   name: delayed execution
@@ -26,7 +26,13 @@ impairment:
   name: impairment
   type: debuff
   description: Impairs the player's movement or actions in some way.
+impairment.pyretic:
+  name: pyretic
   type: debuff
+  description: |
+    A player with this status effect must remain still as they will take severe damage if they move their character. In some cases, this status effect only punishes movement; in other cases it punishes any kind of action, even including auto-attacks. Consult the status effect's description to determine which it is.
+    In cases where this type of debuff punishes actions as well, the character is generally considered to be performing an action as long as that action's animation is still underway, so if you know a Pyretic effect is about to be inflicted, but you still have time to hit one GCD before it is, don't. The GCD's animation will carry into the Pyretic window, triggering its punishment.
+    **Tip**: To stop your character from auto-attacking, hit Esc to untarget the currently targeted enemy (or the configured Cancel button on controller). You can also sheathe your weapon, but note that sheathing your weapon also counts as an action and will trigger Pyretic's punishment effect if the sheathing animation has not fully completed by the time Pyretic is inflicted.
 indicator:
   name: indicator
   description: Has no effect on its own but serves as a helper status to make mechanics easier to resolve by assigning everyone a letter or number.

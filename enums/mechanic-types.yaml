@@ -243,6 +243,16 @@ aoe.facing:
   name: player gaze
   description: An [t:AoE] (usually conal) that originates from a player and is relative to where the player is facing.
   shapeful: true
+aoe.knockback:
+  name: knockback AoE
+  description: An AoE that instantly kills players inside of it and knocks all players outside of it away. Can be avoided using [a:surecast] or [a:arms-length].
+  shapeful: true
+  players: 8
+aoe.knockback.unavoidable:
+  name: knockback AoE
+  description: An AoE that instantly kills players inside of it and knocks all players outside of it away. Can *not* be avoided using [a:surecast] or [a:arms-length].
+  shapeful: true
+  players: 8
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.
@@ -421,3 +431,6 @@ damage:
 combination:
   name: combination
   description: Multiple different mechanics happen at the same time.
+interruptible:
+  name: interruptible cast
+  description: A cast that must be interrupted or debilitating effects are inflicted on players.

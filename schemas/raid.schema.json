@@ -273,6 +273,8 @@
         "aoe.condition",
         "aoe.aftershock",
         "aoe.facing",
+        "aoe.knockback",
+        "aoe.knockback.unavoidable",
         "spread",
         "spread.close",
         "spread.far",
@@ -319,7 +321,8 @@
         "hint",
         "hint.timed",
         "damage",
-        "combination"
+        "combination",
+        "interruptible"
       ]
     },
     "ShapeType": {
@@ -443,6 +446,7 @@
         "delay",
         "form",
         "impairment",
+        "impairment.pyretic",
         "indicator",
         "damage-up",
         "rot",
