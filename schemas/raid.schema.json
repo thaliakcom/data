@@ -688,8 +688,21 @@
           "description": "Allows specifying additional information about the timing of the action."
         },
         "flatten": {
-          "type": "boolean",
-          "description": "If true, completely hides the element from the timeline and instead only prints its children. Can be used to group a sequence of consecutive actions together that appear in this sequence multiple times in the fight, avoiding the need to write them out each time."
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string",
+              "const": "omit-parent"
+            },
+            {
+              "type": "string",
+              "const": "omit-children"
+            }
+          ],
+          "description": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n false (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n true: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n omit-parent: Same as true, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n omit-children: Hides the element's children completely.",
+          "markdownDescription": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n* `false` (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n* `true`: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n* `omit-parent`: Same as `true`, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n* `omit-children`: Hides the element's children completely."
         }
       },
       "required": [
@@ -794,8 +807,21 @@
           "description": "The number of players damaged by this action. Should only be specified if this timeline item's player count differs from the player count defined within the action itself."
         },
         "flatten": {
-          "type": "boolean",
-          "description": "If true, completely hides the element from the timeline and instead only prints its children. Can be used to group a sequence of consecutive actions together that appear in this sequence multiple times in the fight, avoiding the need to write them out each time."
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string",
+              "const": "omit-parent"
+            },
+            {
+              "type": "string",
+              "const": "omit-children"
+            }
+          ],
+          "description": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n false (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n true: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n omit-parent: Same as true, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n omit-children: Hides the element's children completely.",
+          "markdownDescription": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n* `false` (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n* `true`: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n* `omit-parent`: Same as `true`, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n* `omit-children`: Hides the element's children completely."
         },
         "id": {
           "type": "string",
@@ -890,8 +916,21 @@
           "description": "Allows specifying additional information about the timing of the action."
         },
         "flatten": {
-          "type": "boolean",
-          "description": "If true, completely hides the element from the timeline and instead only prints its children. Can be used to group a sequence of consecutive actions together that appear in this sequence multiple times in the fight, avoiding the need to write them out each time."
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "string",
+              "const": "omit-parent"
+            },
+            {
+              "type": "string",
+              "const": "omit-children"
+            }
+          ],
+          "description": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n false (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n true: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n omit-parent: Same as true, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n omit-children: Hides the element's children completely.",
+          "markdownDescription": "Can be used to change how a timeline item with children appears in the timeline.\n\nPossible values:\n\n* `false` (default): The element's children are indented and are not rearranged in any way. All children of an element appear directly underneath that element, but this may cause the children not to appear in the timeline in chronological order.\n\n* `true`: Detaches the element's descendants from their parent element and rearranges them in chronological order. This is useful when the exact order of mechanics is crucial information for resolving the mechanic in-game.\n\n* `omit-parent`: Same as `true`, but this element (the parent element) is hidden from the timeline in the process. This is useful when the parent element doesn't represent a real mechanic and is only used to group several related mechanics.\n\n* `omit-children`: Hides the element's children completely."
         },
         "expandable": {
           "type": "boolean",

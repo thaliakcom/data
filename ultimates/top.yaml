@@ -899,7 +899,7 @@ actions:
     children:
       - at: 5047
         id: wave-repeater
-        flatten: true
+        flatten: omit-parent
       - at: 17112
         id: colossal-blow
       - at: 19127
@@ -1270,19 +1270,19 @@ actions:
     children:
       - at: 0
         id: wave-cannon-set
-        flatten: true
+        flatten: omit-parent
       - at: 7991
         id: wave-repeater
-        flatten: true
+        flatten: omit-parent
       - at: 10760
         id: wave-cannon-set
-        flatten: true
+        flatten: omit-parent
       - at: 25426
         id: wave-repeater
-        flatten: true
+        flatten: omit-parent
       - at: 25559
         id: wave-cannon-set
-        flatten: true
+        flatten: omit-parent
   wave-cannon-set:
     id: 31617
     mechanic: mech
