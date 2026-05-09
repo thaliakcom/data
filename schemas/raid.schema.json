@@ -463,6 +463,10 @@
           "type": "string",
           "description": "Can be used to override the name of the action. Note that the action name is automatically retrieved from game data based on the action ID, so overriding this value is only necessary if there is no game data entry for this action, or when the game data name is incorrect."
         },
+        "caption": {
+          "type": "string",
+          "description": "A sort of \"caption\" or suffix for the action that can be used to disambiguate multiple actions with the same name but different effects.\n\nFor example, The Weapon's Refrain (Ultimate) features two actions called Mistral Song, but one is a wide Wild Charge targeting a specific player via headmarker and the other a simple conal attack originating from Garuda during Ultimate Suppression."
+        },
         "mechanic": {
           "$ref": "#/definitions/MechanicType",
           "description": "What kind of a mechanic it is. Must be one of the values from attack-types.yaml.\n\nAside from being displayed in the timeline, the mechanic type also determines how the mechanic is treated in the mitigation timeline.\n\nIf a mechanic can be one of several types depending on which action is cast, make two actions and link them using link: or in the timeline. If a mechanic can be one of several types but are not distinguished by the action that is cast, prefer to place the damage instances into a children list and link them using link: or. If the mechanic has no associated damage instance or linking them in this way is otherwise impossible, consider creating a new entry in attack-types.yaml.",
@@ -641,6 +645,10 @@
           "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
           "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
         },
+        "caption": {
+          "type": "string",
+          "description": "Can be used to add or override a caption on a per-timeline-item basis."
+        },
         "description": {
           "type": "string",
           "description": "A description of the action as it happens at this point in the timeline. If not supplied, will default to the first line in the description of the referenced action."
@@ -768,6 +776,10 @@
           "minimum": 0,
           "markdownDescription": "The time in milliseconds relative to the `at` value of the parent ability that this ability *hits*.\n\nA mechanic \"hitting\" is defined as follows:\n\n* If the action inflicts damage or statuses, it's at the time that that damage and statuses are **snapshot** on the player(s).\n\n* If the action has a castbar but otherwise has no visible effect, it's at the end of the castbar."
         },
+        "caption": {
+          "type": "string",
+          "description": "Can be used to add or override a caption on a per-timeline-item basis."
+        },
         "description": {
           "type": "string",
           "description": "A description of the action as it happens at this point in the timeline. If not supplied, will default to the first line in the description of the referenced action."
@@ -834,6 +846,10 @@
           "type": "string",
           "description": "The ID of the action executed. Should reference an action listed in actions.\n\nIf the boss can cast different variations of this mechanic, use link: or.",
           "markdownDescription": "The ID of the action executed. Should reference an action listed in `actions`.\n\nIf the boss can cast different variations of this mechanic, use `link: or`."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Can be used to add or override a caption on a per-timeline-item basis."
         },
         "description": {
           "type": "string",
