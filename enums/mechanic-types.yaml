@@ -323,7 +323,7 @@ mech.los:
   name: line of sight
   description: Hits all players in direct line of sight to the source of the attack. Usually some sort of cover is required to hide behind.
 mech.limit:
-  name: limit cut
+  name: Limit Cut
   description: |
     A mechanic that is generally identified by numbers appearing above players' or objects' heads, indicating that they will receive some kind of mechanic in sequence.
     Named after Cruise Chaser's eponymous attack, [a:7916].
