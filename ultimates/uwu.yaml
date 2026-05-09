@@ -1,7 +1,7 @@
 id: 539
 patch: "4.31"
 date: 2026-05-03
-modified: 2026-05-03
+modified: 2026-05-09
 by:
   id: 27637301
   role: author
@@ -556,50 +556,6 @@ actions:
       id: radiant-plume
       description: AoEs that cover the entire arena except a small safe spot in either the west or east, and north or south.
       count: 10
-  ifrit-dashes:
-    name: Ifrit Dashes
-    mechanic: mech
-    emphasis: more
-    compact: trim
-    description: |
-      Ifrit becomes untargetable and jumps away. A short while later, he reappears outside the arena along with three of his clones.
-      The exact positions of the four Ifrits are based on the positions of the Infernal Nails you previously destroyed. Each nail was positioned on either a cardinal or an intercardinal, and the positions of the Ifrits mirror the nails exactly, spawning an Ifrit on a cardinal or intercardinal that previously seated a nail.
-      Each Ifrit now prepares to cast [a:crimson-cyclone]. If Ifrit is [s:woken] by this point, his [a:crimson-cyclone] will be the [woken](a:crimson-cyclone-woken) version (with a follow-up). The other three Ifrits will only use the normal version of [a:crimson-cyclone] without the follow-up.
-      The *order* that the Ifrits use their [a:crimson-cyclone] in is *also* based on the Infernal Nails – specifically their kill order. As an example, if there was a nail east, southeast, southwest, and north, and they were killed in the recommended order (in this case southwest, north, southeast, east), then the first Ifrit using [a:crimson-cyclone] will be southwest, the second one north, the third southeast, and the last one east. One of them will randomly be the real ([s:woken]) Ifrit.
-    resolve: |
-      Start at the position of the last nail to be killed (therefore also the last Ifrit to dash across the arena). Ideally, your tank should have already dragged the boss to this position after [a:hellfire-nails].
-      To identify which Ifrit is the real one and will use the follow-up, find the Ifrit with the blue glow. The goal is to end up on the same position as the [s:woken] Ifrit, across from him, or at a 90° angle from him, after he dashes.
-      If the glowing Ifrit is the first or third Ifrit (to your left), you wait for the first dash, then move one position counter-clockwise and stop there.
-      If the glowing Ifrit is the second (to your right) or fourth (behind you) Ifrit, you wait for the first dash, then quickly move two positions counter-clockwise. If you're extra fast, you may have to wait for the second dash before moving into it, but since dashes resolve very quickly this should generally not be necessary.
-      Your [s:searing-wind] healer will perform the same dodge, but directly across from the party on the opposite side of the arena.
-    strategies:
-      ifrit-dashes:
-        name: Examples
-    children:
-    - at: 0
-      id: <untargetable>
-      target: Ifrit
-      description: Ifrit jumps away, becoming untargetable.
-    - at: 3783
-      id: searing-wind
-    - at: 7399
-      id: crimson-cyclone
-      link: then
-    - at: 8829
-      id: crimson-cyclone
-      link: then
-    - at: 9811
-      id: searing-wind
-      link: and
-    - at: 10213
-      id: crimson-cyclone
-      link: then
-    - at: 11600
-      id: crimson-cyclone
-    - at: 15799
-      id: <targetable>
-      target: Ifrit
-      description: Ifrit returns to the arena.
   crimson-cyclone:
     id: 11103
     mechanic: aoe
@@ -811,6 +767,50 @@ actions:
     shape: line
     count: 2
     description: "[a:crimson-cyclone] hits again 45° offset from the initial dash. Only when Ifrit is [s:woken]. Note that these lines are significantly smaller than the initial hit."
+  ifrit-dashes:
+    name: Ifrit Dashes
+    mechanic: mech
+    emphasis: more
+    compact: trim
+    description: |
+      Ifrit becomes untargetable and jumps away. A short while later, he reappears outside the arena along with three of his clones.
+      The exact positions of the four Ifrits are based on the positions of the Infernal Nails you previously destroyed. Each nail was positioned on either a cardinal or an intercardinal, and the positions of the Ifrits mirror the nails exactly, spawning an Ifrit on a cardinal or intercardinal that previously seated a nail.
+      Each Ifrit now prepares to cast [a:crimson-cyclone]. If Ifrit is [s:woken] by this point, his [a:crimson-cyclone] will be the [woken](a:crimson-cyclone-woken) version (with a follow-up). The other three Ifrits will only use the normal version of [a:crimson-cyclone] without the follow-up.
+      The *order* that the Ifrits use their [a:crimson-cyclone] in is *also* based on the Infernal Nails – specifically their kill order. As an example, if there was a nail east, southeast, southwest, and north, and they were killed in the recommended order (in this case southwest, north, southeast, east), then the first Ifrit using [a:crimson-cyclone] will be southwest, the second one north, the third southeast, and the last one east. One of them will randomly be the real ([s:woken]) Ifrit.
+    resolve: |
+      Start at the position of the last nail to be killed (therefore also the last Ifrit to dash across the arena). Ideally, your tank should have already dragged the boss to this position after [a:hellfire-nails].
+      To identify which Ifrit is the real one and will use the follow-up, find the Ifrit with the blue glow. The goal is to end up on the same position as the [s:woken] Ifrit, across from him, or at a 90° angle from him, after he dashes.
+      If the glowing Ifrit is the first or third Ifrit (to your left), you wait for the first dash, then move one position counter-clockwise and stop there.
+      If the glowing Ifrit is the second (to your right) or fourth (behind you) Ifrit, you wait for the first dash, then quickly move two positions counter-clockwise. If you're extra fast, you may have to wait for the second dash before moving into it, but since dashes resolve very quickly this should generally not be necessary.
+      Your [s:searing-wind] healer will perform the same dodge, but directly across from the party on the opposite side of the arena.
+    strategies:
+      ifrit-dashes:
+        name: Examples
+    children:
+    - at: 0
+      id: <untargetable>
+      target: Ifrit
+      description: Ifrit jumps away, becoming untargetable.
+    - at: 3783
+      id: searing-wind
+    - at: 7399
+      id: crimson-cyclone
+      link: then
+    - at: 8829
+      id: crimson-cyclone
+      link: then
+    - at: 9811
+      id: searing-wind
+      link: and
+    - at: 10213
+      id: crimson-cyclone
+      link: then
+    - at: 11600
+      id: crimson-cyclone
+    - at: 15799
+      id: <targetable>
+      target: Ifrit
+      description: Ifrit returns to the arena.
   geocrush-initial:
     id: 11517
     mechanic: raidwide.proximity
