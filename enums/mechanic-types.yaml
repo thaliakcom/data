@@ -128,12 +128,16 @@ stack.role:
   shapeful: true
 stack.healers:
   name: healer stack
-  description: A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and make it survivable.
+  description: |
+    A heavy-hitting attack on both healers that cannot be survived alone. The party must be divided into light parties, and those light parties must stack close to their respective healer to divide the damage amongst themselves and render it survivable.
+    In most cases if a healer is missing or dead, the stack will instead target a random player.
   players: 4
   shapeful: true
 stack.supports:
   name: light-party stack
-  description: A heavy-hitting attack on either both healers or both tanks that cannot be survived alone. The party must be divided into light parties, and those light parties must stack on top of each other to divide the damage amongst themselves and make it survivable.
+  description: |
+    A heavy-hitting attack on either both healers or both tanks that cannot be survived alone. The party must be divided into light parties, and those light parties must stack on top of each other to divide the damage amongst themselves and render it survivable.
+    In most cases if a player of the targeted role is missing or dead, the stack will instead target a random player.
   players: 4
   shapeful: true
 stack:
@@ -143,31 +147,31 @@ stack:
   shapeful: true
 stack.far:
   name: far stack
-  description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
+  description: A heavy-hitting attack on the farthest player from the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and render it survivable.
   players: 8
   shapeful: true
 stack.close:
   name: close stack
-  description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and make it survivable.
+  description: A heavy-hitting attack on the closest player to the boss that cannot be survived alone. As many party members as possible must stack with them to divide the damage amongst themselves and render it survivable.
   players: 8
   shapeful: true
 stack.ululation:
   name: ululation
   description: |
     A mechanic that requires affected players to stack with at least one other party member. They will not receive damage, but failing to stack will generally inflict heavy damage or debuffs.
-    Named after Cerberus's eponymous attack, [a:3254]. Also sometimes called a "dorito stack", after the appearance of the marker that appears above affected players' heads in some normal raids and trials.
+    Named after Cerberus's eponymous attack, [a:3254]. Also sometimes called a "dorito stack", after the appearance of the marker that appears above affected players' heads in some duties.
 stack.intercept:
   name: Wild Charge
   description: |
     A stack (almost always in the shape of a line) that has a different effect on the first player(s) hit than the players behind them.
-    In practice, this usually translates to the first target(s) taking massive damage and requiring the use of tank cooldowns to live, with non-tanks behind them. In some cases, however, the first target(s) may simply be inflicted with a special status effect.
+    In practice, this usually translates to the first target(s) taking massive damage and requiring the use of tank cooldowns to live, with non-tanks behind them. In some cases, however, the first target(s) may simply take lethal damage if they are under the effect of a special debuff.
     Named after Imdugud's eponymous attack, [a:2134].
   players: 8
   shapeful: true
 stack.tower:
   name: stack tower
   description: |
-    Similar to an ordinary tower mechanic, markers or towers appear in certain locations in the arena that require soaking (i.e. if no one is in the tower or marker, it's usually a party wipe).
+    Similar to an ordinary tower mechanic, markers or towers appear in certain locations in the arena that require soaking (i.e. if no one is in the tower or marker, it inflicts heavy damage or debuffs).
     Unlike regular tower mechanics, however, this type of mechanic does not do fixed but shareable damage, meaning that as many party members as possible should be in each stack to reduce the damage taken.
 aoe:
   name: AoE
