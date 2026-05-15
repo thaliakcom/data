@@ -1,0 +1,957 @@
+# Tank
+- id: rampart
+  description: "Reduces damage taken by 20%.\n\nDuration: 20s"
+  effects:
+  - id: rampart
+    mitigation: 20
+    duration: 20000
+    target: self
+- id: reprisal
+  description: "Reduces damage dealt by nearby enemies by 10%.\n\nDuration: 10s"
+  effects:
+  - id: reprisal
+    mitigation: 10
+    duration: 10000
+    target: enemy
+- id: reprisal
+  level: 98
+  description: "Reduces damage dealt by nearby enemies by 10%.\n\nDuration: 15s"
+  effects:
+  - id: reprisal
+    mitigation: 15
+    duration: 10000
+    target: enemy
+# PLD
+- id: sentinel
+  effects:
+  - id: sentinel
+    mitigation: 30
+    duration: 15000
+    target: self
+- id: guardian
+  supersedes: sentinel
+  effects:
+  - id: guardian
+    mitigation: 40
+    duration: 15000
+    target: self
+  - id: guardians-will
+    barrier: 18
+    duration: 15000
+    target: self
+- id: bulwark
+  effects:
+  - id: bulwark
+    mitigation: 20
+    duration: 10000
+    target: self
+- id: cover
+  effects:
+  - id: cover
+    mitigation: 100
+    duration: 12000
+    target: target
+- id: hallowed-ground
+  effects:
+  - id: hallowed-ground
+    mitigation: 100
+    duration: 10000
+    target: self
+- id: divine-veil
+  effects:
+  - heal: true
+    target: party
+  - id: divine-veil
+    barrier: 10
+    duration: 30000
+    target: party
+- id: sheltron
+  effects:
+  - id: sheltron
+    mitigation: 15
+    duration: 6000
+    target: self
+- id: holy-sheltron
+  supersedes: sheltron
+  effects:
+  - id: holy-sheltron
+    mitigation: 15
+    duration: 8000
+    target: self
+  - id: knights-resolve
+    mitigation: 15
+    duration: 4000
+    target: self
+  - id: knights-benediction
+    heal: true
+    duration: 12000
+    target: self
+- id: intervention
+  description: "Reduces target party member's damage taken by 10%.\n\nDuration: 6s"
+  effects:
+  - id: intervention
+    mitigation: 10
+    duration: 6000
+    target: target
+- id: intervention
+  level: 82
+  effects:
+  - id: intervention
+    mitigation: 10
+    duration: 8000
+    target: target
+  - id: knights-resolve
+    mitigation: 10
+    duration: 4000
+    target: target
+  - id: knights-benediction
+    heal: true
+    duration: 12000
+    target: target
+- id: passage
+  channelable: true
+  channelDuration: 18000
+  effects:
+  - id: passage
+    mitigation: 15
+    duration: 3000
+    target: party-not-self
+  - id: passage
+    mitigation: 20
+    duration: 3000
+    target: self
+# WAR
+- id: thrill-of-battle
+  effects:
+  - id: thrill-of-battle
+    barrier: 20
+    duration: 10000
+    target: self
+- id: holmgang
+  effects:
+  - id: holmgang
+    mitigation: 100
+    duration: 10000
+    target: self
+- id: vengeance
+  effects:
+  - id: vengeance
+    mitigation: 30
+    duration: 15000
+    target: self
+- id: damnation
+  supersedes: vengeance
+  effects:
+  - id: damnation
+    mitigation: 40
+    duration: 15000
+    target: self
+  - id: primeval-impulse
+    heal: true
+    duration: 15000
+    target: self
+- id: equilibrium
+  description: "Restores own HP.\n\nCure Potency: 1,200"
+  effects:
+  - heal: true
+    target: self
+- id: equilibrium
+  level: 84
+  effects:
+  - heal: true
+    target: self
+  - id: equilibrium
+    heal: true
+    duration: 15000
+    target: self
+- id: shake-it-off
+  dispels: [raw-intuition, bloodwhetting, thrill-of-battle, vengeance, damnation]
+  effects:
+  - id: shake-it-off
+    barrier: 15
+    duration: 30000
+    target: party
+  - id: shake-it-off-over-time
+    heal: true
+    duration: 15000
+    target: party
+- id: shake-it-off
+  dispels: [raw-intuition, bloodwhetting, thrill-of-battle, vengeance, damnation]
+  level: 76
+  effects:
+  - id: shake-it-off
+    barrier: 15
+    duration: 30000
+    target: party
+  - id: shake-it-off-over-time
+    heal: true
+    duration: 15000
+    target: party
+  - heal: true
+    target: party
+- id: raw-intuition
+  effects:
+  - id: raw-intuition
+    mitigation: 10
+    duration: 6000
+    target: self
+  - id: raw-intuition
+    heal: true
+    duration: 6000
+    target: self
+- id: bloodwhetting
+  supersedes: raw-intuition
+  effects:
+  - id: bloodwhetting
+    heal: true
+    duration: 8000
+    target: self
+  - id: bloodwhetting
+    mitigation: 10
+    duration: 8000
+    target: self
+  - id: stem-the-flow
+    mitigation: 10
+    duration: 4000
+    target: self
+  - id: stem-the-tide
+    barrier: 8
+    duration: 20000
+    target: self
+- id: nascent-flash
+  effects:
+  - id: nascent-flash
+    heal: true
+    duration: 6000
+    target: self
+  - id: nascent-glint
+    heal: true
+    duration: 6000
+    target: target
+  - id: nascent-glint
+    mitigation: 10
+    duration: 6000
+    target: target
+- id: nascent-flash
+  level: 82
+  effects:
+  - id: nascent-flash
+    heal: true
+    duration: 8000
+    target: self
+  - id: nascent-glint
+    heal: true
+    duration: 8000
+    target: target
+  - id: nascent-glint
+    mitigation: 10
+    duration: 8000
+    target: target
+  - id: stem-the-flow
+    mitigation: 10
+    duration: 4000
+    target: target
+  - id: stem-the-tide
+    barrier: 8
+    duration: 20000
+    target: target
+# DRK
+- id: dark-mind
+  effects:
+  - id: dark-mind
+    mitigation: 20
+    type: magical
+    duration: 20000
+    target: self
+- id: shadow-wall
+  effects:
+  - id: shadow-wall
+    mitigation: 30
+    duration: 15000
+    target: self
+- id: shadowed-vigil
+  effects:
+  - id: shadowed-vigil
+    mitigation: 40
+    duration: 15000
+    target: self
+- id: living-dead
+  effects:
+  - id: living-dead
+    mitigation: 100
+    duration: 10000
+    target: self
+- id: tbn
+  effects:
+  - id: tbn
+    barrier: 25
+    duration: 7000
+    target: target-or-self
+- id: dark-missionary
+  effects:
+  - id: dark-missionary
+    mitigation: 10
+    type: magical
+    duration: 15000
+    target: party
+- id: oblation
+  effects:
+  - id: oblation
+    mitigation: 10
+    duration: 10000
+    target: target-or-self
+# GNB
+- id: camouflage
+  effects:
+  - id: camouflage
+    mitigation: 10
+    duration: 20000
+    target: self
+- id: nebula
+  effects:
+  - id: nebula
+    mitigation: 30
+    duration: 15000
+    target: self
+- id: great-nebula
+  supersedes: nebula
+  effects:
+  - id: great-nebula
+    mitigation: 40
+    duration: 15000
+    target: self
+  - id: great-nebula
+    barrier: 20
+    duration: 15000
+    target: self
+- id: aurora
+  effects:
+  - id: aurora
+    heal: true
+    duration: 18000
+    target: target-or-self
+- id: superbolide
+  effects:
+  - id: superbolide
+    mitigation: 100
+    duration: 10000
+    target: self
+- id: heart-of-light
+  effects:
+  - id: heart-of-light
+    mitigation: 10
+    duration: 15000
+    type: magical
+    target: party
+- id: heart-of-stone
+  effects:
+  - id: heart-of-stone
+    mitigation: 15
+    duration: 7000
+    target: target-or-self
+- id: heart-of-corundum
+  supersedes: 16161
+  effects:
+  - id: heart-of-corundum
+    mitigation: 15
+    duration: 8000
+    target: target-or-self
+  - id: clarity-of-corundum
+    mitigation: 15
+    duration: 4000
+    target: target-or-self
+# Healer
+# WHM
+- id: benediction
+  effects:
+  - heal: true
+    target: target-or-self
+- id: asylum
+  effects:
+  - id: asylum
+    heal: true
+    duration: 24000
+    target: party
+- id: tetragrammaton
+  description: "Restores target's HP.\nCure Potency: 700"
+  charges: 1
+  effects:
+  - heal: true
+    target: target-or-self
+- id: tetragrammaton
+  level: 98
+  effects:
+  - heal: true
+    target: target-or-self
+- id: divine-benison
+  description: "Creates a barrier around self or target party member that absorbs damage equivalent to a heal of 500 potency.\nDuration: 15s"
+  effects:
+  - id: divine-benison
+    duration: 15000
+    barrier: 10
+    target: target-or-self
+- id: divine-benison
+  level: 88
+  effects:
+  - id: divine-benison
+    duration: 15000
+    barrier: 10
+    target: target-or-self
+- id: plenary-indulgence
+  effects:
+  - id: confession
+    duration: 10000
+    mitigation: 10
+    target: party
+- id: temperance
+  effects:
+  - id: temperance
+    duration: 20000
+    mitigation: 10
+    target: party
+  grants:
+  - action: divine-caress
+    duration: 30000
+- id: divine-caress
+  effects:
+  - id: divine-caress
+    barrier: 10
+    duration: 10000
+    target: party
+- id: aquaveil
+  effects:
+  - id: aquaveil
+    duration: 8000
+    mitigation: 15
+    target: target-or-self
+- id: liturgy
+  effects:
+  - id: liturgy
+    duration: 20000
+    heal: true
+    target: target-or-self
+# AST
+- id: essential-dignity
+  description: "Restores target's HP.\nCure Potency: 400\nPotency increases up to 900 as the target's HP decreases, reaching its maximum value when the target has 30% HP or less."
+  effects:
+  - heal: true
+    target: target-or-self
+- id: essential-dignity
+  level: 78
+  description: "Restores target's HP.\nCure Potency: 400\nPotency increases up to 900 as the target's HP decreases, reaching its maximum value when the target has 30% HP or less.\nMaximum Charges: 2"
+  effects:
+  - heal: true
+    target: target-or-self
+- id: essential-dignity
+  level: 98
+  effects:
+  - heal: true
+    target: target-or-self
+- id: synastry
+  effects:
+  - id: synastry
+    heal: true
+    duration: 20000
+    target: target-or-self
+- id: collective-unconscious
+  effects:
+  - id: collective-unconscious
+    mitigation: 10
+    duration: 10000
+    target: party
+  - id: wheel-of-fortune
+    heal: true
+    duration: 15000
+    target: party
+- id: celestial-opposition
+  effects:
+  - id: celestial-opposition
+    duration: 15000
+    heal: true
+    target: party
+- id: earthly-star
+  effects: []
+  grants:
+  - action: stellar-detonation
+    duration: 20000
+- id: stellar-detonation
+  effects:
+  - heal: true
+    target: party
+- id: celestial-intersection
+  description: "Restores own or target party member's HP.\nCure Potency: 200\nAdditional Sect Effect: Erects a magicked barrier which nullifies damage equaling 200% of the amount of HP restored\nDuration: 30s"
+  effects:
+  - id: celestial-intersection
+    barrier: 10
+    duration: 30000
+    target: target-or-self
+- id: celestial-intersection
+  level: 88
+  effects:
+  - id: celestial-intersection
+    barrier: 10
+    duration: 30000
+    target: target-or-self
+- id: horoscope
+  effects:
+  - id: horoscope
+    duration: 40000
+    heal: true
+    target: party
+- id: neutral-sect
+  description: "Increases healing magic potency by 20%.\nDuration: 20s\nAdditional Effect: When casting Aspected Benefic or Aspected Helios, erects a magicked barrier which nullifies damage\nAspected Benefic Effect: Nullifies damage equaling 250% of the amount of HP restored\nAspected Helios Effect: Nullifies damage equaling 125% of the amount of HP restored\nDuration: 30s"
+  effects:
+  - id: 1892
+    barrier: 10
+    duration: 50000
+    reapply: true
+    target: party
+- id: neutral-sect
+  description: "Increases healing magic potency by 20%.\nDuration: 20s\nAdditional Effect: When casting Aspected Benefic or Helios Conjunction, erects a magicked barrier which nullifies damage\nAspected Benefic Effect: Nullifies damage equaling 250% of the amount of HP restored\nHelios Conjunction Effect: Nullifies damage equaling 125% of the amount of HP restored\nDuration: 30s"
+  level: 96
+  effects:
+  - id: 1892
+    barrier: 10
+    duration: 50000
+    reapply: true
+    target: party
+- id: neutral-sect
+  level: 100
+  effects:
+  - id: 1892
+    barrier: 10
+    duration: 50000
+    reapply: true
+    target: party
+  grants:
+  - action: sun-sign
+    duration: 30000
+- id: exaltation
+  effects:
+  - id: exaltation
+    mitigation: 10
+    duration: 8000
+    target: target-or-self
+- id: macrocosmos
+  effects: []
+  grants:
+  - action: microcosmos
+    duration: 15000
+- id: microcosmos
+  effects:
+  - heal: true
+    target: party
+- id: sun-sign
+  effects:
+  - id: sun-sign
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: rescue
+  effects: []
+# SCH
+- id: succor
+  effects:
+  - id: galvanize
+    barrier: 11
+    duration: 30000
+    target: party
+- id: concitation
+  supersedes: succor
+  effects:
+  - id: galvanize
+    barrier: 14
+    duration: 30000
+    target: party
+- id: adloquium
+  effects:
+  - id: galvanize
+    barrier: 38
+    duration: 30000
+    target: target-or-self
+- id: whispering-dawn
+  effects:
+  - id: whispering-dawn
+    heal: true
+    duration: 21000
+    target: party
+- id: fey-illumination
+  effects:
+  - id: fey-illumination
+    mitigation: 5
+    type: magical
+    duration: 20000
+    target: party
+- id: sacred-soil
+  effects:
+  - id: sacred-soil
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: indomitability
+  effects:
+  - heal: true
+    target: party
+- id: deployment-tactics
+  cooldown: 120000
+  effects:
+  - id: galvanize
+    barrier: 38
+    duration: 30000
+    target: party
+- id: deployment-tactics
+  level: 88
+  effects:
+  - id: galvanize
+    barrier: 38
+    duration: 30000
+    target: party
+- id: dissipation
+  effects:
+  - id: dissipation
+    duration: 30000
+    target: party
+- id: excogitation
+  effects:
+  - id: excogitation
+    duration: 45000
+    target: target-or-self
+- id: recitation
+  cooldown: 90000
+  effects:
+  - id: recitation
+    duration: 45000
+    target: self
+- id: recitation
+  level: 98
+  effects:
+  - id: recitation
+    duration: 45000
+    target: self
+- id: fey-blessing
+  effects:
+  - heal: true
+    target: party
+- id: summon-seraph
+  effects:
+  - id: summon-seraph
+    duration: 22000
+    target: self
+- id: protraction
+  effects:
+  - id: protraction
+    barrier: 10
+    duration: 10000
+    target: target-or-self
+- id: expedient
+  effects:
+  - id: expedience
+    mitigation: 10
+    duration: 20000
+    target: party
+- id: seraphism
+  effects:
+  - id: seraphism
+    heal: true
+    duration: 20000
+    target: party
+# SGE
+- id: eukrasian-prognosis
+  effects:
+  - id: eukrasian-prognosis
+    barrier: 11
+    duration: 30000
+    target: party
+- id: eukrasian-prognosis-ii
+  supersedes: eukrasian-prognosis
+  effects:
+  - id: eukrasian-prognosis
+    barrier: 14
+    duration: 30000
+    target: party
+- id: eukrasian-diagnosis
+  effects:
+  - id: eukrasian-diagnosis
+    barrier: 38
+    duration: 30000
+    target: target-or-self
+- id: physis
+  effects:
+  - id: physis
+    heal: true
+    duration: 15000
+    target: party
+- id: physis-ii
+  supersedes: physis
+  effects:
+  - id: physis-ii
+    heal: true
+    duration: 15000
+    target: party
+- id: soteria
+  effects:
+  - id: soteria
+    heal: true
+    duration: 15000
+    target: target-or-self
+- id: kerachole
+  effects:
+  - id: kerachole
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: ixochole
+  effects:
+  - heal: true
+    target: party
+- id: zoe
+  name: Zoe (E.Prog)
+  cooldown: 120000
+  effects:
+  - id: eukrasian-prognosis
+    barrier: 21
+    duration: 30000
+    target: party
+- id: zoe
+  name: Zoe (E.Diag)
+  cooldown: 120000
+  effects:
+  - id: eukrasian-diagnosis
+    barrier: 57
+    duration: 30000
+    target: target-or-self
+- id: zoe
+  name: Zoe (Pneuma)
+  cooldown: 120000
+  effects:
+  - heal: true
+    target: party
+- id: zoe
+  name: Zoe (E.Prog)
+  level: 88
+  effects:
+  - id: eukrasian-prognosis
+    barrier: 21
+    duration: 30000
+    target: party
+- id: zoe
+  name: Zoe (E.Diag)
+  level: 88
+  effects:
+  - id: eukrasian-diagnosis
+    barrier: 57
+    duration: 30000
+    target: target-or-self
+- id: zoe
+  name: Zoe (Pneuma)
+  level: 88
+  effects:
+  - heal: true
+    target: party
+- id: taurochole
+  effects:
+  - id: taurochole
+    mitigation: 10
+    duration: 15000
+    target: target-or-self
+  - heal: true
+    target: target-or-self
+- id: haima
+  effects:
+  - id: haima
+    barrier: 10
+    reapply: 4
+    duration: 15000
+    target: target-or-self
+- id: holos
+  effects:
+  - id: holosakos
+    barrier: 10
+    duration: 30000
+    target: party
+  - id: holos
+    mitigation: 10
+    duration: 20000
+    target: party
+- id: panhaima
+  effects:
+  - id: panhaima
+    barrier: 7
+    reapply: 4
+    duration: 15000
+    target: party
+- id: pneuma
+  effects:
+  - heal: true
+    target: party
+- id: philosophia
+  effects:
+  - id: philosophia
+    heal: true
+    duration: 20000
+    target: party
+# Melee
+- id: second-wind
+  effects:
+  - heal: true
+    target: self
+- id: bloodbath
+  effects:
+  - id: bloodbath
+    heal: true
+    duration: 20000
+    target: self
+- id: feint
+  description: "Lowers target's physical damage dealt by 10% and magic damage dealt by 5%.\n\nDuration: 10s"
+  effects:
+  - id: feint
+    mitigation: 10
+    duration: 10000
+    type: physical
+    target: enemy
+  - id: feint
+    mitigation: 5
+    duration: 10000
+    type: magical
+    target: enemy
+- id: feint
+  level: 98
+  effects:
+  - id: feint
+    mitigation: 10
+    duration: 15000
+    type: physical
+    target: enemy
+  - id: feint
+    mitigation: 5
+    duration: 15000
+    type: magical
+    target: enemy
+# Ranged
+# BRD
+- id: troubadour
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with machinist's Tactician or dancer's Shield Samba."
+  cooldown: 120000
+  effects:
+  - id: troubadour
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: troubadour
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with machinist's Tactician or dancer's Shield Samba."
+  level: 88
+  effects:
+  - id: troubadour
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: troubadour
+  level: 98
+  effects:
+  - id: troubadour
+    mitigation: 15
+    duration: 15000
+    target: party
+# DNC
+- id: shield-samba
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with bard's Troubadour or machinist's Tactician."
+  cooldown: 120000
+  effects:
+  - id: shield-samba
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: shield-samba
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with bard's Troubadour or machinist's Tactician."
+  level: 88
+  effects:
+  - id: shield-samba
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: shield-samba
+  level: 98
+  effects:
+  - id: shield-samba
+    mitigation: 15
+    duration: 15000
+    target: party
+- id: improvisation
+  effects:
+  - id: improvised-finish
+    barrier: 10
+    duration: 30000
+    target: party
+# MCH
+- id: tactician
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with bard's Troubadour or dancer's Shield Samba.."
+  cooldown: 120000
+  effects:
+  - id: tactician
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: tactician
+  description: "Reduces damage taken by self and nearby party members by 10%.\nDuration: 15s\nEffect cannot be stacked with bard's Troubadour or dancer's Shield Samba.."
+  level: 88
+  effects:
+  - id: tactician
+    mitigation: 10
+    duration: 15000
+    target: party
+- id: tactician
+  level: 98
+  effects:
+  - id: tactician
+    mitigation: 15
+    duration: 15000
+    target: party
+- id: dismantle
+  effects:
+  - id: dismantled
+    mitigation: 10
+    duration: 10000
+    target: enemy
+# Caster
+- id: addle
+  description: "Lowers target's physical damage dealt by 5% and magic damage dealt by 10%.\n\nDuration: 10s"
+  effects:
+  - id: addle
+    mitigation: 10
+    duration: 10000
+    type: magical
+    target: enemy
+  - id: addle
+    mitigation: 5
+    duration: 10000
+    type: physical
+    target: enemy
+- id: addle
+  level: 98
+  effects:
+  - id: addle
+    mitigation: 10
+    duration: 15000
+    type: magical
+    target: enemy
+  - id: addle
+    mitigation: 5
+    duration: 15000
+    type: physical
+    target: enemy
+# RDM
+- id: magick-barrier
+  effects:
+  - id: magick-barrier
+    mitigation: 10
+    duration: 10000
+    type: magical
+    target: party
+# PCT
+- id: tempera-grassa
+  cooldown: 90000
+  effects:
+  - id: tempera-grassa
+    barrier: 10
+    duration: 10000
+    target: party

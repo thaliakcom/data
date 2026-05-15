@@ -1,0 +1,534 @@
+{
+  "$id": "https://thaliak.com/mitigation.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/MitigativeAction"
+  },
+  "description": "A list of all mitigative job actions in the game and their effects.",
+  "title": "Mitigation data",
+  "definitions": {
+    "MitigativeAction": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "description": "The numerical ID of the action in the game files, or the action alias as defined in common.yaml. If a job defines multiple actions with the same ID, an action supersedes another if and only if its level is higher than the other(s)'s.",
+              "markdownDescription": "The numerical ID of the action in the game files, or the action alias as defined in `common.yaml`. If a job defines multiple actions with the same ID, an action supersedes another if and only if its level is higher than the other(s)'s."
+            },
+            "name": {
+              "type": "string",
+              "description": "Can be used to override the name of the action."
+            },
+            "description": {
+              "type": "string",
+              "description": "Can be used to override the description of the action."
+            },
+            "level": {
+              "type": "number",
+              "description": "Can be used to override the level the action is usable at."
+            },
+            "charges": {
+              "type": "number",
+              "description": "Can be used to override the number of charges for this action."
+            },
+            "supersedes": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "description": "If this action supersedes another (i.e. because it is an upgrade), specify the redundant action here to hide it in the mitigation view if this action's level exceeds that other action.\n\nNot needed for when the action upgrades to a new action while keeping its action ID."
+            },
+            "dispels": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                ]
+              },
+              "description": "Some actions, such as Shake It Off, dispel certain effects when used while those effects are active. These effects can be specified here."
+            },
+            "cooldown": {
+              "type": "number",
+              "description": "The action's cooldown. This field is normally retrieved from the game data and does not ordinarily need to be specified."
+            },
+            "effects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Effect"
+              },
+              "description": "A list of status effects applied by this action."
+            },
+            "grants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": [
+                      "number",
+                      "string"
+                    ],
+                    "description": "The ID of the action whose use is being granted."
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "How long the action can be used for (ms)."
+                  }
+                },
+                "required": [
+                  "action",
+                  "duration"
+                ],
+                "additionalProperties": false
+              },
+              "description": "Grants the use of these actions after use."
+            }
+          },
+          "required": [
+            "id",
+            "effects"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "description": "The numerical ID of the action in the game files, or the action alias as defined in common.yaml. If a job defines multiple actions with the same ID, an action supersedes another if and only if its level is higher than the other(s)'s.",
+              "markdownDescription": "The numerical ID of the action in the game files, or the action alias as defined in `common.yaml`. If a job defines multiple actions with the same ID, an action supersedes another if and only if its level is higher than the other(s)'s."
+            },
+            "name": {
+              "type": "string",
+              "description": "Can be used to override the name of the action."
+            },
+            "description": {
+              "type": "string",
+              "description": "Can be used to override the description of the action."
+            },
+            "level": {
+              "type": "number",
+              "description": "Can be used to override the level the action is usable at."
+            },
+            "charges": {
+              "type": "number",
+              "description": "Can be used to override the number of charges for this action."
+            },
+            "supersedes": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              ],
+              "description": "If this action supersedes another (i.e. because it is an upgrade), specify the redundant action here to hide it in the mitigation view if this action's level exceeds that other action.\n\nNot needed for when the action upgrades to a new action while keeping its action ID."
+            },
+            "dispels": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                ]
+              },
+              "description": "Some actions, such as Shake It Off, dispel certain effects when used while those effects are active. These effects can be specified here."
+            },
+            "cooldown": {
+              "type": "number",
+              "description": "The action's cooldown. This field is normally retrieved from the game data and does not ordinarily need to be specified."
+            },
+            "effects": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Effect"
+              },
+              "description": "A list of status effects applied by this action."
+            },
+            "grants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "action": {
+                    "type": [
+                      "number",
+                      "string"
+                    ],
+                    "description": "The ID of the action whose use is being granted."
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "How long the action can be used for (ms)."
+                  }
+                },
+                "required": [
+                  "action",
+                  "duration"
+                ],
+                "additionalProperties": false
+              },
+              "description": "Grants the use of these actions after use."
+            },
+            "channelable": {
+              "type": "boolean",
+              "description": "If true, specifies that the action can be \"channeled\" (or \"held\"). In this case, channelDuration should be specified to indicate the maximum amount of time the action can be channeled.\n\nThe duration of all child effects are interpreted as the time the effect lingers after the channel is cancelled.",
+              "markdownDescription": "If true, specifies that the action can be \"channeled\" (or \"held\"). In this case, `channelDuration` should be specified to indicate the maximum amount of time the action can be channeled.\n\nThe `duration` of all child effects are interpreted as the time the effect lingers after the channel is cancelled."
+            },
+            "channelDuration": {
+              "type": "number",
+              "description": "The maximum duration of the channel in ms."
+            }
+          },
+          "required": [
+            "channelDuration",
+            "channelable",
+            "effects",
+            "id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Effect": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/DurationEffect"
+        },
+        {
+          "$ref": "#/definitions/HealEffect"
+        },
+        {
+          "$ref": "#/definitions/RegenEffect"
+        },
+        {
+          "$ref": "#/definitions/BarrierEffect"
+        },
+        {
+          "$ref": "#/definitions/MitigativeEffect"
+        }
+      ],
+      "description": "An action that yields some mitigation or healing."
+    },
+    "DurationEffect": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "self",
+            "party",
+            "party-not-self",
+            "target",
+            "enemy",
+            "target-or-self"
+          ],
+          "description": "The target of the action."
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
+          "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          },
+          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
+        },
+        "duration": {
+          "type": "number",
+          "description": "The duration of the effect in milliseconds."
+        }
+      },
+      "required": [
+        "duration",
+        "id",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "HealEffect": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "self",
+            "party",
+            "party-not-self",
+            "target",
+            "enemy",
+            "target-or-self"
+          ],
+          "description": "The target of the action."
+        },
+        "heal": {
+          "type": "boolean",
+          "description": "Set to true if this action heals players.",
+          "markdownDescription": "Set to `true` if this action heals players."
+        }
+      },
+      "required": [
+        "heal",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "RegenEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "self",
+            "party",
+            "party-not-self",
+            "target",
+            "enemy",
+            "target-or-self"
+          ],
+          "description": "The target of the action."
+        },
+        "heal": {
+          "type": "boolean",
+          "description": "Set to true if this action heals players.",
+          "markdownDescription": "Set to `true` if this action heals players."
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
+          "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          },
+          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
+        },
+        "duration": {
+          "type": "number",
+          "description": "The duration of the effect in milliseconds."
+        }
+      },
+      "required": [
+        "duration",
+        "heal",
+        "id",
+        "target"
+      ]
+    },
+    "BarrierEffect": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "self",
+            "party",
+            "party-not-self",
+            "target",
+            "enemy",
+            "target-or-self"
+          ],
+          "description": "The target of the action."
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
+          "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          },
+          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
+        },
+        "duration": {
+          "type": "number",
+          "description": "The duration of the effect in milliseconds."
+        },
+        "barrier": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "The strength of the barrier applied by this action as a percentage of the user's health."
+        },
+        "reapply": {
+          "type": [
+            "number",
+            "boolean"
+          ],
+          "description": "If true, reapplies the barrier every time damage is taken. If a number, reapplies the barrier at most n times.",
+          "markdownDescription": "If `true`, reapplies the barrier every time damage is taken. If a number, reapplies the barrier at most n times."
+        }
+      },
+      "required": [
+        "barrier",
+        "duration",
+        "id",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "MitigativeEffect": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "self",
+            "party",
+            "party-not-self",
+            "target",
+            "enemy",
+            "target-or-self"
+          ],
+          "description": "The target of the action."
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
+          "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          },
+          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
+        },
+        "duration": {
+          "type": "number",
+          "description": "The duration of the effect in milliseconds."
+        },
+        "mitigation": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "The percentual mitigation applied by this action."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "physical",
+            "magical"
+          ],
+          "description": "If the mitigation only applies to one type of damage, specify it here."
+        }
+      },
+      "required": [
+        "duration",
+        "id",
+        "mitigation",
+        "target"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
