@@ -62,13 +62,17 @@ actions:
   aurora: 16151
   superbolide: 16152
   succor: 186
+  concitation: 37013
   deployment-tactics: 3585
   zoe: 24300
   physick: 190
+  eukrasian-diagnosis: 24291
   eukrasian-prognosis: 24292
+  eukrasian-prognosis-ii: 37034
   taurochole: 24303
   kerachole: 24298
   panhaima: 24311
+  haima: 24305
   holos: 24310
   divine-benison: 7432
   aquaveil: 25861
@@ -77,15 +81,51 @@ actions:
   synastry: 3612
   collective-unconscious: 3613
   macrocosmos: 25874
+  microcosmos: 25875
   riddle-of-earth: 7394
   curing-waltz: 16015
   shade-shift: 2241
   manaward: 157
   troubadour: 7405
   magick-barrier: 25857
+  tempera-grassa: 34686
   tactician: 16889
   shield-samba: 16012
   dismantle: 2887
+  improvisation: 16014
+  benediction: 140
+  asylum: 3569
+  tetragrammaton: 3570
+  plenary-indulgence: 7433
+  divine-caress: 37011
+  essential-dignity: 3614
+  celestial-opposition: 16553
+  earthly-star: 7439
+  stellar-detonation: 8324
+  celestial-intersection: 16556
+  horoscope: 16557
+  neutral-sect: 16559
+  sun-sign: 37031
+  whispering-dawn: 803
+  fey-illumination: 805
+  sacred-soil: 188
+  adloquium: 185
+  indomitability: 3583
+  dissipation: 3587
+  excogitation: 7434
+  recitation: 16542
+  fey-blessing: 16543
+  summon-seraph: 16545
+  protraction: 25867
+  expedient: 25868
+  seraphism: 37014
+  physis: 24288
+  physis-ii: 24302
+  ixochole: 24299
+  pneuma: 24318
+  philosophia: 37035
+  soteria: 24294
+  exaltation: 25873
 
   # Other
   ten-chi-jin: 7403
@@ -164,11 +204,14 @@ status:
   heart-of-light: 1839
   camouflage: 1832
   superbolide: 1836
+  eukrasian-diagnosis: 2607
   eukrasian-prognosis: 2609
   taurochole: 2619
   kerachole: 2618
   panhaima: 2613
+  haima: 2612
   holos: 3003
+  holosakos: 3365
   divine-benison: 1218
   aquaveil: 2708
   liturgy: 2709
@@ -181,6 +224,36 @@ status:
   shade-shift: 488
   troubadour: 1934
   magick-barrier: 2707
+  tempera-grassa: 3687
+  tactician: 1951
+  shield-samba: 1826
+  improvised-finish: 2697
+  asylum: 739
+  confession: 1219
+  divine-caress: 3903
+  celestial-opposition: 897
+  celestial-intersection: 1889
+  horoscope: 1890
+  horoscope-helios: 1891
+  neutral-sect: 1892
+  sun-sign: 3896
+  whispering-dawn: 315
+  fey-illumination: 317
+  sacred-soil: 299
+  galvanize: 297
+  dissipation: 791
+  excogitation: 1220
+  recitation: 1896
+  summon-seraph: 3095
+  protraction: 2710
+  expedience: 2712
+  seraphism: 3884
+  physis: 2617
+  physis-ii: 2620
+  philosophia: 3898
+  soteria: 2610
+  aurora: 1835
+  exaltation: 2717
 
   # Other
   ten-chi-jin: 1186
@@ -192,3 +265,4 @@ status:
   paralysis: 17
   twice-come-ruin: 2483
   doom: 2516
+  dismantled: 860
