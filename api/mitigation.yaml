@@ -409,9 +409,9 @@
     duration: 20000
     mitigation: 10
     target: party
-  grants:
-  - action: divine-caress
+  - id: 3881
     duration: 30000
+    grants: divine-caress
 - id: divine-caress
   effects:
   - id: divine-caress
@@ -470,10 +470,10 @@
     heal: true
     target: party
 - id: earthly-star
-  effects: []
-  grants:
-  - action: stellar-detonation
+  effects:
+  - id: 1224
     duration: 20000
+    grants: stellar-detonation
 - id: stellar-detonation
   effects:
   - heal: true
@@ -523,9 +523,9 @@
     duration: 50000
     reapply: true
     target: party
-  grants:
-  - action: sun-sign
+  - id: 3895
     duration: 30000
+    grants: sun-sign
 - id: exaltation
   effects:
   - id: exaltation
@@ -533,10 +533,10 @@
     duration: 8000
     target: target-or-self
 - id: macrocosmos
-  effects: []
-  grants:
-  - action: microcosmos
+  effects:
+  - id: 2718
     duration: 15000
+    grants: microcosmos
 - id: microcosmos
   effects:
   - heal: true

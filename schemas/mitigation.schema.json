@@ -79,31 +79,6 @@
                 "$ref": "#/definitions/Effect"
               },
               "description": "A list of status effects applied by this action."
-            },
-            "grants": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "action": {
-                    "type": [
-                      "number",
-                      "string"
-                    ],
-                    "description": "The ID of the action whose use is being granted."
-                  },
-                  "duration": {
-                    "type": "number",
-                    "description": "How long the action can be used for (ms)."
-                  }
-                },
-                "required": [
-                  "action",
-                  "duration"
-                ],
-                "additionalProperties": false
-              },
-              "description": "Grants the use of these actions after use."
             }
           },
           "required": [
@@ -182,31 +157,6 @@
               },
               "description": "A list of status effects applied by this action."
             },
-            "grants": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "action": {
-                    "type": [
-                      "number",
-                      "string"
-                    ],
-                    "description": "The ID of the action whose use is being granted."
-                  },
-                  "duration": {
-                    "type": "number",
-                    "description": "How long the action can be used for (ms)."
-                  }
-                },
-                "required": [
-                  "action",
-                  "duration"
-                ],
-                "additionalProperties": false
-              },
-              "description": "Grants the use of these actions after use."
-            },
             "channelable": {
               "type": "boolean",
               "description": "If true, specifies that the action can be \"channeled\" (or \"held\"). In this case, channelDuration should be specified to indicate the maximum amount of time the action can be channeled.\n\nThe duration of all child effects are interpreted as the time the effect lingers after the channel is cancelled.",
@@ -243,6 +193,9 @@
         },
         {
           "$ref": "#/definitions/MitigativeEffect"
+        },
+        {
+          "$ref": "#/definitions/GrantEffect"
         }
       ],
       "description": "An action that yields some mitigation or healing."
@@ -527,6 +480,56 @@
         "id",
         "mitigation",
         "target"
+      ],
+      "additionalProperties": false
+    },
+    "GrantEffect": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
+          "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
+        },
+        "overrides": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          },
+          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
+        },
+        "duration": {
+          "type": "number",
+          "description": "The duration of the effect in milliseconds."
+        },
+        "grants": {
+          "type": [
+            "string",
+            "number"
+          ],
+          "description": "Grants the use of these actions after use."
+        }
+      },
+      "required": [
+        "duration",
+        "grants",
+        "id"
       ],
       "additionalProperties": false
     }
