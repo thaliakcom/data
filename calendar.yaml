@@ -928,7 +928,13 @@
   color: "#872e1c"
   url: https://sqex.to/9BrGm
   from: 2026-05-08 08:00:00
-  to: 2026-05-25 14:59:00
+  to: 2026-05-25 14:59:59
+- name: Make It Rain
+  type: event
+  color: "#a8a82d"
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/85445b8d6f3e6c85d7230afa942c0cd1ace03142
+  from: 2026-05-29 08:00:00
+  to: 2026-06-24 14:59:59
 - name: Patch 7.51 (Ultimate)
   short: Patch 7.51
   type: patch
