@@ -73,6 +73,10 @@
               "type": "number",
               "description": "The action's cooldown. This field is normally retrieved from the game data and does not ordinarily need to be specified."
             },
+            "target": {
+              "$ref": "#/definitions/ActionTarget",
+              "description": "The action's eligible targets. Note that this specifies the target the action can be used on, not necessarily the target the corresponding status effects will be granted to or inflicted on."
+            },
             "effects": {
               "type": "array",
               "items": {
@@ -83,6 +87,7 @@
           },
           "required": [
             "id",
+            "target",
             "effects"
           ],
           "additionalProperties": false
@@ -150,6 +155,10 @@
               "type": "number",
               "description": "The action's cooldown. This field is normally retrieved from the game data and does not ordinarily need to be specified."
             },
+            "target": {
+              "$ref": "#/definitions/ActionTarget",
+              "description": "The action's eligible targets. Note that this specifies the target the action can be used on, not necessarily the target the corresponding status effects will be granted to or inflicted on."
+            },
             "effects": {
               "type": "array",
               "items": {
@@ -171,10 +180,21 @@
             "channelDuration",
             "channelable",
             "effects",
-            "id"
+            "id",
+            "target"
           ],
           "additionalProperties": false
         }
+      ]
+    },
+    "ActionTarget": {
+      "type": "string",
+      "enum": [
+        "self",
+        "party",
+        "target",
+        "enemy",
+        "target-not-self"
       ]
     },
     "Effect": {
@@ -204,16 +224,8 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string",
-          "enum": [
-            "self",
-            "party",
-            "party-not-self",
-            "target",
-            "enemy",
-            "target-or-self"
-          ],
-          "description": "The target of the action."
+          "$ref": "#/definitions/EffectTarget",
+          "description": "The target of the effect. Overwrites the action target if set."
         },
         "id": {
           "anyOf": [
@@ -228,47 +240,34 @@
           "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
           "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
         },
-        "overrides": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "minimum": 0
-              }
-            ]
-          },
-          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
-        },
         "duration": {
           "type": "number",
           "description": "The duration of the effect in milliseconds."
         }
       },
       "required": [
-        "duration",
         "id",
-        "target"
+        "duration"
       ],
       "additionalProperties": false
+    },
+    "EffectTarget": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ActionTarget"
+        },
+        {
+          "type": "string",
+          "const": "party-not-self"
+        }
+      ]
     },
     "HealEffect": {
       "type": "object",
       "properties": {
         "target": {
-          "type": "string",
-          "enum": [
-            "self",
-            "party",
-            "party-not-self",
-            "target",
-            "enemy",
-            "target-or-self"
-          ],
-          "description": "The target of the action."
+          "$ref": "#/definitions/EffectTarget",
+          "description": "The target of the effect. Overwrites the action target if set."
         },
         "heal": {
           "type": "boolean",
@@ -277,8 +276,7 @@
         }
       },
       "required": [
-        "heal",
-        "target"
+        "heal"
       ],
       "additionalProperties": false
     },
@@ -287,16 +285,8 @@
       "additionalProperties": false,
       "properties": {
         "target": {
-          "type": "string",
-          "enum": [
-            "self",
-            "party",
-            "party-not-self",
-            "target",
-            "enemy",
-            "target-or-self"
-          ],
-          "description": "The target of the action."
+          "$ref": "#/definitions/EffectTarget",
+          "description": "The target of the effect. Overwrites the action target if set."
         },
         "heal": {
           "type": "boolean",
@@ -316,21 +306,6 @@
           "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
           "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
         },
-        "overrides": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "minimum": 0
-              }
-            ]
-          },
-          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
-        },
         "duration": {
           "type": "number",
           "description": "The duration of the effect in milliseconds."
@@ -339,24 +314,15 @@
       "required": [
         "duration",
         "heal",
-        "id",
-        "target"
+        "id"
       ]
     },
     "BarrierEffect": {
       "type": "object",
       "properties": {
         "target": {
-          "type": "string",
-          "enum": [
-            "self",
-            "party",
-            "party-not-self",
-            "target",
-            "enemy",
-            "target-or-self"
-          ],
-          "description": "The target of the action."
+          "$ref": "#/definitions/EffectTarget",
+          "description": "The target of the effect. Overwrites the action target if set."
         },
         "id": {
           "anyOf": [
@@ -370,21 +336,6 @@
           ],
           "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
           "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
-        },
-        "overrides": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "minimum": 0
-              }
-            ]
-          },
-          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
         },
         "duration": {
           "type": "number",
@@ -408,8 +359,7 @@
       "required": [
         "barrier",
         "duration",
-        "id",
-        "target"
+        "id"
       ],
       "additionalProperties": false
     },
@@ -417,16 +367,8 @@
       "type": "object",
       "properties": {
         "target": {
-          "type": "string",
-          "enum": [
-            "self",
-            "party",
-            "party-not-self",
-            "target",
-            "enemy",
-            "target-or-self"
-          ],
-          "description": "The target of the action."
+          "$ref": "#/definitions/EffectTarget",
+          "description": "The target of the effect. Overwrites the action target if set."
         },
         "id": {
           "anyOf": [
@@ -440,21 +382,6 @@
           ],
           "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
           "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
-        },
-        "overrides": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "minimum": 0
-              }
-            ]
-          },
-          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
         },
         "duration": {
           "type": "number",
@@ -478,8 +405,7 @@
       "required": [
         "duration",
         "id",
-        "mitigation",
-        "target"
+        "mitigation"
       ],
       "additionalProperties": false
     },
@@ -498,21 +424,6 @@
           ],
           "description": "The ID of the status effect in the game files, or an alias to common.yaml.",
           "markdownDescription": "The ID of the status effect in the game files, or an alias to `common.yaml`."
-        },
-        "overrides": {
-          "type": "array",
-          "items": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "integer",
-                "minimum": 0
-              }
-            ]
-          },
-          "description": "If this action overrides (i.e. cancels) the effect of another action, specify those action IDs here. Actions always override their own effects, so don't specify an action's own ID here."
         },
         "duration": {
           "type": "number",
