@@ -1,7 +1,7 @@
 id: 1116
 patch: "7.5"
 date: 2026-05-09
-modified: 2026-05-09
+modified: 2026-05-15
 by:
   id: 27637301
   role: author
@@ -106,8 +106,8 @@ actions:
     id: 49984
     mechanic: stack.intercept
     shape: line
-    tank-damage: 400000
     damage: 150000
+    tank-damage: 400000
     description: |
       Line [m:stack] on a random healer that deals significantly increased damage to the first two targets hit. Inflicts [s:magic-vulnerability-up].
       A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
@@ -118,8 +118,8 @@ actions:
     shape: line
     count: 2
     players: 4
-    tank-damage: 400000
     damage: 150000
+    tank-damage: 400000
     description: |
       Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up].
       A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
@@ -247,7 +247,8 @@ actions:
     mechanic: aoe.orbs
     shape: chariot
     players: 2
-    damage: 179359
+    damage: 0
+    tank-damage: 179359
     description: |
       A player touches a big black hole, dealing massive damage and inflicting [s:magic-vulnerability-up] on them and any nearby players.
       If no other player was hit by the AoE, knocks the player off the platform.
@@ -336,8 +337,8 @@ actions:
     mechanic: tb.flare
     count: 2
     players: 8
+    damage: 40000
     tank-damage: 337671
-    damage: 80000
     description: Heavy tankbuster on the first and second in enmity. Deals proximity damage.
   all-for-naught:
     id: 50010
@@ -366,13 +367,15 @@ actions:
       * Healers spawn a Soothing Shadow. It immediately inflicts [s:quantum-entanglement] on the corresponding healer, which lasts until the shadow is killed. It then casts [a:curse-of-the-flesh], which inflicts a cleansable [s:disease] on the healer.
       * DPS spawn an Aggressive Shadow. It casts [a:demon-eye], a gaze attack that players must face away from.
       **Note**: If a player targeted to a Shadow dies, that Shadow's damage immunity is lifted, meaning any player can damage it now.
+      **Note 2**: This timeline shows the DPS getting towers first, supports second, but it can be the other way around as well.
   drain-touch:
     id: 50018
     mechanic: interruptible
     type: magic
     count: 2
     players: 0
-    damage: 340000
+    damage: 0
+    tank-damage: 340000
     description: Heavy tankbuster on the tanks tethered to a Protective Shadow. Can be interrupted.
   voidal-turbulence:
     id: 50038
@@ -425,6 +428,7 @@ actions:
     id: 50021
     mechanic: tb.tether
     shape: line
+    count: 2
     damage: 341677
     description: Heavy tankbuster. Cannot be interjected, but with sufficient damage the Protective Shadow can be defeated before it can finish this cast.
   lightless-world:
@@ -707,6 +711,9 @@ timeline:
     target: Shadows (Set 2)
   - at: 216676
     id: curse-of-the-flesh
+  - at: 218712
+    id: drain-touch
+    timing: skippable
   - at: 225841
     id: weight-of-nothing
   - at: 273654
