@@ -1,7 +1,7 @@
 id: 1075
 patch: "7.4"
 date: 2026-01-28
-modified: 2026-03-05
+modified: 2026-05-19
 by:
   id: 27637301
   role: author
@@ -284,6 +284,7 @@ actions:
     mechanic: stack
     shape: chariot
     damage: 327383
+    players: 4
     description: "[s:shared-grotesquerie] resolves, triggering a small 4-person stack on that player. Inflicts [s:magic-vulnerability-up]."
   dramatic-lysis:
     id: 46250
@@ -626,7 +627,7 @@ actions:
     name: Cell Shedding
     mechanic: spread
     shape: chariot
-    count: 3
+    count: 4
     damage: 81075
     description: Small spread AoE as a result of cleansing [s:rotting-flesh] by taking damage. Inflicts [s:poison-resistance-down-ii].
   cell-death:
