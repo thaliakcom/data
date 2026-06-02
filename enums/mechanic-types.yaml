@@ -1,3 +1,6 @@
+unknown:
+  name: unknown
+  description: It is currently unknown what this action does, if anything.
 raidwide:
   name: raidwide
   description: Hits all party members with moderate to heavy damage.
@@ -320,9 +323,12 @@ mech.center-or-sides:
 mech.store:
   name: store
   description: Instead of executing the mechanic immediately, the boss instead *stores* it, executing it after some series of other mechanics. This requires players to remember *what* attack the boss stored, so they can avoid it accordingly when it is finally executed.
-mech.gaze:
-  name: gaze
-  description: Players must look away from a given target (often the boss). Failing to do so usually inflicts a debilitating debuff like [s:210].
+mech.lookaway:
+  name: gaze (look away)
+  description: Players must look *away* from a given target (often the boss). Failing to do so usually inflicts a debilitating debuff like [s:210].
+mech.lookat:
+  name: gaze (look at)
+  description: Players must look *at* a given target (often the boss). Failing to do so usually inflicts a debilitating debuff like [s:210].
 mech.los:
   name: line of sight
   description: Hits all players in direct line of sight to the source of the attack. Usually some sort of cover is required to hide behind.

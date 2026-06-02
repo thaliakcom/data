@@ -125,7 +125,7 @@ actions:
       After [a:ultimate-end], this also moves the massive dragon eye on the outside of the arena to a different location.
   the-dragons-gaze:
     id: 35272
-    mechanic: mech.gaze
+    mechanic: mech.lookaway
     description: Inflicts [s:hysteria] on any player looking at [boss] at the end of the cast.
   lightning-storm:
     id: 35265
@@ -629,7 +629,7 @@ actions:
       All players (except the main tank, who will be busy dealing with a simultaneous [a:heavenly-heel]) must stack in front of the targeted healer. The off-tank must be the closest player to Ser Zephirin, to ensure they get hit first. Be aware that they cannot take enmity from [boss] afterwards, due to their [s:physical-vuln].
   the-dragons-glory:
     id: 35273
-    mechanic: mech.gaze
+    mechanic: mech.lookaway
     description: Anyone looking at the dragon eye on the outside of the arena is inflicted with [s:hysteria] and [s:vuln].
   heavensward-leap:
     id: 35305

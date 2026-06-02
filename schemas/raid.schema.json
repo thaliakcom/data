@@ -220,6 +220,7 @@
     "MechanicType": {
       "type": "string",
       "enum": [
+        "unknown",
         "raidwide",
         "raidwide.lb",
         "raidwide.proximity",
@@ -291,7 +292,8 @@
         "mech.close-or-far",
         "mech.center-or-sides",
         "mech.store",
-        "mech.gaze",
+        "mech.lookaway",
+        "mech.lookat",
         "mech.los",
         "mech.limit",
         "mech.failure",

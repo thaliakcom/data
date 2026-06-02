@@ -599,11 +599,11 @@ actions:
     description: Summons an untargetable Oracle's Reflection (the unarmoured version of Usurper of Frost).
   frost-armor:
     id: 40184
-    mechanic: mech.gaze
+    mechanic: mech.lookaway
     description: Oracle's Reflection dons her ice armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
   shining-armor:
     id: 40185
-    mechanic: mech.gaze
+    mechanic: mech.lookaway
     description: Usurper of Frost dons her light armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
   the-house-of-light-protean:
     id: 40188
@@ -648,7 +648,7 @@ actions:
       Shortly afterwards, four more [a:icicle-impact]s appear next to the two existing ones, followed by a last set in the two remaining safe spots.
       [a:axe-kick]/[a:scythe-kick] resolves at approximately the same time as [a:the-house-of-light], which targets the four *closest* players with conal AoEs that inflict [s:magic-vulnerability-up]. The first set of [a:icicle-impact] resolves shortly after, followed by [a:frigid-stone]. [a:frigid-stone] also inflicts [s:magic-vulnerability-up] and leaves behind star-shaped AoEs in the form of [a:frigid-needle].
       Next, Oracle's Reflection teleports to a random [t:principal] and Usurper of Frost takes her place, executing [a:heavenly-strike], knocking players back a moderate distance. At the same time, Oracle's Reflection begins casting [a:sinbound-holy], an untelegraphed [m:stack.healers] on both healers that hits four times in a row, with each hit leaving behind a puddle that inflicts a lethal [s:bleeding-puddle] if players linger within for too long. The first hit roughly coincides with [a:frigid-needle] resolving. Usurper of Frost also moves to a random [t:principal] at this point, but while Oracle's Reflection is on the *inside* of the arena, Usurper of Frost teleports *outside* of the arena.
-      After all 4 hits of [a:sinbound-holy] are done, both Oracle's Reflection and Usurper of Frost change, with Oracle's Reflection changing into [a:frost-armor] while Usurper of Frost changes into [a:shining-armor]. Both of these outfit changes are [m:mech.gaze] attacks, [stunning](s:stun) players who face either boss when they finish. It also turns the arena to ice, inflicting [s:thin-ice] on all players.
+      After all 4 hits of [a:sinbound-holy] are done, both Oracle's Reflection and Usurper of Frost change, with Oracle's Reflection changing into [a:frost-armor] while Usurper of Frost changes into [a:shining-armor]. Both of these outfit changes are [m:mech.lookaway] attacks, [stunning](s:stun) players who face either boss when they finish. It also turns the arena to ice, inflicting [s:thin-ice] on all players.
       If any player is [stunned](s:stun), they are guaranteed to die without [a:rescue] intervention, as Oracle's Reflection (now appearing as the Usurper of Frost originally did) shouts "In stillness freeze!" or "Sink into silence!" and begins casting either [a:twin-stillness] or [a:twin-silence], respectively, a two-step attack that requires movement in-between the two hits to avoid the attack.
     resolve: |
       Starting off, it is strongly recommended for all players to preposition on standard [t:protean] positions, with supports on cardinals and damage dealers on intercardinals (or vice-versa). The goal of the first part of this mechanic is to ensure that all [a:frigid-needle]s are placed adjacent to the first set of [a:icicle-impact]. This is because the first [a:icicle-impact] locations are the two target [t:principal]s for the [a:heavenly-strike] knockback, and placing the [a:frigid-needle] next to those principals renders them safe.
@@ -1050,7 +1050,7 @@ actions:
     description: Simple stack. Inflicts [s:mark-of-mortality] if soaked by less than 5 players.
   shadoweye:
     id: 40278
-    mechanic: mech.gaze
+    mechanic: mech.lookaway
     count: 3
     description: Gaze attacks originating from the players with [s:spell-in-waiting:-shadoweye]. Any player facing these 3 players when their Shadoweye resolves are inflicted with [s:doom].
   dark-blizzard-iii:
