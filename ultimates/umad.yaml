@@ -7,5 +7,501 @@ by:
   role: author
 boss: Kefka
 HP: 0
-wip: full
+wip: [damage, diagrams]
+party_hp: 235643
 description: ""
+status:
+  damage-down:
+    id: 2911
+    type: impairment
+    duration: 180000
+    description: |
+      Reduces damage dealt by 90% for 3 minutes.
+      Inflicted by any avoidable source of damage, including [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], or auto-attacks from [s:confused] players.
+  magic-vulnerability-up:
+    id: 2941
+    type: vuln
+    duration: [960, 3960]
+    description: |
+      Renders any magic damage taken lethal.
+      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will].
+  double-trouble-trap:
+    id: 5078
+    name: Double-trouble Trap
+    type: delay
+    duration: [5000, 68000]
+    description: |
+      Triggers [a:double-trouble-trap-hit] when the effect expires, dealing shareable damage to the affected players and passing [s:double-trouble-trap] to a random player amongst those hit by [a:double-trouble-trap-hit].
+      When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. Every subsequent instance of this debuff (after being passed to another player), it resolves after over a minute.
+    gameDescription: When this effect expires, everyone else in the immediate vicinity will take damage. Should any player take damage, the [s:double-trouble-trap] will be passed to one of them.
+  tele-portent-down:
+    id: 4877
+    name: Tele-Portent (South)
+    type: delay
+    duration: [10000, 7000]
+    description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the south of the arena.
+  tele-portent-up:
+    id: 4876
+    name: Tele-Portent (North)
+    type: delay
+    duration: [10000, 7000]
+    description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the north of the arena.
+  tele-portent-right:
+    id: 4878
+    name: Tele-Portent (East)
+    type: delay
+    duration: [10000, 7000]
+    description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the east of the arena.
+  tele-portent-left:
+    id: 4879
+    name: Tele-Portent (West)
+    type: delay
+    duration: [7000, 10000]
+    description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the west of the arena.
+  bind:
+    id: 2518
+    type: impairment
+    duration: 1000
+    description: For a brief moment, affected players are unable to move but can still execute actions.
+  confused:
+    id: 1283
+    type: impairment
+    duration: 6000
+    description: |
+      Affected players run towards the closest player. If they are able to reach another player, they will auto-attack them dealing lethal damage and inflicting [s:damage-down].
+      Note that movement speed while [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
+      Inflicted by [a:indulgent-will].
+  sleep:
+    id: 4894
+    type: impairment
+    duration: 6000
+    description: |
+      Affected players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
+      Inflicted by [a:idyllic-will].
+actions:
+  auto-attack:
+    id: 49746
+    name: Auto-attack
+    mechanic: auto.single
+    damage: 158451
+    emphasis: less
+    description: Kefka kicks the top player in enmity, dealing heavy damage.
+  revolting-ruin-iii:
+    id: 50179
+    caption: ×2
+    mechanic: tb.mt
+    shape: cone
+    damage: 1025720
+    description: Heavy tankbuster that hits twice. First hits first-enmity, then second-enmity.
+    resolve: This action inflicts no vulnerability debuff, so with a [t:tankswap] the same player can take both hits without [t:invuln].
+    children:
+    - at: 3124
+      id: revolting-ruin-iii-followup
+  revolting-ruin-iii-followup:
+    id: 50401
+    caption: Follow-up
+    mechanic: tb.ot
+    shape: cone
+    damage: 1020666
+    description: Hits the second player in enmity with a heavy conal tankbuster.
+  enhanced-thrill-of-war-ii:
+    id: 50173
+    name: Enhanced Thrill Of War II
+    mechanic: unknown
+    description: Unknown effect.
+  graven-image-1:
+    id: 48370
+    caption: I
+    mechanic: mech
+    emphasis: more
+    compact: trim
+    description: |
+      Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-fire].
+      The tethered players are knocked back away from north just before [a:mystery-magic-fire] finishes casting. When [a:mystery-magic-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack] resolve, though these can also be inverted (see [a:mystery-magic-fire] for more information).
+      Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
+    children:
+    - at: 45
+      id: auto-attack
+    - at: 3083
+      id: auto-attack
+    - at: 5810
+      id: pulse-wave
+    - at: 8133
+      id: mystery-magic-fire
+    - at: 11126
+      id: auto-attack
+    - at: 13184
+      id: wave-cannon
+    - at: 15323
+      id: double-trouble-trap
+    - at: 16798
+      id: explosion
+    - at: 17200
+      id: auto-attack
+    - at: 20415
+      id: double-trouble-trap-hit
+  graven-image-2:
+    id: 48370
+    caption: II
+    mechanic: mech
+    emphasis: more
+    compact: trim
+    description: |
+      The right side of the statue tethers to all supports and the left side to all DPS, or vice-versa.
+      After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that inflicts [s:magic-vulnerability-up] and leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
+      There is a brief interlude afterwards involving a [a:revolting-ruin-iii] and [a:intemperate-will], after which all players are tethered again and the mechanic repeats.
+      After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked ([a:gravitational-wave]), which is likely related to the fight's puzzle mechanic but is currently still unknown.
+    children:
+    - at: 446
+      id: auto-attack
+    - at: 7103
+      id: blizzard-iii-blowout
+    - at: 7279
+      id: gravitas
+    - at: 9512
+      id: auto-attack
+    - at: 11296
+      id: vitrophyre
+    - at: 17098
+      id: revolting-ruin-iii
+    - at: 17543
+      id: auto-attack
+    - at: 20579
+      id: auto-attack
+    - at: 21027
+      id: intemperate-will
+    - at: 23621
+      id: auto-attack
+    - at: 25722
+      id: gravitas
+    - at: 29739
+      id: vitrophyre
+  graven-image-3:
+    id: 48370
+    caption: III
+    mechanic: mech
+    description: Placeholder description
+  pulse-wave:
+    id: 47785
+    mechanic: mech.knockback.unavoidable
+    count: 4
+    players: 0
+    damage: 0
+    description: Knocks the tethered players back, away from the north of the arena where the statue is.
+  mystery-magic-fire:
+    id: 47764
+    caption: Blizzard and Fire
+    mechanic: combination
+    compact: trim
+    description: |
+      Combines either [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii], or [a:blizzard-iii-blowout], and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread].
+      During the cast, [boss] has two rings around him in the colour of the two elements used for the attack. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the mechanic is *inverted*. For the AoE mechanics ([a:blizzard-iii-blowout] and [a:thrumming-thunder-iii]) this means that the areas of the arena that do *not* have an AoE telegraph in them are unsafe and the AoE telegraphs are safe. For [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack], it means that the stack turns into a spread and vice-versa.
+    children:
+    - at: 0
+      id: blizzard-iii-blowout
+      link: then
+    - at: 1100
+      id: flagrant-fire-iii-spread
+      link: or
+    - at: 1100
+      id: flagrant-fire-iii-stack
+  mystery-magic-thunder:
+    id: 47764
+    caption: Blizzard and Thunder
+    mechanic: combination
+    compact: trim
+    description: "[a:mystery-magic-fire:d]"
+    children:
+    - at: 0
+      id: thrumming-thunder-iii
+      link: and
+    - at: 0
+      id: blizzard-iii-blowout
+  wave-cannon:
+    id: 47784
+    mechanic: spread
+    shape: line
+    count: 4
+    damage: 327868
+    description: The statue fires 4 line AoEs at 2 random supports and 2 random DPS. Inflicts [s:magic-vulnerability-up].
+  double-trouble-trap:
+    id: 47782
+    mechanic: mech.status
+    description: Inflicts [s:double-trouble-trap] on a random support and a random DPS.
+  explosion:
+    id: 47786
+    mechanic: towers.single
+    count: 4
+    damage: 327595
+    description: |
+      Towers resolve.
+      If soaked by a player without [s:magic-vulnerability-up], deals heavy damage to them.
+      If soaked by by a player with [s:magic-vulnerability-up], instantly kills them.
+      If left unsoaked, deals minimal damage and inflicts [s:damage-down] on all party members ([a:unmitigated-explosion]).
+  unmitigated-explosion:
+    id: 47787
+    mechanic: mech.failure
+    players: 8
+    damage: 14000
+    description: A tower wasn't soaked, dealing minimal damage to and inflicting [s:damage-down] on all party members.
+  blizzard-iii-blowout:
+    id: 47768
+    mechanic: aoe
+    shape: cone
+    count: 2
+    players: 0
+    damage: 210019
+    description: |
+      Cone AoEs resolve, dealing heavy damage and inflicting [s:damage-down] on anyone hit.
+      If the ice ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
+  flagrant-fire-iii-spread:
+    id: 47778
+    caption: Spread
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 220657
+    description: |
+      Circular spreads resolve on all players. Inflicts [s:magic-vulnerability-up].
+      If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a stack on a random support and DPS ([a:flagrant-fire-iii-stack]).
+  flagrant-fire-iii-stack:
+    id: 47779
+    caption: Stack
+    mechanic: stack.role
+    shape: chariot
+    count: 2
+    damage: 211571
+    description: |
+      Circular stacks resolve on the indicated support and DPS. Inflicts [s:magic-vulnerability-up].
+      If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a spread on all players ([a:flagrant-fire-iii-spread]).
+  double-trouble-trap-hit:
+    id: 47783
+    caption: Hit
+    mechanic: stack.role
+    shape: chariot
+    count: 2
+    description: |
+      [s:double-trouble-trap] resolves, dealing shareable damage to the affected players, knocking any other players in the stack back, and passing the debuff to one of the players who shared the damage.
+  thrumming-thunder-iii:
+    id: 47775
+    mechanic: aoe
+    shape: line
+    count: 2
+    players: 0
+    damage: 194824
+    description: |
+      Line AoEs resolve, dealing heavy damage and inflicting [s:damage-down] on anyone hit.
+      If the lightning ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
+  light-of-judgment:
+    id: 50722
+    mechanic: raidwide
+    damage: 309023
+    description: Heavy raidwide.
+  hyperdrive:
+    id: 49739
+    caption: ×3
+    mechanic: tb.mt
+    shape: chariot
+    description: Three back-to-back *instant* tankbusters on the top target in enmity. Has no indicator or cast bar.
+    children:
+    - at: 0
+      id: hyperdrive-hit
+    - at: 2094
+      id: hyperdrive-hit
+    - at: 4193
+      id: hyperdrive-hit
+  hyperdrive-hit:
+    id: 49739
+    caption: Hit
+    mechanic: tb.mt
+    shape: chariot
+    damage: 579549
+    description: Individual hit of [a:hyperdrive-hit].
+  gravitas:
+    id: 47788
+    mechanic: stack.partner
+    shape: chariot
+    count: 4
+    damage: 221216
+    description: Tethers from the statue's left side resolve, dealing lethal damage to the tethered players unless the AoE is shared with another player. Leaves behind a persistent gravity well. If the gravity well is subsequently clipped by [a:vitrophyre], wipes the party ([a:gravitational-explosion]).
+  vitrophyre:
+    id: 47792
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 22199
+    description: Tethers from the statue's right side resolve, dealing mild damage to the tethered players, knocking any other player hit off the arena, and exploding any gravity well that is clipped by the AoE ([a:gravitational-explosion]).
+  gravitational-wave:
+    id: 47793
+    mechanic: damage
+    description: A player soaks a gravity well (puddle), dealing moderate damage to them and dispelling the gravity well.
+  gravitational-explosion:
+    id: 47789
+    mechanic: mech.failure
+    description: A gravity well (puddle) is clipped by [a:vitrophyre], wiping the party.
+  intemperate-will:
+    id: 47794
+    mechanic: aoe
+    shape: halfroom
+    description: The half of the arena that the statue's orb is on explodes, dealing heavy damage and inflicting [s:damage-down].
+  tele-trouncing:
+    id: 47801
+    mechanic: mech
+    emphasis: more
+    compact: trim
+    description: |
+      Inflicts [s:tele-portent-up], [s:tele-portent-right], [s:tele-portent-down], or [s:tele-portent-left] on all players.
+      All players are inflicted with two of these status effects. The second resolves three seconds after the first.
+      Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
+      When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
+      Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time, preventing stacking.
+    children:
+    - at: 935
+      id: auto-attack
+    - at: 3961
+      id: auto-attack
+    - at: 6991
+      id: auto-attack
+    - at: 7835
+      id: tele-trouncing-hit
+    - at: 10813
+      id: tele-trouncing-hit
+    - at: 12059
+      id: graven-image-3
+    - at: 13038
+      id: auto-attack
+    - at: 15895
+      id: double-trouble-trap-hit
+    - at: 21895
+      id: indulgent-will
+      link: and
+    - at: 21895
+      id: idyllic-will
+    - at: 28313
+      id: enhanced-thrill-of-war-ii
+      flatten: omit-parent
+    - at: 34698
+      id: mystery-magic-thunder
+      link: and
+    - at: 35010
+      id: indolent-will
+  tele-trouncing-hit:
+    id: 47802
+    mechanic: mech
+    count: 8
+    description: |
+      [a:tele-trouncing-hit] resolves, leaving behind an arrow teleporter sigil. Deals no damage.
+  indulgent-will:
+    id: 47797
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 219477
+    description: Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:confused].
+  idyllic-will:
+    id: 47798
+    mechanic: spread
+    shape: chariot
+    count: 4
+    damage: 218222
+    description: Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep].
+  ave-maria:
+    id: 47795
+    mechanic: mech.lookat
+    players: 0
+    damage: 192456
+    description: A glowing yellow eye with a question mark appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down] on players who look away from it.
+  indolent-will:
+    id: 47796
+    mechanic: mech.lookaway
+    players: 0
+    damage: 211863
+    description: A purple eye appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down] on players who look at it.
+  light-of-judgment-enrage:
+    id: 47803
+    mechanic: enrage.threshold
+    damage: 9999999
+    description: "If [boss] is not brought below 15% HP by this point, he becomes untargetable and wipes the party."
+timeline:
+  - at: 771
+    id: auto-attack
+  - at: 3798
+    id: auto-attack
+  - at: 6824
+    id: auto-attack
+  - at: 9856
+    id: auto-attack
+  - at: 16045
+    id: revolting-ruin-iii
+  - at: 17922
+    id: auto-attack
+  - at: 20955
+    id: auto-attack
+  - at: 23984
+    id: auto-attack
+  - at: 25366
+    id: enhanced-thrill-of-war-ii
+    flatten: omit-parent
+  - at: 30012
+    id: graven-image-1
+  - at: 54406
+    id: mystery-magic-thunder
+  - at: 55254
+    id: auto-attack
+  - at: 58285
+    id: auto-attack
+  - at: 63505
+    id: light-of-judgment
+  - at: 66354
+    id: auto-attack
+  - at: 66664
+    id: hyperdrive
+  - at: 69383
+    id: auto-attack
+  - at: 72423
+    id: auto-attack
+  - at: 75458
+    id: auto-attack
+  - at: 76662
+    id: enhanced-thrill-of-war-ii
+    flatten: omit-parent
+  - at: 81079
+    id: graven-image-2
+  - at: 112870
+    id: auto-attack
+  - at: 115910
+    id: auto-attack
+  - at: 118949
+    id: auto-attack
+  - at: 121985
+    id: auto-attack
+  - at: 125022
+    id: auto-attack
+  - at: 128063
+    id: auto-attack
+  - at: 133199
+    id: light-of-judgment
+  - at: 136104
+    id: auto-attack
+  - at: 136371
+    id: hyperdrive
+  - at: 139136
+    id: auto-attack
+  - at: 142162
+    id: auto-attack
+  - at: 145193
+    id: auto-attack
+  - at: 152327
+    id: tele-trouncing
+  - at: 190103
+    id: auto-attack
+  - at: 193144
+    id: auto-attack
+  - at: 196181
+    id: auto-attack
+  - at: 198146
+    id: <untargetable>
+  - at: 203278
+    id: light-of-judgment-enrage
+  
