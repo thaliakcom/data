@@ -31,7 +31,7 @@ status:
     type: delay
     duration: [5000, 68000]
     description: |
-      Triggers [a:double-trouble-trap-hit] when the effect expires, dealing shareable damage to the affected players and passing [s:double-trouble-trap] to a random player amongst those hit by [a:double-trouble-trap-hit].
+      Triggers [a:double-trouble-trap-hit] when the effect expires.
       When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. Every subsequent instance of this debuff (after being passed to another player), it resolves after over a minute.
     gameDescription: When this effect expires, everyone else in the immediate vicinity will take damage. Should any player take damage, the [s:double-trouble-trap] will be passed to one of them.
   tele-portent-down:
@@ -116,8 +116,8 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-fire].
-      The tethered players are knocked back away from north just before [a:mystery-magic-fire] finishes casting. When [a:mystery-magic-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack] resolve, though these can also be inverted (see [a:mystery-magic-fire] for more information).
+      Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-blizzard-fire].
+      The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
       Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
     children:
     - at: 45
@@ -127,7 +127,7 @@ actions:
     - at: 5810
       id: pulse-wave
     - at: 8133
-      id: mystery-magic-fire
+      id: mystery-magic-blizzard-fire
     - at: 11126
       id: auto-attack
     - at: 13184
@@ -150,7 +150,7 @@ actions:
       The right side of the statue tethers to all supports and the left side to all DPS, or vice-versa.
       After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that inflicts [s:magic-vulnerability-up] and leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
       There is a brief interlude afterwards involving a [a:revolting-ruin-iii] and [a:intemperate-will], after which all players are tethered again and the mechanic repeats.
-      After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked ([a:gravitational-wave]), which is likely related to the fight's puzzle mechanic but is currently still unknown.
+      After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked ([a:gravity-iii]), which is likely related to the fight's puzzle mechanic but is currently still unknown.
     children:
     - at: 446
       id: auto-attack
@@ -170,12 +170,20 @@ actions:
       id: auto-attack
     - at: 21027
       id: intemperate-will
+      link: or
+    - at: 21027
+      id: gravitational-wave
     - at: 23621
       id: auto-attack
     - at: 25722
       id: gravitas
     - at: 29739
       id: vitrophyre
+    - at: 34427
+      id: intemperate-will
+      link: or
+    - at: 34427
+      id: gravitational-wave
   graven-image-3:
     id: 48370
     caption: III
@@ -188,13 +196,13 @@ actions:
     players: 0
     damage: 0
     description: Knocks the tethered players back, away from the north of the arena where the statue is.
-  mystery-magic-fire:
+  mystery-magic-blizzard-fire:
     id: 47764
     caption: Blizzard and Fire
     mechanic: combination
     compact: trim
     description: |
-      Combines either [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii], or [a:blizzard-iii-blowout], and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread].
+      Combines either [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii], [a:blizzard-iii-blowout], and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread], or [a:thrumming-thunder-iii] and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread].
       During the cast, [boss] has two rings around him in the colour of the two elements used for the attack. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the mechanic is *inverted*. For the AoE mechanics ([a:blizzard-iii-blowout] and [a:thrumming-thunder-iii]) this means that the areas of the arena that do *not* have an AoE telegraph in them are unsafe and the AoE telegraphs are safe. For [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack], it means that the stack turns into a spread and vice-versa.
     children:
     - at: 0
@@ -205,18 +213,33 @@ actions:
       link: or
     - at: 1100
       id: flagrant-fire-iii-stack
-  mystery-magic-thunder:
+  mystery-magic-blizzard-thunder:
     id: 47764
     caption: Blizzard and Thunder
     mechanic: combination
     compact: trim
-    description: "[a:mystery-magic-fire:d]"
+    description: "[a:mystery-magic-blizzard-fire:d]"
     children:
     - at: 0
       id: thrumming-thunder-iii
       link: and
     - at: 0
       id: blizzard-iii-blowout
+  mystery-magic-thunder-fire:
+    id: 47764
+    caption: Thunder and Fire
+    mechanic: combination
+    compact: trim
+    description: "[a:mystery-magic-blizzard-fire:d]"
+    children:
+    - at: 0
+      id: thrumming-thunder-iii
+      link: then
+    - at: 1100
+      id: flagrant-fire-iii-spread
+      link: or
+    - at: 1100
+      id: flagrant-fire-iii-stack
   wave-cannon:
     id: 47784
     mechanic: spread
@@ -281,7 +304,7 @@ actions:
     shape: chariot
     count: 2
     description: |
-      [s:double-trouble-trap] resolves, dealing shareable damage to the affected players, knocking any other players in the stack back, and passing the debuff to one of the players who shared the damage.
+      [s:double-trouble-trap] resolves. If no player shares the AoE, deals no damage and dispels the debuff. If an player shares the damage, deals heavy damage to all players in the stack, knocks the other players in the stack back, and passes the debuff to one of the players who shared the damage.
   thrumming-thunder-iii:
     id: 47775
     mechanic: aoe
@@ -316,7 +339,7 @@ actions:
     mechanic: tb.mt
     shape: chariot
     damage: 579549
-    description: Individual hit of [a:hyperdrive-hit].
+    description: Individual hit of [a:hyperdrive].
   gravitas:
     id: 47788
     mechanic: stack.partner
@@ -331,14 +354,19 @@ actions:
     count: 4
     damage: 22199
     description: Tethers from the statue's right side resolve, dealing mild damage to the tethered players, knocking any other player hit off the arena, and exploding any gravity well that is clipped by the AoE ([a:gravitational-explosion]).
-  gravitational-wave:
-    id: 47793
+  gravity-iii:
+    id: 47791
     mechanic: damage
-    description: A player soaks a gravity well (puddle), dealing moderate damage to them and dispelling the gravity well.
+    description: A player soaks a gravity well (puddle), dealing lethal damage to them and dispelling the gravity well.
   gravitational-explosion:
     id: 47789
     mechanic: mech.failure
     description: A gravity well (puddle) is clipped by [a:vitrophyre], wiping the party.
+  gravitational-wave:
+    id: 47793
+    mechanic: aoe
+    shape: halfroom
+    description: The half of the arena that the statue's orb is on explodes, dealing heavy damage and inflicting [s:damage-down].
   intemperate-will:
     id: 47794
     mechanic: aoe
@@ -355,7 +383,7 @@ actions:
       Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
-      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time, preventing stacking.
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] is stacked, both players get both debuffs.
     children:
     - at: 935
       id: auto-attack
@@ -382,10 +410,13 @@ actions:
       id: enhanced-thrill-of-war-ii
       flatten: omit-parent
     - at: 34698
-      id: mystery-magic-thunder
+      id: mystery-magic-thunder-fire
       link: and
     - at: 35010
       id: indolent-will
+      link: or
+    - at: 35010
+      id: ave-maria
   tele-trouncing-hit:
     id: 47802
     mechanic: mech
@@ -446,7 +477,7 @@ timeline:
   - at: 30012
     id: graven-image-1
   - at: 54406
-    id: mystery-magic-thunder
+    id: mystery-magic-blizzard-thunder
   - at: 55254
     id: auto-attack
   - at: 58285
