@@ -921,7 +921,7 @@
   short: Patch 7.5
   type: patch
   color: "#6e9cec"
-  at: 2026-04-28 12:00:00
+  at: 2026-04-28 10:00:00
 - name: The Maiden's Rhapsody (FFXI Crossover)
   short: Maiden's Rhapsody
   type: event
@@ -939,7 +939,7 @@
   short: Patch 7.51
   type: patch
   color: "#6e9cec"
-  at: 2026-06-02 12:00:00
+  at: 2026-06-02 10:00:00
 - name: Fan Fest Berlin
   type: event
   color: "#383642"
