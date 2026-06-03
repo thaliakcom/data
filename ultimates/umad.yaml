@@ -88,6 +88,20 @@ status:
       After 8 sets of towers, [boss] executes [a:light-of-judgment-p2], instantly killing any player who has no cleansed all of their [s:spells-trouble] stacks.
     gameDescription: Burdened by a number of magicks. A spell will activate when hit by a wave of Kefka's own magicks, decreasing stacks. Damage taken from [a:light-of-judgment] is greatly increased while under this effect.
 actions:
+  puzzle:
+    name: Puzzle
+    mechanic: hint
+    description: |
+      Expand this row to learn about this fight's puzzle mechanics.
+      This fight has several puzzle mechanics that must be correctly resolved in phase 1 or the fight simply kicks players out of the instance after phase 2. Here's a list of all prerequisites:
+      * [s:double-trouble-trap] must always be passed to another player. If it is any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
+      * During [a:graven-image-2], all gravity wells (puddles) must be soaked after transforming ([a:gravity-iii]). If any gravity wells are permitted to fade away naturally, the puzzle is failed.
+      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on). If any teleportation sigils are permitted to fade away naturally, the puzzle is failed.
+      To know whether you fulfilled the conditions for the puzzle mechanics so far, [boss] changes his voiceline after all three of the above mechanics:
+      * If [s:double-trouble-trap] is not passed the first time it is applied by [a:double-trouble-trap], [boss] says nothing. Otherwise he says "Hook, line, and stinker!"
+      * If the gravity wells are *not* soaked, [boss] says nothing. Otherwise he says "What?! There's no way that didn't work!" after the next [a:hyperdrive].
+      * If any prerequisites for the puzzle are *not* met, [boss] says these three voicelines in succession: "Yes... I am filled with glorious purpose!" -> "Life... Dreams... Hope... Where do they come from? And where do they go?" -> "Such things as those are mine to destroy!" If all prerequisites are met, these three voicelines are replaced by: "How boring. Guess I'll have to spice things up!" -> "This is meant to be our ultimate encounter." -> "Crafty little bastards, aren't you?"
+      If these new three voicelines play at the end of phase 1, killing [boss] in phase 2 transitions the fight into phase 3. If the original voicelines play, killing [boss] in phase 1 ends the fight and kicks players out of the instance.
   auto-attack:
     id: 49746
     name: Auto-attack
@@ -405,7 +419,7 @@ actions:
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
       A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] is stacked, both players get both debuffs.
-      **Note**: If *all* teleportation sigils are used and none are permitted to expire, :unverified(all gravity wells are utilized in [a:graven-image-2], and [s:double-trouble-trap] does not expire), [boss]'s voiceline at the end of the phase ("Yes... I am filled with glorious purpose!") is replaced with three new lines, back-to-back: "How boring. Guess I'll have to spice things up!" -> "This is meant to be our ultimate encounter." -> "Crafty little bastards, aren't you?" This is the prerequisite for reaching phase 3.
+      **Note**: Utilizing *all* teleportation sigils is a prerequisite for reaching phase 3. See [a:puzzle] for more information.
     children:
     - at: 935
       id: auto-attack
@@ -603,12 +617,12 @@ actions:
     description: A tower explodes as a result of not being soaked by exactly 2 players, inflicting heavy damage and [s:damage-down] on all players.
   spelldriver:
     id: 47808
-    mechanic: stack.enumeration
+    mechanic: stack
     shape: chariot
     count: 2
     players: 3
     damage: 196816
-    description: A stack [s:spells-trouble] resolves in the form of a 3-player [t:enumeration] on the targeted player. Inflicts [s:magic-vulnerability-up].
+    description: A stack [s:spells-trouble] resolves in the form of a 3-player stack on the targeted player. Inflicts [s:magic-vulnerability-up].
   spellwave:
     id: 47810
     mechanic: spread.close
@@ -685,7 +699,7 @@ actions:
     caption: Halfroom
     mechanic: aoe
     shape: halfroom
-    description: One of [boss]'s begins to glow and cleaves that half of the arena. Inflicts [s:damage-down].
+    description: One of [boss]'s wings begins to glow and cleaves that half of the arena. Inflicts [s:damage-down].
   trine-hit:
     id: 47840
     mechanic: aoe
