@@ -1,13 +1,13 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-06-02
+modified: 2026-06-03
 by:
   id: 27637301
   role: author
 boss: Kefka
 HP: 0
-wip: [damage, diagrams]
+wip: [diagrams, in-progress]
 party_hp: 235643
 description: ""
 status:
@@ -24,7 +24,7 @@ status:
     duration: [960, 3960]
     description: |
       Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will].
+      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], and [a:wings-of-destruction-tb].
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
@@ -78,6 +78,15 @@ status:
     description: |
       Affected players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
       Inflicted by [a:idyllic-will].
+  spells-trouble:
+    id: 5083
+    name: Spells' Trouble
+    type: condition
+    description: |
+      All players are initially inflicted with 4 stacks of this debuff. In addition to this, a spell indicator appears above everyone's heads (either stack, cone, or circle).
+      Soaking a tower ([a:the-path-of-light]) cleanses one stack of this debuff and executes the indicated spell. Cones always fire towards the closest player ([a:spellwave]); stack ([a:spelldriver]) and circle ([a:spellscatter]) resolve on this player themselves. All spells inflict [s:magic-vulnerability-up].
+      After 8 sets of towers, [boss] executes [a:light-of-judgment-p2], instantly killing any player who has no cleansed all of their [s:spells-trouble] stacks.
+    gameDescription: Burdened by a number of magicks. A spell will activate when hit by a wave of Kefka's own magicks, decreasing stacks. Damage taken from [a:light-of-judgment] is greatly increased while under this effect.
 actions:
   auto-attack:
     id: 49746
@@ -85,14 +94,22 @@ actions:
     mechanic: auto.single
     damage: 158451
     emphasis: less
-    description: Kefka kicks the top player in enmity, dealing heavy damage.
+    description: Kefka kicks the first player in enmity, dealing heavy damage.
+  auto-attack-p2:
+    id: 49746
+    name: Auto-attack
+    mechanic: auto.single
+    damage: 96809
+    emphasis: less
+    description: Kefka kicks the first player in enmity, dealing heavy damage.
+  # Phase 1
   revolting-ruin-iii:
     id: 50179
     caption: ×2
     mechanic: tb.mt
     shape: cone
     damage: 1025720
-    description: Heavy tankbuster that hits twice. First hits first-enmity, then second-enmity.
+    description: Heavy tankbuster that hits twice. First hits first-in-enmity, then second-in-enmity.
     resolve: This action inflicts no vulnerability debuff, so with a [t:tankswap] the same player can take both hits without [t:invuln].
     children:
     - at: 3124
@@ -119,6 +136,7 @@ actions:
       Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-blizzard-fire].
       The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
       Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
+      **Note**: If neither [a:double-trouble-trap-hit] hits any other player here (and both debuffs fall off as a result), [boss] omits his next voiceline "Hook, line, and stinker!".
     children:
     - at: 45
       id: auto-attack
@@ -150,7 +168,7 @@ actions:
       The right side of the statue tethers to all supports and the left side to all DPS, or vice-versa.
       After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that inflicts [s:magic-vulnerability-up] and leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
       There is a brief interlude afterwards involving a [a:revolting-ruin-iii] and [a:intemperate-will], after which all players are tethered again and the mechanic repeats.
-      After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked ([a:gravity-iii]), which is likely related to the fight's puzzle mechanic but is currently still unknown.
+      After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked, which triggers [a:gravity-iii]. If all gravity wells are soaked in this way and [s:double-trouble-trap] did not fall off earlier, [boss] utters a new voiceline after [a:hyperdrive]: "What?! There's no way that didn't work!"
     children:
     - at: 446
       id: auto-attack
@@ -303,6 +321,7 @@ actions:
     mechanic: stack.role
     shape: chariot
     count: 2
+    damage: 182000
     description: |
       [s:double-trouble-trap] resolves. If no player shares the AoE, deals no damage and dispels the debuff. If an player shares the damage, deals heavy damage to all players in the stack, knocks the other players in the stack back, and passes the debuff to one of the players who shared the damage.
   thrumming-thunder-iii:
@@ -325,7 +344,7 @@ actions:
     caption: ×3
     mechanic: tb.mt
     shape: chariot
-    description: Three back-to-back *instant* tankbusters on the top target in enmity. Has no indicator or cast bar.
+    description: Three back-to-back *instant* tankbusters on the first-in-enmity player. Has no indicator or cast bar.
     children:
     - at: 0
       id: hyperdrive-hit
@@ -356,8 +375,10 @@ actions:
     description: Tethers from the statue's right side resolve, dealing mild damage to the tethered players, knocking any other player hit off the arena, and exploding any gravity well that is clipped by the AoE ([a:gravitational-explosion]).
   gravity-iii:
     id: 47791
-    mechanic: damage
-    description: A player soaks a gravity well (puddle), dealing lethal damage to them and dispelling the gravity well.
+    mechanic: stack
+    shape: chariot
+    damage: 50000
+    description: A player soaks a gravity well (puddle), dealing over a million damage to them and dispelling the gravity well. The damage can be shared by players also soaking the gravity well, significantly reducing the damage. To accomplish this, all players who intend to share the puddle must enter it before the damage comes out. It takes about two or three seconds for damage to come out after the first player enters the puddle.
   gravitational-explosion:
     id: 47789
     mechanic: mech.failure
@@ -384,6 +405,7 @@ actions:
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
       A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] is stacked, both players get both debuffs.
+      **Note**: If *all* teleportation sigils are used and none are permitted to expire, :unverified(all gravity wells are utilized in [a:graven-image-2], and [s:double-trouble-trap] does not expire), [boss]'s voiceline at the end of the phase ("Yes... I am filled with glorious purpose!") is replaced with three new lines, back-to-back: "How boring. Guess I'll have to spice things up!" -> "This is meant to be our ultimate encounter." -> "Crafty little bastards, aren't you?" This is the prerequisite for reaching phase 3.
     children:
     - at: 935
       id: auto-attack
@@ -454,7 +476,245 @@ actions:
     mechanic: enrage.threshold
     damage: 9999999
     description: "If [boss] is not brought below 15% HP by this point, he becomes untargetable and wipes the party."
+  # Phase 2
+  ultimate-embrace:
+    id: 49740
+    mechanic: tb.stack
+    shape: chariot
+    damage: 1300000
+    description: Shared tankbuster on first-in-enmity. Deals lethal damage if taken solo.
+  forsaken:
+    id: 47804
+    mechanic: mech
+    players: 8
+    damage: 562117
+    emphasis: more
+    compact: full
+    description: |
+      Heavy raidwide that inflicts [s:spells-trouble:4] on all players and spawns a series of towers.
+      Along with [s:spells-trouble:4], a spell indicator appears above every player's head. Three supports or DPS get circular spread AoE indicators. Three players of the other role get conal AoE indicators. The remaining two players get stack indicators. These indicators disappear after a short time.
+      Afterwards, spawns two adjacent towers on the inside of the arena. Each tower must be soaked by exactly two players. Any less or more results in the tower exploding for heavy damage and [s:damage-down] on the whole party.
+      Whenever a tower is soaked, it triggers the soaking players' indicated spells and reduces their [s:spells-trouble] stacks by one. After 8 sets of towers, [boss] casts [a:light-of-judgment-p2] which instantly kills any player who failed to cleanse all their [s:spells-trouble] stacks.
+      Cones always fire towards the closest player to the player whose cone spell resolves ([a:spellwave]). Circles ([a:spellscatter]) and stacks ([a:spelldriver]) resolve on the player themselves. Any time a player cleanses a stack of [s:spells-trouble], a new spell indicator appears above their head and the next executed spell changes. This follows a specific logic: every **odd** tower set generates 2 circles and 2 cones, while every **even** tower set generates 2 stacks, 1 cone, and 1 circle.
+      Additionally, during every even tower set [boss] casts either [a:futures-end] or [a:pasts-end], where he dashes towards the 4 closest players, deals heavy damage to them in a radius, and leaves behind a clone. A short time later (before the next tower set), they face towards :unverified(the now closest player) and begin casting [a:all-things-ending], a [ms:halfroom] cleave either in front ([a:futures-end]) or behind ([a:pasts-end]) that resolves during the next odd tower set.
+    children:
+    - at: 1923
+      id: auto-attack-p2
+    - at: 4961
+      id: auto-attack-p2
+    - at: 8003
+      id: auto-attack-p2
+    - at: 13230
+      id: the-path-of-light
+    - at: 13856
+      id: spelldriver
+      link: and
+    - at: 13856
+      id: spellwave
+      count: 2
+    - at: 15152
+      id: auto-attack-p2
+    - at: 22966
+      id: pasts-end
+      link: or
+    - at: 22966
+      id: futures-end
+      link: and
+    - at: 23237
+      id: the-path-of-light
+      link: and
+    - at: 23863
+      id: spellscatter
+      link: and
+    - at: 23863
+      id: spellwave
+    - at: 34089
+      id: all-things-ending
+      link: and
+    - at: 34268
+      id: the-path-of-light
+    - at: 34893
+      id: spelldriver
+    - at: 34893
+      id: spellwave
+      count: 2
+    - at: 43894
+      id: pasts-end
+      link: or
+    - at: 43894
+      id: futures-end
+    - at: 44294
+      id: the-path-of-light
+    - at: 44918
+      id: spellwave
+    - at: 44918
+      id: spellscatter
+    - at: 54996
+      id: all-things-ending
+    - at: 55308
+      id: the-path-of-light
+    - at: 55936
+      id: spellwave
+      count: 2
+    - at: 55936
+      id: spelldriver
+    - at: 64808
+      id: pasts-end
+      link: or
+    - at: 64808
+      id: futures-end
+    - at: 65343
+      id: the-path-of-light
+    - at: 65970
+      id: spellscatter
+    - at: 65970
+      id: spellwave
+    - at: 75903
+      id: all-things-ending
+    - at: 76347
+      id: the-path-of-light
+    - at: 76972
+      id: spelldriver
+    - at: 76972
+      id: spellwave
+      count: 2
+    - at: 85746
+      id: pasts-end
+      link: or
+    - at: 85746
+      id: futures-end
+    - at: 86368
+      id: the-path-of-light
+    - at: 86993
+      id: spellscatter
+    - at: 86993
+      id: spellwave
+    - at: 96627
+      id: all-things-ending
+  the-path-of-light:
+    id: 47806
+    mechanic: towers.double
+    count: 2
+    damage: 0
+    description: Two adjacent [t:enumeration] towers resolve, dealing heavy damage and inflicting [s:damage-down] if not soaked by exactly two players ([a:the-river-of-light]). Deals no damage otherwise.
+  the-river-of-light:
+    id: 47807
+    mechanic: mech.failure
+    description: A tower explodes as a result of not being soaked by exactly 2 players, inflicting heavy damage and [s:damage-down] on all players.
+  spelldriver:
+    id: 47808
+    mechanic: stack.enumeration
+    shape: chariot
+    count: 2
+    players: 3
+    damage: 196816
+    description: A stack [s:spells-trouble] resolves in the form of a 3-player [t:enumeration] on the targeted player. Inflicts [s:magic-vulnerability-up].
+  spellwave:
+    id: 47810
+    mechanic: spread.close
+    shape: cone
+    damage: 200841
+    description: A conal [s:spells-trouble] resolves, firing a cone at the closest player. Inflicts [s:magic-vulnerability-up].
+  pasts-end:
+    id: 47833
+    mechanic: spread.close
+    shape: chariot
+    count: 4
+    damage: 230283
+    description: |
+      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
+      A short time later, [boss] and his 3 clones face the :unverified(now closest player) to them and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
+  futures-end:
+    id: 47832
+    mechanic: spread.close
+    shape: chariot
+    count: 4
+    damage: 173104
+    description: |
+      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
+      A short time later, [boss] and his 3 clones face the :unverified(now closest player) to them and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
+  spellscatter:
+    id: 47809
+    mechanic: spread
+    shape: chariot
+    count: 3
+    damage: 207036
+    description: A circular [s:spells-trouble] resolves in the form of a moderate circular spread AoE. Inflicts [s:magic-vulnerability-up].
+  all-things-ending:
+    id: 47836
+    mechanic: aoe
+    shape: halfroom
+    count: 4
+    description: "[boss] and his 3 clones execute a [ms:halfroom] cleave behind (if [a:pasts-end] was cast) or in front (if [a:futures-end] was cast) of where they are currently facing. Inflicts [s:damage-down]."
+  light-of-judgment-p2:
+    id: 47805
+    mechanic: raidwide
+    damage: 424113
+    description: Heavy raidwide. Kills any player with any remaining [s:spells-trouble] stacks.
+  trine:
+    id: 47839
+    mechanic: aoe.3-to-1
+    shape: chariot
+    description: |
+      Three sets of triangles spawn. 12 seconds later, the tips of the triangles explode in the order they spawned. Inflicts [s:damage-down].
+      One of the triangle sets may be a large triangle.
+      [a:wings-of-destruction] happens right before triangles explode, and [a:wings-of-destruction-tb] at the same time as the last hit.
+    children:
+    - at: 2855
+      id: auto-attack-p2
+    - at: 7137
+      id: wings-of-destruction
+    - at: 9904
+      id: auto-attack-p2
+    - at: 12934
+      id: auto-attack-p2
+    - at: 12934
+      id: trine-hit
+      count: 9
+    - at: 14899
+      id: trine-hit
+      count: 3
+    - at: 16905
+      id: trine-hit
+      count: 9
+      link: and
+    - at: 17395
+      id: wings-of-destruction-tb
+  wings-of-destruction:
+    id: 47821
+    caption: Halfroom
+    mechanic: aoe
+    shape: halfroom
+    description: One of [boss]'s begins to glow and cleaves that half of the arena. Inflicts [s:damage-down].
+  trine-hit:
+    id: 47840
+    mechanic: aoe
+    shape: chariot
+    description: A triangle's tips explode, inflicting [s:damage-down] on any nearby player.
+  wings-of-destruction-tb:
+    id: 47823
+    caption: TB
+    mechanic: tb.close-or-far
+    shape: chariot
+    count: 2
+    damage: 646810
+    description: Hits the closest and farthest player with a big circular [t:tankbuster].
+  light-of-judgment-p2-enrage:
+    id: 47841
+    mechanic: enrage
+    damage: 9999999
+    description: |
+      If the boss's HP is not depleted by this point, wipes the party.
+      **Note**: If Phase 1's puzzle mechanic was not correctly executed (see [a:tele-trouncing]), depleting the boss's HP here simply ends the fight and kicks players out of the instance. Otherwise a cutscene plays and the party advances to Phase 3.
+  # Phase 3
+  coming-soon:
+    name: Coming Soon
+    mechanic: hint
+    description: Not enough information is available for this phase so far. The timeline will be expanded as soon as more information is discovered.
 timeline:
+  - at: 0
+    id: <phase>
+    name: Phase 1 - Kefka
   - at: 771
     id: auto-attack
   - at: 3798
@@ -535,4 +795,47 @@ timeline:
     id: <untargetable>
   - at: 203278
     id: light-of-judgment-enrage
+  - at: 208592
+    id: <phase>
+    name: Phase 2 - God Kefka
+  - at: 208592
+    id: <targetable>
+  - at: 213736
+    id: auto-attack-p2
+  - at: 220799
+    id: ultimate-embrace
+  - at: 221783
+    id: auto-attack-p2
+  - at: 224823
+    id: auto-attack-p2
+  - at: 227863
+    id: auto-attack-p2
+  - at: 235997
+    id: forsaken
+  - at: 335790
+    id: auto-attack-p2
+  - at: 341901
+    id: light-of-judgment-p2
+  - at: 343862
+    id: auto-attack-p2
+  - at: 346896
+    id: auto-attack-p2
+  - at: 349922
+    id: auto-attack-p2
+  - at: 353126
+    id: trine
+  - at: 377557
+    id: ultimate-embrace
+  - at: 378135
+    id: auto-attack-p2
+  - at: 380808
+    id: <untargetable>
+  - at: 385924
+    id: light-of-judgment-p2-enrage
+  - at: 385924
+    id: <phase>
+    name: Phase 3 - Exdeath and Chaos
+  - at: 385924
+    id: coming-soon
+  
   
