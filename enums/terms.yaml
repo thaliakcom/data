@@ -68,3 +68,7 @@ cheese: |
 clock spots: |
   In many fights that feature [m:spread] mechanics, parties establish so-called "clock spots" at the beginning. What this entails is that every player is assigned a position around the center of the arena, just like a clock. Those positions are often (but not always): MT north, R2 northeast, H2 east, M2 southeast, OT south, M1 southwest, H1 west, and R1 northwest. When a mechanic requires players to [m:spread], everyone moves out to their assigned "clock spot" since, unlike casual fights, high-end fights rarely afford you to the time to just "wing it" and predetermined positions are necessary.
   Waymarks are often used to make it easier to find your clock spot.
+enumeration: |
+  An "enumeration"-style mechanic is one that requires an *exact* number of players to soak a certain mechanic, like a tower or a stack. If any less *or more* players soak the mechanic, the mechanic is considered as "failed", which often inflicts heavy damage and/or debuffs.
+  This type of mechanic often deals fixed damage, meaning that unlike ordinary stack mechanics, the damage taken is not reduced for each additional player in the stack.
+  Named after Alexander's eponymous mechanic, [a:5647].
