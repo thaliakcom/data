@@ -82,6 +82,10 @@ tb.close-or-far:
   name: distance tankbuster
   description: A heavy-hitting attack that targets either the closest or farthest player to the boss and must be heavily mitigated with tank cooldowns to survive.
   players: 1
+tb.close-and-far:
+  name: tankbuster (close and far)
+  description: A heavy-hitting attack that targets both the closest and the farthest player from the boss and must be heavily mitigated with tank cooldowns to survive.
+  players: 1
 tb.flare:
   name: flare tankbuster
   description: A tankbuster on either the first or second player on the enmity list. The selected player is indicated by a headmarker and must heavily mitigate the attack using defensive cooldowns to survive. All other players must move as far away from the player as possible, as the tankbuster deals proximity damage to all other players.
@@ -120,7 +124,7 @@ stack.partner:
   shapeful: true
 stack.enumeration:
   name: enumeration
-  description: Similar to a [m:stack.partner], but instead of splitting the damage between everyone in the stack, there is instead a required number of players in the stack (generally 2). If the wrong number of players are in the stack (less *or* more), it kills all stacking players instantly.
+  description: Similar to a [m:stack.partner], but instead of splitting the damage between everyone in the stack, it is an [t:enumeration] mechanic, meaning that an exact number of players must stack with the targeted player. If the wrong number of players are in the stack (less *or* more), it usually kills all stacking players instantly.
   shapeful: true
 stack.role:
   name: role stack
@@ -260,6 +264,11 @@ aoe.knockback.unavoidable:
   description: An AoE that instantly kills players inside of it and knocks all players outside of it away. Can *not* be avoided using [a:surecast] or [a:arms-length].
   shapeful: true
   players: 8
+aoe.3-to-1:
+  name: AoEs (3-to-1)
+  description: |
+    A classic mechanic type wherein three sets of AoEs are telegraphed back-to-back all throughout the arena. The sum of all these AoEs usually renders the entire arena unsafe, but the three sets of AoEs do not resolve at the same time, instead being executed in the same order in which they were telegraphed.
+    "3-to-1" refers to the dodge order. In general, players will want to start on the *third* set of AoEs, then move onto the *first* set after it resolves. The AoEs usually resolve too fast for a 2-to-1 dodge to be viable.
 spread:
   name: spread
   description: Hits targeted players with an unavoidable [t:AoE]. Targeted players should spread out from each other, as clipping each other is usually lethal.

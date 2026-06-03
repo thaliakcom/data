@@ -265,7 +265,7 @@ actions:
     description: Light party stacks on healers. Inflicts [s:magic-vulnerability-up].
   color-riot:
     id: 42641
-    mechanic: tb.close-or-far
+    mechanic: tb.close-and-far
     shape: chariot
     description: |
       A non-aggro-based tankbuster.

@@ -1388,7 +1388,7 @@ actions:
   wings-dark-and-light-in-out:
     id: 39879
     name: Wings Dark and Light
-    mechanic: tb.close-or-far
+    mechanic: tb.close-and-far
     damage: 456163
     description: Placeholder description
   the-path-of-darkness:
