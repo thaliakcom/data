@@ -1325,6 +1325,7 @@ timeline:
   - at: 0
     id: <phase>
     name: Phase 1 - Kefka
+    hp: 56331828
   - at: 771
     id: auto-attack
   - at: 3798
@@ -1417,6 +1418,7 @@ timeline:
   - at: 208592
     id: <phase>
     name: Phase 2 - God Kefka
+    hp: 44109275
   - at: 208592
     id: <targetable>
     target: "[boss]"
@@ -1459,6 +1461,7 @@ timeline:
   - at: 424676
     id: <phase>
     name: Phase 3 - Exdeath and Chaos
+    hp: 75105338
   - at: 424676
     id: definition-of-insanity
   - at: 427714
