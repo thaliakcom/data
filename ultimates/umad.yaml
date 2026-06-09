@@ -1761,21 +1761,13 @@ timeline:
     id: longitudinal-implosion
   - at: 672029
     id: white-hole
-    link: or
   - at: 673417
     id: slap-happy-right
+    link: or
   - at: 673417
     id: slap-happy-left
-  - at: 674220
-    id: slap-happy-hit
-  - at: 674801
-    id: slap-happy-hit
   - at: 675113
     id: auto-attack-exdeath
-  - at: 675518
-    id: slap-happy-hit
-  - at: 676813
-    id: slap-happy-aoe
   - at: 676901
     id: shockwave-role
   - at: 678060
