@@ -588,6 +588,10 @@
           "description": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to 0. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage by a single instance of the action. For instance, for a spread-type mechanic, this field should be set to 1, not 8, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by distinct instances of the action, not the same instance. To specify the number of damage instances, use count.",
           "markdownDescription": "If an action instance deals unavoidable damage to one or more players, this specifies the number of players who take damage. If the action does not deal any damage, or the damage is avoidable, this field should be set to `0`. Changes how the action is interpreted by the mitigation view.\n\nThe value of this field is automatically derived from its mechanic type, so it should only be manually set if the number of targeted players differs from the default value for this mechanic type.\n\nNote that this field specifies the number of players who take damage **by a single instance** of the action. For instance, for a spread-type mechanic, this field should be set to `1`, not `8`, even though most spread-type mechanics target all 8 players simultaneously, because in almost all cases all 8 players are targeted by *distinct* instances of the action, not the same instance. To specify the number of damage instances, use `count`."
         },
+        "expanded": {
+          "type": "boolean",
+          "description": "If set, this action is always expanded by default in the timeline view. Such actions can still be manually collapsed by the user.\n\nCan be overridden on a per-timeline item basis."
+        },
         "icon": {
           "type": "number",
           "description": "The ID of the action icon. This is primarily meant for player actions and is automatically filled from game data in that case. Monster actions do not have icons."
@@ -944,6 +948,10 @@
         "expandable": {
           "type": "boolean",
           "description": "Can be used to override whether the timeline entry should be expandable or not. By default the timeline entry is expandable if the timeline entry and the action both have their own description, or when the timeline references strategies to show."
+        },
+        "expanded": {
+          "type": "boolean",
+          "description": "If set, this timeline item is always expanded by default. Such timeline items can still be manually collapsed by the user."
         }
       },
       "additionalProperties": false,
