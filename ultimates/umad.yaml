@@ -1,7 +1,7 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-06-03
+modified: 2026-06-09
 by:
   id: 27637301
   role: author
@@ -17,14 +17,14 @@ status:
     duration: 180000
     description: |
       Reduces damage dealt by 90% for 3 minutes.
-      Inflicted by any avoidable source of damage, including [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], or auto-attacks from [s:confused] players.
+      Inflicted by any avoidable source of damage, including [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], auto-attacks from [s:confused] players, [a:shockwave], [a:slap-happy-hit], or [a:look-upon-me-and-despair-hit].
   magic-vulnerability-up:
     id: 2941
     type: vuln
     duration: [960, 3960]
     description: |
       Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], and [a:wings-of-destruction-tb].
+      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], and [a:stomp-a-mole-hit].
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
@@ -69,7 +69,8 @@ status:
     duration: 6000
     description: |
       Affected players run towards the closest player. If they are able to reach another player, they will auto-attack them dealing lethal damage and inflicting [s:damage-down].
-      Note that movement speed while [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
+      **Note**: Movement speed during [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
+      **Note**: After being teleported by a teleportation sigil, [s:confused] players do not begin to move towards the next closest player again until the next server tick. This means that sometimes a [s:confused] player may stop and pause for over a second after being teleported, while other times they may start moving towards the closest player immediately and kill them. There is no way to avoid this except by chain-teleporting at least three times.
       Inflicted by [a:indulgent-will].
   sleep:
     id: 4894
@@ -78,6 +79,7 @@ status:
     description: |
       Affected players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
       Inflicted by [a:idyllic-will].
+  # Phase 2
   spells-trouble:
     id: 5083
     name: Spells' Trouble
@@ -87,6 +89,117 @@ status:
       Soaking a tower ([a:the-path-of-light]) cleanses one stack of this debuff and executes the indicated spell. Cones always fire towards the closest player ([a:spellwave]); stack ([a:spelldriver]) and circle ([a:spellscatter]) resolve on this player themselves. All spells inflict [s:magic-vulnerability-up].
       After 8 sets of towers, [boss] executes [a:light-of-judgment-p2], instantly killing any player who has no cleansed all of their [s:spells-trouble] stacks.
     gameDescription: Burdened by a number of magicks. A spell will activate when hit by a wave of Kefka's own magicks, decreasing stacks. Damage taken from [a:light-of-judgment] is greatly increased while under this effect.
+  down-for-the-count:
+    id: 774
+    type: impairment
+    description: Players are unable to move or execute actions while the cutscene playing.
+  # Phase 3
+  epic-villain:
+    id: 4193
+    type: form
+    description: While this buff is active, only players with [s:epic-hero] are able to deal damage to Chaos.
+  epic-hero:
+    id: 4192
+    type: impairment
+    description: This player is unable to deal damage to Exdeath.
+  fated-villain:
+    id: 4195
+    type: form
+    description: While this buff is active, only players with [s:fated-hero] are able to deal damage to Exdeath.
+  fated-hero:
+    id: 4194
+    type: impairment
+    description: This player is unable to deal damage to Chaos.
+  entropy:
+    id: 1600
+    type: delay
+    duration: [46000, 19000]
+    description: |
+      Triggers [a:stray-flames] on the affected players when this effect expires, then triggers [a:inferno] on the closest player(s) to the fire triangle.
+      Note that if this player dies, instantly triggers [a:inferno].
+  dynamic-fluid:
+    id: 1601
+    type: delay
+    duration: [46000, 19000]
+    description: |
+      Triggers [a:stray-spray] on the affected players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the fire triangle.
+      Note that if this player dies, instantly triggers [a:tsunami].
+  headwind:
+    id: 1602
+    type: condition
+    duration: 68000
+    description: |
+      Player is instantly killed if the effect is allowed to expire.
+      To cleanse this debuff, player must be hit by a knockback effect while facing away from it (i.e. turning their back to it). This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
+      Facing a knockback effect results in increased knockback distance and does *not* cleanse this debuff.
+      Note that using anti-knockback abilities such as [s:arms-length] or [s:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
+      Note that if a player with this status effect dies, it instantly triggers [a:cyclone].
+  tailwind:
+    id: 1603
+    type: condition
+    duration: 68000
+    description: |
+      Player is instantly killed if the effect is allowed to expire.
+      To cleanse this debuff, player must be hit by a knockback effect while directly facing it. This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
+      Facing away from a knockback effect results in increased knockback distance and does *not* cleanse this debuff.
+      Note that using anti-knockback abilities such as [s:arms-length] or [s:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
+      Note that if a player with this status effect dies, it instantly triggers [a:cyclone].
+  wind-resistance-down-ii:
+    id: 1052
+    type: vuln
+    duration: 960
+    description: Renders any simultaneous wind damage lethal. Inflicted by [a:cyclone].
+  lightning-resistance-down-ii:
+    id: 2998
+    type: vuln
+    duration: 3960
+    description: Inflicted by [a:thunder-iii-hit]
+  accretion:
+    id: 1604
+    type: condition
+    duration: 14000
+    description: |
+      Affected players are instantly killed if this status effect is permitted to expire.
+      Can be cleansed by healing these players to 100% HP. Cleansing this effect or dying while this effect is active triggers an [a:earthquake-hit].
+  primordial-crust:
+    id: 5454
+    name: Primordial Crust
+    type: condition
+    duration: [72000, 106000, 139000]
+    description: |
+      Affected players are instantly killed if this status effect is permitted to expire.
+      Can be cleansed by taking lethal damage, which leaves this player at 1 HP instead. Cleansing this effect triggers an [a:earthquake-hit].
+      Players with this effect are designated as either [s:first-in-line], [s:second-in-line], or [s:third-in-line], depending on the duration of this debuff.
+    gameDescription: Plagued by rapidly hardening mud. Effect dissipates when damage that would cause HP to drop below 0 is taken, leaving HP at 1.
+  first-in-line:
+    id: 3004
+    type: indicator
+    description: Has no effect. Is always assigned to the players whose [s:primordial-crust] has an initial duration of 72s.
+  second-in-line:
+    id: 3005
+    type: indicator
+    description: Has no effect. Is always assigned to the players whose [s:primordial-crust] has an initial duration of 106s.
+  third-in-line:
+    id: 3006
+    type: indicator
+    description: Has no effect. Is always assigned to the players whose [s:primordial-crust] has an initial duration of 139s.
+  earth-resistance-down-ii:
+    id: 3372
+    type: vuln
+    duration: 1960
+    description: Inflicted by [a:earthquake-hit]. Renders any simultaneous [a:earthquake-hit] lethal.
+  unbecoming:
+    id: 5452
+    name: Unbecoming
+    type: indicator
+    description: Inflicted by [a:nothingness]. Being hit by [a:nothingness] again evolves this effect into [s:meanest-existence].
+    gameDescription: In the process of being unmade. Accruing two stacks will reduce you to [s:meanest-existence].
+  meanest-existence:
+    id: 5453
+    name: Meanest Existence
+    type: vuln
+    description: Renders any subsequent [a:nothingness] lethal. Can be used to cleanse [s:primordial-crust].
+    gameDescription: Nearly reduced to nonbeing, lowering resistance. Further exposure to [a:nothingness] will result in KO.
 actions:
   puzzle:
     name: Puzzle
@@ -96,11 +209,11 @@ actions:
       This fight has several puzzle mechanics that must be correctly resolved in phase 1 or the fight simply kicks players out of the instance after phase 2. Here's a list of all prerequisites:
       * [s:double-trouble-trap] must always be passed to another player. If it is any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
       * During [a:graven-image-2], all gravity wells (puddles) must be soaked after transforming ([a:gravity-iii]). If any gravity wells are permitted to fade away naturally, the puzzle is failed.
-      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on). If any teleportation sigils are permitted to fade away naturally, the puzzle is failed.
+      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) *in sequence* by a [s:confused] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigils are stepped on by a player who is *not* [s:confused], the puzzle is failed.
       To know whether you fulfilled the conditions for the puzzle mechanics so far, [boss] changes his voiceline after all three of the above mechanics:
       * If [s:double-trouble-trap] is not passed the first time it is applied by [a:double-trouble-trap], [boss] says nothing. Otherwise he says "Hook, line, and stinker!"
       * If the gravity wells are *not* soaked, [boss] says nothing. Otherwise he says "What?! There's no way that didn't work!" after the next [a:hyperdrive].
-      * If any prerequisites for the puzzle are *not* met, [boss] says these three voicelines in succession: "Yes... I am filled with glorious purpose!" -> "Life... Dreams... Hope... Where do they come from? And where do they go?" -> "Such things as those are mine to destroy!" If all prerequisites are met, these three voicelines are replaced by: "How boring. Guess I'll have to spice things up!" -> "This is meant to be our ultimate encounter." -> "Crafty little bastards, aren't you?"
+      * If any prerequisites for the puzzle are *not* met, [boss] says these three voicelines in succession: "Yes... I am filled with glorious purpose!" -> "Life... Dreams... Hope... Where do they come from? And where do they go?" -> "Such things as those are mine to destroy!" If all prerequisites are met, these three voicelines are replaced by: "How boring. Guess I'll have to spice things up!" -> "Intriguing. This clearly isn't your first time." -> "This is meant to be our ultimate encounter." -> "Crafty little bastards, aren't you?"
       If these new three voicelines play at the end of phase 1, killing [boss] in phase 2 transitions the fight into phase 3. If the original voicelines play, killing [boss] in phase 1 ends the fight and kicks players out of the instance.
   auto-attack:
     id: 49746
@@ -392,7 +505,10 @@ actions:
     mechanic: stack
     shape: chariot
     damage: 50000
-    description: A player soaks a gravity well (puddle), dealing over a million damage to them and dispelling the gravity well. The damage can be shared by players also soaking the gravity well, significantly reducing the damage. To accomplish this, all players who intend to share the puddle must enter it before the damage comes out. It takes about two or three seconds for damage to come out after the first player enters the puddle.
+    description: |
+      A gravity well (puddle) is soaked, dispelling the gravity well. Deals over a million damage to the soaker if soaked solo, but functions as a [m:stack] between all players inside the gravity well at the same time, significantly reducing the damage.
+      Note that after the first player enters the gravity well, a hidden timer of about 2 seconds is started. The gravity well does not explode until after this timer has elapsed, giving players time to move into the gravity well without requiring perfect coordination.
+      Players outside the gravity well do not count as part of the stack and do not take damage, even if they are standing right next to players who do.
   gravitational-explosion:
     id: 47789
     mechanic: mech.failure
@@ -419,7 +535,7 @@ actions:
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
       A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] is stacked, both players get both debuffs.
-      **Note**: Utilizing *all* teleportation sigils is a prerequisite for reaching phase 3. See [a:puzzle] for more information.
+      **Note**: Utilizing *all* teleportation sigils in sequence is a prerequisite for reaching phase 3. See [a:puzzle] for more information.
     children:
     - at: 935
       id: auto-attack
@@ -445,14 +561,6 @@ actions:
     - at: 28313
       id: enhanced-thrill-of-war-ii
       flatten: omit-parent
-    - at: 34698
-      id: mystery-magic-thunder-fire
-      link: and
-    - at: 35010
-      id: indolent-will
-      link: or
-    - at: 35010
-      id: ave-maria
   tele-trouncing-hit:
     id: 47802
     mechanic: mech
@@ -496,7 +604,41 @@ actions:
     mechanic: tb.stack
     shape: chariot
     damage: 1300000
-    description: Shared tankbuster on first-in-enmity. Deals lethal damage if taken solo.
+    description: Shared tankbuster on first-in-enmity. Deals massive damage if taken solo, but can be survived with [t:kitchen sink] or [t:invuln].
+  forsaken-odd-tower-set:
+    name: Odd Tower Set
+    mechanic: towers.double
+    compact: full
+    description: An odd tower set resolves alongside the imbued spells of those soaking the towers.
+    children:
+    - at: 0
+      id: the-path-of-light
+      link: and
+    - at: 626
+      id: spelldriver
+      link: and
+    - at: 626
+      id: spellwave
+      count: 2
+      link: and
+    - at: 626
+      id: spellscatter
+  forsaken-even-tower-set:
+    name: Even Tower Set
+    mechanic: towers.double
+    compact: full
+    description: An even tower set resolves alongside the imbued spells of those soaking the towers.
+    children:
+    - at: 0
+      id: the-path-of-light
+      link: and
+    - at: 626
+      id: spellscatter
+      count: 2
+      link: and
+    - at: 626
+      id: spellwave
+      count: 2
   forsaken:
     id: 47804
     mechanic: mech
@@ -519,13 +661,7 @@ actions:
     - at: 8003
       id: auto-attack-p2
     - at: 13230
-      id: the-path-of-light
-    - at: 13856
-      id: spelldriver
-      link: and
-    - at: 13856
-      id: spellwave
-      count: 2
+      id: forsaken-odd-tower-set
     - at: 15152
       id: auto-attack-p2
     - at: 22966
@@ -535,74 +671,46 @@ actions:
       id: futures-end
       link: and
     - at: 23237
-      id: the-path-of-light
-      link: and
-    - at: 23863
-      id: spellscatter
-      link: and
-    - at: 23863
-      id: spellwave
+      id: forsaken-even-tower-set
     - at: 34089
       id: all-things-ending
       link: and
     - at: 34268
-      id: the-path-of-light
-    - at: 34893
-      id: spelldriver
-    - at: 34893
-      id: spellwave
-      count: 2
+      id: forsaken-odd-tower-set
     - at: 43894
       id: pasts-end
       link: or
     - at: 43894
       id: futures-end
+      link: and
     - at: 44294
-      id: the-path-of-light
-    - at: 44918
-      id: spellwave
-    - at: 44918
-      id: spellscatter
+      id: forsaken-even-tower-set
     - at: 54996
       id: all-things-ending
+      link: and
     - at: 55308
-      id: the-path-of-light
-    - at: 55936
-      id: spellwave
-      count: 2
-    - at: 55936
-      id: spelldriver
+      id: forsaken-odd-tower-set
     - at: 64808
       id: pasts-end
       link: or
     - at: 64808
       id: futures-end
+      link: and
     - at: 65343
-      id: the-path-of-light
-    - at: 65970
-      id: spellscatter
-    - at: 65970
-      id: spellwave
+      id: forsaken-even-tower-set
     - at: 75903
       id: all-things-ending
+      link: and
     - at: 76347
-      id: the-path-of-light
-    - at: 76972
-      id: spelldriver
-    - at: 76972
-      id: spellwave
-      count: 2
+      id: forsaken-odd-tower-set
     - at: 85746
       id: pasts-end
       link: or
     - at: 85746
       id: futures-end
+      link: and
     - at: 86368
-      id: the-path-of-light
-    - at: 86993
-      id: spellscatter
-    - at: 86993
-      id: spellwave
+      id: forsaken-even-tower-set
     - at: 96627
       id: all-things-ending
   the-path-of-light:
@@ -651,7 +759,6 @@ actions:
     id: 47809
     mechanic: spread
     shape: chariot
-    count: 3
     damage: 207036
     description: A circular [s:spells-trouble] resolves in the form of a moderate circular spread AoE. Inflicts [s:magic-vulnerability-up].
   all-things-ending:
@@ -670,8 +777,8 @@ actions:
     mechanic: aoe.3-to-1
     shape: chariot
     description: |
-      Three sets of triangles spawn. 12 seconds later, the tips of the triangles explode in the order they spawned. Inflicts [s:damage-down].
-      One of the triangle sets may be a large triangle.
+      Three sets of triangles descend. 12 seconds later, the tips of the triangles explode in the order they spawned. These explosions inflict [s:damage-down].
+      The first triangle set is always composed of three triangles and always appears on the outside of the arena. The second triangle set is composed of only one triangle and also always appears on the outside of the arena. The third triangle set is composed of three triangles and always includes two outside triangles and a triangle in the center of the arena.
       [a:wings-of-destruction] happens right before triangles explode, and [a:wings-of-destruction-tb] at the same time as the last hit.
     children:
     - at: 2855
@@ -718,13 +825,502 @@ actions:
     mechanic: enrage
     damage: 9999999
     description: |
-      If the boss's HP is not depleted by this point, wipes the party.
+      Wipes the party if [boss] was not reduced to 1 HP before becoming untargetable.
       **Note**: If Phase 1's puzzle mechanic was not correctly executed (see [a:tele-trouncing]), depleting the boss's HP here simply ends the fight and kicks players out of the instance. Otherwise a cutscene plays and the party advances to Phase 3.
+  aero-iii-assault:
+    id: 50167
+    mechanic: mech.knockback.unavoidable
+    damage: 0
+    description: Knocks back all players from the center of the arena and inflicts [s:down-for-the-count]. Only happens if [boss] is brought to 1 HP before [a:light-of-judgment-p2-enrage].
   # Phase 3
+  definition-of-insanity:
+    id: 47842
+    name: Definition of Insanity
+    mechanic: mech
+    description: |
+      [boss] spawns Exdeath and Chaos.
+      Three times throughout the phase, both bosses will equalize their HP ([a:aetherlink]).
+      As soon as either boss is killed, [s:epic-hero] and [s:fated-hero] will fall off and the other boss will immediately begin their enrage cast ([a:meteor] or [a:bowels-of-agony-enrage]).
+  the-decisive-battle:
+    id: 49890
+    name: the Decisive Battle
+    mechanic: mech.status
+    count: 2
+    description: |
+      Inflicts [s:epic-hero] on the 4 closest players to Chaos and [s:fated-hero] on the other 4 players.
+      Also grants [s:epic-villain] to Chaos and [s:fated-villain] to Exdeath.
+      These debuffs prevent players from dealing damage to Chaos unless they are an [s:epic-hero], or Exdeath unless they are a [s:fated-hero].
+      The debuffs last for only a short time, until Exdeath begins casting [a:thunder-iii-out].
+  auto-attack-chaos:
+    id: 49746
+    name: Auto-attack
+    caption: Chaos
+    mechanic: auto.single
+    damage: 153466
+    emphasis: less
+    description: Chaos punches the player who is first-in-enmity, dealing heavy damage.
+  auto-attack-exdeath:
+    id: 49744
+    name: Auto-attack
+    caption: Exdeath
+    mechanic: auto.single
+    damage: 120835
+    emphasis: less
+    description: Exdeath slashes the player who is first-in-enmity, dealing heavy damage.
+  auto-attack-both:
+    id: 49746
+    name: Auto-attack
+    caption: Both
+    mechanic: auto.double
+    damage: 153466
+    emphasis: less
+    description: Both bosses auto-attack their first-in-enmity target, dealing heavy damage.
+  bowels-of-agony:
+    id: 47858
+    name: Bowels of Agony
+    mechanic: mech.status
+    players: 8
+    damage: 174230
+    emphasis: more
+    description: |
+      Chaos inflicts various debuffs on all players.
+      * 4 random players are inflicted with [s:headwind].
+      * The other 4 players are inflicted with [s:tailwind].
+      * 1 random support and 1 random DPS are inflicted with [s:entropy].
+      * 1 random support and 1 random DPS are inflicted with [s:dynamic-fluid].
+      Both [s:entropy] effects have a duration of 19 seconds and [s:dynamic-fluid] a duration of 46 seconds or vice-versa.
+      Also spawns three sigils in the arena (a water square, wind diamond, and fire triangle). These three sigils are always 90° offset from each other. All three sigils target the two closest players to them with a mechanic after [s:dynamic-fluid] resolves:
+      * The water square targets the two closest players with [a:tsunami], a small [m:spread] AoE.
+      * The wind diamond targets the two closest players with [a:cyclone], a moderately large [m:stack.partner].
+      * The fire triangle targets the two closest players with [a:inferno], a moderately large [ms:dynamo] AoE.
+  stray-flames:
+    id: 47859
+    name: Stray Flames
+    mechanic: spread
+    shape: chariot
+    count: 2
+    damage: 282622
+    description: "[s:entropy] resolves, dealing damage to the player and all players in a small radius around them. Inflicts [s:magic-vulnerability-up]."
+  thunder-iii-out:
+    id: 47890
+    name: Thunder III
+    caption: AoE
+    mechanic: aoe
+    shape: chariot
+    description: A large point-blank AoE on Exdeath's position. Inflicts [s:damage-down].
+  inferno:
+    id: 47860
+    name: Inferno
+    mechanic: aoe
+    shape: dynamo
+    count: 2
+    players: 1
+    damage: 287705
+    description: A moderately large [ms:dynamo] AoE on the 2 closest players to the fire triangle. Inflicts [s:magic-vulnerability-up]. Anyone hit by the dynamo is knocked away from the center of it. Always resolves right after [s:entropy].
+  cyclone:
+    id: 47864
+    name: Cyclone
+    mechanic: stack.partner
+    shape: chariot
+    damage: 202029
+    description: Any time a [s:headwind] or [s:tailwind] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii].
+  thunder-iii-tb:
+    id: 47881
+    name: Thunder III
+    caption: TB
+    mechanic: tb.mt
+    shape: chariot
+    description: Hits the closest player to Exdeath with a heavy tankbuster, then does it again. Inflicts [s:lightning-resistance-down-ii].
+    expanded: true
+    children:
+    - at: 90
+      id: thunder-iii-hit
+    - at: 3126
+      id: thunder-iii-hit
+  thunder-iii-hit:
+    id: 47884
+    name: Thunder III
+    caption: Hit
+    mechanic: tb.mt
+    shape: chariot
+    damage: 674286
+    description: Individual hit of [a:thunder-iii-tb]. Hits the closest player to Exdeath.
+  trance:
+    id: 49878
+    name: Trance
+    mechanic: mech
+    description: |
+      [boss] imbues himself with potent magicks and prepares [a:ultima-blaster].
+      With [a:ultima-blaster], [boss] fires an arena-spanning pulse from any cardinal or intercardinal straight across to the other side, dealing unavoidable raidwide damage to all players. [boss] then repeats this seven more times, with each subsequent pulse being rotated by 90°. The pulses can rotate either clockwise or counter-clockwise.
+      After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8 above their heads. A short while later, each pulse fires *back* across from where it ended up at the corresponding numbered player in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
+      **Example**: The third pulse fired from northwest to southeast. This means that a line AoE originating from southeast fires at the player with the number 3 above their head.
+  longitudinal-implosion:
+    id: 47869
+    name: Longitudinal Implosion
+    mechanic: aoe
+    shape: cone
+    compact: trim
+    description: First hits a cone-shaped area in front of and behind Chaos, then to his sides.
+    children:
+    - at: 712
+      id: shockwave
+    - at: 2719
+      id: shockwave
+  latitudinal-implosion:
+    id: 47870
+    name: Latitudinal Implosion
+    mechanic: aoe
+    shape: cone
+    compact: trim
+    description: First hits a cone-shaped area to Chaos's sides, then in front and behind.
+    children:
+    - at: 712
+      id: shockwave
+    - at: 2719
+      id: shockwave
+  stray-spray:
+    id: 47862
+    name: Stray Spray
+    mechanic: aoe
+    shape: dynamo
+    count: 2
+    players: 1
+    damage: 274248
+    description: "[s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the affected players."
+  tsunami:
+    id: 47861
+    name: Tsunami
+    mechanic: spread
+    shape: chariot
+    count: 2
+    damage: 262491
+    description: The water square hits the two closest players with a small AoE that inflicts [s:magic-vulnerability-up] on all players hit and knocks all players (except the targeted player) back from the targeted player. Always resolves right after [s:dynamic-fluid].
+  ultima-blasters:
+    id: 47843
+    name: Ultima Blasters
+    mechanic: raidwide
+    compact: full
+    description: "[boss] starts on a random cardinal or intercardinal and dashes across, dealing raidwide damage to all players. This then repeats 7 more times."
+    children:
+    - at: 0
+      id: ultima-blaster
+    - at: 2010
+      id: ultima-blaster
+    - at: 4022
+      id: ultima-blaster
+    - at: 6039
+      id: ultima-blaster
+    - at: 8052
+      id: ultima-blaster
+    - at: 10063
+      id: ultima-blaster
+    - at: 12067
+      id: ultima-blaster
+    - at: 14077
+      id: ultima-blaster
+  ultima-blaster:
+    id: 47843
+    name: Ultima Blaster
+    mechanic: raidwide
+    damage: 89341
+    description: "[boss] dashes from any cardinal or intercardinal across to the opposite side, dealing raidwide damage to all players."
+  umbra-smash:
+    id: 47872
+    name: Umbra Smash
+    mechanic: raidwide.proximity
+    shape: chariot
+    damage: 10442
+    description: At the start of the cast Chaos locks onto the farthest player and jumps to that position at the end of the cast, dealing heavy proximity damage.
+    resolve: |
+      Designate a player to bait the jump. They should be at the edge of the arena before the cast begins, then move to the opposite side (along with the rest of the party) before the cast ends.
+  vacuum-wave:
+    id: 47891
+    name: Vacuum Wave
+    mechanic: mech.knockback
+    damage: 0
+    description: Exdeath knocks all players away from him. Can be avoided using [s:arms-length] or [s:surecast].
+  aetherlink:
+    id: 49892
+    name: Aetherlink
+    mechanic: mech
+    description: |
+      Chaos and Exdeath equalize their HP.
+      Mathematically, the boss with the higher HP transfers half of the HP difference between them and the other boss to the other boss.
+  ultima-blaster-lc:
+    id: 47844
+    name: Ultima Blaster
+    mechanic: spread
+    shape: line
+    count: 8
+    damage: 133817
+    emphasis: more
+    description: The [a:ultima-blaster] pulses come back from where they ended up, firing a line AoE at the correspondingly numbered player. Inflicts [s:magic-vulnerability-up]. Ignores [invulnerability effects](t:invuln).
+  max:
+    id: 47845
+    name: Max
+    mechanic: mech
+    description: "[boss] becomes big. Really big."
+  earthquake:
+    id: 50545
+    name: Earthquake
+    mechanic: mech
+    emphasis: more
+    description: |
+      Sets all players' HP to 1, inflicts players with various status effects, and spawns an earth shape in the middle of the arena.
+      * 1 random healer and 1 random DPS are inflicted with [s:accretion] (14s).
+      * 3 players are inflicted with [s:first-in-line] and [s:primordial-crust] (72s).
+      * 3 players are inflicted with [s:second-in-line] and [s:primordial-crust] (106s).
+      * The remaining 2 players are inflicted with [s:third-in-line] and [s:primordial-crust] (139s).
+      All debuffs must be cleansed by healing the player to full (in the case of [s:accretion]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
+      Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all party members, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
+      Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
+    resolve: |
+      Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration.
+      [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
+      [a:nothingness] happens exactly 24 times and cannot be avoided. Each player can soak [a:nothingness] 3× (first gaining [s:unbecoming], the second time gaining [s:meanest-existence], the third time taking lethal damage and thereby cleansing [s:primordial-crust]). It is not possible to survive a fourth hit. 3×8 players is 24 soaks, so if any player at any point takes lethal damage from anything other than [a:nothingness], [a:nothingness] can no longer be cleanly resolved and will result in deaths.
+      Ensure that you never have two or more [s:meanest-existence] players take a [a:nothingness] at the same time, as this would result in a wipe.
+  earthquake-hit:
+    id: 47866
+    name: Earthquake
+    caption: Hit
+    mechanic: raidwide
+    damage: 101287
+    description: "[s:accretion] or [s:primordial-crust] was cleansed, dealing raidwide damage and inflicting [s:earth-resistance-down-ii] on all players."
+  slap-happy-right:
+    id: 47846
+    name: Slap Happy
+    caption: Right
+    mechanic: combination
+    compact: full
+    description: "[boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time."
+    children:
+    - at: 805
+      id: slap-happy-hit
+      link: then
+    - at: 1386
+      id: slap-happy-hit
+      link: then
+    - at: 2101
+      id: slap-happy-hit
+    - at: 3398
+      id: slap-happy-aoe
+      link: and
+    - at: 3486
+      id: shocking-impact
+  slap-happy-left:
+    id: 47847
+    name: Slap Happy
+    caption: Left
+    mechanic: combination
+    compact: full
+    description: "[boss] hits the left side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal role spread at one random player of each role."
+    children:
+    - at: 805
+      id: slap-happy-hit
+      link: then
+    - at: 1386
+      id: slap-happy-hit
+      link: then
+    - at: 2101
+      id: slap-happy-hit
+    - at: 3398
+      id: slap-happy-aoe
+      link: and
+    - at: 3486
+      id: shockwave-role
+  slap-happy-hit:
+    id: 47848
+    name: Slap Happy
+    caption: Hit
+    mechanic: aoe
+    shape: chariot
+    players: 0
+    damage: 200938
+    description: Individual hit of [a:slap-happy-right]. Inflicts [s:damage-down].
+  slap-happy-aoe:
+    id: 47849
+    name: Slap Happy
+    caption: AoE
+    mechanic: aoe
+    shape: chariot
+    description: The center AoE at the end of [a:slap-happy-right]. Inflicts [s:damage-down].
+  shocking-impact:
+    id: 47850
+    name: Shocking Impact
+    mechanic: stack
+    shape: cone
+    damage: 225509
+    description: A conal full party stack originating from the center of the arena. Always follows [a:slap-happy-right].
+  black-hole:
+    id: 47867
+    name: Black Hole
+    mechanic: mech
+    description: |
+      Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down].
+      Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing moderate damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
+      This mechanic repeats two more times, but the distribution of [a:nothingness] tethers varies:
+      * [a:black-hole] 1: one tether, followed by two tethers.
+      * [a:black-hole] 2 and 3: three tethers, followed by three tethers, followed by another three tethers.
+      * [a:black-hole] 4: two tethers, followed by one tether.
+      **Total**: 24× [a:nothingness], which is the exact number of hits required for every player to be hit once by [a:nothingness] while in [s:meanest-existence].
+  nothingness:
+    id: 47868
+    name: Nothingness
+    mechanic: spread.tethers
+    shape: line
+    damage: 22079
+    description: |
+      A black hole fires a line AoE at its tethered player, inflicting [s:unbecoming].
+      If the player already has [s:unbecoming], inflicts [s:meanest-existence].
+      If the player already has [s:meanest-existence], deals 9,999,999 damage.
+  damning-edict:
+    id: 47873
+    name: Damning Edict
+    mechanic: aoe
+    shape: halfroom
+    description: Chaos hits everything in front of him with an avoidable AoE, dealing heavy damage and inflicting [s:damage-down].
+  look-upon-me-and-despair:
+    id: 47852
+    name: Look upon Me and Despair
+    mechanic: aoe
+    shape: line
+    compact: trim
+    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
+    children:
+    - at: 1074
+      id: look-upon-me-and-despair-hit
+  look-upon-me-and-despair-hit:
+    id: 47854
+    name: Look upon Me and Despair
+    caption: Hit
+    mechanic: aoe
+    shape: line
+    players: 0
+    damage: 187902
+    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
+  blackblood:
+    id: 50362
+    name: Blackblood
+    mechanic: unknown
+    description: Unknown effect.
+  white-hole:
+    id: 48486
+    name: White Hole
+    mechanic: aoe.condition
+    description: Petrifies any player not at full health and kills any player under 50% health.
+  shockwave:
+    id: 47871
+    name: Shockwave
+    mechanic: aoe
+    shape: cone
+    count: 2
+    players: 0
+    damage: 226275
+    description: The cone-shaped AoE cast out by [a:longitudinal-implosion] or [a:latitudinal-implosion]. Inflicts [s:damage-down].
+  shockwave-role:
+    id: 47851
+    name: Shockwave
+    caption: Roles
+    mechanic: spread.role
+    shape: cone
+    count: 3
+    damage: 226275
+    description: Fires a cone on a random player of each role (DPS, healers, tanks).
+  blizzard-iii:
+    id: 47887
+    name: Blizzard III
+    caption: AoE
+    mechanic: aoe.delayed
+    shape: chariot
+    compact: trim
+    description: Two sets of delayed AoEs spawn underneath all players. Each AoE Inflicts [s:damage-down].
+    children:
+    - at: 3087
+      id: blizzard-iii-hit
+    - at: 6125
+      id: blizzard-iii-hit
+  blizzard-iii-hit:
+    id: 47885
+    name: Blizzard III
+    caption: Hit
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 8
+    description: Individual hit of [a:blizzard-iii].
+  stomp-a-mole:
+    id: 47855
+    name: Stomp-a-Mole
+    mechanic: towers.double
+    compact: trim
+    description: "[boss] climbs onto the arena and stomps twice with each foot. Each stomp represents a [2-person tower](m:towers.double) that inflicts [s:magic-vulnerability-up]."
+    resolve: |
+      If a DPS is targeted by [a:knock-down] first, supports resolve the first set of stomps. If a support is targeted by [a:knock-down], DPS resolve the first set of stomps.
+    children:
+    - at: 1699
+      id: stomp-a-mole-hit
+    - at: 3040
+      id: stomp-a-mole-hit
+    - at: 4333
+      id: stomp-a-mole-hit
+    - at: 5676
+      id: stomp-a-mole-hit
+  knock-down:
+    id: 47874
+    name: Knock Down
+    mechanic: stack
+    shape: chariot
+    description: Targets either a support or DPS with a visible stack marker, then targets a player of the opposite role.
+    children:
+    - at: 89
+      id: knock-down-hit
+    - at: 5583
+      id: knock-down-hit
+  knock-down-hit:
+    id: 47875
+    name: Knock Down
+    caption: Hit
+    mechanic: stack
+    shape: chariot
+    players: 4
+    damage: 191330
+    description: Individual hit of [a:knock-down].
+  stomp-a-mole-hit:
+    id: 47856
+    name: Stomp-a-Mole
+    caption: Hit
+    mechanic: towers.double
+    damage: 229536
+    description: Individual hit of [a:stomp-a-mole].
+  blizzard-iii-freeze:
+    id: 47889
+    name: Blizzard III
+    caption: Motion
+    mechanic: mech.motion
+    description: Freezes all players who are standing still.
+  big-bang:
+    id: 47878
+    name: Big Bang
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 2
+    description: AoEs resolve wherever the [a:knock-down] stacks were resolved. Inflicts [s:damage-down].
+  meteor:
+    id: 49752
+    name: Meteor
+    mechanic: enrage
+    damage: 9999999
+    description: If Exdeath is not defeated by this point, he wipes the party.
+  bowels-of-agony-enrage:
+    id: 49753
+    name: Bowels of Agony
+    mechanic: enrage
+    damage: 9999999
+    description: If Chaos is not defeated by this point, he wipes the party.
+  # Phase 4
   coming-soon:
     name: Coming Soon
     mechanic: hint
-    description: Not enough information is available for this phase so far. The timeline will be expanded as soon as more information is discovered.
+    description: Work on the timeline for phases 4 and 5 is currently underway, so this section will be expanded soon.
 timeline:
   - at: 0
     id: <phase>
@@ -799,6 +1395,14 @@ timeline:
     id: auto-attack
   - at: 152327
     id: tele-trouncing
+  - at: 187025
+    id: mystery-magic-thunder-fire
+    link: and
+  - at: 187337
+    id: indolent-will
+    link: or
+  - at: 187337
+    id: ave-maria
   - at: 190103
     id: auto-attack
   - at: 193144
@@ -807,6 +1411,7 @@ timeline:
     id: auto-attack
   - at: 198146
     id: <untargetable>
+    target: "[boss]"
   - at: 203278
     id: light-of-judgment-enrage
   - at: 208592
@@ -814,6 +1419,7 @@ timeline:
     name: Phase 2 - God Kefka
   - at: 208592
     id: <targetable>
+    target: "[boss]"
   - at: 213736
     id: auto-attack-p2
   - at: 220799
@@ -844,12 +1450,394 @@ timeline:
     id: auto-attack-p2
   - at: 380808
     id: <untargetable>
+    target: "[boss]"
+    description: If [boss]'s HP is not reduced to 1 by this point, he becomes untargetable and casts [a:light-of-judgment-p2-enrage], wiping the party.
   - at: 385924
     id: light-of-judgment-p2-enrage
-  - at: 385924
+  - at: 387078
+    id: aero-iii-assault
+  - at: 424676
     id: <phase>
     name: Phase 3 - Exdeath and Chaos
-  - at: 385924
+  - at: 424676
+    id: definition-of-insanity
+  - at: 427714
+    id: <targetable>
+    target: Chaos and Exdeath
+  - at: 430838
+    id: the-decisive-battle
+  - at: 434991
+    id: auto-attack-both
+  - at: 438022
+    id: auto-attack-both
+  - at: 441062
+    id: auto-attack-both
+  - at: 444101
+    id: auto-attack-both
+  - at: 447183
+    id: auto-attack-exdeath
+  - at: 450223
+    id: auto-attack-exdeath
+  - at: 450313
+    id: bowels-of-agony
+  - at: 452145
+    id: auto-attack-both
+  - at: 455182
+    id: auto-attack-both
+  - at: 458222
+    id: auto-attack-both
+  - at: 461255
+    id: auto-attack-chaos
+  - at: 464292
+    id: auto-attack-chaos
+  - at: 467326
+    id: auto-attack-chaos
+  - at: 469423
+    id: stray-flames
+    timing: player
+    link: or
+  - at: 469423
+    id: stray-spray
+    timing: player
+    link: and
+  - at: 469468
+    id: thunder-iii-out
+    link: and
+  - at: 470362
+    id: auto-attack-chaos
+    link: and
+  - at: 470452
+    id: inferno
+    timing: player
+    link: or
+  - at: 470452
+    id: tsunami
+    timing: player
+    link: then
+  - at: 472148
+    id: cyclone
+    timing: player
+    count: 2
+  - at: 473397
+    id: auto-attack-chaos
+  - at: 476433
+    id: auto-attack-chaos
+  - at: 478579
+    id: thunder-iii-tb
+  - at: 479473
+    id: auto-attack-chaos
+  - at: 481661
+    id: auto-attack-both
+  - at: 484688
+    id: auto-attack-both
+  - at: 487724
+    id: auto-attack-exdeath
+  - at: 490351
+    id: trance
+  - at: 490752
+    id: auto-attack-exdeath
+  - at: 491555
+    id: latitudinal-implosion
+    link: or
+  - at: 491555
+    id: longitudinal-implosion
+  - at: 493604
+    id: auto-attack-both
+  - at: 496415
+    id: stray-spray
+    timing: player
+    link: or
+  - at: 496415
+    id: stray-flames
+    timing: player
+    link: then
+  - at: 496636
+    id: auto-attack-both
+    link: then
+  - at: 497440
+    id: tsunami
+    timing: player
+    link: or
+  - at: 497440
+    id: inferno
+    timing: player
+    link: then
+  - at: 499183
+    id: cyclone
+    timing: player
+    count: 2
+  - at: 499675
+    id: auto-attack-both
+  - at: 502711
+    id: auto-attack-both
+  - at: 505749
+    id: auto-attack-chaos
+  - at: 507670
+    id: ultima-blasters
+  - at: 511827
+    id: umbra-smash
+  - at: 514739
+    id: vacuum-wave
+  - at: 514962
+    id: auto-attack-exdeath
+  - at: 517912
+    id: auto-attack-chaos
+  - at: 518624
+    id: cyclone
+    timing: player
+    count: 4
+  - at: 519023
+    id: auto-attack-exdeath
+  - at: 520049
+    id: aetherlink
+  - at: 520942
+    id: auto-attack-chaos
+  - at: 523986
+    id: auto-attack-both
+  - at: 527026
+    id: auto-attack-both
+  - at: 529796
+    id: ultima-blaster-lc
+  - at: 530064
+    id: auto-attack-both
+  - at: 533102
+    id: auto-attack-chaos
+  - at: 536139
+    id: auto-attack-chaos
+  - at: 537297
+    id: thunder-iii-tb
+  - at: 538278
+    id: auto-attack-both
+  - at: 541307
+    id: auto-attack-both
+  - at: 545327
+    id: the-decisive-battle
+  - at: 547381
+    id: auto-attack-both
+  - at: 551315
+    id: auto-attack-chaos
+  - at: 554354
+    id: auto-attack-chaos
+  - at: 554579
+    id: thunder-iii-tb
+  - at: 556408
+    id: max
+  - at: 559536
+    id: earthquake
+  - at: 565651
+    id: auto-attack-both
+  - at: 566812
+    id: earthquake-hit
+    timing: player
+  - at: 568686
+    id: auto-attack-both
+  - at: 570340
+    id: earthquake-hit
+    timing: player
+  - at: 571728
+    id: auto-attack-both
+  - at: 574767
+    id: auto-attack-both
+  - at: 574989
+    id: slap-happy-right
+    link: or
+  - at: 574989
+    id: slap-happy-left
+  - at: 577807
+    id: auto-attack-chaos
+  - at: 578789
+    id: black-hole
+  - at: 580845
+    id: auto-attack-both
+  - at: 583880
+    id: auto-attack-both
+  - at: 585933
+    id: nothingness
+  - at: 586021
+    id: aetherlink
+  - at: 586918
+    id: auto-attack-both
+  - at: 589953
+    id: auto-attack-both
+  - at: 592991
+    id: nothingness
+    count: 2
+  - at: 592991
+    id: auto-attack-chaos
+  - at: 596028
+    id: auto-attack-chaos
+  - at: 596162
+    id: thunder-iii-tb
+  - at: 599067
+    id: auto-attack-both
+  - at: 602102
+    id: auto-attack-exdeath
+  - at: 604205
+    id: damning-edict
+  - at: 605140
+    id: auto-attack-exdeath
+  - at: 605407
+    id: slap-happy-right
+    link: or
+  - at: 605407
+    id: slap-happy-left
+  - at: 607102
+    id: auto-attack-chaos
+  - at: 608174
+    id: auto-attack-exdeath
+  - at: 610134
+    id: auto-attack-both
+  - at: 613168
+    id: auto-attack-chaos
+  - at: 616429
+    id: nothingness
+    count: 3
+    link: then
+  - at: 617996
+    id: earthquake-hit
+    timing: player
+  - at: 621518
+    id: nothingness
+    count: 3
+    link: then
+  - at: 623081
+    id: earthquake-hit
+    timing: player
+  - at: 626613
+    id: nothingness
+    count: 3
+    link: then
+  - at: 628176
+    id: earthquake-hit
+    timing: player
+  - at: 630363
+    id: auto-attack-exdeath
+  - at: 631570
+    id: damning-edict
+  - at: 631837
+    id: look-upon-me-and-despair
+  - at: 634655
+    id: auto-attack-chaos
+  - at: 635011
+    id: blackblood
+    flatten: omit-parent
+  - at: 637426
+    id: thunder-iii-tb
+  - at: 637692
+    id: auto-attack-both
+  - at: 640732
+    id: auto-attack-both
+  - at: 643771
+    id: auto-attack-both
+  - at: 647523
+    id: auto-attack-exdeath
+  - at: 650692
+    id: nothingness
+    count: 3
+    link: then
+  - at: 652255
+    id: earthquake-hit
+    timing: player
+  - at: 652832
+    id: aetherlink
+  - at: 655777
+    id: nothingness
+    count: 3
+    link: then
+  - at: 657341
+    id: earthquake-hit
+    timing: player
+  - at: 660859
+    id: nothingness
+    count: 3
+    link: then
+  - at: 662423
+    id: earthquake-hit
+    timing: player
+  - at: 671985
+    id: latitudinal-implosion
+    link: or
+  - at: 671985
+    id: longitudinal-implosion
+  - at: 672029
+    id: white-hole
+    link: or
+  - at: 673417
+    id: slap-happy-right
+  - at: 673417
+    id: slap-happy-left
+  - at: 674220
+    id: slap-happy-hit
+  - at: 674801
+    id: slap-happy-hit
+  - at: 675113
+    id: auto-attack-exdeath
+  - at: 675518
+    id: slap-happy-hit
+  - at: 676813
+    id: slap-happy-aoe
+  - at: 676901
+    id: shockwave-role
+  - at: 678060
+    id: auto-attack-both
+  - at: 684272
+    id: nothingness
+    count: 2
+    link: then
+  - at: 685838
+    id: earthquake-hit
+    timing: player
+  - at: 689857
+    id: look-upon-me-and-despair
+  - at: 691332
+    id: nothingness
+    link: then
+  - at: 692899
+    id: earthquake-hit
+    timing: player
+  - at: 695131
+    id: auto-attack-both
+  - at: 698172
+    id: auto-attack-chaos
+  - at: 700319
+    id: blizzard-iii
+    flatten: true
+    expandable: false
+  - at: 704119
+    id: stomp-a-mole
+    flatten: true
+    expandable: false
+  - at: 704387
+    id: auto-attack-exdeath
+  - at: 705685
+    id: knock-down
+  - at: 706221
+    id: auto-attack-chaos
+  - at: 708452
+    id: auto-attack-both
+  - at: 714757
+    id: blizzard-iii-freeze
+  - at: 715921
+    id: big-bang
+  - at: 718832
+    id: auto-attack-both
+  - at: 721874
+    id: auto-attack-both
+  - at: 724909
+    id: auto-attack-both
+  - at: 727940
+    id: auto-attack-both
+  - at: 729235
+    id: <untargetable>
+    target: Exdeath and Chaos
+  - at: 734337
+    id: meteor
+  - at: 734337
+    id: bowels-of-agony-enrage
+  - at: 999999
+    id: <phase>
+    name: Phase 4
+  - at: 999999
     id: coming-soon
   
   
