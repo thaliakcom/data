@@ -242,6 +242,7 @@
         "tb.close-or-far",
         "tb.close-and-far",
         "tb.flare",
+        "auto",
         "auto.single",
         "auto.double",
         "auto.stack",

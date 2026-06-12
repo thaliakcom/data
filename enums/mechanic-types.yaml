@@ -90,6 +90,10 @@ tb.flare:
   name: flare tankbuster
   description: A tankbuster on either the first or second player on the enmity list. The selected player is indicated by a headmarker and must heavily mitigate the attack using defensive cooldowns to survive. All other players must move as far away from the player as possible, as the tankbuster deals proximity damage to all other players.
   players: 8
+auto:
+  name: auto-attack
+  description: An auto-attack.
+  players: 1
 auto.single:
   name: MT
   description: These auto-attacks target the player with the highest enmity.

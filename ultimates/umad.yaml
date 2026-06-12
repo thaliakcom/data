@@ -1,13 +1,13 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-06-09
+modified: 2026-06-12
 by:
   id: 27637301
   role: author
 boss: Kefka
 HP: 0
-wip: [diagrams, in-progress]
+wip: [diagrams]
 party_hp: 235643
 description: ""
 status:
@@ -21,10 +21,10 @@ status:
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [960, 3960]
+    duration: [960, 1960, 3960]
     description: |
       Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], and [a:stomp-a-mole-hit].
+      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy], and [a:chaotic-holy].
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
@@ -153,7 +153,7 @@ status:
     id: 2998
     type: vuln
     duration: 3960
-    description: Inflicted by [a:thunder-iii-hit]
+    description: Inflicted by [a:thunder-iii-hit] and [a:thunder-iii-tower].
   accretion:
     id: 1604
     type: condition
@@ -270,6 +270,39 @@ status:
     id: 1484
     type: form
     description: "[boss] has stored the truthiness of the last [a:blizzard-iii-blowout]."
+  # Phase 5
+  surprise-holy:
+    id: 5351
+    name: Surprise Holy
+    type: delay
+    duration: 6000
+    description: Triggers [a:chaotic-holy] when the effect expires.
+    gameDescription: "[a:chaotic-holy] will activate when this effect expires."
+  surprise-flare:
+    id: 5350
+    name: Surprise Flare
+    type: delay
+    duration: 6000
+    description: Triggers [a:flare-diffusion] when the effect expires.
+    gameDescription: "[a:flare-diffusion] will activate when this effect expires."
+  fire-resistance-down-ii:
+    id: 2902
+    type: vuln
+    duration: 20000
+    description: Renders any fire damage taken lethal. Inflicted by [a:fire-iii-tower].
+  ice-resistance-down-ii:
+    id: 2903
+    type: vuln
+    duration: 20000
+    description: Renders any ice damage taken lethal. Inflicted by [a:blizzard-iii].
+  forsaken:
+    id: 5144
+    name: Forsaken
+    type: impairment
+    description: |
+      This player has been erased from existence. Their HP is immediately set to 0 and their character model is deleted from the game world. They cannot be raised in any way and are forced to sit out the rest of the fight.
+      Inflicted by [a:forsaken-ground] and [a:forsaken-null].
+    gameDescription: Vanished, sense of self having been eroded by destructive power.
 actions:
   puzzle:
     name: Puzzle
@@ -288,14 +321,14 @@ actions:
   auto-attack:
     id: 49746
     name: Auto-attack
-    mechanic: auto.single
+    mechanic: auto
     damage: 158451
     emphasis: less
     description: "[boss] kicks the first player in enmity, dealing heavy damage."
   auto-attack-p2:
     id: 49746
     name: Auto-attack
-    mechanic: auto.single
+    mechanic: auto
     damage: 96809
     emphasis: less
     description: "[boss] kicks the first player in enmity, dealing heavy damage."
@@ -925,7 +958,7 @@ actions:
     id: 49746
     name: Auto-attack
     caption: Chaos
-    mechanic: auto.single
+    mechanic: auto
     damage: 153466
     emphasis: less
     description: Chaos punches the player who is first-in-enmity, dealing heavy damage.
@@ -933,7 +966,7 @@ actions:
     id: 49744
     name: Auto-attack
     caption: Exdeath
-    mechanic: auto.single
+    mechanic: auto
     damage: 120835
     emphasis: less
     description: Exdeath slashes the player who is first-in-enmity, dealing heavy damage.
@@ -941,7 +974,7 @@ actions:
     id: 49746
     name: Auto-attack
     caption: Both
-    mechanic: auto.double
+    mechanic: auto
     damage: 153466
     emphasis: less
     description: Both bosses auto-attack their first-in-enmity target, dealing heavy damage.
@@ -1295,7 +1328,7 @@ actions:
     shape: cone
     count: 3
     damage: 226275
-    description: Fires a cone on a random player of each role (DPS, healers, tanks).
+    description: Fires a cone at a random player of each role (DPS, healers, tanks). This is not a stack.
   blizzard-iii:
     id: 47887
     name: Blizzard III
@@ -1390,7 +1423,7 @@ actions:
   auto-attack-p4:
     id: 49746
     name: Auto-attack
-    mechanic: auto.single
+    mechanic: auto
     damage: 95527
     emphasis: less
     description: "[boss] kicks the first player in enmity, dealing heavy damage."
@@ -1555,10 +1588,400 @@ actions:
     description: |
       The invisible AoE dropped by [s:dynamic-fluid-p4] resolves in the form of a [ms:dynamo] AoE (real) or [ms:chariot] (fake), inflicting [s:damage-down].
   # Phase 5
-  coming-soon:
-    name: Coming Soon
-    mechanic: hint
-    description: Work on the timeline for phases 4 and 5 is currently underway, so this section will be expanded soon.
+  ultima-repeater:
+    id: 47936
+    name: Ultima Repeater
+    mechanic: raidwide
+    compact: full
+    description: Heavy 4-hit raidwide.
+    children:
+    - at: 1112
+      id: ultima-repeater-hit
+    - at: 1825
+      id: ultima-repeater-hit
+    - at: 2493
+      id: ultima-repeater-hit
+    - at: 3208
+      id: ultima-repeater-hit
+  ultima-repeater-hit:
+    id: 47937
+    name: Ultima Repeater
+    caption: Hit
+    mechanic: raidwide
+    damage: 133000
+    description: Individual hit of [a:ultima-repeater].
+  fell-forces-healer:
+    id: 50772
+    caption: Healer
+    mechanic: spread.role
+    shape: chariot
+    players: 2
+    damage: 83781
+    description: A [circular](ms:chariot) AoE on a random healer.
+  fell-forces-dps:
+    id: 50773
+    caption: DPS
+    mechanic: spread.role
+    shape: chariot
+    players: 4
+    damage: 90900
+    description: A [circular](ms:chariot) AoE on a random DPS.
+  fell-forces-tank:
+    id: 50771
+    caption: Tank
+    mechanic: auto
+    shape: chariot
+    damage: 420000
+    description: Heavy tankbuster-like auto-attack on first-in-enmity.
+  fell-forces:
+    id: 50771
+    mechanic: auto
+    shape: chariot
+    emphasis: less
+    description: |
+      Targets the first-in-enmity player and a random DPS and healer with a heavy [circular](ms:chariot) auto-attack.
+      Each of these deals a fixed amount of damage. They are not stacks.
+    children:
+    - at: 0
+      id: fell-forces-tank
+    - at: 0
+      id: fell-forces-healer
+    - at: 0
+      id: fell-forces-dps
+  flood:
+    id: 49471
+    mechanic: aoe.memory
+    shape: line
+    compact: full
+    description: |
+      Telegraphs 4 sets of 2 diagonal line AoEs each in quick succession, then executes them, inflicting [s:damage-down] on anyone hit.
+      As the attack is executed, four random players in a row are targeted by [a:chaotic-flood], each a [full party stack](m:stack).
+    children:
+    - at: 1024
+      id: chaotic-flood
+    - at: 1112
+      id: flood-hit
+    - at: 2004
+      id: chaotic-flood
+    - at: 2137
+      id: flood-hit
+    - at: 3030
+      id: chaotic-flood
+    - at: 3164
+      id: flood-hit
+    - at: 4055
+      id: chaotic-flood
+    - at: 4190
+      id: flood-hit
+  chaotic-flood:
+    id: 47951
+    name: Chaotic Flood
+    mechanic: stack
+    shape: chariot
+    damage: 77607
+    description: Full party stack, each dealing moderate damage but hitting 4× in a row.
+  flood-hit:
+    id: 49769
+    name: Flood
+    caption: Hit
+    mechanic: aoe
+    shape: line
+    count: 2
+    description: A set of line AoEs telegraphed during [a:flood] resolves.
+  maddening-orchestra:
+    id: 47952
+    name: Maddening Orchestra
+    mechanic: combination
+    emphasis: more
+    description: |
+      Targets multiple players with multiple sets of AoEs.
+      **First set:**
+      * First-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-flare].
+      * Second-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-holy].
+      * 3 other random players are targeted by [a:holy-random], a moderately large AoE that deals heavy damage and inflicts a long [s:magic-vulnerability-up].
+      **Second set:**
+      * First-in-enmity is targeted by [a:chaotic-flare], a moderately large [m:tb.stack].
+      * The three closest players to [boss] are targeted by [a:holy-proximity], a moderately large AoE that deals heavy damage and inflicts a long [s:magic-vulnerability-up].
+      **Third set:**
+      * [s:surprise-flare] resolves in a massive [ms:defamation]-type AoE that deals heavy damage and inflicts [s:magic-vulnerability-up] ([a:flare-diffusion]).
+      * [s:surprise-holy] resolves in a moderately large [m:stack.party] ([a:chaotic-holy]).
+    resolve: |
+      **First set**: Everyone spreads outside [boss]'s hitbox as overlapping AoEs is lethal. Both tanks should be next to each other (but spread), so they can collapse together to share [a:chaotic-flare] during the second set.
+      **Second set**: Tanks collapse to share [a:chaotic-flare]. Everyone who was *not* hit by [a:holy-random] during the first set moves into [boss]'s hitbox.
+      **Third set**: The off-tank (with [s:surprise-holy]) uses [a:provoke], as the [s:surprise-flare] tank has to move to the edge of the arena and would drag the boss out of center doing so, which would make subsequent mechanics significantly more difficult. The [s:surprise-holy] tank is meant to stack with the party here, but the current most common strategy has the [s:surprise-holy] tank stay inside the [a:flare-diffusion] [ms:defamation] to solo the stack with [t:invuln]. This has the additional benefit of covering the next few [a:fell-forces] as well.
+    children:
+    - at: 895
+      id: holy-random
+      link: and
+    - at: 895
+      id: flare
+    - at: 4066
+      id: holy-proximity
+      link: and
+    - at: 4066
+      id: chaotic-flare
+    - at: 7539
+      id: flare-diffusion
+      link: and
+    - at: 7539
+      id: chaotic-holy
+  holy-random:
+    id: 47956
+    name: Holy
+    caption: Random
+    mechanic: spread
+    shape: chariot
+    count: 3
+    damage: 176667
+    description: Three random players who are not first or second in enmity take moderate damage and are inflicted with a long [s:magic-vulnerability-up].
+  holy-proximity:
+    id: 47956
+    name: Holy
+    caption: Proximity
+    mechanic: spread.close
+    shape: chariot
+    count: 3
+    damage: 176667
+    description: The three closest players to [boss] take moderate damage and are inflicted with [s:magic-vulnerability-up].
+  flare:
+    id: 47954
+    name: Flare
+    mechanic: tb.double
+    shape: chariot
+    count: 2
+    damage: 369595
+    description: Hits first and second in enmity with a heavy AoE attack. First-in-enmity is inflicted with [s:surprise-flare], second-in-enmity with [s:surprise-holy].
+  chaotic-flare:
+    id: 47955
+    name: Chaotic Flare
+    mechanic: tb.stack
+    shape: chariot
+    damage: 350000
+    description: A simple shared tankbuster.
+  flare-diffusion:
+    id: 47957
+    name: Flare Diffusion
+    mechanic: spread
+    shape: defamation
+    damage: 333656
+    description: "[s:surprise-flare] resolves, dealing heavy damage and inflicting [s:magic-vulnerability-up] on the affected player and all players in a massive radius around them."
+  chaotic-holy:
+    id: 47958
+    name: Chaotic Holy
+    mechanic: stack.party
+    shape: chariot
+    players: 7
+    damage: 151000
+    description: "[s:surprise-holy] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up] on the affected player and all players in a moderate radius around them."
+  celestriad:
+    id: 47938
+    name: Celestriad
+    mechanic: towers.double
+    emphasis: more
+    compact: full
+    description: |
+      Spawns 9 elemental towers around the arena and inflicts 2 players with [s:fire-resistance-down-ii], 2 players with [s:lightning-resistance-down-ii], and 2 players with [s:ice-resistance-down-ii].
+      The towers spawn in a random configuration, but there are always 3 fire towers, 3 lightning towers, and 3 ice towers. All towers belonging to the same element are guaranteed to always be beside each other. All towers are 2-person towers and will explode if soaked with less players. A tower that explodes deals mild raidwide damage and inflicts [s:damage-down] on all players.
+      There are three sets of tower resolutions. Each set involves all 4 towers and all 3 elements. This means that two elements will feature one tower resolving and the last element will feature two towers resolving. Towers that are about to resolve begin to glow. Towers that have already resolved do not disappear, but they are inactive for the rest of the mechanic and cannot resolve again.
+      The three elemental vulnerability debuffs each last for 20 seconds. When a tower resolves, it applies the corresponding Resistance Down debuff on the players who soaked it. This debuff lasts for the rest of the mechanic. The debuffs that are inflicted by the [a:celestriad] cast itself, however, expire just before the last set of towers resolves.
+      At the same time as the first and third set of towers, [boss] casts [a:catastrophic-choice], during which he is surrounded with a green wind aura or a yellow earth aura. At the end of the cast, this represents a [point-blank AoE](ms:chariot) (earth) or a [ms:dynamo] AoE. The edge of both types of AoEs cover exactly half of all towers, provided [boss] is positioned dead center.
+    resolve: |
+      After the initial cast, 6 players will have debuffs. These players find the three towers that correspond to their debuff (e.g. if you have [s:ice-resistance-down-ii], you find the three ice towers). These players will be soaking the active tower that belongs to the three elemental towers **clockwise** of the towers they have a vulnerability for. If there are *two* active towers belonging to this element during this set, these players soak the **leftmost** active tower (counter-clockwise).
+      The 2 players without debuffs must soak the duplicate active elemental tower, i.e. the second active tower for the element that has two active towers, because no other player can soak that tower. These players need simply check which element has two active towers and soak the **rightmost** (clockwise) one each time.
+      Watch out for [a:catastrophic-choice].
+    children:
+    - at: 8486
+      id: catastrophic-choice
+      link: and
+    - at: 9157
+      id: fire-iii-tower
+      link: and
+    - at: 9157
+      id: thunder-iii-tower
+      link: and
+    - at: 9157
+      id: blizzard-iii-tower
+    - at: 15182
+      id: fire-iii-tower
+      link: and
+    - at: 15182
+      id: thunder-iii-tower
+      link: and
+    - at: 15182
+      id: blizzard-iii-tower
+    - at: 20618
+      id: catastrophic-choice
+      link: and
+    - at: 21201
+      id: fire-iii-tower
+      link: and
+    - at: 21201
+      id: thunder-iii-tower
+      link: and
+    - at: 21201
+      id: blizzard-iii-tower
+  catastrophic-choice:
+    id: 49742
+    name: Catastrophic Choice
+    mechanic: aoe
+    shape: in-or-out
+    description: Either a [ms:dynamo] (if [boss] has a wind aura) or [ms:chariot] (if [boss] has an earth aura).
+    children:
+    - at: 804
+      id: tornado
+      link: or
+    - at: 804
+      id: quake
+  thunder-iii-tower:
+    id: 47941
+    name: Thunder III
+    mechanic: towers.double
+    damage: 176249
+    description: A lightning tower resolves during [a:celestriad].
+  blizzard-iii-tower:
+    id: 47940
+    name: Blizzard III
+    mechanic: towers.double
+    damage: 209095
+    description: An ice tower resolves during [a:celestriad].
+  fire-iii-tower:
+    id: 47939
+    name: Fire III
+    mechanic: towers.double
+    damage: 166806
+    description: A fire tower resolves during [a:celestriad].
+  quake:
+    id: 47946
+    name: Quake
+    mechanic: aoe
+    shape: chariot
+    description: "A [ms:chariot] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down]."
+  tornado:
+    id: 47947
+    name: Tornado
+    mechanic: aoe
+    shape: dynamo
+    description: "A [ms:dynamo] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down]."
+  stray-apocalypse:
+    id: 47931
+    name: Stray Apocalypse
+    mechanic: aoe.exaflares
+    shape: chariot
+    description: |
+      Spawns multiple exaflares originating from northwest and northeast.
+      There are, in total, 6 sets of exaflares – 3 coming from northwest and 3 from northeast. All exaflare sets are composed of two [ms:chariot] AoEs that rapidly move through the arena in a straight line from their point of origin, inflicting [s:damage-down] on anyone hit. No two AoEs can spawn right beside each other; there is always a gap in-between.
+      The first set always spawns from northwest, the second from northeast, the third from northwest again, and so on.
+      [a:stray-apocalypse] is immediately followed by [a:stray-entropy], a [m:spread] on all players.
+    resolve: |
+      These are some of the simplest exaflares we have seen so far, simpler even to resolve than Golden Bahamut's exaflares. Look northwest at the start of the cast and position yourself outside the path of the first set of exas. Then look northeast and, **without leaving the safe row for the first set of exas**, move in a straight line so you're now in the safe row for the second set of exas too. Repeat until done.
+      Each exaflare set always has a safe row in melee range, so you do not need to leave melee range for this mechanic.
+      During the last set of exas, find your [clock spot](t:clock spots) because [boss] has already started casting [a:stray-entropy], which requires you to be there immediately after the last set of exas has concluded.
+  stray-entropy:
+    id: 47935
+    name: Stray Entropy
+    mechanic: spread
+    shape: chariot
+    count: 8
+    cast: 470
+    damage: 171722
+    description: Simple spreads on all players, dealing moderate damage and inflicting [s:magic-vulnerability-up].
+  forsaken-p5:
+    id: 47925
+    name: Forsaken
+    mechanic: enrage.soft
+    damage: 426246
+    emphasis: more
+    compact: full
+    description: |
+      Extremely heavy raidwide that begins the enrage sequence.
+      The enrage sequence begins of 4 sets. For each hit there is:
+      * A large telegraphed AoE on the cardinal or intercardinal closest to the party ([a:forsaken-aoe]).
+      * Two large telegraphed puddle AoEs on a random cardinal or intercardinal. (Or the middle for the first set.) Leaves behind a puddle that, when entered at any point, inflicts [s:forsaken] ([a:forsaken-ground]).
+      * A full party stack on a telegraphed player ([a:forsaken-bonds]) that deals extremely high damage.
+      * A few seconds later, another [a:forsaken-p5-hit] raidwide that deals extremely high damage and begins the next set.
+      Note that the intercardinal [Forsaken Grounds](a:forsaken-ground) are placed farther away from the center of the arena than the cardinal ones. This means that intercardinal [Forsaken Grounds](a:forsaken-ground) leave enough space to pass by while cardinal [Forsaken Grounds](a:forsaken-ground) do not.
+      If any player is still alive by the end of this soft enrage sequence, [boss] begins to cast [a:forsaken-null], which inflicts [s:forsaken] on all players and ends the fight.
+    resolve: |
+      Move as a party, in a coordinated manner. This is one of the hardest hitting raidwide sequences in the entire game, so a proper mitigation plan is *essential*.
+      Do not be afraid of moving through [a:forsaken-aoe] telegraphs to reach a larger safe spot. Keep moving to avoid getting cornered by [a:forsaken-ground].
+    children:
+    - at: 5083
+      id: forsaken-aoe
+      link: and
+    - at: 5083
+      id: forsaken-ground
+      link: and
+    - at: 5128
+      id: forsaken-bonds
+      link: then
+    - at: 8166
+      id: forsaken-p5-hit
+    - at: 13212
+      id: forsaken-aoe
+      link: and
+    - at: 13212
+      id: forsaken-ground
+      link: and
+    - at: 13212
+      id: forsaken-bonds
+      link: then
+    - at: 16337
+      id: forsaken-p5-hit
+    - at: 21383
+      id: forsaken-aoe
+      link: and
+    - at: 21383
+      id: forsaken-ground
+      link: and
+    - at: 21383
+      id: forsaken-bonds
+      link: then
+    - at: 24465
+      id: forsaken-p5-hit
+    - at: 29540
+      id: forsaken-aoe
+      link: and
+    - at: 29540
+      id: forsaken-ground
+      link: and
+    - at: 29540
+      id: forsaken-bonds
+  forsaken-aoe:
+    id: 47928
+    name: Forsaken
+    caption: AoE
+    mechanic: aoe
+    shape: chariot
+    description: A large delayed AoE that spawns on the closest cardinal or intercardinal to players. Cannot spawn on the same position as [a:forsaken-ground]. Inflicts [s:damage-down].
+  forsaken-ground:
+    id: 47927
+    name: Forsaken Ground
+    mechanic: aoe
+    shape: chariot
+    count: 2
+    description: A large delayed AoE that erases a circular section of the arena. All players who are hit by this or step into this erased section later are inflicted with [s:forsaken].
+  forsaken-bonds:
+    id: 47929
+    name: Forsaken Bonds
+    mechanic: stack
+    shape: chariot
+    damage: 303734
+    description: Heavy-hitting telegraphed full party stack.
+  forsaken-p5-hit:
+    id: 47926
+    name: Forsaken
+    mechanic: raidwide
+    damage: 331395
+    description: Heavy-hitting raidwide.
+  forsaken-null:
+    id: 47930
+    name: Forsaken Null
+    mechanic: enrage.soft
+    damage: 0
+    emphasis: more
+    description: |
+      The final enrage cast.
+      After this cast finishes, [boss] executes a final attack animation. This animation lasts for approximately 4 seconds. Once it finishes, all players are inflicted with [s:forsaken] and the fight ends.
 timeline:
   - at: 0
     id: <phase>
@@ -1651,9 +2074,11 @@ timeline:
   - at: 198146
     id: <untargetable>
     target: "[boss]"
+    timing: skippable
     description: If [boss] is not brought below 15% HP by this point, he becomes untargetable and wipes the party.
   - at: 203278
     id: light-of-judgment-enrage
+    timing: skippable
   - at: 208592
     id: <phase>
     name: Phase 2 - God Kefka
@@ -1692,9 +2117,11 @@ timeline:
   - at: 380808
     id: <untargetable>
     target: "[boss]"
+    timing: skippable
     description: If [boss]'s HP is not reduced to 1 by this point, he becomes untargetable and casts [a:light-of-judgment-p2-enrage], wiping the party.
   - at: 385924
     id: light-of-judgment-p2-enrage
+    timing: skippable
   - at: 387078
     id: aero-iii-assault
   - at: 424676
@@ -2071,6 +2498,7 @@ timeline:
   - at: 737763
     id: <phase>
     name: Phase 4 - Kefka Says
+    hp: 32008646
   - at: 737763
     id: <targetable>
     target: Kefka
@@ -2189,14 +2617,69 @@ timeline:
     id: auto-attack-p4
   - at: 861493
     id: <untargetable>
-    description: If [boss] is not brought below 25% HP by this point, he becomes untargetable and wipes the party.
+    timing: skippable
+    description: If [boss] is not brought below 25% HP by this point, he becomes untargetable and wipes the party, otherwise he begins casting [a:ultima-upsurge].
+  - at: 863653
+    id: enhanced-thrill-of-war-ii
+    flatten: omit-parent
   - at: 866624
     id: light-of-judgment-enrage
-  - at: 867111
-    id: auto-attack-p4
-  - at: 999999
+    timing: skippable
+    link: or
+  - at: 870038
+    id: ultima-upsurge
+  - at: 901041
     id: <phase>
-    name: Phase 5
-  - at: 999999
-    id: coming-soon
+    name: Phase 5 - Kuja Kefka
+    hp: 56943803
+  - at: 901041
+    id: <targetable>
+    target: "[boss]"
+    description: "[boss] becomes targetable for the final phase. The auto-attacks in this phase are called [a:fell-forces]."
+  - at: 908133
+    id: ultima-repeater
+  - at: 914111
+    id: fell-forces
+  - at: 917275
+    id: fell-forces
+  - at: 920401
+    id: fell-forces
+  - at: 925709
+    id: flood
+  - at: 938898
+    id: maddening-orchestra
+  - at: 951074
+    id: fell-forces
+  - at: 954195
+    id: fell-forces
+  - at: 960581
+    id: celestriad
+  - at: 990038
+    id: ultima-repeater
+  - at: 996050
+    id: fell-forces
+  - at: 999219
+    id: fell-forces
+  - at: 1004622
+    id: stray-apocalypse
+    link: then
+  - at: 1022645
+    id: stray-entropy
+  - at: 1030919
+    id: maddening-orchestra
+  - at: 1043105
+    id: fell-forces
+  - at: 1046236
+    id: fell-forces
+  - at: 1049361
+    id: fell-forces
+  - at: 1060673
+    id: forsaken-p5
+  - at: 1121236
+    id: forsaken-null
+  - at: 1125697
+    id: <untargetable>
+    target: "[boss]"
+    description: "[boss] inflicts [s:forsaken] on all players and erases the world."
+  
   
