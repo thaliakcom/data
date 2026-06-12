@@ -200,6 +200,76 @@ status:
     type: vuln
     description: Renders any subsequent [a:nothingness] lethal. Can be used to cleanse [s:primordial-crust].
     gameDescription: Nearly reduced to nonbeing, lowering resistance. Further exposure to [a:nothingness] will result in KO.
+  # Phase 4
+  forked-lightning:
+    id: 5544
+    type: delay
+    duration: [51000, 61000]
+    description: Triggers [a:death-bolt] when the effect expires. Can be either real or fake. If real, [a:death-bolt] is a [m:spread], otherwise it's a 3-player [m:stack].
+  compressed-water:
+    id: 5545
+    type: delay
+    duration: [51000, 61000]
+    description: Triggers [a:death-wave] when the effect expires. Can be either real or fake. If real, [a:death-wave] is a 3-player [m:stack], otherwise it's a [m:spread].
+  cursed-shriek:
+    id: 5543
+    type: delay
+    duration: [60000, 69000]
+    description: Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the affected players. If fake, all players must look at the affected players.
+  acceleration-bomb:
+    id: 5546
+    type: delay
+    duration: [36000, 51000, 76000, 61000]
+    description: Triggers an Acceleration Bomb when the effect expires. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires, otherwise affected players must be mid-motion when the effect expires.
+  entropy-p4:
+    id: 5547
+    type: delay
+    duration: [60000, 69000]
+    description: Drops an invisible AoE ([a:stray-flames-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:chariot], otherwise it's a [ms:dynamo].
+  dynamic-fluid-p4:
+    id: 5548
+    type: delay
+    duration: [60000, 69000]
+    description: Drops an invisible AoE ([a:stray-spray-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:dynamo], otherwise it's a [ms:chariot].
+  beyond-death:
+    id: 1382
+    type: condition
+    duration: 14000
+    description: |
+      Can be either real or fake.
+      If real: player instantly dies if they do *not* take damage before the effect expires.
+      If fake: becomes [s:allagan-field], dealing lethal raidwide damage if the player takes any damage before the effect expires.
+      Inflicted by [a:grand-cross-3].
+  white-wound:
+    id: 5541
+    type: condition
+    description: Can be either real or fake. If real, player is immune to [a:black-antilight] and weak to [a:white-antilight]. If fake, player is immune to [a:white-antilight] and weak to [a:black-antilight]. Inflicted by [a:grand-cross-3] and [a:white-antilight].
+  black-wound:
+    id: 5542
+    type: condition
+    description: Can be either real or fake. If real, player is immune to [a:white-antilight] and weak to [a:black-antilight]. If fake, player is immune to [a:black-antilight] and weak to [a:white-antilight]. Inflicted by [a:grand-cross-3] and [a:white-antilight].
+  allagan-field:
+    id: 454
+    type: condition
+    duration: 15000
+    description: |
+      Can be either real or fake.
+      If real: deals lethal raidwide damage ([a:death-surge]) if the player takes any damage before the effect expires.
+      If fake: becomes [s:beyond-death], instantly killing the player if they take no damage before the effect expires.
+      Inflicted by [a:grand-cross-3].
+  mana-charge:
+    id: 1482
+    type: form
+    description: |
+      [boss] will store the truthiness of the next [a:thrumming-thunder-iii] and [a:blizzard-iii-blowout]. Granted by [a:mana-charge] and released during [a:mana-release].
+  thunder-charged:
+    id: 1485
+    type: form
+    description: "[boss] has stored the truthiness of the last [a:thrumming-thunder-iii]."
+  blizzard-charged:
+    id: 1484
+    type: form
+    description: "[boss] has stored the truthiness of the last [a:blizzard-iii-blowout]."
 actions:
   puzzle:
     name: Puzzle
@@ -221,14 +291,14 @@ actions:
     mechanic: auto.single
     damage: 158451
     emphasis: less
-    description: Kefka kicks the first player in enmity, dealing heavy damage.
+    description: "[boss] kicks the first player in enmity, dealing heavy damage."
   auto-attack-p2:
     id: 49746
     name: Auto-attack
     mechanic: auto.single
     damage: 96809
     emphasis: less
-    description: Kefka kicks the first player in enmity, dealing heavy damage.
+    description: "[boss] kicks the first player in enmity, dealing heavy damage."
   # Phase 1
   revolting-ruin-iii:
     id: 50179
@@ -597,7 +667,7 @@ actions:
     id: 47803
     mechanic: enrage.threshold
     damage: 9999999
-    description: "If [boss] is not brought below 15% HP by this point, he becomes untargetable and wipes the party."
+    description: Wipes the party.
   # Phase 2
   ultimate-embrace:
     id: 49740
@@ -1067,9 +1137,9 @@ actions:
     emphasis: more
     description: |
       Sets all players' HP to 1, inflicts players with various status effects, and spawns an earth shape in the middle of the arena.
-      * 1 random healer and 1 random DPS are inflicted with [s:accretion] (14s).
-      * 3 players are inflicted with [s:first-in-line] and [s:primordial-crust] (72s).
-      * 3 players are inflicted with [s:second-in-line] and [s:primordial-crust] (106s).
+      * 1 random support and 1 random DPS are inflicted with [s:accretion] (14s).
+      * 1 random DPS, 1 random support, and one of the [s:accretion] players are inflicted with [s:first-in-line] and [s:primordial-crust] (72s).
+      * 1 random DPS, 1 random support, and the other [s:accretion] player are inflicted with [s:second-in-line] and [s:primordial-crust] (106s).
       * The remaining 2 players are inflicted with [s:third-in-line] and [s:primordial-crust] (139s).
       All debuffs must be cleansed by healing the player to full (in the case of [s:accretion]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
       Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all party members, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
@@ -1317,6 +1387,174 @@ actions:
     damage: 9999999
     description: If Chaos is not defeated by this point, he wipes the party.
   # Phase 4
+  auto-attack-p4:
+    id: 49746
+    name: Auto-attack
+    mechanic: auto.single
+    damage: 95527
+    emphasis: less
+    description: "[boss] kicks the first player in enmity, dealing heavy damage."
+  kefka-says:
+    id: 49884
+    name: Kefka Says
+    mechanic: mech
+    emphasis: more
+    description: |
+      Spawns Neo-Exdeath and Chaos on the outside of the arena and prepares to execute various debuff-inflicting mechanics.
+      Neo-Exdeath will cast Grand Cross three times and Chaos will cast [a:tsunami-p4] and [a:inferno-p4] in a random order. Each of these casts deals heavy raidwide damage and inflicts various debuffs.
+      **These debuffs may be inverted** depending on whether or not Neo-Exdeath/Chaos have [boss]'s question marks surrounding them during the cast. This applies only to the debuffs inflicted by that specific cast. This means that all debuffs or no debuffs could be inverted, or (more likely) a mix of both real and inverted debuffs.
+  grand-cross-1:
+    id: 47892
+    name: Grand Cross
+    caption: I
+    mechanic: mech.status
+    players: 8
+    damage: 306476
+    description: |
+      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+  grand-cross-2:
+    id: 47892
+    name: Grand Cross
+    caption: II
+    mechanic: mech.status
+    players: 8
+    damage: 306476
+    description: |
+      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
+      All debuffs have a different duration than the previous set, and no player may be inflicted with a debuff they already have.
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+  grand-cross-3:
+    id: 47892
+    name: Grand Cross
+    caption: III
+    mechanic: mech.status
+    players: 8
+    damage: 306476
+    description: |
+      Deals heavy raidwide damage and inflicts [s:black-wound] on 4 random players and [s:white-wound] on the other 4 players. Also inflicts [s:beyond-death] on 2 DPS and 2 supports and [s:allagan-field] on the other 4 players.
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+  inferno-p4:
+    id: 47904
+    name: Inferno
+    mechanic: mech.status
+    players: 8
+    damage: 226592
+    description: |
+      Deals moderate raidwide damage and inflicts [s:dynamic-fluid-p4] on all players.
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake).
+  tsunami-p4:
+    id: 47905
+    name: Tsunami
+    mechanic: mech.status
+    players: 8
+    damage: 234208
+    description: |
+      Deals moderate raidwide damage and inflicts [s:entropy-p4] on all players.
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake).
+  flood-of-naught:
+    id: 50067
+    name: Flood of Naught
+    mechanic: aoe
+    shape: line
+    description: |
+      The left half of the arena is [a:white-antilight], the right half is [a:black-antilight] (or vice-versa), and the middle is [a:edge-of-death].
+  edge-of-death:
+    id: 50070
+    name: Edge of Death
+    mechanic: aoe
+    shape: line
+    description: A thin strip in the middle of the arena during [a:flood-of-naught]. Instantly kills any player hit.
+  white-antilight:
+    id: 50068
+    name: White Antilight
+    mechanic: aoe
+    shape: line
+    players: 2
+    damage: 34264
+    description: |
+      Players standing in this [ms:line] take a small amount of damage if they have [s:white-wound] (real) or [s:black-wound] (fake), otherwise they take no damage.
+      Players who fail to take damage are instantly killed with [s:beyond-death] (real) or [s:allagan-field] (fake), while players who do take damage wipe the raid if they have [s:allagan-field] (real) or [s:beyond-death] (fake).
+  black-antilight:
+    id: 50069
+    name: Black Antilight
+    mechanic: aoe
+    shape: line
+    players: 2
+    damage: 32562
+    description: |
+      Players standing in this [ms:line] take a small amount of damage if they have [s:black-wound] (real) or [s:white-wound] (fake), otherwise they take no damage.
+      Players who fail to take damage are instantly killed with [s:beyond-death] (real) or [s:allagan-field] (fake), while players who do take damage wipe the raid if they have [s:allagan-field] (real) or [s:beyond-death] (fake).
+  death-surge:
+    id: 47900
+    name: Death Surge
+    mechanic: mech.check
+    count: 4
+    players: 8
+    damage: 8397
+    description: |
+      [s:allagan-field] (real) or [s:beyond-death] (fake) resolves, dealing little to no damage if affected players took no damage from [a:flood-of-naught], otherwise wipes the raid.
+  mana-charge:
+    id: 47780
+    mechanic: mech.store
+    description: |
+      Stores the truthiness of the next [a:thrumming-thunder-iii] and [a:blizzard-iii-blowout], then applies those truthiness states during [a:mana-release].
+      Grants [boss] [s:mana-charge].
+  death-bolt:
+    id: 47897
+    name: Death Bolt
+    mechanic: stack
+    shape: chariot
+    count: 2
+    players: 3
+    damage: 174542
+    description: |
+      [s:forked-lightning] resolves in the form of a [m:spread] (real) or 3-player [m:stack] (fake) on two players.
+  death-wave:
+    id: 47898
+    name: Death Wave
+    mechanic: spread
+    shape: chariot
+    count: 2
+    damage: 167701
+    description: |
+      [s:compressed-water] resolves in the form of a [m:stack] (real) or 3-player [m:spread] (fake) on two players.
+  death-shriek:
+    id: 47894
+    name: Death Shriek
+    mechanic: mech.lookat
+    count: 2
+    description: |
+      [s:cursed-shriek] resolves, requiring all players to look at (real) or look away from (fake) the affected players.
+  ultima-upsurge:
+    id: 49738
+    mechanic: raidwide
+    damage: 229512
+    description: Moderate raidwide.
+  stray-flames-p4:
+    id: 47906
+    name: Stray Flames
+    mechanic: aoe.delayed
+    shape: chariot
+    count: 8
+    description: |
+      The invisible AoE dropped by [s:entropy-p4] resolves in the form of a [ms:chariot] AoE (real) or [ms:dynamo] (fake), inflicting [s:damage-down].
+  mana-release:
+    id: 47781
+    mechanic: mech
+    description: |
+      [boss] shows a ring with optional question marks for both thunder and ice, same as during [a:mystery-magic-blizzard-thunder].
+      However, he does not execute the AoEs immediately. Instead, he executes [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii] during his next cast right afterward.
+      Note that these AoEs combine the truthiness state of **both** the question mark rings during [a:mana-release] and the question mark ring around the preceding [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii]. A double negative (e.g. ice question marks during [a:blizzard-iii-blowout] and [a:mana-release]) results in a positive, meaning that the attack is real and not inverted.
+  stray-spray-p4:
+    id: 47908
+    name: Stray Spray
+    mechanic: aoe.delayed
+    shape: dynamo
+    count: 8
+    description: |
+      The invisible AoE dropped by [s:dynamic-fluid-p4] resolves in the form of a [ms:dynamo] AoE (real) or [ms:chariot] (fake), inflicting [s:damage-down].
+  # Phase 5
   coming-soon:
     name: Coming Soon
     mechanic: hint
@@ -1325,7 +1563,7 @@ timeline:
   - at: 0
     id: <phase>
     name: Phase 1 - Kefka
-    hp: 56331828
+    hp: 47882053
   - at: 771
     id: auto-attack
   - at: 3798
@@ -1413,6 +1651,7 @@ timeline:
   - at: 198146
     id: <untargetable>
     target: "[boss]"
+    description: If [boss] is not brought below 15% HP by this point, he becomes untargetable and wipes the party.
   - at: 203278
     id: light-of-judgment-enrage
   - at: 208592
@@ -1829,10 +2068,135 @@ timeline:
     id: meteor
   - at: 734337
     id: bowels-of-agony-enrage
+  - at: 737763
+    id: <phase>
+    name: Phase 4 - Kefka Says
+  - at: 737763
+    id: <targetable>
+    target: Kefka
+  - at: 739812
+    id: auto-attack-p4
+  - at: 742845
+    id: auto-attack-p4
+  - at: 747896
+    id: kefka-says
+  - at: 750883
+    id: auto-attack-p4
+  - at: 751060
+    id: enhanced-thrill-of-war-ii
+    flatten: omit-parent
+  - at: 757481
+    id: mystery-magic-blizzard-thunder
+  - at: 758952
+    id: auto-attack-p4
+  - at: 761899
+    id: grand-cross-1
+  - at: 761987
+    id: auto-attack-p4
+  - at: 765028
+    id: auto-attack-p4
+  - at: 766993
+    id: inferno-p4
+    link: or
+  - at: 766993
+    id: tsunami-p4
+  - at: 772437
+    id: mystery-magic-blizzard-thunder
+  - at: 773107
+    id: auto-attack-p4
+  - at: 776144
+    id: auto-attack-p4
+  - at: 776817
+    id: grand-cross-2
+  - at: 779180
+    id: auto-attack-p4
+  - at: 781943
+    id: tsunami-p4
+    link: or
+  - at: 781943
+    id: inferno-p4
+  - at: 782211
+    id: auto-attack-p4
+  - at: 787603
+    id: mystery-magic-blizzard-thunder
+  - at: 790285
+    id: auto-attack-p4
+  - at: 791802
+    id: grand-cross-3
+  - at: 803921
+    id: flood-of-naught
+  - at: 804411
+    id: edge-of-death
+  - at: 804411
+    id: white-antilight
+    link: and
+  - at: 804411
+    id: black-antilight
+  - at: 808279
+    id: death-surge
+  - at: 812729
+    id: mana-charge
+  - at: 812997
+    id: death-wave
+    link: and
+  - at: 812997
+    id: death-bolt
+  - at: 814734
+    id: auto-attack-p4
+  - at: 820969
+    id: thrumming-thunder-iii
+    link: then
+  - at: 821991
+    id: death-shriek
+  - at: 822790
+    id: auto-attack-p4
+  - at: 825810
+    id: auto-attack-p4
+  - at: 831102
+    id: ultima-upsurge
+  - at: 833821
+    id: stray-flames-p4
+  - at: 837916
+    id: death-wave
+    link: and
+  - at: 837916
+    id: death-bolt
+  - at: 839074
+    id: blizzard-iii-blowout
+  - at: 839922
+    id: auto-attack-p4
+  - at: 842945
+    id: auto-attack-p4
+  - at: 845927
+    id: death-shriek
+  - at: 852241
+    id: mana-release
+  - at: 852996
+    id: auto-attack-p4
+  - at: 856020
+    id: auto-attack-p4
+  - at: 856554
+    id: stray-spray-p4
+    link: and
+  - at: 857311
+    id: thrumming-thunder-iii
+    description: Combines the truthiness state of both [a:mana-release] and [a:mana-charge].
+    link: and
+  - at: 857311
+    id: blizzard-iii-blowout
+    description: Combines the truthiness state of both [a:mana-release] and [a:mana-charge].
+  - at: 859046
+    id: auto-attack-p4
+  - at: 861493
+    id: <untargetable>
+    description: If [boss] is not brought below 25% HP by this point, he becomes untargetable and wipes the party.
+  - at: 866624
+    id: light-of-judgment-enrage
+  - at: 867111
+    id: auto-attack-p4
   - at: 999999
     id: <phase>
-    name: Phase 4
+    name: Phase 5
   - at: 999999
     id: coming-soon
-  
   
