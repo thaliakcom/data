@@ -17,14 +17,14 @@ status:
     duration: 180000
     description: |
       Reduces damage dealt by 90% for 3 minutes.
-      Inflicted by any avoidable source of damage, including [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], auto-attacks from [s:confused] players, [a:shockwave], [a:slap-happy-hit], or [a:look-upon-me-and-despair-hit].
+      Inflicted by any avoidable source of damage, including but not limited to [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], auto-attacks from [s:confused] players, [a:shockwave], [a:slap-happy-hit], or [a:look-upon-me-and-despair].
   magic-vulnerability-up:
     id: 2941
     type: vuln
     duration: [960, 1960, 3960]
     description: |
       Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:flagrant-fire-iii-stack], [a:wave-cannon], [a:flagrant-fire-iii-spread], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy], and [a:chaotic-holy].
+      Inflicted by various actions, including [a:wave-cannon], [a:flagrant-fire-iii], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy], and [a:chaotic-holy].
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
@@ -68,7 +68,7 @@ status:
     type: impairment
     duration: 6000
     description: |
-      Affected players run towards the closest player. If they are able to reach another player, they will auto-attack them dealing lethal damage and inflicting [s:damage-down].
+      Affected players run towards the closest player. If they are able to reach another player, they will auto-attack them, dealing lethal damage and inflicting [s:damage-down].
       **Note**: Movement speed during [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
       **Note**: After being teleported by a teleportation sigil, [s:confused] players do not begin to move towards the next closest player again until the next server tick. This means that sometimes a [s:confused] player may stop and pause for over a second after being teleported, while other times they may start moving towards the closest player immediately and kill them. There is no way to avoid this except by chain-teleporting at least three times.
       Inflicted by [a:indulgent-will].
@@ -364,7 +364,7 @@ actions:
     compact: trim
     description: |
       Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-blizzard-fire].
-      The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
+      The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
       Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
       **Note**: If neither [a:double-trouble-trap-hit] hits any other player here (and both debuffs fall off as a result), [boss] omits his next voiceline "Hook, line, and stinker!".
     children:
@@ -436,7 +436,7 @@ actions:
     id: 48370
     caption: III
     mechanic: mech
-    description: Placeholder description
+    description: Raises the statue further and sends out a [s:confused] tether and a [s:sleep] tether. See [a:tele-trouncing] for more information.
   pulse-wave:
     id: 47785
     mechanic: mech.knockback.unavoidable
@@ -446,27 +446,28 @@ actions:
     description: Knocks the tethered players back, away from the north of the arena where the statue is.
   mystery-magic-blizzard-fire:
     id: 47764
-    caption: Blizzard and Fire
+    caption: Ice/Fire
     mechanic: combination
     compact: trim
     description: |
-      Combines either [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii], [a:blizzard-iii-blowout], and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread], or [a:thrumming-thunder-iii] and [a:flagrant-fire-iii-stack]/[a:flagrant-fire-iii-spread].
-      During the cast, [boss] has two rings around him in the colour of the two elements used for the attack. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the mechanic is *inverted*. For the AoE mechanics ([a:blizzard-iii-blowout] and [a:thrumming-thunder-iii]) this means that the areas of the arena that do *not* have an AoE telegraph in them are unsafe and the AoE telegraphs are safe. For [a:flagrant-fire-iii-spread]/[a:flagrant-fire-iii-stack], it means that the stack turns into a spread and vice-versa.
+      Combines [a:blizzard-iii-blowout] and [a:flagrant-fire-iii].
+      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is ice. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:blizzard-iii-blowout] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random support, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
     children:
     - at: 0
       id: blizzard-iii-blowout
       link: then
     - at: 1100
-      id: flagrant-fire-iii-spread
-      link: or
-    - at: 1100
-      id: flagrant-fire-iii-stack
+      id: flagrant-fire-iii
+      flatten: omit-parent
   mystery-magic-blizzard-thunder:
     id: 47764
-    caption: Blizzard and Thunder
+    caption: Ice/Thunder
     mechanic: combination
     compact: trim
-    description: "[a:mystery-magic-blizzard-fire:d]"
+    description: |
+      Combines [a:blizzard-iii-blowout] and [a:thrumming-thunder-iii].
+      During the cast, [boss] has two rings around him. The upper ring is thunder and the lower ring is ice. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. This means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe.
+      The thunder ring corresponds to the [ms:line] telegraphs. The ice ring corresponds to the [ms:cone] telegraphs. Both AoEs can be inverted at the same time, in which case the only safe zone is where both AoEs intersect.
     children:
     - at: 0
       id: thrumming-thunder-iii
@@ -475,26 +476,28 @@ actions:
       id: blizzard-iii-blowout
   mystery-magic-thunder-fire:
     id: 47764
-    caption: Thunder and Fire
+    caption: Thunder/Fire
     mechanic: combination
     compact: trim
-    description: "[a:mystery-magic-blizzard-fire:d]"
+    description: |
+      Combines [a:thrumming-thunder-iii] and [a:flagrant-fire-iii].
+      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is thunder. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:thrumming-thunder-iii] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random support, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
     children:
     - at: 0
       id: thrumming-thunder-iii
       link: then
     - at: 1100
-      id: flagrant-fire-iii-spread
-      link: or
-    - at: 1100
-      id: flagrant-fire-iii-stack
+      id: flagrant-fire-iii
+      flatten: omit-parent
   wave-cannon:
     id: 47784
     mechanic: spread
     shape: line
     count: 4
     damage: 327868
-    description: The statue fires 4 line AoEs at 2 random supports and 2 random DPS. Inflicts [s:magic-vulnerability-up].
+    description: |
+      The statue fires 4 line AoEs at 2 random supports and 2 random DPS. Inflicts [s:magic-vulnerability-up] and leaves behind a tower on those who were hit.
+      Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   double-trouble-trap:
     id: 47782
     mechanic: mech.status
@@ -525,6 +528,19 @@ actions:
     description: |
       Cone AoEs resolve, dealing heavy damage and inflicting [s:damage-down] on anyone hit.
       If the ice ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
+  flagrant-fire-iii:
+    id: 47778
+    mechanic: mech.spread-or-stack
+    shape: chariot
+    description: |
+      Either shows and resolves spread markers on all players, or shows and resolves a stack marker on one random healer and one random DPS. Inflicts [s:magic-vulnerability-up].
+      Can be inverted, in which case a spread becomes a stack on a random healer and DPS, and a stack becomes a spread on all players.
+    children:
+      - at: 0
+        id: flagrant-fire-iii-spread
+        link: or
+      - at: 0
+        id: flagrant-fire-iii-stack
   flagrant-fire-iii-spread:
     id: 47778
     caption: Spread
@@ -534,7 +550,7 @@ actions:
     damage: 220657
     description: |
       Circular spreads resolve on all players. Inflicts [s:magic-vulnerability-up].
-      If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a stack on a random support and DPS ([a:flagrant-fire-iii-stack]).
+      If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a stack on a random healer and DPS ([a:flagrant-fire-iii-stack]).
   flagrant-fire-iii-stack:
     id: 47779
     caption: Stack
@@ -543,7 +559,7 @@ actions:
     count: 2
     damage: 211571
     description: |
-      Circular stacks resolve on the indicated support and DPS. Inflicts [s:magic-vulnerability-up].
+      Circular stacks resolve on the indicated healer and DPS. Inflicts [s:magic-vulnerability-up].
       If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a spread on all players ([a:flagrant-fire-iii-spread]).
   double-trouble-trap-hit:
     id: 47783
@@ -595,14 +611,18 @@ actions:
     shape: chariot
     count: 4
     damage: 221216
-    description: Tethers from the statue's left side resolve, dealing lethal damage to the tethered players unless the AoE is shared with another player. Leaves behind a persistent gravity well. If the gravity well is subsequently clipped by [a:vitrophyre], wipes the party ([a:gravitational-explosion]).
+    description: |
+      Tethers from the statue's left side resolve, dealing lethal damage to the tethered players unless the AoE is shared with another player. Leaves behind a persistent gravity well. If the gravity well is subsequently clipped by [a:vitrophyre], wipes the party ([a:gravitational-explosion]).
+      Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   vitrophyre:
     id: 47792
     mechanic: spread
     shape: chariot
     count: 4
     damage: 22199
-    description: Tethers from the statue's right side resolve, dealing mild damage to the tethered players, knocking any other player hit off the arena, and exploding any gravity well that is clipped by the AoE ([a:gravitational-explosion]).
+    description: |
+      Tethers from the statue's right side resolve, dealing mild damage to the tethered players, knocking any other player hit off the arena, and exploding any gravity well that is clipped by the AoE ([a:gravitational-explosion]).
+      Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   gravity-iii:
     id: 47791
     mechanic: stack
@@ -612,6 +632,7 @@ actions:
       A gravity well (puddle) is soaked, dispelling the gravity well. Deals over a million damage to the soaker if soaked solo, but functions as a [m:stack] between all players inside the gravity well at the same time, significantly reducing the damage.
       Note that after the first player enters the gravity well, a hidden timer of about 2 seconds is started. The gravity well does not explode until after this timer has elapsed, giving players time to move into the gravity well without requiring perfect coordination.
       Players outside the gravity well do not count as part of the stack and do not take damage, even if they are standing right next to players who do.
+      Note that this action *can* be mitigated by targeted mitigation on [boss] such as [a:reprisal] or [a:addle].
   gravitational-explosion:
     id: 47789
     mechanic: mech.failure
@@ -635,9 +656,9 @@ actions:
       Inflicts [s:tele-portent-up], [s:tele-portent-right], [s:tele-portent-down], or [s:tele-portent-left] on all players.
       All players are inflicted with two of these status effects. The second resolves three seconds after the first.
       Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
-      When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if they step on it later.
+      When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if any player steps on it later. These sigils are single-use only and disappear immediately after use. They also disappear on their own a certain time after being placed.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
-      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] is stacked, both players get both debuffs.
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] are stacked, both players get both debuffs.
       **Note**: Utilizing *all* teleportation sigils in sequence is a prerequisite for reaching phase 3. See [a:puzzle] for more information.
     children:
     - at: 935
@@ -676,14 +697,20 @@ actions:
     shape: chariot
     count: 4
     damage: 219477
-    description: Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:confused].
+    description: |
+      Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:confused].
+      Note that this AoE is significantly smaller than that of [a:idyllic-will], so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
+      Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   idyllic-will:
     id: 47798
     mechanic: spread
     shape: chariot
     count: 4
     damage: 218222
-    description: Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep].
+    description: |
+      Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep].
+      Note that this AoE is significantly larger than that of [a:indulgent-will], so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
+      Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   ave-maria:
     id: 47795
     mechanic: mech.lookat
@@ -992,10 +1019,10 @@ actions:
       * 1 random support and 1 random DPS are inflicted with [s:entropy].
       * 1 random support and 1 random DPS are inflicted with [s:dynamic-fluid].
       Both [s:entropy] effects have a duration of 19 seconds and [s:dynamic-fluid] a duration of 46 seconds or vice-versa.
-      Also spawns three sigils in the arena (a water square, wind diamond, and fire triangle). These three sigils are always 90° offset from each other. All three sigils target the two closest players to them with a mechanic after [s:dynamic-fluid] resolves:
-      * The water square targets the two closest players with [a:tsunami], a small [m:spread] AoE.
-      * The wind diamond targets the two closest players with [a:cyclone], a moderately large [m:stack.partner].
-      * The fire triangle targets the two closest players with [a:inferno], a moderately large [ms:dynamo] AoE.
+      Also spawns three sigils in the arena (a water square, wind diamond, and fire triangle). These three sigils are always 90° offset from each other. All three sigils target the closest player or players with a mechanic after a corresponding elemental debuff is cleansed:
+      * The water square targets the closest player(s) with [a:tsunami], a small [m:spread] AoE, whenever a [s:dynamic-fluid] is cleansed.
+      * The fire triangle targets the closest player(s) with [a:inferno], a moderately large [ms:dynamo] AoE, whenever an [s:entropy] is cleansed.
+      * The wind diamond targets the closest player(s) with [a:cyclone], a moderately large [m:stack.partner], whenever a [s:headwind]/[s:tailwind] is cleansed.
   stray-flames:
     id: 47859
     name: Stray Flames
@@ -1003,7 +1030,9 @@ actions:
     shape: chariot
     count: 2
     damage: 282622
-    description: "[s:entropy] resolves, dealing damage to the player and all players in a small radius around them. Inflicts [s:magic-vulnerability-up]."
+    description: |
+      [s:entropy] resolves, dealing damage to the player and all players in a small radius around them. Inflicts [s:magic-vulnerability-up].
+      This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   thunder-iii-out:
     id: 47890
     name: Thunder III
@@ -1019,14 +1048,18 @@ actions:
     count: 2
     players: 1
     damage: 287705
-    description: A moderately large [ms:dynamo] AoE on the 2 closest players to the fire triangle. Inflicts [s:magic-vulnerability-up]. Anyone hit by the dynamo is knocked away from the center of it. Always resolves right after [s:entropy].
+    description: |
+      A moderately large [ms:dynamo] AoE on the 2 closest players to the fire triangle. Inflicts [s:magic-vulnerability-up]. Anyone hit by the dynamo is knocked away from the center of it. Always resolves right after [s:entropy].
+      This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   cyclone:
     id: 47864
     name: Cyclone
     mechanic: stack.partner
     shape: chariot
     damage: 202029
-    description: Any time a [s:headwind] or [s:tailwind] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii].
+    description: |
+      Any time a [s:headwind] or [s:tailwind] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii].
+      This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   thunder-iii-tb:
     id: 47881
     name: Thunder III
@@ -1089,7 +1122,9 @@ actions:
     count: 2
     players: 1
     damage: 274248
-    description: "[s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the affected players."
+    description: |
+      [s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the affected players.
+      This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   tsunami:
     id: 47861
     name: Tsunami
@@ -1097,13 +1132,17 @@ actions:
     shape: chariot
     count: 2
     damage: 262491
-    description: The water square hits the two closest players with a small AoE that inflicts [s:magic-vulnerability-up] on all players hit and knocks all players (except the targeted player) back from the targeted player. Always resolves right after [s:dynamic-fluid].
+    description: |
+      The water square hits the two closest players with a small AoE that inflicts [s:magic-vulnerability-up] on all players hit and knocks all players (except the targeted player) back from the targeted player. Always resolves right after [s:dynamic-fluid].
+      This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   ultima-blasters:
     id: 47843
     name: Ultima Blasters
     mechanic: raidwide
     compact: full
-    description: "[boss] starts on a random cardinal or intercardinal and dashes across, dealing raidwide damage to all players. This then repeats 7 more times."
+    description: |
+      [boss] starts on a random cardinal or intercardinal and dashes across, dealing raidwide damage to all players. This then repeats 7 more times.
+      These raidwides cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 0
       id: ultima-blaster
@@ -1126,7 +1165,9 @@ actions:
     name: Ultima Blaster
     mechanic: raidwide
     damage: 89341
-    description: "[boss] dashes from any cardinal or intercardinal across to the opposite side, dealing raidwide damage to all players."
+    description: |
+      [boss] dashes from any cardinal or intercardinal across to the opposite side, dealing raidwide damage to all players.
+      This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   umbra-smash:
     id: 47872
     name: Umbra Smash
@@ -1157,7 +1198,9 @@ actions:
     count: 8
     damage: 133817
     emphasis: more
-    description: The [a:ultima-blaster] pulses come back from where they ended up, firing a line AoE at the correspondingly numbered player. Inflicts [s:magic-vulnerability-up]. Ignores [invulnerability effects](t:invuln).
+    description: |
+      The [a:ultima-blaster] pulses come back from where they ended up, firing a line AoE at the correspondingly numbered player. Inflicts [s:magic-vulnerability-up]. Ignores [invulnerability effects](t:invuln).
+      This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   max:
     id: 47845
     name: Max
@@ -1195,7 +1238,9 @@ actions:
     caption: Right
     mechanic: combination
     compact: full
-    description: "[boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time."
+    description: |
+      [boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time.
+      This sequence of hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 805
       id: slap-happy-hit
@@ -1216,7 +1261,9 @@ actions:
     caption: Left
     mechanic: combination
     compact: full
-    description: "[boss] hits the left side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal role spread at one random player of each role."
+    description: |
+      [boss] hits the left side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal role spread at one random player of each role.
+      This sequence of hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 805
       id: slap-happy-hit
@@ -1283,21 +1330,12 @@ actions:
     shape: halfroom
     description: Chaos hits everything in front of him with an avoidable AoE, dealing heavy damage and inflicting [s:damage-down].
   look-upon-me-and-despair:
-    id: 47852
-    name: Look upon Me and Despair
-    mechanic: aoe
-    shape: line
-    compact: trim
-    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
-    children:
-    - at: 1074
-      id: look-upon-me-and-despair-hit
-  look-upon-me-and-despair-hit:
     id: 47854
     name: Look upon Me and Despair
     caption: Hit
     mechanic: aoe
     shape: line
+    cast: 40
     players: 0
     damage: 187902
     description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
@@ -1328,7 +1366,7 @@ actions:
     shape: cone
     count: 3
     damage: 226275
-    description: Fires a cone at a random player of each role (DPS, healers, tanks). This is not a stack.
+    description: Fires a cone at a random player of each role (DPS, healers, tanks). This is not a stack. Inflicts [s:magic-vulnerability-up].
   blizzard-iii:
     id: 47887
     name: Blizzard III
@@ -1355,7 +1393,9 @@ actions:
     name: Stomp-a-Mole
     mechanic: towers.double
     compact: trim
-    description: "[boss] climbs onto the arena and stomps twice with each foot. Each stomp represents a [2-person tower](m:towers.double) that inflicts [s:magic-vulnerability-up]."
+    description: |
+      [boss] climbs onto the arena and stomps twice with each foot. Each stomp represents a [2-person tower](m:towers.double) that inflicts [s:magic-vulnerability-up].
+      These hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     resolve: |
       If a DPS is targeted by [a:knock-down] first, supports resolve the first set of stomps. If a support is targeted by [a:knock-down], DPS resolve the first set of stomps.
     children:
@@ -2383,7 +2423,7 @@ timeline:
     id: auto-attack-exdeath
   - at: 631570
     id: damning-edict
-  - at: 631837
+  - at: 632911
     id: look-upon-me-and-despair
   - at: 634655
     id: auto-attack-chaos
@@ -2448,7 +2488,7 @@ timeline:
   - at: 685838
     id: earthquake-hit
     timing: player
-  - at: 689857
+  - at: 690931
     id: look-upon-me-and-despair
   - at: 691332
     id: nothingness
