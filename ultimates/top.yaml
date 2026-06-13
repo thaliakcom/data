@@ -671,7 +671,6 @@ actions:
       - at: 3076
         id: <untargetable>
         target: Omega-M and F
-        description: Omega-M and F become untargetable.
       - at: 9610
         id: subject-simulation-m
         link: and
@@ -2039,7 +2038,6 @@ timeline:
   - at: 135061
     id: <targetable>
     target: Omega-M and F
-    description: Omega-M and F become targetable.
     timing: push
   - at: 138537
     id: firewall
@@ -2050,7 +2048,6 @@ timeline:
   - at: 195202
     id: <targetable>
     target: Omega-M and F
-    description: Omega-M and F become targetable.
   - at: 204788
     id: synthetic-shield
   - at: 215027

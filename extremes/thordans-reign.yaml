@@ -299,7 +299,6 @@ actions:
     - at: 72328
       id: <untargetable>
       target: Ser Janleneoux and Ser Adelphel
-      description: Ser Janleneoux and Ser Adelphel become untargetable.
       timing: push
   divine-right:
     id: 35282
