@@ -940,6 +940,18 @@
   type: patch
   color: "#6e9cec"
   at: 2026-06-02 10:00:00
+- name: Hotfix Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-06-12 06:00:00
+  to: 2026-06-12 10:00:00
+- name: Hotfix Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-06-23 06:00:00
+  to: 2026-06-23 10:00:00
 - name: Fan Fest Berlin
   type: event
   color: "#383642"
