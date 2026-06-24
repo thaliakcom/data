@@ -1,7 +1,7 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-06-12
+modified: 2026-06-17
 by:
   id: 27637301
   role: author
@@ -33,6 +33,8 @@ status:
     description: |
       Triggers [a:double-trouble-trap-hit] when the effect expires.
       When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. Every subsequent instance of this debuff (after being passed to another player), it resolves after over a minute.
+      Properly handling this effect is required to fulfill the conditions for the [a:puzzle] mechanic.
+      Note that, if a player with [s:double-trouble-trap] dies, the effect is lost, instantly failing the [a:puzzle] mechanic.
     gameDescription: When this effect expires, everyone else in the immediate vicinity will take damage. Should any player take damage, the [s:double-trouble-trap] will be passed to one of them.
   tele-portent-down:
     id: 4877
@@ -159,8 +161,8 @@ status:
     type: condition
     duration: 14000
     description: |
-      Affected players are instantly killed if this status effect is permitted to expire.
-      Can be cleansed by healing these players to 100% HP. Cleansing this effect or dying while this effect is active triggers an [a:earthquake-hit].
+      If this debuff is permitted to expire, triggers [a:stray-earth], instantly killing afflicted players and triggering [a:earthquake-hit].
+      Can be cleansed by healing afflicted players to 100% HP. Doing so also triggers [a:earthquake-hit].
   primordial-crust:
     id: 5454
     name: Primordial Crust
@@ -310,9 +312,9 @@ actions:
     description: |
       Expand this row to learn about this fight's puzzle mechanics.
       This fight has several puzzle mechanics that must be correctly resolved in phase 1 or the fight simply kicks players out of the instance after phase 2. Here's a list of all prerequisites:
-      * [s:double-trouble-trap] must always be passed to another player. If it is any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
+      * [s:double-trouble-trap] must always be passed to another player, and no player is permitted to die to [a:double-trouble-trap-hit] at any point. If it is any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
       * During [a:graven-image-2], all gravity wells (puddles) must be soaked after transforming ([a:gravity-iii]). If any gravity wells are permitted to fade away naturally, the puzzle is failed.
-      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) *in sequence* by a [s:confused] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigils are stepped on by a player who is *not* [s:confused], the puzzle is failed.
+      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) by a [s:confused] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigil is stepped on by a player who is *not* [s:confused], the puzzle is failed.
       To know whether you fulfilled the conditions for the puzzle mechanics so far, [boss] changes his voiceline after all three of the above mechanics:
       * If [s:double-trouble-trap] is not passed the first time it is applied by [a:double-trouble-trap], [boss] says nothing. Otherwise he says "Hook, line, and stinker!"
       * If the gravity wells are *not* soaked, [boss] says nothing. Otherwise he says "What?! There's no way that didn't work!" after the next [a:hyperdrive].
@@ -335,7 +337,6 @@ actions:
   # Phase 1
   revolting-ruin-iii:
     id: 50179
-    caption: ×2
     mechanic: tb.mt
     shape: cone
     damage: 1025720
@@ -363,7 +364,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      Lifts the statue in the background and tethers either all DPS or all supports, then casts [a:mystery-magic-blizzard-fire].
+      [boss] commands the statue in the background to tether to all DPS or all supports and execute [a:pulse-wave]. [boss] casts [a:mystery-magic-blizzard-fire] at the same time.
       The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
       Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
       **Note**: If neither [a:double-trouble-trap-hit] hits any other player here (and both debuffs fall off as a result), [boss] omits his next voiceline "Hook, line, and stinker!".
@@ -395,6 +396,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
+      [boss] commands the statue in the background to tether to all players and execute [a:gravitas] followed by [a:vitrophyre].
       The right side of the statue tethers to all supports and the left side to all DPS, or vice-versa.
       After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that inflicts [s:magic-vulnerability-up] and leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
       There is a brief interlude afterwards involving a [a:revolting-ruin-iii] and [a:intemperate-will], after which all players are tethered again and the mechanic repeats.
@@ -432,18 +434,30 @@ actions:
       link: or
     - at: 34427
       id: gravitational-wave
+    - at: 38220
+      id: double-trouble-trap-hit
+      link: then
+    - at: 40800
+      id: gravity-iii
+      count: 4
+      link: then
+    - at: 42400
+      id: gravity-iii
+      count: 4
   graven-image-3:
     id: 48370
     caption: III
     mechanic: mech
-    description: Raises the statue further and sends out a [s:confused] tether and a [s:sleep] tether. See [a:tele-trouncing] for more information.
+    description: |
+      [boss] commands the statue in the background to tether to all players and execute [a:idyllic-will] and [a:indulgent-will].
+      See [a:tele-trouncing] for more information.
   pulse-wave:
     id: 47785
     mechanic: mech.knockback.unavoidable
     count: 4
     players: 0
     damage: 0
-    description: Knocks the tethered players back, away from the north of the arena where the statue is.
+    description: Knocks the tethered players back from the origin of the tether.
   mystery-magic-blizzard-fire:
     id: 47764
     caption: Ice/Fire
@@ -517,7 +531,7 @@ actions:
     mechanic: mech.failure
     players: 8
     damage: 14000
-    description: A tower wasn't soaked, dealing minimal damage to and inflicting [s:damage-down] on all party members.
+    description: A tower wasn't soaked, dealing minimal damage and inflicting [s:damage-down] on all party members.
   blizzard-iii-blowout:
     id: 47768
     mechanic: aoe
@@ -567,9 +581,16 @@ actions:
     mechanic: stack.role
     shape: chariot
     count: 2
+    players: 3
     damage: 182000
     description: |
-      [s:double-trouble-trap] resolves. If no player shares the AoE, deals no damage and dispels the debuff. If an player shares the damage, deals heavy damage to all players in the stack, knocks the other players in the stack back, and passes the debuff to one of the players who shared the damage.
+      [s:double-trouble-trap] resolves in the form of a small AoE that deals shared damage to all but the debuffed player.
+      The player with [s:double-trouble-trap] never takes damage from this attack. For any other player caught within the AoE, deals shared damage (lethal unless soaked with at least 3 players), knocks hit players back from the debuffed player, and passes [s:double-trouble-trap] to one of them (a maximum of two times).
+      There is no restriction on whom [s:double-trouble-trap] can pass to. A player who already had [s:double-trouble-trap] can still get it again.
+      **Note**: to fulfill the requirements for the [a:puzzle] mechanic, this attack must *always* be shared, and no player is permitted to die to this attack at any point.
+    resolve: |
+      Since [s:double-trouble-trap] is always inflicted on one support and one DPS, have both role groups stack with their respective [s:double-trouble-trap] player on a fixed, predetermined position. The [s:double-trouble-trap] should be farther back than the stacking players to aim the knockback.
+      For early prog, if any player is dead before [a:double-trouble-trap-hit], don't [t:wall] immediately, but don't stack for the hit either. Simply have the debuffed player walk off somewhere to solo the hit. This dispels the debuff and fails the [a:puzzle], but allows the party to continue progging up to the end of phase 2.
   thrumming-thunder-iii:
     id: 47775
     mechanic: aoe
@@ -612,8 +633,10 @@ actions:
     count: 4
     damage: 221216
     description: |
-      Tethers from the statue's left side resolve, dealing lethal damage to the tethered players unless the AoE is shared with another player. Leaves behind a persistent gravity well. If the gravity well is subsequently clipped by [a:vitrophyre], wipes the party ([a:gravitational-explosion]).
+      Tethers from the statue's left side resolve, dealing lethal damage to the tethered players unless the AoE is shared with another player. Leaves behind a persistent gravity well.
+      If the gravity well is subsequently clipped by [a:vitrophyre], *or* if the tethered player dies to the initial [a:gravitas] hit, wipes the party ([a:gravitational-explosion]).
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+      Note that [a:gravitas] does not inflict [s:magic-vulnerability-up], so with sufficient mitigation multiple [a:gravitas] can be stacked on top of each other, making the [a:gravity-iii] soaks much easier.
   vitrophyre:
     id: 47792
     mechanic: spread
@@ -658,8 +681,11 @@ actions:
       Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if any player steps on it later. These sigils are single-use only and disappear immediately after use. They also disappear on their own a certain time after being placed.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
-      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] are stacked, both players get both debuffs.
-      **Note**: Utilizing *all* teleportation sigils in sequence is a prerequisite for reaching phase 3. See [a:puzzle] for more information.
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] are stacked, both players get both debuffs, essentially failing the mechanic (see [a:puzzle]).
+      **Note**: All teleportation sigils must be utilized (stepped on) by a [s:confused] player as a prerequisite for reaching phase 3. See [a:puzzle] for more information.
+    trivia: |
+      As of June 23, 2026 the effect of arrows has changed. Before the maintenance hotfix released on this date, arrows always teleported you a set distance in the indicated direction based on where you stepped onto the arrow. This was error-prone, as the server does not register a player being "on" an arrow until the next server tick, which means that players sometimes made it farther onto the arrow than other pulls, potentially messing up the teleport and landing short of the next arrow.
+      The maintenance hotfix changed this: arrows no longer teleport a player from wherever they entered the arrow; instead they always teleport a player from the center of the arrow.
     children:
     - at: 935
       id: auto-attack
@@ -778,11 +804,35 @@ actions:
     compact: full
     description: |
       Heavy raidwide that inflicts [s:spells-trouble:4] on all players and spawns a series of towers.
-      Along with [s:spells-trouble:4], a spell indicator appears above every player's head. Three supports or DPS get circular spread AoE indicators. Three players of the other role get conal AoE indicators. The remaining two players get stack indicators. These indicators disappear after a short time.
-      Afterwards, spawns two adjacent towers on the inside of the arena. Each tower must be soaked by exactly two players. Any less or more results in the tower exploding for heavy damage and [s:damage-down] on the whole party.
-      Whenever a tower is soaked, it triggers the soaking players' indicated spells and reduces their [s:spells-trouble] stacks by one. After 8 sets of towers, [boss] casts [a:light-of-judgment-p2] which instantly kills any player who failed to cleanse all their [s:spells-trouble] stacks.
-      Cones always fire towards the closest player to the player whose cone spell resolves ([a:spellwave]). Circles ([a:spellscatter]) and stacks ([a:spelldriver]) resolve on the player themselves. Any time a player cleanses a stack of [s:spells-trouble], a new spell indicator appears above their head and the next executed spell changes. This follows a specific logic: every **odd** tower set generates 2 circles and 2 cones, while every **even** tower set generates 2 stacks, 1 cone, and 1 circle.
-      Additionally, during every even tower set [boss] casts either [a:futures-end] or [a:pasts-end], where he dashes towards the 4 closest players, deals heavy damage to them in a radius, and leaves behind a clone. A short time later (before the next tower set), they face towards :unverified(the now closest player) and begin casting [a:all-things-ending], a [ms:halfroom] cleave either in front ([a:futures-end]) or behind ([a:pasts-end]) that resolves during the next odd tower set.
+      This is a mechanic composed of **eight sets**. Each set is composed of exactly two adjacent towers. The requirements for this mechanic are relatively simple:
+      * During each set, each tower must be soaked by exactly two players. Soaking a tower with any more or less players deals heavy damage and inflicts [s:damage-down] on the entire party.
+      * After all eight sets, all players' [s:spells-trouble] stacks must be cleansed. [a:light-of-judgment-p2] instantly kills any player with any remaining [s:spells-trouble] stacks. A stack of [s:spells-trouble] is cleansed whenever the afflicted player soaks a tower.
+      While this sounds relatively simple, there are additional complications:
+      * Each stack of [s:spells-trouble] represents a specific type of **spell**. Whenever a stack of [s:spells-trouble] is cleansed, the corresponding spell triggers and must be resolved correctly (see below). The possible types of spells are: [ms:cone], [ms:chariot], and [m:stack].
+      * The spell corresponding to a stack of [s:spells-trouble] is **only briefly shown** as a headmarker on top of the character model after the initial [a:forsaken] cast, and every time a player soaks a tower and cleanses a stack afterwards. Once this indicator disappears, there is no longer any way to check which spell your next [s:spells-trouble] stack represents. Players must remember their spell for potentially long periods of time, as each type of spell is resolved in a different way.
+      * There is a difference between even and odd sets of towers: during **even** tower sets, [boss] casts either [a:futures-end] or [a:pasts-end]. This resolves at the same time as the towers themselves and results in 3 clones and [boss] jumping on and inflicting [s:magic-vulnerability-up] on the 4 closest players to [boss]. A short while later, all clones and [boss] turn towards :unverified(a random player) and begin casting [a:all-things-ending]. This is a [ms:halfroom] cleave that hits either *in front of* (if [a:futures-end] was cast before) or *behind* (if [a:pasts-end] was cast before) the clone/[boss] and resolves at the same time of the next *odd* tower set.
+      **Spells:**
+      * **[ms:cone:c]**: Fires an approximately 90° cone towards the *closest* player, dealing damage and inflicting [s:magic-vulnerability-up] ([a:spellwave]).
+      * **[ms:chariot:c]**: A moderately large point blank AoE that deals damage and inflicts [s:magic-vulnerability-up] ([a:spellscatter]).
+      * **[m:stack:c]**: A moderately large (same size as the [ms:chariot]) point blank stack that deals lethal damage unless soaked with at least 3 players. Inflicts [s:magic-vulnerability-up] ([a:spelldriver]).
+      **Distribution of spells:**
+      The spells distributed during the initial [a:forsaken] cast are role-based:
+      * 3 supports or DPS get [ms:chariot]s.
+      * 3 players of the opposite role get [ms:cone]s.
+      * 1 support and 1 DPS get [m:stack]s.
+      The spells distributed when towers are soaked are **not** role-based:
+      * During odd sets, 1 player gets [ms:cone], 1 player gets [ms:chariot], and 2 players get [m:stack].
+      * During even sets, 2 players get [ms:cone] and 2 players get [ms:chariot].
+      * There is one exception to this: the last two sets of towers always distribute 4 [m:stack]s. In most cases, this doesn't matter, as these towers would cleanse their soakers' last [s:spells-trouble] stack, so no new spell is generated at all. The 4 stacks are a kind of failstate to prevent players from executing unintended strategies.
+    resolve: |
+      Odd tower sets should be soaked by 1× [ms:cone], 1× [ms:chariot], and 2× [m:stack] players and even towers by 2× [ms:cone] and 2× [ms:chariot] players. The stacks may not resolve during even tower sets because even tower sets require 4 players to bait clones (from [a:futures-end]/[a:pasts-end]). This inflicts [s:magic-vulnerability-up], so these players cannot soak a spell at the same time.
+      Additionally, because each odd tower set generates 2 [ms:cone]s and 2 [ms:chariot]s and each even tower set generates 1 [ms:cone], 1 [ms:chariot], and 2 [m:stack]s (in other words: each tower set generates the exact spells "required" for the next tower set), it's important that all towers are soaked by players with the exact spells generated by the *next* tower set, otherwise subsequent tower sets may end up with an unresolvable distribution of spells (for instance, 3 or more stacks during one set).
+      It's recommended to split all players into two groups after the [a:forsaken] cast based on their initial spells. The group you end up in determines which tower sets have you inside a tower and which tower sets have you outside a tower.
+      The easiest way to sort players into two groups is to assemble into **role pairs** during the [a:forsaken] cast, for instance by pairing each tank with a healer and each ranged DPS with a melee DPS. This allows a simple decision making process once the initial spells are distributed:
+      * If either you or your partner have [m:stack], you belong to the first group (group "A").
+      * If you and your partner have the same spell, you belong to the second group (group "B").
+      You'll also want to designate one player per pair as the "flex" player. (Usually, this role falls to tanks and melees.) These players must adjust to the other tower if their role partner has the same spell as them.
+      Which tower set which group is responsible for, and what the concrete positions of everyone during a tower set are, depends on the specific strategy you opt to use. There are many possible strategy variations.
     children:
     - at: 1923
       id: auto-attack-p2
@@ -875,7 +925,7 @@ actions:
     damage: 230283
     description: |
       [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones face the :unverified(now closest player) to them and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
+      A short time later, [boss] and his 3 clones face the now closest player to them and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
   futures-end:
     id: 47832
     mechanic: spread.close
@@ -884,7 +934,7 @@ actions:
     damage: 173104
     description: |
       [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones face the :unverified(now closest player) to them and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
+      A short time later, [boss] and his 3 clones face the now closest player to them and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
   spellscatter:
     id: 47809
     mechanic: spread
@@ -1002,7 +1052,9 @@ actions:
     name: Auto-attack
     caption: Both
     mechanic: auto
-    damage: 153466
+    players: 2
+    tank-damage: 153466
+    damage: 0
     emphasis: less
     description: Both bosses auto-attack their first-in-enmity target, dealing heavy damage.
   bowels-of-agony:
@@ -1023,6 +1075,7 @@ actions:
       * The water square targets the closest player(s) with [a:tsunami], a small [m:spread] AoE, whenever a [s:dynamic-fluid] is cleansed.
       * The fire triangle targets the closest player(s) with [a:inferno], a moderately large [ms:dynamo] AoE, whenever an [s:entropy] is cleansed.
       * The wind diamond targets the closest player(s) with [a:cyclone], a moderately large [m:stack.partner], whenever a [s:headwind]/[s:tailwind] is cleansed.
+      Be aware that this entire mechanic is essentially a long [t:body check]. If any player dies at any point, all their debuffs are considered to be "cleansed", triggering [a:tsunami] or [a:inferno] and [a:cyclone]. Since [a:cyclone] cannot be survived solo, it is likely to kill whomever it targets, triggering a chain reaction of [a:cyclone]s until everyone is dead.
   stray-flames:
     id: 47859
     name: Stray Flames
@@ -1182,7 +1235,9 @@ actions:
     name: Vacuum Wave
     mechanic: mech.knockback
     damage: 0
-    description: Exdeath knocks all players away from him. Can be avoided using [s:arms-length] or [s:surecast].
+    description: |
+      Exdeath knocks all players away from him. Can be avoided using knockback immunity such as [s:arms-length] or [s:surecast].
+      This is players' last opportunity to cleanse [s:headwind] or [s:tailwind].
   aetherlink:
     id: 49892
     name: Aetherlink
@@ -1193,13 +1248,17 @@ actions:
   ultima-blaster-lc:
     id: 47844
     name: Ultima Blaster
-    mechanic: spread
+    caption: LC
+    mechanic: mech.limit
     shape: line
     count: 8
+    players: 8
     damage: 133817
     emphasis: more
     description: |
-      The [a:ultima-blaster] pulses come back from where they ended up, firing a line AoE at the correspondingly numbered player. Inflicts [s:magic-vulnerability-up]. Ignores [invulnerability effects](t:invuln).
+      All players are assigned a [m:mech.limit] marker. A short while later, a line AoE fires at each player in the *opposite* order of the prior [a:ultima-blaster] pulses.
+      **Example**: [boss]'s initial raidwide pulse goes from west to east. Subsequent pulses proceed clockwise. For [a:ultima-blaster-lc], the first line AoE originates from west and subsequent line AoEs proceed **counter**-clockwise.
+      Each hit inflicts [s:magic-vulnerability-up], effectively making this an 8-man [m:spread]. Ignores [invulnerability effects](t:invuln).
       This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   max:
     id: 47845
@@ -1209,6 +1268,7 @@ actions:
   earthquake:
     id: 50545
     name: Earthquake
+    caption: Cast
     mechanic: mech
     emphasis: more
     description: |
@@ -1220,18 +1280,29 @@ actions:
       All debuffs must be cleansed by healing the player to full (in the case of [s:accretion]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
       Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all party members, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
       Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
+      Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii] at the point of the next [a:earthquake-hit].
+      [a:earthquake-hit] deals no damage to the player whose debuff was cleansed.
     resolve: |
-      Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration.
+      Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration. Don't cleanse both [s:accretion]s at the same time.
       [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
       [a:nothingness] happens exactly 24 times and cannot be avoided. Each player can soak [a:nothingness] 3× (first gaining [s:unbecoming], the second time gaining [s:meanest-existence], the third time taking lethal damage and thereby cleansing [s:primordial-crust]). It is not possible to survive a fourth hit. 3×8 players is 24 soaks, so if any player at any point takes lethal damage from anything other than [a:nothingness], [a:nothingness] can no longer be cleanly resolved and will result in deaths.
       Ensure that you never have two or more [s:meanest-existence] players take a [a:nothingness] at the same time, as this would result in a wipe.
+  stray-earth:
+    id: 47865
+    name: Stray Earth
+    mechanic: mech.failure
+    damage: 9999999
+    description: |
+      A player's [s:accretion] was not cleansed in time, instantly killing them and triggering [a:earthquake-hit].
+      This is a guaranteed wipe, as [s:accretion] expires at the exact moment that [a:shockwave-kefka] would hit
   earthquake-hit:
     id: 47866
     name: Earthquake
-    caption: Hit
     mechanic: raidwide
     damage: 101287
-    description: "[s:accretion] or [s:primordial-crust] was cleansed, dealing raidwide damage and inflicting [s:earth-resistance-down-ii] on all players."
+    description: |
+      [s:accretion] or [s:primordial-crust] was cleansed, dealing moderate raidwide damage and inflicting [s:earth-resistance-down-ii] on all players except the player whose debuff was cleansed, who takes no damage from this attack.
+      Targeted mitigation such as [a:reprisal] or [a:addle] *does* reduce the damage if inflicted on Chaos.
   slap-happy-right:
     id: 47846
     name: Slap Happy
@@ -1239,7 +1310,7 @@ actions:
     mechanic: combination
     compact: full
     description: |
-      [boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time.
+      [boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time ([a:shockwave-kefka]).
       This sequence of hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 805
@@ -1262,7 +1333,7 @@ actions:
     mechanic: combination
     compact: full
     description: |
-      [boss] hits the left side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal role spread at one random player of each role.
+      [boss] hits the left side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal role spread at one random player of each role ([a:shockwave-kefka]).
       This sequence of hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 805
@@ -1277,7 +1348,7 @@ actions:
       id: slap-happy-aoe
       link: and
     - at: 3486
-      id: shockwave-role
+      id: shockwave-kefka
   slap-happy-hit:
     id: 47848
     name: Slap Happy
@@ -1358,15 +1429,18 @@ actions:
     players: 0
     damage: 226275
     description: The cone-shaped AoE cast out by [a:longitudinal-implosion] or [a:latitudinal-implosion]. Inflicts [s:damage-down].
-  shockwave-role:
+  shockwave-kefka:
     id: 47851
     name: Shockwave
     caption: Roles
-    mechanic: spread.role
+    mechanic: mech.spread-or-stack
     shape: cone
-    count: 3
+    players: 8
     damage: 226275
-    description: Fires a cone at a random player of each role (DPS, healers, tanks). This is not a stack. Inflicts [s:magic-vulnerability-up].
+    description: |
+      A cone originates from the center of the arena. Inflicts [s:magic-vulnerability-up]. The cone changes its effect based on the hand Kefka raised.
+      * **Left hand**: Targets one random player [of each role](m:spread.role) (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage.
+      * **Right hand**: Targets one random player for a full party [m:stack].
   blizzard-iii:
     id: 47887
     name: Blizzard III
@@ -1485,7 +1559,7 @@ actions:
     damage: 306476
     description: |
       Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
-      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
   grand-cross-2:
     id: 47892
     name: Grand Cross
@@ -1496,7 +1570,7 @@ actions:
     description: |
       Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
       All debuffs have a different duration than the previous set, and no player may be inflicted with a debuff they already have.
-      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
   grand-cross-3:
     id: 47892
     name: Grand Cross
@@ -1506,7 +1580,8 @@ actions:
     damage: 306476
     description: |
       Deals heavy raidwide damage and inflicts [s:black-wound] on 4 random players and [s:white-wound] on the other 4 players. Also inflicts [s:beyond-death] on 2 DPS and 2 supports and [s:allagan-field] on the other 4 players.
-      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake).
+      Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
+      **Note**: the truthiness (inverted) state of the status effects inflicted by this action *does not matter*, because either both effects are true or both effects are inverted at the same time, meaning they cancel out.
   inferno-p4:
     id: 47904
     name: Inferno
@@ -1515,7 +1590,7 @@ actions:
     damage: 226592
     description: |
       Deals moderate raidwide damage and inflicts [s:dynamic-fluid-p4] on all players.
-      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake).
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake). Check the description for [s:dynamic-fluid-p4] to learn about what that means.
   tsunami-p4:
     id: 47905
     name: Tsunami
@@ -1524,7 +1599,7 @@ actions:
     damage: 234208
     description: |
       Deals moderate raidwide damage and inflicts [s:entropy-p4] on all players.
-      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake).
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake). Check the description for [s:entropy-p4] to learn about what that means.
   flood-of-naught:
     id: 50067
     name: Flood of Naught
@@ -1532,6 +1607,14 @@ actions:
     shape: line
     description: |
       The left half of the arena is [a:white-antilight], the right half is [a:black-antilight] (or vice-versa), and the middle is [a:edge-of-death].
+    children:
+    - at: 490
+      id: edge-of-death
+    - at: 490
+      id: white-antilight
+      link: and
+    - at: 490
+      id: black-antilight
   edge-of-death:
     id: 50070
     name: Edge of Death
@@ -2478,7 +2561,7 @@ timeline:
   - at: 675113
     id: auto-attack-exdeath
   - at: 676901
-    id: shockwave-role
+    id: shockwave-kefka
   - at: 678060
     id: auto-attack-both
   - at: 684272
@@ -2593,13 +2676,6 @@ timeline:
     id: grand-cross-3
   - at: 803921
     id: flood-of-naught
-  - at: 804411
-    id: edge-of-death
-  - at: 804411
-    id: white-antilight
-    link: and
-  - at: 804411
-    id: black-antilight
   - at: 808279
     id: death-surge
   - at: 812729
