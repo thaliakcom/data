@@ -1,7 +1,7 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-06-24
+modified: 2026-06-26
 by:
   id: 27637301
   role: author
@@ -239,25 +239,25 @@ status:
     duration: 14000
     description: |
       Can be either real or fake.
-      If real: player instantly dies if they do *not* take damage before the effect expires.
-      If fake: becomes [s:allagan-field], dealing lethal raidwide damage if the player takes any damage before the effect expires.
+      If real: player instantly dies if they do *not* take lethal damage before the effect expires. If a player takes lethal damage, they're instead left at 1 HP. Additionally, this debuff significantly increases vulnerability to matching antilight colours, dealing exactly 3 times the player's maximum HP in damage if standing on a matching colour.
+      If fake: significantly increases vulnerability to matching antilight colours, dealing exactly 3 times the player's maximum HP in damage if standing on a matching colour and instantly killing that player. Has no other effect.
       Inflicted by [a:grand-cross-3].
   white-wound:
     id: 5541
     type: condition
-    description: Can be either real or fake. If real, player is immune to [a:black-antilight] and weak to [a:white-antilight]. If fake, player is immune to [a:white-antilight] and weak to [a:black-antilight]. Inflicted by [a:grand-cross-3] and [a:white-antilight].
+    description: Can be either real or fake. If real, player takes 999 damage from [a:black-antilight] and 66,000 damage from [a:white-antilight]. If fake, player takes 999 damage from [a:white-antilight] and 66,000 damage from [a:black-antilight]. Inflicted by [a:grand-cross-3] and [a:white-antilight].
   black-wound:
     id: 5542
     type: condition
-    description: Can be either real or fake. If real, player is immune to [a:white-antilight] and weak to [a:black-antilight]. If fake, player is immune to [a:black-antilight] and weak to [a:white-antilight]. Inflicted by [a:grand-cross-3] and [a:white-antilight].
+    description: Can be either real or fake. If real, player takes 999 damage from [a:white-antilight] and 66,000 damage from [a:black-antilight]. If fake, player takes 999 damage from [a:black-antilight] and 66,000 damage from [a:white-antilight]. Inflicted by [a:grand-cross-3] and [a:black-antilight].
   allagan-field:
     id: 454
     type: condition
     duration: 15000
     description: |
       Can be either real or fake.
-      If real: deals lethal raidwide damage ([a:death-surge]) if the player takes any damage before the effect expires.
-      If fake: becomes [s:beyond-death], instantly killing the player if they take no damage before the effect expires.
+      If real: while this debuff is active, any damage taken is tallied, multiplied by 10, and released in the form of raidwide damage when the debuff expires ([a:death-surge]). Minimizing the amount of damage taken minimizes the amount of damage dealt by [a:death-surge].
+      If fake: when this debuff is inflicted, a lethal amount of damage is already stored, to be unleashed in the form of raidwide damage when the debuff expires ([a:death-surge]). Taking damage *reduces* the stored damage. Maximizing the amount of damage minimizes the amount of damage dealt by [a:death-surge].
       Inflicted by [a:grand-cross-3].
   mana-charge:
     id: 1482
@@ -1610,6 +1610,7 @@ actions:
     children:
     - at: 490
       id: edge-of-death
+      link: and
     - at: 490
       id: white-antilight
       link: and
@@ -1627,29 +1628,54 @@ actions:
     mechanic: aoe
     shape: line
     players: 2
-    damage: 34264
+    damage: 66000
+    type: dark
     description: |
-      Players standing in this [ms:line] take a small amount of damage if they have [s:white-wound] (real) or [s:black-wound] (fake), otherwise they take no damage.
-      Players who fail to take damage are instantly killed with [s:beyond-death] (real) or [s:allagan-field] (fake), while players who do take damage wipe the raid if they have [s:allagan-field] (real) or [s:beyond-death] (fake).
+      Half the arena explodes in white antilight. Its effect depends on the player's debuff:
+      **Opposite colours** (real [s:black-wound] or fake [s:white-wound]):
+      * [s:beyond-death] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death], which instantly kills the player when it expires.
+      * [s:beyond-death] (fake): Deals 999 damage. Has no other effect.
+      * [s:allagan-field] (real): Deals 999 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      * [s:allagan-field] (fake): Deals 999 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      **Same colours** (real [s:white-wound] or fake [s:black-wound]):
+      * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
+      * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
+      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
+      Note that this action may be fake, in which case it is replaced by [a:black-antilight].
   black-antilight:
     id: 50069
     name: Black Antilight
     mechanic: aoe
     shape: line
     players: 2
-    damage: 32562
+    damage: 66000
+    type: dark
     description: |
-      Players standing in this [ms:line] take a small amount of damage if they have [s:black-wound] (real) or [s:white-wound] (fake), otherwise they take no damage.
-      Players who fail to take damage are instantly killed with [s:beyond-death] (real) or [s:allagan-field] (fake), while players who do take damage wipe the raid if they have [s:allagan-field] (real) or [s:beyond-death] (fake).
+      Half the arena explodes in black antilight. Its effect depends on the player's debuff:
+      **Opposite colours** (real [s:white-wound] or fake [s:black-wound]):
+      * [s:beyond-death] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death], which instantly kills the player when it expires.
+      * [s:beyond-death] (fake): Deals 999 damage. Has no other effect.
+      * [s:allagan-field] (real): Deals 999 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      * [s:allagan-field] (fake): Deals 999 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      **Same colours** (real [s:black-wound] or fake [s:white-wound]):
+      * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
+      * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
+      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
+      Note that this action may be fake, in which case it is replaced by [a:white-antilight].
   death-surge:
     id: 47900
     name: Death Surge
     mechanic: mech.check
     count: 4
     players: 8
-    damage: 8397
+    damage: 9990
+    type: dark
     description: |
-      [s:allagan-field] (real) or [s:beyond-death] (fake) resolves, dealing little to no damage if affected players took no damage from [a:flood-of-naught], otherwise wipes the raid.
+      [s:allagan-field] resolves, dealing either 9,990 damage if all debuffs were resolved correctly, otherwise deals 9,999,999 damage.
   mana-charge:
     id: 47780
     mechanic: mech.store
