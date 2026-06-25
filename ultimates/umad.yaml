@@ -9,7 +9,9 @@ boss: Kefka
 HP: 0
 wip: [diagrams]
 party_hp: 235643
-description: ""
+description: |
+  Dancing Mad (Ultimate) is Dawntrail's second ultimate encounter, in which you face off against Kefka Palazzo. But this is not a simulated version of him conjured by Omega; this Kefka is the real deal.
+  **Note**: This timeline exposes the timestamps and damage amounts for all auto-attacks in the encounter. Unless this is information that you need, it is strongly recommended to click the cogwheel in the top right and select "Hide minor actions" to hide all auto-attacks from the timeline and make it easier to read.
 status:
   damage-down:
     id: 2911
@@ -1640,7 +1642,7 @@ actions:
       **Same colours** (real [s:white-wound] or fake [s:black-wound]):
       * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
       * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
-      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 660,000 raidwide damage upon expiration.
       * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
       This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
       Note that this action may be fake, in which case it is replaced by [a:black-antilight].
@@ -1662,7 +1664,7 @@ actions:
       **Same colours** (real [s:black-wound] or fake [s:white-wound]):
       * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
       * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
-      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 666,000 raidwide damage upon expiration.
       * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
       This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
       Note that this action may be fake, in which case it is replaced by [a:white-antilight].
@@ -1675,7 +1677,8 @@ actions:
     damage: 9990
     type: dark
     description: |
-      [s:allagan-field] resolves, dealing either 9,990 damage if all debuffs were resolved correctly, otherwise deals 9,999,999 damage.
+      [s:allagan-field] resolves, dealing 10 times the damage tallied while the debuff was active.
+      In the case of a fake [s:allagan-field], deals 9,999,999 damage if an insufficient amount of damage was taken.
   mana-charge:
     id: 47780
     mechanic: mech.store
