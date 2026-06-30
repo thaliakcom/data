@@ -224,7 +224,7 @@ status:
     id: 5546
     type: delay
     duration: [36000, 51000, 76000, 61000]
-    description: Triggers an Acceleration Bomb when the effect expires. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires, otherwise affected players must be mid-motion when the effect expires.
+    description: Triggers an Acceleration Bomb when the effect expires, knocking players high into the air and instantly killing them if the fail to meet its condition. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires. If fake, affected players must be mid-motion when the effect expires.
   entropy-p4:
     id: 5547
     type: delay
@@ -1001,7 +1001,7 @@ actions:
     shape: chariot
     count: 2
     damage: 646810
-    description: Hits the closest and farthest player with a big circular [t:tankbuster].
+    description: Hits the closest and farthest player with a big circular [t:tankbuster]. Inflicts [s:magic-vulnerability-up].
   light-of-judgment-p2-enrage:
     id: 47841
     mechanic: enrage
@@ -1023,6 +1023,7 @@ actions:
       [boss] spawns Exdeath and Chaos.
       Three times throughout the phase, both bosses will equalize their HP ([a:aetherlink]).
       As soon as either boss is killed, [s:epic-hero] and [s:fated-hero] will fall off and the other boss will immediately begin their enrage cast ([a:meteor] or [a:bowels-of-agony-enrage]).
+    trivia: References Vaas Montenegro from Far Cry 3, who informs the protagonist that the definition of insanity is "repeating the same thing over and over again and expecting different results" – in other words, exactly what a player group does while attempting to clear this fight.
   the-decisive-battle:
     id: 49890
     name: the Decisive Battle
@@ -1552,6 +1553,7 @@ actions:
       Spawns Neo-Exdeath and Chaos on the outside of the arena and prepares to execute various debuff-inflicting mechanics.
       Neo-Exdeath will cast Grand Cross three times and Chaos will cast [a:tsunami-p4] and [a:inferno-p4] in a random order. Each of these casts deals heavy raidwide damage and inflicts various debuffs.
       **These debuffs may be inverted** depending on whether or not Neo-Exdeath/Chaos have [boss]'s question marks surrounding them during the cast. This applies only to the debuffs inflicted by that specific cast. This means that all debuffs or no debuffs could be inverted, or (more likely) a mix of both real and inverted debuffs.
+    trivia: References the popular game Simon Says, which mirrors this phase quite closely. In Simon Says, the designated "Simon" gives commands to the other players, but those commands are *fake* if "Simon" does not prefix them with "Simon says [...]". Following a fake command, or failing to follow a true command, results in immediate disqualification.
   grand-cross-1:
     id: 47892
     name: Grand Cross
