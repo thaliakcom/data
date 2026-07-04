@@ -365,7 +365,6 @@ actions:
       id: spiral-pierce
       count: 3
       link: and
-      mitigation: max
     - at: 10387
       id: hiemal-storm
       count: 5
@@ -543,11 +542,9 @@ actions:
     - at: 15156
       id: spiral-thrust
       link: and
-      mitigation: max
     - at: 15379
       id: skyward-leap
       link: and
-      mitigation: max
     - at: 15379
       id: spiral-pierce
     - at: 16980

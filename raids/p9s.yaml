@@ -348,14 +348,12 @@ actions:
     - at: 15232
       id: beastly-bile
       link: and
-      mitigation: max
     - at: 15232
       id: thunderbolt
     - at: 22140
       id: beastly-bile
       description: The second stack resolves. Must be taken by the 4 players who just received [a:thunderbolt].
       link: and
-      mitigation: max
     - at: 22140
       id: thunderbolt
       description: The second cones resolve. Must be taken by the 4 players who just received [a:beastly-bile].

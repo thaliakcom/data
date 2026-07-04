@@ -456,7 +456,6 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
-      mitigation: max
     - at: 12120
       id: guided-missile-kyrios
       count: 2
@@ -476,7 +475,6 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
-      mitigation: max
     - at: 18090
       id: guided-missile-kyrios
       count: 2
@@ -496,7 +494,6 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
-      mitigation: max
     - at: 24114
       id: guided-missile-kyrios
       count: 2
@@ -516,7 +513,6 @@ actions:
       id: condensed-wave-cannon-kyrios
       count: 2
       link: and
-      mitigation: max
     - at: 30126
       id: guided-missile-kyrios
       count: 2
@@ -573,19 +569,14 @@ actions:
     children:
       - at: 0
         id: diffuse-wave-cannon-kyrios-hit
-        mitigation: max
       - at: 2047
         id: diffuse-wave-cannon-kyrios-hit
-        mitigation: max
       - at: 4145
         id: diffuse-wave-cannon-kyrios-hit
-        mitigation: max
       - at: 6195
         id: diffuse-wave-cannon-kyrios-hit
-        mitigation: max
       - at: 8289
         id: diffuse-wave-cannon-kyrios-hit
-        mitigation: max
   diffuse-wave-cannon-kyrios-hit:
     id: 31504
     name: Diffuse Wave Cannon Kyrios (Hit)
@@ -905,7 +896,6 @@ actions:
         id: sniper-cannon
         count: 2
         link: and
-        mitigation: max
       - at: 19127
         id: high-powered-sniper-cannon
         count: 2
