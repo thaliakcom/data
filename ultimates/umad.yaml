@@ -1079,6 +1079,145 @@ actions:
       * The fire triangle targets the closest player(s) with [a:inferno], a moderately large [ms:dynamo] AoE, whenever an [s:entropy] is cleansed.
       * The wind diamond targets the closest player(s) with [a:cyclone], a moderately large [m:stack.partner], whenever a [s:headwind]/[s:tailwind] is cleansed.
       Be aware that this entire mechanic is essentially a long [t:body check]. If any player dies at any point, all their debuffs are considered to be "cleansed", triggering [a:tsunami] or [a:inferno] and [a:cyclone]. Since [a:cyclone] cannot be survived solo, it is likely to kill whomever it targets, triggering a chain reaction of [a:cyclone]s until everyone is dead.
+    strategies:
+      bowels-intended:
+        name: Intended
+        description: |
+          **Warning**: The intended strategy is not currently used in party finder. Unless you intend to use this strategy with a premade group for the challenge, it is recommended to use one of the other two strategies instead.
+          The intended strategy for [a:bowels-of-agony] has players gradually resolve their [s:headwind]/[s:tailwind] debuffs over the course of the mini-phase. This is done as follows:
+          * Drag Chaos to the wind diamond. Drag Exdeath opposite.
+          * Check which debuff ([s:entropy] or [s:dynamic-fluid]) resolves first and which one last (short or long).
+          * When [s:entropy] resolves, have the four players without [s:entropy] and [s:dynamic-fluid] go to the wind diamond and position into two distinct pairs. One player per pair must be close to the wind diamond, the other farther away, otherwise two [a:cyclone]s will be baited onto the same pair. The two [s:entropy] players position themselves around the fire triangle (one close, one at the edge of the arena). Two other players who still have [s:headwind]/[s:tailwind] position themselves to get hit by the follow-up [a:inferno] on the close player while facing the right way depending on their debuff. This will cleanse their [s:headwind]/[s:tailwind] and trigger [a:cyclone] on the two closest players to the wind diamond.
+          * When [s:dynamic-fluid] resolves, have the two [s:dynamic-fluid] players go to the wind diamond and position into two distinct pairs, each partnering up with one other player. Two other players position themselves around the water square (one close, one far). Two other players who still have [s:headwind]/[s:tailwind] position themselves inside the follow-up [a:tsunami] on the close player while facing the correct way. This will cleanse their [s:headwind]/[s:tailwind] and trigger [a:cyclone] on the two closest players to the wind diamond (which should be the two [s:dynamic-fluid] players).
+          * Drag Exdeath to the wind diamond before he begins casting [a:vacuum-wave].
+          * When Exdeath begins casting [a:vacuum-wave], the 4 players whose [s:headwind]/[s:tailwind] have already been cleansed use knockback immunity ([a:surecast]/[a:arms-length]) and each pair up with a player who still has their [s:headwind]/[s:tailwind] debuff. After [a:vacuum-wave], the four players who used knockback immunity should be targeted by [a:cyclone]. They must ensure that no one is closer to the wind diamond than the four of them, and that they each clip their partner (a player who just cleansed their [s:headwind]/[s:tailwind]) but *not* each other.
+      bowels-tank-lb-pairs:
+        name: Tank LB3 (via pairs)
+        description: |
+          With this strat, you can mostly ignore [a:bowels-of-agony] debuffs entirely and you resolve the mini-phase the same way every time regardless of RNG.
+          * Drag Chaos to the wind diamond and Exdeath opposite (in the space without a shape).
+          * Your caster and physical ranged go to the fire triangle and stack.
+          * Both healers go to the water square and stack.
+          * Everyone else remains near the wind diamond, in melee range of Chaos. These players need to watch out for only two things: a) when [s:entropy] resolves, both [s:entropy] players may not be stacking with each other, and b) when elements resolve, these players should be close to the edge of the arena, not in the middle, to avoid being clipped by [a:inferno] or [a:stray-spray].
+          * Resolve the rest of the mechanics as usual.
+          * Right before [a:vacuum-wave] finishes casting, use tank limit break 3. Remember to face the right way; every player resolves [s:headwind]/[s:tailwind] using [a:vacuum-wave]. Do not use knockback immunity.
+          * Get knocked back into distinct pairs and wait for [a:cyclone] to resolve.
+          Every player will get a [a:cyclone] at this point if done correctly. The reason this works despite the [s:wind-resistance-down-ii] is that the tank limit break 3 essentially reduces the [a:cyclone] damage back to its pre-[s:wind-resistance-down-ii] value again.
+      bowels-tank-lb-stack:
+        name: Tank LB3 (via stack)
+        description: |
+          Same as the other tank LB3 strat, but instead of separating into pairs after [a:vacuum-wave], the entire party stacks together. This works because [a:cyclone] is not a true [m:stack.partner] and continues to reduce damage for each player present in the stack. As a result, the total damage dealt to each player is roughly equivalent to the pairs strat.
+    children:
+    - at: 1832
+      id: auto-attack-both
+    - at: 4869
+      id: auto-attack-both
+    - at: 7909
+      id: auto-attack-both
+    - at: 10942
+      id: auto-attack-chaos
+    - at: 12155
+      id: <removestatus>
+      status: [epic-hero, fated-hero]
+    - at: 13979
+      id: auto-attack-chaos
+    - at: 17013
+      id: auto-attack-chaos
+    - at: 19110
+      id: stray-flames
+      timing: player
+      link: or
+    - at: 19110
+      id: stray-spray
+      timing: player
+      link: and
+    - at: 19155
+      id: thunder-iii-out
+      link: and
+    - at: 20049
+      id: auto-attack-chaos
+      link: and
+    - at: 20139
+      id: inferno
+      timing: player
+      link: or
+    - at: 20139
+      id: tsunami
+      timing: player
+      link: then
+    - at: 21835
+      id: cyclone
+      timing: player
+      count: 2
+    - at: 23084
+      id: auto-attack-chaos
+    - at: 26120
+      id: auto-attack-chaos
+    - at: 28266
+      id: thunder-iii-tb
+    - at: 29160
+      id: auto-attack-chaos
+    - at: 31348
+      id: auto-attack-both
+    - at: 34375
+      id: auto-attack-both
+    - at: 37411
+      id: auto-attack-exdeath
+    - at: 40038
+      id: trance
+    - at: 40439
+      id: auto-attack-exdeath
+    - at: 41242
+      id: latitudinal-implosion
+      link: or
+    - at: 41242
+      id: longitudinal-implosion
+    - at: 43291
+      id: auto-attack-both
+    - at: 46102
+      id: stray-spray
+      timing: player
+      link: or
+    - at: 46102
+      id: stray-flames
+      timing: player
+      link: then
+    - at: 46323
+      id: auto-attack-both
+      link: then
+    - at: 47127
+      id: tsunami
+      timing: player
+      link: or
+    - at: 47127
+      id: inferno
+      timing: player
+      link: then
+    - at: 48870
+      id: cyclone
+      timing: player
+      count: 2
+    - at: 49362
+      id: auto-attack-both
+    - at: 52398
+      id: auto-attack-both
+    - at: 55436
+      id: auto-attack-chaos
+    - at: 57357
+      id: ultima-blasters
+      flatten: omit-parent
+    - at: 61514
+      id: umbra-smash
+    - at: 64426
+      id: vacuum-wave
+    - at: 64649
+      id: auto-attack-exdeath
+    - at: 67599
+      id: auto-attack-chaos
+    - at: 68311
+      id: cyclone
+      timing: player
+      count: 4
   stray-flames:
     id: 47859
     name: Stray Flames
@@ -1116,14 +1255,14 @@ actions:
     description: |
       Any time a [s:headwind] or [s:tailwind] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii].
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
+      Note that, while this is *intended* as a [m:stack.partner] and deals lethal damage when taken solo, the damage *does* scale linearly with the number of players soaking a hit. In other words: the more players are in the stack, the less damage it deals with no limit. This may be useful in certain strategies.
   thunder-iii-tb:
     id: 47881
     name: Thunder III
-    caption: TB
+    caption: 2× TB
     mechanic: tb.mt
     shape: chariot
     description: Hits the closest player to Exdeath with a heavy tankbuster, then does it again. Inflicts [s:lightning-resistance-down-ii].
-    expanded: true
     children:
     - at: 90
       id: thunder-iii-hit
@@ -1143,9 +1282,8 @@ actions:
     mechanic: mech
     description: |
       [boss] imbues himself with potent magicks and prepares [a:ultima-blaster].
-      With [a:ultima-blaster], [boss] fires an arena-spanning pulse from any cardinal or intercardinal straight across to the other side, dealing unavoidable raidwide damage to all players. [boss] then repeats this seven more times, with each subsequent pulse being rotated by 90°. The pulses can rotate either clockwise or counter-clockwise.
-      After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8 above their heads. A short while later, each pulse fires *back* across from where it ended up at the corresponding numbered player in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
-      **Example**: The third pulse fired from northwest to southeast. This means that a line AoE originating from southeast fires at the player with the number 3 above their head.
+      With [a:ultima-blaster], [boss] fires an arena-spanning pulse from any cardinal or intercardinal straight across to the other side, dealing unavoidable raidwide damage to all players. [boss] then repeats this seven more times, with each subsequent pulse being rotated by 45°. The pulses can rotate either clockwise or counter-clockwise.
+      After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8. A short while later, each pulse fires again, this time aiming for the corresponding numbered player in *opposite order* in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
   longitudinal-implosion:
     id: 47869
     name: Longitudinal Implosion
@@ -1263,6 +1401,8 @@ actions:
       **Example**: [boss]'s initial raidwide pulse goes from west to east. Subsequent pulses proceed clockwise. For [a:ultima-blaster-lc], the first line AoE originates from west and subsequent line AoEs proceed **counter**-clockwise.
       Each hit inflicts [s:magic-vulnerability-up], effectively making this an 8-man [m:spread]. Ignores [invulnerability effects](t:invuln).
       This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+    resolve: |
+      Keep track of the initial raidwide pulses and which way they're going, then invert that direction in your head. Remember that you don't go where the pulses start, players need to go where they *end up*.
   max:
     id: 47845
     name: Max
@@ -1285,19 +1425,29 @@ actions:
       Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
       Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii] at the point of the next [a:earthquake-hit].
       [a:earthquake-hit] deals no damage to the player whose debuff was cleansed.
+      **Note**: [a:earthquake-hit] cannot happen during [boss] mechanics (including [a:slap-happy-left], [a:slap-happy-right]). If a player cleanses [s:primordial-crust] during this time, the [a:earthquake-hit] will instead be stored until just after [a:shockwave-kefka].
     resolve: |
       Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration. Don't cleanse both [s:accretion]s at the same time.
       [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
       [a:nothingness] happens exactly 24 times and cannot be avoided. Each player can soak [a:nothingness] 3× (first gaining [s:unbecoming], the second time gaining [s:meanest-existence], the third time taking lethal damage and thereby cleansing [s:primordial-crust]). It is not possible to survive a fourth hit. 3×8 players is 24 soaks, so if any player at any point takes lethal damage from anything other than [a:nothingness], [a:nothingness] can no longer be cleanly resolved and will result in deaths.
       Ensure that you never have two or more [s:meanest-existence] players take a [a:nothingness] at the same time, as this would result in a wipe.
+    mistakes:
+      - Failing to cleanse both [s:accretion]s before the first [a:slap-happy-left]/[a:slap-happy-right] leads to an instant wipe.
+      - Cleansing two debuffs at the same time results in an instant wipe.
+      - Getting hit by an avoidable AoE and dying to it, or dying due to insufficient healing, triggers [a:earthquake-hit] and results in an instant wipe if this happens during [a:nothingness].
+      - Failing to aim Chaos at an intercardinal relative to [boss] before [a:longitudinal-implosion]/[a:latitudinal-implosion] is an almost guaranteed wipe, as it is not possible to dodge Chaos's [a:shockwave]s in a way that is also safe from [a:slap-happy-left]/[a:slap-happy-right].
+      - Not taking your tether far enough can easily result in you getting clipped by another [a:nothingness], likely resulting in a wipe.
+      - Walking through either boss during [a:black-hole] can easily result in a death or wipe, as the two boss models are big enough to completely cover a potential black hole.
+      - Not returning to the center of the arena and looking directly at [boss] before each tether set can result in a wipe, as [boss] is so large that the perspective can easily make it seem like a tether black hole is directly in front of him when it actually isn't, thus causing someone to pick up the wrong tether.
   stray-earth:
     id: 47865
     name: Stray Earth
     mechanic: mech.failure
+    players: 0
     damage: 9999999
     description: |
       A player's [s:accretion] was not cleansed in time, instantly killing them and triggering [a:earthquake-hit].
-      This is a guaranteed wipe, as [s:accretion] expires at the exact moment that [a:shockwave-kefka] would hit
+      This is a guaranteed wipe, as [s:accretion] expires at the exact moment that [a:shockwave-kefka] hits.
   earthquake-hit:
     id: 47866
     name: Earthquake
@@ -1360,14 +1510,14 @@ actions:
     shape: chariot
     players: 0
     damage: 200938
-    description: Individual hit of [a:slap-happy-right]. Inflicts [s:damage-down].
+    description: Individual hit of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down].
   slap-happy-aoe:
     id: 47849
     name: Slap Happy
     caption: AoE
     mechanic: aoe
     shape: chariot
-    description: The center AoE at the end of [a:slap-happy-right]. Inflicts [s:damage-down].
+    description: The center AoE at the end of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down].
   shocking-impact:
     id: 47850
     name: Shocking Impact
@@ -1379,6 +1529,7 @@ actions:
     id: 47867
     name: Black Hole
     mechanic: mech
+    emphasis: more
     description: |
       Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down].
       Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing moderate damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
@@ -1387,6 +1538,180 @@ actions:
       * [a:black-hole] 2 and 3: three tethers, followed by three tethers, followed by another three tethers.
       * [a:black-hole] 4: two tethers, followed by one tether.
       **Total**: 24× [a:nothingness], which is the exact number of hits required for every player to be hit once by [a:nothingness] while in [s:meanest-existence].
+      At the end of each [a:black-hole] set, [boss] teleports to a random cardinal or intercardinal and executes either [a:slap-happy-left], [a:slap-happy-right], or [a:look-upon-me-and-despair].
+  black-hole-1-2:
+    name: Black Hole
+    caption: Sets 1–2
+    mechanic: mech
+    emphasis: more
+    description: The first two sets of [a:black-hole], followed by [a:damning-edict] and [a:slap-happy-left] or [a:slap-happy-right].
+    children:
+    - at: 2056
+      id: auto-attack-both
+    - at: 5091
+      id: auto-attack-both
+    - at: 7144
+      id: nothingness
+    - at: 7232
+      id: aetherlink
+    - at: 8129
+      id: auto-attack-both
+    - at: 11164
+      id: auto-attack-both
+    - at: 14202
+      id: nothingness
+      count: 2
+    - at: 14202
+      id: auto-attack-chaos
+    - at: 17239
+      id: auto-attack-chaos
+    - at: 17373
+      id: thunder-iii-tb
+    - at: 20278
+      id: auto-attack-both
+    - at: 23313
+      id: auto-attack-exdeath
+    - at: 25416
+      id: damning-edict
+      link: and
+    - at: 26351
+      id: auto-attack-exdeath
+      link: and
+    - at: 26618
+      id: slap-happy-right
+      link: or
+    - at: 26618
+      id: slap-happy-left
+    - at: 28313
+      id: auto-attack-chaos
+    - at: 29385
+      id: auto-attack-exdeath
+    - at: 31345
+      id: auto-attack-both
+    - at: 34379
+      id: auto-attack-chaos
+  black-hole-3-5:
+    name: Black Hole
+    caption: Sets 3–5
+    mechanic: mech
+    emphasis: more
+    description: The next three sets of [a:black-hole], followed by [a:damning-edict] and [a:look-upon-me-and-despair].
+    children:
+    - at: 2429
+      id: nothingness
+      count: 3
+      link: then
+    - at: 3996
+      id: earthquake-hit
+      timing: player
+    - at: 7518
+      id: nothingness
+      count: 3
+      link: then
+    - at: 9081
+      id: earthquake-hit
+      timing: player
+    - at: 12613
+      id: nothingness
+      count: 3
+      link: then
+    - at: 14176
+      id: earthquake-hit
+      timing: player
+    - at: 16363
+      id: auto-attack-exdeath
+    - at: 17570
+      id: damning-edict
+      link: then
+    - at: 18911
+      id: look-upon-me-and-despair
+    - at: 20655
+      id: auto-attack-chaos
+    - at: 21011
+      id: blackblood
+      flatten: omit-parent
+    - at: 23426
+      id: thunder-iii-tb
+    - at: 23692
+      id: auto-attack-both
+    - at: 26732
+      id: auto-attack-both
+    - at: 29771
+      id: auto-attack-both
+    - at: 33523
+      id: auto-attack-exdeath
+  black-hole-6-8:
+    name: Black Hole
+    caption: Sets 6–8
+    mechanic: mech
+    emphasis: more
+    description: The next three sets of [a:black-hole], followed by [a:longitudinal-implosion] or [a:latitudinal-implosion] and [a:slap-happy-left] or [a:slap-happy-right].
+    children:
+    - at: 2692
+      id: nothingness
+      count: 3
+      link: then
+    - at: 4255
+      id: earthquake-hit
+      timing: player
+    - at: 4832
+      id: aetherlink
+    - at: 7777
+      id: nothingness
+      count: 3
+      link: then
+    - at: 9341
+      id: earthquake-hit
+      timing: player
+    - at: 12859
+      id: nothingness
+      count: 3
+      link: then
+    - at: 14423
+      id: earthquake-hit
+      timing: player
+    - at: 23985
+      id: latitudinal-implosion
+      link: or
+    - at: 23985
+      id: longitudinal-implosion
+      link: then
+    - at: 24029
+      id: white-hole
+      link: then
+    - at: 25417
+      id: slap-happy-right
+      link: or
+    - at: 25417
+      id: slap-happy-left
+    - at: 27113
+      id: auto-attack-exdeath
+    - at: 30060
+      id: auto-attack-both
+  black-hole-9-10:
+    name: Black Hole
+    caption: Sets 9–10
+    mechanic: mech
+    emphasis: more
+    description: The last two sets of [a:black-hole], followed by [a:look-upon-me-and-despair].
+    children:
+    - at: 4272
+      id: nothingness
+      count: 2
+      link: then
+    - at: 5838
+      id: earthquake-hit
+      timing: player
+    - at: 10931
+      id: look-upon-me-and-despair
+      description: "[boss] slams the center of the arena, then gets up on top of it in the direction he slammed."
+      link: and
+    - at: 11332
+      id: nothingness
+      link: then
+    - at: 12899
+      id: earthquake-hit
+      timing: player
   nothingness:
     id: 47868
     name: Nothingness
@@ -1402,7 +1727,7 @@ actions:
     name: Damning Edict
     mechanic: aoe
     shape: halfroom
-    description: Chaos hits everything in front of him with an avoidable AoE, dealing heavy damage and inflicting [s:damage-down].
+    description: Chaos faces a random player and begins casting. At the end of the cast, deals heavy damage and inflicts [s:damage-down] on anyone in front of him.
   look-upon-me-and-despair:
     id: 47854
     name: Look upon Me and Despair
@@ -1447,7 +1772,7 @@ actions:
   blizzard-iii:
     id: 47887
     name: Blizzard III
-    caption: AoE
+    caption: AoE (Cast)
     mechanic: aoe.delayed
     shape: chariot
     compact: trim
@@ -1476,10 +1801,20 @@ actions:
     resolve: |
       If a DPS is targeted by [a:knock-down] first, supports resolve the first set of stomps. If a support is targeted by [a:knock-down], DPS resolve the first set of stomps.
     children:
+    - at: 268
+      id: auto-attack-exdeath
+    - at: 1566
+      id: knock-down
+      flatten: omit-parent
     - at: 1699
       id: stomp-a-mole-hit
+    - at: 2102
+      id: auto-attack-chaos
     - at: 3040
       id: stomp-a-mole-hit
+    - at: 4333
+      id: auto-attack-both
+      link: and
     - at: 4333
       id: stomp-a-mole-hit
     - at: 5676
@@ -1516,7 +1851,7 @@ actions:
     name: Blizzard III
     caption: Motion
     mechanic: mech.motion
-    description: Freezes all players who are standing still.
+    description: Freezes and inflicts [s:damage-down] on all players who are standing still.
   big-bang:
     id: 47878
     name: Big Bang
@@ -1553,6 +1888,8 @@ actions:
       Spawns Neo-Exdeath and Chaos on the outside of the arena and prepares to execute various debuff-inflicting mechanics.
       Neo-Exdeath will cast Grand Cross three times and Chaos will cast [a:tsunami-p4] and [a:inferno-p4] in a random order. Each of these casts deals heavy raidwide damage and inflicts various debuffs.
       **These debuffs may be inverted** depending on whether or not Neo-Exdeath/Chaos have [boss]'s question marks surrounding them during the cast. This applies only to the debuffs inflicted by that specific cast. This means that all debuffs or no debuffs could be inverted, or (more likely) a mix of both real and inverted debuffs.
+    resolve: |
+      It is strongly recommended to have at least one player on *macro duty*. They would then keep track of at least [s:cursed-shriek] and which of the [s:cursed-shriek]s (if any) are fake. Optimally, they'd keep track of [s:entropy-p4] and [s:dynamic-fluid-p4] too. In the best case, they would also mark the four [m:spread] players (true [s:forked-lightning] or fake [s:compressed-water]).
     trivia: References the popular game Simon Says, which mirrors this phase quite closely. In Simon Says, the designated "Simon" gives commands to the other players, but those commands are *fake* if "Simon" does not prefix them with "Simon says [...]". Following a fake command, or failing to follow a true command, results in immediate disqualification.
   grand-cross-1:
     id: 47892
@@ -2303,112 +2640,6 @@ timeline:
     id: auto-attack-exdeath
   - at: 450313
     id: bowels-of-agony
-  - at: 452145
-    id: auto-attack-both
-  - at: 455182
-    id: auto-attack-both
-  - at: 458222
-    id: auto-attack-both
-  - at: 461255
-    id: auto-attack-chaos
-  - at: 464292
-    id: auto-attack-chaos
-  - at: 467326
-    id: auto-attack-chaos
-  - at: 469423
-    id: stray-flames
-    timing: player
-    link: or
-  - at: 469423
-    id: stray-spray
-    timing: player
-    link: and
-  - at: 469468
-    id: thunder-iii-out
-    link: and
-  - at: 470362
-    id: auto-attack-chaos
-    link: and
-  - at: 470452
-    id: inferno
-    timing: player
-    link: or
-  - at: 470452
-    id: tsunami
-    timing: player
-    link: then
-  - at: 472148
-    id: cyclone
-    timing: player
-    count: 2
-  - at: 473397
-    id: auto-attack-chaos
-  - at: 476433
-    id: auto-attack-chaos
-  - at: 478579
-    id: thunder-iii-tb
-  - at: 479473
-    id: auto-attack-chaos
-  - at: 481661
-    id: auto-attack-both
-  - at: 484688
-    id: auto-attack-both
-  - at: 487724
-    id: auto-attack-exdeath
-  - at: 490351
-    id: trance
-  - at: 490752
-    id: auto-attack-exdeath
-  - at: 491555
-    id: latitudinal-implosion
-    link: or
-  - at: 491555
-    id: longitudinal-implosion
-  - at: 493604
-    id: auto-attack-both
-  - at: 496415
-    id: stray-spray
-    timing: player
-    link: or
-  - at: 496415
-    id: stray-flames
-    timing: player
-    link: then
-  - at: 496636
-    id: auto-attack-both
-    link: then
-  - at: 497440
-    id: tsunami
-    timing: player
-    link: or
-  - at: 497440
-    id: inferno
-    timing: player
-    link: then
-  - at: 499183
-    id: cyclone
-    timing: player
-    count: 2
-  - at: 499675
-    id: auto-attack-both
-  - at: 502711
-    id: auto-attack-both
-  - at: 505749
-    id: auto-attack-chaos
-  - at: 507670
-    id: ultima-blasters
-  - at: 511827
-    id: umbra-smash
-  - at: 514739
-    id: vacuum-wave
-  - at: 514962
-    id: auto-attack-exdeath
-  - at: 517912
-    id: auto-attack-chaos
-  - at: 518624
-    id: cyclone
-    timing: player
-    count: 4
   - at: 519023
     id: auto-attack-exdeath
   - at: 520049
@@ -2470,166 +2701,22 @@ timeline:
     id: auto-attack-chaos
   - at: 578789
     id: black-hole
-  - at: 580845
-    id: auto-attack-both
-  - at: 583880
-    id: auto-attack-both
-  - at: 585933
-    id: nothingness
-  - at: 586021
-    id: aetherlink
-  - at: 586918
-    id: auto-attack-both
-  - at: 589953
-    id: auto-attack-both
-  - at: 592991
-    id: nothingness
-    count: 2
-  - at: 592991
-    id: auto-attack-chaos
-  - at: 596028
-    id: auto-attack-chaos
-  - at: 596162
-    id: thunder-iii-tb
-  - at: 599067
-    id: auto-attack-both
-  - at: 602102
-    id: auto-attack-exdeath
-  - at: 604205
-    id: damning-edict
-  - at: 605140
-    id: auto-attack-exdeath
-  - at: 605407
-    id: slap-happy-right
-    link: or
-  - at: 605407
-    id: slap-happy-left
-  - at: 607102
-    id: auto-attack-chaos
-  - at: 608174
-    id: auto-attack-exdeath
-  - at: 610134
-    id: auto-attack-both
-  - at: 613168
-    id: auto-attack-chaos
-  - at: 616429
-    id: nothingness
-    count: 3
-    link: then
-  - at: 617996
-    id: earthquake-hit
-    timing: player
-  - at: 621518
-    id: nothingness
-    count: 3
-    link: then
-  - at: 623081
-    id: earthquake-hit
-    timing: player
-  - at: 626613
-    id: nothingness
-    count: 3
-    link: then
-  - at: 628176
-    id: earthquake-hit
-    timing: player
-  - at: 630363
-    id: auto-attack-exdeath
-  - at: 631570
-    id: damning-edict
-  - at: 632911
-    id: look-upon-me-and-despair
-  - at: 634655
-    id: auto-attack-chaos
-  - at: 635011
-    id: blackblood
-    flatten: omit-parent
-  - at: 637426
-    id: thunder-iii-tb
-  - at: 637692
-    id: auto-attack-both
-  - at: 640732
-    id: auto-attack-both
-  - at: 643771
-    id: auto-attack-both
-  - at: 647523
-    id: auto-attack-exdeath
-  - at: 650692
-    id: nothingness
-    count: 3
-    link: then
-  - at: 652255
-    id: earthquake-hit
-    timing: player
-  - at: 652832
-    id: aetherlink
-  - at: 655777
-    id: nothingness
-    count: 3
-    link: then
-  - at: 657341
-    id: earthquake-hit
-    timing: player
-  - at: 660859
-    id: nothingness
-    count: 3
-    link: then
-  - at: 662423
-    id: earthquake-hit
-    timing: player
-  - at: 671985
-    id: latitudinal-implosion
-    link: or
-  - at: 671985
-    id: longitudinal-implosion
-  - at: 672029
-    id: white-hole
-  - at: 673417
-    id: slap-happy-right
-    link: or
-  - at: 673417
-    id: slap-happy-left
-  - at: 675113
-    id: auto-attack-exdeath
-  - at: 676901
-    id: shockwave-kefka
-  - at: 678060
-    id: auto-attack-both
-  - at: 684272
-    id: nothingness
-    count: 2
-    link: then
-  - at: 685838
-    id: earthquake-hit
-    timing: player
-  - at: 690931
-    id: look-upon-me-and-despair
-  - at: 691332
-    id: nothingness
-    link: then
-  - at: 692899
-    id: earthquake-hit
-    timing: player
+  - at: 578789
+    id: black-hole-1-2
+  - at: 614000
+    id: black-hole-3-5
+  - at: 648000
+    id: black-hole-6-8
+  - at: 680000
+    id: black-hole-9-10
   - at: 695131
     id: auto-attack-both
   - at: 698172
     id: auto-attack-chaos
   - at: 700319
     id: blizzard-iii
-    flatten: true
-    expandable: false
   - at: 704119
     id: stomp-a-mole
-    flatten: true
-    expandable: false
-  - at: 704387
-    id: auto-attack-exdeath
-  - at: 705685
-    id: knock-down
-  - at: 706221
-    id: auto-attack-chaos
-  - at: 708452
-    id: auto-attack-both
   - at: 714757
     id: blizzard-iii-freeze
   - at: 715921
@@ -2645,10 +2732,16 @@ timeline:
   - at: 729235
     id: <untargetable>
     target: Exdeath and Chaos
+    timing: skippable
+    description: |
+      If neither boss is defeated by this point, they become untargetable and cast their enrage.
+      As soon as either boss is defeated, the other immediately begins casting their enrage but does *not* go untargetable.
   - at: 734337
     id: meteor
+    timing: skippable
   - at: 734337
     id: bowels-of-agony-enrage
+    timing: skippable
   - at: 737763
     id: <phase>
     name: Phase 4 - Kefka Says
