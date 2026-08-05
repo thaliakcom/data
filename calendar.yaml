@@ -964,6 +964,12 @@
   type: patch
   color: "#6e9cec"
   at: 2026-07-28 12:00:00
+- name: Moonfire Faire 2026
+  type: event
+  color: "#832d2d"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2026/Moonfire_Faire/1fxgakswoj
+  from: 2025-08-12 08:00:00
+  to: 2025-08-26 14:59:59
 - name: Patch 7.56 (Beastmaster)
   short: Patch 7.56
   type: patch
