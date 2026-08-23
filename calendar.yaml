@@ -970,6 +970,12 @@
   url: https://eu.finalfantasyxiv.com/lodestone/special/2026/Moonfire_Faire/1fxgakswoj
   from: 2025-08-12 08:00:00
   to: 2025-08-26 14:59:59
+- name: The Rising 2026
+  type: event
+  color: "#83762d"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/2026/The_Rising/cula62e5jx
+  from: 2026-08-27 07:00:00
+  to: 2026-09-10 14:59:59
 - name: Patch 7.56 (Beastmaster)
   short: Patch 7.56
   type: patch
