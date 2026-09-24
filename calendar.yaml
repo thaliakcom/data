@@ -981,6 +981,12 @@
   type: patch
   color: "#6e9cec"
   at: 2026-09-08 12:00:00
+- name: Moogle Treasure Trove - The First Hunt for Astronomy
+  type: event
+  color: "#9e7123"
+  url: https://eu.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45
+  from: 2026-09-09 08:00:00
+  to: 2026-10-19 14:59:59
 - name: Fan Fest Tokyo
   type: event
   color: "#383642"
