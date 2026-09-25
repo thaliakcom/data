@@ -987,6 +987,13 @@
   url: https://eu.finalfantasyxiv.com/lodestone/special/mogmog-collection/202609/lsekubsk45
   from: 2026-09-09 08:00:00
   to: 2026-10-19 14:59:59
+- name: A Nocturne for Heroes (FFXV Crossover)
+  short: Nocturne for Heroes
+  type: event
+  color: "#322a73"
+  url: https://sqex.to/bB9ng
+  from: 2026-09-24 08:00:00
+  to: 2026-10-13 14:59:59
 - name: Fan Fest Tokyo
   type: event
   color: "#383642"
