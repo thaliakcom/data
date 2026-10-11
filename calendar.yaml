@@ -621,7 +621,6 @@
   url: https://sqex.to/TsL9G
   from: 2024-10-18 08:00:00
   to: 2024-11-04 14:59:59
-  allDay: true
 - name: Fall Guys Collaboration
   type: event
   color: "#7d2885"
@@ -1001,3 +1000,25 @@
   from: 2026-10-31
   to: 2026-11-01
   allDay: true
+- name: Fall Guys Collaboration
+  type: event
+  color: "#7d2885"
+  url: https://sqex.to/crueO
+  from: 2026-10-07 08:00:00
+  to: 2026-10-27 14:59:59
+- name: Patch 7.57 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-10-12 10:00:00
+  to: 2026-10-13 10:00:00
+- name: Patch 7.57
+  type: patch
+  color: "#6e9cec"
+  at: 2026-10-13 10:00:00
+- name: All Saints' Wake
+  type: event
+  color: "#1f5a61"
+  url: https://sqex.to/oZP2Y
+  from: 2026-10-15 08:00:00
+  to: 2026-11-02 14:59:59
