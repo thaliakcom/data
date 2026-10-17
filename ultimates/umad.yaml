@@ -1860,7 +1860,7 @@ actions:
   big-bang:
     id: 47878
     name: Big Bang
-    mechanic: aoe.delayed
+    mechanic: aoe.aftershock
     shape: chariot
     count: 2
     description: AoEs resolve wherever the [a:knock-down] stacks were resolved. Inflicts [s:damage-down].
