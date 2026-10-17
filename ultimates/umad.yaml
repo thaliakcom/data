@@ -219,7 +219,9 @@ status:
     id: 5543
     type: delay
     duration: [60000, 69000]
-    description: Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the afflicted players. If fake, all players must look at the afflicted players.
+    description: |
+      Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the afflicted players. If fake, all players must look at the afflicted players.
+      [a:grand-cross-1] always inflicts the short (60s) variant, [a:grand-cross-2] the long (69s) one.
   acceleration-bomb:
     id: 5546
     type: delay
