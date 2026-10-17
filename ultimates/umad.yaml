@@ -2180,7 +2180,7 @@ actions:
   chaotic-flood:
     id: 47951
     name: Chaotic Flood
-    mechanic: stack
+    mechanic: stack.party
     shape: chariot
     damage: 77607
     description: Full party stack, each dealing moderate damage but hitting 4× in a row.
