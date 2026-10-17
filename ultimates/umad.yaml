@@ -2046,10 +2046,10 @@ actions:
   death-shriek:
     id: 47894
     name: Death Shriek
-    mechanic: mech.lookat
+    mechanic: mech.lookaway
     count: 2
     description: |
-      [s:cursed-shriek] resolves, requiring all players to look at (real) or look away from (fake) the affected players.
+      [s:cursed-shriek] resolves, requiring all players to look away from (real) or look at (fake) the affected players.
   ultima-upsurge:
     id: 49738
     mechanic: raidwide
