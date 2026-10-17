@@ -1295,7 +1295,7 @@ actions:
   longitudinal-implosion:
     id: 47869
     name: Longitudinal Implosion
-    mechanic: aoe
+    mechanic: aoe.alternating
     shape: cone
     compact: trim
     description: First hits a cone-shaped area in front of and behind Chaos, then to his sides.
@@ -1307,7 +1307,7 @@ actions:
   latitudinal-implosion:
     id: 47870
     name: Latitudinal Implosion
-    mechanic: aoe
+    mechanic: aoe.alternating
     shape: cone
     compact: trim
     description: First hits a cone-shaped area to Chaos's sides, then in front and behind.
