@@ -1291,7 +1291,7 @@ actions:
     description: |
       [boss] imbues himself with potent magicks and prepares [a:ultima-blaster].
       With [a:ultima-blaster], [boss] fires an arena-spanning pulse from any cardinal or intercardinal straight across to the other side, dealing unavoidable raidwide damage to all players. [boss] then repeats this seven more times, with each subsequent pulse being rotated by 45°. The pulses can rotate either clockwise or counter-clockwise.
-      After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8. A short while later, each pulse fires again, this time aiming for the corresponding numbered player in *opposite order* in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
+      After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8. A short while later, the pulses fire again, starting from the same origin as the first pulse but rotating in the *opposite direction*, each aiming for the corresponding numbered player in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
   longitudinal-implosion:
     id: 47869
     name: Longitudinal Implosion
@@ -1405,12 +1405,12 @@ actions:
     damage: 133817
     emphasis: more
     description: |
-      All players are assigned a [m:mech.limit] marker. A short while later, a line AoE fires at each player in the *opposite* order of the prior [a:ultima-blaster] pulses.
+      All players are assigned a [m:mech.limit] marker. A short while later, a line AoE fires at each player in order, starting from the same origin as the first [a:ultima-blaster] pulse but rotating in the *opposite* direction.
       **Example**: [boss]'s initial raidwide pulse goes from west to east. Subsequent pulses proceed clockwise. For [a:ultima-blaster-lc], the first line AoE originates from west and subsequent line AoEs proceed **counter**-clockwise.
       Each hit inflicts [s:magic-vulnerability-up], effectively making this an 8-man [m:spread]. Ignores [invulnerability effects](t:invuln).
       This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     resolve: |
-      Keep track of the initial raidwide pulses and which way they're going, then invert that direction in your head. Remember that you don't go where the pulses start, players need to go where they *end up*.
+      Keep track of the initial raidwide pulses and which way they're going, then invert that direction in your head. Remember that you don't go where the pulses start, players need to go where they *end up*. Player 1 stands between the cardinal/intercardinal the first pulse ended at and the next one in the inverted direction; each subsequent player stands one step further in that direction.
   max:
     id: 47845
     name: Max
