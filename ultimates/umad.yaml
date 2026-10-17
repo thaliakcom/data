@@ -2774,7 +2774,7 @@ timeline:
     hp: 32008646
   - at: 737763
     id: <targetable>
-    target: Kefka
+    target: "[boss]"
   - at: 739812
     id: auto-attack-p4
   - at: 742845
@@ -2895,6 +2895,7 @@ timeline:
     id: auto-attack-p4
   - at: 861493
     id: <untargetable>
+    target: "[boss]"
     timing: skippable
     description: If [boss] is not brought below 25% HP by this point, he becomes untargetable and wipes the party, otherwise he begins casting [a:ultima-upsurge].
   - at: 863653
