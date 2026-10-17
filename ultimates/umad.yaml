@@ -1078,8 +1078,7 @@ actions:
     emphasis: more
     description: |
       Chaos inflicts various debuffs on all players.
-      * 4 random players are inflicted with [s:headwind].
-      * The other 4 players are inflicted with [s:tailwind].
+      * Each player is randomly inflicted with either [s:headwind] or [s:tailwind]. The split is random and not necessarily 4/4.
       * 1 random support and 1 random DPS are inflicted with [s:entropy].
       * 1 random support and 1 random DPS are inflicted with [s:dynamic-fluid].
       Both [s:entropy] effects have a duration of 19 seconds and [s:dynamic-fluid] a duration of 46 seconds or vice-versa.
