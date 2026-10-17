@@ -2027,7 +2027,7 @@ actions:
   death-bolt:
     id: 47897
     name: Death Bolt
-    mechanic: stack
+    mechanic: mech.spread-or-stack
     shape: chariot
     count: 2
     players: 3
@@ -2037,12 +2037,13 @@ actions:
   death-wave:
     id: 47898
     name: Death Wave
-    mechanic: spread
+    mechanic: mech.spread-or-stack
     shape: chariot
     count: 2
+    players: 3
     damage: 167701
     description: |
-      [s:compressed-water] resolves in the form of a [m:stack] (real) or 3-player [m:spread] (fake) on two players.
+      [s:compressed-water] resolves in the form of a 3-player [m:stack] (real) or [m:spread] (fake) on two players.
   death-shriek:
     id: 47894
     name: Death Shriek
