@@ -694,7 +694,7 @@ actions:
       Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if any player steps on it later. These sigils are single-use only and disappear immediately after use. They also disappear on their own a certain time after being placed.
       Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
-      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also targeted with a [m:spread] AoE at the same time. This AoE does not inflict [s:magic-vulnerability-up], so stacking two of these is possible with sufficient mitigation. If [a:indulgent-will] and [a:idyllic-will] are stacked, both players get both debuffs, essentially failing the mechanic (see [a:puzzle]).
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also hit at the same time: [a:indulgent-will] hits only its tethered player, while [a:idyllic-will] is a [m:spread] AoE. Neither inflicts [s:magic-vulnerability-up], so overlapping is survivable with sufficient mitigation. However, an [a:indulgent-will] player standing in an [a:idyllic-will] AoE is put to [s:sleep] as well, essentially failing the mechanic (see [a:puzzle]).
       **Note**: All teleportation sigils must be utilized (stepped on) by a [s:confused] player as a prerequisite for reaching phase 3. See [a:puzzle] for more information.
     trivia: |
       As of June 23, 2026 the effect of arrows has changed. Before the maintenance hotfix released on this date, arrows always teleported you a set distance in the indicated direction based on where you stepped onto the arrow. This was error-prone, as the server does not register a player being "on" an arrow until the next server tick, which means that players sometimes made it farther onto the arrow than other pulls, potentially messing up the teleport and landing short of the next arrow.
@@ -732,13 +732,12 @@ actions:
       [a:tele-trouncing-hit] resolves, leaving behind an arrow teleporter sigil. Deals no damage.
   indulgent-will:
     id: 47797
-    mechanic: spread
-    shape: chariot
+    mechanic: damage
     count: 4
     damage: 219477
     description: |
-      Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:confused].
-      Note that this AoE is significantly smaller than that of [a:idyllic-will], so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
+      Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players and inflicting [s:confused].
+      Note that this attack only hits the tethered player, while [a:idyllic-will] is an AoE, so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   idyllic-will:
     id: 47798
@@ -748,7 +747,7 @@ actions:
     damage: 218222
     description: |
       Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep].
-      Note that this AoE is significantly larger than that of [a:indulgent-will], so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
+      Note that this AoE is significantly larger than [a:indulgent-will], which only hits the tethered player, so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   ave-maria:
     id: 47795
