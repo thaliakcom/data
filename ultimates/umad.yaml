@@ -152,7 +152,7 @@ status:
     id: 1052
     type: vuln
     duration: 960
-    description: Renders any simultaneous wind damage lethal. Inflicted by [a:cyclone].
+    description: Renders any wind damage taken within the next second lethal. Inflicted by [a:cyclone].
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
@@ -191,7 +191,7 @@ status:
     id: 3372
     type: vuln
     duration: 1960
-    description: Inflicted by [a:earthquake-hit]. Renders any simultaneous [a:earthquake-hit] lethal.
+    description: Inflicted by [a:earthquake-hit]. Renders any [a:earthquake-hit] taken within the next 2 seconds lethal.
   unbecoming:
     id: 5452
     name: Unbecoming
