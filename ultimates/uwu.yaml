@@ -217,6 +217,11 @@ actions:
     mechanic: tb.mt
     damage: 19229
     description: Heavy tankbuster on the target tethered to the Spiny Plume. Inflicts [s:thermal-low].
+  featherlance:
+    id: 10984
+    mechanic: aoe.orbs
+    shape: defamation
+    description: A player touches a Razor Plume, causing it to detonate, instantly killing them and all nearby players.
   feather-rain:
     id: 11085
     mechanic: aoe.delayed
@@ -292,6 +297,7 @@ actions:
     description: |
       Another set of Satin Plumes spawn and attach to each damage dealer, combined with two [a:mesohigh] tethers.
       There is no Spiny Plume this time.
+      *Note*: If Garuda is already [s:woken] by this point, the Satin Plumes will be replaced by Razor Plumes. Razor Plumes circle the edge of the arena and detonate in a massive AoE ([a:featherlance]) if they touch another player, killing them and all nearby players. Razor Plumes do not go away on their own; if left alone they will eventually begin to home in on random players. The only way to prevent this is to trigger [a:super-cyclone], which knocks all Razor Plumes out of the air.
     resolve: |
       The main tank tanks Garuda towards north. Keep her off-center to avoid cleaving the party with [a:downburst] or [a:slipstream].
       Group up the Satin Plumes in the center of the arena when they spawn. Chirada and Suparna appear east and west, each with a [a:mesohigh] tether that attaches to a random party member and can be passed. The caster takes the west tether, the tank with [s:thermal-low:2] takes the east tether. This will grant Garuda [s:aetherially-charged] and therefore [s:woken], but it will also deal heavy damage since it triggers one mild [a:super-cyclone-1] and one heavy [a:super-cyclone-2], with the caster taking the most damage. Personal mitigation is recommended for said caster.
@@ -1601,7 +1607,7 @@ actions:
       * Two random non-[a:eruption-suppression] players are marked for [a:mistral-song-suppression] by Chirada and Suparna.
       * The player who is not baiting [a:eruption-suppression]s, is not a tank, and is not marked for [a:mistral-song-suppression] is targeted by [a:light-pillar]. [a:light-pillar] has no target marker of any kind.
       Tanks are never targeted for any of these mechanics.
-      At the same time as all these mechanics resolve, four Featherlances spawn near the edge of the arena and begin to circle the arena counter-clockwise. If any player gets too close to the edge of the arena and touch one of these Featherlances they will explode, instantly killing them and all nearby players.
+      At the same time as all these mechanics resolve, four Razor Plumes spawn near the edge of the arena and begin to circle the arena counter-clockwise. If any player gets too close to the edge of the arena and touches one of these Razor Plumes they will explode ([a:featherlance]), instantly killing them and all nearby players. After some time, Razor Plumes stop circling the arena and instead begin to home in on random players. The behaviour is the same: if they reach a player, they will explode and kill all nearby players. To prevent this, Razor Plumes can be knocked out of the air by [a:super-cyclone], which requires soaking a [a:mesohigh-suppression] tether with at least one stack of [s:thermal-low].
       Many AoEs happen during this mini-phase. There are three [a:feather-rain]s, one [a:mistral-song-cone] (which has nothing to do with [a:mistral-song-suppression] and is merely a large conal AoE originating from Garuda), two [a:aetherochemical-laser]s, a [a:landslide-woken] toward a random player, one last [a:mesohigh-suppression] tether from Garuda at the northwest, a [a:flaming-crush], and a [a:tank-purge].
     resolve: |
       Tanks preposition at the southwest of the arena, roughly as close to the center of the arena as Chirada and Suparna. One tank is slightly inched towards Chirada, the other towards Suparna.
@@ -3432,7 +3438,7 @@ graphing:
         T2: [40, -166]
         mistral-song-target#1: { attach: M1, y: -20 }
         mistral-song-target#2: { attach: H2, y: -20 }
-        hint: Tanks preposition southwest. Everyone else prepositions between west and north. Make sure to spread.<br />Featherlances circle around the outside of the arena. They are represented by the ring on the outside. Entering this ring at any point is essentially lethal.
+        hint: Tanks preposition southwest. Everyone else prepositions between west and north. Make sure to spread.<br />Razor Plumes circle around the outside of the arena. They are represented by the ring on the outside. Entering this ring at any point is essentially lethal.
       - # Step 2
         eruption#[1,5,9]: { visible: true, attach: null }
         mistral-song-target#*: { visible: true }
