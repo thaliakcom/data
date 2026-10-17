@@ -822,7 +822,7 @@ actions:
       While this sounds relatively simple, there are additional complications:
       * Each stack of [s:spells-trouble] represents a specific type of **spell**. Whenever a stack of [s:spells-trouble] is cleansed, the corresponding spell triggers and must be resolved correctly (see below). The possible types of spells are: [ms:cone], [ms:chariot], and [m:stack].
       * The spell corresponding to a stack of [s:spells-trouble] is **only briefly shown** as a headmarker on top of the character model after the initial [a:forsaken] cast, and every time a player soaks a tower and cleanses a stack afterwards. Once this indicator disappears, there is no longer any way to check which spell your next [s:spells-trouble] stack represents. Players must remember their spell for potentially long periods of time, as each type of spell is resolved in a different way.
-      * There is a difference between even and odd sets of towers: during **even** tower sets, [boss] casts either [a:futures-end] or [a:pasts-end]. This resolves at the same time as the towers themselves and results in 3 clones and [boss] jumping on and inflicting [s:magic-vulnerability-up] on the 4 closest players to [boss]. A short while later, all clones and [boss] turn towards :unverified(a random player) and begin casting [a:all-things-ending]. This is a [ms:halfroom] cleave that hits either *in front of* (if [a:futures-end] was cast before) or *behind* (if [a:pasts-end] was cast before) the clone/[boss] and resolves at the same time of the next *odd* tower set.
+      * There is a difference between even and odd sets of towers: during **even** tower sets, [boss] casts either [a:futures-end] or [a:pasts-end]. This resolves at the same time as the towers themselves and results in 3 clones and [boss] jumping on and inflicting [s:magic-vulnerability-up] on the 4 closest players to [boss]. A short while later, [boss] and each clone turn towards a random player (not necessarily the same one) and begin casting [a:all-things-ending]. This is a [ms:halfroom] cleave that hits either *in front of* (if [a:futures-end] was cast before) or *behind* (if [a:pasts-end] was cast before) the clone/[boss] and resolves at the same time of the next *odd* tower set.
       **Spells:**
       * **[ms:cone:c]**: Fires an approximately 90° cone towards the *closest* player, dealing damage and inflicting [s:magic-vulnerability-up] ([a:spellwave]).
       * **[ms:chariot:c]**: A moderately large point blank AoE that deals damage and inflicts [s:magic-vulnerability-up] ([a:spellscatter]).
@@ -937,7 +937,7 @@ actions:
     damage: 230283
     description: |
       [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones face the now closest player to them and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
+      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
   futures-end:
     id: 47832
     mechanic: spread.close
@@ -946,7 +946,7 @@ actions:
     damage: 173104
     description: |
       [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones face the now closest player to them and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
+      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
   spellscatter:
     id: 47809
     mechanic: spread
