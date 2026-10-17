@@ -2409,9 +2409,14 @@ actions:
       Extremely heavy raidwide that begins the enrage sequence.
       The enrage sequence consists of 4 sets. For each hit there is:
       * A large telegraphed AoE on the cardinal or intercardinal closest to the party ([a:forsaken-aoe]).
-      * Two large telegraphed puddle AoEs on a random cardinal or intercardinal. (Or the middle for the first set.) Leaves behind a puddle that, when entered at any point, inflicts [s:forsaken] ([a:forsaken-ground]).
+      * Two large telegraphed puddle AoEs on two different positions (see below). Leaves behind a puddle that, when entered at any point, inflicts [s:forsaken] ([a:forsaken-ground]).
       * A full party stack on a telegraphed player ([a:forsaken-bonds]) that deals extremely high damage.
       * A few seconds later, another [a:forsaken-p5-hit] raidwide that deals extremely high damage and begins the next set.
+      The [Forsaken Grounds](a:forsaken-ground) spawn in the following positions:
+      * **Set 1**: the middle of the arena and a random intercardinal.
+      * **Set 2**: two of the three remaining intercardinals.
+      * **Set 3**: the last remaining intercardinal and a :unverified(random) cardinal.
+      * **Set 4**: two of the three remaining cardinals.
       Note that the intercardinal [Forsaken Grounds](a:forsaken-ground) are placed farther away from the center of the arena than the cardinal ones. This means that intercardinal [Forsaken Grounds](a:forsaken-ground) leave enough space to pass by while cardinal [Forsaken Grounds](a:forsaken-ground) do not.
       If any player is still alive by the end of this soft enrage sequence, [boss] begins to cast [a:forsaken-null], which inflicts [s:forsaken] on all players and ends the fight.
     resolve: |
