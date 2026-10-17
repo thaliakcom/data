@@ -1541,12 +1541,12 @@ actions:
     description: |
       Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down].
       Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing moderate damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
-      This mechanic repeats two more times, but the distribution of [a:nothingness] tethers varies:
+      This mechanic repeats three more times, but the distribution of [a:nothingness] tethers varies:
       * [a:black-hole] 1: one tether, followed by two tethers.
       * [a:black-hole] 2 and 3: three tethers, followed by three tethers, followed by another three tethers.
       * [a:black-hole] 4: two tethers, followed by one tether.
       **Total**: 24× [a:nothingness], which is the exact number of hits required for every player to be hit once by [a:nothingness] while in [s:meanest-existence].
-      At the end of each [a:black-hole] set, [boss] teleports to a random cardinal or intercardinal and executes either [a:slap-happy-left], [a:slap-happy-right], or [a:look-upon-me-and-despair].
+      At the end of each [a:black-hole], [boss] teleports to a random cardinal or intercardinal and executes either [a:slap-happy-left] or [a:slap-happy-right] (after [a:black-hole] 1 and 3) or [a:look-upon-me-and-despair] (after [a:black-hole] 2 and 4).
   black-hole-1-2:
     name: Black Hole
     caption: Sets 1–2
