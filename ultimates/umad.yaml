@@ -788,7 +788,6 @@ actions:
       link: and
     - at: 626
       id: spellwave
-      count: 2
       link: and
     - at: 626
       id: spellscatter
@@ -834,8 +833,8 @@ actions:
       * 3 players of the opposite role get [ms:cone]s.
       * 1 support and 1 DPS get [m:stack]s.
       The spells distributed when towers are soaked are **not** role-based:
-      * During odd sets, 1 player gets [ms:cone], 1 player gets [ms:chariot], and 2 players get [m:stack].
-      * During even sets, 2 players get [ms:cone] and 2 players get [ms:chariot].
+      * During odd sets, 2 players get [ms:cone] and 2 players get [ms:chariot].
+      * During even sets, 1 player gets [ms:cone], 1 player gets [ms:chariot], and 2 players get [m:stack].
       * There is one exception to this: the last two sets of towers always distribute 4 [m:stack]s. In most cases, this doesn't matter, as these towers would cleanse their soakers' last [s:spells-trouble] stack, so no new spell is generated at all. The 4 stacks are a kind of failstate to prevent players from executing unintended strategies.
     resolve: |
       Odd tower sets should be soaked by 1× [ms:cone], 1× [ms:chariot], and 2× [m:stack] players and even towers by 2× [ms:cone] and 2× [ms:chariot] players. The stacks may not resolve during even tower sets because even tower sets require 4 players to bait clones (from [a:futures-end]/[a:pasts-end]). This inflicts [s:magic-vulnerability-up], so these players cannot soak a spell at the same time.
