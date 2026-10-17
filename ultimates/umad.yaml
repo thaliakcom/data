@@ -2003,7 +2003,7 @@ actions:
       **Same colours** (real [s:black-wound] or fake [s:white-wound]):
       * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
       * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
-      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 666,000 raidwide damage upon expiration.
+      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 660,000 raidwide damage upon expiration.
       * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
       This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
       Note that this action may be fake, in which case it is replaced by [a:white-antilight].
