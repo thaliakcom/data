@@ -2202,10 +2202,10 @@ actions:
       **First set:**
       * First-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-flare].
       * Second-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-holy].
-      * 3 other random players are targeted by [a:holy-random], a moderately large AoE that deals heavy damage and inflicts a long [s:magic-vulnerability-up].
+      * 3 other random players are targeted by [a:holy-random], a moderately large AoE that deals moderate damage and inflicts a long [s:magic-vulnerability-up].
       **Second set:**
       * First-in-enmity is targeted by [a:chaotic-flare], a moderately large [m:tb.stack].
-      * The three closest players to [boss] are targeted by [a:holy-proximity], a moderately large AoE that deals heavy damage and inflicts a long [s:magic-vulnerability-up].
+      * The three closest players to [boss] are targeted by [a:holy-proximity], a moderately large AoE that deals moderate damage and inflicts a long [s:magic-vulnerability-up].
       **Third set:**
       * [s:surprise-flare] resolves in a massive [ms:defamation]-type AoE that deals heavy damage and inflicts [s:magic-vulnerability-up] ([a:flare-diffusion]).
       * [s:surprise-holy] resolves in a moderately large [m:stack.party] ([a:chaotic-holy]).
