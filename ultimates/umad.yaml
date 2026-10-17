@@ -1006,7 +1006,7 @@ actions:
   wings-of-destruction-tb:
     id: 47823
     caption: TB
-    mechanic: tb.close-or-far
+    mechanic: tb.close-and-far
     shape: chariot
     count: 2
     damage: 646810
