@@ -66,13 +66,13 @@ status:
     id: 2518
     type: impairment
     duration: 1000
-    description: For a brief moment, affected players are unable to move but can still execute actions.
+    description: For a brief moment, afflicted players are unable to move but can still execute actions.
   confused:
     id: 1283
     type: impairment
     duration: 6000
     description: |
-      Affected players run towards the closest player. If they are able to reach another player, they will auto-attack them, dealing lethal damage and inflicting [s:damage-down].
+      Afflicted players run towards the closest player. If they are able to reach another player, they will auto-attack them, dealing lethal damage and inflicting [s:damage-down].
       **Note**: Movement speed during [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
       **Note**: After being teleported by a teleportation sigil, [s:confused] players do not begin to move towards the next closest player again until the next server tick. This means that sometimes a [s:confused] player may stop and pause for over a second after being teleported, while other times they may start moving towards the closest player immediately and kill them. There is no way to avoid this except by chain-teleporting at least three times.
       Inflicted by [a:indulgent-will].
@@ -81,7 +81,7 @@ status:
     type: impairment
     duration: 6000
     description: |
-      Affected players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
+      Afflicted players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
       Inflicted by [a:idyllic-will].
   # Phase 2
   spells-trouble:
@@ -91,12 +91,12 @@ status:
     description: |
       All players are initially inflicted with 4 stacks of this debuff. In addition to this, a spell indicator appears above everyone's heads (either stack, cone, or circle).
       Soaking a tower ([a:the-path-of-light]) cleanses one stack of this debuff and executes the indicated spell. Cones always fire towards the closest player ([a:spellwave]); stack ([a:spelldriver]) and circle ([a:spellscatter]) resolve on this player themselves. All spells inflict [s:magic-vulnerability-up].
-      After 8 sets of towers, [boss] executes [a:light-of-judgment-p2], instantly killing any player who has no cleansed all of their [s:spells-trouble] stacks.
+      After 8 sets of towers, [boss] executes [a:light-of-judgment-p2], instantly killing any player who has not cleansed all of their [s:spells-trouble] stacks.
     gameDescription: Burdened by a number of magicks. A spell will activate when hit by a wave of Kefka's own magicks, decreasing stacks. Damage taken from [a:light-of-judgment] is greatly increased while under this effect.
   down-for-the-count:
     id: 774
     type: impairment
-    description: Players are unable to move or execute actions while the cutscene playing.
+    description: Players are unable to move or execute actions while the cutscene is playing.
   # Phase 3
   epic-villain:
     id: 4193
@@ -119,14 +119,14 @@ status:
     type: delay
     duration: [46000, 19000]
     description: |
-      Triggers [a:stray-flames] on the affected players when this effect expires, then triggers [a:inferno] on the closest player(s) to the fire triangle.
+      Triggers [a:stray-flames] on the afflicted players when this effect expires, then triggers [a:inferno] on the closest player(s) to the fire triangle.
       Note that if this player dies, instantly triggers [a:inferno].
   dynamic-fluid:
     id: 1601
     type: delay
     duration: [46000, 19000]
     description: |
-      Triggers [a:stray-spray] on the affected players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the water square.
+      Triggers [a:stray-spray] on the afflicted players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the water square.
       Note that if this player dies, instantly triggers [a:tsunami].
   headwind:
     id: 1602
@@ -136,7 +136,7 @@ status:
       Player is instantly killed if the effect is allowed to expire.
       To cleanse this debuff, player must be hit by a knockback effect while facing away from it (i.e. turning their back to it). This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
       Facing a knockback effect results in increased knockback distance and does *not* cleanse this debuff.
-      Note that using anti-knockback abilities such as [s:arms-length] or [s:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
+      Note that anti-knockback abilities such as [a:arms-length] or [a:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
       Note that if a player with this status effect dies, it instantly triggers [a:cyclone].
   tailwind:
     id: 1603
@@ -146,7 +146,7 @@ status:
       Player is instantly killed if the effect is allowed to expire.
       To cleanse this debuff, player must be hit by a knockback effect while directly facing it. This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
       Facing away from a knockback effect results in increased knockback distance and does *not* cleanse this debuff.
-      Note that using anti-knockback abilities such as [s:arms-length] or [s:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
+      Note that anti-knockback abilities such as [a:arms-length] or [a:surecast] can be used to nullify the knockback effects of [a:vacuum-wave], [a:tsunami], and [a:inferno], but doing so also results in not cleansing this status effect, even if the player is facing the right way.
       Note that if a player with this status effect dies, it instantly triggers [a:cyclone].
   wind-resistance-down-ii:
     id: 1052
@@ -171,7 +171,7 @@ status:
     type: condition
     duration: [72000, 106000, 139000]
     description: |
-      Affected players are instantly killed if this status effect is permitted to expire.
+      Afflicted players are instantly killed if this status effect is permitted to expire.
       Can be cleansed by taking lethal damage, which leaves this player at 1 HP instead. Cleansing this effect triggers an [a:earthquake-hit].
       Players with this effect are designated as either [s:first-in-line], [s:second-in-line], or [s:third-in-line], depending on the duration of this debuff.
     gameDescription: Plagued by rapidly hardening mud. Effect dissipates when damage that would cause HP to drop below 0 is taken, leaving HP at 1.
@@ -325,7 +325,7 @@ actions:
     description: |
       Expand this row to learn about this fight's puzzle mechanics.
       This fight has several puzzle mechanics that must be correctly resolved in phase 1 or the fight simply kicks players out of the instance after phase 2. Here's a list of all prerequisites:
-      * [s:double-trouble-trap] must always be passed to another player, and no player is permitted to die to [a:double-trouble-trap-hit] at any point. If it is any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
+      * [s:double-trouble-trap] must always be passed to another player, and no player is permitted to die to [a:double-trouble-trap-hit] at any point. If it is at any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
       * During [a:graven-image-2], all gravity wells (puddles) must be soaked after transforming ([a:gravity-iii]). If any gravity wells are permitted to fade away naturally, the puzzle is failed.
       * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) by a [s:confused] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigil is stepped on by a player who is *not* [s:confused], the puzzle is failed.
       To know whether you fulfilled the conditions for the puzzle mechanics so far, [boss] changes his voiceline after all three of the above mechanics:
@@ -537,7 +537,7 @@ actions:
     description: |
       Towers resolve.
       If soaked by a player without [s:magic-vulnerability-up], deals heavy damage to them.
-      If soaked by by a player with [s:magic-vulnerability-up], instantly kills them.
+      If soaked by a player with [s:magic-vulnerability-up], instantly kills them.
       If left unsoaked, deals minimal damage and inflicts [s:damage-down] on all party members ([a:unmitigated-explosion]).
   unmitigated-explosion:
     id: 47787
@@ -729,7 +729,7 @@ actions:
     mechanic: mech
     count: 8
     description: |
-      [a:tele-trouncing-hit] resolves, leaving behind an arrow teleporter sigil. Deals no damage.
+      A Tele-Portent debuff resolves, leaving behind an arrow teleporter sigil. Deals no damage.
   indulgent-will:
     id: 47797
     mechanic: damage
@@ -821,7 +821,7 @@ actions:
       While this sounds relatively simple, there are additional complications:
       * Each stack of [s:spells-trouble] represents a specific type of **spell**. Whenever a stack of [s:spells-trouble] is cleansed, the corresponding spell triggers and must be resolved correctly (see below). The possible types of spells are: [ms:cone], [ms:chariot], and [m:stack].
       * The spell corresponding to a stack of [s:spells-trouble] is **only briefly shown** as a headmarker on top of the character model after the initial [a:forsaken] cast, and every time a player soaks a tower and cleanses a stack afterwards. Once this indicator disappears, there is no longer any way to check which spell your next [s:spells-trouble] stack represents. Players must remember their spell for potentially long periods of time, as each type of spell is resolved in a different way.
-      * There is a difference between even and odd sets of towers: during **even** tower sets, [boss] casts either [a:futures-end] or [a:pasts-end]. This resolves at the same time as the towers themselves and results in 3 clones and [boss] jumping on and inflicting [s:magic-vulnerability-up] on the 4 closest players to [boss]. A short while later, [boss] and each clone turn towards a random player (not necessarily the same one) and begin casting [a:all-things-ending]. This is a [ms:halfroom] cleave that hits either *in front of* (if [a:futures-end] was cast before) or *behind* (if [a:pasts-end] was cast before) the clone/[boss] and resolves at the same time of the next *odd* tower set.
+      * There is a difference between even and odd sets of towers: during **even** tower sets, [boss] casts either [a:futures-end] or [a:pasts-end]. This resolves at the same time as the towers themselves and results in 3 clones and [boss] jumping on and inflicting [s:magic-vulnerability-up] on the 4 closest players to [boss]. A short while later, [boss] and each clone turn towards a random player (not necessarily the same one) and begin casting [a:all-things-ending]. This is a [ms:halfroom] cleave that hits either *in front of* (if [a:futures-end] was cast before) or *behind* (if [a:pasts-end] was cast before) the clone/[boss] and resolves at the same time as the next *odd* tower set.
       **Spells:**
       * **[ms:cone:c]**: Fires an approximately 90° cone towards the *closest* player, dealing damage and inflicting [s:magic-vulnerability-up] ([a:spellwave]).
       * **[ms:chariot:c]**: A moderately large point blank AoE that deals damage and inflicts [s:magic-vulnerability-up] ([a:spellscatter]).
@@ -1325,7 +1325,7 @@ actions:
     players: 1
     damage: 274248
     description: |
-      [s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the affected players.
+      [s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the afflicted players.
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   tsunami:
     id: 47861
@@ -1436,7 +1436,7 @@ actions:
       **Note**: [a:earthquake-hit] cannot happen during [boss] mechanics (including [a:slap-happy-left], [a:slap-happy-right]). If a player cleanses [s:primordial-crust] during this time, the [a:earthquake-hit] will instead be stored until just after [a:shockwave-kefka]/[a:shocking-impact].
     resolve: |
       Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration. Don't cleanse both [s:accretion]s at the same time.
-      [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
+      [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
       [a:nothingness] happens exactly 24 times and cannot be avoided. Each player can soak [a:nothingness] 3× (first gaining [s:unbecoming], the second time gaining [s:meanest-existence], the third time taking lethal damage and thereby cleansing [s:primordial-crust]). It is not possible to survive a fourth hit. 3×8 players is 24 soaks, so if any player at any point takes lethal damage from anything other than [a:nothingness], [a:nothingness] can no longer be cleanly resolved and will result in deaths.
       Ensure that you never have two or more [s:meanest-existence] players take a [a:nothingness] at the same time, as this would result in a wipe.
     mistakes:
@@ -1540,7 +1540,7 @@ actions:
     emphasis: more
     description: |
       Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down].
-      Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing moderate damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
+      Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing mild damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
       This mechanic repeats three more times, but the distribution of [a:nothingness] tethers varies:
       * [a:black-hole] 1: one tether, followed by two tethers.
       * [a:black-hole] 2 and 3: three tethers, followed by three tethers, followed by another three tethers.
@@ -1798,7 +1798,7 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     compact: trim
-    description: Two sets of delayed AoEs spawn underneath all players. Each AoE Inflicts [s:damage-down].
+    description: Two sets of delayed AoEs spawn underneath all players. Each AoE inflicts [s:damage-down].
     children:
     - at: 3087
       id: blizzard-iii-hit
