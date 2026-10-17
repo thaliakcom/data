@@ -1433,7 +1433,7 @@ actions:
       Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
       Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii] at the point of the next [a:earthquake-hit].
       [a:earthquake-hit] deals no damage to the player whose debuff was cleansed.
-      **Note**: [a:earthquake-hit] cannot happen during [boss] mechanics (including [a:slap-happy-left], [a:slap-happy-right]). If a player cleanses [s:primordial-crust] during this time, the [a:earthquake-hit] will instead be stored until just after [a:shockwave-kefka].
+      **Note**: [a:earthquake-hit] cannot happen during [boss] mechanics (including [a:slap-happy-left], [a:slap-happy-right]). If a player cleanses [s:primordial-crust] during this time, the [a:earthquake-hit] will instead be stored until just after [a:shockwave-kefka]/[a:shocking-impact].
     resolve: |
       Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration. Don't cleanse both [s:accretion]s at the same time.
       [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
@@ -1471,7 +1471,7 @@ actions:
     mechanic: combination
     compact: full
     description: |
-      [boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time ([a:shockwave-kefka]).
+      [boss] hits the right side of the arena relative to where he's facing with a series of slaps, then hits the center of the arena and casts a conal full party stack at a random player at the same time ([a:shocking-impact]).
       This sequence of hits cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
     children:
     - at: 805
@@ -1529,7 +1529,7 @@ actions:
   shocking-impact:
     id: 47850
     name: Shocking Impact
-    mechanic: stack
+    mechanic: stack.party
     shape: cone
     damage: 225509
     description: A conal full party stack originating from the center of the arena. Always follows [a:slap-happy-right].
@@ -1769,14 +1769,11 @@ actions:
     id: 47851
     name: Shockwave
     caption: Roles
-    mechanic: mech.spread-or-stack
+    mechanic: spread.role
     shape: cone
     players: 8
     damage: 226275
-    description: |
-      A cone originates from the center of the arena. Inflicts [s:magic-vulnerability-up]. The cone changes its effect based on the hand Kefka raised.
-      * **Left hand**: Targets one random player [of each role](m:spread.role) (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage.
-      * **Right hand**: Targets one random player for a full party [m:stack].
+    description: Cones originate from the center of the arena, targeting one random player of each role (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage. Inflicts [s:magic-vulnerability-up]. Always follows [a:slap-happy-left].
   blizzard-iii:
     id: 47887
     name: Blizzard III
