@@ -157,7 +157,7 @@ status:
     id: 2998
     type: vuln
     duration: 3960
-    description: Inflicted by [a:thunder-iii-hit] and [a:thunder-iii-tower].
+    description: Inflicted by [a:thunder-iii-hit].
   accretion:
     id: 1604
     type: condition
@@ -289,6 +289,11 @@ status:
     duration: 6000
     description: Triggers [a:flare-diffusion] when the effect expires.
     gameDescription: "[a:flare-diffusion] will activate when this effect expires."
+  lightning-resistance-down-ii-p5:
+    id: 2998
+    type: vuln
+    duration: 20000
+    description: Renders any lightning damage taken lethal. Inflicted by [a:thunder-iii-tower].
   fire-resistance-down-ii:
     id: 2902
     type: vuln
@@ -2272,7 +2277,7 @@ actions:
     emphasis: more
     compact: full
     description: |
-      Spawns 9 elemental towers around the arena and inflicts 2 players with [s:fire-resistance-down-ii], 2 players with [s:lightning-resistance-down-ii], and 2 players with [s:ice-resistance-down-ii].
+      Spawns 9 elemental towers around the arena and inflicts 2 players with [s:fire-resistance-down-ii], 2 players with [s:lightning-resistance-down-ii-p5], and 2 players with [s:ice-resistance-down-ii].
       The towers spawn in a random configuration, but there are always 3 fire towers, 3 lightning towers, and 3 ice towers. All towers belonging to the same element are guaranteed to always be beside each other. All towers are 2-person towers and will explode if soaked with less players. A tower that explodes deals mild raidwide damage and inflicts [s:damage-down] on all players.
       There are three sets of tower resolutions. Each set involves 4 towers and all 3 elements. This means that two elements will feature one tower resolving and the last element will feature two towers resolving. Towers that are about to resolve begin to glow. Towers that have already resolved do not disappear, and the same tower can never resolve twice in a row.
       The three elemental vulnerability debuffs each last for 20 seconds. When a tower resolves, it applies the corresponding Resistance Down debuff on the players who soaked it. This debuff lasts for the rest of the mechanic. The debuffs that are inflicted by the [a:celestriad] cast itself, however, expire just before the last set of towers resolves.
