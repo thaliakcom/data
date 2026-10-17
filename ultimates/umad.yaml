@@ -26,7 +26,7 @@ status:
     duration: [960, 1960, 3960]
     description: |
       Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:wave-cannon], [a:flagrant-fire-iii], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy], and [a:chaotic-holy].
+      Inflicted by various actions, including [a:wave-cannon], [a:flagrant-fire-iii], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy-hit], and [a:chaotic-holy].
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
@@ -2374,14 +2374,23 @@ actions:
       Each exaflare set always has a safe row in melee range, so you do not need to leave melee range for this mechanic.
       During the last set of exas, find your [clock spot](t:clock spots) because [boss] has already started casting [a:stray-entropy], which requires you to be there immediately after the last set of exas has concluded.
   stray-entropy:
-    id: 47935
+    id: 47934
     name: Stray Entropy
     mechanic: spread
     shape: chariot
-    count: 8
-    cast: 470
-    damage: 171722
     description: Simple spreads on all players, dealing moderate damage and inflicting [s:magic-vulnerability-up].
+    children:
+    - at: 895
+      id: stray-entropy-hit
+  stray-entropy-hit:
+    id: 47935
+    name: Stray Entropy
+    caption: Hit
+    mechanic: spread
+    shape: chariot
+    count: 8
+    damage: 171722
+    description: Individual hit of [a:stray-entropy].
   forsaken-p5:
     id: 47925
     name: Forsaken
@@ -2915,7 +2924,7 @@ timeline:
   - at: 1004622
     id: stray-apocalypse
     link: then
-  - at: 1022645
+  - at: 1021750
     id: stray-entropy
   - at: 1030919
     id: maddening-orchestra
