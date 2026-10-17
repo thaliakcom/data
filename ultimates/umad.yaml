@@ -478,7 +478,7 @@ actions:
     compact: trim
     description: |
       Combines [a:blizzard-iii-blowout] and [a:flagrant-fire-iii].
-      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is ice. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:blizzard-iii-blowout] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random support, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
+      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is ice. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:blizzard-iii-blowout] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random healer, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
     children:
     - at: 0
       id: blizzard-iii-blowout
@@ -508,7 +508,7 @@ actions:
     compact: trim
     description: |
       Combines [a:thrumming-thunder-iii] and [a:flagrant-fire-iii].
-      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is thunder. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:thrumming-thunder-iii] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random support, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
+      During the cast, [boss] has two rings around him. The upper ring is fire and the lower ring is thunder. Either one ring, no ring, or both rings may be decorated with question marks. This indicates that the corresponding mechanic is *inverted*. For [a:thrumming-thunder-iii] this means that the area of the arena that is telegraphed as unsafe is actually safe, and everything outside of the AoE telegraph is unsafe. For fire it means that a [a:flagrant-fire-iii-spread] is actually a stack on one random DPS and one random healer, and [a:flagrant-fire-iii-stack] is actually a spread on all players.
     children:
     - at: 0
       id: thrumming-thunder-iii
