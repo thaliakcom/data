@@ -1631,7 +1631,7 @@ actions:
     - at: 17570
       id: damning-edict
       link: then
-    - at: 18911
+    - at: 17840
       id: look-upon-me-and-despair
     - at: 20655
       id: auto-attack-chaos
@@ -1710,8 +1710,8 @@ actions:
     - at: 5838
       id: earthquake-hit
       timing: player
-    - at: 10931
-      id: look-upon-me-and-despair
+    - at: 9901
+      id: look-upon-me-and-despair-2
       description: "[boss] slams the center of the arena, then gets up on top of it in the direction he slammed."
       link: and
     - at: 11332
@@ -1737,15 +1737,32 @@ actions:
     shape: halfroom
     description: Chaos faces a random player and begins casting. At the end of the cast, deals heavy damage and inflicts [s:damage-down] on anyone in front of him.
   look-upon-me-and-despair:
+    id: 47852
+    name: Look upon Me and Despair
+    mechanic: aoe
+    shape: line
+    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
+    children:
+    - at: 1071
+      id: look-upon-me-and-despair-hit
+  look-upon-me-and-despair-2:
+    id: 47853
+    name: Look upon Me and Despair
+    mechanic: aoe
+    shape: line
+    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
+    children:
+    - at: 1030
+      id: look-upon-me-and-despair-hit
+  look-upon-me-and-despair-hit:
     id: 47854
     name: Look upon Me and Despair
     caption: Hit
     mechanic: aoe
     shape: line
-    cast: 40
     players: 0
     damage: 187902
-    description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
+    description: Individual hit of [a:look-upon-me-and-despair].
   blackblood:
     id: 50362
     name: Blackblood
