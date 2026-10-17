@@ -2117,26 +2117,25 @@ actions:
   fell-forces-healer:
     id: 50772
     caption: Healer
-    mechanic: spread.role
+    mechanic: stack.role
     shape: chariot
     players: 2
     damage: 83781
-    description: A [circular](ms:chariot) AoE on a random healer.
+    description: A [circular](ms:chariot) 2-player stack on a random healer.
   fell-forces-dps:
     id: 50773
     caption: DPS
-    mechanic: spread.role
+    mechanic: stack.role
     shape: chariot
-    players: 4
     damage: 90900
-    description: A [circular](ms:chariot) AoE on a random DPS.
+    description: A [circular](ms:chariot) 4-player stack on a random DPS.
   fell-forces-tank:
     id: 50771
     caption: Tank
-    mechanic: auto
+    mechanic: auto.stack
     shape: chariot
     damage: 420000
-    description: Heavy tankbuster-like auto-attack on first-in-enmity.
+    description: Heavy tankbuster-like auto-attack on first-in-enmity, shared by both tanks.
   fell-forces:
     id: 50771
     mechanic: auto
@@ -2144,7 +2143,7 @@ actions:
     emphasis: less
     description: |
       Targets the first-in-enmity player and a random DPS and healer with a heavy [circular](ms:chariot) auto-attack.
-      Each of these deals a fixed amount of damage. They are not stacks.
+      Each of these is a stack: 2 players for the tank and healer stacks, 4 players for the DPS stack.
     children:
     - at: 0
       id: fell-forces-tank
