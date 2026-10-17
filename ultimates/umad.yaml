@@ -223,7 +223,7 @@ status:
   acceleration-bomb:
     id: 5546
     type: delay
-    duration: [36000, 51000, 76000, 61000]
+    duration: [36000, 51000, 61000, 76000]
     description: Triggers an Acceleration Bomb when the effect expires, knocking players high into the air and instantly killing them if the fail to meet its condition. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires. If fake, affected players must be mid-motion when the effect expires.
   entropy-p4:
     id: 5547
