@@ -298,7 +298,7 @@ status:
     id: 2903
     type: vuln
     duration: 20000
-    description: Renders any ice damage taken lethal. Inflicted by [a:blizzard-iii].
+    description: Renders any ice damage taken lethal. Inflicted by [a:blizzard-iii-tower].
   forsaken:
     id: 5144
     name: Forsaken
