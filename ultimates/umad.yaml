@@ -31,10 +31,10 @@ status:
     id: 5078
     name: Double-trouble Trap
     type: delay
-    duration: [5000, 68000]
+    duration: [5000, 68000, 49000]
     description: |
       Triggers [a:double-trouble-trap-hit] when the effect expires.
-      When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. Every subsequent instance of this debuff (after being passed to another player), it resolves after over a minute.
+      When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. After the first pass, it resolves after 68 seconds, and after the second pass after 49 seconds.
       Properly handling this effect is required to fulfill the conditions for the [a:puzzle] mechanic.
       Note that, if a player with [s:double-trouble-trap] dies, the effect is lost, instantly failing the [a:puzzle] mechanic.
     gameDescription: When this effect expires, everyone else in the immediate vicinity will take damage. Should any player take damage, the [s:double-trouble-trap] will be passed to one of them.
