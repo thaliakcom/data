@@ -1042,7 +1042,7 @@ actions:
       Inflicts [s:epic-hero] on the 4 closest players to Chaos and [s:fated-hero] on the other 4 players.
       Also grants [s:epic-villain] to Chaos and [s:fated-villain] to Exdeath.
       These debuffs prevent players from dealing damage to Chaos unless they are an [s:epic-hero], or Exdeath unless they are a [s:fated-hero].
-      The debuffs last for only a short time, until Exdeath begins casting [a:thunder-iii-out].
+      The debuffs from the first cast last only a short time, until Exdeath begins casting [a:thunder-iii-out]. The debuffs from the second cast last until either boss is defeated.
   auto-attack-chaos:
     id: 49746
     name: Auto-attack
