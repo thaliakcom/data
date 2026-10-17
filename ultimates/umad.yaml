@@ -229,12 +229,16 @@ status:
     id: 5547
     type: delay
     duration: [45000, 60000]
-    description: Drops an invisible AoE ([a:stray-flames-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:chariot], otherwise it's a [ms:dynamo].
+    description: |
+      Drops an invisible AoE ([a:stray-flames-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:chariot], otherwise it's a [ms:dynamo].
+      Always resolves before [s:dynamic-fluid-p4], regardless of whether [a:inferno-p4] or [a:tsunami-p4] is cast first.
   dynamic-fluid-p4:
     id: 5548
     type: delay
     duration: [69000, 84000]
-    description: Drops an invisible AoE ([a:stray-spray-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:dynamo], otherwise it's a [ms:chariot].
+    description: |
+      Drops an invisible AoE ([a:stray-spray-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:dynamo], otherwise it's a [ms:chariot].
+      Always resolves after [s:entropy-p4], regardless of whether [a:inferno-p4] or [a:tsunami-p4] is cast first.
   beyond-death:
     id: 1382
     type: condition
@@ -2853,9 +2857,6 @@ timeline:
     id: ultima-upsurge
   - at: 833821
     id: stray-flames-p4
-    link: or
-  - at: 833821
-    id: stray-spray-p4
   - at: 837916
     id: death-wave
     link: and
@@ -2880,9 +2881,6 @@ timeline:
     id: auto-attack-p4
   - at: 856554
     id: stray-spray-p4
-    link: or
-  - at: 856554
-    id: stray-flames-p4
     link: and
   - at: 857311
     id: thrumming-thunder-iii
