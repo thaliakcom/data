@@ -126,7 +126,7 @@ status:
     type: delay
     duration: [46000, 19000]
     description: |
-      Triggers [a:stray-spray] on the affected players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the fire triangle.
+      Triggers [a:stray-spray] on the affected players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the water square.
       Note that if this player dies, instantly triggers [a:tsunami].
   headwind:
     id: 1602
