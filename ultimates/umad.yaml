@@ -224,7 +224,7 @@ status:
     id: 5546
     type: delay
     duration: [36000, 51000, 61000, 76000]
-    description: Triggers an Acceleration Bomb when the effect expires, knocking players high into the air and instantly killing them if the fail to meet its condition. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires. If fake, affected players must be mid-motion when the effect expires.
+    description: Triggers [a:death-bomb] when the effect expires, knocking players high into the air and instantly killing them if the fail to meet its condition. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires. If fake, affected players must be mid-motion when the effect expires.
   entropy-p4:
     id: 5547
     type: delay
@@ -2056,6 +2056,13 @@ actions:
     count: 2
     description: |
       [s:cursed-shriek] resolves, requiring all players to look away from (real) or look at (fake) the affected players.
+  death-bomb:
+    id: 47893
+    name: Death Bomb
+    mechanic: mech.stillness
+    count: 4
+    description: |
+      [s:acceleration-bomb] resolves, instantly killing afflicted players who are moving or executing an action (real) or standing still (fake).
   ultima-upsurge:
     id: 49738
     mechanic: raidwide
@@ -2824,6 +2831,9 @@ timeline:
     link: and
   - at: 812997
     id: death-bolt
+    link: and
+  - at: 812997
+    id: death-bomb
   - at: 814734
     id: auto-attack-p4
   - at: 820969
@@ -2847,6 +2857,9 @@ timeline:
     link: and
   - at: 837916
     id: death-bolt
+    link: and
+  - at: 837916
+    id: death-bomb
   - at: 839074
     id: blizzard-iii-blowout
   - at: 839922
