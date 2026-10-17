@@ -1268,7 +1268,7 @@ actions:
     id: 47881
     name: Thunder III
     caption: 2× TB
-    mechanic: tb.mt
+    mechanic: tb.close
     shape: chariot
     description: Hits the closest player to Exdeath with a heavy tankbuster, then does it again. Inflicts [s:lightning-resistance-down-ii].
     children:
@@ -1280,7 +1280,7 @@ actions:
     id: 47884
     name: Thunder III
     caption: Hit
-    mechanic: tb.mt
+    mechanic: tb.close
     shape: chariot
     damage: 674286
     description: Individual hit of [a:thunder-iii-tb]. Hits the closest player to Exdeath.
