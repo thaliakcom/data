@@ -219,12 +219,12 @@ status:
     id: 5543
     type: delay
     duration: [60000, 69000]
-    description: Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the affected players. If fake, all players must look at the affected players.
+    description: Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the afflicted players. If fake, all players must look at the afflicted players.
   acceleration-bomb:
     id: 5546
     type: delay
     duration: [36000, 51000, 61000, 76000]
-    description: Triggers [a:death-bomb] when the effect expires, knocking players high into the air and instantly killing them if the fail to meet its condition. Can be either real or fake. If real, affected players must stop all actions (including movement) when the effect expires. If fake, affected players must be mid-motion when the effect expires.
+    description: Triggers [a:death-bomb] when the effect expires, knocking players high into the air and instantly killing them if they fail to meet its condition. Can be either real or fake. If real, afflicted players must stop all actions (including movement) when the effect expires. If fake, afflicted players must be mid-motion when the effect expires.
   entropy-p4:
     id: 5547
     type: delay
@@ -2055,7 +2055,7 @@ actions:
     mechanic: mech.lookaway
     count: 2
     description: |
-      [s:cursed-shriek] resolves, requiring all players to look away from (real) or look at (fake) the affected players.
+      [s:cursed-shriek] resolves, requiring all players to look away from (real) or look at (fake) the afflicted players.
   death-bomb:
     id: 47893
     name: Death Bomb
@@ -2268,7 +2268,7 @@ actions:
     mechanic: spread
     shape: defamation
     damage: 333656
-    description: "[s:surprise-flare] resolves, dealing heavy damage and inflicting [s:magic-vulnerability-up] on the affected player and all players in a massive radius around them."
+    description: "[s:surprise-flare] resolves, dealing heavy damage and inflicting [s:magic-vulnerability-up] on the afflicted player and all players in a massive radius around them."
   chaotic-holy:
     id: 47958
     name: Chaotic Holy
@@ -2276,7 +2276,7 @@ actions:
     shape: chariot
     players: 4
     damage: 151000
-    description: "[s:surprise-holy] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up] on the affected player and all players in a moderate radius around them."
+    description: "[s:surprise-holy] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up] on the afflicted player and all players in a moderate radius around them."
   celestriad:
     id: 47938
     name: Celestriad
@@ -2407,7 +2407,7 @@ actions:
     compact: full
     description: |
       Extremely heavy raidwide that begins the enrage sequence.
-      The enrage sequence begins of 4 sets. For each hit there is:
+      The enrage sequence consists of 4 sets. For each hit there is:
       * A large telegraphed AoE on the cardinal or intercardinal closest to the party ([a:forsaken-aoe]).
       * Two large telegraphed puddle AoEs on a random cardinal or intercardinal. (Or the middle for the first set.) Leaves behind a puddle that, when entered at any point, inflicts [s:forsaken] ([a:forsaken-ground]).
       * A full party stack on a telegraphed player ([a:forsaken-bonds]) that deals extremely high damage.
