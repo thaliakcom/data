@@ -208,12 +208,12 @@ status:
   forked-lightning:
     id: 5544
     type: delay
-    duration: [51000, 61000]
+    duration: [36000, 51000, 61000, 76000]
     description: Triggers [a:death-bolt] when the effect expires. Can be either real or fake. If real, [a:death-bolt] is a [m:spread], otherwise it's a 3-player [m:stack].
   compressed-water:
     id: 5545
     type: delay
-    duration: [51000, 61000]
+    duration: [36000, 51000, 61000, 76000]
     description: Triggers [a:death-wave] when the effect expires. Can be either real or fake. If real, [a:death-wave] is a 3-player [m:stack], otherwise it's a [m:spread].
   cursed-shriek:
     id: 5543
@@ -228,12 +228,12 @@ status:
   entropy-p4:
     id: 5547
     type: delay
-    duration: [60000, 69000]
+    duration: [45000, 60000]
     description: Drops an invisible AoE ([a:stray-flames-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:chariot], otherwise it's a [ms:dynamo].
   dynamic-fluid-p4:
     id: 5548
     type: delay
-    duration: [60000, 69000]
+    duration: [69000, 84000]
     description: Drops an invisible AoE ([a:stray-spray-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:dynamo], otherwise it's a [ms:chariot].
   beyond-death:
     id: 1382
