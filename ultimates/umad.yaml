@@ -1930,8 +1930,8 @@ actions:
     players: 8
     damage: 226592
     description: |
-      Deals moderate raidwide damage and inflicts [s:dynamic-fluid-p4] on all players.
-      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake). Check the description for [s:dynamic-fluid-p4] to learn about what that means.
+      Deals moderate raidwide damage and inflicts [s:entropy-p4] on all players.
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake). Check the description for [s:entropy-p4] to learn about what that means.
   tsunami-p4:
     id: 47905
     name: Tsunami
@@ -1939,8 +1939,8 @@ actions:
     players: 8
     damage: 234208
     description: |
-      Deals moderate raidwide damage and inflicts [s:entropy-p4] on all players.
-      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake). Check the description for [s:entropy-p4] to learn about what that means.
+      Deals moderate raidwide damage and inflicts [s:dynamic-fluid-p4] on all players.
+      Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake). Check the description for [s:dynamic-fluid-p4] to learn about what that means.
   flood-of-naught:
     id: 50067
     name: Flood of Naught
