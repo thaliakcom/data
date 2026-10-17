@@ -411,7 +411,7 @@ actions:
     description: |
       [boss] commands the statue in the background to tether to all players and execute [a:gravitas] followed by [a:vitrophyre].
       The right side of the statue tethers to all supports and the left side to all DPS, or vice-versa.
-      After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that inflicts [s:magic-vulnerability-up] and leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
+      After a [a:blizzard-iii-blowout], the left side of the statue hits all tethered players with [a:gravitas], a 2-player stack that leaves behind a gravity well (puddle). After a short time, the right side of the statue now fires [a:vitrophyre] at all tethered players. If any other player is hit by this, that player is knocked off the arena. If a gravity well is hit by it, it triggers [a:gravitational-explosion], wiping the party.
       There is a brief interlude afterwards involving a [a:revolting-ruin-iii] and [a:intemperate-will], after which all players are tethered again and the mechanic repeats.
       After the second cycle of the mechanic, [a:double-trouble-trap-hit] resolves and the gravity wells transform. After the gravity wells transform, they can be soaked, which triggers [a:gravity-iii]. If all gravity wells are soaked in this way and [s:double-trouble-trap] did not fall off earlier, [boss] utters a new voiceline after [a:hyperdrive]: "What?! There's no way that didn't work!"
     children:
