@@ -725,12 +725,16 @@ actions:
     children:
     - at: 491
       id: eruption-hit
+      count: 3
     - at: 2456
       id: eruption-hit
+      count: 3
     - at: 4460
       id: eruption-hit
+      count: 3
     - at: 6468
       id: eruption-hit
+      count: 3
   eruption-roulette:
     id: 11097
     mechanic: aoe.delayed
@@ -739,6 +743,7 @@ actions:
     children:
     - at: 491
       id: eruption-hit
+      count: 3
   searing-wind:
     id: 11100
     mechanic: mech.knockback.unavoidable
