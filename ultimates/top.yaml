@@ -155,7 +155,7 @@ status:
     duration: 10000
     description: |
       Player must correctly resolve a [s:critical-performance-bug] before the effect expires or the party wipes.
-      Note that [s:critical-performance-bug] must expire before this effect expires. It is not enough to simply soak a tower with [s:critical-underflow-bug].
+      Note that [s:critical-performance-bug] must expire before this effect expires. It is not enough to simply soak a tower with [s:critical-performance-bug].
   overflow-code-smell:
     id: 3437
     type: delay
@@ -971,8 +971,8 @@ actions:
       * [s:critical-synchronization-bug] → [s:synchronization-debugger]
       * [s:critical-underflow-bug] → [s:underflow-debugger]
       * [s:critical-performance-bug] → [s:performance-debugger]
-      Each debugger renders the player immune to this type of critical bug for the remainder of the mechanic, even if they fulfill the conditions for being inflicted with it again.
-      Omega repeats [a:latent-defect] 4 times, then casts [a:critical-error] at the end, a heavy raidwide that inflicts all players with all critical bugs again – unless they have the corresponding debugger. Critical bugs are only resolvable during [a:hello-world], so all players must have all 4 debuggers during [a:critical-error] or a wipe is guaranteed.
+      Each debugger renders the player immune to the next instance of that critical bug. [s:underflow-debugger] and [s:performance-debugger] instead render the player immune for the rest of the mechanic.
+      Omega casts [a:latent-defect] 4 times in total, then casts [a:critical-error] at the end, a massive raidwide that inflicts [s:critical-overflow-bug] on every player without [s:overflow-debugger]. Critical bugs are only resolvable during [a:hello-world], so all players must have [s:overflow-debugger] during [a:critical-error] or a wipe is guaranteed.
       Each critical bug can be passed to other players in some way:
       * [s:critical-overflow-bug]: a huge [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone else hit by it.
       * [s:critical-synchronization-bug]: a small 2-man stack that inflicts [s:critical-synchronization-bug] to anyone else in the stack.
@@ -3483,8 +3483,8 @@ graphing:
         boss: { rotate: T1 }
         M1: { x: 73, y: -135, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
         H1: { x: 73, y: -45, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
-        T1: { x: 49, y: 65, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug] }
-        H2: { x: 49, y: 116, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug] }
+        T1: { x: 49, y: 65, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
+        H2: { x: 49, y: 116, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
         close-tether#1: { visible: false }
         circle-color#[stack,defam]-[1,2]: { visible: false }
         circle-color#[performance,underflow]-2.[1,2]: { visible: true }
@@ -3504,8 +3504,8 @@ graphing:
         circle-color#tower-3: { y: 180, color: url(#blue-tower) }
         circle-color#tower-4: { y: -90, color: url(#blue-tower) }
         circle-color#[performance,underflow]-1.[1,2]: { visible: false }
-        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, performance-debugger] }
-        [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, underflow-debugger] }
+        [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, underflow-debugger] }
+        [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, performance-debugger] }
         H1: [61, -16]
         M1: [53, -159]
       - label: { visible: true }
@@ -3518,8 +3518,8 @@ graphing:
         close-tether#2: { visible: false }
         circle-color#performance-2.[1,2]: { color: url(#underflow-gradient) }
         circle-color#underflow-2.[1,2]: { color: url(#performance-gradient) }
-        [T1, H2]: { status: [synchronization-debugger, underflow-debugger, critical-overflow-bug, critical-underflow-bug] }
-        [H1, M1]: { status: [latent-synchronization-bug, overflow-debugger, performance-debugger, critical-performance-bug, critical-synchronization-bug] }
+        [T1, H2]: { status: [synchronization-debugger, performance-debugger, critical-overflow-bug, critical-underflow-bug] }
+        [H1, M1]: { status: [latent-synchronization-bug, overflow-debugger, underflow-debugger, critical-performance-bug, critical-synchronization-bug] }
         [R1, R2]: { status: [remote-code-smell, synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
         [T2, M2]: { status: [local-code-smell, synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
       - circle-color#tower-*: { visible: true }
@@ -3548,8 +3548,8 @@ graphing:
         circle-color#tower-*: { scale: 0 }
         circle-color#link-1: { scale: 1, visible: false }
         circle-color#latent-*: { scale: 0 }
-        [T1, H2]: { status: [synchronization-debugger, underflow-debugger, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
-        [H1, M1]: { status: [overflow-debugger, performance-debugger, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
+        [T1, H2]: { status: [synchronization-debugger, performance-debugger, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
+        [H1, M1]: { status: [overflow-debugger, underflow-debugger, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
         [R1, R2]: { status: [remote-regression, underflow-debugger, overflow-debugger, performance-debugger] }
         [T2, M2]: { status: [underflow-debugger, overflow-debugger, performance-debugger] }
       - cast: { visible: false }
