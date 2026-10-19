@@ -890,6 +890,9 @@ actions:
       - at: 5047
         id: wave-repeater
         flatten: omit-parent
+      - at: 13207
+        id: wave-repeater
+        flatten: omit-parent
       - at: 17112
         id: colossal-blow
       - at: 19127
@@ -907,15 +910,13 @@ actions:
     compact: full
     description: Untelegraphed [m:aoe.expanding.rings]. Note that the rings do not correspond to any floor markings, so trying to align yourself with the floor will likely lead to heartbreak (and [s:damage-down]).
     children:
+      - at: 0
+        id: wave-repeater-hit
       - at: 2098
         id: wave-repeater-hit
       - at: 4153
         id: wave-repeater-hit
       - at: 6211
-        id: wave-repeater-hit
-      - at: 8136
-        id: wave-repeater-hit
-      - at: 10235
         id: wave-repeater-hit
   wave-repeater-hit:
     id: 31568
