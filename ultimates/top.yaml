@@ -1757,7 +1757,7 @@ actions:
       [boss]'s auto-attacks. Targets the main target and the farthest player from [boss].
       Note that both hits *can* target the same player if the main target is simultaneously farthest from [boss].
     resolve: |
-      After every mechanic (such as [a:wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
+      After every mechanic (such as [a:cosmo-wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
   cosmo-arrow:
     id: 31650
     mechanic: aoe.exaflares
