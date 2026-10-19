@@ -1422,6 +1422,7 @@ actions:
         id: beyond-defense
       - at: 31056
         id: hyper-pulse
+        count: 6
       - at: 33556
         id: oversampled-wave-cannon
         count: 4
@@ -1430,6 +1431,8 @@ actions:
         players: 3
       - at: 41497
         id: patch
+      - at: 46158
+        id: swivel-cannon
       - at: 47158
         id: hello-near-distant-world
       - at: 54290
