@@ -122,7 +122,7 @@ status:
   physical-vuln-up:
     id: 2940
     type: vuln
-    description: Any physcial damage taken is lethal while this effect is active.
+    description: Any physical damage taken is lethal while this effect is active.
   prey:
     id: 562
     type: delay
@@ -778,7 +778,7 @@ actions:
       - The angle of [a:optimized-sagittarius-arrow] snapshots when the corresponding Omega-M begins the animation. Therefore you can move out of it immediately, without having to wait for the AoE telegraph to appear.
       - If you're a ranged player, you can safely move to the edge of the arena if targeted by [a:optimized-meteor] to reduce the damage taken by the party. However, be mindful of the shielded Omega-M and do not move to the edge closest to him, or you may bait [a:beyond-defense], which will make it impossible to escape the follow-up [a:pile-pitch]. If you're a melee player with [a:optimized-meteor], do not move to max melee; this will not meaningfully decrease the flare damage and only serves to increase the damage the party takes from [a:pile-pitch] (since there's now one less player in the stack).
       - If the [a:optimized-sagittarius-arrow] clone spawns directly behind or in front of the party (thus shooting the line through the middle), check the positions of the [a:optimized-bladedance] and their tethers. Try to dodge **perpendicular** to those tethers after the tanks have taken them to the edge.
-      - If you "randomly" die, [a:optimized-sagittarius-arrow] may be to blame. Anyone standing in [a:optimized-sagittarius-arrow] when the AoE telegraph disappears are already dead, but they don't actually die until the arrow firing animation has completely finished.
+      - If you "randomly" die, [a:optimized-sagittarius-arrow] may be to blame. Anyone standing in [a:optimized-sagittarius-arrow] when the AoE telegraph disappears is already dead, but doesn't actually die until the arrow firing animation has completely finished.
     mistakes:
       - Tanks greeding for uptime and not moving to the edge in time (thus tankbustering the entire party).
       - Tanks not properly communicating whether they'll take their tether to the clockwise or counter-clockwise edge and leaving no safe spot for the party.
@@ -884,7 +884,7 @@ actions:
       3 mechanical hands spawn close to the outside of the arena, then another 3 hands spawn in-between them. Each hand emits a telegraphed [a:colossal-blow] about 12 seconds after it spawns.
     resolve: |
       The entire party should organize into a [t:conga line] to the south. Each Data Center's Party Finder may use a different line-up order, but the actual order makes no difference for the mechanic. LPDU uses R1/M1/MT/H1/H2/OT/M2/R2.
-      Look at your debuffs. Once debuffs come out, take a step back if you get [s:sniper-cannon-fodder], take a step forward if you get [s:high-powered-sniper-cannon-fodder], and stay put if you get nothing. Wait until everyone there are 2 people in your new line (as nothing or [s:high-powered-sniper-cannon-fodder]) or 4 people (as [s:sniper-cannon-fodder]). Whichever position you are in this new line-up determines your position (see the diagram).
+      Look at your debuffs. Once debuffs come out, take a step back if you get [s:sniper-cannon-fodder], take a step forward if you get [s:high-powered-sniper-cannon-fodder], and stay put if you get nothing. Wait until everyone has stepped: your new line now has 2 people (as nothing or [s:high-powered-sniper-cannon-fodder]) or 4 people (as [s:sniper-cannon-fodder]). Your place in this new line determines your spot in the arena (see the diagram).
       Stay out of the first [a:colossal-blow], then step into both it and the preceding [a:wave-repeater] hit. The sniper cannons resolve at the same time as the second set of [a:colossal-blow], greatly limiting the available safe spots. This means that if anyone is out of position, there is no longer enough space to resolve the mechanic without deaths.
     tips:
       - It is not necessary to pay attention to which set of hands spawns first. As long as you stand centered in-between the 2 closest hands, you'll always have enough time to step out of the first AoE. [a:sprint] makes this even easier.
@@ -980,10 +980,10 @@ actions:
       Each debugger renders the player immune to the next instance of that critical bug. [s:underflow-debugger] and [s:performance-debugger] instead render the player immune for the rest of the mechanic.
       Omega casts [a:latent-defect] 4 times in total, then casts [a:critical-error] at the end, a massive raidwide that inflicts [s:critical-overflow-bug] on every player without [s:overflow-debugger]. Critical bugs are only resolvable during [a:hello-world], so all players must have [s:overflow-debugger] during [a:critical-error] or a wipe is guaranteed.
       Each critical bug can be passed to other players in some way:
-      * [s:critical-overflow-bug]: a huge [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone else hit by it.
-      * [s:critical-synchronization-bug]: a small 2-man stack that inflicts [s:critical-synchronization-bug] to anyone else in the stack.
-      * [s:critical-underflow-bug]: a [st:rot] that inflicts [s:critical-underflow-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
-      * [s:critical-performance-bug]: a [st:rot] that inflicts [s:critical-performance-bug] to anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
+      * [s:critical-overflow-bug]: a huge [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] on anyone else hit by it.
+      * [s:critical-synchronization-bug]: a small 2-man stack that inflicts [s:critical-synchronization-bug] on anyone else in the stack.
+      * [s:critical-underflow-bug]: a [st:rot] that inflicts [s:critical-underflow-bug] on anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
+      * [s:critical-performance-bug]: a [st:rot] that inflicts [s:critical-performance-bug] on anyone coming into contact with this player. Explodes in a small AoE at the end of its duration.
     resolve: |
       While the mechanic seems complicated, the debuffs inflicted at the start ensure that there is only one way to resolve the mechanic correctly.
       First, in this description, the following terms will be used instead of the full ability names:
@@ -1140,28 +1140,28 @@ actions:
     damage: 49290
     count: 2
     players: 2
-    description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] to anyone hit while applying [s:overflow-debugger] to themselves."
+    description: "[s:critical-overflow-bug] expires and those players detonate in a massive [ms:defamation] type AoE that inflicts [s:critical-overflow-bug] on anyone hit while granting [s:overflow-debugger] to themselves."
   critical-synchronization-bug:
     id: 31574
     mechanic: stack.partner
     shape: chariot
     damage: 40727
     count: 2
-    description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] to anyone stacking while applying [s:synchronization-debugger] to themselves."
+    description: "[s:critical-synchronization-bug] expires and those players detonate in a small two-man stack that inflicts [s:critical-synchronization-bug] on anyone stacking while granting [s:synchronization-debugger] to themselves."
   latent-performance-defect:
     id: 31584
     mechanic: towers.single
     shape: chariot
     damage: 0
     count: 2
-    description: Blue towers resolve, inflicting [s:latent-performance-defect] to anyone within.
+    description: Blue towers resolve, inflicting [s:latent-performance-defect] on anyone within.
   cascading-latent-defect:
     id: 31583
     mechanic: towers.single
     shape: chariot
     damage: 0
     count: 2
-    description: Red towers resolve, inflicting [s:cascading-latent-defect] to anyone within.
+    description: Red towers resolve, inflicting [s:cascading-latent-defect] on anyone within.
   patch:
     id: 31587
     mechanic: raidwide
@@ -1206,7 +1206,7 @@ actions:
       At the end of the cast all monitors resolve, hitting two random players on the indicated side with large [ms:chariot] AoEs that inflict [s:magic-vuln] and [s:twice-come-ruin].
     resolve: |
       As there are 4 sets of monitors which hit 2 players each, each player is allowed to only receive one monitor AoE. To accomplish this, first identify whether Omega's east or west is the monitor side. Only 2 players should be on that side. All other players should be on the non-monitor side, where the three monitor players must position and rotate themselves in such a way that there are only 2 players on each of *their* monitor side as well. This removes the randomness from the mechanic.
-      Note that the [s:oversampled-wave-cannon-loading] can (and must!) themselves receive an [a:oversampled-wave-cannon] hit.
+      Note that the [s:oversampled-wave-cannon-loading] players can (and must!) themselves receive an [a:oversampled-wave-cannon] hit.
       Check the diagram for an example of how LPDU handles this mechanic.
       Be aware that attacking the boss with anything but an auto-attack will briefly turn your character, so consider staying idle at the end of the cast if you're an [s:oversampled-wave-cannon-loading] player.
     tips:
@@ -1478,7 +1478,7 @@ actions:
     mechanic: mech
     compact: full
     description: |
-      [s:hello-near-world] and [s:hello-distant-world] both resolve, causing those players to explode in large AoEs that wipe the raid if any other player is clipped, and inflicting [s:magic-vuln] and a stack of [s:quickening-dynamis] to them. [s:hello-near-world] then jumps to the closest player via a smaller AoE and [s:hello-distant-world] to the farthest player, inflicting the same statuses, then each jump one last time.
+      [s:hello-near-world] and [s:hello-distant-world] both resolve, causing those players to explode in large AoEs that wipe the raid if any other player is clipped, inflicting [s:magic-vuln] on them and granting them a stack of [s:quickening-dynamis]. [s:hello-near-world] then jumps to the closest player via a smaller AoE and [s:hello-distant-world] to the farthest player, with the same effects, then each jump one last time.
       Each set of [s:hello-near-world]/[s:hello-distant-world] therefore applies 6 stacks of [s:quickening-dynamis] to players. In total, Phase 5 features 4 sets of [a:hello-near-distant-world], adding up to 24 stacks throughout the whole phase. By the end of the phase each player must have [s:quickening-dynamis:3] or a wipe is guaranteed in Phase 6. This means that no stacks may be wasted (by having a jump go to a player who already has [s:quickening-dynamis:3]).
       Since any player can only accumulate one stack of [s:quickening-dynamis] per [a:hello-near-distant-world] set without dying, this also means that each player has to "sit out" 1 of the 4 sets and avoid being targeted by a jump.
     children:
@@ -1566,13 +1566,13 @@ actions:
         name: LPDU
         common: true
         description: |
-          Line up in two rows in front of Omega-M in the order of [i:cross][i:square][i:circle][i:triangle], with [i:cross] being closest to Omega-M. Then, from Final Omega, with Omega-M counting as north:
+          Line up in two rows in front of Omega-M in the order of [i:cross][i:square][i:circle][i:triangle], with [i:cross] being closest to Omega-M. Then, counting pairs from the end of the line nearest Final Omega (the [i:triangle] pair first), with Omega-M counting as north:
           * The first double-marked pair goes west/east, respectively.
           * The second double-marked pair goes north/south, respectively.
           * The first single-marked pair goes northeast (unmarked) and southwest (marked).
           * The second single-marked pair goes northwest (unmarked) and southeast (marked).
           The waymark you are on at this point determines your tower. "North", in this case, will either be where Omega-M spawned or directly opposite. To identify which it is, look at relative north and south and find the spot that has one tower (Remote Glitch) or two towers (Mid Glitch).
-          * Waymark 1 takes the northwest tower, waymark 2 the northeast tower (Mid Glitch). In Far Glitch, waymarks 1 and 2 take the northmost tower.
+          * Waymark 1 takes the northwest tower, waymark 2 the northeast tower ([s:mid-glitch]). With [s:remote-glitch], waymarks 1 and 2 take the northmost tower.
           * Waymark 3 takes the southwest 2-person tower, waymark 4 the southeast 2-person tower.
           * Waymarks A–D take the southern towers, with A taking the westmost tower and D taking the eastmost tower.
     children:
@@ -1728,7 +1728,7 @@ actions:
     type: magic
     mechanic: enrage.threshold
     damage: 69891
-    description: The death wall surrounding the arena disappears and Omega-F begins casting [a:blind-faith]. If she is not brought below 20% HP before the cast finishes, wipes the party.
+    description: The death wall surrounding the arena disappears and Omega-F begins a long cast. If she is not brought below 20% HP before it finishes, it wipes the party; otherwise it deals massive damage and ends Phase 5.
   cosmo-memory-2:
     id: 31649
     mechanic: raidwide.lb
@@ -1911,7 +1911,7 @@ actions:
     id: 31657
     mechanic: mech
     description: |
-      Shortly after the **start** of the cast fires lasers at 4 random players, then the other 4 players.
+      Shortly after the **start** of the cast, [boss] fires lasers at 4 random players, then at the other 4 players.
       At the end of the cast, executes a [m:stack.intercept] towards a random player that deals massive damage to the first targets in line and split damage to all remaining party members.
       *Note that unlike most mechanics on Thaliak, the timestamp of this mechanic indicates the start of the cast, not the end.*
     resolve: |
