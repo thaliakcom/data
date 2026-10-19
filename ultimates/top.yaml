@@ -1216,7 +1216,7 @@ actions:
         name: LPDU
         common: true
         description: |
-          Players line up in a [t:conga line] from north to south on the boss's west side in the following order: H1, H2, M1, M2, M1, M2, R1, R2
+          Players line up in a [t:conga line] from north to south on the boss's west side in the following order: H1, H2, MT, OT, M1, M2, R1, R2
           Each player now counts their position only amongst players with the same responsibility, i.e. [s:oversampled-wave-cannon-loading] players ignore non-monitor players and only count their position amongst the other monitor players from 1–3, and non-monitor players only count amongst non-monitor players (from 1–5).
           * Monitor 1 goes to the non-boss-monitor side and centers themselves inside the 1/4 marker, facing their monitor towards the east (if on the east side) or west (if on the west side).
           * Monitor 2 goes to the boss monitor side and aligns themselves with the **south** edge of the 1/4 marker, facing their monitor north.
