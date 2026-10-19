@@ -21,7 +21,7 @@ status:
   looper:
     id: 3456
     type: condition
-    duration: [1600, 2500, 3400, 4300]
+    duration: [16000, 25000, 34000, 43000]
     description: |
       Players inflicted with this debuff are able to soak towers during [a:program-loop]. (The tower will ignore players without this debuff.)
       Soaking a tower resolves this debuff. If no tower is soaked before the debuff expires, the player is inflicted with [s:memory-loss].
