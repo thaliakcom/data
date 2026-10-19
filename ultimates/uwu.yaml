@@ -53,7 +53,7 @@ status:
     description: |
       If a player with this effect uses limit break, all utilized limit break bars are instantly refilled after a short delay. This status effect is consumed in the process.
       Note that this refund only applies to "full" limit break bars, not partial ones, so for example if limit break 2 is used at 2.5 bars, it only refills 2 bars, not 2.5 bars.
-      This effect is gained from stepping into a light puddle gained from defeating a [s:woken] primal.
+      This effect is gained from stepping into a light puddle left behind by a defeated [s:woken] primal.
       [s:beyond-limits] persists through death.
   thermal-high:
     id: 1526
@@ -153,7 +153,7 @@ status:
     duration: [10000, 12000, 32000, 52000]
     description: |
       Player explodes ([a:viscous-aetheroplasm-stack]) when the debuff expires. The explosion is shared damage that should be stacked for.
-      **Note**: Despite the in-game description stating that "a stack of 5 will result in instant death", it is not possible for any player to have more than one stack of this debuff. It's possible that [s:viscous-aetheroplasm] worked more like its The Minstrel's Ballad: Ultima's Bane counterpart in the fight's original draft but was later changed to its current version, and the description was never updated to reflect its new function. In The Minstrel's Ballad: Ultima's Bane, [s:viscous-aetheroplasm] constantly accumulates stacks on the main tank and is meant to force a [t:tankswap] at 3 or 4 stacks, as 5 stacks triggers a lethal explosion.
+      **Note**: Despite the in-game description stating that "a stack of 5 will result in instant death", it is not possible for any player to have more than one stack of this debuff. It's possible that [s:viscous-aetheroplasm] worked more like its counterpart in The Minstrel's Ballad: Ultima's Bane in the fight's original draft but was later changed to its current version, and the description was never updated to reflect its new function. In The Minstrel's Ballad: Ultima's Bane, [s:viscous-aetheroplasm] constantly accumulates stacks on the main tank and is meant to force a [t:tankswap] at 3 or 4 stacks, as 5 stacks triggers a lethal explosion.
   damage-up-ultima:
     id: 290
     type: damage-up
@@ -257,7 +257,7 @@ actions:
       When the Spiny Plume dies, it explodes with a moderate AoE ([a:gigastorm]) and leaves behind a bubble in the shape of that same AoE. Stepping into the bubble grants [s:thermal-high] and cleanses all [s:thermal-low] stacks. See [a:gigastorm] for more information.
     resolve: |
       Once the plumes spawn, the off-tank should attack the Spiny Plume immediately to force the Spiny Plume to tether them. [a:provoke] works as well. If the off-tank is too slow to attack it, a stray AoE from one of the other players is likely to hit it, causing it to tether to them instead and guaranteeing a wipe.
-      The main tank tanks Garuda away from the party while all other party members (including the off-tank) stack behind Garuda and wait for the Satin Plumes to gather. AoE the Satin Plumes down as fast as possible. *Stop AoEing* the moment the last Satin Plume has died. Do *not* defeat the Spiny Plume until after Garuda has flown away for [a:feather-rain] or the resulting bubble does not last enough to resolve all mechanics.
+      The main tank tanks Garuda away from the party while all other party members (including the off-tank) stack behind Garuda and wait for the Satin Plumes to gather. AoE the Satin Plumes down as fast as possible. *Stop AoEing* the moment the last Satin Plume has died. Do *not* defeat the Spiny Plume until after Garuda has flown away for [a:feather-rain] or the resulting bubble does not last long enough to resolve all mechanics.
     children:
     - at: 0
       id: <targetable>
@@ -999,7 +999,7 @@ actions:
       When the [a:upheaval] cast completes, all players are [stunned](s:stun) and knocked away from Titan's position. The knockback is approximately the entire diameter of the safe zone of the arena, minus the radius of Titan's hitbox. [a:burst] resolves shortly after players' [s:stun] expires, leaving time for only a small microadjustment.
       Afterwards, three random players are visibly targeted for [a:rock-throw] as Titan casts [a:landslide]. Another bomb boulder drops into the empty spot from before at this time, killing any player still there ([a:bury]) and begins casting [a:burst]. The three selected players are encased in a Granite Gaol immediately after [a:landslide]. Titan then casts another [a:landslide], which the Granite Gaol players are now immune to.
       The Granite Gaols immediately begin casting [a:granite-impact]. If this cast is permitted to complete, the party wipes. However, if a Granite Gaol is hit by the last bomb boulder's [a:burst], it is destroyed immediately and the encased player freed. At the same time, the Granite Gaol leaves behind a puddle of [s:sludge] and destroys any other Granite Gaol in its proximity ([a:freefire]), leading to the same result.
-      The puddles inflict [s:sludge] if players dwell within it after being freed. [s:sludge] is a lethal DoT whose ticks cannot be survived. If Titan dwells within a [s:sludge] puddle, he gains one stack of [s:aetherially-charged] every tick (3 seconds) until 4 stacks, at which point he becomes [s:woken]. This is the only point in the fight where a [s:sludge] puddle can be created.
+      The puddles inflict [s:sludge] if players dwell within one after being freed. [s:sludge] is a lethal DoT whose ticks cannot be survived. If Titan dwells within a [s:sludge] puddle, he gains one stack of [s:aetherially-charged] every tick (3 seconds) until 4 stacks, at which point he becomes [s:woken]. This is the only point in the fight where a [s:sludge] puddle can be created.
       The main tank cannot be targeted by [a:rock-throw].
     resolve: |
       After [a:geocrush], immediately run towards Titan to avoid being hit by any of the bomb boulders' [a:bury]s. Center yourself on Titan's frontal hitbox arrow, then look backwards to see if the safe spot (where a bomb boulder is missing) is left or right, then *slightly* inch towards that side while remaining on the edge of Titan's hitbox. If positioned correctly, [a:upheaval] will knock you directly into the safe spot. After being unstunned, walk forward out of the safe spot immediately to avoid being hit by the [a:bury] of the next bomb boulder that drops directly into this safe spot. **Walk directly forward** on the side that you're on; do not walk towards Titan through the center of the arena, as this has the chance to bait a [a:landslide] directly through the center of the arena, which will make it difficult for the [a:rock-throw] players to position themselves correctly.
@@ -1007,7 +1007,7 @@ actions:
       Resolving this presents three difficulties:
       First, a very small amount of time passes between players being targeted for [a:rock-throw] and being encased in their Granite Gaol. This means that players cannot spend any time thinking about what to do or where to go. It must be a snap judgment.
       Second, since the [a:rock-throw] assignment is completely random and not role-based, the party must establish a system whereby there is no ambiguity between who goes to which of the three possible spots, as there is no time to communicate or coordinate in any meaningful way here. It is strongly recommended to use a macro that applies a number marker to yourself if you get targeted by [a:rock-throw]. A correctly written macro will apply the first number to your head that is not already taken by another player or enemy. However, Party Finder generally uses third-party tools to assign a number to each player.
-      Third, the positioning is very tight. Party Finder generally uses waymarks for assistance here. However, the player farthest from Titan cannot blindly use any waymark; they must inch slightly left or slightly right to ensure they're hit by [a:burst]. Failing to position yourself ensures a very delayed wipe, as it is nigh impossible to kill all three Gaols before they're able to cast [a:granite-impact], and the encased players are invulnerable until then. Even if the three players are freed by [a:burst] and [a:freefire], Titan must already be standing in the third [s:sludge] puddle as he is cast-locked until the [s:sludge] puddles have disappeared. It is not enough for Titan's hitbox to be clipped by the puddle; a significant portion of his hitbox must intersect the puddle.
+      Third, the positioning is very tight. Party Finder generally uses waymarks for assistance here. However, the player farthest from Titan cannot blindly use any waymark; they must inch slightly left or slightly right to ensure they're hit by [a:burst]. Failing to position yourself correctly ensures a very delayed wipe, as it is nigh impossible to kill all three Gaols before they're able to cast [a:granite-impact], and the encased players are invulnerable until then. Even if the three players are freed by [a:burst] and [a:freefire], Titan must already be standing in the third [s:sludge] puddle as he is cast-locked until the [s:sludge] puddles have disappeared. It is not enough for Titan's hitbox to be clipped by the puddle; a significant portion of his hitbox must intersect the puddle.
     tips:
       - Do not use raid buffs until after all three players are freed from their Granite Gaol as they are immune to all status effects, including raid buffs, while trapped within the gaol.
       - If a [a:landslide] is baited through the center, the [a:rock-throw] players should wait until the [a:landslide] telegraph disappears, then *jump* into their waymark. If a player is gaoled mid-jump, their forward momentum is not halted until they touch the ground again, essentially extending their range of movement.
@@ -1164,7 +1164,7 @@ actions:
       For the purposes of this fight, only the last two are of interest to us. Critical health recovery should be obvious enough, but the other one requires some explanation.
       **Sustaining lethal damage**
       In order to accumulate bonus limit break points in this way, an enemy's action must deal enough damage to reduce a player's HP to 0 or past 0 *before mitigation and shielding is factored in*. Applying mitigation or shielding allows this player to survive despite sustaining what the game considers to be "lethal damage".
-      Unfortunately, [tank invulns](t:invuln) do not count as "mitigation" in this sense, so sustaining lethal damage through a tank invuln does not grant any bonus points. Additionally (and more importantly), actions like [a:feint] or [a:addle] reduce an enemy's damage *before* it checks whether this damage would be lethal to a player. This means that using these actions can result in otherwise "lethal" damage to not be considered "lethal" anymore and is therefore discouraged.
+      Unfortunately, [tank invulns](t:invuln) do not count as "mitigation" in this sense, so sustaining lethal damage through a tank invuln does not grant any bonus points. Additionally (and more importantly), actions like [a:feint] or [a:addle] reduce an enemy's damage *before* it checks whether this damage would be lethal to a player. This means that using these actions can cause otherwise "lethal" damage to no longer count as "lethal", and is therefore discouraged.
       Bonus limit break points are accrued per player per damage instance, so actions like [a:tumult-x8] are more valuable than single raidwides since [a:tumult-x8] can potentially reward up to **64** instances of bonus points (8 damage instances times 8 players).
       **LB cheese**
       For the LB cheese after [a:ultima], we leverage this exact phenomenon to accrue a large number of bonus points to the first raidwide in the phase ([a:tank-purge]). Every party member must contribute to the LB cheese, though it is mainly the shield healer's responsibility. To do this:
@@ -1276,7 +1276,7 @@ actions:
     description: |
       A pillar of light spawns and begins to chase a targeted player. Anyone in the path of the pillar takes lethal damage.
       [a:light-pillar] hits six times. Each time it does, it hits where the targeted player was approximately three seconds before that hit.
-      [a:light-pillar] always targets the player who does not bait [a:eruption]s and is not targeted by [a:mistral-song-suppression].
+      [a:light-pillar] always targets the non-tank player who does not bait [a:eruption]s and is not targeted by [a:mistral-song-suppression].
     children:
     - at: 3114
       id: light-pillar-hit
@@ -1324,7 +1324,7 @@ actions:
     resolve: |
       Each soak deals massive amounts of damage, and there is very little time to heal in-between before you have to soak the next set. For this reason, it is recommended to split into two groups, but not light parties; soaking an orb with only 4 players would deal nigh-unsurvivable damage even with mitigation. Instead, Party Finder generally splits into a group that consists of both tanks and a group that consists of everyone else. The tank group soaks the southwest pair with defensive cooldowns, then the northwest pair. The other group soaks the southeast pair, then the northeast pair. Remember to wait for heals in-between.
       This strategy is why the 3-3-1-1 soaks are recommended during [a:ultimate-annihilation]. By having 3 players soak the first two orbs and only one player soak the last two orbs, the first two orb pairs that are soaked during [a:aetheric-boom] have the shortest possible tether. This is fine, since both groups will soak these orbs immediately by virtue of being knocked back directly into those orbs. The tethers for the second sets of orb pairs are slightly longer to allow for healing in-between.
-      Keeping the tethers short also ensures that, no matter which of the two orbs of a given pair any individual player decide to soak, they will still be in range of the other orb's explosion in case someone touched the other orb first.
+      Keeping the tethers short also ensures that, no matter which of the two orbs of a given pair any individual player decides to soak, they will still be in range of the other orb's explosion in case someone touched the other orb first.
       It is also generally recommended to use a [i:tank] limit break here, regardless of how many limit break bars you have, to make the mitigation and healing slightly easier. The heavy raidwides during [a:primal-roulette] all but ensure that you'll have another limit break 3 before the end of the fight no matter what.
     children:
     - at: 4143
@@ -1394,7 +1394,7 @@ actions:
       id: <untargetable>
       target: "[boss:c]"
       description: |
-        [boss:c] becomes untargetable and teleports to a random position on the edge of the arena.
+        [boss:c] becomes untargetable and teleports to a random intercardinal at the edge of the arena.
     - at: 14837
       id: landslide-woken
       link: and
