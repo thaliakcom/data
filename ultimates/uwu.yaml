@@ -70,7 +70,7 @@ status:
       Progressing into the final phase of the fight requires exactly 3 players with [s:beyond-limits], so awakening the primals (despite its negative effects) is not optional.
       What follows is a list of all abilities that change when a primal is [s:woken]:
       * [a:wicked-wheel] is now immediately followed up with [a:wicked-tornado].
-      * [a:downburst] stops being a [single-target tankbuster](m:tb.mt) and becomes a [shared tankbuster](m:tb.stack) instead.
+      * [a:downburst] stops being a [single-target tankbuster](m:tb.mt) and becomes a [cleave shared by the party](m:stack.party) instead.
       * [a:crimson-cyclone] is now immediately followed up with two additional [a:crimson-cyclone]s at a 45° angle to either side of the first one. Note that this only applies to the "true" Ifrit, not any of his clones. Look for the blue glow to identify the true Ifrit by his [s:woken] aura.
       * When [s:woken], [s:searing-wind] has a duration of 30 seconds, not 18.
       * [a:flaming-crush] now inflicts [s:accursed-flame], a [t:DoT] on all players hit. The duration of [s:accursed-flame] is reduced for each player hit.
@@ -208,10 +208,10 @@ actions:
   downburst-woken:
     id: 11088
     name: Downburst (Woken)
-    mechanic: tb.stack
+    mechanic: stack.party
     shape: cone
     damage: 17919
-    description: Shared (two-player) tankbuster on the primary target.
+    description: Frontal cleave on the primary target. The damage is shared by everyone hit.
   cyclone:
     id: 11077
     mechanic: tb.mt
