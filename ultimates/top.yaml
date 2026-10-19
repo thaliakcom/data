@@ -827,7 +827,7 @@ actions:
     mechanic: tb.tether
     shape: cone
     damage: 220381
-    description: An optimized version of the standard melee LB2. Massive 90° conal tankbusters with essentially infinite radius, targeting two tethered players.
+    description: An optimized version of the standard melee LB2. Massive 90° conal tankbusters with essentially infinite radius, targeting two tethered players. Each hit inflicts [s:physical-vuln-up].
     resolve: The tethers should be taken directly clockwise or counter-clockwise of their respective clone to create a small gap for the rest of the party to hide in.
   optimized-sagittarius-arrow:
     id: 31539
@@ -853,7 +853,7 @@ actions:
     id: 31538
     mechanic: raidwide.proximity
     damage: 115301
-    description: Three random players are targeted with the standard flare marker.
+    description: Three random players are marked with [s:prey] (the standard flare marker) and hit with proximity damage when it expires.
     resolve: Have these players leave the [a:pile-pitch] stack. Alternatively, some parties prefer to place all three flares in the middle of the stack and simply apply heavy mitigation and shielding, which makes the flares survivable even when they are stacked with the party.
   cosmo-memory:
     id: 31522
