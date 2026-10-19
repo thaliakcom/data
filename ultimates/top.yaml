@@ -1548,9 +1548,9 @@ actions:
       Once markers appear, place the 2 unmarked players on the cardinals or intercardinals opposite the arms and the other 6 players on the other 6 cardinals or intercardinals. Each player should be opposite their tether partner. If it's [s:remote-glitch], all players should stand on the wall. If it's [s:mid-glitch], all players should stand on the fourth ring on the floor from the center of the arena.
       Most PF strategies designate fixed positions based on your initial position in the [t:conga line]. The diagram shows these positions for LPDU. After the spreads resolve, remember the marker you spread on and face your camera back towards Omega-M (or opposite him). That way, when towers spawn, you'll already be looking at either the northmost or southmost tower(s), and there is no chance of getting turned around. Most strategies designate towers based on the marker you spread on. Again, the diagram shows the LPDU designations.
       Wait on any of the center rings to be knocked back to your tower, then either stand in the center of the tower ([s:mid-glitch]) or on the far edge of the tower ([s:remote-glitch]).
-      After towers resolve, assign Hello World spots, then find Omega-F. Go towards her if you're one of the Rear Arm Unit baiters or the first [a:hello-distant-world] target. Everyone else goes opposite Omega-F. Check which direction the [a:rear-lasers] rotate and move slightly towards the other direction to avoid being in the immediate path of the lasers.
+      After towers resolve, assign Hello World spots, then find Omega-F. Go towards her if you're one of the Right Arm Unit baiters or the first [a:hello-distant-world] target. Everyone else goes opposite Omega-F. Check which direction the [a:rear-lasers] rotate and move slightly towards the other direction to avoid being in the immediate path of the lasers.
       Take another look at Omega-F; check whether she's holding a staff or her legs are blades. If it's the former, **do not follow** the rotating laser until she executes [a:optimized-blizzard-iii], otherwise follow the laser.
-      Lastly, move to [a:hello-near-distant-world] spots, taking care to avoid being in the path of the Rear Arm Units. Check the diagram for how LPDU handles this [a:hello-near-distant-world].
+      Lastly, move to [a:hello-near-distant-world] spots, taking care to avoid being in the path of the Right Arm Units. Check the diagram for how LPDU handles this [a:hello-near-distant-world].
     mistakes:
       - Forgetting the marker you initially spread on or otherwise forgetting which tower that correlates to.
       - Not fixing your camera on the relative north/south, thus getting turned around and choosing the wrong tower.
@@ -1602,15 +1602,15 @@ actions:
     damage: 68556
     count: 2
     description: |
-      Two Rear Arm Units spawn and each target the farthest player with a small [ms:line] AoE that inflicts [s:magic-vuln].
+      Two Right Arm Units spawn and each target the farthest player with a small [ms:line] AoE that inflicts [s:magic-vuln].
       Each arm indicates which player is currently being targeted via a narrow silver tether. This tether is only an indicator; it automatically switches targets when a different player moves farther away than the currently tethered player.
   wave-cannon-marked:
     id: 31604
     mechanic: spread
-    shape: line
+    shape: cone
     damage: 70865
     count: 6
-    description: Marks 6 players with a red marker above their heads and, after a delay, fires a [ms:line] AoE at each of them that inflicts [s:magic-vuln].
+    description: Marks 6 players with a red marker above their heads and, after a delay, fires a [ms:cone] AoE at each of them that inflicts [s:magic-vuln].
   run-dynamis-(omega-version):
     id: 32789
     mechanic: mech.trio
@@ -4037,8 +4037,8 @@ graphing:
         tower#mid-4: [80, 112.5]
         tower#mid-5: { x: 80, y: 157.5, color: url(#double-tower-gradient) }
         tower#mid-6: [80, -112.5]
-        wave-cannon#arm-1: { attach: arm#1, rotate: T2, size: [30, 200], opacity: 0.8 }
-        wave-cannon#arm-2: { attach: arm#2, rotate: H2, size: [30, 200], opacity: 0.8 }
+        wave-cannon#arm-1: { attach: arm#1, rotate: T2+180, size: [30, 200], opacity: 0.8 }
+        wave-cannon#arm-2: { attach: arm#2, rotate: H2+180, size: [30, 200], opacity: 0.8 }
         wc-cone#1: { rotation: -90 }
         wc-cone#2: { rotation: 0 }
         wc-cone#3: { rotation: 45 }
@@ -4199,8 +4199,8 @@ graphing:
         arm#2: { x: 90, y: -135, rotate: H2 }
         glitch-link#1: { to: H1 }
         glitch-link#2: { to: H2 }
-        wave-cannon#arm-1: { rotate: R1, scale: [0, 1] }
-        wave-cannon#arm-2: { rotate: H1, scale: [0, 1] }
+        wave-cannon#arm-1: { rotate: R1+180, scale: [0, 1] }
+        wave-cannon#arm-2: { rotate: H1+180, scale: [0, 1] }
       - label: { visible: true, text: Staff-F }
         boss#mf: { text: F, x: 45, y: 90, visible: true, rotate: 90 }
         boss#ring: { visible: true }
