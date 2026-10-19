@@ -1958,7 +1958,7 @@ timeline:
     target: Titan
     description: Titan becomes targetable again.
   - at: 447452
-    id: rock-throw
+    id: rock-throw-healer
   - at: 454491
     id: <targetable>
     target: Granite Gaol
