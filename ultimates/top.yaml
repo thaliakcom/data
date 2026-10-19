@@ -1239,8 +1239,8 @@ actions:
     description: |
       3 sets of spreads followed by stacks.
       During the cast, line stack markers appear on 2 random players. However, before these resolve, Omega first fires lasers at all 8 players that deal moderate damage, inflict [s:magic-vuln], and leave behind an "afterimage" that resolves at the same time as the stacks 5 seconds later.
-      This mechanic repeats three times until [boss] begins casting its enrage, [a:blue-screen].
-      After the first set, [boss] also fires out [a:wave-repeater].
+      This mechanic happens three times before Omega begins casting its enrage, [a:blue-screen].
+      Omega also fires out [a:wave-repeater] after the first set and again during the third set.
     resolve: |
       **Ignore the line stack markers when they appear.** Do not get baited by the line stack markers – the first mechanic that resolves is the [a:wave-cannon-spread]. Wait until they have gone off, then stack in two groups. *Do not stack somewhere a player resolved a protean laser before.*
       A good idea is to leave the south safe for the stacks and have 4 players spread on the west and 4 players on the east. If one of these two 4-player groups has 2 stacks, the southern stack should swap alongside the southmost player of the other group.
@@ -1248,7 +1248,7 @@ actions:
       **It is strongly recommended to use [i:melee] LB3 at the start of this phase** or the DPS check is close to impossible.
     mistakes:
       - Forgetting to swap sides as the second stack on a given side.
-      - Forgetting to swap sides if you're the first player on a given side and your side has no stacks. (A 3-player stack results in lethal damage.)
+      - Forgetting to swap sides if you're the southmost player on a side without stacks. (A 3-player stack is lethal without heavy mitigation and shielding, and even with them, the party will likely wipe to the following raidwides.)
       - Forgetting to move in and being hit by [a:wave-repeater].
       - Not moving back to your designated spot in time and baiting a [a:wave-cannon-lines] in the wrong location (on top of a stack).
     strategies:
@@ -1285,8 +1285,7 @@ actions:
       - at: 5582
         id: wave-cannon-stack
   wave-cannon-spread:
-    id: 32534
-    type: magic
+    id: 31614
     name: Wave Cannon (Spread)
     mechanic: spread
     shape: line
