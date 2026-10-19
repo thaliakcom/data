@@ -25,6 +25,11 @@ status:
     description: |
       Players inflicted with this debuff are able to soak towers during [a:program-loop]. (The tower will ignore players without this debuff.)
       Soaking a tower resolves this debuff. If no tower is soaked before the debuff expires, the player is inflicted with [s:memory-loss].
+  looper-sigma:
+    id: 3456
+    type: condition
+    duration: 18000
+    description: Inflicted on all party members during [a:run-dynamis-(sigma-version)]. Soaking one of its [towers](a:storage-violation-sigma) resolves this debuff.
   first-in-line:
     id: 3004
     type: indicator
@@ -1576,6 +1581,9 @@ actions:
         target: Omega-M
       - at: 17391
         id: subject-simulation-f
+      - at: 20860
+        id: <addstatus>
+        status: looper-sigma
       - at: 22182
         id: far-hyper-pulse
       - at: 22360
@@ -1583,7 +1591,7 @@ actions:
       - at: 30948
         id: discharger
       - at: 34882
-        id: storage-violation
+        id: storage-violation-sigma
       - at: 52364
         id: superliminal-steel
       - at: 59155
@@ -1611,6 +1619,16 @@ actions:
     damage: 70865
     count: 6
     description: Marks 6 players with a red marker above their heads and, after a delay, fires a [ms:cone] AoE at each of them that inflicts [s:magic-vuln].
+  storage-violation-sigma:
+    id: 31492
+    mechanic: towers.random
+    damage: 35014
+    count: 5
+    players: 2
+    description: |
+      Single- and two-player towers that deal moderate damage to the players soaking them and resolve their [s:looper-sigma].
+      With [s:remote-glitch], 2 single and 3 two-player towers spawn; with [s:mid-glitch], 4 single and 2 two-player towers.
+      If any tower is left unsoaked, all party members are inflicted with [s:twice-come-ruin:2], which turns into [s:doom] and wipes the party.
   run-dynamis-(omega-version):
     id: 32789
     mechanic: mech.trio
