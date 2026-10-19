@@ -1,7 +1,7 @@
 id: 539
 patch: "4.31"
 date: 2026-05-03
-modified: 2026-05-09
+modified: 2026-10-19
 by:
   id: 27637301
   role: author
@@ -768,7 +768,7 @@ actions:
     shape: chariot
     damage: 12644
     description: |
-      Targeted stack on a random, marked player. Can never target a healer.
+      Targeted stack on a random, marked DPS.
       If Ifrit is [s:woken], this inflicts a [t:DoT] ([s:accursed-flame]) on all players inside the stack.
   crimson-cyclone-echo:
     id: 11104
