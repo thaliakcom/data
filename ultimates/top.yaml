@@ -397,7 +397,7 @@ actions:
     mechanic: towers.single
     damage: 35847
     description: |
-      Deals medium damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
+      Deals moderate damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
       Does not apply to players who don't have [s:looper].
       If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all party members, likely causing [s:doom].
   blaster-cast:
@@ -417,7 +417,7 @@ actions:
     damage: 35847
     count: 2
     description: |
-      Deals medium damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
+      Deals moderate damage to the tethered players and all players in a large radius around them and inflicts [s:hp-penalty] and [s:twice-come-ruin].
       Be aware that [s:hp-penalty] reduces max HP only *after* the damage is dealt; if a player's HP reaches 0 from the initial hit, their max HP won't be reduced; they'll just die. However, in general it should not be necessary to heal these players before they take their hit unless there are significant gear problems or they forgot to eat food.
   pantokrator:
     id: 31499
@@ -549,7 +549,7 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 58926
-    description: Omega fires a barrage of missiles at the players targeted by [s:guided-missile] that deals medium damage to the player themselves and knocks any nearby players into the death wall.
+    description: Omega fires a barrage of missiles at the players targeted by [s:guided-missile] that deals heavy damage to the player themselves and knocks any nearby players into the death wall.
   ballistic-impact:
     id: 31500
     mechanic: aoe.delayed
@@ -842,7 +842,7 @@ actions:
     mechanic: spread.close
     shape: chariot
     damage: 19463
-    description: At the end of the cast, Omega-M dashes to one of the two closest players and hits them with a small AoE that deals light damage, inflicts [s:twice-come-ruin], and knocks any other players hit into the death wall. The same Omega-M then prepares [a:pile-pitch].
+    description: At the end of the cast, Omega-M dashes to one of the two closest players and hits them with a small AoE that deals mild damage, inflicts [s:twice-come-ruin], and knocks any other players hit into the death wall. The same Omega-M then prepares [a:pile-pitch].
   pile-pitch:
     id: 31529
     mechanic: stack.party
@@ -860,7 +860,7 @@ actions:
     type: magic
     mechanic: raidwide
     damage: 86602
-    description: A heavy-hitting raidwide from Omega's eye on the outside of the arena.
+    description: A raidwide from Omega's eye on the outside of the arena that deals massive damage.
   laser-shower:
     id: 31557
     mechanic: enrage
@@ -952,7 +952,7 @@ actions:
     emphasis: more
     compact: full
     description: |
-      Heavy raidwide that begins the next major mechanic.
+      Raidwide that deals massive damage and begins the next major mechanic.
       Please note that, while this mechanic is technically quite complicated, resolving it is actually quite simple. If reading all the technical specifications on how the mechanic works confuses you, try skipping to the "Resolve" section below.
       Inflicts the following debuffs on all players:
       * [s:local-code-smell] (2×23s, 2×44s, 2×65s, 2×86s)
@@ -1318,7 +1318,7 @@ actions:
     type: magic
     mechanic: enrage.threshold
     damage: 80243
-    description: Kills all players if the boss is not brought below 20% health, otherwise deals moderate damage and advances the fight to Phase 5.
+    description: Kills all players if the boss is not brought below 20% health, otherwise deals massive damage and advances the fight to Phase 5.
     resolve: |
       If you used your 2 minutes at the end of Phase 3, use [i:melee] LB3 here to beat the DPS check.
       The DPS checks in Phase 3 and 4 are deliberately designed in such a way as to **require** the use of [i:melee] LB3 in either P3 or P4.
@@ -1358,7 +1358,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      Heavy raidwide that initiates the first of three [trios](t:trio).
+      Raidwide that deals massive damage and initiates the first of three [trios](t:trio).
       After the raidwide, Omega-M becomes untargetable and tethers all players to another player: two pairs via [s:remote-code-smell] and two pairs via [s:local-code-smell]. Additionally, one player is inflicted with [s:hello-near-world] and one player with [s:hello-distant-world]. At the same time, Beetle Omega and Final Omega spawn on two random opposite cardinals, and an Optical Unit on one of the two remaining cardinals.
       Multiple things now happen at the same time:
       **Fists**
@@ -1535,7 +1535,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      Heavy raidwide that initiates the second of three [trios](t:trio).
+      Raidwide that deals massive damage and initiates the second of three [trios](t:trio).
       Also inflicts one player with [s:hello-near-world] and another player with [s:hello-distant-world].
       **Proteans**
       Omega-M goes untargetable and two Right Arm Units appear. Unlike the units in [a:run-dynamis-(delta-version)], these units draw a visual tether toward the farthest player and, at the end of the mechanic, shoot a laser at these players. The tether isn't fixed; it dynamically changes its target based on who is farthest from the arm at any given point in time.
@@ -1642,7 +1642,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      Heavy raidwide that initiates the third of three [trios](t:trio).
+      Raidwide that deals massive damage and initiates the third of three [trios](t:trio).
       Also inflicts **two** players with [s:hello-near-world] and two other players with [s:hello-distant-world]. These players are marked with [s:first-in-line] or [s:second-in-line] to indicate which set of [a:hello-near-distant-world] debuffs resolves first.
       A player cannot be inflicted with both [s:first-in-line] and [s:second-in-line] at the same time.
       **AoEs**
@@ -1930,7 +1930,7 @@ actions:
     shape: line
     damage: 90000
     count: 4
-    description: Fires lasers at 4 random party members, then lasers at the remaining 4. Each laser deals heavy damage and inflicts [s:magic-vuln].
+    description: Fires lasers at 4 random party members, then lasers at the remaining 4. Each laser deals massive damage and inflicts [s:magic-vuln].
   cosmo-wave-cannon-wc:
     id: 31658
     mechanic: stack.intercept
