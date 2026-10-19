@@ -1329,17 +1329,19 @@ actions:
     children:
     - at: 4143
       id: aetheroplasm-boom
+      count: 2
       timing: player
       link: then
     - at: 7398
       id: aetheroplasm-boom
+      count: 2
       timing: player
   aetheroplasm-boom:
     id: 11145
     mechanic: stack
     shape: chariot
     damage: 25261
-    description: An orb belonging to an orb pair during [a:aetheric-boom] explodes as a result of a player stepping into it, dealing heavy damage that is split between all players who soak the orb.
+    description: An orb belonging to an orb pair during [a:aetheric-boom] explodes as a result of a player stepping into it, dealing massive damage that is split between all players who soak the orb.
   viscous-aetheroplasm-random:
     id: 11151
     mechanic: mech.status
