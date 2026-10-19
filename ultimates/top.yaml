@@ -1038,30 +1038,22 @@ actions:
         link: and
       - at: 24160
         id: critical-synchronization-bug
-        link: and
-      - at: 24160
-        id: latent-performance-defect
-        link: and
-      - at: 24160
-        id: cascading-latent-defect
       - at: 25300
         id: patch
+        timing: player
       - at: 27300
         id: patch
+        timing: player
       - at: 30124
         id: critical-underflow-bug
+        timing: player
         link: and
       - at: 30124
         id: critical-performance-bug
+        timing: player
         link: and
       - at: 44192
         id: latent-defect
-      - at: 45177
-        id: latent-performance-defect
-        link: and
-      - at: 45177
-        id: cascading-latent-defect
-        link: and
       - at: 45222
         id: critical-overflow-bug
         link: and
@@ -1069,23 +1061,19 @@ actions:
         id: critical-synchronization-bug
       - at: 46604
         id: patch
+        timing: player
       - at: 48604
         id: patch
-      - at: 52942
-        id: critical-performance-bug
+        timing: player
       - at: 53165
         id: critical-underflow-bug
+        timing: player
         link: and
       - at: 53342
         id: critical-performance-bug
+        timing: player
       - at: 65263
         id: latent-defect
-      - at: 66244
-        id: latent-performance-defect
-        link: and
-      - at: 66244
-        id: cascading-latent-defect
-        link: and
       - at: 66288
         id: critical-synchronization-bug
         link: and
@@ -1093,12 +1081,16 @@ actions:
         id: critical-overflow-bug
       - at: 67941
         id: patch
+        timing: player
       - at: 69941
         id: patch
+        timing: player
       - at: 73523
         id: critical-performance-bug
+        timing: player
       - at: 74013
         id: critical-underflow-bug
+        timing: player
       - at: 86325
         id: latent-defect
       - at: 87352
@@ -1108,19 +1100,17 @@ actions:
         id: critical-overflow-bug
         link: and
       - at: 87352
-        id: latent-performance-defect
-        link: and
-      - at: 87352
-        id: cascading-latent-defect
-        link: and
-      - at: 87352
         id: patch
+        timing: player
       - at: 90213
         id: patch
+        timing: player
       - at: 94953
         id: critical-performance-bug
+        timing: player
       - at: 95801
         id: critical-underflow-bug
+        timing: player
   hello-world-fail:
     id: 31627
     mechanic: mech.failure
@@ -1131,6 +1121,12 @@ actions:
     shape: chariot
     damage: 0
     description: Towers resolve, inflicting [s:latent-performance-defect] (blue) or [s:cascading-latent-defect] (red) on all players inside.
+    children:
+      - at: 1000
+        id: latent-performance-defect
+        link: and
+      - at: 1000
+        id: cascading-latent-defect
   critical-overflow-bug:
     id: 31575
     mechanic: aoe
@@ -1164,6 +1160,8 @@ actions:
     id: 31587
     mechanic: raidwide
     damage: 21894
+    count: 2
+    players: 8
     description: |
       A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
       Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
