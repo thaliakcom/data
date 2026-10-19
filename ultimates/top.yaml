@@ -1769,6 +1769,7 @@ actions:
       [boss] fires up arrows that come down in two fixed shapes: a cross-shaped AoE in the middle, and lines around the outside of the arena. Which of these shapes impacts first depends on which of the two is telegraphed first.
       After the arrows come down, square-shaped AoEs that are half the width of the initial AoEs begin to travel outwards (for the cross) and inwards (for the outside lines).
       Note that there is no guarantee you'll see both patterns within a pull. You may only get the cross-first pattern both times the ability is used in this phase, or vice-versa.
+      The timeline shows the outer-first pattern. The cross-first pattern has one more step of exasquares.
     resolve: |
       Determine which of the two patterns is used. Generally, these are the accepted dodge strategies (though other dodges are possible), with each comma indicating one hit of the AoEs:
       * **cross first**: in, stay, out, stay, sides, in.
@@ -1796,14 +1797,22 @@ actions:
         id: cosmo-arrow-hit-initial
       - at: 4087
         id: cosmo-arrow-hit
+        count: 4
       - at: 6130
         id: cosmo-arrow-hit
+        count: 8
       - at: 8128
         id: cosmo-arrow-hit
+        count: 8
       - at: 10128
         id: cosmo-arrow-hit
+        count: 8
       - at: 12087
         id: cosmo-arrow-hit
+        count: 4
+      - at: 14087
+        id: cosmo-arrow-hit
+        count: 4
   cosmo-arrow-hit-initial:
     id: 31651
     name: Cosmo Arrow (Initial Hit)
@@ -1815,7 +1824,6 @@ actions:
     name: Cosmo Arrow (Exa)
     mechanic: aoe.exaflares
     shape: rect
-    count: 8
     description: A hit of the outwards or inwards moving exasquares.
   cosmo-dive:
     id: 31654
