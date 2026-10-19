@@ -1592,8 +1592,13 @@ actions:
         id: discharger
       - at: 34882
         id: storage-violation-sigma
+      - at: 49364
+        id: rear-lasers
       - at: 52364
         id: superliminal-steel
+        link: or
+      - at: 52364
+        id: optimized-blizzard-iii
       - at: 59155
         id: hello-near-distant-world
       - at: 59289
