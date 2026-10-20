@@ -686,6 +686,9 @@ timeline:
   - at: 155319
     id: <phase>
     name: Adds Phase
+  - at: 169359
+    id: <addstatus>
+    status: unbecoming
   - at: 175544
     id: <targetable>
     target: Looming Shadow
