@@ -1,7 +1,7 @@
 id: 1094
 patch: "7.51"
 date: 2026-06-02
-modified: 2026-07-04
+modified: 2026-10-20
 by:
   id: 27637301
   role: author
@@ -2972,5 +2972,151 @@ timeline:
     id: <untargetable>
     target: "[boss]"
     description: "[boss] inflicts [s:forsaken] on all players and erases the world."
-  
-  
+graphing:
+  coordinate-system: polar
+  defs:
+    aoe-pulse-rect: "image(/images/markers/aoe-rectangle.svg)"
+  elements:
+    arena:
+      type: image
+      shape: circle
+      image: /images/arenas/umad-p3.avif
+    pulse:
+      type: rectangle
+      size: [24, 170]
+      origin: [0.5, 1]
+      color: "#b45cf0"
+      opacity: 0.5
+      scale: [1, 0]
+      shadow: false
+    lc-line:
+      type: rectangle
+      size: [14, 170]
+      origin: [0.5, 1]
+      color: url(#aoe-pulse-rect)
+      opacity: 0.85
+      scale: [1, 0]
+      shadow: false
+    rotate-cw:
+      type: image
+      image: /images/markers/rotate-cw.svg
+      size: 40
+      shadow: false
+      visible: false
+    rotate-ccw:
+      type: image
+      image: /images/markers/rotate-ccw.svg
+      size: 40
+      shadow: false
+      visible: false
+  graphs:
+    p3-limit-cut:
+      - marker-a: [65, 0]
+        marker-1: [65, 45]
+        marker-b: [65, 90]
+        marker-2: [65, 135]
+        marker-c: [65, 180]
+        marker-3: [65, -135]
+        marker-d: [65, -90]
+        marker-4: [65, -45]
+        pulse#1: [85, -90, 90]
+        pulse#2: [85, -45, 135]
+        pulse#3: [85, 0, 180]
+        pulse#4: [85, 45, -135]
+        pulse#5: [85, 90, -90]
+        pulse#6: [85, 135, -45]
+        pulse#7: [85, 180, 0]
+        pulse#8: [85, -135, 45]
+        lc-line#1: [85, -90, 90]
+        lc-line#2: [85, -135, 45]
+        lc-line#3: [85, 180, 0]
+        lc-line#4: [85, 135, -45]
+        lc-line#5: [85, 90, -90]
+        lc-line#6: [85, 45, -135]
+        lc-line#7: [85, 0, 180]
+        lc-line#8: [85, -45, 135]
+        rotate-cw: [0, 0]
+        rotate-ccw: [0, 0]
+        T1: [10, 0]
+        T2: [10, 45]
+        H1: [10, 90]
+        H2: [10, 135]
+        M1: [10, 180]
+        M2: [10, -135]
+        R1: [10, -90]
+        R2: [10, -45]
+        hint: In this example, the first pulse starts west.
+      - pulse#1: { scale: 1 }
+        hint: The first pulse sweeps from west to east.
+      - pulse#1: { visible: false }
+        pulse#2: { scale: 1 }
+        rotate-cw: { visible: true }
+        hint: Each subsequent pulse is rotated 45°. In this example, they rotate clockwise.
+      - pulse#2: { visible: false }
+        pulse#3: { scale: 1 }
+        hint: ""
+      - pulse#3: { visible: false }
+        pulse#4: { scale: 1 }
+      - pulse#4: { visible: false }
+        pulse#5: { scale: 1 }
+      - pulse#5: { visible: false }
+        pulse#6: { scale: 1 }
+      - pulse#6: { visible: false }
+        pulse#7: { scale: 1 }
+      - pulse#7: { visible: false }
+        pulse#8: { scale: 1 }
+      - pulse#8: { visible: false }
+        rotate-cw: { visible: false }
+        H1: { status: [dice-1] }
+        M2: { status: [dice-2] }
+        T1: { status: [dice-3] }
+        R1: { status: [dice-4] }
+        H2: { status: [dice-5] }
+        M1: { status: [dice-6] }
+        T2: { status: [dice-7] }
+        R2: { status: [dice-8] }
+        hint: All players are assigned limit cut numbers.
+      - rotate-ccw: { visible: true }
+        H1: [75, 67.5]
+        M2: [75, 22.5]
+        T1: [75, -22.5]
+        R1: [75, -67.5]
+        H2: [75, -112.5]
+        M1: [75, -157.5]
+        T2: [75, 157.5]
+        R2: [75, 112.5]
+        lc-line#1: { rotate: H1 }
+        lc-line#2: { rotate: M2 }
+        lc-line#3: { rotate: T1 }
+        lc-line#4: { rotate: R1 }
+        lc-line#5: { rotate: H2 }
+        lc-line#6: { rotate: M1 }
+        lc-line#7: { rotate: T2 }
+        lc-line#8: { rotate: R2 }
+        hint: The lines start west again but rotate counter-clockwise. Player 1 stands between east (where the first pulse ended) and northeast, and each subsequent player one step further counter-clockwise.
+      - lc-line#1: { scale: 1 }
+        H1: { status: [dice-1, magic-vulnerability-up] }
+        hint: Each line hits its numbered player and inflicts Magic Vulnerability Up.
+      - lc-line#1: { visible: false }
+        lc-line#2: { scale: 1 }
+        M2: { status: [dice-2, magic-vulnerability-up] }
+      - lc-line#2: { visible: false }
+        lc-line#3: { scale: 1 }
+        T1: { status: [dice-3, magic-vulnerability-up] }
+      - lc-line#3: { visible: false }
+        lc-line#4: { scale: 1 }
+        R1: { status: [dice-4, magic-vulnerability-up] }
+      - lc-line#4: { visible: false }
+        lc-line#5: { scale: 1 }
+        H2: { status: [dice-5, magic-vulnerability-up] }
+      - lc-line#5: { visible: false }
+        lc-line#6: { scale: 1 }
+        M1: { status: [dice-6, magic-vulnerability-up] }
+      - lc-line#6: { visible: false }
+        lc-line#7: { scale: 1 }
+        T2: { status: [dice-7, magic-vulnerability-up] }
+      - lc-line#7: { visible: false }
+        lc-line#8: { scale: 1 }
+        R2: { status: [dice-8, magic-vulnerability-up] }
+      - lc-line#8: { visible: false }
+        rotate-ccw: { visible: false }
