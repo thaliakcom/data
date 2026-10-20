@@ -110,7 +110,7 @@ actions:
     tank-damage: 400000
     description: |
       Line [m:stack] on a random healer that deals significantly increased damage to the first two targets hit. Inflicts [s:magic-vulnerability-up].
-      A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+      A miniature black hole spawns behind that healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
     resolve: Both tanks use defensive cooldowns and move to intercept the stack, ensuring they're the first two players hit.
   return-to-nothing:
     id: 49983
@@ -122,7 +122,7 @@ actions:
     tank-damage: 400000
     description: |
       Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up].
-      A miniature black hole spawns behind that healer on the outside of the arena at the start of the cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+      A miniature black hole spawns behind that healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
     resolve: Both tanks use defensive cooldowns and move to intercept the stacks, ensuring they're the first player hit for each stack.
   naught-wakes:
     id: 49973
