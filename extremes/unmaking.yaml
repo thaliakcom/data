@@ -86,7 +86,7 @@ actions:
     id: 50049
     mechanic: raidwide
     damage: 189407
-    description: Moderate raidwide.
+    description: Heavy raidwide.
   naught-grows:
     id: 49978
     mechanic: aoe
