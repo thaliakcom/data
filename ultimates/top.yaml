@@ -4993,7 +4993,7 @@ graphing:
         boss#meteor-2: [50, 180]
         circle#bait: { size: 95, scale: 0, visible: true }
         circle-color#lb3: { size: 140, scale: 0, visible: true, color: url(#friendly-aoe) }
-        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 0], scale: 0, visible: true, color: url(#friendly-aoe) }
+        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 1], scale: 0, visible: true, color: url(#friendly-aoe) }
         circle-color#spread-[1..8]: { size: 40, color: "#66231f99" }
         circle-color#spread-1: { attach: T1 }
         circle-color#spread-2: { attach: H1 }
