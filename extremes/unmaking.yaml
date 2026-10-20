@@ -475,7 +475,7 @@ actions:
     damage: 158225
     description: |
       Similar to [a:naught-grows], but this time there are *two* black holes on the outside of the arena.
-      One arrow always originates from [boss] and points at a black hole. The other arrow originates from the other black hole and points at [boss]. The shape displayed above the corresponding will resolve in the form of an AoE wherever the arrow points to. This results in the following possible AoE combinations:
+      One arrow always originates from [boss] and points at a black hole. The other arrow originates from the other black hole and points at [boss]. The shape displayed above each arrow resolves as an AoE wherever that arrow points. This results in the following possible AoE combinations:
       * [ms:dynamo:c] on [boss] and [ms:dynamo] on a black hole
       * [ms:dynamo:c] on [boss] and [point-blank AoE](ms:chariot) on a black hole
       * [Point-blank AoE](ms:chariot) on [boss] and [ms:dynamo] on a black hole
