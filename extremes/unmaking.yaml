@@ -368,7 +368,7 @@ actions:
       * Tanks spawn a Protective Shadow. It casts an interruptible tankbuster called [a:drain-touch], followed by a non-interruptible tankbuster called [a:weight-of-nothing].
       * Healers spawn a Soothing Shadow. It immediately inflicts [s:quantum-entanglement] on the corresponding healer, which lasts until the shadow is killed. It then casts [a:curse-of-the-flesh], which inflicts a cleansable [s:disease] on the healer.
       * DPS spawn an Aggressive Shadow. It casts [a:demon-eye], a gaze attack that players must face away from.
-      **Note**: If a player targeted to a Shadow dies, that Shadow's damage immunity is lifted, meaning any player can damage it now.
+      **Note**: If a player tethered to a Shadow dies, that Shadow's damage immunity is lifted, meaning any player can damage it now.
       **Note 2**: This timeline shows the DPS getting towers first, supports second, but it can be the other way around as well.
   drain-touch:
     id: 50018
