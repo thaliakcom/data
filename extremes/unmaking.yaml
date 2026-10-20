@@ -327,11 +327,12 @@ actions:
     compact: trim
     description: Inflicts [s:freezing-up] on all players for 2 seconds and hits two highest-enmity players with a [m:tb.flare].
     children:
-    - at: 0
-      id: <addstatus>
-      status: freezing-up
     - at: 986
       id: deep-freeze-tankbuster
+      link: and
+    - at: 986
+      id: <addstatus>
+      status: freezing-up
   deep-freeze-tankbuster:
     id: 50044
     mechanic: tb.flare
