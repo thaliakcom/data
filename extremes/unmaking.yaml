@@ -46,7 +46,7 @@ status:
     id: 4882
     type: dot
     tick: 6000
-    description: Light [t:DoT] active for the entirety of adds phase.
+    description: Minimal [t:DoT] active for the entirety of the adds phase.
   dark-resistance-down-ii:
     id: 3323
     type: vuln
