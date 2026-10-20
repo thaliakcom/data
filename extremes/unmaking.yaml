@@ -498,8 +498,8 @@ actions:
       The two black holes on the outside of the arena shift, begin charging, and fire a line AoE through the middle of the arena. Inflicts [s:vulnerability-up].
       One or both of the black holes may also split in two. In this case they fire two smaller line AoEs through the sides of the arena, leaving the middle safe.
       The type of AoEs fired is, in most cases, only pseudo-random. It uses the following logic:
-      * The first instance of this mechanic after [a:lightless-world] is either a big line through the middle + two small lines on the outside, or four small lines on the outside.
-      * The second instance of this mechanic is whichever of those two options the first wasn't.
+      * Outside of [a:naught-hunts], this mechanic always comes in pairs. The first instance of each pair is either a big line through the middle + two small lines on the outside, or four small lines on the outside.
+      * The second instance of each pair is whichever of those two options the first wasn't.
       * Every instance of this mechanic at the start of [a:naught-hunts] is always four small lines on the outside, leaving the middle safe.
       * Every instance of this mechanic at the end of [a:naught-hunts] is always two big lines through the middle, leaving only the intercardinals or cardinals safe.
       Note that, for all instances of this mechanic outside of [a:naught-hunts], the two black holes are not guaranteed to be at a 90° angle towards each other. They cannot be directly opposite, but they *can* be at an angle of 45° to each other.
