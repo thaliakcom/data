@@ -565,10 +565,10 @@ actions:
       Some strategies prefer for the second set of chasers during each [a:naught-hunts] to take their black hole counter-clockwise instead to minimize movement while prepositioning. Please be aware that the entire party must be on board with this if you decide to do this, as two players who each rotate a different way is almost guaranteed to cause a wipe.
       [a:sprint] is strongly recommended to give yourself more leeway and prevent the black hole from being able to catch up to you.
     children:
-    - at: 0
+    - at: 1021
       id: passage-of-naught
       link: and
-    - at: 82
+    - at: 1114
       id: endless-chase
       flatten: omit-children
     - at: 22312
