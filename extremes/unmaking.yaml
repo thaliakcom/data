@@ -90,6 +90,7 @@ actions:
   naught-grows:
     id: 49978
     mechanic: aoe
+    shape: in-or-out
     players: 0
     damage: 158225
     description: |
