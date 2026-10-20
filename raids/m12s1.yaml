@@ -1458,8 +1458,8 @@ graphing:
         rect#bring-down-the-house-3: [62, -50]
         rect#bring-down-the-house-4: [62, 50]
         rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
-        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 1], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
-        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 1], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
         circle#grand-entrance-[1..10]: { size: 20 }
         circle#grand-entrance-1: [-87, -62]
         circle#grand-entrance-2: [-87, 37]
@@ -1597,8 +1597,8 @@ graphing:
         rect#bring-down-the-house-3: { x: -75, y: 0, size: [50, 50] }
         rect#bring-down-the-house-4: { x: 75, y: 0, size: [50, 50] }
         rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
-        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 1], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
-        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 1], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
+        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
         circle#grand-entrance-[1..10]: { size: 20 }
         circle#grand-entrance-1: [-37, -62]
         circle#grand-entrance-2: [-62, 14]

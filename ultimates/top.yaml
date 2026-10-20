@@ -4069,8 +4069,8 @@ graphing:
         tower#mid-4: [80, 112.5]
         tower#mid-5: { x: 80, y: 157.5, color: url(#double-tower-gradient) }
         tower#mid-6: [80, -112.5]
-        wave-cannon#arm-1: { attach: arm#1, rotate: T2+180, size: [30, 200], opacity: 0.8 }
-        wave-cannon#arm-2: { attach: arm#2, rotate: H2+180, size: [30, 200], opacity: 0.8 }
+        wave-cannon#arm-1: { attach: arm#1, rotate: T2, size: [30, 200], opacity: 0.8 }
+        wave-cannon#arm-2: { attach: arm#2, rotate: H2, size: [30, 200], opacity: 0.8 }
         wc-cone#1: { rotation: -90 }
         wc-cone#2: { rotation: 0 }
         wc-cone#3: { rotation: 45 }
@@ -4231,8 +4231,8 @@ graphing:
         arm#2: { x: 90, y: -135, rotate: H2 }
         glitch-link#1: { to: H1 }
         glitch-link#2: { to: H2 }
-        wave-cannon#arm-1: { rotate: R1+180, scale: [0, 1] }
-        wave-cannon#arm-2: { rotate: H1+180, scale: [0, 1] }
+        wave-cannon#arm-1: { rotate: R1, scale: [0, 1] }
+        wave-cannon#arm-2: { rotate: H1, scale: [0, 1] }
       - label: { visible: true, text: Staff-F }
         boss#mf: { text: F, x: 45, y: 90, visible: true, rotate: 90 }
         boss#ring: { visible: true }
@@ -4993,7 +4993,7 @@ graphing:
         boss#meteor-2: [50, 180]
         circle#bait: { size: 95, scale: 0, visible: true }
         circle-color#lb3: { size: 140, scale: 0, visible: true, color: url(#friendly-aoe) }
-        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 1], scale: 0, visible: true, color: url(#friendly-aoe) }
+        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 0], scale: 0, visible: true, color: url(#friendly-aoe) }
         circle-color#spread-[1..8]: { size: 40, color: "#66231f99" }
         circle-color#spread-1: { attach: T1 }
         circle-color#spread-2: { attach: H1 }
