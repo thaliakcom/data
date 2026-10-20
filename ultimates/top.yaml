@@ -3205,6 +3205,7 @@ graphing:
         kb: { scale: 1 }
       - boss#F1: { scale: 0.6, visible: false }
         kb: { visible: false }
+        glitch-link#2: { from: R2, to: H1 }
         M1: { x: 70, y: -45, coordinate-system: polar }
         M2: { x: 70, y: -45, coordinate-system: polar }
         T1: { x: 70, y: -45, coordinate-system: polar }
