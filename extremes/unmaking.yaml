@@ -165,7 +165,7 @@ actions:
     shape: cone
     count: 4
     damage: 147478
-    description: Moderately wide conal stacks on all supports.
+    description: Moderately wide conal stacks on all supports. Inflicts [s:magic-vulnerability-up].
     tips: [If necessary (people are dead), tanks can comfortably solo their stack.]
   dense-emptiness:
     id: 50035
@@ -173,7 +173,7 @@ actions:
     shape: cone
     count: 2
     damage: 205476
-    description: Wide conal stacks on both healers.
+    description: Wide conal stacks on both healers. Inflicts [s:magic-vulnerability-up].
   gaze-of-the-void:
     id: 50002
     mechanic: mech
