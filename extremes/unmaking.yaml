@@ -564,7 +564,7 @@ actions:
       * The speed of the black holes while chasing narrowly exceeds the default speed of player characters. This means that the black hole will slowly catch up to players, and if it does (e.g. because the player briefly stopped) it is no longer possible to escape it by any means, even with [a:sprint].
     resolve: |
       Each targeted player takes their black hole clockwise around the arena. Do not try to maintain melee uptime if the rest of the party doesn't expect you to, as you will clip the players in the middle.
-      Some strategies prefer for the second set of chasers during each [a:naught-hunts] to take their black hole counter-clockwise instead to minimize movement while prepositioning. Please be aware that the entire party must be on board with this if you decide to do this, as two players who each rotate a different way is almost guaranteed to cause a wipe.
+      Some strategies prefer for the second set of chasers during each [a:naught-hunts] to take their black hole counter-clockwise instead to minimize movement while prepositioning. Please be aware that the entire party must be on board with this if you decide to do this, as two players who each rotate a different way are almost guaranteed to cause a wipe.
       [a:sprint] is strongly recommended to give yourself more leeway and prevent the black hole from being able to catch up to you.
     children:
     - at: 1021
