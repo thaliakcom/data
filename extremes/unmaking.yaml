@@ -722,6 +722,7 @@ timeline:
     id: weight-of-nothing
   - at: 273654
     id: <targetable>
+    target: Beacon in the Dark
     description: The Beacon in the Dark becomes targetable immediately after the Looming Shadow is defeated. The duty gauge continues to accumulate until the Beacon is destroyed.
     timing: player
   - at: 276654
