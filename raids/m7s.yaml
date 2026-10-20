@@ -377,7 +377,7 @@ actions:
     id: 42398
     mechanic: raidwide.transition
     damage: 213112
-    description: Massive raidwide damage. Blows a hole in the roof and transitions the fight to the next phase.
+    description: Raidwide that deals massive damage. Blows a hole in the roof and transitions the fight to the next phase.
   stoneringer-2:-stoneringers:
     id: 42400
     mechanic: mech
