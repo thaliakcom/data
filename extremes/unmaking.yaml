@@ -31,7 +31,7 @@ status:
     duration: 60000
     description: |
       Increases damage taken by 8% per stack.
-      Inflicted by various sources of avoidable damage, such as [a:gaze-of-the-void-cone], [a:naught-grows-p2], [a:passage-of-naught], [a:vacuum-hit], [a:meltdown-twister], [a:passage-of-naught], [a:endless-chase-hit].
+      Inflicted by various sources of avoidable damage, such as [a:naught-grows], [a:meltdown-twister], [a:gaze-of-the-void-cone], [a:silent-torrent], [a:vacuum-hit], [a:nothingness], [a:naught-grows-p2], [a:passage-of-naught], [a:endless-chase-hit].
   freezing-up:
     id: 3523
     type: condition
