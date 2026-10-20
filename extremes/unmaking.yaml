@@ -122,7 +122,7 @@ actions:
     tank-damage: 400000
     description: |
       Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up].
-      A miniature black hole spawns behind that healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+      A miniature black hole spawns behind each healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate the targets. Each black hole moves along with its healer, but is independent of which way the healer is facing. The line stacks always originate from the edge of the arena and fire towards the center.
     resolve: Both tanks use defensive cooldowns and move to intercept the stacks, ensuring they're the first player hit for each stack.
   naught-wakes:
     id: 49973
