@@ -1739,16 +1739,6 @@
           ],
           "description": "Whether the image should be rendered in full (rectangle) or only as a circular cutout.",
           "markdownDescription": "Whether the image should be rendered in full (`rectangle`) or only as a circular cutout."
-        },
-        "mask": {
-          "type": "string",
-          "description": "The source of a <mask> element to apply to this image. See https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/mask.",
-          "markdownDescription": "The source of a `<mask>` element to apply to this image. See https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/mask."
-        },
-        "clipPath": {
-          "type": "string",
-          "description": "A clip-path to apply to this image. See https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/clip-path.",
-          "markdownDescription": "A `clip-path` to apply to this image. See https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/clip-path."
         }
       },
       "required": [
@@ -2771,9 +2761,6 @@
             "circle",
             "rectangle"
           ]
-        },
-        "mask": {
-          "type": "string"
         }
       },
       "additionalProperties": false
