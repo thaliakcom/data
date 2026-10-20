@@ -880,8 +880,8 @@ graphing:
       opacity: 0.6
     gaze:
       type: image
-      size: 10
-      image: /images/markers/gaze.avif
+      size: [10, 3.9]
+      image: /images/markers/gaze.svg
       planar: false
       visible: false
   graphs:
