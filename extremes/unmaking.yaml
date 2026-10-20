@@ -264,7 +264,7 @@ actions:
     mechanic: mech.failure
     players: 0
     damage: 100000
-    description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to Enuo, dealing heavy damage and inflicting [s:sustained-damage] on all party members.
+    description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to [boss], dealing heavy damage and inflicting [s:sustained-damage] on all party members.
   burst:
     id: 50006
     mechanic: aoe.orbs
