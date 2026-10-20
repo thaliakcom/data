@@ -432,7 +432,7 @@ actions:
     shape: line
     count: 2
     damage: 341677
-    description: Heavy tankbuster. Cannot be interjected, but with sufficient damage the Protective Shadow can be defeated before it can finish this cast.
+    description: Heavy tankbuster. Cannot be interrupted, but with sufficient damage the Protective Shadow can be defeated before it can finish this cast.
   lightless-world:
     id: 50029
     mechanic: raidwide.ultimate
