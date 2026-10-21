@@ -1238,7 +1238,7 @@ actions:
       Oracle of Darkness's dark Akh Morn inflicts [s:darknesss-design], rendering Usurper of Frost's light Akh Morn lethal.
       Ignores [s:transcendent] and [t:invuln]s.
   morn-afah:
-    id: 40249
+    id: 40250
     mechanic: stack
     shape: chariot
     damage: 180000
@@ -1401,7 +1401,7 @@ actions:
     description: Placeholder description
   polarizing-paths:
     id: 40234
-    mechanic: aoe
+    mechanic: aoe.aftershock
     shape: line
     description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down] on anyone inside.
   fulgent-blade:

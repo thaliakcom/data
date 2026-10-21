@@ -391,7 +391,7 @@ actions:
     - at: 961
       id: fractured-eventide
   fractured-eventide:
-    id: 35644
+    id: 35646
     mechanic: aoe
     shape: line
     description: "[boss] leans onto the arena. After some time, it blasts a [ms:line] across the arena, slowly sweeping toward the other side."
@@ -452,7 +452,7 @@ actions:
     - at: 8129
       id: prominence-spine
   nox:
-    id: 36136
+    id: 36137
     mechanic: aoe.chasing
     shape: chariot
     description: Marks 2 players and spawns two large balls that pursue them. Deals massive damage to anyone in their path.

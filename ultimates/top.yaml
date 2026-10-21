@@ -401,8 +401,7 @@ actions:
       Does not apply to players who don't have [s:looper].
       If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all party members, likely causing [s:doom].
   blaster-cast:
-    id: 31497
-    type: magic
+    id: 31498
     mechanic: spread.tethers
     shape: defamation
     damage: 35847
@@ -821,11 +820,12 @@ actions:
     mechanic: mech
     description: Omega-M uses an optimized version of [a:passage] that renders all friendly targets behind Omega-M invulnerable. Omega-M must be eliminated to dispel this effect.
   optimized-bladedance:
-    id: 31540
+    id: 31542
     type: physical
     mechanic: tb.tether
     shape: cone
     damage: 220381
+    cast: 7900
     description: An optimized version of the standard melee LB2. Massive 90° conal tankbusters with essentially infinite radius, targeting two tethered players. Each hit inflicts [s:physical-vuln-up].
     resolve: The tethers should be taken directly clockwise or counter-clockwise of their respective clone to create a small gap for the rest of the party to hide in.
   optimized-sagittarius-arrow:
@@ -836,11 +836,11 @@ actions:
       An optimized version of [a:sagittarius-arrow] that deals lethal damage to anyone inside the line. This attack is telegraphed and can be easily avoided.
       Be aware that the damage of this attack snapshots as soon as the telegraph disappears, but the damage is not actually applied until the animation has finished nearly 5 seconds later. If someone randomly falls over dead, they were likely hit by Optimized Sagittarius Arrow.
   beyond-defense:
-    id: 31527
-    type: physical
+    id: 31528
     mechanic: spread.close
     shape: chariot
     damage: 19463
+    cast: 4900
     description: At the end of the cast, Omega-M dashes to one of the two closest players and hits them with a small AoE that deals mild damage, inflicts [s:twice-come-ruin], and knocks any other players hit into the death wall. The same Omega-M then prepares [a:pile-pitch].
   pile-pitch:
     id: 31529
@@ -1194,11 +1194,11 @@ actions:
       If any [Critical Overflow Bugs](s:critical-overflow-bug) are successfully inflicted, the next mechanic is unresolvable, necessitating that all players have [s:overflow-debugger] at the end of [a:hello-world].
       **Note**: All players should also have [s:underflow-debugger] and [s:performance-debugger], and most players should have [s:synchronization-debugger] at this point. However, these debuffs are not relevant for [a:critical-error] and will persist even past this cast, only expiring at the start of Phase 5.
   oversampled-wave-cannon:
-    id: 31596
-    type: magic
-    mechanic: mech
+    id: 31597
+    mechanic: spread
+    shape: chariot
     damage: 50785
-    players: 1
+    cast: 10000
     emphasis: more
     description: |
       Monitors appear on either the left or right side of Omega as well as the left or right side of three random players (through [s:oversampled-wave-cannon-loading]).
