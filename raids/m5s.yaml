@@ -1,7 +1,7 @@
 id: 1020
 patch: '7.2'
 date: 2025-04-10
-modified: 2025-04-10
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -267,10 +267,10 @@ actions:
   deep-cut:
     id: 42786
     mechanic: tb.double
-    shape: line
+    shape: cone
     count: 2
     damage: 302564
-    description: Standard [ms:line] tankbuster on the two highest-enmity targets.
+    description: Standard [ms:cone] tankbuster on the two highest-enmity targets.
   celebrate-good-times:
     id: 42787
     mechanic: raidwide

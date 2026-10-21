@@ -1,7 +1,7 @@
 id: 833
 patch: "7.0"
 date: 2024-07-15
-modified: 2024-07-21
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -367,7 +367,7 @@ actions:
   slithering-strike:
     id: 36812
     mechanic: aoe
-    shape: chariot
+    shape: halfroom
     damage: 68441
     players: 0
     description: |

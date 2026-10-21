@@ -1,7 +1,7 @@
 id: 992
 patch: "7.05"
 date: 2024-10-12
-modified: 2025-03-14
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -954,7 +954,7 @@ actions:
   wicked-cannon:
     id: 38436
     mechanic: aoe
-    shape: chariot
+    shape: line
     count: 4
     description: Placeholder description for Wicked Cannon
   wicked-thunder:
@@ -1093,7 +1093,7 @@ actions:
   laceration:
     id: 38401
     mechanic: stack.partner
-    shape: line
+    shape: cone
     count: 4
     damage: 138147
     description: Placeholder description for Laceration

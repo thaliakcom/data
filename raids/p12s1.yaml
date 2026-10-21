@@ -1,7 +1,7 @@
 id: 943
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-22
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -71,11 +71,11 @@ status:
   quartered-soul:
     id: 3585
     type: delay
-    description: Player drops a cross of two [ms:line]s ([a:theoss-cross]) when the effect expires.
+    description: Player drops a plus of two [ms:line]s ([a:theoss-cross]) when the effect expires.
   x-marked-soul:
     id: 3584
     type: delay
-    description: Player drops an X of two [ms:line]s ([a:theoss-saltire]) when the effect expires.
+    description: Player drops a cross of two [ms:line]s ([a:theoss-saltire]) when the effect expires.
   enchained-soul:
     id: 3585
     type: impairment
@@ -458,13 +458,13 @@ actions:
   theoss-cross:
     id: 33546
     mechanic: aoe.delayed
-    shape: line
-    description: The cross-shaped [ms:line]s placed by [s:quartered-soul] resolve.
+    shape: plus
+    description: The plus-shaped [ms:line]s placed by [s:quartered-soul] resolve.
   theoss-saltire:
     id: 33547
     mechanic: aoe.delayed
-    shape: line
-    description: The X-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
+    shape: cross
+    description: The cross-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
   ultima-blade:
     id: 33523
     type: magic

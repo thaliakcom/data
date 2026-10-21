@@ -1,7 +1,7 @@
 id: 539
 patch: "4.31"
 date: 2026-05-03
-modified: 2026-10-20
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -1351,7 +1351,7 @@ actions:
   diffractive-laser:
     id: 11128
     mechanic: tb.mt
-    shape: chariot
+    shape: cone
     damage: 13680
     description: Moderate tankbuster. Cleaves.
   ultimate-predation:

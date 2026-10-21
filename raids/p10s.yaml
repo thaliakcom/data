@@ -1,7 +1,7 @@
 id: 939
 patch: "6.4"
 date: 2023-10-08
-modified: 2024-06-22
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -493,9 +493,9 @@ actions:
     id: 33429
     compact: full
     mechanic: aoe.rotating
-    shape: line
+    shape: cone
     description: |
-      Sets of two line [AoEs](t:AoE) that start opposite, then rotate around the arena. The center is unsafe.
+      Sets of two cone [AoEs](t:AoE) that start opposite, then rotate around the arena. The center is unsafe.
       Be aware that [a:pandæmoniac-ray] directly follows this mechanic, so you might want to consider using [s:sprint] if you end up on the wrong side following the AoEs.
       The AoEs rotate at a rate of about 3.3/s.
     children:
@@ -522,8 +522,8 @@ actions:
     name: Parted Plumes (Hit)
     mechanic: aoe
     count: 2
-    shape: line
-    description: A set of two line [AoEs](t:AoE) explodes, inflicting [s:paralysis] to anyone caught inside.
+    shape: cone
+    description: A set of two cone [AoEs](t:AoE) explodes, inflicting [s:paralysis] to anyone caught inside.
 timeline:
   - at: 14240
     id: ultima

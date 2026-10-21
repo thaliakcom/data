@@ -1,7 +1,7 @@
 id: 908
 patch: "6.31"
 date: 2024-05-19
-modified: 2026-10-20
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -599,7 +599,7 @@ actions:
       Note that, although party buffs come off cooldown here, it is strongly advised to hold them for the start of Phase 2.
   firewall:
     id: 31553
-    mechanic: mech
+    mechanic: mech.status
     damage: 0
     description: Inflicts [s:packet-filter-f] on the four closest players to Omega-M and [s:packet-filter-m] on all remaining players (regardless of distance to Omega-F).
     resolve: |

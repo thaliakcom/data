@@ -1,7 +1,7 @@
 id: 986
 patch: "7.05"
 date: 2024-08-18
-modified: 2024-09-03
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -514,7 +514,7 @@ actions:
     shape: chariot
     compact: full
     description: |
-      [boss]'s clone telegrahps a number of large [ms:chariot] AoEs as she dashes around the arena.
+      [boss]'s clone telegraphs a number of large [ms:chariot] AoEs as she dashes around the arena.
       Note that the path she takes to get from one AoE to another is a [ms:line] AoE and also deals damage.
     resolve: |
       As [boss] uses [a:one-two-paw] at the same time as the clone executes [a:predaceous-pounce], it is necessary to find a safespot somewhere in the center of the arena.
@@ -542,8 +542,8 @@ actions:
   predaceous-pounce-hit:
     id: 39704
     mechanic: aoe
-    shape: chariot
-    description: Individual hit of [a:predaceous-pounce]. Inflicts [s:damage-down].
+    shape: line
+    description: Individual line-chariot hit combination of [a:predaceous-pounce]. Inflicts [s:damage-down].
   mouser-enrage:
     id: 37953
     mechanic: enrage.soft
