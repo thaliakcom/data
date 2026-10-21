@@ -1291,6 +1291,20 @@
     "DonutDefinition": {
       "type": "object",
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -1401,6 +1415,20 @@
     "EllipseDefinition": {
       "type": "object",
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -1511,6 +1539,20 @@
     "ConeDefinition": {
       "type": "object",
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -1750,6 +1792,20 @@
     "RectangleDefinition": {
       "type": "object",
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -2139,6 +2195,20 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -2331,6 +2401,20 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -2473,6 +2557,20 @@
     "ConeDelta": {
       "type": "object",
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
@@ -2908,6 +3006,20 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "look": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "aoe"
+          ],
+          "description": "How the shape is drawn:\n\n- plain (default): filled with color.\n\n- aoe: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. color is ignored; tint it with filter (e.g. hue-rotate). Overlapping AoEs are drawn on top of each other unless they merge.",
+          "markdownDescription": "How the shape is drawn:\n\n- `plain` (default): filled with `color`.\n\n- `aoe`: as an animated AoE, i.e. a fill with a bright inner rim and a pulse every 1.1 s. `color` is ignored; tint it with `filter` (e.g. `hue-rotate`). Overlapping AoEs are drawn on top of each other unless they `merge`."
+        },
+        "merge": {
+          "type": "boolean",
+          "description": "With look: aoe: merges this AoE with the AoEs of the same group (same ID before #, or the same group) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to false: the AoE is drawn on its own.",
+          "markdownDescription": "With `look: aoe`: merges this AoE with the AoEs of the same group (same ID before `#`, or the same `group`) that come right before or after it in drawing order and also merge, into one outline with a single rim. Defaults to `false`: the AoE is drawn on its own."
+        },
         "color": {
           "type": "string",
           "description": "An HTML color string for this element."
