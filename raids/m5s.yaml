@@ -82,7 +82,6 @@ status:
 actions:
   inside-out:
     id: 37826
-    name: Inside Out
     mechanic: aoe
     shape: chariot
     description: A [ms:chariot] followed by a [ms:dynamo].
@@ -91,13 +90,11 @@ actions:
       id: inside-out-1
   inside-out-1:
     id: 37827
-    name: Inside Out
     mechanic: aoe
     shape: dynamo
     description: The followup [ms:dynamo].
   outside-in:
     id: 37828
-    name: Outside In
     mechanic: aoe
     shape: dynamo
     description: A [ms:dynamo] followed by a [ms:chariot].
@@ -106,7 +103,6 @@ actions:
       id: outside-in-1
   outside-in-1:
     id: 37829
-    name: Outside In
     mechanic: aoe
     shape: chariot
     description: The followup [ms:chariot].
@@ -116,7 +112,6 @@ actions:
     description: Assembles a row of frogs at the northern edge of the arena.
   minor-freak-out:
     id: 39475
-    name: Minor Freak Out
     mechanic: spread
     shape: chariot
     damage: 33596
@@ -171,7 +166,6 @@ actions:
       This cleave can only hit the west or east of the arena.
   arcady-night-encore:
     id: 41840
-    name: Arcady Night Encore
     mechanic: mech
     emphasis: more
     compact: full
@@ -252,7 +246,6 @@ actions:
       id: lets-dance-remix
   lets-dance-remix:
     id: 41877
-    name: Let's Dance! Remix
     mechanic: aoe
     shape: halfroom
     description: |
@@ -261,7 +254,6 @@ actions:
       This cleave can hit the north, south, west, or east of the arena.
   frogtourage-finale:
     id: 42209
-    name: Frogtourage Finale
     mechanic: mech.prepare
     description: Summons another ensemble of frogs at the northern edge of the arena in preparation for the [m:enrage].
   deep-cut:
@@ -283,7 +275,6 @@ actions:
     description: Hits the indicated side with a [ms:halfroom].
   2-snap-twist-&-drop-the-needle:
     id: 42797
-    name: 2-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     compact: full
@@ -302,25 +293,21 @@ actions:
       id: play-b-side
   2-snap-twist-&-drop-the-needle-0:
     id: 42798
-    name: 2-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The first [ms:halfroom] on the indicated side.
   2-snap-twist-&-drop-the-needle-1:
     id: 42798
-    name: 2-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The second [ms:halfroom] on the indicated side.
   2-snap-twist-&-drop-the-needle-2:
     id: 42799
-    name: 2-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The last [ms:halfroom] on the opposite side.
   3-snap-twist-&-drop-the-needle:
     id: 42205
-    name: 3-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     compact: full
@@ -341,31 +328,26 @@ actions:
       id: play-b-side
   3-snap-twist-&-drop-the-needle-1:
     id: 42800
-    name: 3-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: Placeholder description
   3-snap-twist-&-drop-the-needle-2:
     id: 42806
-    name: 3-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: Placeholder description
   3-snap-twist-&-drop-the-needle-3:
     id: 42807
-    name: 3-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: Placeholder description
   3-snap-twist-&-drop-the-needle-4:
     id: 42808
-    name: 3-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: Placeholder description
   4-snap-twist-&-drop-the-needle:
     id: 42809
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     compact: full
@@ -388,31 +370,26 @@ actions:
       id: play-b-side
   4-snap-twist-&-drop-the-needle-0:
     id: 42815
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The first [ms:halfroom] on the indicated side.
   4-snap-twist-&-drop-the-needle-1:
     id: 42815
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The second [ms:halfroom] on the indicated side.
   4-snap-twist-&-drop-the-needle-2:
     id: 42816
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The third [ms:halfroom] on the indicated side.
   4-snap-twist-&-drop-the-needle-3:
     id: 42817
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The fourth [ms:halfroom] on the indicated side.
   4-snap-twist-&-drop-the-needle-4:
     id: 42818
-    name: 4-snap Twist & Drop the Needle
     mechanic: aoe
     shape: halfroom
     description: The last [ms:halfroom] on the opposite side.
@@ -562,7 +539,6 @@ actions:
     description: Placeholder description
   freak-out:
     id: 42854
-    name: Freak Out
     mechanic: mech.failure
     shape: chariot
     players: 1
@@ -570,7 +546,6 @@ actions:
     description: Placeholder description
   freak-out-1:
     id: 42855
-    name: Freak Out
     mechanic: mech.failure
     shape: chariot
     players: 1
@@ -592,7 +567,6 @@ actions:
     description: Frogs draw a rectangular shape throughout the arena. Once the drawing is complete, that area explodes, dealing massive damage and inflicting [s:damage-down].
   back-up-dance:
     id: 42872
-    name: Back-up Dance
     mechanic: spread.close
     shape: cone
     count: 4
@@ -600,23 +574,19 @@ actions:
     description: Placeholder description
   hi-nrg-fever:
     id: 42873
-    name: Hi-NRG Fever
     mechanic: enrage
     damage: 9999999
     description: Placeholder description
   flip-to-a-side:
     id: 42880
-    name: Flip to A-side
     mechanic: mech.store
     description: Stocks a [m:stack.role]. Grants [s:needle-poised] to [boss].
   flip-to-b-side:
     id: 42881
-    name: Flip to B-side
     mechanic: mech.store
     description: Stocks a [m:stack.healers]. Grants [s:needle-poised] to [boss].
   play-a-side:
     id: 42883
-    name: Play A-side
     mechanic: stack.role
     shape: cone
     count: 3
@@ -625,7 +595,6 @@ actions:
     description: Plays the previously stocked [m:stack.role].
   play-b-side:
     id: 42884
-    name: Play B-side
     mechanic: stack.healers
     shape: line
     count: 2

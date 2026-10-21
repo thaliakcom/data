@@ -1,7 +1,7 @@
 id: 1006
 patch: "7.11"
 date: 2024-11-26
-modified: 2025-03-22
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -1158,7 +1158,6 @@ actions:
   # Phase 4
   edge-of-oblivion:
     id: 40174
-    name: Edge of Oblivion
     mechanic: raidwide
     damage: 62825
     description: Simple raidwide cast by Fragment of Fate.
@@ -1190,7 +1189,6 @@ actions:
     description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down].
   darklit-dragonsong:
     id: 40239
-    name: Darklit Dragonsong
     mechanic: mech
     emphasis: more
     compact: trim
@@ -1294,7 +1292,6 @@ actions:
     description: Placeholder description
   crystallize-time:
     id: 40298
-    name: Crystallize Time
     mechanic: mech.trio
     emphasis: more
     compact: full
@@ -1387,33 +1384,28 @@ actions:
   # Phase 5
   wings-dark-and-light-in-out:
     id: 39879
-    name: Wings Dark and Light
     mechanic: tb.close-and-far
     damage: 456163
     description: Placeholder description
   the-path-of-darkness:
     id: 40118
-    name: the Path of Darkness
     mechanic: aoe.exaflares
     shape: line
     count: 2
     description: Placeholder description
   the-path-of-light-exa:
     id: 40307
-    name: the Path of Light
     mechanic: aoe.exaflares
     shape: line
     count: 2
     description: Placeholder description
   polarizing-paths:
     id: 40234
-    name: Polarizing Paths
     mechanic: aoe
     shape: line
     description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down] on anyone inside.
   fulgent-blade:
     id: 40306
-    name: Fulgent Blade
     mechanic: mech
     compact: trim
     players: 8
@@ -1439,7 +1431,6 @@ actions:
       id: akh-morn-p5
   akh-morn-p5:
     id: 40312
-    name: Akh Morn
     mechanic: stack
     shape: chariot
     count: 2
@@ -1448,14 +1439,12 @@ actions:
     description: Placeholder description
   wings-dark-and-light-cleave:
     id: 40314
-    name: Wings Dark and Light
     mechanic: tb.mt
     shape: halfroom
     damage: 452250
     description: Placeholder description
   polarizing-strikes:
     id: 40316
-    name: Polarizing Strikes
     mechanic: mech
     compact: full
     description: Placeholder description
@@ -1488,21 +1477,18 @@ actions:
       id: cruel-path-of-darkness
   cruel-path-of-light:
     id: 40317
-    name: Cruel Path of Light
     mechanic: stack.intercept
     shape: line
     damage: 120443
     description: Placeholder description
   cruel-path-of-darkness:
     id: 40318
-    name: Cruel Path of Darkness
     mechanic: stack.intercept
     shape: line
     damage: 120685
     description: Placeholder description
   paradise-regained:
     id: 40319
-    name: Paradise Regained
     mechanic: mech
     compact: trim
     description: Placeholder description
@@ -1525,19 +1511,16 @@ actions:
       id: paradise-explosion
   paradise-explosion:
     id: 40320
-    name: Explosion
     mechanic: towers.double
     damage: 47226
     description: Placeholder description
   pandoras-box:
     id: 40326
-    name: Pandora's Box
     mechanic: raidwide.lb
     damage: 824919
     description: Placeholder description
   paradise-lost:
     id: 40328
-    name: Paradise Lost
     mechanic: enrage
     type: dark
     damage: 9999999

@@ -2,7 +2,7 @@ id: 1075
 sort_id: 1074
 patch: "7.4"
 date: 2026-01-28
-modified: 2026-05-19
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -625,7 +625,6 @@ actions:
       id: burst
   cell-shedding:
     id: 46252
-    name: Cell Shedding
     mechanic: spread
     shape: chariot
     count: 4
@@ -633,7 +632,6 @@ actions:
     description: Small spread AoE as a result of cleansing [s:rotting-flesh] by taking damage. Inflicts [s:poison-resistance-down-ii].
   cell-death:
     id: 46253
-    name: Cell Death
     mechanic: mech.failure
     damage: 130407
     players: 0
@@ -710,7 +708,6 @@ actions:
     description: An individual hit of [a:serpentine-scourge].
   raptor-knuckles:
     id: 46288
-    name: Raptor Knuckles
     mechanic: mech.knockback
     description: |
       A knockback from either the northwest or northeast corner, followed by a knockback from the other corner.
@@ -735,7 +732,6 @@ actions:
     description: If [boss] is not brought below 15%, it goes untargetable here and wipes the party.
   refreshing-overkill:
     id: 46394
-    name: Refreshing Overkill
     mechanic: enrage.threshold
     cast: 10000
     damage: 60000

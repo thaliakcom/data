@@ -1,7 +1,7 @@
 id: 1075
 patch: "7.4"
 date: 2026-01-31
-modified: 2026-04-25
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -202,13 +202,12 @@ actions:
     description: Spread AoEs on the two closest players to the corresponding Lindschrat clone. Inflicts [s:dark-resistance-down-ii].
   snaking-kick-halfroom:
     id: 46375
-    name: Snaking Kick (Halfroom)
+    caption: Halfroom
     mechanic: aoe
     shape: halfroom
     description: Halfroom cleave aimed at a random player. Inflicts [s:damage-down].
   double-sobat:
     id: 46368
-    name: Double Sobat
     mechanic: tb.stack
     shape: halfroom
     description: A halfroom [m:tb.stack] into a halfroom AoE into a [ms:chariot] [m:tb.double].
@@ -222,14 +221,13 @@ actions:
       id: esoteric-finisher
   double-sobat-tb:
     id: 46371
-    name: Double Sobat
     mechanic: tb.stack
     shape: halfroom
     damage: 550000
     description: Halfroom cleave on the highest-enmity target. Deals about 1.1 million damage evenly split between all players hit.
   double-sobat-cleave:
     id: 46373
-    name: Double Sobat
+    caption: Cleave
     mechanic: aoe
     shape: halfroom
     description: |
@@ -244,7 +242,6 @@ actions:
       [ms:chariot:c] tankbusters on the two highest-enmity targets.
   staging-i:
     id: 46305
-    name: Staging
     mechanic: mech.prepare
     description: |
       Spawns a clone of each player in a fixed order around the arena. See [a:replication-ii] for more information.
@@ -253,7 +250,6 @@ actions:
       Each player clone copies the Lindschrat mechanics that player has chosen during [a:replication-ii] after those mechanics have executed. These mechanics are copied in the order the player clones spawned (so north/south first, then clockwise).
   staging-ii:
     id: 46305
-    name: Staging
     mechanic: mech.prepare
     description: |
       Spawns 4 player clones on intercardinals, then cardinals (or vice-versa). See [a:replication-iii] for more information.
@@ -313,7 +309,6 @@ actions:
       id: reenactment-i
   firefall-splash-player:
     id: 46308
-    name: Firefall Splash
     mechanic: spread
     shape: chariot
     damage: 136024
@@ -353,7 +348,6 @@ actions:
     description: Cone in the direction a player is facing. Inflicts [s:damage-down].
   reenactment-i:
     id: 46316
-    name: Reenactment
     mechanic: mech
     compact: trim
     description: |
@@ -381,7 +375,6 @@ actions:
       id: player-clones-senw
   reenactment-ii:
     id: 46316
-    name: Reenactment
     mechanic: mech
     compact: trim
     description: |
@@ -404,7 +397,6 @@ actions:
     description: The southeast & northwest player clones resolve, repeating whatever mechanics their player was targeted by before.
   netherwrath-near:
     id: 46382
-    name: Netherwrath Near
     mechanic: stack.close
     shape: chariot
     description: A 2-player stack on the two closest players to [boss]. Inflicts [s:magic-vulnerability-up].
@@ -413,7 +405,6 @@ actions:
       id: timeless-spite
   netherwrath-far:
     id: 46383
-    name: Netherwrath Far
     mechanic: stack.far
     shape: chariot
     description: A 2-player stack on the two farthest players from [boss]. Inflicts [s:magic-vulnerability-up].
@@ -422,7 +413,6 @@ actions:
       id: timeless-spite
   timeless-spite:
     id: 46384
-    name: Timeless Spite
     mechanic: stack.partner
     shape: chariot
     count: 2
@@ -431,33 +421,33 @@ actions:
     description: The damage instance for [a:netherwrath-far] and [a:netherwrath-near]. Inflicts [s:magic-vulnerability-up].
   hemorrhagic-projection-clone:
     id: 47394
-    name: Hemorrhagic Projection (Clone)
+    caption: Clone
     mechanic: aoe.facing
     shape: cone
     count: 2
     description: Cone in the direction a player clone is facing (towards center). Inflicts [s:damage-down].
   mana-burst-clone:
     id: 48099
-    name: Mana Burst (Clone)
+    caption: Clone
     mechanic: aoe
     shape: defamation
     description: Fires a [a:mana-burst-player] at the clone of a player who took [a:mana-burst-player] before and knocks any nearby players off the platform.
   heavy-slam-clone:
     id: 48733
-    name: Heavy Slam (Clone)
+    caption: Clone
     mechanic: towers.single
     damage: 188297
     players: 4
     description: A [a:heavy-slam] resolves on a player clone. If left unsoaked, inflicts [s:sustained-damage] on the whole party. Inflicts [s:magic-vulnerability-up].
   firefall-splash-clone:
     id: 46317
-    name: Firefall Splash (Clone)
+    caption: Clone
     mechanic: aoe
     shape: chariot
     description: A Lindschrat clone jumps on the clone of the player who took [a:firefall-splash-player] initially, dealing massive damage and inflicting [s:magic-vulnerability-up].
   scalding-waves-repeat:
     id: 47329
-    name: Scalding Waves (Clone)
+    caption: Clone
     mechanic: spread
     shape: cone
     count: 4
@@ -465,7 +455,6 @@ actions:
     description: Fires [a:scalding-waves] at the same 4 players who were targeted by it the first time. Inflicts [s:magic-vulnerability-up].
   mutating-cells:
     id: 46341
-    name: Mutating Cells
     mechanic: mech.status
     description: |
       Inflicts 4 players with [s:mutation-alpha] and the other 4 players with [s:mutation-beta].
@@ -477,7 +466,6 @@ actions:
       The [s:mutation-beta] tank should [a:provoke] immediately if they're not already first in enmity.
   blood-mana:
     id: 46331
-    name: Blood Mana
     mechanic: mech
     emphasis: more
     compact: trim
@@ -520,7 +508,6 @@ actions:
       id: dramatic-lysis
   bloody-burst:
     id: 46334
-    name: Bloody Burst
     mechanic: stack
     shape: chariot
     damage: 165809
@@ -532,7 +519,6 @@ actions:
     description: Deals heavy damage and inflicts [s:damage-down] on players who did not meet their [s:mutation-alpha]/[s:mutation-beta] condition.
   blood-wakening:
     id: 46336
-    name: Blood Wakening
     mechanic: mech
     description: Triggers the first set of AoEs absorbed by black holes, then triggers the second set shortly after.
     children:
@@ -560,33 +546,28 @@ actions:
       id: lindwurms-water-iii
   straightforward-thunder-ii:
     id: 46339
-    name: Straightforward Thunder II
     mechanic: aoe
     shape: cone
     count: 2
     description: A north/south conal AoE originating from a black hole. Inflicts [s:damage-down].
   lindwurms-water-iii:
     id: 46337
-    name: Lindwurm's Water III
     mechanic: aoe
     shape: chariot
     description: A [ms:chariot] AoE on a black hole. Inflicts [s:damage-down].
   sideways-fire-ii:
     id: 46340
-    name: Sideways Fire II
     mechanic: aoe
     shape: cone
     count: 2
     description: An east/west conal AoE originating from a black hole. Inflicts [s:damage-down].
   lindwurms-aero-iii:
     id: 46338
-    name: Lindwurm's Aero III
     mechanic: aoe
     shape: dynamo
     description: A [ms:dynamo] AoE around a black hole. Inflicts [s:damage-down].
   netherworld-near:
     id: 46379
-    name: Netherworld Near
     mechanic: stack.close
     shape: chariot
     description: A 4-player stack on the closest player to [boss].
@@ -596,7 +577,6 @@ actions:
       id: wailing-wave
   netherworld-far:
     id: 46380
-    name: Netherworld Far
     mechanic: stack.far
     shape: chariot
     description: A 4-player stack on the farthest player from [boss].
@@ -606,7 +586,6 @@ actions:
       id: wailing-wave
   wailing-wave:
     id: 46381
-    name: Wailing Wave
     mechanic: stack
     shape: chariot
     damage: 207456
@@ -614,7 +593,6 @@ actions:
     description: The [a:netherworld-far]/[a:netherworld-near] stack resolves.
   idyllic-dream:
     id: 46345
-    name: Idyllic Dream
     mechanic: raidwide.transition
     emphasis: more
     damage: 323330
@@ -659,20 +637,17 @@ actions:
       Check your data center's raidplans for strategies regarding who picks which tether.
   idyllic-dream-end:
     id: 46345
-    name: Idyllic Dream
     mechanic: raidwide.transition
     damage: 323330
     description: |
       Heavy raidwide that fuses the two realities back together to restore the original reality.
   twisted-vision:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     emphasis: more
     description: Shifts realities, pausing any mechanics in the source reality and resuming any in-progress mechanics in the destination reality.
   twisted-vision-i:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the blue reality and executes [a:replication-iii].
     children:
@@ -680,7 +655,6 @@ actions:
       id: replication-iii
   twisted-vision-ii:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the green reality and executes [a:replication-iv].
     children:
@@ -688,7 +662,6 @@ actions:
       id: replication-iv
   twisted-vision-iii:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the blue reality. Immediately after, executes the paused casts of the [a:replication-iii] clones.
     children:
@@ -707,7 +680,6 @@ actions:
       id: arcadian-arcanum
   twisted-vision-iv:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the green reality and executes all Lindschrat tether mechanics.
     children:
@@ -721,7 +693,6 @@ actions:
       id: heavy-slam-idyllic
   twisted-vision-v:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the blue reality and executes towers as well as all tower-related effects.
     children:
@@ -741,7 +712,6 @@ actions:
       id: temporal-curtain
   twisted-vision-vi:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the green reality and executes the stored mechanics on the player clones that spawned first.
     children:
@@ -756,7 +726,6 @@ actions:
       count: 2
   twisted-vision-vii:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the blue reality and executes [a:snaking-kick-chariot] on one platform and [a:power-gusher] on the other.
     children:
@@ -768,7 +737,6 @@ actions:
       count: 2
   twisted-vision-viii:
     id: 48098
-    name: Twisted Vision
     mechanic: mech.arena
     description: Shifts to the green reality and executes the remaining 4 [a:reenactment-ii] player clone mechanics.
     children:
@@ -785,7 +753,7 @@ actions:
       count: 2
   snaking-kick-chariot:
     id: 48789
-    name: Snaking Kick (Circle)
+    caption: Circle
     mechanic: aoe
     shape: chariot
     description: A [ms:chariot] AoE executed by a Lindschrat clone. Inflicts [s:damage-down].
@@ -796,7 +764,6 @@ actions:
     description: North/south or east/west cones originating from a Lindschrat clone. Inflicts [s:damage-down].
   lindwurms-meteor:
     id: 46322
-    name: Lindwurm's Meteor
     mechanic: mech.arena
     damage: 325318
     players: 8
@@ -805,7 +772,6 @@ actions:
       Assign one light party to the west platform and the other one to the east platform.
   downfall:
     id: 46323
-    name: Downfall
     mechanic: towers.single
     damage: 0
     description: |
@@ -821,7 +787,6 @@ actions:
       After [a:arcadian-arcanum], swap towers with the other close/far player if you were hit and your tower is a light tower. Remember which tower you're assigned here for when you return to this reality.
   arcadian-arcanum:
     id: 47577
-    name: Arcadian Arcanum
     mechanic: spread
     shape: chariot
     cast: 3000
@@ -851,7 +816,6 @@ actions:
     description: Towers resolve, alongside their special effects. Inflicts [s:sustained-damage] per tower missed.
   lindwurms-dark-ii:
     id: 46326
-    name: Lindwurm's Dark II
     mechanic: spread
     shape: line
     count: 2
@@ -861,14 +825,12 @@ actions:
       The [s:doom] can be cleansed.
   lindwurms-stone-iii:
     id: 46327
-    name: Lindwurm's Stone III
     mechanic: aoe.delayed
     shape: chariot
     count: 2
     description: Inflicts [s:damage-down] on any player near where the earth tower stood.
   lindwurms-thunder-ii:
     id: 46330
-    name: Lindwurm's Thunder II
     mechanic: mech.close-or-far
     shape: cone
     count: 4
@@ -877,7 +839,6 @@ actions:
     description: "[s:nearby-portent] and [s:faraway-portent] resolve in the form of a cone originating from the player themselves, aimed towards the closest/farthest player from them, respectively."
   lindwurms-glare:
     id: 46328
-    name: Lindwurm's Glare
     mechanic: spread
     shape: chariot
     count: 4
@@ -885,7 +846,6 @@ actions:
     description: "[s:lindwurms-portent] resolves in the form of a tiny [ms:chariot] AoE that inflicts [s:magic-vulnerability-up]."
   temporal-curtain:
     id: 46364
-    name: Temporal Curtain
     mechanic: mech
     description: |
       Opens a portal to the other reality on one of the two platforms. Either the northmost or southmost Lindschrat clone slips through this portal.

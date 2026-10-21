@@ -1,7 +1,7 @@
 id: 1073
 patch: "7.4"
 date: 2026-01-25
-modified: 2026-01-31
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -572,7 +572,6 @@ actions:
     description: A comet explodes in a moderately sized [ms:chariot] AoE.
   triple-tyrannhilation:
     id: 46140
-    name: Triple Tyrannhilation
     mechanic: mech.los
     description: Three hits in rapid succession, each of which instantly kills any player and destroys any comet in line of sight.
     children:
@@ -860,7 +859,6 @@ actions:
       Second, players are not inflicted with [s:magic-vulnerability-up] but [s:fire-resistance-down-ii].
   two-way-fireball:
     id: 47038
-    name: Two-way Fireball
     mechanic: stack.intercept
     shape: line
     cast: 6000
@@ -873,7 +871,6 @@ actions:
       - "A **very** common mistake is the second player in line being closer than the first player in line on the opposite side. In other words: the two non-[s:fire-resistance-down-ii] players on one side are both the two closest players to the boss. This causes both line stacks to be baited onto the same side, thus overlapping and killing the entire light party."
   four-way-fireball:
     id: 46171
-    name: Four-way Fireball
     mechanic: stack.intercept
     shape: line
     cast: 6000

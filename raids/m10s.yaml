@@ -1,7 +1,7 @@
 id: 1071
 patch: "7.4"
 date: 2026-01-20
-modified: 2026-01-31
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -232,7 +232,6 @@ actions:
     description: A spread on all non-[s:firesnaking] players.
   reverse-alley-oop:
     id: 46561
-    name: Reverse Alley-oop
     mechanic: spread
     shape: cone
     cast: 5000
@@ -249,13 +248,12 @@ actions:
       count: 16
   reverse-alley-oop-echo:
     id: 46562
-    name: Reverse Alley-oop (Aftershock)
+    caption: Aftershock
     mechanic: aoe.aftershock
     shape: cone
     description: Hits between the previous spreads. See [a:reverse-alley-oop] for more information. Inflicts [s:damage-down].
   alley-oop-double-dip:
     id: 46558
-    name: Alley-oop Double-dip
     mechanic: spread
     shape: cone
     cast: 5000
@@ -269,7 +267,7 @@ actions:
       count: 8
   alley-oop-double-dip-echo:
     id: 46559
-    name: Alley-oop Double-dip (Aftershock)
+    caption: Aftershock
     mechanic: aoe.aftershock
     shape: cone
     description: Cones on all players' initial positions. Inflicts [s:damage-down].
@@ -349,7 +347,6 @@ actions:
     description: Subsequent casts of [a:insane-air-initial] are functionally identical but have a faster cast.
   blasting-snap:
     id: 46577
-    name: Blasting Snap
     mechanic: spread.close
     shape: cone
     count: 4
@@ -357,7 +354,6 @@ actions:
     description: Conal spreads on the 4 closest players. Leaves behind conal fire puddles. Inflicts [s:magic-vulnerability-up].
   plunging-snap:
     id: 46578
-    name: Plunging Snap
     mechanic: spread.close
     shape: cone
     count: 4
@@ -365,35 +361,30 @@ actions:
     description: Conal spreads on the 4 closest players. Inflicts [s:magic-vulnerability-up].
   vertical-blast:
     id: 46585
-    name: Vertical Blast
     mechanic: tb.close
     shape: chariot
     damage: 319500
     description: Point-blank tankbuster on the closest player. Leaves behind a fire puddle. Inflicts [s:magic-vulnerability-up].
   vertical-plunge:
     id: 46586
-    name: Vertical Plunge
     mechanic: tb.close
     shape: chariot
     damage: 321559
     description: Point-blank tankbuster on the closest player. Inflicts [s:magic-vulnerability-up].
   re-entry-blast:
     id: 46581
-    name: Re-entry Blast
     mechanic: stack.close
     shape: cone
     damage: 97476
     description: Conal 4-player stack on the closest player. Leaves behind a conal fire puddle. Inflicts [s:magic-vulnerability-up].
   re-entry-plunge:
     id: 46582
-    name: Re-entry Plunge
     mechanic: stack.close
     shape: cone
     damage: 118963
     description: Conal 4-player stack on the closest player. Inflicts [s:magic-vulnerability-up].
   firesnaking:
     id: 45953
-    name: Firesnaking
     mechanic: mech
     emphasis: more
     players: 8
@@ -439,7 +430,6 @@ actions:
       id: deep-impact
   watersnaking:
     id: 45954
-    name: Watersnaking
     mechanic: mech
     emphasis: more
     players: 8
@@ -447,7 +437,6 @@ actions:
     description: See [a:firesnaking].
   deep-varial:
     id: 46547
-    name: Deep Varial
     mechanic: aoe
     shape: cone
     description: |
@@ -575,7 +564,6 @@ actions:
     description: A stack on a random non-[s:firesnaking] player.
   xtreme-firesnaking:
     id: 46510
-    name: Xtreme Firesnaking
     mechanic: mech
     emphasis: more
     players: 8
@@ -607,7 +595,6 @@ actions:
       id: bailout
   xtreme-watersnaking:
     id: 46511
-    name: Xtreme Watersnaking
     mechanic: mech
     emphasis: more
     players: 8
@@ -615,7 +602,6 @@ actions:
     description: See [a:xtreme-firesnaking].
   bailout:
     id: 46512
-    name: Bailout
     mechanic: aoe
     shape: chariot
     count: 2

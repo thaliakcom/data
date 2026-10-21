@@ -1,7 +1,7 @@
 id: 1069
 patch: "7.4"
 date: 2026-01-18
-modified: 2026-01-31
+modified: 2026-10-22
 by:
   id: 27637301
   role: author
@@ -409,7 +409,6 @@ actions:
     description: Constant damage dealt to the inmate of a [a:hell-in-a-cell] while the cell is active.
   ultrasonic-spread:
     id: 45982
-    name: Ultrasonic Spread
     mechanic: spread.role
     shape: cone
     count: 3
@@ -421,7 +420,6 @@ actions:
       Due to the pseudo-random cell spawn positions, there are always 3 gaps available between cells: 2 smaller gaps and 1 large gap. The large gap belongs to the tank. Their cone cannot fit into the smaller gaps. Based on the larger gap, place the healer cone in the gap clockwise to the tank gap and the damage dealer cone in the gap counter-clockwise of the tank gap.
   ultrasonic-amp:
     id: 45983
-    name: Ultrasonic Amp
     mechanic: stack
     shape: cone
     damage: 205812
