@@ -410,8 +410,7 @@ actions:
     count: 2
     description: "[a:blaster:d]"
   blaster:
-    id: 31497
-    type: magic
+    id: 31498
     mechanic: spread.tethers
     shape: defamation
     damage: 35847
