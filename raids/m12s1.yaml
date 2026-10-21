@@ -790,7 +790,6 @@ graphing:
     aoe-gradient: "radial-gradient(0 #8A080855 10% #8A080855 100% #FC6E6ECC)"
     attached-snake-gradient: "radial-gradient(0 #AD0000CD 80% #AD0000CD 100% #610101CD)"
     tb-gradient: "radial-gradient(0 #D839391E 95% #D839391E 100% #D83939AB)"
-    aoe-pulse: "image-cone(/images/markers/aoe-circle.svg)"
   elements:
     arena:
       type: image
@@ -801,15 +800,15 @@ graphing:
       opacity: 0.4
       coordinate-system: cartesian
     circle:
-      type: image
+      type: ellipse
+      look: aoe
       size: 60
-      image: /images/markers/aoe-circle.svg
       opacity: 0.85
       visible: false
       shadow: false
     rect:
-      type: image
-      image: /images/markers/aoe-rectangle.svg
+      type: rectangle
+      look: aoe
       opacity: 0.85
       scale: [1, 0]
       shadow: false
@@ -821,10 +820,10 @@ graphing:
       opacity: 0.6
     cone-arm:
       type: cone
+      look: aoe
       angle: 105
       size: [185, 0]
       origin: [0.5, 1]
-      color: url(#aoe-pulse)
       opacity: 0.85
       visible: false
       shadow: false
@@ -837,9 +836,9 @@ graphing:
       visible: false
       shadow: false
     spread:
-      type: image
+      type: ellipse
+      look: aoe
       size: 54
-      image: /images/markers/aoe-circle.svg
       filter: hue-rotate(330deg) contrast(1.2)
       scale: 0
       shadow: false
@@ -850,9 +849,9 @@ graphing:
       scale: 0
       shadow: false
     spread-small:
-      type: image
+      type: ellipse
+      look: aoe
       size: 30
-      image: /images/markers/aoe-circle.svg
       filter: hue-rotate(330deg) contrast(1.2)
       visible: false
       shadow: false

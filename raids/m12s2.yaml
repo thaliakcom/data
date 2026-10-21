@@ -988,7 +988,6 @@ graphing:
     fire: "radial-gradient(0 #9944125D 50% #9944125D 100% #994412)"
     snake: "radial-gradient(0 #9912125D 50% #9912125D 100% #770F0F)"
     firefall-splash: "radial-gradient(at 50% 100%, 0 #720404 100% #775B0F)"
-    aoe-pulse: "image-cone(/images/markers/aoe-circle.svg)"
   elements:
     arena:
       type: image
@@ -998,9 +997,9 @@ graphing:
       size: 45
       opacity: 0.5
     circle:
-      type: image
+      type: ellipse
+      look: aoe
       size: 60
-      image: /images/markers/aoe-circle.svg
       opacity: 0.85
       scale: 0
       shadow: false
@@ -1053,9 +1052,9 @@ graphing:
       shadow: false
     cone:
       type: cone
+      look: aoe
       angle: 30
       size: [185, 0]
-      color: url(#aoe-pulse)
       opacity: 0.7
       visible: false
       shadow: false

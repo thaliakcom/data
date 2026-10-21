@@ -2201,9 +2201,6 @@ graphing:
     close-gradient: "radial-gradient(0% #a3c5d1 100% #39a5cc)"
     monitor-gradient: "linear-gradient(0% #88e7f7 2% #3a8efc 100% transparent)"
     monitor-boom-gradient: "radial-gradient(0% #dbeeff 95% #dbeeff 100% #a1ebff)"
-    aoe-pulse-circle: "image(/images/markers/aoe-circle.svg)"
-    aoe-pulse-cone: "image-cone(/images/markers/aoe-circle.svg)"
-    aoe-pulse-rect: "image(/images/markers/aoe-rectangle.svg)"
   elements:
     arena:
       type: image
@@ -2239,28 +2236,34 @@ graphing:
       shadow: false
     flamethrower:
       type: cone
+      look: aoe
       angle: 60
       size: [0, 110]
-      color: url(#aoe-pulse-cone)
       shadow: false
     circle:
-      type: image
+      type: ellipse
+      look: aoe
       size: 45
-      image: /images/markers/aoe-circle.svg
+      opacity: 0.85
+      visible: false
+      shadow: false
+    hello:
+      type: image
+      image: /images/other/hello-world.svg
+      size: 45
       opacity: 0.85
       visible: false
       shadow: false
     circle-color:
       type: ellipse
       size: 45
-      color: url(#aoe-pulse-circle)
       opacity: 0.85
       visible: false
       shadow: false
     donut:
       type: donut
+      look: aoe
       size: [100, 320]
-      color: url(#aoe-pulse-circle)
       opacity: 0.85
       scale: 0
       visible: false
@@ -2271,9 +2274,9 @@ graphing:
       visible: false
       shadow: false
     rect:
-      type: image
+      type: rectangle
+      look: aoe
       size: 45
-      image: /images/markers/aoe-rectangle.svg
       opacity: 0.85
       scale: 0
       visible: false
@@ -2281,7 +2284,6 @@ graphing:
     rect-color:
       type: rectangle
       size: 45
-      color: url(#aoe-pulse-rect)
       opacity: 0.85
       scale: 0
       visible: false
@@ -2349,9 +2351,9 @@ graphing:
       visible: false
     bladedance:
       type: cone
+      look: aoe
       angle: 125
       size: [0, 180]
-      color: url(#aoe-pulse-cone)
       opacity: 0.85
       visible: false
       shadow: false
@@ -3347,7 +3349,7 @@ graphing:
         marker-3: [63, -135]
         marker-d: [63, -90]
         marker-4: [63, -45]
-        circle-color#1: { scale: 1.15, visible: false }
+        circle-color#1: { scale: 1.15, visible: false, look: aoe }
         circle#2: { scale: 1.15, visible: false, color: url(#wave-repeater-gradient) }
         circle#3: { x: 63, y: -60, size: 100 }
         circle#4: { x: 63, y: 60, size: 100 }
@@ -3817,13 +3819,12 @@ graphing:
         circle-color#monitor-2: { attach: T1 }
         circle-color#monitor-3: { attach: M1 }
         circle-color#monitor-4: { attach: R1 }
-        circle#hello-far-1: { size: 76, attach: H1 }
-        circle#hello-far-2: { size: 40, attach: M1 }
-        circle#hello-far-3: { size: 40, attach: R1 }
-        circle#hello-near-1: { size: 76, attach: T2 }
-        circle#hello-near-2: { size: 40, attach: R2 }
-        circle#hello-near-3: { size: 40, attach: T1 }
-        circle#hello-[near,far]-[1..3]: { image: /images/other/hello-world.svg }
+        hello#far-1: { size: 76, attach: H1 }
+        hello#far-2: { size: 40, attach: M1 }
+        hello#far-3: { size: 40, attach: R1 }
+        hello#near-1: { size: 76, attach: T2 }
+        hello#near-2: { size: 40, attach: R2 }
+        hello#near-3: { size: 40, attach: T1 }
         rect#eye: { scale: [1.7, 10], rotate: 90, filter: grayscale(1) contrast(2) }
         rect#arm-[1..6]: { origin: [0.5, 0], scale: [1, 3] }
         rect-color#arm-[1..6]: { origin: [0.5, 0], scale: [0, 3], color: url(#wc-gradient-line), opacity: 0.7, visible: true }
@@ -4023,16 +4024,16 @@ graphing:
         circle-color#link-1: { scale: 1, visible: false }
       - rect#swivel: { visible: true }
         circle-color#omega-light-*: { visible: false }
-      - circle#hello-[far,near]-1: { visible: true }
+      - hello#[far,near]-1: { visible: true }
         rect#swivel: { visible: false }
         [H1, T2]: { status: [quickening-dynamis, magic-vuln] }
-      - circle#hello-[far,near]-2: { visible: true }
-        circle#hello-[far,near]-1: { visible: false }
+      - hello#[far,near]-2: { visible: true }
+        hello#[far,near]-1: { visible: false }
         [M1, R2]: { status: [quickening-dynamis, magic-vuln] }
-      - circle#hello-[far,near]-3: { visible: true }
-        circle#hello-[far,near]-2: { visible: false }
+      - hello#[far,near]-3: { visible: true }
+        hello#[far,near]-2: { visible: false }
         [R1, T1]: { status: [quickening-dynamis, magic-vuln] }
-      - circle#hello-[far,near]-3: { visible: false }
+      - hello#[far,near]-3: { visible: false }
         boss#m: { visible: true }
         boss#beetle: { visible: false }
         [H1, T2]: { status: [quickening-dynamis] }
@@ -4051,13 +4052,12 @@ graphing:
         far-tether#2: { visible: false }
     sigma:
       - arena: { image: /images/arenas/top-p5.avif }
-        circle#hello-far-1: { size: 76, attach: M2 }
-        circle#hello-far-2: { size: 40, attach: H2 }
-        circle#hello-far-3: { size: 40, attach: M1 }
-        circle#hello-near-1: { size: 76, attach: T2 }
-        circle#hello-near-2: { size: 40, attach: T1 }
-        circle#hello-near-3: { size: 40, attach: R2 }
-        circle#hello-[near,far]-[1..3]: { image: /images/other/hello-world.svg }
+        hello#far-1: { size: 76, attach: M2 }
+        hello#far-2: { size: 40, attach: H2 }
+        hello#far-3: { size: 40, attach: M1 }
+        hello#near-1: { size: 76, attach: T2 }
+        hello#near-2: { size: 40, attach: T1 }
+        hello#near-3: { size: 40, attach: R2 }
         tower#far-1: { x: 80, y: -90, color: url(#double-tower-gradient) }
         tower#far-2: [80, 0]
         tower#far-3: { x: 80, y: 45, color: url(#double-tower-gradient) }
@@ -4287,8 +4287,8 @@ graphing:
         label: { text: Blades-F }
         boss#mf: { visible: true }
         boss#ring: { rotate: 90 }
-        rect-color#ring: { rotate: 90, color: url(#aoe-pulse-rect) }
-      - rect-color#ring: { color: url(#wc-gradient), opacity: 0.8 }
+        rect-color#ring: { rotate: 90, look: aoe }
+      - rect-color#ring: { color: url(#wc-gradient), opacity: 0.8, look: plain }
         rotate-cw: { visible: false }
       - rect-color#ring: { rotate: 100 }
         boss#ring: { rotate: 100 }
@@ -4358,28 +4358,27 @@ graphing:
         R2: [89, 10]
       - wave-cannon#arm-[1..2]: { scale: 1 }
         glitch-link#[1..2]: { visible: false }
-        circle#hello-[near,far]-1: { visible: true }
+        hello#[near,far]-1: { visible: true }
         M2: { status: [quickening-dynamis] }
         T2: { status: [quickening-dynamis:1] }
       - wave-cannon#arm-[1..2]: { visible: false }
         arm#*: { visible: false }
-        circle#hello-[near,far]-1: { visible: false }
-        circle#hello-[near,far]-2: { visible: true }
+        hello#[near,far]-1: { visible: false }
+        hello#[near,far]-2: { visible: true }
         T1: { status: [mark3, quickening-dynamis:1] }
         H2: { status: [mark1, quickening-dynamis] }
-      - circle#hello-[near,far]-2: { visible: false }
-        circle#hello-[near,far]-3: { visible: true }
+      - hello#[near,far]-2: { visible: false }
+        hello#[near,far]-3: { visible: true }
         R2: { status: [mark2, quickening-dynamis:1] }
         M1: { status: [mark4, quickening-dynamis:1] }
     omega:
       - arena: { image: /images/arenas/top-p5.avif }
-        circle#hello-far-1: { size: 76, attach: M1 }
-        circle#hello-far-2: { size: 40, attach: H2 }
-        circle#hello-far-3: { size: 40, attach: M2 }
-        circle#hello-near-1: { size: 76, attach: T1 }
-        circle#hello-near-2: { size: 40, attach: H1 }
-        circle#hello-near-3: { size: 40, attach: R1 }
-        circle#hello-[near,far]-[1..3]: { image: /images/other/hello-world.svg }
+        hello#far-1: { size: 76, attach: M1 }
+        hello#far-2: { size: 40, attach: H2 }
+        hello#far-3: { size: 40, attach: M2 }
+        hello#near-1: { size: 76, attach: T1 }
+        hello#near-2: { size: 40, attach: H1 }
+        hello#near-3: { size: 40, attach: R1 }
         rect#blades-1: { x: 81, y: 65, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
         rect#blades-2: { x: 78, y: -125, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
         rect#staff-1: { size: [45, 300], origin: [0.5, 0.5], scale: [0, 1], rotate: 45, attach: boss#f2, visible: true }
@@ -4513,21 +4512,21 @@ graphing:
         R1: [88, 80]
         H1: [88, 103]
         H2: [88, 179]
-      - circle#hello-[near,far]-1: { visible: true }
+      - hello#[near,far]-1: { visible: true }
         circle-color#monitor*: { scale: 1 }
         monitor: { visible: false }
         boss#beetle: { visible: true }
         [M1,T1]: { status: [quickening-dynamis:2] }
       - circle-color#monitor*: { visible: false }
-        circle#hello-[near,far]-1: { visible: false }
-        circle#hello-[near,far]-2: { visible: true }
+        hello#[near,far]-1: { visible: false }
+        hello#[near,far]-2: { visible: true }
         H2: { status: [quickening-dynamis:1, mark4] }
         H1: { status: [quickening-dynamis:1, mark3] }
-      - circle#hello-[near,far]-2: { visible: false }
-        circle#hello-[near,far]-3: { visible: true }
+      - hello#[near,far]-2: { visible: false }
+        hello#[near,far]-3: { visible: true }
         R1: { status: [quickening-dynamis:1, mark2] }
         M2: { status: [quickening-dynamis:1, mark1, hello-distant-world] }
-      - circle#hello-[near,far]-3: { visible: false }
+      - hello#[near,far]-3: { visible: false }
         blaster-tether#[1..2]: { visible: true }
         H2: [87, 173]
         M2: { x: 45, y: 88, status: [quickening-dynamis:1, hello-distant-world] }
@@ -4539,28 +4538,28 @@ graphing:
         blaster-tether#2: { to: M1 }
       - T2: [24, 86]
         blaster-tether#1: { to: T1 }
-        circle#hello-near-1: { attach: R2 }
-        circle#hello-near-2: { attach: H2 }
-        circle#hello-near-3: { attach: T2 }
-        circle#hello-far-1: { attach: M2 }
-        circle#hello-far-2: { attach: H1 }
-        circle#hello-far-3: { attach: R1 }
+        hello#near-1: { attach: R2 }
+        hello#near-2: { attach: H2 }
+        hello#near-3: { attach: T2 }
+        hello#far-1: { attach: M2 }
+        hello#far-2: { attach: H1 }
+        hello#far-3: { attach: R1 }
       - T2: [89, 6]
         M1: [90, -60]
         T1: [90, -120]
       - blaster#*: { scale: 1 }
         blaster-tether#*: { visible: false }
         [M1, T1]: { status: [quickening-dynamis:2, hp-penalty] }
-        circle#hello-[near,far]-1: { visible: true }
+        hello#[near,far]-1: { visible: true }
         [R2, M2]: { status: [quickening-dynamis:2] }
       - blaster#*: { visible: false }
-        circle#hello-[near,far]-1: { visible: false }
-        circle#hello-[near,far]-2: { visible: true }
+        hello#[near,far]-1: { visible: false }
+        hello#[near,far]-2: { visible: true }
         [H2, H1]: { status: [quickening-dynamis:2] }
-      - circle#hello-[near,far]-2: { visible: false }
-        circle#hello-[near,far]-3: { visible: true }
+      - hello#[near,far]-2: { visible: false }
+        hello#[near,far]-3: { visible: true }
         [T2, R1]: { status: [quickening-dynamis:2] }
-      - circle#hello-[near,far]-3: { visible: false }
+      - hello#[near,far]-3: { visible: false }
     cosmo-arrow-in-only:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }

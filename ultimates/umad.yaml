@@ -2975,7 +2975,6 @@ timeline:
 graphing:
   coordinate-system: polar
   defs:
-    aoe-pulse-rect: "image(/images/markers/aoe-rectangle.svg)"
   elements:
     arena:
       type: image
@@ -2991,9 +2990,9 @@ graphing:
       shadow: false
     lc-line:
       type: rectangle
+      look: aoe
       size: [14, 170]
       origin: [0.5, 1]
-      color: url(#aoe-pulse-rect)
       opacity: 0.85
       scale: [1, 0]
       shadow: false

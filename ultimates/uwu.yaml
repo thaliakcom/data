@@ -2114,16 +2114,16 @@ graphing:
       size: 45
       opacity: 0.5
     feather-rain:
-      type: image
+      type: ellipse
+      look: aoe
       size: 30
-      image: /images/markers/aoe-circle.svg
       opacity: 0.85
       scale: 0
       shadow: false
     wicked-wheel:
-      type: image
+      type: ellipse
+      look: aoe
       size: 80
-      image: /images/markers/aoe-circle.svg
       opacity: 0.85
       scale: 0
       shadow: false
@@ -2271,9 +2271,9 @@ graphing:
       visible: false
       shadow: false
     burst:
-      type: image
+      type: ellipse
+      look: aoe
       size: 65
-      image: /images/markers/aoe-circle.svg
       opacity: 0.85
       visible: false
       shadow: false

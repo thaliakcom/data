@@ -997,8 +997,8 @@ graphing:
       size: [10, 30]
       visible: false
     defamation:
-      type: image
-      image: /images/markers/aoe-circle.svg
+      type: ellipse
+      look: aoe
       opacity: 0.85
       size: 130
       visible: false

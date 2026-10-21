@@ -784,9 +784,9 @@ graphing:
       size: 28
       opacity: 0.7
     heavensflame:
-      type: image
+      type: ellipse
+      look: aoe
       size: 50
-      image: /images/markers/aoe-circle.svg
       origin: [0.5, 0.5]
       visible: false
     hiemal-storm:
