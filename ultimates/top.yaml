@@ -3456,14 +3456,6 @@ graphing:
         circle-color#latent-2: { attach: R2, size: 40, color: "#000000aa", scale: 0, visible: true }
         circle-color#latent-3: { attach: T2, size: 40, color: "#000000aa", scale: 0, visible: true }
         circle-color#latent-4: { attach: M2, size: 40, color: "#000000aa", scale: 0, visible: true }
-        T1: [50, 0]
-        R2: [50, 45]
-        H2: [50, 90]
-        M2: [50, 135]
-        T2: [50, 180]
-        M1: [50, -135]
-        H1: [50, -90]
-        R1: [50, -45]
         circle-color#performance-1.1: { size: 13, color: url(#performance-gradient), attach: T2 }
         circle-color#performance-1.2: { size: 13, color: url(#performance-gradient), attach: M2 }
         circle-color#performance-2.1: { size: 13, color: url(#performance-gradient), attach: H1 }
@@ -3472,6 +3464,14 @@ graphing:
         circle-color#underflow-1.2: { size: 13, color: url(#underflow-gradient), attach: R2 }
         circle-color#underflow-2.1: { size: 13, color: url(#underflow-gradient), attach: T1 }
         circle-color#underflow-2.2: { size: 13, color: url(#underflow-gradient), attach: H2 }
+        T1: [50, 0]
+        R2: [50, 45]
+        H2: [50, 90]
+        M2: [50, 135]
+        T2: [50, 180]
+        M1: [50, -135]
+        H1: [50, -90]
+        R1: [50, -45]
         cast: { progress: 0, text: Hello World }
         label: { text: "Fast-forwarding to last set...", visible: false, y: -90 }
       - arena: { image: /images/arenas/top-p3-hw.avif }
