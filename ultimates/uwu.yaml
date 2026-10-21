@@ -2129,7 +2129,7 @@ graphing:
       shadow: false
     wicked-tornado:
       type: donut
-      size: [178, 80]
+      size: [80, 178]
       scale: 0
       color: "#067F0A"
       opacity: 0.5
@@ -2153,7 +2153,7 @@ graphing:
       blink: true
     eye-of-the-storm:
       type: donut
-      size: [200, 100]
+      size: [100, 200]
       color: "#43A0D5"
       opacity: 0.7
       visible: false
@@ -2296,7 +2296,7 @@ graphing:
       blink: true
     titan-edge:
       type: donut
-      size: [190, 165]
+      size: [165, 190]
       color: "#E1DB6D"
       opacity: 0.7
       shadow: false
