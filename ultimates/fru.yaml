@@ -256,6 +256,7 @@ actions:
   # Phase 1
   cyclonic-break:
     id: 40144
+    source: 17819
     mechanic: mech.spread-or-stack
     compact: full
     description: |
@@ -325,12 +326,14 @@ actions:
       The only real purpose of this ability is to deal damage to and inflict [s:magic-vulnerability-up] on any [blue-fettered](s:floating-fetters) players, since [a:bow-shock] only hits the 3 closest players and not the fettered player themselves.
   powder-mark-trail:
     id: 40168
+    source: 17819
     mechanic: tb.mt
     damage: 675000
     description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up], rendering any subsequent auto-attack lethal.
     resolve: Use heavy mitigation. Requires a [t:tankswap].
   utopian-sky:
     id: 40154
+    source: 17819
     mechanic: mech
     description: |
       Fatebreaker surrounds himself with an aura of either fire or lightning, then disappears as the arena becomes wreathed in fog.
@@ -366,6 +369,7 @@ actions:
     description: The player inflicted with [s:powder-mark-trail] and the player closest to them explode, dealing heavy damage to themselves and everyone around them.
   blasting-zone:
     id: 40157
+    source: 17820
     mechanic: aoe
     shape: line
     count: 3
@@ -386,6 +390,7 @@ actions:
     description: A [m:spread] on all players. Inflicts [s:magic-vulnerability-up].
   turn-of-the-heavens:
     id: 40150
+    source: 17820
     mechanic: mech
     compact: trim
     description: |
@@ -425,16 +430,19 @@ actions:
         count: 2
   bound-of-faith:
     id: 40165
+    source: 17820
     mechanic: mech.status
     description: Two Fatebreaker clones each tether to a random player and inflict them with [s:prey] and [s:fated-burn-mark].
   brightfire:
     id: 40152
+    source: 17821
     mechanic: aoe
     shape: chariot
     count: 8
     description: The circles (Halo of Levin) during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down].
   burnt-strike:
     id: 40133
+    source: 17819
     mechanic: aoe
     shape: line
     description: |
@@ -448,6 +456,7 @@ actions:
         id: blastburn
   burnt-strike-lightning:
     id: 40133
+    source: 17819
     name: Burnt Strike (Lightning)
     mechanic: aoe
     shape: line
@@ -457,6 +466,7 @@ actions:
         id: burnout
   burnt-strike-fire:
     id: 40133
+    source: 17819
     name: Burnt Strike (Fire)
     mechanic: aoe
     shape: line
@@ -485,11 +495,13 @@ actions:
       A [m:stack] on a tethered player. Inflicts [s:mark-of-mortality] if taken with less than 4 players.
   burnished-glory:
     id: 40170
+    source: 17819
     mechanic: raidwide
     damage: 146513
     description: Heavy raidwide. Inflicts [s:bleeding].
   fall-of-faith:
     id: 40140
+    source: 17820
     mechanic: mech
     emphasis: more
     compact: full
@@ -536,10 +548,12 @@ actions:
       id: bow-shock
   floating-fetters:
     id: 40171
+    source: 17820
     mechanic: mech
     description: Inflicts [s:floating-fetters] on the tethered player.
   solemn-charge:
     id: 40141
+    source: 17820
     mechanic: mech
     description: Fatebreaker (or his Image) dashes to the tethered player and executes either [a:bow-shock] or [a:sinblaze].
   bow-shock:
@@ -590,12 +604,14 @@ actions:
   # Phase 2
   mirror-mirror:
     id: 40179
+    source: 17823
     mechanic: mech.prepare
     description: |
       Summons two red mirrors and one blue mirror.
       The blue mirror executes the same mechanics Usurper of Frost executes at the same time. The red mirrors execute those mechanics with a slight delay.
   mirror-image:
     id: 40180
+    source: 17823
     mechanic: mech.prepare
     description: Summons an untargetable Oracle's Reflection (the unarmoured version of Usurper of Frost).
   frost-armor:
@@ -617,6 +633,7 @@ actions:
       This is the only instance of The House of Light which hits all 8 players regardless of distance, and merely serves as a "mechanics check" to ensure that no player has more than [s:lightsteeped:3]. If any player has [s:lightsteeped:4] at this point, the resulting [a:lightsteep] immediately wipes the party.
   quadruple-slap:
     id: 40191
+    source: 17823
     mechanic: tb.mt
     damage: 0
     description: Heavy two-hit tankbuster. Each hit inflicts a cleansable [s:physical-vulnerability-up].
@@ -628,12 +645,14 @@ actions:
         id: quadruple-slap-hit
   quadruple-slap-hit:
     id: 40192
+    source: 17823
     name: Quadruple Slap (Hit)
     mechanic: tb.mt
     damage: 522000
     description: An individual hit of the tankbuster. Inflicts [s:physical-vulnerability-up].
   diamond-dust:
     id: 40197
+    source: 17823
     mechanic: mech.trio
     emphasis: more
     players: 8
@@ -738,26 +757,31 @@ actions:
     description: An eight-pronged star-shaped AoE emerging from where players dropped their [Frigid Stones](a:frigid-stone).
   twin-stillness:
     id: 40196
+    source: 17824
     mechanic: aoe
     shape: cone
     description: Cleaves a 270° arc in front of Oracle's Reflection, then cleaves a 90° arc behind her. Either hit means instant death.
   twin-silence:
     id: 40194
+    source: 17824
     mechanic: aoe
     shape: cone
     description: Cleaves a 90° arc behind Oracle's Reflection, then cleaves a 270° arc in front of her. Either hit means instant death.
   axe-kick:
     id: 40202
+    source: 17824
     mechanic: aoe
     shape: chariot
     description: A massive circle AoE centered on the boss. Leaves only the edges of the arena safe.
   scythe-kick:
     id: 40203
+    source: 17823
     mechanic: aoe
     shape: dynamo
     description: A narrow donut AoE centered on the boss. Leaves only the center of the boss safe.
   reflected-scythe-kick:
     id: 40205
+    source: 17825
     mechanic: aoe
     shape: dynamo
     description: Same as [a:scythe-kick], but centered on a mirror.
@@ -770,6 +794,7 @@ actions:
     description: Conal AoEs on the 4 closest players to the boss or one of the mirrors. Inflicts [s:magic-vulnerability-up].
   heavenly-strike:
     id: 40207
+    source: 17823
     mechanic: mech.knockback.unavoidable
     damage: 0
     description: Knockback for about two thirds of the arena's radius in distance, emerging from the boss.
@@ -784,6 +809,7 @@ actions:
       Unlike most stacks in this fight, this stack does **not** inflict [s:mark-of-mortality] if taken with less than 4 players and can be survived with sufficient mitigation and healing.
   hallowed-ray:
     id: 40211
+    source: 17823
     mechanic: stack
     shape: line
     damage: 190804
@@ -792,6 +818,7 @@ actions:
       Does not inflict [s:mark-of-mortality] if taken with less than 8 players and can be survived with sufficient mitigation.
   light-rampant:
     id: 40212
+    source: 17823
     mechanic: mech.trio
     emphasis: more
     players: 8
@@ -891,6 +918,7 @@ actions:
     description: Placeholder description
   hiemal-storm:
     id: 40255
+    source: 17827
     mechanic: aoe.puddle
     shape: chariot
     count: 4
@@ -904,6 +932,7 @@ actions:
     description: Placeholder description
   sinbound-blizzard-iii:
     id: 40258
+    source: 17828
     mechanic: aoe.delayed
     shape: cone
     count: 4
@@ -927,6 +956,7 @@ actions:
   # Phase 3
   darkest-dance:
     id: 40181
+    source: 17831
     mechanic: tb.far
     shape: chariot
     description: Placeholder description
@@ -937,12 +967,14 @@ actions:
       id: darkest-dance-kb
   darkest-dance-hit:
     id: 40182
+    source: 17831
     mechanic: tb.far
     shape: chariot
     damage: 680000
     description: Placeholder description
   darkest-dance-kb:
     id: 40183
+    source: 17831
     mechanic: mech.knockback
     damage: 16000
     description: Placeholder description
@@ -958,10 +990,12 @@ actions:
       Each laser deals moderate damage and inflicts [s:fire-resistance-down-ii], unless the player already suffers from [s:fire-resistance-down-ii], in which case the laser is lethal.
   hells-judgment:
     id: 40265
+    source: 17831
     mechanic: raidwide.sethp
     description: Placeholder description
   ultimate-relativity:
     id: 40266
+    source: 17831
     mechanic: raidwide
     emphasis: more
     damage: 200520
@@ -1019,10 +1053,12 @@ actions:
       status: stun
   spell-in-waiting-refrain:
     id: 40269
+    source: 17831
     mechanic: mech.prepare
     description: Placeholder description
   dark-water-iii-cast:
     id: 40270
+    source: 17831
     mechanic: mech.status
     description: Placeholder description
   dark-water-iii:
@@ -1061,33 +1097,39 @@ actions:
     description: Placeholder description
   shockwave-pulsar:
     id: 40282
+    source: 17831
     mechanic: raidwide
     damage: 165080
     description: Placeholder description
   shell-crusher:
     id: 40287
+    source: 17831
     mechanic: stack.party
     shape: chariot
     damage: 124393
     description: Full party stack. Does not inflict [s:mark-of-mortality].
   spirit-taker:
     id: 40289
+    source: 17835
     mechanic: spread
     shape: chariot
     damage: 70369
     description: Oracle of Darkness leaps onto a random player. Any player too close to them is knocked into the wall.
   black-halo:
     id: 40290
+    source: 17831
     mechanic: tb.stack
     shape: cone
     damage: 373386
     description: Placeholder description
   speed:
     id: 40293
+    source: 17831
     mechanic: mech.prepare
     description: Tethers to five hourglasses, [quickening](a:quicken) 3 (via a yellow tether) while [slowing](a:slow) 2 (via a purple tether).
   speed-ct:
     id: 40293
+    source: 17831
     mechanic: mech.prepare
     description: Tethers to four hourglasses, [quickening](a:quicken) 2 (via a yellow tether) while [slowing](a:slow) 2 (via a purple tether).
   quicken:
@@ -1102,6 +1144,7 @@ actions:
     description: Placeholder description
   apocalypse:
     id: 40296
+    source: 17831
     mechanic: mech
     emphasis: more
     compact: full
@@ -1159,6 +1202,7 @@ actions:
   # Phase 4
   edge-of-oblivion:
     id: 40174
+    source: 17841
     mechanic: raidwide
     damage: 62825
     description: Simple raidwide cast by Fragment of Fate.
@@ -1179,6 +1223,7 @@ actions:
     description: Same as [a:the-house-of-light] – hits the 4 closest players to Usurper of Frost. The only difference is that this action additionally inflicts [s:lightsteeped].
   hallowed-wings:
     id: 40228
+    source: 17833
     mechanic: aoe
     shape: halfroom
     description: Standard half-room cleave on the side of Usurper's glowing wing.
@@ -1190,6 +1235,7 @@ actions:
     description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down].
   darklit-dragonsong:
     id: 40239
+    source: 17833
     mechanic: mech
     emphasis: more
     compact: trim
@@ -1221,6 +1267,7 @@ actions:
     description: A dragonhead detonates as a result of a player coming into contact with it. Cleanses [s:wyrmclaw] and leaves behind a puddle that cleanses [s:wyrmfang].
   materialization:
     id: 40246
+    source: 17833
     mechanic: mech.arena
     description: |
       Summons Fragment of Fate, a crystal containing Gaia's memories. Throughout this phase, this crystal takes several instances of unavoidable damage from Oracle of Darkness and Usurper of Frost, ultimately leaving it at 1 HP at the end of the phase.
@@ -1252,6 +1299,7 @@ actions:
       - If more than one player is dead at the end of [a:akh-morn] or the bosses' HP is not balanced, it may be preferable to sacrifice the main target by letting them solo the stack.
   tidal-light:
     id: 40251
+    source: 17833
     mechanic: aoe.exaflares
     shape: line
     description: Placeholder description
@@ -1271,6 +1319,7 @@ actions:
     description: Placeholder description
   somber-dance:
     id: 40283
+    source: 17835
     mechanic: tb.far
     shape: chariot
     description: Placeholder description
@@ -1281,18 +1330,21 @@ actions:
       id: somber-dance-close
   somber-dance-far:
     id: 40284
+    source: 17835
     mechanic: tb.far
     shape: chariot
     damage: 290000
     description: Placeholder description
   somber-dance-close:
     id: 40285
+    source: 17835
     mechanic: tb.close
     shape: chariot
     damage: 290000
     description: Placeholder description
   crystallize-time:
     id: 40298
+    source: 17835
     mechanic: mech.trio
     emphasis: more
     compact: full
@@ -1362,12 +1414,14 @@ actions:
       description: Both Usurper of Frost and Oracle of Darkness become targetable.
   maelstrom:
     id: 40299
+    source: 17837
     mechanic: aoe
     shape: defamation
     count: 2
     description: A Sorrow's Hourglass detonates in a large circle, inflicting [s:damage-down] on anyone hit.
   hallowed-wings-kb:
     id: 40332
+    source: 17833
     mechanic: mech.knockback
     damage: 151018
     description: Placeholder description
@@ -1402,11 +1456,13 @@ actions:
     description: Placeholder description
   polarizing-paths:
     id: 40234
+    source: 17839
     mechanic: aoe.aftershock
     shape: line
     description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down] on anyone inside.
   fulgent-blade:
     id: 40306
+    source: 17839
     mechanic: mech
     compact: trim
     players: 8
@@ -1440,12 +1496,14 @@ actions:
     description: Placeholder description
   wings-dark-and-light-cleave:
     id: 40314
+    source: 17839
     mechanic: tb.mt
     shape: halfroom
     damage: 452250
     description: Placeholder description
   polarizing-strikes:
     id: 40316
+    source: 17839
     mechanic: mech
     compact: full
     description: Placeholder description
@@ -1490,6 +1548,7 @@ actions:
     description: Placeholder description
   paradise-regained:
     id: 40319
+    source: 17839
     mechanic: mech
     compact: trim
     description: Placeholder description
@@ -1517,6 +1576,7 @@ actions:
     description: Placeholder description
   pandoras-box:
     id: 40326
+    source: 17839
     mechanic: raidwide.lb
     damage: 824919
     description: Placeholder description

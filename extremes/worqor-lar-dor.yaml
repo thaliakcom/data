@@ -223,6 +223,7 @@ status:
 actions:
   spikesicle:
     id: 36850
+    source: 16664
     mechanic: aoe
     compact: full
     description: |
@@ -285,6 +286,7 @@ actions:
     description: Fires a [a:spikesicle] curve and leaves behind an ice block. Does moderate damage and inflicts [s:damage-down].
   sphere-shatter:
     id: 39261
+    source: 17554
     mechanic: aoe
     shape: chariot
     damage: 54570
@@ -319,6 +321,7 @@ actions:
       Either follows or precedes [a:skyruin-ice]. :unverified(This order will not change for the remainder of the instance.)
   triscourge:
     id: 36839
+    source: 16664
     mechanic: raidwide
     damage: 89662
     description: |
@@ -415,6 +418,7 @@ actions:
       Triggered after [a:susurrant-breath], [a:strangling-coil], and [a:slithering-strike] while in Fire Phase.
   mountain-fire:
     id: 36876
+    source: 16664
     mechanic: tb.towers
     compact: trim
     description: |
@@ -502,6 +506,7 @@ actions:
     description: Heavy raidwide. Transitions the arena back to its original state, ending the elemental phase.
   ruin-foretold:
     id: 38546
+    source: 16664
     mechanic: raidwide
     emphasis: more
     damage: 90857
@@ -548,6 +553,7 @@ actions:
     description: Conal AoEs during [a:ruin-foretold].
   tulidisaster:
     id: 36872
+    source: 16664
     mechanic: raidwide
     description: A three-step raidwide. The last hit inflicts [s:perpetual-conflagration], which lasts until the end of the fight.
     children:

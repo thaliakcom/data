@@ -162,6 +162,7 @@ status:
 actions:
   slipstream:
     id: 11091
+    source: 8722
     mechanic: aoe
     shape: cone
     damage: 15868
@@ -170,6 +171,7 @@ actions:
     resolve: Wait for the cast to begin, then step behind Garuda.
   mistral-song-healer:
     id: 11074
+    source: 8722
     mechanic: aoe.intercept
     shape: line
     tank-damage: 30000
@@ -202,12 +204,14 @@ actions:
       [a:great-whirlwind]s always spawn on the locations of the first player in line of [a:mistral-song-healer].
   downburst:
     id: 11088
+    source: 8722
     mechanic: tb.mt
     shape: cone
     damage: 17919
     description: Single-target tankbuster on the primary target. Becomes [a:downburst-woken] when Garuda is [s:woken].
   downburst-woken:
     id: 11088
+    source: 8722
     name: Downburst (Woken)
     mechanic: stack.party
     shape: cone
@@ -215,6 +219,7 @@ actions:
     description: Frontal cleave on the primary target. The damage is shared by everyone hit.
   cyclone:
     id: 11077
+    source: 8726
     mechanic: tb.mt
     damage: 19229
     description: Heavy tankbuster on the target tethered to the Spiny Plume. Inflicts [s:thermal-low].
@@ -243,6 +248,7 @@ actions:
     description: If any Satin Plume is still alive by this point, it enrages here. Deals no damage but inflicts [s:sleep] on all players.
   mistral-shriek:
     id: 11092
+    source: 8722
     mechanic: raidwide
     damage: 16458
     description: Heavy raidwide.
@@ -329,6 +335,7 @@ actions:
           [s:thermal-low:2] using [a:mesohigh].
   gigastorm:
     id: 11078
+    source: 8726
     mechanic: aoe
     emphasis: more
     shape: chariot
@@ -404,6 +411,7 @@ actions:
     description: Heavy raidwide as a result of cleansing [s:thermal-low:2].
   friction:
     id: 11080
+    source: 8722
     mechanic: aoe
     shape: chariot
     damage: 13478
@@ -414,11 +422,13 @@ actions:
       Be aware that any player inside the bubble produced by the Spiny Plume will immediately cleanse their [s:thermal-low] stack.
   aerial-blast:
     id: 11093
+    source: 8722
     mechanic: raidwide.ultimate
     damage: 18874
     description: Heavy raidwide.
   aerial-blast-enrage:
     id: 11093
+    source: 8722
     mechanic: enrage
     damage: 999999
     description: Garuda enrages, killing all players.
@@ -457,6 +467,7 @@ actions:
       id: great-whirlwind
   mistral-song:
     id: 11083
+    source: 8723
     mechanic: aoe.intercept
     shape: line
     count: 2
@@ -470,6 +481,7 @@ actions:
       [a:mistral-song] must be intercepted by tanks. To simplify things, have your party always stack on the same location (using a waymark is a good idea) and use a simple priority system to determine which tank intercepts which of the sisters.
   mistral-song-suppression:
     id: 11083
+    source: 8723
     mechanic: aoe.intercept
     shape: line
     count: 2
@@ -483,6 +495,7 @@ actions:
       When [a:ultimate-suppression] starts, have your tanks preposition in the same location every time. The two players selected for [a:mistral-song-suppression] can then simply go to stand behind the tanks.
   mistral-song-cone:
     id: 11150
+    source: 8722
     name: Mistral Song (Cone)
     mechanic: aoe
     shape: cone
@@ -495,11 +508,13 @@ actions:
     description: Wide [ms:dynamo] around the center of the arena.
   wicked-wheel:
     id: 11086
+    source: 8722
     mechanic: aoe
     shape: chariot
     description: Moderate [ms:chariot] AoE centered on Garuda.
   wicked-wheel-woken:
     id: 11086
+    source: 8722
     name: Wicked Wheel (Woken)
     mechanic: aoe
     shape: chariot
@@ -509,6 +524,7 @@ actions:
       id: wicked-tornado
   mesohigh:
     id: 11081
+    source: 8722
     mechanic: spread.tethers
     shape: chariot
     count: 2
@@ -520,6 +536,7 @@ actions:
     trivia: As explained in [a:gigastorm], [a:mesohigh] cleanses are most likely not intended to be able to grant [s:aetherially-charged].
   mesohigh-annihilation:
     id: 11081
+    source: 8722
     mechanic: spread.tethers
     shape: chariot
     count: 1
@@ -527,6 +544,7 @@ actions:
     description: Garuda (at the south of the arena) tethers to a random party member. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
   mesohigh-suppression:
     id: 11081
+    source: 8722
     mechanic: spread.tethers
     shape: chariot
     count: 1
@@ -564,6 +582,7 @@ actions:
       count: 10
   crimson-cyclone:
     id: 11103
+    source: 8730
     mechanic: aoe
     shape: line
     damage: 21404
@@ -573,6 +592,7 @@ actions:
       When [s:woken], is immediately followed up by another two [a:crimson-cyclone]s at a 45° angle to either side of the first dash.
   crimson-cyclone-woken:
     id: 11103
+    source: 8730
     name: Crimson Cyclone (Woken)
     mechanic: aoe
     shape: line
@@ -591,21 +611,25 @@ actions:
     description: Pseudo-random AoEs.
   hellfire:
     id: 11102
+    source: 8730
     mechanic: raidwide.ultimate
     damage: 19856
     description: Heavy raidwide.
   hellfire-nails:
     id: 11102
+    source: 8730
     mechanic: raidwide.ultimate
     damage: 19856
     description: Heavy raidwide. Deals lethal damage if any Infernal Nail was left alive.
   hellfire-enrage:
     id: 11102
+    source: 8730
     mechanic: enrage
     damage: 999999
     description: Ifrit becomes untargetable and casts Hellfire again, wiping the party.
   vulcan-burst:
     id: 11095
+    source: 8730
     mechanic: mech.knockback
     damage: 1000
     description: |
@@ -614,6 +638,7 @@ actions:
     resolve: A simple [a:eukrasian-prognosis] or [a:succor] is enough to fully mitigate the damage and skip the knockback.
   incinerate:
     id: 11094
+    source: 8730
     mechanic: tb.mt
     shape: cone
     description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
@@ -629,6 +654,7 @@ actions:
       id: incinerate-hit
   incinerate-hit:
     id: 11094
+    source: 8730
     name: Incinerate (Hit)
     mechanic: tb.mt
     shape: cone
@@ -636,6 +662,7 @@ actions:
     description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
   infernal-nails:
     id: 461
+    source: 8730
     name: Infernal Nails
     mechanic: mech
     emphasis: more
@@ -692,6 +719,7 @@ actions:
       The farther those two players stray from each other, the more stacks of [s:infernal-fetters] they accrue. The more stacks they have, the less damage they deal, and the more damage they take from their [t:DoT].
   inferno-howl:
     id: 11099
+    source: 8730
     mechanic: damage
     damage: 2524
     description: |
@@ -699,6 +727,7 @@ actions:
       If a healer is already inflicted with [s:searing-wind], this is guaranteed to target the other healer. If all available healers are dead, targets a random DPS instead.
   eruption:
     id: 11097
+    source: 8730
     mechanic: aoe.delayed
     shape: chariot
     type: magic
@@ -718,6 +747,7 @@ actions:
       id: eruption-hit
   eruption-suppression:
     id: 11097
+    source: 8730
     mechanic: aoe.delayed
     shape: chariot
     description: |
@@ -738,6 +768,7 @@ actions:
       count: 3
   eruption-roulette:
     id: 11097
+    source: 8730
     mechanic: aoe.delayed
     shape: chariot
     description: Selects three random players and spawns a single AoE beneath their feet.
@@ -760,11 +791,13 @@ actions:
     description: Individual hit of [a:eruption].
   infernal-surge:
     id: 11096
+    source: 8731
     mechanic: raidwide
     damage: 7332
     description: An Infernal Nail is defeated, dealing moderate raidwide damage and inflicting [s:vulnerability-up] on all players.
   flaming-crush:
     id: 11101
+    source: 8730
     mechanic: stack
     shape: chariot
     damage: 12644
@@ -824,17 +857,20 @@ actions:
       description: Ifrit returns to the arena.
   geocrush-initial:
     id: 11517
+    source: 8727
     mechanic: raidwide.proximity
     damage: 11199
     description: Titan drops into the center of the arena, dealing heavy damage that drops off with distance.
     resolve: Hug the edge of the arena or the damage is unsurvivable.
   earthen-fury:
     id: 11152
+    source: 8727
     mechanic: raidwide.ultimate
     damage: 18831
     description: Heavy raidwide.
   rock-buster:
     id: 11106
+    source: 8727
     mechanic: tb.mt
     shape: cone
     damage: 24270
@@ -844,12 +880,14 @@ actions:
       id: mountain-buster
   mountain-buster:
     id: 11107
+    source: 8727
     mechanic: tb.mt
     shape: cone
     damage: 36446
     description: Deals massive damage to the primary target and any players near them.
   weight-of-the-land:
     id: 11108
+    source: 8727
     mechanic: aoe.delayed
     shape: chariot
     compact: full
@@ -861,6 +899,7 @@ actions:
       id: weight-of-the-land-hit
   weight-of-the-land-woken:
     id: 11108
+    source: 8727
     name: Weight of the Land (Woken)
     mechanic: aoe.delayed
     shape: chariot
@@ -884,6 +923,7 @@ actions:
     description: Individual hit of [a:weight-of-the-land].
   geocrush:
     id: 11110
+    source: 8727
     mechanic: raidwide.proximity
     damage: 6758
     description: Titan turns toward a random cardinal before jumping away. A short time later he drops back into the arena on the cardinal he previously turned towards, dealing massive damage that drops off with distance and shrinking the arena.
@@ -892,12 +932,14 @@ actions:
       The main tank should attempt to drag Titan towards the center of the arena before he jumps away, to make it easier to see which cardinal he turns towards.
   upheaval:
     id: 11111
+    source: 8727
     mechanic: mech.knockback.unavoidable
     damage: 5365
     description: Deals mild damage, briefly inflicts [s:stun], and knocks all players away from Titan. The knockback distance is approximately the full length of the safe area of the arena.
     resolve: Check behind to see where the rocks (spawned by [a:rock-throw]) are. Either the left or the right side will be missing a rock. To correctly position for the knockback, stand directly on the front of Titan's hitbox, then slightly inch towards the left or right.
   rock-throw:
     id: 11115
+    source: 8727
     mechanic: mech.status
     count: 3
     description: |
@@ -905,10 +947,12 @@ actions:
       The main tank can never be marked for [a:rock-throw].
   rock-throw-healer:
     id: 11115
+    source: 8727
     mechanic: mech.status
     description: Titan marks a random healer. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
   rock-throw-suppression:
     id: 11115
+    source: 8727
     mechanic: mech.status
     description: Titan marks a random player baiting [a:eruption]. A short while later, they are entrapped within a Granite Gaol and inflicted with [s:fetters]. The Gaol then begins casting [a:granite-impact] which wipes the party if the Gaol is not killed before it can finish its cast.
   granite-impact:
@@ -918,12 +962,14 @@ actions:
     description: A Granite Gaol enrages, wiping the party.
   bury:
     id: 11113
+    source: 8728
     mechanic: aoe
     shape: chariot
     emphasis: less
     description: A bomb boulder drops from the sky, instantly killing any player in a moderate radius around where it touches down. It then begins casting [a:burst].
   burst:
     id: 11114
+    source: 8728
     mechanic: aoe
     shape: chariot
     emphasis: less
@@ -964,12 +1010,14 @@ actions:
       id: burst
   landslide:
     id: 11119
+    source: 8727
     mechanic: aoe
     shape: line
     count: 5
     description: Five telegraphed [ms:line] AoEs originate from Titan, targeting a random player. Anyone hit is knocked into the wall. Turns into [a:landslide-woken] when [s:woken].
   landslide-woken:
     id: 11121
+    source: 8727
     name: Landslide (Woken)
     mechanic: aoe
     shape: line
@@ -987,6 +1035,7 @@ actions:
     description: Five untelegraphed [ms:line] AoEs originating from Titan that hit in-between [the first set](a:landslide-woken). Anyone hit is knocked into the wall.
   freefire:
     id: 11118
+    source: 8729
     mechanic: aoe
     shape: chariot
     description: A Granite Gaol detonates as a result of getting clipped by [a:burst] or [a:freefire], instantly killing any nearby players. Leaves behind a [s:sludge] puddle and detonates any nearby Granite Gaols.
@@ -1058,6 +1107,7 @@ actions:
       timing: skippable
   tumult-x6:
     id: 11288
+    source: 8727
     name: 6× Tumults
     mechanic: raidwide
     compact: full
@@ -1077,6 +1127,7 @@ actions:
       id: tumult
   tumult-x7:
     id: 11288
+    source: 8727
     name: 7× Tumults
     mechanic: raidwide
     compact: full
@@ -1098,6 +1149,7 @@ actions:
       id: tumult
   tumult-x8:
     id: 11288
+    source: 8727
     name: 8× Tumults
     mechanic: raidwide
     compact: full
@@ -1121,11 +1173,13 @@ actions:
       id: tumult
   tumult:
     id: 11288
+    source: 8727
     mechanic: raidwide
     damage: 6984
     description: An individual hit of Titan's multi-hit raidwide.
   earthen-fury-enrage:
     id: 11152
+    source: 8727
     mechanic: enrage
     damage: 999999
     description: Titan enrages, killing all party members.
@@ -1195,6 +1249,7 @@ actions:
     resolve: Use a [i:caster] limit break 3 to destroy the magitek bits. Ensure the caster using the limit break has [s:beyond-limits].
   blight:
     id: 11123
+    source: 8732
     mechanic: mech.status
     description: |
       Lahabrea appears, inflicting a 4s [s:down-for-the-count] and 8s [s:doom] on all players. [s:doom] can only be cleansed by a [i:healer] limit break 3.
@@ -1208,6 +1263,7 @@ actions:
     resolve: Use a [i:melee] limit break 3 to defeat Lahabrea and prevent him from enraging. Ensure the melee using the limit break has [s:beyond-limits].
   ultima:
     id: 11147
+    source: 8734
     mechanic: raidwide.lb
     damage: 86430
     description: |
@@ -1226,17 +1282,20 @@ actions:
       * At the end of the fight, if the duty gauge is not yet at 100, [boss] begins channeling aether at a rate of 2 points per second until the duty gauge is at 100.
   tank-purge:
     id: 11143
+    source: 8734
     mechanic: raidwide
     damage: 17090
     description: Heavy raidwide.
   viscous-aetheroplasm:
     id: 11129
+    source: 8734
     mechanic: spread
     shape: chariot
     damage: 2975
     description: Deals mild damage to the highest enmity player and everyone near them, and inflicts [s:viscous-aetheroplasm] on everyone hit.
   homing-lasers:
     id: 11131
+    source: 8734
     mechanic: tb.ot
     shape: chariot
     damage: 35530
@@ -1252,6 +1311,7 @@ actions:
     description: A player's [s:viscous-aetheroplasm] expires, triggering an explosion that can be shared to reduce the damage.
   ceruleum-vent:
     id: 11132
+    source: 8734
     mechanic: aoe
     shape: chariot
     description: |
@@ -1265,6 +1325,7 @@ actions:
       [boss:c] uses [a:landslide]. This version of the attack only features three lines instead of five. There is no follow-up.
   aetheroplasm:
     id: 11137
+    source: 8735
     mechanic: aoe
     shape: chariot
     damage: 10804
@@ -1272,6 +1333,7 @@ actions:
     description: One of the orbs spawned during [a:ultimate-annihilation] is soaked, triggering a moderately sized AoE that increases the duty gauge by 1 per player who soaked it, tethers all of those players to [boss], and increases the length of the tether between the corresponding set of orbs during [a:aetheric-boom].
   light-pillar:
     id: 11138
+    source: 8734
     mechanic: aoe.chasing
     shape: chariot
     description: |
@@ -1299,6 +1361,7 @@ actions:
     description: An individual hit of [a:light-pillar].
   aetherochemical-laser:
     id: 11140
+    source: 8734
     mechanic: aoe.delayed
     shape: line
     description: |
@@ -1308,12 +1371,14 @@ actions:
       id: aetherochemical-laser-hit
   aetherochemical-laser-hit:
     id: 11142
+    source: 8734
     name: Aetherochemical Laser (Hit)
     mechanic: aoe
     shape: line
     description: The laser fired by [a:aetherochemical-laser] resolves, dealing lethal damage to anyone in its path.
   aetheric-boom:
     id: 11144
+    source: 8734
     mechanic: mech.knockback
     emphasis: more
     damage: 2543
@@ -1339,12 +1404,14 @@ actions:
       timing: player
   aetheroplasm-boom:
     id: 11145
+    source: 8736
     mechanic: stack
     shape: chariot
     damage: 25261
     description: An orb belonging to an orb pair during [a:aetheric-boom] explodes as a result of a player stepping into it, dealing massive damage that is split between all players who soak the orb.
   viscous-aetheroplasm-random:
     id: 11151
+    source: 8734
     mechanic: mech.status
     description: |
       Inflicts three random players with [s:viscous-aetheroplasm].
@@ -1357,6 +1424,7 @@ actions:
     description: Moderate tankbuster. Cleaves.
   ultimate-predation:
     id: 11126
+    source: 8734
     mechanic: mech.trio
     emphasis: more
     compact: trim
@@ -1471,6 +1539,7 @@ actions:
       id: feather-rain
   ultimate-annihilation:
     id: 11596
+    source: 8734
     mechanic: mech.trio
     emphasis: more
     compact: full
@@ -1595,6 +1664,7 @@ actions:
       id: burst
   ultimate-suppression:
     id: 11597
+    source: 8734
     mechanic: mech.trio
     emphasis: more
     compact: full

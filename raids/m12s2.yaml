@@ -124,11 +124,13 @@ status:
 actions:
   arcadia-aflame:
     id: 46376
+    source: 19202
     mechanic: raidwide
     damage: 388906
     description: Heavy raidwide.
   replication-i:
     id: 46296
+    source: 19202
     name: Replication I
     mechanic: mech
     emphasis: more
@@ -182,6 +184,7 @@ actions:
       count: 4
   top-tier-slam-rep-i:
     id: 46302
+    source: 19204
     mechanic: stack.close
     shape: chariot
     cast: 3000
@@ -203,12 +206,14 @@ actions:
     description: Spread AoEs on the two closest players to the corresponding Lindschrat clone. Inflicts [s:dark-resistance-down-ii].
   snaking-kick-halfroom:
     id: 46375
+    source: 19202
     caption: Halfroom
     mechanic: aoe
     shape: halfroom
     description: Halfroom cleave aimed at a random player. Inflicts [s:damage-down].
   double-sobat:
     id: 46368
+    source: 19202
     mechanic: tb.stack
     shape: halfroom
     description: A halfroom [m:tb.stack] into a halfroom AoE into a [ms:chariot] [m:tb.double].
@@ -222,6 +227,7 @@ actions:
       id: esoteric-finisher
   double-sobat-tb:
     id: 46371
+    source: 19202
     mechanic: tb.stack
     shape: halfroom
     damage: 550000
@@ -243,6 +249,7 @@ actions:
       [ms:chariot:c] tankbusters on the two highest-enmity targets.
   staging-i:
     id: 46305
+    source: 19202
     mechanic: mech.prepare
     description: |
       Spawns a clone of each player in a fixed order around the arena. See [a:replication-ii] for more information.
@@ -251,12 +258,14 @@ actions:
       Each player clone copies the Lindschrat mechanics that player has chosen during [a:replication-ii] after those mechanics have executed. These mechanics are copied in the order the player clones spawned (so north/south first, then clockwise).
   staging-ii:
     id: 46305
+    source: 19202
     mechanic: mech.prepare
     description: |
       Spawns 4 player clones on intercardinals, then cardinals (or vice-versa). See [a:replication-iii] for more information.
       The clones function the same way as during [a:replication-ii], copying whatever mechanic the cloned player chooses via Lindschrat tether.
   replication-ii:
     id: 46296
+    source: 19202
     name: Replication II
     mechanic: mech
     emphasis: more
@@ -310,6 +319,7 @@ actions:
       id: reenactment-i
   firefall-splash-player:
     id: 46308
+    source: 19202
     mechanic: spread
     shape: chariot
     damage: 136024
@@ -333,6 +343,7 @@ actions:
       A massive [ms:defamation] on targeted players that knocks any player nearby off the platform.
   heavy-slam:
     id: 46312
+    source: 19204
     mechanic: stack
     shape: chariot
     count: 2
@@ -349,6 +360,7 @@ actions:
     description: Cone in the direction a player is facing. Inflicts [s:damage-down].
   reenactment-i:
     id: 46316
+    source: 19202
     mechanic: mech
     compact: trim
     description: |
@@ -376,6 +388,7 @@ actions:
       id: player-clones-senw
   reenactment-ii:
     id: 46316
+    source: 19202
     mechanic: mech
     compact: trim
     description: |
@@ -398,6 +411,7 @@ actions:
     description: The southeast & northwest player clones resolve, repeating whatever mechanics their player was targeted by before.
   netherwrath-near:
     id: 46382
+    source: 19202
     mechanic: stack.close
     shape: chariot
     description: A 2-player stack on the two closest players to [boss]. Inflicts [s:magic-vulnerability-up].
@@ -406,6 +420,7 @@ actions:
       id: timeless-spite
   netherwrath-far:
     id: 46383
+    source: 19202
     mechanic: stack.far
     shape: chariot
     description: A 2-player stack on the two farthest players from [boss]. Inflicts [s:magic-vulnerability-up].
@@ -442,6 +457,7 @@ actions:
     description: A [a:heavy-slam] resolves on a player clone. If left unsoaked, inflicts [s:sustained-damage] on the whole party. Inflicts [s:magic-vulnerability-up].
   firefall-splash-clone:
     id: 46317
+    source: 19204
     caption: Clone
     mechanic: aoe
     shape: chariot
@@ -456,6 +472,7 @@ actions:
     description: Fires [a:scalding-waves] at the same 4 players who were targeted by it the first time. Inflicts [s:magic-vulnerability-up].
   mutating-cells:
     id: 46341
+    source: 19202
     mechanic: mech.status
     description: |
       Inflicts 4 players with [s:mutation-alpha] and the other 4 players with [s:mutation-beta].
@@ -467,6 +484,7 @@ actions:
       The [s:mutation-beta] tank should [a:provoke] immediately if they're not already first in enmity.
   blood-mana:
     id: 46331
+    source: 19202
     mechanic: mech
     emphasis: more
     compact: trim
@@ -520,6 +538,7 @@ actions:
     description: Deals heavy damage and inflicts [s:damage-down] on players who did not meet their [s:mutation-alpha]/[s:mutation-beta] condition.
   blood-wakening:
     id: 46336
+    source: 19202
     mechanic: mech
     description: Triggers the first set of AoEs absorbed by black holes, then triggers the second set shortly after.
     children:
@@ -569,6 +588,7 @@ actions:
     description: A [ms:dynamo] AoE around a black hole. Inflicts [s:damage-down].
   netherworld-near:
     id: 46379
+    source: 19202
     mechanic: stack.close
     shape: chariot
     description: A 4-player stack on the closest player to [boss].
@@ -578,6 +598,7 @@ actions:
       id: wailing-wave
   netherworld-far:
     id: 46380
+    source: 19202
     mechanic: stack.far
     shape: chariot
     description: A 4-player stack on the farthest player from [boss].
@@ -594,6 +615,7 @@ actions:
     description: The [a:netherworld-far]/[a:netherworld-near] stack resolves.
   idyllic-dream:
     id: 46345
+    source: 19202
     mechanic: raidwide.transition
     emphasis: more
     damage: 323330
@@ -618,6 +640,7 @@ actions:
         description: See <a href="https://raidplan.io/plan/9zpa6vu5kxgtuwqc">external raidplan</a>.
   replication-iii:
     id: 46296
+    source: 19202
     name: Replication III
     mechanic: mech
     description: |
@@ -628,6 +651,7 @@ actions:
       Remember whether the north clone telegraphs a north/south cone or east/west. The first time these clones execute their respective AoEs, all three AoEs are executed simultaneously, so it may be easier to memorize the initial safe spot separately.
   replication-iv:
     id: 46296
+    source: 19202
     name: Replication IV
     mechanic: mech
     description: |
@@ -638,17 +662,20 @@ actions:
       Check your data center's raidplans for strategies regarding who picks which tether.
   idyllic-dream-end:
     id: 46345
+    source: 19202
     mechanic: raidwide.transition
     damage: 323330
     description: |
       Heavy raidwide that fuses the two realities back together to restore the original reality.
   twisted-vision:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     emphasis: more
     description: Shifts realities, pausing any mechanics in the source reality and resuming any in-progress mechanics in the destination reality.
   twisted-vision-i:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the blue reality and executes [a:replication-iii].
     children:
@@ -656,6 +683,7 @@ actions:
       id: replication-iii
   twisted-vision-ii:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the green reality and executes [a:replication-iv].
     children:
@@ -663,6 +691,7 @@ actions:
       id: replication-iv
   twisted-vision-iii:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the blue reality. Immediately after, executes the paused casts of the [a:replication-iii] clones.
     children:
@@ -681,6 +710,7 @@ actions:
       id: arcadian-arcanum
   twisted-vision-iv:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the green reality and executes all Lindschrat tether mechanics.
     children:
@@ -694,6 +724,7 @@ actions:
       id: heavy-slam-idyllic
   twisted-vision-v:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the blue reality and executes towers as well as all tower-related effects.
     children:
@@ -713,6 +744,7 @@ actions:
       id: temporal-curtain
   twisted-vision-vi:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the green reality and executes the stored mechanics on the player clones that spawned first.
     children:
@@ -727,6 +759,7 @@ actions:
       count: 2
   twisted-vision-vii:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the blue reality and executes [a:snaking-kick-chariot] on one platform and [a:power-gusher] on the other.
     children:
@@ -738,6 +771,7 @@ actions:
       count: 2
   twisted-vision-viii:
     id: 48098
+    source: 19202
     mechanic: mech.arena
     description: Shifts to the green reality and executes the remaining 4 [a:reenactment-ii] player clone mechanics.
     children:
@@ -765,6 +799,7 @@ actions:
     description: North/south or east/west cones originating from a Lindschrat clone. Inflicts [s:damage-down].
   lindwurms-meteor:
     id: 46322
+    source: 19202
     mechanic: mech.arena
     damage: 325318
     players: 8
@@ -773,6 +808,7 @@ actions:
       Assign one light party to the west platform and the other one to the east platform.
   downfall:
     id: 46323
+    source: 19202
     mechanic: towers.single
     damage: 0
     description: |
@@ -803,6 +839,7 @@ actions:
     description: "[a:mana-burst-player:d]"
   heavy-slam-idyllic:
     id: 46361
+    source: 19204
     mechanic: stack
     shape: chariot
     count: 2
@@ -847,6 +884,7 @@ actions:
     description: "[s:lindwurms-portent] resolves in the form of a tiny [ms:chariot] AoE that inflicts [s:magic-vulnerability-up]."
   temporal-curtain:
     id: 46364
+    source: 19202
     mechanic: mech
     description: |
       Opens a portal to the other reality on one of the two platforms. Either the northmost or southmost Lindschrat clone slips through this portal.

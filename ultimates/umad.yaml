@@ -337,6 +337,7 @@ actions:
       If these new voicelines play at the end of phase 1, killing [boss] in phase 2 transitions the fight into phase 3. If the original voicelines play, killing [boss] in phase 2 ends the fight and kicks players out of the instance.
   auto-attack:
     id: 49746
+    source: 19508
     name: Auto-attack
     mechanic: auto
     damage: 158451
@@ -344,6 +345,7 @@ actions:
     description: "[boss] kicks the first player in enmity, dealing heavy damage."
   auto-attack-p2:
     id: 49746
+    source: 19508
     name: Auto-attack
     mechanic: auto
     damage: 96809
@@ -352,6 +354,7 @@ actions:
   # Phase 1
   revolting-ruin-iii:
     id: 50179
+    source: 19504
     mechanic: tb.mt
     shape: cone
     damage: 1025720
@@ -362,6 +365,7 @@ actions:
       id: revolting-ruin-iii-followup
   revolting-ruin-iii-followup:
     id: 50401
+    source: 19504
     caption: Follow-up
     mechanic: tb.ot
     shape: cone
@@ -369,11 +373,13 @@ actions:
     description: Hits the second player in enmity with a heavy conal tankbuster.
   enhanced-thrill-of-war-ii:
     id: 50173
+    source: 19504
     name: Enhanced Thrill Of War II
     mechanic: unknown
     description: Unknown effect.
   graven-image-1:
     id: 48370
+    source: 19504
     caption: I
     mechanic: mech
     emphasis: more
@@ -406,6 +412,7 @@ actions:
       id: double-trouble-trap-hit
   graven-image-2:
     id: 48370
+    source: 19504
     caption: II
     mechanic: mech
     emphasis: more
@@ -461,6 +468,7 @@ actions:
       count: 4
   graven-image-3:
     id: 48370
+    source: 19504
     caption: III
     mechanic: mech
     description: |
@@ -468,6 +476,7 @@ actions:
       See [a:tele-trouncing] for more information.
   pulse-wave:
     id: 47785
+    source: 19505
     mechanic: mech.knockback.unavoidable
     count: 4
     players: 0
@@ -475,6 +484,7 @@ actions:
     description: Knocks the tethered players back from the origin of the tether.
   mystery-magic-blizzard-fire:
     id: 47764
+    source: 18475
     caption: Ice/Fire
     mechanic: combination
     compact: trim
@@ -490,6 +500,7 @@ actions:
       flatten: omit-parent
   mystery-magic-blizzard-thunder:
     id: 47764
+    source: 18475
     caption: Ice/Thunder
     mechanic: combination
     compact: trim
@@ -505,6 +516,7 @@ actions:
       id: blizzard-iii-blowout
   mystery-magic-thunder-fire:
     id: 47764
+    source: 18475
     caption: Thunder/Fire
     mechanic: combination
     compact: trim
@@ -520,6 +532,7 @@ actions:
       flatten: omit-parent
   wave-cannon:
     id: 47784
+    source: 19505
     mechanic: spread
     shape: line
     count: 4
@@ -529,6 +542,7 @@ actions:
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   double-trouble-trap:
     id: 47782
+    source: 19504
     mechanic: mech.status
     description: Inflicts [s:double-trouble-trap] on a random support and a random DPS.
   explosion:
@@ -618,11 +632,13 @@ actions:
       If the lightning ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
   light-of-judgment:
     id: 50722
+    source: 19504
     mechanic: raidwide
     damage: 309023
     description: Heavy raidwide.
   hyperdrive:
     id: 49739
+    source: 19504
     caption: ×3
     mechanic: tb.mt
     shape: chariot
@@ -636,6 +652,7 @@ actions:
       id: hyperdrive-hit
   hyperdrive-hit:
     id: 49739
+    source: 19504
     caption: Hit
     mechanic: tb.mt
     shape: chariot
@@ -643,6 +660,7 @@ actions:
     description: Individual hit of [a:hyperdrive].
   gravitas:
     id: 47788
+    source: 19505
     mechanic: stack.partner
     shape: chariot
     count: 4
@@ -654,6 +672,7 @@ actions:
       Note that [a:gravitas] does not inflict [s:magic-vulnerability-up], so with sufficient mitigation multiple [a:gravitas] can be stacked on top of each other, making the [a:gravity-iii] soaks much easier.
   vitrophyre:
     id: 47792
+    source: 19505
     mechanic: spread
     shape: chariot
     count: 4
@@ -677,16 +696,19 @@ actions:
     description: A gravity well (puddle) is clipped by [a:vitrophyre], wiping the party.
   gravitational-wave:
     id: 47793
+    source: 19505
     mechanic: aoe
     shape: halfroom
     description: The left half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down].
   intemperate-will:
     id: 47794
+    source: 19505
     mechanic: aoe
     shape: halfroom
     description: The right half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down].
   tele-trouncing:
     id: 47801
+    source: 19504
     mechanic: mech
     emphasis: more
     compact: trim
@@ -734,6 +756,7 @@ actions:
       A Tele-Portent debuff resolves, leaving behind an arrow teleporter sigil. Deals no damage.
   indulgent-will:
     id: 47797
+    source: 19505
     mechanic: damage
     count: 4
     damage: 219477
@@ -743,6 +766,7 @@ actions:
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   idyllic-will:
     id: 47798
+    source: 19505
     mechanic: spread
     shape: chariot
     count: 4
@@ -753,12 +777,14 @@ actions:
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   ave-maria:
     id: 47795
+    source: 19505
     mechanic: mech.lookat
     players: 0
     damage: 192456
     description: A glowing yellow eye with a question mark appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down] on players who look away from it.
   indolent-will:
     id: 47796
+    source: 19505
     mechanic: mech.lookaway
     players: 0
     damage: 211863
@@ -771,6 +797,7 @@ actions:
   # Phase 2
   ultimate-embrace:
     id: 49740
+    source: 19506
     mechanic: tb.stack
     shape: chariot
     damage: 1300000
@@ -810,6 +837,7 @@ actions:
       count: 2
   forsaken:
     id: 47804
+    source: 19506
     mechanic: mech
     players: 8
     damage: 562117
@@ -932,6 +960,7 @@ actions:
     description: A conal [s:spells-trouble] resolves, firing a cone at the closest player. Inflicts [s:magic-vulnerability-up].
   pasts-end:
     id: 47833
+    source: 19513
     mechanic: spread.close
     shape: chariot
     count: 4
@@ -941,6 +970,7 @@ actions:
       A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
   futures-end:
     id: 47832
+    source: 19513
     mechanic: spread.close
     shape: chariot
     count: 4
@@ -956,17 +986,20 @@ actions:
     description: A circular [s:spells-trouble] resolves in the form of a moderate circular spread AoE. Inflicts [s:magic-vulnerability-up].
   all-things-ending:
     id: 47836
+    source: 19513
     mechanic: aoe
     shape: halfroom
     count: 4
     description: "[boss] and his 3 clones execute a [ms:halfroom] cleave behind (if [a:pasts-end] was cast) or in front (if [a:futures-end] was cast) of where they are currently facing. Inflicts [s:damage-down]."
   light-of-judgment-p2:
     id: 47805
+    source: 19506
     mechanic: raidwide
     damage: 424113
     description: Heavy raidwide. Kills any player with any remaining [s:spells-trouble] stacks.
   trine:
     id: 47839
+    source: 19506
     mechanic: aoe.3-to-1
     shape: chariot
     description: |
@@ -1022,12 +1055,14 @@ actions:
       **Note**: If Phase 1's puzzle mechanic was not correctly executed (see [a:puzzle]), depleting the boss's HP here simply ends the fight and kicks players out of the instance. Otherwise a cutscene plays and the party advances to Phase 3.
   aero-iii-assault:
     id: 50167
+    source: 19504
     mechanic: mech.knockback.unavoidable
     damage: 0
     description: Knocks back all players from the center of the arena and inflicts [s:down-for-the-count]. Only happens if [boss] is brought to 1 HP before [a:light-of-judgment-p2-enrage].
   # Phase 3
   definition-of-insanity:
     id: 47842
+    source: 19504
     name: Definition of Insanity
     mechanic: mech
     description: |
@@ -1037,6 +1072,7 @@ actions:
     trivia: References Vaas Montenegro from Far Cry 3, who informs the protagonist that the definition of insanity is "repeating the same thing over and over again and expecting different results" – in other words, exactly what a player group does while attempting to clear this fight.
   the-decisive-battle:
     id: 49890
+    source: 19508
     name: the Decisive Battle
     mechanic: mech.status
     count: 2
@@ -1047,6 +1083,7 @@ actions:
       The debuffs from the first cast last only a short time, until Exdeath begins casting [a:thunder-iii-out]. The debuffs from the second cast last until either boss is defeated.
   auto-attack-chaos:
     id: 49746
+    source: 19508
     name: Auto-attack
     caption: Chaos
     mechanic: auto
@@ -1055,6 +1092,7 @@ actions:
     description: Chaos punches the player who is first-in-enmity, dealing heavy damage.
   auto-attack-exdeath:
     id: 49744
+    source: 19509
     name: Auto-attack
     caption: Exdeath
     mechanic: auto
@@ -1063,6 +1101,7 @@ actions:
     description: Exdeath slashes the player who is first-in-enmity, dealing heavy damage.
   auto-attack-both:
     id: 49746
+    source: 19508
     name: Auto-attack
     caption: Both
     mechanic: auto
@@ -1073,6 +1112,7 @@ actions:
     description: Both bosses auto-attack their first-in-enmity target, dealing heavy damage.
   bowels-of-agony:
     id: 47858
+    source: 19508
     name: Bowels of Agony
     mechanic: mech.status
     players: 8
@@ -1240,6 +1280,7 @@ actions:
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   thunder-iii-out:
     id: 47890
+    source: 19509
     name: Thunder III
     caption: AoE
     mechanic: aoe
@@ -1268,6 +1309,7 @@ actions:
       Note that, while this is *intended* as a [m:stack.partner] and deals lethal damage when taken solo, the damage *does* scale linearly with the number of players soaking a hit. In other words: the more players are in the stack, the less damage it deals with no limit. This may be useful in certain strategies.
   thunder-iii-tb:
     id: 47881
+    source: 19509
     name: Thunder III
     caption: 2× TB
     mechanic: tb.close
@@ -1288,6 +1330,7 @@ actions:
     description: Individual hit of [a:thunder-iii-tb]. Hits the closest player to Exdeath.
   trance:
     id: 49878
+    source: 19504
     name: Trance
     mechanic: mech
     description: |
@@ -1296,6 +1339,7 @@ actions:
       After all eight [a:ultima-blaster]s have executed, all players are assigned limit cut numbers from 1 to 8. A short while later, the pulses fire again, starting from the same origin as the first pulse but rotating in the *opposite direction*, each aiming for the corresponding numbered player in a [ms:line] AoE that inflicts [s:magic-vulnerability-up] ([a:ultima-blaster-lc]).
   longitudinal-implosion:
     id: 47869
+    source: 19508
     name: Longitudinal Implosion
     mechanic: aoe.alternating
     shape: cone
@@ -1308,6 +1352,7 @@ actions:
       id: shockwave
   latitudinal-implosion:
     id: 47870
+    source: 19508
     name: Latitudinal Implosion
     mechanic: aoe.alternating
     shape: cone
@@ -1341,6 +1386,7 @@ actions:
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
   ultima-blasters:
     id: 47843
+    source: 19451
     name: Ultima Blasters
     mechanic: raidwide
     compact: full
@@ -1366,6 +1412,7 @@ actions:
       id: ultima-blaster
   ultima-blaster:
     id: 47843
+    source: 19451
     name: Ultima Blaster
     mechanic: raidwide
     damage: 89341
@@ -1374,6 +1421,7 @@ actions:
       This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
   umbra-smash:
     id: 47872
+    source: 19508
     name: Umbra Smash
     mechanic: raidwide.proximity
     shape: chariot
@@ -1383,6 +1431,7 @@ actions:
       Designate a player to bait the jump. They should be at the edge of the arena before the cast begins, then move to the opposite side (along with the rest of the party) before the cast ends.
   vacuum-wave:
     id: 47891
+    source: 19509
     name: Vacuum Wave
     mechanic: mech.knockback
     damage: 0
@@ -1391,6 +1440,7 @@ actions:
       This is players' last opportunity to cleanse [s:headwind] or [s:tailwind].
   aetherlink:
     id: 49892
+    source: 19508
     name: Aetherlink
     mechanic: mech
     description: |
@@ -1398,6 +1448,7 @@ actions:
       Mathematically, the boss with the higher HP transfers half of the HP difference between them and the other boss to the other boss.
   ultima-blaster-lc:
     id: 47844
+    source: 19451
     name: Ultima Blaster
     caption: LC
     mechanic: mech.limit
@@ -1415,11 +1466,13 @@ actions:
       Keep track of the initial raidwide pulses and which way they're going, then invert that direction in your head. Remember that you don't go where the pulses start, players need to go where they *end up*. Player 1 stands between the cardinal/intercardinal the first pulse ended at and the next one in the inverted direction; each subsequent player stands one step further in that direction.
   max:
     id: 47845
+    source: 19504
     name: Max
     mechanic: mech
     description: "[boss] becomes big. Really big."
   earthquake:
     id: 50545
+    source: 19508
     name: Earthquake
     caption: Cast
     mechanic: mech
@@ -1468,6 +1521,7 @@ actions:
       Targeted mitigation such as [a:reprisal] or [a:addle] *does* reduce the damage if inflicted on Chaos.
   slap-happy-right:
     id: 47846
+    source: 19504
     name: Slap Happy
     caption: Right
     mechanic: combination
@@ -1491,6 +1545,7 @@ actions:
       id: shocking-impact
   slap-happy-left:
     id: 47847
+    source: 19504
     name: Slap Happy
     caption: Left
     mechanic: combination
@@ -1537,6 +1592,7 @@ actions:
     description: A conal full party stack originating from the center of the arena. Always follows [a:slap-happy-right].
   black-hole:
     id: 47867
+    source: 19509
     name: Black Hole
     mechanic: mech
     emphasis: more
@@ -1724,6 +1780,7 @@ actions:
       timing: player
   nothingness:
     id: 47868
+    source: 19512
     name: Nothingness
     mechanic: spread.tethers
     shape: line
@@ -1734,12 +1791,14 @@ actions:
       If the player already has [s:meanest-existence], deals 9,999,999 damage.
   damning-edict:
     id: 47873
+    source: 19508
     name: Damning Edict
     mechanic: aoe
     shape: halfroom
     description: Chaos faces a random player and begins casting. At the end of the cast, deals heavy damage and inflicts [s:damage-down] on anyone in front of him.
   look-upon-me-and-despair:
     id: 47852
+    source: 19504
     name: Look upon Me and Despair
     mechanic: aoe
     shape: line
@@ -1749,6 +1808,7 @@ actions:
       id: look-upon-me-and-despair-hit
   look-upon-me-and-despair-2:
     id: 47853
+    source: 19504
     name: Look upon Me and Despair
     mechanic: aoe
     shape: line
@@ -1767,11 +1827,13 @@ actions:
     description: Individual hit of [a:look-upon-me-and-despair].
   blackblood:
     id: 50362
+    source: 19504
     name: Blackblood
     mechanic: unknown
     description: Unknown effect.
   white-hole:
     id: 48486
+    source: 19509
     name: White Hole
     mechanic: aoe.condition
     description: Petrifies any player not at full health and kills any player under 50% health.
@@ -1795,6 +1857,7 @@ actions:
     description: Cones originate from the center of the arena, targeting one random player of each role (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage. Inflicts [s:magic-vulnerability-up]. Always follows [a:slap-happy-left].
   blizzard-iii:
     id: 47887
+    source: 19509
     name: Blizzard III
     caption: AoE (Cast)
     mechanic: aoe.delayed
@@ -1816,6 +1879,7 @@ actions:
     description: Individual hit of [a:blizzard-iii].
   stomp-a-mole:
     id: 47855
+    source: 19504
     name: Stomp-a-Mole
     mechanic: towers.double
     compact: trim
@@ -1845,6 +1909,7 @@ actions:
       id: stomp-a-mole-hit
   knock-down:
     id: 47874
+    source: 19508
     name: Knock Down
     mechanic: stack
     shape: chariot
@@ -1872,6 +1937,7 @@ actions:
     description: Individual hit of [a:stomp-a-mole].
   blizzard-iii-freeze:
     id: 47889
+    source: 19509
     name: Blizzard III
     caption: Motion
     mechanic: mech.motion
@@ -1898,6 +1964,7 @@ actions:
   # Phase 4
   auto-attack-p4:
     id: 49746
+    source: 19508
     name: Auto-attack
     mechanic: auto
     damage: 95527
@@ -1905,6 +1972,7 @@ actions:
     description: "[boss] kicks the first player in enmity, dealing heavy damage."
   kefka-says:
     id: 49884
+    source: 18475
     name: Kefka Says
     mechanic: mech
     emphasis: more
@@ -1917,6 +1985,7 @@ actions:
     trivia: References the popular game Simon Says, which mirrors this phase quite closely. In Simon Says, the designated "Simon" gives commands to the other players, but those commands are *fake* if "Simon" does not prefix them with "Simon says [...]". Following a fake command, or failing to follow a true command, results in immediate disqualification.
   grand-cross-1:
     id: 47892
+    source: 19510
     name: Grand Cross
     caption: I
     mechanic: mech.status
@@ -1927,6 +1996,7 @@ actions:
       Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
   grand-cross-2:
     id: 47892
+    source: 19510
     name: Grand Cross
     caption: II
     mechanic: mech.status
@@ -1938,6 +2008,7 @@ actions:
       Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
   grand-cross-3:
     id: 47892
+    source: 19510
     name: Grand Cross
     caption: III
     mechanic: mech.status
@@ -1967,6 +2038,7 @@ actions:
       Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake). Check the description for [s:dynamic-fluid-p4] to learn about what that means.
   flood-of-naught:
     id: 50067
+    source: 19510
     name: Flood of Naught
     mechanic: aoe
     shape: line
@@ -2044,6 +2116,7 @@ actions:
       In the case of a fake [s:allagan-field], deals 9,999,999 damage if an insufficient amount of damage was taken.
   mana-charge:
     id: 47780
+    source: 18475
     mechanic: mech.store
     description: |
       Stores the truthiness of the next [a:thrumming-thunder-iii] and [a:blizzard-iii-blowout], then applies those truthiness states during [a:mana-release].
@@ -2084,6 +2157,7 @@ actions:
       [s:acceleration-bomb] resolves, instantly killing afflicted players who are moving or executing an action (real) or standing still (fake).
   ultima-upsurge:
     id: 49738
+    source: 18475
     mechanic: raidwide
     damage: 229512
     description: Moderate raidwide.
@@ -2097,6 +2171,7 @@ actions:
       The invisible AoE dropped by [s:entropy-p4] resolves in the form of a [ms:chariot] AoE (real) or [ms:dynamo] (fake), inflicting [s:damage-down].
   mana-release:
     id: 47781
+    source: 18475
     mechanic: mech
     description: |
       [boss] shows a ring with optional question marks for both thunder and ice, same as during [a:mystery-magic-blizzard-thunder].
@@ -2113,6 +2188,7 @@ actions:
   # Phase 5
   ultima-repeater:
     id: 47936
+    source: 19511
     name: Ultima Repeater
     mechanic: raidwide
     compact: full
@@ -2172,6 +2248,7 @@ actions:
       id: fell-forces-dps
   flood:
     id: 49471
+    source: 19511
     mechanic: aoe.memory
     shape: line
     compact: full
@@ -2212,6 +2289,7 @@ actions:
     description: A set of line AoEs telegraphed during [a:flood] resolves.
   maddening-orchestra:
     id: 47952
+    source: 19511
     name: Maddening Orchestra
     mechanic: combination
     emphasis: more
@@ -2297,6 +2375,7 @@ actions:
     description: "[s:surprise-holy] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up] on the afflicted player and all players in a moderate radius around them."
   celestriad:
     id: 47938
+    source: 19511
     name: Celestriad
     mechanic: towers.double
     emphasis: more
@@ -2344,6 +2423,7 @@ actions:
       id: blizzard-iii-tower
   catastrophic-choice:
     id: 49742
+    source: 19511
     name: Catastrophic Choice
     mechanic: aoe
     shape: in-or-out
@@ -2386,6 +2466,7 @@ actions:
     description: "A [ms:dynamo] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down]."
   stray-apocalypse:
     id: 47931
+    source: 19511
     name: Stray Apocalypse
     mechanic: aoe.exaflares
     shape: chariot
@@ -2400,6 +2481,7 @@ actions:
       During the last set of exas, find your [clock spot](t:clock spots) because [boss] has already started casting [a:stray-entropy], which requires you to be there immediately after the last set of exas has concluded.
   stray-entropy:
     id: 47934
+    source: 19511
     name: Stray Entropy
     mechanic: spread
     shape: chariot
@@ -2418,6 +2500,7 @@ actions:
     description: Individual hit of [a:stray-entropy].
   forsaken-p5:
     id: 47925
+    source: 19511
     name: Forsaken
     mechanic: enrage.soft
     damage: 426246
@@ -2505,6 +2588,7 @@ actions:
     description: Heavy-hitting telegraphed full party stack.
   forsaken-p5-hit:
     id: 47926
+    source: 19511
     name: Forsaken
     mechanic: raidwide
     damage: 331395

@@ -132,11 +132,13 @@ status:
 actions:
   the-fixer:
     id: 46295
+    source: 19195
     mechanic: raidwide
     damage: 420074
     description: Heavy raidwide.
   mortal-slayer:
     id: 46229
+    source: 19195
     mechanic: mech
     emphasis: more
     compact: trim
@@ -185,6 +187,7 @@ actions:
       id: mortal-slayer-set
   mortal-slayer-tb:
     id: 46232
+    source: 19200
     name: Mortal Slayer (Purple)
     mechanic: tb.close
     shape: chariot
@@ -192,6 +195,7 @@ actions:
     description: Heavy [t:tankbuster] on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii].
   mortal-slayer-ball:
     id: 46230
+    source: 19201
     name: Mortal Slayer (Green)
     mechanic: spread.close
     shape: chariot
@@ -206,6 +210,7 @@ actions:
     description: Two balls resolve (either [a:mortal-slayer-ball] or [a:mortal-slayer-tb]).
   grotesquerie-act-1:
     id: 48829
+    source: 19195
     mechanic: mech
     emphasis: more
     compact: full
@@ -321,6 +326,7 @@ actions:
     description: Stack on a :unverified(random healer). Inflicts [s:magic-vulnerability-up].
   grotesquerie-act-2:
     id: 48830
+    source: 19195
     mechanic: mech
     emphasis: more
     compact: full
@@ -441,6 +447,7 @@ actions:
     description: Standard AoE. Leaves behind a [a:roiling-mass-alpha] blob on the ground.
   cruel-coil:
     id: 46267
+    source: 19195
     mechanic: mech
     description: |
       Pulls all players into the center of the arena and [binds](s:bind) them, then [boss] coils around them.
@@ -448,6 +455,7 @@ actions:
       After a few seconds, [boss] spins ([a:skinsplitter]), which rotates the gap *90° counter-clockwise*. If any player is touching [boss]'s body when [a:skinsplitter] happens, inflicts [s:damage-down] on them.
   skinsplitter:
     id: 46268
+    source: 19195
     mechanic: aoe
     type: physical
     description: Deals heavy damage and inflicts a small knockback and [s:damage-down] on players touching [boss]'s body as he spins once.
@@ -461,12 +469,14 @@ actions:
     description: A tether is snapped, dealing moderate damage to both players and anyone around them, and inflicting [s:magic-vulnerability-up].
   roiling-mass-alpha:
     id: 46263
+    source: 19199
     name: Roiling Mass (α)
     mechanic: towers.single
     damage: 36948
     description: A tower spawns about 20 seconds after [a:phagocyte-spotlight-blob] and resolves. Inflicts [s:poison-resistance-down-ii]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
   roiling-mass-beta:
     id: 46259
+    source: 19199
     name: Roiling Mass (ß)
     mechanic: towers.single
     damage: 38125
@@ -483,6 +493,7 @@ actions:
     description: Moderate raidwide. [boss:c] sheds his arms and regrows them.
   grotesquerie-act-3:
     id: 48831
+    source: 19195
     mechanic: mech
     emphasis: more
     compact: full
@@ -523,6 +534,7 @@ actions:
       id: venomous-scourge
   feral-fission:
     id: 48649
+    source: 19195
     mechanic: mech.arena
     description: |
       [boss]'s snake arms plunge down and burrow through the arena in five specific locations. Each segment of an arm that is "above ground" then destroys that portion of the arena.
@@ -574,6 +586,7 @@ actions:
     description: The three westmost and three eastmost players are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up].
   grotesquerie-curtain-call:
     id: 48832
+    source: 19195
     mechanic: mech
     emphasis: more
     compact: trim
@@ -691,6 +704,7 @@ actions:
     description: Telegraphed stack on a random damage dealer or support (opposite of the role selected for [a:dramatic-lysis-spread]).
   serpentine-scourge:
     id: 46289
+    source: 19195
     mechanic: aoe
     shape: halfroom
     description: |
@@ -709,6 +723,7 @@ actions:
     description: An individual hit of [a:serpentine-scourge].
   raptor-knuckles:
     id: 46288
+    source: 19195
     mechanic: mech.knockback
     description: |
       A knockback from either the northwest or northeast corner, followed by a knockback from the other corner.
