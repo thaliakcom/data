@@ -9,6 +9,7 @@ tier: AAC Light-heavyweight
 boss: Brute Bomber
 HP: 96522586
 party_hp: 120000
+arena: 30
 wip: [guide, damage, diagrams]
 alias: [r3s]
 description: |

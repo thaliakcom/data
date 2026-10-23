@@ -8,6 +8,7 @@ by:
 tier: Dawntrail
 boss: Zelenia
 party_hp: 172123
+arena: 32
 HP: 85834672
 autos:
   mechanic: auto.single

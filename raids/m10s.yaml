@@ -9,6 +9,7 @@ tier: AAC Heavyweight
 boss: Deep Blue and Red Hot
 HP: 118983004
 party_hp: 197477
+arena: 40
 autos:
   mechanic: auto.single
   type: physical

@@ -9,6 +9,7 @@ tier: AAC Light-heavyweight
 boss: Wicked Thunder
 HP: 114525943
 party_hp: 120000
+arena: 40
 wip: [guide, damage, diagrams]
 alias: [r4s]
 description: |

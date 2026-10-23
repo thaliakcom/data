@@ -10,6 +10,7 @@ boss: Athena
 suffix: " Part 1"
 HP: 32790420
 party_hp: 73000
+arena: 40
 autos:
   mechanic: auto.single
   type: magic

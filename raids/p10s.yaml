@@ -9,6 +9,7 @@ tier: Anabaseios
 boss: Pandæmonium
 HP: 43656896
 party_hp: 73000
+arena: [60, 45]
 autos:
   mechanic: auto.single
   type: magic

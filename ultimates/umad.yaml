@@ -10,6 +10,7 @@ alias: [dmu]
 HP: 0
 wip: [diagrams]
 party_hp: 235643
+arena: 40
 description: |
   Dancing Mad (Ultimate) is Dawntrail's second ultimate encounter, in which you face off against Kefka Palazzo. But this is not a simulated version of him conjured by Omega; this Kefka is the real deal.
   **Note**: This timeline exposes the timestamps and damage amounts for all auto-attacks in the encounter. Unless this is information that you need, it is strongly recommended to click the cogwheel in the top right and select "Hide minor actions" to hide all auto-attacks from the timeline and make it easier to read.

@@ -8,6 +8,7 @@ by:
 boss: Alpha Omega
 HP: 0
 party_hp: 67993
+arena: 40
 description: An alternate retelling of the Omega raid storyline in which Omega successfully ascertains and harnesses what lies at the heart of a mortal's strength.
 status:
   damage-down:

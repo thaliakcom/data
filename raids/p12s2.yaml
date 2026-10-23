@@ -10,6 +10,7 @@ boss: Pallas Athena
 suffix: " Part 2"
 HP: 40192744
 party_hp: 73000
+arena: [40, 30]
 autos:
   mechanic: auto.single
   type: magic

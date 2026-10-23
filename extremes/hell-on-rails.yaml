@@ -8,6 +8,7 @@ by:
 tier: Dawntrail
 boss: Doomtrain
 party_hp: 192220
+arena: [20, 29.2]
 HP: 98895160
 description: ""
 autos:

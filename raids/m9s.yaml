@@ -9,6 +9,7 @@ tier: AAC Heavyweight
 boss: Vamp Fatale
 HP: 110594239
 party_hp: 197011
+arena: 40
 autos:
   mechanic: auto.single
   type: physical

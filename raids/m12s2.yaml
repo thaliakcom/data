@@ -9,6 +9,7 @@ tier: AAC Heavyweight
 boss: The Lindwurm
 HP: 131936161
 party_hp: 197477
+arena: 40
 autos:
   mechanic: auto.single
   type: physical

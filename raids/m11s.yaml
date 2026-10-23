@@ -9,6 +9,7 @@ tier: AAC Heavyweight
 boss: the Tyrant
 HP: 154287371
 party_hp: 197477
+arena: [52, 40]
 autos:
   mechanic: auto.single
   type: physical

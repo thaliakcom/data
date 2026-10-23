@@ -167,6 +167,18 @@
       },
       "description": "Macros that can be copied and pasted into the FFXIV in-game macro editor and describe some set of strats."
     },
+    "arena": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PositiveNumber"
+        },
+        {
+          "$ref": "#/definitions/PositivePoint"
+        }
+      ],
+      "description": "The full size of the arena in yalms as [x, y], or a single number for square and circular arenas (never a radius: a circle with a radius of 20 is 40). Diagrams map the part of the arena image inside the arena element's margin to this size, which converts sizes taken from actions (see action on diagram elements) into diagram units. If the arena changes size during the fight, use its largest extent and give the smaller arena images different margins.\n\nThis field is required unless wip includes timeline.",
+      "markdownDescription": "The full size of the arena in yalms as `[x, y]`, or a single number for square and circular arenas (never a radius: a circle with a radius of 20 is `40`). Diagrams map the part of the arena image inside the `arena` element's `margin` to this size, which converts sizes taken from actions (see `action` on diagram elements) into diagram units. If the arena changes size during the fight, use its largest extent and give the smaller arena images different margins.\n\nThis field is required unless `wip` includes `timeline`."
+    },
     "graphing": {
       "$ref": "#/definitions/Graphing",
       "description": "The graphing information. Can be supplied to create diagrams."
@@ -1080,6 +1092,25 @@
       ],
       "additionalProperties": false
     },
+    "PositiveNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "PositivePoint": {
+      "type": "array",
+      "minItems": 2,
+      "items": [
+        {
+          "$ref": "#/definitions/PositiveNumber",
+          "title": "x"
+        },
+        {
+          "$ref": "#/definitions/PositiveNumber",
+          "title": "y"
+        }
+      ],
+      "maxItems": 2
+    },
     "Graphing": {
       "type": "object",
       "properties": {
@@ -1148,8 +1179,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1188,8 +1218,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1230,23 +1259,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "PositivePoint": {
-      "type": "array",
-      "minItems": 2,
-      "items": [
-        {
-          "type": "number",
-          "minimum": 0,
-          "title": "x"
-        },
-        {
-          "type": "number",
-          "minimum": 0,
-          "title": "y"
-        }
-      ],
-      "maxItems": 2
     },
     "Origin": {
       "type": "array",
@@ -1291,6 +1303,11 @@
     "DonutDefinition": {
       "type": "object",
       "properties": {
+        "action": {
+          "type": "string",
+          "description": "The key of an action in actions whose game data gives this element's size, converted from yalms with the fight's arena size: effectRange is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's XAxisModifier. Donuts still need an explicit size (game data has no inner radius). An explicit size always takes precedence.",
+          "markdownDescription": "The key of an action in `actions` whose game data gives this element's size, converted from yalms with the fight's `arena` size: `effectRange` is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's `XAxisModifier`. Donuts still need an explicit `size` (game data has no inner radius). An explicit `size` always takes precedence."
+        },
         "look": {
           "type": "string",
           "enum": [
@@ -1322,8 +1339,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1362,8 +1378,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1415,6 +1430,11 @@
     "EllipseDefinition": {
       "type": "object",
       "properties": {
+        "action": {
+          "type": "string",
+          "description": "The key of an action in actions whose game data gives this element's size, converted from yalms with the fight's arena size: effectRange is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's XAxisModifier. Donuts still need an explicit size (game data has no inner radius). An explicit size always takes precedence.",
+          "markdownDescription": "The key of an action in `actions` whose game data gives this element's size, converted from yalms with the fight's `arena` size: `effectRange` is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's `XAxisModifier`. Donuts still need an explicit `size` (game data has no inner radius). An explicit `size` always takes precedence."
+        },
         "look": {
           "type": "string",
           "enum": [
@@ -1446,8 +1466,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1486,8 +1505,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1539,6 +1557,11 @@
     "ConeDefinition": {
       "type": "object",
       "properties": {
+        "action": {
+          "type": "string",
+          "description": "The key of an action in actions whose game data gives this element's size, converted from yalms with the fight's arena size: effectRange is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's XAxisModifier. Donuts still need an explicit size (game data has no inner radius). An explicit size always takes precedence.",
+          "markdownDescription": "The key of an action in `actions` whose game data gives this element's size, converted from yalms with the fight's `arena` size: `effectRange` is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's `XAxisModifier`. Donuts still need an explicit `size` (game data has no inner radius). An explicit `size` always takes precedence."
+        },
         "look": {
           "type": "string",
           "enum": [
@@ -1570,8 +1593,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1610,8 +1632,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1685,8 +1706,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1725,8 +1745,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1781,6 +1800,11 @@
           ],
           "description": "Whether the image should be rendered in full (rectangle) or only as a circular cutout.",
           "markdownDescription": "Whether the image should be rendered in full (`rectangle`) or only as a circular cutout."
+        },
+        "margin": {
+          "$ref": "#/definitions/Margin",
+          "description": "Only on the arena element: the margin in pixels of the arena image (CSS margin semantics) around the part that corresponds to the fight's arena size in yalms. Negative values for images smaller than the arena. Doesn't change how the image is drawn.",
+          "markdownDescription": "Only on the `arena` element: the margin in pixels of the arena image (CSS `margin` semantics) around the part that corresponds to the fight's `arena` size in yalms. Negative values for images smaller than the arena. Doesn't change how the image is drawn."
         }
       },
       "required": [
@@ -1789,9 +1813,89 @@
       ],
       "additionalProperties": false
     },
+    "Margin": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "title": "all"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "items": [
+            {
+              "type": "number",
+              "title": "vertical"
+            },
+            {
+              "type": "number",
+              "title": "horizontal"
+            }
+          ],
+          "maxItems": 2
+        },
+        {
+          "type": "array",
+          "minItems": 3,
+          "items": [
+            {
+              "type": "number",
+              "title": "top"
+            },
+            {
+              "type": "number",
+              "title": "horizontal"
+            },
+            {
+              "type": "number",
+              "title": "bottom"
+            }
+          ],
+          "maxItems": 3
+        },
+        {
+          "type": "array",
+          "minItems": 4,
+          "items": [
+            {
+              "type": "number",
+              "title": "top"
+            },
+            {
+              "type": "number",
+              "title": "right"
+            },
+            {
+              "type": "number",
+              "title": "bottom"
+            },
+            {
+              "type": "number",
+              "title": "left"
+            }
+          ],
+          "maxItems": 4
+        }
+      ],
+      "description": "Like the CSS margin property: one value for all sides, or 2–4 values in the order top, right, bottom, left.",
+      "markdownDescription": "Like the CSS `margin` property: one value for all sides, or 2–4 values in the order top, right, bottom, left."
+    },
     "RectangleDefinition": {
       "type": "object",
       "properties": {
+        "action": {
+          "type": "string",
+          "description": "The key of an action in actions whose game data gives this element's size, converted from yalms with the fight's arena size: effectRange is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's XAxisModifier. Donuts still need an explicit size (game data has no inner radius). An explicit size always takes precedence.",
+          "markdownDescription": "The key of an action in `actions` whose game data gives this element's size, converted from yalms with the fight's `arena` size: `effectRange` is the radius of an ellipse or cone and the length of a rectangle, whose width is the action's `XAxisModifier`. Donuts still need an explicit `size` (game data has no inner radius). An explicit `size` always takes precedence."
+        },
         "look": {
           "type": "string",
           "enum": [
@@ -1823,8 +1927,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1863,8 +1966,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -1968,8 +2070,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2008,8 +2109,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2226,8 +2326,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2266,8 +2365,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2432,8 +2530,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2472,8 +2569,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2588,8 +2684,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2628,8 +2723,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2730,8 +2824,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2770,8 +2863,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2859,6 +2951,11 @@
             "circle",
             "rectangle"
           ]
+        },
+        "margin": {
+          "$ref": "#/definitions/Margin",
+          "description": "Only on the arena element: see margin on image definitions.",
+          "markdownDescription": "Only on the `arena` element: see `margin` on image definitions."
         }
       },
       "additionalProperties": false
@@ -2880,8 +2977,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -2920,8 +3016,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -3037,8 +3132,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -3077,8 +3171,7 @@
         "size": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"
@@ -3213,8 +3306,7 @@
         "scale": {
           "anyOf": [
             {
-              "type": "number",
-              "minimum": 0
+              "$ref": "#/definitions/PositiveNumber"
             },
             {
               "$ref": "#/definitions/PositivePoint"

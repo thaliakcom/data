@@ -7,6 +7,7 @@ by:
   role: author
 tier: Dawntrail
 boss: Necron
+arena: [36, 30]
 HP: 0
 wip: full
 description: ""
