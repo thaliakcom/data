@@ -2974,7 +2974,6 @@ timeline:
     description: "[boss] inflicts [s:forsaken] on all players and erases the world."
 graphing:
   coordinate-system: polar
-  defs:
   elements:
     arena:
       type: image
