@@ -1,0 +1,80 @@
+{
+  "$id": "https://thaliak.com/animations.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "in": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "elements": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "all"
+              },
+              {
+                "type": "string",
+                "const": "shapes"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "The element types the animation can be used on: all of them, only shapes, or a list of element types."
+          }
+        },
+        "required": [
+          "elements"
+        ],
+        "additionalProperties": false
+      },
+      "description": "The animations elements can play when they appear."
+    },
+    "out": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "elements": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "all"
+              },
+              {
+                "type": "string",
+                "const": "shapes"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ],
+            "description": "The element types the animation can be used on: all of them, only shapes, or a list of element types."
+          }
+        },
+        "required": [
+          "elements"
+        ],
+        "additionalProperties": false
+      },
+      "description": "The animations elements can play when they disappear."
+    }
+  },
+  "required": [
+    "in",
+    "out"
+  ],
+  "additionalProperties": false,
+  "description": "A list of the animations diagram elements can play when they appear (in) or disappear (out).",
+  "title": "Animations",
+  "definitions": {},
+  "markdownDescription": "A list of the animations diagram elements can play when they appear (`in`) or disappear (`out`)."
+}

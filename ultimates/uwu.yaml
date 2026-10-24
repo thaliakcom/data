@@ -2252,8 +2252,8 @@ graphing:
       shadow: false
       blink: true
     mistral-song-target:
-      type: image
-      image: /images/markers/target-green.svg
+      type: marker
+      look: target-green
       size: 20
       visible: false
       shadow: false
@@ -2372,8 +2372,8 @@ graphing:
       opacity: 0.7
       shadow: false
     kb:
-      type: image
-      image: /images/markers/circle-kb.svg
+      type: marker
+      look: circle-kb
       size: 130
       visible: false
       opacity: 0.6

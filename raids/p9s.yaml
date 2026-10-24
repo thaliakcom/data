@@ -803,8 +803,8 @@ graphing:
       origin: [0.5, 0]
       scale: [1, 0]
     tower:
-      type: image
-      image: /images/markers/tower.svg
+      type: marker
+      look: tower
       size: 23
       scale: 0
       opacity: 0.9

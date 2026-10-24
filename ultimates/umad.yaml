@@ -3081,14 +3081,14 @@ graphing:
       scale: [1, 0]
       shadow: false
     rotate-cw:
-      type: image
-      image: /images/markers/rotate-cw.svg
+      type: marker
+      look: rotate-cw
       size: 40
       shadow: false
       visible: false
     rotate-ccw:
-      type: image
-      image: /images/markers/rotate-ccw.svg
+      type: marker
+      look: rotate-ccw
       size: 40
       shadow: false
       visible: false

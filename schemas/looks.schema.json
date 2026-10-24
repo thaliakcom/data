@@ -1,0 +1,40 @@
+{
+  "$id": "https://thaliak.com/looks.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "aoes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The looks of shapes (look on ellipses, rectangles, cones and donuts).",
+      "markdownDescription": "The looks of shapes (`look` on ellipses, rectangles, cones and donuts)."
+    },
+    "tethers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The looks of links (look on links).",
+      "markdownDescription": "The looks of links (`look` on links)."
+    },
+    "markers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The markers (look on markers).",
+      "markdownDescription": "The markers (`look` on markers)."
+    }
+  },
+  "required": [
+    "aoes",
+    "tethers",
+    "markers"
+  ],
+  "additionalProperties": false,
+  "description": "A list of the looks diagram shapes and links can be drawn with.",
+  "title": "Looks",
+  "definitions": {}
+}

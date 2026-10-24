@@ -1,0 +1,40 @@
+in:
+  none:
+    elements: all
+  fade:
+    elements: all
+  scale:
+    elements: all
+  scale-x:
+    elements: all
+  scale-y:
+    elements: all
+out:
+  none:
+    elements: all
+  fade:
+    elements: all
+  scale:
+    elements: all
+  scale-x:
+    elements: all
+  scale-y:
+    elements: all
+  rocks:
+    elements: shapes
+  fire:
+    elements: shapes
+  meteor:
+    elements: [ellipse]
+  wave-cannon:
+    elements: [rectangle]
+  cosmo-arrow:
+    elements: [rectangle]
+  sync-bug:
+    elements: [ellipse]
+  overflow-bug:
+    elements: [ellipse]
+  flare:
+    elements: [ellipse]
+  explosion:
+    elements: shapes
