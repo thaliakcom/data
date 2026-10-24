@@ -863,19 +863,19 @@ graphing:
       opacity: 0.5
       size: [5, 200]
     stack:
-      type: image
+      type: marker
       size: 50
-      image: /images/markers/stack.svg
+      look: stack
       visible: false
     tower:
-      type: image
-      image: /images/markers/tower.svg
+      type: marker
+      look: tower
       size: 23
       scale: 0
       opacity: 0.9
     kb:
-      type: image
-      image: /images/markers/circle-kb.svg
+      type: marker
+      look: circle-kb
       size: 130
       visible: false
       opacity: 0.6

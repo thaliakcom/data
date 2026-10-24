@@ -2295,8 +2295,8 @@ graphing:
       visible: false
       shadow: false
     hello:
-      type: image
-      image: /images/other/hello-world.svg
+      type: marker
+      look: hello-world
       size: 45
       opacity: 0.85
       visible: false
@@ -2385,15 +2385,15 @@ graphing:
       width: 1
       color: "#e1e2e3cc"
     stack:
-      type: image
+      type: marker
       size: 50
-      image: /images/markers/stack.svg
+      look: stack
       shadow: false
       visible: false
     line-stack:
-      type: image
+      type: marker
       size: 50
-      image: /images/markers/line-stack.svg
+      look: line-stack
       shadow: false
       visible: false
     bladedance:
@@ -2405,9 +2405,9 @@ graphing:
       visible: false
       shadow: false
     flare:
-      type: image
+      type: marker
       size: 50
-      image: /images/markers/flare.svg
+      look: flare
       shadow: false
       visible: false
     far-tether:
@@ -2446,26 +2446,26 @@ graphing:
       size: 20
       shadow: true
     rotate-cw:
-      type: image
-      image: /images/markers/rotate-cw.svg
+      type: marker
+      look: rotate-cw
       size: 40
       shadow: false
       visible: false
     rotate-ccw:
-      type: image
-      image: /images/markers/rotate-ccw.svg
+      type: marker
+      look: rotate-ccw
       size: 40
       shadow: false
       visible: false
     exaflare:
-      type: image
-      image: /images/markers/exaflare.svg
+      type: marker
+      look: exaflare
       size: 60
       shadow: false
       visible: false
     kb:
-      type: image
-      image: /images/markers/circle-kb.svg
+      type: marker
+      look: circle-kb
       size: 130
       scale: 0
       opacity: 0.6
