@@ -19,8 +19,8 @@
   target: enemy
   effects:
   - id: reprisal
-    mitigation: 15
-    duration: 10000
+    mitigation: 10
+    duration: 15000
 # PLD
 - id: sentinel
   target: self
