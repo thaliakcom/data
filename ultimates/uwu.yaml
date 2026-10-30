@@ -2178,274 +2178,290 @@ graphing:
   coordinate-system: polar
   defs:
     eruption: "radial-gradient(0% #FFF9BF 30% #FF876C9B 97% #FF876C9B 98% #FF915E 100% #FF915E)"
-    weight: "radial-gradient(0% #FFF9BF 30% #7E593E9B 100% #75593A)"
     orb: "radial-gradient(0% #000000 30% #000000 100% #5eccb3)"
-    landslide: "linear-gradient(0% #597BC4 2% #7E593ED4 50% #7E6F3E72 98% #7E593ED4 100% #3E4E8D)"
   elements:
     arena:
       type: image
       shape: circle
       image: /images/arenas/uwu-p1.avif
+      margin: [30, 35, 42, 33]
     boss:
       size: 45
       opacity: 0.5
+    raidwide:
+      type: ellipse
+      look: { type: plain, color: "#F5BB5E" }
+      size: 400
+      opacity: 0.25
+      enter: scale
+      exit: { type: sweep, speed: 3 }
+      visible: false
     feather-rain:
       type: ellipse
+      action: feather-rain
       look: aoe
-      size: 30
       opacity: 0.85
-      scale: 0
-      shadow: false
+      enter: scale
+      exit: feather-rain
+      visible: false
     wicked-wheel:
       type: ellipse
+      action: wicked-wheel
       look: aoe
-      size: 80
       opacity: 0.85
-      scale: 0
-      shadow: false
+      enter: scale
+      exit: flash
+      visible: false
     wicked-tornado:
       type: donut
+      look: none
+      stroke: { color: "#8FB990", style: dashed }
       size: [80, 178]
-      scale: 0
-      color: "#067F0A"
       opacity: 0.5
-      shadow: false
-      blink: true
+      enter: scale
+      exit: wind
+      visible: false
     wicked-wheel-sister:
       type: ellipse
-      size: 120
-      color: "#067F0A"
-      opacity: 0.6
+      action: wicked-wheel-sister
+      look: none
+      stroke: { color: "#8FB990", style: dashed }
+      opacity: 0.85
+      exit: flash
       visible: false
-      shadow: false
-      blink: true
     great-whirlwind:
       type: ellipse
-      size: 85
-      color: "#067F0A"
+      action: great-whirlwind
+      look: { type: plain, color: "#076C0B" }
+      stroke: "#55C459"
       opacity: 0.6
+      exit: tornado
       visible: false
-      shadow: false
-      blink: true
     eye-of-the-storm:
       type: donut
+      look: { type: plain, color: "#43A0D5" }
       size: [100, 200]
-      color: "#43A0D5"
       opacity: 0.7
+      exit: wind
       visible: false
-      shadow: false
     mesohigh-tether:
       type: link
-      color: "#1D9A16"
+      look: strands
       opacity: 0.6
       visible: false
     mesohigh:
       type: ellipse
-      size: 20
-      color: "#1D9A16"
+      action: mesohigh
+      look: none
+      stroke: { color: "#1D9A16", style: dashed }
       opacity: 0.6
+      exit: tornado
       visible: false
-      shadow: false
-      blink: true
     mistral-song:
       type: rectangle
+      action: mistral-song
+      look: { type: plain, color: "#067F0A" }
+      stroke: "#0A870E"
       size: [50, 185]
-      scale: [1, 0]
       origin: [0.5, 1]
-      color: "#067F0A"
       opacity: 0.6
-      shadow: false
-      blink: true
+      enter: scale-y
+      exit: sweep
+      visible: false
     mistral-song-target:
       type: marker
       look: target-green
       size: 20
       visible: false
-      shadow: false
     mistral-song-cone:
       type: cone
       angle: 110
-      size: [0, 100]
-      color: "#2EA632"
+      action: mistral-song-cone
+      look: { type: plain, color: "#2EA632" }
       opacity: 0.6
+      exit: sweep
       visible: false
-      shadow: false
-      blink: false
     crimson-cyclone:
       type: rectangle
-      size: [83, 185]
-      scale: [1, 0]
-      origin: [0.5, 0.9]
-      color: "#B3480E"
-      opacity: 0.6
-      shadow: false
-      blink: true
+      action: crimson-cyclone
+      look: none
+      stroke: { color: "#FFB4B4", style: dashed }
+      origin: [0.5, 0.1]
+      opacity: 0.8
+      exit: sweep
+      visible: false
     crimson-cyclone-followup:
       type: rectangle
-      size: [58, 185]
-      scale: [1, 0]
-      origin: [0.5, 0.9]
-      color: "#B3480E"
-      opacity: 0.6
-      shadow: false
-      blink: true
+      action: crimson-cyclone-echo
+      look: none
+      stroke: { color: "#FFB4B4", style: dashed }
+      origin: [0.5, 0.1]
+      opacity: 0.8
+      exit: sweep
+      visible: false
     eruption:
       type: ellipse
-      size: 75
-      color: "url(#eruption)"
-      opacity: 0.6
+      action: eruption-hit
+      look: { type: plain, color: "#FF876C" }
+      stroke: "#FF915E"
+      opacity: 0.5
+      exit: explosion
       visible: false
-      shadow: false
     radiant-plume:
       type: ellipse
-      size: 80
-      scale: 0
-      color: "#B3480E"
-      opacity: 0.6
-      shadow: false
-      blink: true
-    inferno-howl:
+      action: radiant-plume
+      look: flame
+      opacity: 1
+      filter: hue-rotate(-15deg)
+      enter: scale
+      exit: { type: fire, opacity: 0.3 }
+      visible: false
+    inferno-howl-outline:
       type: ellipse
-      size: 110
-      color: "#FFE396"
+      action: searing-wind
+      look: none
+      stroke: { color: "#FFF3B6", style: dashed }
       opacity: 0.6
       visible: false
-      shadow: false
-      blink: true
+    inferno-howl:
+      type: ellipse
+      action: searing-wind
+      opacity: 0.6
+      exit: flash
+      visible: false
     infernal-fetters:
       type: link
-      color: "#FFE396"
+      look: chain
       opacity: 0.6
       visible: false
     flaming-crush:
       type: ellipse
-      size: 50
-      color: "#BF380F"
+      action: flaming-crush
+      look: none
+      stroke: { color: "#FFBE89", style: dashed }
       opacity: 0.7
+      exit: flash
       visible: false
-      shadow: false
     sludge:
       type: ellipse
-      size: 65
-      color: "#9F9045"
+      action: freefire
+      look: sludge
       opacity: 0.7
       visible: false
-      shadow: false
     bury:
       type: ellipse
-      size: 65
-      color: "#C64224"
+      action: bury
+      look: none
+      stroke: { color: "#FFBDBD", style: dashed }
       opacity: 0.8
+      exit: meteor
       visible: false
-      shadow: false
-      blink: true
     weight:
       type: ellipse
-      size: 65
-      color: url(#weight)
-      opacity: 0.4
+      action: weight-of-the-land-hit
+      look: ripple
+      opacity: 0.6
+      exit: flash
       visible: false
-      shadow: false
     burst:
       type: ellipse
+      action: burst
       look: aoe
-      size: 65
       opacity: 0.85
+      exit: flash
       visible: false
-      shadow: false
     landslide:
       type: rectangle
+      action: landslide
+      look: landslide
       origin: [0.5, 1]
-      size: [32, 185]
-      color: url(#landslide)
-      opacity: 0.8
+      opacity: 0.5
+      exit: rocks
       visible: false
-      shadow: false
     landslide-followup:
       type: rectangle
+      action: landslide
+      look: none
+      stroke: { color: "#DCCFAB", style: dashed }
       origin: [0.5, 1]
-      size: [32, 185]
-      color: "#945B3C"
-      opacity: 0.8
+      opacity: 0.5
+      exit: rocks
       visible: false
-      shadow: false
-      blink: true
     titan-edge:
       type: donut
+      look: { type: ripple, color: "#E1DB6D" }
       size: [165, 190]
-      color: "#E1DB6D"
-      opacity: 0.7
-      shadow: false
+      opacity: 0.9
     kb:
       type: marker
       look: circle-kb
       size: 130
-      visible: false
       opacity: 0.6
+      visible: false
     ceruleum-vent:
       type: ellipse
-      size: 100
-      color: "#249BC6"
+      action: ceruleum-vent
+      look: none
+      stroke: { color: "#249BC6", style: dashed }
       opacity: 0.8
+      exit: { type: flash, color: "#249BC6" }
       visible: false
-      shadow: false
-      blink: true
     homing-lasers:
       type: ellipse
-      size: 50
-      color: "#249BC6"
+      action: homing-lasers
+      look: none
+      stroke: { color: "#249BC6", style: dashed }
       opacity: 0.8
+      exit: flash
       visible: false
-      shadow: false
-      blink: true
     light-pillar:
       type: ellipse
-      size: 30
-      scale: 0
-      color: "#249BC6"
+      action: light-pillar-hit
+      look: none
+      stroke: { color: "#FFA162", style: dashed }
       opacity: 0.8
-      shadow: false
-      blink: true
+      filter: hue-rotate(180deg)
+      enter: scale
+      exit: fire
+      visible: false
     viscous-aetheroplasm:
       type: ellipse
-      size: 25
-      color: "#7826AF"
+      action: viscous-aetheroplasm
+      look: none
+      stroke: { color: "#B779E1", style: dashed }
       opacity: 0.6
+      exit: { type: flash, color: "#7826AF" }
       visible: false
-      shadow: false
-      blink: true
     orb:
       type: ellipse
+      look: { type: plain, color: url(#orb) }
       size: 8
-      color: url(#orb)
       visible: false
     orb-explosion:
       type: ellipse
-      size: 60
-      color: "#5eccb3"
+      action: aetheroplasm
+      look: { type: plain, color: "#5eccb3" }
       opacity: 0.6
       visible: false
-      shadow: false
-      blink: true
     orb-tether:
       type: link
-      color: "#d536db"
+      look: jagged
       opacity: 0.6
       visible: false
     aetherochemical-laser:
       type: rectangle
-      origin: [0.5, 1]
-      size: [40, 200]
-      color: "#BDB144"
+      action: aetherochemical-laser-hit
+      look: none
+      stroke: { color: "#BDB144", style: dashed }
+      origin: [0.5, 0]
       opacity: 0.6
+      exit: { type: sweep, speed: 0.5 }
       visible: false
-      shadow: false
     featherlance:
       type: donut
+      look: { type: plain, color: "#68FD75" }
       size: [130, 180]
-      color: "#68FD75"
       opacity: 0.3
-      shadow: false
       blink: true
   graphs:
     double-mistral-song-lpdu:
@@ -2474,24 +2490,24 @@ graphing:
         enemy#chirada: { x: 30, y: -90, scale: 0.7, opacity: 0.4, rotate: 0, text: Chirada, visible: false }
         enemy#suparna: { x: 30, y: 90, scale: 0.7, opacity: 0.4, rotate: 0, text: Suparna, visible: false }
         players: [12, 180]
-      - enemy#*: { visible: true }
-        feather-rain#*: { attach: null }
+      - feather-rain#*: { attach: null }
+        enemy#*: { visible: true }
         hint: Chirada and Suparna spawn.
       - enemy#*: { visible: false }
         [T1, T2]: [15, 0]
         [M1, M2]: [15, 90]
         [H1, H2, R1, R2]: [44, 128]
         hint: Chirada and Suparna scream and fly away.
-      - feather-rain#*: { scale: 1 }
+      - feather-rain#*: { visible: true }
         enemy#chirada: [93, -90, -90]
         enemy#suparna: [93, 90, 90]
         hint: Feather Rain resolves.
-      - enemy#*: { visible: true }
-        feather-rain#*: { visible: false }
+      - feather-rain#*: { visible: false }
         mistral-song-target#*: { visible: true }
+        enemy#*: { visible: true }
         hint: Chirada and Suparna reappear on random cardinals. Tanks take note.
-      - wicked-wheel: { scale: 1 }
-        feather-rain#*: { scale: 0 }
+      - wicked-wheel: { visible: true }
+        eye-of-the-storm: { visible: true }
         feather-rain#1: { attach: T1 }
         feather-rain#2: { attach: M1 }
         feather-rain#3: { attach: M2 }
@@ -2502,34 +2518,35 @@ graphing:
         T1: [44, -90]
         T2: [44, 90]
         [M1, M2]: [44, 128]
-        eye-of-the-storm: { visible: true }
         hint: Melees join the party, tanks move to intercept.
-      - mistral-song#*: { scale: 1 }
-        mistral-song-target#*: { visible: false }
-        eye-of-the-storm: { blink: true }
-        feather-rain#*: { visible: true }
-        cast: { progress: 1 }
-        hint: Everything resolves at the same time.
       - wicked-wheel: { visible: false }
         eye-of-the-storm: { visible: false }
-        mistral-song#*: { visible: false }
         great-whirlwind#*: { attach: null }
-        cast: { visible: false }
+        mistral-song#*: { visible: resolve, hits: [players] }
+        mistral-song-target#*: { visible: false }
+        cast: { progress: 1 }
         [T1, T2, M1, M2]: { x: 15 }
         hint: Wait for Feather Rain. (Melees rarely wait for Feather Rain.)
-      - enemy#*: { visible: false }
-        feather-rain#*: { attach: null }
+      - feather-rain#*: { attach: null }
+        enemy#*: { visible: false }
         [T1, T2, M1, M2]: { y: 0 }
         [H1, H2, R1, R2]: { y: 180 }
         hint: Suparna and Chirada scream and fly away.
-      - feather-rain#*: { scale: 1 }
-        great-whirlwind#*: { visible: true }
+        cast: { visible: false }
+      - great-whirlwind#*: { visible: true }
+        feather-rain#*: { visible: true }
+        hint: Great Whirlwinds spawn where the tanks intercepted Mistral Song.
+      - great-whirlwind#*: { visible: false }
+        feather-rain#*: { visible: false }
         hint: Feather Rain and Great Whirlwind resolve.
     reverse-z:
-      - arena: { image: /images/arenas/uwu-p2.avif }
+      - arena:
+          image: /images/arenas/uwu-p2.avif
+          margin: [31, 36, 39, 36]
         eruption#[1..4]: { attach: R1 }
         eruption#[5..8]: { attach: R2 }
         inferno-howl: { attach: H2 }
+        inferno-howl-outline: { attach: inferno-howl }
         infernal-fetters: { from: T2, to: R1 }
         marker-a: [32, 0]
         marker-1: [88, 0]
@@ -2546,45 +2563,46 @@ graphing:
         boss: { scale: 1, opacity: 0.4, rotate: T1 }
         players: [24, 0]
         T1: [30, 180]
+        raidwide: { attach: enemy#nail-4 }
         hint: In this fight, almost all bosses spawn in facing south and start off with a tankbuster. To avoid cleaving the party, PF strat is to avoid turning the boss when it spawns in and just have party stacking behind it.
       - enemy#nail-*: { visible: true }
-        T1: [69, 113]
         boss: [41, 113]
+        T1: [69, 113]
         [M1, M2, T2]: [16, 101]
         H1: [26, 32]
         H2: [13, -154]
         R1: [60, -6]
         R2: [60, -132]
         hint: Nails spawn in a random orientation, but always in this exact formation. The two "close" nails are new north. MT drags the boss in-between them.
-      - boss: { rotate: H2 }
+      - infernal-fetters: { visible: true }
+        boss: { rotate: H2 }
         cast: { text: Inferno Howl, progress: 0.5 }
-        infernal-fetters: { visible: true }
         hint: Boss turns towards a random healer and spits Searing Wind at them. They go relative south.
-      - H2: { x: 90, y: -67, status: [searing-wind] }
+      - inferno-howl-outline: { visible: true }
+        boss: { rotate: T1, hits: [H2] }
         H1: [16, 101]
-        boss: { rotate: T1 }
+        H2: { x: 90, y: -67, status: [searing-wind] }
         cast: { progress: 1, visible: false }
       - eruption#[1,5]: { visible: true, attach: null }
         cast: { text: Eruption, progress: 0, visible: true }
-        R2: [48, -172]
         R1: [55, 35]
+        R2: [48, -172]
         hint: Rangeds begin baiting Eruptions. Each must hit a nail.
       - eruption#[2,6]: { visible: true, attach: null }
-        cast: { progress: 0.5 }
-        R2: [70, 150]
+        inferno-howl: { visible: resolve }
         R1: [70, 75]
-        inferno-howl: { visible: true }
+        R2: [70, 150]
+        cast: { progress: 0.5 }
       # Eruptions 1
       - eruption#[1,5]: { visible: false }
-        enemy#nail-[3,4]: { scale: 0.6, status: [vulnerability-down, damage-up] }
         eruption#[3,7]: { visible: true, attach: null }
-        inferno-howl: { visible: false }
+        enemy#nail-[3,4]: { scale: 0.6, status: [vulnerability-down, damage-up] }
         [R1, R2]: [65, 113]
         cast: { progress: 1, visible: false }
       # Eruptions 2
       - eruption#[2,6]: { visible: false }
-        enemy#nail-[3,4]: { scale: 0.8, status: [vulnerability-down:2, damage-up:2] }
         eruption#[4,8]: { visible: true, attach: null }
+        enemy#nail-[3,4]: { scale: 0.8, status: [vulnerability-down:2, damage-up:2] }
         [R1, R2, T1]: [16, 101]
         [M1, M2, T2]: [31, -147]
         hint: After the second Eruptions, players can kill the rear nails.
@@ -2593,31 +2611,44 @@ graphing:
         enemy#nail-[1,2]: { scale: 0.6, status: [vulnerability-down, damage-up] }
         enemy#nail-4: { visible: false }
         boss: { status: [aetherially-charged] }
+        T2: { hits: [enemy#nail-4] }
+        raidwide: { visible: resolve, hits: [players] }
         [M1, M2, T2]: [31, 23]
       # Eruptions 4
       - eruption#[4,8]: { visible: false }
+        inferno-howl: { visible: resolve }
         enemy#nail-[1,2]: { scale: 0.8, status: [vulnerability-down:2, damage-up:2] }
-        inferno-howl: { visible: true }
-        T1: [69, 113]
         enemy#nail-3: { visible: false }
         boss: { status: [aetherially-charged:2] }
+        T1: [69, 113]
+        T2: { hits: [enemy#nail-3] }
+        raidwide: { attach: enemy#nail-3, visible: resolve, hits: [players] }
         [M1, M2, T2]: [30, 139]
       - inferno-howl: { visible: false }
         enemy#nail-2: { visible: false }
         boss: { status: [aetherially-charged:3] }
+        T2: { hits: [enemy#nail-2] }
+        raidwide: { attach: enemy#nail-2, visible: resolve, hits: [players] }
         [M1, M2, T2]: [36, 96]
-      - enemy#nail-1: { visible: false }
+      - inferno-howl-outline: { visible: false }
+        enemy#nail-1: { visible: false }
         boss: { status: [woken] }
+        H2: { status: [] }
+        T2: { hits: [enemy#nail-1] }
+        raidwide: { attach: enemy#nail-1, visible: resolve, hits: [players] }
         [M1, M2, T2]: [16, 90]
     ifrit-dashes:
-      - arena: { image: /images/arenas/uwu-p2.avif }
+      - arena:
+          image: /images/arenas/uwu-p2.avif
+          margin: [31, 36, 39, 36]
         inferno-howl: { attach: H1 }
-        crimson-cyclone#1: { attach: boss#4, rotate: 90 }
+        inferno-howl-outline: { attach: inferno-howl, visible: true }
+        crimson-cyclone#1: { attach: boss#4, rotate: 90, visible: true }
         crimson-cyclone#2: { attach: boss#3, rotate: -135 }
         crimson-cyclone#3: { attach: boss#1, rotate: 0 }
         crimson-cyclone#4: { attach: boss#2, rotate: -45 }
-        crimson-cyclone-followup#1: [95, -45, 135]
-        crimson-cyclone-followup#2: [95, 45, -135]
+        crimson-cyclone-followup#1: [95, -45, -45]
+        crimson-cyclone-followup#2: [95, 45, 45]
         marker-a: [32, 0]
         marker-1: [88, 0]
         marker-b: [32, 90]
@@ -2633,120 +2664,135 @@ graphing:
         players: [88, -45]
         H1: { y: 135, status: [searing-wind] }
         hint: Variation 1 (one move)<br />Always start on the last Ifrit (#4)
-      - boss#4: { y: -90, visible: false }
-        crimson-cyclone#1: { h: 1.2 }
-      - crimson-cyclone#1: { h: 0 }
-        boss#3: { y: 45, visible: false }
-        crimson-cyclone#2: { h: 1.2 }
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone#2: { visible: true }
+        boss#4: { x: 300, y: -90 }
+      - crimson-cyclone#2: { visible: false }
+        crimson-cyclone#3: { visible: true }
+        boss#3: { x: 300, y: 45 }
+        boss#4: { visible: false }
         players: { y: -90 }
         H1: { y: 90 }
-      - crimson-cyclone#2: { h: 0 }
-        boss#1: { y: 180, visible: false }
-        crimson-cyclone#3: { h: 1.2 }
-      - crimson-cyclone#3: { h: 0 }
-        boss#2: { y: 135, visible: false }
-        crimson-cyclone#4: { h: 1.2 }
-        inferno-howl: { visible: true }
-      - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone-followup#*: { h: 1.2 }
-        inferno-howl: { visible: false }
-        # Variation 2
+      - crimson-cyclone#3: { visible: false }
+        crimson-cyclone#4: { visible: true }
+        boss#1: { x: 300, y: 180 }
+        boss#3: { visible: false }
+      - inferno-howl: { visible: resolve }
+        crimson-cyclone#4: { visible: false }
+        crimson-cyclone-followup#*: { visible: true }
+        boss#1: { visible: false }
+        boss#2: { x: 300, y: 135 }
       - crimson-cyclone-followup#*: { visible: false }
-        boss#1: { y: 0, visible: true, filter: "" }
-        boss#2: { y: -45, visible: true }
-        boss#3: { y: -135, visible: true }
-        boss#4: { y: 90, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#2: { visible: false }
+        # Variation 2
+      - crimson-cyclone#1: { visible: true }
+        crimson-cyclone-followup#1: { y: 45, rotate: 45 }
+        crimson-cyclone-followup#2: { y: 135, rotate: 135 }
+        boss#1: { x: 95, y: 0, visible: true, filter: "" }
+        boss#2: { x: 95, y: -45, visible: true }
+        boss#3: { x: 95, y: -135, visible: true }
+        boss#4: { x: 95, y: 90, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
         players: { y: -45 }
         H1: { y: 135 }
         hint: Variation 2 (one move)
-      - boss#4: { y: -90, visible: false }
-        crimson-cyclone-followup#*: { h: 0 }
-        crimson-cyclone#1: { h: 1.2 }
-      - crimson-cyclone#1: { h: 0 }
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone#2: { visible: true }
+        boss#4: { x: 300, y: -90 }
+      - crimson-cyclone#2: { visible: false }
+        crimson-cyclone#3: { visible: true }
         crimson-cyclone-followup#*: { visible: true }
-        boss#3: { y: 45, visible: false }
-        crimson-cyclone#2: { h: 1.2 }
+        boss#3: { x: 300, y: 45 }
+        boss#4: { visible: false }
         players: { y: -90 }
         H1: { y: 90 }
-      - crimson-cyclone#2: { h: 0 }
-        boss#1: { y: 180, visible: false }
-        crimson-cyclone#3: { h: 1.2 }
-        crimson-cyclone-followup#*: { h: 1.2 }
-        inferno-howl: { visible: true }
-      - crimson-cyclone#3: { h: 0 }
-        boss#2: { y: 135, visible: false }
-        crimson-cyclone#4: { h: 1.2 }
+      - inferno-howl: { visible: resolve }
+        crimson-cyclone#3: { visible: false }
+        crimson-cyclone#4: { visible: true }
         crimson-cyclone-followup#*: { visible: false }
-        inferno-howl: { visible: false }
+        boss#1: { x: 300, y: 180 }
+        boss#3: { visible: false }
+      - crimson-cyclone#4: { visible: false }
+        boss#1: { visible: false }
+        boss#2: { x: 300, y: 135 }
         # Variation 3
-      - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone-followup#*: { h: 0 }
-        crimson-cyclone-followup#1: { y: -90, rotate: 90 }
-        crimson-cyclone-followup#2: { y: 0, rotate: 180 }
-        boss#1: { y: 0, visible: true }
-        boss#2: { y: -45, visible: true }
-        boss#3: { y: -135, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
-        boss#4: { y: 90, visible: true, filter: "" }
+      - crimson-cyclone#1: { visible: true }
+        crimson-cyclone-followup#1: { y: -90, rotate: -90 }
+        crimson-cyclone-followup#2: { y: 180, rotate: 180 }
+        boss#1: { x: 95, y: 0, visible: true }
+        boss#2: { x: 95, y: -45, visible: true }
+        boss#3: { x: 95, y: -135, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#4: { x: 95, y: 90, visible: true, filter: "" }
         players: { y: -45 }
         H1: { y: 135 }
         hint: Variation 3 (two moves)
-      - boss#4: { y: -90, visible: false }
-        crimson-cyclone-followup#*: { visible: true }
-        crimson-cyclone#1: { h: 1.2 }
-      - crimson-cyclone#1: { h: 0 }
-        boss#3: { y: 45, visible: false }
-        crimson-cyclone#2: { h: 1.2 }
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone#2: { visible: true }
+        boss#4: { x: 300, y: -90 }
+      - crimson-cyclone#2: { visible: false }
+        crimson-cyclone#3: { visible: true }
+        boss#3: { x: 300, y: 45 }
+        boss#4: { visible: false }
         players: { y: -90 }
         H1: { y: 90 }
-      - crimson-cyclone#2: { h: 0 }
-        boss#1: { y: 180, visible: false }
-        crimson-cyclone#3: { h: 1.2 }
-        inferno-howl: { visible: true }
+      - inferno-howl: { visible: resolve }
+        crimson-cyclone#3: { visible: false }
+        crimson-cyclone#4: { visible: true }
+        crimson-cyclone-followup#*: { visible: true }
+        boss#1: { x: 300, y: 180 }
+        boss#3: { visible: false }
         players: { y: -135 }
         H1: { y: 45 }
-      - crimson-cyclone#3: { h: 0 }
-        boss#2: { y: 135, visible: false }
-        crimson-cyclone#4: { h: 1.2 }
-        inferno-howl: { visible: false }
-        crimson-cyclone-followup#*: { h: 1.2 }
+      - crimson-cyclone#4: { visible: false }
+        crimson-cyclone-followup#*: { visible: false }
+        boss#1: { visible: false }
+        boss#2: { x: 300, y: 135 }
         # Variation 4
-      - crimson-cyclone#4: { h: 0 }
-        crimson-cyclone-followup#*: { h: 0 }
-        crimson-cyclone-followup#1: { y: -90, rotate: 90, visible: false }
-        crimson-cyclone-followup#2: { y: 0, rotate: 180, visible: false }
-        boss#1: { y: 0, visible: true }
-        boss#2: { y: -45, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
-        boss#3: { y: -135, visible: true, filter: "" }
-        boss#4: { y: 90, visible: true }
+      - crimson-cyclone#1: { visible: true }
+        crimson-cyclone-followup#1: { y: -90, rotate: -90 }
+        crimson-cyclone-followup#2: { y: 0, rotate: 0 }
+        boss#1: { x: 95, y: 0, visible: true }
+        boss#2: { x: 95, y: -45, visible: true, filter: "drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3) drop-shadow(0 0 3px #23A6E3)" }
+        boss#3: { x: 95, y: -135, visible: true, filter: "" }
+        boss#4: { x: 95, y: 90, visible: true }
         players: { y: -45 }
         H1: { y: 135 }
         hint: Variation 4 (two moves)
-      - boss#4: { y: -90, visible: false }
-        crimson-cyclone-followup#*: { visible: true }
-        crimson-cyclone#1: { h: 1.2 }
-      - crimson-cyclone#1: { h: 0 }
-        boss#3: { y: 45, visible: false }
-        crimson-cyclone#2: { h: 1.2 }
+      - crimson-cyclone#1: { visible: false }
+        crimson-cyclone#2: { visible: true }
+        boss#4: { x: 300, y: -90 }
+      - crimson-cyclone#2: { visible: false }
+        crimson-cyclone#3: { visible: true }
+        boss#3: { x: 300, y: 45 }
+        boss#4: { visible: false }
         players: { y: -90 }
         H1: { y: 90 }
-      - crimson-cyclone#2: { h: 0 }
-        boss#1: { y: 180, visible: false }
-        crimson-cyclone#3: { h: 1.2 }
-        inferno-howl: { visible: true }
+      - inferno-howl: { visible: resolve }
+        crimson-cyclone#3: { visible: false }
+        crimson-cyclone#4: { visible: true }
+        boss#1: { x: 300, y: 180 }
+        boss#3: { visible: false }
         players: { y: -135 }
         H1: { y: 45 }
-      - crimson-cyclone#3: { h: 0 }
-        boss#2: { y: 135, visible: false }
-        crimson-cyclone#4: { h: 1.2 }
-        inferno-howl: { visible: false }
-      - crimson-cyclone#4: { h: 0 }
-      - crimson-cyclone-followup#*: { h: 1.2 }
+      - crimson-cyclone#4: { visible: false }
+        boss#1: { visible: false }
+        boss#2: { x: 300, y: 135 }
+      - crimson-cyclone-followup#*: { visible: true }
+        boss#2: { visible: false }
+      - crimson-cyclone-followup#*: { visible: false }
     titan-gaols:
-      - arena: { image: /images/arenas/uwu-p3.avif }
+      - arena:
+          image: /images/arenas/uwu-p3.avif
+          margin: [34, 38, 38, 36]
         titan-edge: { }
         sludge#1: { attach: R1 }
         sludge#2: { attach: H2 }
         sludge#3: { attach: M1 }
+        landslide-followup#[1..5]: { attach: boss }
+        landslide-followup#1: { rotate: set:landslide#1+-180 }
+        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
+        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
+        landslide-followup#4: { rotate: set:landslide-followup#1+157 }
+        landslide-followup#5: { rotate: set:landslide-followup#1+-157 }
         landslide#[1..10]: { attach: boss }
         landslide#1: { rotate: R2 }
         landslide#2: { rotate: set:landslide#1+45 }
@@ -2758,12 +2804,6 @@ graphing:
         landslide#8: { rotate: set:landslide#6+-45 }
         landslide#9: { rotate: set:landslide#6+135 }
         landslide#10: { rotate: set:landslide#6+-135 }
-        landslide-followup#[1..5]: { attach: boss }
-        landslide-followup#1: { rotate: set:landslide#1+-180 }
-        landslide-followup#2: { rotate: set:landslide-followup#1+90 }
-        landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
-        landslide-followup#4: { rotate: set:landslide-followup#1+157 }
-        landslide-followup#5: { rotate: set:landslide-followup#1+-157 }
         weight#[1,2].1: { attach: M1 }
         weight#[1,2].2: { attach: R1 }
         weight#[1,2].3: { attach: T2 }
@@ -2790,23 +2830,26 @@ graphing:
         marker-d: [32, -90]
         marker-4: [0, 0]
         boss: { x: 80, y: 0, rotate: 0, visible: false }
+        raidwide: { attach: boss }
         players: [80, 180]
-      - boss: { visible: true }
+      - bury#[1..5]: { visible: true }
+        boss: { visible: true }
+        raidwide: { visible: resolve, hits: [players] }
         players: [60, 0]
         cast: { text: Upheaval, visible: true }
-      - bury#[1..5]: { visible: true }
+      - bury#[1..5]: { visible: false }
         cast: { progress: 0.25 }
         hint: Bomb boulders drop, killing anyone within the red areas.
-      - bury#[1..5]: { visible: false }
-        burst#[1..5]: { visible: true }
+      - burst#[1..5]: { visible: true }
         players: { y: 2 }
         hint: Get knocked back into the safe spot. It can be either left or right.
         cast: { progress: 0.8 }
       - kb: { visible: true }
         players: [78, 166]
         cast: { progress: 1, visible: false }
-      - kb: { visible: false }
+      - bury#6: { visible: true }
         burst#[1..5]: { visible: false }
+        kb: { visible: false }
         M1: { x: 27, y: 80, status: [mark1] }
         H2: { x: 16, y: 102, status: [mark2] }
         R1: { x: 16, y: 142, status: [mark3] }
@@ -2816,77 +2859,84 @@ graphing:
         hint: Titan marks three random players (except the MT). Move forward to avoid Bury.
       - landslide#[1..5]: { visible: true }
         landslide#1: { rotate: null }
+        bury#6: { visible: false }
         boss: { rotate: set:landslide#1 }
-        bury#6: { visible: true }
         R2: [33, -102]
         H1: [25, -69]
         R1: [30, -168]
         H2: [6, -90]
         M1: [29, -18]
         hint: Landslide is baited towards a random player.
-      - bury#6: { visible: false }
+      - landslide#[1..5]: { visible: false }
         burst#6: { visible: true }
-        landslide#[1..5]: { visible: false }
         R1: { x: 32, y: 173, status: [fetters], opacity: 0.7 }
         H2: { x: 0, y: 90, status: [fetters], opacity: 0.7 }
         M1: { x: 32, y: 0, status: [fetters], opacity: 0.7 }
         hint: Marked players are fettered.
-      - boss: { rotate: set:landslide#6 }
-        landslide#[6..10]: { rotate: null, visible: true }
+      - landslide#[6..10]: { rotate: null, visible: true }
+        boss: { rotate: set:landslide#6 }
         [T1, T2, M2]: [52, -42]
         H1: [46, -63]
         R2: [48, -79]
         hint: Fettered players don't need to worry about this Landslide.
-      - R1: { x: 41, y: -90, opacity: 1, status: [] }
-        sludge#1: { attach: null, visible: true }
-        burst#6: { visible: false }
+      - sludge#1: { attach: null, visible: true }
         landslide#[6..10]: { visible: false }
+        burst#6: { visible: false, hits: [R1] }
+        R1: { x: 41, y: -90, opacity: 1, status: [] }
         [T1, T2, M2, R2, H1]: [78, -20]
         hint: ""
-      - H2: { x: 44, y: -53, opacity: 1, status: [] }
-        sludge#2: { attach: null, visible: true }
+      - sludge#2: { attach: null, visible: true, hits: [H2] }
+        H2: { x: 44, y: -53, opacity: 1, status: [] }
         R1: [78, -20]
-      - M1: { x: 78, y: -20, opacity: 1, status: [] }
-        sludge#3: { attach: null, visible: true }
+      - sludge#3: { attach: null, visible: true, hits: [M1] }
+        M1: { x: 78, y: -20, opacity: 1, status: [] }
         H2: [78, -20]
       - boss: { status: [aetherially-charged] }
+        raidwide: { visible: resolve, hits: [players] }
         hint: Tumults.
       - boss: { rotate: T1, status: [aetherially-charged:2] }
+        raidwide: { visible: resolve, hits: [players] }
         hint: ""
-      - boss: { rotate: null, status: [aetherially-charged:3] }
-        cast: { progress: 0, text: Weight of the Land, visible: true }
+      - landslide#1: { rotate: T1 }
         weight#1.[1..4]: { visible: true, attach: null }
+        boss: { rotate: null, status: [aetherially-charged:3] }
+        cast: { progress: 0, text: Weight of the Land, visible: true }
         [T1, T2, M1, M2]: [78, 8]
         [R1, R2, H1, H2]: [77, -49]
-        landslide#1: { rotate: T1 }
-      - boss: { x: 59, y: 0, rotate: T1, status: [woken] }
-        cast: { progress: 1, visible: false }
+      - sludge#*: { visible: false }
         weight#1.[1..4]: { visible: false }
         weight#2.[1..4]: { visible: true, attach: null }
-        sludge#*: { visible: false }
+        boss: { x: 59, y: 0, rotate: T1, status: [woken] }
+        cast: { progress: 1, visible: false }
         T1: [29, 0]
         [T2, M1, M2]: [78, -20]
         [R1, R2, H1, H2]: [67, -78]
         hint: MT tries to drag the boss closer to middle to make the Landslide a bit easier to avoid.
-      - weight#2.[1..4]: { visible: false }
+      - landslide#[1..5]: { visible: true }
+        landslide#1: { rotate: null }
+        weight#2.[1..4]: { visible: false }
         boss: { rotate: set:landslide#1 }
         hint: "Warning: this Landslide is woken."
-        landslide#[1..5]: { visible: true }
-        landslide#1: { rotate: null }
         [H1, H2, R1, R2]: [72, -71]
         [M1, M2, T2]: [67, -28]
         T1: [23, -65]
-      - landslide#[1..5]: { visible: false }
+      - landslide-followup#*: { visible: true }
+        landslide#[1..5]: { visible: false }
         [H1, H2, R1, R2]: [69, -79]
         [M1, M2, T1, T2]: [50, -45]
-      - landslide-followup#*: { visible: true }
+      - landslide-followup#*: { visible: false }
+      - boss: [26, 0]
+        T1: [9, 180]
+        hint: "MT drags Titan to the center of the arena so it's easier to see where he turns to for his next jump."
     braindead-predation:
-      - arena: { image: /images/arenas/uwu-p5-1.avif }
+      - arena:
+          image: /images/arenas/uwu-p5-1.avif
+          margin: [74, 70, 75, 78]
         wicked-wheel: { attach: enemy#garuda }
         wicked-tornado: { attach: enemy#garuda }
         crimson-cyclone#1: { attach: enemy#ifrit, rotate: set:enemy#ifrit }
-        crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 180 }
-        crimson-cyclone-followup#2: { x: 82, y: 90, rotate: -90 }
+        crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 0 }
+        crimson-cyclone-followup#2: { x: 82, y: 90, rotate: 90 }
         landslide#[1..5]: { attach: enemy#titan }
         landslide#1: { rotate: set:enemy#titan+180 }
         landslide#2: { rotate: set:landslide#1+45 }
@@ -2922,129 +2972,123 @@ graphing:
       - enemy#*: { visible: true }
       - players: [87, 160]
         hint: Example 1<br />We go away from Garuda (west or south), but Titan covers west, so we go south.
-      - wicked-wheel: { scale: 1 }
+      - wicked-wheel: { visible: true }
+        crimson-cyclone#1: { visible: true }
         landslide#*: { visible: true }
       - wicked-wheel: { visible: false }
+        wicked-tornado: { visible: true }
+        crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#*: { visible: true }
         landslide#*: { visible: false }
-        crimson-cyclone#1: { h: 1.2 }
-        enemy#ifrit: { y: -135, visible: false }
-      - crimson-cyclone#1: { visible: false }
-        crimson-cyclone-followup#*: { h: 1.2 }
         landslide-followup#*: { visible: true }
-        wicked-tornado: { scale: 1 }
         ceruleum-vent: { visible: true }
+        enemy#ifrit: { x: 300, y: -135 }
       - players: { opacity: 0.05 }
         hint: Fading the player icons to show just how small the safe spot is.
-      - players: { x: 60, opacity: 1 }
-        feather-rain#*: { attach: null, scale: 1 }
-        enemy#garuda: { visible: false }
+      - wicked-tornado: { visible: false }
         crimson-cyclone-followup#*: { visible: false }
         landslide-followup#*: { visible: false }
-        wicked-tornado: { visible: false }
         ceruleum-vent: { visible: false }
+        enemy#ifrit: { visible: false }
+        players: { opacity: 1 }
+      - feather-rain#*: { attach: null, visible: true }
         enemy#*: { visible: false }
+        enemy#garuda: { visible: false }
+        players: { x: 60, opacity: 1 }
         hint: Garuda screams and flies away.
-      - hint: Example 2
-        players: [0, 0]
-        enemy#ifrit: [82, 45, 45]
+      - feather-rain#*: { visible: false }
         enemy#garuda: [25, 135, 135]
         enemy#titan: [82, 85, 90]
+        enemy#ifrit: [82, 45, 45]
         enemy#ultima: [82, 135, 135]
-        wicked-wheel: { scale: 0 }
-        feather-rain#*: { visible: false }
-        crimson-cyclone#*: { h: 0 }
-      - enemy#*: { visible: true }
-        wicked-tornado: { scale: 0 }
-        wicked-wheel: { visible: true }
-        feather-rain#*: { scale: 0 }
-        feather-rain#1: { attach: R1 }
+        players: [0, 0]
+        hint: Example 2
+      - feather-rain#1: { attach: R1 }
         feather-rain#2: { attach: H2 }
         feather-rain#3: { attach: T1 }
         feather-rain#4: { attach: M1 }
         feather-rain#5: { attach: T2 }
-        crimson-cyclone#*: { visible: true }
-        crimson-cyclone-followup#*: { h: 0 }
+        enemy#*: { visible: true }
       - players: [87, -69]
-        wicked-tornado: { visible: true }
-        feather-rain#*: { visible: true }
         T1: { x: 75, y: -8, status: [50] }
         T2: [85, -102]
         H2: [86, -21]
-        crimson-cyclone-followup#*: { visible: true }
         hint: Example 2<br />There are multiple possible dodges here, but the tanks' dodges are harder, since you'll need to wait for Crimson Cyclone before moving to the rune.
-      - wicked-wheel: { scale: 1 }
+      - wicked-wheel: { visible: true }
+        crimson-cyclone#1: { visible: true }
         landslide#*: { visible: true }
       - wicked-wheel: { visible: false }
+        wicked-tornado: { visible: true }
+        crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#*: { visible: true }
         landslide#*: { visible: false }
-        crimson-cyclone#1: { h: 1.2 }
-        enemy#ifrit: { y: -135, visible: false }
+        landslide-followup#5: { visible: true }
+        landslide-followup#4: { visible: true }
+        landslide-followup#3: { visible: true }
+        landslide-followup#2: { visible: true }
+        landslide-followup#1: { visible: true }
+        ceruleum-vent: { visible: true }
+        enemy#ifrit: { x: 300, y: -135 }
         T1: [87, 21]
         T2: [86, -110]
-      - crimson-cyclone#1: { visible: false }
-        crimson-cyclone-followup#[1,2]: { h: 1.2 }
-        landslide-followup#*: { visible: true }
-        wicked-tornado: { scale: 1 }
-        ceruleum-vent: { visible: true }
-      - players: { x: 60, opacity: 1 }
-        feather-rain#*: { attach: null, scale: 1 }
-        enemy#garuda: { visible: false }
+      - wicked-tornado: { visible: false }
         crimson-cyclone-followup#*: { visible: false }
         landslide-followup#*: { visible: false }
-        wicked-tornado: { visible: false }
         ceruleum-vent: { visible: false }
         enemy#*: { visible: false }
+        enemy#garuda: { visible: true }
+      - feather-rain#*: { attach: null, visible: true }
+        enemy#garuda: { visible: false }
+        players: { x: 60, opacity: 1 }
         hint: Garuda screams and flies away.
-      - hint: Example 3 (Cursed)
-        players: { x: 0, y: 0, status: [] }
-        enemy#ifrit: [82, 45, 45]
+      - feather-rain#*: { visible: false }
         enemy#garuda: [25, -135, -135]
         enemy#titan: [82, 5, 0]
+        enemy#ifrit: [82, 45, 45]
         enemy#ultima: [82, 135, 135]
-        feather-rain#*: { visible: false }
-        wicked-wheel: { scale: 0 }
-        crimson-cyclone#*: { h: 0 }
-      - enemy#*: { visible: true }
-        wicked-tornado: { scale: 0 }
-        wicked-wheel: { visible: true }
-        feather-rain#*: { scale: 0 }
-        feather-rain#1: { attach: R1 }
+        players: { x: 0, y: 0, status: [] }
+        hint: Example 3 (Cursed)
+      - feather-rain#1: { attach: R1 }
         feather-rain#2: { attach: H2 }
         feather-rain#3: { attach: T1 }
         feather-rain#4: { attach: M1 }
         feather-rain#5: { attach: T2 }
-        crimson-cyclone#*: { visible: true }
-        crimson-cyclone-followup#*: { h: 0 }
+        enemy#*: { visible: true }
       - players: [85, 90]
-        wicked-tornado: { visible: true }
-        feather-rain#*: { visible: true }
-        crimson-cyclone-followup#*: { visible: true }
         hint: Example 3 (Cursed)<br />This is the worst possible pattern. The only possible dodge is a very uncomfortable one.
-      - players: [70, 99]
-        wicked-wheel: { scale: 1 }
+      - wicked-wheel: { visible: true }
+        crimson-cyclone#1: { visible: true }
         landslide#*: { visible: true }
+        players: [70, 99]
       - wicked-wheel: { visible: false }
+        wicked-tornado: { visible: true }
+        crimson-cyclone#1: { visible: false }
+        crimson-cyclone-followup#*: { visible: true }
         landslide#*: { visible: false }
-        crimson-cyclone#1: { h: 1.2 }
-        enemy#ifrit: { y: -135, visible: false }
-        players: [87, 70]
-      - crimson-cyclone#1: { visible: false }
-        crimson-cyclone-followup#[1,2]: { h: 1.2 }
-        landslide-followup#*: { visible: true }
-        wicked-tornado: { scale: 1 }
+        landslide-followup#5: { visible: true }
+        landslide-followup#4: { visible: true }
+        landslide-followup#3: { visible: true }
+        landslide-followup#2: { visible: true }
+        landslide-followup#1: { visible: true }
         ceruleum-vent: { visible: true }
-      - players: { x: 60, opacity: 1 }
-        feather-rain#*: { attach: null, scale: 1 }
-        enemy#garuda: { visible: false }
+        enemy#ifrit: { x: 300, y: -135 }
+        players: [87, 70]
+      - wicked-tornado: { visible: false }
         crimson-cyclone-followup#*: { visible: false }
         landslide-followup#*: { visible: false }
-        wicked-tornado: { visible: false }
         ceruleum-vent: { visible: false }
         enemy#*: { visible: false }
+        enemy#garuda: { visible: true }
+      - feather-rain#*: { attach: null, visible: true }
+        enemy#garuda: { visible: false }
+        players: { x: 60, opacity: 1 }
         hint: Garuda screams and flies away.
       - feather-rain#*: { visible: false }
     post-predation:
-      - # Step 1
-        arena: { image: /images/arenas/uwu-p5-1.avif, filter: saturate(1) contrast(1) }
+      - arena:
+          image: /images/arenas/uwu-p5-1.avif
+          filter: saturate(1) contrast(1)
+          margin: [74, 70, 75, 78]
         wicked-wheel-sister#1: { attach: enemy#chirada }
         wicked-wheel-sister#2: { attach: enemy#suparna }
         radiant-plume#[1,3,5,7]: { x: 78 }
@@ -3104,8 +3148,8 @@ graphing:
         marker-d: [29, -90]
         marker-4: [0, 0]
         boss: { x: 0, y: 0, rotate: 0, scale: 1.4 }
-        enemy#chirada: { x: 70, y: -90, rotate: -90, scale: 0.8, opacity: 0.5, visible: false, text: Chirada }
-        enemy#suparna: { x: 70, y: 90, rotate: 90, scale: 0.8, opacity: 0.5, visible: false, text: Suparna }
+        enemy#chirada: { x: 62, y: -90, rotate: -90, scale: 0.8, opacity: 0.5, visible: false, text: Chirada }
+        enemy#suparna: { x: 62, y: 90, rotate: 90, scale: 0.8, opacity: 0.5, visible: false, text: Suparna }
         enemy#titan: { x: 90, y: 135, rotate: 135, scale: 1.2, opacity: 0.5, visible: false, text: Titan }
         enemy#ifrit: { x: 90, y: 0, rotate: 0, scale: 1.2, opacity: 0.5, visible: false, text: Ifrit }
         enemy#garuda: { x: 10, y: 0, rotate: 0, opacity: 0.4, visible: false, text: Garuda }
@@ -3114,146 +3158,133 @@ graphing:
         T1: [39, 0]
         R1: [80, -171]
         R2: [80, 171]
+        raidwide: { attach: enemy#titan }
         hint: Rangeds preposition south. They can stack too and go the same way, it doesn't matter.
-      - # Step 2
+      - boss: [15, 0, 180]
         T1: [54, 0]
-        boss: [15, 0, 180]
         hint: MT drags the boss a little towards the north.
-      - # Step 3 (Eruption 1)
-        [T1, T2, H1, H2, M1, M2]: [34, 0]
-        enemy#ifrit: { visible: true }
+      - [T1, T2, H1, H2, M1, M2]: [34, 0]
         eruption#[1,5]: { visible: true, attach: null }
+        enemy#ifrit: { visible: true }
         R1: [68, -129]
         R2: [68, 129]
         hint: Begin baiting Eruptions. Everyone else stacks north.
-      - # Step 4 (Eruption 2)
+      - eruption#[2,6]: { visible: true, attach: null }
+        eruption#[1,5]: { visible: false }
         R1: [62, -86]
         R2: [62, 86]
-        eruption#[2,6]: { visible: true, attach: null }
-        eruption#[1,5]: { visible: false }
         hint: ""
-      - # Step 5 (Eruption 3)
+      - eruption#[3,7]: { visible: true, attach: null }
+        eruption#[2,6]: { visible: false }
         R1: [65, -46]
         R2: [65, 46]
-        eruption#[3,7]: { visible: true, attach: null }
-        eruption#[2,6]: { visible: false }
-      - # Step 6 (Eruption 4)
-        [R1, R2]: [34, 0]
+      - [R1, R2]: [34, 0]
         eruption#[4,8]: { visible: true, attach: null }
         eruption#[3,7]: { visible: false }
-      - # Step 7
+      - radiant-plume#*: { visible: true }
         eruption#[4,8]: { visible: false }
-        radiant-plume#*: { scale: 1 }
-        infernal-fetters: { visible: true }
+        bury#1: { visible: true }
         enemy#titan: { visible: true, rotate: 150 }
         enemy#ifrit: { visible: false }
+        infernal-fetters: { visible: true }
         cast: { text: Radiant Plume, progress: 0.5, visible: true }
-      - # Step 8
-        radiant-plume#*: { visible: false }
-        players: [70, 0]
-        boss: [37, 0]
-        landslide#[1..5]: { visible: true }
-        bury#1: { visible: true }
-        cast: { progress: 1, visible: false }
-      - # Step 9
-        landslide#[6..8]: { visible: true }
+      - radiant-plume#*: { visible: false }
         bury#1: { visible: false }
-        burst#1: { visible: true }
         bury#2: { visible: true }
+        landslide#[1..5]: { visible: true }
+        boss: [37, 0]
+        players: [70, 0]
+        cast: { progress: 1, visible: false }
+      - bury#2: { visible: false }
+        bury#3: { visible: true }
+        burst#1: { visible: true }
+        landslide#[6..8]: { visible: true }
         players: [86, 12]
         cast: { text: Landslide, progress: 0.5, visible: true }
-      - # Step 9 (Landslide resolves)
-        landslide#*: { visible: false }
-        bury#2: { visible: false }
+      - bury#3: { visible: false }
+        bury#4: { visible: true }
         burst#2: { visible: true }
-        bury#3: { visible: true }
+        landslide#*: { visible: false }
         cast: { progress: 1, visible: false }
         players: [71, 0]
-      - # Step 10 (Landslide Followup resolves)
-        landslide-followup#*: { visible: true }
-        bury#3: { visible: false }
-        burst#3: { visible: true }
+      - bury#4: { visible: false }
+        bury#5: { visible: true }
         burst#1: { visible: false }
-        bury#4: { visible: true }
+        burst#3: { visible: true }
+        landslide-followup#*: { visible: true }
         players: [66, -28]
         T1: [66, 28]
-      - # Step 11
-        landslide-followup#*: { visible: false }
-        bury#4: { visible: false }
-        burst#4: { visible: true }
-        burst#2: { visible: false }
-        bury#5: { visible: true }
-        hint: Tumults begin. Heal through this.
-      - # Step 12
-        bury#5: { visible: false }
-        burst#5: { visible: true }
-        burst#3: { visible: false }
+      - bury#5: { visible: false }
         bury#6: { visible: true }
+        burst#2: { visible: false }
+        burst#4: { visible: true }
+        landslide-followup#*: { visible: false }
+        raidwide: { visible: resolve, hits: [players] }
+        hint: Tumults begin. Heal through this.
+      - bury#6: { visible: false }
+        burst#3: { visible: false }
+        burst#5: { visible: true }
+        viscous-aetheroplasm: { visible: true }
+        raidwide: { visible: resolve, hits: [players] }
         hint: ""
-      - # Step 13
-        bury#6: { visible: false }
+      - burst#4: { visible: false }
         burst#6: { visible: true }
-        burst#4: { visible: false }
-        enemy#garuda: { visible: true }
+        viscous-aetheroplasm: { visible: false, hits: [T1] }
+        boss: { rotate: T1 }
         enemy#chirada: { visible: true }
         enemy#suparna: { visible: true }
-        viscous-aetheroplasm: { visible: true }
-        boss: { rotate: T1 }
+        enemy#garuda: { visible: true }
         T1: { status: [viscous-aetheroplasm] }
+        raidwide: { visible: resolve, hits: [players] }
         hint: Boss turns towards the MT and gives them Viscous Aetheroplasm.
-      - # Step 14
-        burst#5: { visible: false }
+      - burst#5: { visible: false }
         boss: { rotate: T2 }
-        viscous-aetheroplasm: { visible: false }
+        raidwide: { visible: resolve }
         hint: Off-tank provokes for Homing Lasers.
-      - # Step 15
+      - wicked-wheel-sister#*: { visible: true }
         burst#6: { visible: false }
         infernal-fetters: { visible: false }
-      - # Step 16
-        wicked-wheel-sister#*: { visible: true }
+        raidwide: { visible: resolve }
+      - wicked-wheel-sister#*: { visible: false }
         enemy#titan: { visible: false }
+        raidwide: { attach: enemy#garuda, visible: resolve, hits: [players] }
         hint: Tumults end. Mistral Shriek happens (big raidwide damage).
-      - # Step 17
-        wicked-wheel-sister#*: { visible: false }
+      - feather-rain#[1..5]: { attach: null }
         enemy#chirada: { visible: false }
         enemy#suparna: { visible: false }
-        feather-rain#[1..5]: { attach: null }
         players: [37, -60]
         T1: { x: 37, y: 60, status: [viscous-aetheroplasm, hallowed-ground] }
         hint: Sisters scream.
-      - # Step 18 (Feather Rain 1)
-        feather-rain#[1..5]: { scale: 1 }
-        hint: Feather Rain resolves. Homing Lasers happen at the same time as Viscous Aetheroplasm, so invuln this. MT vokes back.
+      - arena: { filter: saturate(1.3) contrast(1.2) }
+        feather-rain#[1..5]: { visible: true }
+        homing-lasers: { visible: true }
         boss: { rotate: T1 }
+        hint: Feather Rain resolves. Homing Lasers happen at the same time as Viscous Aetheroplasm, so invuln this. MT vokes back.
         cast: { progress: 0, text: Homing Lasers, visible: true }
-        arena: { filter: saturate(1.3) contrast(1.2) }
-      - # Step 19 (Homing Lasers)
-        enemy#garuda: { visible: false }
-        feather-rain#[1..5]: { visible: false }
+      - feather-rain#[1..5]: { visible: false }
         feather-rain#[6..10]: { attach: null }
-        hint: Garuda screams.
+        homing-lasers: { visible: false }
+        enemy#garuda: { visible: false }
         players: [66, -28]
         T1: { x: 66, y: 28, status: [hallowed-ground] }
+        hint: Garuda screams.
         cast: { progress: 1, visible: false }
-        homing-lasers: { visible: true }
-      - # Step 19 (Feather Rain 2)
-        feather-rain#[6..10]: { scale: 1 }
-        hint: Feather Rain resolves.
-        homing-lasers: { visible: false }
-        T1: { status: [] }
+      - feather-rain#[6..10]: { visible: true }
         boss: { rotate: null }
-      - # Step 20
-        feather-rain#[6..10]: { visible: false }
+        T1: { status: [] }
+        hint: Feather Rain resolves.
+      - feather-rain#[6..10]: { visible: false }
         players: [37, -60]
         cast: { progress: 0, text: Ultimate Annihilation, visible: true }
         hint: ""
     ultimate-annihilation:
-      - # Step 1
-        arena: { image: /images/arenas/uwu-p5-2.avif }
+      - arena:
+          image: /images/arenas/uwu-p5-2.avif
+          margin: [65, 65, 77, 75]
         eye-of-the-storm: [0, 0]
-        crimson-cyclone: { attach: enemy#ifrit, rotate: set:enemy#ifrit+180 }
-        crimson-cyclone-followup#1: { x: 82, y: 0, rotate: 180 }
-        crimson-cyclone-followup#2: { x: 82, y: 90, rotate: -90 }
+        crimson-cyclone: { attach: enemy#ifrit, rotate: set:enemy#ifrit }
+        crimson-cyclone-followup#1: { x: 82, y: 90, rotate: 90 }
+        crimson-cyclone-followup#2: { x: 82, y: 180, rotate: 180 }
         landslide#[1..5]: { attach: enemy#titan }
         landslide#1: { rotate: set:enemy#titan+180 }
         landslide#2: { rotate: set:landslide#1+45 }
@@ -3288,6 +3319,7 @@ graphing:
         marker-4: [0, 0]
         boss: { x: 45, y: 0, rotate: 0, scale: 1.4 }
         inferno-howl: { attach: H1 }
+        inferno-howl-outline: { attach: inferno-howl }
         homing-lasers: { attach: T2 }
         orb-explosion: { attach: orb }
         orb-tether#1: { from: boss, to: M1 }
@@ -3297,7 +3329,9 @@ graphing:
         enemy#ifrit: { x: 90, y: 135, rotate: 135, scale: 1.2, opacity: 0.5, text: Ifrit }
         enemy#garuda: { x: 81, y: 180, rotate: 180, opacity: 0.4, text: Garuda }
         players: [28, -57]
+        [T1, H1, H2, R1]: { status: [thermal-low:1] }
         orb: [23, 40]
+        raidwide: { attach: boss }
       - # Step 2
         weight#1.*: { visible: true, attach: null }
         players: [28, 57]
@@ -3305,147 +3339,143 @@ graphing:
       - # Step 3
         weight#2.*: { visible: true, attach: null }
         weight#1.*: { visible: false }
-        players: [28, -57]
-        mesohigh-tether: { visible: true }
         flaming-crush: { visible: true }
+        mesohigh-tether: { visible: true }
+        players: [28, -57]
         hint: ""
       - # Step 4
         weight#3.*: { visible: true, attach: null }
         weight#2.*: { visible: false }
-        orb: { visible: true }
-        players: { status: [accursed-flame] }
-        flaming-crush: { visible: false, attach: null }
+        flaming-crush: { visible: false, attach: null, hits: [players] }
+        mesohigh: { visible: true }
         R2: [71, -37]
         M2: [65, -30]
         H1: [65, -72]
         H2: [71, -60]
         R1: [38, 180]
+        [T1, H1, H2, R1]: { status: [accursed-flame, thermal-low:1] }
+        [T2, R2, M1, M2]: { status: [accursed-flame] }
+        orb: { visible: true }
         [T1, T2, M1]: [21, 33]
         hint: Split here.<br />Healers go west to check which of them gets Searing.<br />Tanks and one melee go back to soak the orb.<br />R1 takes the Mesohigh tether south.<br />Everyone else goes northwards.
       - # Step 5 (Orb 1)
         weight#3.*: { visible: false }
-        players: { status: [] }
-        orb: { visible: false }
-        orb-explosion: { visible: true }
-        orb-tether#*: { visible: true }
         mesohigh-tether: { visible: false }
-        mesohigh: { visible: true, attach: null }
-        H1: { status: [searing-wind] }
+        mesohigh: { visible: false }
+        inferno-howl-outline: { visible: true }
+        orb-explosion: { visible: resolve, hits: [T1, T2, M1] }
+        orb-tether#*: { visible: true }
+        players: { status: [] }
+        [T1, H1, H2]: { status: [thermal-low:1] }
+        H1: { status: [searing-wind, thermal-low] }
+        orb: { visible: false }
         hint: A random healer gets Searing Wind.
       - # Step 6
-        orb-explosion: { visible: false }
-        mesohigh: { visible: false }
         [T1, T2, M1]: [42, 34]
         H1: [75, -118]
         R1: [7, -13]
         hint: ""
       - # Step 7
-        players: [86, -0]
-        H1: [82, 180]
-        [T1, T2, M1]: [21, 33]
         feather-rain#[1..5]: { attach: null }
         orb-tether#*: { visible: false }
         enemy#garuda: { visible: false }
+        players: [86, -0]
+        H1: [82, 180]
+        [T1, T2, M1]: [21, 33]
         orb: { visible: true }
         hint: Garuda screams.
       - # Step 8
-        feather-rain#[1..5]: { scale: 1 }
-        orb: { visible: false }
-        orb-explosion: { visible: true }
+        feather-rain#[1..5]: { visible: true }
+        orb-explosion: { visible: resolve, hits: [T1, T2, M1] }
         orb-tether#*: { visible: true }
+        orb: { visible: false }
         hint: ""
       - # Step 9
         [T1, T2, M1]: [86, -0]
         feather-rain#[1..5]: { visible: false }
-        orb-explosion: { visible: false }
-        inferno-howl: { visible: true }
+        inferno-howl: { visible: resolve }
       - # Step 10
+        crimson-cyclone: { visible: true }
         landslide#*: { visible: true }
-        inferno-howl: { visible: false }
         orb-tether#*: { visible: false }
       - # Step 11
+        crimson-cyclone: { visible: false, attach: null }
+        crimson-cyclone-followup#*: { visible: true }
         landslide#*: { visible: false }
-        crimson-cyclone: { h: 1.2, attach: null }
-        enemy#ifrit: { y: -45, visible: false }
-        enemy#garuda: { visible: true }
         mesohigh-tether: { to: R1 }
-      - # Step 12
-        landslide-followup#*: { visible: true }
-        crimson-cyclone: { visible: false }
-        crimson-cyclone-followup#*: { h: 1.2 }
-        eye-of-the-storm: { visible: true }
-        mesohigh-tether: { visible: true }
-        orb: { visible: true }
+        enemy#ifrit: { x: 300, y: -45 }
+        enemy#garuda: { visible: true }
         players: [86, -45]
         H1: [86, 135]
         T1: [86, 45]
+      - # Step 12
+        eye-of-the-storm: { visible: true }
+        crimson-cyclone-followup#*: { visible: false }
+        landslide-followup#*: { visible: true }
+        mesohigh-tether: { visible: true }
+        enemy#ifrit: { visible: false }
+        orb: { visible: true }
         hint: Searing healer goes where Ifrit was, <strong>not</strong> opposite the party.<br />MT goes NE in preparation to soak the third orb solo.
       - # Step 13
         eye-of-the-storm: { blink: true }
-        crimson-cyclone-followup#*: { visible: false }
         landslide-followup#*: { visible: false }
-        inferno-howl: { visible: true }
+        inferno-howl: { visible: resolve }
         players: { x: 46 }
         hint: ""
       - # Step 14
-        inferno-howl: { visible: false }
         eye-of-the-storm: { visible: false }
+        mesohigh-tether: { to: H1 }
+        orb-explosion: { visible: resolve, hits: [T1] }
+        orb-tether#2: { visible: true }
         H1: { y: -166 }
         T1: [24, 40]
-        mesohigh-tether: { to: H1 }
-        orb-explosion: { visible: true }
-        orb-tether#2: { visible: true }
         orb: { visible: false }
       - # Step 15
-        H1: [75, 180]
-        orb-explosion: { visible: false }
+        mesohigh: { attach: H1, visible: true }
         orb-tether#2: { visible: false }
+        H1: [75, 180]
         orb: { visible: true }
-        mesohigh: { attach: H1 }
         cast: { progress: 0, text: Tank Purge }
       - # Step 16
-        orb-explosion: { visible: true }
-        orb-tether#2: { visible: true }
-        orb: { visible: false }
-        mesohigh: { visible: true }
-        inferno-howl: { visible: true }
         mesohigh-tether: { visible: false }
+        mesohigh: { visible: false }
+        inferno-howl: { visible: resolve }
+        orb-explosion: { visible: resolve, hits: [T1] }
+        orb-tether#2: { visible: true }
+        H1: { status: [searing-wind] }
+        orb: { visible: false }
         cast: { progress: 0.5 }
       - # Step 17
-        mesohigh: { visible: false }
-        inferno-howl: { visible: false }
-        orb-explosion: { visible: false }
         orb-tether#2: { visible: false }
         cast: { progress: 1, visible: false }
         enemy#garuda: { visible: false }
+        raidwide: { visible: resolve, hits: [players] }
         hint: Garuda screams and flies away.
       - # Step 18
-        feather-rain#[6..10]: { scale: 1, attach: null }
+        feather-rain#[6..10]: { attach: null, visible: true }
         players: [73, -25]
         T1: [73, 25]
         H1: [83, 161]
         hint: ""
       - # Step 19
-        boss: { visible: false, x: 0, y: 0 }
         feather-rain#[6..10]: { visible: false }
-        inferno-howl: { visible: true }
+        boss: { visible: false, x: 0, y: 0 }
+        inferno-howl: { visible: resolve }
         hint: The Ultima Weapon briefly becomes untargetable.
       - # Step 20
-        boss: { visible: true }
-        inferno-howl: { visible: false }
         eye-of-the-storm: { visible: true, blink: false }
+        boss: { visible: true }
         players: [44, -37]
         T1: [44, 37]
         H1: [44, 180]
       - # Step 21
         [T1, T2]: [44, 0]
+        eye-of-the-storm: { visible: false }
         boss: { rotate: T1 }
-        eye-of-the-storm: { blink: true }
-        inferno-howl: { visible: true, attach: null }
+        inferno-howl: { visible: resolve, attach: null }
+        inferno-howl-outline: { visible: false }
         H1: { status: [] }
       - # Step 22
-        eye-of-the-storm: { visible: false }
-        inferno-howl: { visible: false }
         boss: { rotate: null }
         cast: { text: Homing Lasers, progress: 0, visible: true }
         T1: [44, -37]
@@ -3457,7 +3487,9 @@ graphing:
         cast: { progress: 1, visible: false }
     ultimate-suppression:
       - # Step 1
-        arena: { image: /images/arenas/uwu-p5-2.avif }
+        arena:
+          image: /images/arenas/uwu-p5-2.avif
+          margin: [65, 65, 77, 75]
         featherlance: {}
         crimson-cyclone: { attach: enemy#ifrit, rotate: set:enemy#ifrit+180 }
         eruption#[1..4]: { attach: H1 }
@@ -3478,8 +3510,8 @@ graphing:
         landslide-followup#3: { rotate: set:landslide-followup#1+-90 }
         landslide-followup#4: { rotate: set:landslide-followup#1+156 }
         landslide-followup#5: { rotate: set:landslide-followup#1+-156 }
-        aetherochemical-laser#1: { attach: enemy#ultima, rotate: 180 }
-        aetherochemical-laser#2: { attach: enemy#ultima, rotate: -135 }
+        aetherochemical-laser#1: { attach: enemy#ultima, rotate: 0 }
+        aetherochemical-laser#2: { attach: enemy#ultima, rotate: 45 }
         mistral-song#chirada: { attach: enemy#chirada, rotate: M1 }
         mistral-song#suparna: { attach: enemy#suparna, rotate: H2 }
         mistral-song-cone: { attach: enemy#garuda, rotate: set:enemy#garuda+180 }
@@ -3511,12 +3543,12 @@ graphing:
         enemy#suparna: { x: 39, y: -45, rotate: -45, scale: 0.8, opacity: 0.5, text: Suparna }
         enemy#chirada: { x: 39, y: 135, rotate: 135, scale: 0.8, opacity: 0.5, text: Chirada }
         H1: [85, 0]
-        H2: [85, -15]
+        H2: { x: 85, y: -15, status: [thermal-low] }
         R1: [85, -30]
         R2: [85, -45]
         M1: [85, -60]
         M2: [85, -75]
-        T1: [41, -144]
+        T1: { x: 41, y: -144, status: [thermal-low] }
         T2: [40, -166]
         mistral-song-target#1: { attach: M1, y: -20 }
         mistral-song-target#2: { attach: H2, y: -20 }
@@ -3539,77 +3571,78 @@ graphing:
       - # Step 5
         eruption#[3,7,11]: { visible: false }
         eruption#[4,8,12]: { visible: true, attach: null }
-        mistral-song#*: { scale: 1 }
-        enemy#chirada: { rotate: M1 }
-        enemy#suparna: { rotate: H2 }
+        mistral-song#*: { visible: true }
         mistral-song-cone: { visible: true }
+        enemy#suparna: { rotate: H2 }
+        enemy#chirada: { rotate: M1 }
         mistral-song-target#*: { visible: false }
         [H1, R1]: [49, 63]
         hint: The Granite Gaol player stays on 3. The Eruptions under them will not harm them.
       - # Step 6
-        M2: { opacity: 0.6, status: [fetters] }
         eruption#[4,8,12]: { visible: false }
+        great-whirlwind#*: { attach: null }
         mistral-song#*: { visible: false }
         mistral-song-cone: { visible: false }
-        enemy#[chirada, suparna]: { visible: false }
         feather-rain#[1..5]: { attach: null }
-        great-whirlwind#*: { attach: null }
+        enemy#[chirada, suparna]: { visible: false }
+        M2: { opacity: 0.6, status: [fetters] }
         hint: Suparna and Chirada scream and fly away.
       - # Step 7
         [T1, T2, H2, M1]: [51, 131]
         [H1, R1]: [39, 110]
-        R2: [62, -45]
-        feather-rain#[1..5]: { scale: 1 }
         great-whirlwind#*: { visible: true }
-        enemy#ultima: { rotate: 0 }
         aetherochemical-laser#1: { visible: true }
+        feather-rain#[1..5]: { visible: true }
+        enemy#ultima: { rotate: 0 }
+        R2: [62, -45]
         hint: Everyone except the Light Pillar goes to kill the Granite Gaol.
       - # Step 8
-        R2: [16, -1]
-        feather-rain#[1..5]: { visible: false }
         great-whirlwind#*: { visible: false }
         aetherochemical-laser#1: { visible: false }
+        feather-rain#[1..5]: { visible: false }
+        light-pillar#[1,2]: { visible: true }
         enemy#ultima: { rotate: 45 }
-        light-pillar#[1,2]: { scale: 1 }
+        R2: [16, -1]
         hint: ""
       - # Step 9
-        R2: [29, 89]
         light-pillar#[1,2]: { visible: false }
-        light-pillar#[3,4]: { scale: 1 }
+        light-pillar#[3,4]: { visible: true }
+        R2: [29, 89]
         M2: { status: [], opacity: 1 }
       - # Step 10
         light-pillar#[3,4]: { visible: false }
-        light-pillar#[5,6]: { scale: 1 }
+        light-pillar#[5,6]: { visible: true }
         players: [29, 89]
       - # Step 11
         light-pillar#[5,6]: { visible: false }
         enemy#titan: { rotate: M1 }
       - # Step 12
-        enemy#titan: { rotate: null }
-        aetherochemical-laser#2: { visible: true }
         landslide#*: { visible: true }
+        aetherochemical-laser#2: { visible: true }
         mesohigh-tether: { visible: true }
+        enemy#titan: { rotate: null }
         players: [41, 128]
         T1: [44, 3]
       - # Step 13
-        aetherochemical-laser#2: { visible: false }
+        flaming-crush: { visible: true }
         landslide#*: { visible: false }
         landslide-followup#*: { visible: true }
+        aetherochemical-laser#2: { visible: false }
+        mesohigh: { visible: true }
         players: [29, 89]
         T1: [61, -49]
       - # Step 14
-        mesohigh: { visible: true }
-        flaming-crush: { visible: true }
+        flaming-crush: { visible: false, hits: [H1, H2, R1, R2, M1, M2, T2] }
         [H1, H2, R1, R2, M1, M2, T2]: { status: [accursed-flame] }
-        mesohigh-tether: { visible: false }
         landslide-followup#*: { visible: false }
+        mesohigh-tether: { visible: false }
+        mesohigh: { visible: false, hits: [T1] }
+        T1: { status: [] }
       - # Step 15
-        mesohigh: { visible: false }
-        flaming-crush: { visible: false }
         enemy#[titan, ifrit, garuda]: { visible: false }
         hint: Garuda screams and flies away.
       - # Step 16
-        feather-rain#[6..10]: { scale: 1, attach: null }
+        feather-rain#[6..10]: { attach: null, visible: true }
         [H1, H2, R1, R2, M1, M2, T2]: { status: [] }
         players: [6, 167]
         T1: [35, -54]

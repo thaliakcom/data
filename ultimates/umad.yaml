@@ -3068,30 +3068,32 @@ graphing:
       type: rectangle
       size: [24, 170]
       origin: [0.5, 1]
-      color: "#b45cf0"
+      look: { type: plain, color: "#b45cf0" }
       opacity: 0.5
-      scale: [1, 0]
+      visible: false
+      enter: scale-y
       shadow: false
     lc-line:
       type: rectangle
-      look: aoe
       size: [14, 170]
       origin: [0.5, 1]
+      look: aoe
       opacity: 0.85
-      scale: [1, 0]
+      visible: false
+      enter: scale-y
       shadow: false
     rotate-cw:
       type: marker
-      look: rotate-cw
       size: 40
-      shadow: false
+      look: rotate-cw
       visible: false
+      shadow: false
     rotate-ccw:
       type: marker
-      look: rotate-ccw
       size: 40
-      shadow: false
+      look: rotate-ccw
       visible: false
+      shadow: false
   graphs:
     p3-limit-cut:
       - marker-a: [65, 0]
@@ -3129,46 +3131,37 @@ graphing:
         R1: [10, -90]
         R2: [10, -45]
         hint: In this example, the first pulse starts west.
-      - pulse#1: { scale: 1 }
+      - pulse#1: { visible: true }
         hint: The first pulse sweeps from west to east.
       - pulse#1: { visible: false }
-        pulse#2: { scale: 1 }
+        pulse#2: { visible: true }
         rotate-cw: { visible: true }
         hint: Each subsequent pulse is rotated 45°. In this example, they rotate clockwise.
       - pulse#2: { visible: false }
-        pulse#3: { scale: 1 }
+        pulse#3: { visible: true }
         hint: ""
       - pulse#3: { visible: false }
-        pulse#4: { scale: 1 }
+        pulse#4: { visible: true }
       - pulse#4: { visible: false }
-        pulse#5: { scale: 1 }
+        pulse#5: { visible: true }
       - pulse#5: { visible: false }
-        pulse#6: { scale: 1 }
+        pulse#6: { visible: true }
       - pulse#6: { visible: false }
-        pulse#7: { scale: 1 }
+        pulse#7: { visible: true }
       - pulse#7: { visible: false }
-        pulse#8: { scale: 1 }
+        pulse#8: { visible: true }
       - pulse#8: { visible: false }
         rotate-cw: { visible: false }
-        H1: { status: [dice-1] }
-        M2: { status: [dice-2] }
         T1: { status: [dice-3] }
-        R1: { status: [dice-4] }
+        T2: { status: [dice-7] }
+        H1: { status: [dice-1] }
         H2: { status: [dice-5] }
         M1: { status: [dice-6] }
-        T2: { status: [dice-7] }
+        M2: { status: [dice-2] }
+        R1: { status: [dice-4] }
         R2: { status: [dice-8] }
         hint: All players are assigned limit cut numbers.
-      - rotate-ccw: { visible: true }
-        H1: [75, 67.5]
-        M2: [75, 22.5]
-        T1: [75, -22.5]
-        R1: [75, -67.5]
-        H2: [75, -112.5]
-        M1: [75, -157.5]
-        T2: [75, 157.5]
-        R2: [75, 112.5]
-        lc-line#1: { rotate: H1 }
+      - lc-line#1: { rotate: H1 }
         lc-line#2: { rotate: M2 }
         lc-line#3: { rotate: T1 }
         lc-line#4: { rotate: R1 }
@@ -3176,30 +3169,39 @@ graphing:
         lc-line#6: { rotate: M1 }
         lc-line#7: { rotate: T2 }
         lc-line#8: { rotate: R2 }
+        rotate-ccw: { visible: true }
+        T1: [75, -22.5]
+        T2: [75, 157.5]
+        H1: [75, 67.5]
+        H2: [75, -112.5]
+        M1: [75, -157.5]
+        M2: [75, 22.5]
+        R1: [75, -67.5]
+        R2: [75, 112.5]
         hint: The lines start west again but rotate counter-clockwise. Player 1 stands between east (where the first pulse ended) and northeast, and each subsequent player one step further counter-clockwise.
-      - lc-line#1: { scale: 1 }
+      - lc-line#1: { visible: true }
         H1: { status: [dice-1, magic-vulnerability-up] }
         hint: Each line hits its numbered player and inflicts Magic Vulnerability Up.
       - lc-line#1: { visible: false }
-        lc-line#2: { scale: 1 }
+        lc-line#2: { visible: true }
         M2: { status: [dice-2, magic-vulnerability-up] }
       - lc-line#2: { visible: false }
-        lc-line#3: { scale: 1 }
+        lc-line#3: { visible: true }
         T1: { status: [dice-3, magic-vulnerability-up] }
       - lc-line#3: { visible: false }
-        lc-line#4: { scale: 1 }
+        lc-line#4: { visible: true }
         R1: { status: [dice-4, magic-vulnerability-up] }
       - lc-line#4: { visible: false }
-        lc-line#5: { scale: 1 }
+        lc-line#5: { visible: true }
         H2: { status: [dice-5, magic-vulnerability-up] }
       - lc-line#5: { visible: false }
-        lc-line#6: { scale: 1 }
+        lc-line#6: { visible: true }
         M1: { status: [dice-6, magic-vulnerability-up] }
       - lc-line#6: { visible: false }
-        lc-line#7: { scale: 1 }
+        lc-line#7: { visible: true }
         T2: { status: [dice-7, magic-vulnerability-up] }
       - lc-line#7: { visible: false }
-        lc-line#8: { scale: 1 }
+        lc-line#8: { visible: true }
         R2: { status: [dice-8, magic-vulnerability-up] }
       - lc-line#8: { visible: false }
         rotate-ccw: { visible: false }

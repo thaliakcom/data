@@ -2259,33 +2259,34 @@ graphing:
       opacity: 0.7
     tower:
       type: ellipse
+      look: { type: plain, color: url(#tower-gradient) }
       size: 26
       scale: 1
-      color: url(#tower-gradient)
       origin: [0.5, 0.5]
       visible: false
     tower-filled:
       type: ellipse
+      look: { type: plain, color: url(#tower-filled-gradient) }
       size: 26
       scale: 1
-      color: url(#tower-filled-gradient)
       origin: [0.5, 0.5]
       visible: false
     blaster-tether:
       type: link
-      color: "#e8ae82"
+      look: pulse
       visible: false
     blaster:
       type: ellipse
+      look: { type: plain, color: url(#blaster-gradient) }
       size: 130
-      color: url(#blaster-gradient)
-      scale: 0
+      visible: false
+      enter: scale
       shadow: false
     flamethrower:
       type: cone
       look: aoe
-      angle: 60
       size: [0, 110]
+      angle: 60
       shadow: false
     circle:
       type: ellipse
@@ -2312,12 +2313,12 @@ graphing:
       look: aoe
       size: [100, 320]
       opacity: 0.85
-      scale: 0
       visible: false
+      enter: scale
       shadow: false
     wave-repeater:
       type: donut
-      color: url(#wave-repeater-gradient)
+      look: { type: plain, color: url(#wave-repeater-gradient) }
       visible: false
       shadow: false
     rect:
@@ -2325,150 +2326,149 @@ graphing:
       look: aoe
       size: 45
       opacity: 0.85
-      scale: 0
       visible: false
       shadow: false
     rect-color:
       type: rectangle
       size: 45
       opacity: 0.85
-      scale: 0
       visible: false
       shadow: false
     exasquare:
       type: rectangle
+      look: { type: plain, color: url(#exasquare-gradient) }
       size: [23, 200]
-      color: url(#exasquare-gradient)
       visible: false
       shadow: false
     label:
       type: rectangle
       planar: false
+      look: { type: plain, color: "#111111bb" }
       size: [120, 25]
-      color: "#111111bb"
       visible: false
       coordinate-system: cartesian
       shadow: false
     wave-cannon:
       type: rectangle
+      look: { type: plain, color: url(#wc-gradient) }
       size: [20, 200]
       origin: [0.5, 0]
-      color: url(#wc-gradient)
       opacity: 0.7
-      scale: [0, 1]
+      visible: false
+      enter: scale-x
       shadow: false
     p6-wc:
       type: rectangle
+      look: { type: plain, color: url(#wc-p6-gradient) }
       size: [20, 150]
       origin: [0.5, 0]
-      color: url(#wc-p6-gradient)
-      scale: [0, 1]
+      visible: false
+      enter: scale-x
+      exit: scale-x
       shadow: false
     wc-cone:
       type: cone
+      look: { type: plain, color: url(#wc-gradient) }
       size: [0, 100]
       angle: 60
-      color: url(#wc-gradient)
       opacity: 0.8
       visible: false
       shadow: false
     ring-cone:
       type: cone
+      look: { type: plain, color: url(#monitor-boom-gradient) }
       size: [0, 200]
       angle: 120
-      color: url(#monitor-boom-gradient)
       opacity: 0.85
       visible: false
       shadow: false
     glitch-link:
       type: link
-      width: 1
-      color: "#e1e2e3cc"
+      look: glow
     stack:
       type: marker
-      size: 50
       look: stack
-      shadow: false
+      size: 50
       visible: false
+      shadow: false
     line-stack:
       type: marker
-      size: 50
       look: line-stack
-      shadow: false
+      size: 50
       visible: false
+      shadow: false
     bladedance:
       type: cone
       look: aoe
-      angle: 125
       size: [0, 180]
+      angle: 125
       opacity: 0.85
       visible: false
       shadow: false
     flare:
       type: marker
-      size: 50
       look: flare
-      shadow: false
+      size: 50
       visible: false
+      shadow: false
     far-tether:
       type: link
-      width: 2
-      color: url(#far-gradient)
+      look: braid
       visible: false
     close-tether:
       type: link
-      width: 2
-      color: url(#close-gradient)
+      look: coil
       visible: false
     monitor:
       type: rectangle
-      opacity: 0.5
+      look: { type: plain, color: url(#monitor-gradient) }
       size: [30, 40]
       origin: [0, 0.5]
-      color: url(#monitor-gradient)
+      opacity: 0.5
       visible: false
       shadow: false
     blue-fist:
       type: image
-      image: /images/other/fist-blue.avif
-      size: 26
       planar: false
+      size: 26
+      image: /images/other/fist-blue.avif
       shadow: true
     orange-fist:
       type: image
-      image: /images/other/fist-orange.avif
-      size: 26
       planar: false
+      size: 26
+      image: /images/other/fist-orange.avif
       shadow: true
     arm:
       type: image
-      image: /images/other/arm.avif
       size: 20
+      image: /images/other/arm.avif
       shadow: true
     rotate-cw:
       type: marker
       look: rotate-cw
       size: 40
-      shadow: false
       visible: false
+      shadow: false
     rotate-ccw:
       type: marker
       look: rotate-ccw
       size: 40
-      shadow: false
       visible: false
+      shadow: false
     exaflare:
       type: marker
       look: exaflare
       size: 60
-      shadow: false
       visible: false
+      shadow: false
     kb:
       type: marker
       look: circle-kb
       size: 130
-      scale: 0
       opacity: 0.6
+      visible: false
+      enter: scale
   graphs:
     looper:
       - marker-a: [60, 0]
@@ -2509,8 +2509,7 @@ graphing:
         H1: [60, 180]
         H2: [70, 180]
         cast: { text: "Program Loop", progress: 0, visible: true }
-      - cast: { text: "Program Loop", progress: 1, visible: true }
-        tower#1: { visible: true }
+      - tower#1: { visible: true }
         tower#7: { visible: true }
         T1: { status: [third-in-line, looper] }
         T2: { status: [second-in-line, looper] }
@@ -2520,106 +2519,107 @@ graphing:
         R2: { status: [fourth-in-line, looper] }
         H1: { status: [fourth-in-line, looper] }
         H2: { status: [second-in-line, looper] }
-      - cast: { progress: 1, visible: false }
-        T2: [55, 180]
+        cast: { text: "Program Loop", progress: 1, visible: true }
+      - T2: [55, 180]
         M1: [55, 180]
         M2: [55, 180]
+        R1: [38, 180]
         R2: [55, 180]
         H1: [55, 180]
         H2: [55, 180]
-        R1: [38, 180]
-      - cast: { text: Blaster, progress: 0.1, visible: true }
-        blaster-tether#*: { visible: true }
-      - cast: { progress: 0.3 }
+        cast: { progress: 1, visible: false }
+      - blaster-tether#*: { visible: true }
+        cast: { text: Blaster, progress: 0.1, visible: true }
+      - blaster-tether#1: { to: T1 }
         T1: [32, 180]
-        blaster-tether#1: { to: T1 }
-      - cast: { progress: 0.8 }
-        tower#1: { visible: false }
+        cast: { progress: 0.3 }
+      - tower#1: { visible: false }
         tower#7: { visible: false }
         tower-filled#1: { visible: true }
         tower-filled#7: { visible: true }
         T1: [59, 101]
-        R1: [80, -171]
+        T2: [52, -10]
         M1: [50, 9]
         M2: [50, -68]
+        R1: [80, -171]
         R2: [53, -2]
         H1: [50, -56]
-        T2: [52, -10]
         H2: [51, -44]
-      - cast: { progress: 1 }
-        blaster#*: { scale: 1 }
+        cast: { progress: 0.8 }
+      - tower#5: { visible: true }
         tower-filled#1: { visible: false }
-        tower-filled#7: { visible: false }
         tower-filled#3: { visible: true }
-        tower#5: { visible: true }
+        tower-filled#7: { visible: false }
+        blaster#*: { visible: true }
         T1: { status: [third-in-line, looper, hp-penalty, twice-come-ruin] }
-        R1: { status: [third-in-line, looper, hp-penalty, twice-come-ruin] }
         M1: { status: [twice-come-ruin] }
         M2: { status: [twice-come-ruin] }
-      - cast: { visible: false }
-        T1: [34, 101]
-        R1: [34, -171]
-        M1: [55, 125]
-        M2: [55, 175]
-        R2: [28, 101]
-        H1: [28, -171]
-        T2: [49, 110]
-        H2: [52, -174]
-        tower#5: { visible: false }
+        R1: { status: [third-in-line, looper, hp-penalty, twice-come-ruin] }
+        cast: { progress: 1 }
+      - tower#5: { visible: false }
         tower-filled#5: { visible: true }
         blaster-tether#1: { to: R2 }
         blaster-tether#2: { to: H1 }
         blaster#*: { visible: false }
-      - R2: [65, 2]
-        H1: [62, -71]
+        T1: [34, 101]
+        T2: [49, 110]
+        M1: [55, 125]
+        M2: [55, 175]
+        R1: [34, -171]
+        R2: [28, 101]
+        H1: [28, -171]
+        H2: [52, -174]
+        cast: { visible: false }
+      - blaster#1: { x: 65, y: 2 }
+        blaster#2: { x: 62, y: -71 }
         T1: [48, 126]
         R1: [51, 164]
-        blaster#1: { x: 65, y: 2, scale: 0 }
-        blaster#2: { x: 62, y: -71, scale: 0 }
-      - blaster#*: { scale: 1, visible: true }
+        R2: [65, 2]
+        H1: [62, -71]
+      - tower#8: { visible: true }
         tower-filled#3: { visible: false }
-        tower-filled#5: { visible: false }
         tower-filled#4: { visible: true }
-        tower#8: { visible: true }
-        R2: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
-        H1: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
+        tower-filled#5: { visible: false }
+        blaster#*: { visible: true }
         T1: { status: [third-in-line, looper] }
-        R1: { status: [third-in-line, looper] }
         T2: { status: [twice-come-ruin] }
-        H2: { status: [twice-come-ruin] }
         M1: { status: [] }
         M2: { status: [] }
+        R1: { status: [third-in-line, looper] }
+        R2: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
+        H1: { status: [fourth-in-line, looper, hp-penalty, twice-come-ruin] }
+        H2: { status: [twice-come-ruin] }
       - tower#8: { visible: false }
         tower-filled#8: { visible: true }
         blaster-tether#1: { to: M1 }
         blaster-tether#2: { to: M2 }
         blaster#*: { visible: false }
         T1: [51, -14]
+        T2: [52, -178]
+        M1: [25, 2]
+        M2: [25, -71]
         R1: [51, 174]
         R2: [33, 2]
         H1: [33, -71]
-        M1: [25, 2]
-        M2: [25, -71]
-        T2: [52, -178]
         H2: [61, -179]
-      - blaster#1: { x: 60, y: 77, scale: 0 }
-        blaster#2: { x: 60, y: -95, scale: 0 }
+      - blaster#1: { x: 60, y: 77 }
+        blaster#2: { x: 60, y: -95 }
         M1: [60, 77]
         M2: [60, -95]
         R2: [58, 1]
         H1: [68, -175]
-      - blaster#*: { scale: 1, visible: true }
+      - tower#2: { visible: true }
+        tower#6: { visible: true }
         tower-filled#4: { visible: false }
         tower-filled#8: { visible: false }
-        tower#2: { visible: true }
-        tower#6: { visible: true }
-        R2: { status: [fourth-in-line, looper] }
-        H1: { status: [fourth-in-line, looper] }
+        blaster#*: { visible: true }
+        T1: { status: [twice-come-ruin] }
+        T2: { status: [] }
         M1: { status: [hp-penalty, twice-come-ruin] }
         M2: { status: [hp-penalty, twice-come-ruin] }
-        T1: { status: [twice-come-ruin] }
         R1: { status: [twice-come-ruin] }
-        T2: { status: [] }
+        R2: { status: [fourth-in-line, looper] }
+        H1: { status: [fourth-in-line, looper] }
         H2: { status: [] }
       - tower#2: { visible: false }
         tower#6: { visible: false }
@@ -2628,31 +2628,31 @@ graphing:
         blaster-tether#1: { to: T2 }
         blaster-tether#2: { to: H2 }
         blaster#*: { visible: false }
+        T1: [67, -93]
+        T2: [28, 77]
         M1: [33, 77]
         M2: [33, -95]
-        T2: [28, 77]
-        H2: [28, -95]
+        R1: [66, 88]
         R2: [51, 83]
         H1: [48, -100]
-        R1: [66, 88]
-        T1: [67, -93]
-      - blaster#1: { x: 60, y: -10, scale: 0 }
-        blaster#2: { x: 65, y: 173, scale: 0 }
+        H2: [28, -95]
+      - blaster#1: { x: 60, y: -10 }
+        blaster#2: { x: 65, y: 173 }
         T2: [60, -10]
-        H2: [65, 173]
         M1: [55, 95]
         M2: [63, -88]
-      - blaster#*: { scale: 1, visible: true }
-        blaster-tether#*: { visible: false }
-        tower-filled#2: { visible: false }
+        H2: [65, 173]
+      - tower-filled#2: { visible: false }
         tower-filled#6: { visible: false }
-        R2: { status: [twice-come-ruin] }
-        H1: { status: [twice-come-ruin] }
-        R1: { status: [] }
+        blaster-tether#*: { visible: false }
+        blaster#*: { visible: true }
         T1: { status: [] }
+        T2: { status: [hp-penalty, twice-come-ruin] }
         M1: { status: [] }
         M2: { status: [] }
-        T2: { status: [hp-penalty, twice-come-ruin] }
+        R1: { status: [] }
+        R2: { status: [twice-come-ruin] }
+        H1: { status: [twice-come-ruin] }
         H2: { status: [hp-penalty, twice-come-ruin] }
       - blaster#*: { visible: false }
     pantokrator:
@@ -2678,7 +2678,7 @@ graphing:
         flamethrower#12: { rotate: 0, visible: false }
         circle#1..24: [0, 0]
         wave-cannon#1..2: [0, 0]
-        circle-color#1..2: { size: 60, color: url(#blaster-gradient), scale: 0 }
+        circle-color#1..2: { size: 60, look: { type: plain, color: url(#blaster-gradient) }, enter: scale }
         boss: [0, 0]
         R1: { x: 30, y: -135, status: [first-in-line] }
         T2: { x: 30, y: 45, status: [second-in-line] }
@@ -2697,11 +2697,9 @@ graphing:
         H2: [50, 135]
         M2: [55, 135]
       - flamethrower#1: { visible: false }
-        flamethrower#7: { visible: false }
         flamethrower#2: { visible: true }
+        flamethrower#7: { visible: false }
         flamethrower#8: { visible: true }
-        R1: [60, 26]
-        M1: [60, -152]
         circle#1: [60, 26]
         circle#2: [45, -45]
         circle#3: [50, -45]
@@ -2710,13 +2708,15 @@ graphing:
         circle#6: [45, 135]
         circle#7: [50, 135]
         circle#8: [55, 135]
+        R1: [60, 26]
+        M1: [60, -152]
       - flamethrower#2: { visible: false }
-        flamethrower#8: { visible: false }
         flamethrower#3: { visible: true }
+        flamethrower#8: { visible: false }
         flamethrower#9: { visible: true }
       - flamethrower#3: { visible: false }
-        flamethrower#9: { visible: false }
         flamethrower#4: { visible: true }
+        flamethrower#9: { visible: false }
         flamethrower#10: { visible: true }
         circle#1..8: { visible: true }
         circle#9: [60, 54]
@@ -2740,21 +2740,11 @@ graphing:
         H2: [50, 168]
         M2: [55, 166]
       - flamethrower#4: { visible: false }
-        flamethrower#10: { visible: false }
         flamethrower#5: { visible: true }
+        flamethrower#10: { visible: false }
         flamethrower#11: { visible: true }
-        wave-cannon#1..2: { scale: 1, visible: false }
-        circle-color#1..2: { scale: 1, visible: false }
         circle#1..8: { visible: false }
         circle#9..16: { visible: true }
-        R1: { x: 87, y: 31, status: [] }
-        T2: [38, 110]
-        T1: [50, 20]
-        H1: [55, 18]
-        M1: { x: 87, y: -148, status: [] }
-        R2: [38, -61]
-        H2: [50, -162]
-        M2: [55, -164]
         circle#17: [87, 31]
         circle#18: [38, 110]
         circle#19: [50, 20]
@@ -2763,9 +2753,19 @@ graphing:
         circle#22: [38, -61]
         circle#23: [50, -162]
         circle#24: [55, -164]
+        wave-cannon#1..2: { visible: resolve }
+        circle-color#1..2: { visible: resolve }
+        R1: { x: 87, y: 31, status: [] }
+        T2: [38, 110]
+        T1: [50, 20]
+        H1: [55, 18]
+        M1: { x: 87, y: -148, status: [] }
+        R2: [38, -61]
+        H2: [50, -162]
+        M2: [55, -164]
       - flamethrower#5: { visible: false }
-        flamethrower#11: { visible: false }
         flamethrower#6: { visible: true }
+        flamethrower#11: { visible: false }
         flamethrower#12: { visible: true }
         circle#1: [45, 58]
         circle#2: [60, 146]
@@ -2777,8 +2777,6 @@ graphing:
         circle#8: [55, -134]
         circle#9..16: { visible: false }
         circle#17..24: { visible: true }
-        wave-cannon#1..2: { scale: [0, 1] }
-        circle-color#1..2: { scale: 0 }
         R1: [45, 58]
         T2: [60, 146]
         T1: [50, 56]
@@ -2787,10 +2785,10 @@ graphing:
         R2: [60, -32]
         H2: [50, -132]
         M2: [55, -134]
-      - flamethrower#6: { visible: false }
-        flamethrower#12: { visible: false }
+      - flamethrower#1: { visible: true }
+        flamethrower#6: { visible: false }
         flamethrower#7: { visible: true }
-        flamethrower#1: { visible: true }
+        flamethrower#12: { visible: false }
         circle#1..8: { visible: true }
         circle#9: [45, 94]
         circle#10: [50, 178]
@@ -2801,10 +2799,10 @@ graphing:
         circle#15: [50, -95]
         circle#16: [55, -97]
         circle#17..24: { visible: false }
-        wave-cannon#1: { visible: true, rotate: 92 }
-        wave-cannon#2: { visible: true, rotate: -80 }
-        circle-color#1: { x: 50, y: 178, visible: true }
-        circle-color#2: { x: 50, y: -5, visible: true }
+        wave-cannon#1: { rotate: 92 }
+        wave-cannon#2: { rotate: -80 }
+        circle-color#1: { x: 50, y: 178 }
+        circle-color#2: { x: 50, y: -5 }
         R1: [45, 94]
         T2: [50, 178]
         T1: [50, 92]
@@ -2813,12 +2811,10 @@ graphing:
         R2: [50, -5]
         H2: [50, -95]
         M2: [55, -97]
-      - flamethrower#7: { visible: false }
-        flamethrower#1: { visible: false }
-        flamethrower#8: { visible: true }
+      - flamethrower#1: { visible: false }
         flamethrower#2: { visible: true }
-        wave-cannon#1..2: { scale: 1, visible: false }
-        circle-color#1..2: { scale: 1, visible: false }
+        flamethrower#7: { visible: false }
+        flamethrower#8: { visible: true }
         circle#1..8: { visible: false }
         circle#9..16: { visible: true }
         circle#17: [45, 127]
@@ -2829,6 +2825,8 @@ graphing:
         circle#22: [80, 4]
         circle#23: [40, -55]
         circle#24: [50, -59]
+        wave-cannon#1..2: { visible: resolve }
+        circle-color#1..2: { visible: resolve }
         R1: [45, 127]
         T2: { x: 80, y: 162, status: [] }
         T1: [40, 129]
@@ -2837,12 +2835,10 @@ graphing:
         R2: { x: 80, y: 4, status: [] }
         H2: [40, -55]
         M2: [50, -59]
-      - flamethrower#8: { visible: false }
-        flamethrower#2: { visible: false }
-        flamethrower#9: { visible: true }
+      - flamethrower#2: { visible: false }
         flamethrower#3: { visible: true }
-        wave-cannon#1..2: { scale: [0, 1] }
-        circle-color#1..2: { scale: 0 }
+        flamethrower#8: { visible: false }
+        flamethrower#9: { visible: true }
         circle#1: [45, 162]
         circle#2: [50, 162]
         circle#3: [50, -124]
@@ -2861,14 +2857,10 @@ graphing:
         R2: [50, -21]
         H2: [50, 54]
         M2: [55, -23]
-      - flamethrower#9: { visible: false }
-        flamethrower#3: { visible: false }
-        flamethrower#10: { visible: true }
+      - flamethrower#3: { visible: false }
         flamethrower#4: { visible: true }
-        wave-cannon#1: { rotate: -168, visible: true }
-        wave-cannon#2: { rotate: 10, visible: true }
-        circle-color#1: { x: 50, y: -92, visible: true }
-        circle-color#2: { x: 50, y: 84, visible: true }
+        flamethrower#9: { visible: false }
+        flamethrower#10: { visible: true }
         circle#1..8: { visible: true }
         circle#9: [45, -168]
         circle#10: [50, -168]
@@ -2879,6 +2871,10 @@ graphing:
         circle#15: [50, 84]
         circle#16: [55, 8]
         circle#17..24: { visible: false }
+        wave-cannon#1: { rotate: -168 }
+        wave-cannon#2: { rotate: 10 }
+        circle-color#1: { x: 50, y: -92 }
+        circle-color#2: { x: 50, y: 84 }
         R1: [45, -168]
         T2: [50, -168]
         T1: [50, -92]
@@ -2887,12 +2883,10 @@ graphing:
         R2: [50, 10]
         H2: [50, 84]
         M2: [55, 8]
-      - flamethrower#10: { visible: false }
-        flamethrower#4: { visible: false }
-        flamethrower#11: { visible: true }
+      - flamethrower#4: { visible: false }
         flamethrower#5: { visible: true }
-        wave-cannon#1..2: { scale: 1, visible: false }
-        circle-color#1..2: { scale: 1, visible: false }
+        flamethrower#10: { visible: false }
+        flamethrower#11: { visible: true }
         circle#1..8: { visible: false }
         circle#9..16: { visible: true }
         circle#17: [45, -138]
@@ -2903,6 +2897,8 @@ graphing:
         circle#22: [50, 43]
         circle#23: [80, 71]
         circle#24: [55, 41]
+        wave-cannon#1..2: { visible: resolve }
+        circle-color#1..2: { visible: resolve }
         R1: [45, -138]
         T2: [50, -138]
         T1: { x: 74, y: -107, status: [] }
@@ -2911,12 +2907,10 @@ graphing:
         R2: [50, 43]
         H2: { x: 80, y: 71, status: [] }
         M2: [55, 41]
-      - flamethrower#11: { visible: false }
-        flamethrower#5: { visible: false }
-        flamethrower#12: { visible: true }
+      - flamethrower#5: { visible: false }
         flamethrower#6: { visible: true }
-        wave-cannon#1..2: { scale: [0, 1] }
-        circle-color#1..2: { scale: 0 }
+        flamethrower#11: { visible: false }
+        flamethrower#12: { visible: true }
         circle#1: [40, -102]
         circle#2: [45, -104]
         circle#3: [50, -106]
@@ -2935,16 +2929,16 @@ graphing:
         R2: [50, 74]
         H2: [55, 72]
         M2: [54, 146]
-      - flamethrower#12: { visible: false }
+      - flamethrower#1: { visible: true }
         flamethrower#6: { visible: false }
-        flamethrower#1: { visible: true }
         flamethrower#7: { visible: true }
-        wave-cannon#1: { visible: true, rotate: -75 }
-        wave-cannon#2: { visible: true, rotate: 110 }
-        circle-color#1: { visible: true, x: 50, y: -2 }
-        circle-color#2: { visible: true, x: 48, y: 177 }
+        flamethrower#12: { visible: false }
         circle#1..8: { visible: true }
         circle#17..24: { visible: false }
+        wave-cannon#1: { rotate: -75 }
+        wave-cannon#2: { rotate: 110 }
+        circle-color#1: { x: 50, y: -2 }
+        circle-color#2: { x: 48, y: 177 }
         R1: [45, -66]
         T2: [50, -68]
         T1: [55, -70]
@@ -2954,12 +2948,12 @@ graphing:
         H2: [55, 102]
         M2: [48, 177]
       - flamethrower#1: { visible: false }
-        flamethrower#7: { visible: false }
         flamethrower#2: { visible: true }
+        flamethrower#7: { visible: false }
         flamethrower#8: { visible: true }
-        wave-cannon#1..2: { scale: 1, visible: false }
-        circle-color#1..2: { scale: 1, visible: false }
         circle#1..8: { visible: false }
+        wave-cannon#1..2: { visible: resolve }
+        circle-color#1..2: { visible: resolve }
         R1: [45, -66]
         T2: [50, -68]
         T1: [55, -70]
@@ -2988,18 +2982,18 @@ graphing:
         boss#M5: { x: 63, y: -90, visible: false, scale: 0.4, text: M, rotate: -90 }
         boss#M6: { x: 63, y: 180, visible: false, scale: 0.4, text: M }
         boss#eye: { x: 100, y: 0, scale: 0.8, visible: false, rotate: 0 }
-        rect#1: { x: 92, y: 22.5, scale: 0, rotate: 112.5 }
-        rect#2: { x: 92, y: -157.5, scale: 0, rotate: 112.5 }
-        rect#3: { x: 52, y: 112.5, scale: 0, rotate: 112.5 }
-        rect#4: { x: 52, y: 112.5, scale: 0, rotate: 22.5 }
+        rect#1: { x: 92, y: 22.5, rotate: 112.5, enter: scale }
+        rect#2: { x: 92, y: -157.5, rotate: 112.5, enter: scale }
+        rect#3: { x: 52, y: 112.5, rotate: 112.5, enter: scale }
+        rect#4: { x: 52, y: 112.5, rotate: 22.5, enter: scale }
         rect#eye: { scale: [1.7, 10], rotate: 0, filter: grayscale(1) contrast(2) }
-        circle#1..2: { x: 52, y: -67.5, scale: 0 }
-        circle#3: { x: -79, y: -36, scale: 1.5, coordinate-system: cartesian }
-        circle#4: { x: 79, y: -36, scale: 1.5, coordinate-system: cartesian }
-        circle#5: { x: -79, y: 36, scale: 1.5, coordinate-system: cartesian }
-        circle#6: { x: 79, y: 36, scale: 1.5, coordinate-system: cartesian }
-        circle#7: { x: -45, y: 75, scale: 1.5, coordinate-system: cartesian }
-        circle#8: { x: 45, y: -75, scale: 1.5, coordinate-system: cartesian }
+        circle#1..2: { x: 52, y: -67.5, enter: scale }
+        circle#3: { x: -79, y: -36, scale: 1.5, coordinate-system: cartesian, enter: scale }
+        circle#4: { x: 79, y: -36, scale: 1.5, coordinate-system: cartesian, enter: scale }
+        circle#5: { x: -79, y: 36, scale: 1.5, coordinate-system: cartesian, enter: scale }
+        circle#6: { x: 79, y: 36, scale: 1.5, coordinate-system: cartesian, enter: scale }
+        circle#7: { x: -45, y: 75, scale: 1.5, coordinate-system: cartesian, enter: scale }
+        circle#8: { x: 45, y: -75, scale: 1.5, coordinate-system: cartesian, enter: scale }
         donut#1: { x: 52, y: -67.5 }
         donut#2: { x: 52, y: -67.5 }
         stack#1..2: { coordinate-system: cartesian }
@@ -3017,41 +3011,40 @@ graphing:
         R2: { x: 36, y: 20, coordinate-system: cartesian }
         cast: { text: Party Synergy, progress: 0, visible: true }
         label: { x: 0, y: -90, visible: false }
-      - cast: { progress: 1, visible: false }
+      - boss#*: { visible: false }
         glitch-link#*: { visible: true }
         T1: { x: -36, y: -25, status: [circle] }
-        H1: { status: [triangle] }
-        M1: { status: [cross] }
-        R1: { status: [circle] }
         T2: { x: 36, y: -25, status: [cross] }
+        H1: { status: [triangle] }
         H2: { status: [square] }
+        M1: { status: [cross] }
         M2: { status: [square] }
+        R1: { status: [circle] }
         R2: { status: [triangle] }
-        boss#*: { visible: false }
-      - R1: [36, 5]
-        M2: [-36, 20]
+        cast: { progress: 1, visible: false }
+      - boss#F1: { x: 52, y: 112.5, rotate: boss#M1, text: Blades-F }
+        boss#F2: { x: 62, y: 180, rotate: 180, text: Staff-F }
         boss#M1: { x: 52, y: -67.5, rotate: boss#F1, text: Sword-M }
         boss#M2: { x: 0, y: 0, rotate: boss#F1, text: Sword-M }
-        boss#F1: { x: 52, y: 112.5, rotate: boss#M1, text: Blades-F }
-        boss#F2: { x: 62, y: 180, rotate: 180, text: Staff-F }
-      - label: { visible: true, text: Variation 1 }
-        boss#eye: { visible: true }
+        M2: [-36, 20]
+        R1: [36, 5]
+      - boss#F1: { visible: true }
+        boss#F2: { visible: true }
         boss#M1: { visible: true }
         boss#M2: { visible: true }
-        boss#F1: { visible: true }
-        boss#F2: { visible: true }
-      - T1: [40, 30]
+        boss#eye: { visible: true }
+        label: { visible: true, text: Variation 1 }
+      - rect#1..2: { scale: [3, 10], visible: true }
+        circle#1: { scale: 2, visible: true }
+        T1: [40, 30]
         T2: [40, 30]
         H1: [40, 30]
         H2: [40, 30]
-        R1: [40, 30]
-        R2: [40, 30]
         M1: [40, 30]
         M2: [40, 30]
-        rect#1..2: { scale: [3, 10], visible: true }
-        circle#1: { scale: 2, visible: true }
-      - label: { text: Variation 2 }
-        boss#F1: { text: Staff-F }
+        R1: [40, 30]
+        R2: [40, 30]
+      - boss#F1: { text: Staff-F }
         rect#1..2: { visible: false }
         circle#1: { visible: false }
         T1: [-36, -25]
@@ -3062,21 +3055,19 @@ graphing:
         M2: [-36, 20]
         R1: [36, 5]
         R2: [36, 20]
-      - rect#1..2: { scale: 0 }
-        rect#3..4: { scale: [1, 10], visible: true }
-        circle#1: { scale: 0 }
+        label: { text: Variation 2 }
+      - rect#3..4: { scale: [1, 10], visible: true }
         circle#2: { scale: 2, visible: true }
         T1: [-44, 44]
+        T2: [20, -51]
         H1: [-44, 44]
+        H2: [20, -51]
         M1: [-44, 44]
         M2: [-44, 44]
-        T2: [20, -51]
-        H2: [20, -51]
         R1: [20, -51]
         R2: [20, -51]
-      - label: { text: Variation 3 }
+      - boss#F1: { text: Blades-F }
         boss#M1: { text: Shield-M }
-        boss#F1: { text: Blades-F }
         rect#3..4: { visible: false }
         circle#2: { visible: false }
         T1: [-36, -25]
@@ -3087,19 +3078,18 @@ graphing:
         M2: [-36, 20]
         R1: [36, 5]
         R2: [36, 20]
-      - donut#1: { scale: 1, visible: true }
-        rect#1..2: { scale: [3, 10], visible: true }
-        rect#3..4: { scale: 0 }
+        label: { text: Variation 3 }
+      - rect#1..2: { scale: [3, 10], visible: true }
+        donut#1: { visible: true }
         T1: [-47, -22]
         T2: [-47, -22]
+        H1: [-47, -22]
+        H2: [-47, -22]
         M1: [-47, -22]
         M2: [-47, -22]
         R1: [-47, -22]
         R2: [-47, -22]
-        H1: [-47, -22]
-        H2: [-47, -22]
-      - label: { text: Variation 4 }
-        boss#F1: { text: Staff-F }
+      - boss#F1: { text: Staff-F }
         rect#1..2: { visible: false }
         donut#1: { visible: false }
         T1: [-36, -25]
@@ -3110,85 +3100,86 @@ graphing:
         M2: [-36, 20]
         R1: [36, 5]
         R2: [36, 20]
-      - donut#2: { scale: 1, visible: true }
-        rect#3..4: { scale: [1, 10], visible: true }
+        label: { text: Variation 4 }
+      - rect#3..4: { scale: [1, 10], visible: true }
+        donut#2: { visible: true }
         T1: [-60, 12]
+        T2: [-36, -56]
         H1: [-60, 12]
+        H2: [-36, -56]
         M1: [-60, 12]
         M2: [-60, 12]
-        T2: [-36, -56]
-        H2: [-36, -56]
         R1: [-36, -56]
         R2: [-36, -56]
-      - label: { text: Remote Glitch }
-        donut#2: { visible: false }
-        rect#3..4: { visible: false }
+      - boss#F1: { visible: false }
+        boss#F2: { visible: false }
         boss#M1: { visible: false }
         boss#M2: { visible: false }
-        boss#F1: { visible: false }
-        boss#F2: { visible: false }
         boss#M3: { visible: true }
         boss#M4: { visible: true }
         boss#M5: { visible: true }
         boss#M6: { visible: true }
+        rect#3..4: { visible: false }
         circle#1: { x: -45, y: -75, coordinate-system: cartesian, scale: 1.5 }
         circle#2: { x: 45, y: 75, coordinate-system: cartesian, scale: 1.5 }
-        M1: [-45, -75]
+        donut#2: { visible: false }
+        T1: [-79, 36]
         T2: [45, 75]
+        H1: [-45, 75]
+        H2: [79, 36]
+        M1: [-45, -75]
         M2: [-79, -36]
         R1: [79, -36]
-        T1: [-79, 36]
-        H2: [79, 36]
-        H1: [-45, 75]
         R2: [45, -75]
-      - rect#eye: { visible: true }
+        label: { text: Remote Glitch }
+      - boss#F1: { x: 0, y: 0, rotate: 0 }
         boss#M1: { x: 63, y: 45, rotate: 45, text: M }
-        boss#F1: { x: 0, y: 0, rotate: 0 }
+        rect#eye: { visible: true }
         circle#1..8: { visible: true }
         stack#1: [-79, -36]
         stack#2: [45, 75]
-      - circle#1..8: { visible: false }
-        rect#eye: { visible: false }
+      - boss#F1: { visible: true }
         boss#M1: { visible: true }
-        boss#F1: { visible: true }
+        rect#eye: { visible: false }
+        circle#1..8: { visible: false }
         stack#1..2: { visible: true }
-      - M1: { x: 12, y: -45, coordinate-system: polar }
-        M2: { x: 12, y: -45, coordinate-system: polar }
-        T1: { x: 12, y: -45, coordinate-system: polar }
-        H1: { x: 12, y: -45, coordinate-system: polar }
-        T2: { x: 12, y: 135, coordinate-system: polar }
-        R1: { x: 12, y: 135, coordinate-system: polar }
-        H2: { x: 12, y: 135, coordinate-system: polar }
-        R2: { x: 12, y: 135, coordinate-system: polar }
-        stack#1: { x: 12, y: -45, coordinate-system: polar }
+      - stack#1: { x: 12, y: -45, coordinate-system: polar }
         stack#2: { x: 12, y: 135, coordinate-system: polar }
-      - boss#F1: { scale: 0.6 }
-        kb: { scale: 1 }
-        M1: { x: 88, y: -45, coordinate-system: polar }
-        M2: { x: 88, y: -45, coordinate-system: polar }
-        T1: { x: 88, y: -45, coordinate-system: polar }
-        H1: { x: 88, y: -45, coordinate-system: polar }
-        T2: { x: 88, y: 135, coordinate-system: polar }
-        R1: { x: 88, y: 135, coordinate-system: polar }
-        H2: { x: 88, y: 135, coordinate-system: polar }
-        R2: { x: 88, y: 135, coordinate-system: polar }
-        stack#1: { x: 88, y: -45, coordinate-system: polar }
-        stack#2: { x: 88, y: 135, coordinate-system: polar }
-        circle#1: { x: 63, y: 0, scale: 0, coordinate-system: polar }
-        circle#2: { x: 63, y: 45, scale: 0, coordinate-system: polar }
-        circle#3: { x: 63, y: 90, scale: 0, coordinate-system: polar }
-        circle#4: { x: 63, y: 180, scale: 0, coordinate-system: polar }
-        circle#5: { x: 63, y: -90, scale: 0, coordinate-system: polar }
+        T1: { x: 12, y: -45, coordinate-system: polar }
+        T2: { x: 12, y: 135, coordinate-system: polar }
+        H1: { x: 12, y: -45, coordinate-system: polar }
+        H2: { x: 12, y: 135, coordinate-system: polar }
+        M1: { x: 12, y: -45, coordinate-system: polar }
+        M2: { x: 12, y: -45, coordinate-system: polar }
+        R1: { x: 12, y: 135, coordinate-system: polar }
+        R2: { x: 12, y: 135, coordinate-system: polar }
+      - kb: { visible: true }
+        boss#F1: { scale: 0.6 }
+        circle#1: { x: 63, y: 0, coordinate-system: polar }
+        circle#2: { x: 63, y: 45, coordinate-system: polar }
+        circle#3: { x: 63, y: 90, coordinate-system: polar }
+        circle#4: { x: 63, y: 180, coordinate-system: polar }
+        circle#5: { x: 63, y: -90, coordinate-system: polar }
         circle#6: { x: 88, y: -45, scale: 0.9, coordinate-system: polar }
         circle#7: { x: 88, y: 135, scale: 0.9, coordinate-system: polar }
-      - circle#1..5: { scale: 2, visible: true }
-        circle#6..7: { visible: true }
-        kb: { visible: false }
+        stack#1: { x: 88, y: -45, coordinate-system: polar }
+        stack#2: { x: 88, y: 135, coordinate-system: polar }
+        T1: { x: 88, y: -45, coordinate-system: polar }
+        T2: { x: 88, y: 135, coordinate-system: polar }
+        H1: { x: 88, y: -45, coordinate-system: polar }
+        H2: { x: 88, y: 135, coordinate-system: polar }
+        M1: { x: 88, y: -45, coordinate-system: polar }
+        M2: { x: 88, y: -45, coordinate-system: polar }
+        R1: { x: 88, y: 135, coordinate-system: polar }
+        R2: { x: 88, y: 135, coordinate-system: polar }
+      - kb: { visible: false }
         boss#F1: { visible: false, scale: 0.4 }
-      - circle#1..7: { visible: false }
+        circle#1..5: { scale: 2, visible: true }
+        circle#6..7: { visible: true }
+      - boss#M*: { visible: false }
+        circle#1..7: { visible: false }
         stack#1..2: { visible: false }
-        boss#M*: { visible: false }
-        kb: { scale: 0 }
+        glitch-link#*: { visible: false }
         T1: { status: [] }
         T2: { status: [] }
         H1: { status: [] }
@@ -3197,33 +3188,23 @@ graphing:
         M2: { status: [] }
         R1: { status: [] }
         R2: { status: [] }
-        glitch-link#*: { visible: false }
-      - label: { text: Mid Glitch }
-        rect#eye: { visible: false }
-        kb: { visible: true }
-        circle#1..8: { visible: false }
-        glitch-link#*: { visible: true }
-        T1: { x: -60, y: 12, status: [circle], coordinate-system: cartesian }
-        H1: { x: -60, y: 12, status: [triangle], coordinate-system: cartesian }
-        M1: { x: -60, y: 12, status: [cross], coordinate-system: cartesian }
-        M2: { x: -60, y: 12, status: [square], coordinate-system: cartesian }
-        T2: { x: -36, y: -56, status: [cross], coordinate-system: cartesian }
-        H2: { x: -36, y: -56, status: [square], coordinate-system: cartesian }
-        R1: { x: -36, y: -56, status: [circle], coordinate-system: cartesian }
-        R2: { x: -36, y: -56, status: [triangle], coordinate-system: cartesian }
-        boss#M3: { visible: true }
+      - boss#M3: { visible: true }
         boss#M4: { visible: true }
         boss#M5: { visible: true }
         boss#M6: { visible: true }
-      - M1: [-50, -71]
-        T2: [50, -71]
-        M2: [-50, -23.6]
-        R1: [50, 23.6]
-        T1: [-50, 23.6]
-        H2: [50, -23.6]
-        H1: [-50, 71]
-        R2: [50, 71]
-        circle#1: { x: -50, y: -71, coordinate-system: cartesian, scale: 1.5 }
+        rect#eye: { visible: false }
+        circle#1..8: { visible: false }
+        glitch-link#*: { visible: true }
+        T1: { x: -60, y: 12, status: [circle], coordinate-system: cartesian }
+        T2: { x: -36, y: -56, status: [cross], coordinate-system: cartesian }
+        H1: { x: -60, y: 12, status: [triangle], coordinate-system: cartesian }
+        H2: { x: -36, y: -56, status: [square], coordinate-system: cartesian }
+        M1: { x: -60, y: 12, status: [cross], coordinate-system: cartesian }
+        M2: { x: -60, y: 12, status: [square], coordinate-system: cartesian }
+        R1: { x: -36, y: -56, status: [circle], coordinate-system: cartesian }
+        R2: { x: -36, y: -56, status: [triangle], coordinate-system: cartesian }
+        label: { text: Mid Glitch }
+      - circle#1: { x: -50, y: -71, coordinate-system: cartesian, scale: 1.5 }
         circle#2: { x: 50, y: -71, coordinate-system: cartesian, scale: 1.5 }
         circle#3: { x: -50, y: -23.6, coordinate-system: cartesian, scale: 1.5 }
         circle#4: { x: 50, y: 23.6, coordinate-system: cartesian, scale: 1.5 }
@@ -3232,51 +3213,60 @@ graphing:
         circle#7: { x: -50, y: 71, coordinate-system: cartesian, scale: 1.5 }
         circle#8: { x: 50, y: 71, coordinate-system: cartesian, scale: 1.5 }
         stack#1..2: { coordinate-system: cartesian }
+        T1: [-50, 23.6]
+        T2: [50, -71]
+        H1: [-50, 71]
+        H2: [50, -23.6]
+        M1: [-50, -71]
+        M2: [-50, -23.6]
+        R1: [50, 23.6]
+        R2: [50, 71]
       - rect#eye: { visible: true }
         circle#1..8: { visible: true }
         stack#1: [50, -23.6]
         stack#2: [50, 71]
-      - circle#1..8: { visible: false }
-        rect#eye: { visible: false }
+      - boss#F1: { visible: true }
         boss#M1: { visible: true }
-        boss#F1: { visible: true }
+        rect#eye: { visible: false }
+        circle#1..8: { visible: false }
         stack#1..2: { visible: true }
-      - M1: { x: 12, y: -45, coordinate-system: polar }
-        M2: { x: 12, y: -45, coordinate-system: polar }
-        T1: { x: 12, y: -45, coordinate-system: polar }
-        H1: { x: 12, y: -135, coordinate-system: polar }
-        T2: { x: 12, y: -135, coordinate-system: polar }
-        R1: { x: 12, y: -135, coordinate-system: polar }
-        H2: { x: 12, y: -135, coordinate-system: polar }
-        R2: { x: 12, y: -45, coordinate-system: polar }
+      - kb: { visible: true }
         stack#1: { x: 12, y: -45, coordinate-system: polar }
         stack#2: { x: 12, y: -135, coordinate-system: polar }
-        kb: { scale: 1 }
-      - boss#F1: { scale: 0.6, visible: false }
-        kb: { visible: false }
-        glitch-link#2: { from: R2, to: H1 }
-        M1: { x: 70, y: -45, coordinate-system: polar }
-        M2: { x: 70, y: -45, coordinate-system: polar }
-        T1: { x: 70, y: -45, coordinate-system: polar }
-        H1: { x: 70, y: -45, coordinate-system: polar }
-        T2: { x: 70, y: -135, coordinate-system: polar }
-        R1: { x: 70, y: -135, coordinate-system: polar }
-        H2: { x: 70, y: -135, coordinate-system: polar }
-        R2: { x: 70, y: -135, coordinate-system: polar }
-        stack#1: { x: 70, y: -45, coordinate-system: polar }
-        stack#2: { x: 70, y: -135, coordinate-system: polar }
-        circle#1: { x: 63, y: 0, scale: 0, coordinate-system: polar }
-        circle#2: { x: 63, y: 45, scale: 0, coordinate-system: polar }
-        circle#3: { x: 63, y: 90, scale: 0, coordinate-system: polar }
-        circle#4: { x: 63, y: 180, scale: 0, coordinate-system: polar }
-        circle#5: { x: 63, y: -90, scale: 0, coordinate-system: polar }
+        T1: { x: 12, y: -45, coordinate-system: polar }
+        T2: { x: 12, y: -135, coordinate-system: polar }
+        H1: { x: 12, y: -135, coordinate-system: polar }
+        H2: { x: 12, y: -135, coordinate-system: polar }
+        M1: { x: 12, y: -45, coordinate-system: polar }
+        M2: { x: 12, y: -45, coordinate-system: polar }
+        R1: { x: 12, y: -135, coordinate-system: polar }
+        R2: { x: 12, y: -45, coordinate-system: polar }
+      - kb: { visible: false }
+        boss#F1: { scale: 0.6, visible: false }
+        circle#1: { x: 63, y: 0, coordinate-system: polar }
+        circle#2: { x: 63, y: 45, coordinate-system: polar }
+        circle#3: { x: 63, y: 90, coordinate-system: polar }
+        circle#4: { x: 63, y: 180, coordinate-system: polar }
+        circle#5: { x: 63, y: -90, coordinate-system: polar }
         circle#6: { x: 70, y: -45, scale: 0.9, coordinate-system: polar }
         circle#7: { x: 70, y: -135, scale: 0.9, coordinate-system: polar }
+        stack#1: { x: 70, y: -45, coordinate-system: polar }
+        stack#2: { x: 70, y: -135, coordinate-system: polar }
+        glitch-link#2: { from: R2, to: H1 }
+        T1: { x: 70, y: -45, coordinate-system: polar }
+        T2: { x: 70, y: -135, coordinate-system: polar }
+        H1: { x: 70, y: -45, coordinate-system: polar }
+        H2: { x: 70, y: -135, coordinate-system: polar }
+        M1: { x: 70, y: -45, coordinate-system: polar }
+        M2: { x: 70, y: -45, coordinate-system: polar }
+        R1: { x: 70, y: -135, coordinate-system: polar }
+        R2: { x: 70, y: -135, coordinate-system: polar }
       - circle#1..5: { scale: 2, visible: true }
         circle#6..7: { visible: true }
-      - circle#1..7: { visible: false }
+      - boss#M*: { visible: false }
+        circle#1..7: { visible: false }
         stack#1..2: { visible: false }
-        boss#M*: { visible: false }
+        glitch-link#*: { visible: false }
         T1: { status: [] }
         T2: { status: [] }
         H1: { status: [] }
@@ -3285,7 +3275,6 @@ graphing:
         M2: { status: [] }
         R1: { status: [] }
         R2: { status: [] }
-        glitch-link#*: { visible: false }
     limitless-synergy:
       - arena: { image: "/images/arenas/top-p2.avif" }
         marker-a: [63, 0]
@@ -3319,15 +3308,15 @@ graphing:
         R1: [36, 180]
         R2: [36, 180]
         flare#1..3: { visible: false }
-      - T1: [36, 180]
-        T2: [36, 180]
-        boss#PoA: { rotate: 0 }
+      - boss#PoA: { rotate: 0 }
         boss#LS: { x: 47, y: 0, scale: 0.3, rotate: 0 }
         boss#BD: { visible: true }
         boss#SA: { visible: true }
         boss#TB1: { visible: true }
         boss#TB2: { visible: true }
         boss#flare: { visible: true }
+        T1: [36, 180]
+        T2: [36, 180]
         flare#1: [10, -90]
         flare#2: [10, 30]
         flare#3: [10, 150]
@@ -3345,6 +3334,7 @@ graphing:
         R2: [42, -60]
       - bladedance#1..2: { visible: true }
       - rect: { visible: false }
+        circle#BD: [33, 75]
         bladedance#1..2: { visible: false }
         blaster-tether#1..2: { visible: false }
         boss#TB1: { visible: false }
@@ -3358,26 +3348,25 @@ graphing:
         R1: [10, -150]
         R2: [10, 150]
         flare#1..3: { visible: true }
-        circle#BD: [33, 75]
-      - boss#BD: { x: 52, y: 53, rotate: T2 }
-        circle#BD: { visible: true }
+      - circle#BD: { visible: true }
+        boss#BD: { x: 52, y: 53, rotate: T2 }
         H1: [87, -32]
         R2: [87, -163]
         flare#1: [87, -32]
         flare#3: [87, -163]
       - circle#BD: { visible: false }
-        boss#BD: { x: 30, y: 46, rotate: M1 }
         circle#PP: { visible: true }
-        flare#2: [0, 0]
-        flare#1..3: { scale: 3, visible: false }
+        boss#BD: { x: 30, y: 46, rotate: M1 }
         players: [0, 0]
+        T2: [35, -130]
         H1: [87, -32]
         R2: [87, -163]
-        T2: [35, -130]
+        flare#2: [0, 0]
+        flare#1..3: { scale: 3, visible: false }
       - circle#PP: { visible: false }
         boss#BD: { visible: false }
-        boss#flare: { visible: false }
         boss#SA: { visible: false }
+        boss#flare: { visible: false }
         T1: [16, 0]
         T2: [16, 180]
         H1: [10, -90]
@@ -3397,19 +3386,19 @@ graphing:
         marker-d: [63, -90]
         marker-4: [63, -45]
         circle-color#1: { scale: 1.15, visible: false, look: aoe }
-        circle#2: { scale: 1.15, visible: false, color: url(#wave-repeater-gradient) }
+        circle#2: { scale: 1.15, visible: false }
         circle#3: { x: 63, y: -60, size: 100 }
         circle#4: { x: 63, y: 60, size: 100 }
         circle#5: { x: 63, y: 180, size: 100 }
         circle#6: { x: 63, y: -120, size: 100 }
         circle#7: { x: 63, y: 120, size: 100 }
         circle#8: { x: 63, y: 0, size: 100 }
-        circle-color#9: { x: 74, y: -46, size: 40, color: url(#hp-sniper-gradient) }
-        circle-color#10: { x: 74, y: 46, size: 40, color: url(#hp-sniper-gradient) }
-        circle-color#11: { x: 74, y: -72, size: 40, color: url(#sniper-gradient) }
-        circle-color#12: { x: 74, y: 72, size: 40, color: url(#sniper-gradient) }
-        circle-color#13: { x: 74, y: -166, size: 40, color: url(#sniper-gradient) }
-        circle-color#14: { x: 74, y: 166, size: 40, color: url(#sniper-gradient) }
+        circle-color#9: { x: 74, y: -46, size: 40, look: { type: plain, color: url(#hp-sniper-gradient) } }
+        circle-color#10: { x: 74, y: 46, size: 40, look: { type: plain, color: url(#hp-sniper-gradient) } }
+        circle-color#11: { x: 74, y: -72, size: 40, look: { type: plain, color: url(#sniper-gradient) } }
+        circle-color#12: { x: 74, y: 72, size: 40, look: { type: plain, color: url(#sniper-gradient) } }
+        circle-color#13: { x: 74, y: -166, size: 40, look: { type: plain, color: url(#sniper-gradient) } }
+        circle-color#14: { x: 74, y: 166, size: 40, look: { type: plain, color: url(#sniper-gradient) } }
         wave-repeater#1: { size: [51, 114] }
         wave-repeater#2: { size: [114, 162] }
         wave-repeater#3: { size: [162, 200] }
@@ -3431,9 +3420,9 @@ graphing:
         R2: { x: 40, y: 55, coordinate-system: cartesian }
       - circle-color#1: { visible: true }
         R1: { y: 65, status: [sniper-cannon-fodder] }
+        H1: { status: [] }
         M1: { y: 45, status: [high-powered-sniper-cannon-fodder] }
         T1: { y: 65, status: [sniper-cannon-fodder] }
-        H1: { status: [] }
         H2: { y: 65, status: [sniper-cannon-fodder] }
         T2: { y: 65, status: [sniper-cannon-fodder] }
         M2: { status: [] }
@@ -3442,38 +3431,38 @@ graphing:
       - circle-color#1: { visible: false }
         circle#2: { visible: true }
         boss#4..6: { visible: true }
-        M1: { x: 88, y: -20, coordinate-system: polar }
-        H1: { x: 88, y: -20, coordinate-system: polar }
-        M2: { x: 88, y: 20, coordinate-system: polar }
-        R2: { x: 88, y: 20, coordinate-system: polar }
         R1: { x: 88, y: -100, coordinate-system: polar }
+        H1: { x: 88, y: -20, coordinate-system: polar }
+        M1: { x: 88, y: -20, coordinate-system: polar }
         T1: { x: 88, y: -140, coordinate-system: polar }
         H2: { x: 88, y: 140, coordinate-system: polar }
         T2: { x: 88, y: 100, coordinate-system: polar }
-      - wave-repeater#1: { visible: true }
-        circle#3..5: { visible: true }
-      - wave-repeater#1: { visible: false }
-        wave-repeater#2: { visible: true }
-        circle#3..5: { visible: false }
+        M2: { x: 88, y: 20, coordinate-system: polar }
+        R2: { x: 88, y: 20, coordinate-system: polar }
+      - circle#3..5: { visible: true }
+        wave-repeater#1: { visible: true }
+      - circle#3..5: { visible: false }
         circle#6..8: { visible: true }
-        M1: [74, -46]
-        H1: [74, -46]
-        M2: [74, 46]
-        R2: [74, 46]
+        wave-repeater#1: { visible: false }
+        wave-repeater#2: { visible: true }
         R1: [74, -72]
+        H1: [74, -46]
+        M1: [74, -46]
         T1: [74, -166]
         H2: [74, 166]
         T2: [74, 72]
-      - wave-repeater#2: { visible: false }
+        M2: [74, 46]
+        R2: [74, 46]
+      - circle#6..8: { visible: false }
+        circle-color#9..14: { visible: true }
+        wave-repeater#2: { visible: false }
         wave-repeater#3: { visible: true }
         boss#1..3: { visible: false }
-        circle#6..8: { visible: false }
-        circle-color#9..14: { visible: true }
-      - players: { status: [] }
+      - circle#*: { visible: false }
         wave-repeater#3: { visible: false }
-        circle#*: { visible: false }
-        boss#4..6: { visible: false }
         boss#omega: { scale: 1, opacity: 0.7 }
+        boss#4..6: { visible: false }
+        players: { status: [] }
     hello-world:
       - arena: { image: /images/arenas/top-p3.avif }
         boss: { opacity: 0.7 }
@@ -3487,30 +3476,34 @@ graphing:
         marker-4: [63, -45]
         far-tether#1: { from: H1, to: M1, opacity: 0.4 }
         far-tether#2: { from: R1, to: R2, opacity: 0. }
-        close-tether#1: { from: T1, to: H2, opacity: 0. }
+        close-tether#1: { from: T1, to: H2 }
         close-tether#2: { from: T2, to: M2, opacity: 0. }
-        circle-color#tower-1: { x: 63, y: 45, size: 60, color: url(#blue-tower) }
-        circle-color#tower-2: { x: 63, y: 135, size: 60, color: url(#blue-tower) }
-        circle-color#tower-3: { x: 63, y: -135, size: 60, color: url(#red-tower) }
-        circle-color#tower-4: { x: 63, y: -45, size: 60, color: url(#red-tower) }
-        circle-color#stack-1: { attach: R1, size: 50, color: "#000000aa", scale: 0, visible: true }
-        circle-color#stack-2: { attach: R2, size: 50, color: "#000000aa", scale: 0, visible: true }
-        circle-color#defam-1: { attach: T2, size: 180, color: "#000000aa", scale: 0, visible: true }
-        circle-color#defam-2: { attach: M2, size: 180, color: "#000000aa", scale: 0, visible: true }
-        circle-color#link-1: { x: 44, y: 90, size: 300, color: "#00000088", scale: 0, visible: true }
-        circle-color#link-2: { x: 44, y: -90, size: 300, color: "#00000088", scale: 0, visible: true }
-        circle-color#latent-1: { attach: R1, size: 40, color: "#000000aa", scale: 0, visible: true }
-        circle-color#latent-2: { attach: R2, size: 40, color: "#000000aa", scale: 0, visible: true }
-        circle-color#latent-3: { attach: T2, size: 40, color: "#000000aa", scale: 0, visible: true }
-        circle-color#latent-4: { attach: M2, size: 40, color: "#000000aa", scale: 0, visible: true }
-        circle-color#performance-1.1: { size: 13, color: url(#performance-gradient), attach: T2 }
-        circle-color#performance-1.2: { size: 13, color: url(#performance-gradient), attach: M2 }
-        circle-color#performance-2.1: { size: 13, color: url(#performance-gradient), attach: H1 }
-        circle-color#performance-2.2: { size: 13, color: url(#performance-gradient), attach: M1 }
-        circle-color#underflow-1.1: { size: 13, color: url(#underflow-gradient), attach: R1 }
-        circle-color#underflow-1.2: { size: 13, color: url(#underflow-gradient), attach: R2 }
-        circle-color#underflow-2.1: { size: 13, color: url(#underflow-gradient), attach: T1 }
-        circle-color#underflow-2.2: { size: 13, color: url(#underflow-gradient), attach: H2 }
+        circle-color#tower-1: { x: 63, y: 45, size: 60, look: { type: plain, color: url(#blue-tower) }, exit: scale }
+        circle-color#tower-2: { x: 63, y: 135, size: 60, look: { type: plain, color: url(#blue-tower) }, exit: scale }
+        circle-color#tower-3: { x: 63, y: -135, size: 60, look: { type: plain, color: url(#red-tower) }, exit: scale }
+        circle-color#tower-4: { x: 63, y: -45, size: 60, look: { type: plain, color: url(#red-tower) }, exit: scale }
+        circle-color#stack-1: { attach: R1, size: 50, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#stack-2: { attach: R2, size: 50, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#defam-1: { attach: T2, size: 180, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#defam-2: { attach: M2, size: 180, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#link-1: { x: 44, y: 90, size: 300, look: { type: plain, color: "#00000088" }, enter: scale }
+        circle-color#link-2: { x: 44, y: -90, size: 300, look: { type: plain, color: "#00000088" }, enter: scale }
+        circle-color#latent-1: { attach: R1, size: 40, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#latent-2: { attach: R2, size: 40, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#latent-3: { attach: T2, size: 40, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#latent-4: { attach: M2, size: 40, look: { type: plain, color: "#000000aa" }, enter: scale }
+        circle-color#performance-1.1: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: T2 }
+        circle-color#performance-1.2: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: M2 }
+        circle-color#performance-2.1: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: H1 }
+        circle-color#performance-2.2: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: M1 }
+        circle-color#underflow-1.1: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: R1 }
+        circle-color#underflow-1.2: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: R2 }
+        circle-color#underflow-2.1: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: T1 }
+        circle-color#underflow-2.2: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: H2 }
+        circle-color#performance-3.1: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: T1 }
+        circle-color#performance-3.2: { size: 13, look: { type: plain, color: url(#performance-gradient) }, attach: H2 }
+        circle-color#underflow-3.1: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: H1 }
+        circle-color#underflow-3.2: { size: 13, look: { type: plain, color: url(#underflow-gradient) }, attach: M1 }
         T1: [50, 0]
         R2: [50, 45]
         H2: [50, 90]
@@ -3522,84 +3515,81 @@ graphing:
         cast: { progress: 0, text: Hello World }
         label: { text: "Fast-forwarding to last set...", visible: false, y: -90 }
       - arena: { image: /images/arenas/top-p3-hw.avif }
+        far-tether#1: { visible: true }
+        circle-color#[performance,underflow]-1.[1,2]: { visible: true }
         cast: { progress: 1 }
         [T1, H2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug] }
         [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-code-smell, underflow-code-smell] }
         [H1, M1]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, latent-defect] }
         [R1, R2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, synchronization-code-smell, performance-code-smell] }
-        far-tether#1: { visible: true }
-        close-tether#1: { visible: true }
-        circle-color#[performance,underflow]-1.[1,2]: { visible: true }
       - cast: { visible: false }
         [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
         [R1, R2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, critical-synchronization-bug, critical-performance-bug] }
-      - cast: { progress: 0, text: Latent Defect, visible: true }
-        circle-color#tower-*: { visible: true }
-      - cast: { progress: 0.3 }
+      - circle-color#tower-*: { visible: true }
+        cast: { progress: 0, text: Latent Defect, visible: true }
+      - T1: [20, 0]
+        R2: [49, 116]
+        H2: [23, 90]
+        M2: [73, -135]
+        T2: [57, -124]
         M1: [17, -153]
         H1: [26, -98]
-        T1: [20, 0]
-        H2: [23, 90]
-        T2: [57, -124]
-        M2: [73, -135]
-        R2: [49, 116]
         R1: [49, 65]
-      - cast: { progress: 0.6 }
+        cast: { progress: 0.3 }
+      - T1: [45, 79]
+        H2: [45, 100]
         T2: [73, -45]
         M1: [71, -163]
         H1: [71, -13]
-        T1: [45, 79]
-        H2: [45, 100]
-      - cast: { progress: 1 }
-        far-tether#1: { opacity: 1 }
-        close-tether#1: { opacity: 1 }
+        cast: { progress: 0.6 }
+      - far-tether#1: { opacity: 1 }
         far-tether#2: { visible: true }
+        close-tether#1: { visible: true }
         close-tether#2: { visible: true }
-        circle-color#[stack,defam]-[1,2]: { scale: 1 }
-        circle-color#tower-*: { scale: 0 }
+        circle-color#tower-*: { visible: false }
+        circle-color#[stack,defam]-[1,2]: { visible: true }
+        cast: { progress: 1 }
         [T1, H2]: { status: [local-code-smell, remote-regression, latent-synchronization-bug] }
         [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
         [H1, M1]: { status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug] }
         [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
-      - cast: { visible: false }
-        boss: { rotate: T1 }
-        M1: { x: 73, y: -135, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
-        H1: { x: 73, y: -45, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
-        T1: { x: 49, y: 65, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
-        H2: { x: 49, y: 116, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
+      - boss: { rotate: T1 }
         close-tether#1: { visible: false }
         circle-color#[stack,defam]-[1,2]: { visible: false }
+        circle-color#link-1: { visible: resolve }
         circle-color#[performance,underflow]-2.[1,2]: { visible: true }
-        circle-color#link-1: { scale: 1, visible: false }
-      - T1: [60, 16]
+        T1: { x: 49, y: 65, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
+        H2: { x: 49, y: 116, status: [local-code-smell, critical-synchronization-bug, latent-synchronization-bug, critical-performance-bug] }
+        M1: { x: 73, y: -135, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        H1: { x: 73, y: -45, status: [local-regression, remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
+        cast: { visible: false }
+      - far-tether#1: { visible: false }
+        circle-color#link-2: { visible: resolve }
+        T1: [60, 16]
         H2: [60, 158]
         M1: { x: 27, y: -110, status: [remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
         H1: { x: 27, y: -45, status: [remote-code-smell, latent-synchronization-bug, critical-overflow-bug, critical-underflow-bug] }
-        far-tether#1: { visible: false }
-        circle-color#link-2: { scale: 1, visible: false }
-      - circle-color#latent-*: { scale: 1 }
-        far-tether#1: { from: T2, to: M2, opacity: 0.4 }
+      - far-tether#1: { from: T2, to: M2, opacity: 0.4 }
         close-tether#1: { from: R1, to: R2, opacity: 0.4 }
-        circle-color#tower-*: { visible: false }
-        circle-color#tower-1: { y: 0, color: url(#red-tower) }
-        circle-color#tower-2: { y: 90, color: url(#red-tower) }
-        circle-color#tower-3: { y: 180, color: url(#blue-tower) }
-        circle-color#tower-4: { y: -90, color: url(#blue-tower) }
+        circle-color#tower-1: { y: 180 }
+        circle-color#tower-2: { y: -90 }
+        circle-color#tower-3: { y: 0 }
+        circle-color#tower-4: { y: 90 }
+        circle-color#latent-*: { visible: true }
         circle-color#[performance,underflow]-1.[1,2]: { visible: false }
         [T2, M2]: { status: [local-code-smell, remote-code-smell, latent-synchronization-bug, overflow-debugger, underflow-debugger] }
         [R1, R2]: { status: [local-code-smell, remote-code-smell, synchronization-debugger, performance-debugger] }
-        H1: [61, -16]
         M1: [53, -159]
-      - label: { visible: true }
-        cast: { progress: 0 }
-        circle-color#tower-*: { scale: 1 }
-        circle-color#latent-*: { visible: false }
-        far-tether#1: { visible: true }
-        close-tether#1: { visible: true }
+        H1: [61, -16]
+      - far-tether#1: { visible: true }
         far-tether#2: { visible: false }
+        close-tether#1: { visible: true }
         close-tether#2: { visible: false }
-        circle-color#performance-2.[1,2]: { color: url(#underflow-gradient) }
-        circle-color#underflow-2.[1,2]: { color: url(#performance-gradient) }
+        circle-color#latent-*: { visible: false }
+        circle-color#[performance,underflow]-2.[1,2]: { visible: false }
+        circle-color#[performance,underflow]-3.[1,2]: { visible: true }
+        cast: { progress: 0 }
+        label: { visible: true }
         [T1, H2]: { status: [synchronization-debugger, performance-debugger, critical-overflow-bug, critical-underflow-bug] }
         [H1, M1]: { status: [latent-synchronization-bug, overflow-debugger, underflow-debugger, critical-performance-bug, critical-synchronization-bug] }
         [R1, R2]: { status: [remote-code-smell, synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
@@ -3607,47 +3597,44 @@ graphing:
       - circle-color#tower-*: { visible: true }
         cast: { visible: true }
         label: { visible: false }
-        circle-color#link-[1,2]: { scale: 0 }
-        circle-color#[stack,defam]-[1,2]: { scale: 0 }
       - boss: { rotate: 196 }
-        cast: { progress: 0.5 }
-        T2: [49, -122]
-        M2: [52, -145]
-        H1: [54, -108]
-        R1: [48, -120]
+        circle-color#stack-1: { attach: M1 }
+        circle-color#stack-2: { attach: H1 }
+        circle-color#defam-1: { attach: T1 }
+        circle-color#defam-2: { attach: H2 }
+        circle-color#link-[1,2]: { x: 48, y: -131 }
+        T1: [63, 0]
         R2: [54, -145]
         H2: [63, 89]
-        T1: [63, 0]
-        circle-color#link-[1,2]: { visible: true, x: 48, y: -131 }
-        circle-color#stack-1: { visible: true, attach: M1 }
-        circle-color#stack-2: { visible: true, attach: H1 }
-        circle-color#defam-1: { visible: true, attach: T1 }
-        circle-color#defam-2: { visible: true, attach: H2 }
-      - cast: { progress: 1 }
-        far-tether#1: { visible: false }
+        M2: [52, -145]
+        T2: [49, -122]
+        H1: [54, -108]
+        R1: [48, -120]
+        cast: { progress: 0.5 }
+      - far-tether#1: { visible: false }
         close-tether#1: { opacity: 1 }
-        circle-color#[stack,defam]-[1,2]: { scale: 1 }
-        circle-color#tower-*: { scale: 0 }
-        circle-color#link-1: { scale: 1, visible: false }
-        circle-color#latent-*: { scale: 0 }
+        circle-color#tower-*: { visible: false }
+        circle-color#[stack,defam]-[1,2]: { visible: true }
+        circle-color#link-1: { visible: resolve }
+        cast: { progress: 1 }
         [T1, H2]: { status: [synchronization-debugger, performance-debugger, overflow-debugger, critical-underflow-bug, cascading-latent-defect] }
         [H1, M1]: { status: [overflow-debugger, underflow-debugger, synchronization-debugger, critical-performance-bug, latent-performance-defect] }
         [R1, R2]: { status: [remote-regression, underflow-debugger, overflow-debugger, performance-debugger] }
         [T2, M2]: { status: [underflow-debugger, overflow-debugger, performance-debugger] }
-      - cast: { visible: false }
-        boss: { rotate: T1 }
-        circle-color#[stack,defam]-[1,2]: { visible: false }
-        circle-color#link-2: { scale: 1, visible: false }
+      - boss: { rotate: T1 }
         close-tether#1: { visible: false }
-        M2: [18, -161]
-        R1: { x: 58, y: -58, status: [underflow-debugger, overflow-debugger, performance-debugger] }
-        T2: [21, -116]
+        circle-color#[stack,defam]-[1,2]: { visible: false }
+        circle-color#link-2: { visible: resolve }
+        circle-color#latent-1: { attach: H1 }
+        circle-color#latent-2: { attach: H2 }
+        circle-color#latent-3: { attach: T1 }
+        circle-color#latent-4: { attach: M1 }
         R2: { x: 53, y: 169, status: [underflow-debugger, overflow-debugger, performance-debugger] }
-        circle-color#latent-1: { attach: H1, visible: true }
-        circle-color#latent-2: { attach: H2, visible: true }
-        circle-color#latent-3: { attach: T1, visible: true }
-        circle-color#latent-4: { attach: M1, visible: true }
-      - circle-color#latent-*: { scale: 1 }
+        M2: [18, -161]
+        T2: [21, -116]
+        R1: { x: 58, y: -58, status: [underflow-debugger, overflow-debugger, performance-debugger] }
+        cast: { visible: false }
+      - circle-color#latent-*: { visible: true }
         [T1, H2]: { status: [synchronization-debugger, underflow-debugger, overflow-debugger, performance-debugger] }
         [H1, M1]: { status: [overflow-debugger, performance-debugger, synchronization-debugger, underflow-debugger] }
         circle-color#[performance,underflow]-2.[1,2]: { visible: false }
@@ -3658,7 +3645,7 @@ graphing:
         monitor#M1: { attach: M1 }
         monitor#R2: { attach: R2 }
         boss: { opacity: 0.7, rotate: T1 }
-        circle-color#monitor-[1..8]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle-color#monitor-[1..8]: { size: 60, look: { type: plain, color: url(#monitor-boom-gradient) }, enter: scale }
         circle-color#monitor-1: { attach: T1 }
         circle-color#monitor-2: { attach: T2 }
         circle-color#monitor-3: { attach: H1 }
@@ -3685,36 +3672,36 @@ graphing:
         R2: [54, -149]
         cast: { text: Oversampled Wave Cannon, visible: false, progress: 0 }
       - T1: [54, -69]
-      - boss: { rotate: 180 }
+      - monitor#*: { visible: true }
+        boss: { rotate: 180 }
         cast: { visible: true }
-        monitor#*: { visible: true }
         [T2,M1,R2]: { status: [oversampled-wave-cannon-loading] }
-      - cast: { progress: 0.4 }
-        T2: [68, 40]
-        M1: [61, -48]
-        R2: [61, -132]
+      - T1: [67, 107]
         H1: [75, 2]
         H2: [67, 72]
-        T1: [67, 107]
+        T2: [68, 40]
+        M1: [61, -48]
         M2: [61, 140]
         R1: [67, 177]
-      - cast: { progress: 0.7 }
-        monitor#T2: { rotate: 0 }
+        R2: [61, -132]
+        cast: { progress: 0.4 }
+      - monitor#T2: { rotate: 0 }
         monitor#M1: { rotate: -90 }
         monitor#R2: { rotate: 90 }
-      - cast: { progress: 1 }
-        circle-color#monitor-*: { scale: 1 }
-        monitor#*: { visible: false }
+        cast: { progress: 0.7 }
+      - monitor#*: { visible: false }
+        circle-color#monitor-*: { visible: true }
+        cast: { progress: 1 }
         [T2,M1,R2]: { status: [] }
     p4:
       - arena: { image: /images/arenas/top-p4.avif }
         boss: { size: 113, opacity: 0.7 }
         circle#1: { scale: 1.15, visible: false }
-        circle-color#2: { scale: 1.15, visible: false, color: url(#wave-repeater-gradient) }
+        circle-color#2: { scale: 1.15, visible: false, look: { type: plain, color: url(#wave-repeater-gradient) } }
         wave-repeater#1: { size: [51, 114] }
         wave-repeater#2: { size: [114, 162] }
         wave-repeater#3: { size: [162, 200] }
-        wave-cannon#[1..10]: { size: [30, 200] }
+        wave-cannon#[1..10]: { size: [30, 200], exit: scale-x }
         wave-cannon#1: { rotate: 119 }
         wave-cannon#2: { rotate: -119 }
         wave-cannon#3: { rotate: 68 }
@@ -3746,23 +3733,26 @@ graphing:
         cast: { progress: 0, text: Wave Cannon, visible: true }
       - line-stack#*: { visible: true }
         cast: { progress: 0.5 }
-      - wave-cannon#[1..8]: { scale: 1 }
+      - wave-cannon#[1..8]: { visible: true }
         cast: { progress: 1 }
-      - wave-cannon#[1..8]: { scale: [0, 1] }
-        cast: { visible: false }
-        circle#1: { visible: true }
-        M1: [59, -164]
-        H1: [62, -164]
-        R1: [56, -164]
+      - circle#1: { visible: true }
+        wave-cannon#[1..8]: { visible: false }
         T1: [65, -164]
-        M2: [59, 165]
-        H2: [62, 165]
-        R2: [56, 165]
         T2: [65, 165]
-      - wave-cannon#[1..8]: { scale: 1 }
-        wave-cannon#[9..10]: { scale: 1 }
+        H1: [62, -164]
+        H2: [62, 165]
+        M1: [59, -164]
+        M2: [59, 165]
+        R1: [56, -164]
+        R2: [56, 165]
+        cast: { visible: false }
+      - wave-cannon#[1..8]: { visible: true }
+        wave-cannon#[9..10]: { visible: true }
         line-stack#*: { visible: false }
-      - T1: [64, -60]
+      - circle#1: { visible: false }
+        circle-color#2: { visible: true }
+        wave-cannon#[1..10]: { visible: false, rotate: null }
+        T1: [64, -60]
         T2: [64, 60]
         H1: [64, -112]
         H2: [64, 112]
@@ -3770,17 +3760,16 @@ graphing:
         M2: [64, 134]
         R1: [64, -87]
         R2: [64, 87]
-        wave-cannon#[1..10]: { scale: [0, 1], rotate: null }
-        circle#1: { visible: false }
-        circle-color#2: { visible: true }
         line-stack#1: { attach: T1, visible: true }
         line-stack#2: { attach: M1, visible: true }
       - circle-color#2: { visible: false }
         wave-repeater#1: { visible: true }
-        wave-cannon#[1..8]: { scale: 1 }
+        wave-cannon#[1..8]: { visible: true }
         wave-cannon#9: { rotate: T1 }
         wave-cannon#10: { rotate: M1 }
-      - T1: [43, -60]
+      - wave-repeater#1: { visible: false }
+        wave-cannon#[1..8]: { visible: false }
+        T1: [43, -60]
         T2: [43, 60]
         H1: [43, -112]
         H2: [43, 112]
@@ -3788,31 +3777,29 @@ graphing:
         M2: [43, 134]
         R1: [43, -87]
         R2: [43, 87]
-        wave-cannon#[1..8]: { scale: [0, 1] }
-        wave-repeater#1: { visible: false }
       - wave-repeater#2: { visible: true }
-        M2: [38, -164]
-        H1: [41, -164]
-        R1: [35, -164]
         T1: [44, -164]
-        M1: [38, 165]
-        H2: [41, 165]
-        R2: [35, 165]
         T2: [44, 165]
-      - M2: [59, -164]
-        H1: [62, -164]
-        R1: [56, -164]
-        T1: [65, -164]
-        M1: [59, 165]
-        H2: [62, 165]
-        R2: [56, 165]
-        T2: [65, 165]
-        wave-repeater#2: { visible: false }
+        H1: [41, -164]
+        H2: [41, 165]
+        M1: [38, 165]
+        M2: [38, -164]
+        R1: [35, -164]
+        R2: [35, 165]
+      - wave-repeater#2: { visible: false }
         wave-repeater#3: { visible: true }
-        wave-cannon#[1..10]: { scale: 1 }
+        wave-cannon#[1..10]: { visible: true }
+        T1: [65, -164]
+        T2: [65, 165]
+        H1: [62, -164]
+        H2: [62, 165]
+        M1: [59, 165]
+        M2: [59, -164]
+        R1: [56, -164]
+        R2: [56, 165]
         line-stack#*: { visible: false }
-      - wave-cannon#[1..10]: { scale: [0, 1], rotate: null }
-        wave-repeater#3: { visible: false }
+      - wave-repeater#3: { visible: false }
+        wave-cannon#[1..10]: { visible: false, rotate: null }
         T1: [64, -60]
         T2: [64, 60]
         H1: [64, -112]
@@ -3824,33 +3811,33 @@ graphing:
         line-stack#1: { attach: H2, visible: true }
         line-stack#2: { attach: R2, visible: true }
       - circle#1: { visible: true }
-        wave-cannon#[1..8]: { scale: 1 }
-      - wave-cannon#[1..8]: { scale: [0, 1] }
-        H2: [59, -164]
-        H1: [62, -164]
-        R1: [56, -164]
+        wave-cannon#[1..8]: { visible: true }
+      - wave-cannon#[1..8]: { visible: false }
         T1: [65, -164]
-        M2: [59, 165]
-        M1: [62, 165]
-        R2: [56, 165]
         T2: [65, 165]
-      - wave-cannon#[1..10]: { scale: 1 }
-        line-stack#*: { visible: false }
-        circle#1: { visible: false }
+        H1: [62, -164]
+        H2: [59, -164]
+        M1: [62, 165]
+        M2: [59, 165]
+        R1: [56, -164]
+        R2: [56, 165]
+      - circle#1: { visible: false }
         circle-color#2: { visible: true }
-      - wave-cannon#[1..10]: { scale: [0, 1] }
-        circle-color#2: { visible: false }
+        wave-cannon#[1..10]: { visible: true }
+        line-stack#*: { visible: false }
+      - circle-color#2: { visible: false }
         wave-repeater#1: { visible: true }
-      - H2: [38, -164]
-        H1: [41, -164]
-        R1: [35, -164]
-        T1: [44, -164]
-        M2: [38, 165]
-        M1: [41, 165]
-        R2: [35, 165]
-        T2: [44, 165]
-        wave-repeater#1: { visible: false }
+        wave-cannon#[1..10]: { visible: false }
+      - wave-repeater#1: { visible: false }
         wave-repeater#2: { visible: true }
+        T1: [44, -164]
+        T2: [44, 165]
+        H1: [41, -164]
+        H2: [38, -164]
+        M1: [41, 165]
+        M2: [38, 165]
+        R1: [35, -164]
+        R2: [35, 165]
       - wave-repeater#2: { visible: false }
         wave-repeater#3: { visible: true }
     delta-lpdu:
@@ -3861,7 +3848,7 @@ graphing:
         circle#fist-4: { attach: R1 }
         circle#fist-[1..4]: { size: 25 }
         circle#BD: { scale: 0.8, attach: H2, filter: grayscale(1) contrast(2) }
-        circle-color#monitor-[1..4]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle-color#monitor-[1..4]: { size: 60, look: { type: plain, color: url(#monitor-boom-gradient) }, enter: scale }
         circle-color#monitor-1: { attach: R2 }
         circle-color#monitor-2: { attach: T1 }
         circle-color#monitor-3: { attach: M1 }
@@ -3874,7 +3861,7 @@ graphing:
         hello#near-3: { size: 40, attach: T1 }
         rect#eye: { scale: [1.7, 10], rotate: 90, filter: grayscale(1) contrast(2) }
         rect#arm-[1..6]: { origin: [0.5, 0], scale: [1, 3] }
-        rect-color#arm-[1..6]: { origin: [0.5, 0], scale: [0, 3], color: url(#wc-gradient-line), opacity: 0.7, visible: true }
+        rect-color#arm-[1..6]: { origin: [0.5, 0], scale: [1, 3], look: { type: plain, color: url(#wc-gradient-line) }, opacity: 0.7, enter: scale-x }
         rect#arm-1: { attach: arm#1, rotate: T1 }
         rect#arm-2: { attach: arm#2, rotate: R2 }
         rect#arm-3: { attach: arm#3, rotate: H1 }
@@ -3887,7 +3874,7 @@ graphing:
         rect-color#arm-4: { attach: arm#4, rotate: M2 }
         rect-color#arm-5: { attach: arm#5, rotate: R1 }
         rect-color#arm-6: { attach: arm#6, rotate: M1 }
-        rect#swivel: { scale: 1, size: [300, 200], origin: [0.21, 0], attach: boss#beetle, rotate: 75 }
+        rect#swivel: { size: [300, 200], origin: [0.21, 0], attach: boss#beetle, rotate: 75 }
         monitor#boss: { attach: boss#final, size: [50, 200], rotate: 180 }
         monitor#M2: { attach: M2, rotate: 20 }
         boss#m: { size: 50, opacity: 0.6, rotate: 180, visible: false }
@@ -3895,8 +3882,8 @@ graphing:
         boss#final: { text: Final, x: -90, y: 0, size: 50, opacity: 0.6 }
         boss#eye: { text: Eye, x: 100, y: 90, scale: 0.8, rotate: 90 }
         boss#BD: { rotate: -90, scale: 0.3, visible: false, text: Shield-M }
-        circle-color#omega-light-1: { attach: boss#beetle, x: -20, color: "#c8dbf7", size: 10 }
-        circle-color#omega-light-2: { attach: boss#beetle, x: -15, y: 10, color: "#c8dbf7", size: 10 }
+        circle-color#omega-light-1: { attach: boss#beetle, x: -20, look: { type: plain, color: "#c8dbf7" }, size: 10 }
+        circle-color#omega-light-2: { attach: boss#beetle, x: -15, y: 10, look: { type: plain, color: "#c8dbf7" }, size: 10 }
         marker-a: [63, 0]
         marker-1: [63, 45]
         marker-b: [63, 90]
@@ -3939,8 +3926,8 @@ graphing:
         rotate-ccw#1: { attach: arm#2 }
         rotate-ccw#2: { attach: arm#3 }
         rotate-ccw#3: { attach: arm#5 }
-        circle-color#link-1: { x: 63, y: 0, size: 300, color: "#00000088", scale: 0, visible: true }
-        circle-color#link-2: { x: 81, y: 0, size: 300, color: "#00000088", scale: 0, visible: true }
+        circle-color#link-1: { x: 63, y: 0, size: 300, look: { type: plain, color: "#00000088" }, enter: scale }
+        circle-color#link-2: { x: 81, y: 0, size: 300, look: { type: plain, color: "#00000088" }, enter: scale }
       - T1: [46, -118]
         T2: [61, -41]
         R1: [62, 135]
@@ -3953,12 +3940,12 @@ graphing:
         orange-fist#*: { visible: true, attach: null, rotate: null }
       - T1: [46, 120]
         R2: [46, -118]
-      - R2: [63, -134]
-        T1: [62, 135]
+      - T1: [62, 135]
         T2: [70, -25]
+        R2: [63, -134]
         H2: [70, 25]
         arm#*: { visible: true }
-      - circle-color#link-1: { scale: 1, visible: false }
+      - boss#BD: { visible: true }
         far-tether#*: { opacity: 1 }
         close-tether#1: { visible: false }
         close-tether#2: { opacity: 1 }
@@ -3966,109 +3953,107 @@ graphing:
         H2: [65, 10]
         rotate-cw#*: { visible: true }
         rotate-ccw#*: { visible: true }
-        boss#BD: { visible: true }
+        circle-color#link-1: { visible: resolve }
       - circle#fist-*: { visible: true, attach: null }
         rect#eye: { visible: true }
       - rect#eye: { visible: false }
-        boss#eye: { visible: false }
-        circle-color#link-2: { scale: 1, visible: false }
-        close-tether#2: { visible: false }
         monitor#boss: { visible: true }
-        H2: [16, 87]
-        H1: [88, -22]
-        M2: [90, 23]
-        T2: [16, -83]
-        M1: [90, -155]
-        R1: [89, 155]
+        boss#eye: { visible: false }
+        close-tether#2: { visible: false }
         T1: [89, 82]
+        T2: [16, -83]
+        R1: [89, 155]
         R2: [88, -84]
+        M1: [90, -155]
+        M2: [90, 23]
+        H1: [88, -22]
+        H2: [16, 87]
+        circle-color#link-2: { visible: resolve }
       - circle#fist-*: { visible: false }
         blue-fist#1: { attach: circle#fist-3, rotate: circle#fist-3 }
         blue-fist#2: { attach: circle#fist-4, rotate: circle#fist-4 }
         blue-fist#3: { attach: circle#fist-1, rotate: circle#fist-1 }
         blue-fist#4: { attach: circle#fist-2, rotate: circle#fist-2 }
+        blue-fist#*: { x: 0, y: 0, visible: false }
         orange-fist#1: { attach: circle#fist-1, rotate: circle#fist-1 }
         orange-fist#2: { attach: circle#fist-4, rotate: circle#fist-4 }
         orange-fist#3: { attach: circle#fist-3, rotate: circle#fist-3 }
         orange-fist#4: { attach: circle#fist-2, rotate: circle#fist-2 }
-        blue-fist#*: { x: 0, y: 0, visible: false }
         orange-fist#*: { x: 0, y: 0, visible: false }
       - rotate-cw#*: { visible: false }
         rotate-ccw#*: { visible: false }
-      - monitor#M2: { visible: true }
-        M2: { status: [oversampled-wave-cannon-loading] }
-        H2: { status: [twice-come-ruin] }
+      - circle#BD: { visible: true }
         rect#arm-[1..6]: { visible: true, rotate: null }
         rect-color#arm-[1..6]: { rotate: null }
-        circle#BD: { visible: true }
+        monitor#M2: { visible: true }
+        M2: { status: [oversampled-wave-cannon-loading] }
+        H2: { status: [twice-come-ruin] }
         arm#1: { rotate: T1 }
         arm#2: { rotate: R2 }
         arm#3: { rotate: H1 }
         arm#4: { rotate: M2 }
         arm#5: { rotate: R1 }
         arm#6: { rotate: M1 }
-      - arm#[1..6]: { rotate: null }
+      - circle#BD: { visible: false, attach: null }
         rect#arm-[1..6]: { visible: false }
-        rect-color#arm-[1..6]: { scale: [1, 3] }
-        circle#BD: { visible: false, attach: null }
+        rect-color#arm-[1..6]: { visible: true }
         monitor#M2: { rotate: -160 }
-        R2: [69, -50]
         T1: [73, 52]
-        M1: [77, -124]
-        R1: [82, 123]
-        H2: [65, 177]
         T2: [7, 82]
+        R1: [82, 123]
+        R2: [69, -50]
+        M1: [77, -124]
         M2: [13, 71]
         H1: [9, 64]
-      - monitor#M2: { rotate: 0 }
-        circle#BD: { attach: T2 }
+        H2: [65, 177]
+        arm#[1..6]: { rotate: null }
+      - circle#BD: { attach: T2 }
         rect-color#arm-1: { rotate: 190 }
         rect-color#arm-2: { rotate: -190 }
         rect-color#arm-3: { rotate: -130 }
         rect-color#arm-4: { rotate: 130 }
         rect-color#arm-5: { rotate: 40 }
         rect-color#arm-6: { rotate: -40 }
+        monitor#M2: { rotate: 0 }
       - circle#BD: { visible: true }
-        circle-color#monitor-[1..4]: { scale: 1 }
-        monitor#boss: { visible: false }
-        monitor#M2: { visible: false }
-        M2: { status: [] }
-        [M1, M2, R2, T1, R1]: { status: [twice-come-ruin] }
-        T2: { status: [hello-near-world, twice-come-ruin] }
-        H1: { status: [hello-distant-world, twice-come-ruin] }
+        circle-color#monitor-[1..4]: { visible: true }
         rect-color#arm-1: { rotate: 220 }
         rect-color#arm-2: { rotate: -220 }
         rect-color#arm-3: { rotate: -160 }
         rect-color#arm-4: { rotate: 160 }
         rect-color#arm-5: { rotate: 10 }
         rect-color#arm-6: { rotate: -10 }
-      - boss#BD: { visible: false }
-        boss#final: { visible: false }
-        circle#BD: { visible: false }
+        monitor#boss: { visible: false }
+        monitor#M2: { visible: false }
+        T2: { status: [hello-near-world, twice-come-ruin] }
+        M2: { status: [] }
+        [M1, M2, R2, T1, R1]: { status: [twice-come-ruin] }
+        H1: { status: [hello-distant-world, twice-come-ruin] }
+      - circle#BD: { visible: false }
         circle-color#monitor-[1..4]: { visible: false }
         rect-color#arm-*: { visible: false }
-        arm#*: { visible: false }
+        boss#final: { visible: false }
+        boss#BD: { visible: false }
         H2: { status: [] }
+        arm#*: { visible: false }
       - circle-color#omega-light-*: { visible: true }
-        circle-color#link-[1..2]: { scale: 0 }
       - [M1, R2, T1, R1]: { status: [] }
-        circle-color#link-[1..2]: { visible: true }
+        T1: [64, 45]
+        T2: [28, 87]
+        R1: [87, 147]
+        R2: [53, -33]
+        M1: [86, 3]
+        M2: [88, 120]
+        H1: [88, 89]
+        H2: [88, 120]
         circle-color#link-1: [48, 17]
         circle-color#link-2: [8, -138]
-        M1: [86, 3]
-        R1: [87, 147]
-        H2: [88, 120]
-        H1: [88, 89]
-        M2: [88, 120]
-        T2: [28, 87]
-        R2: [53, -33]
-        T1: [64, 45]
       - T2: { status: [hello-near-world] }
-        H1: { status: [hello-distant-world] }
         M2: { status: [] }
-      - R2: [49, 20]
-        far-tether#1: { visible: false }
-        circle-color#link-1: { scale: 1, visible: false }
+        H1: { status: [hello-distant-world] }
+      - far-tether#1: { visible: false }
+        R2: [49, 20]
+        circle-color#link-1: { visible: resolve }
       - rect#swivel: { visible: true }
         circle-color#omega-light-*: { visible: false }
       - hello#[far,near]-1: { visible: true }
@@ -4086,17 +4071,17 @@ graphing:
         [H1, T2]: { status: [quickening-dynamis] }
         T1: [33, -1]
         T2: [27, 40]
+        R1: [48, 116]
         R2: [18, 169]
+        M1: [31, -83]
+        M2: [18, 122]
         H1: [21, 147]
         H2: [24, 115]
-        M2: [18, 122]
-        M1: [31, -83]
-        R1: [48, 116]
       - [M1, R2, R1, T1]: { status: [quickening-dynamis] }
-      - M1: [15, -111]
+      - far-tether#2: { visible: false }
         R1: [15, 98]
-        circle-color#link-2: { scale: 1, visible: false }
-        far-tether#2: { visible: false }
+        M1: [15, -111]
+        circle-color#link-2: { visible: resolve }
     sigma:
       - arena: { image: /images/arenas/top-p5.avif }
         hello#far-1: { size: 76, attach: M2 }
@@ -4105,17 +4090,28 @@ graphing:
         hello#near-1: { size: 76, attach: T2 }
         hello#near-2: { size: 40, attach: T1 }
         hello#near-3: { size: 40, attach: R2 }
-        tower#far-1: { x: 80, y: -90, color: url(#double-tower-gradient) }
+        tower#far-1: { x: 80, y: -90, look: { type: plain, color: url(#double-tower-gradient) } }
         tower#far-2: [80, 0]
-        tower#far-3: { x: 80, y: 45, color: url(#double-tower-gradient) }
-        tower#far-4: { x: 80, y: 135, color: url(#double-tower-gradient) }
+        tower#far-3: { x: 80, y: 45, look: { type: plain, color: url(#double-tower-gradient) } }
+        tower#far-4: { x: 80, y: 135, look: { type: plain, color: url(#double-tower-gradient) } }
         tower#far-5: [80, 180]
         tower#mid-1: [80, -67.5]
-        tower#mid-2: { x: 80, y: 22.5, color: url(#double-tower-gradient) }
+        tower#mid-2: { x: 80, y: 22.5, look: { type: plain, color: url(#double-tower-gradient) } }
         tower#mid-3: [80, 67.5]
         tower#mid-4: [80, 112.5]
-        tower#mid-5: { x: 80, y: 157.5, color: url(#double-tower-gradient) }
+        tower#mid-5: { x: 80, y: 157.5, look: { type: plain, color: url(#double-tower-gradient) } }
         tower#mid-6: [80, -112.5]
+        tower-filled#far-1: [80, -90]
+        tower-filled#far-2: [80, 0]
+        tower-filled#far-3: [80, 45]
+        tower-filled#far-4: [80, 135]
+        tower-filled#far-5: [80, 180]
+        tower-filled#mid-1: [80, -67.5]
+        tower-filled#mid-2: [80, 22.5]
+        tower-filled#mid-3: [80, 67.5]
+        tower-filled#mid-4: [80, 112.5]
+        tower-filled#mid-5: [80, 157.5]
+        tower-filled#mid-6: [80, -112.5]
         wave-cannon#arm-1: { attach: arm#1, rotate: T2, size: [30, 200], opacity: 0.8 }
         wave-cannon#arm-2: { attach: arm#2, rotate: H2, size: [30, 200], opacity: 0.8 }
         wc-cone#1: { rotation: -90 }
@@ -4130,12 +4126,13 @@ graphing:
         circle-color#target-4: { attach: M2 }
         circle-color#target-5: { attach: R2 }
         circle-color#target-6: { attach: R1 }
-        circle-color#target-[1..6]: { size: 10, color: "#d16232", y: 2 }
-        rect#blades-1: { x: 75, y: 22.5, size: [100, 300], rotate: 90, visible: true }
-        rect#blades-2: { x: 75, y: -157.5, size: [100, 300], rotate: 90, visible: true }
-        rect#staff-1: { x: 45, y: 90, size: [45, 300], scale: [0, 1], rotate: 90, visible: true }
-        rect#staff-2: { x: 45, y: 90, size: [45, 300], scale: [0, 1], rotate: 0, visible: true }
-        rect-color#ring: { size: [57, 300], scale: [0, 1], rotate: 90, visible: true }
+        circle-color#target-[1..6]: { size: 10, look: { type: plain, color: "#d16232" }, y: 2 }
+        rect#blades-1: { x: 75, y: 22.5, size: [100, 300], rotate: 90, enter: scale }
+        rect#blades-2: { x: 75, y: -157.5, size: [100, 300], rotate: 90, enter: scale }
+        rect#staff-1: { x: 45, y: 90, size: [45, 300], rotate: 90, enter: scale-x }
+        rect#staff-2: { x: 45, y: 90, size: [45, 300], rotate: 0, enter: scale-x }
+        rect-color#ring: { size: [57, 300], rotate: 90, look: aoe, enter: scale-x }
+        rect-color#ring-beam: { size: [57, 300], rotate: 90, look: { type: plain, color: url(#wc-gradient) }, opacity: 0.8 }
         boss#m: { text: M, size: 30, opacity: 0.6, rotate: 180 }
         boss#mf: { x: 90, y: -90, text: M, size: 30, opacity: 0.6, rotate: -90, visible: false }
         kb: { attach: boss#mf }
@@ -4170,254 +4167,257 @@ graphing:
         rotate-cw: { attach: boss#final, size: 75 }
         label: { x: 0, y: -90, visible: false }
         cast: { text: "Run: ****mi* (Sigma Version)", progress: 0 }
-      - cast: { progress: 1, visible: false }
-        boss#m: { visible: false }
-        arm#*: { visible: true }
+      - boss#m: { visible: false }
+        boss#mf: { visible: true }
         glitch-link#*: { visible: true }
         T1: { status: [quickening-dynamis, square] }
-        M2: { status: [hello-distant-world, square] }
-        [H1, R1]: { status: [quickening-dynamis, triangle] }
         M1: { status: [quickening-dynamis, cross] }
         T2: { status: [quickening-dynamis, cross, hello-near-world] }
         H2: { status: [circle] }
+        M2: { status: [hello-distant-world, square] }
         R2: { status: [quickening-dynamis, circle] }
-        boss#mf: { visible: true }
-      - M1: [80, -84]
-        T2: [81, -96]
-        T1: [71, -84]
-        M2: [71, -96]
-        H2: [62, -83]
-        R2: [62, -98]
-        H1: [51, -82]
-        R1: [51, -99]
-        glitch-link#1: { to: T2 }
-        arm#1: { rotate: T2 }
+        arm#*: { visible: true }
+        cast: { progress: 1, visible: false }
+        [H1, R1]: { status: [quickening-dynamis, triangle] }
+      - glitch-link#1: { to: T2 }
         glitch-link#2: { to: M1 }
+        T1: [71, -84]
+        H1: [51, -82]
+        M1: [80, -84]
+        R1: [51, -99]
+        T2: [81, -96]
+        H2: [62, -83]
+        M2: [71, -96]
+        R2: [62, -98]
+        arm#1: { rotate: T2 }
         arm#2: { rotate: M1 }
-      - boss#[beetle, final]: { visible: true }
-        circle-color#target-[1..6]: { visible: true }
+      - circle-color#target-[1..6]: { visible: true }
+        boss#[beetle, final]: { visible: true }
         [T1, H1, R1, R2, M1]: { status: [quickening-dynamis] }
-        M2: { status: [hello-distant-world] }
         T2: { status: [quickening-dynamis, hello-near-world] }
         H2: { status: [] }
-      - T2: [90, -135]
-        M1: [90, 45]
-        M2: [90, -90]
+        M2: { status: [hello-distant-world] }
+      - glitch-link#2: { to: H2 }
         T1: [90, 90]
-        H2: [90, -45]
-        R2: [90, 135]
-        R1: [90, -180]
         H1: [90, 0]
-        glitch-link#2: { to: H2 }
+        M1: [90, 45]
+        R1: [90, -180]
+        T2: [90, -135]
+        H2: [90, -45]
+        M2: [90, -90]
+        R2: [90, 135]
         arm#2: { rotate: H2 }
         label: { visible: true, text: Remote Glitch }
       - players: { x: 57 }
         label: { text: Mid Glitch }
-      - label: { visible: false }
-        wave-cannon#arm-[1..2]: { scale: 1 }
+      - wave-cannon#arm-[1..2]: { visible: true }
         wc-cone#*: { visible: true }
         circle-color#target-[1..6]: { visible: false }
-      - label: { visible: true, text: Remote Glitch }
+        label: { visible: false }
+      - tower#far-*: { visible: true }
         wave-cannon#arm-[1..2]: { visible: false }
         wc-cone#*: { visible: false }
-        players: { x: 25 }
-        boss#[beetle, final]: { visible: false }
         boss#mf: { text: F }
-        arm#*: { visible: false }
+        boss#[beetle, final]: { visible: false }
         glitch-link#[1,2]: { visible: false }
-        tower#far-*: { visible: true }
+        players: { x: 25 }
+        arm#*: { visible: false }
+        label: { visible: true, text: Remote Glitch }
       - boss#mf: [0, 0]
         [M1, R2]: [16, -90]
         H1: [16, 180]
         [T1, T2]: [16, 135]
         [R1, H2]: [16, 45]
         M2: [16, 0]
-      - boss#mf: { scale: 1.3 }
-        kb: { scale: 1 }
+      - tower#far-*: { visible: false }
+        tower-filled#far-*: { visible: true }
+        boss#mf: { scale: 1.3 }
+        kb: { visible: true }
         players: { x: 90 }
-        tower#far-*: { color: url(#tower-filled-gradient) }
-      - label: { text: Mid Glitch }
-        tower#far-*: { visible: false }
+      - tower#mid-*: { visible: true }
+        tower-filled#far-*: { visible: false }
         boss#mf: { x: 90, y: -90, scale: 1 }
         kb: { visible: false }
-        tower#mid-*: { visible: true }
-        T2: [25, -135]
-        M1: [25, 45]
-        M2: [25, -90]
         T1: [25, 90]
-        H2: [25, -45]
-        R2: [25, 135]
-        R1: [25, -180]
         H1: [25, 0]
+        M1: [25, 45]
+        R1: [25, -180]
+        T2: [25, -135]
+        H2: [25, -45]
+        M2: [25, -90]
+        R2: [25, 135]
+        label: { text: Mid Glitch }
       - boss#mf: [0, 0]
-        kb: { scale: 0 }
-        R2: [16, -67.5]
-        M1: [16, -112.5]
-        [H1, T2]: [16, 157.5]
         T1: [16, 112.5]
+        M1: [16, -112.5]
         R1: [16, 67.5]
+        R2: [16, -67.5]
+        [H1, T2]: [16, 157.5]
         [M2, H2]: [16, 22.5]
-      - boss#mf: { scale: 1.3 }
-        kb: { scale: 1, visible: true }
+      - tower#mid-*: { visible: false }
+        tower-filled#mid-*: { visible: true }
+        boss#mf: { scale: 1.3 }
+        kb: { visible: true }
         players: { x: 80 }
-        tower#mid-*: { color: url(#tower-filled-gradient) }
-      - tower#*: { visible: false }
-        kb: { visible: false }
+      - tower-filled#*: { visible: false }
+        wave-cannon#arm-1: { rotate: R1 }
+        wave-cannon#arm-2: { rotate: H1 }
         boss#mf: { scale: 1, visible: false }
+        kb: { visible: false }
         glitch-link#*: { visible: false }
-        label: { visible: false }
-        T2: [60, 164]
-        H1: [60, 137]
-        M1: { x: 60, y: -112, status: [mark4, quickening-dynamis] }
-        R2: { x: 60, y: -58, status: [mark2, quickening-dynamis] }
-        M2: [60, 9]
-        H2: { x: 60, y: 44, status: [mark1] }
-        R1: [60, 73]
-        T1: { x: 60, y: 111, status: [mark3, quickening-dynamis] }
-        arm#1: { x: 90, y: -45, rotate: H1 }
-        arm#2: { x: 90, y: -135, rotate: H2 }
         glitch-link#1: { to: H1 }
         glitch-link#2: { to: H2 }
-        wave-cannon#arm-1: { rotate: R1, scale: [0, 1] }
-        wave-cannon#arm-2: { rotate: H1, scale: [0, 1] }
-      - label: { visible: true, text: Staff-F }
-        boss#mf: { text: F, x: 45, y: 90, visible: true, rotate: 90 }
+        T1: { x: 60, y: 111, status: [mark3, quickening-dynamis] }
+        H1: [60, 137]
+        M1: { x: 60, y: -112, status: [mark4, quickening-dynamis] }
+        R1: [60, 73]
+        T2: [60, 164]
+        H2: { x: 60, y: 44, status: [mark1] }
+        M2: [60, 9]
+        R2: { x: 60, y: -58, status: [mark2, quickening-dynamis] }
+        arm#1: { x: 90, y: -45, rotate: H1 }
+        arm#2: { x: 90, y: -135, rotate: H2 }
+        label: { visible: false }
+      - boss#mf: { text: F, x: 45, y: 90, visible: true, rotate: 90 }
         boss#ring: { visible: true }
-        rotate-cw: { visible: true }
-        arm#*: { visible: true }
-        wave-cannon#arm-[1..2]: { visible: true }
         glitch-link#[1..2]: { visible: true }
-      - H2: [88, 67]
-        R1: [87, 66]
-        H1: [85, 66]
-        T2: [83, -113]
-        M1: [84, -116]
-        R2: [85, -112]
+        arm#*: { visible: true }
+        rotate-cw: { visible: true }
+        label: { visible: true, text: Staff-F }
+      - glitch-link#1: { to: H2 }
         T1: [83, -117]
+        H1: [85, 66]
+        M1: [84, -116]
+        R1: [87, 66]
+        T2: [83, -113]
+        H2: [88, 67]
         M2: [83, -115]
+        R2: [85, -112]
         arm#1: { rotate: H2 }
-        glitch-link#1: { to: H2 }
-      - rect-color#ring: { scale: 1 }
-      - rect-color#ring: { color: url(#wc-gradient), opacity: 0.8 }
+      - rect-color#ring: { visible: true }
+      - rect-color#ring: { visible: false }
+        rect-color#ring-beam: { visible: true }
         rotate-cw: { visible: false }
-      - rect-color#ring: { rotate: 100 }
+      - rect-color#[ring, ring-beam]: { rotate: 100 }
         boss#ring: { rotate: 100 }
-      - rect-color#ring: { rotate: 110 }
+      - rect#staff-*: { visible: true }
+        rect-color#[ring, ring-beam]: { rotate: 110 }
         boss#ring: { rotate: 110 }
-        rect#staff-*: { scale: 1 }
       - rect#staff-*: { visible: false }
+        rect-color#[ring, ring-beam]: { rotate: 120 }
         boss#mf: { visible: false }
-        rect-color#ring: { rotate: 120 }
         boss#ring: { rotate: 120 }
-        H2: [89, 90]
-        R1: [83, 97]
-        H1: [89, 49]
-        R2: [78, -84]
-        M2: [57, -98]
-        T2: [72, -86]
-        M1: [89, -90]
-        T1: [84, -82]
-        arm#1: { rotate: R1 }
         glitch-link#1: { to: R1 }
-        arm#2: { rotate: H1 }
         glitch-link#2: { to: H1 }
-      - H2: [88, 67]
-        R1: [87, 66]
-        H1: [85, 66]
-        T2: [83, -113]
-        M1: [84, -116]
-        R2: [85, -112]
-        T1: [83, -117]
-        M2: [83, -115]
-        arm#1: { rotate: H2 }
-        glitch-link#1: { to: H2 }
-        label: { text: Blades-F }
+        T1: [84, -82]
+        H1: [89, 49]
+        M1: [89, -90]
+        R1: [83, 97]
+        T2: [72, -86]
+        H2: [89, 90]
+        M2: [57, -98]
+        R2: [78, -84]
+        arm#1: { rotate: R1 }
+        arm#2: { rotate: H1 }
+      - rect-color#ring: { rotate: 90, visible: true }
+        rect-color#ring-beam: { rotate: 90, visible: false }
         boss#mf: { visible: true }
         boss#ring: { rotate: 90 }
-        rect-color#ring: { rotate: 90, look: aoe }
-      - rect-color#ring: { color: url(#wc-gradient), opacity: 0.8, look: plain }
+        glitch-link#1: { to: H2 }
+        T1: [83, -117]
+        H1: [85, 66]
+        M1: [84, -116]
+        R1: [87, 66]
+        T2: [83, -113]
+        H2: [88, 67]
+        M2: [83, -115]
+        R2: [85, -112]
+        arm#1: { rotate: H2 }
+        label: { text: Blades-F }
+      - rect-color#ring: { visible: false }
+        rect-color#ring-beam: { visible: true }
         rotate-cw: { visible: false }
-      - rect-color#ring: { rotate: 100 }
+      - rect-color#[ring, ring-beam]: { rotate: 100 }
         boss#ring: { rotate: 100 }
-        H2: [87, 77]
-        R1: [86, 76]
-        H1: [84, 75]
-        R2: [85, -103]
-        T2: [84, -103]
-        M2: [85, -103]
-        M1: [82, -104]
         T1: [81, -104]
-      - rect-color#ring: { rotate: 110 }
+        H1: [84, 75]
+        M1: [82, -104]
+        R1: [86, 76]
+        T2: [84, -103]
+        H2: [87, 77]
+        M2: [85, -103]
+        R2: [85, -103]
+      - rect#blades-*: { visible: true }
+        rect-color#[ring, ring-beam]: { rotate: 110 }
         boss#ring: { rotate: 110 }
-        rect#blades-*: { scale: 1 }
-        H2: [85, 87]
-        R1: [83, 85]
-        H1: [82, 85]
-        R2: [86, -91]
-        M2: [82, -93]
-        T2: [82, -94]
-        M1: [79, -95]
         T1: [77, -95]
+        H1: [82, 85]
+        M1: [79, -95]
+        R1: [83, 85]
+        T2: [82, -94]
+        H2: [85, 87]
+        M2: [82, -93]
+        R2: [86, -91]
       - rect#blades-*: { visible: false }
+        rect-color#[ring, ring-beam]: { rotate: 120 }
         boss#mf: { visible: false }
-        rect-color#ring: { rotate: 120 }
         boss#ring: { rotate: 120 }
-        H2: [89, 90]
-        R1: [83, 97]
-        H1: [89, 49]
-        R2: [78, -84]
-        M2: [57, -98]
-        T2: [72, -86]
-        M1: [89, -90]
-        T1: [84, -82]
-        arm#1: { rotate: R1 }
         glitch-link#1: { to: R1 }
-        arm#2: { rotate: H1 }
         glitch-link#2: { to: H1 }
-      - rect-color#ring: { rotate: 130 }
+        T1: [84, -82]
+        H1: [89, 49]
+        M1: [89, -90]
+        R1: [83, 97]
+        T2: [72, -86]
+        H2: [89, 90]
+        M2: [57, -98]
+        R2: [78, -84]
+        arm#1: { rotate: R1 }
+        arm#2: { rotate: H1 }
+      - rect-color#[ring, ring-beam]: { rotate: 130 }
         boss#ring: { rotate: 130 }
-        label: { visible: false }
+        T1: [86, -71]
         R1: [86, 109]
+        T2: [67, -78]
         M2: [45, -90]
         R2: [83, -71]
-        T1: [86, -71]
-        T2: [67, -78]
-      - rect-color#ring: { rotate: 160 }
+        label: { visible: false }
+      - rect-color#[ring, ring-beam]: { rotate: 160 }
         boss#ring: { rotate: 160 }
-        T2: [51, -58]
-        R2: [86, -42]
         T1: [88, -51]
         R1: [87, 135]
-      - rect-color#ring: { rotate: 190 }
+        T2: [51, -58]
+        R2: [86, -42]
+      - rect-color#[ring, ring-beam]: { rotate: 190 }
         boss#ring: { rotate: 190 }
+        T1: [89, -18]
         T2: [47, -32]
         R2: [89, -11]
-        T1: [89, -18]
-      - rect-color#ring: { rotate: 205 }
+      - rect-color#[ring, ring-beam]: { rotate: 205 }
         boss#ring: { rotate: 205 }
+        T1: [89, -10]
         T2: [47, -18]
         R2: [89, 4]
-        T1: [89, -10]
-      - rect-color#ring: { visible: false }
+      - rect-color#[ring, ring-beam]: { visible: false }
         boss#ring: { visible: false }
         H1: [89, 45]
         T2: [46, -1]
         R2: [89, 10]
-      - wave-cannon#arm-[1..2]: { scale: 1 }
+      - hello#[near,far]-1: { visible: true }
+        wave-cannon#arm-[1..2]: { visible: true }
         glitch-link#[1..2]: { visible: false }
-        hello#[near,far]-1: { visible: true }
-        M2: { status: [quickening-dynamis] }
         T2: { status: [quickening-dynamis:1] }
-      - wave-cannon#arm-[1..2]: { visible: false }
-        arm#*: { visible: false }
-        hello#[near,far]-1: { visible: false }
+        M2: { status: [quickening-dynamis] }
+      - hello#[near,far]-1: { visible: false }
         hello#[near,far]-2: { visible: true }
+        wave-cannon#arm-[1..2]: { visible: false }
         T1: { status: [mark3, quickening-dynamis:1] }
         H2: { status: [mark1, quickening-dynamis] }
+        arm#*: { visible: false }
       - hello#[near,far]-2: { visible: false }
         hello#[near,far]-3: { visible: true }
-        R2: { status: [mark2, quickening-dynamis:1] }
         M1: { status: [mark4, quickening-dynamis:1] }
+        R2: { status: [mark2, quickening-dynamis:1] }
     omega:
       - arena: { image: /images/arenas/top-p5.avif }
         hello#far-1: { size: 76, attach: M1 }
@@ -4426,19 +4426,18 @@ graphing:
         hello#near-1: { size: 76, attach: T1 }
         hello#near-2: { size: 40, attach: H1 }
         hello#near-3: { size: 40, attach: R1 }
-        rect#blades-1: { x: 81, y: 65, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
-        rect#blades-2: { x: 78, y: -125, size: [100, 300], scale: [0, 1], rotate: -45, visible: true }
-        rect#staff-1: { size: [45, 300], origin: [0.5, 0.5], scale: [0, 1], rotate: 45, attach: boss#f2, visible: true }
-        rect#staff-2: { size: [45, 300], origin: [0.5, 0.5], scale: [0, 1], rotate: 135, attach: boss#f2, visible: true }
-        circle#m: { attach: boss#m2, size: 100, scale: 0, visible: true }
-        donut#m: { attach: boss#m1, visible: true }
-        ring-cone#[1..4]: { visible: true }
-        ring-cone#1: { scale: [0, 1] }
-        ring-cone#2: { rotation: 180, scale: [0, 1] }
-        ring-cone#3: { rotation: 90, scale: [1, 0] }
-        ring-cone#4: { rotation: -90, scale: [1, 0] }
+        rect#blades-1: { x: 81, y: 65, size: [100, 300], rotate: -45, enter: scale-x }
+        rect#blades-2: { x: 78, y: -125, size: [100, 300], rotate: -45, enter: scale-x }
+        rect#staff-1: { size: [45, 300], origin: [0.5, 0.5], rotate: 45, attach: boss#f2, enter: scale-x }
+        rect#staff-2: { size: [45, 300], origin: [0.5, 0.5], rotate: 135, attach: boss#f2, enter: scale-x }
+        circle#m: { attach: boss#m2, size: 100, enter: scale }
+        donut#m: { attach: boss#m1 }
+        ring-cone#1: { enter: scale-x }
+        ring-cone#2: { rotation: 180, enter: scale-x }
+        ring-cone#3: { rotation: 90, enter: scale-y }
+        ring-cone#4: { rotation: -90, enter: scale-y }
         monitor: { attach: boss#final, size: [50, 200], rotate: 180 }
-        circle-color#monitor-[1..2]: { size: 60, color: url(#monitor-boom-gradient), scale: 0, visible: true }
+        circle-color#monitor-[1..2]: { size: 60, look: { type: plain, color: url(#monitor-boom-gradient) }, enter: scale }
         circle-color#monitor-1: { attach: R2 }
         circle-color#monitor-2: { attach: T2 }
         boss#m[1..2]: { size: 30, opacity: 0.6, visible: false }
@@ -4473,28 +4472,27 @@ graphing:
         R2: { x: 27, y: 160, status: [quickening-dynamis:1, hello-near-world] }
         label: { x: 0, y: -90, visible: false }
         cast: { text: "Run: ****mi* (Omega Version)", progress: 0 }
-      - cast: { progress: 1, visible: false }
+      - boss#[m,f]1: { visible: true }
         boss#final: { visible: true }
-        boss#[m,f]1: { visible: true }
         label: { visible: true, text: Variation 1 }
+        cast: { progress: 1, visible: false }
       - boss#[m,f]2: { visible: true }
       - players: [22, 90]
-      - ring-cone#[1..2]: { scale: 1 }
-        donut#m: { scale: 1 }
-        rect#blades-[1..2]: { scale: 1 }
-      - ring-cone#[1..2]: { visible: false }
+      - rect#blades-[1..2]: { visible: true }
+        donut#m: { visible: true }
+        ring-cone#[1..2]: { visible: true }
+      - rect#blades-[1..2]: { visible: false }
         donut#m: { visible: false }
-        rect#blades-[1..2]: { visible: false }
+        ring-cone#[1..2]: { visible: false }
+        boss#f0: [58, 159]
         players: [58, 159]
         T1: [84, 163]
-        boss#f0: [58, 159]
-      - ring-cone#[3..4]: { scale: 1 }
-        circle#m: { scale: 1 }
-        rect#staff-[1..2]: { scale: 1 }
-      - label: { text: Variation 2 }
-        ring-cone#[3..4]: { visible: false }
+      - rect#staff-[1..2]: { visible: true }
+        circle#m: { visible: true }
+        ring-cone#[3..4]: { visible: true }
+      - rect#staff-[1..2]: { visible: false }
         circle#m: { visible: false }
-        rect#staff-[1..2]: { visible: false }
+        ring-cone#[3..4]: { visible: false }
         boss#f0: [0, 0]
         boss#[f,m][1..2]: { visible: false }
         T1: { x: 30, y: 1 }
@@ -4505,103 +4503,95 @@ graphing:
         H2: { x: 20, y: 100 }
         M2: { x: 20, y: 138 }
         R2: { x: 27, y: 160 }
-      - boss#f2: { visible: true }
-        boss#m2: { text: Shield-M, visible: true }
+        label: { text: Variation 2 }
+      - boss#m2: { text: Shield-M, visible: true }
         boss#m1: { text: Sword-M }
-        rect#staff-[1..2]: { scale: [0, 1] }
-        rect#blades-[1..2]: { scale: [0, 1] }
-        donut#m: { scale: 0 }
-        circle#m: { scale: 0 }
-        ring-cone#[1..2]: { scale: [0, 1] }
-        ring-cone#[3..4]: { scale: [1, 0] }
-      - rect#staff-[1..2]: { visible: true }
-        rect#blades-[1..2]: { visible: true }
-        donut#m: { visible: true, attach: boss#m2 }
-        circle#m: { visible: true, attach: boss#m1 }
-        ring-cone#[1..4]: { visible: true }
+        boss#f2: { visible: true }
+      - circle#m: { attach: boss#m1 }
+        donut#m: { attach: boss#m2 }
         boss#[m,f]1: { visible: true }
-      - players: [62, -92]
-        boss#f0: [43, -87]
-      - donut#m: { scale: 1 }
-        rect#staff-[1..2]: { scale: 1 }
-        ring-cone#[1..2]: { scale: 1 }
-      - donut#m: { visible: false }
-        rect#staff-[1..2]: { visible: false }
+      - boss#f0: [43, -87]
+        players: [62, -92]
+      - rect#staff-[1..2]: { visible: true }
+        donut#m: { visible: true }
+        ring-cone#[1..2]: { visible: true }
+      - rect#staff-[1..2]: { visible: false }
+        donut#m: { visible: false }
         ring-cone#[1..2]: { visible: false }
-        players: [22, 0]
         boss#f0: [22, -54]
-      - ring-cone#[3..4]: { scale: 1 }
-        circle#m: { scale: 1 }
-        rect#blades-[1..2]: { scale: 1 }
-      - label: { visible: false }
-        ring-cone#[3..4]: { visible: false }
+        players: [22, 0]
+      - rect#blades-[1..2]: { visible: true }
+        circle#m: { visible: true }
+        ring-cone#[3..4]: { visible: true }
+      - rect#blades-[1..2]: { visible: false }
         circle#m: { visible: false }
-        rect#blades-[1..2]: { visible: false }
+        ring-cone#[3..4]: { visible: false }
         boss#[f,m][1..2]: { visible: false }
         boss#f0: { visible: false }
-        R2: [25, 53]
-        M2: [25, -56]
-        H2: [25, -122]
-        T2: [25, 172]
-        R1: [25, 28]
-        M1: [25, -29]
         H1: [25, 118]
+        M1: [25, -29]
+        R1: [25, 28]
+        T2: [25, 172]
+        H2: [25, -122]
+        M2: [25, -56]
+        R2: [25, 53]
+        label: { visible: false }
       - monitor: { visible: true }
-        M2: { status: [quickening-dynamis, mark1, hello-distant-world] }
-        R1: { status: [quickening-dynamis, mark2] }
         H1: { status: [quickening-dynamis, mark3] }
+        R1: { status: [quickening-dynamis, mark2] }
         H2: { status: [quickening-dynamis, mark4] }
+        M2: { status: [quickening-dynamis, mark1, hello-distant-world] }
       - T1: [45, 89]
-        M1: [46, 3]
-        R2: [70, -49]
-        T2: [70, -128]
-        M2: [89, 2]
-        R1: [88, 80]
         H1: [88, 103]
+        M1: [46, 3]
+        R1: [88, 80]
+        T2: [70, -128]
         H2: [88, 179]
+        M2: [89, 2]
+        R2: [70, -49]
       - hello#[near,far]-1: { visible: true }
-        circle-color#monitor*: { scale: 1 }
         monitor: { visible: false }
+        circle-color#monitor*: { visible: true }
         boss#beetle: { visible: true }
         [M1,T1]: { status: [quickening-dynamis:2] }
-      - circle-color#monitor*: { visible: false }
-        hello#[near,far]-1: { visible: false }
+      - hello#[near,far]-1: { visible: false }
         hello#[near,far]-2: { visible: true }
-        H2: { status: [quickening-dynamis:1, mark4] }
+        circle-color#monitor*: { visible: false }
         H1: { status: [quickening-dynamis:1, mark3] }
+        H2: { status: [quickening-dynamis:1, mark4] }
       - hello#[near,far]-2: { visible: false }
         hello#[near,far]-3: { visible: true }
         R1: { status: [quickening-dynamis:1, mark2] }
         M2: { status: [quickening-dynamis:1, mark1, hello-distant-world] }
       - hello#[near,far]-3: { visible: false }
         blaster-tether#[1..2]: { visible: true }
-        H2: [87, 173]
-        M2: { x: 45, y: 88, status: [quickening-dynamis:1, hello-distant-world] }
-        M1: [13, -79]
-        T2: { x: 62, y: -134, status: [quickening-dynamis:1, mark1] }
-        R2: [47, 10]
-        T1: [16, 87]
         blaster-tether#1: { to: T2 }
         blaster-tether#2: { to: M1 }
-      - T2: [24, 86]
-        blaster-tether#1: { to: T1 }
+        T1: [16, 87]
+        M1: [13, -79]
+        T2: { x: 62, y: -134, status: [quickening-dynamis:1, mark1] }
+        H2: [87, 173]
+        M2: { x: 45, y: 88, status: [quickening-dynamis:1, hello-distant-world] }
+        R2: [47, 10]
+      - hello#far-1: { attach: M2 }
+        hello#far-2: { attach: H1 }
+        hello#far-3: { attach: R1 }
         hello#near-1: { attach: R2 }
         hello#near-2: { attach: H2 }
         hello#near-3: { attach: T2 }
-        hello#far-1: { attach: M2 }
-        hello#far-2: { attach: H1 }
-        hello#far-3: { attach: R1 }
-      - T2: [89, 6]
+        blaster-tether#1: { to: T1 }
+        T2: [24, 86]
+      - T1: [90, -120]
         M1: [90, -60]
-        T1: [90, -120]
-      - blaster#*: { scale: 1 }
+        T2: [89, 6]
+      - hello#[near,far]-1: { visible: true }
         blaster-tether#*: { visible: false }
+        blaster#*: { visible: true }
         [M1, T1]: { status: [quickening-dynamis:2, hp-penalty] }
-        hello#[near,far]-1: { visible: true }
         [R2, M2]: { status: [quickening-dynamis:2] }
-      - blaster#*: { visible: false }
-        hello#[near,far]-1: { visible: false }
+      - hello#[near,far]-1: { visible: false }
         hello#[near,far]-2: { visible: true }
+        blaster#*: { visible: false }
         [H2, H1]: { status: [quickening-dynamis:2] }
       - hello#[near,far]-2: { visible: false }
         hello#[near,far]-3: { visible: true }
@@ -4610,8 +4600,8 @@ graphing:
     cosmo-arrow-in-only:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }
-        rect#in-1: { size: [46, 200], scale: 1 }
-        rect#in-2: { size: [46, 200], scale: 1, rotate: 90 }
+        rect#in-1: { size: [46, 200] }
+        rect#in-2: { size: [46, 200], rotate: 90 }
         exasquare#v1: { x: 80.5, y: -90 }
         exasquare#v2: { x: 57.5, y: -90 }
         exasquare#v3: { x: 34.5, y: -90 }
@@ -4642,10 +4632,10 @@ graphing:
     cosmo-arrow-out-only:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }
-        rect#out-1: { x: 69, y: 0, size: [46, 200], scale: 1, rotate: 90 }
-        rect#out-2: { x: 69, y: 180, size: [46, 200], scale: 1, rotate: -90 }
-        rect#out-3: { x: 69, y: 90, size: [46, 200], scale: 1, rotate: 180 }
-        rect#out-4: { x: 69, y: -90, size: [46, 200], scale: 1 }
+        rect#out-1: { x: 69, y: 0, size: [46, 200], rotate: 90 }
+        rect#out-2: { x: 69, y: 180, size: [46, 200], rotate: -90 }
+        rect#out-3: { x: 69, y: 90, size: [46, 200], rotate: 180 }
+        rect#out-4: { x: 69, y: -90, size: [46, 200] }
         exasquare#v1: { x: 80.5, y: -90 }
         exasquare#v2: { x: 57.5, y: -90 }
         exasquare#v3: { x: 34.5, y: -90 }
@@ -4685,12 +4675,12 @@ graphing:
     cosmo-arrow-in:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }
-        rect#in-1: { size: [46, 200], scale: 1 }
-        rect#in-2: { size: [46, 200], scale: 1, rotate: 90 }
-        rect#out-1: { x: 69, y: 0, size: [46, 200], scale: 1, rotate: 90 }
-        rect#out-2: { x: 69, y: 180, size: [46, 200], scale: 1, rotate: -90 }
-        rect#out-3: { x: 69, y: 90, size: [46, 200], scale: 1, rotate: 180 }
-        rect#out-4: { x: 69, y: -90, size: [46, 200], scale: 1 }
+        rect#in-1: { size: [46, 200] }
+        rect#in-2: { size: [46, 200], rotate: 90 }
+        rect#out-1: { x: 69, y: 0, size: [46, 200], rotate: 90 }
+        rect#out-2: { x: 69, y: 180, size: [46, 200], rotate: -90 }
+        rect#out-3: { x: 69, y: 90, size: [46, 200], rotate: 180 }
+        rect#out-4: { x: 69, y: -90, size: [46, 200] }
         p6-wc#1: { rotate: T1 }
         p6-wc#2: { rotate: M1 }
         p6-wc#3: { rotate: R2 }
@@ -4738,76 +4728,76 @@ graphing:
       - rect#out-*: { visible: true }
         cast: { progress: 0.666 }
       - rect#in-*: { visible: false }
-        cast: { progress: 1, visible: false }
         players: { x: 20 }
+        cast: { progress: 1, visible: false }
       - rect#out-*: { visible: false }
         exasquare#[h,v][3,6]: { visible: true }
       - exasquare#[h,v][2,7]: { visible: true }
         cast: { text: Wave Cannon, progress: 0 }
       - exasquare#[h,v][2,3,6,7]: { visible: false }
         exasquare#[h,v][1,4,5,8]: { visible: true }
-        cast: { visible: true }
         players: { x: 44 }
+        cast: { visible: true }
       - exasquare#[h,v][1,8]: { visible: false }
-        H1: [70, -156]
+        T1: [66, -27]
+        R2: [65, 63]
+        T2: [67, 24]
+        M2: [63, 115]
         M1: [71, -113]
         R1: [72, -64]
-        T1: [66, -27]
-        T2: [67, 24]
-        R2: [65, 63]
-        M2: [63, 115]
         H2: [71, 157]
+        H1: [70, -156]
         cast: { progress: 0.2 }
       - exasquare#[h,v][4,5]: { visible: false }
         exasquare#[h,v][3,6]: { visible: true }
+        T1: [68, -16]
+        R2: [64, 72]
+        T2: [68, 17]
+        M2: [63, 103]
         M1: [67, -104]
         R1: [68, -73]
-        T1: [68, -16]
-        T2: [68, 17]
-        R2: [64, 72]
-        M2: [63, 103]
         H2: [63, 167]
         H1: [63, -163]
         cast: { progress: 0.4 }
-      - exasquare#[h,v][3,6]: { visible: false }
+      - p6-wc#[1..4]: { visible: true }
+        exasquare#[h,v][3,6]: { visible: false }
         exasquare#[h,v][2,7]: { visible: true }
-        p6-wc#[1..4]: { scale: 1 }
+        T1: [44, -26]
+        R2: [44, 68]
+        T2: [44, 22]
+        M2: [44, 109]
         M1: [44, -106]
         R1: [44, -66]
-        T1: [44, -26]
-        T2: [44, 22]
-        R2: [44, 68]
-        M2: [44, 109]
         H2: [44, 157]
         H1: [44, -158]
         cast: { progress: 0.6 }
-      - exasquare#[h,v][2,7]: { visible: false }
+      - p6-wc#[1..4]: { visible: false }
+        p6-wc#[5..8]: { visible: true, rotate: null }
+        exasquare#[h,v][2,7]: { visible: false }
         exasquare#[h,v][1,8]: { visible: true }
-        p6-wc#[1..4]: { scale: [0, 1] }
-        p6-wc#[5..8]: { scale: 1, rotate: null }
         cast: { progress: 0.8 }
-      - p6-wc#[5..8]: { scale: [0, 1] }
+      - p6-wc#[5..8]: { visible: false }
         exasquare#[h,v][1,8]: { visible: false }
-        H2: [52, -169]
-        R1: [46, -173]
-        R2: [47, -177]
-        M2: [47, 175]
-        T2: [19, -175]
         T1: [17, 171]
+        R2: [47, -177]
+        T2: [19, -175]
+        M2: [47, 175]
         M1: [53, -179]
+        R1: [46, -173]
+        H2: [52, -169]
         H1: [51, 174]
         cast: { progress: 0.9 }
-      - p6-wc#9: { scale: 1 }
+      - p6-wc#9: { visible: true }
         cast: { progress: 1, visible: false }
     cosmo-arrow-out:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }
-        rect#in-1: { size: [46, 200], scale: 1 }
-        rect#in-2: { size: [46, 200], scale: 1, rotate: 90 }
-        rect#out-1: { x: 69, y: 0, size: [46, 200], scale: 1, rotate: 90 }
-        rect#out-2: { x: 69, y: 180, size: [46, 200], scale: 1, rotate: -90 }
-        rect#out-3: { x: 69, y: 90, size: [46, 200], scale: 1, rotate: 180 }
-        rect#out-4: { x: 69, y: -90, size: [46, 200], scale: 1 }
+        rect#in-1: { size: [46, 200] }
+        rect#in-2: { size: [46, 200], rotate: 90 }
+        rect#out-1: { x: 69, y: 0, size: [46, 200], rotate: 90 }
+        rect#out-2: { x: 69, y: 180, size: [46, 200], rotate: -90 }
+        rect#out-3: { x: 69, y: 90, size: [46, 200], rotate: 180 }
+        rect#out-4: { x: 69, y: -90, size: [46, 200] }
         p6-wc#1: { rotate: T1 }
         p6-wc#2: { rotate: M1 }
         p6-wc#3: { rotate: R2 }
@@ -4855,64 +4845,64 @@ graphing:
       - rect#in-*: { visible: true }
         cast: { progress: 0.666 }
       - rect#out-*: { visible: false }
-        cast: { progress: 1, visible: false }
-        H1: [73, -138]
+        T1: [73, -42]
+        R2: [73, 47]
+        T2: [73, 42]
+        M2: [73, 133]
         M1: [73, -133]
         R1: [73, -47]
-        T1: [73, -42]
-        T2: [73, 42]
-        R2: [73, 47]
-        M2: [73, 133]
         H2: [73, 138]
+        H1: [73, -138]
+        cast: { progress: 1, visible: false }
       - rect#in-*: { visible: false }
         exasquare#[h,v][3,6]: { visible: true }
       - exasquare#[h,v][4,5]: { visible: true }
         cast: { text: Wave Cannon, progress: 0 }
       - exasquare#[h,v][3,6]: { visible: false }
         exasquare#[h,v][2,7]: { visible: true }
-        cast: { visible: true }
         players: { x: 44 }
+        cast: { visible: true }
       - exasquare#[h,v][2,4,5,7]: { visible: false }
         exasquare#[h,v][1,3,6,8]: { visible: true }
+        T1: [68, -16]
+        R2: [64, 72]
+        T2: [68, 17]
+        M2: [63, 103]
         M1: [67, -104]
         R1: [68, -73]
-        T1: [68, -16]
-        T2: [68, 17]
-        R2: [64, 72]
-        M2: [63, 103]
         H2: [63, 167]
         H1: [63, -163]
         cast: { progress: 0.2 }
       - exasquare#[h,v][1,3,6,8]: { visible: false }
         exasquare#[h,v][2,7]: { visible: true }
-        cast: { progress: 0.4 }
+        T1: [44, -26]
+        R2: [44, 68]
+        T2: [44, 22]
+        M2: [44, 109]
         M1: [44, -106]
         R1: [44, -66]
-        T1: [44, -26]
-        T2: [44, 22]
-        R2: [44, 68]
-        M2: [44, 109]
         H2: [44, 157]
         H1: [44, -158]
-      - exasquare#[h,v][2,7]: { visible: false }
+        cast: { progress: 0.4 }
+      - p6-wc#[1..4]: { visible: true }
+        exasquare#[h,v][2,7]: { visible: false }
         exasquare#[h,v][1,8]: { visible: true }
-        p6-wc#[1..4]: { scale: 1 }
         cast: { progress: 0.6 }
-      - exasquare#[h,v][1,8]: { visible: false }
-        p6-wc#[1..4]: { scale: [0, 1] }
-        p6-wc#[5..8]: { scale: 1, rotate: null }
+      - p6-wc#[1..4]: { visible: false }
+        p6-wc#[5..8]: { visible: true, rotate: null }
+        exasquare#[h,v][1,8]: { visible: false }
         cast: { progress: 0.8 }
-      - p6-wc#[5..8]: { scale: [0, 1] }
-        H2: [52, -169]
-        R1: [46, -173]
-        R2: [47, -177]
-        M2: [47, 175]
-        T2: [19, -175]
+      - p6-wc#[5..8]: { visible: false }
         T1: [17, 171]
+        R2: [47, -177]
+        T2: [19, -175]
+        M2: [47, 175]
         M1: [53, -179]
+        R1: [46, -173]
+        H2: [52, -169]
         H1: [51, 174]
         cast: { progress: 0.9 }
-      - p6-wc#9: { scale: 1 }
+      - p6-wc#9: { visible: true }
         cast: { progress: 1, visible: false }
     unlimited-wave-cannon:
       - arena: { image: /images/arenas/top-p6.avif }
@@ -4921,14 +4911,14 @@ graphing:
         exaflare#2: { x: 100, y: 90 }
         exaflare#3: { x: 100, y: 45, rotate: -45 }
         exaflare#4: { x: 100, y: 0, rotate: -90 }
-        circle#[1..6]: { size: 60, scale: 0, visible: true }
+        circle#[1..6]: { size: 60, enter: scale }
         circle#1: [0, 0]
         circle#2: [33, 175]
         circle#3: [67, 175]
         circle#4: [81, 149]
         circle#5: [76, 121]
         circle#6: [72, 89]
-        circle-color#exa-[1..4]-[1..8]: { size: 60, color: url(#wc-p6-gradient) }
+        circle-color#exa-[1..4]-[1..8]: { size: 60, look: { type: plain, color: url(#wc-p6-gradient) } }
         circle-color#exa-1-1: [100, 135]
         circle-color#exa-2-1: [100, 90]
         circle-color#exa-3-1: [100, 45]
@@ -4958,72 +4948,72 @@ graphing:
         H2: [33, 171]
         M2: [34, 138]
         cast: { text: Unlimited Wave Cannon, progress: 0 }
-      - cast: { progress: 0.8 }
-        exaflare#1: { visible: true }
+      - exaflare#1: { visible: true }
         players: { x: 0, y: 0, attach: circle#1 }
-      - cast: { progress: 1, visible: false }
-        exaflare#2: { visible: true }
+        cast: { progress: 0.8 }
+      - exaflare#2: { visible: true }
+        cast: { progress: 1, visible: false }
       - exaflare#3: { visible: true }
       - exaflare#4: { visible: true }
-      - circle#1: { scale: 1 }
+      - circle#1: { visible: true }
       - players: { attach: circle#2 }
-      - circle#2: { scale: 1 }
+      - exaflare#1: { visible: false }
+        circle#2: { visible: true }
         circle-color#exa-1-1: { visible: true }
-        exaflare#1: { visible: false }
-      - players: { attach: circle#3 }
+      - exaflare#2: { visible: false }
         circle#1: { visible: false }
         circle-color#[exa-1-1]: { visible: false }
         circle-color#exa-[2-1,1-2]: { visible: true }
-        exaflare#2: { visible: false }
-      - circle#3: { scale: 1 }
+        players: { attach: circle#3 }
+      - exaflare#3: { visible: false }
+        circle#3: { visible: true }
         circle-color#exa-[2-1,1-2]: { visible: false }
         circle-color#exa-[3-1,2-2,1-3]: { visible: true }
         circle-color#exa-1-1: [10, 135]
-        exaflare#3: { visible: false }
-      - players: { attach: circle#4 }
+      - exaflare#4: { visible: false }
         circle#2: { visible: false }
         circle-color#[exa-3-1, exa-2-2, exa-1-3]: { visible: false }
         circle-color#exa-[4-1,3-2,2-3,1-1]: { visible: true }
         circle-color#exa-2-1: [10, 90]
         circle-color#exa-1-2: [20, -45]
-        exaflare#4: { visible: false }
-      - circle#4: { scale: 1 }
+        players: { attach: circle#4 }
+      - circle#4: { visible: true }
         circle-color#exa-[4-1,3-2,2-3,1-1]: { visible: false }
         circle-color#exa-[3-3,1-2,2-1,4-2]: { visible: true }
         circle-color#exa-3-1: [10, 45]
         circle-color#exa-2-2: [20, -90]
         circle-color#exa-1-3: [50, -45]
-      - players: { attach: circle#5 }
-        circle-color#exa-[1-2,2-1,3-3,4-2]: { visible: false }
-        circle-color#exa-[1-3,2-2,3-1,4-3]: { visible: true }
-        circle#3: { visible: false }
+      - circle#3: { visible: false }
         circle-color#exa-4-1: [10, 0]
         circle-color#exa-3-2: [20, -135]
         circle-color#exa-2-3: [50, -90]
         circle-color#exa-1-1: [80, -45]
-      - circle#5: { scale: 1 }
+        circle-color#exa-[1-2,2-1,3-3,4-2]: { visible: false }
+        circle-color#exa-[1-3,2-2,3-1,4-3]: { visible: true }
+        players: { attach: circle#5 }
+      - circle#5: { visible: true }
         circle-color#exa-[1-3,2-2,3-1,4-3]: { visible: false }
         circle-color#exa-[1-1,2-3,3-2,4-1]: { visible: true }
         circle-color#exa-1-2: [110, -45]
         circle-color#exa-2-1: [80, -90]
         circle-color#exa-3-3: [50, -135]
         circle-color#exa-4-2: [20, 180]
-      - players: { attach: circle#6 }
-        circle#4: { visible: false }
+      - circle#4: { visible: false }
         circle-color#exa-[1-1,2-3,3-2,4-1]: { visible: false }
         circle-color#exa-[1-2,2-1,3-3,4-2]: { visible: true }
         circle-color#exa-2-2: [110, -90]
         circle-color#exa-3-1: [80, -135]
         circle-color#exa-4-3: [50, 180]
-      - circle#6: { scale: 1 }
+        players: { attach: circle#6 }
+      - circle#6: { visible: true }
         circle-color#exa-[1-2,2-1,3-3,4-2]: { visible: false }
         circle-color#exa-[2-2,3-1,4-3]: { visible: true }
         circle-color#exa-3-2: [110, -135]
         circle-color#exa-4-1: [80, 180]
-      - players: { x: 76, y: 60, attach: null }
-        circle#5: { visible: false }
+      - circle#5: { visible: false }
         circle-color#exa-[2-2,3-1,4-3]: { visible: false }
         circle-color#exa-[3-2,4-1]: { visible: true }
+        players: { x: 76, y: 60, attach: null }
     cosmo-meteor:
       - arena: { image: /images/arenas/top-p6.avif }
         boss: { size: 115, opacity: 0.5 }
@@ -5037,10 +5027,10 @@ graphing:
         boss#comet-6: [60, -35]
         boss#meteor-1: [50, 0]
         boss#meteor-2: [50, 180]
-        circle#bait: { size: 95, scale: 0, visible: true }
-        circle-color#lb3: { size: 140, scale: 0, visible: true, color: url(#friendly-aoe) }
-        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 0], scale: 0, visible: true, color: url(#friendly-aoe) }
-        circle-color#spread-[1..8]: { size: 40, color: "#66231f99" }
+        circle#bait: { size: 95, enter: scale }
+        circle-color#lb3: { size: 140, look: { type: plain, color: url(#friendly-aoe) }, enter: scale }
+        rect-color#lb3: { attach: R1, rotate: boss, size: [40, 200], origin: [0.5, 0], look: { type: plain, color: url(#friendly-aoe) }, enter: scale }
+        circle-color#spread-[1..8]: { size: 40, look: { type: plain, color: "#66231f99" } }
         circle-color#spread-1: { attach: T1 }
         circle-color#spread-2: { attach: H1 }
         circle-color#spread-3: { attach: M2 }
@@ -5049,8 +5039,8 @@ graphing:
         circle-color#spread-6: { attach: M1 }
         circle-color#spread-7: { attach: H2 }
         circle-color#spread-8: { attach: R2 }
-        circle-color#stack: { attach: H2, size: 60, color: "#66231f99" }
-        circle-color#proximity-[1..3]: { size: 150, color: url(#proximity-aoe) }
+        circle-color#stack: { attach: H2, size: 60, look: { type: plain, color: "#66231f99" } }
+        circle-color#proximity-[1..3]: { size: 150, look: { type: plain, color: url(#proximity-aoe) } }
         circle-color#proximity-1: { attach: R2 }
         circle-color#proximity-2: { attach: M2 }
         circle-color#proximity-3: { attach: T1 }
@@ -5077,42 +5067,42 @@ graphing:
         label: { text: Caster uses LB3..., x: 0, y: -90, visible: false }
       - players: [0, 0]
         cast: { progress: 0.5 }
-      - cast: { progress: 1, visible: false }
-        circle#bait: { scale: 1 }
-      - H2: [60, 90]
-        H1: [60, -90]
-        M1: [60, -135]
-        M2: [60, 135]
-        R1: [60, 0]
-        R2: [60, 45]
+      - circle#bait: { visible: true }
+        cast: { progress: 1, visible: false }
+      - T1: [60, -45]
         T2: [60, 180]
-        T1: [60, -45]
-      - circle#bait: { visible: false }
-        boss#comet-*: { visible: true }
+        R2: [60, 45]
+        R1: [60, 0]
+        M2: [60, 135]
+        M1: [60, -135]
+        H1: [60, -90]
+        H2: [60, 90]
+      - boss#comet-*: { visible: true }
         boss#meteor-*: { visible: true }
+        circle#bait: { visible: false }
+        circle-color#lb3: { visible: true }
+        circle-color#spread-[1..4]: { visible: true }
         H2: [0, 0]
         label: { visible: true }
-        circle-color#lb3: { scale: 1 }
-        circle-color#spread-[1..4]: { visible: true }
       - circle-color#spread-[1..4]: { visible: false }
-      - circle-color#lb3: { visible: false }
-        label: { visible: false }
-        boss#comet-*: { visible: false }
+      - boss#comet-*: { visible: false }
+        circle-color#lb3: { visible: false }
         circle-color#spread-[5..8]: { visible: true }
-      - circle-color#spread-[5..8]: { visible: false }
-        boss#comet-*: { visible: false }
-      - rect-color#lb3: { scale: 1 }
-        label: { text: Pranged uses LB3..., visible: true }
-        flare#*: { visible: true }
-      - R2: [86, 89]
-        M2: [83, -180]
-        T1: [88, -89]
-        [H2,T2,M1,H1]: [60, 0]
-      - circle-color#stack: { visible: true }
-        circle-color#proximity-*: { visible: true }
-        rect-color#lb3: { visible: false }
         label: { visible: false }
+      - boss#comet-*: { visible: false }
+        circle-color#spread-[5..8]: { visible: false }
+      - rect-color#lb3: { visible: true }
+        flare#*: { visible: true }
+        label: { text: Pranged uses LB3..., visible: true }
+      - T1: [88, -89]
+        R2: [86, 89]
+        M2: [83, -180]
+        [H2,T2,M1,H1]: [60, 0]
+      - boss#meteor-*: { visible: false }
+        rect-color#lb3: { visible: false }
+        circle-color#stack: { visible: true }
+        circle-color#proximity-*: { visible: true }
         flare#*: { visible: false }
-        boss#meteor-*: { visible: false }
-      - circle-color#proximity-*: { visible: false }
-        circle-color#stack: { visible: false }
+        label: { visible: false }
+      - circle-color#stack: { visible: false }
+        circle-color#proximity-*: { visible: false }

@@ -947,8 +947,6 @@ timeline:
   - at: 659243
     id: tulidisaster-enrage
 graphing:
-  defs:
-    line-gradient: "linear-gradient(0 #FEAF49CC 10% #FFC86872 90% #FFC86872 100% #FEAF49CC)"
   coordinate-system: cartesian
   elements:
     arena:
@@ -961,68 +959,66 @@ graphing:
       coordinate-system: cartesian
     tile:
       type: rectangle
-      color: "#358788"
-      opacity: 0.7
+      look: { type: plain, color: "#358788" }
       size: [50, 48]
+      opacity: 0.7
       origin: [0.5, 0.47]
     snow:
       type: rectangle
+      look: { type: plain, color: "#D9D9D9" }
       size: [200, 145]
       opacity: 0.8
-      color: "#D9D9D9"
     spikesicle-thin:
       type: image
       image: /images/markers/spikesicle-thin.svg
       size: [210, 210]
       origin: [0.5, 0.05]
       rotate: 90
-      shadow: false
     spikesicle-thin-straight:
       type: rectangle
-      color: "#7ad4faaa"
+      look: { type: plain, color: "#7ad4faaa" }
       size: [1, 144]
       origin: [0.5, 0]
       visible: false
-      shadow: false
     spikesicle:
       type: image
       image: /images/markers/spikesicle.svg
       size: 210
       origin: [0.5, 0.05]
       rotate: 90
-      shadow: false
     spikesicle-straight:
       type: rectangle
-      color: "#dce8e8aa"
+      look: { type: plain, color: "#dce8e8aa" }
       size: [15, 144]
       origin: [0.5, 0]
       visible: false
-      shadow: false
     ice-block:
       type: ellipse
-      color: "#dce8e8dd"
+      look: { type: plain, color: "#dce8e8dd" }
       size: [10, 30]
       visible: false
+      shadow: true
     defamation:
       type: ellipse
-      look: aoe
-      opacity: 0.85
+      look: none
+      stroke: { color: "#dce8e8", style: dashed }
       size: 130
+      opacity: 0.85
+      exit: ice
       visible: false
-      shadow: false
     chilling-cataclysm:
       type: image
       image: /images/markers/chilling-cataclysm.svg
       size: 37
       opacity: 0.8
-      shadow: false
     chilling-line:
       type: rectangle
-      color: url(#line-gradient)
-      opacity: 1
+      look: aoe
       size: [24, 400]
-      scale: [0, 1]
-      shadow: false
+      opacity: 1
+      origin: [0.5, 0]
+      visible: false
+      enter: scale-x
   graphs:
     spikesicle:
       - boss: [0, -75, 0]
@@ -1062,27 +1058,27 @@ graphing:
         ice-block#8: [75, -71]
         ice-block#9: [40, 55]
         ice-block#10: [95, 6]
-      - spikesicle-thin#1: { visible: false }
+      - players: [89, -8]
+        spikesicle-thin#1: { visible: false }
         spikesicle-thin#2: { visible: true }
-        players: [89, -8]
       - spikesicle-thin#1: { x: -75, transform: scaleY(-1) }
         spikesicle-thin#2: { visible: false }
         spikesicle-thin#3: { visible: true }
-      - spikesicle-thin#3: { visible: false }
+      - spikesicle-thin#1: { visible: true }
         spikesicle-thin#2: { x: -95 }
-        spikesicle-thin#1: { visible: true }
+        spikesicle-thin#3: { visible: false }
       - spikesicle-thin#1: { visible: false }
         spikesicle-thin#2: { visible: true }
       - spikesicle-thin#1: { x: 45, transform: "" }
         spikesicle-thin#2: { visible: false }
         spikesicle-thin-straight: { visible: true }
-      - spikesicle-thin-straight: { visible: false }
-        spikesicle-thin#1: { visible: true }
+      - spikesicle-thin#1: { visible: true }
         spikesicle-thin#2: { x: 75, transform: "" }
         spikesicle-thin#3: { x: 95, transform: "" }
-      - spikesicle-thin-straight: { x: 95 }
-        spikesicle-thin#1: { visible: false }
+        spikesicle-thin-straight: { visible: false }
+      - spikesicle-thin#1: { visible: false }
         spikesicle-thin#2: { visible: true }
+        spikesicle-thin-straight: { x: 95 }
       - spikesicle-thin#2: { visible: false }
         spikesicle-thin#3: { visible: true }
       - spikesicle-thin#3: { visible: false }
@@ -1092,82 +1088,87 @@ graphing:
       - spikesicle#1: { visible: false }
         spikesicle#2: { visible: true }
         ice-block#1: { visible: true }
-      - spikesicle#1: { x: -75, transform: scaleY(-1) }
+      - players: [20, 20]
+        spikesicle#1: { x: -75, transform: scaleY(-1) }
         spikesicle#2: { visible: false }
         spikesicle#3: { visible: true }
         ice-block#2: { visible: true }
-        players: [20, 20]
-      - spikesicle#3: { visible: false }
-        spikesicle#2: { x: -95 }
+      - players: [-10, 20]
         spikesicle#1: { visible: true }
+        spikesicle#2: { x: -95 }
+        spikesicle#3: { visible: false }
         ice-block#3: { visible: true }
-        players: [-10, 20]
-      - spikesicle#1: { visible: false }
+      - defamation#1: { visible: true }
+        players: [-20, 20]
+        spikesicle#1: { visible: false }
         spikesicle#2: { visible: true }
         ice-block#4: { visible: true }
-        defamation#1: { visible: true }
-        players: [-20, 20]
-      - spikesicle#1: { x: 45, transform: "" }
+      - defamation#1: { visible: false }
+        defamation#2: { visible: true }
+        spikesicle#1: { x: 45, transform: "" }
         spikesicle#2: { visible: false }
         spikesicle-straight: { visible: true }
-        ice-block#5: { visible: true }
-        defamation#1: { visible: false }
         ice-block#1: { visible: false }
-        defamation#2: { visible: true }
-      - spikesicle-straight: { visible: false }
+        ice-block#5: { visible: true }
+      - defamation#2: { visible: false }
+        defamation#3: { visible: true }
         spikesicle#1: { visible: true }
         spikesicle#2: { x: 75, transform: "" }
         spikesicle#3: { x: 95, transform: "" }
-        ice-block#6: { visible: true }
-        defamation#2: { visible: false }
+        spikesicle-straight: { visible: false }
         ice-block#2: { visible: false }
-        defamation#3: { visible: true }
-      - spikesicle-straight: { x: 95 }
-        spikesicle#1: { visible: false }
-        spikesicle#2: { visible: true }
-        ice-block#7: { visible: true }
-        defamation#3: { visible: false }
-        ice-block#3: { visible: false }
+        ice-block#6: { visible: true }
+      - defamation#3: { visible: false }
         defamation#4: { visible: true }
         players: [0, 0]
-      - spikesicle#2: { visible: false }
-        spikesicle#3: { visible: true }
-        ice-block#8: { visible: true }
-        defamation#4: { visible: false }
-        ice-block#4: { visible: false }
+        spikesicle#1: { visible: false }
+        spikesicle#2: { visible: true }
+        spikesicle-straight: { x: 95 }
+        ice-block#3: { visible: false }
+        ice-block#7: { visible: true }
+      - defamation#4: { visible: false }
         defamation#5: { visible: true }
-      - spikesicle#3: { visible: false }
-        spikesicle-straight: { visible: true }
-        ice-block#9: { visible: true }
-        defamation#5: { visible: false }
-        ice-block#5: { visible: false }
+        spikesicle#2: { visible: false }
+        spikesicle#3: { visible: true }
+        ice-block#4: { visible: false }
+        ice-block#8: { visible: true }
+      - defamation#5: { visible: false }
         defamation#6: { visible: true }
-      - ice-block#10: { visible: true }
-        defamation#6: { visible: false }
-        ice-block#6: { visible: false }
+        spikesicle#3: { visible: false }
+        spikesicle-straight: { visible: true }
+        ice-block#5: { visible: false }
+        ice-block#9: { visible: true }
+      - defamation#6: { visible: false }
         defamation#7: { visible: true }
+        spikesicle-straight: { visible: false }
+        ice-block#6: { visible: false }
+        ice-block#10: { visible: true }
       - defamation#7: { visible: false }
-        ice-block#7: { visible: false }
         defamation#8: { visible: true }
+        ice-block#7: { visible: false }
       - defamation#8: { visible: false }
-        ice-block#8: { visible: false }
         defamation#9: { visible: true }
+        ice-block#8: { visible: false }
       - defamation#9: { visible: false }
-        ice-block#9: { visible: false }
         defamation#10: { visible: true }
+        ice-block#9: { visible: false }
       - defamation#10: { visible: false }
         ice-block#10: { visible: false }
     chilling-cataclysm:
       - snow: [0, 0]
         boss: [0, -75, 0]
-        chilling-line#1.[1..4]: { attach: chilling-cataclysm#1 }
-        chilling-line#2.[1..4]: { attach: chilling-cataclysm#2 }
-        chilling-line#3.[1..4]: { attach: chilling-cataclysm#3 }
-        chilling-line#4.[1..4]: { attach: chilling-cataclysm#4 }
-        chilling-line#5.[1..4]: { attach: chilling-cataclysm#5 }
+        chilling-line#1.[1..8]: { attach: chilling-cataclysm#1 }
+        chilling-line#2.[1..8]: { attach: chilling-cataclysm#2 }
+        chilling-line#3.[1..8]: { attach: chilling-cataclysm#3 }
+        chilling-line#4.[1..8]: { attach: chilling-cataclysm#4 }
+        chilling-line#5.[1..8]: { attach: chilling-cataclysm#5 }
         chilling-line#[1..5].2: { rotate: 45 }
         chilling-line#[1..5].3: { rotate: 90 }
         chilling-line#[1..5].4: { rotate: -45 }
+        chilling-line#[1..5].5: { rotate: -90 }
+        chilling-line#[1..5].6: { rotate: -135 }
+        chilling-line#[1..5].7: { rotate: 180 }
+        chilling-line#[1..5].8: { rotate: 135 }
         T1: [-12, -31]
         T2: [12, -31]
         H1: [-16, 3]
@@ -1182,18 +1183,4 @@ graphing:
         chilling-cataclysm#4: [64, 13.5]
         chilling-cataclysm#5: [88, 61]
       - players: [-27, -30]
-      - chilling-line#*: { scale: 1 }
-    # thunder:
-    #   - tile#1: [-75, -50]
-    #     tile#2: { x: -25, y: -50, opacity: 0.3 }
-    #     tile#3: { x: 25, y: -50, opacity: 0.3 }
-    #     tile#4: [75, -50]
-    #     tile#5: { x: -75, y: -2, opacity: 0.3 }
-    #     tile#6: [-25, -2]
-    #     tile#7: [25, -2]
-    #     tile#8: { x: 75, y: -2, opacity: 0.3 }
-    #     tile#9: [-75, 46]
-    #     tile#10: { x: -25, y: 46, opacity: 0.3 }
-    #     tile#11: { x: 25, y: 46, opacity: 0.3 }
-    #     tile#12: [75, 46]
-    #     boss: [0, -75, 0]
+      - chilling-line#*: { visible: true }

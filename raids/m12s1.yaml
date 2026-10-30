@@ -816,20 +816,22 @@ graphing:
       look: aoe
       size: 60
       opacity: 0.85
+      exit: flash
       visible: false
-      shadow: false
     rect:
       type: rectangle
       look: aoe
       opacity: 0.85
-      scale: [1, 0]
-      shadow: false
+      enter: scale-y
+      exit: flash
+      visible: false
     kb:
       type: marker
       look: circle-kb
       size: 130
-      scale: 0
       opacity: 0.6
+      enter: scale
+      visible: false
     cone-arm:
       type: cone
       look: aoe
@@ -837,106 +839,121 @@ graphing:
       size: [185, 0]
       origin: [0.5, 1]
       opacity: 0.85
+      exit: sweep
       visible: false
-      shadow: false
     cone-gaze:
       type: cone
+      look: { type: plain, color: url(#aoe-gradient) }
       angle: 30
       size: [195, 0]
       origin: [0.5, 1]
-      color: url(#aoe-gradient)
+      exit: sweep
       visible: false
-      shadow: false
     spread:
       type: ellipse
-      look: aoe
+      look: none
+      stroke: { color: "#DD6F6EB8", style: dashed }
       size: 54
-      filter: hue-rotate(330deg) contrast(1.2)
-      scale: 0
-      shadow: false
+      enter: scale
+      exit: { type: flash, color: "#DD6F6EB8" }
+      visible: false
+    spread-drop:
+      type: ellipse
+      look: none
+      stroke: { color: "#6CD1F0B8", style: dashed }
+      size: 54
+      filter: hue-rotate(-90deg)
+      enter: scale
+      exit: splash
+      visible: false
+    split-scourge:
+      type: rectangle
+      look: none
+      stroke: { color: "#6EB3DD", style: dashed }
+      opacity: 0.5
+      filter: hue-rotate(-90deg)
+      enter: scale
+      exit: wave-cannon
+      visible: false
     targeted-spread:
       type: marker
-      size: 54
       look: spread-circle
-      scale: 0
+      size: 54
+      enter: scale
+      visible: false
       shadow: false
     spread-small:
       type: ellipse
-      look: aoe
+      look: none
+      stroke: { color: "#DD6F6EB8", style: dashed }
       size: 30
-      filter: hue-rotate(330deg) contrast(1.2)
+      exit: { type: flash, color: "#DD6F6EB8" }
       visible: false
-      shadow: false
     blob-tower:
       type: ellipse
+      look: { type: plain, color: url(#spread-gradient-radial) }
       size: 10
-      color: url(#spread-gradient-radial)
       visible: false
-      shadow: false
     green-orb:
       type: ellipse
+      look: { type: plain, color: url(#green-orb-gradient) }
       size: 8
-      color: url(#green-orb-gradient)
       visible: false
-      shadow: false
     purple-orb:
       type: ellipse
+      look: { type: plain, color: url(#purple-orb-gradient) }
       size: 8
-      color: url(#purple-orb-gradient)
       visible: false
-      shadow: false
     attached-snake:
       type: ellipse
+      look: { type: plain, color: url(#attached-snake-gradient) }
       size: [5, 3]
-      color: url(#attached-snake-gradient)
       visible: false
-      shadow: false
     cruel-coil:
       type: cone
+      look: { type: plain, color: url(#spread-gradient-radial) }
       angle: 320
       size: [46, 62]
       rotate: 180
-      visible: false
       opacity: 0.8
-      color: url(#spread-gradient-radial)
+      visible: false
       extrude: 5px url(#spread-gradient-radial)
     tb:
       type: marker
-      size: 15
       look: tankbuster
+      size: 15
       opacity: 0.7
-      shadow: false
       visible: false
     tb-circle:
       type: ellipse
+      look: { type: aoe, color: "#D83939" }
       size: 50
-      color: url(#tb-gradient)
+      opacity: 0.4
+      exit: { type: flash, color: "#D83939" }
       visible: false
-      shadow: false
     stack:
       type: marker
-      size: 50
       look: stack
+      size: 50
       opacity: 0.7
-      shadow: false
       visible: false
     tether:
       type: link
-      color: "#610101CD"
+      look: { type: plain, color: "#610101CD" }
       visible: false
     tower:
       type: marker
       look: tower
       size: 23
-      scale: 0
       opacity: 0.9
+      enter: scale
+      visible: false
     label:
       type: rectangle
       planar: false
+      look: { type: plain, color: "#111111bb" }
       size: [120, 25]
-      color: "#111111bb"
       visible: false
-      shadow: false
   graphs:
     role-orbs:
       - marker-a: [0, -65]
@@ -964,52 +981,52 @@ graphing:
         T1: [7, -20]
         cast: { text: Mortal Slayer, progress: 0 }
         hint: "Wait until the first purple orb appears, then:\nsupports on that side, DPS other side."
-      - cast: { progress: 0.25 }
-        green-orb#w2: { visible: true }
+      - green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
-        T1: [33, -69]
         M1: [-33, -69]
-      - cast: { progress: 0.5 }
-        purple-orb#e3: { visible: true }
+        T1: [33, -69]
+        cast: { progress: 0.25 }
+      - purple-orb#e3: { visible: true }
         green-orb#e4: { visible: true }
-        M2: [-27, -32]
-        H1: [27, -32]
         H2: [0, -8]
+        H1: [27, -32]
         R2: [0, -8]
         R1: [0, -8]
+        M2: [-27, -32]
         T2: [0, -8]
+        cast: { progress: 0.5 }
         hint: "DPS order: M1 M2 R1 R2<br />Tank order: MT OT<br />Healer order: H1 H2"
-      - cast: { progress: 0.75 }
-        green-orb#w3: { visible: true }
+      - green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
-      - cast: { progress: 1 }
-        green-orb#w1: { x: 0, y: 0, attach: M1, scale: 6 }
-        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
-      - cast: { visible: false }
-        green-orb#w1: { visible: false }
+        cast: { progress: 0.75 }
+      - green-orb#w1: { x: 0, y: 0, attach: M1, scale: 6, hits: [M1] }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6, hits: [T1] }
+        cast: { progress: 1 }
+      - green-orb#w1: { visible: false }
         purple-orb#e1: { visible: false }
-        T1: [80, -69]
-        M1: [-80, -69]
-        M2: [-33, -69]
         H1: [33, -69]
         R1: [-27, -32]
+        M2: [-33, -69]
+        M1: [-80, -69]
         T2: [27, -32]
-      - green-orb#w2: { x: 0, y: 0, attach: M2, scale: 6 }
-        green-orb#e2: { x: 0, y: 0, attach: H1, scale: 6 }
+        T1: [80, -69]
+        cast: { visible: false }
+      - green-orb#w2: { x: 0, y: 0, attach: M2, scale: 6, hits: [M2] }
+        green-orb#e2: { x: 0, y: 0, attach: H1, scale: 6, hits: [H1] }
       - green-orb#w2: { visible: false }
         green-orb#e2: { visible: false }
-        H1: [80, -69]
-        M2: [-80, -69]
-        R1: [-33, -69]
-        T2: [33, -69]
-        R2: [-27, -32]
         H2: [27, -32]
-      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
-        green-orb#e4: { x: 0, y: 0, attach: H2, scale: 6 }
-      - purple-orb#e3: { visible: false }
+        H1: [80, -69]
+        R2: [-27, -32]
+        R1: [-33, -69]
+        M2: [-80, -69]
+        T2: [33, -69]
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6, hits: [T2] }
+        green-orb#e4: { x: 0, y: 0, attach: H2, scale: 6, hits: [H2] }
+      - green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6, hits: [R1] }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6, hits: [R2] }
+        purple-orb#e3: { visible: false }
         green-orb#e4: { visible: false }
-        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
-        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
     light-party-orbs:
       - marker-a: [0, -65]
         marker-1: [-80, -62]
@@ -1036,53 +1053,53 @@ graphing:
         M2: [7, -10]
         cast: { text: Mortal Slayer, progress: 0 }
         hint: "Healers can preposition immediately, but may need to \"unpreposition\" if a purple orb is first."
-      - cast: { progress: 0.25 }
-        green-orb#w2: { visible: true }
+      - green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
-        T1: [33, -69]
         H2: [7, -20]
-      - cast: { progress: 0.5 }
-        purple-orb#e3: { visible: true }
+        T1: [33, -69]
+        cast: { progress: 0.25 }
+      - purple-orb#e3: { visible: true }
         green-orb#e4: { visible: true }
-        M1: [-27, -32]
         H2: [27, -32]
         R2: [0, -8]
         R1: [0, -8]
+        M1: [-27, -32]
         T2: [0, -8]
         M2: [0, -8]
+        cast: { progress: 0.5 }
         hint: "West order: H1 M1 R1<br />East order: H2 M2 R2<br />Tanks slot in as needed."
-      - cast: { progress: 0.75 }
-        green-orb#w3: { visible: true }
+      - green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
-      - cast: { progress: 1 }
-        green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6 }
-        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
-      - cast: { visible: false }
-        green-orb#w1: { visible: false }
+        cast: { progress: 0.75 }
+      - green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6, hits: [H1] }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6, hits: [T1] }
+        cast: { progress: 1 }
+      - green-orb#w1: { visible: false }
         purple-orb#e1: { visible: false }
         H1: [-80, -69]
-        T1: [80, -69]
-        M1: [-33, -69]
         H2: [33, -69]
+        T1: [80, -69]
         R1: [-27, -32]
+        M1: [-33, -69]
         T2: [27, -32]
-      - green-orb#w2: { x: 0, y: 0, attach: M1, scale: 6 }
-        green-orb#e2: { x: 0, y: 0, attach: H2, scale: 6 }
+        cast: { visible: false }
+      - green-orb#w2: { x: 0, y: 0, attach: M1, scale: 6, hits: [M1] }
+        green-orb#e2: { x: 0, y: 0, attach: H2, scale: 6, hits: [H2] }
       - green-orb#w2: { visible: false }
         green-orb#e2: { visible: false }
-        M1: [-80, -69]
         H2: [80, -69]
-        R1: [-33, -69]
-        T2: [33, -69]
         R2: [-27, -32]
+        R1: [-33, -69]
+        M1: [-80, -69]
+        T2: [33, -69]
         M2: [27, -32]
         hint: "R2 goes west because east already has all green orbs assigned and west does not.<br/>One ranged will always swap sides."
-      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
-        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
-      - purple-orb#e3: { visible: false }
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6, hits: [T2] }
+        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6, hits: [M2] }
+      - green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6, hits: [R1] }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6, hits: [R2] }
+        purple-orb#e3: { visible: false }
         green-orb#e4: { visible: false }
-        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
-        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
     kindred-orbs:
       - marker-a: [0, -65]
         marker-1: [-80, -62]
@@ -1109,50 +1126,50 @@ graphing:
         T1: [7, -20]
         cast: { text: Mortal Slayer, progress: 0 }
         hint: "Wait until the first purple orb appears, then:\ntanks and melees on that side, everyone else other side."
-      - cast: { progress: 0.25 }
-        green-orb#w2: { visible: true }
+      - green-orb#w2: { visible: true }
         green-orb#e2: { visible: true }
-        T1: [5, -70]
-        H1: [-2, -19]
         H2: [-2, 25]
-        R1: [-2, 69]
+        H1: [-2, -19]
         R2: [-36, 69]
+        R1: [-2, 69]
+        T1: [5, -70]
+        cast: { progress: 0.25 }
         hint: "Healers and rangeds preposition using these exact positions on the non-purple side."
-      - cast: { progress: 0.5 }
-        purple-orb#e3: { visible: true }
+      - purple-orb#e3: { visible: true }
         green-orb#e4: { visible: true }
-        M1: [41, -70]
         M2: [62, -27]
+        M1: [41, -70]
         T2: [62, -27]
-      - cast: { progress: 0.75 }
-        green-orb#w3: { visible: true }
+        cast: { progress: 0.5 }
+      - green-orb#w3: { visible: true }
         green-orb#w4: { visible: true }
-      - cast: { progress: 1 }
-        green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6 }
-        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6 }
-      - cast: { visible: false }
-        green-orb#w1: { visible: false }
+        cast: { progress: 0.75 }
+      - green-orb#w1: { x: 0, y: 0, attach: H1, scale: 6, hits: [H1] }
+        purple-orb#e1: { x: 0, y: 0, attach: T1, scale: 6, hits: [T1] }
+        cast: { progress: 1 }
+      - green-orb#w1: { visible: false }
         purple-orb#e1: { visible: false }
-        T1: [80, -69]
+        H1: [2, -19]
         M1: [5, -70]
         T2: [41, -70]
-        H1: [2, -19]
+        T1: [80, -69]
+        cast: { visible: false }
         hint: "When a healer or ranged gets hit, they just take a small step onto the other side."
-      - green-orb#w2: { x: 0, y: 0, attach: H2, scale: 6 }
-        green-orb#e2: { x: 0, y: 0, attach: M1, scale: 6 }
+      - green-orb#w2: { x: 0, y: 0, attach: H2, scale: 6, hits: [H2] }
+        green-orb#e2: { x: 0, y: 0, attach: M1, scale: 6, hits: [M1] }
       - green-orb#w2: { visible: false }
         green-orb#e2: { visible: false }
+        H2: [2, 25]
+        M2: [41, -70]
         M1: [80, -69]
         T2: [5, -70]
-        M2: [41, -70]
-        H2: [2, 25]
-      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6 }
-        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6 }
+      - purple-orb#e3: { x: 0, y: 0, attach: T2, scale: 6, hits: [T2] }
+        green-orb#e4: { x: 0, y: 0, attach: M2, scale: 6, hits: [M2] }
         hint: ""
-      - purple-orb#e3: { visible: false }
+      - green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6, hits: [R1] }
+        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6, hits: [R2] }
+        purple-orb#e3: { visible: false }
         green-orb#e4: { visible: false }
-        green-orb#w3: { x: 0, y: 0, attach: R1, scale: 6 }
-        green-orb#w4: { x: 0, y: 0, attach: R2, scale: 6 }
     grotesquerie-act-1:
       - circle#spotlight-1: [-67, -65]
         circle#spotlight-2: [-33, -65]
@@ -1208,76 +1225,82 @@ graphing:
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 1", progress: 0.75 }
         hint: "Spread out a bit to make it easier to see where your blob is."
-      - attached-snake#*: { visible: true }
-        cast: { progress: 1, visible: false }
+      - H2: { status: [shared-grotesquerie] }
         DPS: { status: [bursting-grotesquerie] }
-        H2: { status: [shared-grotesquerie] }
-      - cast: { text: Ravenous Reach, progress: 0 }
-        players: { x: -67, y: -65, status: [] }
-        attached-snake#*: { visible: false }
-        hint: ""
-      - cast: { visible: true }
-        attached-snake#*: { visible: false }
-        circle#spotlight-1: { visible: true }
-        players: [-33, -65]
-      - cast: { progress: 0.2 }
-        enemy#arm: { visible: true }
-        circle#spotlight-1: { visible: false }
-        circle#spotlight-2: { visible: true }
-        players: [0, -65]
-      - cast: { progress: 0.4 }
-        enemy#arm: [17, -51, 45]
-        circle#spotlight-2: { visible: false }
-        circle#spotlight-3: { visible: true }
-        players: [0, -32]
-      - cast: { progress: 0.6 }
-        enemy#arm: [-33, -27, 60]
-        circle#spotlight-3: { visible: false }
-        circle#spotlight-4: { visible: true }
         attached-snake#*: { visible: true }
-        DPS: { status: [bursting-grotesquerie] }
-        H2: { x: -95, y: -70, status: [shared-grotesquerie] }
-        R2: [-17, 72]
-        R1: [-50, 35]
-        M2: [-50, -35]
-        M1: [-17, -70]
-        H1: [-95, -59]
-        T2: [-80, -70]
+        cast: { progress: 1, visible: false }
+      - players: { x: -67, y: -65, status: [] }
+        attached-snake#*: { visible: false }
+        cast: { text: Ravenous Reach, progress: 0 }
+        hint: ""
+      - circle#spotlight-1: { visible: true }
+        players: [-33, -65]
+        attached-snake#*: { visible: false }
+        cast: { visible: true }
+      - circle#spotlight-1: { visible: false }
+        circle#spotlight-2: { visible: true }
+        enemy#arm: { visible: true }
+        players: [0, -65]
+        cast: { progress: 0.2 }
+      - circle#spotlight-2: { visible: false }
+        circle#spotlight-3: { visible: true }
+        enemy#arm: [17, -51, 45]
+        players: [0, -32]
+        cast: { progress: 0.4 }
+      - circle#spotlight-3: { visible: false }
+        circle#spotlight-4: { visible: true }
+        enemy#arm: [-33, -27, 60]
         T1: [-72, -70]
-      - cast: { progress: 0.8 }
+        T2: [-80, -70]
+        H1: [-95, -59]
+        H2: { x: -95, y: -70, status: [shared-grotesquerie] }
+        M1: [-17, -70]
+        M2: [-50, -35]
+        R1: [-50, 35]
+        R2: [-17, 72]
+        DPS: { status: [bursting-grotesquerie] }
+        attached-snake#*: { visible: true }
+        cast: { progress: 0.6 }
+      - circle#spotlight-4: { visible: false }
         enemy#arm: [-67, 0, -90]
-        circle#spotlight-4: { visible: false }
-        attached-snake#[M2,R2]: { rotate: -90, x: 5, y: 0 }
         attached-snake#H1: { x: -5, y: 0 }
         attached-snake#H2: { x: 0, y: -5 }
         attached-snake#T1: { x: 0, y: -5, rotate: 180 }
+        attached-snake#[M2,R2]: { rotate: -90, x: 5, y: 0 }
+        cast: { progress: 0.8 }
         hint: "Turn your character to ensure your blob isn't facing another player."
-      - cast: { progress: 1 }
-        cone-arm: { visible: true }
+      - cone-arm: { visible: true }
         cone-gaze#*: { visible: true }
+        spread#stack: { visible: true }
+        spread#spread-*: { visible: true }
         players: { status: [] }
         attached-snake#*: { visible: false }
-        spread#spread-*: { scale: 1 }
+        cast: { progress: 1 }
         hint: ""
-      - cast: { visible: false }
+      - enemy#arm: { visible: false }
         cone-arm: { visible: false }
-        enemy#arm: { visible: false }
         cone-gaze#*: { visible: false }
-        spread#spread-*: { visible: false }
         circle#blob-*: { visible: true }
-      - stack: { visible: true }
-        tb#*: { visible: true }
+        spread#stack: { visible: false, hits: [H2] }
+        spread#spread-1: { visible: false, hits: [M1] }
+        spread#spread-2: { visible: false, hits: [M2] }
+        spread#spread-3: { visible: false, hits: [R1] }
+        spread#spread-4: { visible: false, hits: [R2] }
+        cast: { visible: false }
+      - tb#*: { visible: true }
         tb-circle#*: { visible: true }
+        stack: { visible: true }
         players: [-95, -70]
         T1: [97, -5]
         T2: [94, 3]
       - circle#blob-*: { scale: 6.2 }
-        spread#stack: { scale: 1 }
+        spread#stack: { visible: true }
         stack: { visible: false }
       - circle#*: { visible: false }
-        spread#stack: { visible: false }
+        spread#stack: { visible: false, hits: [healers, DPS] }
         tb#*: { visible: false }
-        tb-circle#*: { visible: false }
+        tb-circle#T1: { visible: false, hits: [T1] }
+        tb-circle#T2: { visible: false, hits: [T2] }
     grotesquerie-act-2:
       - circle#spotlight-1: { attach: blob-tower#1, size: 50 }
         circle#spotlight-2: { attach: blob-tower#2, size: 50 }
@@ -1324,133 +1347,140 @@ graphing:
         R1: [30, 0]
         R2: [21, 21]
         cast: { text: "Grotesquerie: Act 2", progress: 0.75 }
-      - cast: { progress: 1 }
-        T1: { status: [first-in-line, bonds-of-flesh-alpha] }
+      - T1: { status: [first-in-line, bonds-of-flesh-alpha] }
         T2: { status: [second-in-line, bonds-of-flesh-alpha] }
-        H2: { status: [third-in-line, bonds-of-flesh-alpha] }
         H1: { status: [fourth-in-line, bonds-of-flesh-alpha] }
-        R1: { status: [first-in-line, bonds-of-flesh-beta] }
-        M2: { status: [second-in-line, bonds-of-flesh-beta] }
+        H2: { status: [third-in-line, bonds-of-flesh-alpha] }
         M1: { status: [third-in-line, bonds-of-flesh-beta] }
+        M2: { status: [second-in-line, bonds-of-flesh-beta] }
+        R1: { status: [first-in-line, bonds-of-flesh-beta] }
         R2: { status: [fourth-in-line, bonds-of-flesh-beta] }
+        cast: { progress: 1 }
         hint: "Players are assigned debuffs. Alphas go out and soak blob towers. Betas stay in and soak player towers."
-      - cast: { visible: false }
-        circle#spotlight-1: { visible: true }
+      - circle#spotlight-1: { visible: true }
         players: { x: 0, y: 0, status: [] }
+        cast: { visible: false }
         hint: "Alpha players keep an eye on the AoEs as they appear. The order determines which tower they soak."
-      - cast: { text: "Cruel Coil", progress: 0 }
-        circle#spotlight-2: { visible: true }
+      - circle#spotlight-2: { visible: true }
+        cast: { text: "Cruel Coil", progress: 0 }
       - circle#spotlight-1: { visible: false }
-        blob-tower#1: { visible: true }
         circle#spotlight-2: { visible: true }
+        blob-tower#1: { visible: true }
       - circle#spotlight-2: { visible: false }
-        blob-tower#2: { visible: true }
         circle#spotlight-3: { visible: true }
+        blob-tower#2: { visible: true }
         cast: { visible: true }
       - circle#spotlight-3: { visible: false }
-        blob-tower#3: { visible: true }
         circle#spotlight-4: { visible: true }
+        blob-tower#3: { visible: true }
         cast: { progress: 0.5 }
       - circle#spotlight-4: { visible: false }
         blob-tower#4: { visible: true }
         cast: { progress: 1 }
-      - cast: { visible: false }
-        boss: { x: 0, y: 0, visible: false }
+      - boss: { x: 0, y: 0, visible: false }
         cruel-coil: { visible: true }
+        cast: { visible: false }
       - cruel-coil: { rotate: 90 }
       - cruel-coil: { rotate: 0 }
+        spread-small#[T1,R1]: { visible: true }
+        tether#1: { visible: true }
         T1: { y: 40, status: [first-in-line, unbreakable-flesh-alpha] }
         R1: { y: -40, status: [first-in-line, unbreakable-flesh-beta] }
-        tether#1: { visible: true }
-        spread-small#[T1,R1]: { visible: true }
         hint: "First tethers activate. Alpha goes out, beta stays in."
-      - tether#1: { visible: false }
-        spread-small#[T1,R1]: { visible: false }
+      - spread-small#[T1,R1]: { visible: false, hits: [T1, R1] }
         blob-tower#1: { visible: false }
-        tower#[a,b]1: { scale: 1 }
+        tower#[a,b]1: { visible: true }
+        tether#1: { visible: false }
         T1: { y: 60, status: [magic-vulnerability-up] }
         R1: { status: [magic-vulnerability-up] }
         hint: "First towers appear."
       - cruel-coil: { rotate: -90 }
-        R1: { y: 0 }
+        spread-small#[T2,M2]: { visible: true }
+        tether#2: { visible: true }
+        T1: [-46, 55]
+        T2: { x: 40, status: [second-in-line, unbreakable-flesh-alpha] }
         H2: { attach: tower#a1, status: [third-in-line, bonds-of-flesh-alpha] }
         M1: { attach: tower#b1, status: [third-in-line, bonds-of-flesh-beta] }
-        T2: { x: 40, status: [second-in-line, unbreakable-flesh-alpha] }
         M2: { x: -40, status: [second-in-line, unbreakable-flesh-beta] }
-        T1: [-46, 55]
-        tether#2: { visible: true }
-        spread-small#[T2,M2]: { visible: true }
+        R1: { y: 0 }
         hint: "Second tethers activate. Third-in-lines soak first towers."
-      - tether#2: { visible: false }
-        spread-small#[T2,M2]: { visible: false }
+      - spread-small#M2: { visible: false, hits: [M2] }
+        spread-small#T2: { visible: false, hits: [T2] }
         blob-tower#2: { visible: false }
-        tower#[a,b]1: { visible: false }
-        tower#[a,b]2: { scale: 1 }
+        tower#a1: { visible: false, hits: [H2] }
+        tower#b1: { visible: false, hits: [M1] }
+        tower#[a,b]2: { visible: true }
+        tether#2: { visible: false }
         T1: [-68, 2]
         T2: { x: 60, status: [magic-vulnerability-up] }
-        M2: { status: [magic-vulnerability-up] }
         H2: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
         M1: { attach: null, x: 0, y: 0, status: [third-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
+        M2: { status: [magic-vulnerability-up] }
         hint: "Second towers appear."
       - cruel-coil: { rotate: -180 }
-        M2: { x: 0 }
-        H1: { attach: tower#a2, status: [fourth-in-line, bonds-of-flesh-alpha] }
-        R2: { attach: tower#b2, status: [fourth-in-line, bonds-of-flesh-beta] }
-        H2: { y: -40, status: [third-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
-        M1: { y: 40, status: [third-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
+        spread-small#[H2,M1]: { visible: true }
+        tether#3: { visible: true }
         T1: [-69, -46]
         T2: [66, 45]
-        tether#3: { visible: true }
-        spread-small#[H2,M1]: { visible: true }
+        H1: { attach: tower#a2, status: [fourth-in-line, bonds-of-flesh-alpha] }
+        H2: { y: -40, status: [third-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
+        M1: { y: 40, status: [third-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
+        M2: { x: 0 }
+        R2: { attach: tower#b2, status: [fourth-in-line, bonds-of-flesh-beta] }
         hint: "Third tethers activate. Fourth-in-lines soak second towers."
-      - tether#3: { visible: false }
-        spread-small#[H2,M1]: { visible: false }
+      - spread-small#M1: { visible: false, hits: [M1] }
+        spread-small#H2: { visible: false, hits: [H2] }
         blob-tower#3: { visible: false }
-        tower#[a,b]2: { visible: false }
-        tower#[a,b]3: { scale: 1 }
-        R1: { status: [] }
+        tower#a2: { visible: false, hits: [H1] }
+        tower#b2: { visible: false, hits: [R2] }
+        tower#[a,b]3: { visible: true }
+        tether#3: { visible: false }
         T1: { x: -69, y: -46, status: [] }
+        H1: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
         H2: { y: -60, status: [magic-vulnerability-up, poison-resistance-down-ii] }
         M1: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
-        H1: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-alpha, poison-resistance-down-ii] }
+        R1: { status: [] }
         R2: { attach: null, x: 0, y: 0, status: [fourth-in-line, bonds-of-flesh-beta, poison-resistance-down-ii] }
         hint: "Third towers appear."
       - cruel-coil: { rotate: 90 }
-        M2: { x: 0 }
-        H2: [53, -62]
-        R1: [0, 40]
-        M1: [0, 0]
-        H1: { x: -40, status: [fourth-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
-        R2: { x: 40, status: [fourth-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
-        tether#4: { visible: true }
         spread-small#[H1,R2]: { visible: true }
+        tether#4: { visible: true }
+        H1: { x: -40, status: [fourth-in-line, unbreakable-flesh-alpha, poison-resistance-down-ii] }
+        H2: [53, -62]
+        M1: [0, 0]
+        M2: { x: 0 }
+        R1: [0, 40]
+        R2: { x: 40, status: [fourth-in-line, unbreakable-flesh-beta, poison-resistance-down-ii] }
         hint: "Fourth tethers activate. First-in-lines soak third towers."
-      - tether#4: { visible: false }
-        spread-small#[H1,R2]: { visible: false }
+      - spread-small#H1: { visible: false, hits: [H1] }
+        spread-small#R2: { visible: false, hits: [R2] }
         blob-tower#4: { visible: false }
-        tower#[a,b]3: { visible: false }
-        tower#[a,b]4: { scale: 1 }
+        tower#a3: { visible: false, hits: [T1] }
+        tower#b3: { visible: false, hits: [R1] }
+        tower#[a,b]4: { visible: true }
+        tether#4: { visible: false }
         [M2,T2]: { status: [] }
-        H1: { x: -60, status: [magic-vulnerability-up, poison-resistance-down-ii] }
-        R2: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
-        R1: { x: 0, y: 0, status: [poison-resistance-down-ii] }
         T1: { status: [poison-resistance-down-ii] }
+        H1: { x: -60, status: [magic-vulnerability-up, poison-resistance-down-ii] }
+        R1: { x: 0, y: 0, status: [poison-resistance-down-ii] }
+        R2: { status: [magic-vulnerability-up, poison-resistance-down-ii] }
         hint: "Fourth towers appear."
       - cruel-coil: { rotate: 0 }
-        R2: { x: 19 }
-        M2: { x: 40 }
-        [R1,M1]: [19, 0]
         H1: [-71, -22]
+        M2: { x: 40 }
+        R2: { x: 19 }
+        [R1,M1]: [19, 0]
         hint: "Second-in-lines soak fourth towers."
-      - tower#[a,b]4: { visible: false }
+      - tower#a4: { visible: false, hits: [T2] }
+        tower#b4: { visible: false, hits: [M2] }
         [M2,T2,H2,M1]: { status: [poison-resistance-down-ii] }
         hint: "The exit is always on the fourth tower. Everyone still inside prepares to exit."
       - cruel-coil: { rotate: -90 }
         hint: ""
       - [M2,R2,R1,M1]: [78, -19]
         [H1,R2]: { status: [poison-resistance-down-ii] }
-      - cruel-coil: { scale: 0.3, rotate: 180, visible: false }
-        boss: { visible: true, y: -80 }
+      - boss: { visible: true, y: -80 }
+        cruel-coil: { scale: 0.3, rotate: 180, visible: false }
         T2: [53, -7]
     grotesquerie-act-3-cardinals:
       - arena: { image: /images/arenas/m12s1.avif }
@@ -1469,8 +1499,8 @@ graphing:
         rect#bring-down-the-house-3: [62, -50]
         rect#bring-down-the-house-4: [62, 50]
         rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
-        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
-        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        split-scourge#1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150] }
+        split-scourge#2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150] }
         circle#grand-entrance-[1..10]: { size: 20 }
         circle#grand-entrance-1: [-87, -62]
         circle#grand-entrance-2: [-87, 37]
@@ -1490,6 +1520,12 @@ graphing:
         spread#H2: { attach: H2, size: 90 }
         spread#R1: { attach: R1, size: 90 }
         spread#R2: { attach: R2, size: 90 }
+        spread-drop#M1: { attach: M1, size: 54 }
+        spread-drop#M2: { attach: M2, size: 54 }
+        spread-drop#H1: { attach: H1, size: 54 }
+        spread-drop#H2: { attach: H2, size: 54 }
+        spread-drop#R1: { attach: R1, size: 54 }
+        spread-drop#R2: { attach: R2, size: 54 }
         tower#M1: { attach: M1 }
         tower#M2: { attach: M2 }
         tower#T1: { attach: T1 }
@@ -1516,40 +1552,42 @@ graphing:
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
         hint: "Cardinal pattern"
-      - cast: { progress: 1 }
-        attached-snake#*: { visible: true }
-        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
-        boss: { visible: false }
+      - boss: { visible: false }
         players: { status: [mitotic-phase] }
-      - R1: [47, -7]
-        T1: [47, 7]
-        R2: [7, 47]
+        attached-snake#*: { visible: true }
+        cast: { progress: 1 }
+        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
+      - T1: [47, 7]
         T2: [-7, 47]
-        M1: [-47, -7]
         H1: [-47, 7]
-        M2: [7, -47]
         H2: [-7, -47]
+        M1: [-47, -7]
+        M2: [7, -47]
+        R1: [47, -7]
+        R2: [7, 47]
         hint: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise."
-      - cast: { text: "Feral Fission", progress: 0.5 }
-        circle#*: { visible: true }
-        R1: [93, -18]
+      - circle#*: { visible: true }
         T1: [57, 18]
-        R2: [18, 68]
         T2: [-18, 32]
-        M1: [-57, -18]
         H1: [-93, 18]
-        M2: [-18, -68]
         H2: [18, -32]
+        M1: [-57, -18]
+        M2: [-18, -68]
+        R1: [93, -18]
+        R2: [18, 68]
+        cast: { text: "Feral Fission", progress: 0.5 }
         hint: "N/S platforms position differently so the players can't clip each other across platforms."
-      - rect#bring-down-the-house-*: { scale: 1 }
+      - rect#bring-down-the-house-*: { visible: true }
         circle#*: { visible: false }
         cast: { progress: 1, visible: false }
-      - rect#bring-down-the-house-*: { visible: false }
+      - arena: { image: /images/arenas/m12s1_split_cardinals.avif }
+        rect#bring-down-the-house-*: { visible: false }
         circle#*: { visible: false }
         players: { status: [mitotic-phase, fate-of-the-wurm] }
-        arena: { image: /images/arenas/m12s1_split_cardinals.avif }
         hint: ""
-      - players: { status: [bind, fate-of-the-wurm] }
+      - spread#*: { visible: true }
+        tower#*: { visible: true }
+        players: { status: [bind, fate-of-the-wurm] }
         attached-snake#H1: { attach: T1 }
         attached-snake#H2: { attach: R2 }
         attached-snake#T1: { attach: H1 }
@@ -1559,38 +1597,48 @@ graphing:
         attached-snake#R1: { attach: M1 }
         attached-snake#R2: { attach: H2 }
         attached-snake#*: { x: 0, y: 0, visible: false }
-        tower#*: { scale: 1 }
-        spread#*: { scale: 1, visible: true  }
-      - tower#*: { visible: false }
-        spread#*: { visible: false }
+      - spread#M1: { visible: false, hits: [M1] }
+        spread#M2: { visible: false, hits: [M2] }
+        spread#T1: { visible: false, hits: [T1] }
+        spread#T2: { visible: false, hits: [T2] }
+        spread#H1: { visible: false, hits: [H1] }
+        spread#H2: { visible: false, hits: [H2] }
+        spread#R1: { visible: false, hits: [R1] }
+        spread#R2: { visible: false, hits: [R2] }
+        tower#*: { visible: false }
         players: { status: [bind, fate-of-the-wurm, poison-resistance-down-ii] }
       - arena: { image: /images/arenas/m12s1_cardinals.avif }
         players: { status: [poison-resistance-down-ii] }
       - boss: { visible: true }
         enemy#[1,2]: { visible: true }
+        split-scourge#*: { visible: true }
         T1: [-43, -68]
         T2: [43, -68]
-        M1: [-5, -12]
-        M2: [5, -12]
         H1: [-57, 18]
         H2: [57, 18]
-        R2: [43, 68]
+        M1: [-5, -12]
+        M2: [5, -12]
         R1: [-43, 68]
+        R2: [43, 68]
         players: { status: [] }
         hint: "MT takes left TB in the corner, OT right. Rangeds can preposition."
       - enemy#1: { rotate: T1 }
         enemy#2: { rotate: T2 }
-        rect#split-scourge-*: { scale: 1 }
-        spread#*: { size: 54, scale: 0 }
+        split-scourge#1: { visible: false, hits: [T1] }
+        split-scourge#2: { visible: false, hits: [T2] }
         [T1, T2]: { status: [magic-vulnerability-up] }
-      - rect#split-scourge-*: { visible: false }
-        spread#*: { visible: true }
+      - enemy#[1,2]: { rotate: 0 }
+        spread-drop#*: { visible: true }
         [T1, T2]: [0, 0]
         M1: [-43, -68]
         M2: [43, -68]
-        enemy#[1,2]: { rotate: 0 }
         hint: "Tanks hurry middle so they don't get clipped by the melee spreads."
-      - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
+      - spread-drop#M1: { visible: false, hits: [M1] }
+        spread-drop#M2: { visible: false, hits: [M2] }
+        spread-drop#H1: { visible: false, hits: [H1] }
+        spread-drop#H2: { visible: false, hits: [H2] }
+        spread-drop#R1: { visible: false, hits: [R1] }
+        spread-drop#R2: { visible: false, hits: [R2] }
         players: { status: [magic-vulnerability-up] }
     grotesquerie-act-3-intercardinals:
       - arena: { image: /images/arenas/m12s1.avif }
@@ -1608,8 +1656,8 @@ graphing:
         rect#bring-down-the-house-3: { x: -75, y: 0, size: [50, 50] }
         rect#bring-down-the-house-4: { x: 75, y: 0, size: [50, 50] }
         rect#bring-down-the-house-5: { x: 0, y: 0, size: [100, 50] }
-        rect#split-scourge-1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150], filter: hue-rotate(90deg) }
-        rect#split-scourge-2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150], filter: hue-rotate(90deg) }
+        split-scourge#1: { attach: enemy#1, origin: [0.5, 0], rotate: T1, size: [50, 150] }
+        split-scourge#2: { attach: enemy#2, origin: [0.5, 0], rotate: T2, size: [50, 150] }
         circle#grand-entrance-[1..10]: { size: 20 }
         circle#grand-entrance-1: [-37, -62]
         circle#grand-entrance-2: [-62, 14]
@@ -1629,6 +1677,12 @@ graphing:
         spread#H2: { attach: H2, size: 90 }
         spread#R1: { attach: R1, size: 90 }
         spread#R2: { attach: R2, size: 90 }
+        spread-drop#M1: { attach: M1, size: 54 }
+        spread-drop#M2: { attach: M2, size: 54 }
+        spread-drop#H1: { attach: H1, size: 54 }
+        spread-drop#H2: { attach: H2, size: 54 }
+        spread-drop#R1: { attach: R1, size: 54 }
+        spread-drop#R2: { attach: R2, size: 54 }
         tower#M1: { attach: M1 }
         tower#M2: { attach: M2 }
         tower#T1: { attach: T1 }
@@ -1655,40 +1709,42 @@ graphing:
         attached-snake#R2: { attach: R2, rotate: 0, x: 0, y: -5 }
         cast: { text: "Grotesquerie: Act 3", progress: 0.75 }
         hint: "Intercardinal pattern"
-      - cast: { progress: 1 }
-        attached-snake#*: { visible: true }
-        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
-        boss: { visible: false }
+      - boss: { visible: false }
         players: { status: [mitotic-phase] }
-      - R1: [47, -7]
-        T1: [47, 7]
-        R2: [7, 47]
+        attached-snake#*: { visible: true }
+        cast: { progress: 1 }
+        hint: "Unlike the attached blobs during Act 1, these do <strong>not</strong> rotate alongside your character."
+      - T1: [47, 7]
         T2: [-7, 47]
-        M1: [-47, -7]
         H1: [-47, 7]
-        M2: [7, -47]
         H2: [-7, -47]
+        M1: [-47, -7]
+        M2: [7, -47]
+        R1: [47, -7]
+        R2: [7, 47]
         hint: "Preposition on your cardinal. If it's intercard, simply rotate 45° clockwise."
-      - cast: { text: "Feral Fission", progress: 0.5 }
-        circle#*: { visible: true }
-        R1: [95, 30]
+      - circle#*: { visible: true }
         T1: [55, 69]
-        R2: [-54, 30]
         T2: [-95, 69]
-        M1: [-54, -70]
         H1: [-95, -32]
-        M2: [95, -70]
         H2: [55, -32]
+        M1: [-54, -70]
+        M2: [95, -70]
+        R1: [95, 30]
+        R2: [-54, 30]
+        cast: { text: "Feral Fission", progress: 0.5 }
         hint: "N/S platforms position differently so the players can't clip each other across platforms."
-      - rect#bring-down-the-house-*: { scale: 1 }
+      - rect#bring-down-the-house-*: { visible: true }
         circle#*: { visible: false }
         cast: { progress: 1, visible: false }
-      - rect#bring-down-the-house-*: { visible: false }
+      - arena: { image: /images/arenas/m12s1_split_intercardinals.avif }
+        rect#bring-down-the-house-*: { visible: false }
         circle#*: { visible: false }
         players: { status: [mitotic-phase, fate-of-the-wurm] }
-        arena: { image: /images/arenas/m12s1_split_intercardinals.avif }
         hint: ""
-      - players: { status: [bind, fate-of-the-wurm] }
+      - spread#*: { visible: true }
+        tower#*: { visible: true }
+        players: { status: [bind, fate-of-the-wurm] }
         attached-snake#H1: { attach: H2 }
         attached-snake#H2: { attach: T1 }
         attached-snake#T1: { attach: T2 }
@@ -1698,19 +1754,25 @@ graphing:
         attached-snake#R1: { attach: R2 }
         attached-snake#R2: { attach: M1 }
         attached-snake#*: { x: 0, y: 0, visible: false }
-        tower#*: { scale: 1 }
-        spread#*: { scale: 1, visible: true }
-      - tower#*: { visible: false }
-        spread#*: { visible: false }
+      - spread#M1: { visible: false, hits: [M1] }
+        spread#M2: { visible: false, hits: [M2] }
+        spread#T1: { visible: false, hits: [T1] }
+        spread#T2: { visible: false, hits: [T2] }
+        spread#H1: { visible: false, hits: [H1] }
+        spread#H2: { visible: false, hits: [H2] }
+        spread#R1: { visible: false, hits: [R1] }
+        spread#R2: { visible: false, hits: [R2] }
+        tower#*: { visible: false }
         players: { status: [bind, fate-of-the-wurm, poison-resistance-down-ii] }
       - arena: { image: /images/arenas/m12s1_intercardinals.avif }
         players: { status: [poison-resistance-down-ii] }
       - boss: { visible: true }
         enemy#[1,2]: { visible: true }
-        H1: [-43, 18]
-        H2: [43, 18]
+        split-scourge#*: { visible: true }
         T1: [-45, -32]
         T2: [45, -32]
+        H1: [-43, 18]
+        H2: [43, 18]
         M1: [-80, -69]
         M2: [80, -69]
         R1: [-57, 68]
@@ -1719,17 +1781,21 @@ graphing:
         hint: "MT takes left TB, OT right. Rangeds can preposition."
       - enemy#1: { rotate: T1 }
         enemy#2: { rotate: T2 }
-        rect#split-scourge-*: { scale: 1 }
-        spread#*: { size: 54, scale: 0 }
+        split-scourge#1: { visible: false, hits: [T1] }
+        split-scourge#2: { visible: false, hits: [T2] }
         [T1, T2]: { status: [magic-vulnerability-up] }
-      - rect#split-scourge-*: { visible: false }
-        spread#*: { visible: true }
+      - enemy#[1,2]: { rotate: 0 }
+        spread-drop#*: { visible: true }
         [T1, T2]: [0, 0]
         M1: [-43, -68]
         M2: [43, -68]
-        enemy#[1,2]: { rotate: 0 }
         hint: "Tanks hurry middle so they don't get clipped by the melee spreads."
-      - spread#[M1,M2,R1,R2,H1,H2]: { scale: 1 }
+      - spread-drop#M1: { visible: false, hits: [M1] }
+        spread-drop#M2: { visible: false, hits: [M2] }
+        spread-drop#H1: { visible: false, hits: [H1] }
+        spread-drop#H2: { visible: false, hits: [H2] }
+        spread-drop#R1: { visible: false, hits: [R1] }
+        spread-drop#R2: { visible: false, hits: [R2] }
         players: { status: [magic-vulnerability-up] }
     grotesquerie-curtain-call-cardinals:
       - arena: { image: /images/arenas/m12s1_cardinals.avif }
@@ -1768,28 +1834,27 @@ graphing:
         cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
         hint: "Cardinal pattern"
       - cast: { progress: 1, visible: false }
-      - cast: { text: Ravenous Reach, progress: 0 }
-        hint: ""
-        circle#spotlight-1: { visible: true }
+      - circle#spotlight-1: { visible: true }
         players: { attach: circle#spotlight-2 }
-      - cast: { visible: true }
-        circle#spotlight-1: { visible: false }
+        cast: { text: Ravenous Reach, progress: 0 }
+        hint: ""
+      - circle#spotlight-1: { visible: false }
         circle#spotlight-2: { visible: true }
         players: { attach: circle#spotlight-3 }
-      - cast: { progress: 0.2 }
-        enemy#arm: { visible: true }
-        circle#spotlight-2: { visible: false }
+        cast: { visible: true }
+      - circle#spotlight-2: { visible: false }
         circle#spotlight-3: { visible: true }
+        enemy#arm: { visible: true }
         players: { attach: circle#spotlight-4 }
-      - cast: { progress: 0.4 }
-        enemy#arm: [17, -51, 45]
-        circle#spotlight-3: { visible: false }
+        cast: { progress: 0.2 }
+      - circle#spotlight-3: { visible: false }
         circle#spotlight-4: { visible: true }
+        enemy#arm: [17, -51, 45]
         players: { attach: circle#spotlight-5 }
-      - cast: { progress: 0.6 }
-        enemy#arm: [-33, -27, 60]
-        circle#spotlight-4: { visible: false }
+        cast: { progress: 0.4 }
+      - circle#spotlight-4: { visible: false }
         circle#spotlight-5: { visible: true }
+        enemy#arm: [-33, -27, 60]
         players: { attach: null }
         DPS: { status: [rotting-flesh, bonds-of-flesh-alpha] }
         supports: { status: [bursting-grotesquerie, bonds-of-flesh-alpha] }
@@ -1801,27 +1866,28 @@ graphing:
         M2: [33, -7]
         R1: [-7, 17]
         R2: [29, 63]
+        cast: { progress: 0.6 }
         hint: "Players within the AoE have more space to work with and don't need to use these exact positions, as long as the same order of players from north to south is maintained."
-      - cast: { progress: 0.8 }
-        circle#spotlight-5: { visible: false }
+      - circle#spotlight-5: { visible: false }
         enemy#arm: [-67, 0, -90]
-      - cast: { progress: 1 }
-        cone-arm: { visible: true }
+        cast: { progress: 0.8 }
+      - cone-arm: { visible: true }
+        spread#*: { visible: true }
         players: { status: [bonds-of-flesh-alpha] }
-        spread#*: { scale: 1 }
+        cast: { progress: 1 }
       - arena: { image: /images/arenas/m12s1.avif }
-        cast: { visible: false }
-        cone-arm: { visible: false }
         enemy#arm: { visible: false }
-        spread#*: { visible: false }
+        cone-arm: { visible: false }
         circle#blob-*: { visible: true }
+        spread#*: { visible: false }
         players: { x: 0, y: 0, status: [] }
         T1: { status: [bonds-of-flesh-alpha] }
+        cast: { visible: false }
         hint: ""
-      - T1: { status: [unbreakable-flesh-alpha] }
-        tether#*: { visible: true }
-        spread#*: { scale: 0 }
-      - T1: [-71, -66]
+      - tether#*: { visible: true }
+        T1: { status: [unbreakable-flesh-alpha] }
+      - spread#*: { scale: 0.7, visible: true }
+        T1: [-71, -66]
         T2: [-71, -22]
         H1: [-71, 22]
         H2: [-71, 66]
@@ -1830,8 +1896,9 @@ graphing:
         R1: [71, 22]
         R2: [71, 66]
         players: { status: [unbreakable-flesh-alpha] }
-        spread#*: { scale: 0.7, visible: true }
-      - T1: [-71, -68]
+      - spread#*: { visible: false }
+        tether#*: { visible: false }
+        T1: [-71, -68]
         T2: [-62, -65]
         H1: [-52, -68]
         H2: [-43, -66]
@@ -1839,8 +1906,6 @@ graphing:
         M2: [-27, -65]
         R1: [64, 66]
         players: { status: [magic-vulnerability-up] }
-        spread#*: { visible: false }
-        tether#*: { visible: false }
       - circle#blob-*: { scale: 6.2 }
         hint: "This AoE pattern may also be flipped."
     grotesquerie-curtain-call-intercardinals:
@@ -1880,28 +1945,27 @@ graphing:
         cast: { text: "Grotesquerie: Curtain Call", progress: 0.75 }
         hint: "Intercardinal pattern"
       - cast: { progress: 1, visible: false }
-      - cast: { text: Ravenous Reach, progress: 0 }
-        hint: ""
-        circle#spotlight-1: { visible: true }
+      - circle#spotlight-1: { visible: true }
         players: { attach: circle#spotlight-2 }
-      - cast: { visible: true }
-        circle#spotlight-1: { visible: false }
+        cast: { text: Ravenous Reach, progress: 0 }
+        hint: ""
+      - circle#spotlight-1: { visible: false }
         circle#spotlight-2: { visible: true }
         players: { attach: circle#spotlight-3 }
-      - cast: { progress: 0.2 }
-        enemy#arm: { visible: true }
-        circle#spotlight-2: { visible: false }
+        cast: { visible: true }
+      - circle#spotlight-2: { visible: false }
         circle#spotlight-3: { visible: true }
+        enemy#arm: { visible: true }
         players: { attach: circle#spotlight-4 }
-      - cast: { progress: 0.4 }
-        enemy#arm: [17, -51, 45]
-        circle#spotlight-3: { visible: false }
+        cast: { progress: 0.2 }
+      - circle#spotlight-3: { visible: false }
         circle#spotlight-4: { visible: true }
+        enemy#arm: [17, -51, 45]
         players: { attach: circle#spotlight-5 }
-      - cast: { progress: 0.6 }
-        enemy#arm: [-33, -27, 60]
-        circle#spotlight-4: { visible: false }
+        cast: { progress: 0.4 }
+      - circle#spotlight-4: { visible: false }
         circle#spotlight-5: { visible: true }
+        enemy#arm: [-33, -27, 60]
         players: { attach: null }
         DPS: { status: [rotting-flesh, bonds-of-flesh-alpha] }
         supports: { status: [bursting-grotesquerie, bonds-of-flesh-alpha] }
@@ -1912,26 +1976,27 @@ graphing:
         M1: [0, -19]
         M2: [45, 0]
         R1: [0, 19]
-        R2: [-45, 0]
-      - cast: { progress: 0.8 }
-        circle#spotlight-5: { visible: false }
+        R2: [-45, 6]
+        cast: { progress: 0.6 }
+      - circle#spotlight-5: { visible: false }
         enemy#arm: [-67, 0, -90]
-      - cast: { progress: 1 }
-        cone-arm: { visible: true }
+        cast: { progress: 0.8 }
+      - cone-arm: { visible: true }
+        spread#*: { visible: true }
         players: { status: [bonds-of-flesh-alpha] }
-        spread#*: { scale: 1 }
+        cast: { progress: 1 }
       - arena: { image: /images/arenas/m12s1.avif }
-        cast: { visible: false }
-        cone-arm: { visible: false }
         enemy#arm: { visible: false }
-        spread#*: { visible: false }
+        cone-arm: { visible: false }
         circle#blob-*: { visible: true }
+        spread#*: { visible: false }
         players: { x: 0, y: 0, status: [] }
         T1: { status: [bonds-of-flesh-alpha] }
-      - T1: { status: [unbreakable-flesh-alpha] }
-        tether#*: { visible: true }
-        spread#*: { scale: 0 }
-      - T1: [-71, -66]
+        cast: { visible: false }
+      - tether#*: { visible: true }
+        T1: { status: [unbreakable-flesh-alpha] }
+      - spread#*: { scale: 0.7, visible: true }
+        T1: [-71, -66]
         T2: [-71, -22]
         H1: [-71, 22]
         H2: [-71, 66]
@@ -1940,8 +2005,9 @@ graphing:
         R1: [71, 22]
         R2: [71, 66]
         players: { status: [unbreakable-flesh-alpha] }
-        spread#*: { scale: 0.7, visible: true }
-      - T1: [-71, -68]
+      - spread#*: { visible: false }
+        tether#*: { visible: false }
+        T1: [-71, -68]
         T2: [-62, -65]
         H1: [-52, -68]
         H2: [-43, -66]
@@ -1949,8 +2015,6 @@ graphing:
         M2: [-27, -65]
         R1: [64, 66]
         players: { status: [magic-vulnerability-up] }
-        spread#*: { visible: false }
-        tether#*: { visible: false }
       - circle#blob-*: { scale: 6.2 }
         hint: "This AoE pattern may also be flipped."
     slaughtershed-halfroom:
@@ -1983,27 +2047,26 @@ graphing:
         R2: [21, -4]
         cast: { text: "Slaughtershed", progress: 0.5 }
         hint: "Split into two groups like this to more easily see who gets spreads and who gets stack."
-        label#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
-        label#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Snake arm", visible: true, opacity: 0.7 }
-      - cast: { progress: 1 }
+        label#east: { x: 27, y: -89, size: [80, 20], origin: [0, 0.5], text: "Snake arm", opacity: 0.7, enter: scale-x }
+        label#west: { x: -27, y: -89, size: [80, 20], origin: [1, 0.5], text: "Snake arm", opacity: 0.7, enter: scale-x }
+      - circle#blob-*: { visible: true }
+        targeted-spread#*: { visible: true }
         stack#H1: { visible: true }
-        targeted-spread#*: { scale: 1 }
-        circle#blob-*: { visible: true }
-        label#east: { scale: 1 }
-      - cast: { visible: false }
+        cast: { progress: 1 }
+        label#east: { visible: true }
+      - circle#blob-*: { scale: 6.2 }
+        supports: [-97, -71]
         M1: [60, -73]
         M2: [68, -33]
         R1: [98, -73]
         R2: [98, -37]
-        supports: [-97, -71]
-        circle#blob-*: { scale: 6.2 }
-        label#west: { scale: 1 }
+        cast: { visible: false }
         hint: "AoE pattern can be flipped."
-      - players: { status: [magic-vulnerability-up] }
-        circle#blob-*: { visible: false }
+        label#west: { visible: true }
+      - circle#blob-*: { visible: false }
         targeted-spread#*: { visible: false }
         stack#H1: { visible: false }
-        hint: ""
+        players: { status: [magic-vulnerability-up] }
         T1: [-5, -42]
         T2: [-14, -37]
         H1: [-5, -31]
@@ -2012,9 +2075,12 @@ graphing:
         M2: [-14, -13]
         R1: [-5, -8]
         R2: [-14, 0]
-      - rect#east: { scale: 1 }
+        hint: ""
+      - rect#east: { visible: true }
         players: { status: [] }
-      - T1: [5, -42]
+      - rect#east: { visible: false }
+        rect#west: { visible: true }
+        T1: [5, -42]
         T2: [14, -37]
         H1: [5, -31]
         H2: [14, -26]
@@ -2022,8 +2088,6 @@ graphing:
         M2: [14, -13]
         R1: [5, -8]
         R2: [14, 0]
-        rect#east: { visible: false }
-        rect#west: { scale: 1 }
     slaughtershed-hands:
       - marker-a: [0, -65]
         marker-1: [-80, -62]
@@ -2054,30 +2118,30 @@ graphing:
         R2: [21, -4]
         cast: { text: "Slaughtershed", progress: 0.5 }
         hint: "Split into two groups like this to more easily see who gets spreads and who gets stack."
-        label#east: { x: 27, y: -89, scale: [0, 1], size: [80, 20], origin: [0, 0.5], text: "Hand", visible: true, opacity: 0.7 }
-        label#west: { x: -27, y: -89, scale: [0, 1], size: [80, 20], origin: [1, 0.5], text: "Hand", visible: true, opacity: 0.7 }
-      - cast: { progress: 1 }
+        label#east: { x: 27, y: -89, size: [80, 20], origin: [0, 0.5], text: "Hand", opacity: 0.7, enter: scale-x }
+        label#west: { x: -27, y: -89, size: [80, 20], origin: [1, 0.5], text: "Hand", opacity: 0.7, enter: scale-x }
+      - circle#blob-*: { visible: true }
+        targeted-spread#*: { visible: true }
         stack#H1: { visible: true }
-        targeted-spread#*: { scale: 1 }
-        circle#blob-*: { visible: true }
-        label#east: { scale: 1 }
-      - cast: { visible: false }
+        cast: { progress: 1 }
+        label#east: { visible: true }
+      - circle#blob-*: { scale: 6.2 }
+        supports: [-97, -71]
         M1: [60, -73]
         M2: [68, -33]
         R1: [98, -73]
         R2: [98, -37]
-        supports: [-97, -71]
-        circle#blob-*: { scale: 6.2 }
-        label#west: { scale: 1 }
+        cast: { visible: false }
         hint: "AoE pattern can be flipped."
-      - players: { x: 75, y: -57, status: [magic-vulnerability-up] }
-        circle#blob-*: { visible: false }
+        label#west: { visible: true }
+      - circle#blob-*: { visible: false }
         targeted-spread#*: { visible: false }
         stack#H1: { visible: false }
+        players: { x: 75, y: -57, status: [magic-vulnerability-up] }
         hint: ""
-      - kb#east: { scale: 1 }
+      - kb#east: { visible: true }
         players: { x: -64, y: -45, status: [] }
-      - players: [-75, -57]
-        kb#east: { visible: false }
-      - kb#west: { scale: 1 }
+      - kb#east: { visible: false }
+        players: [-75, -57]
+      - kb#west: { visible: true }
         players: { x: 64, y: -45, status: [] }

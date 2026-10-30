@@ -1000,59 +1000,62 @@ graphing:
       look: aoe
       size: 60
       opacity: 0.85
-      scale: 0
+      visible: false
+      enter: scale
       shadow: false
     kick:
       type: cone
       angle: 180
+      look: { type: plain, color: url(#snake) }
       size: [150, 0]
-      color: url(#snake)
       opacity: 0.7
       visible: false
       shadow: false
       blink: true
     dark:
       type: ellipse
+      look: { type: plain, color: url(#dark) }
       size: 40
-      color: url(#dark)
       opacity: 0.85
       scale: 0
+      enter: scale
       shadow: false
       blink: true
     defamation:
       type: ellipse
+      look: { type: plain, color: url(#dark) }
       size: 165
-      color: url(#dark)
       opacity: 0.85
       scale: 0
+      enter: scale
       shadow: false
       blink: true
     gaze:
       type: cone
       angle: 40
+      look: { type: plain, color: "#8F0021" }
       size: [185, 0]
-      color: "#8F0021"
       opacity: 0.4
       visible: false
       shadow: false
       blink: true
     tether:
       type: link
-      width: 1
-      color: "#EDCA87"
-      visible: false
+      look: flicker
       opacity: 0.85
+      visible: false
     fire:
       type: ellipse
+      look: { type: plain, color: url(#fire) }
       size: 40
-      color: url(#fire)
       opacity: 0.85
       scale: 0
+      enter: scale
       shadow: false
     cone:
       type: cone
-      look: aoe
       angle: 30
+      look: aoe
       size: [185, 0]
       opacity: 0.7
       visible: false
@@ -1060,12 +1063,12 @@ graphing:
     firefall-splash:
       type: cone
       angle: 15
+      look: { type: plain, color: url(#firefall-splash) }
       size: [70, 0]
-      color: url(#firefall-splash)
-      blink: true
       opacity: 0.5
       visible: false
       shadow: false
+      blink: true
   graphs:
     normal-rep-1:
       - marker-a: [40, 0]
