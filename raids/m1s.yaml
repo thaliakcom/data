@@ -611,8 +611,8 @@ timeline:
     link: then
   - at: 112707
     id: quadruple-swipe
-    link: or
     description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].
+    link: or
   - at: 112707
     id: double-swipe
     description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].

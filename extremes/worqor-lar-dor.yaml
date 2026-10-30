@@ -594,8 +594,8 @@ actions:
   chilling-cataclysm:
     id: 36803
     mechanic: aoe
-    count: 5
     damage: 31666
+    count: 5
     players: 0
     description: |
       5 frost circles appear in the arena, each preparing to shoot a [ms:line] [t:AoE] in 8 different directions, leaving only a small number of tiny safe spots.
@@ -679,8 +679,8 @@ actions:
     id: 39002
     mechanic: aoe
     shape: line
-    count: 10
     damage: 53903
+    count: 10
     players: 0
     description: Lightning circles spawn on both sides of the arena, each preparing to fire a [ms:line] AoE across. Each AoE inflicts [s:vulnerability-up] and [s:paralysis]. Only one row in the arena has no circle on either side.
   ruinfall:

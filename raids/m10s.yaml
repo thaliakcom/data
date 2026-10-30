@@ -605,8 +605,8 @@ actions:
     id: 46512
     mechanic: aoe
     shape: chariot
-    count: 2
     players: 4
+    count: 2
     damage: 19297
     description: |
       Moderate-sized explosion that deals little damage and inflicts [s:magic-vulnerability-up].

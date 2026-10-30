@@ -237,15 +237,15 @@ actions:
   entangling-web-lock:
     name: Entangling Web (Lock)
     mechanic: aoe.delayed
-    count: 4
     shape: chariot
+    count: 4
     description: The [a:entangling-web] "locks in". In other words, it no longer follows the player it spawned on.
   entangling-web-hit:
     id: 33406
     name: Entangling Web (Hit)
     mechanic: aoe
-    count: 4
     shape: chariot
+    count: 4
     description: The [a:entangling-web] drops, dealing heavy damage and entangling everything in its radius in a similar way as [a:steel-web].
   pandæmoniac-pillars:
     id: 33408
@@ -288,22 +288,22 @@ actions:
   peal-of-damnation:
     id: 34736
     mechanic: aoe
-    count: 2
     shape: line
+    count: 2
     description: |
       A wide [ms:line] originating from two pandæmoniac turrets after [a:pandæmoniac-pillars] that leaves the last row unsafe.
       :unverified(Anyone in this row is killed instantly.)
   imprisonment:
     id: 33413
     mechanic: aoe
-    count: 3
     shape: chariot
+    count: 3
     description: A small [ms:chariot] originating from three of the eight towers that inflicts [s:doom] and [s:fetters].
   cannonspawn:
     id: 33415
     mechanic: aoe
-    count: 3
     shape: dynamo
+    count: 3
     description: A small [ms:dynamo] originating from three of the eight towers that inflicts [s:doom].
   silkspit:
     id: 33404
@@ -522,8 +522,8 @@ actions:
     id: 33430
     name: Parted Plumes (Hit)
     mechanic: aoe
-    count: 2
     shape: cone
+    count: 2
     description: A set of two cone [AoEs](t:AoE) explodes, inflicting [s:paralysis] to anyone caught inside.
 timeline:
   - at: 14240

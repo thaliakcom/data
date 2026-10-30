@@ -249,8 +249,8 @@ actions:
   glaukopis-hit:
     id: 33533
     mechanic: tb.mt
-    damage: 190000
     shape: line
+    damage: 190000
     description: An individual tankbuster hit. Inflicts [s:magic-vuln].
     resolve: The main tank should take the first hit, the off-tank the second. If the main tank were to take the second hit, the [s:magic-vuln] would cause the next auto-attack to kill them.
   superchain-theory-i:
@@ -598,23 +598,23 @@ actions:
   palladion-hit:
     id: 33526
     mechanic: aoe
+    shape: chariot
     damage: 81997
     players: 2
-    shape: chariot
     description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding]."
   palladion-platforms:
     id: 22529
     mechanic: aoe
+    shape: rect
     damage: 9999999
     players: 0
-    shape: rect
     description: "[boss] cuts away the inner 4 platforms, killing anyone on them."
   shockwave:
     id: 33527
     mechanic: mech.distance
+    shape: line
     damage: 6000
     players: 2
-    shape: line
     description: "[boss] dashes to the next player in the sequence, dealing damage to that player and all players in her path relative to how close they were to her starting position (the closer, the more damage)."
   theoss-ultima:
     id: 33530

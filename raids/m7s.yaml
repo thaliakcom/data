@@ -362,8 +362,8 @@ actions:
     name: Strange Seeds (Drop)
     mechanic: spread
     shape: chariot
-    damage: 96648
     count: 2
+    damage: 96648
     description: Simple targeted AoE. Inflicts [s:magic-vulnerability-up]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
   killer-seeds:
     id: 42395

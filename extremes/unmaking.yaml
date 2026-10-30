@@ -404,9 +404,9 @@ actions:
     id: 48478
     mechanic: enrage
     count: 8
+    compact: full
     players: 1
     damage: 9999999
-    compact: full
     description: If the duty gauge reaches 100 points before the Beacon in the Dark is destroyed, all players are instantly killed here.
     children:
     - at: 0
@@ -579,9 +579,9 @@ actions:
   endless-chase:
     id: 48475
     mechanic: aoe.chasing
-    compact: full
     shape: chariot
     count: 2
+    compact: full
     description: A small black hole spawned by [a:naught-hunts] begins chasing a player.
     children:
     - at: 757
@@ -637,8 +637,8 @@ actions:
     caption: Hit
     mechanic: aoe.chasing
     shape: chariot
-    emphasis: less
     count: 2
+    emphasis: less
     players: 0
     damage: 111874
     description: Individual hit of [a:endless-chase]. Inflicts [s:vulnerability-up].

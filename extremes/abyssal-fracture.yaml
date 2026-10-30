@@ -504,8 +504,8 @@ actions:
   rend-the-rift:
     id: 35853
     mechanic: raidwide.transition
-    damage: 59551
     compact: full
+    damage: 59551
     description: |
       Heavy raidwide that transitions the arena into its final state and changes [boss]'s mechanics.
       This action is not executed at a specific time. Instead, after the boss has been reduced to below 25% HP, its next cast will be replaced by [a:rend-the-rift].

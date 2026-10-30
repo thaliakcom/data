@@ -164,8 +164,8 @@ actions:
   ultima-ray:
     id: 33584
     mechanic: aoe
-    description: The three angels spawned by [a:summon-darkness-1] each shoot a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
     shape: line
+    description: The three angels spawned by [a:summon-darkness-1] each shoot a wide beam across the arena, dealing massive damage and inflicting [s:damage-down] to anyone caught inside.
   missing-link:
     id: 34182
     cast: 4800
@@ -228,9 +228,9 @@ actions:
     count: 8
     mechanic: spread
     damage: 61000
+    shape: chariot
     description: Every player is hit by a small [ms:chariot] [m:spread] that inflicts [s:magic-vuln].
     resolve: Spread out. The AoEs themselves are tiny, so while it is recommended to use fixed positions for every pattern, it is not strictly necessary.
-    shape: chariot
   ultima-restore:
     id: 34550
     mechanic: raidwide
@@ -298,18 +298,18 @@ actions:
     id: 33587
     count: 12
     mechanic: aoe
+    shape: chariot
     description: All shapes implode, killing anyone nearby.
     resolve: Move in-between 4 shapes.
-    shape: chariot
   palladian-ray:
     id: 33571
     count: 8
     type: magic
     mechanic: spread
-    compact: full
     damage: 37000
-    description: Spawns a tower on the west and on the east of the arena that each shoot 6 cones toward the 4 closest players. Each cone inflicts [s:magic-vuln].
     shape: cone
+    compact: full
+    description: Spawns a tower on the west and on the east of the arena that each shoot 6 cones toward the 4 closest players. Each cone inflicts [s:magic-vuln].
     resolve: |
       While it is possible to "YOLO" this mechanic and just have players spread to an intercardinal relative to their tower that is closest to their initial spot while intercepting the tether, it is recommended to use a more deterministic strategy, for instance by using the [s:alpha] and [s:beta] markers to determine whether a player goes to the northmost or southmost spot to bait their cone within their column.
       If you're on the second or third column, make sure to stay close to the tower while baiting the cone to avoid getting clipped by a cone from the other side.
@@ -388,21 +388,21 @@ actions:
     name: Caloric Theory (Beacon)
     mechanic: stack.role
     damage: 50000
-    description: One of the two initially marked players explodes, hitting them for massive damage. This damage can be shared.
     shape: chariot
+    description: One of the two initially marked players explodes, hitting them for massive damage. This damage can be shared.
     resolve: 2 players is enough to reduce the damage to survivable levels with sufficient mitigation. 3+ makes it even safer but may require significant strategy adjustments since it affects your starting position for the main mechanic.
   pyre-pulse:
     id: 33594
     mechanic: stack.partner
     damage: 64000
-    description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
     shape: chariot
+    description: An explosion at the end of [s:pyrefaction] that must be shared by one other player. Inflicts a stack of [s:caloric] to the player who had it.
   dynamic-atmosphere:
     id: 33595
     mechanic: spread
     damage: 58000
-    description: A small [ms:chariot] [m:spread]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
     shape: chariot
+    description: A small [ms:chariot] [m:spread]. If anyone is hit, they are knocked back and rapidly accumulate [s:caloric] stacks to cause a wipe.
   ekpyrosis:
     id: 33566
     trivia: >
@@ -441,22 +441,22 @@ actions:
     id: 33568
     count: 4
     mechanic: aoe.exaflares
-    description: Exaflares travel through the arena.
     shape: chariot
+    description: Exaflares travel through the arena.
   ekpyrosis-spread:
     id: 33570
     count: 8
     mechanic: spread
     damage: 25000
-    description: Spread AoEs.
     shape: chariot
+    description: Spread AoEs.
   pangenesis:
     id: 33599
     trivia: >
       *Pangenesis* is the name of Darwin's outdated theory on heredity, which postulates that the body is composed of tiny particles called *gemmules* that contain hereditary information. These gemmules are to gather in the reproductive organs and are passed onto offspring during reproduction.
     mechanic: mech
-    compact: trim
     damage: 100000
+    compact: trim
     players: 8
     description: |
       Tower-based major mechanic.
@@ -514,9 +514,9 @@ actions:
     count: 6
     mechanic: spread
     damage: 81000
+    shape: defamation
     description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [ms:defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
     resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
-    shape: defamation
   panta-rhei:
     id: 33590
     trivia: >
@@ -527,8 +527,8 @@ actions:
     id: 34706
     name: Caloric Theory II
     mechanic: mech
-    compact: full
     damage: 60000
+    compact: full
     players: 8
     description: |
       Hot Potato – The Mechanic.
@@ -569,8 +569,8 @@ actions:
       In any system (including the universe itself) entropy is constantly increasing. The end result is the <a href="https://www.wikipedia.com/en/Heat_death_of_the_universe">heat death of the universe</a>, a state wherein all energy in the universe has completely dispersed. There is no single concentrated cluster of energy anywhere; every single cubic centimeter in the entire universe has the exact same amount of energy in it. In this state stars can no longer exist, so it is also the end of life as we know it.
       This mechanic demonstrates this concept quite well; at the start of the mechanic entropy is extremely low as all 8 stacks of [s:entropification:8] are initially concentrated on one player, but each pulse irreversibly loses one stack until there is no heat left.
     mechanic: aoe.delayed
-    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.delayed) which reduces the stack of the status effect by one.
     shape: chariot
+    description: The [s:entropification:8] player leaves a telegraphed [chariot AoE](m:aoe.delayed) which reduces the stack of the status effect by one.
   summon-darkness-2:
     id: 33583
     mechanic: mech
@@ -620,9 +620,9 @@ actions:
     count: 4
     mechanic: aoe.intercept
     damage: 61000
+    shape: line
     players: 2
     description: Each angel shoots a beam at their tethered target. The beam can be intercepted by another player to prevent the target from dying due to their [s:magic-vuln].
-    shape: line
   ignorabimus:
     id: 33609
     trivia: >

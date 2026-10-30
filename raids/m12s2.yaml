@@ -1113,73 +1113,73 @@ graphing:
         R2: [34, 23]
         cast: { text: Replication, progress: 0.5 }
       # Players move to the waymark corners.
-      - cast: { progress: 1, visible: false }
-        boss: { rotate: T1 }
+      - boss: { rotate: T1 }
         enemy#[d1,f1,c1,c2]: { visible: true }
         T1: [41, -36]
         T2: [41, -54]
         H1: [41, -126]
         H2: [41, -144]
-        R1: [41, 54]
-        R2: [41, 36]
         M1: [41, 126]
         M2: [41, 144]
+        R1: [41, 54]
+        R2: [41, 36]
+        cast: { progress: 1, visible: false }
         hint: "Players position themselves on the corners of the waymarks. The corners are in max melee range."
       # Cones become visible. Players dodge.
       - cone#c[1,2]-[1,2]: { visible: true }
         hint: "Players in the path of the cones take a quick step out. The cones may be N/S as well."
         T2: [47, -45]
-        R1: [47, 45]
-        M1: [47, 135]
         H1: [47, -135]
+        M1: [47, 135]
+        R1: [47, 45]
       # First set of AoEs.
-      - dark#1: { attach: T1, scale: 1 }
+      - enemy#f1: { attach: H2, rotate: 135 }
+        dark#1: { attach: T1, scale: 1 }
         dark#2: { attach: R2, scale: 1 }
         fire#1: { attach: H2, scale: 1 }
-        enemy#f1: { attach: H2, rotate: 135 }
         [T1, T2, R1, R2]: { status: [dark-resistance-down-ii] }
         [H1, H2]: { status: [fire-resistance-down-ii] }
         hint: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire."
         cast: { text: "Snaking Kick", progress: 0 }
       # Snaking Kick.
-      - cone#c[1,2]-[1,2]: { visible: false }
+      - boss: { rotate: M2 }
+        enemy#f1: { attach: null }
         dark#[1,2]: { visible: false, attach: null }
         fire#1: { visible: false, attach: null }
-        enemy#f1: { attach: null }
-        cast: { visible: true }
-        boss: { rotate: M2 }
+        cone#c[1,2]-[1,2]: { visible: false }
         kick: { rotate: 144 }
+        cast: { visible: true }
         hint: "Boss turns towards a random player and casts Snaking Kick."
       # Players dodge Snaking Kick.
       - boss: { rotate: null }
+        dark#[1,2]: { scale: 0, attach: enemy#d1 }
+        fire#1: { scale: 0, attach: enemy#f1 }
         kick: { rotate: null }
         T1: [31, -29]
         T2: [31, -51]
+        H1: [37, -116]
+        H2: [27, -116]
         M1: [23, -9]
         M2: [30, 7]
         R1: [37, 48]
         R2: [34, 36]
-        H1: [37, -116]
-        H2: [27, -116]
-        dark#[1,2]: { scale: 0, attach: enemy#d1 }
-        fire#1: { scale: 0, attach: enemy#f1 }
         cast: { progress: 0.75 }
         hint: ""
       # Snaking Kick finishes casting and becomes visible.
-      - kick: { visible: true }
-        dark#[1,2]: { visible: true }
+      - dark#[1,2]: { visible: true }
         fire#1: { visible: true }
+        kick: { visible: true }
         cast: { progress: 1, visible: false }
       # Lindschrats split apart.
-      - kick: { visible: false }
-        boss: { rotate: T1 }
+      - boss: { rotate: T1 }
         enemy#*: { visible: true }
+        enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
+        enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
         enemy#f1: { x: 25 }
         enemy#f2: { x: 57 }
         enemy#[c1,c2]: { x: 41 }
         enemy#[c3,c4]: { x: 73 }
-        enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
-        enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
+        kick: { visible: false }
         hint: "Each clone splits in two. The new clones keep the same attack."
       # Darks and fires seem to always move first.
       - enemy#d1: { x: 33, y: 135, coordinate-system: polar }
@@ -1189,20 +1189,20 @@ graphing:
         hint: "All dark and fire clones move to opposite intercardinals."
       # Cones move next.
       - enemy#c1: [33, 45]
-        enemy#c2: [33, -135]
         enemy#c3: [63, -135]
+        enemy#c2: [33, -135]
         enemy#c4: [63, 45]
         hint: "All cone clones also move to opposite intercardinals."
       # Shows the names.
-      - enemy#c[1..4]: { text: "Cone" }
+      - enemy#d[1..2]: { text: "Dark" }
+        enemy#c[1..4]: { text: "Cone" }
         enemy#f[1..2]: { text: "Fire" }
-        enemy#d[1..2]: { text: "Dark" }
         hint: "Dark and fire clones always alternate."
       # Tanks/melees move into position.
       - enemy#*: { text: "" }
         tanks: [17, -45]
-        M2: [21, 108]
         M1: [21, 162]
+        M2: [21, 108]
         hint: "Melees take the inner clones. Avoid going dead center. Just use these positions."
       # Healers/ranged move into position.
       - enemy#*: { text: "" }
@@ -1212,21 +1212,21 @@ graphing:
         hint: "Rangeds have to remember which way the cones went. In this case cones went E/W, so only N/S is safe."
       # Cones become visible. Players dodge.
       - cone#c[1..4]-[1,2]: { visible: true }
+        tanks: [16, -54]
         H1: [81, -25]
         H2: [67, -11]
         [R1, R2]: [74, 158]
         M1: [31, -171]
-        tanks: [16, -54]
         hint: "Players in the path of the cones take a quick step out."
       # Second set of AoEs.
-      - dark#1: { attach: M1, scale: 1 }
+      - enemy#f1: { attach: T1, rotate: -45 }
+        enemy#f2: { attach: R1, rotate: 45 }
+        dark#1: { attach: M1, scale: 1 }
         dark#2: { attach: M2, scale: 1 }
         dark#3: { attach: H1, scale: 1 }
         dark#4: { attach: H2, scale: 1 }
         fire#1: { attach: T1, scale: 1 }
         fire#2: { attach: R1, scale: 1 }
-        enemy#f1: { attach: T1, rotate: -45 }
-        enemy#f2: { attach: R1, rotate: 45 }
         [T1, T2, R1, R2, H1, H2]: { status: [dark-resistance-down-ii, fire-resistance-down-ii] }
         [M1, M2]: { status: [dark-resistance-down-ii] }
         hint: ""
@@ -1273,73 +1273,73 @@ graphing:
         R2: [34, 23]
         cast: { text: Replication, progress: 0.5 }
       # Players move to the waymark corners.
-      - cast: { progress: 1, visible: false }
-        boss: { rotate: T1 }
+      - boss: { rotate: T1 }
         enemy#[d1,f1,c1,c2]: { visible: true }
         T1: [41, -36]
         T2: [41, -54]
         H1: [41, -126]
         H2: [41, -144]
-        R1: [41, 54]
-        R2: [41, 36]
         M1: [41, 126]
         M2: [41, 144]
+        R1: [41, 54]
+        R2: [41, 36]
+        cast: { progress: 1, visible: false }
         hint: "Players position themselves on the corners of the waymarks. The corners are in max melee range."
       # Cones become visible. Players dodge.
       - cone#c[1,2]-[1,2]: { visible: true }
         hint: "Players in the path of the cones take a quick step out. The cones may be N/S as well."
         T2: [47, -45]
-        R1: [47, 45]
-        M1: [47, 135]
         H1: [47, -135]
+        M1: [47, 135]
+        R1: [47, 45]
       # First set of AoEs.
-      - dark#1: { attach: T1, scale: 1 }
+      - enemy#f1: { attach: H2, rotate: 135 }
+        dark#1: { attach: T1, scale: 1 }
         dark#2: { attach: R2, scale: 1 }
         fire#1: { attach: H2, scale: 1 }
-        enemy#f1: { attach: H2, rotate: 135 }
         [T1, T2, R1, R2]: { status: [dark-resistance-down-ii] }
         [H1, H2]: { status: [fire-resistance-down-ii] }
         hint: "H2 was slightly closer than M2, so the fire clone picked healers. Melees are still considered as being hit by fire."
         cast: { text: "Snaking Kick", progress: 0 }
       # Snaking Kick.
-      - cone#c[1,2]-[1,2]: { visible: false }
+      - boss: { rotate: M2 }
+        enemy#f1: { attach: null }
         dark#[1,2]: { visible: false, attach: null }
         fire#1: { visible: false, attach: null }
-        enemy#f1: { attach: null }
-        cast: { visible: true }
-        boss: { rotate: M2 }
+        cone#c[1,2]-[1,2]: { visible: false }
         kick: { rotate: 144 }
+        cast: { visible: true }
         hint: "Boss turns towards a random player and casts Snaking Kick."
       # Players dodge Snaking Kick.
       - boss: { rotate: null }
+        dark#[1,2]: { scale: 0, attach: enemy#d1 }
+        fire#1: { scale: 0, attach: enemy#f1 }
         kick: { rotate: null }
         T1: [31, -29]
         T2: [31, -51]
+        H1: [37, -116]
+        H2: [27, -116]
         M1: [23, -9]
         M2: [30, 7]
         R1: [37, 48]
         R2: [34, 36]
-        H1: [37, -116]
-        H2: [27, -116]
-        dark#[1,2]: { scale: 0, attach: enemy#d1 }
-        fire#1: { scale: 0, attach: enemy#f1 }
         cast: { progress: 0.75 }
         hint: "Dodge Snaking Kick. Find the dark clone (north in this case)."
       # Snaking Kick finishes casting and becomes visible.
-      - kick: { visible: true }
-        dark#[1,2]: { visible: true }
+      - dark#[1,2]: { visible: true }
         fire#1: { visible: true }
+        kick: { visible: true }
         cast: { progress: 1, visible: false }
       # Lindschrats split apart.
-      - kick: { visible: false }
-        boss: { rotate: T1 }
+      - boss: { rotate: T1 }
         enemy#*: { visible: true }
+        enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
+        enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
         enemy#f1: { x: 25 }
         enemy#f2: { x: 57 }
         enemy#[c1,c2]: { x: 41 }
         enemy#[c3,c4]: { x: 73 }
-        enemy#d1: { x: -16, y: -57, coordinate-system: cartesian }
-        enemy#d2: { x: 16, y: -57, coordinate-system: cartesian }
+        kick: { visible: false }
         hint: "Each clone splits in two. The new clones keep the same attack."
       # Darks and fires seem to always move first.
       - enemy#d1: { x: 33, y: 135, coordinate-system: polar }
@@ -1349,36 +1349,36 @@ graphing:
         hint: "All dark and fire clones move to opposite intercardinals."
       # Cones move next.
       - enemy#c1: [33, 45]
-        enemy#c2: [33, -135]
         enemy#c3: [63, -135]
+        enemy#c2: [33, -135]
         enemy#c4: [63, 45]
         hint: "All cone clones also move to opposite intercardinals."
       # Shows the names.
-      - enemy#c[1..4]: { text: "Cone" }
+      - enemy#d[1..2]: { text: "Dark" }
+        enemy#c[1..4]: { text: "Cone" }
         enemy#f[1..2]: { text: "Fire" }
-        enemy#d[1..2]: { text: "Dark" }
         hint: "Dark and fire clones always alternate. All positions are relative to the dark clone on the wall."
       # Tanks/melees move into position.
       - enemy#*: { text: "" }
+        tanks: [6, -48]
         H1: [57, -90]
         H2: [57, 0]
         [R1, R2]: [57, 180]
         M1: [29, -156]
         M2: [29, 66]
-        tanks: [6, -48]
         hint: "NW is new north in this case."
       # Cones become visible. Players dodge.
       - cone#c[1..4]-[1,2]: { visible: true }
         hint: "You can ignore the cones in this strat."
       # Second set of AoEs.
-      - dark#1: { attach: M1, scale: 1 }
+      - enemy#f1: { attach: T1, rotate: -45 }
+        enemy#f2: { attach: R1, rotate: 45 }
+        dark#1: { attach: M1, scale: 1 }
         dark#2: { attach: M2, scale: 1 }
         dark#3: { attach: H1, scale: 1 }
         dark#4: { attach: H2, scale: 1 }
         fire#1: { attach: T1, scale: 1 }
         fire#2: { attach: R1, scale: 1 }
-        enemy#f1: { attach: T1, rotate: -45 }
-        enemy#f2: { attach: R1, rotate: 45 }
         [T1, T2, R1, R2, H1, H2]: { status: [dark-resistance-down-ii, fire-resistance-down-ii] }
         [M1, M2]: { status: [dark-resistance-down-ii] }
         hint: ""
@@ -1403,9 +1403,9 @@ graphing:
         defamation#3: { attach: boss }
         dark#1: { attach: M2#player, scale: 1.2, visible: false }
         dark#2: { attach: H2#player, scale: 1.2, visible: false }
-        fire#1: { attach: enemy#stack-1 }
-        fire#2: { attach: enemy#stack-2 }
-        fire#3: { attach: boss }
+        fire#1: { attach: enemy#stack-1, scale: 1, visible: false }
+        fire#2: { attach: enemy#stack-2, scale: 1, visible: false }
+        fire#3: { attach: boss, scale: 1.2, visible: false }
         gaze#1: { attach: H1#player }
         gaze#2: { attach: R1#player }
         kick: { attach: boss }
@@ -1454,50 +1454,50 @@ graphing:
       - T1#clone: { visible: true }
         H2#clone: { visible: true }
         cast: { visible: false }
-      - M1#clone: { visible: true }
-        T2#clone: { visible: true }
+      - T2#clone: { visible: true }
+        M1#clone: { visible: true }
       - M2#clone: { visible: true }
         R2#clone: { visible: true }
       # Player clones tether to players.
       - tether#player-*: { visible: true }
         hint: "Each player's clone tethers to them to make it easier to see where your clone is."
       # Players move to their clone.
-      - H2#player: { y: -135 }
-        H1#player: { y: 0 }
+      - T1#player: { y: 45 }
         T2#player: { y: -90 }
-        T1#player: { y: 45 }
-        R2#player: { y: 135 }
+        H1#player: { y: 0 }
+        H2#player: { y: -135 }
         M1#player: { y: 90 }
         M2#player: { y: -45 }
-        hint: "Moving to your clone isn't strictly necessary, but can make it easier to remember what you need later."
+        R2#player: { y: 135 }
         cast: { text: Replication, progress: 0 }
+        hint: "Moving to your clone isn't strictly necessary, but can make it easier to remember what you need later."
       # Player clones resolve to players' appearances.
       - T1#clone: { image: job, filter: saturate(0) }
         T2#clone: { image: job, filter: saturate(0) }
         H1#clone: { image: job, filter: saturate(0) }
         H2#clone: { image: job, filter: saturate(0) }
-        R1#clone: { image: job, filter: saturate(0) }
-        R2#clone: { image: job, filter: saturate(0) }
         M1#clone: { image: job, filter: saturate(0) }
         M2#clone: { image: job, filter: saturate(0) }
+        R1#clone: { image: job, filter: saturate(0) }
+        R2#clone: { image: job, filter: saturate(0) }
         tether#player-*: { visible: false }
         hint: "Player clones fully assume the appearance of their respective players."
       # Replication cast
       - cast: { visible: true, progress: 1 }
       # Boss clones spawn.
-      - cast: { visible: false }
-        enemy#*: { visible: true }
+      - enemy#*: { visible: true }
+        cast: { visible: false }
         hint: "Boss clones spawn."
       # Boss clones tether.
       - tether#enemy-*: { visible: true }
         hint: "Clones tether to players. These tethers can be passed."
       - T1#player: { y: 0 }
-        H1#player: [29, -52]
         T2#player: [18, 106]
-        R2#player: [32, -99]
+        H1#player: [29, -52]
         H2#player: [33, -160]
-        R1#player: [34, 106]
         M2#player: [33, 80]
+        R1#player: [34, 106]
+        R2#player: [32, -99]
         tether#enemy-defam-2: { to: R2#player }
         tether#enemy-stack-1: { to: M2#player }
         tether#enemy-stack-2: { to: H2#player }
@@ -1505,85 +1505,85 @@ graphing:
         tether#enemy-cone-2: { to: R1#player }
         tether#enemy-boss: { to: T2#player }
         hint: Grab the tether corresponding to your player clone's position.<br />Relative east players take the first tether clockwise, relative west players the first tether counter-clockwise.
-      - R2#player: { y: -120 }
+      - T2#player: [0, 0]
         H1#player: { y: -60 }
-        R1#player: { y: 120 }
-        M2#player: { y: 60 }
         H2#player: { y: 180 }
-        T2#player: [0, 0]
+        M2#player: { y: 60 }
+        R1#player: { y: 120 }
+        R2#player: { y: -120 }
         cast: { text: Firefall Splash, progress: 0 }
         hint: Get close to your Lindschrat after grabbing your tether to prevent anyone from accidentally yoinking your tether.
-      - M1#player: [80, 90]
+      - enemy#*: { status: [] }
         T1#player: [81, 5]
-        R2#player: [78, 175]
-        M2#player: [80, -85]
+        T2#player: [40, -87]
         H1#player: [80, -74]
         H2#player: [80, -95]
+        M1#player: [80, 90]
+        M2#player: [80, -85]
         R1#player: [80, -105]
-        T2#player: [40, -87]
+        R2#player: [78, 175]
         cast: { visible: true, progress: 0.5 }
-        enemy#*: { status: [] }
         hint: Tethers lock in. Go to your assigned position based on your player clone.
       - boss: { attach: T2#player, rotate: 90 }
-        tether#enemy-boss: { visible: false }
-        fire#3: { scale: 1.2 }
+        fire#3: { visible: true }
         firefall-splash#*: { visible: true }
-        R1#player: { status: [magic-vulnerability-up] }
+        T2#player: { status: [magic-vulnerability-up] }
+        H1#player: { status: [magic-vulnerability-up] }
         H2#player: { status: [magic-vulnerability-up] }
         M2#player: { status: [magic-vulnerability-up] }
-        H1#player: { status: [magic-vulnerability-up] }
-        T2#player: { status: [magic-vulnerability-up] }
+        R1#player: { status: [magic-vulnerability-up] }
+        tether#enemy-boss: { visible: false }
         cast: { progress: 1 }
         hint: Firefall Splash goes off first.
       - boss: { attach: null }
         defamation#1: { scale: 1, attach: T1#player }
         defamation#2: { scale: 1, attach: R2#player }
         defamation#3: { scale: 1, attach: M1#player }
-        T1#player: { status: [magic-vulnerability-up] }
-        R2#player: { status: [magic-vulnerability-up] }
-        M1#player: { status: [magic-vulnerability-up] }
-        firefall-splash#*: { visible: false }
         fire#3: { visible: false }
+        firefall-splash#*: { visible: false }
+        T1#player: { status: [magic-vulnerability-up] }
+        M1#player: { status: [magic-vulnerability-up] }
+        R2#player: { status: [magic-vulnerability-up] }
         tether#enemy-defam-*: { visible: false }
         cast: { visible: false }
         hint: Defamations go off second.
-      - H1#player: { x: 34, y: -29, status: [] }
-        M2#player: { x: 32, y: -41, status: [] }
-        T2#player: { x: 32, y: -41, status: [] }
-        H2#player: { x: 32, y: -139, status: [] }
-        R1#player: { x: 34, y: -153, status: [] }
+      - defamation#*: { visible: false, attach: null }
         T1#player: { x: 32, y: -41, status: [] }
+        T2#player: { x: 32, y: -41, status: [] }
+        H1#player: { x: 34, y: -29, status: [] }
+        H2#player: { x: 32, y: -139, status: [] }
         M1#player: { x: 32, y: -139, status: [] }
+        M2#player: { x: 32, y: -41, status: [] }
+        R1#player: { x: 34, y: -153, status: [] }
         R2#player: { x: 32, y: -139, status: [] }
-        defamation#*: { visible: false, attach: null }
         cast: { progress: 0, text: Snaking Kick }
         hint: Stacks go off third, followed immediately by cones.
-      - fire#[1,2]: { scale: 1 }
+      - boss: { rotate: H2#player }
         enemy#stack-1: { attach: M2#player, rotate: 90 }
         enemy#stack-2: { attach: H2#player, rotate: 135 }
+        fire#[1,2]: { visible: true }
         gaze#1: { rotate: 45 }
         gaze#2: { rotate: 135 }
-        tether#enemy-stack-[1,2]: { visible: false }
-        H1#player: { status: [magic-vulnerability-up] }
-        M2#player: { status: [magic-vulnerability-up] }
-        T2#player: { status: [magic-vulnerability-up] }
-        H2#player: { status: [magic-vulnerability-up] }
-        R1#player: { status: [magic-vulnerability-up] }
-        T1#player: { status: [magic-vulnerability-up] }
-        M1#player: { status: [magic-vulnerability-up] }
-        R2#player: { status: [magic-vulnerability-up] }
-        cast: { progress: 0.1, visible: true }
-        boss: { rotate: H2#player }
         kick: { rotate: H2#player }
+        T1#player: { status: [magic-vulnerability-up] }
+        T2#player: { status: [magic-vulnerability-up] }
+        H1#player: { status: [magic-vulnerability-up] }
+        H2#player: { status: [magic-vulnerability-up] }
+        M1#player: { status: [magic-vulnerability-up] }
+        M2#player: { status: [magic-vulnerability-up] }
+        R1#player: { status: [magic-vulnerability-up] }
+        R2#player: { status: [magic-vulnerability-up] }
+        tether#enemy-stack-[1,2]: { visible: false }
+        cast: { progress: 0.1, visible: true }
       - fire#[1,2]: { visible: false }
         gaze#[1,2]: { visible: true }
         tether#enemy-cone-[1,2]: { visible: false }
         cast: { progress: 0.6 }
         hint: Cone players <em>may</em> be able to simply look at the boss, and if everyone is correctly positioned and no one moves early, neither cone will clip the other party.<br />However, someone almost always moves early, so just look away.
-      - gaze#[1,2]: { visible: false, attach: null }
-        boss: { rotate: null }
-        kick: { rotate: null, visible: true }
+      - boss: { rotate: null }
         enemy#*: { visible: false, attach: null }
+        gaze#[1,2]: { visible: false, attach: null }
+        kick: { rotate: null, visible: true }
         T1#player: { x: 47, y: -76, status: [] }
         T2#player: { x: 47, y: -76, status: [] }
         H1#player: { x: 47, y: -76, status: [] }
@@ -1594,84 +1594,81 @@ graphing:
         R2#player: { x: 47, y: -76, status: [] }
         cast: { progress: 1 }
         hint: Step behind the boss.
-      - cast: { progress: 0, text: Reenactment }
-        boss: { rotate: T1#player }
-        T1#player: [66, -90]
-        M1#player: [66, -90]
-        R2#player: [66, -90]
-        T2#player: [66, -90]
-        M2#player: [41, -58]
-        H2#player: [38, -114]
-        H1#player: [52, -49]
-        R1#player: [52, -131]
+      - boss: { rotate: T1#player }
         kick: { visible: false }
+        T1#player: [66, -90]
+        T2#player: [66, -90]
+        H1#player: [52, -49]
+        H2#player: [38, -114]
+        M1#player: [66, -90]
+        M2#player: [41, -58]
+        R1#player: [52, -131]
+        R2#player: [66, -90]
+        cast: { progress: 0, text: Reenactment }
         hint: Stacks and cones preposition for Netherwrath.
-      - cast: { progress: 1, visible: false }
+      - defamation#1: { attach: T1#clone }
+        defamation#2: { attach: M1#clone }
+        defamation#3: { attach: R2#clone }
         fire#1: { attach: M2#clone }
         fire#2: { attach: H2#clone }
         gaze#1: { attach: H1#clone, rotate: R1#clone }
         gaze#2: { attach: R1#clone, rotate: H1#clone }
-        defamation#1: { attach: T1#clone, scale: 0 }
-        defamation#2: { attach: M1#clone, scale: 0 }
-        defamation#3: { attach: R2#clone, scale: 0 }
+        cast: { progress: 1, visible: false }
       - cast: { progress: 0, visible: true, text: Netherwrath Near }
-        defamation#1: { visible: true }
-        defamation#2: { visible: true }
-        defamation#3: { visible: true }
-      - cast: { progress: 1, visible: true }
-        dark#[1,2]: { visible: true }
+      - dark#[1,2]: { visible: true }
         gaze#[1,2]: { visible: true }
-        M2#player: { status: [magic-vulnerability-up] }
-        H2#player: { status: [magic-vulnerability-up] }
         H1#player: { status: [magic-vulnerability-up] }
+        H2#player: { status: [magic-vulnerability-up] }
+        M2#player: { status: [magic-vulnerability-up] }
         R1#player: { status: [magic-vulnerability-up] }
+        cast: { progress: 1, visible: true }
         hint: You don't need to look at the cast. If players position like this, it resolves both Netherwrath Near and Netherwrath Far.
-      - cast: { visible: false }
-        dark#[1,2]: { visible: false }
-        gaze#[1,2]: { visible: false }
-        R1#clone: { visible: false }
-        H1#clone: { visible: false }
+      - dark#[1,2]: { visible: false }
         fire#3: { attach: T2#clone }
-        M2#player: [80, -85]
+        gaze#[1,2]: { visible: false }
+        T1#player: [49, -128]
+        T2#player: [49, -128]
         H1#player: [80, -74]
         H2#player: [80, -95]
-        R1#player: [80, -105]
-        T1#player: [49, -128]
         M1#player: [49, -128]
+        M2#player: [80, -85]
+        R1#player: [80, -105]
         R2#player: [49, -128]
-        T2#player: [49, -128]
+        H1#clone: { visible: false }
+        R1#clone: { visible: false }
+        cast: { visible: false }
         hint: Stacks and cones return to soak Firefall Splash once more. Everyone else soaks the first stack.
-      - fire#2: { visible: true }
-        defamation#1: { scale: 1 }
-        M2#player: { status: [] }
-        H2#player: { status: [] }
-        H1#player: { status: [] }
-        R1#player: { status: [] }
-        T2#player: { status: [magic-vulnerability-up] }
-        R2#player: { status: [magic-vulnerability-up] }
-        M1#player: { status: [magic-vulnerability-up] }
+      - defamation#1: { visible: true }
+        fire#2: { visible: true }
         T1#player: { status: [magic-vulnerability-up] }
-      - fire#2: { visible: false }
-        defamation#1: { visible: false }
-        defamation#2: { scale: 1 }
+        T2#player: { status: [magic-vulnerability-up] }
+        H1#player: { status: [] }
+        H2#player: { status: [] }
+        M1#player: { status: [magic-vulnerability-up] }
+        M2#player: { status: [] }
+        R1#player: { status: [] }
+        R2#player: { status: [magic-vulnerability-up] }
+      - defamation#1: { visible: false }
+        defamation#2: { visible: true }
+        fire#2: { visible: false }
         fire#3: { visible: true }
         firefall-splash#*: { visible: true }
-        M2#player: { status: [magic-vulnerability-up] }
-        H2#player: { status: [magic-vulnerability-up] }
-        H1#player: { status: [magic-vulnerability-up] }
-        R1#player: { status: [magic-vulnerability-up] }
-        T2#player: { x: 49, y: -52, status: [] }
-        R2#player: { x: 49, y: -52, status: [] }
-        M1#player: { x: 49, y: -52, status: [] }
         T1#player: { x: 49, y: -52, status: [] }
+        T2#player: { x: 49, y: -52, status: [] }
+        H1#player: { status: [magic-vulnerability-up] }
+        H2#player: { status: [magic-vulnerability-up] }
+        M1#player: { x: 49, y: -52, status: [] }
+        M2#player: { status: [magic-vulnerability-up] }
+        R1#player: { status: [magic-vulnerability-up] }
+        R2#player: { x: 49, y: -52, status: [] }
         hint: While crossing over, stack players hurry to avoid getting clipped by Firefall Splash or Mana Burst.
       - defamation#2: { visible: false }
-        defamation#3: { scale: 1 }
-        fire#3: { visible: false }
+        defamation#3: { visible: true }
         fire#1: { visible: true }
+        fire#3: { visible: false }
         firefall-splash#*: { visible: false }
-        T2#player: { status: [magic-vulnerability-up] }
-        R2#player: { status: [magic-vulnerability-up] }
-        M1#player: { status: [magic-vulnerability-up] }
         T1#player: { status: [magic-vulnerability-up] }
+        T2#player: { status: [magic-vulnerability-up] }
+        M1#player: { status: [magic-vulnerability-up] }
+        R2#player: { status: [magic-vulnerability-up] }
         hint: ""
