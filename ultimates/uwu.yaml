@@ -21,8 +21,7 @@ status:
     type: condition
     description: |
       Inflicted by [a:cyclone] and [a:friction]. Grants resistance to [a:mesohigh]. Without this status effect, [a:mesohigh] deals lethal damage to the player who takes the tether.
-      This effect can be cleansed by taking a [a:mesohigh] tether, standing near a player who takes a [a:mesohigh] tether, or by entering the bubble left behind by the Spiny Plume to trigger [a:super-cyclone].
-      Note that cleansing this effect deals raidwide damage. Cleansing [s:thermal-low] deals mild raidwide damage, cleansing [s:thermal-low:2] deals significant raidwide damage, and cleansing [s:thermal-low:3] deals unsurvivable raidwide damage.
+      This effect can be cleansed by taking a [a:mesohigh] tether, standing near a player who takes a [a:mesohigh] tether, or by entering the bubble left behind by the Spiny Plume. All three methods trigger [a:super-cyclone], an instance of raidwide damage that varies based on the number of cleaned stacks: cleansing [s:thermal-low] deals mild raidwide damage, cleansing [s:thermal-low:2] deals significant raidwide damage, and cleansing [s:thermal-low:3] deals lethal raidwide damage.
       Every time a [s:thermal-low:2] is cleansed, Garuda gains one stack of [s:aetherially-charged]. At 4 stacks, [s:aetherially-charged] transforms into [s:woken].
       [s:thermal-low] stacks persist through death.
   aetherially-charged:
@@ -70,7 +69,7 @@ status:
       While [s:woken], the primal glows blue and certain abilities that they use are "upgraded" and have additional effects. Additionally, when a [s:woken] primal is defeated, they leave behind a small puddle of light. When a player steps inside this puddle, the puddle disappears and the player gains [s:beyond-limits].
       Progressing into the final phase of the fight requires exactly 3 players with [s:beyond-limits], so awakening the primals (despite its negative effects) is not optional.
       What follows is a list of all abilities that change when a primal is [s:woken]:
-      * [a:wicked-wheel] is now immediately followed up with [a:wicked-tornado].
+      * [a:wicked-wheel] is now immediately followed up with [a:wicked-tornado]. This does not affect Suparna or Chirada.
       * [a:downburst] stops being a [single-target tankbuster](m:tb.mt) and becomes a [cleave shared by the party](m:stack.party) instead.
       * [a:crimson-cyclone] is now immediately followed up with two additional [a:crimson-cyclone]s at a 45° angle to either side of the first one. Note that this only applies to the "true" Ifrit, not any of his clones. Look for the blue glow to identify the true Ifrit by his [s:woken] aura.
       * When [s:woken], [s:searing-wind] has a duration of 30 seconds, not 18.
@@ -337,8 +336,8 @@ actions:
     id: 11078
     source: 8726
     mechanic: aoe
-    emphasis: more
     shape: chariot
+    emphasis: more
     compact: trim
     description: |
       The Spiny Plume explodes a short while after being killed. Kills all players caught in its radius, then leaves behind a bubble.
@@ -506,6 +505,12 @@ actions:
     mechanic: aoe
     shape: dynamo
     description: Wide [ms:dynamo] around the center of the arena.
+  wicked-wheel-sister:
+    id: 11084
+    source: 8723
+    mechanic: aoe
+    shape: chariot
+    description: Moderate [ms:chariot] AoE centered on Suparna and Chirada. Unlike Garuda's [a:wicked-wheel], these are not telegraphed.
   wicked-wheel:
     id: 11086
     source: 8722
@@ -1500,7 +1505,7 @@ actions:
       * Rangeds converge with the rest of the party north, just outside of [a:radiant-plume]s.
       * After [a:radiant-plume], immediately backpedal north to avoid the first [a:bury] in the middle. This also baits [boss]'s [a:landslide] north, and Titan's [a:landslide] (who should have spawned either southwest or southeast) should be directly on top of it. Dodge both sets of [a:landslide]s on the Titan side, which has a bigger safe spot.
       * In theory, [a:landslide-followup] should not be able to hit you where you dodged initially, but just to be safe go back directly north.
-      * After [a:landslide-followup], the MT goes northeast and the rest of the party northwest of [boss]. Heal through [Tumults](a:tumult-x7), dodge [a:feather-rain], then dodge [a:feather-rain] again. That's it. You don't deal with any of the other mechanics ([a:post-predation-boulders], [a:wicked-wheel]) as long as you stay on the edge of the arena.
+      * After [a:landslide-followup], the MT goes northeast and the rest of the party northwest of [boss]. Heal through [Tumults](a:tumult-x7), dodge [a:feather-rain], then dodge [a:feather-rain] again. That's it. You don't deal with any of the other mechanics ([a:post-predation-boulders], [a:wicked-wheel-sister]) as long as you stay on the edge of the arena.
       * In Party Finder, the off-tank usually uses [a:provoke] after [a:viscous-aetheroplasm] so the main tank can [t:invuln] to solo [a:viscous-aetheroplasm-stack] and [a:homing-lasers] at the same time.
     strategies:
       post-predation:
@@ -1524,8 +1529,8 @@ actions:
     - at: 22953
       id: viscous-aetheroplasm
     - at: 28033
-      id: wicked-wheel
-      description: Chirada and Suparna both use [a:wicked-wheel]. There is no follow-up.
+      id: wicked-wheel-sister
+      description: Chirada and Suparna both use [a:wicked-wheel-sister]. There is no follow-up.
       count: 2
     - at: 30039
       id: mistral-shriek
