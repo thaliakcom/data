@@ -45,7 +45,7 @@ status:
     id: 1510
     type: impairment
     duration: 30000
-    description: Inflicted on all party members when a Satin Plume isn't killed in time and executes [a:thermal-tumult]. Taking damage dispels the effect early.
+    description: Inflicted on all players when a Satin Plume isn't killed in time and executes [a:thermal-tumult]. Taking damage dispels the effect early.
   beyond-limits:
     id: 1530
     type: form
@@ -236,7 +236,7 @@ actions:
     players: 0
     description: |
       Garuda or her sisters (Chirada and Suparna) scream and fly away. Approximately 2.5 seconds later, small AoEs hit where 5 random players were at the time of the scream.
-      The AoEs remain invisible until shortly before they resolve, too late to react to. Any player hit sustains significant damage and is inflicted with [s:windburn].
+      The AoEs remain invisible until shortly before they resolve, too late to react to. Any player hit sustains heavy damage and is inflicted with [s:windburn].
     resolve: |
       Try to stack with as many players as possible before the scream happens, then move away after. Since there is no cast bar, this necessitates knowing the fight's timeline to know exactly when each scream happens. Most of the fight is spent stacked with other players, so when in doubt simply stay stacked.
       Avoid moving early, as this is likely to place an AoE in the path of another player when they move to dodge.
@@ -263,7 +263,7 @@ actions:
       When the Spiny Plume dies, it explodes with a moderate AoE ([a:gigastorm]) and leaves behind a bubble in the shape of that same AoE. Stepping into the bubble grants [s:thermal-high] and cleanses all [s:thermal-low] stacks. See [a:gigastorm] for more information.
     resolve: |
       Once the plumes spawn, the off-tank should attack the Spiny Plume immediately to force the Spiny Plume to tether them. [a:provoke] works as well. If the off-tank is too slow to attack it, a stray AoE from one of the other players is likely to hit it, causing it to tether to them instead and guaranteeing a wipe.
-      The main tank tanks Garuda away from the party while all other party members (including the off-tank) stack behind Garuda and wait for the Satin Plumes to gather. AoE the Satin Plumes down as fast as possible. *Stop AoEing* the moment the last Satin Plume has died. Do *not* defeat the Spiny Plume until after Garuda has flown away for [a:feather-rain] or the resulting bubble does not last long enough to resolve all mechanics.
+      The main tank tanks Garuda away from the party while all other players (including the off-tank) stack behind Garuda and wait for the Satin Plumes to gather. AoE the Satin Plumes down as fast as possible. *Stop AoEing* the moment the last Satin Plume has died. Do *not* defeat the Spiny Plume until after Garuda has flown away for [a:feather-rain] or the resulting bubble does not last long enough to resolve all mechanics.
     children:
     - at: 0
       id: <targetable>
@@ -305,7 +305,7 @@ actions:
       *Note*: If Garuda is already [s:woken] by this point, the Satin Plumes will be replaced by Razor Plumes. Razor Plumes circle the edge of the arena and detonate in a massive AoE ([a:featherlance]) if they touch another player, killing them and all nearby players. Razor Plumes do not go away on their own; if left alone they will eventually begin to home in on random players. The only way to prevent this is to trigger [a:super-cyclone], which knocks all Razor Plumes out of the air.
     resolve: |
       The main tank tanks Garuda towards north. Keep her off-center to avoid cleaving the party with [a:downburst] or [a:slipstream].
-      Group up the Satin Plumes in the center of the arena when they spawn. Chirada and Suparna appear east and west, each with a [a:mesohigh] tether that attaches to a random party member and can be passed. The caster takes the west tether, the tank with [s:thermal-low:2] takes the east tether. This will grant Garuda [s:aetherially-charged] and therefore [s:woken], but it will also deal heavy damage since it triggers one mild [a:super-cyclone-1] and one heavy [a:super-cyclone-2], with the caster taking the most damage. Personal mitigation is recommended for said caster.
+      Group up the Satin Plumes in the center of the arena when they spawn. Chirada and Suparna appear east and west, each with a [a:mesohigh] tether that attaches to a random player and can be passed. The caster takes the west tether, the tank with [s:thermal-low:2] takes the east tether. This will grant Garuda [s:aetherially-charged] and therefore [s:woken], but it will also deal heavy damage since it triggers one mild [a:super-cyclone-1] and one heavy [a:super-cyclone-2], with the caster taking the most damage. Personal mitigation is recommended for said caster.
       **Important**: If Garuda is already low by this point (less than ~10% HP when plumes spawn), the main tank drags Garuda far north, to the edge of the arena. If Garuda dies before [a:mesohigh] tethers resolve it's a guaranteed wipe (unless she's already [s:woken]). This keeps Garuda away from player AoEs.
     children:
     - at: 0
@@ -546,7 +546,7 @@ actions:
     shape: chariot
     count: 1
     damage: 3905
-    description: Garuda (at the south of the arena) tethers to a random party member. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
+    description: Garuda (at the south of the arena) tethers to a random player. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
   mesohigh-suppression:
     id: 11081
     source: 8722
@@ -554,7 +554,7 @@ actions:
     shape: chariot
     count: 1
     damage: 3905
-    description: Garuda (at the northwest of the arena) tethers to a random party member. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
+    description: Garuda (at the northwest of the arena) tethers to a random player. Another player can take the tether by walking into it. After a short time the tether resolves, dealing mild damage to the tethered player and cleansing their [s:thermal-low] stacks and those of anyone in close proximity to them. Deals lethal damage if the player has no [s:thermal-low] stacks.
   wicked-tornado:
     id: 11087
     mechanic: aoe
@@ -1187,7 +1187,7 @@ actions:
     source: 8727
     mechanic: enrage
     damage: 999999
-    description: Titan enrages, killing all party members.
+    description: Titan enrages, killing all players.
   awakening:
     name: Awakening
     mechanic: hint
@@ -1227,14 +1227,14 @@ actions:
       Unfortunately, [tank invulns](t:invuln) do not count as "mitigation" in this sense, so sustaining lethal damage through a tank invuln does not grant any bonus points. Additionally (and more importantly), actions like [a:feint] or [a:addle] reduce an enemy's damage *before* it checks whether this damage would be lethal to a player. This means that using these actions can cause otherwise "lethal" damage to no longer count as "lethal", and is therefore discouraged.
       Bonus limit break points are accrued per player per damage instance, so actions like [a:tumult-x8] are more valuable than single raidwides since [a:tumult-x8] can potentially reward up to **64** instances of bonus points (8 damage instances times 8 players).
       **LB cheese**
-      For the LB cheese after [a:ultima], we leverage this exact phenomenon to accrue a large number of bonus points to the first raidwide in the phase ([a:tank-purge]). Every party member must contribute to the LB cheese, though it is mainly the shield healer's responsibility. To do this:
+      For the LB cheese after [a:ultima], we leverage this exact phenomenon to accrue a large number of bonus points to the first raidwide in the phase ([a:tank-purge]). Every player must contribute to the LB cheese, though it is mainly the shield healer's responsibility. To do this:
       * Do **not** heal up the party after [a:ultima]. The only one casting any healing actions here should be your shield healer (see below).
       * Do not use [a:second-wind] or similar actions to heal yourself. Let your shield healer handle your HP.
       * The shield healer should apply the strongest shields they can via [a:deployment-tactics]/[a:zoe].
-      * The shield healer checks if every party member has at least 9,400 HP. (Be aware that the game doesn't include shields in the displayed HP, so we're checking the shieldless value here, even if shields have already been applied.)
-      * If most party members have less than 9,400 HP, cast a small additional heal.
-      * If only a small number of party members have less than 9,400 HP, use small heals like [a:physick] if possible. Don't worry about it if you happen to heal too much. A dead player accrues no limit break gauge.
-      * For [a:tank-purge], every party member uses as many party and personal defensives as possible. [a:shade-shift], [a:manaward], [a:tactician], [a:shield-samba], [a:divine-veil], [a:dark-missionary], [a:kerachole], [a:collective-unconscious] – all of these actions should be used. (If an action also has a regenerative component attached to it like with [a:shake-it-off], wait until [boss] is targetable before using it.)
+      * The shield healer checks if every player has at least 9,400 HP. (Be aware that the game doesn't include shields in the displayed HP, so we're checking the shieldless value here, even if shields have already been applied.)
+      * If most players have less than 9,400 HP, cast a small additional heal.
+      * If only a small number of players have less than 9,400 HP, use small heals like [a:physick] if possible. Don't worry about it if you happen to heal too much. A dead player accrues no limit break gauge.
+      * For [a:tank-purge], every player uses as many party and personal defensives as possible. [a:shade-shift], [a:manaward], [a:tactician], [a:shield-samba], [a:divine-veil], [a:dark-missionary], [a:kerachole], [a:collective-unconscious] – all of these actions should be used. (If an action also has a regenerative component attached to it like with [a:shake-it-off], wait until [boss] is targetable before using it.)
       * Just as before, do **not** use any targeted mitigation like [a:feint], [a:addle], or [a:reprisal].
       If done properly, you should be at about 1.25 LB bars after [a:ultima] (since [a:ultima] is always lethal damage no matter what) and at 2 or more LB bars after [a:tank-purge]. The remaining LB bar is naturally accumulated over the course of the fight, even if zero additional bonus points are accumulated.
       If you fail to properly execute the LB cheese and you end up with less than ~2.8 LB bars after [a:ultimate-annihilation], stop hitting [boss] and wait until [a:ultimate-suppression] naturally executes.
@@ -1272,7 +1272,7 @@ actions:
     mechanic: raidwide.lb
     damage: 86430
     description: |
-      [boss:c] unleashes devastation. Kills all party members not under the effect of a [i:tank] limit break 3.
+      [boss:c] unleashes devastation. Kills all players not under the effect of a [i:tank] limit break 3.
     resolve: Use a [i:tank] limit break 3.
   ultima-aether:
     name: Ultima Aether
@@ -1552,7 +1552,7 @@ actions:
       [boss:c] becomes untargetable and teleports to the north of the arena, where it becomes targetable again.
       At the same time, Garuda spawns at the south of the arena. Titan spawns southwest and Ifrit southeast, or vice-versa.
       First, three back-to-back [a:weight-of-the-land-woken] are baited underneath random players while one player is targeted for [a:flaming-crush] and another for [a:mesohigh-annihilation]. The [a:mesohigh-annihilation] tether can be passed.
-      After [a:flaming-crush] Garuda uses [a:eye-of-the-storm] and the first of four [a:aetheroplasm] orbs spawns. Each orb spawns at the northwest of [boss]'s hitbox and begins moving toward a random party member. When a player touches it, the orb explodes, dealing moderate damage to any nearby player and briefly tethering all nearby players to [boss]. For every player tethered the duty gauge climbs by one point, and the length of the tethers between orbs during [a:aetheric-boom] is increased.
+      After [a:flaming-crush] Garuda uses [a:eye-of-the-storm] and the first of four [a:aetheroplasm] orbs spawns. Each orb spawns at the northwest of [boss]'s hitbox and begins moving toward a random player. When a player touches it, the orb explodes, dealing moderate damage to any nearby player and briefly tethering all nearby players to [boss]. For every player tethered the duty gauge climbs by one point, and the length of the tethers between orbs during [a:aetheric-boom] is increased.
       After the first [a:mesohigh-annihilation] resolves, Ifrit uses [a:inferno-howl] to inflict [s:searing-wind] on a random healer. After a [a:feather-rain] another [a:aetheroplasm] orb spawns. Titan now begins casting an unbaited [a:landslide-woken] and Ifrit [a:crimson-cyclone-woken]. Another [a:aetheroplasm] orb spawns, another [a:eye-of-the-storm] happens, and the final [a:aetheroplasm] orb spawns while Garuda casts out a second [a:mesohigh-annihilation] tether.
       There's a [a:tank-purge], another [a:feather-rain], and then [boss] briefly becomes untargetable as it teleports into the center of the arena for a last [a:eye-of-the-storm].
     resolve: |
@@ -1747,7 +1747,7 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      [boss:c] inflicts [s:viscous-aetheroplasm] on three random party members, then each of the three primals briefly appears to execute one mechanic and a raidwide before leaving again.
+      [boss:c] inflicts [s:viscous-aetheroplasm] on three random players, then each of the three primals briefly appears to execute one mechanic and a raidwide before leaving again.
       The order in which the primals appear is random, but Ifrit can never appear last and Titan can never appear in the middle. This means that there are only three possible patterns: Ifrit -> Garuda -> Titan, Garuda -> Ifrit -> Titan, or Titan -> Ifrit -> Garuda.
       Garuda executes a [a:wicked-wheel-woken], an [a:aerial-blast], and leaves with a [a:feather-rain].
       Ifrit executes [a:eruption-roulette]s, two [a:crimson-cyclone]s covering all cardinals, and concludes with a [a:hellfire].

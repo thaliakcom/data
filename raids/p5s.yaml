@@ -45,7 +45,7 @@ status:
     type: dot
     tick: 18000
     duration: 999999.0
-    description: Ticks for approximately 18,000 damage each tick for as long as the affected player is standing inside the caustic pool.
+    description: Ticks for approximately 18,000 damage each tick for as long as the afflicted player is standing inside the caustic pool.
 actions:
   sonic-howl:
     id: 30496
@@ -62,7 +62,7 @@ actions:
     id: 30457
     mechanic: aoe
     shape: rect
-    description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of high damage. Inflicts [s:damage-down].
+    description: Magic damage that is reflected by a ruby wall and bathes that respective square or half in three ticks of heavy damage. Inflicts [s:damage-down].
   topaz-stones:
     id: 30461
     mechanic: mech
@@ -97,11 +97,11 @@ actions:
     id: 30476
     mechanic: tb.close.stack
     damage: 75000
-    description: High-damage [t:AoE] on the party member closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
+    description: High-damage [t:AoE] on the player closest to the unsoaked caustic pool that spawned it. Can be shared by two people to reduce its damage to a regular tankbuster.
   scatterbait:
     id: 30477
     mechanic: mech.failure
-    description: High-damage raidwide that inflicts [s:damage-down] on every living party member.
+    description: High-damage raidwide that inflicts [s:damage-down] on every living player.
   caustic-pools:
     name: Caustic Pools
     mechanic: towers.double
@@ -128,7 +128,7 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 64000
-    description: Hits every party member with a high-damage [t:AoE].
+    description: Hits every player with a high-damage [t:AoE].
     strategies:
       clock-spots:
         name: Clock spots
@@ -207,7 +207,7 @@ actions:
     id: 30497
     mechanic: raidwide
     damage: 40000
-    description: Medium damage raidwide used five times in quick succession.
+    description: Moderate damage raidwide used five times in quick succession.
   acidic-slaver:
     id: 30499
     mechanic: enrage

@@ -64,13 +64,13 @@ status:
     type: condition
     name: Wavelength Î±
     duration: [40500, 30500, 25500]
-    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î²] player whose debuff is also expiring at the same time. Doing so deals minor damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î²] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
   wavelength-î²:
     id: 4463
     type: condition
     name: Wavelength Î²
     duration: [43000, 28000, 23000, 18000]
-    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î±] player whose debuff is also expiring at the same time. Doing so deals minor damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î±] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
   in-the-spotlight:
     id: 4471
     type: impairment
@@ -117,7 +117,7 @@ actions:
     shape: chariot
     damage: 33596
     description: |
-      Deals minor damage to all stacking players as their [s:wavelength-î±]/[s:wavelength-î²] is properly resolved.
+      Deals minimal damage to all stacking players as their [s:wavelength-î±]/[s:wavelength-î²] is properly resolved.
       If players of not identically timed Wavelengths stack, triggers [a:freak-out] instead.
   lets-dance-group:
     name: Let's Dance!

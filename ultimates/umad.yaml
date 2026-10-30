@@ -554,13 +554,13 @@ actions:
       Towers resolve.
       If soaked by a player without [s:magic-vulnerability-up], deals heavy damage to them.
       If soaked by a player with [s:magic-vulnerability-up], instantly kills them.
-      If left unsoaked, deals minimal damage and inflicts [s:damage-down] on all party members ([a:unmitigated-explosion]).
+      If left unsoaked, deals minimal damage and inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
   unmitigated-explosion:
     id: 47787
     mechanic: mech.failure
     players: 8
     damage: 14000
-    description: A tower wasn't soaked, dealing minimal damage and inflicting [s:damage-down] on all party members.
+    description: A tower wasn't soaked, dealing minimal damage and inflicting [s:damage-down] on all players.
   blizzard-iii-blowout:
     id: 47768
     mechanic: aoe
@@ -1484,7 +1484,7 @@ actions:
       * 1 random DPS, 1 random support, and the other [s:accretion] player are inflicted with [s:second-in-line] and [s:primordial-crust] (106s).
       * The remaining 2 players are inflicted with [s:third-in-line] and [s:primordial-crust] (139s).
       All debuffs must be cleansed by healing the player to full (in the case of [s:accretion]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
-      Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all party members, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
+      Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all players, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
       Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
       Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii] at the point of the next [a:earthquake-hit].
       [a:earthquake-hit] deals no damage to the player whose debuff was cleansed.

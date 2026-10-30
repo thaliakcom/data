@@ -283,7 +283,7 @@ actions:
     mechanic: aoe
     damage: 32365
     players: 0
-    description: Fires a [a:spikesicle] curve and leaves behind an ice block. Does moderate damage and inflicts [s:damage-down].
+    description: Fires a [a:spikesicle] curve and leaves behind an ice block. Deals moderate damage and inflicts [s:damage-down].
   sphere-shatter:
     id: 39261
     source: 17554

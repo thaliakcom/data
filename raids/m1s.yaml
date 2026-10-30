@@ -360,7 +360,7 @@ actions:
     shape: rect
     damage: 16215
     players: 0
-    description: Damages a tile, reducing its health by 1, as well as dealing light damage to all players on that tile.
+    description: Damages a tile, reducing its health by 1, as well as dealing mild damage to all players on that tile.
   grimalkin-gale:
     id: 39812
     mechanic: spread
@@ -424,7 +424,7 @@ actions:
     damage: 118467
     players: 7
     description: |
-      Telegraphed [ms:line] stack on a random party member, dealing moderate damage.
+      Telegraphed [ms:line] stack on a random player, dealing moderate damage.
       This attack can never target the player targeted by [a:elevate-and-eviscerate].
   raining-cats:
     id: 39611
@@ -443,7 +443,7 @@ actions:
         description: |
           **Not recommended**.
           A "cheese" strat whereby the first two sets of Raining Cats proceeds as in the intended strat, with melees soaking the first tethers and tanks soaking the second set, but instead of passing the tethers off to the healers or rangeds for the third set, tanks keep their tethers and pop [t:invuln]s. Additionally, since they're already invulnerable, one tanks positions themselves close to the boss and one tank far from the boss, to ensure both tanks get both stacks.
-          The reason this strategy is generally not recommended is because the positioning to make this work is extremely precise. In order for the tanks to take both stacks, all other party members have to be at a medium distance to [boss], i.e. farther away than the inner tank but closer than the outer tank. Since tanks are melee jobs, meaning that the maximum distance the outer tank can be is [t:max melee], this creates an extremely narrow space that all other party members must stay in.
+          The reason this strategy is generally not recommended is because the positioning to make this work is extremely precise. In order for the tanks to take both stacks, all other players have to be at a medium distance to [boss], i.e. farther away than the inner tank but closer than the outer tank. Since tanks are melee jobs, meaning that the maximum distance the outer tank can be is [t:max melee], this creates an extremely narrow space that all other players must stay in.
           If you run your own group, consider modifying this strat such that tanks still [t:invuln] the third and fourth sets, but instead of attempting to bait both stacks, have both tanks stand in the middle of [boss]'s hitbox such that they only bait the close stack while the party continues to bait the far stack.
     children:
       - at: 786

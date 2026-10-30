@@ -62,7 +62,7 @@ status:
     type: condition
     duration: 15000
     description: |
-      Inflicted on 2 players during [a:turn-of-the-heavens]. If these two players die by any means before their stack resolves their burn mark explodes, instantly killing all party members.
+      Inflicted on 2 players during [a:turn-of-the-heavens]. If these two players die by any means before their stack resolves their burn mark explodes, instantly killing all players.
   floating-fetters:
     id: 2304
     type: impairment
@@ -125,7 +125,7 @@ status:
     name: The Weight of Light
     type: delay
     duration: 16000
-    description: Triggers [a:powerful-light] on the affected players when the effect expires.
+    description: Triggers [a:powerful-light] on the afflicted players when the effect expires.
   stun:
     id: 4163
     name: Stun
@@ -184,7 +184,7 @@ status:
   spell-in-waiting-refrain:
     id: 4373
     type: form
-    description: The next spell the boss casts (which is [a:dark-water-iii-cast]) will have staggered effect timers in the form of [s:spell-in-waiting:-dark-water-iii] for each party member.
+    description: The next spell the boss casts (which is [a:dark-water-iii-cast]) will have staggered effect timers in the form of [s:spell-in-waiting:-dark-water-iii] for each player.
   fire-resistance-down-ii:
     id: 4383
     type: vuln
@@ -570,7 +570,7 @@ actions:
     mechanic: stack.party
     shape: cone
     damage: 118494
-    description: Hits the closest player to the [fettered](s:floating-fetters) player with a conal AoE that must be shared by 2 other party members. Inflicts [s:magic-vulnerability-up]. If less than 2 party members soak this stack, inflicts [s:mark-of-mortality] on all players hit.
+    description: Hits the closest player to the [fettered](s:floating-fetters) player with a conal AoE that must be shared by 2 other players. Inflicts [s:magic-vulnerability-up]. If less than 2 players soak this stack, inflicts [s:mark-of-mortality] on all players hit.
   p1-towers:
     name: Towers
     mechanic: towers.random
@@ -1238,9 +1238,9 @@ actions:
     source: 17833
     mechanic: mech
     emphasis: more
-    compact: trim
     players: 8
     damage: 204558
+    compact: trim
     description: |
       Major mechanic.
       Note that, while both bosses cast the mechanic, the damage originates from Usurper of Frost.
@@ -1347,9 +1347,9 @@ actions:
     source: 17835
     mechanic: mech.trio
     emphasis: more
-    compact: full
     players: 8
     damage: 225675
+    compact: full
     description: |
       Major mechanic.
       Note that, while both bosses cast the mechanic, the damage originates from Oracle of Darkness.
@@ -1464,9 +1464,9 @@ actions:
     id: 40306
     source: 17839
     mechanic: mech
-    compact: trim
     players: 8
     damage: 200557
+    compact: trim
     description: Placeholder description
     children:
     - at: 11067

@@ -30,7 +30,7 @@ status:
     id: 3456
     type: condition
     duration: 18000
-    description: Inflicted on all party members during [a:run-dynamis-(sigma-version)]. Soaking one of its [towers](a:storage-violation-sigma) resolves this debuff.
+    description: Inflicted on all players during [a:run-dynamis-(sigma-version)]. Soaking one of its [towers](a:storage-violation-sigma) resolves this debuff.
   first-in-line:
     id: 3004
     type: indicator
@@ -401,7 +401,7 @@ actions:
     description: |
       Deals moderate damage to any players soaking a tower, removes their [s:looper] effect, and inflicts [s:twice-come-ruin].
       Does not apply to players who don't have [s:looper].
-      If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all party members, likely causing [s:doom].
+      If a tower is left unsoaked it explodes. In this case, instead of dealing its damage and inflicting [s:twice-come-ruin] only on the players inside, it instead affects all players, likely causing [s:doom].
   blaster-cast:
     id: 31498
     mechanic: spread.tethers
@@ -775,16 +775,16 @@ actions:
       Omega-M teleports to the center of the arena and faces south. Omega-F teleports behind him while he engages [a:optimized-passage-of-arms], rendering Omega-F invulnerable.
       Additionally, several clones spawn outside of the arena:
       * An Omega-M clone and an Omega-F clone spawn on opposite sides, each spawning a passable tether, and begin casting [a:optimized-bladedance]. On execution, these tethers resolve into massive 90° conal tankbusters.
-      * One Omega-M clone spawns on a random position and begins casting [a:optimized-sagittarius-arrow], a baited [ms:line] AoE on a random party member. The position of this AoE snapshots at the start of the [a:optimized-sagittarius-arrow] cast.
+      * One Omega-M clone spawns on a random position and begins casting [a:optimized-sagittarius-arrow], a baited [ms:line] AoE on a random player. The position of this AoE snapshots at the start of the [a:optimized-sagittarius-arrow] cast.
       * One Omega-M clone that prepares a [a:synthetic-shield] and begins casting [a:beyond-defense] into [a:pile-pitch] once [a:optimized-bladedance] resolves.
-      * One Omega-F clone that does nothing for now but begins casting [a:optimized-meteor] on 3 random party members once [a:optimized-bladedance] resolves.
+      * One Omega-F clone that does nothing for now but begins casting [a:optimized-meteor] on 3 random players once [a:optimized-bladedance] resolves.
       After all mechanics resolve, an Omega-M and Omega-F clone spawn behind Omega-F and command the eye to execute [a:cosmo-memory].
     resolve: |
       The party should preposition at [t:max melee] to the south of Omega-M. After the Limitless Synergy cast concludes, you once again have about 2-3 GCDs to cleave both bosses until Omega-F becomes invulnerable.
       Once tethers spawn, tanks should grab the tethers and move to the edge of the arena, slightly *clockwise* of their respective clone. If done correctly, the tankbusters leave a gap in the form of a narrow line through the center in which the party can stack.
       Consequently, after tanks have grabbed their tethers, the party should immediately move into the center of the arena, right on top of Omega-M. Do *not* wait for the [a:optimized-sagittarius-arrow] telegraph to appear as it has already snapshot its position.
       If the [a:optimized-sagittarius-arrow] clone spawned behind or in front of the party, the center may not be safe. In this case, wait for the telegraph to appear, then move slightly towards one of the two [a:optimized-bladedance] clones, just enough to get out of the AoE.
-      Afterwards, two previously designated party members (usually the tanks) should move in-between the party and the Omega-M clone with the [a:synthetic-shield] at [t:max melee] to intercept [a:beyond-defense]. Whichever of these two players is targeted should immediately circle around the party, ending up on the opposite side so they cannot be targeted for or hit by [a:pile-pitch], which is lethal to that player. The other player should move in to stack with the party for [a:pile-pitch]. It is okay for the [a:beyond-defense] baiters to also be targeted for [a:optimized-meteor].
+      Afterwards, two previously designated players (usually the tanks) should move in-between the party and the Omega-M clone with the [a:synthetic-shield] at [t:max melee] to intercept [a:beyond-defense]. Whichever of these two players is targeted should immediately circle around the party, ending up on the opposite side so they cannot be targeted for or hit by [a:pile-pitch], which is lethal to that player. The other player should move in to stack with the party for [a:pile-pitch]. It is okay for the [a:beyond-defense] baiters to also be targeted for [a:optimized-meteor].
       The intended way to resolve [a:optimized-meteor] is to have these players move out of the [a:pile-pitch] party stack, but with sufficient shielding and mitigation the [a:optimized-meteor] players can just stack with the party. This has become the preferred way to handle this mechanic in most parties.
       Remember to heal up and mitigate for [a:cosmo-memory], then it's just DPS until both bosses are dead.
     tips:
@@ -909,8 +909,11 @@ actions:
     tips:
       - It is not necessary to pay attention to which set of hands spawns first. As long as you stand centered in-between the 2 closest hands, you'll always have enough time to step out of the first AoE. [a:sprint] makes this even easier.
     mistakes:
-      - Not stepping out of the [t:conga line] in time and confusing your party members.
+      - Not stepping out of the [t:conga line] in time and confusing your players.
       - If you're a [s:high-powered-sniper-cannon-fodder], not checking to make sure you're stacking with a no-debuff player, and vice-versa.
+    strategies:
+      p3-transition:
+        name: Example
     children:
       - at: 5047
         id: wave-repeater
@@ -1142,7 +1145,7 @@ actions:
   hello-world-fail:
     id: 31627
     mechanic: mech.failure
-    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Deals lethal damage to all party members. Can be [t:invuln]ed, but inflicts [s:damage-down] in that case.
+    description: Failure state that occurs when a player with [s:hello-near-world] or [s:hello-distant-world] dies, or when any of either effect's three AoEs clips another player. Deals lethal damage to all players. Can be [t:invuln]ed, but inflicts [s:damage-down] in that case.
   latent-defect:
     id: 31599
     source: 15717
@@ -1192,7 +1195,7 @@ actions:
     count: 2
     players: 8
     description: |
-      A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all party members and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
+      A tether (either [s:local-regression] or [s:remote-regression]) snaps, dealing damage to all players and inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2].
       Note that, if the tether was not manually snapped (i.e. it was left to expire or one of the tethered players died), Patch will deal almost three times as much damage, which can be difficult to survive.
   critical-underflow-bug:
     id: 31578
@@ -1353,8 +1356,8 @@ actions:
     id: 33196
     source: 15720
     mechanic: tb.mt
-    compact: full
     shape: chariot
+    compact: full
     description: Similar to [Solar Ray (single)](a:solar-ray), but deals significantly more damage, inflicts [s:magic-vuln], and executes twice in quick succession.
     resolve: Either invuln both hits or [t:tankswap] in-between the hits.
     children:
@@ -1477,8 +1480,8 @@ actions:
     id: 31600
     source: 15718
     mechanic: aoe.rotating
-    compact: full
     shape: line
+    compact: full
     description: |
       The Left/Right Arm Unit fires a laser at the closest player that rotates counter-clockwise/clockwise after the initial hit.
       The initial hit is telegraphed and can (and should) be stepped out of.
@@ -1669,7 +1672,7 @@ actions:
     description: |
       Single- and two-player towers that deal moderate damage to the players soaking them and resolve their [s:looper-sigma].
       With [s:remote-glitch], 2 single and 3 two-player towers spawn; with [s:mid-glitch], 4 single and 2 two-player towers.
-      If any tower is left unsoaked, all party members are inflicted with [s:twice-come-ruin:2], which turns into [s:doom] and wipes the party.
+      If any tower is left unsoaked, all players are inflicted with [s:twice-come-ruin:2], which turns into [s:doom] and wipes the party.
   run-dynamis-(omega-version):
     id: 32789
     source: 15720
@@ -1796,14 +1799,14 @@ actions:
       [boss]'s auto-attacks. Targets the main target and the farthest player from [boss].
       Note that both hits *can* target the same player if the main target is simultaneously farthest from [boss].
     resolve: |
-      After every mechanic (such as [a:cosmo-wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other party member. The rest of the party should be inside the hitbox.
+      After every mechanic (such as [a:cosmo-wave-cannon] or [a:cosmo-dive]), make doubly sure that your off-tank is outside the hitbox and that both your MT and OT are nowhere near any other player. The rest of the party should be inside the hitbox.
   cosmo-arrow:
     id: 31650
     source: 15725
     mechanic: aoe.exaflares
+    shape: rect
     emphasis: more
     compact: full
-    shape: rect
     description: |
       Exasquares.
       [boss] fires up arrows that come down in two fixed shapes: a cross-shaped AoE in the middle, and lines around the outside of the arena. Which of these shapes impacts first depends on which of the two is telegraphed first.
@@ -1907,7 +1910,7 @@ actions:
     compact: full
     description: |
       A circle with arrows appears on a random cardinal or intercardinal about half a second before the end of the cast. Three more circles then appear clockwise or counter-clockwise, each with a slight delay.
-      Five seconds after the cast, big telegraphed AoEs spawn underneath each party member that resolve 2.7 seconds later. They do not follow players. More AoEs spawn underneath each party member every 2 seconds. At the same time, the first of the arrow circles on the outside of the arena resolves into exaflares that travel across the arena in the indicated direction, then the next, and so on.
+      Five seconds after the cast, big telegraphed AoEs spawn underneath each player that resolve 2.7 seconds later. They do not follow players. More AoEs spawn underneath each player every 2 seconds. At the same time, the first of the arrow circles on the outside of the arena resolves into exaflares that travel across the arena in the indicated direction, then the next, and so on.
     resolve: |
       Stack in the center of the arena with the entire party. During the cast, continuously turn your camera until you've found the location of the first exaflare. Once the cast finishes and the first set of AoEs appears underneath players, move toward the marker next to the first exaflare that does *not* have another exaflare on top of it, then move into where the first exaflare was, and continue to move around the hitbox at max melee until you're clear.
       Just like [a:pantokrator], don't move too far ahead – only move just outside the previous set of baited AoEs until the next set of baited AoEs appears.
@@ -1955,7 +1958,7 @@ actions:
     mechanic: mech
     description: |
       Shortly after the **start** of the cast, [boss] fires lasers at 4 random players, then at the other 4 players.
-      At the end of the cast, executes a [m:stack.intercept] towards a random player that deals massive damage to the first targets in line and split damage to all remaining party members.
+      At the end of the cast, executes a [m:stack.intercept] towards a random player that deals massive damage to the first targets in line and split damage to all remaining players.
       *Note that unlike most mechanics on Thaliak, the timestamp of this mechanic indicates the start of the cast, not the end.*
     resolve: |
       Stay spread until the second set of proteans, then heal the party and stack on a designated cardinal (e.g. south) with both tanks in front of the party. Requires *heavy* tank mits and party mits.
@@ -1973,7 +1976,7 @@ actions:
     shape: line
     damage: 90000
     count: 4
-    description: Fires lasers at 4 random party members, then lasers at the remaining 4. Each laser deals massive damage and inflicts [s:magic-vuln].
+    description: Fires lasers at 4 random players, then lasers at the remaining 4. Each laser deals massive damage and inflicts [s:magic-vuln].
   cosmo-wave-cannon-wc:
     id: 31658
     source: 15725
@@ -1990,9 +1993,9 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      First, spawns massive baited AoEs underneath every party member.
+      First, spawns massive baited AoEs underneath every player.
       A short while later, spawns eight adds around the hitbox: 6× Cosmo Comet and 2× Cosmo Meteor. The meteors always spawn north and south while the remaining ones spawn on the other cardinals and intercardinals. If not killed within 15 seconds, they will wipe the party.
-      At the same time, hits 4 party members with [targeted spreads](a:cosmo-meteor-spreads), then the other 4.
+      At the same time, hits 4 players with [targeted spreads](a:cosmo-meteor-spreads), then the other 4.
       There is a second round of spreads that functions the same as the first, then 3 players are targeted by [flare markers](a:cosmo-meteor-flare). At the same time as the flares resolve, a random non-flare player is targeted with a [stack](a:cosmo-meteor-stack) that is lethal if taken with less than 5 players.
     resolve: |
       At the start of the cast, everyone should stack dead-center of [boss]'s hitbox. Wait until the AoEs appear, then everyone moves out to their designated clock spot.
@@ -2029,7 +2032,7 @@ actions:
     name: Cosmo Meteor (Baits)
     mechanic: aoe.delayed
     shape: defamation
-    description: Spawns massive baited AoEs underneath every party member that resolve about 4 seconds later. Each AoE is almost the size of [boss]'s hitbox.
+    description: Spawns massive baited AoEs underneath every player that resolve about 4 seconds later. Each AoE is almost the size of [boss]'s hitbox.
   cosmo-meteor-spreads:
     id: 32699
     name: Cosmo Meteor (Spreads)
@@ -2037,7 +2040,7 @@ actions:
     shape: chariot
     damage: 110884
     count: 4
-    description: Hits 4 party members with a small protean comet, then the other 4. Each hit inflicts [s:magic-vuln] for about 3 seconds.
+    description: Hits 4 players with a small protean comet, then the other 4. Each hit inflicts [s:magic-vuln] for about 3 seconds.
   cosmo-meteor-stack:
     id: 31667
     name: Cosmo Meteor (Stack)
@@ -2059,7 +2062,7 @@ actions:
     mechanic: raidwide.lb
     damage: 310607
     description: |
-      Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all party members, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
+      Annihilates the party. Can only be survived with a [i:tank] LB3, in which case the attack deals heavy damage and inflicts [s:magic-number] on all players, a debuff that must be cleansed using [i:healer] LB3 within 6 seconds or the party wipes.
       Note that [a:cover] *prevents* the targeted player from being inflicted with [s:magic-number]. This can be used to essentially "skip" one [a:magic-number] if one of your healers has died and lost their free LB3. (Have the non-PLD use [i:tank] LB3 while the PLD [a:cover]s the healer who still has [s:brilliant-dynamis], then have the PLD click off their LB3 buff immediately to ensure they die to the cast without having to wait for [s:magic-number] to expire. The healer raises the PLD, the PLD uses [i:tank] LB3 and the healer uses [i:healer] LB3 to raise the rest of the party.)
     trivia: |
       In programming terms, a *magic number* is a number that is used directly in source code. This is an anti-pattern; best practice is to extract such numbers into named constants and then reference the constant anywhere the number is needed. This way the name of that constant explains what the number means.

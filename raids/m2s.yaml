@@ -350,7 +350,7 @@ actions:
     id: 39525
     mechanic: aoe.delayed
     shape: line
-    description: A groupbee executes a line AoE through the arena. Inflicts [s:damage-down] and [s:piercing-resistance-down] and knocks affected players back.
+    description: A groupbee executes a line AoE through the arena. Inflicts [s:damage-down] and [s:piercing-resistance-down] and knocks afflicted players back.
   alarm-pheromones-2:
     id: 37245
     mechanic: mech
@@ -512,7 +512,7 @@ actions:
     resolve: |
       Have all players spread to clock positions to avoid accidentally touching another player. After each [a:call-me-honey], wait for both heals and for [s:magic-vulnerability-up] to expire, then have the next Beeloved Venoms to expire go in the center of [boss]'s hitbox to resolve their debuffs.
       Be aware that the [s:magic-vulnerability-up] inflicted by [a:rotten-big-burst] lasts for 7 seconds. This means that if the debuffs are resolved at 3s or less, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
-      If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the affected players die instead. This will not cause a wipe.
+      If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the afflicted players die instead. This will not cause a wipe.
     children:
     - at: 7857
       id: rotten-big-burst
@@ -543,12 +543,12 @@ actions:
     id: 37303
     mechanic: mech.failure
     description: |
-      Inflicts [s:honey-bee-mine] and [s:drone] on all party members, restores [boss]'s HP by 8% (1% per party member), and grants her [s:femme-fatale:16].
+      Inflicts [s:honey-bee-mine] and [s:drone] on all players, restores [boss]'s HP by 8% (1% per player), and grants her [s:femme-fatale:16].
   honey-b-finale-enrage:
     id: 37304
     mechanic: enrage
     damage: 9999999
-    description: Kills every party member.
+    description: Kills every player.
 timeline:
   - at: 10882
     id: call-me-honey

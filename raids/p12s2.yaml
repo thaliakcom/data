@@ -125,7 +125,7 @@ actions:
     type: physical
     mechanic: tb.mt
     description: "[boss] slams her tentacle twice onto the half of the arena with the main target on it. Deals massive damage to everyone on that half of the arena and inflicts [s:physical-vuln]."
-    resolve: All party members except the targeted tank should move to the other half of the arena. Either [t:invuln] the two hits or tankswap after the first hit. If you swap, make sure that the tanks also swap positions.
+    resolve: All players except the targeted tank should move to the other half of the arena. Either [t:invuln] the two hits or tankswap after the first hit. If you swap, make sure that the tanks also swap positions.
     children:
       - at: 223
         id: palladian-grasp-hit
@@ -246,7 +246,7 @@ actions:
     players: 8
     description: |
       Heavy raidwide that initiates a major shape-based mechanic.
-      12 polyhedra spawn in a 4x3 grid pattern within the arena: 4 red tetrahedra, 4 yellow cubes, and 4 blue icosahedra. After some time, each tetrahedron and cube attempts to *tether* itself to a neighbouring icosahedron. If successful, the shapes merge, wiping the raid. Players can prevent this by *intercepting* the tether before it appears. This causes the shape to tether itself to the player and merge with them instead, dealing medium damage to that player.
+      12 polyhedra spawn in a 4x3 grid pattern within the arena: 4 red tetrahedra, 4 yellow cubes, and 4 blue icosahedra. After some time, each tetrahedron and cube attempts to *tether* itself to a neighbouring icosahedron. If successful, the shapes merge, wiping the raid. Players can prevent this by *intercepting* the tether before it appears. This causes the shape to tether itself to the player and merge with them instead, dealing moderate damage to that player.
       Additionally, each player is assigned either [s:alpha] or [s:beta], shows a PlayStation icon above their head, and is tethered to another player ([s:shackled-together]), causing a wipe if the pair separates.
       The arrangement of the shapes is pseudo-random, but there are some guarantees:
       * There will never be more than 1 icosahedron per column.
@@ -293,7 +293,7 @@ actions:
     mechanic: mech
     damage: 54000
     players: 1
-    description: A cube or tetrahedron merges with a player, dealing medium damage.
+    description: A cube or tetrahedron merges with a player, dealing moderate damage.
   implode:
     id: 33587
     count: 12
@@ -318,7 +318,7 @@ actions:
     id: 33559
     count: 2
     mechanic: tb.double
-    description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a high damage physical tankbuster.
+    description: Inflicts 4 subsequent stacks of [s:physical-vuln-stack] to each tank, followed by a heavy damage physical tankbuster.
     resolve: |
       Wait for all 4 stacks to be inflicted, then cleanse them using [a:esuna] or [a:wardens-paean], or use [a:cover].
       Make sure your healers are aware that the main target continues to get auto-attacked while stacks are being inflicted.
@@ -359,7 +359,7 @@ actions:
     players: 8
     description: |
       Major mechanic.
-      At the start of the cast, a grid appears on the arena. Additionally, 2 players (1 support and 1 DPS) are marked with a beacon. At the end of the cast, **one** of them explodes for massive damage that can be shared in addition to raidwide damage to every party member.
+      At the start of the cast, a grid appears on the arena. Additionally, 2 players (1 support and 1 DPS) are marked with a beacon. At the end of the cast, **one** of them explodes for massive damage that can be shared in addition to raidwide damage to every player.
       After the cast, 4 players (2 supports and 2 DPS) are assigned [s:pyrefaction] and [s:caloric:1]; these players are marked with a giant fire beacon above their heads. The other 4 players are assigned [s:atmosfaction] and [s:caloric:2].
       [s:caloric]: During the entire mechanic, moving the length of the short side of two grid rectangles or moving the diagonal length of one grid rectangle adds one stack of [s:caloric] to that player. Reaching [s:caloric:5] wipes the party.
       [s:pyrefaction]: A partner stack that must be shared by one other player or the party wipes. This also adds another stack of [s:caloric] to the source players (but not to anyone stacking with them).
@@ -516,7 +516,7 @@ actions:
     damage: 81000
     shape: defamation
     description: The Forbidden Factor slimes tether to a target and launch toward them in a huge [ms:defamation] [t:AoE] that are lethal to anyone with [s:critical-factor]. The tethers can be passed. Being hit by the [t:AoE] inflicts [s:fourfold-come-ruin].
-    resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take high damage and end up at [s:fourfold-come-ruin:3].
+    resolve: At this point there should be two players without [s:critical-factor]. Have each of these 2 players take 3 slime tethers each. They will take heavy damage and end up at [s:fourfold-come-ruin:3].
   panta-rhei:
     id: 33590
     trivia: >

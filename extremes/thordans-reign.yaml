@@ -43,7 +43,7 @@ status:
     id: 296
     type: impairment
     duration: 4000
-    description: Causes affected players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:rescue] on the affected player.
+    description: Causes afflicted players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:rescue] on the afflicted player.
   paralysis:
     id: 17
     type: impairment
@@ -71,12 +71,12 @@ status:
     id: 945
     type: resistance
     affects: enemy
-    description: Automatically applies [s:vuln-down] to self and any nearby knights.
+    description: Automatically grants [s:vuln-down] to self and any nearby knights.
   sword-of-the-heavens:
     id: 944
     type: resistance
     affects: enemy
-    description: Automatically applies [s:damage-up] to self and any nearby knights.
+    description: Automatically grants [s:damage-up] to self and any nearby knights.
   vuln-down:
     id: 350
     type: resistance
@@ -205,7 +205,7 @@ actions:
     mechanic: mech.failure
     damage: 26395
     players: 8
-    description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all party members.
+    description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all players.
   knights-2:
     name: Zephirin and others
     mechanic: adds
@@ -232,7 +232,7 @@ actions:
     mechanic: raidwide
     damage: 40000
     description: |
-      Ser Zephirin casts [a:sacred-cross]. When he finishes the cast, deals twice Ser Zephirin's remaining health percentage to all party members relative to your maximum health.
+      Ser Zephirin casts [a:sacred-cross]. When he finishes the cast, deals twice Ser Zephirin's remaining health percentage to all players relative to your maximum health.
       So, for instance, if you have 47,000 max HP and your tanks have 60,000 max HP, the attack will deal 120,000 damage to tanks and 94,000 damage to everyone else if you don't damage Ser Zephirin at all. This means that the attack becomes survivable after damaging Ser Zephirin to roughly 50% health with sufficient mitigation and/or shields.
   spiral-thrust:
     id: 35301
@@ -266,7 +266,7 @@ actions:
     resolve: |
       Keep the knights separated (ideally east and west, with one tank taking each knight) at all times to ensure they don't tether. Always target the knight with [s:sword-of-the-heavens], as the other is nigh invulnerable.
       If you have [t:DoT] abilities, try to put them on both knights before they cast the first [a:divine-right], as any DoTs inflicted before [s:shield-of-the-heavens] are unaffected by the defense increase.
-      Once blue markers appear, place the first north, the second south, and the third north again, to ensure the other party members only take minimal damage from each jump.
+      Once blue markers appear, place the first north, the second south, and the third north again, to ensure the other players only take minimal damage from each jump.
       If you're tanking the knight with [s:sword-of-the-heavens] beware, as his [a:holy-bladedance] deals massive amounts of damage, requiring heavy mitigation or [t:invuln]s.
     children:
     - at: 500
@@ -385,7 +385,7 @@ actions:
     mechanic: spread
     shape: line
     damage: 36567
-    description: A knight tethers to a random player and, after some time, dashes towards them, dealing high damage. Anyone else in the path of the dash is knocked into the wall and killed.
+    description: A knight tethers to a random player and, after some time, dashes towards them, dealing heavy damage. Anyone else in the path of the dash is knocked into the wall and killed.
   dimensional-collapse:
     id: 35288
     mechanic: aoe.expanding
@@ -449,7 +449,7 @@ actions:
     mechanic: mech.failure
     damage: 9999999
     players: 8
-    description: The Meteor Circle was not destroyed in time and its meteor reached the ground. Instantly kills all party members.
+    description: The Meteor Circle was not destroyed in time and its meteor reached the ground. Instantly kills all players.
   the-light-of-ascalon:
     id: 35278
     mechanic: raidwide
@@ -482,7 +482,7 @@ actions:
     damage: 44915
     description: |
       [boss] buries you and your beliefs.
-      Does more damage if the limit break gauge is at 100, but can still be survived with sufficient mitigation, shields, or a tank limit break.
+      Deals more damage if the limit break gauge is at 100, but can still be survived with sufficient mitigation, shields, or a tank limit break.
       After his ultimate, [boss] becomes targetable again and summons a giant dragon eye on the outside of the arena. Each time [a:the-dragons-gaze] is cast, there will now be a gaze coming from both [boss] and the eye ([a:the-dragons-glory]). To make dealing with this easier, try to move [boss] in front of the eye each time [a:the-dragons-eye] is cast.
   knights-of-the-round-1:
     id: 35275
@@ -632,7 +632,7 @@ actions:
     id: 35305
     mechanic: raidwide
     damage: 19448
-    description: A knight dives onto a random party member, dealing moderate raidwide damage.
+    description: A knight dives onto a random player, dealing moderate raidwide damage.
   knightly-cover:
     name: Heaven's Cover
     mechanic: mech
@@ -719,7 +719,7 @@ timeline:
     description: King Thordan becomes targetable.
   - at: 331703
     id: the-dragons-eye
-    description: Applies [s:light-of-ascalon:2], increasing damage dealt.
+    description: Grants [s:light-of-ascalon:2], increasing damage dealt.
   - at: 341876
     id: knights-of-the-round-1
   - at: 370289
@@ -730,14 +730,14 @@ timeline:
     id: ancient-quaga
   - at: 387580
     id: the-dragons-eye
-    description: Applies [s:light-of-ascalon:3], increasing damage dealt.
+    description: Grants [s:light-of-ascalon:3], increasing damage dealt.
   - at: 397758
     id: knights-of-the-round-2
   - at: 429317
     id: ascalons-might
   - at: 438515
     id: the-dragons-eye
-    description: Applies [s:light-of-ascalon:4], increasing damage dealt.
+    description: Grants [s:light-of-ascalon:4], increasing damage dealt.
   - at: 448693
     id: knights-of-the-round-3
   - at: 476873
@@ -746,7 +746,7 @@ timeline:
     id: ascalons-might
   - at: 489147
     id: the-dragons-eye
-    description: Applies [s:light-of-ascalon:5], increasing damage dealt.
+    description: Grants [s:light-of-ascalon:5], increasing damage dealt.
   - at: 499351
     id: knights-of-the-round-4
   - at: 524055
@@ -757,7 +757,7 @@ timeline:
     id: ancient-quaga
   - at: 540500
     id: the-dragons-eye
-    description: Applies [s:light-of-ascalon:6], increasing damage dealt.
+    description: Grants [s:light-of-ascalon:6], increasing damage dealt.
   - at: 550677
     id: knights-of-the-round-5
   - at: 618211

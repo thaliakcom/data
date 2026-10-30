@@ -237,7 +237,7 @@ actions:
     name: Archaic Rockbreaker (Stack)
     mechanic: stack.partner
     shape: chariot
-    description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a party member of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
+    description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a player of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
     damage: 58000
     count: 4
   rockbreaker-aoe:  # Archaic Rockbreaker
@@ -386,7 +386,7 @@ actions:
     type: magic
     mechanic: stack.far
     shape: chariot
-    description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and applies [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
+    description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and inflicts [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
     damage: 46000
     count: 1
   thunderbolt:  # Thunderbolt
@@ -394,7 +394,7 @@ actions:
     type: magic
     mechanic: spread
     shape: cone
-    description: Launches conal attacks at the closest 4 players, originating from [boss], and applies [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
+    description: Launches conal attacks at the closest 4 players, originating from [boss], and inflicts [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
       To avoid damaging any comets, the cones should be aimed into the tornados. The lines on each cardinal and intercardinal assist with positioning.
     damage: 60000
     count: 4
@@ -410,7 +410,7 @@ actions:
       Odd numbers (1, 3, 5, 7) appear above the orbs, while even numbers (2, 4, 6, 8) appear above four random players. This is a [m:mech.limit] mechanic with *four turns*. After the cast resolves, the boss becomes untargetable and the first turn begins. In each turn the following three mechanics happen simultaneously:
       [a:shock]: [a:shock:d]
       [a:firemeld]: [a:firemeld:d]
-      [a:icemeld]: Before each turn, a blue marker appears above a random unnumbered party member. These party members will receive an enormous [ms:chariot] [t:AoE] that inflicts [s:magic-vuln]. Unlike [a:shock]'s and [a:firemeld]'s vulnerabilities, however, [a:icemeld]'s vulnerability lasts for the duration of the entire mechanic. This means that even after their [a:icemeld] is resolved, these players cannot soak towers at any point. All towers must be soaked by numbered players two turns before or after their respective [a:firemeld] dash.
+      [a:icemeld]: Before each turn, a blue marker appears above a random unnumbered player. These players will receive an enormous [ms:chariot] [t:AoE] that inflicts [s:magic-vuln]. Unlike [a:shock]'s and [a:firemeld]'s vulnerabilities, however, [a:icemeld]'s vulnerability lasts for the duration of the entire mechanic. This means that even after their [a:icemeld] is resolved, these players cannot soak towers at any point. All towers must be soaked by numbered players two turns before or after their respective [a:firemeld] dash.
       **Order** (tower soaks): 6-8-2-4. An easy way to remember this is that, if you're 2 or 4, your first mechanic is a [a:firemeld]. If you're a 6 or 8, your first mechanic is a tower soak. Afterwards, your other responsibility resolves exactly two turns later.
       Note that, after the last tower is resolved, the boss immediately starts casting [a:two-minds], which essentially serves as a [t:body check] and also requires players to get into their assigned [t:protean] or partner positions quickly.
     children:

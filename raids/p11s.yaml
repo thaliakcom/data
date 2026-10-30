@@ -76,7 +76,7 @@ actions:
   dike:
     id: 33325
     mechanic: tb.double
-    description: High damage tankbuster. Invuln or [t:tankswap].
+    description: Heavy damage tankbuster. Invuln or [t:tankswap].
     children:
       - at: 0
         id: dike-hit
@@ -86,7 +86,7 @@ actions:
     id: 33330
     mechanic: tb.double
     damage: 145000
-    description: Pierces first-in-enmity with light damage, inflicting [s:light-vuln], and second-in-enmity with dark damage, inflicting [s:dark-vuln].
+    description: Pierces first-in-enmity with light-aspected damage, inflicting [s:light-vuln], and second-in-enmity with dark damage, inflicting [s:dark-vuln].
   jury-overruling:
     id: 33254
     mechanic: spread
@@ -150,7 +150,7 @@ actions:
     mechanic: mech
     compact: full
     description: |
-      The boss tethers to a random party member and glows either dark or light, indicating the next mechanic.
+      The boss tethers to a random player and glows either dark or light, indicating the next mechanic.
       Light: [a:upheld-overruling-stack] > [a:lightburst] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
       Dark: [a:upheld-overruling-tb] > [a:dark-perimeter] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
     children:
@@ -173,7 +173,7 @@ actions:
     damage: 95000
     compact: full
     description: |
-      Dark ability. [boss] tethers to a random tank and jumps on them, dealing high damage, inflicting [s:stab-wound], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
+      Dark ability. [boss] tethers to a random tank and jumps on them, dealing heavy damage, inflicting [s:stab-wound], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
       Is always immediately followed by [a:dark-perimeter] and [a:inevitable-sentence].
     children:
     - at: 4100
@@ -189,7 +189,7 @@ actions:
     damage: 38000
     compact: full
     description: |
-      Light ability. [boss] tethers to a random party member and jumps on them, dealing high damage that must be shared by the rest of the party.
+      Light ability. [boss] tethers to a random player and jumps on them, dealing heavy damage that must be shared by the rest of the party.
       Is always immediately followed by [a:lightburst] and [a:inevitable-law].
     children:
     - at: 4100

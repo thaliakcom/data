@@ -355,7 +355,7 @@ actions:
     mechanic: mech
     emphasis: more
     description: |
-      Two players at a time drop [starbursts](t:starburst) until all party members have dropped one.
+      Two players at a time drop [starbursts](t:starburst) until all players have dropped one.
       Each drop inflicts [s:magic-vulnerability-up] that lasts until after the *next* drop. This means that if any player is hit by the [a:tendrils-of-terror] immediately following their drop, or the next set of [a:strange-seeds-drop], they will instantly die.
   strange-seeds-drop:
     id: 42392

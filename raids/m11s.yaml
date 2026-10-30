@@ -75,7 +75,7 @@ actions:
     name: Raw Steel Trophy (Scythe)
     mechanic: combination
     shape: cone
-    description: A [tankbuster](m:tb.double) on each of the two highest enmity party members and a [m:stack.party] on a random other party member.
+    description: A [tankbuster](m:tb.double) on each of the two highest enmity players and a [m:stack.party] on a random other player.
     children:
     - at: 7473
       id: raw-steel-scythe
@@ -88,20 +88,20 @@ actions:
     shape: cone
     count: 2
     damage: 439200
-    description: Conal tankbusters on the two highest enmity party members. Inflicts [s:physical-vulnerability-up].
+    description: Conal tankbusters on the two highest enmity players. Inflicts [s:physical-vulnerability-up].
   heavy-hitter:
     id: 46096
     mechanic: stack.party
     shape: cone
     damage: 161699
-    description: A conal stack on a random party member who is *not* one of the first two targets in enmity. Inflicts [s:physical-vulnerability-up].
+    description: A conal stack on a random player who is *not* one of the first two targets in enmity. Inflicts [s:physical-vulnerability-up].
   raw-steel-trophy-axe:
     id: 46114
     name: Raw Steel Trophy (Axe)
     mechanic: combination
     shape: chariot
     description: |
-      A shared [tankbuster](m:tb.stack) on either of the two highest-enmity party members and a [m:spread] on all other party members.
+      A shared [tankbuster](m:tb.stack) on either of the two highest-enmity players and a [m:spread] on all other players.
       **Note**: To reiterate, the tankbuster randomly targets either the player with the most enmity or the player with the second-most enmity. **You cannot have your main tank take this tankbuster solo with [t:invuln]** for this reason.
     children:
     - at: 6312
@@ -114,14 +114,14 @@ actions:
     mechanic: tb.stack
     shape: chariot
     damage: 450855
-    description: Heavy-hitting tankbuster on either of the two highest-enmity party members that deals lethal damage unless shared by another player. Inflicts [s:physical-vulnerability-up].
+    description: Heavy-hitting tankbuster on either of the two highest-enmity players that deals lethal damage unless shared by another player. Inflicts [s:physical-vulnerability-up].
   impact:
     id: 46092
     mechanic: spread
     shape: chariot
     count: 6
     damage: 157622
-    description: Spreads on all party members who are not first or second in enmity. Inflicts [s:physical-vulnerability-up].
+    description: Spreads on all players who are not first or second in enmity. Inflicts [s:physical-vulnerability-up].
   trophy-weapons:
     id: 46102
     mechanic: mech.prepare
@@ -606,7 +606,7 @@ actions:
       There will always be 2 meteor portals and 2 towers per side. The towers spawn in fixed positions on the north and south of the platform. The portals may either both spawn outside or inside. If the western portals spawn outside, the eastern portals spawn inside, and vice-versa.
       Each meteor portal tethers to a random player, with an even 2-2 split (meaning each platform has exactly two tethered players). This is a [distance tether](m:mech.tether.distance) and cannot be passed.
       In addition to these east/west meteor portals, two meteor portals will also spawn on the north of the arena (one per platform). This portal does not tether to a player and is instead equivalent to the portals during [a:orbital-omen] (a [ms:line] AoE in the direction of the portal). Each of these portals renders one half of the arena unsafe, either the half close to [boss] or the half far from him. Like the east/west portals, these two portals are also inverted per platform (so if the west platform features the close portal, the east platform features the far portal).
-      Towers resolve when their meteor touches the ground, knocking all soakees up and away from the center of the tower. If a player is missing from a tower, deals heavy damage and inflicts [s:sustained-damage] on all party members. If a tower is missed completely, deals heavy damage and inflicts [s:sustained-damage:2] on all party members.
+      Towers resolve when their meteor touches the ground, knocking all soakees up and away from the center of the tower. If a player is missing from a tower, deals heavy damage and inflicts [s:sustained-damage] on all players. If a tower is missed completely, deals heavy damage and inflicts [s:sustained-damage:2] on all players.
       Shortly after players touch the ground again, the four closest players to [boss] are marked for [a:fire-breath]. This is directly followed by three sets of delayed AoEs that spawn underneath each player ([a:majestic-meteor-puddle]). After the third set spawns the portal tethers ([a:majestic-meteowrath]), the player markers ([a:fire-breath]), and the north portals ([a:majestic-meteorain]) resolve simultaneously.
       This entire sequence, starting with the towers, repeats one more time in full. Any player who was tethered to a portal is now untethered and vice-versa.
       After this repeat one last set of towers spawns, but this time without any portals. Instead [boss] faces a random platform and begins casting [a:arcadion-avalanche]. After towers resolve, he picks up the platform he is facing, killing all players on it, then throws it towards the other platform, killing all players hit. See [a:arcadion-avalanche] for hints on how to spot the AoE.
@@ -841,7 +841,7 @@ actions:
     mechanic: tb.towers
     count: 2
     damage: 399580
-    description: A one-person tower that deals heavy damage. Deals heavy damage and inflicts [s:sustained-damage] on all party members if not soaked.
+    description: A one-person tower that deals heavy damage. Deals heavy damage and inflicts [s:sustained-damage] on all players if not soaked.
   weighty-impact:
     id: 46167
     mechanic: towers.double
@@ -891,11 +891,11 @@ actions:
       Note that only the first tower can be [invulned](t:invuln) in its entirety as all 5 hits fall within a span of less than ten seconds (but only barely). Both subsequent towers cannot be covered by a single [t:invuln] alone. A dark knight can cover the entire first tower for free by virtue of [a:living-dead]. Other tanks must time their [t:invuln] extremely precisely or risk wiping the party.
       Kitchen sinking a tower is only possible if both tanks have all their cooldowns available. As such, any party with a warrior will likely be unable to utilize this strategy, as they would need to use their cooldowns during [a:ecliptic-stampede] or risk dying to the [m:tb.towers]. Even then, healers would need to apply constant spot heals to both tanks as they will both take heavy damage throughout the tower, even with full [t:kitchen sink]. The healing requirements for the tanks are virtually indistinguishable from the healing requirements to the whole party if the entire party stacked, making this strat questionable in its usefulness.
       Another strategy, if both tank invulns are available, is to have one tank [t:invuln] the first half of the tower and the second tank [t:invuln] the second half of the tower (with the non-invulning tank, respectively, stepping out of the tower until their [t:invuln] is active). In this case timing the [t:invuln] is no longer an issue. It's a fairly risk-free strat.
-      **Recommendation**: This guide's general recommendation that works in all party comps is to take the first tower as a full party, have tanks use the aforementioned double [t:invuln] strat on the second tower, and have the entire party stack for the last tower, with tanks using short cooldowns such as [a:tbn] or [a:intervention] on low-defense party members (such as physical rangeds and healers).
+      **Recommendation**: This guide's general recommendation that works in all party comps is to take the first tower as a full party, have tanks use the aforementioned double [t:invuln] strat on the second tower, and have the entire party stack for the last tower, with tanks using short cooldowns such as [a:tbn] or [a:intervention] on low-defense players (such as physical rangeds and healers).
   heartbreak-kick-1:
     id: 46173
     mechanic: stack.tower
-    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 5 times. Deals heavy damage.
+    description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 5 times. Deals heavy damage.
     children:
     - at: 1154
       id: heartbreak-kick-hit
@@ -910,7 +910,7 @@ actions:
   heartbreak-kick-2:
     id: 46173
     mechanic: stack.tower
-    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 6 times. Deals heavy damage.
+    description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 6 times. Deals heavy damage.
     children:
     - at: 1154
       id: heartbreak-kick-hit
@@ -927,7 +927,7 @@ actions:
   heartbreak-kick-3:
     id: 46173
     mechanic: stack.tower
-    description: A tower spawns in the middle of the arena that must be shared by as many party members as possible. Hits 7 times. Deals heavy damage.
+    description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 7 times. Deals heavy damage.
     children:
     - at: 1154
       id: heartbreak-kick-hit
@@ -949,13 +949,13 @@ actions:
     mechanic: stack.tower
     damage: 121414
     players: 8
-    description: Individual hit of [a:heartbreak-kick-1]. Each hit deals approximately 900,000 raw damage (500,000 to a tank). This damage is evenly split across all players in the tower, meaning that if both tanks take the hit together, it'll deal 250,000 raw damage to each per hit. If all 8 party members stack together, it'll deal about 120,000 damage to each player per hit.
+    description: Individual hit of [a:heartbreak-kick-1]. Each hit deals approximately 900,000 raw damage (500,000 to a tank). This damage is evenly split across all players in the tower, meaning that if both tanks take the hit together, it'll deal 250,000 raw damage to each per hit. If all 8 players stack together, it'll deal about 120,000 damage to each player per hit.
   heartbreaker:
     id: 46178
     mechanic: enrage
     type: dark
     damage: 9999999
-    description: Kills all party members.
+    description: Kills all players.
 timeline:
   - at: 10874
     id: crown-of-arcadia

@@ -106,7 +106,7 @@ status:
     id: 296
     type: impairment
     duration: 6000
-    description: Affected players lose the ability to control their own character and instead move autonomously, aimlessly. This is very likely to lead to the player walking off the edge or into poison.
+    description: Afflicted players lose the ability to control their own character and instead move autonomously, aimlessly. This is very likely to lead to the player walking off the edge or into poison.
   sustained-damage:
     id: 2935
     type: dot
@@ -156,7 +156,7 @@ actions:
     description: |
       Places two wing pillars in the arena that tether to and eventually shoot cones at players.
       One pillar will always tether itself to a random tank or healer, while the other will always tether to a random DPS player. After some time, each wing shoots a wide conal [t:AoE] toward their tethered player, inflicting [s:bleeding] and [s:magic-vuln].
-      [a:dividing-wings] will always resolve at the same time as [a:steel-web]. As [a:steel-web] also applies [s:magic-vuln], any player hit by both will die.
+      [a:dividing-wings] will always resolve at the same time as [a:steel-web]. As [a:steel-web] also inflicts [s:magic-vuln], any player hit by both will die.
     children:
     - at: 6155
       id: steel-web
@@ -171,7 +171,7 @@ actions:
     shape: chariot
     damage: 0
     description: |
-      A telegraphed three-person stack on a random party member. When the stack resolves, a web forms between all players in the stack, preventing movement. Every 1.5 seconds, these players receive a stack of [s:binding-soul-snare], killing them if it reaches 5 before they are freed. To free them, another player must run through the web to break it. Breaking a web inflicts [s:heavy-soul-snare], slowing movement speed and applying a [t:DoT] every 3 seconds. Each player is only able to break up to 3 webs; breaking more inflicts [s:poison], which is essentially a death sentence.
+      A telegraphed three-person stack on a random player. When the stack resolves, a web forms between all players in the stack, preventing movement. Every 1.5 seconds, these players receive a stack of [s:binding-soul-snare], killing them if it reaches 5 before they are freed. To free them, another player must run through the web to break it. Breaking a web inflicts [s:heavy-soul-snare], slowing movement speed and applying a [t:DoT] every 3 seconds. Each player is only able to break up to 3 webs; breaking more inflicts [s:poison], which is essentially a death sentence.
       Note that, if any two players within the stack are too close to each other, the web becomes *reinforced* (indicated by a pink tint) and these players receive [s:incapacitating-soul-snare], preventing actions in addition to movement. A reinforced web cannot be broken in any way, sealing these players' doom. It is therefore essential that the stacking players position themselves close to the edge of the stack circle.
       Be aware that including one of the small white posts that are present in the arena in the stack will also result in a reinforced web.
   dividing-wings-hit:
@@ -425,14 +425,14 @@ actions:
     shape: line
     damage: 80817
     count: 2
-    description: An [m:stack.intercept] originating from a turret. Applies [s:dark-vuln] to the first player hit and knocks back all players hit.
+    description: An [m:stack.intercept] originating from a turret. Inflicts [s:dark-vuln] to the first player hit and knocks back all players hit.
   pandæmoniac-ray:
     id: 33419
     mechanic: aoe
     shape: halfroom
     description: |
       [boss] detaches its head and gets ready to cleave the side of the arena it's facing.
-      Being hit by this cleave applies [s:damage-down] and [s:hysteria].
+      Being hit by this cleave inflicts [s:damage-down] and [s:hysteria].
       The cleave also summons either 7 or 8 orbs (or "bits") on the side that was cleaved. Each of these will fire a beam.
   jade-passage:
     id: 33420

@@ -359,7 +359,7 @@ actions:
     damage: 155139
     description: |
       A tank tower spawns on the north and south side of the arena and must be soaked or it will explode ([a:massive-impact]).
-      These towers deal very little damage to tanks and can be safely soaked without defensives. If a tank is dead, these towers can also be safely soaked by a healthy non-tank, though tanks are still the preferred option.
+      These towers deal minimal damage to tanks and can be safely soaked without defensives. If a tank is dead, these towers can also be safely soaked by a healthy non-tank, though tanks are still the preferred option.
   massive-impact:
     id: 45964
     mechanic: mech.failure

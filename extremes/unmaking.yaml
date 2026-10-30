@@ -185,7 +185,7 @@ actions:
       Miniature black holes appear in a rotating manner around [boss].
       There are 10 in total, with the last two overlapping with the first two. When the cast completes, the black holes fire a cone out towards the edge of the arena in the order in which they appeared, creating new black holes at the edge of the arena where the cone hits. Each cone inflicts [s:vulnerability-up].
       The last two cones each hit an existing black hole, causing it to grow bigger.
-      Once all cones have resolved, each resulting black hole tethers to [boss] and begins traveling towards him. Four tethers are purple and four yellow, and of the two big black holes, there is always one per tether. The yellow-tethered black holes move much faster than the purple ones. If any of them reach [boss], it triggers [a:big-burst-orb], dealing heavy damage and inflicting [s:sustained-damage] on all party members.
+      Once all cones have resolved, each resulting black hole tethers to [boss] and begins traveling towards him. Four tethers are purple and four yellow, and of the two big black holes, there is always one per tether. The yellow-tethered black holes move much faster than the purple ones. If any of them reach [boss], it triggers [a:big-burst-orb], dealing heavy damage and inflicting [s:sustained-damage] on all players.
       When a player touches a black hole as it moves towards [boss], the black hole is nullified, dealing heavy damage in a radius around it ([a:burst]) and inflicting [s:magic-vulnerability-up] for 5 seconds. If the explosion only hits a single player, that player is knocked off the platform. Knockback immunity is ineffective against this.
       The two big black holes deal significantly more damage in a much bigger radius than the others when touched ([a:violent-burst]).
     resolve: |
@@ -260,13 +260,13 @@ actions:
     mechanic: mech.failure
     players: 0
     damage: 187536
-    description: A tower wasn't soaked, dealing massive damage and inflicting [s:damage-down] on all party members.
+    description: A tower wasn't soaked, dealing massive damage and inflicting [s:damage-down] on all players.
   big-burst-orb:
     id: 50014
     mechanic: mech.failure
     players: 0
     damage: 100000
-    description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to [boss], dealing heavy damage and inflicting [s:sustained-damage] on all party members.
+    description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to [boss], dealing heavy damage and inflicting [s:sustained-damage] on all players.
   burst:
     id: 50006
     mechanic: aoe.orbs
@@ -463,7 +463,7 @@ actions:
     caption: Final Hit
     mechanic: raidwide.ultimate
     damage: 48284
-    description: Last hit of [a:lightless-world]. Does less damage than the previous hits.
+    description: Last hit of [a:lightless-world]. Deals less damage than the previous hits.
   almagest:
     id: 49972
     mechanic: raidwide

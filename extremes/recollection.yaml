@@ -60,7 +60,7 @@ status:
     type: vuln
     duration: 1960
     description: |
-      Renders any light damage lethal.
+      Renders any light-aspected damage lethal.
       Inflicted by [a:explosion], [a:shock-chariot].
 actions:
   emblazon:

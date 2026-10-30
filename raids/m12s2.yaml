@@ -93,14 +93,14 @@ status:
     name: Faraway Portent
     type: delay
     duration: 10000
-    description: Fires [a:lindwurms-thunder-ii] towards the farthest party member when this effect expires.
+    description: Fires [a:lindwurms-thunder-ii] towards the farthest player when this effect expires.
     gameDescription: Age-old magicks will fire in the direction of the most distant ally when this effect expires.
   nearby-portent:
     id: 4767
     name: Nearby Portent
     type: delay
     duration: 10000
-    description: Fires [a:lindwurms-thunder-ii] towards the closest party member when this effect expires.
+    description: Fires [a:lindwurms-thunder-ii] towards the closest player when this effect expires.
     gameDescription: Age-old magicks will fire in the direction of the nearest ally when this effect expires.
   pyretic:
     id: 3522
@@ -479,7 +479,7 @@ actions:
       Both debuff groups feature exactly one tank, one healer, and two DPS.
       * [s:mutation-alpha] players are inflicted with [s:damage-down] if they *don't* take any damage before the debuff expires.
       * [s:mutation-beta] players are inflicted with [s:damage-down] if they *do* take any damage before the debuff expires. This includes auto-attacks.
-      After the debuffs expire, triggers [a:dramatic-lysis] on all players. [a:dramatic-lysis] either does no damage if the debuff's condition was met, or deals heavy damage and inflicts [s:damage-down] if the condition was not met. The debuff then briefly changes to [s:mutating-cells] before flipping to the *opposite* debuff (so [s:mutation-alpha] becomes [s:mutation-beta] and vice-versa).
+      After the debuffs expire, triggers [a:dramatic-lysis] on all players. [a:dramatic-lysis] either deals no damage if the debuff's condition was met, or deals heavy damage and inflicts [s:damage-down] if the condition was not met. The debuff then briefly changes to [s:mutating-cells] before flipping to the *opposite* debuff (so [s:mutation-alpha] becomes [s:mutation-beta] and vice-versa).
     resolve: |
       The [s:mutation-beta] tank should [a:provoke] immediately if they're not already first in enmity.
   blood-mana:

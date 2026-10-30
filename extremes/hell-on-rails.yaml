@@ -164,7 +164,7 @@ actions:
     shape: chariot
     count: 8
     damage: 172341
-    description: Spreads on all party members. Inflicts [s:magic-vulnerability-up].
+    description: Spreads on all players. Inflicts [s:magic-vulnerability-up].
   hyperexplosive-plasma:
     id: 45676
     mechanic: stack.partner

@@ -115,15 +115,15 @@ actions:
     shape: chariot
     damage: 410315
     description: |
-      Standard [m:tb.stack] on the party member with the highest enmity.
-      Will never target [s:watersnaking] players. If the highest enmity player is under the effect of [s:watersnaking], targets the highest-enmity party member under the effect of [s:firesnaking].
+      Standard [m:tb.stack] on the player with the highest enmity.
+      Will never target [s:watersnaking] players. If the highest enmity player is under the effect of [s:watersnaking], targets the highest-enmity player under the effect of [s:firesnaking].
   flame-floater:
     id: 46522
     mechanic: mech
     emphasis: more
     description: |
       Inflicts [s:first-in-line], [s:second-in-line], [s:third-in-line], and [s:fourth-in-line] on 4 random players and tethers to them.
-      At the end of the cast, Red Hot dashes towards each player in order, dealing high damage and leaving behind a persistent rectangular fire puddle that inflicts [s:burns] on any who enter. Each player must be a sufficient distance from Red Hot by the time he dashes to them (as indicated by the tether changing colour) or they take lethal damage.
+      At the end of the cast, Red Hot dashes towards each player in order, dealing heavy damage and leaving behind a persistent rectangular fire puddle that inflicts [s:burns] on any who enter. Each player must be a sufficient distance from Red Hot by the time he dashes to them (as indicated by the tether changing colour) or they take lethal damage.
       Each hit inflicts [s:fire-resistance-down-ii] until the last dash.
     tips:
       - As long as each dash is taken at the minimum distance required (i.e. until the tether is no longer purple), maintaining melee uptime for players not targeted by the mechanic is easily possible with [s:sprint].
@@ -163,7 +163,7 @@ actions:
     id: 46530
     mechanic: stack.party
     shape: chariot
-    description: A 3-hit stack on a random party member. Each hit leaves behind a persistent fire puddle.
+    description: A 3-hit stack on a random player. Each hit leaves behind a persistent fire puddle.
     children:
     - at: 891
       id: pyrotation-hit
@@ -609,7 +609,7 @@ actions:
     count: 2
     damage: 19297
     description: |
-      Moderate-sized explosion that deals little damage and inflicts [s:magic-vulnerability-up].
+      Moderate-sized explosion that deals minimal damage and inflicts [s:magic-vulnerability-up].
       Caused by a player with [s:xtreme-firesnaking] or [s:xtreme-watersnaking] getting hit by the opposite type of damage.
     mistakes:
       - The [s:magic-vulnerability-up] is what forces a player to "swap" bosses (resolve their [s:xtreme-firesnaking]/[s:xtreme-watersnaking] near the opposite boss). It also means that a player death is likely to cascade into a wipe, as it may cause one of the [a:plunging-snap]/[a:blasting-snap] cones to shoot at the opposite side, causing multiple explosions to be on top of each other, which is lethal.

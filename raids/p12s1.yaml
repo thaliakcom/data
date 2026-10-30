@@ -204,13 +204,13 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 63954
-    description: Drops an umbral (light) tower on the position of a player with [s:umbralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:umbral-tilt].
+    description: Drops an umbral (light) tower on the position of a player with [s:umbralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if player is also under the effect of [s:umbral-tilt].
   astral-glow:
     id: 33549
     mechanic: spread
     shape: chariot
     damage: 62352
-    description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if affected player is also under the effect of [s:astral-tilt].
+    description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if player is also under the effect of [s:astral-tilt].
   umbral-advance:
     id: 33550
     mechanic: towers.single
@@ -471,7 +471,7 @@ actions:
     type: magic
     mechanic: raidwide.ultimate
     damage: 86300
-    description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every party member and transform the arena into a hexagon."
+    description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every player and transform the arena into a hexagon."
   palladion:
     id: 33525
     type: magic
