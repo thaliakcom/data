@@ -21,101 +21,80 @@ status:
   damage-down:
     id: 3304
     type: impairment
-    duration: 29960
     description: |
       Reduces damage dealt by approximately 25% (multiplicative) per stack.
       Inflicted by AoEs such as [a:quadruple-crossing] and [a:mouser].
   slashing-resistance-down:
     id: 3130
     type: vuln
-    duration: [1960, 3960, 19960]
-    description: |
-      Renders and slashing damage lethal.
-      Inflicted by [a:quadruple-crossing], [a:biscuit-maker], [a:leaping-quadruple-crossing], [a:splintering-nails], and [a:raining-cats].
+    description: Renders any slashing damage lethal.
   physical-vulnerability-up:
     id: 2940
     type: vuln
-    duration: 2000
-    description: |
-      Renders any physical damage lethal.
-      Inflicted by [a:quadruple-swipe] and [a:double-swipe].
+    description: Renders any physical damage lethal.
   stun:
     id: 2656
     type: impairment
-    duration: 3000
     description: Temporarily unable to act or move.
   down-for-the-count:
     id: 783
     type: impairment
-    duration: 3000
-    description: |
-      Temporarily unable to act or move.
-      Inflicted by [a:elevate-and-eviscerate].
+    description: Temporarily unable to act or move.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [2000, 4000]
-    description: |
-      Renders any magic damage lethal.
-      Inflicted by [a:grimalkin-gale], [a:tempestuous-tear], [a:nailchipper], and [a:raining-cats].
+    description: Renders any magic damage lethal.
   sustained-damage:
     id: 2935
     type: dot
     tick: 30000
-    duration: 15000
     description: Heavy [t:DoT] inflicted by [a:one-two-paw].
   nine-lives:
     id: 3931
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] begins to glow. All mechanics executed while in this state are recorded within a [a:soulshade].
   one-two-memory:
     id: 4048
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored [a:one-two-paw].
   four-swipe-memory:
     id: 4052
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored [a:quadruple-swipe].
   two-swipe-memory:
     id: 4053
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored [a:double-swipe].
   rightward-memory:
     id: 4050
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored a rightward leap.
   leftward-memory:
     id: 4051
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored a leftward leap.
   four-crossed-memory:
     id: 4049
     type: form
     affects: enemy
-    duration: 9999000
     description: |
       [boss] has stored [a:quadruple-crossing].
 actions:
   quadruple-crossing:
     id: 37948
+    source: 17193
     mechanic: spread.close
     shape: cone
     count: 4
@@ -141,10 +120,10 @@ actions:
         id: quadruple-crossing-spread
       - at: 6614
         id: quadruple-crossing-aoe
-        description: Fires a conal AoE in the direction of the first set of spreads, dealing heavy damage and inflicting [s:damage-down].
+        description: Fires a conal AoE in the direction of the first set of spreads, dealing heavy damage and inflicting [s:damage-down:30s].
       - at: 9622
         id: quadruple-crossing-aoe
-        description: Fires a conal AoE in the direction of the second set of spreads, dealing heavy damage and inflicting [s:damage-down].
+        description: Fires a conal AoE in the direction of the second set of spreads, dealing heavy damage and inflicting [s:damage-down:30s].
   quadruple-crossing-spread:
     id: 37951
     name: Quadruple Crossing (Spread)
@@ -152,19 +131,26 @@ actions:
     shape: cone
     count: 4
     damage: 131234
-    description: Fires a conal AoE at the closest 4 players, dealing physical damage and inflicting [s:slashing-resistance-down].
+    description: Fires a conal AoE at the closest 4 players, dealing physical damage and inflicting [s:slashing-resistance-down:4s].
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 3960
   quadruple-crossing-aoe:
     id: 37952
     name: Quadruple Crossing (AoE)
     mechanic: aoe.delayed
     shape: cone
-    description: Fires a conal AoE in the direction of the previous spreads, dealing heavy damage and inflicting [s:damage-down].
+    description: Fires a conal AoE in the direction of the previous spreads, dealing heavy damage and inflicting [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 29960
   biscuit-maker:
     id: 38037
+    source: 17193
     mechanic: tb.mt
     compact: trim
     description: |
-      2-hit tankbuster. Each hit deals heavy damage and inflicts [s:physical-vulnerability-up].
+      2-hit tankbuster. Each hit deals heavy damage and inflicts [s:slashing-resistance-down:4s].
       This tankbuster does not cleave.
     resolve: Tankswap after each hit. Make sure to swap back after the second hit or the next auto-attack is lethal.
     children:
@@ -174,11 +160,16 @@ actions:
         id: biscuit-maker-hit
   biscuit-maker-hit:
     id: 38038
+    source: 17193
     mechanic: tb.mt
     damage: 271921
-    description: Deals heavy damage and inflicts [s:physical-vulnerability-up].
+    description: Deals heavy damage and inflicts [s:slashing-resistance-down:4s].
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 4000
   nine-lives:
     id: 37985
+    source: 17193
     mechanic: mech.store
     description: |
       Grants [s:nine-lives] to [boss]. All mechanics executed while in this state are recorded and later stored within a [a:soulshade].
@@ -207,9 +198,13 @@ actions:
     id: 37943
     mechanic: aoe
     shape: halfroom
-    description: Cleaves half of the arena, inflicting [s:sustained-damage].
+    description: Cleaves half of the arena, inflicting [s:sustained-damage:15s].
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
   soulshade:
     id: 37986
+    source: 17193
     mechanic: mech.store
     description: |
       Transfers the memory of the last executed mechanic(s) to a newly created clone of [boss].
@@ -217,12 +212,16 @@ actions:
       Dispels [s:nine-lives], [s:one-two-memory], [s:four-crossed-memory], [s:four-swipe-memory], [s:two-swipe-memory], [s:leftward-memory], and [s:rightward-memory].
   quadruple-swipe:
     id: 37981
+    source: 17193
     mechanic: stack.partner
     shape: chariot
     type: physical
     count: 4
     damage: 112381
-    description: Partner stack on all support or DPS players.
+    description: Partner stack on all support or DPS players. Inflicts [s:physical-vulnerability-up:2s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 2000
   double-swipe:
     id: 37983
     mechanic: stack.healers
@@ -230,9 +229,13 @@ actions:
     type: physical
     count: 2
     damage: 112381
-    description: Light party stacks on both healers.
+    description: Light party stacks on both healers. Inflicts [s:physical-vulnerability-up:2s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 2000
   leaping-quadruple-crossing:
     id: 37975
+    source: 17193
     mechanic: spread.close
     shape: cone
     description: "[boss] leaps to either her left or right, then executes [a:quadruple-crossing]."
@@ -241,16 +244,18 @@ actions:
         id: quadruple-crossing
   bloody-scratch:
     id: 38036
+    source: 17193
     mechanic: raidwide
     damage: 144849
     description: Standard raidwide.
   mouser:
     id: 37953
+    source: 17193
     mechanic: aoe.memory
     shape: rect
     description: |
       Telegraphs a sequence of 28 AoEs across 10 steps, then executes that sequence.
-      Each AoE targets one tile (square) of the arena and damages that tile, inflicting [s:damage-down] to all players on it. A tile that is already damaged breaks when damaged again, causing all players on it to fall to their doom. A broken tile cannot be targeted by another AoE.
+      Each AoE targets one tile (square) of the arena and damages that tile, inflicting [s:damage-down:30s] to all players on it. A tile that is already damaged breaks when damaged again, causing all players on it to fall to their doom. A broken tile cannot be targeted by another AoE.
       The arena is composed of 16 tiles (4x4), resulting in 32 tile "health states". [boss] executes 3 AoEs per step for the first 8 steps, then 2 AoEs for the remaining 2 steps. 28 AoEs in total means that at the end of the mechanic 4 damaged tiles remain. These tiles are always oriented from west to east in a "checker" pattern. The broken tiles in-between are then restored at full health, but the northern and southern rows of tiles remain broken.
       Between the four centermost tiles, the southeast tile will always be hit first, followed (after 4 steps) by the southwest tile. Either the southwest or southeast tile is targeted for another hit and destroyed.
     resolve: |
@@ -291,9 +296,13 @@ actions:
     mechanic: aoe
     shape: rect
     description: |
-      Hits a tile within the arena, dealing heavy damage and inflicting [s:damage-down] to all players on that tile while reducing the health of that tile by 1. A tile starts with 2 health; if reduced to 0 health, a tile is destroyed.
+      Hits a tile within the arena, dealing heavy damage and inflicting [s:damage-down:30s] to all players on that tile while reducing the health of that tile by 1. A tile starts with 2 health; if reduced to 0 health, a tile is destroyed.
+    inflicts:
+      - status: damage-down
+        duration: 29960
   copycat:
     id: 37957
+    source: 17193
     mechanic: mech
     description: |
       Creates a clone of [boss] at the western edge of the arena.
@@ -301,6 +310,7 @@ actions:
       The targeted player receives a paw marker atop their head.
   elevate-and-eviscerate:
     id: 37958
+    source: 17194
     mechanic: mech
     players: 1
     description: |
@@ -324,28 +334,46 @@ actions:
       id: elevate-and-eviscerate-slam
   elevate-and-eviscerate-knock:
     id: 37958
+    source: 17194
     name: Elevate and Eviscerate (Knockup)
     mechanic: mech
-    players: 1
     description: |
-      [boss]'s clone bows forward with her right hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count] and [a:shockwave], and knocking that player up and away. The knockback distance is slightly less than the diagonal length of a single tile. Inflicts [a:impact] on the tile the player lands on, damaging all players on that tile along with the tile itself. If the tile is at 1 health, destroys the tile and causes all players on it (including the knocked up player) to fall to their doom.
+      [boss]'s clone bows forward with her right hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count:3s] and [a:shockwave], and knocking that player up and away. The knockback distance is slightly less than the diagonal length of a single tile. Inflicts [a:impact] on the tile the player lands on, damaging all players on that tile along with the tile itself. If the tile is at 1 health, destroys the tile and causes all players on it (including the knocked up player) to fall to their doom.
     children:
     - at: 917
       id: shockwave
+    - at: 2408
+      id: elevate-and-eviscerate-knock-hit
     - at: 3697
       id: impact
+  elevate-and-eviscerate-knock-hit:
+    id: 37959
+    mechanic: mech
+    description: Hit of [a:elevate-and-eviscerate-knock]. Inflicts [s:down-for-the-count:3s].
+    inflicts:
+      - status: down-for-the-count
+        duration: 3000
   elevate-and-eviscerate-slam:
     id: 37960
+    source: 17194
     name: Elevate and Eviscerate (Slam)
     mechanic: mech
-    players: 1
     description: |
-      [boss]'s clone stands straight with her left hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count], [a:shockwave], and [a:impact] on the tile the player is standing on. If the tile is at 1 health, destroys the tile and causes the targeted player to fall to their doom.
+      [boss]'s clone stands straight with her left hand glowing. After a delay, she jumps behind the targeted player, inflicting [s:down-for-the-count:3s], [a:shockwave], and [a:impact] on the tile the player is standing on. If the tile is at 1 health, destroys the tile and causes the targeted player to fall to their doom.
     children:
     - at: 897
       id: shockwave
     - at: 1425
       id: impact
+    - at: 2410
+      id: elevate-and-eviscerate-slam-hit
+  elevate-and-eviscerate-slam-hit:
+    id: 37961
+    mechanic: mech
+    description: Hit of [a:elevate-and-eviscerate-slam]. Inflicts [s:down-for-the-count:3s].
+    inflicts:
+      - status: down-for-the-count
+        duration: 3000
   shockwave:
     id: 37962
     mechanic: mech.knockback
@@ -366,9 +394,13 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 120053
-    description: Moderately sized [ms:chariot] AoE on every player. Deals heavy damage and inflicts [s:magic-vulnerability-up].
+    description: Moderately sized [ms:chariot] AoE on every player. Deals heavy damage and inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   shockwave-kb:
     id: 37963
+    source: 17193
     mechanic: mech.knockback.unavoidable
     type: magic
     damage: 7760
@@ -384,6 +416,7 @@ actions:
         id: grimalkin-gale
   leaping-one-two-paw:
     id: 37967
+    source: 17193
     mechanic: aoe
     shape: halfroom
     description: "[boss] leaps to either her left or right, then executes [a:one-two-paw]."
@@ -394,18 +427,32 @@ actions:
         id: one-two-paw-hit
   tempestuous-tear:
     id: 38019
+    source: 17193
     mechanic: stack.healers
     shape: line
-    type: magic
-    damage: 158844
     description: "[ms:line:c] stacks on both healers, originating from the boss."
+    children:
+      - at: 799
+        id: tempestuous-tear-hit
+  tempestuous-tear-hit:
+    id: 38020
+    mechanic: stack.healers
+    shape: line
+    damage: 158844
+    description: Deals heavy damage and inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   nailchipper:
     id: 38022
     mechanic: spread
     shape: chariot
     count: 4
     damage: 96480
-    description: Targets all support or all DPS players with a visible marker. After a short delay, hits these players with a [ms:chariot] AoE that deals heavy damage and inflicts [s:magic-vulnerability-up].
+    description: Targets all support or all DPS players with a visible marker. After a short delay, hits these players with a [ms:chariot] AoE that deals heavy damage and inflicts [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4000
   splintering-nails:
     id: 38042
     mechanic: spread.role
@@ -413,12 +460,16 @@ actions:
     count: 3
     damage: 94942
     description: |
-      A narrow conal AoE that randomly targets one tank, one support, and one DPS, dealing moderate damage to all players hit and inflicting [s:slashing-resistance-down].
+      A narrow conal AoE that randomly targets one tank, one support, and one DPS, dealing moderate damage to all players hit and inflicting [s:slashing-resistance-down:2s].
       This attack can never target the player targeted by [a:elevate-and-eviscerate].
     resolve: |
       As [a:elevate-and-eviscerate] is happening at the same time, significantly limiting the available safe space, the remaining players should split into roles, even though this attack is not actually a stack (damage is not reduced per player hit). Ensure that no player is near a player of a different role—you may get lucky and the cone targets one of the players in the correct position, but you may also get unlucky and kill multiple players, as overlapping any cones is fatal.
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 1960
   overshadow:
     id: 38039
+    source: 17193
     mechanic: stack.party
     shape: line
     damage: 118467
@@ -428,11 +479,12 @@ actions:
       This attack can never target the player targeted by [a:elevate-and-eviscerate].
   raining-cats:
     id: 39611
+    source: 17193
     mechanic: mech
     description: |
       4 sets of 2 targeted cones and 2 stacks.
-      Spawns two passable tethers originating from the boss. In each set, both tethered players are targeted by [a:raining-cats-cone], a conal [m:spread] that inflicts [s:slashing-resistance-down].
-      Additionally, the *farthest* player from [boss] is targeted by [a:raining-cats-stack-far] and the *closest* player by [a:raining-cats-stack-close], [ms:chariot] stacks that inflict [s:magic-vulnerability-up].
+      Spawns two passable tethers originating from the boss. In each set, both tethered players are targeted by [a:raining-cats-cone], a conal [m:spread] that inflicts [s:slashing-resistance-down:20s].
+      Additionally, the *farthest* player from [boss] is targeted by [a:raining-cats-stack-far] and the *closest* player by [a:raining-cats-stack-close], [ms:chariot] stacks that inflict [s:magic-vulnerability-up:2s].
     strategies:
       intended:
         name: Intended
@@ -486,9 +538,12 @@ actions:
     damage: 88352
     players: 3
     description: |
-      A stack targeting the closest player to [boss], inflicting [s:magic-vulnerability-up].
+      A stack targeting the closest player to [boss], inflicting [s:magic-vulnerability-up:2s].
       Intended to be soaked by 3 players, but with sufficient mitigation can be survived by 2.
       A tank can soak this stack alone with sufficient mitigation.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   raining-cats-stack-far:
     id: 38047
     name: Raining Cats (Far Stack)
@@ -497,9 +552,12 @@ actions:
     damage: 88352
     players: 3
     description: |
-      A stack targeting the farthest player from [boss], inflicting [s:magic-vulnerability-up].
+      A stack targeting the farthest player from [boss], inflicting [s:magic-vulnerability-up:2s].
       Intended to be soaked by 3 players, but with sufficient mitigation can be survived by 2.
       A tank can soak this stack alone with sufficient mitigation.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   raining-cats-cone:
     id: 38045
     name: Raining Cats (Cone)
@@ -508,7 +566,10 @@ actions:
     count: 2
     damage: 146992
     description: |
-      Two passable tethers emerge from [boss]. Deals heavy damage to the targeted players and anyone nearby and inflicts [s:slashing-resistance-down].
+      Two passable tethers emerge from [boss]. Deals heavy damage to the targeted players and anyone nearby and inflicts [s:slashing-resistance-down:20s].
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 19960
   predaceous-pounce:
     id: 39635
     mechanic: aoe.memory
@@ -547,6 +608,7 @@ actions:
     description: Individual line-chariot hit combination of [a:predaceous-pounce]. Inflicts [s:damage-down].
   mouser-enrage:
     id: 37953
+    source: 17193
     mechanic: enrage.soft
     description: |
       Like [a:mouser], but this time executes 32 AoEs across 8 steps (4 per step).
@@ -646,14 +708,14 @@ timeline:
     id: leaping-quadruple-crossing
   - at: 300078
     id: soulshade
+  - at: 325237
+    id: tempestuous-tear
+    link: and
   - at: 326036
     id: leaping-one-two-paw
     description: |
       The clone executes the previously stored [a:leaping-one-two-paw].
       Note that the other clone may be chosen instead, thus executing [a:leaping-quadruple-crossing] first.
-    link: and
-  - at: 326036
-    id: tempestuous-tear
   - at: 351196
     id: leaping-quadruple-crossing
     link: and

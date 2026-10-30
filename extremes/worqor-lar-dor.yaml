@@ -16,111 +16,90 @@ status:
   damage-down:
     id: 628
     type: impairment
-    duration: [30000, 29380]
     description: |
       Reduces damage dealt by approximately 25% (multiplicative) per stack.
-      Inflicted by various abilities such as [a:spikesicle], [a:sphere-shatter], or [a:chilling-cataclysm].
   burns:
     id: 2082
     type: dot
-    duration: 12000
     tick: 13000
-    description: Light [t:DoT] inflicted by [a:skyruin-fire].
+    description: Light [t:DoT].
   frostbite:
     id: 2083
     type: dot
-    duration: [12000, 15000]
     tick: 13000
-    description: Light [t:DoT] inflicted by [a:skyruin-ice] and various other ice attacks such as [a:scourge-of-ice] and [a:ice-talon].
+    description: Light [t:DoT].
   electrocution:
     id: 2086
     type: dot
-    duration: [12000, 9000]
     tick: 13000
-    description: Light [t:DoT] inflicted by [a:skyruin-thunder] and various other ice attacks such as [a:scourge-of-thunder].
+    description: Light [t:DoT].
   burns-puddle:
     id: 3065
     type: dot
-    duration: 15000
     tick: 66000
     description: Heavy [t:DoT] inflicted by the fire puddles left behind by [a:empowered-scourge-of-fire].
   burns-tb:
     id: 2945
     type: dot
-    duration: 6000
     tick: 27000
     description: A heavy [t:DoT] inflicted on whoever soaks a tower during [a:mountain-fire].
   burns-fail:
     id: 3826
     type: dot
-    duration: 15000
     tick: 23000
     description: A cleansable [t:DoT] inflicted on all players by [a:unmitigated-explosion] if no one soaked the tower during [a:mountain-fire].
   calamitys-inferno:
     id: 3818
     type: delay
-    duration: 76000
-    description: |
-      Triggers [a:empowered-scourge-of-fire], a 3-hit 4-man [m:stack.healers], when the effect expires. Each hit leaves behind a [m:aoe.puddle] that inflicts a lethal [s:burns-fail].
-      Inflicted by [a:triscourge].
+    description: Triggers [a:empowered-scourge-of-fire], a 3-hit 4-man [m:stack.healers], when the effect expires. Each hit leaves behind a [m:aoe.puddle] that inflicts a lethal [s:burns-fail:15s].
   calamitys-embers:
     id: 3819
     type: delay
-    duration: 11000
     description: |
       Triggers [a:scourge-of-fire], a 3-man [m:stack.healers], when the effect expires.
-      Inflicted by [a:triscourge] during Ice Phase.
+       during Ice Phase.
   calamitys-flames:
     id: 3817
     type: delay
-    duration: 11000
     description: |
       Triggers [a:scourge-of-fire], a 4-man [m:stack.healers], when the effect expires.
-      Inflicted by [a:triscourge] during Thunder Phase.
+       during Thunder Phase.
   calamitys-bolt:
     id: 3823
     type: delay
-    duration: [122000, 43000, 120000]
     description: |
       Triggers [a:scourge-of-thunder], a [ms:chariot] [m:spread], when the effect expires.
-      Inflicted by [a:triscourge] during Fire and Ice Phase.
+       during Fire and Ice Phase.
   calamitys-fulgur:
     id: 3824
     type: delay
-    duration: [59000, 99000]
     description: |
       Triggers [a:empowered-scourge-of-thunder], a large [ms:chariot] [m:spread], when the effect expires.
-      Inflicted by [a:triscourge] during Thunder Phase.
+       during Thunder Phase.
   calamitys-chill:
     id: 3822
     type: delay
-    duration: [29000, 91000]
     description: |
-      Inflicts [s:freezing-up] when the effect expires, requiring players to keep moving or be inflicted with [s:deep-freeze].
-      Inflicted by [a:triscourge] during Fire Phase.
+      Inflicts [s:freezing-up:2s] when the effect expires, requiring players to keep moving or be inflicted with [s:deep-freeze:18s].
+       during Fire Phase.
   calamitys-bite:
     id: 3821
     type: delay
-    duration: 11000
     description: |
       Triggers [a:scourge-of-ice], a large [ms:defamation]-type [m:spread] on both tanks, when the effect expires.
-      Inflicted by [a:triscourge] during Ice Phase.
+       during Ice Phase.
   calamitys-frost:
     id: 3820
     type: delay
-    duration: [59000, 99000]
     description: |
-      When the effect expires, encases the afflicted player in a block of ice, inflicting [s:deep-freeze].
+      When the effect expires, encases the afflicted player in a block of ice, inflicting [s:deep-freeze:18s].
       To avoid, the player must be [levitating](s:levitate).
-      Inflicted by [a:triscourge] during Thunder Phase.
+       during Thunder Phase.
   sustained-damage:
     id: 2935
     type: dot
-    duration: 15000
     tick: 16000
-    description: |
-      Afflicted players take damage over time.
-      Inflicted by [a:slithering-strike], [a:susurrant-breath] and [a:strangling-coil].
+    description: Afflicted players take damage over time.
   levitate:
     id: 3974
     type: form
@@ -130,59 +109,43 @@ status:
   trauma:
     id: 3796
     type: condition
-    duration: 90000
-    description: |
-      Accumulating another stack inflicts [s:concussion].
-      Inflicted by [a:slithering-strike], [a:susurrant-breath] and [a:strangling-coil].
+    description: Accumulating another stack inflicts [s:concussion:7s].
   concussion:
     id: 3513
     type: impairment
-    duration: 6960
     description: |
       Afflicted players are stunned and cannot act or move. Can be cleansed.
-      Inflicted by accumulating 2 stacks of [s:trauma].
+      Inflicted by accumulating 2 stacks of [s:trauma:90s].
   fire-resistance-down-ii:
     id: 2937
     type: vuln
-    duration: [1960, 7000, 960]
-    description: |
-      Renders any fire damage taken lethal.
-      Inflicted by [a:charring-cataclysm], [a:mountain-fire-hit], and [a:scourge-of-fire].
+    description: Renders any fire damage taken lethal.
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
-    duration: 2960
-    description: |
-      Renders any lightning damage taken lethal.
-      Inflicted by [a:scourge-of-thunder] and [a:empowered-scourge-of-thunder].
+    description: Renders any lightning damage taken lethal.
   freezing-up:
     id: 3523
     type: condition
-    duration: 2000
     description: |
-      Players must be in constant motion. If a player stops moving before this status expires, inflicts [s:deep-freeze].
-      Inflicted by [a:freezing-dust] and [s:calamitys-chill].
+      Players must be in constant motion. If a player stops moving before this status expires, inflicts [s:deep-freeze:18s].
+       and [s:calamitys-chill].
   prey:
     id: 2939
     type: delay
-    duration: [5000, 6000]
     description: |
       Targeted for [a:calamitous-cry] during [a:ruin-foretold].
       The first set of [s:prey]s have a duration of 6 seconds. Each subsequent [a:calamitous-cry] hits after only 5 seconds.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: 1960
-    description: |
-      Renders any magic damage taken lethal.
-      Inflicted by [a:calamitous-cry].
+    description: Renders any magic damage taken lethal.
   vulnerability-up:
     id: 1789
     type: vuln
-    duration: 59960
     description: |
       Increases damage taken by 25% (additive) per stack.
-      Inflicted by a number of mechanics such as [a:calamitous-echo], [a:northern-cross], or [a:thunderous-breath].
+
   perpetual-conflagration:
     id: 4122
     type: dot
@@ -193,18 +156,16 @@ status:
   deep-freeze:
     id: 4150
     type: impairment
-    duration: 18000
     tick: 19000
     description: |
       Player is frozen alive and taking constant damage. Other players can free them by attacking the block of ice they're encased in.
-      Inflicted by [a:chilling-cataclysm], [s:calamitys-frost], and [s:freezing-up] (if a player stops moving).
+      , [s:calamitys-frost], and [s:freezing-up:2s] (if a player stops moving).
   paralysis:
     id: 3463
     type: impairment
-    duration: 12000
     description: |
       Randomly stuns the player for a brief moment, interrupting all actions.
-      Inflicted by lightning-aspected abilities such as [a:thunderous-breath] and [a:arcane-lightning].
+
   damage-up:
     id: 3975
     type: damage-up
@@ -230,7 +191,7 @@ actions:
       Telegraphs 10 subsequent ice curves.
       The curves always start towards either the left or right side of the middle of the arena and move towards the *far* side. Note that the curves are always angled towards the *far* side of the arena, so after the first curve, the curves will now curve towards the *other* side since that side is now farther away.
       Each curve spawns an ice block somewhere along its trajectory. The first 4 curves spawn their ice block at the origin of the curve; the 5th at the *end* of the curve; and the 6th in the *middle* of the curve (which is really more of a line at this point), on the edge of the arena. The remaining 4 curves behave identically to the previous 4 but on the other side of the arena.
-      After the telegraphs are finished, fires the ice curves in the telegraphed order. Each curve represents a narrow [ms:line] [t:AoE] that inflicts [s:damage-down] to anyone in their path. The ice blocks they spawn are yet inactive, but approximately 7 seconds after an ice block spawns, it [explodes](a:sphere-shatter) in a large [ms:chariot] [t:AoE] that likewise inflicts [s:damage-down].
+      After the telegraphs are finished, fires the ice curves in the telegraphed order. Each curve represents a narrow [ms:line] [t:AoE] that inflicts [s:damage-down:30s] to anyone in their path. The ice blocks they spawn are yet inactive, but approximately 7 seconds after an ice block spawns, it [explodes](a:sphere-shatter) in a large [ms:chariot] [t:AoE] that likewise inflicts [s:damage-down:30s].
     resolve: |
       Determine which side of the arena the first curve appears on, then go *towards* that side, to the edge of the arena. Wait until after the *second* curve, then start chasing the curves until you end up just past the arrow on [boss]'s hitbox. Wait here until a curve cleaves the hitbox arrow, then plant yourself at the *end* of the hitbox arrow (opposite the tip). This spot is safe from every [a:sphere-shatter].
     strategies:
@@ -283,7 +244,10 @@ actions:
     mechanic: aoe
     damage: 32365
     players: 0
-    description: Fires a [a:spikesicle] curve and leaves behind an ice block. Deals moderate damage and inflicts [s:damage-down].
+    description: Fires a [a:spikesicle] curve and leaves behind an ice block. Deals moderate damage and inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   sphere-shatter:
     id: 39261
     source: 17554
@@ -292,6 +256,9 @@ actions:
     damage: 54570
     players: 0
     description: An ice block spawned by [a:spikesicle] explodes, dealing moderate damage and inflicting [s:damage-down].
+    inflicts:
+      - status: damage-down
+        duration: [29380, 30000]
   skyruin-fire:
     id: 36818
     name: Skyruin (Fire)
@@ -299,8 +266,11 @@ actions:
     cast: 10000
     damage: 79703
     description: |
-      Deals heavy damage, inflicts [s:burns] on all players, transitions the arena, and begins Fire Phase.
+      Deals heavy damage, inflicts [s:burns:12s] on all players, transitions the arena, and begins Fire Phase.
       The first Skyruin always transitions the arena to fire.
+    inflicts:
+      - status: burns
+        duration: 12000
   skyruin-ice:
     id: 36818
     name: Skyruin (Ice)
@@ -308,8 +278,11 @@ actions:
     cast: 10000
     damage: 79703
     description: |
-      Deals heavy damage, inflicts [s:frostbite] on all players, transitions the arena, and begins Ice Phase.
+      Deals heavy damage, inflicts [s:frostbite:12s] on all players, transitions the arena, and begins Ice Phase.
       Either follows or precedes [a:skyruin-thunder]. :unverified(This order will not change for the remainder of the instance.)
+    inflicts:
+      - status: frostbite
+        duration: 12000
   skyruin-thunder:
     id: 36819
     name: Skyruin (Thunder)
@@ -317,8 +290,11 @@ actions:
     cast: 10000
     damage: 79703
     description: |
-      Deals heavy damage, inflicts [s:electrocution] on all players, transitions the arena, and begins Thunder Phase.
+      Deals heavy damage, inflicts [s:electrocution:12s] on all players, transitions the arena, and begins Thunder Phase.
       Either follows or precedes [a:skyruin-ice]. :unverified(This order will not change for the remainder of the instance.)
+    inflicts:
+      - status: electrocution
+        duration: 12000
   triscourge:
     id: 36839
     source: 16664
@@ -327,21 +303,38 @@ actions:
     description: |
       Deals heavy damage and inflicts various status effects depending on the arena's current dominant element.
       **Fire**:
-      * [s:calamitys-inferno] (76s) → both healers
-      * [s:calamitys-bolt] (122s) → all players
-      * [s:calamitys-chill] (29s) → all supports or DPS
-      * [s:calamitys-chill] (91s) → opposite role of [s:calamitys-chill] (29s)
+      * [s:calamitys-inferno:76s] → both healers
+      * [s:calamitys-bolt:122s] → all players
+      * [s:calamitys-chill:29s] → all supports or DPS
+      * [s:calamitys-chill:91s] → opposite role of [s:calamitys-chill:29s]
       **Ice**:
-      * [s:calamitys-embers] (11s) → both healers
-      * [s:calamitys-bite] (11s) → both tanks
-      * [s:calamitys-bolt] (43s) → all supports or DPS
-      * [s:calamitys-bolt] (120s) → opposite role of [s:calamitys-bolt] (43s)
+      * [s:calamitys-embers:11s] → both healers
+      * [s:calamitys-bite:11s] → both tanks
+      * [s:calamitys-bolt:43s] → all supports or DPS
+      * [s:calamitys-bolt:120s] → opposite role of [s:calamitys-bolt:43s]
       **Thunder**:
-      * [s:calamitys-flames] (11s) → both healers
-      * [s:calamitys-fulgur] (59s) → all supports or DPS
-      * [s:calamitys-frost] (99s) → same role as [s:calamitys-fulgur] (59s)
-      * [s:calamitys-frost] (59s) → opposite role of [s:calamitys-fulgur] (59s)
-      * [s:calamitys-fulgur] (99s) → same role as [s:calamitys-frost] (59s)
+      * [s:calamitys-flames:11s] → both healers
+      * [s:calamitys-fulgur:59s] → all supports or DPS
+      * [s:calamitys-frost:99s] → same role as [s:calamitys-fulgur:59s]
+      * [s:calamitys-frost:59s] → opposite role of [s:calamitys-fulgur:59s]
+      * [s:calamitys-fulgur:99s] → same role as [s:calamitys-frost:59s]
+    inflicts:
+      - status: calamitys-inferno
+        duration: 76000
+      - status: calamitys-embers
+        duration: 11000
+      - status: calamitys-flames
+        duration: 11000
+      - status: calamitys-bolt
+        duration: [43000, 120000, 122000]
+      - status: calamitys-fulgur
+        duration: [59000, 99000]
+      - status: calamitys-chill
+        duration: [29000, 91000]
+      - status: calamitys-bite
+        duration: 11000
+      - status: calamitys-frost
+        duration: [59000, 99000]
   volcanic-drop:
     id: 36838
     mechanic: aoe.linger
@@ -349,8 +342,8 @@ actions:
     compact: trim
     description: |
       The message "A volcanic eruption is imminent." appears on screen.
-      At the same time, one of the volcanoes to the west or east of the arena begins to smolder. After a short time, it spews a massive [t:AoE] onto that side of the arena that lingers for about 2.5s, dealing massive damage and inflicting [s:vulnerability-up] to any players who enter the area during this time.
-      It also spawns 3 sets of [baited AoEs](m:aoe.delayed) under 3 random players, also dealing massive damage and inflicting [s:vulnerability-up].
+      At the same time, one of the volcanoes to the west or east of the arena begins to smolder. After a short time, it spews a massive [t:AoE] onto that side of the arena that lingers for about 2.5s, dealing massive damage and inflicting [s:vulnerability-up:60s] to any players who enter the area during this time.
+      It also spawns 3 sets of [baited AoEs](m:aoe.delayed) under 3 random players, also dealing massive damage and inflicting [s:vulnerability-up:60s].
     resolve: |
       Point your camera at one of the two volcanoes. If your volcano is smoldering, go to the opposite side. If it remains dark, go to that side.
       As the space to dodge [a:volcanic-drop-baits] is limited, try to stack up and move together to make sure the AoEs are all in the same place. Casters may wish to stand off to the side and only move if they have to.
@@ -367,7 +360,7 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     count: 3
-    description: A small [t:AoE] telegraph appears underneath 3 random players. After a brief moment, lava from the volcano rains down upon that spot, dealing massive damage and inflicting [s:vulnerability-up] to any players hit.
+    description: A small [t:AoE] telegraph appears underneath 3 random players. After a brief moment, lava from the volcano rains down upon that spot, dealing massive damage and inflicting [s:vulnerability-up:60s] to any players hit.
   slithering-strike:
     id: 36812
     mechanic: aoe
@@ -376,9 +369,14 @@ actions:
     players: 0
     description: |
       [boss] flies forward and begins to glow, hovering over the arena with both claws raised.
-      After a short time he punches the front of the arena, leaving only the rear of the arena safe. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      After a short time he punches the front of the arena, leaving only the rear of the arena safe. Deals massive damage and inflicts [s:sustained-damage:15s] and [s:trauma:90s] on any players hit.
       Note that the [t:AoE] covers more than [t:max melee] range.
       [a:aoe-common:d]
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
+      - status: trauma
+        duration: 90000
   strangling-coil:
     id: 36816
     mechanic: aoe
@@ -387,8 +385,13 @@ actions:
     players: 0
     description: |
       [boss] flies around the arena, creating a wind effect around the outside of the arena.
-      After a short time the wind manifests, leaving only a [ms:dynamo]-shaped safe spot in the center of the arena. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      After a short time the wind manifests, leaving only a [ms:dynamo]-shaped safe spot in the center of the arena. Deals massive damage and inflicts [s:sustained-damage:15s] and [s:trauma:90s] on any players hit.
       [a:aoe-common:d]
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
+      - status: trauma
+        duration: 90000
   susurrant-breath:
     id: 36808
     mechanic: aoe
@@ -397,8 +400,13 @@ actions:
     players: 0
     description: |
       [boss] flies backwards and begins glowing.
-      After a short time, he fires a massive conal breath of fire across the arena, leaving only small triangles at the front left and right of the arena untouched. Deals massive damage and inflicts [s:sustained-damage] and [s:trauma] on any players hit.
+      After a short time, he fires a massive conal breath of fire across the arena, leaving only small triangles at the front left and right of the arena untouched. Deals massive damage and inflicts [s:sustained-damage:15s] and [s:trauma:90s] on any players hit.
       [a:aoe-common:d]
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
+      - status: trauma
+        duration: 90000
   aoe-common:
     name: AoE (Common)
     mechanic: aoe
@@ -414,8 +422,11 @@ actions:
     damage: 101985
     count: 4
     description: |
-      A [m:stack.partner] on all DPS or support players. Deals heavy damage and inflicts [s:fire-resistance-down-ii].
+      A [m:stack.partner] on all DPS or support players. Deals heavy damage and inflicts [s:fire-resistance-down-ii:2s].
       Triggered after [a:susurrant-breath], [a:strangling-coil], and [a:slithering-strike] while in Fire Phase.
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 1960
   mountain-fire:
     id: 36876
     source: 16664
@@ -423,14 +434,14 @@ actions:
     compact: trim
     description: |
       A tower appears at the front of the arena. [boss] then shoots six consecutive fireballs at it.
-      If the tower is unsoaked, the fire [bathes the arena in flames](a:unmitigated-explosion) that deal heavy but survivable damage and inflict [s:vulnerability-up] and a stacking cleansable [s:burns-fail] [t:DoT].
-      If the tower is soaked, deals heavy damage to the player to the tower and inflicts [s:fire-resistance-down-ii] and an uncleansable [s:burns-tb]. This damage can only realistically be survived by a tank with defensive cooldowns. Due to [s:fire-resistance-down-ii], soaking multiple consecutive hits is lethal.
-      Even with a soaked tower, the fire still bathes the arena in flames. However, the flames are "split" down the middle by the player in the tower, creating a narrow conal safe spot behind that player. Note that players outside of this safe spot do **not** take survivable damage and a [s:vulnerability-up] and [s:burns] as it would be if the tower were left unsoaked; they just die.
+      If the tower is unsoaked, the fire [bathes the arena in flames](a:unmitigated-explosion) that deal heavy but survivable damage and inflict [s:vulnerability-up:60s] and a stacking cleansable [s:burns-fail:15s] [t:DoT].
+      If the tower is soaked, deals heavy damage to the player to the tower and inflicts [s:fire-resistance-down-ii] and an uncleansable [s:burns-tb:6s]. This damage can only realistically be survived by a tank with defensive cooldowns. Due to [s:fire-resistance-down-ii], soaking multiple consecutive hits is lethal.
+      Even with a soaked tower, the fire still bathes the arena in flames. However, the flames are "split" down the middle by the player in the tower, creating a narrow conal safe spot behind that player. Note that players outside of this safe spot do **not** take survivable damage and a [s:vulnerability-up:60s] and [s:burns:12s] as it would be if the tower were left unsoaked; they just die.
       After each hit, [boss] repositions to the left, the middle, or the right. This has no bearing on the tower player but changes the angle of the safe cone for the other players.
     resolve: |
       Have one of your tanks soak the tower's first hit, then alternate tanks from there. The [s:fire-resistance-down-ii] only lasts for a single hit.
       For the first hit, [boss] is always positioned center. Afterwards, each hit requires the party to move such that the tower is between them and [boss].
-      Note that using a tank [t:invuln] on multiple hits is inadvised, as the [s:fire-resistance-down-ii] from the first hit renders the next hit's [s:burns-tb] lethal. Additionally, the hits are spaced out just enough that an invuln cannot cover more than 2 hits. If you intend to invuln this tankbuster, make sure to time it as late as possible. If timed correctly, the invuln can cover two tower hits as well as the subsequent lethal [s:burns-tb] ticks, expiring just after the last [s:burns-tb] tick.
+      Note that using a tank [t:invuln] on multiple hits is inadvised, as the [s:fire-resistance-down-ii] from the first hit renders the next hit's [s:burns-tb:6s] lethal. Additionally, the hits are spaced out just enough that an invuln cannot cover more than 2 hits. If you intend to invuln this tankbuster, make sure to time it as late as possible. If timed correctly, the invuln can cover two tower hits as well as the subsequent lethal [s:burns-tb:6s] ticks, expiring just after the last [s:burns-tb:6s] tick.
     tips:
       - As a non-tank, always move back to the middle after each hit; that way you only have to move either not at all or a maximum of 45 degrees. If you stay on the side after a hit, you may have to move a full 90 degrees, which is especially uncomfortable for casters.
       - As a tank, make sure to cycle through mitigation as needed. Don't save any mitigation for other tankbusters; the other tankbusters can all be comfortably survived with only a tank's short cooldown.
@@ -451,14 +462,19 @@ actions:
     id: 36889
     mechanic: tb.towers
     damage: 182678
-    description: An individual [a:mountain-fire] hit. Inflicts [s:burns-tb] on the player inside the tower.
+    description: An individual [a:mountain-fire] hit. Inflicts [s:burns-tb:6s] on the player inside the tower. Inflicts [s:fire-resistance-down-ii:7s].
+    inflicts:
+      - status: burns-tb
+        duration: 6000
+      - status: fire-resistance-down-ii
+        duration: 7000
   unmitigated-explosion:
     id: 36891
     mechanic: mech.failure
     damage: 90000
     players: 0
     description: |
-      [boss] bathes the entire arena in flames as no one soaked the tower during [a:mountain-fire]. Deals massive damage and inflicts [s:burns-fail] and [s:vulnerability-up] on all players.
+      [boss] bathes the entire arena in flames as no one soaked the tower during [a:mountain-fire]. Deals massive damage and inflicts [s:burns-fail:15s] and [s:vulnerability-up:60s] on all players.
   empowered-scourge-of-fire:
     id: 36847
     name: Scourge of Fire (Empowered)
@@ -466,8 +482,8 @@ actions:
     shape: chariot
     compact: trim
     description: |
-      3 subsequent [m:stack.healers]s, triggered by [s:calamitys-inferno].
-      Each stack deals heavy damage, inflicts a brief [s:fire-resistance-down-ii], and leaves behind a fire puddle. Remaining in the puddle for too long or stepping into it again inflicts [s:burns-puddle].
+      3 subsequent [m:stack.healers]s, triggered by [s:calamitys-inferno:76s].
+      Each stack deals heavy damage, inflicts a brief [s:fire-resistance-down-ii], and leaves behind a fire puddle. Remaining in the puddle for too long or stepping into it again inflicts [s:burns-puddle:15s].
     resolve: |
       Use a predetermined starting position for both light parties in the center of the arena. The hitbox ring is a good indicator for where to start. After each hit, move *forward* until you reach the edge of the puddle. After the last hit, move sideways and wait for the puddles to dissipate.
     children:
@@ -484,7 +500,11 @@ actions:
     damage: 105986
     count: 2
     description: |
-      [m:stack.healers:c] triggered by [s:calamitys-embers], [s:calamitys-flames], or [s:calamitys-inferno].
+      [m:stack.healers:c] triggered by [s:calamitys-embers:11s], [s:calamitys-flames:11s], or [s:calamitys-inferno:76s].
+      Inflicts [s:fire-resistance-down-ii].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: [960, 1960]
   empowered-scourge-of-thunder:
     id: 36841
     name: Scourge of Thunder (Empowered)
@@ -492,13 +512,19 @@ actions:
     shape: chariot
     damage: 94464
     count: 4
-    description: Like [a:scourge-of-thunder], but larger and deals more damage. Only appears during Thunder Phase.
+    description: Like [a:scourge-of-thunder], but larger and deals more damage. Only appears during Thunder Phase. Inflicts [s:lightning-resistance-down-ii:3s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 2960
   scourge-of-thunder:
     id: 36842
     mechanic: spread
     shape: chariot
     damage: 66820
-    description: Standard spread on either 4 players (during Ice Phase) or all 8 players (during Fire Phase).
+    description: Standard spread on either 4 players (during Ice Phase) or all 8 players (during Fire Phase). Inflicts [s:lightning-resistance-down-ii:3s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 2960
   disaster-zone:
     id: 36824
     mechanic: raidwide.transition
@@ -542,8 +568,14 @@ actions:
     count: 2
     players: 4
     description: |
-      A line stack on the two players marked by [s:prey]. Alternates between healers and tanks.
+      A line stack on the two players marked by [s:prey:5s]. Alternates between healers and tanks.
       Each [a:calamitous-cry] increases the damage of the next one by 6%.
+      Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: prey
+        duration: 5000
+      - status: magic-vulnerability-up
+        duration: 1960
   calamitous-echo:
     id: 36870
     mechanic: aoe
@@ -590,7 +622,10 @@ actions:
     damage: 168586
     count: 2
     description: |
-      Two massive tankbusters on the two tanks. Triggered by [s:calamitys-bite]. Inflicts [s:frostbite].
+      Two massive tankbusters on the two tanks. Triggered by [s:calamitys-bite:11s]. Inflicts [s:frostbite:15s].
+    inflicts:
+      - status: frostbite
+        duration: 15000
   chilling-cataclysm:
     id: 36803
     mechanic: aoe
@@ -599,8 +634,13 @@ actions:
     players: 0
     description: |
       5 frost circles appear in the arena, each preparing to shoot a [ms:line] [t:AoE] in 8 different directions, leaving only a small number of tiny safe spots.
-      Being hit by one of the lines deals moderate damage and inflicts [s:deep-freeze] and [s:damage-down].
+      Being hit by one of the lines deals moderate damage and inflicts [s:deep-freeze:18s] and [s:damage-down:30s].
       The circle positioning is not random. They always appear in the same places every time, though they may be horizontally mirrored, for a total of only 2 variations. Specifically, each circle is exactly the diameter of 1/6th of the arena's height. If one pictures the arena divided into an even grid with 6 rows and 8 columns, each circle is placed exactly into this grid, and each row and column only features at most 1 circle. This means that only 1 row and 3 columns do not have a circle inside them, and because of the diagonal [ms:line]s, this leaves only a single safe spot in the arena.
+    inflicts:
+      - status: damage-down
+        duration: 30000
+      - status: deep-freeze
+        duration: 18000
     resolve: |
       Identify the two frontmost ice circles. The safe spot is centered in-between them. (More specifically, the safe spot is in the grid row between the two frontmost circles, and in the diagonal between the two rearmost circles.)
       It is not necessary to find this exact spot; there is a grace period of slightly more than a second after the line telegraphs appear before the AoEs resolve that allows for microadjustments. For additional ease, you can place waymarks in the two possible safe spots.
@@ -616,20 +656,32 @@ actions:
     players: 0
     description: |
       The message "A rumbling avalanche approaches from the southeast..." appears on-screen.
-      The avalanche is telegraphed by arrows on either the northeastern or southwestern side of the arena. Shortly afterwards the avalanche hits, dealing heavy damage, inflicting [s:vulnerability-up], and knocking back anyone hit, with a potential to knock them off the arena.
+      The avalanche is telegraphed by arrows on either the northeastern or southwestern side of the arena. Shortly afterwards the avalanche hits, dealing heavy damage, inflicting [s:vulnerability-up:60s], and knocking back anyone hit, with a potential to knock them off the arena.
+    inflicts:
+      - status: vulnerability-up
+        duration: 59960
   freezing-dust:
     id: 36848
+    source: 16664
     mechanic: mech.motion
-    description: Inflicts [s:freezing-up] on all players. If any player isn't moving at this point or stops moving before [s:freezing-up] falls off, inflicts [s:deep-freeze].
+    description: Inflicts [s:freezing-up:2s] on all players. If any player isn't moving at this point or stops moving before [s:freezing-up:2s] falls off, inflicts [s:deep-freeze:18s].
+    inflicts:
+      - status: freezing-up
+        duration: 2000
   ice-talon:
     id: 36859
+    source: 16763
     mechanic: tb.double
     shape: chariot
     damage: 142384
     count: 2
-    description: A telegraphed tankbuster on the two highest enmity targets. Inflicts [s:frostbite].
+    description: A telegraphed tankbuster on the two highest enmity targets. Inflicts [s:frostbite:15s].
+    inflicts:
+      - status: frostbite
+        duration: 15000
   hail-of-feathers:
     id: 36829
+    source: 16664
     mechanic: raidwide.proximity
     compact: full
     description: |
@@ -659,7 +711,8 @@ actions:
     damage: 42825
     description: A feather hits the arena, dealing proximity damage to all players.
   blighted-bolt:
-    id: 36831
+    id: 36833
+    source: 16664
     mechanic: aoe
     shape: chariot
     description: |
@@ -668,23 +721,38 @@ actions:
     id: 36801
     mechanic: aoe.delayed
     shape: chariot
-    description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up] and [s:paralysis].
+    description: Leaves behind invisible AoEs that explode a short time later, dealing massive damage and inflicting [s:vulnerability-up:60s] and [s:paralysis:12s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 59960
+      - status: paralysis
+        duration: 12000
   thunderous-breath:
     id: 36835
     mechanic: aoe.condition
     damage: 112441
     players: 0
-    description: Deals massive damage and inflicts [s:vulnerability-up] and [s:paralysis] on all players who are not [levitating](s:levitate).
+    description: Deals massive damage and inflicts [s:vulnerability-up:60s] and [s:paralysis:12s] on all players who are not [levitating](s:levitate).
+    inflicts:
+      - status: vulnerability-up
+        duration: 59960
+      - status: paralysis
+        duration: 12000
   arcane-lightning:
     id: 39002
+    source: 16770
     mechanic: aoe
     shape: line
     damage: 53903
     count: 10
     players: 0
-    description: Lightning circles spawn on both sides of the arena, each preparing to fire a [ms:line] AoE across. Each AoE inflicts [s:vulnerability-up] and [s:paralysis]. Only one row in the arena has no circle on either side.
+    description: Lightning circles spawn on both sides of the arena, each preparing to fire a [ms:line] AoE across. Each AoE inflicts [s:vulnerability-up:60s] and [s:paralysis:12s]. Only one row in the arena has no circle on either side.
+    inflicts:
+      - status: paralysis
+        duration: 12000
   ruinfall:
     id: 36860
+    source: 16664
     mechanic: tb.towers
     description: |
       A tower appears in the center of the arena, dealing massive damage if left unsoaked. Soaking players take heavy damage that can be shared.
@@ -720,6 +788,7 @@ actions:
     description: AoEs at the rear of the arena explode, dealing massive damage to anyone inside.
   wrath-unfurled:
     id: 36871
+    source: 16664
     mechanic: raidwide
     damage: 85776
     description: Standard raidwide.
@@ -753,10 +822,10 @@ timeline:
     id: triscourge
     description: |
       Deals heavy damage and inflicts a number of status effects.
-      * [s:calamitys-inferno] (76s) → both healers
-      * [s:calamitys-bolt] (122s) → all players
-      * [s:calamitys-chill] (29s) → all supports or DPS
-      * [s:calamitys-chill] (91s) → opposite role of [s:calamitys-chill] (29s)
+      * [s:calamitys-inferno:76s] → both healers
+      * [s:calamitys-bolt:122s] → all players
+      * [s:calamitys-chill:29s] → all supports or DPS
+      * [s:calamitys-chill:91s] → opposite role of [s:calamitys-chill:29s]
   - at: 65480
     id: volcanic-drop
   - at: 78123
@@ -814,16 +883,16 @@ timeline:
     id: triscourge
     description: |
       Deals heavy damage and inflicts a number of status effects.
-      * [s:calamitys-embers] (11s) → both healers
-      * [s:calamitys-bite] (11s) → both tanks
-      * [s:calamitys-bolt] (43s) → all supports or DPS
-      * [s:calamitys-bolt] (120s) → opposite role of [s:calamitys-bolt] (43s)
+      * [s:calamitys-embers:11s] → both healers
+      * [s:calamitys-bite:11s] → both tanks
+      * [s:calamitys-bolt:43s] → all supports or DPS
+      * [s:calamitys-bolt:120s] → opposite role of [s:calamitys-bolt:43s]
   - at: 305850
     id: scourge-of-ice
     link: and
   - at: 305850
     id: scourge-of-fire
-    description: 3-man [m:stack.healers] triggered by [s:calamitys-embers].
+    description: 3-man [m:stack.healers] triggered by [s:calamitys-embers:11s].
     players: 3
   - at: 322117
     id: northern-cross
@@ -880,14 +949,14 @@ timeline:
     id: triscourge
     description: |
       Deals heavy damage and inflicts a number of status effects.
-      * [s:calamitys-flames] (11s) → both healers
-      * [s:calamitys-fulgur] (59s) → all supports or DPS
-      * [s:calamitys-frost] (99s) → same role as [s:calamitys-fulgur] (59s)
-      * [s:calamitys-frost] (59s) → opposite role of [s:calamitys-fulgur] (59s)
-      * [s:calamitys-fulgur] (99s) → same role as [s:calamitys-frost] (59s)
+      * [s:calamitys-flames:11s] → both healers
+      * [s:calamitys-fulgur:59s] → all supports or DPS
+      * [s:calamitys-frost:99s] → same role as [s:calamitys-fulgur:59s]
+      * [s:calamitys-frost:59s] → opposite role of [s:calamitys-fulgur:59s]
+      * [s:calamitys-fulgur:99s] → same role as [s:calamitys-frost:59s]
   - at: 466550
     id: scourge-of-fire
-    description: 4-man [m:stack.healers] triggered by [s:calamitys-flames].
+    description: 4-man [m:stack.healers] triggered by [s:calamitys-flames:11s].
   - at: 477812
     id: hail-of-feathers
     link: then
@@ -901,7 +970,7 @@ timeline:
     status: calamitys-frost
     description: |
       [s:calamitys-frost] expires, encasing any players who are not [levitating](s:levitate) in a block of ice.
-      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up].
+      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up:60s].
   - at: 529463
     id: slithering-strike
     link: or
@@ -925,7 +994,7 @@ timeline:
     status: calamitys-frost
     description: |
       [s:calamitys-frost] expires, encasing any players who are not [levitating](s:levitate) in a block of ice.
-      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up].
+      Note that, even while [levitating](s:levitate), the block of ice still spawns, but it spawns underneath the afflicted player(s). If two blocks of ice are too close to each other, they will tether and explode, dealing massive damage and inflicting [s:vulnerability-up:60s].
   - at: 569782
     id: slithering-strike
     link: or

@@ -21,7 +21,6 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by approximately 38%.
   magic-vuln:
     id: 2941
@@ -31,12 +30,10 @@ status:
     id: 2944
     type: dot
     tick: 40000
-    duration: 9000
   bleeding:
     id: 2951
     type: dot
     tick: 100000
-    duration: 30000
     description: Inflicted by stepping into the fire puddles during limit cut.
   astral-tilt:
     id: 3577
@@ -67,7 +64,6 @@ status:
   heavensflame-soul:
     id: 3578
     type: delay
-    duration: 21000
     description: Player drops a [ms:chariot] [m:spread] ([a:theoss-holy]) when the effect expires.
   quartered-soul:
     id: 3585
@@ -84,11 +80,13 @@ status:
 actions:
   on-the-soul:
     id: 33540
+    source: 16171
     mechanic: raidwide
     damage: 92080
     description: Standard raidwide. Restores any missing platforms.
   paradeigma-1:
     id: 33517
+    source: 16171
     name: Paradeigma 1
     mechanic: mech
     compact: space
@@ -118,6 +116,7 @@ actions:
       count: 4
   trinity-of-souls:
     id: 33511
+    source: 16171
     mechanic: aoe
     shape: halfroom
     compact: full
@@ -133,18 +132,20 @@ actions:
       id: trinity-of-souls-hit
   trinity-of-souls-hit:
     id: 33514
+    source: 16171
     name: Trinity of Souls (Hit)
     mechanic: aoe
     shape: halfroom
-    description: A cleave from [a:trinity-of-souls]. Inflicts [s:damage-down].
+    description: A cleave from [a:trinity-of-souls]. Inflicts [s:damage-down:30s].
   white-flame:
     id: 33520
     mechanic: spread.close
     shape: line
     damage: 65723
-    description: Beam of light fired by an angel. Inflicts [s:magic-vuln] for 6 seconds, preventing anyone from being hit by two consecutive beams.
+    description: Beam of light fired by an angel. Inflicts [s:magic-vuln:6s], preventing anyone from being hit by two consecutive beams.
   paradeigma-2:
     id: 33517
+    source: 16171
     name: Paradeigma 2
     mechanic: mech
     compact: space
@@ -185,16 +186,19 @@ actions:
       id: ray-of-light
   engravement-of-souls:
     id: 33541
+    source: 16171
     mechanic: mech.status
     description: Applies the aforementioned status effects.
   searing-radiance:
     id: 33521
+    source: 16172
     mechanic: spread
     shape: line
     damage: 62439
     description: An umbral (light) tether resolves as the corresponding angel shoots the tethered player with a beam, inflicting [s:umbral-tilt] and a brief [s:magic-vuln], preventing anyone from being hit by two beams at the same time.
   shadowsear:
     id: 33522
+    source: 16172
     mechanic: spread
     shape: line
     damage: 65063
@@ -213,11 +217,13 @@ actions:
     description: Drops an astral (dark) tower on the position of a player with [s:astralbright]. Inflicts [s:magic-vuln], preventing two towers from being dropped on top of each other. Lethal if player is also under the effect of [s:astral-tilt].
   umbral-advance:
     id: 33550
+    source: 16172
     mechanic: towers.single
     damage: 26729
     description: An umbral (light) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:astral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
   astral-advance:
     id: 33551
+    source: 16172
     mechanic: towers.single
     damage: 26899
     description: An astral (dark) tower resolves, dealing mild damage to anyone inside and inflicting a brief [s:magic-vuln], preventing one player from soaking multiple stacked towers. If not soaked by an [s:umbral-tilt] player, causes [a:unmitigated-explosion], wiping the party.
@@ -229,14 +235,16 @@ actions:
     description: An unsoaked tower explodes, wiping the party.
   ray-of-light:
     id: 33518
+    source: 16172
     mechanic: aoe
     shape: line
     damage: 80868
     players: 0
     count: 2
-    description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:damage-down] to anyone caught inside.
+    description: An angel at the edge of the arena fires a wide beam through the arena, inflicting [s:damage-down:30s] to anyone caught inside.
   glaukopis:
     id: 33532
+    source: 16171
     mechanic: tb.mt
     shape: line
     compact: full
@@ -248,6 +256,7 @@ actions:
         id: glaukopis-hit
   glaukopis-hit:
     id: 33533
+    source: 16171
     mechanic: tb.mt
     shape: line
     damage: 190000
@@ -255,6 +264,7 @@ actions:
     resolve: The main tank should take the first hit, the off-tank the second. If the main tank were to take the second hit, the [s:magic-vuln] would cause the next auto-attack to kill them.
   superchain-theory-i:
     id: 33498
+    source: 16171
     mechanic: mech
     compact: space
     description: |
@@ -265,12 +275,12 @@ actions:
       Orange spikes: [a:superchain-radiation] ([ms:cone] [m:spread])
       The chain's colour is the same as the shape's colour, so it is not necessary to find the end of the chain to know what its effect will be.
       After the chains are summoned, [boss] casts [a:engravement-of-souls], inflicting the following debuffs:
-      1× [s:astralstrong] (11s)
-      1× [s:umbralstrong] (11s)
-      1× [s:astralbright] (19s)
-      1× [s:umbralbright] (19s)
-      2× [s:astral-tilt] (23s) + [s:heavensflame-soul] (21s)
-      2× [s:umbral-tilt] (23s) + [s:heavensflame-soul] (21s)
+      1× [s:astralstrong:11s]
+      1× [s:umbralstrong:11s]
+      1× [s:astralbright:19s]
+      1× [s:umbralbright:19s]
+      2× [s:astral-tilt:23s] + [s:heavensflame-soul:21s]
+      2× [s:umbral-tilt:23s] + [s:heavensflame-soul:21s]
     children:
     - at: 7134
       id: engravement-of-souls
@@ -335,12 +345,12 @@ actions:
     id: 33499
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] centered on the chain source. Inflicts [s:damage-down].
+    description: A [ms:chariot] centered on the chain source. Inflicts [s:damage-down:30s].
   superchain-coil:
     id: 33500
     mechanic: aoe
     shape: dynamo
-    description: A [ms:dynamo] centered on the chain source. Inflicts [s:damage-down].
+    description: A [ms:dynamo] centered on the chain source. Inflicts [s:damage-down:30s].
   umbral-impact:
     id: 33544
     mechanic: stack.party
@@ -361,25 +371,34 @@ actions:
     shape: chariot
     damage: 58287
     count: 4
-    description: "[s:heavensflame-soul] resolves, dealing damage within a [ms:chariot] [m:spread] around the player. Inflicts [s:magic-vuln]."
+    description: "[s:heavensflame-soul:21s] resolves, dealing damage within a [ms:chariot] [m:spread] around the player. Inflicts [s:magic-vuln]."
   apodialogos:
     id: 33534
+    source: 16171
     type: magic
     mechanic: tb.far.stack
     shape: chariot
     damage: 148212
-    description: Hits the farthest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the closest target with an [ms:chariot] party stack.
+    description: Hits the farthest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion:9s]. Also hits the closest target with an [ms:chariot] party stack.
+    inflicts:
+      - status: concussion
+        duration: 9000
     resolve: Party in the center of the hitbox, tanks outside.
   peridialogos:
     id: 33535
+    source: 16171
     type: magic
     mechanic: tb.close.stack
     shape: chariot
     damage: 148212
-    description: Hits the closest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion]. Also hits the farthest target with an [ms:chariot] party stack.
+    description: Hits the closest target with a shared [ms:chariot] tankbuster that inflicts [s:magic-vuln] and [s:concussion:9s]. Also hits the farthest target with an [ms:chariot] party stack.
+    inflicts:
+      - status: concussion
+        duration: 9000
     resolve: Party at the south at max melee, tanks in the center of the hitbox.
   paradeigma-3:
     id: 33517
+    source: 16171
     name: Paradeigma 3
     mechanic: mech
     compact: space
@@ -439,10 +458,12 @@ actions:
       id: on-the-soul
   unnatural-enchainment-1:
     id: 33503
+    source: 16171
     mechanic: mech.arena
     description: Temporarily removes 4 platforms from the arena and inflicts all players with [s:enchained-soul], preventing jumps.
   unnatural-enchainment-2:
     id: 33503
+    source: 16171
     mechanic: mech.arena
     description: Temporarily removes 7 of the 8 platforms of the arena and inflicts all players with [s:enchained-soul], preventing jumps.
   shock:
@@ -468,20 +489,21 @@ actions:
     description: The cross-shaped [ms:line]s placed by [s:x-marked-soul] resolve.
   ultima-blade:
     id: 33523
+    source: 16171
     type: magic
     mechanic: raidwide.ultimate
     damage: 86300
     description: "[boss] summons 8 angels that help her create two blades infused with the power of Ultima, then uses them to deal damage to every player and transform the arena into a hexagon."
   palladion:
     id: 33525
+    source: 16171
     type: magic
     mechanic: mech.limit
-    damage: 81997
     players: 8
     compact: full
     description: |
       Each angel [boss] summoned flies up in a random order, then [boss] herself flies up and comes back down on a random corner of the hexagon as everyone is assigned a number between 1 and 8.
-      [boss] will then dash to each numbered player in turn, dealing more damage the closer the player and all players in her path are to [boss] ([a:shockwave]) and cleaving in a circle around the player while leaving a puddle behind on their position and inflicting [s:magic-vuln] ([a:palladion-hit]). Staying in the puddle inflicts [s:bleeding].
+      [boss] will then dash to each numbered player in turn, dealing more damage the closer the player and all players in her path are to [boss] ([a:shockwave]) and cleaving in a circle around the player while leaving a puddle behind on their position and inflicting [s:magic-vuln] ([a:palladion-hit]). Staying in the puddle inflicts [s:bleeding:30s].
       Just before each dash resolves, one of the 8 angels comes down in the center of the arena in the same order that they initially flew up and uses either [a:clear-cut] or [a:white-flame].
       After all 8 dashes are resolved, [boss] jumps to the center, restores the arena to its previous state, and slashes her blades, cutting away the four inner platforms.
     resolve: |
@@ -592,16 +614,18 @@ actions:
       id: palladion-platforms
   clear-cut:
     id: 33531
+    source: 16172
     mechanic: aoe
     shape: 270°
-    description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:damage-down] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
+    description: A purple angel descends and cuts everything in a 270° radius in front of it, dealing massive damage and inflicting [s:damage-down:30s] to anyone hit. Note that each consecutive purple angel faces the opposite direction of the previous one.
   palladion-hit:
     id: 33526
+    source: 16171
     mechanic: aoe
     shape: chariot
     damage: 81997
     players: 2
-    description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding]."
+    description: "[boss] spins her blades, cutting everything in a [ms:chariot] around her and leaving behind a puddle. Inflicts [s:magic-vuln]. Staying in the puddle for too long inflicts [s:bleeding:30s]."
   palladion-platforms:
     id: 22529
     mechanic: aoe
@@ -618,11 +642,13 @@ actions:
     description: "[boss] dashes to the next player in the sequence, dealing damage to that player and all players in her path relative to how close they were to her starting position (the closer, the more damage)."
   theoss-ultima:
     id: 33530
+    source: 16171
     mechanic: raidwide.ultimate
     damage: 130138
     description: "[boss] unleashes Ultima, dealing massive damage to all players and restoring the arena. Deals more damage the more players are dead."
   superchain-theory-iia:
     id: 34554
+    source: 16171
     name: Superchain Theory IIa
     mechanic: mech
     compact: space
@@ -661,6 +687,7 @@ actions:
       id: superchain-radiation
   superchain-theory-iib:
     id: 34555
+    source: 16171
     name: Superchain Theory IIb
     mechanic: mech
     compact: space
@@ -704,11 +731,13 @@ actions:
       id: unnatural-enchainment-2
   paradeigma-4:
     id: 33517
+    source: 16171
     name: Paradeigma 4
     mechanic: mech
     description: "[boss] summons 2 angels from red crystals."
   parthenos:
     id: 33539
+    source: 16171
     mechanic: aoe
     shape: line
     description: "[boss] faces a certain direction and cleaves all targets in-line with her."

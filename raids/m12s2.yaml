@@ -25,81 +25,69 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by 50%.
   sustained-damage:
     id: 4149
     type: dot
     tick: 42000
-    duration: 14330
     description: Heavy stackable [t:DoT].
   fire-resistance-down-ii:
     id: 2937
     type: vuln
-    duration: 24960
-    description: Renders any subsequent fire damage taken lethal. Inflicted by [a:top-tier-slam-rep-i].
+    description: Renders any subsequent fire damage taken lethal.
   dark-resistance-down-ii:
     id: 3323
     type: vuln
-    duration: 23960
-    description: Renders any subsequent dark damage taken lethal. Inflicted by [a:mighty-magic-rep-i].
+    description: Renders any subsequent dark damage taken lethal.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [4960, 1960, 5960]
-    description: Renders any subsequent magic damage taken lethal. Inflicted by a multitude of actions, including [a:firefall-splash-player], [a:scalding-waves], [a:mana-burst-player], [a:heavy-slam], [a:timeless-spite], [a:lindwurms-thunder-ii], and [a:lindwurms-glare].
+    description: Renders any subsequent magic damage taken lethal.
   mutation-alpha:
     id: 4769
     name: Mutation α
     type: condition
-    duration: [17000, 28000]
     description: |
-      If this player takes **any** damage before the effect expires, inflicts [s:damage-down]. This includes damage from auto attacks.
-      If this player has not yet been under the effect of [s:mutating-cells], then after expiring this status effect briefly turns into [s:mutating-cells], then [s:mutation-alpha].
+      If this player takes **any** damage before the effect expires, inflicts [s:damage-down:30s]. This includes damage from auto attacks.
+      If this player has not yet been under the effect of [s:mutating-cells:2s], then after expiring this status effect briefly turns into [s:mutating-cells:2s], then [s:mutation-alpha].
     gameDescription: Infected by cells with the alpha mutation. Taking damage before this effect expires will result in heavy damage upon its expiration.
   mutation-beta:
     id: 4771
     name: Mutation β
     type: condition
-    duration: [17000, 28000]
     description: |
-      If this player does **not** take damage before the effect expires, inflicts [s:damage-down].
-      If this player has not yet been under the effect of [s:mutating-cells], then after expiring this status effect briefly turns into [s:mutating-cells], then [s:mutation-beta].
+      If this player does **not** take damage before the effect expires, inflicts [s:damage-down:30s].
+      If this player has not yet been under the effect of [s:mutating-cells:2s], then after expiring this status effect briefly turns into [s:mutating-cells:2s], then [s:mutation-beta].
     gameDescription: Infected by cells with the beta mutation. Failing to take damage before this effect expires will result in heavy damage upon its expiration.
   mutating-cells:
     id: 4770
     name: Mutating Cells
     type: indicator
-    duration: 2000
     description: |
       Brief transitional state. After expiring, this status effect turns into [s:mutation-alpha] or [s:mutation-beta] (whichever status effect the player did not yet have).
       While this effect is active, neither [s:mutation-alpha] nor [s:mutation-beta] is in effect, so damage can be taken freely.
-      This status effect is a one-time occurrence. After expiring, the player is immune to [s:mutating-cells] for the rest of the pull, so their second mutation will not turn back into the first.
+      This status effect is a one-time occurrence. After expiring, the player is immune to [s:mutating-cells:2s] for the rest of the pull, so their second mutation will not turn back into the first.
     gameDescription: Infected by cells that will change to a different mutation when this effect expires.
   light-resistance-down-ii:
     id: 4164
     type: vuln
-    duration: [23960, 16000]
-    description: Renders any subsequent light damage taken lethal. Inflicted by [a:arcadian-arcanum].
+    description: Renders any subsequent light damage taken lethal.
   lindwurms-portent:
     id: 4765
     name: Lindwurm's Portent
     type: delay
-    duration: 10000
     description: Triggers [a:lindwurms-glare] (a tiny [ms:chariot] AoE) when this effect expires.
     gameDescription: Age-old magicks will cause damage to the surrounding area when this effect expires.
   faraway-portent:
     id: 4766
     name: Faraway Portent
     type: delay
-    duration: 10000
     description: Fires [a:lindwurms-thunder-ii] towards the farthest player when this effect expires.
     gameDescription: Age-old magicks will fire in the direction of the most distant ally when this effect expires.
   nearby-portent:
     id: 4767
     name: Nearby Portent
     type: delay
-    duration: 10000
     description: Fires [a:lindwurms-thunder-ii] towards the closest player when this effect expires.
     gameDescription: Age-old magicks will fire in the direction of the nearest ally when this effect expires.
   pyretic:
@@ -109,17 +97,15 @@ status:
     id: 4768
     name: Hot-blooded
     type: condition
-    duration: 5000
     description: |
-      Player takes heavy damage, is inflicted with [s:damage-down], and briefly knocked up into the air if they move.
-      Note that this is distinct from the common status effect [s:pyretic], as [s:pyretic] does not allow you to **take any action**, including auto-attacking. [s:hot-blooded] merely disallows movement. Actions (including auto-attacks, GCDs, or oGCDs) do not trigger its effect so long as they do not move the player's character.
+      Player takes heavy damage, is inflicted with [s:damage-down:30s], and briefly knocked up into the air if they move.
+      Note that this is distinct from the common status effect [s:pyretic], as [s:pyretic] does not allow you to **take any action**, including auto-attacking. [s:hot-blooded:5s] merely disallows movement. Actions (including auto-attacks, GCDs, or oGCDs) do not trigger its effect so long as they do not move the player's character.
     gameDescription: Sparking with fire aether. Moving from current position will result in fire damage.
   doom:
     id: 3364
     type: condition
-    duration: 8000
     description: |
-      Player is instantly killed when the effect expires. Can be cleansed through [a:esuna] or [a:wardens-paean]. Inflicted by [a:lindwurms-dark-ii].
+      Player is instantly killed when the effect expires. Can be cleansed through [a:esuna] or [a:wardens-paean].
       **Note**: This status effect snapshots its application very late. Attempting to [a:esuna] this effect too soon after [a:lindwurms-dark-ii] will result in [a:esuna] having no effect. This can happen even if the effect already visually appears on your debuff bar.
 actions:
   arcadia-aflame:
@@ -137,15 +123,15 @@ actions:
     compact: trim
     description: |
       Spawns one Lindschrat clone on each cardinal. Each clone casts a different mechanic. It is not possible to determine which clone casts what.
-      * One clone casts [a:top-tier-slam-rep-i], a two-player stack on the closest player that deals fire damage and inflicts [s:fire-resistance-down-ii].
-      * The opposite clone casts [a:mighty-magic-rep-i], a spread on the two closest players that deals dark damage and inflicts [s:dark-resistance-down-ii].
-      * The other two clones cast [a:winged-scourge-rep-i], a conal AoE either towards west and east, or towards north and south. Inflicts [s:damage-down]. These conal AoEs have a late telegraph and can be sidestepped at the last moment.
+      * One clone casts [a:top-tier-slam-rep-i], a two-player stack on the closest player that deals fire damage and inflicts [s:fire-resistance-down-ii:25s].
+      * The opposite clone casts [a:mighty-magic-rep-i], a spread on the two closest players that deals dark damage and inflicts [s:dark-resistance-down-ii:24s].
+      * The other two clones cast [a:winged-scourge-rep-i], a conal AoE either towards west and east, or towards north and south. Inflicts [s:damage-down:30s]. These conal AoEs have a late telegraph and can be sidestepped at the last moment.
       Afterwards all clones split in two while a [a:snaking-kick-halfroom] AoE is executed wherever [boss] is facing. All clones then dash towards an intercardinal. Each intercardinal fits two clones: a close clone and a far clone. After the dashes, all four [a:winged-scourge-rep-i] clones occupy all spots northwest and southeast or northeast and southwest. The other four clones occupy the other two intercardinals. The two clones that share a mechanic are always opposite one another (e.g. if the first [a:top-tier-slam-rep-i] clone is northwest close, the other one will be southeast far).
     resolve: |
       Use fixed positions at the start of the mechanic. Ensure that there are always two players closest to each clone, and that those two players are not on top of each other.
       Because the first set only has half the number of clones, it means that half the players don't get hit by anything. (Depending on your exact positions, you may still be hit by your partner's mechanic.) During the second set, every player must take a hit, but as the first hit gives you a vuln to the damage inflicted by that clone, you must not get hit by the same clone twice. In other words:
-      * Players who got hit by [a:top-tier-slam-rep-i] and now have [s:fire-resistance-down-ii] must get hit by [a:mighty-magic-rep-i] next.
-      * Players who got hit by [a:mighty-magic-rep-i] and now have [s:dark-resistance-down-ii] must get hit by [a:top-tier-slam-rep-i] next.
+      * Players who got hit by [a:top-tier-slam-rep-i] and now have [s:fire-resistance-down-ii:25s] must get hit by [a:mighty-magic-rep-i] next.
+      * Players who got hit by [a:mighty-magic-rep-i] and now have [s:dark-resistance-down-ii:24s] must get hit by [a:top-tier-slam-rep-i] next.
       * Players who got hit by nothing and have no debuff count as having been hit by [a:top-tier-slam-rep-i] and must get hit by [a:mighty-magic-rep-i] next.
       Dodge [a:snaking-kick-halfroom], then track the clone you need to get hit by as they split and dash to an intercardinal. *You do not need to watch the clones as they fire their mechanics initially.* There is a simple way to find each clone before they split:
       * The [a:top-tier-slam-rep-i] clone is the only clone that jumps on a player, so the clone that is *not* directly on a cardinal is the [a:top-tier-slam-rep-i] clone.
@@ -153,6 +139,9 @@ actions:
       * The cardinal directly *opposite* the empty cardinal features the [a:mighty-magic-rep-i] clone.
       Likewise, after they split, you only need to keep track of *one* of the two clones that fire the same mechanic, not both. As stated above, you can extrapolate the second clone's position through the first clone's position after the dashes. Because of this, both the spread and the stack feature one clone in melee range and one clone outside of melee range, so melees always position to get hit by the melee clone and rangeds always position to get hit by the ranged clone.
       Ranged players additionally need to remember whether [a:winged-scourge-rep-i] hit east/west or north/south, as they'll need to dodge the cones (of which there are now twice as many) during the second set. Melees don't have to worry about this.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     tips:
       - During the second set there are always two players who get hit by the same clone. If you miss where your clone goes, you may be able to save the pull by following your partner (as long as they know where they're going).
     strategies:
@@ -190,27 +179,39 @@ actions:
     cast: 3000
     damage: 200255
     players: 2
-    description: The Lindschrat clone jumps on the closest player in a two-player stack. Inflicts [s:fire-resistance-down-ii].
+    description: The Lindschrat clone jumps on the closest player in a two-player stack. Inflicts [s:fire-resistance-down-ii:25s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 24960
   winged-scourge-rep-i:
     id: 46300
     mechanic: aoe
     shape: cone
     cast: 3000
-    description: Conal AoEs that either go east/west or north/south from half the Lindschrat clones. Inflicts [s:damage-down].
+    description: Conal AoEs that either go east/west or north/south from half the Lindschrat clones. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   mighty-magic-rep-i:
     id: 46304
     mechanic: spread.close
     shape: chariot
     cast: 3000
     damage: 196698
-    description: Spread AoEs on the two closest players to the corresponding Lindschrat clone. Inflicts [s:dark-resistance-down-ii].
+    description: Spread AoEs on the two closest players to the corresponding Lindschrat clone. Inflicts [s:dark-resistance-down-ii:24s].
+    inflicts:
+      - status: dark-resistance-down-ii
+        duration: 23960
   snaking-kick-halfroom:
     id: 46375
     source: 19202
     caption: Halfroom
     mechanic: aoe
     shape: halfroom
-    description: Halfroom cleave aimed at a random player. Inflicts [s:damage-down].
+    description: Halfroom cleave aimed at a random player. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   double-sobat:
     id: 46368
     source: 19202
@@ -238,7 +239,10 @@ actions:
     mechanic: aoe
     shape: halfroom
     description: |
-      [boss:c] faces a random direction and casts a halfroom cleave in front of him. Functionally identical to [a:snaking-kick-halfroom]. Inflicts [s:damage-down].
+      [boss:c] faces a random direction and casts a halfroom cleave in front of him. Functionally identical to [a:snaking-kick-halfroom]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   esoteric-finisher:
     id: 46374
     mechanic: tb.double
@@ -288,7 +292,7 @@ actions:
       There's also a [a:snaking-kick-halfroom] and a [a:netherwrath-far]/[a:netherwrath-near], a 2-player stack on the two farthest/closest players, respectively. The latter resolves at the same time as the first player clone set north and south.
       * [a:firefall-splash-clone] has a Lindschrat clone jump on the respective player clone and execute [a:scalding-waves] *at the same players that were targeted by [a:scalding-waves] the first time*, *not* the four closest players.
       * [a:mana-burst-clone] is self-explanatory. Whoever was target of a [a:mana-burst-player] before, their clone is targeted by [a:mana-burst-clone] now. That includes [boss]'s [a:mana-burst-clone] as well.
-      * [a:heavy-slam-clone] is executed on the same player clones as the initial targets. This now counts as a [m:towers.single] mechanic, meaning that any [a:heavy-slam-clone] that does not have any players soaking it deals heavy damage and inflicts [s:sustained-damage] on the whole party.
+      * [a:heavy-slam-clone] is executed on the same player clones as the initial targets. This now counts as a [m:towers.single] mechanic, meaning that any [a:heavy-slam-clone] that does not have any players soaking it deals heavy damage and inflicts [s:sustained-damage:14s] on the whole party.
       * [a:hemorrhagic-projection-clone] fires conal AoEs in the direction the respective clones are looking (i.e. towards the center of the arena).
     resolve: |
       During the first part of the mechanic you're essentially "setting up" the second part, making this a "Make Your Own Mechanic" type of mechanic. Because of this, there is a significant degree of freedom and flexibility for how and where to take certain mechanics. Check your data center's raidplans for more information.
@@ -324,7 +328,10 @@ actions:
     shape: chariot
     damage: 136024
     description: |
-      [boss:c] jumps on the player with the boss tether, dealing moderate damage, inflicting [s:magic-vulnerability-up], and binding that player until [a:scalding-waves] has executed.
+      [boss:c] jumps on the player with the boss tether, dealing moderate damage, inflicting [s:magic-vulnerability-up:5s], and binding that player until [a:scalding-waves] has executed.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   scalding-waves:
     id: 46309
     mechanic: spread
@@ -332,7 +339,10 @@ actions:
     count: 4
     damage: 148028
     description: |
-      [boss:c] fires narrow conal AoEs at the closest four players. Inflicts [s:magic-vulnerability-up].
+      [boss:c] fires narrow conal AoEs at the closest four players. Inflicts [s:magic-vulnerability-up:5s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   mana-burst-player:
     id: 46311
     mechanic: spread
@@ -341,6 +351,10 @@ actions:
     damage: 147046
     description: |
       A massive [ms:defamation] on targeted players that knocks any player nearby off the platform.
+      Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   heavy-slam:
     id: 46312
     source: 19204
@@ -350,14 +364,20 @@ actions:
     damage: 146118
     players: 4
     description: |
-      4-player stack on a player with a stack Lindschrat tether. Inflicts [s:magic-vulnerability-up].
+      4-player stack on a player with a stack Lindschrat tether. Inflicts [s:magic-vulnerability-up:5s].
       Can be survived with 3 players with some mitigation. Surviving with only 2 is difficult.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   hemorrhagic-projection-player:
     id: 46315
     mechanic: aoe.facing
     shape: cone
     count: 2
-    description: Cone in the direction a player is facing. Inflicts [s:damage-down].
+    description: Cone in the direction a player is facing. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   reenactment-i:
     id: 46316
     source: 19202
@@ -368,7 +388,7 @@ actions:
       Player clones resolve in intervals of 4 seconds. Some mechanics executed on player clones function slightly differently.
       * [a:firefall-splash-clone] causes a Lindschrat clone to jump on the corresponding player clone, not [boss] himself.
       * [a:scalding-waves-repeat] is executed on the same players who were targeted by it the first time, not the four closest players and not any player clones.
-      * [a:heavy-slam-clone] is now a [m:towers.single] mechanic, so failing to soak it results in [s:sustained-damage] spread across the party.
+      * [a:heavy-slam-clone] is now a [m:towers.single] mechanic, so failing to soak it results in [s:sustained-damage:14s] spread across the party.
       * [a:hemorrhagic-projection-clone] fires in the direction the clones are looking (i.e. towards center), not wherever the corresponding players were looking when their cone resolved initially.
       * [a:mana-burst-clone] is functionally identical.
     children:
@@ -434,14 +454,20 @@ actions:
     count: 2
     damage: 194426
     players: 4
-    description: The damage instance for [a:netherwrath-far] and [a:netherwrath-near]. Inflicts [s:magic-vulnerability-up].
+    description: The damage instance for [a:netherwrath-far] and [a:netherwrath-near]. Inflicts [s:magic-vulnerability-up:6s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5960
   hemorrhagic-projection-clone:
     id: 47394
     caption: Clone
     mechanic: aoe.facing
     shape: cone
     count: 2
-    description: Cone in the direction a player clone is facing (towards center). Inflicts [s:damage-down].
+    description: Cone in the direction a player clone is facing (towards center). Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   mana-burst-clone:
     id: 48099
     caption: Clone
@@ -454,7 +480,10 @@ actions:
     mechanic: towers.single
     damage: 188297
     players: 4
-    description: A [a:heavy-slam] resolves on a player clone. If left unsoaked, inflicts [s:sustained-damage] on the whole party. Inflicts [s:magic-vulnerability-up].
+    description: A [a:heavy-slam] resolves on a player clone. If left unsoaked, inflicts [s:sustained-damage:14s] on the whole party. Inflicts [s:magic-vulnerability-up:6s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5960
   firefall-splash-clone:
     id: 46317
     source: 19204
@@ -469,7 +498,10 @@ actions:
     shape: cone
     count: 4
     damage: 199706
-    description: Fires [a:scalding-waves] at the same 4 players who were targeted by it the first time. Inflicts [s:magic-vulnerability-up].
+    description: Fires [a:scalding-waves] at the same 4 players who were targeted by it the first time. Inflicts [s:magic-vulnerability-up:6s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5960
   mutating-cells:
     id: 46341
     source: 19202
@@ -477,11 +509,14 @@ actions:
     description: |
       Inflicts 4 players with [s:mutation-alpha] and the other 4 players with [s:mutation-beta].
       Both debuff groups feature exactly one tank, one healer, and two DPS.
-      * [s:mutation-alpha] players are inflicted with [s:damage-down] if they *don't* take any damage before the debuff expires.
-      * [s:mutation-beta] players are inflicted with [s:damage-down] if they *do* take any damage before the debuff expires. This includes auto-attacks.
-      After the debuffs expire, triggers [a:dramatic-lysis] on all players. [a:dramatic-lysis] either deals no damage if the debuff's condition was met, or deals heavy damage and inflicts [s:damage-down] if the condition was not met. The debuff then briefly changes to [s:mutating-cells] before flipping to the *opposite* debuff (so [s:mutation-alpha] becomes [s:mutation-beta] and vice-versa).
+      * [s:mutation-alpha] players are inflicted with [s:damage-down:30s] if they *don't* take any damage before the debuff expires.
+      * [s:mutation-beta] players are inflicted with [s:damage-down:30s] if they *do* take any damage before the debuff expires. This includes auto-attacks.
+      After the debuffs expire, triggers [a:dramatic-lysis] on all players. [a:dramatic-lysis] either deals no damage if the debuff's condition was met, or deals heavy damage and inflicts [s:damage-down:30s] if the condition was not met. The debuff then briefly changes to [s:mutating-cells:2s] before flipping to the *opposite* debuff (so [s:mutation-alpha] becomes [s:mutation-beta] and vice-versa).
     resolve: |
       The [s:mutation-beta] tank should [a:provoke] immediately if they're not already first in enmity.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   blood-mana:
     id: 46331
     source: 19202
@@ -504,7 +539,7 @@ actions:
     resolve: |
       Find the black hole with the two shapes that are closer than the others. Take note of those two close shapes.
       On the other side, find those same two shapes and stagger them by touching them with as many players as possible. Staggering those two shapes ensures that the two shapes that are absorbed first by the first black hole are absorbed second by the other black hole, and vice-versa, and ensures that the two black holes don't execute the same mechanics at the same time, which would leave no safe spot. Remember that only [s:mutation-beta] players should be staggering any shapes.
-      One of the two shapes to stagger is always north and the other always south, so you can assign fixed soaks based on this (e.g. supports stagger the northern shapes, DPS the southern shape). However, while this is most likely the intended strategy, there is another strategy that has significantly less healing requirements: have all [s:mutation-beta] players stagger the northern shape. The [s:mutation-alpha] players wait until their debuff *flips*, then stagger the southern shape. There is enough time to do so. This way there are four players per stack instead of two, significantly decreasing damage dealt. (Note: [s:mutation-alpha] players do not need to wait until their debuff becomes [s:mutation-beta]. Once the debuff becomes [s:mutating-cells], it is safe to soak the shape.)
+      One of the two shapes to stagger is always north and the other always south, so you can assign fixed soaks based on this (e.g. supports stagger the northern shapes, DPS the southern shape). However, while this is most likely the intended strategy, there is another strategy that has significantly less healing requirements: have all [s:mutation-beta] players stagger the northern shape. The [s:mutation-alpha] players wait until their debuff *flips*, then stagger the southern shape. There is enough time to do so. This way there are four players per stack instead of two, significantly decreasing damage dealt. (Note: [s:mutation-alpha] players do not need to wait until their debuff becomes [s:mutation-beta]. Once the debuff becomes [s:mutating-cells:2s], it is safe to soak the shape.)
       While soaking the shapes, pay attention to where the green wind ring is on either side. **Whichever black hole absorbed the green ring first** is the black hole all players should move to for [a:blood-wakening]. After the first AoEs resolve, move to the other side.
       [a:straightforward-thunder-ii] cannot coincide with [a:lindwurms-aero-iii] (unless the wrong shapes were staggered), so the safe spot is *always* "in and north/south". (If it were possible for [a:straightforward-thunder-ii] to coincide with [a:lindwurms-aero-iii], it would mean that [a:sideways-fire-ii] would cleave the other black hole while resolving [a:lindwurms-aero-iii] there, so there would be no safe spot.)
     children:
@@ -535,7 +570,10 @@ actions:
     id: 46343
     mechanic: mech.check
     count: 8
-    description: Deals heavy damage and inflicts [s:damage-down] on players who did not meet their [s:mutation-alpha]/[s:mutation-beta] condition.
+    description: Deals heavy damage and inflicts [s:damage-down:30s] on players who did not meet their [s:mutation-alpha]/[s:mutation-beta] condition.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   blood-wakening:
     id: 46336
     source: 19202
@@ -569,23 +607,35 @@ actions:
     mechanic: aoe
     shape: cone
     count: 2
-    description: A north/south conal AoE originating from a black hole. Inflicts [s:damage-down].
+    description: A north/south conal AoE originating from a black hole. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   lindwurms-water-iii:
     id: 46337
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] AoE on a black hole. Inflicts [s:damage-down].
+    description: A [ms:chariot] AoE on a black hole. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   sideways-fire-ii:
     id: 46340
     mechanic: aoe
     shape: cone
     count: 2
-    description: An east/west conal AoE originating from a black hole. Inflicts [s:damage-down].
+    description: An east/west conal AoE originating from a black hole. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   lindwurms-aero-iii:
     id: 46338
     mechanic: aoe
     shape: dynamo
-    description: A [ms:dynamo] AoE around a black hole. Inflicts [s:damage-down].
+    description: A [ms:dynamo] AoE around a black hole. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   netherworld-near:
     id: 46379
     source: 19202
@@ -728,6 +778,9 @@ actions:
     mechanic: mech.arena
     description: Shifts to the blue reality and executes towers as well as all tower-related effects.
     children:
+    - at: 1293
+      id: <addstatus>
+      status: light-resistance-down-ii:16s
     - at: 4415
       id: cosmic-kiss
       link: and
@@ -791,12 +844,18 @@ actions:
     caption: Circle
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] AoE executed by a Lindschrat clone. Inflicts [s:damage-down].
+    description: A [ms:chariot] AoE executed by a Lindschrat clone. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   power-gusher:
     id: 46358
     mechanic: aoe
     shape: cone
-    description: North/south or east/west cones originating from a Lindschrat clone. Inflicts [s:damage-down].
+    description: North/south or east/west cones originating from a Lindschrat clone. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   lindwurms-meteor:
     id: 46322
     source: 19202
@@ -813,15 +872,26 @@ actions:
     damage: 0
     description: |
       Spawns 4 towers per platform. Each tower has a meteor dropping on it. These meteors have special effects.
-      * **Brown earth meteor**: leaves behind an invisible [a:lindwurms-stone-iii] AoE underneath the tower that resolves later, inflicting [s:damage-down].
-      * **White light + purple dark + blue thunder meteor**: kills the soakee if they have [s:light-resistance-down-ii]. Fires a dark laser from the center of the tower towards the soaking player that inflicts [s:doom] on all players hit. Inflicts [s:nearby-portent] and [s:lindwurms-portent].
-      * **Red fire meteor**: inflicts [s:hot-blooded].
-      * **White light + green aero + blue thunder meteor**: kills the soakee if they have [s:light-resistance-down-ii]. Knocks the soakee up and away relative to the center of the tower. Inflicts [s:faraway-portent] and [s:lindwurms-portent].
+      * **Brown earth meteor**: leaves behind an invisible [a:lindwurms-stone-iii] AoE underneath the tower that resolves later, inflicting [s:damage-down:30s].
+      * **White light + purple dark + blue thunder meteor**: kills the soakee if they have [s:light-resistance-down-ii]. Fires a dark laser from the center of the tower towards the soaking player that inflicts [s:doom:8s] on all players hit. Inflicts [s:nearby-portent:10s] and [s:lindwurms-portent:10s].
+      * **Red fire meteor**: inflicts [s:hot-blooded:5s].
+      * **White light + green aero + blue thunder meteor**: kills the soakee if they have [s:light-resistance-down-ii]. Knocks the soakee up and away relative to the center of the tower. Inflicts [s:faraway-portent:10s] and [s:lindwurms-portent:10s].
       All four tower types appear once per platform, but the exact arrangement is random, with one caveat: two adjacent towers cannot both feature light meteors.
       The towers resolve on the next return to this reality.
     resolve: |
       Preposition for towers. The towers don't actually resolve here, but you need to be spread anyway for [a:arcadian-arcanum], so you might as well spread in tower positions. Tanks and melees take the towers close to [boss], healers and rangeds the towers far from [boss].
       After [a:arcadian-arcanum], swap towers with the other close/far player if you were hit and your tower is a light tower. Remember which tower you're assigned here for when you return to this reality.
+    inflicts:
+      - status: lindwurms-portent
+        duration: 10000
+      - status: faraway-portent
+        duration: 10000
+      - status: nearby-portent
+        duration: 10000
+      - status: hot-blooded
+        duration: 5000
+      - status: damage-down
+        duration: 30000
   arcadian-arcanum:
     id: 47577
     mechanic: spread
@@ -829,7 +899,10 @@ actions:
     cast: 3000
     count: 4
     damage: 195115
-    description: Hits either all supports or all DPS with a small [ms:chariot] inflicting [s:light-resistance-down-ii].
+    description: Hits either all supports or all DPS with a small [ms:chariot] inflicting [s:light-resistance-down-ii:24s].
+    inflicts:
+      - status: light-resistance-down-ii
+        duration: 23960
   mana-burst-idyllic:
     id: 46360
     mechanic: spread
@@ -837,6 +910,9 @@ actions:
     count: 2
     damage: 181309
     description: "[a:mana-burst-player:d]"
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   heavy-slam-idyllic:
     id: 46361
     source: 19204
@@ -845,13 +921,16 @@ actions:
     count: 2
     damage: 192321
     players: 4
-    description: "[a:heavy-slam:d]"
+    description: 4-player stack on a player with a stack Lindschrat tether. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   cosmic-kiss:
     id: 46324
     mechanic: towers.single
     count: 8
     damage: 38460
-    description: Towers resolve, alongside their special effects. Inflicts [s:sustained-damage] per tower missed.
+    description: Towers resolve, alongside their special effects. Inflicts [s:sustained-damage:14s] per tower missed.
   lindwurms-dark-ii:
     id: 46326
     mechanic: spread
@@ -859,14 +938,20 @@ actions:
     count: 2
     damage: 96184
     description: |
-      Dark laser originating from the center of the dark tower, aimed at the player soaking the dark tower. Inflicts [s:doom] on them and any other player hit.
-      The [s:doom] can be cleansed.
+      Dark laser originating from the center of the dark tower, aimed at the player soaking the dark tower. Inflicts [s:doom:8s] on them and any other player hit.
+      The [s:doom:8s] can be cleansed.
+    inflicts:
+      - status: doom
+        duration: 8000
   lindwurms-stone-iii:
     id: 46327
     mechanic: aoe.delayed
     shape: chariot
     count: 2
-    description: Inflicts [s:damage-down] on any player near where the earth tower stood.
+    description: Inflicts [s:damage-down:30s] on any player near where the earth tower stood.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   lindwurms-thunder-ii:
     id: 46330
     mechanic: mech.close-or-far
@@ -874,14 +959,20 @@ actions:
     count: 4
     damage: 79130
     players: 1
-    description: "[s:nearby-portent] and [s:faraway-portent] resolve in the form of a cone originating from the player themselves, aimed towards the closest/farthest player from them, respectively."
+    description: "[s:nearby-portent:10s] and [s:faraway-portent:10s] resolve in the form of a cone originating from the player themselves, aimed towards the closest/farthest player from them, respectively. Inflicts [s:magic-vulnerability-up:2s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   lindwurms-glare:
     id: 46328
     mechanic: spread
     shape: chariot
     count: 4
     damage: 91993
-    description: "[s:lindwurms-portent] resolves in the form of a tiny [ms:chariot] AoE that inflicts [s:magic-vulnerability-up]."
+    description: "[s:lindwurms-portent:10s] resolves in the form of a tiny [ms:chariot] AoE that inflicts [s:magic-vulnerability-up:2s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   temporal-curtain:
     id: 46364
     source: 19202
@@ -893,6 +984,7 @@ actions:
       You have hopefully memorized which of the two clones (northmost or southmost) embodies a north/south cone and which of the two embodies the east/west cone, so take note of which of the two cone orientations slips through the portal. Also, take note of which platform each of the other two clones jumps to. Whichever platform the middle clone jumped to is unsafe and must be avoided the next time you return to this reality.
   replication-v:
     id: 46188
+    source: 19202
     name: Replication V
     mechanic: enrage.soft
     description: Summons 4 Lindschrat clones. Each will duplicate [boss]'s [a:arcadian-hell] cast, then split themselves in two.
@@ -915,11 +1007,13 @@ actions:
       id: arcadian-hell-enrage
   arcadian-hell-clone:
     id: 46388
+    source: 19204
     mechanic: raidwide
     damage: 19000
     description: Lindschrat raidwide. Deals minimal damage by itself but is multiplied by however many Lindschrats there currently are.
   arcadian-hell:
     id: 46387
+    source: 19202
     mechanic: raidwide
     damage: 189546
     description: "[boss:c]'s raidwide. Does significantly more damage than the Lindschrats' [a:arcadian-hell-clone]s."

@@ -21,33 +21,25 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: [22420, 30000]
-    description: |
-      Reduces damage by 25%.
-      Inflicted by [a:funky-floor], [a:inside-out], [a:ride-the-waves], [a:lets-dance!].
+    description: Reduces damage by 25%.
   bleeding:
     id: 2088
     type: dot
     tick: 36225
-    duration: 15000
-    description: A moderate [t:DoT] inflicted by [a:deep-cut].
+    description: A moderate [t:DoT].
   sustained-damage:
     id: 2935
     type: dot
     tick: 35143
-    duration: 15000
-    description: A moderate [t:DoT] inflicted by [a:freak-out].
+    description: A moderate [t:DoT].
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [9000, 13950, 1960]
-    description: Inflicted by [a:deep-cut], [a:play-a-side], [a:quarter-beats], [a:get-down-cone], [a:play-b-side], [a:eighth-beats], [a:minor-freak-out]
   frogtourage-fan:
     id: 3998
     type: vuln
     name: Frogtourage Fan
-    duration: 17960
-    description: Inflicted by [a:back-up-dance]. Renders the next [a:back-up-dance] lethal.
+    description:  Renders the next [a:back-up-dance] lethal.
   needle-poised:
     id: 4459
     type: form
@@ -57,20 +49,17 @@ status:
     id: 4461
     type: condition
     name: Burn Baby Burn
-    duration: [9500, 19500, 23500, 31500]
     description: When the effect expires, player must be standing inside a spotlight to turn this debuff into [s:in-the-spotlight]. If the player does not stand inside a spotlight at the end of the effect's duration, instantly kills the player.
   wavelength-î±:
     id: 4462
     type: condition
     name: Wavelength Î±
-    duration: [40500, 30500, 25500]
-    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î²] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î²] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage:15s].
   wavelength-î²:
     id: 4463
     type: condition
     name: Wavelength Î²
-    duration: [43000, 28000, 23000, 18000]
-    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î±] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage].
+    description: When the effect expires, player must be standing on top of the corresponding [s:wavelength-î±] player whose debuff is also expiring at the same time. Doing so deals minimal damage via [a:minor-freak-out]. Failing to do so deals heavy damage via [a:freak-out] and inflicts [s:sustained-damage:15s].
   in-the-spotlight:
     id: 4471
     type: impairment
@@ -78,14 +67,16 @@ status:
   perfect-groove:
     id: 4464
     type: damage-up
-    duration: 20000
     description: Increases damage by 3% for 20 seconds as a reward for correctly resolving [s:wavelength-î±]/[s:wavelength-î²] and avoiding all [a:lets-dance!].
 actions:
   inside-out:
     id: 37826
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] followed by a [ms:dynamo].
+    description: A [ms:chariot] followed by a [ms:dynamo]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
     children:
     - at: 2452
       id: inside-out-1
@@ -106,9 +97,13 @@ actions:
     id: 37829
     mechanic: aoe
     shape: chariot
-    description: The followup [ms:chariot].
+    description: The followup [ms:chariot]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   ensemble-assemble:
     id: 39474
+    source: 18361
     mechanic: mech.prepare
     description: Assembles a row of frogs at the northern edge of the arena.
   minor-freak-out:
@@ -119,6 +114,10 @@ actions:
     description: |
       Deals minimal damage to all stacking players as their [s:wavelength-î±]/[s:wavelength-î²] is properly resolved.
       If players of not identically timed Wavelengths stack, triggers [a:freak-out] instead.
+      Inflicts [s:magic-vulnerability-up].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: [3960, 9000, 13950, 18960]
   lets-dance-group:
     name: Let's Dance!
     mechanic: aoe
@@ -163,10 +162,14 @@ actions:
     shape: halfroom
     description: |
       Originating from Dancing Green, hits the side of the arena with a [ms:halfroom] that the corresponding frog on the northern edge is pointing towards.
-      Deals heavy damage, inflicts [s:damage-down], and renders this player ineligible to receive [s:perfect-groove].
+      Deals heavy damage, inflicts [s:damage-down:30s], and renders this player ineligible to receive [s:perfect-groove:20s].
       This cleave can only hit the west or east of the arena.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   arcady-night-encore:
     id: 41840
+    source: 18361
     mechanic: mech
     emphasis: more
     compact: full
@@ -251,10 +254,14 @@ actions:
     shape: halfroom
     description: |
       Originating from Dancing Green, hits the side of the arena with a [ms:halfroom] that the corresponding frog on the northern edge is pointing towards.
-      Deals heavy damage, inflicts [s:damage-down], and renders this player ineligible to receive [s:perfect-groove].
+      Deals heavy damage, inflicts [s:damage-down:30s], and renders this player ineligible to receive [s:perfect-groove:20s].
       This cleave can hit the north, south, west, or east of the arena.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   frogtourage-finale:
     id: 42209
+    source: 18361
     mechanic: mech.prepare
     description: Summons another ensemble of frogs at the northern edge of the arena in preparation for the [m:enrage].
   deep-cut:
@@ -263,14 +270,21 @@ actions:
     shape: cone
     count: 2
     damage: 302564
-    description: Standard [ms:cone] tankbuster on the two highest-enmity targets.
+    description: Standard [ms:cone] tankbuster on the two highest-enmity targets. Inflicts [s:bleeding:15s] and [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: bleeding
+        duration: 15000
+      - status: magic-vulnerability-up
+        duration: 1960
   celebrate-good-times:
     id: 42787
+    source: 18361
     mechanic: raidwide
     damage: 180189
     description: Standard raidwide.
   do-the-hustle:
     id: 42788
+    source: 18361
     mechanic: aoe
     shape: halfroom
     description: Hits the indicated side with a [ms:halfroom].
@@ -306,7 +320,10 @@ actions:
     id: 42799
     mechanic: aoe
     shape: halfroom
-    description: The last [ms:halfroom] on the opposite side.
+    description: The last [ms:halfroom] on the opposite side. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   3-snap-twist-&-drop-the-needle:
     id: 42205
     mechanic: aoe
@@ -349,6 +366,7 @@ actions:
     description: Placeholder description
   4-snap-twist-&-drop-the-needle:
     id: 42809
+    source: 18361
     mechanic: aoe
     shape: halfroom
     compact: full
@@ -396,45 +414,66 @@ actions:
     description: The last [ms:halfroom] on the opposite side.
   funky-floor:
     id: 42834
+    source: 18361
     mechanic: mech.arena
     description: |
       Begins alternating AoEs within the arena tiles.
       If the arena were a chessboard, the resulting AoEs would always alternate between hitting all white squares and all dark squares.
+      Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   ride-the-waves:
     id: 42836
+    source: 18361
     mechanic: aoe.exaflares
     shape: rect
     description: |
       Spawns a continuous row of AoEs at the northern edge of the arena that travels south.
       The row leaves two gaps for players within it.
-      Being hit by the "wave" deals heavy damage and inflicts [s:damage-down].
+      Being hit by the "wave" deals heavy damage and inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   disco-infernal:
     id: 42838
+    source: 18361
     mechanic: mech
     emphasis: more
     players: 8
     damage: 131533
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:burn-baby-burn].
+    inflicts:
+      - status: burn-baby-burn
+        duration: [9500, 19500, 23500, 31500]
   quarter-beats:
     id: 42844
     mechanic: stack.partner
     shape: chariot
     count: 4
     damage: 131556
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   eighth-beats:
     id: 42846
     mechanic: spread
     shape: chariot
     count: 8
     damage: 130005
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   frogtourage:
     id: 42847
+    source: 18361
     mechanic: mech
     description: Placeholder description
   arcady-night-fever:
     id: 42848
+    source: 18361
     mechanic: mech
     emphasis: more
     compact: full
@@ -524,14 +563,24 @@ actions:
     name: Get Down! (Donut)
     mechanic: aoe
     shape: dynamo
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   get-down-cone:
     id: 42852
     name: Get Down! (Cone)
     mechanic: spread
     shape: cone
     damage: 97550
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:9s], [s:wavelength-î±], and [s:wavelength-î²].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 9000
+      - status: wavelength-î±
+        duration: [25500, 30500, 40500]
+      - status: wavelength-î²
+        duration: [18000, 23000, 28000, 43000]
   get-down-aftershock:
     id: 42853
     name: Get Down! (Aftershock)
@@ -544,7 +593,10 @@ actions:
     shape: chariot
     players: 1
     damage: 108514
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:sustained-damage:15s].
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
   freak-out-1:
     id: 42855
     mechanic: mech.failure
@@ -554,36 +606,49 @@ actions:
     description: Placeholder description
   lets-pose!:
     id: 42863
+    source: 18361
     mechanic: mech.check
     players: 0
     damage: 157831
     description: |
-      Grants [s:perfect-groove] to any player who successfully resolved their [s:wavelength-î±]/[s:wavelength-î²] and avoided all of [a:lets-dance!].
+      Grants [s:perfect-groove:20s] to any player who successfully resolved their [s:wavelength-î±]/[s:wavelength-î²] and avoided all of [a:lets-dance!].
       These players don't take any damage. All other players take heavy damage.
       If the duty gauge is full at this point (which requires all mechanics to be resolved perfectly), the party is granted one full bar of limit break.
+    inflicts:
+      - status: perfect-groove
+        duration: 20000
   moonburn:
     id: 42867
     mechanic: aoe
     shape: rect
-    description: Frogs draw a rectangular shape throughout the arena. Once the drawing is complete, that area explodes, dealing massive damage and inflicting [s:damage-down].
+    description: Frogs draw a rectangular shape throughout the arena. Once the drawing is complete, that area explodes, dealing massive damage and inflicting [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   back-up-dance:
     id: 42872
     mechanic: spread.close
     shape: cone
     count: 4
     damage: 97414
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:frogtourage-fan:18s].
+    inflicts:
+      - status: frogtourage-fan
+        duration: 17960
   hi-nrg-fever:
     id: 42873
+    source: 18361
     mechanic: enrage
     damage: 9999999
     description: Placeholder description
   flip-to-a-side:
     id: 42880
+    source: 18361
     mechanic: mech.store
     description: Stocks a [m:stack.role]. Grants [s:needle-poised] to [boss].
   flip-to-b-side:
     id: 42881
+    source: 18361
     mechanic: mech.store
     description: Stocks a [m:stack.healers]. Grants [s:needle-poised] to [boss].
   play-a-side:
@@ -593,14 +658,20 @@ actions:
     count: 3
     players: 8
     damage: 97547
-    description: Plays the previously stocked [m:stack.role].
+    description: Plays the previously stocked [m:stack.role]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   play-b-side:
     id: 42884
     mechanic: stack.healers
     shape: line
     count: 2
     damage: 131048
-    description: Plays the previously stocked [m:stack.healers].
+    description: Plays the previously stocked [m:stack.healers]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
 timeline:
   - at: 15558
     id: deep-cut

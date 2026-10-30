@@ -16,28 +16,24 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 180000
     description: |
       Reduces all damage dealt by 90%.
-      Due to the extremely punishing nature of the damage reduction and the long duration of this debuff, it is recommended to [wall](t:wall) yourself at the earliest convenience where no mechanics require your input to replace [s:damage-down] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
-      Under no circumstances should you use any kind of damage cooldown while [s:damage-down] is active, even during the 2m buff window. Raid buffs are the only exception, since they are unaffected by the damage reduction.
-      Note that this debuff stacks with [s:mark-of-mortality], reducing damage dealt by a total of 99% if a player holds both debuffs at the same time.
+      Due to the extremely punishing nature of the damage reduction and the long duration of this debuff, it is recommended to [wall](t:wall) yourself at the earliest convenience where no mechanics require your input to replace [s:damage-down:180s] with [s:weakness], which only has a 100s duration and only reduces damage by 25%.
+      Under no circumstances should you use any kind of damage cooldown while [s:damage-down:180s] is active, even during the 2m buff window. Raid buffs are the only exception, since they are unaffected by the damage reduction.
+      Note that this debuff stacks with [s:mark-of-mortality:180s], reducing damage dealt by a total of 99% if a player holds both debuffs at the same time.
   physical-vulnerability-up:
     id: 2940
     type: vuln
-    duration: [1960, 14000]
-    description: Doubles all physical damage taken. Inflicted by [a:cyclonic-break-proteans], [a:powder-mark-trail], and [a:quadruple-slap].
+    description: Doubles all physical damage taken.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [1960, 3950]
     description: Renders magic damage lethal. Prevents any one player from resolving multiple mechanics simultaneously.
   mark-of-mortality:
     id: 4372
     type: impairment
-    duration: 180000
     description: |
-      Like [s:damage-down], reduces damage dealt by 90% for 3 minutes. In addition, being inflicted with another stack of this debuff instantly kills the player.
+      Like [s:damage-down:180s], reduces damage dealt by 90% for 3 minutes. In addition, being inflicted with another stack of this debuff instantly kills the player.
       In Futures Rewritten (Ultimate), this debuff is inflicted on all players inside some [m:stack.healers] if too few players soaked the stack.
       Unlike [s:twice-come-ruin], being inflicted with another stack of this debuff does *not* turn the debuff into [s:doom]. Instead, the afflicted player simply dies with no delay.
   # Phase 1
@@ -46,12 +42,10 @@ status:
     name: Powder Mark Trail
     gameDescription: Emblazoned with a gunpowder mark that will cause you and the nearest ally to explode when this effect expires.
     type: delay
-    duration: 16000
-    description: Inflicted by [a:powder-mark-trail]. When the duration expires, or when the player dies, both the player as well as the player closest to them explode ([a:burn-mark]), dealing massive damage to themselves and everyone around them.
+    description:  When the duration expires, or when the player dies, both the player as well as the player closest to them explode ([a:burn-mark]), dealing massive damage to themselves and everyone around them.
   prey:
     id: 1051
     type: delay
-    duration: 9999000
     description: |
       Targeted by a specific mechanic.
       Inflicted on all tethered players during Phase 1 ([a:turn-of-the-heavens], [a:fall-of-faith]).
@@ -60,28 +54,22 @@ status:
     name: Fated Burn Mark
     gameDescription: Emblazoned with a fateful burn mark that will cause you to explode with a vengeance when you are KO'd.
     type: condition
-    duration: 15000
-    description: |
-      Inflicted on 2 players during [a:turn-of-the-heavens]. If these two players die by any means before their stack resolves their burn mark explodes, instantly killing all players.
+    description: Inflicted on 2 players during [a:turn-of-the-heavens]. If these two players die by any means before their stack resolves their burn mark explodes, instantly killing all players.
   floating-fetters:
     id: 2304
     type: impairment
-    duration: 3950
     description: |
       The player is lifted up into the air and enclosed within a bubble that prevents movement.
-      Note that the bubble cannot be placed within the hitbox of the Fatebreaker who creates it, since this would make that Fatebreaker unable to dash to his target. If the player is within Fatebreaker's hitbox when [s:floating-fetters] is inflicted, that player is displaced to the edge of the boss's hitbox. If the player is currently casting, this will interrupt their cast. This is only relevant for the first tether during [a:fall-of-faith]. All subsequent bubbles can be placed within Fatebreaker's hitbox.
-      Inflicted by [a:floating-fetters], which is used during [a:fall-of-faith].
+      Note that the bubble cannot be placed within the hitbox of the Fatebreaker who creates it, since this would make that Fatebreaker unable to dash to his target. If the player is within Fatebreaker's hitbox when [s:floating-fetters:4s] is inflicted, that player is displaced to the edge of the boss's hitbox. If the player is currently casting, this will interrupt their cast. This is only relevant for the first tether during [a:fall-of-faith]. All subsequent bubbles can be placed within Fatebreaker's hitbox.
+      , which is used during [a:fall-of-faith].
   bleeding:
     id: 2951
     type: dot
     tick: 40000
-    duration: 15000
-    description: Inflicted by [a:burnished-glory].
   bleeding-puddle:
     id: 3077
     type: dot
     tick: 330814
-    duration: 30000
     description: Inflicted by puddles if a player stays in them for too long, such as those during [a:light-rampant] or Intermission.
 
   # Phase 2
@@ -100,84 +88,69 @@ status:
   lightsteeped:
     id: 2257
     type: condition
-    duration: 36000
     description: |
       If any player accumulates 5 stacks of this debuff, they will explode ([a:lightsteep]) and wipe the raid.
-      6 stacks are randomly distributed among players at the start of [a:light-rampant], with a maximum of 2 stacks per player. Additional stacks are inflicted by [a:bright-hunger], [a:the-house-of-light], and [a:powerful-light].
+      6 stacks are randomly distributed among players at the start of [a:light-rampant], with a maximum of 2 stacks per player. Additional stacks are.
   chains-of-everlasting-light:
     id: 4157
     name: Chains of Everlasting Light
     type: delay
-    duration: 10000
     description: |
       Player is tethered to two other players, but the tether is still inactive.
-      When the effect expires, the tether activates and this status effect turns into [s:curse-of-everlasting-light].
+      When the effect expires, the tether activates and this status effect turns into [s:curse-of-everlasting-light:9s].
       Note that, even though the tether is not yet "active", dying with this debuff still triggers [a:refulgent-fate], wiping the raid.
   curse-of-everlasting-light:
     id: 4158
     name: Curse of Everlasting Light
     type: condition
-    duration: 9000
-    description: |
-      Player is tethered to two other players. If this player dies, or the length of the tether falls below the minimum distance (which is slightly less than the diameter of the arena), triggers [a:refulgent-fate], wiping the raid.
+    description: Player is tethered to two other players. If this player dies, or the length of the tether falls below the minimum distance (which is slightly less than the diameter of the arena), triggers [a:refulgent-fate], wiping the raid.
   the-weight-of-light:
     id: 4159
     name: The Weight of Light
     type: delay
-    duration: 16000
     description: Triggers [a:powerful-light] on the afflicted players when the effect expires.
   stun:
     id: 4163
     name: Stun
     type: impairment
-    duration: [10000, 4000, 9000]
     description: Player is unable to move or execute actions.
   vulnerability-down:
     id: 4436
     type: resistance
-    duration: 9999000
     description: Inflicted on the Ice Veil if it is hit by a [a:sinbound-blizzard-iii]. Significantly reduces its damage taken, making it nigh-impossible to beat its enrage timer.
 
   # Phase 3
   return:
     id: 2452
     type: delay
-    duration: [24000, 14000]
     description: Player will be rewound to their placed rewind marker when the effect expires. During the rewind, they will be [stunned](s:stun).
   spell-in-waiting:-unholy-darkness:
     id: 2454
     type: delay
-    duration: [11000, 31000, 21000]
     description: When the effect expires, [a:unholy-darkness] will detonate on the player's position.
   spell-in-waiting:-dark-fire-iii:
     id: 2455
     type: delay
-    duration: [21000, 31000, 11000]
     description: When the effect expires, [a:dark-fire-iii] will detonate on the player's position.
   spell-in-waiting:-shadoweye:
     id: 2456
     type: delay
-    duration: 43000
     description: When the effect expires, [a:shadoweye] will take effect on the player's position.
   spell-in-waiting:-dark-eruption:
     id: 2460
     type: delay
-    duration: 43000
     description: When the effect expires, [a:dark-eruption] will detonate on the player's position.
   spell-in-waiting:-dark-water-iii:
     id: 2461
     type: delay
-    duration: [43000, 38000, 10000, 29000]
     description: When the effect expires, [a:dark-water-iii] will detonate on the player's position.
   spell-in-waiting:-dark-blizzard-iii:
     id: 2462
     type: delay
-    duration: 21000
     description: When the effect expires, [a:dark-blizzard-iii] will detonate on the player's position.
   spell-in-waiting:-return:
     id: 2464
     type: delay
-    duration: [26000, 16000]
     description: >
       Player will place a rewind marker on their current position when the effect expires.
       This effect will then turn into [s:return].
@@ -188,70 +161,57 @@ status:
   fire-resistance-down-ii:
     id: 4383
     type: vuln
-    duration: 12000
     description: The next instance of fire damage (from [a:dark-fire-iii] or [a:sinbound-meltdown]) is lethal.
 
   # Phase 4
   refulgent-chain:
     id: 2253
     type: delay
-    duration: 7000
     description: |
       Player is tethered to two other players, but the tether is still inactive.
-      When the effect expires, the tether activates and this status effect turns into [s:refulgent-fate].
+      When the effect expires, the tether activates and this status effect turns into [s:refulgent-fate:14s].
       Note that, even though the tether is not yet "active", dying with this debuff still triggers [a:refulgent-fate], wiping the raid.
-      This effect is functionally identical to [s:chains-of-everlasting-light].
+      This effect is functionally identical to [s:chains-of-everlasting-light:10s].
   refulgent-fate:
     id: 2255
     type: condition
-    duration: 14000
     description: |
       Player is tethered to two other players. If this player dies, or the length of the tether exceeds the maximum distance or falls below the minimum distance (both of which is approximately the distance between the two towers), triggers [a:refulgent-fate], wiping the raid.
-      This effect is functionally identical to [s:curse-of-everlasting-light], with the exception that while [s:curse-of-everlasting-light] detonates when players are too close, [s:refulgent-fate] detonates when players are too close or too far from each other.
+      This effect is functionally identical to [s:curse-of-everlasting-light:9s], with the exception that while [s:curse-of-everlasting-light:9s] detonates when players are too close, [s:refulgent-fate:14s] detonates when players are too close or too far from each other.
   spell-in-waiting:-dark-aero-iii:
     id: 2463
     type: delay
-    duration: 14000
     description: When the effect expires, [a:dark-aero-iii] will detonate on the player's position.
   wyrmclaw:
     id: 3263
     type: condition
-    duration: [17000, 40000]
     description: If the effect is allowed to expire, kills the player instantly. Can be cleansed by standing in the path of a dragon head to trigger [a:longing-of-the-lost].
   wyrmfang:
     id: 3264
     type: condition
-    duration: 40000
     description: If the effect is allowed to expire, kills the player instantly. Can be cleansed by standing atop one of the puddles left behind by [a:longing-of-the-lost].
   lights-design:
     id: 4160
     name: Light's Design
     type: vuln
-    duration: 4000
     description: Renders any dark damage taken lethal. Inflicted by Usurper of Frost's light [a:akh-morn].
   darknesss-design:
     id: 4161
     name: Darkness's Design
     type: vuln
-    duration: 4000
     description: Renders any light damage taken lethal. Inflicted by Oracle of Darkness's dark [a:akh-morn].
   spell-in-waiting:-quietus:
     id: 4174
     type: delay
-    duration: 31000
     description: Triggers [a:quietus] when the effect expires.
   
   # Phase 5
   dark-resistance-down-ii:
     id: 3323
     type: vuln
-    duration: 16000
-    description: Inflicted by [a:cruel-path-of-darkness], [a:the-path-of-darkness]
   light-resistance-down-ii:
     id: 4164
     type: vuln
-    duration: 16000
-    description: Inflicted by [a:cruel-path-of-light], [a:the-path-of-light]
 actions:
   # Phase 1
   cyclonic-break:
@@ -288,19 +248,22 @@ actions:
     mechanic: spread
     shape: cone
     damage: 96521
-    description: Hits all players with a conal spread.
+    description: Hits all players with a conal spread. Inflicts [s:physical-vulnerability-up:2s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 1960
   cyclonic-break-first-baits:
     id: 40146
     name: Cyclonic Break (Baits)
     mechanic: aoe.aftershock
     shape: cone
-    description: Conal AoEs hit where the players took their spreads. Inflicts [s:damage-down].
+    description: Conal AoEs hit where the players took their spreads. Inflicts [s:damage-down:180s].
   cyclonic-break-baits:
     id: 40146
     name: Cyclonic Break (Baits)
     mechanic: aoe.aftershock
     shape: cone
-    description: Conal AoEs hit 22.5° clockwise from the previous set of AoEs. Inflicts [s:damage-down].
+    description: Conal AoEs hit 22.5° clockwise from the previous set of AoEs. Inflicts [s:damage-down:180s].
   sinsmoke:
     id: 40147
     mechanic: stack.partner
@@ -314,22 +277,33 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 119999
-    description: A [m:spread] on all players. Inflicts [s:magic-vulnerability-up].
+    description: A [m:spread] on all players. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   sinsmite-fof:
     id: 40142
     mechanic: damage
     damage: 80000
     description: |
-      Deals damage to the [fettered](s:floating-fetters) player in the case of a blue tether. Inflicts [s:magic-vulnerability-up].
+      Deals damage to the [fettered](s:floating-fetters:4s) player in the case of a blue tether. Inflicts [s:magic-vulnerability-up:4s].
       Not to be confused with the identically-named [a:sinsmite], which is the circular spread AoE during [a:cyclonic-break].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3950
     trivia: |
-      The only real purpose of this ability is to deal damage to and inflict [s:magic-vulnerability-up] on any [blue-fettered](s:floating-fetters) players, since [a:bow-shock] only hits the 3 closest players and not the fettered player themselves.
+      The only real purpose of this ability is to deal damage to and inflict [s:magic-vulnerability-up] on any [blue-fettered](s:floating-fetters:4s) players, since [a:bow-shock] only hits the 3 closest players and not the fettered player themselves.
   powder-mark-trail:
     id: 40168
     source: 17819
     mechanic: tb.mt
     damage: 675000
-    description: Deals massive damage to the main target and inflicts [s:powder-mark-trail] and [s:physical-vulnerability-up], rendering any subsequent auto-attack lethal.
+    description: Deals massive damage to the main target and inflicts [s:powder-mark-trail:16s] and [s:physical-vulnerability-up:14s], rendering any subsequent auto-attack lethal.
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 14000
+      - status: powder-mark-trail
+        duration: 16000
     resolve: Use heavy mitigation. Requires a [t:tankswap].
   utopian-sky:
     id: 40154
@@ -343,7 +317,7 @@ actions:
       * If he was channeling fire (red) during the initial Utopian Sky cast, both healers are targeted by [a:sinbound-fire-iii], a [m:stack.supports].
       * If he was channeling lightning (blue) during the initial Utopian Sky cast, all players are targeted by [a:sinbound-thunder-iii], a [m:spread].
     resolve: |
-      Designate a [t:protean] for every player and have every player move to the edge of their protean position after the Utopian Sky cast, but ensure that **both tanks take adjacent protean positions** to resolve [s:powder-mark-trail]. They must also use heavy mitigation here.
+      Designate a [t:protean] for every player and have every player move to the edge of their protean position after the Utopian Sky cast, but ensure that **both tanks take adjacent protean positions** to resolve [s:powder-mark-trail:16s]. They must also use heavy mitigation here.
       Have each player look at their clone. If the clone is raising its sword, or if the **player across from them** moves forward, the player also moves forward. If done correctly, there must now be two players who haven't moved from their initial protean position at the edge of the arena. Those two positions, and only those two positions, are **safe** from [a:blasting-zone].
       To resolve [a:sinbound-fire-iii]/[a:sinbound-thunder-iii], both safe spots must contain at most 4 players and at most 1 healer. In accordance, separate your group into 2 light parties and move each light party into one safe spot. If [a:sinbound-fire-iii] is stocked, no further action needs to be taken; just ensure all 4 players are in the safe spot. If [a:sinbound-thunder-iii] is stocked, players must spread within the safe spot in a triangle formation.
       **Note**: Both tanks **must** be assigned *adjacent* protean positions for this mechanic, otherwise a non-tank will be hit by [a:burn-mark].
@@ -366,7 +340,7 @@ actions:
     mechanic: tb.double
     shape: chariot
     damage: 287258
-    description: The player inflicted with [s:powder-mark-trail] and the player closest to them explode, dealing heavy damage to themselves and everyone around them.
+    description: The player inflicted with [s:powder-mark-trail:16s] and the player closest to them explode, dealing heavy damage to themselves and everyone around them.
   blasting-zone:
     id: 40157
     source: 17820
@@ -381,7 +355,10 @@ actions:
     mechanic: stack.supports
     shape: chariot
     damage: 119185
-    description: A [m:stack.supports] on either both tanks or both healers. Inflicts [s:magic-vulnerability-up]. If taken with less than 4 players, inflicts [s:mark-of-mortality].
+    description: A [m:stack.supports] on either both tanks or both healers. Inflicts [s:magic-vulnerability-up:2s]. If taken with less than 4 players, inflicts [s:mark-of-mortality:180s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   sinbound-thunder-iii:
     id: 40160
     mechanic: spread
@@ -399,10 +376,10 @@ actions:
       * Fatebreaker's Image near the center of the arena channels either fire or lightning as he casts Turn of the Heavens. At the end of the cast he disappears.
       * Blue and red circles appear at every cardinal and intercardinal. All circles from north to southwest are one colour, and the 4 remaining circles are the other colour.
       * One Fatebreaker's Image spawns north of the arena and begins casting [a:burnt-strike-fire] through the middle of the arena.
-      * Two Fatebreaker's Images spawn outside the arena and cast [a:bound-of-faith]. They tether to two random players and inflict [s:prey] and [s:fated-burn-mark] on them.
+      * Two Fatebreaker's Images spawn outside the arena and cast [a:bound-of-faith]. They tether to two random players and inflict [s:prey] and [s:fated-burn-mark:15s] on them.
       * The [a:burnt-strike-lightning] resolves.
       * The [a:burnt-strike-fire] resolves 6 seconds later.
-      * All circles explode ([a:brightfire]), dealing massive damage and inflicting [s:damage-down] on all players inside them. The circles **matching** the center clone's colour during the Turn of the Heavens cast expand before they explode.
+      * All circles explode ([a:brightfire]), dealing massive damage and inflicting [s:damage-down:180s] on all players inside them. The circles **matching** the center clone's colour during the Turn of the Heavens cast expand before they explode.
       * The two tether clones [charge](a:solemn-charge) towards the two tethered players and hit them with a 4-man stack ([a:sinsmoke-tether]).
     resolve: |
       1. Check the colour of the center clone and remember it for later. (Alternatively, remember the *opposite* colour, if you prefer going *to* the colour you remember instead of away from it.)
@@ -411,7 +388,7 @@ actions:
       4. Position yourself in light parties for the knockback.
       5. While waiting for the knockback (or earlier), check if an adjust is necessary. Both groups must contain exactly 4 players, and only one of those 4 may have a tether. The general adjust priority is TMRH, meaning that tanks adjust most of the time and healers never adjust.
       6. Get knocked back into one of the gaps between the circles. Move back into middle through those gaps.
-      7. Stop moving once the tethered player in your group is inflicted with [s:floating-fetters] and wait for the stack to resolve.
+      7. Stop moving once the tethered player in your group is inflicted with [s:floating-fetters:4s] and wait for the stack to resolve.
     children:
       - at: 652
         id: burnt-strike-lightning
@@ -432,14 +409,14 @@ actions:
     id: 40165
     source: 17820
     mechanic: mech.status
-    description: Two Fatebreaker clones each tether to a random player and inflict them with [s:prey] and [s:fated-burn-mark].
+    description: Two Fatebreaker clones each tether to a random player and inflict them with [s:prey] and [s:fated-burn-mark:15s].
   brightfire:
     id: 40152
     source: 17821
     mechanic: aoe
     shape: chariot
     count: 8
-    description: The circles (Halo of Levin) during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down].
+    description: The circles (Halo of Levin) during [a:turn-of-the-heavens] explode, dealing massive damage to anyone under (or, for the circles belonging to the empowered element, anyone nearby) them and inflicting [s:damage-down:180s].
   burnt-strike:
     id: 40133
     source: 17819
@@ -448,6 +425,11 @@ actions:
     description: |
       Fatebreaker channels an element and executes a line AoE at the end.
       The line AoE has one of two additional effects, see below.
+      Inflicts [s:prey] and [s:fated-burn-mark:15s].
+    inflicts:
+      - status: prey
+      - status: fated-burn-mark
+        duration: 15000
     children:
       - at: 1739
         id: burnout
@@ -478,7 +460,7 @@ actions:
     id: 40164
     mechanic: aoe
     shape: line
-    description: The [a:burnt-strike-lightning] expands, dealing damage to all players in its path and inflicting [s:damage-down].
+    description: The [a:burnt-strike-lightning] expands, dealing damage to all players in its path and inflicting [s:damage-down:180s].
   blastburn:
     id: 40162
     mechanic: mech.knockback.unavoidable
@@ -492,13 +474,20 @@ actions:
     players: 4
     damage: 124086
     description: |
-      A [m:stack] on a tethered player. Inflicts [s:mark-of-mortality] if taken with less than 4 players.
+      A [m:stack] on a tethered player. Inflicts [s:mark-of-mortality:180s] if taken with less than 4 players.
+      Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   burnished-glory:
     id: 40170
     source: 17819
     mechanic: raidwide
     damage: 146513
-    description: Heavy raidwide. Inflicts [s:bleeding].
+    description: Heavy raidwide. Inflicts [s:bleeding:15s].
+    inflicts:
+      - status: bleeding
+        duration: 15000
   fall-of-faith:
     id: 40140
     source: 17820
@@ -508,7 +497,7 @@ actions:
     description: |
       Fatebreaker glows red or blue and tethers to a random player. 3 more Fatebreaker Images spawn on the northern outside of the arena and do the same, glowing red or blue and tethering to a random player. A player cannot be tethered by more than one Fatebreaker.
       At the end of the cast, Fatebreaker [charges](a:solemn-charge) to the first tethered player and executes either [a:sinblaze] (red tether) or [a:bow-shock] (blue tether). Then the first Fatebreaker Image does the same to its tethered target, and so on, until all tethers are resolved.
-      Two seconds before [a:solemn-charge], [s:floating-fetters] is inflicted on the tethered player, preventing further movement.
+      Two seconds before [a:solemn-charge], [s:floating-fetters:4s] is inflicted on the tethered player, preventing further movement.
     children:
     - at: 756
       id: floating-fetters
@@ -550,7 +539,10 @@ actions:
     id: 40171
     source: 17820
     mechanic: mech
-    description: Inflicts [s:floating-fetters] on the tethered player.
+    description: Inflicts [s:floating-fetters:4s] on the tethered player.
+    inflicts:
+      - status: floating-fetters
+        duration: 3950
   solemn-charge:
     id: 40141
     source: 17820
@@ -563,38 +555,44 @@ actions:
     players: 3
     damage: 120353
     description: |
-      Hits the 3 players closest to the [fettered](s:floating-fetters) player with a wide conal AoE that inflicts [s:magic-vulnerability-up].
-      The [fettered](s:floating-fetters) player themselves is hit with [a:sinsmite-fof].
+      Hits the 3 players closest to the [fettered](s:floating-fetters:4s) player with a wide conal AoE that inflicts [s:magic-vulnerability-up:4s].
+      The [fettered](s:floating-fetters:4s) player themselves is hit with [a:sinsmite-fof].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3950
   sinblaze:
     id: 40156
     mechanic: stack.party
     shape: cone
     damage: 118494
-    description: Hits the closest player to the [fettered](s:floating-fetters) player with a conal AoE that must be shared by 2 other players. Inflicts [s:magic-vulnerability-up]. If less than 2 players soak this stack, inflicts [s:mark-of-mortality] on all players hit.
+    description: Hits the closest player to the [fettered](s:floating-fetters:4s) player with a conal AoE that must be shared by 2 other players. Inflicts [s:magic-vulnerability-up:4s]. If less than 2 players soak this stack, inflicts [s:mark-of-mortality:180s] on all players hit.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3950
   p1-towers:
     name: Towers
     mechanic: towers.random
     damage: 0
     description: |
-      Three towers appear in a line on either the west or east of the arena. Each tower requires between one to four players inside it when it resolves, always totaling up to six players. If less players than required occupy the tower, triggers [a:unmitigated-explosion], dealing massive damage and inflicting [s:damage-down] on all players.
+      Three towers appear in a line on either the west or east of the arena. Each tower requires between one to four players inside it when it resolves, always totaling up to six players. If less players than required occupy the tower, triggers [a:unmitigated-explosion], dealing massive damage and inflicting [s:damage-down:180s] on all players.
     resolve: |
       The easiest way to resolve this mechanic is by assigning one "fixed" player to each tower, from north to south. This player will always take that tower no matter what. Then assign one more player to each tower. This player adjusts to a different tower if their tower is a one-person tower.
       The adjust is quite simple: check if your tower is a 1-person tower. If it is, find the tower that requires three or four players. There can never be more than one tower that requires more than two players, so no priority system is necessary for this mechanic.
       Make sure to pay attention to the [a:burnt-strike] that happens right before the towers resolve. If it's blue, go to your tower immediately; otherwise get knocked into your tower.
-      Tanks never take towers, as their [s:powder-mark-trail] resolves at the same time as the towers do.
+      Tanks never take towers, as their [s:powder-mark-trail:16s] resolves at the same time as the towers do.
   explosion:
     id: 40126
     mechanic: damage
     damage: 45088
     description: |
       The towers resolve.
-      If any towers were missing players, the [a:explosion] is replaced by an [a:unmitigated-explosion] instead, dealing massive damage and inflicting [s:damage-down] on all players.
+      If any towers were missing players, the [a:explosion] is replaced by an [a:unmitigated-explosion] instead, dealing massive damage and inflicting [s:damage-down:180s] on all players.
   unmitigated-explosion:
     id: 40136
     mechanic: mech.failure
     players: 8
     damage: 140296
-    description: A tower was missing one or more players, dealing massive raidwide damage and inflicting [s:damage-down] on all players.
+    description: A tower was missing one or more players, dealing massive raidwide damage and inflicting [s:damage-down:180s] on all players.
   burnished-glory-enrage:
     id: 40128
     mechanic: enrage
@@ -617,11 +615,11 @@ actions:
   frost-armor:
     id: 40184
     mechanic: mech.lookaway
-    description: Oracle's Reflection dons her ice armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
+    description: Oracle's Reflection dons her ice armour, inflicting [s:stun] and [s:damage-down:180s] on any players facing her.
   shining-armor:
     id: 40185
     mechanic: mech.lookaway
-    description: Usurper of Frost dons her light armour, inflicting [s:stun] and [s:damage-down] on any players facing her.
+    description: Usurper of Frost dons her light armour, inflicting [s:stun] and [s:damage-down:180s] on any players facing her.
   the-house-of-light-protean:
     id: 40188
     mechanic: spread
@@ -629,13 +627,17 @@ actions:
     count: 8
     damage: 125894
     description: |
-      Hits all 8 players with a conal spread. Inflicts [s:magic-vulnerability-up] and [s:lightsteeped].
-      This is the only instance of The House of Light which hits all 8 players regardless of distance, and merely serves as a "mechanics check" to ensure that no player has more than [s:lightsteeped:3]. If any player has [s:lightsteeped:4] at this point, the resulting [a:lightsteep] immediately wipes the party.
+      Hits all 8 players with a conal spread. Inflicts [s:magic-vulnerability-up:2s] and [s:lightsteeped:36s].
+      This is the only instance of The House of Light which hits all 8 players regardless of distance, and merely serves as a "mechanics check" to ensure that no player has more than [s:lightsteeped:3:36s]. If any player has [s:lightsteeped:4:36s] at this point, the resulting [a:lightsteep] immediately wipes the party.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: lightsteeped
+        duration: 36000
   quadruple-slap:
     id: 40191
     source: 17823
     mechanic: tb.mt
-    damage: 0
     description: Heavy two-hit tankbuster. Each hit inflicts a cleansable [s:physical-vulnerability-up].
     resolve: Either [a:esuna] the debuff or use [t:invuln]. PF prefers to invuln. Be aware that you still need to [a:esuna] the debuff or [t:tankswap] afterwards, as Usurper of Frost's auto-attacks deal physical damage.
     children:
@@ -667,7 +669,7 @@ actions:
       * Either all supports or all damage dealers are targeted by [a:frigid-stone].
       Shortly afterwards, four more [a:icicle-impact]s appear next to the two existing ones, followed by a last set in the two remaining safe spots.
       [a:axe-kick]/[a:scythe-kick] resolves at approximately the same time as [a:the-house-of-light], which targets the four *closest* players with conal AoEs that inflict [s:magic-vulnerability-up]. The first set of [a:icicle-impact] resolves shortly after, followed by [a:frigid-stone]. [a:frigid-stone] also inflicts [s:magic-vulnerability-up] and leaves behind star-shaped AoEs in the form of [a:frigid-needle].
-      Next, Oracle's Reflection teleports to a random [t:principal] and Usurper of Frost takes her place, executing [a:heavenly-strike], knocking players back a moderate distance. At the same time, Oracle's Reflection begins casting [a:sinbound-holy], an untelegraphed [m:stack.healers] on both healers that hits four times in a row, with each hit leaving behind a puddle that inflicts a lethal [s:bleeding-puddle] if players linger within for too long. The first hit roughly coincides with [a:frigid-needle] resolving. Usurper of Frost also moves to a random [t:principal] at this point, but while Oracle's Reflection is on the *inside* of the arena, Usurper of Frost teleports *outside* of the arena.
+      Next, Oracle's Reflection teleports to a random [t:principal] and Usurper of Frost takes her place, executing [a:heavenly-strike], knocking players back a moderate distance. At the same time, Oracle's Reflection begins casting [a:sinbound-holy], an untelegraphed [m:stack.healers] on both healers that hits four times in a row, with each hit leaving behind a puddle that inflicts a lethal [s:bleeding-puddle:30s] if players linger within for too long. The first hit roughly coincides with [a:frigid-needle] resolving. Usurper of Frost also moves to a random [t:principal] at this point, but while Oracle's Reflection is on the *inside* of the arena, Usurper of Frost teleports *outside* of the arena.
       After all 4 hits of [a:sinbound-holy] are done, both Oracle's Reflection and Usurper of Frost change, with Oracle's Reflection changing into [a:frost-armor] while Usurper of Frost changes into [a:shining-armor]. Both of these outfit changes are [m:mech.lookaway] attacks, [stunning](s:stun) players who face either boss when they finish. It also turns the arena to ice, inflicting [s:thin-ice] on all players.
       If any player is [stunned](s:stun), they are guaranteed to die without [a:rescue] intervention, as Oracle's Reflection (now appearing as the Usurper of Frost originally did) shouts "In stillness freeze!" or "Sink into silence!" and begins casting either [a:twin-stillness] or [a:twin-silence], respectively, a two-step attack that requires movement in-between the two hits to avoid the attack.
     resolve: |
@@ -748,7 +750,10 @@ actions:
     shape: chariot
     count: 4
     damage: 118736
-    description: Player-targeted AoE that leaves behind a [a:frigid-needle]. Inflicts [s:magic-vulnerability-up]. Spawns on either all supports or all DPS.
+    description: Player-targeted AoE that leaves behind a [a:frigid-needle]. Inflicts [s:magic-vulnerability-up:2s]. Spawns on either all supports or all DPS.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   frigid-needle:
     id: 40200
     mechanic: aoe
@@ -791,7 +796,12 @@ actions:
     shape: cone
     count: 4
     damage: 126800
-    description: Conal AoEs on the 4 closest players to the boss or one of the mirrors. Inflicts [s:magic-vulnerability-up].
+    description: Conal AoEs on the 4 closest players to the boss or one of the mirrors. Inflicts [s:magic-vulnerability-up:2s] and [s:lightsteeped:36s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: lightsteeped
+        duration: 36000
   heavenly-strike:
     id: 40207
     source: 17823
@@ -806,7 +816,11 @@ actions:
     damage: 87473
     description: |
       4-hit stacks on both healers.
-      Unlike most stacks in this fight, this stack does **not** inflict [s:mark-of-mortality] if taken with less than 4 players and can be survived with sufficient mitigation and healing.
+      Unlike most stacks in this fight, this stack does **not** inflict [s:mark-of-mortality:180s] if taken with less than 4 players and can be survived with sufficient mitigation and healing.
+      Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   hallowed-ray:
     id: 40211
     source: 17823
@@ -815,7 +829,7 @@ actions:
     damage: 190804
     description: |
       A simple line stack on a random player.
-      Does not inflict [s:mark-of-mortality] if taken with less than 8 players and can be survived with sufficient mitigation.
+      Does not inflict [s:mark-of-mortality:180s] if taken with less than 8 players and can be survived with sufficient mitigation.
   light-rampant:
     id: 40212
     source: 17823
@@ -824,7 +838,12 @@ actions:
     players: 8
     damage: 203476
     compact: full
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:chains-of-everlasting-light:10s] and [s:the-weight-of-light:16s].
+    inflicts:
+      - status: chains-of-everlasting-light
+        duration: 10000
+      - status: the-weight-of-light
+        duration: 16000
     children:
     - at: 3076
       id: <untargetable>
@@ -868,17 +887,23 @@ actions:
     mechanic: mech.failure
     players: 0
     damage: 9999999
-    description: A player explodes as a result of accumulating [s:lightsteeped:5], wiping the raid.
+    description: A player explodes as a result of accumulating [s:lightsteeped:5:36s], wiping the raid.
   bright-hunger:
     id: 40213
     mechanic: towers.single
     damage: 63518
-    description: A tower resolves, either dealing moderate damage to the player(s) inside or killing all players ([a:unmitigated-explosion]) if unoccupied. Inflicts [s:lightsteeped].
+    description: A tower resolves, either dealing moderate damage to the player(s) inside or killing all players ([a:unmitigated-explosion]) if unoccupied. Inflicts [s:lightsteeped:36s].
+    inflicts:
+      - status: lightsteeped
+        duration: 36000
   bright-hunger-4:
     id: 40213
     mechanic: towers.quadruple
     damage: 63518
-    description: A tower resolves, either dealing moderate damage to the players inside or killing all players ([a:unmitigated-explosion]) if not occupied by enough players. Inflicts [s:lightsteeped].
+    description: A tower resolves, either dealing moderate damage to the players inside or killing all players ([a:unmitigated-explosion]) if not occupied by enough players. Inflicts [s:lightsteeped:36s].
+    inflicts:
+      - status: lightsteeped
+        duration: 36000
   powerful-light:
     id: 40217
     mechanic: stack
@@ -887,8 +912,12 @@ actions:
     players: 4
     damage: 135167
     description: |
-      A 4-player stack on the player with [s:the-weight-of-light].
-      If the stack is soaked by less than 4 players, inflicts all stacking players with [s:mark-of-mortality].
+      A 4-player stack on the player with [s:the-weight-of-light:16s].
+      If the stack is soaked by less than 4 players, inflicts all stacking players with [s:mark-of-mortality:180s].
+      Inflicts [s:lightsteeped:36s].
+    inflicts:
+      - status: lightsteeped
+        duration: 36000
   luminous-hammer:
     id: 40218
     mechanic: aoe.puddle
@@ -896,14 +925,20 @@ actions:
     count: 2
     players: 1
     damage: 21242
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   banish-iii:
     id: 40222
     mechanic: stack.partner
     shape: chariot
     count: 4
     damage: 91076
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   banish-iii-divided:
     id: 40223
     mechanic: spread
@@ -971,7 +1006,10 @@ actions:
     mechanic: tb.far
     shape: chariot
     damage: 680000
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:physical-vulnerability-up:4s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 4000
   darkest-dance-kb:
     id: 40183
     source: 17831
@@ -987,7 +1025,10 @@ actions:
     description: |
       A rotating laser originating from a Delight's Hourglass.
       Targets the closest player to the hourglass and fires one laser at them. After a two-second delay it fires 9 additional lasers in one-second intervals, each AoE slightly angled clockwise or counter-clockwise to the previous one. This direction is indicated by the standard rotation marker.
-      Each laser deals moderate damage and inflicts [s:fire-resistance-down-ii], unless the player already suffers from [s:fire-resistance-down-ii], in which case the laser is lethal.
+      Each laser deals moderate damage and inflicts [s:fire-resistance-down-ii:12s], unless the player already suffers from [s:fire-resistance-down-ii:12s], in which case the laser is lethal.
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 12000
   hells-judgment:
     id: 40265
     source: 17831
@@ -1000,7 +1041,22 @@ actions:
     emphasis: more
     damage: 200520
     compact: full
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:spell-in-waiting:-unholy-darkness], [s:spell-in-waiting:-dark-fire-iii], [s:spell-in-waiting:-shadoweye:43s], [s:spell-in-waiting:-dark-eruption:43s], [s:spell-in-waiting:-dark-water-iii:43s], [s:spell-in-waiting:-dark-blizzard-iii:21s], and [s:spell-in-waiting:-return].
+    inflicts:
+      - status: spell-in-waiting:-unholy-darkness
+        duration: [11000, 21000, 31000]
+      - status: spell-in-waiting:-dark-fire-iii
+        duration: [11000, 21000, 31000]
+      - status: spell-in-waiting:-shadoweye
+        duration: 43000
+      - status: spell-in-waiting:-dark-eruption
+        duration: 43000
+      - status: spell-in-waiting:-dark-water-iii
+        duration: 43000
+      - status: spell-in-waiting:-dark-blizzard-iii
+        duration: 21000
+      - status: spell-in-waiting:-return
+        duration: [16000, 26000]
     children:
     - at: 9648
       id: speed
@@ -1060,36 +1116,53 @@ actions:
     id: 40270
     source: 17831
     mechanic: mech.status
-    description: Placeholder description
+    description: Inflicts [s:spell-in-waiting:-dark-water-iii] on each player, with staggered timers.
+    inflicts:
+      - status: spell-in-waiting:-dark-water-iii
+        duration: [10000, 29000, 38000]
   dark-water-iii:
     id: 40271
     mechanic: stack.party
     shape: chariot
     damage: 95658
-    description: 4-player stack. Inflicts [s:mark-of-mortality] if soaked by less than 4 players.
+    description: 4-player stack. Inflicts [s:mark-of-mortality:180s] if soaked by less than 4 players. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   dark-eruption:
     id: 40274
     mechanic: spread
     shape: chariot
     damage: 75007
-    description: Simple spread. Inflicts [s:magic-vulnerability-up].
+    description: Simple spread. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   dark-fire-iii:
     id: 40276
     mechanic: spread
     shape: chariot
     damage: 158773
-    description: Simple spread. Inflicts [s:fire-resistance-down-ii].
+    description: Simple spread. Inflicts [s:fire-resistance-down-ii:12s] and [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
+      - status: fire-resistance-down-ii
+        duration: 12000
   unholy-darkness:
     id: 40277
     mechanic: stack.party
     shape: chariot
     damage: 126743
-    description: Simple stack. Inflicts [s:mark-of-mortality] if soaked by less than 5 players.
+    description: Simple stack. Inflicts [s:mark-of-mortality:180s] if soaked by less than 5 players. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   shadoweye:
     id: 40278
     mechanic: mech.lookaway
     count: 3
-    description: Gaze attacks originating from the players with [s:spell-in-waiting:-shadoweye]. Any player facing these 3 players when their Shadoweye resolves are inflicted with [s:doom].
+    description: Gaze attacks originating from the players with [s:spell-in-waiting:-shadoweye:43s]. Any player facing these 3 players when their Shadoweye resolves are inflicted with [s:doom].
   dark-blizzard-iii:
     id: 40279
     mechanic: aoe
@@ -1107,7 +1180,7 @@ actions:
     mechanic: stack.party
     shape: chariot
     damage: 124393
-    description: Full party stack. Does not inflict [s:mark-of-mortality].
+    description: Full party stack. Does not inflict [s:mark-of-mortality:180s].
   spirit-taker:
     id: 40289
     source: 17835
@@ -1220,7 +1293,12 @@ actions:
     shape: cone
     count: 4
     damage: 109551
-    description: Same as [a:the-house-of-light] – hits the 4 closest players to Usurper of Frost. The only difference is that this action additionally inflicts [s:lightsteeped].
+    description: Same as [a:the-house-of-light] – hits the 4 closest players to Usurper of Frost. The only difference is that this action additionally inflicts [s:lightsteeped:36s]. Inflicts [s:magic-vulnerability-up:2s] and [s:light-resistance-down-ii:16s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: light-resistance-down-ii
+        duration: 16000
   hallowed-wings:
     id: 40228
     source: 17833
@@ -1232,7 +1310,7 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     count: 8
-    description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down].
+    description: Invisible baited AoE that hits 10 times in rapid succession on all players' past positions. Inflicts [s:damage-down:180s].
   darklit-dragonsong:
     id: 40239
     source: 17833
@@ -1244,6 +1322,12 @@ actions:
     description: |
       Major mechanic.
       Note that, while both bosses cast the mechanic, the damage originates from Usurper of Frost.
+      Inflicts [s:spell-in-waiting:-dark-water-iii:19s] and [s:refulgent-chain:7s].
+    inflicts:
+      - status: spell-in-waiting:-dark-water-iii
+        duration: 19000
+      - status: refulgent-chain
+        duration: 7000
     children:
     - at: 11187
       id: bright-hunger
@@ -1264,7 +1348,7 @@ actions:
     mechanic: spread
     shape: defamation
     damage: 126301
-    description: A dragonhead detonates as a result of a player coming into contact with it. Cleanses [s:wyrmclaw] and leaves behind a puddle that cleanses [s:wyrmfang].
+    description: A dragonhead detonates as a result of a player coming into contact with it. Cleanses [s:wyrmclaw] and leaves behind a puddle that cleanses [s:wyrmfang:40s].
   materialization:
     id: 40246
     source: 17833
@@ -1282,9 +1366,17 @@ actions:
     damage: 160000
     description: |
       Light party stack targeting both Usurper of Frost's and Oracle of Darkness's main targets. Hits 4 times in quick succession.
-      Usurper of Frost's light Akh Morn inflicts [s:lights-design], rendering Oracle of Darkness's dark Akh Morn lethal.
-      Oracle of Darkness's dark Akh Morn inflicts [s:darknesss-design], rendering Usurper of Frost's light Akh Morn lethal.
+      Usurper of Frost's light Akh Morn inflicts [s:lights-design:4s], rendering Oracle of Darkness's dark Akh Morn lethal.
+      Oracle of Darkness's dark Akh Morn inflicts [s:darknesss-design:4s], rendering Usurper of Frost's light Akh Morn lethal.
       Ignores [s:transcendent] and [t:invuln]s.
+      Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
+      - status: lights-design
+        duration: 4000
+      - status: darknesss-design
+        duration: 4000
   morn-afah:
     id: 40250
     mechanic: stack
@@ -1309,7 +1401,10 @@ actions:
     count: 2
     players: 0
     damage: 0
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   quietus:
     id: 40281
     mechanic: raidwide
@@ -1334,7 +1429,10 @@ actions:
     mechanic: tb.far
     shape: chariot
     damage: 290000
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:physical-vulnerability-up:4s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 4000
   somber-dance-close:
     id: 40285
     source: 17835
@@ -1353,6 +1451,20 @@ actions:
     description: |
       Major mechanic.
       Note that, while both bosses cast the mechanic, the damage originates from Oracle of Darkness.
+      Inflicts [s:spell-in-waiting:-unholy-darkness:17s], [s:spell-in-waiting:-dark-water-iii:12s], [s:spell-in-waiting:-dark-aero-iii:14s], [s:wyrmclaw], [s:wyrmfang:40s], and [s:spell-in-waiting:-quietus:31s].
+    inflicts:
+      - status: spell-in-waiting:-unholy-darkness
+        duration: 17000
+      - status: spell-in-waiting:-dark-water-iii
+        duration: 12000
+      - status: spell-in-waiting:-dark-aero-iii
+        duration: 14000
+      - status: wyrmclaw
+        duration: [17000, 40000]
+      - status: wyrmfang
+        duration: 40000
+      - status: spell-in-waiting:-quietus
+        duration: 31000
     children:
     - at: 3072
       id: <untargetable>
@@ -1418,7 +1530,7 @@ actions:
     mechanic: aoe
     shape: defamation
     count: 2
-    description: A Sorrow's Hourglass detonates in a large circle, inflicting [s:damage-down] on anyone hit.
+    description: A Sorrow's Hourglass detonates in a large circle, inflicting [s:damage-down:180s] on anyone hit.
   hallowed-wings-kb:
     id: 40332
     source: 17833
@@ -1441,13 +1553,19 @@ actions:
     id: 39879
     mechanic: tb.close-and-far
     damage: 456163
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3950
   the-path-of-darkness:
     id: 40118
     mechanic: aoe.exaflares
     shape: line
     count: 2
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:dark-resistance-down-ii:16s].
+    inflicts:
+      - status: dark-resistance-down-ii
+        duration: 16000
   the-path-of-light-exa:
     id: 40307
     mechanic: aoe.exaflares
@@ -1459,7 +1577,7 @@ actions:
     source: 17839
     mechanic: aoe.aftershock
     shape: line
-    description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down] on anyone inside.
+    description: The line left behind by [a:cruel-path-of-light] and [a:cruel-path-of-darkness] explodes, inflicting [s:damage-down:180s] on anyone inside.
   fulgent-blade:
     id: 40306
     source: 17839
@@ -1493,14 +1611,20 @@ actions:
     count: 2
     players: 4
     damage: 197550
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   wings-dark-and-light-cleave:
     id: 40314
     source: 17839
     mechanic: tb.mt
     shape: halfroom
     damage: 452250
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:physical-vulnerability-up:4s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 4000
   polarizing-strikes:
     id: 40316
     source: 17839
@@ -1539,13 +1663,23 @@ actions:
     mechanic: stack.intercept
     shape: line
     damage: 120443
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:1s] and [s:light-resistance-down-ii:16s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1000
+      - status: light-resistance-down-ii
+        duration: 16000
   cruel-path-of-darkness:
     id: 40318
     mechanic: stack.intercept
     shape: line
     damage: 120685
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:1s] and [s:dark-resistance-down-ii:16s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1000
+      - status: dark-resistance-down-ii
+        duration: 16000
   paradise-regained:
     id: 40319
     source: 17839
@@ -1573,7 +1707,10 @@ actions:
     id: 40320
     mechanic: towers.double
     damage: 47226
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:magic-vulnerability-up:7s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 7000
   pandoras-box:
     id: 40326
     source: 17839

@@ -397,22 +397,6 @@
           "type": "number",
           "description": "The icon ID of the status effect. Note that this ID is automatically retrieved from game data, so explicitly defining it is strongly discouraged."
         },
-        "duration": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0
-            },
-            {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "minimum": 0
-              }
-            }
-          ],
-          "description": "How long the status effect lasts (in milliseconds). If the status effect has multiple variations with different durations, you can supply an array instead of a single number here. If the status effect does not have a fixed duration (and therefore lasts indefinitely or until cleared by another mechanic), leave this field blank."
-        },
         "type": {
           "$ref": "#/definitions/StatusType",
           "description": "The type of the status effect. Must be one of the values from status-types.yaml. Leave blank if none of these apply.",
@@ -584,6 +568,13 @@
           },
           "description": "\"Sub-mechanics\" that are executed as part of this main mechanic. Child mechanics denoted here are initially hidden and only show up when the parent mechanic is expanded.\n\nNote that the at field is interpreted differently from the at field in the timeline proper: in the timeline it's interpreted relative to the start of the encounter, whereas this at field is interpreted relative to the time the parent action hits (so, generally speaking, n milliseconds after the cast).",
           "markdownDescription": "\"Sub-mechanics\" that are executed as part of this main mechanic. Child mechanics denoted here are initially hidden and only show up when the parent mechanic is expanded.\n\nNote that the `at` field is interpreted differently from the `at` field in the timeline proper: in the timeline it's interpreted relative to the start of the encounter, whereas this `at` field is interpreted relative to the time the parent action hits (so, generally speaking, `n` milliseconds after the cast)."
+        },
+        "inflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InflictedStatus"
+          },
+          "description": "The status effects this action applies.\n\nNote that this field is currently informational only and does not affect the rendered page in any way."
         },
         "compact": {
           "$ref": "#/definitions/CompactMode",
@@ -882,6 +873,37 @@
         "status"
       ],
       "additionalProperties": false
+    },
+    "InflictedStatus": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "The key of the status effect in the status object (or in common statuses).",
+          "markdownDescription": "The key of the status effect in the `status` object (or in common statuses)."
+        },
+        "duration": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          ],
+          "description": "How long the status effect lasts (in milliseconds) when applied by this action. If the action applies the status effect with different durations, supply an array. If the status effect does not have a fixed duration, leave this field blank."
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false,
+      "description": "A status effect applied by an action."
     },
     "CompactMode": {
       "type": "string",

@@ -18,47 +18,44 @@ status:
   damage-down:
     id: 628
     type: impairment
-    duration: 30000
     description: |
       Reduces damage dealt by approximately 26% (multiplicative) per stack.
   poison-resistance-down-ii:
     id: 3935
     type: vuln
-    duration: 9960
     description: Renders any other [a:drop-of-venom-hit] or [a:splash-of-venom-hit] lethal.
   infatuated:
     id: 3923
     type: dot
     tick: 6000
     description: |
-      Player has 1 heart stack. If they accumulate 3 more stacks, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
+      Player has 1 heart stack. If they accumulate 3 more stacks, they are inflicted with [s:drone:6s], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
       Additionally, player takes mild [t:DoT] damage every 3 seconds.
   head-over-heels:
     id: 3924
     type: dot
     tick: 9000
     description: |
-      Player has 2 heart stacks. If they accumulate 2 more stacks, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
+      Player has 2 heart stacks. If they accumulate 2 more stacks, they are inflicted with [s:drone:6s], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
       Additionally, player takes mild [t:DoT] damage every 3 seconds.
   hopeless-devotion:
     id: 3925
     type: dot
     tick: 12000
     description: |
-      Player has 3 heart stacks. If they accumulate 1 more stack, they are inflicted with [s:drone], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
+      Player has 3 heart stacks. If they accumulate 1 more stack, they are inflicted with [s:drone:6s], heal [boss]'s HP by 1% of her maximum HP, and grant her 1 stack of [s:queen-bee].
       Additionally, player takes moderate [t:DoT] damage every 3 seconds.
   honey-bee-mine:
     id: 3926
     type: dot
     tick: 15000
     description: |
-      Player has 4 heart stacks. They are inflicted with [s:drone], heal [boss]'s HP by 1%, and grant her 1 stack of [s:queen-bee].
-      When [s:drone] expires, this debuff along with all heart stacks will be cleansed.
-      Additionally, player takes moderate [t:DoT] damage every 3 seconds (for 2 ticks, until [s:drone] expires).
+      Player has 4 heart stacks. They are inflicted with [s:drone:6s], heal [boss]'s HP by 1%, and grant her 1 stack of [s:queen-bee].
+      When [s:drone:6s] expires, this debuff along with all heart stacks will be cleansed.
+      Additionally, player takes moderate [t:DoT] damage every 3 seconds (for 2 ticks, until [s:drone:6s] expires).
   drone:
     id: 3921
     type: impairment
-    duration: 6000
     description: |
       Stuns the player as a result of reaching 4 heart stacks, leaving them unable to act or dodge mechanics.
       This can be quite lethal, since [a:centerstage-combo] or [a:outerstage-combo] is one of the most common causes of heart stacks.
@@ -66,44 +63,32 @@ status:
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [6960, 20000]
-    description: |
-      Renders any other magic damage taken lethal.
-      Inflicted by [a:poison-sting], [a:big-burst], and [a:rotten-big-burst].
+    description: Renders any other magic damage taken lethal.
   piercing-resistance-down:
     id: 3131
     type: vuln
-    duration: 3000
-    description: |
-      Renders any other piercing damage taken lethal.
-      Inflicted by [a:bee-sting].
+    description: Renders any other piercing damage taken lethal.
   slashing-resistance-down:
     id: 3130
     type: vuln
-    duration: 2960
-    description: |
-      Renders any other slashing damage taken lethal.
-      Inflicted by [a:stinging-slash].
+    description: Renders any other slashing damage taken lethal.
   poison-n-pop:
     id: 3934
     type: delay
-    duration: [26000, 46000]
     description: Triggers [a:big-burst] when the effect expires.
   beeloved-venom-alpha:
     id: 3932
     type: rot.pass
     tick: 6000
-    duration: [12000, 28000, 44000, 62000]
     description: |
-      Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-beta], cleansing both effects and inflicting [s:magic-vulnerability-up]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
+      Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-beta], cleansing both effects and inflicting [s:magic-vulnerability-up:7s]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
       If this effect is allowed to expire instead, that player is inflicted with [s:paralysis].
   beeloved-venom-beta:
     id: 3933
     type: rot.pass
     tick: 6000
-    duration: [12000, 28000, 44000, 62000]
     description: |
-      Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-alpha], cleansing both effects and inflicting [s:magic-vulnerability-up]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
+      Triggers [a:rotten-big-burst] if this player touches a player with [s:beeloved-venom-alpha], cleansing both effects and inflicting [s:magic-vulnerability-up:7s]. If the debuff is cleansed too late, the next [a:call-me-honey] wipes the party. As such, the debuff should be cleansed no later than at 3s of remaining duration, and is recommended to be cleansed at around 7s remaining.
       If this effect is allowed to expire instead, that player is instantly killed.
   lovely-poison:
     id: 3915
@@ -119,7 +104,7 @@ status:
     affects: enemy
     description: |
       Granted by [a:beat-1], [a:beat-2], and [a:beat-3].
-      In this state, [boss] does not attack with honey that inflicts [s:damage-down]; instead she attacks with "love" that inflicts a stack of [s:infatuated], up to a maximum of [s:honey-bee-mine]. Reaching 4 stacks inflicts [s:drone] for 6 seconds, restores [boss]'s HP by 1% of her maximum HP, and grants her a stack of [s:queen-bee].
+      In this state, [boss] does not attack with honey that inflicts [s:damage-down:30s]; instead she attacks with "love" that inflicts a stack of [s:infatuated], up to a maximum of [s:honey-bee-mine]. Reaching 4 stacks inflicts [s:drone:6s], restores [boss]'s HP by 1% of her maximum HP, and grants her a stack of [s:queen-bee].
   queen-bee:
     id: 3936
     type: damage-up
@@ -139,7 +124,6 @@ status:
     id: 3082
     type: dot
     tick: 17400
-    duration: 15000
     description: Moderate [t:DoT] inflicted by the puddles left behind by [a:poison-sting].
   rotten-honey:
     id: 4145
@@ -156,19 +140,23 @@ status:
 actions:
   call-me-honey:
     id: 37251
+    source: 16941
     mechanic: raidwide
     damage: 156640
     description: Standard raidwide. Deals heavy damage.
   drop-of-venom:
     id: 37253
+    source: 16941
     mechanic: mech.store
     description: Stores [a:drop-of-venom-hit] within [s:lovely-poison], executing a [m:stack.partner] during the next [a:honey-beeline] or [a:tempting-twist].
   splash-of-venom:
     id: 37252
+    source: 16941
     mechanic: mech.store
     description: Stores [a:splash-of-venom-hit] within [s:lovely-poison], executing a [m:spread] during the next [a:honey-beeline] or [a:tempting-twist].
   honey-beeline:
     id: 37254
+    source: 16941
     type: magic
     mechanic: aoe
     shape: line
@@ -182,6 +170,7 @@ actions:
       id: drop-of-venom-hit
   tempting-twist:
     id: 37255
+    source: 16941
     type: magic
     mechanic: aoe
     shape: dynamo
@@ -201,16 +190,23 @@ actions:
     shape: chariot
     damage: 135598
     count: 4
-    description: Standard two-man stack on all supports or all DPS players.
+    description: Standard two-man stack on all supports or all DPS players. Inflicts [s:poison-resistance-down-ii:10s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 9960
   splash-of-venom-hit:
     id: 37257
     mechanic: spread
     shape: chariot
     damage: 132560
     count: 8
-    description: Standard spread on all players.
+    description: Standard spread on all players. Inflicts [s:poison-resistance-down-ii:10s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 9960
   killer-sting:
     id: 37276
+    source: 16941
     type: physical
     mechanic: tb.stack
     shape: chariot
@@ -227,18 +223,23 @@ actions:
     count: 2
     description: |
       Tankbusters on the two targets with the highest enmity.
-      Inflicts [s:slashing-resistance-down].
+      Inflicts [s:slashing-resistance-down:3s].
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 2960
   beat-1:
     id: 39972
+    source: 16941
     type: magic
     mechanic: raidwide.transition
     damage: 147716
     description: |
       Transitions the arena and grants [boss] [s:top-of-the-hive].
-      In this form, attacks no longer inflict [s:damage-down] but instead add a stack of [s:infatuated], up to a maximum of [s:honey-bee-mine]. After reaching [s:honey-bee-mine], that player is inflicted with [s:drone] and grants [boss] a stack of [s:queen-bee], permanently increasing her damage by 3% while also restoring 1% of her maximum HP.
+      In this form, attacks no longer inflict [s:damage-down:30s] but instead add a stack of [s:infatuated], up to a maximum of [s:honey-bee-mine]. After reaching [s:honey-bee-mine], that player is inflicted with [s:drone:6s] and grants [boss] a stack of [s:queen-bee], permanently increasing her damage by 3% while also restoring 1% of her maximum HP.
       In addition, this raidwide randomly distributes 8 stacks of [s:infatuated] among all players, though no player can receive more than [s:hopeless-devotion].
   centerstage-combo:
     id: 37292
+    source: 16941
     mechanic: aoe
     shape: cone
     compact: trim
@@ -252,6 +253,7 @@ actions:
       id: laceration-out
   outerstage-combo:
     id: 37293
+    source: 16941
     mechanic: aoe
     shape: cone
     compact: trim
@@ -283,6 +285,7 @@ actions:
     description: A [ms:chariot] combined with narrow [ms:cone]s on all intercardinals. [t:max melee:c] is a safe distance away.
   love-me-tender:
     id: 37279
+    source: 16941
     mechanic: towers.single
     damage: 0
     description: |
@@ -300,6 +303,7 @@ actions:
     description: A player soaking a tower. Deals mild damage and inflicts a stack of [s:infatuated].
   loveseeker:
     id: 39805
+    source: 16941
     mechanic: aoe.orbs
     description: |
       A [ms:chariot] AoE that spawns a number of hearts from both the inside and outside of the arena.
@@ -319,22 +323,25 @@ actions:
       All players with [s:head-over-heels] or less should stack with the targeted player. The hearts are still moving around the arena here, so everyone in the stack will have to keep moving the same way to avoid them. This is why it is recommended to give your caster(s) and healers [s:hopeless-devotion], as it exempts them from the stack, allowing them to simply chill somewhere on the outside of the arena to minimize movement.
   splinter:
     id: 37285
+    source: 16943
     mechanic: mech.failure
     damage: 15142
     players: 1
     description: A player stood in the path of [a moving heart](a:loveseeker) and was hit, dealing mild damage and inflicting a stack of [s:infatuated].
   honey-b-finale:
     id: 37263
+    source: 16941
     mechanic: raidwide.transition
     damage: 159088
     description: Heavy raidwide that dispels [s:top-of-the-hive] and all players' heart stacks and returns the arena to its original state.
   alarm-pheromones-1:
     id: 37245
+    source: 16941
     mechanic: aoe.delayed
     shape: line
     description: |
       Continuously spawns bees on the outside of the arena.
-      Each bee faces a player's position at the time of their spawn, indicated by an arrow. After a few seconds, the bee shoots [a line AoE](a:blinding-love) in the indicated direction, inflicting [s:damage-down] and knocking all hit players back.
+      Each bee faces a player's position at the time of their spawn, indicated by an arrow. After a few seconds, the bee shoots [a line AoE](a:blinding-love) in the indicated direction, inflicting [s:damage-down:30s] and knocking all hit players back.
       There is a one second interval between the resolution of every [a:blinding-love].
     strategies:
       ap-mario:
@@ -345,20 +352,26 @@ actions:
         description: Players fan out and dodge on their position. Has the potential for the least amount of movement needed, but players can also get unlucky and have to move a lot.
     tips:
       - Use [a:sprint] to make it easier to dodge the AoEs.
-      - Use [a:arms-length] or [a:surecast] if you're in a tough spot and think you might get hit. You'll take the [s:damage-down], but you won't be knocked into the wall and killed.
+      - Use [a:arms-length] or [a:surecast] if you're in a tough spot and think you might get hit. You'll take the [s:damage-down:30s], but you won't be knocked into the wall and killed.
   blinding-love:
     id: 39525
     mechanic: aoe.delayed
     shape: line
-    description: A groupbee executes a line AoE through the arena. Inflicts [s:damage-down] and [s:piercing-resistance-down] and knocks afflicted players back.
+    description: A groupbee executes a line AoE through the arena. Inflicts [s:damage-down:30s] and [s:piercing-resistance-down:15s] and knocks afflicted players back.
+    inflicts:
+      - status: piercing-resistance-down
+        duration: 15000
+      - status: damage-down
+        duration: 30000
   alarm-pheromones-2:
     id: 37245
+    source: 16941
     mechanic: mech
     compact: trim
     description: |
       Continuously spawns bees on the outside of the arena.
       Unlike the first [a:alarm-pheromones-1], this time the bees spawn in a fixed pattern and aim their [a:blinding-love] AoE across the arena instead of targeting players. 4 bees spawn in a rectangular pattern, and their lines create a safe spot in the center of the arena as well as 4 evenly spaced-out safe spots around the outside. There are 6 sets of this. Each set rotates the cage slightly clockwise or counter-clockwise. The direction of rotation does not change throughout the rest of the mechanic.
-      Additionally, during the first 4 sets 1 random support and 1 random DPS are targeted by [a:poison-sting], an attack indicated by a marker above those 2 players' heads that inflicts [s:magic-vulnerability-up] and leaves behind a [m:aoe.puddle] at their position that inflicts [s:toxicosis] to players stepping inside.
+      Additionally, during the first 4 sets 1 random support and 1 random DPS are targeted by [a:poison-sting], an attack indicated by a marker above those 2 players' heads that inflicts [s:magic-vulnerability-up:20s] and leaves behind a [m:aoe.puddle] at their position that inflicts [s:toxicosis:15s] to players stepping inside.
       During the last two sets, [boss] uses [a:bee-sting], a [m:stack.role].
     resolve: |
       Have the party stack center. Separate DPS from supports: supports are slightly north-ish, DPS slightly south-ish.
@@ -374,10 +387,11 @@ actions:
       id: poison-sting
     - at: 24177
       id: poison-sting
-    - at: 34123
+    - at: 33099
       id: bee-sting
   beat-2:
     id: 39973
+    source: 16941
     type: magic
     mechanic: raidwide.transition
     damage: 147716
@@ -394,10 +408,12 @@ actions:
       If executed correctly, all players should now have [s:head-over-heels], and after the subsequent [a:spread-love-hit]/[a:drop-of-love-hit] [s:hopeless-devotion].
   spread-love:
     id: 39688
+    source: 16941
     mechanic: mech.store
     description: Grants [boss] [s:honeyed-charms] and stores a [m:spread] on all players that inflicts [s:infatuated].
   drop-of-love:
     id: 39689
+    source: 16941
     mechanic: mech.store
     description: |
       Grants [boss] [s:honeyed-charms] and stores a [m:stack.partner] on all players of one role.
@@ -429,6 +445,7 @@ actions:
       id: drop-of-love-hit
   honey-beeline-heart:
     id: 39692
+    source: 16941
     type: magic
     mechanic: aoe
     shape: line
@@ -458,31 +475,49 @@ actions:
     damage: 68949
     players: 1
     count: 2
-    description: Marks one support and one DPS for an AoE that inflicts [s:magic-vulnerability-up] and leaves behind a puddle that inflicts [s:toxicosis] upon entering.
+    description: Marks one support and one DPS for an AoE that inflicts [s:magic-vulnerability-up:20s] and leaves behind a puddle that inflicts [s:toxicosis:15s] upon entering.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 20000
   bee-sting:
     id: 37288
-    type: physical
+    source: 16941
+    mechanic: stack.role
+    shape: chariot
+    description: Marks one support and one DPS for a light party stack that inflicts [s:piercing-resistance-down:3s].
+    children:
+    - at: 1024
+      id: bee-sting-hit
+  bee-sting-hit:
+    id: 37289
     mechanic: stack.role
     shape: chariot
     damage: 129233
     count: 2
-    description: Marks one support and one DPS for a light party stack that inflicts [s:piercing-resistance-down].
+    description: A light party stack on one support and one DPS that deals physical damage and inflicts [s:piercing-resistance-down:3s].
+    inflicts:
+      - status: piercing-resistance-down
+        duration: 3000
   beat-3:
     id: 39974
+    source: 16941
     type: magic
     mechanic: raidwide.transition
     damage: 149150
     description: |
       Transitions the arena, grants [boss] [s:top-of-the-hive], and inflicts [s:poison-n-pop] on all players.
-      The timers between supports and DPS players are different. One role's [s:poison-n-pop] has a duration of 26s, the other role 46s.
-      After a [a:centerstage-combo]/[a:outerstage-combo], 4 towers appear slightly offset from each intercardinal. The first role's [s:poison-n-pop] expires here, causing those players to explode in a massive [ms:defamation]-type AoE that inflicts [s:infatuated].
-      After another [a:centerstage-combo]/[a:outerstage-combo], another 4 towers appear slightly offset from each intercardinal. The second role's [s:poison-n-pop] expires here.
+      The timers between supports and DPS players are different: one role receives [s:poison-n-pop:26s], the other role [s:poison-n-pop:46s].
+      After a [a:centerstage-combo]/[a:outerstage-combo], 4 towers appear slightly offset from each intercardinal. The first role's [s:poison-n-pop:26s] expires here, causing those players to explode in a massive [ms:defamation]-type AoE that inflicts [s:infatuated].
+      After another [a:centerstage-combo]/[a:outerstage-combo], another 4 towers appear slightly offset from each intercardinal. The second role's [s:poison-n-pop:46s] expires here.
       Finally, resolves the previously stored [a:drop-of-love] or [a:spread-love].
     resolve: |
       Like before, the mechanic has no leeway. If any player gets hit by anything they're not supposed to, or if any towers explode, [a:beat-3] is no longer cleanly resolvable and [boss] is guaranteed to come out of it with one or more stacks of [s:queen-bee].
       Designate a spread position for every player at the edge of the arena. (Check strategies for info about common strats.) Then, dodge the first [a:centerstage-combo]/[a:outerstage-combo] near your spread position so you only have to backpedal at the end of that mechanic to resolve [s:poison-n-pop]. The players whose [s:poison-n-pop] is not about to resolve stack in the very center of the arena.
       **Do not go to your tower after [a:centerstage-combo]/[a:outerstage-combo].** The [s:poison-n-pop] AoEs are so large that they cover all towers. Only step into your tower (usually dictated by your [a:drop-of-venom-hit] position) after [s:poison-n-pop] has expired.
       Then do the same thing, but swap the roles.
+    inflicts:
+      - status: poison-n-pop
+        duration: [26000, 46000]
     strategies:
       defams-clocks:
         name: Clock Defamations
@@ -501,19 +536,24 @@ actions:
     count: 4
     description: |
       [s:poison-n-pop] expires, causing those players to explode in a massive AoE that inflicts [s:infatuated] on anyone hit.
+      Inflicts [s:magic-vulnerability-up:7s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 6960
   rotten-heart:
     id: 37290
-    type: magic
+    source: 16941
     mechanic: enrage.soft
-    damage: 157663
     description: |
       Raidwide that deals heavy damage, transitions the arena into its final state, and begins the enrage sequence.
-      Grants [boss] [s:rotten-honey] (which has no effect) and 4 players [s:beeloved-venom-alpha] and 4 players [s:beeloved-venom-beta]. Each [s:beeloved-venom-alpha] has a different duration that corresponds with one [s:beeloved-venom-beta]. If a player with [s:beeloved-venom-alpha] touches a player with [s:beeloved-venom-beta], they explode, dealing raidwide damage and inflicting [s:magic-vulnerability-up]. If any debuffs are allowed to expire instead, those players are instantly killed, but without affecting anyone else.
+      Grants [boss] [s:rotten-honey] (which has no effect) and 4 players [s:beeloved-venom-alpha] and 4 players [s:beeloved-venom-beta]. Each [s:beeloved-venom-alpha] has a different duration that corresponds with one [s:beeloved-venom-beta]. If a player with [s:beeloved-venom-alpha] touches a player with [s:beeloved-venom-beta], they explode, dealing raidwide damage and inflicting [s:magic-vulnerability-up:7s]. If any debuffs are allowed to expire instead, those players are instantly killed, but without affecting anyone else.
     resolve: |
-      Have all players spread to clock positions to avoid accidentally touching another player. After each [a:call-me-honey], wait for both heals and for [s:magic-vulnerability-up] to expire, then have the next Beeloved Venoms to expire go in the center of [boss]'s hitbox to resolve their debuffs.
-      Be aware that the [s:magic-vulnerability-up] inflicted by [a:rotten-big-burst] lasts for 7 seconds. This means that if the debuffs are resolved at 3s or less, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
-      If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the afflicted players die instead. This will not cause a wipe.
+      Have all players spread to clock positions to avoid accidentally touching another player. After each [a:call-me-honey], wait for both heals and for [s:magic-vulnerability-up:7s] to expire, then have the next Beeloved Venoms to expire go in the center of [boss]'s hitbox to resolve their debuffs.
+      Be aware of the [s:magic-vulnerability-up:7s] inflicted by [a:rotten-big-burst]. This means that if the debuffs are resolved at 3s or less, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
+      If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up:7s] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the afflicted players die instead. This will not cause a wipe.
     children:
+    - at: 3657
+      id: rotten-heart-hit
     - at: 7857
       id: rotten-big-burst
       timing: player
@@ -534,16 +574,32 @@ actions:
       timing: player
     - at: 68007
       id: call-me-honey
+  rotten-heart-hit:
+    id: 37330
+    mechanic: enrage.soft
+    damage: 157663
+    description: Hit of [a:rotten-heart]. Inflicts [s:beeloved-venom-alpha] and [s:beeloved-venom-beta].
+    inflicts:
+      - status: beeloved-venom-alpha
+        duration: [12000, 28000, 44000, 62000]
+      - status: beeloved-venom-beta
+        duration: [12000, 28000, 44000, 62000]
   rotten-big-burst:
     id: 37291
     mechanic: raidwide
     damage: 72551
-    description: Raidwide damage. Inflicts [s:magic-vulnerability-up].
+    description: Raidwide damage. Inflicts [s:magic-vulnerability-up:7s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 6960
   sheer-heart-attack:
     id: 37303
     mechanic: mech.failure
     description: |
-      Inflicts [s:honey-bee-mine] and [s:drone] on all players, restores [boss]'s HP by 8% (1% per player), and grants her [s:femme-fatale:16].
+      Inflicts [s:honey-bee-mine] and [s:drone:6s] on all players, restores [boss]'s HP by 8% (1% per player), and grants her [s:femme-fatale:16].
+    inflicts:
+      - status: drone
+        duration: 6000
   honey-b-finale-enrage:
     id: 37304
     mechanic: enrage

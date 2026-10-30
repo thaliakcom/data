@@ -10,9 +10,3 @@ boss:  Lamebrix Strikebocks
 HP: 0
 wip: full
 description: ""
-status:
-  damage-down:
-    id: 2911
-    type: impairment
-    duration: 30000
-    description: Reduces damage dealt by approximately 25%.

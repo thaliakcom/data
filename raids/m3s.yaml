@@ -18,52 +18,39 @@ status:
   damage-down:
     id: 628
     type: impairment
-    duration: 30000
     description: |
       Reduces damage dealt by approximately 38% (multiplicative) per stack.
   physical-vulnerability-up:
     id: 2940
     type: vuln
-    duration: 960
-    description: Inflicted by [a:blazing-lariat-spread], [a:diveboom-spread], [a:bombariboom-spread]
   poison:
     id: 2089
     type: dot
-    duration: 15000
-    description: Inflicted by [a:murderous-mist], [a:murderous-mist-mandatory]
   chain-deathmatch:
     id: 4019
     type: condition
-    duration: [11000, 16000]
-    description: Inflicted by unknown
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [5960, 1960]
-    description: Inflicted by [a:explosion-player], [a:explosion-player], [a:mana-explosion]
   bombarium:
     id: 4020
     type: condition
-    duration: [44000, 26000]
-    description: Inflicted by unknown
   dangerously-doped:
     id: 4022
     type: damage-up
-    duration: 9999000
     description: Granted by [a:doping-draught-1]
   fusefield:
     id: 3289
     type: form
-    duration: 9999000
     description: Granted by unknown_93f0
   doped-and-detonative:
     id: 4023
     type: damage-up
-    duration: 34000
     description: Granted by [a:doping-draught-2], [a:doping-draught-3]
 actions:
   brutal-impact-1:
     id: 37925
+    source: 17094
     mechanic: raidwide
     description: Placeholder description for Brutal Impact
     compact: full
@@ -78,6 +65,7 @@ actions:
         id: brutal-impact-1-hit
   brutal-impact-2:
     id: 37925
+    source: 17094
     mechanic: raidwide
     description: Placeholder description for Brutal Impact
     compact: full
@@ -96,6 +84,7 @@ actions:
         id: brutal-impact-2-hit
   brutal-impact-3:
     id: 37925
+    source: 17094
     mechanic: raidwide
     description: Placeholder description for Brutal Impact
     compact: full
@@ -118,24 +107,28 @@ actions:
         id: brutal-impact-3-hit
   brutal-impact-1-hit:
     id: 37926
+    source: 17094
     name: Brutal Impact (Hit)
     mechanic: raidwide
     damage: 32000
     description: Placeholder description for Brutal Impact
   brutal-impact-2-hit:
     id: 37926
+    source: 17094
     name: Brutal Impact (Hit)
     mechanic: raidwide
     damage: 37000
     description: Placeholder description for Brutal Impact
   brutal-impact-3-hit:
     id: 37926
+    source: 17094
     name: Brutal Impact (Hit)
     mechanic: raidwide
     damage: 41000
     description: Placeholder description for Brutal Impact
   knuckle-sandwich-1:
     id: 37923
+    source: 17094
     mechanic: tb.stack
     shape: chariot
     damage: 230373
@@ -152,6 +145,7 @@ actions:
         id: knuckle-sandwich-hit
   knuckle-sandwich-2:
     id: 37923
+    source: 17094
     mechanic: tb.stack
     shape: chariot
     damage: 230373
@@ -172,6 +166,7 @@ actions:
         id: knuckle-sandwich-hit
   knuckle-sandwich-3:
     id: 37923
+    source: 17094
     mechanic: tb.stack
     shape: chariot
     damage: 230373
@@ -196,6 +191,7 @@ actions:
         id: knuckle-sandwich-hit
   knuckle-sandwich-hit:
     id: 37924
+    source: 17094
     name: Knuckle Sandwich (Hit)
     mechanic: tb.stack
     shape: chariot
@@ -203,6 +199,7 @@ actions:
     description: Placeholder description for Knuckle Sandwich
   octuple-lariat:
     id: 37848
+    source: 17094
     mechanic: spread
     shape: cone
     count: 8
@@ -212,6 +209,7 @@ actions:
         id: blazing-lariat-spread
   quadruple-lariat:
     id: 37851
+    source: 17094
     mechanic: stack.partner
     shape: cone
     count: 4
@@ -224,15 +222,22 @@ actions:
     mechanic: spread
     shape: cone
     damage: 122157
-    description: Placeholder description for Blazing Lariat
+    description: Placeholder description for Blazing Lariat. Inflicts [s:physical-vulnerability-up:1s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 960
   blazing-lariat-stack:
     id: 37853
     mechanic: stack.partner
     shape: cone
     damage: 122157
-    description: Placeholder description for Blazing Lariat
+    description: Placeholder description for Blazing Lariat. Inflicts [s:physical-vulnerability-up:1s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 960
   octoboom-dive:
     id: 37855
+    source: 17094
     mechanic: mech.close-or-far
     players: 8
     damage: 31992
@@ -242,6 +247,7 @@ actions:
         id: diveboom-spread
   quadroboom-dive:
     id: 37856
+    source: 17094
     mechanic: mech.close-or-far
     players: 8
     damage: 31992
@@ -254,15 +260,22 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 122157
-    description: Placeholder description for Diveboom
+    description: Placeholder description for Diveboom. Inflicts [s:physical-vulnerability-up:1s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 960
   diveboom-stack:
     id: 37859
     mechanic: stack.partner
     shape: chariot
     damage: 122157
-    description: Placeholder description for Diveboom
+    description: Placeholder description for Diveboom. Inflicts [s:physical-vulnerability-up:1s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 960
   barbarous-barrage-1:
     id: 37883
+    source: 17094
     mechanic: towers.kb
     emphasis: more
     description: Placeholder description for Barbarous Barrage
@@ -280,6 +293,7 @@ actions:
         id: murderous-mist
   barbarous-barrage-2:
     id: 37883
+    source: 17094
     mechanic: towers.kb
     emphasis: more
     description: Placeholder description for Barbarous Barrage
@@ -315,15 +329,23 @@ actions:
     description: Placeholder description for Explosion
   murderous-mist:
     id: 37886
+    source: 17094
     mechanic: aoe
     shape: 270°
-    description: Placeholder description for Murderous Mist
+    description: Placeholder description for Murderous Mist. Inflicts [s:poison:15s].
+    inflicts:
+      - status: poison
+        duration: 15000
   doping-draught-1:
     id: 37895
+    source: 17094
     mechanic: mech.prepare
-    description: Placeholder description for Doping Draught
+    description: Placeholder description for Doping Draught. Inflicts [s:dangerously-doped].
+    inflicts:
+      - status: dangerously-doped
   tag-team-1:
     id: 37863
+    source: 17094
     mechanic: mech
     emphasis: more
     description: Placeholder description for Tag Team
@@ -334,8 +356,12 @@ actions:
       id: lariat-combo
   chain-deathmatch:
     id: 37861
+    source: 17094
     mechanic: mech.status
-    description: Placeholder description for Chain Deathmatch
+    description: Placeholder description for Chain Deathmatch. Inflicts [s:chain-deathmatch].
+    inflicts:
+      - status: chain-deathmatch
+        duration: [11000, 16000]
   lariat-combo:
     id: 39733
     mechanic: aoe
@@ -357,6 +383,7 @@ actions:
     description: Placeholder description for Lariat Combo
   final-fusedown:
     id: 37894
+    source: 17094
     mechanic: mech
     description: Placeholder description for Final Fusedown
     children:
@@ -372,6 +399,7 @@ actions:
         id: explosion-player
   self-destruct:
     id: 37889
+    source: 17095
     mechanic: aoe
     shape: chariot
     description: Placeholder description for Self-destruct
@@ -380,17 +408,32 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 96486
-    description: Placeholder description for Explosion
+    description: Placeholder description for Explosion. Inflicts [s:magic-vulnerability-up:6s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5960
   fusefield:
     id: 37870
+    source: 17094
     mechanic: mech
-    description: Placeholder description for Fusefield
+    description: Placeholder description for Fusefield.
     compact: full
     children:
+      - at: 934
+        id: fusefield-hit
       - at: 6152
         id: bombarian-flame
+  fusefield-hit:
+    id: 37870
+    source: 17094
+    mechanic: mech
+    description: Hit of [a:fusefield]. Inflicts [s:bombarium].
+    inflicts:
+      - status: bombarium
+        duration: [26000, 44000]
   bombarian-flame:
     id: 37871
+    source: 17094
     mechanic: mech
     description: Placeholder description for Bombarian Flame
     children:
@@ -420,15 +463,24 @@ actions:
         timing: player
   mana-explosion:
     id: 37875
+    source: 17098
     mechanic: raidwide
     damage: 107189
-    description: Placeholder description for Mana Explosion
+    description: Placeholder description for Mana Explosion. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   doping-draught-2:
     id: 37927
+    source: 17094
     mechanic: mech.prepare
-    description: Placeholder description for Doping Draught
+    description: Placeholder description for Doping Draught. Inflicts [s:doped-and-detonative:34s].
+    inflicts:
+      - status: doped-and-detonative
+        duration: 34000
   octoboom-bombarian-special:
     id: 38738
+    source: 17094
     mechanic: mech
     description: Placeholder description for Octoboom Bombarian Special
     compact: full
@@ -529,7 +581,10 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 98219
-    description: Placeholder description for Bombariboom
+    description: Placeholder description for Bombariboom. Inflicts [s:physical-vulnerability-up:1s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 960
   bombariboom-stack:
     id: 38740
     mechanic: stack.partner
@@ -538,6 +593,7 @@ actions:
     description: Placeholder description for Bombariboom
   fuses-of-fury:
     id: 37887
+    source: 17094
     mechanic: mech
     description: Placeholder description for Fuses of Fury
     children:
@@ -549,6 +605,7 @@ actions:
         id: self-destruct
   tag-team-2:
     id: 37863
+    source: 17094
     mechanic: mech
     emphasis: more
     description: Placeholder description for Tag Team
@@ -561,13 +618,18 @@ actions:
       id: lariat-combo
   murderous-mist-mandatory:
     id: 39895
+    source: 17094
     mechanic: aoe
     shape: 270°
     players: 8
     damage: 28084
-    description: Placeholder description for Murderous Mist
+    description: Placeholder description for Murderous Mist. Inflicts [s:poison:15s].
+    inflicts:
+      - status: poison
+        duration: 15000
   fuse-or-foe:
     id: 37891
+    source: 17094
     mechanic: mech
     emphasis: more
     description: Placeholder description for Fuse or Foe
@@ -616,6 +678,7 @@ actions:
     description: Placeholder description for Explosive Rain
   infernal-spin-hit:
     id: 37918
+    source: 17094
     mechanic: aoe
     shape: cone
     description: Placeholder description for Infernal Spin
@@ -636,10 +699,15 @@ actions:
     description: Placeholder description for Lariat Combo
   doping-draught-3:
     id: 39320
+    source: 17094
     mechanic: mech.prepare
-    description: Placeholder description for Doping Draught
+    description: Placeholder description for Doping Draught. Inflicts [s:doped-and-detonative:34s].
+    inflicts:
+      - status: doped-and-detonative
+        duration: 34000
   special-bombarian-special:
     id: 37931
+    source: 17094
     mechanic: enrage.soft
     description: Placeholder description for Special Bombarian Special
     compact: full

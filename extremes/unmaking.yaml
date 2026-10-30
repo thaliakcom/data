@@ -19,30 +19,24 @@ status:
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [960, 4960]
-    description: Renders further magic damage taken lethal. Inflicted by most actions in the fight that deal magic damage, including [a:great-return-to-nothing], [a:meltdown-spread], [a:airy-emptiness], [a:return-to-nothing], [a:violent-burst], [a:burst], [a:dense-emptiness], [a:shrouded-holy].
+    description: Renders further magic damage taken lethal.
   chains-of-condemnation:
     id: 4562
     type: impairment.pyretic
-    duration: 2000
-    description: Any movement while this status is in effect deals heavy damage to the player. Actions that don't move the character don't trigger this effect. Inflicted by [a:meltdown].
+    description: Any movement while this status is in effect deals heavy damage to the player. Actions that don't move the character don't trigger this effect.
   vulnerability-up:
     id: 1789
     type: vuln
-    duration: 60000
     description: |
       Increases damage taken by 8% per stack.
-      Inflicted by various sources of avoidable damage, such as [a:naught-grows], [a:meltdown-twister], [a:gaze-of-the-void-cone], [a:silent-torrent], [a:vacuum-hit], [a:nothingness], [a:naught-grows-p2], [a:passage-of-naught], [a:endless-chase-hit].
   freezing-up:
     id: 3523
     type: condition
-    duration: 2000
-    description: Player must keep moving or they will be inflicted with [s:deep-freeze]. Inflicted by [a:deep-freeze].
+    description: Player must keep moving or they will be inflicted with [s:deep-freeze:9s].
   deep-freeze:
     id: 4150
     type: impairment
-    duration: 9000
-    description: Player failed to keep moving during [s:freezing-up] and is frozen as a result, leaving them unable to act or move for 9 seconds.
+    description: Player failed to keep moving during [s:freezing-up:2s] and is frozen as a result, leaving them unable to act or move for 9 seconds.
   unbecoming:
     id: 4882
     type: dot
@@ -51,8 +45,7 @@ status:
   dark-resistance-down-ii:
     id: 3323
     type: vuln
-    duration: 2000
-    description: Renders any subsequent dark damage taken lethal. Inflicted by [a:empty-shadow] and [a:voidal-turbulence].
+    description: Renders any subsequent dark damage taken lethal.
   gauntlet-taken:
     id: 5357
     type: impairment
@@ -65,17 +58,14 @@ status:
   disease:
     id: 3943
     type: impairment
-    duration: 60000
     description: Reduces movement speed and healing on self. Inflicted on healers by [a:curse-of-the-flesh]. Can be cleansed.
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces all damage dealt. Inflicted when a tower is permitted to explode ([a:big-burst-tower]).
   petrification:
     id: 3007
     type: impairment
-    duration: 9000
     description: A player was hit by [a:demon-eye]'s gaze attack and is momentarily petrified, leaving them unable to act or move.
   sustained-damage:
     id: 4149
@@ -85,11 +75,13 @@ status:
 actions:
   meteorain:
     id: 50049
+    source: 19905
     mechanic: raidwide
     damage: 189407
     description: Heavy raidwide.
   naught-grows:
     id: 49978
+    source: 19906
     mechanic: aoe
     shape: in-or-out
     players: 0
@@ -106,16 +98,21 @@ actions:
       id: return-to-nothing
   great-return-to-nothing:
     id: 49984
+    source: 19450
     mechanic: stack.intercept
     shape: line
     damage: 150000
     tank-damage: 400000
     description: |
-      Line [m:stack] on a random healer that deals significantly increased damage to the first two targets hit. Inflicts [s:magic-vulnerability-up].
+      Line [m:stack] on a random healer that deals significantly increased damage to the first two targets hit. Inflicts [s:magic-vulnerability-up:1s].
       A miniature black hole spawns behind that healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate which healer is targeted. The black hole moves along with the healer, but is independent of which way the healer is facing. The line stack always originates from the edge of the arena and fires towards the center.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
     resolve: Both tanks use defensive cooldowns and move to intercept the stack, ensuring they're the first two players hit.
   return-to-nothing:
     id: 49983
+    source: 19447
     mechanic: stack.intercept
     shape: line
     count: 2
@@ -123,22 +120,30 @@ actions:
     damage: 150000
     tank-damage: 400000
     description: |
-      Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up].
+      Line [m:stack]s on both healers that each deal significantly increased damage to the first target hit. Inflicts [s:magic-vulnerability-up:1s].
       A miniature black hole spawns behind each healer on the outside of the arena at the start of [a:naught-grows]'s cast to indicate the targets. Each black hole moves along with its healer, but is independent of which way the healer is facing. The line stacks always originate from the edge of the arena and fire towards the center.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
     resolve: Both tanks use defensive cooldowns and move to intercept the stacks, ensuring they're the first player hit for each stack.
   naught-wakes:
     id: 49973
+    source: 19905
     mechanic: mech.prepare
     description: Moves the black hole(s) on the outside of the arena somewhere else.
   meltdown:
     id: 50040
+    source: 19905
     mechanic: combination
     shape: chariot
     description: |
-      Inflicts [s:chains-of-condemnation] for 2 seconds and spawns invisible AoEs underneath each player at the end of the cast that resolve five seconds later, along with a [m:spread].
-      [s:chains-of-condemnation] is a [st:impairment.pyretic]-like effect that deals heavy damage if the player moves while the effect is active. It does not affect actions.
+      Inflicts [s:chains-of-condemnation:2s] and spawns invisible AoEs underneath each player at the end of the cast that resolve five seconds later, along with a [m:spread].
+      [s:chains-of-condemnation:2s] is a [st:impairment.pyretic]-like effect that deals heavy damage if the player moves while the effect is active. It does not affect actions.
+    inflicts:
+      - status: chains-of-condemnation
+        duration: 2000
     resolve: |
-      Get underneath the boss before the cast finishes, then wait 2 seconds until [s:chains-of-condemnation] expires (you may continue to attack as long as those attacks don't move your character). After it expires, move out to [t:clock spots] to take [a:meltdown-spread].
+      Get underneath the boss before the cast finishes, then wait 2 seconds until [s:chains-of-condemnation:2s] expires (you may continue to attack as long as those attacks don't move your character). After it expires, move out to [t:clock spots] to take [a:meltdown-spread].
     children:
     - at: 5483
       id: meltdown-twister
@@ -152,7 +157,10 @@ actions:
     count: 8
     players: 0
     damage: 152699
-    description: An AoE left behind by a player at the end of the cast explodes. Inflicts [s:vulnerability-up].
+    description: An AoE left behind by a player at the end of the cast explodes. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   meltdown-spread:
     id: 50042
     caption: Spread
@@ -160,14 +168,20 @@ actions:
     shape: chariot
     count: 8
     damage: 146535
-    description: "[m:spread:c] on all players. Inflicts [s:magic-vulnerability-up]."
+    description: "[m:spread:c] on all players. Inflicts [s:magic-vulnerability-up:1s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   airy-emptiness:
     id: 50034
     mechanic: stack.partner
     shape: cone
     count: 4
     damage: 147478
-    description: Moderately wide conal stacks on all supports. Inflicts [s:magic-vulnerability-up].
+    description: Moderately wide conal stacks on all supports. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
     tips: [If necessary (people are dead), tanks can comfortably solo their stack.]
   dense-emptiness:
     id: 50035
@@ -175,18 +189,22 @@ actions:
     shape: cone
     count: 2
     damage: 205476
-    description: Wide conal stacks on both healers. Inflicts [s:magic-vulnerability-up].
+    description: Wide conal stacks on both healers. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   gaze-of-the-void:
     id: 50002
+    source: 19905
     mechanic: mech
     compact: full
     emphasis: more
     description: |
       Miniature black holes appear in a rotating manner around [boss].
-      There are 10 in total, with the last two overlapping with the first two. When the cast completes, the black holes fire a cone out towards the edge of the arena in the order in which they appeared, creating new black holes at the edge of the arena where the cone hits. Each cone inflicts [s:vulnerability-up].
+      There are 10 in total, with the last two overlapping with the first two. When the cast completes, the black holes fire a cone out towards the edge of the arena in the order in which they appeared, creating new black holes at the edge of the arena where the cone hits. Each cone inflicts [s:vulnerability-up:60s].
       The last two cones each hit an existing black hole, causing it to grow bigger.
       Once all cones have resolved, each resulting black hole tethers to [boss] and begins traveling towards him. Four tethers are purple and four yellow, and of the two big black holes, there is always one per tether. The yellow-tethered black holes move much faster than the purple ones. If any of them reach [boss], it triggers [a:big-burst-orb], dealing heavy damage and inflicting [s:sustained-damage] on all players.
-      When a player touches a black hole as it moves towards [boss], the black hole is nullified, dealing heavy damage in a radius around it ([a:burst]) and inflicting [s:magic-vulnerability-up] for 5 seconds. If the explosion only hits a single player, that player is knocked off the platform. Knockback immunity is ineffective against this.
+      When a player touches a black hole as it moves towards [boss], the black hole is nullified, dealing heavy damage in a radius around it ([a:burst]) and inflicting [s:magic-vulnerability-up:5s]. If the explosion only hits a single player, that player is knocked off the platform. Knockback immunity is ineffective against this.
       The two big black holes deal significantly more damage in a much bigger radius than the others when touched ([a:violent-burst]).
     resolve: |
       Dodge the cones as normal. After dodging, rotate your camera towards the last two cones, as these will be the locations of the two big black holes. These two big black holes must be soaked by the tanks. For the remaining black holes, use a simple [t:snake prio]: healers take the first set of small black holes clockwise from the big ones, melees the second, and rangeds the third. Always soak the yellow black hole first, then the purple ones after your [s:magic-vulnerability-up] has expired.
@@ -246,21 +264,25 @@ actions:
     description: Individual rotating cone during [a:gaze-of-the-void].
   violent-burst:
     id: 50007
+    source: 19910
     mechanic: aoe.orbs
     shape: chariot
     players: 2
     damage: 0
     tank-damage: 179359
     description: |
-      A player touches a big black hole, dealing massive damage and inflicting [s:magic-vulnerability-up] on them and any nearby players.
+      A player touches a big black hole, dealing massive damage and inflicting [s:magic-vulnerability-up:5s] on them and any nearby players.
       If no other player was hit by the AoE, knocks the player off the platform.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   big-burst-tower:
     id: 50014
     caption: Tower
     mechanic: mech.failure
     players: 0
     damage: 187536
-    description: A tower wasn't soaked, dealing massive damage and inflicting [s:damage-down] on all players.
+    description: A tower wasn't soaked, dealing massive damage and inflicting [s:damage-down:30s] on all players.
   big-burst-orb:
     id: 50014
     mechanic: mech.failure
@@ -269,25 +291,30 @@ actions:
     description: A black hole wasn't soaked during [a:gaze-of-the-void] and returned to [boss], dealing heavy damage and inflicting [s:sustained-damage] on all players.
   burst:
     id: 50006
+    source: 19909
     mechanic: aoe.orbs
     shape: chariot
     count: 3
     players: 2
     damage: 124658
     description: |
-      A player touches a small black hole, dealing heavy damage and inflicting [s:magic-vulnerability-up] on them and any nearby players.
+      A player touches a small black hole, dealing heavy damage and inflicting [s:magic-vulnerability-up:5s] on them and any nearby players.
       If no other player was hit by the AoE, knocks the player off the platform.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   vacuum:
     id: 49994
+    source: 19905
     mechanic: aoe
     compact: trim
     description: |
-      Shows AoE telegraphs for 8 slightly curved arc AoEs originating from [boss] that resolve 6 seconds later ([a:silent-torrent]), inflicting [s:vulnerability-up].
+      Shows AoE telegraphs for 8 slightly curved arc AoEs originating from [boss] that resolve 6 seconds later ([a:silent-torrent]), inflicting [s:vulnerability-up:60s].
       The arcs vary in length. There are exactly:
       * 1 short arc
       * 4 medium arcs
       * 3 long arcs
-      After they resolve, a small black hole spawns at the end of each arc and explodes 2 seconds later, inflicting [s:vulnerability-up].
+      After they resolve, a small black hole spawns at the end of each arc and explodes 2 seconds later, inflicting [s:vulnerability-up:60s].
     resolve: |
       The only relevant arc is the short one. Find the short arc, then position yourself just outside of the intersection of two arcs of which *neither arc is the short one or adjacent to the short one*. This will always be safe, with no additional movement necessary after [a:silent-torrent].
     children:
@@ -298,6 +325,7 @@ actions:
       id: vacuum-hit
   vacuum-meltdown:
     id: 49994
+    source: 19905
     mechanic: aoe
     compact: trim
     description: Same as [a:vacuum], but this time immediately follows up with [a:meltdown], forcing players to already be in a safe spot *before* [a:silent-torrent] resolves.
@@ -313,21 +341,23 @@ actions:
     id: 50000
     mechanic: aoe
     count: 8
-    description: An arc created by [a:vacuum] detonates, dealing heavy damage and inflicting [s:vulnerability-up] on anyone hit.
+    description: An arc created by [a:vacuum] detonates, dealing heavy damage and inflicting [s:vulnerability-up:60s] on anyone hit.
   vacuum-hit:
     id: 50001
+    source: 19908
     caption: Hit
     mechanic: aoe
     shape: chariot
     count: 8
     players: 0
     damage: 137505
-    description: A [ms:chariot] created by [a:silent-torrent] detonates, dealing heavy damage and inflicting [s:vulnerability-up] on anyone hit.
+    description: A [ms:chariot] created by [a:silent-torrent] detonates, dealing heavy damage and inflicting [s:vulnerability-up:60s] on anyone hit.
   deep-freeze:
     id: 50043
+    source: 19905
     mechanic: combination
     compact: trim
-    description: Inflicts [s:freezing-up] on all players for 2 seconds and hits two highest-enmity players with a [m:tb.flare].
+    description: Inflicts [s:freezing-up:2s] on all players and hits two highest-enmity players with a [m:tb.flare].
     children:
     - at: 986
       id: deep-freeze-tankbuster
@@ -342,9 +372,13 @@ actions:
     players: 8
     damage: 40000
     tank-damage: 337671
-    description: Heavy tankbuster on the first and second in enmity. Deals proximity damage.
+    description: Heavy tankbuster on the first and second in enmity. Deals proximity damage. Inflicts [s:freezing-up:2s].
+    inflicts:
+      - status: freezing-up
+        duration: 2000
   all-for-naught:
     id: 50010
+    source: 19905
     mechanic: mech.arena
     description: |
       [boss] enters a voidgate and submerges the arena in darkness.
@@ -364,13 +398,16 @@ actions:
     damage: 20368
     description: |
       2 towers spawn on the west of the arena and 2 towers on the east.
-      After being soaked, each tower inflicts [s:gauntlet-taken] and [s:dark-resistance-down-ii] on the player who soaked it and spawns an add. The add is tethered to the player, can only take damage from that player, and if the player attempts to move too far away from their add, they are forcibly pulled back.
+      After being soaked, each tower inflicts [s:gauntlet-taken] and [s:dark-resistance-down-ii:2s] on the player who soaked it and spawns an add. The add is tethered to the player, can only take damage from that player, and if the player attempts to move too far away from their add, they are forcibly pulled back.
       The add's name and mechanics depend on the role of the player who is tethered to it.
       * Tanks spawn a Protective Shadow. It casts an interruptible tankbuster called [a:drain-touch], followed by a non-interruptible tankbuster called [a:weight-of-nothing].
-      * Healers spawn a Soothing Shadow. It immediately inflicts [s:quantum-entanglement] on the corresponding healer, which lasts until the shadow is killed. It then casts [a:curse-of-the-flesh], which inflicts a cleansable [s:disease] on the healer.
+      * Healers spawn a Soothing Shadow. It immediately inflicts [s:quantum-entanglement] on the corresponding healer, which lasts until the shadow is killed. It then casts [a:curse-of-the-flesh], which inflicts a cleansable [s:disease:60s] on the healer.
       * DPS spawn an Aggressive Shadow. It casts [a:demon-eye], a gaze attack that players must face away from.
       **Note**: If a player tethered to a Shadow dies, that Shadow's damage immunity is lifted, meaning any player can damage it now.
       **Note 2**: This timeline shows the DPS getting towers first, supports second, but it can be the other way around as well.
+    inflicts:
+      - status: dark-resistance-down-ii
+        duration: 2000
   drain-touch:
     id: 50018
     mechanic: interruptible
@@ -386,9 +423,13 @@ actions:
     shape: cone
     count: 4
     damage: 61478
-    description: Wide conal spreads on either all DPS or all supports. Inflicts [s:dark-resistance-down-ii].
+    description: Wide conal spreads on either all DPS or all supports. Inflicts [s:dark-resistance-down-ii:2s].
+    inflicts:
+      - status: dark-resistance-down-ii
+        duration: 2000
   enhanced-vitality-iii:
     id: 50016
+    source: 19911
     name: Enhanced Vitality III
     mechanic: auto.single
     damage: 47444
@@ -398,7 +439,7 @@ actions:
     mechanic: mech.lookaway
     count: 4
     description: |
-      A gaze attack originating from all Aggressive Shadows. Failing to face away inflicts [s:petrification].
+      A gaze attack originating from all Aggressive Shadows. Failing to face away inflicts [s:petrification:9s].
       Note that this gaze attack affects not only the [s:gauntlet-taken] DPS but any player who fails to face away in time. However, this gaze attack has a limited radius of attack and can be outranged. In the middle of the arena (directly underneath the Looming Shadow) is always safe from all gazes.
   apeiron:
     id: 48478
@@ -418,15 +459,19 @@ actions:
     description: The duty gauge has reached 100 points, killing all players.
   nothingness:
     id: 50017
+    source: 19912
     mechanic: aoe.delayed
     shape: line
     count: 3
-    description: Three untargetable Shadows surrounding the Beacon in the Dark fire a delayed line AoE at a random player. Inflicts [s:vulnerability-up].
+    description: Three untargetable Shadows surrounding the Beacon in the Dark fire a delayed line AoE at a random player. Inflicts [s:vulnerability-up:60s].
   curse-of-the-flesh:
     id: 50025
     mechanic: mech.status
     count: 2
-    description: Inflicts a cleansable [s:disease] on both healers.
+    description: Inflicts a cleansable [s:disease:60s] on both healers.
+    inflicts:
+      - status: disease
+        duration: 60000
   weight-of-nothing:
     id: 50021
     mechanic: tb.tether
@@ -436,6 +481,7 @@ actions:
     description: Heavy tankbuster. Cannot be interrupted, but with sufficient damage the Protective Shadow can be defeated before it can finish this cast.
   lightless-world:
     id: 50029
+    source: 19905
     mechanic: raidwide.ultimate
     compact: full
     description: Heavy raidwide. Hits 6×, with each hit dealing heavy damage.
@@ -466,6 +512,7 @@ actions:
     description: Last hit of [a:lightless-world]. Deals less damage than the previous hits.
   almagest:
     id: 49972
+    source: 19905
     mechanic: raidwide
     damage: 191569
     description: Heavy raidwide.
@@ -491,13 +538,14 @@ actions:
       id: return-to-nothing
   passage-of-naught:
     id: 49986
+    source: 19907
     mechanic: aoe
     shape: line
     count: 2
     players: 0
     damage: 161625
     description: |
-      The two black holes on the outside of the arena shift, begin charging, and fire a line AoE through the middle of the arena. Inflicts [s:vulnerability-up].
+      The two black holes on the outside of the arena shift, begin charging, and fire a line AoE through the middle of the arena. Inflicts [s:vulnerability-up:60s].
       One or both of the black holes may also split in two. In this case they fire two smaller line AoEs through the sides of the arena, leaving the middle safe.
       The type of AoEs fired is, in most cases, only pseudo-random. It uses the following logic:
       * Outside of [a:naught-hunts], this mechanic always comes in pairs. The first instance of each pair is either a big line through the middle + two small lines on the outside, or four small lines on the outside.
@@ -511,9 +559,13 @@ actions:
     shape: chariot
     count: 2
     damage: 156251
-    description: Telegraphed light party stacks on both healers. Inflicts [s:magic-vulnerability-up].
+    description: Telegraphed light party stacks on both healers. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   dimension-zero-i:
     id: 50047
+    source: 19905
     mechanic: stack
     shape: line
     compact: full
@@ -529,6 +581,7 @@ actions:
       id: dimension-zero-hit
   dimension-zero-ii:
     id: 50047
+    source: 19905
     mechanic: stack
     shape: line
     compact: full
@@ -544,19 +597,21 @@ actions:
       id: dimension-zero-hit
   dimension-zero-hit:
     id: 50048
+    source: 19905
     mechanic: stack
     shape: line
     damage: 143819
     description: Individual hit of [a:dimension-zero-i], dealing massive damage.
   naught-hunts:
     id: 49992
+    source: 19905
     mechanic: aoe.chasing
     shape: chariot
     compact: trim
     emphasis: more
     description: |
       At the start of the cast, spawns two small black holes at opposite [principals](t:principal) and begins charging a [a:passage-of-naught] that leaves the middle safe.
-      Each black hole tethers to a random player via an arrow. When the cast ends, [a:passage-of-naught] resolves and both mini black holes use [a:endless-chase], which causes them to begin chasing the tethered player. Each black hole emits a moderately large [ms:chariot] AoE every ¾ of a second, dealing heavy damage and inflicting [s:vulnerability-up] ([a:endless-chase-hit]).
+      Each black hole tethers to a random player via an arrow. When the cast ends, [a:passage-of-naught] resolves and both mini black holes use [a:endless-chase], which causes them to begin chasing the tethered player. Each black hole emits a moderately large [ms:chariot] AoE every ¾ of a second, dealing heavy damage and inflicting [s:vulnerability-up:60s] ([a:endless-chase-hit]).
       Each black hole hits 24 times in total before it stops and disappears. After the first 5 hits another arrow appears, tethering itself to a different player. 7 hits later, each black hole abruptly switches targets to this new player and begins chasing them instead.
       After the black holes stop chasing, another [a:passage-of-naught] takes place, with both line AoEs hitting the center this time.
       **Other notes**:
@@ -578,6 +633,7 @@ actions:
       id: passage-of-naught
   endless-chase:
     id: 48475
+    source: 20149
     mechanic: aoe.chasing
     shape: chariot
     count: 2
@@ -634,6 +690,7 @@ actions:
       id: endless-chase-hit
   endless-chase-hit:
     id: 49993
+    source: 20149
     caption: Hit
     mechanic: aoe.chasing
     shape: chariot
@@ -641,7 +698,10 @@ actions:
     emphasis: less
     players: 0
     damage: 111874
-    description: Individual hit of [a:endless-chase]. Inflicts [s:vulnerability-up].
+    description: Individual hit of [a:endless-chase]. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   almagest-enrage:
     id: 50050
     mechanic: enrage

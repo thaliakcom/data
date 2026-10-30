@@ -20,43 +20,35 @@ status:
   lightning-vuln:  # Lightning Resistance Down II
     id: 2095
     type: vuln
-    duration: 9960
     description: Makes any lightning damage received lethal.
   fire-vuln:  # Fire Resistance Down II
     id: 2098
     type: vuln
-    duration: 9960
     description: Makes any fire damage received lethal.
   wind-vuln:  # Wind Resistance Down II
     id: 2096
     type: vuln
-    duration: 9960
     description: Makes any wind damage received lethal.
   damage-down:  # Damage Down
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by approximately 25%.
   physical-vuln:  # Physical Vulnerability Up
     id: 2940
     type: vuln
-    duration: 10000
     description: Makes any physical damage received lethal.
   magic-vuln:  # Magic Vulnerability Up
     id: 2941
     type: vuln
-    duration: [1960, 7000, 8960, 9960, 12960, 15960, 18960]
     description: Makes any magic damage received lethal.
   concussion:  # Concussion
     id: 2944
     type: dot
     tick: 31000
-    duration: 12000
-    description: A heavy [t:DoT] inflicted by [a:ascendant-fist].
+    description: A heavy [t:DoT].
   dark-vuln:  # Dark Resistance Down II
     id: 3323
     type: vuln
-    duration: 9960
     description: Makes any dark magic damage received lethal.
   mage-soul:
     id: 3542
@@ -129,13 +121,19 @@ actions:
     id: 33106
     mechanic: tb.mt
     shape: chariot
-    description: "[boss] hits the main target with heavy fire damage. Inflicts [s:fire-vuln], preventing players from taking two of these in succession."
+    description: "[boss] hits the main target with heavy fire damage. Inflicts [s:fire-vuln:10s], preventing players from taking two of these in succession."
+    inflicts:
+      - status: fire-vuln
+        duration: 9960
     damage: 75000
   aero-iv:  # Aero IV
     id: 33107
     mechanic: tb.ot
     shape: chariot
-    description: "[boss] hits the second target with heavy wind damage. Inflicts [s:wind-vuln], preventing players from taking two of these in succession."
+    description: "[boss] hits the second target with heavy wind damage. Inflicts [s:wind-vuln:10s], preventing players from taking two of these in succession."
+    inflicts:
+      - status: wind-vuln
+        duration: 9960
     damage: 75000
   dualspell:  # Dualspell
     id: 33108
@@ -216,7 +214,10 @@ actions:
     id: 33110
     mechanic: stack.partner
     shape: chariot
-    description: The stack [ms:chariot] fired during the fire variant of [a:dualspell] or [a:two-minds].
+    description: The stack [ms:chariot] fired during the fire variant of [a:dualspell] or [a:two-minds]. Inflicts [s:magic-vuln:2s].
+    inflicts:
+      - status: magic-vuln
+        duration: 1960
     damage: 57000
     count: 4
   thunder-iii:  # Thunder III
@@ -224,20 +225,29 @@ actions:
     resolve: Spread away from other players.
     mechanic: spread
     shape: line
-    description: The [t:protean] [t:AoE] fired during the thunder variant of [a:dualspell] or [a:two-minds].
+    description: The [t:protean] [t:AoE] fired during the thunder variant of [a:dualspell] or [a:two-minds]. Inflicts [s:magic-vuln:2s].
+    inflicts:
+      - status: magic-vuln
+        duration: 1960
     damage: 57000
     count: 8
   blizzard-iii:  # Blizzard III
     id: 33111
     mechanic: aoe
     shape: dynamo
-    description: A [ms:dynamo] on the outside of the arena during [a:dualspell] and [a:two-minds]. Must be avoided. Looking at the rings on the arena floor can help; if ice is empowered, only the inner ring (inside the boss's hitbox) will be safe, otherwise everything inside the middle ring (at [t:max melee] to the boss) will be safe.
+    description: A [ms:dynamo] on the outside of the arena during [a:dualspell] and [a:two-minds]. Must be avoided. Looking at the rings on the arena floor can help; if ice is empowered, only the inner ring (inside the boss's hitbox) will be safe, otherwise everything inside the middle ring (at [t:max melee] to the boss) will be safe. Inflicts [s:magic-vuln:2s].
+    inflicts:
+      - status: magic-vuln
+        duration: 1960
   rockbreaker-stack:  # Archaic Rockbreaker
     id: 33122
     name: Archaic Rockbreaker (Stack)
     mechanic: stack.partner
     shape: chariot
-    description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln]. Must be shared by a player of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
+    description: Rocks explode from the ground under each player of one role. Inflicts [s:magic-vuln:2s]. Must be shared by a player of the opposite role to reduce the damage to survivable levels. Make sure you don't gapclose back to the boss too early.
+    inflicts:
+      - status: magic-vuln
+        duration: 1960
     damage: 58000
     count: 4
   rockbreaker-aoe:  # Archaic Rockbreaker
@@ -328,9 +338,14 @@ actions:
     count: 2
   ascendant-fist:  # Ascendant Fist
     id: 33135
-    resolve: A [t:tankswap] is required after the hit as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln].
+    resolve: A [t:tankswap] is required after the hit as [boss]'s auto-attacks are physical in Martialist Form, meaning auto-attacks become lethal with [s:physical-vuln:10s].
     mechanic: tb.mt
-    description: "[boss] uppercuts the main target for heavy damage, inflicting [s:concussion] and [s:physical-vuln]."
+    description: "[boss] uppercuts the main target for heavy damage, inflicting [s:concussion:12s] and [s:physical-vuln:10s]."
+    inflicts:
+      - status: physical-vuln
+        duration: 10000
+      - status: concussion
+        duration: 12000
     damage: 128000
   charybdis:  # Charybdis
     id: 33136
@@ -386,7 +401,10 @@ actions:
     type: magic
     mechanic: stack.far
     shape: chariot
-    description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and inflicts [s:dark-vuln] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
+    description: "[Stores](t:stores) a poison 4-person stack marker on the farthest player from [boss] and inflicts [s:dark-vuln:10s] to all players hit. The stack is executed at the same time as the [a:thunderbolt] cast resolves. If the stack hits any of the comets, their health state is reduced by one. Due to limited space in the arena, the stack should be placed on one of the two cracked comets."
+    inflicts:
+      - status: dark-vuln
+        duration: 9960
     damage: 46000
     count: 1
   thunderbolt:  # Thunderbolt
@@ -394,8 +412,11 @@ actions:
     type: magic
     mechanic: spread
     shape: cone
-    description: Launches conal attacks at the closest 4 players, originating from [boss], and inflicts [s:lightning-vuln]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
+    description: Launches conal attacks at the closest 4 players, originating from [boss], and inflicts [s:lightning-vuln:10s]. If a cone hits any of the comets, its health state is reduced by one, which may destroy it if it is already cracked. [a:beastly-bile] resolves at the same time.
       To avoid damaging any comets, the cones should be aimed into the tornados. The lines on each cardinal and intercardinal assist with positioning.
+    inflicts:
+      - status: lightning-vuln
+        duration: 9960
     damage: 60000
     count: 4
   levinstrike:  # Levinstrike Summoning
@@ -468,19 +489,28 @@ actions:
     id: 33152
     mechanic: mech.distance
     shape: chariot
-    description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
+    description: "[boss] dashes to the next target in the even number sequence and deals damage to them and everyone around them relative to the distance he dashed, with more damage taken the less distance was dashed. To reduce damage to survivable levels, the targeted player should be as far away from [boss]'s initial position (i.e. the last orb) as possible, and no other player should be near them at this time. Inflicts [s:magic-vuln:9s], so being hit by another mechanic in the next turn results in death."
+    inflicts:
+      - status: magic-vuln
+        duration: 8960
     players: 1
     damage: 53000
   shock:  # Shock
     id: 33153
     mechanic: towers.single
-    description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [ms:chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln], so being hit by another mechanic in the next turn results in death."
+    description: "[boss] dashes to the next orb in the numbered sequence, then kicks it toward the *opposite* wall. No players should be at that wall, as it releases a medium-sized [ms:chariot] [t:AoE], when it hits the wall, then spawns a tower. A player must quickly enter the tower to soak it. If the tower is not soaked, it explodes and wipes the raid. Inflicts [s:magic-vuln:7s], so being hit by another mechanic in the next turn results in death."
+    inflicts:
+      - status: magic-vuln
+        duration: 7000
     damage: 23000
   icemeld:  # Icemeld
     id: 33155
     mechanic: spread
     shape: defamation
-    description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2].
+    description: These are the enormous [t:AoE]s indicated by blue markers during [a:lc1] and [a:lc2]. Inflicts [s:magic-vuln].
+    inflicts:
+      - status: magic-vuln
+        duration: [9960, 12960, 15960, 18960]
     damage: 70000
   two-minds:  # Two Minds
     id: 33157
@@ -520,6 +550,7 @@ actions:
     damage: 80000
   lc2:
     id: 33211
+    source: 16087
     resolve: |
       As the [a:icemeld]s come out quite fast, it is recommended to place the *1* and *2* players both on the outside of the arena, then swap *3* for *1* once *1* resolves, and *4* for *2* once *2* resolves.
       The rest of the party must stack outside of [a:icemeld] range and pay attention to [boss]'s cast: either [a:front-firestrikes] or [a:rear-firestrikes]. At the end of the cast (which happens between the resolution of the *2* and *3* [a:icemeld]s), [boss] will dash towards a random non-numbered player and hit them with [a:pyremeld]. Like [a:firemeld], [a:pyremeld] is a proximity-based attack, dealing more damage the closer the targeted player is to [boss]'s initial position, but unlike [a:firemeld] it is also a *stack*.
@@ -563,37 +594,38 @@ actions:
     name: Swinging Kick (Front)
     mechanic: aoe
     shape: halfroom
-    description: Executes the previously stored frontward cleave. Inflicts [s:concussion].
+    description: Executes the previously stored frontward cleave. Inflicts [s:concussion:12s].
   swinging-kick-rear:  # Swinging Kick
     id: 33315
     name: Swinging Kick (Rear)
     mechanic: aoe
     shape: halfroom
-    description: Executes the previously stored rearward cleave. Inflicts [s:concussion].
+    description: Executes the previously stored rearward cleave. Inflicts [s:concussion:12s].
   swinging-kick-cast-front:  # Swinging Kick (with castbar)
     id: 34709
     name: Swinging Kick (Front)
     mechanic: mech
     shape: halfroom
-    description: Executes the previously stored frontward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
+    description: Executes the previously stored frontward cleave. Inflicts [s:concussion:12s]. Note that this version of Swinging Kick has a castbar.
   swinging-kick-cast-rear:  # Swinging Kick (with castbar)
     id: 34710
     name: Swinging Kick (Rear)
     mechanic: mech
     shape: halfroom
-    description: Executes the previously stored rearward cleave. Inflicts [s:concussion]. Note that this version of Swinging Kick has a castbar.
+    description: Executes the previously stored rearward cleave. Inflicts [s:concussion:12s]. Note that this version of Swinging Kick has a castbar.
   roundhouse-in:  # Inside Roundhouse
     id: 33336
     mechanic: aoe
     shape: chariot
-    description: A [ms:chariot] centered on the boss, leaving only the outside of the arena safe. Inflicts [s:damage-down].
+    description: A [ms:chariot] centered on the boss, leaving only the outside of the arena safe. Inflicts [s:damage-down:30s].
   roundhouse-out:  # Outside Roundhouse
     id: 33337
     mechanic: aoe
     shape: dynamo
-    description: A [ms:dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Inflicts [s:damage-down].
+    description: A [ms:dynamo] centered on the boss, leaving only [boss]'s hitbox safe. Inflicts [s:damage-down:30s].
   front-firestrikes:
     id: 34702
+    source: 16087
     resolve: After the jump, all players in the stack should move closer to the wall to face the [a:swinging-kick-cast-front] into the wall and avoid killing the [a:icemeld] players, who are too far away to dodge.
     mechanic: mech.distance
     description: Similar to [a:front-comb], [t:stores] a frontal [a:swinging-kick-cast-front] that will be executed after a [a:pyremeld]. After [a:pyremeld], the boss turns toward the target it just jumped on.
@@ -612,6 +644,10 @@ actions:
       [boss] dashes to a non-[a:icemeld] target and blows them up in a fire tornado. Happens during [a:lc2]. It deals more damage the *less* distance [boss] dashes.
       This attack is almost the same as [a:firemeld], but there are a few differences. For one, [a:pyremeld] is a 4-person stack. Not stacking drastically increases the damage dealt. The actual damage and falloff numbers are also different, maxing out at less distance than [a:firemeld].
       [a:pyremeld] has a damage fall-off of about 12,500 damage per yalm, maxing out at 22y. If the boss is kept centered, the maximum achievable distance to the boss if one is all the way at the wall is about 19y, which still deals about 100,000 damage.
+      Inflicts [s:magic-vuln:9s].
+    inflicts:
+      - status: magic-vuln
+        duration: 8960
     damage: 53000
   enrage:  # Disintegration
     id: 33162

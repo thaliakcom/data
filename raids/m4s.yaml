@@ -18,34 +18,25 @@ status:
   damage-down:
     id: 628
     type: impairment
-    duration: 30000
     description: |
       Reduces damage dealt by approximately 25% (multiplicative) per stack.
   physical-vulnerability-up:
     id: 2940
     type: vuln
-    duration: [12960, 19000, 1960]
     description: |
       Renders any subsequent physical damage taken lethal.
-      Inflicted by [a:witch-hunt] hits, [a:soaring-soulpress] towers, and [a:laceration].
+       hits, [a:soaring-soulpress] towers, and [a:laceration].
   forked-lightning:
     id: 587
     type: delay
-    duration: 8000
-    description: |
-      A [a:forked-lightning] will resolve on the player when this debuff expires.
-      Inflicted by [a:electrifying-witch-hunt].
+    description: A [a:forked-lightning] will resolve on the player when this debuff expires.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [3960, 5000, 1960, 5960, 960]
-    description: |
-      Renders any subsequent magic damage taken lethal.
-      Inflicted by [a:four-star], [a:wicked-jolt], [a:axe-current], [a:spinning-current], [a:conduction-point], [a:wicked-blaze], [a:wicked-flare], and [a:wicked-spark].
+    description: Renders any subsequent magic damage taken lethal.
   electrical-condenser:
     id: 3999
     type: delay
-    duration: [42000, 22000]
     description: |
       Player is a target to lightning. When the effect expires, player will unleash a Spark, with its radius equal to the number of lightning stacks they have.
       Note that lightning stacks are not visible and are inflicted by any lightning-aspected damage taken, including [a:witchgleam-player], [a:spark-ii], [a:spark-iii], [a:four-star], or [a:eight-star].
@@ -53,77 +44,60 @@ status:
       * 2 stacks: [a:spark-ii]
       * 3 stacks: [a:spark-iii]
       * 4 stacks: [a:unmigitated-explosion]
-      Inflicted by [a:electrope-edge-2].
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
-    duration: [1960, 18960]
-    description: |
-      Renders any subsequent lightning damage taken lethal.
-      Inflicted by [a:spark-ii], [a:spark-iii], [a:forked-fissures], [a:positron-stream], [a:negatron-stream].
+    description: Renders any subsequent lightning damage taken lethal.
   sustained-damage:
     id: 4149
     type: dot
-    duration: 14960
-    description: Heavy stacking DoT inflicted by [a:spark-ii] and [a:spark-iii].
+    description: Heavy stacking DoT.
   positron:
     id: 4000
     type: condition
-    duration: [62000, 23000, 38000]
     description: Player is positively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a negative charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   negatron:
     id: 4001
     type: condition
-    duration: [62000, 23000, 38000]
     description: Player is negatively charged with a certain number of stacks. A stack is cleansed upon being hit by an attack with a positive charge. If any stacks remain by the time the effect expires, the player is killed instantly ([a:ionic-discharge]).
   collider-conductor:
     id: 4006
     type: delay
-    duration: 7000
-    description: Can be cleansed by being hit by [a:axe-current]. If it is not cleansed before the effect expires, unleashes [a:collider-current], dealing heavy damage and inflicting [s:damage-down] on all players.
+    description: Can be cleansed by being hit by [a:axe-current]. If it is not cleansed before the effect expires, unleashes [a:collider-current], dealing heavy damage and inflicting [s:damage-down:30s] on all players.
   roundhouse-conductor:
     id: 4005
     type: delay
-    duration: 5000
     description: Player unleashes [a:roundhouse-current], a large [ms:dynamo] AoE when the effect expires.
   spinning-conductor:
     id: 4004
     type: delay
-    duration: 5000
     description: Player unleashes [a:spinning-current], a small [ms:chariot] AoE when the effect expires.
   proximate-current:
     id: 4003
     type: delay
-    duration: 5000
     description: Player shoots an [a:axe-current] towards the closest player when this effect expires.
   remote-current:
     id: 4002
     type: delay
-    duration: 5000
     description: Player shoots an [a:axe-current] towards the farthest player when this effect expires.
   fire-resistance-down-ii:
     id: 2937
     type: vuln
-    duration: [10960, 1960]
-    description: |
-      Renders any subsequent fire damage taken lethal.
-      Inflicted by [a:kindling-cauldron] and [a:mustard-bomb].
+    description: Renders any subsequent fire damage taken lethal.
   mustard-bomb:
     id: 4007
     type: rot.pass
-    duration: [9000, 7230, 5310]
     description: |
       [a:mustard-bomb-echo] resolves on the player's position when the effect expires.
       Deals only moderate damage, but is lethal if the player suffers from [s:fire-resistance-down-ii] as a result of the first hit of [a:mustard-bomb]. Instead, this debuff can be passed to another player by touching them. This inflicts [s:mustard-bombproof] on the passing player, preventing them from accidentally taking it back straight away.
-      Inflicted by the first hit of [a:mustard-bomb].
   mustard-bombproof:
     id: 4008
     type: rot.immunity
-    duration: [7230, 5310]
     description: Player is immune to [s:mustard-bomb] until this effect expires. Inflicted when a player passes [s:mustard-bomb] to another player, and merely serves the purpose of preventing them from accidentally taking it back immediately.
 actions:
   wrath-of-zeus:
     id: 38383
+    source: 17322
     mechanic: raidwide
     damage: 202006
     description: Standard raidwide. Deals heavy damage.
@@ -156,18 +130,25 @@ actions:
         id: forked-lightning
   electray:
     id: 38379
+    source: 17324
     mechanic: aoe
     shape: grid
     description: Placeholder description for Electray
   electrifying-witch-hunt:
     id: 38373
+    source: 17322
     type: physical
     mechanic: mech.close-or-far
     shape: chariot
     count: 4
     players: 1
     damage: 122973
-    description: Placeholder description for Electrifying Witch Hunt
+    description: Placeholder description for Electrifying Witch Hunt. Inflicts [s:physical-vulnerability-up:13s] and [s:forked-lightning:8s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 12960
+      - status: forked-lightning
+        duration: 8000
   burst:
     id: 38378
     mechanic: aoe
@@ -175,12 +156,16 @@ actions:
     description: Placeholder description for Burst
   witch-hunt:
     id: 38366
+    source: 17322
     type: physical
     mechanic: mech.close-or-far
     shape: chariot
     players: 1
     damage: 125546
-    description: Placeholder description for Witch Hunt
+    description: Placeholder description for Witch Hunt. Inflicts [s:physical-vulnerability-up:13s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 12960
   forked-lightning:
     id: 38375
     mechanic: spread
@@ -190,6 +175,7 @@ actions:
     description: Placeholder description for Forked Lightning
   widening-witch-hunt:
     id: 38368
+    source: 17322
     mechanic: mech
     emphasis: more
     compact: trim
@@ -262,10 +248,11 @@ actions:
     description: Placeholder description for Thundering
   electrope-edge-1:
     id: 38341
+    source: 17322
     mechanic: mech
     emphasis: more
     compact: full
-    description: Placeholder description for Electrope Edge
+    description: Placeholder description for Electrope Edge.
     children:
       - at: 7144
         id: witchgleam-electromine
@@ -310,10 +297,12 @@ actions:
     description: Placeholder description for Witchgleam
   symphony-fantastique:
     id: 38344
+    source: 17322
     mechanic: mech.prepare
     description: Triggers the electromines, who will begin casting [a:spark]/[a:spark-ii-electromine].
   sidewise-spark:
     id: 38380
+    source: 17322
     mechanic: aoe
     shape: halfroom
     description: Placeholder description for Sidewise Spark
@@ -323,16 +312,23 @@ actions:
     shape: chariot
     count: 4
     damage: 133026
-    description: Placeholder description for Four Star
+    description: Placeholder description for Four Star. Inflicts [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   eight-star:
     id: 38353
     mechanic: spread
     shape: chariot
     count: 8
     damage: 133026
-    description: Placeholder description for Four Star
+    description: Placeholder description for Four Star. Inflicts [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   wicked-jolt:
     id: 38384
+    source: 17322
     mechanic: tb.mt
     shape: line
     description: Placeholder description for Wicked Jolt
@@ -343,17 +339,24 @@ actions:
         id: wicked-jolt-hit
   wicked-jolt-hit:
     id: 38385
+    source: 17322
     mechanic: tb.mt
     shape: line
     damage: 380000
-    description: Placeholder description for Wicked Jolt
+    description: Placeholder description for Wicked Jolt. Inflicts [s:magic-vulnerability-up:5s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5000
   electrope-edge-2:
     id: 38341
+    source: 17322
     mechanic: mech
     emphasis: more
     compact: full
-    description: Placeholder description for Electrope Edge
+    description: Placeholder description for Electrope Edge.
     children:
+      - at: 1115
+        id: electrope-edge-2-hit
       - at: 7144
         id: witchgleam-player
         link: then
@@ -398,6 +401,14 @@ actions:
         link: and
       - at: 43707
         id: lightning-cage
+  electrope-edge-2-hit:
+    id: 38341
+    source: 17322
+    mechanic: mech
+    description: Hit of [a:electrope-edge-2]. Inflicts [s:electrical-condenser].
+    inflicts:
+      - status: electrical-condenser
+        duration: [22000, 42000]
   witchgleam-player:
     id: 38790
     mechanic: spread
@@ -407,6 +418,7 @@ actions:
     description: Placeholder description for Witchgleam
   lightning-cage-cast:
     id: 38350
+    source: 17322
     mechanic: mech.prepare
     description: Placeholder description for Lightning Cage
   lightning-cage:
@@ -418,6 +430,7 @@ actions:
     description: Placeholder description for Lightning Cage
   spark:
     id: 38346
+    source: 17325
     mechanic: aoe
     shape: rect
     description: Placeholder description for Spark
@@ -426,24 +439,38 @@ actions:
     mechanic: spread
     shape: rect
     damage: 105031
-    description: Inflicts [s:sustained-damage].
+    description: Inflicts [s:sustained-damage:15s] and [s:lightning-resistance-down-ii:2s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 1960
+      - status: sustained-damage
+        duration: 14960
   spark-ii-electromine:
     id: 38347
     mechanic: aoe
     shape: rect
-    description: Placeholder description for Spark II
+    description: Placeholder description for Spark II. Inflicts [s:lightning-resistance-down-ii:2s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 1960
   spark-iii:
     id: 38348
     mechanic: spread
     shape: rect
     damage: 107531
-    description: Inflicts [s:sustained-damage].
+    description: Inflicts [s:sustained-damage:15s] and [s:lightning-resistance-down-ii:2s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 1960
+      - status: sustained-damage
+        duration: 14960
   unmigitated-explosion:
     id: 38349
     mechanic: mech.failure
     description: Placeholder description for Unmitigated Explosion
   wicked-bolt:
     id: 37570
+    source: 17322
     mechanic: stack.party
     shape: chariot
     description: Placeholder description for Wicked Bolt
@@ -470,10 +497,17 @@ actions:
     description: Placeholder description for Wicked Bolt
   ion-cluster:
     id: 38356
+    source: 17322
     mechanic: mech.status
-    description: Placeholder description for Ion Cluster
+    description: Placeholder description for Ion Cluster. Inflicts [s:positron:62s] and [s:negatron:62s].
+    inflicts:
+      - status: positron
+        duration: 62000
+      - status: negatron
+        duration: 62000
   stampeding-thunder:
     id: 35334
+    source: 17322
     mechanic: aoe
     shape: rect
     description: Placeholder description for Stampeding Thunder
@@ -510,6 +544,7 @@ actions:
     description: Placeholder description for Stampeding Thunder
   electron-stream:
     id: 38358
+    source: 17322
     mechanic: mech
     emphasis: more
     compact: trim
@@ -523,6 +558,7 @@ actions:
         id: electron-stream-inner
   electron-stream-inner:
     id: 38358
+    source: 17322
     mechanic: stack.intercept
     shape: rect
     damage: 0
@@ -548,18 +584,44 @@ actions:
     shape: rect
     damage: 150000
     tank-damage: 250000
-    description: Placeholder description for Negatron Stream
+    description: Placeholder description for Negatron Stream. Inflicts [s:lightning-resistance-down-ii:19s], [s:collider-conductor:7s], [s:roundhouse-conductor:5s], [s:spinning-conductor:5s], [s:proximate-current:5s], and [s:remote-current:5s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 18960
+      - status: collider-conductor
+        duration: 7000
+      - status: roundhouse-conductor
+        duration: 5000
+      - status: spinning-conductor
+        duration: 5000
+      - status: proximate-current
+        duration: 5000
+      - status: remote-current
+        duration: 5000
   positron-stream:
     id: 38360
     mechanic: stack.intercept
     shape: rect
     damage: 150000
     tank-damage: 250000
-    description: Placeholder description for Positron Stream
+    description: Placeholder description for Positron Stream. Inflicts [s:lightning-resistance-down-ii:19s], [s:collider-conductor:7s], [s:roundhouse-conductor:5s], [s:spinning-conductor:5s], [s:proximate-current:5s], and [s:remote-current:5s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 18960
+      - status: collider-conductor
+        duration: 7000
+      - status: roundhouse-conductor
+        duration: 5000
+      - status: spinning-conductor
+        duration: 5000
+      - status: proximate-current
+        duration: 5000
+      - status: remote-current
+        duration: 5000
   collider-current:
     id: 38365
     mechanic: mech.failure
-    description: Deals heavy damage and inflicts [s:damage-down] on all players.
+    description: Deals heavy damage and inflicts [s:damage-down:30s] on all players.
   roundhouse-current:
     id: 38364
     mechanic: aoe
@@ -573,20 +635,27 @@ actions:
     count: 2
     players: 2
     damage: 78839
-    description: Placeholder description for Axe Current
+    description: Placeholder description for Axe Current. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   spinning-current:
     id: 38363
     mechanic: spread
     shape: chariot
     count: 4
     damage: 78688
-    description: Placeholder description for Spinning Current
+    description: Placeholder description for Spinning Current. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   ionic-discharge:
     id: 38357
     mechanic: mech.failure
     description: A player failed to cleanse all their [s:positron] or [s:negatron] stacks and is killed instantly.
   electrope-transplant:
     id: 39123
+    source: 17322
     mechanic: mech.phase
     emphasis: more
     compact: full
@@ -644,7 +713,10 @@ actions:
     shape: chariot
     count: 4
     damage: 93958
-    description: Placeholder description for Conduction Point
+    description: Placeholder description for Conduction Point. Inflicts [s:magic-vulnerability-up:6s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 5960
   forked-fissures:
     id: 39119
     mechanic: aoe.intercept
@@ -652,7 +724,10 @@ actions:
     count: 4
     players: 2
     damage: 120797
-    description: Placeholder description for Forked Fissures
+    description: Placeholder description for Forked Fissures. Inflicts [s:lightning-resistance-down-ii:2s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 1960
   soulshock:
     id: 20033
     mechanic: raidwide
@@ -679,6 +754,7 @@ actions:
     description: Placeholder description for Cannonbolt
   cross-tail-switch:
     id: 38386
+    source: 17326
     mechanic: raidwide.lb
     compact: full
     description: Placeholder description for Cross Tail Switch
@@ -717,6 +793,7 @@ actions:
     description: Placeholder description for Cross Tail Switch
   wicked-blaze:
     id: 38391
+    source: 17326
     mechanic: stack.healers
     shape: chariot
     count: 2
@@ -741,7 +818,10 @@ actions:
     shape: chariot
     count: 2
     damage: 47000
-    description: Placeholder description for Wicked Blaze
+    description: Placeholder description for Wicked Blaze. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   wicked-blaze-hit:
     id: 38392
     name: Wicked Blaze (Hit)
@@ -749,7 +829,10 @@ actions:
     shape: chariot
     count: 2
     damage: 29479
-    description: Placeholder description for Wicked Blaze
+    description: Placeholder description for Wicked Blaze. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   sabertail:
     id: 38389
     mechanic: aoe.exaflares
@@ -787,6 +870,7 @@ actions:
     description: Placeholder description for Wicked Special
   mustard-bomb:
     id: 38430
+    source: 17326
     mechanic: spread
     shape: chariot
     compact: trim
@@ -805,21 +889,32 @@ actions:
     shape: chariot
     count: 2
     damage: 401834
-    description: Placeholder description for Mustard Bomb
+    description: Placeholder description for Mustard Bomb. Inflicts [s:fire-resistance-down-ii:11s] and [s:mustard-bomb:9s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 10960
+      - status: mustard-bomb
+        duration: 9000
   kindling-cauldron:
     id: 38432
     mechanic: spread
     shape: chariot
     count: 6
     damage: 141520
-    description: Placeholder description for Kindling Cauldron
+    description: Placeholder description for Kindling Cauldron. Inflicts [s:fire-resistance-down-ii:11s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 10960
   mustard-bomb-echo:
     id: 38433
     mechanic: spread
     shape: chariot
     count: 2
     damage: 141503
-    description: Placeholder description for Mustard Bomb
+    description: Placeholder description for Mustard Bomb. Inflicts [s:fire-resistance-down-ii:2s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 1960
   aetherial-conversion:
     id: 38402
     mechanic: mech.prepare
@@ -855,12 +950,14 @@ actions:
     description: Placeholder description for Tail Thrust
   azure-thunder:
     id: 38447
+    source: 17326
     mechanic: mech.arena
     players: 8
     damage: 220921
     description: Placeholder description for Azure Thunder
   twilight-sabbath:
     id: 38435
+    source: 17326
     mechanic: mech
     emphasis: more
     compact: trim
@@ -877,6 +974,7 @@ actions:
         id: sidewise-spark
   wicked-fire:
     id: 38448
+    source: 17326
     mechanic: aoe.delayed
     shape: chariot
     count: 8
@@ -893,6 +991,7 @@ actions:
     description: Placeholder description for Wicked Fire
   midnight-sabbath:
     id: 39609
+    source: 17326
     mechanic: mech
     emphasis: more
     compact: trim
@@ -934,6 +1033,7 @@ actions:
     description: Placeholder description for Concentrated Burst
   scattered-burst:
     id: 38444
+    source: 17326
     mechanic: spread
     shape: chariot
     damage: 0
@@ -944,38 +1044,49 @@ actions:
     shape: chariot
     count: 4
     damage: 80414
-    description: Placeholder description for Wicked Flare
+    description: Placeholder description for Wicked Flare. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   wicked-spark:
     id: 38445
     mechanic: spread
     shape: chariot
     count: 8
     damage: 74359
-    description: Placeholder description for Wicked Spark
+    description: Placeholder description for Wicked Spark. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   wicked-cannon:
     id: 38436
+    source: 17323
     mechanic: aoe
     shape: line
     count: 4
     description: Placeholder description for Wicked Cannon
   wicked-thunder:
     id: 38043
+    source: 17326
     mechanic: raidwide
     damage: 159116
     description: Placeholder description for Wicked Thunder
   flame-slash:
     id: 38420
+    source: 17326
     mechanic: mech.arena
     shape: line
     description: Placeholder description for Flame Slash
   raining-swords:
     id: 38422
+    source: 17326
     mechanic: towers.single
     count: 8
     damage: 25488
     description: Placeholder description for Raining Swords
   chain-lightning:
     id: 38425
+    source: 17326
     mechanic: aoe.memory
     shape: chariot
     compact: full
@@ -1010,10 +1121,17 @@ actions:
     description: Placeholder description for Switch of Tides
   ion-cluster-sunrise:
     id: 38434
+    source: 17326
     mechanic: mech.status
-    description: Placeholder description for Ion Cluster
+    description: Placeholder description for Ion Cluster. Inflicts [s:positron] and [s:negatron].
+    inflicts:
+      - status: positron
+        duration: [23000, 38000]
+      - status: negatron
+        duration: [23000, 38000]
   sunrise-sabbath:
     id: 39610
+    source: 17326
     mechanic: mech
     emphasis: more
     compact: trim
@@ -1039,26 +1157,41 @@ actions:
         id: negatron-stream-sunrise
   soaring-soulpress:
     id: 38440
+    source: 17323
     mechanic: towers.double
     count: 2
     damage: 98424
-    description: Placeholder description for Soaring Soulpress
+    description: Placeholder description for Soaring Soulpress. Inflicts [s:physical-vulnerability-up:19s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 19000
   positron-stream-sunrise:
     id: 38437
+    source: 17323
     mechanic: spread
     shape: line
     count: 2
     damage: 99212
-    description: Placeholder description for Positron Stream
+    description: Placeholder description for Positron Stream. Inflicts [s:lightning-resistance-down-ii:19s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 18960
   negatron-stream-sunrise:
     id: 38438
+    source: 17323
     mechanic: spread
     shape: line
     count: 2
     damage: 97058
-    description: Placeholder description for Negatron Stream
+    description: Placeholder description for Negatron Stream. Inflicts [s:lightning-resistance-down-ii:19s] and [s:positron:10s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 18960
+      - status: positron
+        duration: 10000
   sword-quiver:
     id: 38395
+    source: 17326
     mechanic: raidwide
     description: Placeholder description for Sword Quiver
     children:
@@ -1097,9 +1230,13 @@ actions:
     shape: cone
     count: 4
     damage: 138147
-    description: Placeholder description for Laceration
+    description: Placeholder description for Laceration. Inflicts [s:physical-vulnerability-up:2s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 1960
   wicked-thunder-enrage:
     id: 38450
+    source: 17326
     mechanic: enrage
     damage: 9999999
     description: Placeholder description for Wicked Thunder

@@ -21,12 +21,10 @@ status:
   vulnerability-down:
     id: 929
     type: resistance
-    duration: 10000
     description: Reduces all player damage dealt to the Watery Grave by 75%.
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by 30%.
   brotherly-love:
     id: 4972
@@ -54,12 +52,10 @@ status:
   fire-resistance-down-ii:
     id: 2937
     type: vuln
-    duration: [11960, 8960, 5960, 2960, 7960, 3960, 1960]
-    description: Renders any further fire damage taken lethal. Inflicted by [a:flame-floater] and [a:hot-aerial].
+    description: Renders any further fire damage taken lethal.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [2000, 960]
     description: Renders any further magic damage taken lethal.
   firesnaking:
     id: 4974
@@ -77,18 +73,16 @@ status:
     id: 3065
     type: dot
     tick: 139317
-    description: Heavy DoT, as a result of stepping into a fire puddle. Transforms into [s:burns-1] after stepping out of the fire.
+    description: Heavy DoT, as a result of stepping into a fire puddle. Transforms into [s:burns-1:15s] after stepping out of the fire.
   burns-1:
     id: 3066
     type: dot
     tick: 71939
-    duration: 15000
     description: Heavy DoT, as a result of stepping out of a fire puddle.
   watery-grave:
     id: 4829
     type: condition
     name: Watery Grave
-    duration: 59000
     tick: 36600
     description: |
       The two players in the water bubble cannot move or execute gapclosers. They take constant [t:DoT] damage but take greatly reduced damage from any other sources of damage.
@@ -98,19 +92,18 @@ status:
     id: 4827
     type: condition
     name: Xtreme Firesnaking
-    duration: 51000
     description: Player is instantly killed if they are not hit by a water action from Deep Blue before the end of the effect's duration. Being hit by a water action triggers [a:bailout] and cleanses this debuff.
     gameDescription: Extended exposure to Red Hot's scathing aether will result in damage taken when this effect expires.
   xtreme-watersnaking:
     id: 4828
     type: condition
     name: Xtreme Watersnaking
-    duration: 51000
     description: Player is instantly killed if they are not hit by a fire action from Red Hot before the end of the effect's duration. Being hit by a fire action triggers [a:bailout] and cleanses this debuff.
     gameDescription: Extended exposure to Deep Blue's roiling aether will result in damage taken when this effect expires.
 actions:
   hot-impact:
     id: 46518
+    source: 19287
     mechanic: tb.stack
     shape: chariot
     damage: 410315
@@ -119,6 +112,7 @@ actions:
       Will never target [s:watersnaking] players. If the highest enmity player is under the effect of [s:watersnaking], targets the highest-enmity player under the effect of [s:firesnaking].
   flame-floater:
     id: 46522
+    source: 19287
     mechanic: mech
     emphasis: more
     description: |
@@ -138,17 +132,24 @@ actions:
       id: flame-floater-hit
   flame-floater-hit:
     id: 46524
+    source: 19287
     name: Flame Floater (Hit)
     mechanic: mech.tether.distance
     players: 1
     damage: 140760
-    description: Red Hot dashes to a player ([a:flame-floater]).
+    description: Red Hot dashes to a player ([a:flame-floater]). Inflicts [s:fire-resistance-down-ii].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: [2960, 5960, 8960, 11960]
   alley-oop-inferno:
     id: 46529
     mechanic: spread
     shape: chariot
     damage: 96148
-    description: Fire spreads on all players not under the effect of [s:watersnaking].
+    description: Fire spreads on all players not under the effect of [s:watersnaking]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   cutback-blaze:
     id: 46538
     mechanic: aoe.puddle
@@ -161,6 +162,7 @@ actions:
       Will never target players under the effect of [s:watersnaking] regardless of distance.
   pyrotation:
     id: 46530
+    source: 19287
     mechanic: stack.party
     shape: chariot
     description: A 3-hit stack on a random player. Each hit leaves behind a persistent fire puddle.
@@ -180,15 +182,18 @@ actions:
     description: An individual hit of [a:pyrotation]. Leaves behind a persistent fire puddle.
   divers-dare:
     id: 46520
+    source: 19287
     mechanic: raidwide
     damage: 101000
     description: Moderate raidwide. Erases all fire puddles in the arena.
   sick-swell:
     id: 46539
+    source: 19288
     mechanic: mech.prepare
     description: Summons a massive wave at the north or south of the arena.
   sickest-take-off:
     id: 46541
+    source: 19288
     mechanic: mech
     description: |
       Deep Blue leaves the arena and positions himself either on the west, center, or east of the wave.
@@ -230,50 +235,86 @@ actions:
     shape: chariot
     players: 8
     damage: 144119
-    description: A spread on all non-[s:firesnaking] players.
+    description: A spread on all non-[s:firesnaking] players. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   reverse-alley-oop:
     id: 46561
     mechanic: spread
     shape: cone
     cast: 5000
-    count: 8
-    damage: 117661
     compact: full
     description: |
       Standard conal spread. Afterwards, hits between where all players were.*
       *This is an oversimplification of the mechanic for ease of understanding. To be more specific, after the conal spreads each of the cones "splits" into two new cones, each about half the width of the original cones. These new cones then hit the outside of the original cones.
     resolve: Stand still. Do not move after the initial spreads.
     children:
+    - at: 0
+      id: reverse-alley-oop-hit
     - at: 2578
       id: reverse-alley-oop-echo
       count: 16
+  reverse-alley-oop-hit:
+    id: 46561
+    caption: Hit
+    mechanic: spread
+    shape: cone
+    count: 8
+    damage: 117661
+    description: Hit of [a:reverse-alley-oop]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   reverse-alley-oop-echo:
     id: 46562
     caption: Aftershock
     mechanic: aoe.aftershock
     shape: cone
-    description: Hits between the previous spreads. See [a:reverse-alley-oop] for more information. Inflicts [s:damage-down].
+    description: Hits between the previous spreads. See [a:reverse-alley-oop] for more information. Inflicts [s:damage-down:30s] and [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
+      - status: damage-down
+        duration: 30000
   alley-oop-double-dip:
     id: 46558
     mechanic: spread
     shape: cone
     cast: 5000
-    damage: 115782
     compact: full
     description: Standard conal spread. Afterwards, hits where all players were.
     resolve: Move in-between the cones after the initial hit.
     children:
+    - at: 0
+      id: alley-oop-double-dip-hit
     - at: 2578
       id: alley-oop-double-dip-echo
       count: 8
+  alley-oop-double-dip-hit:
+    id: 46558
+    caption: Hit
+    mechanic: spread
+    shape: cone
+    damage: 115782
+    description: Hit of [a:alley-oop-double-dip]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   alley-oop-double-dip-echo:
     id: 46559
     caption: Aftershock
     mechanic: aoe.aftershock
     shape: cone
-    description: Cones on all players' initial positions. Inflicts [s:damage-down].
+    description: Cones on all players' initial positions. Inflicts [s:damage-down:30s] and [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
+      - status: damage-down
+        duration: 30000
   deep-impact:
     id: 44486
+    source: 19288
     mechanic: tb.far
     shape: chariot
     cast: 4900
@@ -282,6 +323,7 @@ actions:
     resolve: Since this attack is almost exclusively used during periods of time where wide swathes of the arena are covered in fire, using [s:arms-length] is practically required.
   xtreme-spectacular-cast:
     id: 46553
+    source: 19287
     mechanic: raidwide.ultimate
     description: The Xtremes' ultimate attack.
     children:
@@ -307,22 +349,26 @@ actions:
       description: Both bosses become targetable.
   xtreme-spectacular-hit:
     id: 46556
+    source: 19423
     name: Xtreme Spectacular (Hit)
     mechanic: raidwide.ultimate
     damage: 40000
     description: Individual hit of [a:xtreme-spectacular-cast].
   xtreme-spectacular-finale:
     id: 47050
+    source: 19423
     name: Xtreme Spectacular (Finale)
     mechanic: raidwide.ultimate
     damage: 233207
     description: Final hit of [a:xtreme-spectacular-cast].
   epic-brotherhood:
     id: 46458
+    source: 19287
     mechanic: mech
     description: The two brothers equalize their HP through their [s:brotherly-love].
   insane-air-initial:
     id: 47255
+    source: 19287
     mechanic: mech
     emphasis: more
     count: 2
@@ -343,6 +389,7 @@ actions:
       id: insane-air-subsequent
   insane-air-subsequent:
     id: 47257
+    source: 19287
     mechanic: mech
     count: 2
     description: Subsequent casts of [a:insane-air-initial] are functionally identical but have a faster cast.
@@ -352,40 +399,59 @@ actions:
     shape: cone
     count: 4
     damage: 97876
-    description: Conal spreads on the 4 closest players. Leaves behind conal fire puddles. Inflicts [s:magic-vulnerability-up].
+    description: Conal spreads on the 4 closest players. Leaves behind conal fire puddles. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   plunging-snap:
     id: 46578
     mechanic: spread.close
     shape: cone
     count: 4
     damage: 98165
-    description: Conal spreads on the 4 closest players. Inflicts [s:magic-vulnerability-up].
+    description: Conal spreads on the 4 closest players. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   vertical-blast:
     id: 46585
     mechanic: tb.close
     shape: chariot
     damage: 319500
-    description: Point-blank tankbuster on the closest player. Leaves behind a fire puddle. Inflicts [s:magic-vulnerability-up].
+    description: Point-blank tankbuster on the closest player. Leaves behind a fire puddle. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   vertical-plunge:
     id: 46586
     mechanic: tb.close
     shape: chariot
     damage: 321559
-    description: Point-blank tankbuster on the closest player. Inflicts [s:magic-vulnerability-up].
+    description: Point-blank tankbuster on the closest player. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   re-entry-blast:
     id: 46581
     mechanic: stack.close
     shape: cone
     damage: 97476
-    description: Conal 4-player stack on the closest player. Leaves behind a conal fire puddle. Inflicts [s:magic-vulnerability-up].
+    description: Conal 4-player stack on the closest player. Leaves behind a conal fire puddle. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   re-entry-plunge:
     id: 46582
     mechanic: stack.close
     shape: cone
     damage: 118963
-    description: Conal 4-player stack on the closest player. Inflicts [s:magic-vulnerability-up].
+    description: Conal 4-player stack on the closest player. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   firesnaking:
     id: 45953
+    source: 19287
     mechanic: mech
     emphasis: more
     players: 8
@@ -431,6 +497,7 @@ actions:
       id: deep-impact
   watersnaking:
     id: 45954
+    source: 19288
     mechanic: mech
     emphasis: more
     players: 8
@@ -447,11 +514,16 @@ actions:
       4 orbs: [ms:chariot] spreads on all [s:watersnaking] players.
   steam-burst:
     id: 46587
+    source: 19289
     mechanic: aoe
     shape: chariot
-    description: An AoE from Deep Blue has intersected an attack or a puddle from Red Hot, triggering a moderately sized [ms:chariot] steam explosion. Inflicts [s:damage-down].
+    description: An AoE from Deep Blue has intersected an attack or a puddle from Red Hot, triggering a moderately sized [ms:chariot] steam explosion. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   hot-aerial:
     id: 46532
+    source: 19287
     mechanic: mech
     description: Red Hot jumps on the farthest [s:firesnaking] player. Leaves behind a puddle. Inflicts [s:fire-resistance-down-ii]. Repeats 4 times in a row.
     children:
@@ -468,7 +540,10 @@ actions:
     mechanic: spread.far
     shape: chariot
     damage: 194480
-    description: An individual jump of [a:hot-aerial].
+    description: An individual jump of [a:hot-aerial]. Inflicts [s:fire-resistance-down-ii].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: [1960, 3960, 5960, 7960]
   deep-aerial:
     id: 46564
     mechanic: towers.double
@@ -476,17 +551,20 @@ actions:
     damage: 92565
     description: |
       A two-man tower spawns in the middle of the arena.
-      When it resolves, both bosses become untargetable and the tower turns into a massive bubble ("Watery Grave") that captures the two players who soaked the tower and inflicts [s:watery-grave] on them, preventing movement and gapclosers while dealing constant damage. The Watery Grave must be reduced to 0 HP to break these players out and dispel their debuffs. If the two players are not broken out before their debuffs expire, wipes the party.
+      When it resolves, both bosses become untargetable and the tower turns into a massive bubble ("Watery Grave") that captures the two players who soaked the tower and inflicts [s:watery-grave:59s] on them, preventing movement and gapclosers while dealing constant damage. The Watery Grave must be reduced to 0 HP to break these players out and dispel their debuffs. If the two players are not broken out before their debuffs expire, wipes the party.
       If more than two players soak the tower, two players are picked at random out of all the soakees to be encaged by the Watery Grave.
       During this mini-phase, each boss will tether to a random player and execute [a:xtreme-wave]. Like [a:flame-floater], each tether must be extended a certain distance or the hit deals lethal damage. Red Hot's [a:xtreme-wave] does not leave behind a puddle, but intersecting it with Deep Blue's wave triggers [a:steam-burst].
       [a:xtreme-wave] can intersect the Watery Grave and this has a specific effect based on the boss from whom the tether originated:
-      Deep Blue's [a:xtreme-wave] grants the Watery Grave a 10s [s:vulnerability-down].
+      Deep Blue's [a:xtreme-wave] grants the Watery Grave [s:vulnerability-down:10s].
       Red Hot's [a:xtreme-wave] deals damage to the Watery Grave equal to 15% of its maximum health and triggers [a:scathing-steam], a moderate raidwide.
     resolve: |
       Avoid hitting the Watery Grave with Deep Blue's [a:xtreme-wave], but hit the Watery Grave with every one of Red Hot's [a:xtreme-wave]s.
       Due to the Watery Grave's significantly inflated health pool, missing even a single Red Hot [a:xtreme-wave] is essentially guaranteed to result in an enrage.
+    inflicts:
+      - status: watery-grave
+        duration: 59000
     tips:
-      - A two-minute window comes up during this mini-phase. Unless you accidentally cause [s:vulnerability-down] or you have deaths, aim to delay your one-minutes and two-minutes until this mini-phase ends, as you are likely to overkill the Watery Grave otherwise, resulting in your two-minutes being completely wasted.
+      - A two-minute window comes up during this mini-phase. Unless you accidentally cause [s:vulnerability-down:10s] or you have deaths, aim to delay your one-minutes and two-minutes until this mini-phase ends, as you are likely to overkill the Watery Grave otherwise, resulting in your two-minutes being completely wasted.
     children:
     - at: 3247
       id: <untargetable>
@@ -532,6 +610,7 @@ actions:
       timing: push
   xtreme-wave:
     id: 46545
+    source: 19287
     mechanic: mech.tether.distance
     players: 1
     count: 2
@@ -539,13 +618,19 @@ actions:
     description: |
       Casts a tether onto a random player, then dashes to them shortly after.
       Deals lethal damage if not taken with sufficient distance to the boss. See [a:deep-aerial] for more information.
+      Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   scathing-steam:
     id: 44487
+    source: 19292
     mechanic: raidwide
     damage: 116780
     description: Moderate raidwide, caused by hitting the Watery Grave with Red Hot's [a:xtreme-wave].
   flame-floater-arena-split:
     id: 46527
+    source: 19287
     mechanic: aoe
     shape: rect
     description: Red Hot jumps north and splits the arena in two by casting a rectangular fire puddle down the middle.
@@ -556,27 +641,39 @@ actions:
     cast: 4300
     count: 4
     damage: 124214
-    description: Telegraphed [m:stack.partner] on all supports or damage dealers. Leaves behind a puddle.
+    description: Telegraphed [m:stack.partner] on all supports or damage dealers. Leaves behind a puddle. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   awesome-slab:
     id: 46544
     mechanic: stack
     shape: chariot
     damage: 139060
-    description: A stack on a random non-[s:firesnaking] player.
+    description: A stack on a random non-[s:firesnaking] player. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   xtreme-firesnaking:
     id: 46510
+    source: 19287
     mechanic: mech
     emphasis: more
     players: 8
     damage: 199705
     compact: trim
     description: |
-      Inflicts the closest 4 players to Red Hot with either [s:xtreme-firesnaking] or [s:xtreme-watersnaking]. All other players are inflicted with the opposite debuff.
-      Unlike [s:firesnaking] and [s:watersnaking], this debuff has no effect on which boss is able to target a given player. Instead, it's a debuff with a fixed duration. Players can cleanse the debuff by getting hit by an attack from the opposite boss ([s:xtreme-firesnaking] by Deep Blue, [s:xtreme-watersnaking] by Red Hot). Cleansing the debuff in this manner triggers [a:bailout], a moderate explosion that briefly inflicts [s:magic-vulnerability-up] on all nearby players.
+      Inflicts the closest 4 players to Red Hot with either [s:xtreme-firesnaking:51s] or [s:xtreme-watersnaking:51s]. All other players are inflicted with the opposite debuff.
+      Unlike [s:firesnaking] and [s:watersnaking], this debuff has no effect on which boss is able to target a given player. Instead, it's a debuff with a fixed duration. Players can cleanse the debuff by getting hit by an attack from the opposite boss ([s:xtreme-firesnaking:51s] by Deep Blue, [s:xtreme-watersnaking:51s] by Red Hot). Cleansing the debuff in this manner triggers [a:bailout], a moderate explosion that briefly inflicts [s:magic-vulnerability-up] on all nearby players.
       Failing to cleanse the debuff causes instant death.
       Both bosses repeat the [a:insane-air-initial] mechanic immediately after. Cleanses must take place during this mechanic. There's one difference compared to the original [a:insane-air-initial]: this time, while the order of the mechanics is still random on a per-boss basis, this time both bosses are guaranteed to use [a:vertical-plunge]/[a:vertical-blast] (the [t:tankbuster]) at the same time.
     resolve: |
       Decide on a cleanse order, such as HMR (healers, melees, rangeds). Each player starts on the boss that corresponds to their debuff (same colour). During each of the 3 non-tankbuster [a:insane-air-initial] sets, the corresponding two players swap light parties, joining the other light party for their mechanic. Tanks swap whenever the tankbuster happens.
+    inflicts:
+      - status: xtreme-firesnaking
+        duration: 51000
+      - status: xtreme-watersnaking
+        duration: 51000
     children:
     - at: 14826
       id: insane-air-initial
@@ -596,6 +693,7 @@ actions:
       id: bailout
   xtreme-watersnaking:
     id: 46511
+    source: 19288
     mechanic: mech
     emphasis: more
     players: 8
@@ -609,10 +707,13 @@ actions:
     count: 2
     damage: 19297
     description: |
-      Moderate-sized explosion that deals minimal damage and inflicts [s:magic-vulnerability-up].
-      Caused by a player with [s:xtreme-firesnaking] or [s:xtreme-watersnaking] getting hit by the opposite type of damage.
+      Moderate-sized explosion that deals minimal damage and inflicts [s:magic-vulnerability-up:2s].
+      Caused by a player with [s:xtreme-firesnaking:51s] or [s:xtreme-watersnaking:51s] getting hit by the opposite type of damage.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
     mistakes:
-      - The [s:magic-vulnerability-up] is what forces a player to "swap" bosses (resolve their [s:xtreme-firesnaking]/[s:xtreme-watersnaking] near the opposite boss). It also means that a player death is likely to cascade into a wipe, as it may cause one of the [a:plunging-snap]/[a:blasting-snap] cones to shoot at the opposite side, causing multiple explosions to be on top of each other, which is lethal.
+      - The [s:magic-vulnerability-up] is what forces a player to "swap" bosses (resolve their [s:xtreme-firesnaking:51s]/[s:xtreme-watersnaking:51s] near the opposite boss). It also means that a player death is likely to cascade into a wipe, as it may cause one of the [a:plunging-snap]/[a:blasting-snap] cones to shoot at the opposite side, causing multiple explosions to be on top of each other, which is lethal.
   over-the-falls:
     id: 46588
     mechanic: enrage

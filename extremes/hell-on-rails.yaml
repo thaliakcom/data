@@ -19,29 +19,20 @@ status:
   vulnerability-up:
     id: 1789
     type: vuln
-    duration: 60000
     description: |
       Increases damage taken per stack.
-      Inflicted by various mechanics, including [a:hail-of-thunder], [a:plasma-beam], [a:dead-mans-blastpipe], [a:third-rail], and [a:headlight].
   system-lock:
     id: 2578
     type: impairment
-    duration: 1000
     description: Players affected by this have just used a teleporter. This debuff prevents them from accidentally teleporting back immediately.
   physical-vulnerability-up:
     id: 2940
     type: vuln
-    duration: 2000
-    description: |
-      Renders physical damage lethal.
-      Inflicted by [a:plummet].
+    description: Renders physical damage lethal.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [1960, 960]
-    description: |
-      Renders magic damage lethal.
-      Inflicted by [a:hyperexplosive-plasma], [a:plasma], [a:aetherochar], [a:hyperconductive-plasma], [a:aetherosote].
+    description: Renders magic damage lethal.
   designated-conductor:
     id: 4719
     type: delay
@@ -53,16 +44,18 @@ status:
 actions:
   turret-crossing:
     id: 45628
+    source: 18999
     mechanic: mech.prepare
-    description: Spawns turrets at the side of the train car. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up].
-  turret-crossing-hit:
-    id: 45628
-    name: Turret Crossing (Hit)
+    description: Spawns turrets at the side of the train car. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up:60s].
+  electray:
+    id: 45629
+    source: 18999
     mechanic: aoe
     shape: line
-    description: The turrets at the side of the train car fire. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up].
+    description: The turrets at the side of the train car fire. Solid blocks obstruct the lasers, but hazard barriers do not. Inflicts [s:vulnerability-up:60s].
   runaway-train:
     id: 45638
+    source: 18999
     mechanic: mech.phase
     description: |
       Boss summons an orb of aether that transports players into an aetherial realm.
@@ -79,6 +72,7 @@ actions:
       id: overdraught
   overdraught:
     id: 45639
+    source: 19002
     mechanic: mech.arena
     description: Transports players into an aetherial realm.
   runaway-train-raidwide:
@@ -95,11 +89,15 @@ actions:
     description: |
       [boss] grows arms and unleashes a moderate raidwide.
   hail-of-thunder:
-    id: 45656
+    id: 45659
+    source: 18999
     mechanic: aoe
     shape: defamation
     description: |
-      The lightning traveling on the diamond summoned by [a:arcane-revelation] explodes. Inflicts [s:vulnerability-up].
+      The lightning traveling on the diamond summoned by [a:arcane-revelation] explodes. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   lightning-burst:
     id: 45715
     mechanic: tb.double
@@ -109,12 +107,14 @@ actions:
     description: Heavy tankbuster on the two highest-enmity targets.
   dead-mans-overdraught:
     id: 45663
+    source: 18999
     mechanic: mech.store
     description: |
       [boss] stores either [a:hyperexplosive-plasma] (a [m:stack.partner]) or [a:plasma] (a [m:spread]), as indicated by the number of lightning orbs floating around [boss] during the cast.
       Grants [boss] [s:dead-mans-overdraught].
   third-rail:
     id: 45665
+    source: 18999
     mechanic: aoe.delayed
     shape: chariot
     count: 8
@@ -131,9 +131,13 @@ actions:
     name: Third Rail (Hit)
     mechanic: aoe.delayed
     shape: chariot
-    description: The AoEs summoned by [a:third-rail] explode, inflicting [s:vulnerability-up].
+    description: The AoEs summoned by [a:third-rail] explode, inflicting [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   psychokinesis:
     id: 45668
+    source: 18999
     mechanic: mech.arena
     description: |
       [boss] removes some blocks from the train car.
@@ -143,42 +147,57 @@ actions:
     shape: defamation
     damage: 189342
     description: |
-      Big spreads on random players. Inflicts [s:physical-vulnerability-up].
+      Big spreads on random players. Inflicts [s:physical-vulnerability-up:2s].
+    inflicts:
+      - status: physical-vulnerability-up
+        duration: 2000
   dead-mans-express:
     id: 45670
+    source: 18999
     mechanic: mech.knockback
     damage: 19682
     description: |
       Minor raidwide that knocks all players back. Is coupled with [ms:line] [m:aoe]s that render some lanes of the train car unsafe.
-      Getting hit by one inflicts [s:vulnerability-up].
+      Getting hit by one inflicts [s:vulnerability-up:60s].
       Executes the previously stored [a:dead-mans-overdraught] right after.
   plasma-beam:
     id: 45671
+    source: 19000
     mechanic: aoe
     shape: line
     count: 4
-    description: Lightning [ms:line] [m:aoe] fired by one of the Levin Signals during [a:dead-mans-express]. Inflicts [s:vulnerability-up].
+    description: Lightning [ms:line] [m:aoe] fired by one of the Levin Signals during [a:dead-mans-express]. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   plasma:
     id: 45675
     mechanic: spread
     shape: chariot
     count: 8
     damage: 172341
-    description: Spreads on all players. Inflicts [s:magic-vulnerability-up].
+    description: Spreads on all players. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   hyperexplosive-plasma:
     id: 45676
     mechanic: stack.partner
     shape: chariot
     count: 4
     damage: 152830
-    description: Stacks on all supports or damage dealers. Inflicts [s:magic-vulnerability-up].
+    description: Stacks on all supports or damage dealers. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   dead-mans-windpipe:
     id: 45677
+    source: 18999
     mechanic: mech.pull
     damage: 0
     description: |
       Minor raidwide that pulls all players in. Is coupled with [ms:line] [m:aoe]s that render some lanes of the train car unsafe.
-      Players who get pulled to the front of the train car are hit by [a:dead-mans-blastpipe] and inflicted with [s:vulnerability-up].
+      Players who get pulled to the front of the train car are hit by [a:dead-mans-blastpipe] and inflicted with [s:vulnerability-up:60s].
       Executes the previously stored [a:dead-mans-overdraught] right after.
     children:
     - at: 2060
@@ -187,7 +206,10 @@ actions:
     id: 45679
     mechanic: aoe
     shape: rect
-    description: A rectangular AoE at the front of the train car after [a:dead-mans-windpipe].
+    description: A rectangular AoE at the front of the train car after [a:dead-mans-windpipe]. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   unlimited-express:
     id: 45680
     mechanic: mech.arena
@@ -198,11 +220,15 @@ actions:
   thunderous-breath:
     id: 45689
     mechanic: aoe
-    description: Hits all players on ground level, inflicting [s:vulnerability-up].
+    description: Hits all players on ground level, inflicting [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   headlight:
     id: 45692
+    source: 19003
     mechanic: aoe
-    description: Hits all players on top of a block, inflicting [s:vulnerability-up].
+    description: Hits all players on top of a block, inflicting [s:vulnerability-up:60s].
   aetherial-ray:
     id: 45693
     mechanic: tb.double
@@ -217,16 +243,23 @@ actions:
     shape: chariot
     count: 3
     damage: 151115
-    description: A spread on three random non-tanks.
+    description: A spread on three random non-tanks. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   aetherosote:
     id: 45698
     mechanic: stack.healers
     shape: chariot
     count: 2
     damage: 151015
-    description: A 3-man stack on healers.
+    description: A 3-man stack on healers. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   derailment-siege-x3:
     id: 45648
+    source: 18999
     mechanic: stack.tower
     count: 1
     description: |
@@ -243,6 +276,7 @@ actions:
       id: derailment-siege-hit-final
   derailment-siege-x4:
     id: 45700
+    source: 18999
     mechanic: stack.tower
     count: 1
     description: |
@@ -261,6 +295,7 @@ actions:
       id: derailment-siege-hit-final
   derailment-siege-x5:
     id: 45701
+    source: 18999
     mechanic: stack.tower
     count: 1
     description: |
@@ -318,6 +353,7 @@ actions:
     description: The final hit of [a:derailment-siege-x3]. Deals double damage.
   derail:
     id: 45709
+    source: 18999
     mechanic: mech.arena
     description: |
       [boss] destroys the current train car. Any players still on it when the cast ends are instantly killed.
@@ -335,9 +371,13 @@ actions:
     count: 2
     players: 4
     damage: 140000
-    description: The two players indicated by [s:designated-conductor] explode in a [m:stack].
+    description: The two players indicated by [s:designated-conductor] explode in a [m:stack]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   arcane-revelation:
     id: 47527
+    source: 18999
     mechanic: mech
     description: |
       Boss summons a diamond in the center of the train car. A beam of lightning periodically travels around this diamond. Also inflicts one tank and one healer with [s:designated-conductor].
@@ -392,7 +432,7 @@ timeline:
   - at: 70017
     id: turret-crossing
   - at: 80000
-    id: turret-crossing-hit
+    id: electray
   - at: 81061
     id: dead-mans-windpipe
     link: or
@@ -585,7 +625,7 @@ timeline:
   - at: 510536
     id: turret-crossing
   - at: 520723
-    id: turret-crossing-hit
+    id: electray
     link: then
   - at: 523723
     id: headlight
@@ -608,7 +648,7 @@ timeline:
   - at: 540618
     id: third-rail
   - at: 553653
-    id: turret-crossing-hit
+    id: electray
   - at: 554653
     id: dead-mans-express
     link: and

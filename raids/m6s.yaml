@@ -17,29 +17,24 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by 30%.
   six-fulms-under:
     id: 567
     type: impairment
-    duration: 3000
     description: Movement speed exponentially drops the longer the player stays in the quicksand until they are completely immobile and doomed to die. Dashes are unaffected by the movement speed reduction and can help escape the quicksand.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [960, 1960]
     description: Renders any magic damage taken lethal.
   dropsy:
     id: 3076
     type: dot
     tick: 47178
-    duration: 15000
     description: Moderate [t:DoT].
   vulnerability-up:
     id: 3361
     type: vuln
-    duration: 7960
-    description: Renders any damage taken lethal. Inflicted by [a:water-iii].
+    description: Renders any damage taken lethal.
   bind:
     id: 3625
     type: impairment
@@ -48,24 +43,20 @@ status:
     id: 4149
     type: dot
     tick: 337300
-    duration: 14960
-    description: Unlivable DoT. Inflicted by [a:unmitigated-explosion].
+    description: Unlivable DoT.
   sustained-damage-orerigato:
     id: 4149
     type: dot
     tick: 40000
-    duration: 14960
-    description: Heavy DoT. Inflicted by [a:orerigato].
+    description: Heavy DoT.
   stun:
     id: 4163
     type: impairment
-    duration: 3000
     description: Cannot move or act while flying.
   fire-resistance-down-ii:
     id: 4383
     type: vuln
-    duration: 2960
-    description: Renders any fire damage taken lethal. Inflicted by [a:brulee].
+    description: Renders any fire damage taken lethal.
   fire-resistance-up:
     id: 4455
     type: resistance
@@ -74,7 +65,6 @@ status:
     id: 4448
     name: Burning Up
     type: delay
-    duration: 43000
     description: Triggers [a:crowd-brulee] on this player at the end of the effect's duration, causing that player to explode in a moderately sized 6-player [m:stack].
     gameDescription: Getting hotter by the moment, resulting in damage to those nearby when this effect expires.
   sweltering:
@@ -86,8 +76,7 @@ status:
     id: 4450
     name: Wingmark
     type: delay
-    duration: [10000, 21000]
-    description: At the end of the effect's duration, the player is [stunned](s:stun), then launched across the arena in the direction they're facing.
+    description: At the end of the effect's duration, the player is [stunned](s:stun:3s), then launched across the arena in the direction they're facing.
     gameDescription: Bearing painted wings. Will fly forward when this effect expires.
   warm-tint:
     id: 4451
@@ -105,14 +94,12 @@ status:
     id: 4453
     name: Mousse Mine
     type: delay
-    duration: 5000
-    description: Player cannot move but can still act. At the end of the effect's duration, triggers [a:burst] on this player, a 4-player [m:stack]. Inflicted by [a:sticky-mousse].
+    description: Player cannot move but can still act. At the end of the effect's duration, triggers [a:burst] on this player, a 4-player [m:stack].
     gameDescription: Covered in mousse and unable to move. Will detonate when this effect expires.
   heating-up:
     id: 4454
     name: Heating Up
     type: delay
-    duration: [43000, 74000]
     description: Triggers [a:brulee] on this player at the end of the effect's duration, causing that player to explode in a massive [ms:defamation] type AoE.
     gameDescription: Getting hotter by the moment, resulting in damage to those nearby when this effect expires.
   lightning-resistance-down-ii:
@@ -131,7 +118,6 @@ status:
   hp-penalty:
     id: 3401
     type: impairment
-    duration: 20000
     description: Reduces maximum HP by approximately 67%, essentially rendering any damage taken while the effect is active lethal.
   damage-up:
     id: 3129
@@ -161,79 +147,100 @@ actions:
     id: 39468
     mechanic: aoe
     shape: chariot
-    description: A cactus explodes, dealing heavy damage and inflicting [s:damage-down] on those nearby.
+    description: A cactus explodes, dealing heavy damage and inflicting [s:damage-down:30s] on those nearby.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   crowd-brulee:
     id: 39469
     mechanic: stack
     shape: chariot
     damage: 111114
-    description: "[s:burning-up] resolves, triggering a moderately sized [m:stack] on that player. Inflicts [s:fire-resistance-down-ii]."
+    description: "[s:burning-up:43s] resolves, triggering a moderately sized [m:stack] on that player. Inflicts [s:fire-resistance-down-ii:3s]."
   unlimited-craving:
     id: 39479
+    source: 18347
     mechanic: mech
     description: Resets the limit break gauge to zero.
   single-style:
     id: 39485
+    source: 18335
     mechanic: mech.prepare
     description: Paints a single graffiti – in this case, arrows on the side of the arena, casting [a:rush].
   riverscape:
     id: 42595
+    source: 18335
     name: Sugarscape (River)
     mechanic: mech.arena
     description: |
       Paints a riverscape.
       The riverscape has three different states. All states feature three grass islands.
       State 1: There are bridges connecting the islands. Stepping into the water inflicts [s:fire-resistance-up] and [s:lightning-resistance-down-ii] until the player steps out. This allows players to survive [a:taste-of-fire], but [a:taste-of-thunder] becomes lethal.
-      State 2: There are still bridges connecting the islands, but the river has turned into rapids, inflicting a heavy [s:dropsy] [t:DoT] if a player steps into them. This [t:DoT] does *not* fade when the player steps out of the river.
+      State 2: There are still bridges connecting the islands, but the river has turned into rapids, inflicting a heavy [s:dropsy:15s] [t:DoT] if a player steps into them. This [t:DoT] does *not* fade when the player steps out of the river.
       State 3: The river has turned into lava and the bridges are removed. Stepping into the lava river or attempting to gapclose across instantly kills the player. The only means of moving to a different island is via [s:wingmark].
       Note that this cast transforms the height of the arena floor. If a player is casting when the arena is transformed, their cast will be interrupted if it results in them dropping slightly. For that reason, it is recommended for casters to stand where the bridges are going to be when the cast ends.
   desertscape:
     id: 42600
+    source: 18335
     name: Sugarscape (Desert)
     mechanic: mech.arena
     description: |
       Paints a desertscape.
       After the cast, all players are inflicted with [s:sweltering], a durationless [t:DoT] that lasts throughout the entirety of desert phase.
-      Additionally, 1 random tank and 1 random damage dealer are inflicted with a 43s [s:heating-up], 1 random player with a 43s [s:burning-up], and both healers with a 74s [s:heating-up].
+      Additionally, 1 random tank and 1 random damage dealer are inflicted with [s:heating-up:43s], 1 random player with [s:burning-up:43s], and both healers with [s:heating-up:74s].
   layer:
     id: 42602
+    source: 18335
     mechanic: mech.prepare
     description: Adds an additional layer to the active sugarscape.
   wingmark:
     id: 42614
+    source: 18335
     mechanic: mech.status
     description: |
       Inflicts [s:wingmark] on all players.
       [s:wingmark:d]
+    inflicts:
+      - status: wingmark
+        duration: [10000, 21000]
   burst:
     id: 42619
     mechanic: aoe
     shape: chariot
     count: 3
-    description: A bomb explodes, inflicting [s:damage-down] on anyone hit.
+    description: A bomb explodes, inflicting [s:damage-down:30s] on anyone hit.
   bad-breath:
     id: 42628
+    source: 18340
     mechanic: aoe
     shape: cone
-    description: A morbol breathes, inflicting [s:damage-down] on anyone hit.
+    description: A morbol breathes, inflicting [s:damage-down:30s] on anyone hit.
   dark-mist:
     id: 42629
+    source: 18341
     mechanic: aoe
     shape: chariot
-    description: A succubus explodes, inflicting [s:damage-down] on anyone hit.
+    description: A succubus explodes, inflicting [s:damage-down:30s] on anyone hit.
   rush:
     id: 42630
+    source: 18338
     mechanic: aoe
     shape: line
     count: 6
-    description: An arrow shoots forward, inflicting [s:damage-down] on anyone hit.
+    description: An arrow shoots forward, inflicting [s:damage-down:30s] on anyone hit.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   taste-of-thunder:
     id: 42634
     mechanic: spread
     shape: chariot
     count: 8
     damage: 125411
-    description: "[ms:chariot] spreads on everyone. Lethal to any players inside the river and under the effect of [s:lightning-resistance-down-ii]."
+    description: "[ms:chariot] spreads on everyone. Lethal to any players inside the river and under the effect of [s:lightning-resistance-down-ii]. Inflicts [s:magic-vulnerability-up:2s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   taste-of-fire:
     id: 42632
     mechanic: stack.healers
@@ -243,6 +250,7 @@ actions:
     description: "[ms:chariot] [light party stacks on healers](m:stack.healers). Lethal to any players *not* inside the river and thus not under the effect of [s:fire-resistance-up]."
   color-clash:
     id: 42635
+    source: 18335
     mechanic: mech.store
     description: |
       Shoots in the air either two or four times.
@@ -263,9 +271,13 @@ actions:
     shape: chariot
     count: 2
     damage: 184472
-    description: Light party stacks on healers. Inflicts [s:magic-vulnerability-up].
+    description: Light party stacks on healers. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   color-riot:
     id: 42641
+    source: 18335
     mechanic: tb.close-and-far
     shape: chariot
     description: |
@@ -288,29 +300,42 @@ actions:
     mechanic: tb.close-or-far
     shape: chariot
     damage: 340810
-    description: Hits the closest or farthest player with a [ms:chariot] that deals massive damage and inflicts [s:cool-tint] and [s:magic-vulnerability-up].
+    description: Hits the closest or farthest player with a [ms:chariot] that deals massive damage and inflicts [s:cool-tint] and [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   warm-bomb:
     id: 42644
     mechanic: tb.close-or-far
     shape: chariot
     damage: 340810
-    description: Hits the closest or farthest player with a [ms:chariot] that deals massive damage and inflicts [s:warm-tint] and [s:magic-vulnerability-up].
+    description: Hits the closest or farthest player with a [ms:chariot] that deals massive damage and inflicts [s:warm-tint] and [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   sticky-mousse:
+    id: 42646
+    mechanic: spread
+    shape: chariot
+    description: |
+      Hits two random players with a [ms:chariot] that deals moderate damage and inflicts [s:mousse-mine:5s] and [s:magic-vulnerability-up].
+      At the end of the status effect, triggers [a:sticky-mousse-burst], a [m:stack] on the [s:mousse-mine:5s] players.
+      Note that, if multiple players are hit by the same [a:sticky-mousse], *all* players hit will be inflicted with [s:mousse-mine:5s], rendering the mechanic unsurvivable as all those players will be hit with [stacks](m:stack) while they're on top of each other and cannot move.
+    resolve: |
+      Have players spread at standard [t:protean] positions. Once two players are inflicted with [s:mousse-mine:5s], stack with the *closest* [s:mousse-mine:5s] player. If both [s:mousse-mine:5s] players are equidistant to you, rotate to the [s:mousse-mine:5s] player clockwise from you.
+      The mechanic is intended for an even 4-4 split, but a 3-stack *is* survivable with enough mitigation. A 2-stack is not survivable under any circumstances outside of [i:tank] limit break.
+    children:
+    - at: 0
+      id: sticky-mousse-hit
+    - at: 5950
+      id: sticky-mousse-burst
+  sticky-mousse-hit:
     id: 42646
     mechanic: spread
     shape: chariot
     count: 2
     damage: 94917
-    description: |
-      Hits two random players with a [ms:chariot] that deals moderate damage and inflicts [s:mousse-mine] and [s:magic-vulnerability-up].
-      At the end of the status effect, triggers [a:sticky-mousse-burst], a [m:stack] on the [s:mousse-mine] players.
-      Note that, if multiple players are hit by the same [a:sticky-mousse], *all* players hit will be inflicted with [s:mousse-mine], rendering the mechanic unsurvivable as all those players will be hit with [stacks](m:stack) while they're on top of each other and cannot move.
-    resolve: |
-      Have players spread at standard [t:protean] positions. Once two players are inflicted with [s:mousse-mine], stack with the *closest* [s:mousse-mine] player. If both [s:mousse-mine] players are equidistant to you, rotate to the [s:mousse-mine] player clockwise from you.
-      The mechanic is intended for an even 4-4 split, but a 3-stack *is* survivable with enough mitigation. A 2-stack is not survivable under any circumstances outside of [i:tank] limit break.
-    children:
-    - at: 5950
-      id: sticky-mousse-burst
+    description: Hit of [a:sticky-mousse].
   sticky-mousse-burst:
     id: 42647
     mechanic: stack
@@ -318,7 +343,12 @@ actions:
     count: 2
     players: 4
     damage: 162827
-    description: Light party stacks on two players. Inflicts [s:magic-vulnerability-up]. Not resolvable if more than two players were inflicted with [s:mousse-mine].
+    description: Light party stacks on two players. Inflicts [s:magic-vulnerability-up:2s]. Not resolvable if more than two players were inflicted with [s:mousse-mine:5s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: mousse-mine
+        duration: 5000
   lightning-bolt:
     id: 42650
     mechanic: aoe
@@ -331,7 +361,10 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     count: 8
-    description: The screen flashes, which places an invisible AoE underneath each player that resolves shortly after and inflicts [s:damage-down].
+    description: The screen flashes, which places an invisible AoE underneath each player that resolves shortly after and inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   lightning-storm:
     id: 42654
     mechanic: spread
@@ -342,6 +375,7 @@ actions:
     resolve: Targeted players should stand on one safe grass island each while the party sits on the only safe bridge in-between them. They should be far enough away from the bridge to ensure that the AoE only touches the island they're standing on and nothing else.
   highlightning:
     id: 42651
+    source: 18339
     mechanic: aoe
     shape: defamation
     count: 2
@@ -352,7 +386,10 @@ actions:
     shape: defamation
     count: 2
     damage: 111530
-    description: "[s:heating-up] resolves, triggering a massive [ms:defamation] on that player. Inflicts [s:fire-resistance-down-ii]."
+    description: "[s:heating-up] resolves, triggering a massive [ms:defamation] on that player. Inflicts [s:fire-resistance-down-ii:3s]."
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 2960
   explosion:
     id: 42659
     mechanic: towers.single
@@ -364,9 +401,13 @@ actions:
     mechanic: mech.failure
     players: 8
     damage: 106645
-    description: A tower wasn't soaked and exploded as a result. Inflicts [s:damage-down] and [s:sustained-damage] on all players.
+    description: A tower wasn't soaked and exploded as a result. Inflicts [s:damage-down:30s] and [s:sustained-damage:15s] on all players.
+    inflicts:
+      - status: sustained-damage
+        duration: 14960
   soul-sugar:
     id: 42661
+    source: 18335
     mechanic: mech.prepare
     description: |
       Initiates adds phase.
@@ -378,18 +419,22 @@ actions:
       * **Jabberwock**: Targets a random healer with a headmarker. Shortly afterwards, uses [a:manxome-windersnatch] on that player, dealing heavy damage and inflicting [s:bind], then begins to slowly move towards that player. If the Jabberwock reaches that healer, it instantly kills them with [a:slayous-snicker-snack] and moves onto a different player.
   live-painting:
     id: 42662
+    source: 18335
     mechanic: mech.prepare
     description: Spawns a Yan, two Mus, and a Gimme Cat.
   live-painting-1:
     id: 42663
+    source: 18335
     mechanic: mech.prepare
     description: Spawns two Feather Rays and two Mus.
   live-painting-2:
     id: 42664
+    source: 18335
     mechanic: mech.prepare
     description: Spawns a Yan, a Gimme Cat, and a Jabberwock.
   live-painting-3:
     id: 42665
+    source: 18335
     mechanic: mech.prepare
     description: Spawns a Yan, two Feather Rays, two Mus, a Gimme Cat, and a Jabberwock.
   orerigato:
@@ -397,15 +442,20 @@ actions:
     mechanic: enrage.soft
     damage: 100000
     description: |
-      Mu enrage. Deals heavy damage to all players and inflicts [s:sustained-damage-orerigato].
+      Mu enrage. Deals heavy damage to all players and inflicts [s:sustained-damage-orerigato:15s].
       If multiple Mus enrage, the damage from both the raidwide and the DoT is multiplied by the number of enraging Mus. At 2 enraging Mus, the attack becomes virtually unsurvivable.
+    inflicts:
+      - status: sustained-damage-orerigato
+        duration: 14960
   ready-ore-not:
     id: 42666
+    source: 18335
     mechanic: raidwide
     damage: 214049
     description: Heavy raidwide. Requires heavy mitigation. Enrages any leftover Mus, causing them to immediately begin casting [a:orerigato].
   manxome-windersnatch:
     id: 42669
+    source: 18345
     mechanic: damage
     damage: 123105
     description: |
@@ -419,21 +469,26 @@ actions:
     resolve: Kill the Jabberwock before it reaches the healer.
   water-iii:
     id: 42671
+    source: 18346
     mechanic: spread.tethers
     shape: chariot
     damage: 51726
     description: |
-      A Feather Ray shoots at a player, dealing moderate damage and inflicting [s:vulnerability-up].
-      A water puddle also appears underneath that player that lasts throughout the entirety of adds phase. Stepping into the puddle inflicts [s:dropsy].
-      Note that the [s:vulnerability-up] is inflicted about two seconds before the puddle's location is snapshot, so avoid using the [s:vulnerability-up] as an indication on when to move.
+      A Feather Ray shoots at a player, dealing moderate damage and inflicting [s:vulnerability-up:8s].
+      A water puddle also appears underneath that player that lasts throughout the entirety of adds phase. Stepping into the puddle inflicts [s:dropsy:15s].
+      Note that the [s:vulnerability-up:8s] is inflicted about two seconds before the puddle's location is snapshot, so avoid using the [s:vulnerability-up:8s] as an indication on when to move.
+    inflicts:
+      - status: vulnerability-up
+        duration: 7960
   i-crave-violence:
     id: 42673
+    source: 18347
     mechanic: aoe
     shape: chariot
     description: |
       The cat attempts to steal aether from nearby players.
       If this attack misses all players, the cat gains one stack of [s:huffy-cat]. At [s:huffy-cat:3] it enrages with [a:hangry-hiss].
-      If this attack hits a player, that player loses all of their MP, and they're inflicted with [s:damage-down] and [s:hp-penalty].
+      If this attack hits a player, that player loses all of their MP, and they're inflicted with [s:damage-down:30s] and [s:hp-penalty:20s].
   hangry-hiss:
     id: 42674
     mechanic: enrage
@@ -443,6 +498,7 @@ actions:
       Can be delayed by 15 seconds if a player gets hit by [a:i-crave-violence]. This is not recommended, however, as the consequences for being hit by [a:i-crave-violence] are very punishing.
   pudding-graf:
     id: 42677
+    source: 18335
     mechanic: mech.prepare
     description: Prepares [a:pudding-graf-hit].
   pudding-graf-hit:
@@ -453,12 +509,16 @@ actions:
     count: 8
     damage: 98398
     description: |
-      Drops winged bombs on all damage dealers or supports and drops non-winged bombs on the opposite role. Inflicts [s:magic-vulnerability-up].
+      Drops winged bombs on all damage dealers or supports and drops non-winged bombs on the opposite role. Inflicts [s:magic-vulnerability-up:2s].
       Winged bombs (indicated by a purple tether) jump roughly half the arena's width in the direction the player is facing before exploding. Non-winged bombs (indicated by a blue tether) explode where they are dropped. The explosion manifests as a large [ms:defamation] style AoE.
       The drop itself is a [ms:chariot], so players stacking on top of each other results in deaths, regardless of whether they're tethered to a winged or non-winged bomb.
       If a bomb explodes in the quicksand, the AoE disappears.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   mousse-drip:
     id: 42679
+    source: 18335
     mechanic: stack.partner
     shape: chariot
     compact: full
@@ -482,9 +542,13 @@ actions:
     shape: chariot
     count: 2
     damage: 79665
-    description: An individual hit of [a:mousse-drip]. Leaves behind a puddle and inflicts [s:magic-vulnerability-up].
+    description: An individual hit of [a:mousse-drip]. Leaves behind a puddle and inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   pudding-party:
     id: 42605
+    source: 18335
     mechanic: stack.party
     shape: chariot
     compact: full
@@ -513,9 +577,13 @@ actions:
     shape: cone
     count: 4
     damage: 160871
-    description: Conal AoEs on the 4 closest players to [boss]. Inflicts [s:magic-vulnerability-up].
+    description: Conal AoEs on the 4 closest players to [boss]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   mousse-mural:
     id: 42684
+    source: 18335
     mechanic: raidwide
     damage: 189241
     description: Standard raidwide. Dispels any active sugarscape.
@@ -597,10 +665,10 @@ timeline:
     id: layer
     description: |
       Adds quicksand to the desertscape.
-      Players remaining in the quicksand for too long are inflicted with [s:six-fulms-under], which gradually reduces movement speed until the player can no longer move at all, at which point they die instantly.
+      Players remaining in the quicksand for too long are inflicted with [s:six-fulms-under:3s], which gradually reduces movement speed until the player can no longer move at all, at which point they die instantly.
   - at: 173706
     id: brulee
-    description: The healers' [s:heating-up] resolves, triggering a massive [ms:defamation] on them. Inflicts [s:fire-resistance-down-ii].
+    description: The healers' [s:heating-up] resolves, triggering a massive [ms:defamation] on them. Inflicts [s:fire-resistance-down-ii:3s].
   - at: 174377
     id: spray-pain
     count: 9
@@ -664,7 +732,7 @@ timeline:
     id: layer
     description: |
       Transforms the riverscape into its second stage.
-      In this stage, the river has turned into rapids and inflicts [s:dropsy] when players step into it.
+      In this stage, the river has turned into rapids and inflicts [s:dropsy:15s] when players step into it.
       Additionally, spawns a giant thundercloud over one of the three islands. The thundercloud periodically explodes ([a:highlightning]), then moves to a different island.
       Finally, [a:lightning-bolt] AoEs randomly spawn throughout the arena at 3 second intervals.
   - at: 469460

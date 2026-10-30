@@ -18,25 +18,20 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 180000
     description: |
       Reduces damage dealt by 90% for 3 minutes.
-      Inflicted by any avoidable source of damage, including but not limited to [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], auto-attacks from [s:confused] players, [a:shockwave], [a:slap-happy-hit], or [a:look-upon-me-and-despair].
+      Inflicted by any avoidable source of damage, including but not limited to [a:blizzard-iii-blowout], [a:thrumming-thunder-iii], [a:ave-maria], [a:indolent-will], auto-attacks from [s:confused:6s] players, [a:shockwave], [a:slap-happy-hit], or [a:look-upon-me-and-despair].
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [960, 1960, 3960]
-    description: |
-      Renders any magic damage taken lethal.
-      Inflicted by various actions, including [a:wave-cannon], [a:flagrant-fire-iii], [a:idyllic-will], [a:spelldriver], [a:spellwave], [a:pasts-end], [a:spellscatter], [a:futures-end], [a:wings-of-destruction-tb], [a:stray-flames], [a:inferno], [a:stray-spray], [a:tsunami], [a:ultima-blaster-lc], [a:shocking-impact], [a:shockwave], [a:knock-down-hit], [a:stomp-a-mole-hit], [a:fell-forces-healer], [a:fell-forces-dps], [a:fell-forces-tank], [a:holy-random], [a:flare], [a:chaotic-flare], [a:flare-diffusion], [a:stray-entropy-hit], and [a:chaotic-holy].
+    description: Renders any magic damage taken lethal.
   double-trouble-trap:
     id: 5078
     name: Double-trouble Trap
     type: delay
-    duration: [5000, 68000, 49000]
     description: |
       Triggers [a:double-trouble-trap-hit] when the effect expires.
-      When this effect is initially inflicted by [a:double-trouble-trap], it resolves after only 5 seconds. After the first pass, it resolves after 68 seconds, and after the second pass after 49 seconds.
+      When this effect is initially, it resolves after only 5 seconds. After the first pass, it resolves after 68 seconds, and after the second pass after 49 seconds.
       Properly handling this effect is required to fulfill the conditions for the [a:puzzle] mechanic.
       Note that, if a player with [s:double-trouble-trap] dies, the effect is lost, instantly failing the [a:puzzle] mechanic.
     gameDescription: When this effect expires, everyone else in the immediate vicinity will take damage. Should any player take damage, the [s:double-trouble-trap] will be passed to one of them.
@@ -44,47 +39,37 @@ status:
     id: 4877
     name: Tele-Portent (South)
     type: delay
-    duration: [10000, 7000]
     description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the south of the arena.
   tele-portent-up:
     id: 4876
     name: Tele-Portent (North)
     type: delay
-    duration: [10000, 7000]
     description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the north of the arena.
   tele-portent-right:
     id: 4878
     name: Tele-Portent (East)
     type: delay
-    duration: [10000, 7000]
     description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the east of the arena.
   tele-portent-left:
     id: 4879
     name: Tele-Portent (West)
     type: delay
-    duration: [7000, 10000]
     description: When the effect expires, places a sigil on the ground. Any player who steps on this sigil later is teleported a short distance towards the west of the arena.
   bind:
     id: 2518
     type: impairment
-    duration: 1000
     description: For a brief moment, afflicted players are unable to move but can still execute actions.
   confused:
     id: 1283
     type: impairment
-    duration: 6000
     description: |
-      Afflicted players run towards the closest player. If they are able to reach another player, they will auto-attack them, dealing lethal damage and inflicting [s:damage-down].
-      **Note**: Movement speed during [s:confused] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
-      **Note**: After being teleported by a teleportation sigil, [s:confused] players do not begin to move towards the next closest player again until the next server tick. This means that sometimes a [s:confused] player may stop and pause for over a second after being teleported, while other times they may start moving towards the closest player immediately and kill them. There is no way to avoid this except by chain-teleporting at least three times.
-      Inflicted by [a:indulgent-will].
+      Afflicted players run towards the closest player. If they are able to reach another player, they will auto-attack them, dealing lethal damage and inflicting [s:damage-down:180s].
+      **Note**: Movement speed during [s:confused:6s] *is* affected by any status effects that affect movement speed, such as [s:expedience] or [s:sprint].
+      **Note**: After being teleported by a teleportation sigil, [s:confused:6s] players do not begin to move towards the next closest player again until the next server tick. This means that sometimes a [s:confused:6s] player may stop and pause for over a second after being teleported, while other times they may start moving towards the closest player immediately and kill them. There is no way to avoid this except by chain-teleporting at least three times.
   sleep:
     id: 4894
     type: impairment
-    duration: 6000
-    description: |
-      Afflicted players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
-      Inflicted by [a:idyllic-will].
+    description: Afflicted players fall asleep, preventing them from moving or executing actions. If a sleeping player takes damage, they are woken up.
   # Phase 2
   spells-trouble:
     id: 5083
@@ -119,21 +104,18 @@ status:
   entropy:
     id: 1600
     type: delay
-    duration: [46000, 19000]
     description: |
       Triggers [a:stray-flames] on the afflicted players when this effect expires, then triggers [a:inferno] on the closest player(s) to the fire triangle.
       Note that if this player dies, instantly triggers [a:inferno].
   dynamic-fluid:
     id: 1601
     type: delay
-    duration: [46000, 19000]
     description: |
       Triggers [a:stray-spray] on the afflicted players when this effect expires, then triggers [a:tsunami] on the closest player(s) to the water square.
       Note that if this player dies, instantly triggers [a:tsunami].
   headwind:
     id: 1602
     type: condition
-    duration: 68000
     description: |
       Player is instantly killed if the effect is allowed to expire.
       To cleanse this debuff, player must be hit by a knockback effect while facing away from it (i.e. turning their back to it). This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
@@ -143,7 +125,6 @@ status:
   tailwind:
     id: 1603
     type: condition
-    duration: 68000
     description: |
       Player is instantly killed if the effect is allowed to expire.
       To cleanse this debuff, player must be hit by a knockback effect while directly facing it. This also has the additional effect of shortening the knockback distance and triggering a [a:cyclone].
@@ -153,17 +134,13 @@ status:
   wind-resistance-down-ii:
     id: 1052
     type: vuln
-    duration: 960
-    description: Renders any wind damage taken within the next second lethal. Inflicted by [a:cyclone].
+    description: Renders any wind damage taken within the next second lethal.
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
-    duration: 3960
-    description: Inflicted by [a:thunder-iii-hit].
   accretion:
     id: 1604
     type: condition
-    duration: 14000
     description: |
       If this debuff is permitted to expire, triggers [a:stray-earth], instantly killing afflicted players and triggering [a:earthquake-hit].
       Can be cleansed by healing afflicted players to 100% HP. Doing so also triggers [a:earthquake-hit].
@@ -171,7 +148,6 @@ status:
     id: 5454
     name: Primordial Crust
     type: condition
-    duration: [72000, 106000, 139000]
     description: |
       Afflicted players are instantly killed if this status effect is permitted to expire.
       Can be cleansed by taking lethal damage, which leaves this player at 1 HP instead. Cleansing this effect triggers an [a:earthquake-hit].
@@ -192,8 +168,7 @@ status:
   earth-resistance-down-ii:
     id: 3372
     type: vuln
-    duration: 1960
-    description: Inflicted by [a:earthquake-hit]. Renders any [a:earthquake-hit] taken within the next 2 seconds lethal.
+    description:  Renders any [a:earthquake-hit] taken within the next 2 seconds lethal.
   unbecoming:
     id: 5452
     name: Unbecoming
@@ -210,48 +185,40 @@ status:
   forked-lightning:
     id: 5544
     type: delay
-    duration: [36000, 51000, 61000, 76000]
     description: Triggers [a:death-bolt] when the effect expires. Can be either real or fake. If real, [a:death-bolt] is a [m:spread], otherwise it's a 3-player [m:stack].
   compressed-water:
     id: 5545
     type: delay
-    duration: [36000, 51000, 61000, 76000]
     description: Triggers [a:death-wave] when the effect expires. Can be either real or fake. If real, [a:death-wave] is a 3-player [m:stack], otherwise it's a [m:spread].
   cursed-shriek:
     id: 5543
     type: delay
-    duration: [60000, 69000]
     description: |
       Triggers [a:death-shriek] when the effect expires. Can be either real or fake. If real, all players must look away from the afflicted players. If fake, all players must look at the afflicted players.
       [a:grand-cross-1] always inflicts the short (60s) variant, [a:grand-cross-2] the long (69s) one.
   acceleration-bomb:
     id: 5546
     type: delay
-    duration: [36000, 51000, 61000, 76000]
     description: Triggers [a:death-bomb] when the effect expires, knocking players high into the air and instantly killing them if they fail to meet its condition. Can be either real or fake. If real, afflicted players must stop all actions (including movement) when the effect expires. If fake, afflicted players must be mid-motion when the effect expires.
   entropy-p4:
     id: 5547
     type: delay
-    duration: [45000, 60000]
     description: |
       Drops an invisible AoE ([a:stray-flames-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:chariot], otherwise it's a [ms:dynamo].
       Always resolves before [s:dynamic-fluid-p4], regardless of whether [a:inferno-p4] or [a:tsunami-p4] is cast first.
   dynamic-fluid-p4:
     id: 5548
     type: delay
-    duration: [69000, 84000]
     description: |
       Drops an invisible AoE ([a:stray-spray-p4]) when the effect expires that resolves a short while later. Can be either real or fake. If real, the dropped AoE is a [ms:dynamo], otherwise it's a [ms:chariot].
       Always resolves after [s:entropy-p4], regardless of whether [a:inferno-p4] or [a:tsunami-p4] is cast first.
   beyond-death:
     id: 1382
     type: condition
-    duration: 14000
     description: |
       Can be either real or fake.
       If real: player instantly dies if they do *not* take lethal damage before the effect expires. If a player takes lethal damage, they're instead left at 1 HP. Additionally, this debuff significantly increases vulnerability to matching antilight colours, dealing exactly 3 times the player's maximum HP in damage if standing on a matching colour.
       If fake: significantly increases vulnerability to matching antilight colours, dealing exactly 3 times the player's maximum HP in damage if standing on a matching colour and instantly killing that player. Has no other effect.
-      Inflicted by [a:grand-cross-3].
   white-wound:
     id: 5541
     type: condition
@@ -263,12 +230,10 @@ status:
   allagan-field:
     id: 454
     type: condition
-    duration: 15000
     description: |
       Can be either real or fake.
       If real: while this debuff is active, any damage taken is tallied, multiplied by 10, and released in the form of raidwide damage when the debuff expires ([a:death-surge]). Minimizing the amount of damage taken minimizes the amount of damage dealt by [a:death-surge].
       If fake: when this debuff is inflicted, a lethal amount of damage is already stored, to be unleashed in the form of raidwide damage when the debuff expires ([a:death-surge]). Taking damage *reduces* the stored damage. Maximizing the amount of damage minimizes the amount of damage dealt by [a:death-surge].
-      Inflicted by [a:grand-cross-3].
   mana-charge:
     id: 1482
     type: form
@@ -287,31 +252,26 @@ status:
     id: 5351
     name: Surprise Holy
     type: delay
-    duration: 6000
     description: Triggers [a:chaotic-holy] when the effect expires.
     gameDescription: "[a:chaotic-holy] will activate when this effect expires."
   surprise-flare:
     id: 5350
     name: Surprise Flare
     type: delay
-    duration: 6000
     description: Triggers [a:flare-diffusion] when the effect expires.
     gameDescription: "[a:flare-diffusion] will activate when this effect expires."
   lightning-resistance-down-ii-p5:
     id: 2998
     type: vuln
-    duration: 20000
-    description: Renders any lightning damage taken lethal. Inflicted by [a:thunder-iii-tower].
+    description: Renders any lightning damage taken lethal.
   fire-resistance-down-ii:
     id: 2902
     type: vuln
-    duration: 20000
-    description: Renders any fire damage taken lethal. Inflicted by [a:fire-iii-tower].
+    description: Renders any fire damage taken lethal.
   ice-resistance-down-ii:
     id: 2903
     type: vuln
-    duration: 20000
-    description: Renders any ice damage taken lethal. Inflicted by [a:blizzard-iii-tower].
+    description: Renders any ice damage taken lethal.
   forsaken:
     id: 5144
     name: Forsaken
@@ -329,7 +289,7 @@ actions:
       This fight has several puzzle mechanics that must be correctly resolved in phase 1 or the fight simply kicks players out of the instance after phase 2. Here's a list of all prerequisites:
       * [s:double-trouble-trap] must always be passed to another player, and no player is permitted to die to [a:double-trouble-trap-hit] at any point. If it is at any point allowed to expire by not passing it to another player, the puzzle is failed. This includes the last pass during [a:tele-trouncing], where the debuff is not reapplied despite being passed.
       * During [a:graven-image-2], all gravity wells (puddles) must be soaked after transforming ([a:gravity-iii]). If any gravity wells are permitted to fade away naturally, the puzzle is failed.
-      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) by a [s:confused] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigil is stepped on by a player who is *not* [s:confused], the puzzle is failed.
+      * During [a:tele-trouncing], all teleportation sigils must be utilized (stepped on) by a [s:confused:6s] player. If any teleportation sigils are permitted to fade away naturally, *or* any teleportation sigil is stepped on by a player who is *not* [s:confused:6s], the puzzle is failed.
       To know whether you fulfilled the conditions for the puzzle mechanics so far, [boss] changes his voiceline after all three of the above mechanics:
       * If [s:double-trouble-trap] is not passed the first time it is applied by [a:double-trouble-trap], [boss] says nothing. Otherwise he says "Hook, line, and stinker!"
       * If the gravity wells are *not* soaked, [boss] says nothing. Otherwise he says "What?! There's no way that didn't work!" after the next [a:hyperdrive].
@@ -356,13 +316,21 @@ actions:
     id: 50179
     source: 19504
     mechanic: tb.mt
-    shape: cone
-    damage: 1025720
     description: Heavy tankbuster that hits twice. First hits first-in-enmity, then second-in-enmity.
     resolve: This action inflicts no vulnerability debuff, so with a [t:tankswap] the same player can take both hits without [t:invuln].
     children:
+    - at: 0
+      id: revolting-ruin-iii-hit
     - at: 3124
       id: revolting-ruin-iii-followup
+  revolting-ruin-iii-hit:
+    id: 50179
+    source: 19504
+    caption: Hit
+    mechanic: tb.mt
+    shape: cone
+    damage: 1025720
+    description: Hit of [a:revolting-ruin-iii].
   revolting-ruin-iii-followup:
     id: 50401
     source: 19504
@@ -387,8 +355,11 @@ actions:
     description: |
       [boss] commands the statue in the background to tether to all DPS or all supports and execute [a:pulse-wave]. [boss] casts [a:mystery-magic-blizzard-fire] at the same time.
       The tethered players are knocked back away from north just before [a:mystery-magic-blizzard-fire] finishes casting. When [a:mystery-magic-blizzard-fire] finishes casting, [a:blizzard-iii-blowout] and [a:flagrant-fire-iii] resolve, though these can also be inverted (see [a:mystery-magic-blizzard-fire] for more information).
-      Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
+      Afterwards, the statue fires a [a:wave-cannon] at 2 random DPS and 2 random supports, inflicting [s:magic-vulnerability-up] on everyone hit and spawning towers underneath the targeted players. Soaking a tower deals heavy damage ([a:explosion]) while failing to soak a tower inflicts [s:damage-down:180s] on all players ([a:unmitigated-explosion]).
       **Note**: If neither [a:double-trouble-trap-hit] hits any other player here (and both debuffs fall off as a result), [boss] omits his next voiceline "Hook, line, and stinker!".
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 45
       id: auto-attack
@@ -538,13 +509,19 @@ actions:
     count: 4
     damage: 327868
     description: |
-      The statue fires 4 line AoEs at 2 random supports and 2 random DPS. Inflicts [s:magic-vulnerability-up] and leaves behind a tower on those who were hit.
+      The statue fires 4 line AoEs at 2 random supports and 2 random DPS. Inflicts [s:magic-vulnerability-up:4s] and leaves behind a tower on those who were hit.
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   double-trouble-trap:
     id: 47782
     source: 19504
     mechanic: mech.status
-    description: Inflicts [s:double-trouble-trap] on a random support and a random DPS.
+    description: Inflicts [s:double-trouble-trap:5s] on a random support and a random DPS.
+    inflicts:
+      - status: double-trouble-trap
+        duration: 5000
   explosion:
     id: 47786
     mechanic: towers.single
@@ -554,13 +531,19 @@ actions:
       Towers resolve.
       If soaked by a player without [s:magic-vulnerability-up], deals heavy damage to them.
       If soaked by a player with [s:magic-vulnerability-up], instantly kills them.
-      If left unsoaked, deals minimal damage and inflicts [s:damage-down] on all players ([a:unmitigated-explosion]).
+      If left unsoaked, deals minimal damage and inflicts [s:damage-down:180s] on all players ([a:unmitigated-explosion]).
+    inflicts:
+      - status: damage-down
+        duration: 180000
   unmitigated-explosion:
     id: 47787
     mechanic: mech.failure
     players: 8
     damage: 14000
-    description: A tower wasn't soaked, dealing minimal damage and inflicting [s:damage-down] on all players.
+    description: A tower wasn't soaked, dealing minimal damage and inflicting [s:damage-down:180s] on all players.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   blizzard-iii-blowout:
     id: 47768
     mechanic: aoe
@@ -569,8 +552,11 @@ actions:
     players: 0
     damage: 210019
     description: |
-      Cone AoEs resolve, dealing heavy damage and inflicting [s:damage-down] on anyone hit.
+      Cone AoEs resolve, dealing heavy damage and inflicting [s:damage-down:180s] on anyone hit.
       If the ice ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   flagrant-fire-iii:
     id: 47778
     mechanic: mech.spread-or-stack
@@ -602,8 +588,11 @@ actions:
     count: 2
     damage: 211571
     description: |
-      Circular stacks resolve on the indicated healer and DPS. Inflicts [s:magic-vulnerability-up].
+      Circular stacks resolve on the indicated healer and DPS. Inflicts [s:magic-vulnerability-up:1s].
       If the fire ring around [boss] has question marks, this mechanic is inverted, instead becoming a spread on all players ([a:flagrant-fire-iii-spread]).
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   double-trouble-trap-hit:
     id: 47783
     caption: Hit
@@ -617,6 +606,12 @@ actions:
       The player with [s:double-trouble-trap] never takes damage from this attack. For any other player caught within the AoE, deals shared damage (lethal unless soaked with at least 3 players), knocks hit players back from the debuffed player, and passes [s:double-trouble-trap] to one of them (a maximum of two times).
       There is no restriction on whom [s:double-trouble-trap] can pass to. A player who already had [s:double-trouble-trap] can still get it again.
       **Note**: to fulfill the requirements for the [a:puzzle] mechanic, this attack must *always* be shared, and no player is permitted to die to this attack at any point.
+      Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
+      - status: double-trouble-trap
+        duration: [49000, 68000]
     resolve: |
       Since [s:double-trouble-trap] is always inflicted on one support and one DPS, have both role groups stack with their respective [s:double-trouble-trap] player on a fixed, predetermined position. The [s:double-trouble-trap] should be farther back than the stacking players to aim the knockback.
       For early prog, if any player is dead before [a:double-trouble-trap-hit], don't [t:wall] immediately, but don't stack for the hit either. Simply have the debuffed player walk off somewhere to solo the hit. This dispels the debuff and fails the [a:puzzle], but allows the party to continue progging up to the end of phase 2.
@@ -628,8 +623,11 @@ actions:
     players: 0
     damage: 194824
     description: |
-      Line AoEs resolve, dealing heavy damage and inflicting [s:damage-down] on anyone hit.
+      Line AoEs resolve, dealing heavy damage and inflicting [s:damage-down:180s] on anyone hit.
       If the lightning ring around [boss] has question marks, this AoE is inverted, instead hitting where the telegraph *isn't*.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   light-of-judgment:
     id: 50722
     source: 19504
@@ -699,13 +697,19 @@ actions:
     source: 19505
     mechanic: aoe
     shape: halfroom
-    description: The left half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down].
+    description: The left half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   intemperate-will:
     id: 47794
     source: 19505
     mechanic: aoe
     shape: halfroom
-    description: The right half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down].
+    description: The right half of the arena (the side the statue's orb is on) explodes, dealing heavy damage and inflicting [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   tele-trouncing:
     id: 47801
     source: 19504
@@ -717,9 +721,9 @@ actions:
       All players are inflicted with two of these status effects. The second resolves three seconds after the first.
       Exactly one player is inflicted with 2× [s:tele-portent-up], one player with 2× [s:tele-portent-down], etc. The other 4 players are inflicted with mixed Tele-Portent directions.
       When any of these effects resolve, it places a sigil on the ground that teleports a player in the indicated direction if any player steps on it later. These sigils are single-use only and disappear immediately after use. They also disappear on their own a certain time after being placed.
-      Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused], the right side [s:sleep].
-      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also hit at the same time: [a:indulgent-will] hits only its tethered player, while [a:idyllic-will] is a [m:spread] AoE. Neither inflicts [s:magic-vulnerability-up], so overlapping is survivable with sufficient mitigation. However, an [a:indulgent-will] player standing in an [a:idyllic-will] AoE is put to [s:sleep] as well, essentially failing the mechanic (see [a:puzzle]).
-      **Note**: All teleportation sigils must be utilized (stepped on) by a [s:confused] player as a prerequisite for reaching phase 3. See [a:puzzle] for more information.
+      Players are now tethered to either the left or right side of the statue. All players of the same role are tethered to the same side of the statue. The left side will inflict [s:confused:6s], the right side [s:sleep:6s].
+      A few seconds after [a:double-trouble-trap-hit], tethers resolve. All tethered players are also hit at the same time: [a:indulgent-will] hits only its tethered player, while [a:idyllic-will] is a [m:spread] AoE. Neither inflicts [s:magic-vulnerability-up], so overlapping is survivable with sufficient mitigation. However, an [a:indulgent-will] player standing in an [a:idyllic-will] AoE is put to [s:sleep:6s] as well, essentially failing the mechanic (see [a:puzzle]).
+      **Note**: All teleportation sigils must be utilized (stepped on) by a [s:confused:6s] player as a prerequisite for reaching phase 3. See [a:puzzle] for more information.
     trivia: |
       As of June 23, 2026 the effect of arrows has changed. Before the maintenance hotfix released on this date, arrows always teleported you a set distance in the indicated direction based on where you stepped onto the arrow. This was error-prone, as the server does not register a player being "on" an arrow until the next server tick, which means that players sometimes made it farther onto the arrow than other pulls, potentially messing up the teleport and landing short of the next arrow.
       The maintenance hotfix changed this: arrows no longer teleport a player from wherever they entered the arrow; instead they always teleport a player from the center of the arrow.
@@ -754,6 +758,16 @@ actions:
     count: 8
     description: |
       A Tele-Portent debuff resolves, leaving behind an arrow teleporter sigil. Deals no damage.
+      Inflicts [s:tele-portent-up], [s:tele-portent-right], [s:tele-portent-down], and [s:tele-portent-left].
+    inflicts:
+      - status: tele-portent-down
+        duration: [7000, 10000]
+      - status: tele-portent-up
+        duration: [7000, 10000]
+      - status: tele-portent-right
+        duration: [7000, 10000]
+      - status: tele-portent-left
+        duration: [7000, 10000]
   indulgent-will:
     id: 47797
     source: 19505
@@ -761,9 +775,12 @@ actions:
     count: 4
     damage: 219477
     description: |
-      Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players and inflicting [s:confused].
+      Tethers from the left side of the statue resolve, dealing heavy damage to the tethered players and inflicting [s:confused:6s].
       Note that this attack only hits the tethered player, while [a:idyllic-will] is an AoE, so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+    inflicts:
+      - status: confused
+        duration: 6000
   idyllic-will:
     id: 47798
     source: 19505
@@ -772,23 +789,35 @@ actions:
     count: 4
     damage: 218222
     description: |
-      Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep].
+      Tethers from the right side of the statue resolve, dealing heavy damage to the tethered players in a radius and inflicting [s:sleep:6s].
       Note that this AoE is significantly larger than [a:indulgent-will], which only hits the tethered player, so it is possible for an [a:idyllic-will] player to be too close and kill an [a:indulgent-will] player while surviving themselves.
       Note that this action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+      Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
+      - status: sleep
+        duration: 6000
   ave-maria:
     id: 47795
     source: 19505
     mechanic: mech.lookat
     players: 0
     damage: 192456
-    description: A glowing yellow eye with a question mark appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down] on players who look away from it.
+    description: A glowing yellow eye with a question mark appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down:180s] on players who look away from it.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   indolent-will:
     id: 47796
     source: 19505
     mechanic: mech.lookaway
     players: 0
     damage: 211863
-    description: A purple eye appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down] on players who look at it.
+    description: A purple eye appears on the statue in the background. Deals heavy damage and inflicts [s:damage-down:180s] on players who look at it.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   light-of-judgment-enrage:
     id: 47803
     mechanic: enrage.threshold
@@ -846,7 +875,7 @@ actions:
     description: |
       Heavy raidwide that inflicts [s:spells-trouble:4] on all players and spawns a series of towers.
       This is a mechanic composed of **eight sets**. Each set is composed of exactly two adjacent towers. The requirements for this mechanic are relatively simple:
-      * During each set, each tower must be soaked by exactly two players. Soaking a tower with any more or less players deals heavy damage and inflicts [s:damage-down] on the entire party.
+      * During each set, each tower must be soaked by exactly two players. Soaking a tower with any more or less players deals heavy damage and inflicts [s:damage-down:180s] on the entire party.
       * After all eight sets, all players' [s:spells-trouble] stacks must be cleansed. [a:light-of-judgment-p2] instantly kills any player with any remaining [s:spells-trouble] stacks. A stack of [s:spells-trouble] is cleansed whenever the afflicted player soaks a tower.
       While this sounds relatively simple, there are additional complications:
       * Each stack of [s:spells-trouble] represents a specific type of **spell**. Whenever a stack of [s:spells-trouble] is cleansed, the corresponding spell triggers and must be resolved correctly (see below). The possible types of spells are: [ms:cone], [ms:chariot], and [m:stack].
@@ -874,6 +903,9 @@ actions:
       * If you and your partner have the same spell, you belong to the second group (group "B").
       You'll also want to designate one player per pair as the "flex" player. (Usually, this role falls to tanks and melees.) These players must adjust to the other tower if their role partner has the same spell as them.
       Which tower set which group is responsible for, and what the concrete positions of everyone during a tower set are, depends on the specific strategy you opt to use. There are many possible strategy variations.
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 1923
       id: auto-attack-p2
@@ -939,11 +971,17 @@ actions:
     mechanic: towers.double
     count: 2
     damage: 0
-    description: Two adjacent [t:enumeration] towers resolve, dealing heavy damage and inflicting [s:damage-down] if not soaked by exactly two players ([a:the-river-of-light]). Deals no damage otherwise.
+    description: Two adjacent [t:enumeration] towers resolve, dealing heavy damage and inflicting [s:damage-down:180s] if not soaked by exactly two players ([a:the-river-of-light]). Deals no damage otherwise.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   the-river-of-light:
     id: 47807
     mechanic: mech.failure
-    description: A tower explodes as a result of not being soaked by exactly 2 players, inflicting heavy damage and [s:damage-down] on all players.
+    description: A tower explodes as a result of not being soaked by exactly 2 players, inflicting heavy damage and [s:damage-down:180s] on all players.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   spelldriver:
     id: 47808
     mechanic: stack
@@ -951,13 +989,19 @@ actions:
     count: 2
     players: 3
     damage: 196816
-    description: A stack [s:spells-trouble] resolves in the form of a 3-player stack on the targeted player. Inflicts [s:magic-vulnerability-up].
+    description: A stack [s:spells-trouble] resolves in the form of a 3-player stack on the targeted player. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   spellwave:
     id: 47810
     mechanic: spread.close
     shape: cone
     damage: 200841
-    description: A conal [s:spells-trouble] resolves, firing a cone at the closest player. Inflicts [s:magic-vulnerability-up].
+    description: A conal [s:spells-trouble] resolves, firing a cone at the closest player. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   pasts-end:
     id: 47833
     source: 19513
@@ -966,8 +1010,13 @@ actions:
     count: 4
     damage: 230283
     description: |
-      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down] on all players behind [boss] and his clones.
+      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up:2s].
+      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a rear [ms:halfroom] cleave that inflicts [s:damage-down:180s] on all players behind [boss] and his clones.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: damage-down
+        duration: 180000
   futures-end:
     id: 47832
     source: 19513
@@ -976,21 +1025,32 @@ actions:
     count: 4
     damage: 173104
     description: |
-      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up].
-      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down] on all players in front of [boss] and his clones.
+      [boss] dashes at the 4 closest players and deals heavy damage to them in a radius, leaving behind clones. Inflicts [s:magic-vulnerability-up:2s].
+      A short time later, [boss] and his 3 clones each face a random player and begin casting [a:all-things-ending], a frontal [ms:halfroom] cleave that inflicts [s:damage-down:180s] on all players in front of [boss] and his clones.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
+      - status: damage-down
+        duration: 180000
   spellscatter:
     id: 47809
     mechanic: spread
     shape: chariot
     damage: 207036
-    description: A circular [s:spells-trouble] resolves in the form of a moderate circular spread AoE. Inflicts [s:magic-vulnerability-up].
+    description: A circular [s:spells-trouble] resolves in the form of a moderate circular spread AoE. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   all-things-ending:
     id: 47836
     source: 19513
     mechanic: aoe
     shape: halfroom
     count: 4
-    description: "[boss] and his 3 clones execute a [ms:halfroom] cleave behind (if [a:pasts-end] was cast) or in front (if [a:futures-end] was cast) of where they are currently facing. Inflicts [s:damage-down]."
+    description: "[boss] and his 3 clones execute a [ms:halfroom] cleave behind (if [a:pasts-end] was cast) or in front (if [a:futures-end] was cast) of where they are currently facing. Inflicts [s:damage-down:180s]."
+    inflicts:
+      - status: damage-down
+        duration: 180000
   light-of-judgment-p2:
     id: 47805
     source: 19506
@@ -1003,9 +1063,12 @@ actions:
     mechanic: aoe.3-to-1
     shape: chariot
     description: |
-      Three sets of triangles descend. 12 seconds later, the tips of the triangles explode in the order they spawned. These explosions inflict [s:damage-down].
+      Three sets of triangles descend. 12 seconds later, the tips of the triangles explode in the order they spawned. These explosions inflict [s:damage-down:180s].
       The first triangle set is always composed of three triangles and always appears on the outside of the arena. The second triangle set is composed of only one triangle and also always appears on the outside of the arena. The third triangle set is composed of three triangles and always includes two outside triangles and a triangle in the center of the arena.
       [a:wings-of-destruction] happens right before triangles explode, and [a:wings-of-destruction-tb] at the same time as the last hit.
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 2855
       id: auto-attack-p2
@@ -1029,15 +1092,22 @@ actions:
       id: wings-of-destruction-tb
   wings-of-destruction:
     id: 47821
+    source: 19506
     caption: Halfroom
     mechanic: aoe
     shape: halfroom
-    description: One of [boss]'s wings begins to glow and cleaves that half of the arena. Inflicts [s:damage-down].
+    description: One of [boss]'s wings begins to glow and cleaves that half of the arena. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   trine-hit:
     id: 47840
     mechanic: aoe
     shape: chariot
-    description: A triangle's tips explode, inflicting [s:damage-down] on any nearby player.
+    description: A triangle's tips explode, inflicting [s:damage-down:180s] on any nearby player.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   wings-of-destruction-tb:
     id: 47823
     caption: TB
@@ -1045,7 +1115,10 @@ actions:
     shape: chariot
     count: 2
     damage: 646810
-    description: Hits the closest and farthest player with a big circular [t:tankbuster]. Inflicts [s:magic-vulnerability-up].
+    description: Hits the closest and farthest player with a big circular [t:tankbuster]. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   light-of-judgment-p2-enrage:
     id: 47841
     mechanic: enrage
@@ -1120,27 +1193,36 @@ actions:
     emphasis: more
     description: |
       Chaos inflicts various debuffs on all players.
-      * Each player is randomly inflicted with either [s:headwind] or [s:tailwind]. The split is random and not necessarily 4/4.
+      * Each player is randomly inflicted with either [s:headwind:68s] or [s:tailwind:68s]. The split is random and not necessarily 4/4.
       * 1 random support and 1 random DPS are inflicted with [s:entropy].
       * 1 random support and 1 random DPS are inflicted with [s:dynamic-fluid].
       Both [s:entropy] effects have a duration of 19 seconds and [s:dynamic-fluid] a duration of 46 seconds or vice-versa.
       Also spawns three sigils in the arena (a water square, wind diamond, and fire triangle). These three sigils are always 90° offset from each other. All three sigils target the closest player or players with a mechanic after a corresponding elemental debuff is cleansed:
       * The water square targets the closest player(s) with [a:tsunami], a small [m:spread] AoE, whenever a [s:dynamic-fluid] is cleansed.
       * The fire triangle targets the closest player(s) with [a:inferno], a moderately large [ms:dynamo] AoE, whenever an [s:entropy] is cleansed.
-      * The wind diamond targets the closest player(s) with [a:cyclone], a moderately large [m:stack.partner], whenever a [s:headwind]/[s:tailwind] is cleansed.
+      * The wind diamond targets the closest player(s) with [a:cyclone], a moderately large [m:stack.partner], whenever a [s:headwind:68s]/[s:tailwind:68s] is cleansed.
       Be aware that this entire mechanic is essentially a long [t:body check]. If any player dies at any point, all their debuffs are considered to be "cleansed", triggering [a:tsunami] or [a:inferno] and [a:cyclone]. Since [a:cyclone] cannot be survived solo, it is likely to kill whomever it targets, triggering a chain reaction of [a:cyclone]s until everyone is dead.
+    inflicts:
+      - status: entropy
+        duration: [19000, 46000]
+      - status: dynamic-fluid
+        duration: [19000, 46000]
+      - status: headwind
+        duration: 68000
+      - status: tailwind
+        duration: 68000
     strategies:
       bowels-intended:
         name: Intended
         description: |
           **Warning**: The intended strategy is not currently used in party finder. Unless you intend to use this strategy with a premade group for the challenge, it is recommended to use one of the other two strategies instead.
-          The intended strategy for [a:bowels-of-agony] has players gradually resolve their [s:headwind]/[s:tailwind] debuffs over the course of the mini-phase. This is done as follows:
+          The intended strategy for [a:bowels-of-agony] has players gradually resolve their [s:headwind:68s]/[s:tailwind:68s] debuffs over the course of the mini-phase. This is done as follows:
           * Drag Chaos to the wind diamond. Drag Exdeath opposite.
           * Check which debuff ([s:entropy] or [s:dynamic-fluid]) resolves first and which one last (short or long).
-          * When [s:entropy] resolves, have the four players without [s:entropy] and [s:dynamic-fluid] go to the wind diamond and position into two distinct pairs. One player per pair must be close to the wind diamond, the other farther away, otherwise two [a:cyclone]s will be baited onto the same pair. The two [s:entropy] players position themselves around the fire triangle (one close, one at the edge of the arena). Two other players who still have [s:headwind]/[s:tailwind] position themselves to get hit by the follow-up [a:inferno] on the close player while facing the right way depending on their debuff. This will cleanse their [s:headwind]/[s:tailwind] and trigger [a:cyclone] on the two closest players to the wind diamond.
-          * When [s:dynamic-fluid] resolves, have the two [s:dynamic-fluid] players go to the wind diamond and position into two distinct pairs, each partnering up with one other player. Two other players position themselves around the water square (one close, one far). Two other players who still have [s:headwind]/[s:tailwind] position themselves inside the follow-up [a:tsunami] on the close player while facing the correct way. This will cleanse their [s:headwind]/[s:tailwind] and trigger [a:cyclone] on the two closest players to the wind diamond (which should be the two [s:dynamic-fluid] players).
+          * When [s:entropy] resolves, have the four players without [s:entropy] and [s:dynamic-fluid] go to the wind diamond and position into two distinct pairs. One player per pair must be close to the wind diamond, the other farther away, otherwise two [a:cyclone]s will be baited onto the same pair. The two [s:entropy] players position themselves around the fire triangle (one close, one at the edge of the arena). Two other players who still have [s:headwind:68s]/[s:tailwind:68s] position themselves to get hit by the follow-up [a:inferno] on the close player while facing the right way depending on their debuff. This will cleanse their [s:headwind:68s]/[s:tailwind:68s] and trigger [a:cyclone] on the two closest players to the wind diamond.
+          * When [s:dynamic-fluid] resolves, have the two [s:dynamic-fluid] players go to the wind diamond and position into two distinct pairs, each partnering up with one other player. Two other players position themselves around the water square (one close, one far). Two other players who still have [s:headwind:68s]/[s:tailwind:68s] position themselves inside the follow-up [a:tsunami] on the close player while facing the correct way. This will cleanse their [s:headwind:68s]/[s:tailwind:68s] and trigger [a:cyclone] on the two closest players to the wind diamond (which should be the two [s:dynamic-fluid] players).
           * Drag Exdeath to the wind diamond before he begins casting [a:vacuum-wave].
-          * When Exdeath begins casting [a:vacuum-wave], the 4 players whose [s:headwind]/[s:tailwind] have already been cleansed use knockback immunity ([a:surecast]/[a:arms-length]) and each pair up with a player who still has their [s:headwind]/[s:tailwind] debuff. After [a:vacuum-wave], the four players who used knockback immunity should be targeted by [a:cyclone]. They must ensure that no one is closer to the wind diamond than the four of them, and that they each clip their partner (a player who just cleansed their [s:headwind]/[s:tailwind]) but *not* each other.
+          * When Exdeath begins casting [a:vacuum-wave], the 4 players whose [s:headwind:68s]/[s:tailwind:68s] have already been cleansed use knockback immunity ([a:surecast]/[a:arms-length]) and each pair up with a player who still has their [s:headwind:68s]/[s:tailwind:68s] debuff. After [a:vacuum-wave], the four players who used knockback immunity should be targeted by [a:cyclone]. They must ensure that no one is closer to the wind diamond than the four of them, and that they each clip their partner (a player who just cleansed their [s:headwind:68s]/[s:tailwind:68s]) but *not* each other.
       bowels-tank-lb-pairs:
         name: Tank LB3 (via pairs)
         description: |
@@ -1150,9 +1232,9 @@ actions:
           * Both healers go to the water square and stack.
           * Everyone else remains near the wind diamond, in melee range of Chaos. These players need to watch out for only two things: a) when [s:entropy] resolves, both [s:entropy] players may not be stacking with each other, and b) when elements resolve, these players should be close to the edge of the arena, not in the middle, to avoid being clipped by [a:inferno] or [a:stray-spray].
           * Resolve the rest of the mechanics as usual.
-          * Right before [a:vacuum-wave] finishes casting, use tank limit break 3. Remember to face the right way; every player resolves [s:headwind]/[s:tailwind] using [a:vacuum-wave]. Do not use knockback immunity.
+          * Right before [a:vacuum-wave] finishes casting, use tank limit break 3. Remember to face the right way; every player resolves [s:headwind:68s]/[s:tailwind:68s] using [a:vacuum-wave]. Do not use knockback immunity.
           * Get knocked back into distinct pairs and wait for [a:cyclone] to resolve.
-          Every player will get a [a:cyclone] at this point if done correctly. The reason this works despite the [s:wind-resistance-down-ii] is that the tank limit break 3 essentially reduces the [a:cyclone] damage back to its pre-[s:wind-resistance-down-ii] value again.
+          Every player will get a [a:cyclone] at this point if done correctly. The reason this works despite the [s:wind-resistance-down-ii:1s] is that the tank limit break 3 essentially reduces the [a:cyclone] damage back to its pre-[s:wind-resistance-down-ii] value again.
       bowels-tank-lb-stack:
         name: Tank LB3 (via stack)
         description: |
@@ -1276,8 +1358,11 @@ actions:
     count: 2
     damage: 282622
     description: |
-      [s:entropy] resolves, dealing damage to the player and all players in a small radius around them. Inflicts [s:magic-vulnerability-up].
+      [s:entropy] resolves, dealing damage to the player and all players in a small radius around them. Inflicts [s:magic-vulnerability-up:4s].
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   thunder-iii-out:
     id: 47890
     source: 19509
@@ -1285,7 +1370,10 @@ actions:
     caption: AoE
     mechanic: aoe
     shape: chariot
-    description: A large point-blank AoE on Exdeath's position. Inflicts [s:damage-down].
+    description: A large point-blank AoE on Exdeath's position. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   inferno:
     id: 47860
     name: Inferno
@@ -1297,6 +1385,8 @@ actions:
     description: |
       A moderately large [ms:dynamo] AoE on the 2 closest players to the fire triangle. Inflicts [s:magic-vulnerability-up]. Anyone hit by the dynamo is knocked away from the center of it. Always resolves right after [s:entropy].
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
+    inflicts:
+      - status: magic-vulnerability-up
   cyclone:
     id: 47864
     name: Cyclone
@@ -1304,9 +1394,12 @@ actions:
     shape: chariot
     damage: 202029
     description: |
-      Any time a [s:headwind] or [s:tailwind] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii].
+      Any time a [s:headwind:68s] or [s:tailwind:68s] debuff is cleansed, the wind diamond hits the closest players to itself with a [m:stack.partner]. The number of players hit is equal to the number of wind debuffs cleansed. Inflicts [s:wind-resistance-down-ii:1s].
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
       Note that, while this is *intended* as a [m:stack.partner] and deals lethal damage when taken solo, the damage *does* scale linearly with the number of players soaking a hit. In other words: the more players are in the stack, the less damage it deals with no limit. This may be useful in certain strategies.
+    inflicts:
+      - status: wind-resistance-down-ii
+        duration: 960
   thunder-iii-tb:
     id: 47881
     source: 19509
@@ -1314,7 +1407,7 @@ actions:
     caption: 2× TB
     mechanic: tb.close
     shape: chariot
-    description: Hits the closest player to Exdeath with a heavy tankbuster, then does it again. Inflicts [s:lightning-resistance-down-ii].
+    description: Hits the closest player to Exdeath with a heavy tankbuster, then does it again. Inflicts [s:lightning-resistance-down-ii:4s].
     children:
     - at: 90
       id: thunder-iii-hit
@@ -1327,7 +1420,10 @@ actions:
     mechanic: tb.close
     shape: chariot
     damage: 674286
-    description: Individual hit of [a:thunder-iii-tb]. Hits the closest player to Exdeath.
+    description: Individual hit of [a:thunder-iii-tb]. Hits the closest player to Exdeath. Inflicts [s:lightning-resistance-down-ii:4s].
+    inflicts:
+      - status: lightning-resistance-down-ii
+        duration: 3960
   trance:
     id: 49878
     source: 19504
@@ -1374,6 +1470,8 @@ actions:
     description: |
       [s:dynamic-fluid] resolves, triggering a moderately large [ms:dynamo] AoE on the positions of the afflicted players.
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
+    inflicts:
+      - status: magic-vulnerability-up
   tsunami:
     id: 47861
     name: Tsunami
@@ -1382,8 +1480,11 @@ actions:
     count: 2
     damage: 262491
     description: |
-      The water square hits the two closest players with a small AoE that inflicts [s:magic-vulnerability-up] on all players hit and knocks all players (except the targeted player) back from the targeted player. Always resolves right after [s:dynamic-fluid].
+      The water square hits the two closest players with a small AoE that inflicts [s:magic-vulnerability-up:4s] on all players hit and knocks all players (except the targeted player) back from the targeted player. Always resolves right after [s:dynamic-fluid].
       This action can be mitigated by targeted mitigation such as [a:reprisal] or [a:addle] on Chaos.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   ultima-blasters:
     id: 47843
     source: 19451
@@ -1437,7 +1538,7 @@ actions:
     damage: 0
     description: |
       Exdeath knocks all players away from him. Can be avoided using knockback immunity such as [s:arms-length] or [s:surecast].
-      This is players' last opportunity to cleanse [s:headwind] or [s:tailwind].
+      This is players' last opportunity to cleanse [s:headwind:68s] or [s:tailwind:68s].
   aetherlink:
     id: 49892
     source: 19508
@@ -1460,8 +1561,11 @@ actions:
     description: |
       All players are assigned a [m:mech.limit] marker. A short while later, a line AoE fires at each player in order, starting from the same origin as the first [a:ultima-blaster] pulse but rotating in the *opposite* direction.
       **Example**: [boss]'s initial raidwide pulse goes from west to east. Subsequent pulses proceed clockwise. For [a:ultima-blaster-lc], the first line AoE originates from west and subsequent line AoEs proceed **counter**-clockwise.
-      Each hit inflicts [s:magic-vulnerability-up], effectively making this an 8-man [m:spread]. Ignores [invulnerability effects](t:invuln).
+      Each hit inflicts [s:magic-vulnerability-up:3s], effectively making this an 8-man [m:spread]. Ignores [invulnerability effects](t:invuln).
       This action cannot be mitigated by targeted mitigation such as [a:reprisal] or [a:addle].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2960
     resolve: |
       Keep track of the initial raidwide pulses and which way they're going, then invert that direction in your head. Remember that you don't go where the pulses start, players need to go where they *end up*. Player 1 stands between the cardinal/intercardinal the first pulse ended at and the next one in the inverted direction; each subsequent player stands one step further in that direction.
   max:
@@ -1479,23 +1583,28 @@ actions:
     emphasis: more
     description: |
       Sets all players' HP to 1, inflicts players with various status effects, and spawns an earth shape in the middle of the arena.
-      * 1 random support and 1 random DPS are inflicted with [s:accretion] (14s).
-      * 1 random DPS, 1 random support, and one of the [s:accretion] players are inflicted with [s:first-in-line] and [s:primordial-crust] (72s).
-      * 1 random DPS, 1 random support, and the other [s:accretion] player are inflicted with [s:second-in-line] and [s:primordial-crust] (106s).
-      * The remaining 2 players are inflicted with [s:third-in-line] and [s:primordial-crust] (139s).
-      All debuffs must be cleansed by healing the player to full (in the case of [s:accretion]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
-      Cleansing either [s:accretion] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts a 2s [s:earth-resistance-down-ii] on all players, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
-      Dying at any point while either [s:primordial-crust] or [s:accretion] is still active instantly triggers [a:earthquake-hit].
-      Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii] at the point of the next [a:earthquake-hit].
+      * 1 random support and 1 random DPS are inflicted with [s:accretion:14s].
+      * 1 random DPS, 1 random support, and one of the [s:accretion:14s] players are inflicted with [s:first-in-line] and [s:primordial-crust:72s].
+      * 1 random DPS, 1 random support, and the other [s:accretion:14s] player are inflicted with [s:second-in-line] and [s:primordial-crust:106s].
+      * The remaining 2 players are inflicted with [s:third-in-line] and [s:primordial-crust:139s].
+      All debuffs must be cleansed by healing the player to full (in the case of [s:accretion:14s]) or taking lethal damage (in the case of [s:primordial-crust]). Failing to do so before the debuff expires results in instant death.
+      Cleansing either [s:accretion:14s] or [s:primordial-crust] triggers an [a:earthquake-hit] from the earth shape in the middle of the arena. This deals raidwide damage and inflicts [s:earth-resistance-down-ii:2s] on all players, meaning that cleansing more than one of these effects within a span of 2 seconds wipes the raid.
+      Dying at any point while either [s:primordial-crust] or [s:accretion:14s] is still active instantly triggers [a:earthquake-hit].
+      Be aware that this entire mechanic is essentially one long [t:body check]. If any player "dies" at any point, it cleanses [s:primordial-crust], triggering [a:earthquake-hit]. If any player dies to this, it wipes the raid, since all players still have [s:earth-resistance-down-ii:2s] at the point of the next [a:earthquake-hit].
       [a:earthquake-hit] deals no damage to the player whose debuff was cleansed.
       **Note**: [a:earthquake-hit] cannot happen during [boss] mechanics (including [a:slap-happy-left], [a:slap-happy-right]). If a player cleanses [s:primordial-crust] during this time, the [a:earthquake-hit] will instead be stored until just after [a:shockwave-kefka]/[a:shocking-impact].
     resolve: |
-      Healers should methodically cleanse [s:accretion] immediately, as this status has a very short duration. Don't cleanse both [s:accretion]s at the same time.
+      Healers should methodically cleanse [s:accretion:14s] immediately, as this status has a very short duration. Don't cleanse both [s:accretion:14s] debuffs at the same time.
       [s:primordial-crust] should be cleansed via [a:nothingness]. A little while into the phase, Exdeath spawns several sets of [black holes](a:black-hole) around the arena, some of which tether to players and shortly thereafter fire a line AoE at them ([a:nothingness]).
       [a:nothingness] happens exactly 24 times and cannot be avoided. Each player can soak [a:nothingness] 3× (first gaining [s:unbecoming], the second time gaining [s:meanest-existence], the third time taking lethal damage and thereby cleansing [s:primordial-crust]). It is not possible to survive a fourth hit. 3×8 players is 24 soaks, so if any player at any point takes lethal damage from anything other than [a:nothingness], [a:nothingness] can no longer be cleanly resolved and will result in deaths.
       Ensure that you never have two or more [s:meanest-existence] players take a [a:nothingness] at the same time, as this would result in a wipe.
+    inflicts:
+      - status: accretion
+        duration: 14000
+      - status: primordial-crust
+        duration: [72000, 106000, 139000]
     mistakes:
-      - Failing to cleanse both [s:accretion]s before the first [a:slap-happy-left]/[a:slap-happy-right] leads to an instant wipe.
+      - Failing to cleanse both [s:accretion:14s] debuffs before the first [a:slap-happy-left]/[a:slap-happy-right] leads to an instant wipe.
       - Cleansing two debuffs at the same time results in an instant wipe.
       - Getting hit by an avoidable AoE and dying to it, or dying due to insufficient healing, triggers [a:earthquake-hit] and results in an instant wipe if this happens during [a:nothingness].
       - Failing to aim Chaos at an intercardinal relative to [boss] before [a:longitudinal-implosion]/[a:latitudinal-implosion] is an almost guaranteed wipe, as it is not possible to dodge Chaos's [a:shockwave]s in a way that is also safe from [a:slap-happy-left]/[a:slap-happy-right].
@@ -1509,16 +1618,19 @@ actions:
     players: 0
     damage: 9999999
     description: |
-      A player's [s:accretion] was not cleansed in time, instantly killing them and triggering [a:earthquake-hit].
-      This is a guaranteed wipe, as [s:accretion] expires at the exact moment that [a:shockwave-kefka] hits.
+      A player's [s:accretion:14s] was not cleansed in time, instantly killing them and triggering [a:earthquake-hit].
+      This is a guaranteed wipe, as [s:accretion:14s] expires at the exact moment that [a:shockwave-kefka] hits.
   earthquake-hit:
     id: 47866
     name: Earthquake
     mechanic: raidwide
     damage: 101287
     description: |
-      [s:accretion] or [s:primordial-crust] was cleansed, dealing moderate raidwide damage and inflicting [s:earth-resistance-down-ii] on all players except the player whose debuff was cleansed, who takes no damage from this attack.
+      [s:accretion:14s] or [s:primordial-crust] was cleansed, dealing moderate raidwide damage and inflicting [s:earth-resistance-down-ii:2s] on all players except the player whose debuff was cleansed, who takes no damage from this attack.
       Targeted mitigation such as [a:reprisal] or [a:addle] *does* reduce the damage if inflicted on Chaos.
+    inflicts:
+      - status: earth-resistance-down-ii
+        duration: 1960
   slap-happy-right:
     id: 47846
     source: 19504
@@ -1575,21 +1687,30 @@ actions:
     shape: chariot
     players: 0
     damage: 200938
-    description: Individual hit of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down].
+    description: Individual hit of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   slap-happy-aoe:
     id: 47849
     name: Slap Happy
     caption: AoE
     mechanic: aoe
     shape: chariot
-    description: The center AoE at the end of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down].
+    description: The center AoE at the end of [a:slap-happy-left]/[a:slap-happy-right]. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   shocking-impact:
     id: 47850
     name: Shocking Impact
     mechanic: stack.party
     shape: cone
     damage: 225509
-    description: A conal full party stack originating from the center of the arena. Always follows [a:slap-happy-right].
+    description: A conal full party stack originating from the center of the arena. Always follows [a:slap-happy-right]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   black-hole:
     id: 47867
     source: 19509
@@ -1597,7 +1718,7 @@ actions:
     mechanic: mech
     emphasis: more
     description: |
-      Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down].
+      Exdeath creates a series of small black holes around the arena. Stepping into one inflicts [s:damage-down:180s].
       Some of the black holes close to the edge of the arena tether to players. The tether can be passed. After a short time, these black holes fire [a:nothingness] at their tethered players, dealing mild damage and inflicting first [s:unbecoming], then [s:meanest-existence], then death on players.
       This mechanic repeats three more times, but the distribution of [a:nothingness] tethers varies:
       * [a:black-hole] 1: one tether, followed by two tethers.
@@ -1605,6 +1726,9 @@ actions:
       * [a:black-hole] 4: two tethers, followed by one tether.
       **Total**: 24× [a:nothingness], which is the exact number of hits required for every player to be hit once by [a:nothingness] while in [s:meanest-existence].
       At the end of each [a:black-hole], [boss] teleports to a random cardinal or intercardinal and executes either [a:slap-happy-left] or [a:slap-happy-right] (after [a:black-hole] 1 and 3) or [a:look-upon-me-and-despair] (after [a:black-hole] 2 and 4).
+    inflicts:
+      - status: damage-down
+        duration: 180000
   black-hole-1-2:
     name: Black Hole
     caption: Sets 1–2
@@ -1795,7 +1919,10 @@ actions:
     name: Damning Edict
     mechanic: aoe
     shape: halfroom
-    description: Chaos faces a random player and begins casting. At the end of the cast, deals heavy damage and inflicts [s:damage-down] on anyone in front of him.
+    description: Chaos faces a random player and begins casting. At the end of the cast, deals heavy damage and inflicts [s:damage-down:180s] on anyone in front of him.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   look-upon-me-and-despair:
     id: 47852
     source: 19504
@@ -1845,7 +1972,11 @@ actions:
     count: 2
     players: 0
     damage: 226275
-    description: The cone-shaped AoE cast out by [a:longitudinal-implosion] or [a:latitudinal-implosion]. Inflicts [s:damage-down].
+    description: The cone-shaped AoE cast out by [a:longitudinal-implosion] or [a:latitudinal-implosion]. Inflicts [s:damage-down:180s]. Inflicts [s:magic-vulnerability-up].
+    inflicts:
+      - status: magic-vulnerability-up
+      - status: damage-down
+        duration: 180000
   shockwave-kefka:
     id: 47851
     name: Shockwave
@@ -1854,7 +1985,10 @@ actions:
     shape: cone
     players: 8
     damage: 226275
-    description: Cones originate from the center of the arena, targeting one random player of each role (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage. Inflicts [s:magic-vulnerability-up]. Always follows [a:slap-happy-left].
+    description: Cones originate from the center of the arena, targeting one random player of each role (DPS, healers, tanks) for heavy, fixed (i.e. not shareable) damage. Inflicts [s:magic-vulnerability-up:2s]. Always follows [a:slap-happy-left].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   blizzard-iii:
     id: 47887
     source: 19509
@@ -1863,7 +1997,10 @@ actions:
     mechanic: aoe.delayed
     shape: chariot
     compact: trim
-    description: Two sets of delayed AoEs spawn underneath all players. Each AoE inflicts [s:damage-down].
+    description: Two sets of delayed AoEs spawn underneath all players. Each AoE inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 3087
       id: blizzard-iii-hit
@@ -1927,28 +2064,40 @@ actions:
     shape: chariot
     players: 4
     damage: 191330
-    description: Individual hit of [a:knock-down].
+    description: Individual hit of [a:knock-down]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   stomp-a-mole-hit:
     id: 47856
     name: Stomp-a-Mole
     caption: Hit
     mechanic: towers.double
     damage: 229536
-    description: Individual hit of [a:stomp-a-mole].
+    description: Individual hit of [a:stomp-a-mole]. Inflicts [s:magic-vulnerability-up:3s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3000
   blizzard-iii-freeze:
     id: 47889
     source: 19509
     name: Blizzard III
     caption: Motion
     mechanic: mech.motion
-    description: Freezes and inflicts [s:damage-down] on all players who are standing still.
+    description: Freezes and inflicts [s:damage-down:180s] on all players who are standing still.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   big-bang:
     id: 47878
     name: Big Bang
     mechanic: aoe.aftershock
     shape: chariot
     count: 2
-    description: AoEs resolve wherever the [a:knock-down] stacks were resolved. Inflicts [s:damage-down].
+    description: AoEs resolve wherever the [a:knock-down] stacks were resolved. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   meteor:
     id: 49752
     name: Meteor
@@ -1992,8 +2141,17 @@ actions:
     players: 8
     damage: 306476
     description: |
-      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
+      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek:60s] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
       Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
+    inflicts:
+      - status: forked-lightning
+        duration: [51000, 76000]
+      - status: compressed-water
+        duration: [51000, 76000]
+      - status: cursed-shriek
+        duration: 60000
+      - status: acceleration-bomb
+        duration: [51000, 76000]
   grand-cross-2:
     id: 47892
     source: 19510
@@ -2003,9 +2161,18 @@ actions:
     players: 8
     damage: 306476
     description: |
-      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
+      Deals heavy raidwide damage and inflicts [s:forked-lightning], [s:compressed-water], and [s:cursed-shriek:69s] on 1 DPS and 1 support each, and [s:acceleration-bomb] on 2 DPS and 2 supports.
       All debuffs have a different duration than the previous set, and no player may be inflicted with a debuff they already have.
       Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
+    inflicts:
+      - status: forked-lightning
+        duration: [36000, 61000]
+      - status: compressed-water
+        duration: [36000, 61000]
+      - status: cursed-shriek
+        duration: 69000
+      - status: acceleration-bomb
+        duration: [36000, 61000]
   grand-cross-3:
     id: 47892
     source: 19510
@@ -2015,9 +2182,14 @@ actions:
     players: 8
     damage: 306476
     description: |
-      Deals heavy raidwide damage and inflicts [s:black-wound] on 4 random players and [s:white-wound] on the other 4 players. Also inflicts [s:beyond-death] on 2 DPS and 2 supports and [s:allagan-field] on the other 4 players.
+      Deals heavy raidwide damage and inflicts [s:black-wound] on 4 random players and [s:white-wound] on the other 4 players. Also inflicts [s:beyond-death:14s] on 2 DPS and 2 supports and [s:allagan-field:15s] on the other 4 players.
       Neo-Exdeath may have [boss]-like question marks surrounding him during the cast, in which case all inflicted status effects are inverted (fake). Check the description for each status effect to learn about what that means for any given effect.
       **Note**: the truthiness (inverted) state of the status effects inflicted by this action *does not matter*, because either both effects are true or both effects are inverted at the same time, meaning they cancel out.
+    inflicts:
+      - status: beyond-death
+        duration: 14000
+      - status: allagan-field
+        duration: 15000
   inferno-p4:
     id: 47904
     name: Inferno
@@ -2027,6 +2199,9 @@ actions:
     description: |
       Deals moderate raidwide damage and inflicts [s:entropy-p4] on all players.
       Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:entropy-p4] are inverted (fake). Check the description for [s:entropy-p4] to learn about what that means.
+    inflicts:
+      - status: entropy-p4
+        duration: [45000, 60000]
   tsunami-p4:
     id: 47905
     name: Tsunami
@@ -2036,6 +2211,9 @@ actions:
     description: |
       Deals moderate raidwide damage and inflicts [s:dynamic-fluid-p4] on all players.
       Chaos may have [boss]-like question marks surrounding him during the cast, in which case all [s:dynamic-fluid-p4] are inverted (fake). Check the description for [s:dynamic-fluid-p4] to learn about what that means.
+    inflicts:
+      - status: dynamic-fluid-p4
+        duration: [69000, 84000]
   flood-of-naught:
     id: 50067
     source: 19510
@@ -2070,15 +2248,15 @@ actions:
     description: |
       Half the arena explodes in white antilight. Its effect depends on the player's debuff:
       **Opposite colours** (real [s:black-wound] or fake [s:white-wound]):
-      * [s:beyond-death] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death], which instantly kills the player when it expires.
-      * [s:beyond-death] (fake): Deals 999 damage. Has no other effect.
-      * [s:allagan-field] (real): Deals 999 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
-      * [s:allagan-field] (fake): Deals 999 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:beyond-death:14s] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death:14s], which instantly kills the player when it expires.
+      * [s:beyond-death:14s] (fake): Deals 999 damage. Has no other effect.
+      * [s:allagan-field:15s] (real): Deals 999 damage, causing [s:allagan-field:15s] to deal 9,990 raidwide damage upon expiration.
+      * [s:allagan-field:15s] (fake): Deals 999 damage, causing [s:allagan-field:15s] to deal 9,999,999 raidwide damage upon expiration.
       **Same colours** (real [s:white-wound] or fake [s:black-wound]):
-      * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
-      * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
-      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 660,000 raidwide damage upon expiration.
-      * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      * [s:beyond-death:14s] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death:14s] and leaving the player at 1 HP.
+      * [s:beyond-death:14s] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
+      * [s:allagan-field:15s] (real): Deals 66,000 damage, causing [s:allagan-field:15s] to deal 660,000 raidwide damage upon expiration.
+      * [s:allagan-field:15s] (fake): Deals 66,000 damage, causing [s:allagan-field:15s] to deal 9,990 raidwide damage upon expiration.
       This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
       Note that this action may be fake, in which case it is replaced by [a:black-antilight].
   black-antilight:
@@ -2092,15 +2270,15 @@ actions:
     description: |
       Half the arena explodes in black antilight. Its effect depends on the player's debuff:
       **Opposite colours** (real [s:white-wound] or fake [s:black-wound]):
-      * [s:beyond-death] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death], which instantly kills the player when it expires.
-      * [s:beyond-death] (fake): Deals 999 damage. Has no other effect.
-      * [s:allagan-field] (real): Deals 999 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
-      * [s:allagan-field] (fake): Deals 999 damage, causing [s:allagan-field] to deal 9,999,999 raidwide damage upon expiration.
+      * [s:beyond-death:14s] (real): Deals 999 damage, thus failing to cleanse [s:beyond-death:14s], which instantly kills the player when it expires.
+      * [s:beyond-death:14s] (fake): Deals 999 damage. Has no other effect.
+      * [s:allagan-field:15s] (real): Deals 999 damage, causing [s:allagan-field:15s] to deal 9,990 raidwide damage upon expiration.
+      * [s:allagan-field:15s] (fake): Deals 999 damage, causing [s:allagan-field:15s] to deal 9,999,999 raidwide damage upon expiration.
       **Same colours** (real [s:black-wound] or fake [s:white-wound]):
-      * [s:beyond-death] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death] and leaving the player at 1 HP.
-      * [s:beyond-death] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
-      * [s:allagan-field] (real): Deals 66,000 damage, causing [s:allagan-field] to deal 660,000 raidwide damage upon expiration.
-      * [s:allagan-field] (fake): Deals 66,000 damage, causing [s:allagan-field] to deal 9,990 raidwide damage upon expiration.
+      * [s:beyond-death:14s] (real): Deals exactly 3 times the player's maximum HP in damage, cleansing [s:beyond-death:14s] and leaving the player at 1 HP.
+      * [s:beyond-death:14s] (fake): Deals exactly 3 times the player's maximum HP in damage, killing the player instantly.
+      * [s:allagan-field:15s] (real): Deals 66,000 damage, causing [s:allagan-field:15s] to deal 660,000 raidwide damage upon expiration.
+      * [s:allagan-field:15s] (fake): Deals 66,000 damage, causing [s:allagan-field:15s] to deal 9,990 raidwide damage upon expiration.
       This action deals a fixed amount of [dt:dark] damage. It cannot be shielded or mitigated.
       Note that this action may be fake, in which case it is replaced by [a:white-antilight].
   death-surge:
@@ -2112,8 +2290,8 @@ actions:
     damage: 9990
     type: dark
     description: |
-      [s:allagan-field] resolves, dealing 10 times the damage tallied while the debuff was active.
-      In the case of a fake [s:allagan-field], deals 9,999,999 damage if an insufficient amount of damage was taken.
+      [s:allagan-field:15s] resolves, dealing 10 times the damage tallied while the debuff was active.
+      In the case of a fake [s:allagan-field:15s], deals 9,999,999 damage if an insufficient amount of damage was taken.
   mana-charge:
     id: 47780
     source: 18475
@@ -2131,6 +2309,10 @@ actions:
     damage: 174542
     description: |
       [s:forked-lightning] resolves in the form of a [m:spread] (real) or 3-player [m:stack] (fake) on two players.
+      Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   death-wave:
     id: 47898
     name: Death Wave
@@ -2141,6 +2323,10 @@ actions:
     damage: 167701
     description: |
       [s:compressed-water] resolves in the form of a 3-player [m:stack] (real) or [m:spread] (fake) on two players.
+      Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   death-shriek:
     id: 47894
     name: Death Shriek
@@ -2168,7 +2354,10 @@ actions:
     shape: chariot
     count: 8
     description: |
-      The invisible AoE dropped by [s:entropy-p4] resolves in the form of a [ms:chariot] AoE (real) or [ms:dynamo] (fake), inflicting [s:damage-down].
+      The invisible AoE dropped by [s:entropy-p4] resolves in the form of a [ms:chariot] AoE (real) or [ms:dynamo] (fake), inflicting [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   mana-release:
     id: 47781
     source: 18475
@@ -2184,7 +2373,10 @@ actions:
     shape: dynamo
     count: 8
     description: |
-      The invisible AoE dropped by [s:dynamic-fluid-p4] resolves in the form of a [ms:dynamo] AoE (real) or [ms:chariot] (fake), inflicting [s:damage-down].
+      The invisible AoE dropped by [s:dynamic-fluid-p4] resolves in the form of a [ms:dynamo] AoE (real) or [ms:chariot] (fake), inflicting [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   # Phase 5
   ultima-repeater:
     id: 47936
@@ -2216,21 +2408,30 @@ actions:
     shape: chariot
     players: 2
     damage: 83781
-    description: A [circular](ms:chariot) 2-player stack on a random healer.
+    description: A [circular](ms:chariot) 2-player stack on a random healer. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   fell-forces-dps:
     id: 50773
     caption: DPS
     mechanic: stack.role
     shape: chariot
     damage: 90900
-    description: A [circular](ms:chariot) 4-player stack on a random DPS.
+    description: A [circular](ms:chariot) 4-player stack on a random DPS. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   fell-forces-tank:
     id: 50771
     caption: Tank
     mechanic: auto.stack
     shape: chariot
     damage: 420000
-    description: Heavy tankbuster-like auto-attack on first-in-enmity, shared by both tanks.
+    description: Heavy tankbuster-like auto-attack on first-in-enmity, shared by both tanks. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   fell-forces:
     id: 50771
     mechanic: auto
@@ -2253,8 +2454,11 @@ actions:
     shape: line
     compact: full
     description: |
-      Telegraphs 4 sets of 2 diagonal line AoEs each in quick succession, then executes them, inflicting [s:damage-down] on anyone hit.
+      Telegraphs 4 sets of 2 diagonal line AoEs each in quick succession, then executes them, inflicting [s:damage-down:180s] on anyone hit.
       As the attack is executed, four random players in a row are targeted by [a:chaotic-flood], each a [full party stack](m:stack).
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 1024
       id: chaotic-flood
@@ -2296,19 +2500,19 @@ actions:
     description: |
       Targets multiple players with multiple sets of AoEs.
       **First set:**
-      * First-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-flare].
-      * Second-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-holy].
+      * First-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-flare:6s].
+      * Second-in-enmity is targeted by [a:flare], a moderately large AoE that deals heavy damage and inflicts a brief [s:magic-vulnerability-up] and [s:surprise-holy:6s].
       * 3 other random players are targeted by [a:holy-random], a moderately large AoE that deals moderate damage and inflicts a long [s:magic-vulnerability-up].
       **Second set:**
       * First-in-enmity is targeted by [a:chaotic-flare], a moderately large [m:tb.stack].
       * The three closest players to [boss] are targeted by [a:holy-proximity], a moderately large AoE that deals moderate damage and inflicts a long [s:magic-vulnerability-up].
       **Third set:**
-      * [s:surprise-flare] resolves in a massive [ms:defamation]-type AoE that deals heavy damage and inflicts [s:magic-vulnerability-up] ([a:flare-diffusion]).
-      * [s:surprise-holy] resolves in a moderately large [m:stack.party] ([a:chaotic-holy]).
+      * [s:surprise-flare:6s] resolves in a massive [ms:defamation]-type AoE that deals heavy damage and inflicts [s:magic-vulnerability-up] ([a:flare-diffusion]).
+      * [s:surprise-holy:6s] resolves in a moderately large [m:stack.party] ([a:chaotic-holy]).
     resolve: |
       **First set**: Everyone spreads outside [boss]'s hitbox as overlapping AoEs is lethal. Both tanks should be next to each other (but spread), so they can collapse together to share [a:chaotic-flare] during the second set.
       **Second set**: Tanks collapse to share [a:chaotic-flare]. Everyone who was *not* hit by [a:holy-random] during the first set moves into [boss]'s hitbox.
-      **Third set**: The off-tank (with [s:surprise-holy]) uses [a:provoke], as the [s:surprise-flare] tank has to move to the edge of the arena and would drag the boss out of center doing so, which would make subsequent mechanics significantly more difficult. The [s:surprise-holy] tank is meant to share the stack with the three [a:holy-random] players here (the [a:holy-proximity] players still have [s:magic-vulnerability-up]), but the current most common strategy has the [s:surprise-holy] tank stay inside the [a:flare-diffusion] [ms:defamation] to solo the stack with [t:invuln]. This has the additional benefit of covering the next few [a:fell-forces] as well.
+      **Third set**: The off-tank (with [s:surprise-holy:6s]) uses [a:provoke], as the [s:surprise-flare:6s] tank has to move to the edge of the arena and would drag the boss out of center doing so, which would make subsequent mechanics significantly more difficult. The [s:surprise-holy:6s] tank is meant to share the stack with the three [a:holy-random] players here (the [a:holy-proximity] players still have [s:magic-vulnerability-up]), but the current most common strategy has the [s:surprise-holy:6s] tank stay inside the [a:flare-diffusion] [ms:defamation] to solo the stack with [t:invuln]. This has the additional benefit of covering the next few [a:fell-forces] as well.
     children:
     - at: 895
       id: holy-random
@@ -2333,7 +2537,10 @@ actions:
     shape: chariot
     count: 3
     damage: 176667
-    description: Three random players who are not first or second in enmity take moderate damage and are inflicted with a long [s:magic-vulnerability-up].
+    description: Three random players who are not first or second in enmity take moderate damage and are inflicted with a long [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   holy-proximity:
     id: 47956
     name: Holy
@@ -2342,7 +2549,10 @@ actions:
     shape: chariot
     count: 3
     damage: 176667
-    description: The three closest players to [boss] take moderate damage and are inflicted with [s:magic-vulnerability-up].
+    description: The three closest players to [boss] take moderate damage and are inflicted with [s:magic-vulnerability-up:4s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 3960
   flare:
     id: 47954
     name: Flare
@@ -2350,21 +2560,34 @@ actions:
     shape: chariot
     count: 2
     damage: 369595
-    description: Hits first and second in enmity with a heavy AoE attack. First-in-enmity is inflicted with [s:surprise-flare], second-in-enmity with [s:surprise-holy].
+    description: Hits first and second in enmity with a heavy AoE attack. First-in-enmity is inflicted with [s:surprise-flare:6s], second-in-enmity with [s:surprise-holy:6s]. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
+      - status: surprise-holy
+        duration: 6000
+      - status: surprise-flare
+        duration: 6000
   chaotic-flare:
     id: 47955
     name: Chaotic Flare
     mechanic: tb.stack
     shape: chariot
     damage: 350000
-    description: A simple shared tankbuster.
+    description: A simple shared tankbuster. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   flare-diffusion:
     id: 47957
     name: Flare Diffusion
     mechanic: spread
     shape: defamation
     damage: 333656
-    description: "[s:surprise-flare] resolves, dealing heavy damage and inflicting [s:magic-vulnerability-up] on the afflicted player and all players in a massive radius around them."
+    description: "[s:surprise-flare:6s] resolves, dealing heavy damage and inflicting [s:magic-vulnerability-up:1s] on the afflicted player and all players in a massive radius around them."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   chaotic-holy:
     id: 47958
     name: Chaotic Holy
@@ -2372,7 +2595,10 @@ actions:
     shape: chariot
     players: 4
     damage: 151000
-    description: "[s:surprise-holy] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up] on the afflicted player and all players in a moderate radius around them."
+    description: "[s:surprise-holy:6s] resolves, dealing moderate shared damage and inflicting [s:magic-vulnerability-up:1s] on the afflicted player and all players in a moderate radius around them."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
   celestriad:
     id: 47938
     source: 19511
@@ -2381,15 +2607,18 @@ actions:
     emphasis: more
     compact: full
     description: |
-      Spawns 9 elemental towers around the arena and inflicts 2 players with [s:fire-resistance-down-ii], 2 players with [s:lightning-resistance-down-ii-p5], and 2 players with [s:ice-resistance-down-ii].
-      The towers spawn in a random configuration, but there are always 3 fire towers, 3 lightning towers, and 3 ice towers. All towers belonging to the same element are guaranteed to always be beside each other. All towers are 2-person towers and will explode if soaked with less players. A tower that explodes deals mild raidwide damage and inflicts [s:damage-down] on all players.
+      Spawns 9 elemental towers around the arena and inflicts 2 players with [s:fire-resistance-down-ii:20s], 2 players with [s:lightning-resistance-down-ii-p5:20s], and 2 players with [s:ice-resistance-down-ii:20s].
+      The towers spawn in a random configuration, but there are always 3 fire towers, 3 lightning towers, and 3 ice towers. All towers belonging to the same element are guaranteed to always be beside each other. All towers are 2-person towers and will explode if soaked with less players. A tower that explodes deals mild raidwide damage and inflicts [s:damage-down:180s] on all players.
       There are three sets of tower resolutions. Each set involves 4 towers and all 3 elements. This means that two elements will feature one tower resolving and the last element will feature two towers resolving. Towers that are about to resolve begin to glow. Towers that have already resolved do not disappear, and the same tower can never resolve twice in a row.
       The three elemental vulnerability debuffs each last for 20 seconds. When a tower resolves, it applies the corresponding Resistance Down debuff on the players who soaked it. This debuff lasts for the rest of the mechanic. The debuffs that are inflicted by the [a:celestriad] cast itself, however, expire just before the last set of towers resolves.
       At the same time as the first and third set of towers, [boss] casts [a:catastrophic-choice], during which he is surrounded with a green wind aura or a yellow earth aura. At the end of the cast, this represents a [point-blank AoE](ms:chariot) (earth) or a [ms:dynamo] AoE. The edge of both types of AoEs cover exactly half of all towers, provided [boss] is positioned dead center.
     resolve: |
-      After the initial cast, 6 players will have debuffs. These players find the three towers that correspond to their debuff (e.g. if you have [s:ice-resistance-down-ii], you find the three ice towers). These players will be soaking the active tower that belongs to the three elemental towers **clockwise** of the towers they have a vulnerability for. If there are *two* active towers belonging to this element during this set, these players soak the **leftmost** active tower (counter-clockwise).
+      After the initial cast, 6 players will have debuffs. These players find the three towers that correspond to their debuff (e.g. if you have [s:ice-resistance-down-ii:20s], you find the three ice towers). These players will be soaking the active tower that belongs to the three elemental towers **clockwise** of the towers they have a vulnerability for. If there are *two* active towers belonging to this element during this set, these players soak the **leftmost** active tower (counter-clockwise).
       The 2 players without debuffs must soak the duplicate active elemental tower, i.e. the second active tower for the element that has two active towers, because no other player can soak that tower. These players need simply check which element has two active towers and soak the **rightmost** (clockwise) one each time.
       Watch out for [a:catastrophic-choice].
+    inflicts:
+      - status: damage-down
+        duration: 180000
     children:
     - at: 8486
       id: catastrophic-choice
@@ -2439,31 +2668,46 @@ actions:
     name: Thunder III
     mechanic: towers.double
     damage: 176249
-    description: A lightning tower resolves during [a:celestriad].
+    description: A lightning tower resolves during [a:celestriad]. Inflicts [s:lightning-resistance-down-ii-p5:20s].
+    inflicts:
+      - status: lightning-resistance-down-ii-p5
+        duration: 20000
   blizzard-iii-tower:
     id: 47940
     name: Blizzard III
     mechanic: towers.double
     damage: 209095
-    description: An ice tower resolves during [a:celestriad].
+    description: An ice tower resolves during [a:celestriad]. Inflicts [s:ice-resistance-down-ii:20s].
+    inflicts:
+      - status: ice-resistance-down-ii
+        duration: 20000
   fire-iii-tower:
     id: 47939
     name: Fire III
     mechanic: towers.double
     damage: 166806
-    description: A fire tower resolves during [a:celestriad].
+    description: A fire tower resolves during [a:celestriad]. Inflicts [s:fire-resistance-down-ii:20s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 20000
   quake:
     id: 47946
     name: Quake
     mechanic: aoe
     shape: chariot
-    description: "A [ms:chariot] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down]."
+    description: "A [ms:chariot] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down:180s]."
+    inflicts:
+      - status: damage-down
+        duration: 180000
   tornado:
     id: 47947
     name: Tornado
     mechanic: aoe
     shape: dynamo
-    description: "A [ms:dynamo] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down]."
+    description: "A [ms:dynamo] AoE centered on [boss]'s position, covering half of each tower. Inflicts [s:damage-down:180s]."
+    inflicts:
+      - status: damage-down
+        duration: 180000
   stray-apocalypse:
     id: 47931
     source: 19511
@@ -2472,13 +2716,16 @@ actions:
     shape: chariot
     description: |
       Spawns multiple exaflares originating from northwest and northeast.
-      There are, in total, 6 sets of exaflares – 3 coming from northwest and 3 from northeast. All exaflare sets are composed of two [ms:chariot] AoEs that rapidly move through the arena in a straight line from their point of origin, inflicting [s:damage-down] on anyone hit. No two AoEs can spawn right beside each other; there is always a gap in-between.
+      There are, in total, 6 sets of exaflares – 3 coming from northwest and 3 from northeast. All exaflare sets are composed of two [ms:chariot] AoEs that rapidly move through the arena in a straight line from their point of origin, inflicting [s:damage-down:180s] on anyone hit. No two AoEs can spawn right beside each other; there is always a gap in-between.
       The first set always spawns from northwest, the second from northeast, the third from northwest again, and so on.
       [a:stray-apocalypse] is immediately followed by [a:stray-entropy], a [m:spread] on all players.
     resolve: |
       These are some of the simplest exaflares we have seen so far, simpler even to resolve than Golden Bahamut's exaflares. Look northwest at the start of the cast and position yourself outside the path of the first set of exas. Then look northeast and, **without leaving the safe row for the first set of exas**, move in a straight line so you're now in the safe row for the second set of exas too. Repeat until done.
       Each exaflare set always has a safe row in melee range, so you do not need to leave melee range for this mechanic.
       During the last set of exas, find your [clock spot](t:clock spots) because [boss] has already started casting [a:stray-entropy], which requires you to be there immediately after the last set of exas has concluded.
+    inflicts:
+      - status: damage-down
+        duration: 180000
   stray-entropy:
     id: 47934
     source: 19511
@@ -2497,13 +2744,15 @@ actions:
     shape: chariot
     count: 8
     damage: 171722
-    description: Individual hit of [a:stray-entropy].
+    description: Individual hit of [a:stray-entropy]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   forsaken-p5:
     id: 47925
     source: 19511
     name: Forsaken
     mechanic: enrage.soft
-    damage: 426246
     emphasis: more
     compact: full
     description: |
@@ -2524,6 +2773,8 @@ actions:
       Move as a party, in a coordinated manner. This is one of the hardest hitting raidwide sequences in the entire game, so a proper mitigation plan is *essential*.
       Do not be afraid of moving through [a:forsaken-aoe] telegraphs to reach a larger safe spot. Keep moving to avoid getting cornered by [a:forsaken-ground].
     children:
+    - at: 0
+      id: forsaken-p5-initial-hit
     - at: 5083
       id: forsaken-aoe
       link: and
@@ -2565,13 +2816,24 @@ actions:
       link: and
     - at: 29540
       id: forsaken-bonds
+  forsaken-p5-initial-hit:
+    id: 47925
+    source: 19511
+    name: Forsaken
+    caption: Hit
+    mechanic: raidwide
+    damage: 426246
+    description: Hit of [a:forsaken-p5].
   forsaken-aoe:
     id: 47928
     name: Forsaken
     caption: AoE
     mechanic: aoe
     shape: chariot
-    description: A large delayed AoE that spawns on the closest cardinal or intercardinal to players. Cannot spawn on the same position as [a:forsaken-ground]. Inflicts [s:damage-down].
+    description: A large delayed AoE that spawns on the closest cardinal or intercardinal to players. Cannot spawn on the same position as [a:forsaken-ground]. Inflicts [s:damage-down:180s].
+    inflicts:
+      - status: damage-down
+        duration: 180000
   forsaken-ground:
     id: 47927
     name: Forsaken Ground

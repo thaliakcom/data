@@ -21,8 +21,7 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
-    description: Reduces damage dealt by 25%. Inflicted by a multitude of attacks, including [a:coffinfiller], [a:pulping-pulse], [a:sanguine-scratch], [a:explosion], or [a:blast-beat-bat].
+    description: Reduces damage dealt by 25%.
   curse-of-the-bombpyre:
     id: 4729
     type: condition
@@ -32,8 +31,7 @@ status:
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [1960, 960]
-    description: Renders any other magic damage taken during the duration lethal. Inflicted by [a:blast-beat-bat] and [a:ultrasonic-spread].
+    description: Renders any other magic damage taken during the duration lethal.
   satisfied:
     id: 4727
     type: damage-up
@@ -46,26 +44,22 @@ status:
     id: 2942
     type: dot
     tick: 76342
-    duration: 15000
     description: Heavy [t:DoT] inflicted by the buzzsaws during the second narrow arena phase.
   electrocution:
     id: 3074
     type: dot
     tick: 49418
-    duration: 15000
     description: Heavy [t:DoT] inflicted by the nails during the second narrow arena phase.
   sustained-damage:
     id: 4149
     type: dot
     tick: 90000
-    duration: 15000
     description: Heavy [t:DoT] inflicted by failing to soak a tower during [a:flails-and-nails] or [a:hell-in-a-cell].
   hell-awaits:
     id: 4730
     type: vuln
     name: Hell Awaits
-    duration: 25000
-    description: Inflicted by [a:bloody-bondage] whenever a player soaks a [a:hell-in-a-cell] tower. Soaking another [a:hell-in-a-cell] results in instant death.
+    description: Inflicted whenever a player soaks a [a:hell-in-a-cell] tower. Soaking another [a:hell-in-a-cell] results in instant death.
     gameDescription: Wounded by contact with a charnel cell. Taking damage from the same attack again will result in instant death.
   hell-in-a-cell:
     id: 4734
@@ -90,6 +84,7 @@ status:
 actions:
   killer-voice:
     id: 45956
+    source: 19167
     mechanic: raidwide
     damage: 171435
     description: Standard raidwide. Deals moderate damage.
@@ -109,11 +104,14 @@ actions:
     compact: trim
     description: |
       Inflicts [s:curse-of-the-bombpyre] on all players and spawns a number of bats and an expanding circle.
-      The circle begins expanding from the center of the arena. When the circle touches a bat, the bat explodes ([a:blast-beat-bat]), dealing moderate damage and inflicting [s:magic-vulnerability-up] and [s:damage-down] on all nearby players. When the circle touches a player, cleanses [s:curse-of-the-bombpyre] and triggers another explosion ([a:blast-beat-cleanse]) that also deals moderate damage and inflicts [s:magic-vulnerability-up].
+      The circle begins expanding from the center of the arena. When the circle touches a bat, the bat explodes ([a:blast-beat-bat]), dealing moderate damage and inflicting [s:magic-vulnerability-up] and [s:damage-down:30s] on all nearby players. When the circle touches a player, cleanses [s:curse-of-the-bombpyre] and triggers another explosion ([a:blast-beat-cleanse]) that also deals moderate damage and inflicts [s:magic-vulnerability-up].
       Players who already cleansed [s:curse-of-the-bombpyre] do not trigger [a:blast-beat-cleanse] if they touch the circle again.
       As both [a:blast-beat-bat] and [a:blast-beat-cleanse] inflict [s:magic-vulnerability-up], touching the circle shortly before or after being hit by an exploding bat, or clipping another player with [a:blast-beat-cleanse], deals lethal damage.
     resolve: |
       It is generally recommended for tanks and melees to cleanse [s:curse-of-the-bombpyre] first so they can get back into melee range of [boss] sooner. Rangeds can wait until the circle reaches them. Either way all players should be spread out, for instance by positioning one melee and one ranged player on each cardinal.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     children:
     - at: 4190
       id: blast-beat-bat
@@ -129,21 +127,31 @@ actions:
       id: blast-beat-bat
   blast-beat-bat:
     id: 45941
+    source: 19503
     name: Blast Beat (Bat)
     mechanic: aoe
     shape: chariot
     damage: 134927
     players: 0
-    description: A bat explodes during [a:vamp-stomp] after being hit by the expanding circle, dealing moderate damage to all nearby players and inflicting [s:magic-vulnerability-up] and [s:damage-down] on them.
+    description: A bat explodes during [a:vamp-stomp] after being hit by the expanding circle, dealing moderate damage to all nearby players and inflicting [s:magic-vulnerability-up:2s] and [s:damage-down:30s] on them.
+    inflicts:
+      - status: damage-down
+        duration: 30000
+      - status: magic-vulnerability-up
+        duration: 1960
   blast-beat-cleanse:
     id: 45942
     name: Blast Beat (Cleanse)
     mechanic: spread
     shape: chariot
     damage: 118918
-    description: A player explodes after cleansing their [s:curse-of-the-bombpyre] on the expanding circle, dealing moderate damage to them and all nearby players and inflicting [s:magic-vulnerability-up] on them.
+    description: A player explodes after cleansing their [s:curse-of-the-bombpyre] on the expanding circle, dealing moderate damage to them and all nearby players and inflicting [s:magic-vulnerability-up:2s] on them.
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   brutal-rain-1:
     id: 45917
+    source: 19167
     mechanic: stack.party
     shape: chariot
     compact: full
@@ -159,6 +167,7 @@ actions:
       id: brutal-rain-hit
   brutal-rain-2:
     id: 45917
+    source: 19167
     mechanic: stack.party
     shape: chariot
     compact: full
@@ -176,6 +185,7 @@ actions:
       id: brutal-rain-hit
   brutal-rain-3:
     id: 45917
+    source: 19167
     mechanic: stack.party
     shape: chariot
     compact: full
@@ -229,7 +239,10 @@ actions:
     count: 2
     damage: 75772
     players: 0
-    description: Two of the Coffinmaker's saws begin to glow, then plunge forward, dealing damage and inflicting [s:damage-down] to all players in their path.
+    description: Two of the Coffinmaker's saws begin to glow, then plunge forward, dealing damage and inflicting [s:damage-down:30s] to all players in their path.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   coffinfiller-1:
     id: 45929
     name: Coffinfiller (Follow-up)
@@ -238,7 +251,10 @@ actions:
     count: 2
     damage: 75772
     players: 0
-    description: The other two of the Coffinmaker's saws plunge forward, dealing damage and inflicting [s:damage-down] to all players in their path.
+    description: The other two of the Coffinmaker's saws plunge forward, dealing damage and inflicting [s:damage-down:30s] to all players in their path.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   crowd-kill:
     id: 45933
     mechanic: raidwide
@@ -260,9 +276,13 @@ actions:
     shape: chariot
     damage: 127441
     players: 0
-    description: Small AoE. Deals moderate damage and inflicts [s:damage-down].
+    description: Small AoE. Deals moderate damage and inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   aetherletting:
     id: 45967
+    source: 19167
     mechanic: mech
     emphasis: more
     compact: full
@@ -329,7 +349,10 @@ actions:
     mechanic: aoe
     shape: cross
     count: 2
-    description: A [ms:cross] or [ms:plus] AoE originating from where a player dropped their [a:aetherletting-player] spread. Inflicts [s:damage-down].
+    description: A [ms:cross] or [ms:plus] AoE originating from where a player dropped their [a:aetherletting-player] spread. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   insatiable-thirst:
     id: 45938
     mechanic: raidwide
@@ -341,17 +364,23 @@ actions:
     shape: rect
     damage: 37913
     players: 0
-    description: One of the moving chainsaws touches a player, dealing mild damage and inflicting [s:flesh-wound] on them.
+    description: One of the moving chainsaws touches a player, dealing mild damage and inflicting [s:flesh-wound:15s] on them.
+    inflicts:
+      - status: flesh-wound
+        duration: 15000
   flails-and-nails:
     name: Flails and Nails
     mechanic: adds
     description: |
-      A mini-phase that involves two large buzzsaws and two small chakrams constantly moving back and forth throughout the arena. Any player touching these saws ([a:gravegrazer]) is inflicted with [s:flesh-wound].
-      There are three sets of adds. Each set begins with a tank tower in the northern and southern half of the arena that must be soaked ([a:plummet]) or they explode ([a:massive-impact]), inflicting [s:sustained-damage]. Afterwards, spawns three adds: 2 Fatal Flails where the two towers were soaked, and 1 Deadly Doornail.
-      The Flatal Fails immediately begin casting [a:barbed-burst], a 16 second cast that must be canceled by destroying the flail or it will deal heavy damage and inflict [s:damage-down] on all players.
-      The Deadly Doornail spawns with a small purple puddle underneath it that gradually [expands](m:aoe.expanding). Any player who steps into this puddle is inflicted with [s:electrocution], a heavy DoT. If the doornail is not killed in time, it will likely cover the entirety of the next [a:plummet] tower with its puddle and make crossing through the middle difficult or impossible.
+      A mini-phase that involves two large buzzsaws and two small chakrams constantly moving back and forth throughout the arena. Any player touching these saws ([a:gravegrazer]) is inflicted with [s:flesh-wound:15s].
+      There are three sets of adds. Each set begins with a tank tower in the northern and southern half of the arena that must be soaked ([a:plummet]) or they explode ([a:massive-impact]), inflicting [s:sustained-damage:15s]. Afterwards, spawns three adds: 2 Fatal Flails where the two towers were soaked, and 1 Deadly Doornail.
+      The Flatal Fails immediately begin casting [a:barbed-burst], a 16 second cast that must be canceled by destroying the flail or it will deal heavy damage and inflict [s:damage-down:30s] on all players.
+      The Deadly Doornail spawns with a small purple puddle underneath it that gradually [expands](m:aoe.expanding). Any player who steps into this puddle is inflicted with [s:electrocution:15s], a heavy DoT. If the doornail is not killed in time, it will likely cover the entirety of the next [a:plummet] tower with its puddle and make crossing through the middle difficult or impossible.
     resolve: |
       Have the main tank soak the northern [a:plummet] tower and the off-tank soak the southern [a:plummet] tower. Melees can get a [t:GCD] or two off on the Deadly Doornail before switching to the Fatal Flails. Tanks cannot kill these alone outside of burst and will likely need help. Ranged damage dealers focus on the Deadly Doornail.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   plummet:
     id: 45963
     mechanic: tb.towers
@@ -363,19 +392,26 @@ actions:
   massive-impact:
     id: 45964
     mechanic: mech.failure
-    description: A Fatal Flail was left unsoaked, dealing heavy damage and inflicting [s:sustained-damage] on all players.
+    description: A Fatal Flail was left unsoaked, dealing heavy damage and inflicting [s:sustained-damage:15s] on all players.
+    inflicts:
+      - status: sustained-damage
+        duration: 15000
   barbed-burst:
     id: 45965
     mechanic: mech.failure
-    description: A Fatal Flail was not killed in time, dealing heavy damage and inflicting [s:damage-down] on all players.
+    description: A Fatal Flail was not killed in time, dealing heavy damage and inflicting [s:damage-down:30s] on all players.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   hell-in-a-cell:
     id: 45973
+    source: 19167
     mechanic: mech
     emphasis: more
     compact: trim
     description: |
       Four towers spawn around the arena. Each tower must be soaked by one person ([a:bloody-bondage]).
-      After being soaked, the tower turns into a charnel cell. Each charnel cell has the status effect [s:heel-of-the-cell]. The soakee is inflicted with [s:hell-in-a-cell] and [s:hell-awaits] and cannot leave the cell until the cell is destroyed. Only the initial soakee (and inmate) can deal damage to the cell. While in the cell, they take constant damage every 3 seconds ([a:blood-lash]).
+      After being soaked, the tower turns into a charnel cell. Each charnel cell has the status effect [s:heel-of-the-cell]. The soakee is inflicted with [s:hell-in-a-cell] and [s:hell-awaits:25s] and cannot leave the cell until the cell is destroyed. Only the initial soakee (and inmate) can deal damage to the cell. While in the cell, they take constant damage every 3 seconds ([a:blood-lash]).
       Meanwhile, the 4 players outside the cells have to deal with [a:ultrasonic-amp] and [a:ultrasonic-spread]. [boss] casts both mechanics, the only variance is which one the boss casts first. Care must be taken to ensure the ultrasonic cones don't hit any players in a cell. This is always possible as two, and only two, towers are always guaranteed to spawn directly side-by-side, meaning there are always 3 gaps available (2 smaller gaps and 1 large gap).
       After this is done, 4 more towers spawn and the mechanic repeats.
     resolve: |
@@ -402,9 +438,13 @@ actions:
     mechanic: towers.single
     count: 4
     damage: 39450
-    description: The towers resolve, turning into charnel cells and inflicting [s:hell-in-a-cell] and [s:hell-awaits] to the soakees.
+    description: The towers resolve, turning into charnel cells and inflicting [s:hell-in-a-cell] and [s:hell-awaits:25s] to the soakees.
+    inflicts:
+      - status: hell-awaits
+        duration: 25000
   blood-lash:
     id: 45977
+    source: 19171
     mechanic: auto.single
     damage: 72475
     description: Constant damage dealt to the inmate of a [a:hell-in-a-cell] while the cell is active.
@@ -416,7 +456,10 @@ actions:
     damage: 137381
     players: 4
     tank-damage: 370411
-    description: Two smaller spread cones on the healer and the damage dealers outside a charnel cell and a larger cone dealing tankbuster-levels of damage on the tank outside any cell.
+    description: Two smaller spread cones on the healer and the damage dealers outside a charnel cell and a larger cone dealing tankbuster-levels of damage on the tank outside any cell. Inflicts [s:magic-vulnerability-up:1s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 960
     resolve: |
       Due to the pseudo-random cell spawn positions, there are always 3 gaps available between cells: 2 smaller gaps and 1 large gap. The large gap belongs to the tank. Their cone cannot fit into the smaller gaps. Based on the larger gap, place the healer cone in the gap clockwise to the tank gap and the damage dealer cone in the gap counter-clockwise of the tank gap.
   ultrasonic-amp:
@@ -428,15 +471,19 @@ actions:
     resolve: Place the cone in the large gap.
   undead-deathmatch:
     id: 45984
+    source: 19167
     mechanic: mech
     emphasis: more
     compact: full
     description: |
       Two [stack towers](m:stack.tower) spawn.
       After resolving, each tower spawns a bat. Each bat will attempt to chain itself to the closest 4 players.* The bat then begins moving either clockwise or counter-clockwise around the arena until they complete a 180 degree rotation, at which point they perform either [a:breakdown-drop] ([ms:chariot]) or [a:breakwing-beat] ([ms:dynamo]) as indicated by an icon above the bat during its rotation. They may flip direction at this point, or they may not, and begin moving back to their point of origin, at which point they again perform either [a:breakdown-drop] or [a:breakwing-beat]. A bat may perform the same or opposite types of AoE each time. Whichever AoE the first bat performs, the other bat performs the opposite type of AoE.
-      Players may not move too far away from the bat they are chained to. If they do, they are inflicted with [s:damage-down] and dealt a massive amount of damage ([a:explosion]).
+      Players may not move too far away from the bat they are chained to. If they do, they are inflicted with [s:damage-down:30s] and dealt a massive amount of damage ([a:explosion]).
       At the same time [boss] casts [a:sanguine-scratch], a set of [m:aoe.alternating].
-      * If 4 players soak each tower as intended, each bat will simply tether to the 4 players who soaked the tower. If someone goes to the wrong tower and the towers are soaked in a 5/3 split, one of the players in the 5-stack will be tethered to the bat across the arena, resulting in an instant [s:damage-down] and damage from being too far away from their bat.
+      * If 4 players soak each tower as intended, each bat will simply tether to the 4 players who soaked the tower. If someone goes to the wrong tower and the towers are soaked in a 5/3 split, one of the players in the 5-stack will be tethered to the bat across the arena, resulting in an instant [s:damage-down:30s] and damage from being too far away from their bat.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     children:
     - at: 1206
       id: bloody-bondage-deathmatch
@@ -463,11 +510,15 @@ actions:
     description: The [stack towers](m:stack.tower) resolve and bats tether to the 4 closest players, see [a:undead-deathmatch].
   sanguine-scratch:
     id: 45988
+    source: 19167
     mechanic: aoe.alternating
     shape: cone
     compact: full
-    description: Executes a series of alternating conal AoEs. Getting hit deals damage and inflicts [s:damage-down].
+    description: Executes a series of alternating conal AoEs. Getting hit deals damage and inflicts [s:damage-down:30s].
     resolve: Be aware that the safe zones are much smaller cones than the danger zones. It is not sufficient to dodge into one of the conal AoEs when they resolve. You must dodge into *the center* of a danger cone or the next set will likely hit you.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     children:
     - at: 714
       id: sanguine-scratch-hit
@@ -485,20 +536,31 @@ actions:
     mechanic: aoe.alternating
     shape: cone
     count: 8
-    description: The cones hit. See [a:sanguine-scratch].
+    description: The cones hit. See [a:sanguine-scratch]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   explosion:
     id: 45987
     mechanic: mech.failure
     damage: 142804
     players: 0
-    description: A player has exceeded the maximum distance permitted for their chain and are dealt heavy damage and inflicted with [s:damage-down].
+    description: A player has exceeded the maximum distance permitted for their chain and are dealt heavy damage and inflicted with [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   breakdown-drop:
     id: 45992
+    source: 19503
     mechanic: aoe
     shape: chariot
-    description: The bat executes a [ms:chariot] AoE on its position.
+    description: The bat executes a [ms:chariot] AoE on its position. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   breakwing-beat:
     id: 45993
+    source: 19503
     mechanic: aoe
     shape: dynamo
     description: The bat executes a [ms:dynamo] AoE on its position.

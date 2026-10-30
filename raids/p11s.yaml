@@ -18,35 +18,28 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by approximately 39%.
   bleed:
     id: 2088
     type: dot
     tick: 25000
-    duration: 12000
   sustained-damage:
     id: 2935
     type: dot
     tick: 17000
-    duration: 29960
   dark-vuln:
     id: 3619
     type: vuln
-    duration: 5000
   light-vuln:
     id: 2278
     type: vuln
-    duration: 5000
   blunt-vuln:
     id: 3132
     type: vuln
-    duration: 2960
   stab-wound:
     id: 2080
     type: dot
     tick: 24000
-    duration: 12000
   dark-accord:
     id: 3554
     type: condition
@@ -65,16 +58,20 @@ status:
   polarizing:
     id: 3559
     type: vuln
-    duration: 29600
     description: If this debuff is still present by the time [a:emissarys-will] is cast, any player with this affliction dies instantly.
 actions:
   eunomia:
     id: 33323
+    source: 16114
     mechanic: raidwide
     damage: 70000
-    description: Medium raidwide. Inflicts [s:bleed].
+    description: Medium raidwide. Inflicts [s:bleed:12s].
+    inflicts:
+      - status: bleed
+        duration: 12000
   dike:
     id: 33325
+    source: 16114
     mechanic: tb.double
     description: Heavy damage tankbuster. Invuln or [t:tankswap].
     children:
@@ -86,24 +83,30 @@ actions:
     id: 33330
     mechanic: tb.double
     damage: 145000
-    description: Pierces first-in-enmity with light-aspected damage, inflicting [s:light-vuln], and second-in-enmity with dark damage, inflicting [s:dark-vuln].
+    description: Pierces first-in-enmity with light-aspected damage, inflicting [s:light-vuln:5s], and second-in-enmity with dark damage, inflicting [s:dark-vuln:5s].
+    inflicts:
+      - status: dark-vuln
+        duration: 5000
+      - status: light-vuln
+        duration: 5000
   jury-overruling:
     id: 33254
+    source: 16114
     mechanic: spread
     shape: line
-    damage: 56000
     compact: full
-    count: 8
     description: |
       [boss] glows either dark or light, indicating the mechanical sequence executed.
       Light: [a:jury-overruling] ([ms:line] [m:spread]) > [a:illusory-glare] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
       Dark: [a:jury-overruling] ([ms:line] [m:spread]) > [a:illusory-gloom] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
-      After the cast, clones of [boss] dash toward each player, inflicting [s:blunt-vuln].
+      After the cast, clones of [boss] dash toward each player, inflicting [s:blunt-vuln:3s].
     resolve: |
       Everyone moves to [t:protean] positions around the boss at [t:max melee]. Use the tiny diamonds around the boss to aid in positioning.
       If it's light, move into the hitbox on west (light party 1) or east (light party 2) for the stack.
       If it's dark, have either supports or DPS rotate clockwise or counter-clockwise to the next player and stack in their [ms:dynamo].
     children:
+      - at: 1829
+        id: jury-overruling-hit
       - at: 4084
         id: illusory-glare
         link: and
@@ -115,6 +118,17 @@ actions:
         link: and
       - at: 4084
         id: inevitable-sentence
+  jury-overruling-hit:
+    id: 33256
+    source: 16116
+    mechanic: spread
+    shape: line
+    count: 8
+    damage: 56000
+    description: Hit of [a:jury-overruling]. Inflicts [s:blunt-vuln:3s].
+    inflicts:
+      - status: blunt-vuln
+        duration: 2960
   illusory-glare:
     id: 33258
     mechanic: aoe
@@ -147,6 +161,7 @@ actions:
     description: A 2-player stack on all DPS players. Targets a random player if any DPS are dead. Cannot be survived alone.
   upheld-overruling:
     id: 34771
+    source: 16114
     mechanic: mech
     compact: full
     description: |
@@ -167,14 +182,18 @@ actions:
       id: inevitable-sentence
   upheld-overruling-tb:
     id: 33267
+    source: 16114
     name: Upheld Overruling (Tankbuster)
     mechanic: tb.tether
     shape: chariot
     damage: 95000
     compact: full
     description: |
-      Dark ability. [boss] tethers to a random tank and jumps on them, dealing heavy damage, inflicting [s:stab-wound], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
+      Dark ability. [boss] tethers to a random tank and jumps on them, dealing heavy damage, inflicting [s:stab-wound:12s], and knocking all other players hit by the jump into the wall, killing them instantly. The jump is roughly the size of [a:lightburst].
       Is always immediately followed by [a:dark-perimeter] and [a:inevitable-sentence].
+    inflicts:
+      - status: stab-wound
+        duration: 12000
     children:
     - at: 4100
       id: dark-perimeter
@@ -183,6 +202,7 @@ actions:
       id: inevitable-sentence
   upheld-overruling-stack:
     id: 33266
+    source: 16114
     name: Upheld Overruling (Stack)
     mechanic: stack.party
     shape: chariot
@@ -206,7 +226,10 @@ actions:
     id: 33317
     mechanic: aoe
     shape: dynamo
-    description: Darkness ripples outwards from [boss], leaving only a circle inside his hitbox safe.
+    description: Darkness ripples outwards from [boss], leaving only a circle inside his hitbox safe. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   ripples-of-gloom:
     id: 33265
     mechanic: aoe
@@ -219,6 +242,7 @@ actions:
     description: Light scorches the path that [boss] dashed. This [ms:line] is larger than the size of the initial dash.
   divisive-overruling:
     id: 33261
+    source: 16114
     mechanic: mech
     compact: full
     description: |
@@ -240,6 +264,7 @@ actions:
       id: inevitable-sentence
   styx-1:
     id: 33303
+    source: 16114
     mechanic: stack.party
     shape: chariot
     damage: 65882
@@ -256,6 +281,7 @@ actions:
       id: styx-hit
   styx-2:
     id: 33303
+    source: 16114
     mechanic: stack.party
     shape: chariot
     damage: 65882
@@ -274,6 +300,7 @@ actions:
       id: styx-hit
   styx-3:
     id: 33303
+    source: 16114
     mechanic: stack.party
     shape: chariot
     damage: 65882
@@ -294,6 +321,7 @@ actions:
       id: styx-hit
   styx-4:
     id: 33303
+    source: 16114
     mechanic: stack.party
     shape: chariot
     damage: 65882
@@ -316,6 +344,7 @@ actions:
       id: styx-hit
   styx-hit:
     id: 33304
+    source: 16114
     mechanic: stack.party
     shape: chariot
     damage: 43515
@@ -325,7 +354,7 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 4 dark mirrors and 4 light mirrors on the sides of the arena.
-      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:damage-down].
+      After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:damage-down:30s].
     children:
     - at: 7623
       id: dismissal-overruling
@@ -336,7 +365,7 @@ actions:
     mechanic: mech
     description: |
       [boss] glows either dark or light, then summons 2 dark spheres and 2 light spheres on the arena's cardinals.
-      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [ms:chariot], dealing massive damage to anyone hit and inflicting [s:damage-down].
+      After some time, whichever spheres match the colour that the boss glowed during this cast will emit a huge [ms:chariot], dealing massive damage to anyone hit and inflicting [s:damage-down:30s].
     children:
     - at: 9635
       id: unlucky-lot
@@ -345,9 +374,10 @@ actions:
     mechanic: aoe
     shape: chariot
     count: 2
-    description: The spheres explodes in a huge [t:AoE]. Inflicts [s:damage-down].
+    description: The spheres explodes in a huge [t:AoE]. Inflicts [s:damage-down:30s].
   dismissal-overruling:
     id: 34693
+    source: 16114
     mechanic: mech.knockback
     damage: 22285
     compact: full
@@ -392,6 +422,7 @@ actions:
     description: Darkness explodes around [boss], leaving only his hitbox safe.
   shadowed-messengers:
     id: 33305
+    source: 16114
     mechanic: mech
     description: Summons two clones on the intercardinals of the arena. After a short time they will cast [a:divisive-ruling] – one dark and one light – while [boss] casts [a:divisive-overruling].
     resolve: |
@@ -406,6 +437,7 @@ actions:
       id: upheld-ruling
   divisive-ruling:
     id: 33306
+    source: 16115
     mechanic: aoe
     shape: line
     compact: full
@@ -418,17 +450,26 @@ actions:
       id: ripples-of-gloom
   upheld-ruling:
     id: 34769
+    source: 16115
     mechanic: mech
     compact: full
     description: Same as [a:upheld-overruling], but cast by a clone of [boss] rather than [boss] himself.
     children:
+    - at: 354
+      id: upheld-ruling-hit
     - at: 4100
       id: lightburst
       link: or
     - at: 4100
       id: dark-perimeter
+  upheld-ruling-hit:
+    id: 33313
+    source: 16115
+    mechanic: mech
+    description: Hit of [a:upheld-ruling].
   lightstream:
     id: 33283
+    source: 16114
     mechanic: aoe.rotating
     shape: line
     count: 3
@@ -436,10 +477,11 @@ actions:
     resolve: One possible trick to find the safe spot quickly is to identify the "odd one out" – two of the cylinders will always rotate the same way while one of them rotates the other way. Find this cylinder. The safe spot is the second triangle in the direction it is *not* rotating.
   dark-and-light:
     id: 33278
+    source: 16114
     mechanic: mech
     description: |
       Tethers each DPS player to a support player and inflicts [s:dark-discord] (dark tether) or [s:light-discord] (light tether).
-      Each pair of partners may either share the same tether colour or may have *different* tether colours, in which case they will meet in the middle. Each pair of partners must maintain a proper distance to each other to change their [s:dark-discord] or [s:light-discord] into [s:dark-accord] or [s:light-accord] respectively; failing to do so deals heavy sustained damage and inflicts [s:polarizing] (a:katakrisis). Players with [s:polarizing] instantly die at the end of the mechanic.
+      Each pair of partners may either share the same tether colour or may have *different* tether colours, in which case they will meet in the middle. Each pair of partners must maintain a proper distance to each other to change their [s:dark-discord] or [s:light-discord] into [s:dark-accord] or [s:light-accord] respectively; failing to do so deals heavy sustained damage and inflicts [s:polarizing:30s] (a:katakrisis). Players with [s:polarizing:30s] instantly die at the end of the mechanic.
       A pair of partners that share the same tether colour must stay far away from each other.
       A pair of partners that have different tether colours must stack on top of each other.
       There will always be two "far" pairs and two "close" pairs.
@@ -455,13 +497,15 @@ actions:
   katakrisis:
     id: 33280
     mechanic: mech.check
-    description: Deals damage to any players with [s:dark-discord] or [s:light-discord] and inflicts [s:polarizing].
+    description: Deals damage to any players with [s:dark-discord] or [s:light-discord] and inflicts [s:polarizing:30s].
   emissarys-will:
     id: 33282
+    source: 16114
     mechanic: mech.check
-    description: Resolves [s:dark-accord] and [s:light-accord]. Any players who failed to maintain the proper aetheric balance and obtained any stacks of [s:polarizing] are killed instantly.
+    description: Resolves [s:dark-accord] and [s:light-accord]. Any players who failed to maintain the proper aetheric balance and obtained any stacks of [s:polarizing:30s] are killed instantly.
   dark-current:
     id: 33284
+    source: 16114
     mechanic: aoe.rotating
     shape: chariot
     description: |
@@ -509,6 +553,7 @@ actions:
     description: Spread [t:AoE]s on all eight players.
   letter-of-the-law:
     id: 34770
+    source: 16114
     mechanic: mech
     description: A rapid sequence of previous mechanics combined.
     children:
@@ -531,16 +576,17 @@ actions:
     resolve: "There are two safe spots during this mechanic: one is around the southern sphere, while one is around the northern sphere. The party should always take the southmost safe spot while the tethered tank should always take the northmost safe spot. Find the safe spot first, then look at the sides to determine where you have to stand in around the sphere. Remember you must find both the safe column and the safe row."
   heart-of-judgment:
     id: 33318
+    source: 16114
     mechanic: towers.double
     damage: 4650
-    description: "[boss] summons four towers at the intercardinals of the arena. If not soaked by two players before the descending orb reaches the tower, the tower explodes, dealing massive damage to the entire party and inflicting [s:sustained-damage]."
+    description: "[boss] summons four towers at the intercardinals of the arena. If not soaked by two players before the descending orb reaches the tower, the tower explodes, dealing massive damage to the entire party and inflicting [s:sustained-damage:30s]."
     resolve: Use standard [a:inevitable-sentence] partners. It is recommended to handle this mechanic [t:true north], allowing you to target a waymarker while you're waiting for the preceding [a:upheld-ruling] to resolve, then beeline for that marker once you've escaped [a:dark-perimeter].
   explosion:
     id: 33319
     mechanic: towers.double
     damage: 4650
     count: 4
-    description: Towers explode, dealing minimal damage to all players soaking them. If any towers do not have 2 players soaking them, deals massive damage and inflicts [s:sustained-damage] to the whole party. This damage is survivable if only one player is missing from a tower, but lethal if both players are missing.
+    description: Towers explode, dealing minimal damage to all players soaking them. If any towers do not have 2 players soaking them, deals massive damage and inflicts [s:sustained-damage:30s] to the whole party. This damage is survivable if only one player is missing from a tower, but lethal if both players are missing.
   ultimate-verdict:
     id: 33324
     mechanic: enrage

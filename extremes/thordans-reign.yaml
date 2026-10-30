@@ -17,46 +17,36 @@ status:
   vuln:
     id: 1789
     type: vuln
-    duration: 119650
   physical-vuln:
     id: 934
     type: vuln
-    duration: 60000
   magic-vuln:
     id: 658
     type: vuln
-    duration: 10420
   burning-chains:
     id: 769
     type: condition
-    duration: 30000
     description: Chains link this player with another player, inflicting constant damage ([a:holy-chain]). To break the chain, the distance between the two chained players must be greater than the distance when the chain was initially established.
   stun:
     id: 2
     type: impairment
-    duration: 3000
   down-for-the-count:
     id: 783
     type: impairment
-    duration: 11000
   hysteria:
     id: 296
     type: impairment
-    duration: 4000
     description: Causes afflicted players to run away in fear while being unable to execute actions. May cause player to run into the death wall. To prevent this, a healer can use [a:rescue] on the afflicted player.
   paralysis:
     id: 17
     type: impairment
-    duration: 30000
   infirmity:
     id: 172
     type: impairment
-    duration: 14000
   frostbite:
     id: 268
     type: dot
     tick: 10550
-    duration: 30000
   light-of-ascalon:
     id: 943
     type: form
@@ -127,7 +117,10 @@ actions:
   the-dragons-gaze:
     id: 35272
     mechanic: mech.lookaway
-    description: Inflicts [s:hysteria] on any player looking at [boss] at the end of the cast.
+    description: Inflicts [s:hysteria:4s] on any player looking at [boss] at the end of the cast.
+    inflicts:
+      - status: hysteria
+        duration: 4000
   lightning-storm:
     id: 35265
     mechanic: spread
@@ -156,8 +149,11 @@ actions:
     name: Charibert and Hermenost
     mechanic: mech.trio
     description: |
-      Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert shackles each player with [s:burning-chains] to another random player and summons fire [t:AoE]s beneath them ([a:heavensflame]) while Ser Hermenost summons four towers at the edge of the arena.
-    resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
+      Ser Charibert (a mage) and Ser Hermenost (a warrior) appear in the middle of the arena. Ser Charibert shackles each player with [s:burning-chains:30s] to another random player and summons fire [t:AoE]s beneath them ([a:heavensflame]) while Ser Hermenost summons four towers at the edge of the arena.
+    inflicts:
+      - status: burning-chains
+        duration: 30000
+    resolve: Stack center to reduce the distance needed between two chained players to break the chain. Wait until everyone receives [s:burning-chains:30s], then run out to your clock spot. At your clock spot, dodge [a:heavensflame] if necessary. If there's a tower at your clock spot, stand in it.
     strategies:
       knights-1:
         name: Example
@@ -171,7 +167,7 @@ actions:
     mechanic: mech.failure
     damage: 10945
     players: 2
-    description: The [s:burning-chains] continuously explode, dealing some damage with each explosion.
+    description: The [s:burning-chains:30s] continuously explode, dealing some damage with each explosion.
   heavensflame:
     id: 35306
     mechanic: aoe.delayed
@@ -205,7 +201,10 @@ actions:
     mechanic: mech.failure
     damage: 26395
     players: 8
-    description: A tower explodes, dealing massive damage and inflicting [s:paralysis] on all players.
+    description: A tower explodes, dealing massive damage and inflicting [s:paralysis:30s] on all players.
+    inflicts:
+      - status: paralysis
+        duration: 30000
   knights-2:
     name: Zephirin and others
     mechanic: adds
@@ -240,7 +239,10 @@ actions:
     shape: line
     description: |
       A knight dashes across the arena, knocking anyone hit into the wall.
-      This attack is susceptible to knockback immunity effects, in which case it only inflicts [s:vuln].
+      This attack is susceptible to knockback immunity effects, in which case it only inflicts [s:vuln:120s].
+    inflicts:
+      - status: vuln
+        duration: 119650
   spiral-thrust-x3:
     id: 35301
     mechanic: aoe
@@ -248,7 +250,10 @@ actions:
     count: 3
     description: |
       Three knights dash across the arena, knocking anyone hit into the wall. These knights will never spawn opposite one another.
-      The dashes themselves are susceptible to knockback immunity effects, in which case they only inflict [s:vuln].
+      The dashes themselves are susceptible to knockback immunity effects, in which case they only inflict [s:vuln:120s].
+    inflicts:
+      - status: vuln
+        duration: 119650
     resolve: While there is always one safe clock spot + opposite clock spot, finding it requires inspecting each knight. To make matters easier, simply stand on the lines in-between the prongs of the star on the arena floor. This diagram demonstrates the positioning.
     strategies:
       spiral-thrust-x3:
@@ -353,7 +358,7 @@ actions:
       Five knights appear in the middle of the arena.
       Three of them cast a yellow tether to three random players and begin casting [a:spiral-pierce].
       Ser Grinnaux places AoEs underneath each player and begins casting [a:dimensional-collapse], gradually expanding the AoEs until the cast has finished.
-      Meanwhile, all untethered players receive an ice marker, indicating they will be hit by [a:hiemal-storm] soon, dealing mild damage and leaving a frost puddle behind that inflicts [s:frostbite] if anyone steps in it.
+      Meanwhile, all untethered players receive an ice marker, indicating they will be hit by [a:hiemal-storm] soon, dealing mild damage and leaving a frost puddle behind that inflicts [s:frostbite:30s] if anyone steps in it.
       Finally, Ser Grinnaux uses [a:faith-unmoving], knocking all players back from his position.
     resolve: |
       Stack in the center of the arena and wait for the red [a:dimensional-collapse] AoEs to appear. Once they do, move to your clock spot. If you are targeted by [a:hiemal-storm], wait until the frost puddle appears, then move out of it while still avoiding [a:dimensional-collapse].
@@ -379,7 +384,10 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 24580
-    description: Telegraphed [t:AoE] on random players that deals  damage and leaves behind a frost puddle. Staying in this puddle for too long inflicts [s:frostbite].
+    description: Telegraphed [t:AoE] on random players that deals  damage and leaves behind a frost puddle. Staying in this puddle for too long inflicts [s:frostbite:30s].
+    inflicts:
+      - status: frostbite
+        duration: 30000
   spiral-pierce:
     id: 35302
     mechanic: spread
@@ -387,7 +395,7 @@ actions:
     damage: 36567
     description: A knight tethers to a random player and, after some time, dashes towards them, dealing heavy damage. Anyone else in the path of the dash is knocked into the wall and killed.
   dimensional-collapse:
-    id: 35288
+    id: 35289
     mechanic: aoe.expanding
     shape: chariot
     description: |
@@ -398,7 +406,7 @@ actions:
     mechanic: mech.knockback
     damage: 6155
     description: A knockback from Ser Grinnaux. Be aware that this ability has no cast bar.
-    resolve: Get close to Ser Grinnaux and aim yourself away from the [a:hiemal-storm] puddles, to avoid getting [s:frostbite].
+    resolve: Get close to Ser Grinnaux and aim yourself away from the [a:hiemal-storm] puddles, to avoid getting [s:frostbite:30s].
   holy-meteor:
     name: Holy Meteor
     cast: 3000
@@ -436,7 +444,10 @@ actions:
     shape: 270°
     damage: 29401
     players: 0
-    description: A 270° arc that hits multiple times in a row. Each time the arc is bigger and farther from the origin of the attack.
+    description: A 270° arc that hits multiple times in a row. Each time the arc is bigger and farther from the origin of the attack. Inflicts [s:stun:3s].
+    inflicts:
+      - status: stun
+        duration: 3000
     resolve: Step into the 90° cone that is safe from the AoE, or step into an AoE explosion after it has gone off.
   comet-impact:
     id: 35314
@@ -555,9 +566,9 @@ actions:
     mechanic: mech.trio
     description: |
       [boss] summons his knights, who begin to execute a series of mechanics.
-      This includes [s:burning-chains], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and [a:the-dragons-gaze].
+      This includes [s:burning-chains:30s], [a:comet]s, [a:heavensflame], [a:hiemal-storm], an [a:ascalons-mercy], and [a:the-dragons-gaze].
     resolve: |
-      All attacks can be safely avoided by going to your clock spot once [s:burning-chains] appear.
+      All attacks can be safely avoided by going to your clock spot once [s:burning-chains:30s] appear.
     children:
     - at: 6154
       id: ascalons-might
@@ -611,23 +622,38 @@ actions:
     id: 35286
     mechanic: mech.status
     damage: 0
-    description: A random healer receives a green marker. Shortly thereafter two knights charge at them, inflicting [s:down-for-the-count] and [s:magic-vuln:2].
+    description: A random healer receives a green marker. Shortly thereafter two knights charge at them, inflicting [s:down-for-the-count:11s] and [s:magic-vuln:2:10s].
+    inflicts:
+      - status: magic-vuln
+        duration: 10420
+      - status: down-for-the-count
+        duration: 11000
   spear-of-the-fury:
     id: 35281
     mechanic: stack.intercept
     shape: line
     damage: 36000
     description: |
-      Ser Zephirin throws an aetheric spear at the healer who is [s:down-for-the-count], intending to inflict upon them the same fate as poor Haurchefant.
-      This attack splits damage between all players hit, reducing damage to survivable levels. The first player hit takes drastically increased damage (about twice as much as everyone else) and is inflicted with [s:physical-vuln].
-      Any player hit is inflicted with [s:infirmity], slightly reducing healing received.
+      Ser Zephirin throws an aetheric spear at the healer who is [s:down-for-the-count:11s], intending to inflict upon them the same fate as poor Haurchefant.
+      This attack splits damage between all players hit, reducing damage to survivable levels. The first player hit takes drastically increased damage (about twice as much as everyone else) and is inflicted with [s:physical-vuln:60s].
+      Any player hit is inflicted with [s:infirmity:14s], slightly reducing healing received.
       If any player (including the targeted healer) dies to this attack, Ser Zephirin immediately follows up with a maximum damage [a:sacred-cross], wiping the party.
+    inflicts:
+      - status: physical-vuln
+        duration: 60000
+      - status: infirmity
+        duration: 14000
     resolve:
-      All players (except the main tank, who will be busy dealing with a simultaneous [a:heavenly-heel]) must stack in front of the targeted healer. The off-tank must be the closest player to Ser Zephirin, to ensure they get hit first. Be aware that they cannot take enmity from [boss] afterwards, due to their [s:physical-vuln].
+      All players (except the main tank, who will be busy dealing with a simultaneous [a:heavenly-heel]) must stack in front of the targeted healer. The off-tank must be the closest player to Ser Zephirin, to ensure they get hit first. Be aware that they cannot take enmity from [boss] afterwards, due to their [s:physical-vuln:60s].
   the-dragons-glory:
     id: 35273
     mechanic: mech.lookaway
-    description: Anyone looking at the dragon eye on the outside of the arena is inflicted with [s:hysteria] and [s:vuln].
+    description: Anyone looking at the dragon eye on the outside of the arena is inflicted with [s:hysteria:4s] and [s:vuln:120s].
+    inflicts:
+      - status: hysteria
+        duration: 4000
+      - status: vuln
+        duration: 119650
   heavensward-leap:
     id: 35305
     mechanic: raidwide

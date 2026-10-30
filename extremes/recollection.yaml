@@ -20,36 +20,24 @@ status:
   thorny-vine:
     id: 445
     type: condition
-    duration: 15000
     description: Player is chained to a player of the opposite role. Deals massive damage to both players if the chain is not broken by establishing sufficient distance between the pair.
   vulnerability-up:
     id: 1789
     type: vuln
-    duration: 60000
     description: |
       Increases damage taken by 8% per stack.
-      Inflicted by a number of mechanics, including [a:holy-hazard-hit], [a:alexandrian-thunder-iv], [a:valorous-ascension-4], [a:alexandrian-thunder-iv-1], [a:thunder-slash], [a:alexandrian-thunder-ii].
   lightning-resistance-down-ii:
     id: 2998
     type: vuln
-    duration: 2000
-    description: |
-      Renders lightning damage lethal.
-      Inflicted by [a:alexandrian-thunder-iii].
+    description: Renders lightning damage lethal.
   slashing-resistance-down:
     id: 3130
     type: vuln
-    duration: 4960
-    description: |
-      Renders slashing damage lethal.
-      Inflicted by [a:escelons-fall-hit]
+    description: Renders slashing damage lethal.
   magic-vulnerability-up:
     id: 3414
     type: vuln
-    duration: 8950
-    description: |
-      Renders magic damage lethal.
-      Inflicted by [a:emblazon].
+    description: Renders magic damage lethal.
   bleeding:
     id: 4137
     type: dot
@@ -58,10 +46,7 @@ status:
   light-resistance-down-ii:
     id: 4164
     type: vuln
-    duration: 1960
-    description: |
-      Renders any light-aspected damage lethal.
-      Inflicted by [a:explosion], [a:shock-chariot].
+    description: Renders any light-aspected damage lethal.
 actions:
   emblazon:
     id: 43040
@@ -69,7 +54,10 @@ actions:
     shape: cone
     count: 4
     damage: 39364
-    description: Emblazons the conal tile the player is standing on. Inflicts [s:magic-vulnerability-up].
+    description: Emblazons the conal tile the player is standing on. Inflicts [s:magic-vulnerability-up:9s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 8950
   alexandrian-thunder-ii:
     id: 43064
     mechanic: aoe.rotating
@@ -78,6 +66,7 @@ actions:
     description: Placeholder description
   holy-hazard:
     id: 43065
+    source: 18374
     mechanic: aoe
     shape: sides
     description: An AoE that leave only four conal tiles safe. Is immediately followed by another AoE that is rotated directly clockwise or counter-clockwise of the first.
@@ -90,9 +79,13 @@ actions:
     id: 43068
     mechanic: towers.single
     damage: 71095
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:light-resistance-down-ii:2s].
+    inflicts:
+      - status: light-resistance-down-ii
+        duration: 1960
   thorned-catharsis:
     id: 43166
+    source: 18374
     mechanic: raidwide
     damage: 158002
     description: Placeholder description
@@ -114,9 +107,13 @@ actions:
     name: Shock (Point-blank)
     mechanic: aoe.linger
     shape: chariot
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:light-resistance-down-ii:2s].
+    inflicts:
+      - status: light-resistance-down-ii
+        duration: 1960
   escelons-fall:
     id: 43181
+    source: 18374
     mechanic: mech.close-or-far
     shape: cone
     description: Placeholder description
@@ -135,18 +132,27 @@ actions:
     shape: cone
     count: 4
     damage: 158232
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:slashing-resistance-down:5s].
+    inflicts:
+      - status: slashing-resistance-down
+        duration: 4960
   bud-of-valor:
     id: 43186
+    source: 18374
     mechanic: mech.prepare
     description: Placeholder description
   spearpoint-push:
     id: 43187
+    source: 18378
     mechanic: aoe
     shape: halfroom
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   blessed-barricade:
     id: 43189
+    source: 18374
     mechanic: mech.arena
     description: Placeholder description
     children:
@@ -182,6 +188,7 @@ actions:
       description: "[boss:c] becomes targetable."
   roseblood-bloom:
     id: 43193
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description
@@ -200,15 +207,18 @@ actions:
     description: Places a lingering AoE in the center of the arena that inflicts a lethal [s:bleeding] DoT when stepped into.
   emblazon-cast:
     id: 43195
+    source: 18374
     mechanic: mech.status
     description: Placeholder description
   alexandrian-holy:
     id: 43200
+    source: 18378
     mechanic: towers.single
     damage: 0
     description: Placeholder description
   encircling-thorns:
     id: 43203
+    source: 18374
     mechanic: mech.tether.snappable
     description: Placeholder description
   rose-red:
@@ -218,6 +228,7 @@ actions:
     description: Placeholder description
   valorous-ascension:
     id: 43206
+    source: 18374
     mechanic: raidwide
     description: Placeholder description
     children:
@@ -244,6 +255,7 @@ actions:
     description: Placeholder description
   valorous-ascension-4:
     id: 43210
+    source: 18375
     mechanic: aoe
     shape: line
     count: 2
@@ -257,7 +269,10 @@ actions:
     id: 43216
     mechanic: aoe
     shape: cone
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   alexandrian-banish-ii:
     id: 43218
     mechanic: stack.role
@@ -267,6 +282,7 @@ actions:
     description: Placeholder description
   stock-break:
     id: 43221
+    source: 18374
     mechanic: stack.party
     shape: chariot
     description: Placeholder description
@@ -308,13 +324,21 @@ actions:
     mechanic: aoe
     shape: sides
     count: 2
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   alexandrian-thunder-iii:
     id: 43236
     mechanic: spread
     shape: chariot
     damage: 138944
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:vulnerability-up:60s] and [s:lightning-resistance-down-ii:2s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
+      - status: lightning-resistance-down-ii
+        duration: 2000
   alexandrian-banish-iii:
     id: 43241
     mechanic: stack.role
@@ -333,9 +357,13 @@ actions:
     id: 43451
     mechanic: aoe
     shape: in-or-out
-    description: Placeholder description
+    description: Placeholder description. Inflicts [s:vulnerability-up:60s].
+    inflicts:
+      - status: vulnerability-up
+        duration: 60000
   roseblood-2nd-bloom:
     id: 43540
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description
@@ -348,6 +376,7 @@ actions:
       id: alexandrian-thunder-iv
   roseblood-3rd-bloom:
     id: 43541
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description
@@ -364,6 +393,7 @@ actions:
       id: explosion
   roseblood-4th-bloom:
     id: 43542
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description
@@ -382,6 +412,7 @@ actions:
       id: alexandrian-banish-iii
   roseblood-5th-bloom:
     id: 43543
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description
@@ -400,6 +431,7 @@ actions:
       id: valorous-ascension-4
   roseblood-6th-bloom:
     id: 43544
+    source: 18374
     mechanic: mech.arena
     emphasis: more
     description: Placeholder description

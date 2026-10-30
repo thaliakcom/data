@@ -16,13 +16,11 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
     description: Reduces damage dealt by 35%.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [7000, 2000]
-    description: Renders all magic damage lethal. Inflicted by [a:strange-seeds-drop], [a:electrogenetic-force], [a:sinister-seeds-stars], [a:killer-seeds], [a:impact], [a:the-unpotted].
+    description: Renders all magic damage lethal.
   thorns-of-death-i:
     id: 4466
     name: Thorns of Death I
@@ -50,13 +48,13 @@ status:
   stone-curse:
     id: 4537
     type: impairment
-    duration: 20000
     description: |
-      Player is petrified and thus unable to act or move. Any damage instance results in instant death. Inflicted by [a:quarry-swamp]. Due to the unavoidable damage immediately following [a:quarry-swamp], this debuff is a death sentence.
+      Player is petrified and thus unable to act or move. Any damage instance results in instant death.  Due to the unavoidable damage immediately following [a:quarry-swamp], this debuff is a death sentence.
       In Phase 3, adds can also be inflicted with this debuff, which is why it is recommended not to hit the Phase 3 adds at all until after [a:quarry-swamp], at which point a single point of damage will kill them instantly.
 actions:
   brutal-impact-6x:
     id: 42331
+    source: 18307
     mechanic: raidwide
     description: |
       Standard raidwide.
@@ -76,6 +74,7 @@ actions:
       id: brutal-impact-hit
   brutal-impact-7x:
     id: 42331
+    source: 18307
     mechanic: raidwide
     description: Placeholder description
     children:
@@ -95,6 +94,7 @@ actions:
       id: brutal-impact-hit
   brutal-impact-8x:
     id: 42331
+    source: 18307
     mechanic: raidwide
     description: Placeholder description
     children:
@@ -116,11 +116,13 @@ actions:
       id: brutal-impact-hit
   brutal-impact-hit:
     id: 42332
+    source: 18307
     mechanic: raidwide
     damage: 57492
     description: Individual hit of [a:brutal-impact-6x].
   stoneringer:
     id: 42333
+    source: 18307
     mechanic: mech.prepare
     description: |
       [boss] summons either a blade or a club.
@@ -129,6 +131,7 @@ actions:
       * a ([ms:chariot]) if he's wielding a club.
   smash-here:
     id: 42335
+    source: 18307
     name: Smash Here
     mechanic: tb.close
     description: |
@@ -143,6 +146,7 @@ actions:
       id: brutal-smash
   smash-there:
     id: 42336
+    source: 18307
     name: Smash There
     mechanic: tb.far
     description: |
@@ -161,9 +165,10 @@ actions:
     id: 42338
     mechanic: aoe
     shape: in-or-out
-    description: A [ms:chariot] if [boss] wields a club, or a [ms:dynamo] if he wields a blade. Inflicts [s:damage-down].
+    description: A [ms:chariot] if [boss] wields a club, or a [ms:dynamo] if he wields a blade. Inflicts [s:damage-down:30s].
   brutal-smash:
     id: 42341
+    source: 18307
     mechanic: tb.stack
     shape: chariot
     damage: 358126
@@ -173,22 +178,23 @@ actions:
     mechanic: aoe
     shape: chariot
     count: 4
-    description: 4 AoEs in one of two predefined patterns that determines where the Blooming Abominations will spawn. Inflicts [s:damage-down].
+    description: 4 AoEs in one of two predefined patterns that determines where the Blooming Abominations will spawn. Inflicts [s:damage-down:30s].
   pollen:
     id: 42347
     mechanic: aoe
     shape: chariot
     count: 12
-    description: After [a:spore-sac], 3 tendrils begin to grow from each spore. The ends of each tendril then detonate in a [ms:chariot] AoE. Inflicts [s:damage-down].
+    description: After [a:spore-sac], 3 tendrils begin to grow from each spore. The ends of each tendril then detonate in a [ms:chariot] AoE. Inflicts [s:damage-down:30s].
   sinister-seeds-1:
     id: 42349
+    source: 18307
     mechanic: mech
     emphasis: more
     description: |
       Major mechanic.
       There are two types of responsibilities for this mechanic: [a:sinister-seeds-stars] and [a:sinister-seeds-aoes]. At the end of the cast, the closest 4 players are designated for one of these mechanics while the other 4 receive the other mechanic.
       [a:sinister-seeds-stars]: 4 players receive a headmarker along with a telegraphed AoE. After a significant delay, the AoE resolves, dealing moderate damage and leaving behind [a:tendrils-of-terror]; star-shaped AoEs where the AoE was dropped.
-      [a:sinister-seeds-aoes]: several rounds of AoEs appear underneath the other 4 players. Any player hit by these is inflicted with [s:damage-down]. At the end of the mechanic, all dropped AoEs explode again with a much bigger radius ([a:roots-of-evil]).
+      [a:sinister-seeds-aoes]: several rounds of AoEs appear underneath the other 4 players. Any player hit by these is inflicted with [s:damage-down:30s]. At the end of the mechanic, all dropped AoEs explode again with a much bigger radius ([a:roots-of-evil]).
     children:
     - at: 1202
       id: pollen
@@ -222,27 +228,34 @@ actions:
     shape: chariot
     count: 4
     damage: 125535
-    description: The AoEs on the 4 players with headmarkers resolve. Shortly afterwards, [a:tendrils-of-terror] appear in that location. Inflicts [s:magic-vulnerability-up].
+    description: The AoEs on the 4 players with headmarkers resolve. Shortly afterwards, [a:tendrils-of-terror] appear in that location. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   tendrils-of-terror:
     id: 42351
     mechanic: aoe
     shape: star
-    description: A [ms:star]-shaped AoE that detonates wherever [a:sinister-seeds-stars] were dropped. Inflicts [s:damage-down].
+    description: A [ms:star]-shaped AoE that detonates wherever [a:sinister-seeds-stars] were dropped. Inflicts [s:damage-down:30s].
   sinister-seeds-aoes:
     id: 42353
     name: Sinister Seeds (AoE)
     mechanic: aoe.delayed
     shape: chariot
     count: 4
-    description: Multiple rounds of AoEs that are baited on either the closest or farthest 4 players. The locations of these drops determines the locations of [a:roots-of-evil]. Inflicts [s:damage-down].
+    description: Multiple rounds of AoEs that are baited on either the closest or farthest 4 players. The locations of these drops determines the locations of [a:roots-of-evil]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   roots-of-evil:
     id: 42354
     mechanic: aoe.aftershock
     shape: chariot
     count: 16
-    description: Massive AoEs that detonate wherever [a:sinister-seeds-aoes] were dropped. Inflicts [s:damage-down].
+    description: Massive AoEs that detonate wherever [a:sinister-seeds-aoes] were dropped. Inflicts [s:damage-down:30s].
   sinister-seeds-2:
     id: 42349
+    source: 18307
     mechanic: mech
     emphasis: more
     description: No description yet
@@ -252,11 +265,18 @@ actions:
     shape: chariot
     count: 2
     damage: 180518
-    description: Both healers are targeted by a [t:stack].
+    description: Both healers are targeted by a [t:stack]. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   quarry-swamp:
     id: 42357
+    source: 18307
     mechanic: mech.los
-    description: Inflicts [s:stone-curse] on all players in line of sight with [boss].
+    description: Inflicts [s:stone-curse:20s] on all players in line of sight with [boss].
+    inflicts:
+      - status: stone-curse
+        duration: 20000
     resolve: Hide behind a Blooming Abomination. It does not matter whether the Blooming Abomination is alive or dead.
   explosion:
     id: 42358
@@ -276,16 +296,20 @@ actions:
     id: 42362
     mechanic: aoe
     shape: chariot
-    description: Close-range AoE originating from [boss] after [a:pulp-smash]. Inflicts [s:damage-down].
+    description: Close-range AoE originating from [boss] after [a:pulp-smash]. Inflicts [s:damage-down:30s].
   the-unpotted:
     id: 42363
     mechanic: spread
     shape: cone
     count: 8
     damage: 79310
-    description: Narrow conal spreads on each player.
+    description: Narrow conal spreads on each player. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   neo-bombarian-special:
     id: 42364
+    source: 18307
     mechanic: raidwide.transition
     damage: 181968
     description: |
@@ -293,28 +317,35 @@ actions:
     resolve: Stand in the center on the northern edge of the arena to be knocked onto the second arena. Failure to do so leads to death.
   grappling-ivy:
     id: 42365
+    source: 18307
     mechanic: mech.prepare
     description: |
       [boss] grapples to one of the three walls in the second arena. For the rest of this phase, [boss] becomes a [t:wall boss].
   glower-power:
     id: 42373
+    source: 18307
     mechanic: aoe
     shape: line
-    description: A wide line AoE originating from the boss, aimed straight ahead. Inflicts [s:damage-down].
+    description: A wide line AoE originating from the boss, aimed straight ahead. Inflicts [s:damage-down:30s].
   electrogenetic-force:
     id: 42374
     mechanic: spread
     shape: chariot
     count: 8
     damage: 129015
-    description: Moderate-size spreads. Inflicts [s:magic-vulnerability-up].
+    description: Moderate-size spreads. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
   revenge-of-the-vines:
     id: 42375
+    source: 18307
     mechanic: raidwide
     damage: 196357
     description: Heavy raidwide.
   thorny-deathmatch:
     id: 42376
+    source: 18307
     mechanic: mech.tether.close
     description: |
       [boss] tethers the highest enmity player player with [s:thorns-of-death-i].
@@ -323,6 +354,7 @@ actions:
       Nothing needs to be done initially, but a few seconds later the boss uses [a:abominable-blink], targeting either the highest enmity target or the second-highest. To prevent the main target from having to deal with both the damage from the tether and the flare at the same time, it is recommended to have the off-tank [a:provoke] if the main tank is targeted by [a:abominable-blink].
   sporesplosion:
     id: 42378
+    source: 18307
     mechanic: aoe
     shape: chariot
     description: |
@@ -346,12 +378,14 @@ actions:
     description: A [a:sporesplosion] AoE explodes.
   demolition-deathmatch:
     id: 42390
+    source: 18307
     mechanic: mech.tether.close
     description: |
       All 3 vine walls tether to the closest player.
       Unlike [a:thorny-deathmatch], these tethers are not immediately active. Instead, they can be passed around by passing through them for about five seconds, at which point they lock in and inflict [s:thorns-of-death-i] on the tethered player.
   strange-seeds:
     id: 42391
+    source: 18307
     mechanic: mech
     emphasis: more
     description: |
@@ -364,17 +398,24 @@ actions:
     shape: chariot
     count: 2
     damage: 96648
-    description: Simple targeted AoE. Inflicts [s:magic-vulnerability-up]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+    description: Simple targeted AoE. Inflicts [s:magic-vulnerability-up:7s]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 7000
   killer-seeds:
     id: 42395
     mechanic: stack.partner
     shape: chariot
     count: 4
     damage: 106298
-    description: Telegraphed [m:stack.partner] on either all supports or all damage dealers. Inflicts [s:magic-vulnerability-up]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+    description: Telegraphed [m:stack.partner] on either all supports or all damage dealers. Inflicts [s:magic-vulnerability-up:2s]. Leaves behind a [t:starburst] ([a:tendrils-of-terror]).
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 2000
     resolve: Players are still tethered here, so fixed spots near the walls should be used for the stack locations. This also helps make the resulting [starbursts](t:starburst) more predictable.
   powerslam:
     id: 42398
+    source: 18307
     mechanic: raidwide.transition
     damage: 213112
     description: Raidwide that deals massive damage. Blows a hole in the roof and transitions the fight to the next phase.
@@ -402,6 +443,7 @@ actions:
     resolve: There are only 2 [Slaminators](a:slaminator) in the fight, so it is recommended to have each tank [t:invuln] one while the rest of the party stays out of it.
   debris-deathmatch:
     id: 42416
+    source: 18307
     mechanic: mech
     emphasis: more
     description: Placeholder description
@@ -412,6 +454,7 @@ actions:
     description: Boss slams the middle of the arena, knocking all players into the wall.
   revenge-of-the-vines-instant:
     id: 42553
+    source: 18307
     mechanic: raidwide
     damage: 196594
     description: Heavy raidwide, but without a cast bar.
@@ -425,6 +468,7 @@ actions:
       Similar to [a:explosion], this is a [m:raidwide.proximity.fake] attack. It deals massive [t:tankbuster]-level damage to targets in the immediate vicinity and heavy raidwide-level damage to all targets outside of its immediate radius, regardless of distance.
   strange-seeds-2:
     id: 43274
+    source: 18307
     description: Placeholder description
 timeline:
   - at: 0

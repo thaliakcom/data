@@ -23,50 +23,41 @@ status:
   damage-down:
     id: 2911
     type: impairment
-    duration: 30000
-    description: Reduces damage dealt by 50%. Inflicted by various actions, including [a:phagocyte-spotlight] and [a:cell-death].
+    description: Reduces damage dealt by 50%.
   poison-resistance-down-ii:
     id: 3935
     type: vuln
-    duration: [11960, 25000, 3960, 1960]
     description: |
       Renders any poison damage taken lethal.
       Note that this does not refer to a literal poison [t:DoT] but simply poison-aspected damage. Most damage dealt by [boss] is poison-aspected.
-      Inflicted by various actions, including [a:mortal-slayer-ball], [a:mortal-slayer-tb], [a:roiling-mass-alpha], [a:roiling-mass-beta], [a:dramatic-lysis-mitotic-phase], and [a:cell-shedding].
   shared-grotesquerie:
     id: 4762
     type: delay
-    duration: 17000
     description: Triggers [a:fourth-wall-fusion] on the player when the effect expires.
   bursting-grotesquerie:
     id: 4761
     type: delay
-    duration: [17000, 14000]
     description: Triggers [a:dramatic-lysis] on the player when the effect expires.
   directed-grotesquerie:
     id: 4976
     type: delay
-    duration: 17000
     description: Triggers [a:hemorrhagic-projection] in the direction of the blob when the effect expires.
   magic-vulnerability-up:
     id: 2941
     type: vuln
-    duration: [1960, 8960, 4960]
-    description: Renders any magic damage taken lethal. Inflicted by various actions, including [a:dramatic-lysis], [a:fourth-wall-fusion], [a:fourth-wall-fusion-random], [a:dramatic-lysis-tether-break], [a:split-scourge], [a:venomous-scourge], [a:fourth-wall-fusion-slaughtershed], and [a:dramatic-lysis-spread].
+    description: Renders any magic damage taken lethal.
   bonds-of-flesh-alpha:
     id: 4752
     name: Bonds of Flesh α
     type: delay
-    duration: [26000, 31000, 36000, 41000, 19000]
-    description: Turns into [s:unbreakable-flesh-alpha] when the effect expires.
-    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-alpha] when this effect expires.
+    description: Turns into [s:unbreakable-flesh-alpha:18s] when the effect expires.
+    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-alpha:18s] when this effect expires.
   bonds-of-flesh-beta:
     id: 4754
     name: Bonds of Flesh β
     type: delay
-    duration: [26000, 31000, 36000, 41000]
-    description: Turns into [s:unbreakable-flesh-beta] when the effect expires.
-    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-beta] when this effect expires.
+    description: Turns into [s:unbreakable-flesh-beta:18s] when the effect expires.
+    gameDescription: Ensnared by a chain of cells, which will transform into [s:unbreakable-flesh-beta:18s] when this effect expires.
   first-in-line:
     id: 3004
     type: indicator
@@ -86,33 +77,29 @@ status:
   bind:
     id: 2518
     type: impairment
-    duration: [5000, 3000]
     description: Player is unable to move or execute gapcloser actions.
   unbreakable-flesh-alpha:
     id: 4753
     name: Unbreakable Flesh α
     type: condition
-    duration: 18000
     description: |
-      During [a:grotesquerie-act-2], player is tethered to the corresponding player with [s:unbreakable-flesh-beta]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
+      During [a:grotesquerie-act-2], player is tethered to the corresponding player with [s:unbreakable-flesh-beta:18s]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta:18s] player.
       During [a:grotesquerie-curtain-call], player is tethered to a random player of the opposite role.
-      Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
-      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down] and repeated instances of heavy damage until they die.
+      Failing to break the tether in time inflicts [s:damage-down:30s] and leads to repeated heavy damage.
+      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha:18s] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down:30s] and repeated instances of heavy damage until they die.
     gameDescription: Chained by alpha-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
   unbreakable-flesh-beta:
     id: 4755
     name: Unbreakable Flesh β
     type: condition
-    duration: 18000
     description: |
-      Player is tethered to the corresponding player with [s:unbreakable-flesh-alpha]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta] player.
-      Failing to break the tether in time inflicts [s:damage-down] and leads to repeated heavy damage.
-      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-beta] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down] and repeated instances of heavy damage until they die.
+      Player is tethered to the corresponding player with [s:unbreakable-flesh-alpha:18s]. This tether must be broken by establishing sufficient distance to the tether partner. Breaking the tether spawns a tower on the position of the [s:unbreakable-flesh-beta:18s] player.
+      Failing to break the tether in time inflicts [s:damage-down:30s] and leads to repeated heavy damage.
+      If the player's assigned tether partner is dead by the time [s:unbreakable-flesh-beta:18s] activates there will be no tether, but this debuff will still be in effect. Since the debuff cannot be cleansed by breaking the tether, this guarantees that the player will suffer [s:damage-down:30s] and repeated instances of heavy damage until they die.
     gameDescription: Chained by beta-variant cells to a partner. Partners moving too far from one another will result in a burst of damage centered around them.
   mitotic-phase:
     id: 4764
     type: delay
-    duration: 10000
     description: |
       Accompanied by a blob appearing in a fixed cardinal on the player's body.
       The blob does not rotate along with the player's body.
@@ -124,10 +111,9 @@ status:
   rotting-flesh:
     id: 4763
     type: condition
-    duration: 16000
     description: |
-      Allowing this effect to expire triggers [a:cell-death], dealing heavy damage and inflicting [s:damage-down].
-      This effect renders players immune to being inflicted with [s:damage-down], but to cleanse this status effect, players must take damage from an action that would normally inflict [s:damage-down]. The only action available for this purpose is [a:ravenous-reach].
+      Allowing this effect to expire triggers [a:cell-death], dealing heavy damage and inflicting [s:damage-down:30s].
+      This effect renders players immune to being inflicted with [s:damage-down:30s], but to cleanse this status effect, players must take damage from an action that would normally inflict [s:damage-down:30s]. The only action available for this purpose is [a:ravenous-reach].
       Cleansing this status effect triggers [a:cell-shedding], a spread AoE roughly the same size as [a:dramatic-lysis].
 actions:
   the-fixer:
@@ -192,7 +178,10 @@ actions:
     mechanic: tb.close
     shape: chariot
     damage: 619351
-    description: Heavy [t:tankbuster] on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii].
+    description: Heavy [t:tankbuster] on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii:12s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 11960
   mortal-slayer-ball:
     id: 46230
     source: 19201
@@ -200,7 +189,10 @@ actions:
     mechanic: spread.close
     shape: chariot
     damage: 203822
-    description: Heavy spread AoE on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii].
+    description: Heavy spread AoE on the closest player to the center of [boss] on the corresponding side. Inflicts [s:poison-resistance-down-ii:12s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 11960
   mortal-slayer-set:
     name: Mortal Slayer (Hit)
     mechanic: spread.close
@@ -215,15 +207,15 @@ actions:
     emphasis: more
     compact: full
     description: |
-      Inflicts all players with [s:directed-grotesquerie], all supports or damage dealers with [s:bursting-grotesquerie], and one player of the opposite role with [s:shared-grotesquerie].
-      * [s:directed-grotesquerie] spawns a blob on a random cardinal on the player's body. The blob turns alongside the player. At the end of the effect's duration, the blob shoots a conal AoE wherever it is facing ([a:hemorrhagic-projection]).
-      * [s:bursting-grotesquerie] triggers a simple spread AoE at the end of the effect's duration ([a:dramatic-lysis]).
-      * [s:shared-grotesquerie] triggers a 4-player stack at the end of the effect's duration ([a:fourth-wall-fusion]).
+      Inflicts all players with [s:directed-grotesquerie:17s], all supports or damage dealers with [s:bursting-grotesquerie:17s], and one player of the opposite role with [s:shared-grotesquerie:17s].
+      * [s:directed-grotesquerie:17s] spawns a blob on a random cardinal on the player's body. The blob turns alongside the player. At the end of the effect's duration, the blob shoots a conal AoE wherever it is facing ([a:hemorrhagic-projection]).
+      * [s:bursting-grotesquerie:17s] triggers a simple spread AoE at the end of the effect's duration ([a:dramatic-lysis]).
+      * [s:shared-grotesquerie:17s] triggers a 4-player stack at the end of the effect's duration ([a:fourth-wall-fusion]).
       [boss:c] then sends out his arm for [a:ravenous-reach] while spawning 4 sets of [a:phagocyte-spotlight] AoEs underneath all players. All debuffs resolve at the same time as [a:ravenous-reach].
       As they resolve, spawns 5 blobs around the arena that rapidly expand and explode ([a:burst]). At the same time, a telegraphed stack appears on a :unverified(random healer) ([a:fourth-wall-fusion-random]) and a tankbuster on both the first and second player in enmity ([a:visceral-burst]).
     resolve: |
-      Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie] blob is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
-      The role with [s:bursting-grotesquerie] should spread alongside the edge of the [a:ravenous-reach] conal AoE, with M1/MT, M2/OT, R1/H1, R2/H2 from north to south. The role with [s:shared-grotesquerie] stacks in the northeast corner of the arena. You can maintain melee uptime safely here.
+      Just after [a:grotesquerie-act-1] is cast, check which way your [s:directed-grotesquerie:17s] blob is facing and remember it for later. Once you know which way it's facing, stack with the other players near the northwest of the arena. Drop [a:phagocyte-spotlight] AoEs alongside the northern edge until you reach the center of [boss]'s hitbox, then break away towards the center of the arena until you know where the [a:ravenous-reach] snake head is going. Follow it and position yourself for debuff resolution.
+      The role with [s:bursting-grotesquerie] should spread alongside the edge of the [a:ravenous-reach] conal AoE, with M1/MT, M2/OT, R1/H1, R2/H2 from north to south. The role with [s:shared-grotesquerie:17s] stacks in the northeast corner of the arena. You can maintain melee uptime safely here.
       Remember to turn around if necessary to point your blob towards the outside of the arena (or into the [a:ravenous-reach] AoE).
       After this resolves, the party stays on whatever side they currently are and seeks the [a:burst] safe spot on that side. Tanks move to the other side to resolve [a:visceral-burst]. Note that [a:visceral-burst] does not inflict [s:poison-resistance-down-ii] or [s:magic-vulnerability-up], so it can safely be stacked (given sufficient mitigation).
     tips:
@@ -233,6 +225,8 @@ actions:
       grotesquerie-act-1:
         name: Example
     children:
+    - at: 1160
+      id: grotesquerie-act-1-hit
     - at: 9225
       id: phagocyte-spotlight
       link: then
@@ -263,6 +257,19 @@ actions:
       link: and
     - at: 27442
       id: fourth-wall-fusion-random
+  grotesquerie-act-1-hit:
+    id: 48829
+    source: 19195
+    caption: Hit
+    mechanic: mech
+    description: Hit of [a:grotesquerie-act-1]. Inflicts [s:shared-grotesquerie:17s], [s:bursting-grotesquerie:17s], and [s:directed-grotesquerie:17s].
+    inflicts:
+      - status: shared-grotesquerie
+        duration: 17000
+      - status: bursting-grotesquerie
+        duration: 17000
+      - status: directed-grotesquerie
+        duration: 17000
   phagocyte-spotlight:
     id: 46238
     mechanic: aoe.delayed
@@ -270,7 +277,10 @@ actions:
     count: 8
     damage: 229465
     players: 0
-    description: Drops a delayed AoE underneath all players. Inflicts [s:damage-down].
+    description: Drops a delayed AoE underneath all players. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   ravenous-reach:
     id: 46237
     mechanic: aoe
@@ -278,34 +288,49 @@ actions:
     damage: 215086
     players: 0
     description: |
-      [boss:c] dispatches his snake arm, which slithers across the arena and then executes a wide conal AoE towards the far side. Inflicts [s:damage-down].
-      Cleanses [s:rotting-flesh].
+      [boss:c] dispatches his snake arm, which slithers across the arena and then executes a wide conal AoE towards the far side. Inflicts [s:damage-down:30s].
+      Cleanses [s:rotting-flesh:16s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   hemorrhagic-projection:
     id: 46255
     mechanic: aoe.facing
     shape: cone
     count: 8
-    description: The blob attached to players via [s:directed-grotesquerie] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down].
+    description: The blob attached to players via [s:directed-grotesquerie:17s] resolves, firing a narrow conal AoE in the direction the head is facing. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   fourth-wall-fusion:
     id: 46254
     mechanic: stack
     shape: chariot
     damage: 327383
     players: 4
-    description: "[s:shared-grotesquerie] resolves, triggering a small 4-person stack on that player. Inflicts [s:magic-vulnerability-up]."
+    description: "[s:shared-grotesquerie:17s] resolves, triggering a small 4-person stack on that player. Inflicts [s:magic-vulnerability-up:2s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   dramatic-lysis:
     id: 46250
     mechanic: spread
     shape: chariot
     count: 4
     damage: 315201
-    description: "[s:bursting-grotesquerie] resolves, triggering a moderately-sized spread on that player. Inflicts [s:magic-vulnerability-up]."
+    description: "[s:bursting-grotesquerie] resolves, triggering a moderately-sized spread on that player. Inflicts [s:magic-vulnerability-up:2s]."
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   burst:
     id: 46239
     mechanic: aoe
     shape: chariot
     count: 5
-    description: A massive [ms:chariot] AoE is triggered by a bulbous mass of flesh sitting in the arena. Inflicts [s:damage-down].
+    description: A massive [ms:chariot] AoE is triggered by a bulbous mass of flesh sitting in the arena. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   visceral-burst:
     id: 46294
     mechanic: tb.double
@@ -323,7 +348,10 @@ actions:
     mechanic: stack
     shape: chariot
     damage: 233347
-    description: Stack on a :unverified(random healer). Inflicts [s:magic-vulnerability-up].
+    description: Stack on a :unverified(random healer). Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   grotesquerie-act-2:
     id: 48830
     source: 19195
@@ -336,17 +364,19 @@ actions:
       Finally, [boss] casts [a:cruel-coil], trapping all players within the center of the arena as he coils around them. The only way to exit the coil is through a narrow gap on a random intercardinal. Every five seconds, [boss] spins, which rotates this gap 90° counter-clockwise.
       **Debuffs**
       Each individual [s:bonds-of-flesh-alpha] has a different debuff timer, ranging from 26 to 41 seconds, and pairs with a corresponding [s:bonds-of-flesh-beta] with the same timer. All players are also granted a [s:first-in-line], [s:second-in-line], [s:third-in-line], or [s:fourth-in-line] based on the timer of their debuff (from shortest to longest).
-      When a set of [s:bonds-of-flesh-alpha] and [s:bonds-of-flesh-beta] debuffs expires, those debuffs turn into [s:unbreakable-flesh-alpha] and [s:unbreakable-flesh-beta] respectively, causing both players to be tethered to each other. The new debuffs have a duration of 20 seconds. Failing to cleanse the debuff by breaking the tether causes :unverified(both players to die). A tether can be broken by establishing sufficient distance between the two of them compared to the initial distance when the tether went into effect. The distance needed is roughly equal to the total diameter of the coil that players are trapped within.
-      Breaking the tether triggers a [a:dramatic-lysis-tether-break] (a small spread AoE inflicting [s:magic-vulnerability-up] for 10 seconds) on both players and spawns a tower on the [s:unbreakable-flesh-beta] player which resolves shortly after.
-      Soaking a tower inflicts [s:poison-resistance-down-ii] for 25 seconds. Note that [Dramatic Lysis](a:dramatic-lysis-tether-break) (breaking a tether) deals magic damage but not poison damage, while [Roiling Mass](a:roiling-mass-alpha) (a tower resolving) deals poison *and* magic damage. Because of the durations of [s:poison-resistance-down-ii] and [s:magic-vulnerability-up], this yields two conclusions: first, each player may only soak a single tower during this mechanic, and second, each player must wait at least 10 seconds after breaking their tether before soaking a tower. There are no restrictions apart from this.
+      When a set of [s:bonds-of-flesh-alpha] and [s:bonds-of-flesh-beta] debuffs expires, those debuffs turn into [s:unbreakable-flesh-alpha:18s] and [s:unbreakable-flesh-beta:18s] respectively, causing both players to be tethered to each other. The new debuffs have a duration of 20 seconds. Failing to cleanse the debuff by breaking the tether causes :unverified(both players to die). A tether can be broken by establishing sufficient distance between the two of them compared to the initial distance when the tether went into effect. The distance needed is roughly equal to the total diameter of the coil that players are trapped within.
+      Breaking the tether triggers a [a:dramatic-lysis-tether-break] (a small spread AoE inflicting [s:magic-vulnerability-up:9s]) on both players and spawns a tower on the [s:unbreakable-flesh-beta:18s] player which resolves shortly after.
+      Soaking a tower inflicts [s:poison-resistance-down-ii:25s]. Note that [Dramatic Lysis](a:dramatic-lysis-tether-break) (breaking a tether) deals magic damage but not poison damage, while [Roiling Mass](a:roiling-mass-alpha) (a tower resolving) deals poison *and* magic damage. Because of the durations of [s:poison-resistance-down-ii] and [s:magic-vulnerability-up], this yields two conclusions: first, each player may only soak a single tower during this mechanic, and second, each player must wait at least 10 seconds after breaking their tether before soaking a tower. There are no restrictions apart from this.
     resolve: |
-      All players remain stacked in the center of the arena (ideally, do not move after being pulled there during [a:cruel-coil]). Any time Bonds of Flesh turns into Unbreakable Flesh, the [s:unbreakable-flesh-alpha] player exits the coil through the gap and the [s:unbreakable-flesh-beta] moves into the opposite direction until the tether breaks.
-      At this point, the [s:unbreakable-flesh-alpha] players [s:first-in-line] and [s:second-in-line] move to the first and second outer [a:roiling-mass-alpha] blobs that spawned, respectively. The [s:third-in-line] and [s:fourth-in-line] players are responsible for the first and second *inner* [a:roiling-mass-alpha] blobs. This job will already be complete by the time these players break their tether and exit the coil, so [s:third-in-line] and [s:fourth-in-line] have no extra duties after exiting the coil.
-      Each [s:unbreakable-flesh-beta] player is responsible for soaking the tower dropped by the [s:unbreakable-flesh-beta] two sets removed (meaning [s:first-in-line] soaks [s:third-in-line]'s tower, [s:fourth-in-line] soaks [s:second-in-line]'s tower, and so on). After soaking your tower, exit the coil at your convenience, but beware of any remaining [s:unbreakable-flesh-alpha] players, as being clipped by their [a:dramatic-lysis-tether-break] results in instant death. If in doubt, wait until after the last [a:dramatic-lysis-tether-break], at which point there will be another [a:skinsplitter] giving you one last opportunity to exit the coil before [a:constrictor] kills all players still within.
+      All players remain stacked in the center of the arena (ideally, do not move after being pulled there during [a:cruel-coil]). Any time Bonds of Flesh turns into Unbreakable Flesh, the [s:unbreakable-flesh-alpha:18s] player exits the coil through the gap and the [s:unbreakable-flesh-beta:18s] moves into the opposite direction until the tether breaks.
+      At this point, the [s:unbreakable-flesh-alpha:18s] players [s:first-in-line] and [s:second-in-line] move to the first and second outer [a:roiling-mass-alpha] blobs that spawned, respectively. The [s:third-in-line] and [s:fourth-in-line] players are responsible for the first and second *inner* [a:roiling-mass-alpha] blobs. This job will already be complete by the time these players break their tether and exit the coil, so [s:third-in-line] and [s:fourth-in-line] have no extra duties after exiting the coil.
+      Each [s:unbreakable-flesh-beta:18s] player is responsible for soaking the tower dropped by the [s:unbreakable-flesh-beta:18s] two sets removed (meaning [s:first-in-line] soaks [s:third-in-line]'s tower, [s:fourth-in-line] soaks [s:second-in-line]'s tower, and so on). After soaking your tower, exit the coil at your convenience, but beware of any remaining [s:unbreakable-flesh-alpha:18s] players, as being clipped by their [a:dramatic-lysis-tether-break] results in instant death. If in doubt, wait until after the last [a:dramatic-lysis-tether-break], at which point there will be another [a:skinsplitter] giving you one last opportunity to exit the coil before [a:constrictor] kills all players still within.
     strategies:
       grotesquerie-act-2:
         name: Example
     children:
+    - at: 1160
+      id: grotesquerie-act-2-hit
     - at: 9220
       id: phagocyte-spotlight-blob
     - at: 11225
@@ -440,6 +470,17 @@ actions:
       id: skinsplitter
     - at: 56894
       id: constrictor
+  grotesquerie-act-2-hit:
+    id: 48830
+    source: 19195
+    caption: Hit
+    mechanic: mech
+    description: Hit of [a:grotesquerie-act-2]. Inflicts [s:bonds-of-flesh-alpha] and [s:bonds-of-flesh-beta].
+    inflicts:
+      - status: bonds-of-flesh-alpha
+        duration: [26000, 31000, 36000, 41000]
+      - status: bonds-of-flesh-beta
+        duration: [26000, 31000, 36000, 41000]
   phagocyte-spotlight-blob:
     id: 46262
     mechanic: aoe
@@ -450,15 +491,23 @@ actions:
     source: 19195
     mechanic: mech
     description: |
-      Pulls all players into the center of the arena and [binds](s:bind) them, then [boss] coils around them.
+      Pulls all players into the center of the arena and [binds](s:bind:5s) them, then [boss] coils around them.
       [boss:c]'s body forms a wall that prevents players from exiting the coil. There is a narrow gap between [boss]'s tail and head that permits passage. This gap is always on cardinals.
-      After a few seconds, [boss] spins ([a:skinsplitter]), which rotates the gap *90° counter-clockwise*. If any player is touching [boss]'s body when [a:skinsplitter] happens, inflicts [s:damage-down] on them.
+      After a few seconds, [boss] spins ([a:skinsplitter]), which rotates the gap *90° counter-clockwise*. If any player is touching [boss]'s body when [a:skinsplitter] happens, inflicts [s:damage-down:30s] on them.
+    inflicts:
+      - status: bind
+        duration: 5000
+      - status: damage-down
+        duration: 30000
   skinsplitter:
     id: 46268
     source: 19195
     mechanic: aoe
     type: physical
-    description: Deals heavy damage and inflicts a small knockback and [s:damage-down] on players touching [boss]'s body as he spins once.
+    description: Deals heavy damage and inflicts a small knockback and [s:damage-down:30s] on players touching [boss]'s body as he spins once.
+    inflicts:
+      - status: damage-down
+        duration: 30000
   dramatic-lysis-tether-break:
     id: 46260
     name: Dramatic Lysis (Tether)
@@ -466,21 +515,30 @@ actions:
     shape: chariot
     count: 2
     damage: 142225
-    description: A tether is snapped, dealing moderate damage to both players and anyone around them, and inflicting [s:magic-vulnerability-up].
+    description: A tether is snapped, dealing moderate damage to both players and anyone around them, and inflicting [s:magic-vulnerability-up:9s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 8960
   roiling-mass-alpha:
     id: 46263
     source: 19199
     name: Roiling Mass (α)
     mechanic: towers.single
     damage: 36948
-    description: A tower spawns about 20 seconds after [a:phagocyte-spotlight-blob] and resolves. Inflicts [s:poison-resistance-down-ii]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+    description: A tower spawns about 20 seconds after [a:phagocyte-spotlight-blob] and resolves. Inflicts [s:poison-resistance-down-ii:25s]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 25000
   roiling-mass-beta:
     id: 46259
     source: 19199
     name: Roiling Mass (ß)
     mechanic: towers.single
     damage: 38125
-    description: A tower spawns and resolves as a result of a [a:dramatic-lysis-tether-break] tether break. Inflicts [s:poison-resistance-down-ii]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+    description: A tower spawns and resolves as a result of a [a:dramatic-lysis-tether-break] tether break. Inflicts [s:poison-resistance-down-ii:25s]. Failing to soak the tower deals poison damage to and inflicts a potent [t:DoT] on the entire party.
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 25000
   constrictor:
     id: 46274
     mechanic: aoe
@@ -498,10 +556,10 @@ actions:
     emphasis: more
     compact: full
     description: |
-      All players are inflicted with [s:mitotic-phase].
+      All players are inflicted with [s:mitotic-phase:10s].
       This spawns a blob on their body that always faces a specific cardinal, independent of character rotation. There are always two players whose blob faces the same direction.
       Additionally, [boss] plunges its two snake arms down, which then burrow through the arena in specific locations ([a:feral-fission]). One always burrows through the center. Four more burrow through either all intercardinals or all cardinals. Shortly afterwards, they destroy that section of the arena, plunging players who are still there to their deaths.
-      Shortly after the arena is partially destroyed, [s:mitotic-phase] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's blob is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's blob faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
+      Shortly after the arena is partially destroyed, [s:mitotic-phase:10s] resolves, which briefly [binds](s:bind) all players and spawns a tower some distance away in the direction the player's blob is facing. The distance is equal to the length of arena that was destroyed, which means that, if a player's blob faces towards another platform, the tower will always spawn in the exact location on *that* platform as where the player is on *their* platform.
       Towers resolve while players are still [bound](s:bind). All players also deal damage and inflict [s:magic-vulnerability-up] in a radius around them ([a:dramatic-lysis-mitotic-phase]) while this happens.
       [s:bind] then dissipates and the center of the arena is restored, but not the other destroyed sections.
       Afterward, two giant snake heads rise from the ground in predetermined positions and fire a line [t:tankbuster] at the closest player ([a:split-scourge]). This is immediately followed by circular spread AoEs on the 3 westmost and the 3 eastmost players ([a:venomous-scourge]).
@@ -514,6 +572,8 @@ actions:
       grotesquerie-act-3-intercardinals:
         name: Intercardinal Platforms
     children:
+    - at: 1158
+      id: grotesquerie-act-3-hit
     - at: 3119
       id: <untargetable>
       description: "[boss:c] becomes untargetable."
@@ -532,6 +592,15 @@ actions:
       link: then
     - at: 25303
       id: venomous-scourge
+  grotesquerie-act-3-hit:
+    id: 48831
+    source: 19195
+    caption: Hit
+    mechanic: mech
+    description: Hit of [a:grotesquerie-act-3]. Inflicts [s:mitotic-phase:10s].
+    inflicts:
+      - status: mitotic-phase
+        duration: 10000
   feral-fission:
     id: 48649
     source: 19195
@@ -545,12 +614,18 @@ actions:
       id: grand-entrance
     - at: 5170
       id: bring-down-the-house
+    - at: 5974
+      id: <addstatus>
+      status: bind:3s
   grand-entrance:
     id: 46243
     mechanic: aoe
     shape: chariot
     count: 10
-    description: Tiny chariot AoE where a snake breaks through the arena. :unverified(Inflicts [s:damage-down].)
+    description: Tiny chariot AoE where a snake breaks through the arena. :unverified(Inflicts [s:damage-down:30s].)
+    inflicts:
+      - status: damage-down
+        duration: 30000
   bring-down-the-house:
     id: 46244
     mechanic: aoe
@@ -563,27 +638,36 @@ actions:
     shape: chariot
     count: 8
     damage: 38450
-    description: All players explode with moderate-size AoEs that inflict [s:poison-resistance-down-ii].
+    description: All players explode with moderate-size AoEs that inflict [s:poison-resistance-down-ii:4s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 3960
   metamitosis:
     id: 47395
     mechanic: towers.single
     count: 8
     damage: 20595
-    description: All towers placed by [s:mitotic-phase] resolve.
+    description: All towers placed by [s:mitotic-phase:10s] resolve.
   split-scourge:
     id: 46251
     mechanic: tb.close
     shape: line
     count: 2
     damage: 459257
-    description: Two giant snake heads rise from the depths and each fire a line tankbuster at the closest player. Inflicts [s:magic-vulnerability-up].
+    description: Two giant snake heads rise from the depths and each fire a line tankbuster at the closest player. Inflicts [s:magic-vulnerability-up:5s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 4960
   venomous-scourge:
     id: 46248
     mechanic: spread
     shape: chariot
     count: 6
     damage: 185574
-    description: The three westmost and three eastmost players are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up].
+    description: The three westmost and three eastmost players are targeted by a moderate-size spread AoE. Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   grotesquerie-curtain-call:
     id: 48832
     source: 19195
@@ -591,24 +675,29 @@ actions:
     emphasis: more
     compact: trim
     description: |
-      All supports are inflicted with [s:rotting-flesh] and all damage dealers with [s:bursting-grotesquerie] or vice-versa.
-      Additionally, all players are inflicted with [s:bonds-of-flesh-alpha].
+      All supports are inflicted with [s:rotting-flesh:16s] and all damage dealers with [s:bursting-grotesquerie:14s] or vice-versa.
+      Additionally, all players are inflicted with [s:bonds-of-flesh-alpha:19s].
       This mechanic begins similarly to [a:grotesquerie-act-1] (5 back-to-back [a:phagocyte-spotlight]s followed by a [a:ravenous-reach]). There are two major differences:
       * The arena is still partially broken as a result of [a:grotesquerie-act-3].
-      * Instead of half the players being required to stack for [s:shared-grotesquerie] in the [a:ravenous-reach] safe spot, the non-[s:bursting-grotesquerie] are now required to stand *in* the [a:ravenous-reach] AoE to cleanse [s:rotting-flesh]. Like [s:bursting-grotesquerie], this is also a spread. Failing to cleanse [s:rotting-flesh] inflicts [s:damage-down].
-      The arena is restored the moment [a:ravenous-reach] hits. Five [a:burst] blobs drop in various locations on the now-restored arena and [s:bonds-of-flesh-alpha] are activated into [s:unbreakable-flesh-alpha] here, which tethers all players to a random player of the opposite role. Tethers can be broken like before, by establishing sufficient distance relative to the initial distance when the tether activated.
-      **Note**: Tether partners are assigned after the [a:grotesquerie-curtain-call] cast and do not redirect. If a player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha] activates, this debuff does not simply disappear; they will, in essence, have an unbreakable tether, guaranteeing [s:damage-down] and death.
+      * Instead of half the players being required to stack for [s:shared-grotesquerie:17s] in the [a:ravenous-reach] safe spot, the non-[s:bursting-grotesquerie] are now required to stand *in* the [a:ravenous-reach] AoE to cleanse [s:rotting-flesh:16s]. Like [s:bursting-grotesquerie:14s], this is also a spread. Failing to cleanse [s:rotting-flesh:16s] inflicts [s:damage-down:30s].
+      The arena is restored the moment [a:ravenous-reach] hits. Five [a:burst] blobs drop in various locations on the now-restored arena and [s:bonds-of-flesh-alpha:19s] are activated into [s:unbreakable-flesh-alpha:18s] here, which tethers all players to a random player of the opposite role. Tethers can be broken like before, by establishing sufficient distance relative to the initial distance when the tether activated.
+      **Note**: Tether partners are assigned after the [a:grotesquerie-curtain-call] cast and do not redirect. If a player's assigned tether partner is dead by the time [s:unbreakable-flesh-alpha:18s] activates, this debuff does not simply disappear; they will, in essence, have an unbreakable tether, guaranteeing [s:damage-down:30s] and death.
     resolve: |
       Stack and move together for [a:phagocyte-spotlight]. Like before during [a:grotesquerie-act-1], it is strongly recommended to drop the final [a:phagocyte-spotlight] near the center of the arena, so that players are equidistant to both sides of the arena, allowing them to dodge [a:ravenous-reach] regardless of where it hits.
-      The [s:bursting-grotesquerie] should spread in the exact same way as during [a:grotesquerie-act-1]. The [s:rotting-flesh] players can use fixed spread positions within the [a:ravenous-reach] cone (meaning that everyone always spreads in the same location regardless of whether [a:ravenous-reach] hits west or east). Since the cone is so large, it's also easily possible to wing these spreads however.
+      The [s:bursting-grotesquerie] should spread in the exact same way as during [a:grotesquerie-act-1]. The [s:rotting-flesh:16s] players can use fixed spread positions within the [a:ravenous-reach] cone (meaning that everyone always spreads in the same location regardless of whether [a:ravenous-reach] hits west or east). Since the cone is so large, it's also easily possible to wing these spreads however.
       After both debuffs resolve, immediately rush to the center of the arena, to stack with all other players while waiting for tethers to activate. Once tethers have activated supports rush west, DPS east to break the tether. Be aware that breaking a tether triggers a spread AoE on your position, so select a fixed position on the wall for every player to head towards. It's recommended to order players the same way from north to south as for [s:bursting-grotesquerie].
       [a:burst] triggers shortly afterwards. There is always one wide safe spot in the front and an equivalent safe spot in the rear of the arena on the opposite corner. Rangeds and healers (being closer to the rear than the front) can simply dodge towards the closest safe spot. Melees and tanks are advised rush towards the front safe spot, even if it's on the opposite side of the arena. It is strongly recommended to use [a:sprint] when tethers activate in order to easily make it regardless of where the safe spot is.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     strategies:
       grotesquerie-curtain-call-cardinals:
         name: Cardinal Platforms
       grotesquerie-curtain-call-intercardinals:
         name: Intercardinal Platforms
     children:
+    - at: 935
+      id: grotesquerie-curtain-call-hit
     - at: 4008
       id: phagocyte-spotlight
       link: then
@@ -637,19 +726,38 @@ actions:
       timing: player
     - at: 27801
       id: burst
+  grotesquerie-curtain-call-hit:
+    id: 48832
+    source: 19195
+    caption: Hit
+    mechanic: mech
+    description: Hit of [a:grotesquerie-curtain-call]. Inflicts [s:bursting-grotesquerie:14s], [s:bonds-of-flesh-alpha:19s], and [s:rotting-flesh:16s].
+    inflicts:
+      - status: bursting-grotesquerie
+        duration: 14000
+      - status: bonds-of-flesh-alpha
+        duration: 19000
+      - status: rotting-flesh
+        duration: 16000
   cell-shedding:
     id: 46252
     mechanic: spread
     shape: chariot
     count: 4
     damage: 81075
-    description: Small spread AoE as a result of cleansing [s:rotting-flesh] by taking damage. Inflicts [s:poison-resistance-down-ii].
+    description: Small spread AoE as a result of cleansing [s:rotting-flesh:16s] by taking damage. Inflicts [s:poison-resistance-down-ii:2s].
+    inflicts:
+      - status: poison-resistance-down-ii
+        duration: 1960
   cell-death:
     id: 46253
     mechanic: mech.failure
     damage: 130407
     players: 0
-    description: Deals heavy damage and inflicts [s:damage-down] as a result of a player failing to cleanse [s:rotting-flesh].
+    description: Deals heavy damage and inflicts [s:damage-down:30s] as a result of a player failing to cleanse [s:rotting-flesh:16s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   slaughtershed:
     id: 44489
     mechanic: mech
@@ -694,22 +802,31 @@ actions:
     shape: chariot
     count: 4
     damage: 192792
-    description: Telegraphed spread AoE on all damage dealers or supports (opposite of the role selected for [a:fourth-wall-fusion-slaughtershed]).
+    description: Telegraphed spread AoE on all damage dealers or supports (opposite of the role selected for [a:fourth-wall-fusion-slaughtershed]). Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   fourth-wall-fusion-slaughtershed:
     id: 46293
     mechanic: stack
     shape: chariot
     damage: 226326
     players: 4
-    description: Telegraphed stack on a random damage dealer or support (opposite of the role selected for [a:dramatic-lysis-spread]).
+    description: Telegraphed stack on a random damage dealer or support (opposite of the role selected for [a:dramatic-lysis-spread]). Inflicts [s:magic-vulnerability-up:2s].
+    inflicts:
+      - status: magic-vulnerability-up
+        duration: 1960
   serpentine-scourge:
     id: 46289
     source: 19195
     mechanic: aoe
     shape: halfroom
     description: |
-      A standard left-right or right-left halfroom AoE. Inflicts [s:damage-down].
+      A standard left-right or right-left halfroom AoE. Inflicts [s:damage-down:30s].
       This AoE is untelegraphed. The order in which the snake head arms grew is the order in which the halfroom AoEs resolve.
+    inflicts:
+      - status: damage-down
+        duration: 30000
     children:
     - at: 979
       id: serpentine-scourge-hit
@@ -720,7 +837,10 @@ actions:
     name: Serpentine Scourge (Hit)
     mechanic: aoe
     shape: halfroom
-    description: An individual hit of [a:serpentine-scourge].
+    description: An individual hit of [a:serpentine-scourge]. Inflicts [s:damage-down:30s].
+    inflicts:
+      - status: damage-down
+        duration: 30000
   raptor-knuckles:
     id: 46288
     source: 19195

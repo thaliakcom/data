@@ -14,8 +14,7 @@ status:
   stun:
     id: 149
     type: impairment
-    duration: [10000, 2000]
-    description: Inflicted by [a:slipstream] (10 seconds) and [a:upheaval] (2 seconds).
+    description: Renders a player unable to perform any actions.
   thermal-low:
     id: 1525
     type: condition
@@ -39,12 +38,10 @@ status:
     id: 235
     type: dot
     tick: 6084
-    duration: 18000
     description: Inflicted on players hit by [a:feather-rain].
   sleep:
     id: 1510
     type: impairment
-    duration: 30000
     description: Inflicted on all players when a Satin Plume isn't killed in time and executes [a:thermal-tumult]. Taking damage dispels the effect early.
   beyond-limits:
     id: 1530
@@ -80,7 +77,6 @@ status:
     id: 377
     type: impairment
     tick: 3862
-    duration: 21000
     description: |
       Tethers a random DPS to the current off-tank. At any given point, the distance between the two players determines the number of [s:infernal-fetters] stacks. Each stack reduces damage dealt and increases the potency of a [t:DoT] on those two players.
       Inflicted by the action of the same name, [a:infernal-fetters].
@@ -88,12 +84,11 @@ status:
     id: 1578
     type: dot
     tick: 3490
-    duration: [18000, 30000]
     description: |
       Every 6 seconds, afflicted players explode in a large [ms:chariot] AoE that knocks all players caught into the wall.
       This effect has a duration of 30 seconds if Ifrit is [s:woken] and 18 seconds otherwise.
       **Persists through death.** Beware of the corpses of dead healers. They will continue to explode.
-      Inflicted by [a:inferno-howl] and can normally only target healers, unless all available healers are dead, in which case a random DPS is chosen.
+      Can normally only target healers, unless all available healers are dead, in which case a random DPS is chosen.
       During Ifrit's phase, if Ifrit is defeated while a player still has [s:searing-wind], [s:searing-wind] is removed from that player early, **but only if the player is alive**. If the player is dead, [s:searing-wind] persists into Titan's phase and runs for its full duration.
   damage-up:
     id: 1544
@@ -106,20 +101,17 @@ status:
   vulnerability-up:
     id: 202
     type: vuln
-    duration: 1000
     description: |
-      Brief stacking vulnerability inflicted by [a:infernal-surge]. Unlike most instances of this debuff in modern content, this does not represent a mechanical failure in The Weapon's Refrain and cannot, in fact, be avoided. It's merely a means for the fight to trigger a wipe (or at least several deaths) if you destroy too many nails at the same time. Try to wait one second in-between each nail kill and this debuff will have no effect.
+      Brief stacking vulnerability. Unlike most instances of this debuff in modern content, this does not represent a mechanical failure in The Weapon's Refrain and cannot, in fact, be avoided. It's merely a means for the fight to trigger a wipe (or at least several deaths) if you destroy too many nails at the same time. Try to wait one second in-between each nail kill and this debuff will have no effect.
   accursed-flame:
     id: 1527
     type: dot
     tick: 1263
-    duration: [3000, 48000]
     description: Moderate [t:DoT] on all players hit by [a:flaming-crush] when Ifrit is [s:woken]. The duration of the [t:DoT] ranges from 3 seconds to 60 seconds depending on how many players are hit by [a:flaming-crush].
   fire-resistance-down-ii:
     id: 1255
     type: vuln
-    duration: 5000
-    description: Renders subsequent fire damage taken lethal. Inflicted by [a:incinerate-hit].
+    description: Renders subsequent fire damage taken lethal.
   fetters:
     id: 292
     type: impairment
@@ -132,13 +124,11 @@ status:
   doom:
     id: 210
     type: condition
-    duration: 7960
-    description: Kills the player if the debuff isn't cleansed in time. Can only be cleansed by a [i:healer] limit break 3. Inflicted by [a:blight].
+    description: Kills the player if the debuff isn't cleansed in time. Can only be cleansed by a [i:healer] limit break 3.
   down-for-the-count:
     id: 783
     type: impairment
-    duration: 3960
-    description: Renders the player briefly unable to act or move. Inflicted by [a:blight].
+    description: Renders the player briefly unable to act or move.
   sabik-stun:
     id: 201
     type: impairment
@@ -150,7 +140,6 @@ status:
   viscous-aetheroplasm:
     id: 1532
     type: delay
-    duration: [10000, 12000, 32000, 52000]
     description: |
       Player explodes ([a:viscous-aetheroplasm-stack]) when the debuff expires. The explosion is shared damage that should be stacked for.
       **Note**: Despite the in-game description stating that "a stack of 5 will result in instant death", it is not possible for any player to have more than one stack of this debuff. It's possible that [s:viscous-aetheroplasm] worked more like its counterpart in The Minstrel's Ballad: Ultima's Bane in the fight's original draft but was later changed to its current version, and the description was never updated to reflect its new function. In The Minstrel's Ballad: Ultima's Bane, [s:viscous-aetheroplasm] constantly accumulates stacks on the main tank and is meant to force a [t:tankswap] at 3 or 4 stacks, as 5 stacks triggers a lethal explosion.
@@ -166,8 +155,11 @@ actions:
     shape: cone
     damage: 15868
     players: 0
-    description: Deals heavy damage and inflicts [s:stun] on all players in front of Garuda.
+    description: Deals heavy damage and inflicts [s:stun:10s] on all players in front of Garuda.
     resolve: Wait for the cast to begin, then step behind Garuda.
+    inflicts:
+      - status: stun
+        duration: 10000
   mistral-song-healer:
     id: 11074
     source: 8722
@@ -236,15 +228,21 @@ actions:
     players: 0
     description: |
       Garuda or her sisters (Chirada and Suparna) scream and fly away. Approximately 2.5 seconds later, small AoEs hit where 5 random players were at the time of the scream.
-      The AoEs remain invisible until shortly before they resolve, too late to react to. Any player hit sustains heavy damage and is inflicted with [s:windburn].
+      The AoEs remain invisible until shortly before they resolve, too late to react to. Any player hit sustains heavy damage and is inflicted with [s:windburn:18s].
     resolve: |
       Try to stack with as many players as possible before the scream happens, then move away after. Since there is no cast bar, this necessitates knowing the fight's timeline to know exactly when each scream happens. Most of the fight is spent stacked with other players, so when in doubt simply stay stacked.
       Avoid moving early, as this is likely to place an AoE in the path of another player when they move to dodge.
+    inflicts:
+      - status: windburn
+        duration: 18000
   thermal-tumult:
     id: 11076
     mechanic: enrage
     damage: 0
-    description: If any Satin Plume is still alive by this point, it enrages here. Deals no damage but inflicts [s:sleep] on all players.
+    description: If any Satin Plume is still alive by this point, it enrages here. Deals no damage but inflicts [s:sleep:30s] on all players.
+    inflicts:
+      - status: sleep
+        duration: 30000
   mistral-shriek:
     id: 11092
     source: 8722
@@ -646,7 +644,7 @@ actions:
     source: 8730
     mechanic: tb.mt
     shape: cone
-    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
+    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii:5s].
     resolve: Despite the fact that [a:incinerate] is [dt:dark] damage [invulns](t:invuln) do work, so just invuln all three hits.
     children:
     - at: 0
@@ -664,7 +662,10 @@ actions:
     mechanic: tb.mt
     shape: cone
     damage: 22269
-    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii].
+    description: Heavy conal tankbuster on the primary target. Inflicts [s:fire-resistance-down-ii:5s].
+    inflicts:
+      - status: fire-resistance-down-ii
+        duration: 5000
   infernal-nails:
     id: 461
     source: 8730
@@ -673,7 +674,7 @@ actions:
     emphasis: more
     compact: full
     description: |
-      Spawns 4 Infernal Nails in a randomly rotated trapezoid pattern. Destroying a nail deals moderate damage ([a:infernal-surge]) and inflicts a stacking [s:vulnerability-up] on all players. All four nails must be destroyed before Ifrit jumps away or the subsequent [a:hellfire] deals lethal damage.
+      Spawns 4 Infernal Nails in a randomly rotated trapezoid pattern. Destroying a nail deals moderate damage ([a:infernal-surge]) and inflicts a stacking [s:vulnerability-up:1s] on all players. All four nails must be destroyed before Ifrit jumps away or the subsequent [a:hellfire] deals lethal damage.
       When an Infernal Nail is hit by an [a:eruption] it grows, gaining [s:vulnerability-down] and [s:damage-up], up to a maximum of two stacks. If a nail is destroyed at two stacks, Ifrit gains one stack of [s:aetherially-charged].
       Additionally, the order in which the nails are destroyed determines the order of the subsequent [a:crimson-cyclone] dashes.
     resolve: |
@@ -720,16 +721,22 @@ actions:
     damage: 3283
     players: 2
     description: |
-      The player second-in-enmity is tethered to a random DPS and inflicted with [s:infernal-fetters].
+      The player second-in-enmity is tethered to a random DPS and inflicted with [s:infernal-fetters:21s].
       The farther those two players stray from each other, the more stacks of [s:infernal-fetters] they accrue. The more stacks they have, the less damage they deal, and the more damage they take from their [t:DoT].
+    inflicts:
+      - status: infernal-fetters
+        duration: 21000
   inferno-howl:
     id: 11099
     source: 8730
     mechanic: damage
     damage: 2524
     description: |
-      Inflicts a random healer with [s:searing-wind], causing them to periodically explode and kill all nearby players.
+      Inflicts a random healer with [s:searing-wind:18s] (or [s:searing-wind:30s] if Ifrit is [s:woken]), causing them to periodically explode and kill all nearby players.
       If a healer is already inflicted with [s:searing-wind], this is guaranteed to target the other healer. If all available healers are dead, targets a random DPS instead.
+    inflicts:
+      - status: searing-wind
+        duration: [18000, 30000]
   eruption:
     id: 11097
     source: 8730
@@ -799,7 +806,10 @@ actions:
     source: 8731
     mechanic: raidwide
     damage: 7332
-    description: An Infernal Nail is defeated, dealing moderate raidwide damage and inflicting [s:vulnerability-up] on all players.
+    description: An Infernal Nail is defeated, dealing moderate raidwide damage and inflicting [s:vulnerability-up:1s] on all players.
+    inflicts:
+      - status: vulnerability-up
+        duration: 1000
   flaming-crush:
     id: 11101
     source: 8730
@@ -809,6 +819,9 @@ actions:
     description: |
       Targeted stack on a random, marked DPS.
       If Ifrit is [s:woken], this inflicts a [t:DoT] ([s:accursed-flame]) on all players inside the stack.
+    inflicts:
+      - status: accursed-flame
+        duration: 3000
   crimson-cyclone-echo:
     id: 11104
     name: Crimson Cyclone (Followup)
@@ -940,8 +953,11 @@ actions:
     source: 8727
     mechanic: mech.knockback.unavoidable
     damage: 5365
-    description: Deals mild damage, briefly inflicts [s:stun], and knocks all players away from Titan. The knockback distance is approximately the full length of the safe area of the arena.
+    description: Deals mild damage, inflicts [s:stun:2s], and knocks all players away from Titan. The knockback distance is approximately the full length of the safe area of the arena.
     resolve: Check behind to see where the rocks (spawned by [a:rock-throw]) are. Either the left or the right side will be missing a rock. To correctly position for the knockback, stand directly on the front of Titan's hitbox, then slightly inch towards the left or right.
+    inflicts:
+      - status: stun
+        duration: 2000
   rock-throw:
     id: 11115
     source: 8727
@@ -1257,9 +1273,14 @@ actions:
     source: 8732
     mechanic: mech.status
     description: |
-      Lahabrea appears, inflicting a 4s [s:down-for-the-count] and 8s [s:doom] on all players. [s:doom] can only be cleansed by a [i:healer] limit break 3.
+      Lahabrea appears, inflicting [s:down-for-the-count:4s] and [s:doom:8s] on all players. [s:doom:8s] can only be cleansed by a [i:healer] limit break 3.
       This attack also deals damage, but the damage dealt is equal to each individual player's current HP minus one, which means it is not possible for this attack to deal lethal damage. Ordinarily this type of attack would simply be described as "sets all players' HP to 1", but this isn't quite true either. Unlike most other instances of [m:raidwide.sethp] type attacks, this attack does *not* ignore shields, which means that if a player has a shield, their HP is not set to 1 but to (1 + shield value). The shield is consumed in the process.
-    resolve: Use a [i:healer] limit break 3 to cleanse [s:doom]. Ensure the healer using the limit break has [s:beyond-limits].
+    resolve: Use a [i:healer] limit break 3 to cleanse [s:doom:8s]. Ensure the healer using the limit break has [s:beyond-limits].
+    inflicts:
+      - status: down-for-the-count
+        duration: 3960
+      - status: doom
+        duration: 7960
   dark-iv:
     id: 11124
     mechanic: enrage
@@ -1297,7 +1318,10 @@ actions:
     mechanic: spread
     shape: chariot
     damage: 2975
-    description: Deals mild damage to the highest enmity player and everyone near them, and inflicts [s:viscous-aetheroplasm] on everyone hit.
+    description: Deals mild damage to the highest enmity player and everyone near them, and inflicts [s:viscous-aetheroplasm:10s] on everyone hit.
+    inflicts:
+      - status: viscous-aetheroplasm
+        duration: 10000
   homing-lasers:
     id: 11131
     source: 8734
@@ -1418,9 +1442,10 @@ actions:
     id: 11151
     source: 8734
     mechanic: mech.status
-    description: |
-      Inflicts three random players with [s:viscous-aetheroplasm].
-      One debuff has a duration of 12 seconds, another 32 seconds, and the last 52 seconds.
+    description: Inflicts three random players with [s:viscous-aetheroplasm:12s], [s:viscous-aetheroplasm:32s], and [s:viscous-aetheroplasm:52s], respectively.
+    inflicts:
+      - status: viscous-aetheroplasm
+        duration: [12000, 32000, 52000]
   diffractive-laser:
     id: 11128
     mechanic: tb.mt
@@ -1553,14 +1578,14 @@ actions:
       At the same time, Garuda spawns at the south of the arena. Titan spawns southwest and Ifrit southeast, or vice-versa.
       First, three back-to-back [a:weight-of-the-land-woken] are baited underneath random players while one player is targeted for [a:flaming-crush] and another for [a:mesohigh-annihilation]. The [a:mesohigh-annihilation] tether can be passed.
       After [a:flaming-crush] Garuda uses [a:eye-of-the-storm] and the first of four [a:aetheroplasm] orbs spawns. Each orb spawns at the northwest of [boss]'s hitbox and begins moving toward a random player. When a player touches it, the orb explodes, dealing moderate damage to any nearby player and briefly tethering all nearby players to [boss]. For every player tethered the duty gauge climbs by one point, and the length of the tethers between orbs during [a:aetheric-boom] is increased.
-      After the first [a:mesohigh-annihilation] resolves, Ifrit uses [a:inferno-howl] to inflict [s:searing-wind] on a random healer. After a [a:feather-rain] another [a:aetheroplasm] orb spawns. Titan now begins casting an unbaited [a:landslide-woken] and Ifrit [a:crimson-cyclone-woken]. Another [a:aetheroplasm] orb spawns, another [a:eye-of-the-storm] happens, and the final [a:aetheroplasm] orb spawns while Garuda casts out a second [a:mesohigh-annihilation] tether.
+      After the first [a:mesohigh-annihilation] resolves, Ifrit uses [a:inferno-howl] to inflict [s:searing-wind:30s] on a random healer. After a [a:feather-rain] another [a:aetheroplasm] orb spawns. Titan now begins casting an unbaited [a:landslide-woken] and Ifrit [a:crimson-cyclone-woken]. Another [a:aetheroplasm] orb spawns, another [a:eye-of-the-storm] happens, and the final [a:aetheroplasm] orb spawns while Garuda casts out a second [a:mesohigh-annihilation] tether.
       There's a [a:tank-purge], another [a:feather-rain], and then [boss] briefly becomes untargetable as it teleports into the center of the arena for a last [a:eye-of-the-storm].
     resolve: |
       A lot happens during this mechanic and it may all seem rather unstructured and borderline random on first glance, but the resolution is relatively straightforward.
       First, stack at the northeast of [boss]'s hitbox (which, since [boss] is facing the center of the arena, is towards the southwest of the arena). When the first [a:weight-of-the-land] appears, move directly across to [boss]'s northwest to bait another [a:weight-of-the-land], then back again. After the third [a:weight-of-the-land], have everyone split into one of four directions:
       * Both your tanks and a designated melee go back to the northwest to soak the [a:aetheroplasm] orb that has just spawned there. We want this orb to be soaked by three players for a future mechanic ([a:aetheric-boom]). These three players stay there for the second orb as well. After soaking the second orb, they move up and stack directly north.
       * One of your rangeds (ordinarily the physical ranged; they must still have a [s:thermal-low] stack from Phase 1) goes south to pick up and soak the [a:mesohigh-annihilation] tether. After [a:mesohigh-annihilation] resolves, they hurry to join the party north. Be aware that this player has no reason to go all the way south. They just need to avoid stacking with other players and avoid being too close to the [s:searing-wind] healer. Moving too far south will make it difficult to rejoin the party before [a:crimson-cyclone-woken].
-      * Your healers go directly west, away from everyone else. One of them will now be inflicted with [s:searing-wind]. They head towards south, where the [a:mesohigh-annihilation] player was. The other healer joins the rest of the group at the southeast of [boss]'s hitbox.
+      * Your healers go directly west, away from everyone else. One of them will now be inflicted with [s:searing-wind:30s]. They head towards south, where the [a:mesohigh-annihilation] player was. The other healer joins the rest of the group at the southeast of [boss]'s hitbox.
       * Everyone else moves up, towards the southeast of [boss]'s hitbox. They wait there until the [a:feather-rain] has happened, then move north.
       At this point everyone should be directly north, except the healer with [s:searing-wind], who should be directly south. Wait for [a:crimson-cyclone-woken] and then move clockwise to the next intercardinal to dodge [a:crimson-cyclone-echo]. Only the tank designated to soak the last two orbs moves counter-clockwise instead. If you do this dodge, you can ignore Titan's [a:landslide-woken] entirely.
       Note that the [s:searing-wind] healer cannot simply dodge [a:crimson-cyclone-woken] by moving clockwise. Instead, they must dodge to the southern intercardinal that **doesn't** have Titan on it. This can be either southwest or southeast.
