@@ -1299,10 +1299,10 @@ actions:
       id: trance
     - at: 40439
       id: auto-attack-exdeath
-    - at: 41242
+    - at: 42042
       id: latitudinal-implosion
       link: or
-    - at: 41242
+    - at: 42042
       id: longitudinal-implosion
     - at: 43291
       id: auto-attack-both
@@ -1442,9 +1442,9 @@ actions:
     compact: trim
     description: First hits a cone-shaped area in front of and behind Chaos, then to his sides.
     children:
-    - at: 712
+    - at: 0
       id: shockwave
-    - at: 2719
+    - at: 1919
       id: shockwave
   latitudinal-implosion:
     id: 47870
@@ -1455,9 +1455,9 @@ actions:
     compact: trim
     description: First hits a cone-shaped area to Chaos's sides, then in front and behind.
     children:
-    - at: 712
+    - at: 0
       id: shockwave
-    - at: 2719
+    - at: 1919
       id: shockwave
   stray-spray:
     id: 47862
@@ -1813,7 +1813,7 @@ actions:
     - at: 17570
       id: damning-edict
       link: then
-    - at: 17840
+    - at: 18840
       id: look-upon-me-and-despair
     - at: 20655
       id: auto-attack-chaos
@@ -1860,14 +1860,14 @@ actions:
     - at: 14423
       id: earthquake-hit
       timing: player
-    - at: 23985
-      id: latitudinal-implosion
-      link: or
-    - at: 23985
-      id: longitudinal-implosion
-      link: then
     - at: 24029
       id: white-hole
+      link: then
+    - at: 24785
+      id: latitudinal-implosion
+      link: or
+    - at: 24785
+      id: longitudinal-implosion
       link: then
     - at: 25417
       id: slap-happy-right
@@ -1892,7 +1892,7 @@ actions:
     - at: 5838
       id: earthquake-hit
       timing: player
-    - at: 9901
+    - at: 10901
       id: look-upon-me-and-despair-2
       description: "[boss] slams the center of the arena, then gets up on top of it in the direction he slammed."
       link: and
@@ -1931,7 +1931,7 @@ actions:
     shape: line
     description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
     children:
-    - at: 1071
+    - at: 71
       id: look-upon-me-and-despair-hit
   look-upon-me-and-despair-2:
     id: 47853
@@ -1941,7 +1941,7 @@ actions:
     shape: line
     description: "[boss] slams the arena in a [ms:line] AoE in the direction he's facing."
     children:
-    - at: 1030
+    - at: 30
       id: look-upon-me-and-despair-hit
   look-upon-me-and-despair-hit:
     id: 47854
@@ -2223,13 +2223,13 @@ actions:
     description: |
       The left half of the arena is [a:white-antilight], the right half is [a:black-antilight] (or vice-versa), and the middle is [a:edge-of-death].
     children:
-    - at: 490
+    - at: 0
       id: edge-of-death
       link: and
-    - at: 490
+    - at: 0
       id: white-antilight
       link: and
-    - at: 490
+    - at: 0
       id: black-antilight
   edge-of-death:
     id: 50070
@@ -2386,13 +2386,13 @@ actions:
     compact: full
     description: Heavy 4-hit raidwide.
     children:
-    - at: 1112
+    - at: 112
       id: ultima-repeater-hit
-    - at: 1825
+    - at: 825
       id: ultima-repeater-hit
-    - at: 2493
+    - at: 1493
       id: ultima-repeater-hit
-    - at: 3208
+    - at: 2208
       id: ultima-repeater-hit
   ultima-repeater-hit:
     id: 47937
@@ -2460,21 +2460,21 @@ actions:
       - status: damage-down
         duration: 180000
     children:
-    - at: 1024
+    - at: 0
       id: chaotic-flood
-    - at: 1112
+    - at: 0
       id: flood-hit
-    - at: 2004
+    - at: 804
       id: chaotic-flood
-    - at: 2137
+    - at: 937
       id: flood-hit
-    - at: 3030
+    - at: 1830
       id: chaotic-flood
-    - at: 3164
+    - at: 1964
       id: flood-hit
-    - at: 4055
+    - at: 2855
       id: chaotic-flood
-    - at: 4190
+    - at: 2990
       id: flood-hit
   chaotic-flood:
     id: 47951
@@ -2514,20 +2514,20 @@ actions:
       **Second set**: Tanks collapse to share [a:chaotic-flare]. Everyone who was *not* hit by [a:holy-random] during the first set moves into [boss]'s hitbox.
       **Third set**: The off-tank (with [s:surprise-holy:6s]) uses [a:provoke], as the [s:surprise-flare:6s] tank has to move to the edge of the arena and would drag the boss out of center doing so, which would make subsequent mechanics significantly more difficult. The [s:surprise-holy:6s] tank is meant to share the stack with the three [a:holy-random] players here (the [a:holy-proximity] players still have [s:magic-vulnerability-up]), but the current most common strategy has the [s:surprise-holy:6s] tank stay inside the [a:flare-diffusion] [ms:defamation] to solo the stack with [t:invuln]. This has the additional benefit of covering the next few [a:fell-forces] as well.
     children:
-    - at: 895
+    - at: 95
       id: holy-random
       link: and
-    - at: 895
+    - at: 95
       id: flare
-    - at: 4066
+    - at: 3266
       id: holy-proximity
       link: and
-    - at: 4066
+    - at: 3266
       id: chaotic-flare
-    - at: 7539
+    - at: 6739
       id: flare-diffusion
       link: and
-    - at: 7539
+    - at: 6739
       id: chaotic-holy
   holy-random:
     id: 47956
@@ -2620,17 +2620,17 @@ actions:
       - status: damage-down
         duration: 180000
     children:
-    - at: 8486
+    - at: 9157
+      id: fire-iii-tower
+      link: and
+    - at: 9157
+      id: thunder-iii-tower
+      link: and
+    - at: 9157
+      id: blizzard-iii-tower
+      link: and
+    - at: 9186
       id: catastrophic-choice
-      link: and
-    - at: 9157
-      id: fire-iii-tower
-      link: and
-    - at: 9157
-      id: thunder-iii-tower
-      link: and
-    - at: 9157
-      id: blizzard-iii-tower
     - at: 15182
       id: fire-iii-tower
       link: and
@@ -2639,17 +2639,17 @@ actions:
       link: and
     - at: 15182
       id: blizzard-iii-tower
-    - at: 20618
+    - at: 21201
+      id: fire-iii-tower
+      link: and
+    - at: 21201
+      id: thunder-iii-tower
+      link: and
+    - at: 21201
+      id: blizzard-iii-tower
+      link: and
+    - at: 21318
       id: catastrophic-choice
-      link: and
-    - at: 21201
-      id: fire-iii-tower
-      link: and
-    - at: 21201
-      id: thunder-iii-tower
-      link: and
-    - at: 21201
-      id: blizzard-iii-tower
   catastrophic-choice:
     id: 49742
     source: 19511
@@ -2658,10 +2658,10 @@ actions:
     shape: in-or-out
     description: Either a [ms:dynamo] (if [boss] has a wind aura) or [ms:chariot] (if [boss] has an earth aura).
     children:
-    - at: 804
+    - at: 104
       id: tornado
       link: or
-    - at: 804
+    - at: 104
       id: quake
   thunder-iii-tower:
     id: 47941
@@ -3189,7 +3189,7 @@ timeline:
     id: auto-attack-p4
   - at: 791802
     id: grand-cross-3
-  - at: 803921
+  - at: 804421
     id: flood-of-naught
   - at: 808279
     id: death-surge
@@ -3274,7 +3274,7 @@ timeline:
     id: <targetable>
     target: "[boss]"
     description: "[boss] becomes targetable for the final phase. The auto-attacks in this phase are called [a:fell-forces]."
-  - at: 908133
+  - at: 909133
     id: ultima-repeater
   - at: 914111
     id: fell-forces
@@ -3282,9 +3282,9 @@ timeline:
     id: fell-forces
   - at: 920401
     id: fell-forces
-  - at: 925709
+  - at: 926909
     id: flood
-  - at: 938898
+  - at: 939698
     id: maddening-orchestra
   - at: 951074
     id: fell-forces
@@ -3292,7 +3292,7 @@ timeline:
     id: fell-forces
   - at: 960581
     id: celestriad
-  - at: 990038
+  - at: 991038
     id: ultima-repeater
   - at: 996050
     id: fell-forces
@@ -3303,7 +3303,7 @@ timeline:
     link: then
   - at: 1021750
     id: stray-entropy
-  - at: 1030919
+  - at: 1031719
     id: maddening-orchestra
   - at: 1043105
     id: fell-forces

@@ -1626,38 +1626,46 @@ actions:
       - status: physical-vulnerability-up
         duration: 4000
   polarizing-strikes:
-    id: 40316
-    source: 17839
+    name: Polarizing Strikes
     mechanic: mech
     compact: full
     description: Placeholder description
     children:
-    - at: 2675
+    - at: 7000
+      id: polarizing-strikes-cast
+      link: and
+    - at: 7080
       id: cruel-path-of-light
       link: and
-    - at: 2675
+    - at: 7080
       id: cruel-path-of-darkness
-    - at: 4636
+    - at: 9541
       id: polarizing-paths
-    - at: 7310
+    - at: 11715
       id: cruel-path-of-light
       link: and
-    - at: 7310
+    - at: 11715
       id: cruel-path-of-darkness
-    - at: 9269
+    - at: 14174
       id: polarizing-paths
-    - at: 11940
+    - at: 16345
       id: cruel-path-of-light
       link: and
-    - at: 11940
+    - at: 16345
       id: cruel-path-of-darkness
-    - at: 13903
+    - at: 18808
       id: polarizing-paths
-    - at: 16581
+    - at: 20986
       id: cruel-path-of-light
       link: and
-    - at: 16581
+    - at: 20986
       id: cruel-path-of-darkness
+  polarizing-strikes-cast:
+    id: 40316
+    caption: Cast
+    source: 17839
+    mechanic: mech
+    description: Placeholder description
   cruel-path-of-light:
     id: 40317
     mechanic: stack.intercept
@@ -1947,7 +1955,7 @@ timeline:
     id: fulgent-blade
   - at: 913865
     id: paradise-regained
-  - at: 945220
+  - at: 940815
     id: polarizing-strikes
   - at: 979586
     id: pandoras-box
@@ -1955,7 +1963,7 @@ timeline:
     id: fulgent-blade
   - at: 1031134
     id: paradise-regained
-  - at: 1057477
+  - at: 1053072
     id: polarizing-strikes
   - at: 1082654
     id: fulgent-blade

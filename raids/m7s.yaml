@@ -140,9 +140,9 @@ actions:
       If [boss] wields a blade, the party must be inside, then move out immediately after [a:brutish-swing] or they'll bait the tankbuster. The tank remains inside for the entire mechanic.
       If [boss] wields a club, the party must remain outside for the entire mechanic. The tank must gapclose in immediately after [a:brutish-swing]. Melees may not do the same or they'll bait the tankbuster.
     children:
-    - at: 981
+    - at: 0
       id: brutish-swing
-    - at: 2145
+    - at: 1145
       id: brutal-smash
   smash-there:
     id: 42336
@@ -157,9 +157,9 @@ actions:
     tips:
       - Be aware that the snapshot for the in/out **does not** coincide with the end of the cast **nor** the disappearance of the AoE telegraph. The snapshot happens about slightly afterwards, so do not move out/in too early!
     children:
-    - at: 981
+    - at: 0
       id: brutish-swing
-    - at: 2145
+    - at: 1145
       id: brutal-smash
   brutish-swing:
     id: 42338
@@ -196,30 +196,30 @@ actions:
       [a:sinister-seeds-stars]: 4 players receive a headmarker along with a telegraphed AoE. After a significant delay, the AoE resolves, dealing moderate damage and leaving behind [a:tendrils-of-terror]; star-shaped AoEs where the AoE was dropped.
       [a:sinister-seeds-aoes]: several rounds of AoEs appear underneath the other 4 players. Any player hit by these is inflicted with [s:damage-down:30s]. At the end of the mechanic, all dropped AoEs explode again with a much bigger radius ([a:roots-of-evil]).
     children:
-    - at: 1202
+    - at: 202
       id: pollen
-    - at: 3340
+    - at: 2340
       id: <targetable>
       target: Blooming Abominations
       description: 4 Blooming Abominations become targetable.
-    - at: 4142
+    - at: 3142
       id: sinister-seeds-aoes
-    - at: 6147
+    - at: 5147
       id: sinister-seeds-aoes
-    - at: 8151
+    - at: 7151
       id: sinister-seeds-stars
       link: and
-    - at: 8151
+    - at: 7151
       id: sinister-seeds-aoes
-    - at: 10153
+    - at: 9153
       id: sinister-seeds-aoes
-    - at: 12697
+    - at: 11697
       id: impact
       link: and
-    - at: 12787
+    - at: 11787
       id: tendrils-of-terror
       count: 4
-    - at: 18180
+    - at: 17180
       id: roots-of-evil
   sinister-seeds-stars:
     id: 42350
@@ -476,16 +476,16 @@ timeline:
     name: Phase 1
   - at: 10766
     id: brutal-impact-6x
-  - at: 23487
+  - at: 26987
     id: stoneringer
-  - at: 32344
+  - at: 33344
     id: smash-here
     link: or
-  - at: 32344
+  - at: 33344
     id: smash-there
   - at: 48791
     id: spore-sac
-  - at: 53202
+  - at: 54202
     id: sinister-seeds-1
   - at: 94040
     id: quarry-swamp
@@ -493,11 +493,11 @@ timeline:
     id: explosion
   - at: 108583
     id: explosion
-  - at: 109160
-    id: stoneringer
   - at: 111117
     id: explosion
-  - at: 118031
+  - at: 112660
+    id: stoneringer
+  - at: 119031
     id: smash-there
   - at: 127879
     id: pulp-smash
@@ -518,19 +518,19 @@ timeline:
   - at: 163596
     id: <targetable>
     description: "[boss:c] becomes targetable."
-  - at: 170711
+  - at: 174211
     id: stoneringer
   - at: 184657
     id: brutish-swing
   - at: 189381
     id: electrogenetic-force
-  - at: 189515
+  - at: 190815
     id: glower-power
   - at: 195357
     id: revenge-of-the-vines
   - at: 206563
     id: thorny-deathmatch
-  - at: 210668
+  - at: 214168
     id: stoneringer
   - at: 222806
     id: abominable-blink
@@ -540,7 +540,7 @@ timeline:
     id: brutish-swing
   - at: 251922
     id: electrogenetic-force
-  - at: 252055
+  - at: 253355
     id: glower-power
   - at: 257898
     id: revenge-of-the-vines
@@ -552,7 +552,7 @@ timeline:
     id: strange-seeds
   - at: 294774
     id: strange-seeds-drop
-  - at: 295755
+  - at: 299255
     id: stoneringer
   - at: 299419
     id: tendrils-of-terror
@@ -581,7 +581,7 @@ timeline:
     id: brutish-swing
   - at: 334506
     id: electrogenetic-force
-  - at: 334639
+  - at: 335939
     id: glower-power
   - at: 340486
     id: revenge-of-the-vines
@@ -598,27 +598,27 @@ timeline:
     description: "[boss:c] becomes targetable."
   - at: 382200
     id: brutal-impact-7x
-  - at: 396043
+  - at: 399543
     id: stoneringer-2:-stoneringers
   - at: 408652
     id: brutish-swing
   - at: 409806
     id: revenge-of-the-vines-instant
-  - at: 415898
+  - at: 416398
     id: lashing-lariat
   - at: 424175
     id: brutish-swing
   - at: 427124
     id: electrogenetic-force
-  - at: 427258
+  - at: 428558
     id: glower-power
   - at: 433106
     id: slaminator
   - at: 442225
     id: brutal-impact-8x
-  - at: 455028
+  - at: 458528
     id: stoneringer
-  - at: 463873
+  - at: 464873
     id: smash-there
   - at: 477203
     id: debris-deathmatch
@@ -637,7 +637,7 @@ timeline:
     count: 4
   - at: 513551
     id: quarry-swamp
-  - at: 524698
+  - at: 525698
     id: sinister-seeds-2
   - at: 528849
     id: sinister-seeds-aoes
@@ -662,7 +662,7 @@ timeline:
     id: the-unpotted
   - at: 551275
     id: brutal-impact-8x
-  - at: 569181
+  - at: 572681
     id: stoneringer-2:-stoneringers
   - at: 581134
     id: strange-seeds-2
@@ -674,7 +674,7 @@ timeline:
   - at: 592424
     id: tendrils-of-terror
     count: 4
-  - at: 596930
+  - at: 597430
     id: lashing-lariat
   - at: 601493
     id: strange-seeds-drop
@@ -686,9 +686,9 @@ timeline:
     count: 4
   - at: 612965
     id: slaminator
-  - at: 619080
+  - at: 622580
     id: stoneringer
-  - at: 627959
+  - at: 628959
     id: smash-there
   - at: 639224
     id: brutal-impact-8x

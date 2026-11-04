@@ -199,45 +199,45 @@ actions:
         name: Minimal Movement
         description: This strategy dodges all AoEs with minimal movement.
     children:
-      - at: 1294
+      - at: 794
         id: spikesicle-curve
-      - at: 2496
+      - at: 1996
         id: spikesicle-curve
-      - at: 3701
+      - at: 3201
         id: spikesicle-curve
-      - at: 4906
+      - at: 4406
         id: spikesicle-curve
-      - at: 6110
+      - at: 5610
         id: spikesicle-curve
-      - at: 7311
+      - at: 6811
         id: spikesicle-curve
-      - at: 8025
+      - at: 7525
         id: sphere-shatter
-      - at: 8515
+      - at: 8015
         id: spikesicle-curve
-      - at: 9228
+      - at: 8728
         id: sphere-shatter
-      - at: 9720
+      - at: 9220
         id: spikesicle-curve
-      - at: 10433
+      - at: 9933
         id: sphere-shatter
-      - at: 10923
+      - at: 10423
         id: spikesicle-curve
-      - at: 11635
+      - at: 11135
         id: sphere-shatter
-      - at: 12126
+      - at: 11626
         id: spikesicle-curve
-      - at: 12838
+      - at: 12338
         id: sphere-shatter
-      - at: 14040
+      - at: 13540
         id: sphere-shatter
-      - at: 15242
+      - at: 14742
         id: sphere-shatter
-      - at: 16448
+      - at: 15948
         id: sphere-shatter
-      - at: 17651
+      - at: 17151
         id: sphere-shatter
-      - at: 18853
+      - at: 18353
         id: sphere-shatter
   spikesicle-curve:
     id: 36854
@@ -589,11 +589,11 @@ actions:
     mechanic: raidwide
     description: A three-step raidwide. The last hit inflicts [s:perpetual-conflagration], which lasts until the end of the fight.
     children:
-      - at: 3123
+      - at: 123
         id: tulidisaster-ice
-      - at: 11636
+      - at: 8636
         id: tulidisaster-thunder
-      - at: 19659
+      - at: 16659
         id: tulidisaster-fire
   tulidisaster-ice:
     id: 36874
@@ -693,17 +693,17 @@ actions:
     tips:
       - If you're a melee, do not attempt to maintain melee uptime on the last feather impact unless you know what you're doing. The proximity damage has a steep falloff and you will likely die.
     children:
-      - at: 1737
+      - at: 0
         id: hail-of-feathers-hit
-      - at: 4762
+      - at: 2762
         id: hail-of-feathers-hit
-      - at: 7746
+      - at: 5746
         id: hail-of-feathers-hit
-      - at: 10769
+      - at: 8769
         id: hail-of-feathers-hit
-      - at: 13749
+      - at: 11749
         id: hail-of-feathers-hit
-      - at: 16776
+      - at: 14776
         id: hail-of-feathers-hit
   hail-of-feathers-hit:
     id: 36898
@@ -761,11 +761,11 @@ actions:
       Have both tanks soak the tower with light cooldowns.
       All players should either use [s:arms-length]/[s:surecast] towards the end of the cast, or position themselves in such a way to get knocked back in-between the AoEs at the rear of the arena.
     children:
-      - at: 1606
+      - at: 6
         id: ruinfall-tb
-      - at: 4015
+      - at: 2415
         id: ruinfall-kb
-      - at: 5533
+      - at: 3933
         id: ruinfall-circles
   ruinfall-tb:
     id: 36861
@@ -799,11 +799,11 @@ actions:
       Enrage sequence.
       Behaves like the first [a:tulidisaster], but instead of inflicting another [s:perpetual-conflagration], the last hit wipes the party.
     children:
-      - at: 3150
+      - at: 150
         id: tulidisaster-ice
-      - at: 11690
+      - at: 8690
         id: tulidisaster-thunder
-      - at: 19669
+      - at: 16669
         id: tulidisaster-enrage-fire
   tulidisaster-enrage-fire:
     id: 37453
@@ -811,7 +811,7 @@ actions:
     damage: 9999999
     description: Kills all players.
 timeline:
-  - at: 19905
+  - at: 20405
     id: spikesicle
   - at: 48067
     id: skyruin-fire
@@ -869,7 +869,7 @@ timeline:
     description: |
       [boss] becomes targetable again after all three beacons have been destroyed.
       This timeline assumes it took 7× [a:calamitous-cry] until all beacons were destroyed. It may take your party more or less time, altering the overall timeline.
-  - at: 250581
+  - at: 253581
     id: tulidisaster
   - at: 285237
     id: skyruin-ice
@@ -909,7 +909,7 @@ timeline:
   - at: 337832
     id: scourge-of-thunder
     count: 4
-  - at: 353275
+  - at: 353775
     id: spikesicle
     description: Like the first [a:spikesicle], but combined with a [a:northern-cross].
     resolve: Dodge like before, then inch forward or backward depending on where the avalanche is coming from.
@@ -928,7 +928,7 @@ timeline:
     id: chilling-cataclysm
   - at: 400156
     id: northern-cross
-  - at: 404208
+  - at: 405008
     id: freezing-dust
   - at: 414851
     id: scourge-of-thunder
@@ -957,7 +957,7 @@ timeline:
   - at: 466550
     id: scourge-of-fire
     description: 4-man [m:stack.healers] triggered by [s:calamitys-flames:11s].
-  - at: 477812
+  - at: 479812
     id: hail-of-feathers
     link: then
   - at: 504025
@@ -1007,13 +1007,13 @@ timeline:
     id: crackling-cataclysm
   - at: 579366
     id: disaster-zone
-  - at: 589651
+  - at: 591251
     id: ruinfall
-  - at: 603023
+  - at: 606323
     id: wrath-unfurled
   - at: 614845
     id: mountain-fire
-  - at: 659243
+  - at: 662243
     id: tulidisaster-enrage
 graphing:
   coordinate-system: cartesian

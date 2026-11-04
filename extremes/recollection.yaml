@@ -159,28 +159,28 @@ actions:
     - at: 890
       id: <untargetable>
       description: "[boss:c] becomes untargetable."
-    - at: 11455
+    - at: 12155
       id: spearpoint-push
       count: 2
       link: and
     - at: 12155
       id: explosion
       count: 2
-    - at: 23455
+    - at: 24155
       id: spearpoint-push
       count: 2
       link: and
     - at: 24188
       id: explosion
       count: 2
-    - at: 35555
-      id: spearpoint-push
-      count: 2
-      link: and
     - at: 36222
       id: explosion
       count: 2
-    - at: 47555
+      link: and
+    - at: 36255
+      id: spearpoint-push
+      count: 2
+    - at: 48255
       id: spearpoint-push
       count: 2
     - at: 53197
@@ -193,11 +193,11 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1114
+    - at: 714
       id: queens-crusade
-    - at: 8555
+    - at: 8155
       id: alexandrian-thunder-ii
-    - at: 29045
+    - at: 28645
       id: alexandrian-thunder-iii
       count: 8
   queens-crusade:
@@ -368,11 +368,11 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1116
+    - at: 716
       id: queens-crusade
-    - at: 9529
+    - at: 9129
       id: thunder-slash
-    - at: 10241
+    - at: 9841
       id: alexandrian-thunder-iv
   roseblood-3rd-bloom:
     id: 43541
@@ -381,15 +381,15 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1070
+    - at: 670
       id: queens-crusade
-    - at: 6549
+    - at: 6149
       id: bud-of-valor
-    - at: 14699
+    - at: 14299
       id: emblazon-cast
-    - at: 22278
+    - at: 21878
       id: emblazon
-    - at: 26643
+    - at: 26243
       id: explosion
   roseblood-4th-bloom:
     id: 43542
@@ -398,17 +398,17 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1111
+    - at: 711
       id: queens-crusade
-    - at: 6550
+    - at: 6150
       id: emblazon-cast
-    - at: 14120
+    - at: 13720
       id: emblazon
-    - at: 14788
+    - at: 14388
       id: alexandrian-thunder-iii
-    - at: 18712
+    - at: 18312
       id: encircling-thorns
-    - at: 27667
+    - at: 27267
       id: alexandrian-banish-iii
   roseblood-5th-bloom:
     id: 43543
@@ -417,17 +417,17 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1114
+    - at: 714
       id: queens-crusade
-    - at: 6547
+    - at: 6147
       id: valorous-ascension
-    - at: 17688
+    - at: 17288
       id: thunder-slash
-    - at: 18222
+    - at: 17822
       id: valorous-ascension-4
-    - at: 18400
+    - at: 18000
       id: alexandrian-thunder-iv
-    - at: 21252
+    - at: 20852
       id: valorous-ascension-4
   roseblood-6th-bloom:
     id: 43544
@@ -436,24 +436,24 @@ actions:
     emphasis: more
     description: Placeholder description
     children:
-    - at: 1067
+    - at: 667
       id: queens-crusade
-    - at: 6544
+    - at: 6144
       id: bud-of-valor
-    - at: 12686
+    - at: 12286
       id: emblazon-cast
-    - at: 20264
+    - at: 19864
       id: emblazon
-    - at: 22845
+    - at: 22445
       id: holy-hazard
-    - at: 26628
+    - at: 26228
       id: explosion
   roseblood-withering:
     id: 43545
     mechanic: mech.arena
     description: Placeholder description
     children:
-    - at: 1117
+    - at: 717
       id: queens-crusade
 timeline:
   - at: 11985
@@ -480,15 +480,15 @@ timeline:
     id: blessed-barricade
   - at: 157326
     id: perfumed-quietus
-  - at: 172165
+  - at: 172565
     id: roseblood-bloom
   - at: 208649
     id: thorned-catharsis
-  - at: 218678
+  - at: 219078
     id: roseblood-2nd-bloom
   - at: 244109
     id: specter-of-the-lost
-  - at: 253374
+  - at: 253774
     id: roseblood-3rd-bloom
   - at: 288254
     id: thorned-catharsis
@@ -503,7 +503,7 @@ timeline:
     id: escelons-fall
   - at: 341258
     id: stock-break
-  - at: 353232
+  - at: 353632
     id: roseblood-4th-bloom
   - at: 392265
     id: thorned-catharsis
@@ -513,13 +513,13 @@ timeline:
     id: escelons-fall
   - at: 439159
     id: stock-break
-  - at: 453151
+  - at: 453551
     id: roseblood-5th-bloom
   - at: 486745
     id: specter-of-the-lost
-  - at: 498016
+  - at: 498416
     id: roseblood-6th-bloom
-  - at: 535994
+  - at: 536394
     id: roseblood-bloom
   - at: 572538
     id: thorned-catharsis
@@ -531,7 +531,7 @@ timeline:
     id: stock-break
   - at: 623382
     id: stock-break
-  - at: 632140
+  - at: 632540
     id: roseblood-withering
   - at: 645685
     id: rose-red

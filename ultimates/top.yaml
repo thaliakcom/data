@@ -1096,7 +1096,7 @@ actions:
         name: PF Standard
         common: true
     children:
-      - at: 23134
+      - at: 24134
         id: latent-defect
       - at: 24160
         id: critical-overflow-bug
@@ -1117,7 +1117,7 @@ actions:
         id: critical-performance-bug
         timing: player
         link: and
-      - at: 44192
+      - at: 45192
         id: latent-defect
       - at: 45222
         id: critical-overflow-bug
@@ -1137,7 +1137,7 @@ actions:
       - at: 53342
         id: critical-performance-bug
         timing: player
-      - at: 65263
+      - at: 66263
         id: latent-defect
       - at: 66288
         id: critical-synchronization-bug
@@ -1156,7 +1156,7 @@ actions:
       - at: 74013
         id: critical-underflow-bug
         timing: player
-      - at: 86325
+      - at: 87325
         id: latent-defect
       - at: 87352
         id: critical-synchronization-bug
@@ -1191,10 +1191,10 @@ actions:
     damage: 0
     description: Towers resolve, inflicting [s:latent-performance-defect:10s] (blue) or [s:cascading-latent-defect:10s] (red) on all players inside.
     children:
-      - at: 1000
+      - at: 0
         id: latent-performance-defect
         link: and
-      - at: 1000
+      - at: 0
         id: cascading-latent-defect
   critical-overflow-bug:
     id: 31575
@@ -1962,8 +1962,7 @@ actions:
     shape: rect
     description: A hit of the outwards or inwards moving exasquares.
   cosmo-dive:
-    id: 31654
-    source: 15725
+    name: Cosmo Dive
     mechanic: combination
     shape: chariot
     description: |
@@ -1973,11 +1972,18 @@ actions:
       Have both tanks stand inside the hitbox (but away from each other), and the party outside or on the edge of the hitbox.
       Use light party mitigation and light tank mitigation ([a:rampart] and short mits). You'll need your heavy mits for [a:cosmo-wave-cannon].
     children:
-      - at: 2447
+      - at: 7976
+        id: cosmo-dive-cast
+      - at: 8023
         id: cosmo-dive-stack
         link: and
-      - at: 2447
+      - at: 8023
         id: cosmo-dive-tb
+  cosmo-dive-cast:
+    id: 31654
+    source: 15725
+    mechanic: mech
+    description: "[boss] finishes casting [a:cosmo-dive]. The stack and the tankbusters follow shortly after."
   cosmo-dive-stack:
     id: 31656
     name: Cosmo Dive (Stack)
@@ -2046,8 +2052,7 @@ actions:
     count: 8
     description: Telegraphed AoEs appear underneath each player that explode 2.7 seconds later, killing anyone still in them by that point.
   cosmo-wave-cannon:
-    id: 31657
-    source: 15725
+    name: Wave Cannon
     mechanic: mech
     description: |
       Shortly after the **start** of the cast, [boss] fires lasers at 4 random players, then at the other 4 players.
@@ -2057,11 +2062,13 @@ actions:
       Stay spread until the second set of proteans, then heal the party and stack on a designated cardinal (e.g. south) with both tanks in front of the party. Requires *heavy* tank mits and party mits.
       If tanks have their invuln available, have one tank invuln and use their personal mit on the other tank, who should use everything they have (excluding [a:rampart]).
     children:
-      - at: 3026
+      - at: 3666
         id: cosmo-wave-cannon-spread
-      - at: 5029
+      - at: 5669
         id: cosmo-wave-cannon-spread
-      - at: 11385
+      - at: 10890
+        id: cosmo-wave-cannon-cast
+      - at: 12025
         id: cosmo-wave-cannon-wc
   cosmo-wave-cannon-spread:
     id: 31659
@@ -2070,6 +2077,11 @@ actions:
     damage: 90000
     count: 4
     description: Fires lasers at 4 random players, then lasers at the remaining 4. Each laser deals massive damage and inflicts [s:magic-vuln].
+  cosmo-wave-cannon-cast:
+    id: 31657
+    source: 15725
+    mechanic: mech
+    description: "[boss] finishes casting [a:cosmo-wave-cannon]. The [m:stack.intercept] follows shortly after."
   cosmo-wave-cannon-wc:
     id: 31658
     source: 15725
@@ -2304,12 +2316,12 @@ timeline:
   - at: 919100
     id: inhale
     flatten: omit-parent
-  - at: 932346
+  - at: 926770
     id: cosmo-dive
   - at: 950706
     id: unlimited-wave-cannon
     link: then
-  - at: 968877
+  - at: 968237
     id: cosmo-wave-cannon
   - at: 994100
     id: inhale
@@ -2319,21 +2331,21 @@ timeline:
   - at: 995800
     id: inhale
     flatten: omit-parent
-  - at: 1002487
+  - at: 1001847
     id: cosmo-wave-cannon
   - at: 1027013
     id: unlimited-wave-cannon
+  - at: 1040193
+    id: cosmo-dive
   - at: 1044769
     id: limit-break
-  - at: 1045769
-    id: cosmo-dive
   - at: 1067410
     id: cosmo-meteor
   - at: 1102819
     id: magic-number
   - at: 1118978
     id: magic-number
-  - at: 1144133
+  - at: 1158533
     id: run-dynamis
 graphing:
   coordinate-system: polar

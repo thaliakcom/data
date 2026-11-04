@@ -71,10 +71,10 @@ actions:
     shape: cone
     description: A [tankbuster](m:tb.double) on each of the two highest enmity players and a [m:stack.party] on a random other player.
     children:
-    - at: 7473
+    - at: 3473
       id: raw-steel-scythe
       link: and
-    - at: 7473
+    - at: 3473
       id: heavy-hitter
   raw-steel-scythe:
     id: 46095
@@ -105,10 +105,10 @@ actions:
       A shared [tankbuster](m:tb.stack) on either of the two highest-enmity players and a [m:spread] on all other players.
       **Note**: To reiterate, the tankbuster randomly targets either the player with the most enmity or the player with the second-most enmity. **You cannot have your main tank take this tankbuster solo with [t:invuln]** for this reason.
     children:
-    - at: 6312
+    - at: 2312
       id: raw-steel-axe
       link: and
-    - at: 7465
+    - at: 3465
       id: impact
   raw-steel-axe:
     id: 46091
@@ -255,16 +255,16 @@ actions:
       Three sets of AoEs spawn under players' positions, followed by [a:comet] or [a:crushing-comet].
       After [a:assault-evolved], this repeats, finishing on whichever of the two mechanics ([a:comet] or [a:crushing-comet]) wasn't used the first time.
     children:
-    - at: 4140
+    - at: 3140
       id: cometite
-    - at: 6140
+    - at: 5140
       id: cometite
-    - at: 8137
+    - at: 7137
       id: cometite
-    - at: 10138
+    - at: 9138
       id: comet
       link: or
-    - at: 10138
+    - at: 9138
       id: crushing-comet
   void-stardust-followup:
     name: Void Stardust (Part 2)
@@ -321,22 +321,22 @@ actions:
       This is followed by a heavy multi-hit [m:raidwide], after which [boss] spawns thin white lines on the arena floor. One random edge does not have a line on it.
       Each line indicates where a wide [ms:line] AoE will hit after only a few seconds. At the same time, a [m:stack.partner] goes off on all supports or all damage dealers.
     children:
-    - at: 7250
+    - at: 3250
       id: dance-of-domination-hit
-    - at: 7831
+    - at: 3831
       id: dance-of-domination-hit
-    - at: 8410
+    - at: 4410
       id: dance-of-domination-hit
-    - at: 8990
+    - at: 4990
       id: dance-of-domination-hit
-    - at: 9569
+    - at: 5569
       id: dance-of-domination-hit
-    - at: 10725
+    - at: 6725
       id: dance-of-domination-finale
-    - at: 15668
+    - at: 11668
       id: eye-of-the-hurricane
       link: and
-    - at: 15889
+    - at: 11889
       id: explosion
   dance-of-domination-hit:
     id: 46113
@@ -605,7 +605,7 @@ actions:
       link: then
     - at: 41735
       id: explosion-comet
-    - at: 50536
+    - at: 51536
       id: triple-tyrannhilation
   fearsome-fireball:
     id: 46138
@@ -659,13 +659,13 @@ actions:
     mechanic: mech.los
     description: Three hits in rapid succession, each of which instantly kills any player and destroys any comet in line of sight.
     children:
-    - at: 1157
+    - at: 157
       id: shockwave
       link: then
-    - at: 2717
+    - at: 1717
       id: shockwave
       link: then
-    - at: 4274
+    - at: 3274
       id: shockwave
   shockwave:
     id: 46141
@@ -1008,15 +1008,15 @@ actions:
     mechanic: stack.tower
     description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 5 times. Deals heavy damage.
     children:
-    - at: 1154
+    - at: 154
       id: heartbreak-kick-hit
-    - at: 3158
+    - at: 2158
       id: heartbreak-kick-hit
-    - at: 5159
+    - at: 4159
       id: heartbreak-kick-hit
-    - at: 7163
+    - at: 6163
       id: heartbreak-kick-hit
-    - at: 9205
+    - at: 8205
       id: heartbreak-kick-hit
   heartbreak-kick-2:
     id: 46173
@@ -1024,17 +1024,17 @@ actions:
     mechanic: stack.tower
     description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 6 times. Deals heavy damage.
     children:
-    - at: 1154
+    - at: 154
       id: heartbreak-kick-hit
-    - at: 3158
+    - at: 2158
       id: heartbreak-kick-hit
-    - at: 5159
+    - at: 4159
       id: heartbreak-kick-hit
-    - at: 7163
+    - at: 6163
       id: heartbreak-kick-hit
-    - at: 9205
+    - at: 8205
       id: heartbreak-kick-hit
-    - at: 11206
+    - at: 10206
       id: heartbreak-kick-hit
   heartbreak-kick-3:
     id: 46173
@@ -1042,19 +1042,19 @@ actions:
     mechanic: stack.tower
     description: A tower spawns in the middle of the arena that must be shared by as many players as possible. Hits 7 times. Deals heavy damage.
     children:
-    - at: 1154
+    - at: 154
       id: heartbreak-kick-hit
-    - at: 3158
+    - at: 2158
       id: heartbreak-kick-hit
-    - at: 5159
+    - at: 4159
       id: heartbreak-kick-hit
-    - at: 7163
+    - at: 6163
       id: heartbreak-kick-hit
-    - at: 9205
+    - at: 8205
       id: heartbreak-kick-hit
-    - at: 11206
+    - at: 10206
       id: heartbreak-kick-hit
-    - at: 13249
+    - at: 12249
       id: heartbreak-kick-hit
   heartbreak-kick-hit:
     id: 46174
@@ -1072,10 +1072,10 @@ actions:
 timeline:
   - at: 10874
     id: crown-of-arcadia
-  - at: 18030
+  - at: 22030
     id: raw-steel-trophy-scythe
     link: or
-  - at: 18030
+  - at: 22030
     id: raw-steel-trophy-axe
   - at: 38947
     id: trophy-weapons
@@ -1083,7 +1083,7 @@ timeline:
     id: assault-evolved
   - at: 73567
     id: trophy-weapons
-  - at: 80721
+  - at: 81721
     id: void-stardust
   - at: 93392
     id: assault-evolved
@@ -1091,18 +1091,18 @@ timeline:
     id: void-stardust-followup
   - at: 123009
     id: crown-of-arcadia
-  - at: 135504
+  - at: 139504
     id: dance-of-domination-trophy
-  - at: 157265
+  - at: 161265
     id: raw-steel-trophy-axe
     link: or
-  - at: 157265
+  - at: 161265
     id: raw-steel-trophy-scythe
   - at: 179951
     id: charybdistopia
   - at: 185581
     id: ultimate-trophy-weapons
-  - at: 228524
+  - at: 229524
     id: immortal-reign
   - at: 241679
     id: one-and-only
@@ -1144,19 +1144,19 @@ timeline:
     description: Grants [s:damage-up] to [boss].
   - at: 595646
     id: heartbreak-kicks
-  - at: 595646
+  - at: 596646
     id: heartbreak-kick-1
   - at: 609018
     id: <addstatus>
     status: damage-up
     description: Grants [s:damage-up:2] to [boss].
-  - at: 614798
+  - at: 615798
     id: heartbreak-kick-2
   - at: 630230
     id: <addstatus>
     status: damage-up
     description: Grants [s:damage-up:3] to [boss].
-  - at: 636019
+  - at: 637019
     id: heartbreak-kick-3
   - at: 662232
     id: heartbreaker

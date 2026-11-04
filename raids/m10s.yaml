@@ -167,11 +167,11 @@ actions:
     shape: chariot
     description: A 3-hit stack on a random player. Each hit leaves behind a persistent fire puddle.
     children:
-    - at: 891
+    - at: 191
       id: pyrotation-hit
-    - at: 2895
+    - at: 2195
       id: pyrotation-hit
-    - at: 4896
+    - at: 4196
       id: pyrotation-hit
   pyrotation-hit:
     id: 46531
@@ -675,19 +675,19 @@ actions:
       - status: xtreme-watersnaking
         duration: 51000
     children:
-    - at: 14826
+    - at: 16326
       id: insane-air-initial
     - at: 19367
       id: bailout
-    - at: 25167
+    - at: 26667
       id: insane-air-subsequent
     - at: 29795
       id: bailout
-    - at: 35536
+    - at: 37036
       id: insane-air-subsequent
     - at: 40072
       id: bailout
-    - at: 45899
+    - at: 47399
       id: insane-air-subsequent
     - at: 50614
       id: bailout
@@ -732,7 +732,7 @@ timeline:
     count: 8
   - at: 63079
     id: cutback-blaze
-  - at: 68592
+  - at: 69292
     id: pyrotation
   - at: 82734
     id: divers-dare
@@ -775,7 +775,7 @@ timeline:
     id: xtreme-spectacular-cast
   - at: 179486
     id: epic-brotherhood
-  - at: 195324
+  - at: 196824
     id: insane-air-initial
   - at: 230013
     id: divers-dare
@@ -839,7 +839,7 @@ timeline:
   - at: 547254
     id: alley-oop-inferno
     count: 8
-  - at: 555253
+  - at: 555953
     id: pyrotation
     link: and
   - at: 556542

@@ -205,7 +205,7 @@ actions:
     count: 8
     description: Placeholder description for Octuple Lariat
     children:
-      - at: 0
+      - at: 1
         id: blazing-lariat-spread
   quadruple-lariat:
     id: 37851
@@ -215,7 +215,7 @@ actions:
     count: 4
     description: Placeholder description for Quadruple Lariat
     children:
-      - at: 0
+      - at: 1
         id: blazing-lariat-stack
   blazing-lariat-spread:
     id: 37852
@@ -243,7 +243,7 @@ actions:
     damage: 31992
     description: Placeholder description for Octoboom Dive
     children:
-      - at: 3303
+      - at: 2503
         id: diveboom-spread
   quadroboom-dive:
     id: 37856
@@ -253,7 +253,7 @@ actions:
     damage: 31992
     description: Placeholder description for Quadroboom Dive
     children:
-      - at: 3303
+      - at: 2503
         id: diveboom-stack
   diveboom-spread:
     id: 37859
@@ -307,7 +307,7 @@ actions:
       - at: 17129
         id: explosion-tower-single
         count: 1
-      - at: 19160
+      - at: 20360
         id: lariat-combo-avoidable
   explosion-tower-quad:
     id: 38542
@@ -634,7 +634,7 @@ actions:
     emphasis: more
     description: Placeholder description for Fuse or Foe
     children:
-      - at: 9039
+      - at: 9539
         id: infernal-spin
       - at: 9541
         id: explosive-rain
@@ -659,17 +659,17 @@ actions:
     description: Placeholder description for Infernal Spin
     compact: full
     children:
-      - at: 535
+      - at: 35
         id: infernal-spin-hit
-      - at: 1025
+      - at: 525
         id: infernal-spin-hit
-      - at: 1569
+      - at: 1069
         id: infernal-spin-hit
-      - at: 2007
+      - at: 1507
         id: infernal-spin-hit
-      - at: 2544
+      - at: 2044
         id: infernal-spin-hit
-      - at: 2989
+      - at: 2489
         id: infernal-spin-hit
   explosive-rain:
     id: 37910
@@ -688,9 +688,9 @@ actions:
     shape: halfroom
     description: Placeholder description for Lariat Combo
     children:
-      - at: 1199
+      - at: 0
         id: lariat-combo-hit-avoidable
-      - at: 5468
+      - at: 4268
         id: lariat-combo-hit-avoidable
   lariat-combo-hit-avoidable:
     id: 39665
@@ -783,18 +783,18 @@ timeline:
     id: brutal-impact-1
   - at: 21443
     id: knuckle-sandwich-1
-  - at: 38513
+  - at: 38512
     id: octuple-lariat
     description: A close-range AoE combined with a conal spread on all players.
     link: or
-  - at: 38513
+  - at: 38512
     id: quadruple-lariat
     description: A close-range AoE combined with a conal partner stack on all DPS or supports.
-  - at: 49400
+  - at: 50200
     id: octoboom-dive
     description: "[boss] faces a direction and jumps there, dealing proximity damage followed by a circular spread on all players."
     link: or
-  - at: 49400
+  - at: 50200
     id: quadroboom-dive
     description: "[boss] faces a direction and jumps there, dealing proximity damage followed by a circular partner stack on all players."
   - at: 60867
@@ -803,15 +803,15 @@ timeline:
     id: barbarous-barrage-1
   - at: 110283
     id: doping-draught-1
-  - at: 143698
+  - at: 143697
     id: octuple-lariat
     link: or
-  - at: 143698
+  - at: 143697
     id: quadruple-lariat
-  - at: 155372
+  - at: 156172
     id: octoboom-dive
     link: or
-  - at: 155372
+  - at: 156172
     id: quadroboom-dive
   - at: 166860
     id: brutal-impact-2
@@ -819,19 +819,19 @@ timeline:
     id: knuckle-sandwich-2
   - at: 196540
     id: tag-team-1
-  - at: 226762
+  - at: 226761
     id: octuple-lariat
     link: or
-  - at: 226762
+  - at: 226761
     id: quadruple-lariat
   - at: 234899
     id: brutal-impact-2
   - at: 254518
     id: final-fusedown
-  - at: 278875
+  - at: 279675
     id: octoboom-dive
     link: or
-  - at: 278875
+  - at: 279675
     id: quadroboom-dive
   - at: 298734
     id: fusefield
@@ -846,10 +846,10 @@ timeline:
     id: quadroboom-bombarian-special
   - at: 427545
     id: fuses-of-fury
-  - at: 472303
+  - at: 473103
     id: octoboom-dive
     link: or
-  - at: 472303
+  - at: 473103
     id: quadroboom-dive
   - at: 484836
     id: brutal-impact-3
@@ -857,7 +857,7 @@ timeline:
     id: knuckle-sandwich-3
   - at: 517792
     id: fuse-or-foe
-  - at: 548262
+  - at: 548261
     id: quadruple-lariat
   - at: 556396
     id: brutal-impact-3

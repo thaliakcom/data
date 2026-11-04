@@ -105,18 +105,18 @@ actions:
       If it's light, move into the hitbox on west (light party 1) or east (light party 2) for the stack.
       If it's dark, have either supports or DPS rotate clockwise or counter-clockwise to the next player and stack in their [ms:dynamo].
     children:
-      - at: 1829
+      - at: 0
         id: jury-overruling-hit
-      - at: 4084
+      - at: 3173
         id: illusory-glare
         link: and
-      - at: 4084
+      - at: 3173
         id: inevitable-law
         link: or
-      - at: 4084
+      - at: 3173
         id: illusory-gloom
         link: and
-      - at: 4084
+      - at: 3173
         id: inevitable-sentence
   jury-overruling-hit:
     id: 33256
@@ -169,16 +169,16 @@ actions:
       Light: [a:upheld-overruling-stack] > [a:lightburst] ([ms:chariot]) > [a:inevitable-law] ([m:stack.healers])
       Dark: [a:upheld-overruling-tb] > [a:dark-perimeter] ([ms:dynamo]) > [a:inevitable-sentence] ([m:stack.partner])
     children:
-    - at: 4189
+    - at: 3989
       id: lightburst
       link: and
-    - at: 4189
+    - at: 3989
       id: inevitable-law
       link: or
-    - at: 4189
+    - at: 3989
       id: dark-perimeter
       link: and
-    - at: 4189
+    - at: 3989
       id: inevitable-sentence
   upheld-overruling-tb:
     id: 33267
@@ -251,16 +251,16 @@ actions:
       Dark: [a:divisive-overruling] ([m:aoe] [ms:sides]) > [a:ripples-of-gloom] ([m:aoe] [ms:line]) > [a:inevitable-sentence] ([m:stack.partner])
       After the cast, [boss] dashes, leaving either the inside or outside of the dash safe.
     children:
-    - at: 4585
+    - at: 2685
       id: divine-ruination
       link: and
-    - at: 4585
+    - at: 2685
       id: inevitable-law
       link: or
-    - at: 4585
+    - at: 2685
       id: ripples-of-gloom
       link: and
-    - at: 4585
+    - at: 2685
       id: inevitable-sentence
   styx-1:
     id: 33303
@@ -356,7 +356,7 @@ actions:
       [boss] glows either dark or light, then summons 4 dark mirrors and 4 light mirrors on the sides of the arena.
       After some time, whichever mirrors match the colour that the boss glowed during this cast will fire a [ms:line], dealing massive damage to anyone hit and inflicting [s:damage-down:30s].
     children:
-    - at: 7623
+    - at: 8123
       id: dismissal-overruling
     - at: 9635
       id: arche
@@ -388,16 +388,16 @@ actions:
       After the cast, [boss] inflicts a knockback slightly smaller than the radius of the arena.
     resolve: Either use [a:surecast] or [a:arms-length] or position yourself close to the boss's center to avoid being knocked into the wall, then go in with your partner or out with your light party, depending on the boss's colour.
     children:
-    - at: 5081
+    - at: 4581
       id: inner-light
       link: and
-    - at: 5081
+    - at: 4581
       id: inevitable-law
       link: or
-    - at: 5081
+    - at: 4581
       id: outer-dark
       link: and
-    - at: 5081
+    - at: 4581
       id: inevitable-sentence
   arche:
     id: 33299
@@ -429,11 +429,11 @@ actions:
       Take your light party to either the east or west, which will always be safe. After the clones dash, move into the dark dash. Wait until [boss] has dashed, then either move into his dash with your partner or go to max melee with your light party.
       **Important**: The main tank has an important responsibility during this mechanic, as the way [boss] dashes is determined by which way the tank faces him. It is strongly recommended to wait until the clones begin to indicate their colour, then point the boss at or opposite the *light clone*. Do *not* point him at the dark clone, as this means there is no safe spot during the mechanic.
     children:
-    - at: 14395
+    - at: 14895
       id: divisive-ruling
-    - at: 17023
+    - at: 18923
       id: divisive-overruling
-    - at: 26691
+    - at: 26891
       id: upheld-ruling
   divisive-ruling:
     id: 33306
@@ -443,10 +443,10 @@ actions:
     compact: full
     description: Same as [a:divisive-overruling], but cast by a clone of [boss] rather than [boss] himself.
     children:
-    - at: 4496
+    - at: 3996
       id: divine-ruination
       link: or
-    - at: 4496
+    - at: 3996
       id: ripples-of-gloom
   upheld-ruling:
     id: 34769
@@ -455,12 +455,12 @@ actions:
     compact: full
     description: Same as [a:upheld-overruling], but cast by a clone of [boss] rather than [boss] himself.
     children:
-    - at: 354
+    - at: 154
       id: upheld-ruling-hit
-    - at: 4100
+    - at: 3900
       id: lightburst
       link: or
-    - at: 4100
+    - at: 3900
       id: dark-perimeter
   upheld-ruling-hit:
     id: 33313
@@ -488,9 +488,9 @@ actions:
     children:
     - at: 13181
       id: arcane-revelation-2
-    - at: 31130
+    - at: 33930
       id: jury-overruling
-    - at: 47877
+    - at: 49777
       id: divisive-overruling
     - at: 59647
       id: emissarys-will
@@ -561,13 +561,13 @@ actions:
       id: twofold-revelation
     - at: 16288
       id: heart-of-judgment
-    - at: 19004
+    - at: 19204
       id: upheld-ruling
     - at: 28359
       id: explosion
-    - at: 31746
+    - at: 32246
       id: divisive-ruling
-    - at: 37940
+    - at: 38440
       id: dismissal-overruling
   twofold-revelation:
     id: 33297
@@ -597,11 +597,11 @@ timeline:
     id: eunomia
   - at: 26070
     id: dike
-  - at: 44158
+  - at: 46958
     id: jury-overruling
-  - at: 62381
+  - at: 62581
     id: upheld-overruling
-  - at: 80251
+  - at: 82151
     id: divisive-overruling
   - at: 94009
     id: styx-1
@@ -609,17 +609,17 @@ timeline:
     id: arcane-revelation
   - at: 153588
     id: shadowed-messengers
-  - at: 192216
+  - at: 195016
     id: jury-overruling
   - at: 204613
     id: styx-2
   - at: 222405
     id: lightstream
-  - at: 241556
+  - at: 243456
     id: divisive-overruling
   - at: 258340
     id: eunomia
-  - at: 273341
+  - at: 273541
     id: upheld-overruling
   - at: 295696
     id: dark-and-light
@@ -629,11 +629,11 @@ timeline:
     id: dike
   - at: 404828
     id: dark-current
-  - at: 430943
+  - at: 433743
     id: jury-overruling
-  - at: 449165
+  - at: 449365
     id: upheld-overruling
-  - at: 468817
+  - at: 470717
     id: divisive-overruling
   - at: 486618
     id: eunomia
@@ -643,11 +643,11 @@ timeline:
     id: styx-4
   - at: 583794
     id: lightstream
-  - at: 602466
+  - at: 604366
     id: divisive-overruling
   - at: 623278
     id: dike
-  - at: 644324
+  - at: 647124
     id: jury-overruling
   - at: 659659
     id: eunomia

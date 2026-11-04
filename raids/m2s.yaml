@@ -163,10 +163,10 @@ actions:
     description: A wide [ms:line] AoE through [boss]'s center, followed by 4 [ms:chariot] on each side that completely cover both sides.
     resolve: Stand [t:max melee] at [boss]'s side, then move into the line after it's gone off. Remember to spread or stack here.
     children:
-    - at: 6013
+    - at: 5313
       id: splash-of-venom-hit
       link: or
-    - at: 6013
+    - at: 5313
       id: drop-of-venom-hit
   tempting-twist:
     id: 37255
@@ -179,10 +179,10 @@ actions:
       Stand in or around [boss]'s hitbox, then move into your designated quarter with your partner and either spread or stack.
       Be aware the outer safe spots are outside of [t:max melee] range, so maintaining melee uptime is difficult or impossible, depending on your job.
     children:
-    - at: 6013
+    - at: 5313
       id: splash-of-venom-hit
       link: or
-    - at: 6013
+    - at: 5313
       id: drop-of-venom-hit
   drop-of-venom-hit:
     id: 37258
@@ -245,11 +245,11 @@ actions:
     compact: trim
     description: A sequence of [ms:dynamo] + [ms:cone] (cardinals) → [ms:plus] → [ms:chariot] + [ms:cone] (intercardinals).
     children:
-    - at: 1205
+    - at: 205
       id: laceration-in
-    - at: 4200
+    - at: 3200
       id: laceration-plus
-    - at: 7456
+    - at: 6456
       id: laceration-out
   outerstage-combo:
     id: 37293
@@ -259,11 +259,11 @@ actions:
     compact: trim
     description: A sequence of [ms:chariot] + [ms:cone] (intercardinals) → [ms:plus] → [ms:dynamo] + [ms:cone] (cardinals).
     children:
-    - at: 1205
+    - at: 205
       id: laceration-out
-    - at: 4200
+    - at: 3200
       id: laceration-plus
-    - at: 7456
+    - at: 6456
       id: laceration-in
   laceration-in:
     id: 37300
@@ -387,7 +387,7 @@ actions:
       id: poison-sting
     - at: 24177
       id: poison-sting
-    - at: 33099
+    - at: 34099
       id: bee-sting
   beat-2:
     id: 39973
@@ -438,10 +438,10 @@ actions:
     shape: dynamo
     description: Same as [a:tempting-twist], but also inflicts [s:infatuated] on anyone hit.
     children:
-    - at: 6013
+    - at: 5313
       id: spread-love-hit
       link: or
-    - at: 6013
+    - at: 5313
       id: drop-of-love-hit
   honey-beeline-heart:
     id: 39692
@@ -451,10 +451,10 @@ actions:
     shape: line
     description: Same as [a:honey-beeline], but also inflicts [s:infatuated] on anyone hit.
     children:
-    - at: 6013
+    - at: 5313
       id: spread-love-hit
       link: or
-    - at: 6013
+    - at: 5313
       id: drop-of-love-hit
   spread-love-hit:
     id: 39694
@@ -486,7 +486,7 @@ actions:
     shape: chariot
     description: Marks one support and one DPS for a light party stack that inflicts [s:piercing-resistance-down:3s].
     children:
-    - at: 1024
+    - at: 24
       id: bee-sting-hit
   bee-sting-hit:
     id: 37289
@@ -552,27 +552,27 @@ actions:
       Be aware of the [s:magic-vulnerability-up:7s] inflicted by [a:rotten-big-burst]. This means that if the debuffs are resolved at 3s or less, a wipe is guaranteed as the subsequent [a:call-me-honey] instantly kills all players. It is recommended to resolve the debuffs at about 7s remaining.
       If a pair of debuffs missed their cleanse window, meaning that there is no longer enough time to cleanse the debuff and wait for [s:magic-vulnerability-up:7s] to expire before [a:call-me-honey], it is recommended not to cleanse the debuff at all and let the afflicted players die instead. This will not cause a wipe.
     children:
-    - at: 3657
+    - at: 0
       id: rotten-heart-hit
-    - at: 7857
+    - at: 3857
       id: rotten-big-burst
       timing: player
-    - at: 16513
+    - at: 12513
       id: call-me-honey
-    - at: 22690
+    - at: 18690
       id: rotten-big-burst
       timing: player
-    - at: 33659
+    - at: 29659
       id: call-me-honey
-    - at: 39653
+    - at: 35653
       id: rotten-big-burst
       timing: player
-    - at: 50854
+    - at: 46854
       id: call-me-honey
-    - at: 58093
+    - at: 54093
       id: rotten-big-burst
       timing: player
-    - at: 68007
+    - at: 64007
       id: call-me-honey
   rotten-heart-hit:
     id: 37330
@@ -614,10 +614,10 @@ timeline:
   - at: 18019
     id: splash-of-venom
     link: then
-  - at: 28855
+  - at: 29555
     id: honey-beeline
     link: or
-  - at: 28855
+  - at: 29555
     id: tempting-twist
   - at: 40033
     id: splash-of-venom
@@ -625,53 +625,53 @@ timeline:
   - at: 40033
     id: drop-of-venom
     link: then
-  - at: 47655
+  - at: 48355
     id: tempting-twist
     link: or
-  - at: 47655
+  - at: 48355
     id: honey-beeline
-  - at: 61067
+  - at: 62067
     id: killer-sting
     link: or
-  - at: 61067
+  - at: 62067
     id: stinging-slash
-  - at: 79446
-    id: beat-1
   - at: 79446
     id: <phase>
     name: "Honey B. Live: 1st Beat"
-  - at: 87257
+  - at: 85746
+    id: beat-1
+  - at: 88257
     id: centerstage-combo
     link: or
-  - at: 87257
+  - at: 88257
     id: outerstage-combo
   - at: 102861
     id: love-me-tender
-  - at: 136144
+  - at: 137144
     id: loveseeker
   - at: 158451
     id: heartsick
-  - at: 168703
+  - at: 169703
     id: outerstage-combo
     link: or
-  - at: 168703
+  - at: 169703
     id: centerstage-combo
   - at: 187343
     id: honey-b-finale
   - at: 187343
     id: <endphase>
-  - at: 202817
+  - at: 203817
     id: killer-sting
     link: or
-  - at: 202817
+  - at: 203817
     id: stinging-slash
   - at: 209676
     id: alarm-pheromones-1
   - at: 254280
-    id: beat-2
-  - at: 254280
     id: <phase>
     name: "Honey B. Live: 2nd Beat"
+  - at: 260580
+    id: beat-2
   - at: 262118
     id: spread-love
     link: or
@@ -692,10 +692,10 @@ timeline:
   - at: 287424
     id: fracture
     count: 2
-  - at: 296461
+  - at: 297161
     id: tempting-twist-heart
     link: or
-  - at: 296461
+  - at: 297161
     id: honey-beeline-heart
   - at: 310644
     id: honey-b-finale
@@ -708,58 +708,58 @@ timeline:
     id: splash-of-venom
   - at: 334178
     id: alarm-pheromones-2
-  - at: 376338
+  - at: 377338
     id: killer-sting
     link: or
-  - at: 376338
+  - at: 377338
     id: stinging-slash
-  - at: 388681
+  - at: 389381
     id: honey-beeline
     link: or
-  - at: 388681
+  - at: 389381
     id: tempting-twist
-  - at: 413462
-    id: beat-3
   - at: 413462
     id: <phase>
     name: "Honey B. Live: 3rd Beat"
+  - at: 419762
+    id: beat-3
   - at: 420307
     id: drop-of-love
-  - at: 427465
+  - at: 428465
     id: centerstage-combo
     link: or
-  - at: 427465
+  - at: 428465
     id: outerstage-combo
   - at: 439471
     id: big-burst
   - at: 442847
     id: fracture
     count: 4
-  - at: 447068
+  - at: 448068
     id: outerstage-combo
     link: or
-  - at: 447068
+  - at: 448068
     id: centerstage-combo
   - at: 459507
     id: big-burst
   - at: 462482
     id: fracture
     count: 4
-  - at: 472171
+  - at: 472871
     id: honey-beeline-heart
     link: or
-  - at: 472171
+  - at: 472871
     id: tempting-twist-heart
   - at: 485285
     id: honey-b-finale
   - at: 485285
     id: <endphase>
-  - at: 499431
+  - at: 500431
     id: stinging-slash
     link: or
-  - at: 499431
+  - at: 500431
     id: killer-sting
-  - at: 515517
+  - at: 519517
     id: rotten-heart
   - at: 605851
     id: sheer-heart-attack

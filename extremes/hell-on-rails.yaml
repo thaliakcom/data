@@ -200,7 +200,7 @@ actions:
       Players who get pulled to the front of the train car are hit by [a:dead-mans-blastpipe] and inflicted with [s:vulnerability-up:60s].
       Executes the previously stored [a:dead-mans-overdraught] right after.
     children:
-    - at: 2060
+    - at: 1060
       id: dead-mans-blastpipe
   dead-mans-blastpipe:
     id: 45679
@@ -268,11 +268,11 @@ actions:
       Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] the next two Derailment Sieges.
     compact: full
     children:
-    - at: 1115
+    - at: 115
       id: derailment-siege-hit
-    - at: 2094
+    - at: 1094
       id: derailment-siege-hit
-    - at: 3568
+    - at: 2568
       id: derailment-siege-hit-final
   derailment-siege-x4:
     id: 45700
@@ -285,13 +285,13 @@ actions:
       Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] this and the next [a:derailment-siege-x5].
     compact: full
     children:
-    - at: 1113
+    - at: 113
       id: derailment-siege-hit
-    - at: 2092
+    - at: 1092
       id: derailment-siege-hit
-    - at: 3073
+    - at: 2073
       id: derailment-siege-hit
-    - at: 4547
+    - at: 3547
       id: derailment-siege-hit-final
   derailment-siege-x5:
     id: 45701
@@ -304,15 +304,15 @@ actions:
       Each subsequent Derailment Siege adds another hit. It is recommended to [t:invuln] this Derailment Siege.
     compact: full
     children:
-    - at: 1111
+    - at: 111
       id: derailment-siege-hit
-    - at: 2091
+    - at: 1091
       id: derailment-siege-hit
-    - at: 3070
+    - at: 2070
       id: derailment-siege-hit
-    - at: 4052
+    - at: 3052
       id: derailment-siege-hit
-    - at: 5520
+    - at: 4520
       id: derailment-siege-hit-final
   derailment-siege-x6:
     id: 45702
@@ -323,17 +323,17 @@ actions:
       The final hit deals double damage and is immediately followed by [a:derail-enrage], wiping the party.
     compact: full
     children:
-    - at: 1111
+    - at: 111
       id: derailment-siege-hit
-    - at: 2092
+    - at: 1092
       id: derailment-siege-hit
-    - at: 3072
+    - at: 2072
       id: derailment-siege-hit
-    - at: 4052
+    - at: 3052
       id: derailment-siege-hit
-    - at: 5036
+    - at: 4036
       id: derailment-siege-hit
-    - at: 6504
+    - at: 5504
       id: derailment-siege-hit-final
   derailment-siege-hit:
     id: 45706
@@ -393,7 +393,7 @@ timeline:
   - at: 0
     id: <phase>
     name: Car 1
-  - at: 12851
+  - at: 13851
     id: dead-mans-overdraught
   - at: 20896
     id: dead-mans-express
@@ -406,9 +406,9 @@ timeline:
     link: or
   - at: 26075
     id: plasma
-  - at: 31917
+  - at: 32917
     id: dead-mans-overdraught
-  - at: 40969
+  - at: 41969
     id: dead-mans-windpipe
     link: then
   - at: 45121
@@ -427,30 +427,30 @@ timeline:
   - at: 58884
     id: <targetable>
     description: "[boss:c] becomes targetable."
-  - at: 64986
+  - at: 65986
     id: dead-mans-overdraught
   - at: 70017
     id: turret-crossing
   - at: 80000
     id: electray
   - at: 81061
-    id: dead-mans-windpipe
-    link: or
-  - at: 81061
     id: dead-mans-express
+    link: or
+  - at: 82061
+    id: dead-mans-windpipe
   - at: 85205
     id: plasma
     link: or
   - at: 85205
     id: hyperexplosive-plasma
-  - at: 91082
+  - at: 92082
     id: dead-mans-overdraught
   - at: 98701
     id: lightning-burst
   - at: 108228
     id: dead-mans-express
     link: or
-  - at: 108228
+  - at: 109228
     id: dead-mans-windpipe
     link: and
   - at: 110271
@@ -527,7 +527,7 @@ timeline:
     id: shockwave
   - at: 272994
     id: lightning-burst
-  - at: 280522
+  - at: 281522
     id: derailment-siege-x3
     link: then
   - at: 289742
@@ -548,7 +548,7 @@ timeline:
     link: or
   - at: 317589
     id: thunderous-breath
-  - at: 322939
+  - at: 323939
     id: arcane-revelation
   - at: 337601
     id: hail-of-thunder
@@ -580,7 +580,7 @@ timeline:
     id: third-rail
   - at: 393028
     id: lightning-burst
-  - at: 402610
+  - at: 403610
     id: derailment-siege-x4
     link: then
   - at: 413973
@@ -612,7 +612,7 @@ timeline:
     count: 5
   - at: 464463
     id: third-rail
-  - at: 479536
+  - at: 480536
     id: derailment-siege-x5
     link: then
   - at: 491293
@@ -620,7 +620,7 @@ timeline:
   - at: 496293
     id: <phase>
     name: Car 6
-  - at: 505499
+  - at: 506499
     id: dead-mans-overdraught
   - at: 510536
     id: turret-crossing
@@ -662,9 +662,9 @@ timeline:
     id: plasma
   - at: 567312
     id: lightning-burst
-  - at: 574754
+  - at: 575754
     id: dead-mans-overdraught
-  - at: 578763
+  - at: 579763
     id: arcane-revelation
   - at: 593420
     id: hail-of-thunder
@@ -678,7 +678,7 @@ timeline:
     id: hyperconductive-plasma
   - at: 607101
     id: third-rail
-  - at: 621941
+  - at: 622941
     id: dead-mans-windpipe
   - at: 626079
     id: plasma
@@ -700,7 +700,7 @@ timeline:
     id: lightning-burst
   - at: 648091
     id: third-rail
-  - at: 662045
+  - at: 663045
     id: derailment-siege-x6
     link: then
   - at: 684283

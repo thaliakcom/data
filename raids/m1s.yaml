@@ -412,7 +412,7 @@ actions:
       Determine which tiles are restored first, then split into light parties: light party 1 gets knocked back to the northern tiles that are restored first, light party 2 to the southern tiles. This is to make the subsequent [m:spread] easier.
       If you're a melee, don't be afraid to use your gapcloser to jump back to the boss. Just make sure everyone is clear on where they spread, for example by having melee DPS stay and tanks move clockwise to the next cardinal.
     children:
-      - at: 3800
+      - at: 2800
         id: grimalkin-gale
   leaping-one-two-paw:
     id: 37967
@@ -432,7 +432,7 @@ actions:
     shape: line
     description: "[ms:line:c] stacks on both healers, originating from the boss."
     children:
-      - at: 799
+      - at: 0
         id: tempestuous-tear-hit
   tempestuous-tear-hit:
     id: 38020
@@ -661,21 +661,21 @@ timeline:
     description: |
       Both clones execute [a:one-two-paw] in the same order as [boss] did before.
       The two clones always spawn in the same configuration, so the dodge is always the same. The only thing that changes is whether the dodge is from the left side of clone A to the right side of clone B, or from the right side of clone B to the left side of clone A.
-  - at: 89145
+  - at: 90145
     id: quadruple-swipe
     link: or
-  - at: 89145
+  - at: 90145
     id: double-swipe
   - at: 94203
     id: soulshade
   - at: 101284
     id: leaping-quadruple-crossing
     link: then
-  - at: 112707
+  - at: 113707
     id: quadruple-swipe
     description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].
     link: or
-  - at: 112707
+  - at: 113707
     id: double-swipe
     description: Repeats the previously executed [a:double-swipe] or [a:quadruple-swipe].
   - at: 123240
@@ -694,7 +694,7 @@ timeline:
     id: elevate-and-eviscerate
   - at: 224621
     id: biscuit-maker
-  - at: 237711
+  - at: 238711
     id: shockwave-kb
   - at: 256888
     id: nine-lives
@@ -708,14 +708,14 @@ timeline:
     id: leaping-quadruple-crossing
   - at: 300078
     id: soulshade
-  - at: 325237
-    id: tempestuous-tear
-    link: and
   - at: 326036
     id: leaping-one-two-paw
     description: |
       The clone executes the previously stored [a:leaping-one-two-paw].
       Note that the other clone may be chosen instead, thus executing [a:leaping-quadruple-crossing] first.
+    link: and
+  - at: 326237
+    id: tempestuous-tear
   - at: 351196
     id: leaping-quadruple-crossing
     link: and
@@ -764,7 +764,7 @@ timeline:
     id: overshadow
   - at: 476033
     id: biscuit-maker
-  - at: 490166
+  - at: 491166
     id: shockwave-kb
   - at: 513532
     id: raining-cats

@@ -181,28 +181,28 @@ actions:
     compact: trim
     description: Placeholder description for Widening Witch Hunt
     children:
-      - at: 0
+      - at: 72
         id: lightning-vortex
         link: and
-      - at: 0
+      - at: 72
         id: witch-hunt
         count: 2
-      - at: 3554
+      - at: 3626
         id: thundering
         link: and
-      - at: 3554
+      - at: 3626
         id: witch-hunt
         count: 2
-      - at: 7108
+      - at: 7180
         id: lightning-vortex
         link: and
-      - at: 7108
+      - at: 7180
         id: witch-hunt
         count: 2
-      - at: 10662
+      - at: 10734
         id: thundering
         link: and
-      - at: 10662
+      - at: 10734
         id: witch-hunt
         count: 2
   narrowing-witch-hunt:
@@ -212,28 +212,28 @@ actions:
     compact: trim
     description: Placeholder description for Widening Witch Hunt
     children:
-      - at: 0
+      - at: 72
         id: thundering
         link: and
-      - at: 0
+      - at: 72
         id: witch-hunt
         count: 2
-      - at: 3554
+      - at: 3626
         id: lightning-vortex
         link: and
-      - at: 3554
+      - at: 3626
         id: witch-hunt
         count: 2
-      - at: 7108
+      - at: 7180
         id: thundering
         link: and
-      - at: 7108
+      - at: 7180
         id: witch-hunt
         count: 2
-      - at: 10662
+      - at: 10734
         id: lightning-vortex
         link: and
-      - at: 10662
+      - at: 10734
         id: witch-hunt
         count: 2
   lightning-vortex:
@@ -475,19 +475,19 @@ actions:
     shape: chariot
     description: Placeholder description for Wicked Bolt
     children:
-      - at: 1000
+      - at: 0
         id: wicked-bolt-hit
         link: then
-      - at: 2042
+      - at: 1042
         id: wicked-bolt-hit
         link: then
-      - at: 3021
+      - at: 2021
         id: wicked-bolt-hit
         link: then
-      - at: 4041
+      - at: 3041
         id: wicked-bolt-hit
         link: then
-      - at: 5063
+      - at: 4063
         id: wicked-bolt-hit
   wicked-bolt-hit:
     id: 38382
@@ -759,31 +759,31 @@ actions:
     compact: full
     description: Placeholder description for Cross Tail Switch
     children:
-      - at: 1155
+      - at: 155
         id: cross-tail-switch-hit
         link: then
-      - at: 2176
+      - at: 1176
         id: cross-tail-switch-hit
         link: then
-      - at: 3198
+      - at: 2198
         id: cross-tail-switch-hit
         link: then
-      - at: 4221
+      - at: 3221
         id: cross-tail-switch-hit
         link: then
-      - at: 5243
+      - at: 4243
         id: cross-tail-switch-hit
         link: then
-      - at: 6264
+      - at: 5264
         id: cross-tail-switch-hit
         link: then
-      - at: 7283
+      - at: 6283
         id: cross-tail-switch-hit
         link: then
-      - at: 8305
+      - at: 7305
         id: cross-tail-switch-hit
         link: then
-      - at: 9323
+      - at: 8323
         id: cross-tail-switch-hit
   cross-tail-switch-hit:
     id: 38387
@@ -881,7 +881,7 @@ actions:
         link: and
       - at: 0
         id: kindling-cauldron
-      - at: 9732
+      - at: 9578
         id: mustard-bomb-echo
   mustard-bomb-tb:
     id: 38431
@@ -925,24 +925,24 @@ actions:
     shape: defamation
     description: Placeholder description for Tail Thrust
     children:
-      - at: 1064
+      - at: 64
         id: tail-thrust-hit
-      - at: 5145
+      - at: 4145
         id: tail-thrust-hit
   tail-thrust-kb:
     id: 38406
     mechanic: mech.knockback.unavoidable
     description: Placeholder description for Tail Thrust
     children:
+      - at: 64
+        id: tail-thrust-hit
+        link: and
       - at: 1064
-        id: tail-thrust-hit
-        link: and
-      - at: 2064
         id: switch-of-tides
-      - at: 5145
+      - at: 4145
         id: tail-thrust-hit
         link: and
-      - at: 6145
+      - at: 5145
         id: switch-of-tides
   tail-thrust-hit:
     id: 38414
@@ -1092,21 +1092,21 @@ actions:
     compact: full
     description: Placeholder description for Chain Lightning
     children:
-      - at: 844
+      - at: 0
         id: chain-lightning-hit
-      - at: 3508
+      - at: 2508
         id: chain-lightning-hit
-      - at: 6227
+      - at: 5227
         id: chain-lightning-hit
-      - at: 8939
+      - at: 7939
         id: chain-lightning-hit
-      - at: 11608
+      - at: 10608
         id: chain-lightning-hit
-      - at: 14329
+      - at: 13329
         id: chain-lightning-hit
-      - at: 17039
+      - at: 16039
         id: chain-lightning-hit
-      - at: 19714
+      - at: 18714
         id: chain-lightning-hit
   chain-lightning-hit:
     id: 38427
@@ -1195,22 +1195,22 @@ actions:
     mechanic: raidwide
     description: Placeholder description for Sword Quiver
     children:
-      - at: 1385
+      - at: 85
         id: sword-quiver-hit
         description: A diagonal slash across, dealing raidwide damage and leaving an AoE behind that resolves later.
-      - at: 2362
+      - at: 1062
         id: sword-quiver-hit
         description: A diagonal slash across, dealing raidwide damage and leaving an AoE behind that resolves later.
-      - at: 3386
+      - at: 2086
         id: sword-quiver-hit
         description: A vertical slash through the center, dealing raidwide damage and leaving an AoE behind that resolves later.
-      - at: 4588
+      - at: 3288
         id: sword-quiver-hit
         description: A horizontal slash across, dealing raidwide damage and leaving an AoE behind that resolves later.
-      - at: 8892
+      - at: 7592
         id: burst-sword-quiver
         link: and
-      - at: 9072
+      - at: 7772
         id: laceration
   sword-quiver-hit:
     id: 38396
@@ -1248,10 +1248,10 @@ timeline:
     id: wrath-of-zeus
   - at: 39434
     id: bewitching-flight
-  - at: 75141
+  - at: 75069
     id: widening-witch-hunt
     link: or
-  - at: 75141
+  - at: 75069
     id: narrowing-witch-hunt
   - at: 99531
     id: wrath-of-zeus
@@ -1261,7 +1261,7 @@ timeline:
     id: wicked-jolt
   - at: 158705
     id: electrope-edge-2
-  - at: 209470
+  - at: 210470
     id: wicked-bolt
   - at: 220667
     id: ion-cluster
@@ -1284,7 +1284,7 @@ timeline:
   - at: 399526
     id: <targetable>
     description: "[boss:c] becomes untargetable."
-  - at: 411649
+  - at: 412649
     id: cross-tail-switch
   - at: 429804
     id: wicked-blaze
@@ -1293,14 +1293,14 @@ timeline:
     id: sabertail
   - at: 440919
     id: wicked-special
-  - at: 456929
+  - at: 457083
     id: mustard-bomb
   - at: 474217
     id: aetherial-conversion
-  - at: 482347
+  - at: 483347
     id: tail-thrust-aoe
     link: or
-  - at: 482347
+  - at: 483347
     id: tail-thrust-kb
   - at: 504693
     id: azure-thunder
@@ -1314,18 +1314,18 @@ timeline:
     id: wicked-thunder
   - at: 578939
     id: aetherial-conversion
-  - at: 588079
+  - at: 589079
     id: flame-slash
-  - at: 594211
+  - at: 595211
     id: raining-swords
-  - at: 614376
+  - at: 615376
     id: chain-lightning
-  - at: 640549
+  - at: 641549
     id: tail-thrust-aoe
     link: or
-  - at: 640549
+  - at: 641549
     id: tail-thrust-kb
-  - at: 657557
+  - at: 657711
     id: mustard-bomb
   - at: 674940
     id: aetherial-conversion
@@ -1335,16 +1335,16 @@ timeline:
     id: ion-cluster-sunrise
   - at: 695362
     id: sunrise-sabbath
-  - at: 731725
+  - at: 732725
     id: tail-thrust-aoe
     link: or
-  - at: 731725
+  - at: 732725
     id: tail-thrust-kb
-  - at: 748011
+  - at: 749311
     id: sword-quiver
-  - at: 765152
+  - at: 766452
     id: sword-quiver
-  - at: 782282
+  - at: 783582
     id: sword-quiver
   - at: 810733
     id: wicked-thunder-enrage

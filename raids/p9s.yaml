@@ -359,21 +359,21 @@ actions:
       Places four comets on the intercardinals of the arena, between the tornadoes. Two of them will start out cracked.
       After they have spawned, two comets will appear whole, while two will appear cracked. If a comet takes any damage during this phase, its health state will be reduced by one (to "cracked" or, if it's already cracked, ready to [a:burst]). If the two "whole" comets take any damage during this phase a wipe is guaranteed.
     children:
-    - at: 1070
+    - at: 70
       id: comet-impact
-    - at: 15232
+    - at: 14232
       id: beastly-bile
       link: and
     - at: 15232
       id: thunderbolt
-    - at: 22140
+    - at: 21140
       id: beastly-bile
       description: The second stack resolves. Must be taken by the 4 players who just received [a:thunderbolt].
       link: and
     - at: 22140
       id: thunderbolt
       description: The second cones resolve. Must be taken by the 4 players who just received [a:beastly-bile].
-    - at: 33500
+    - at: 34500
       id: ecliptic
   comet-impact:  # Comet Impact
     id: 33139
@@ -683,7 +683,7 @@ timeline:
     id: ascendant-fist
   - at: 147026
     id: rockbreaker-1
-  - at: 168025
+  - at: 169025
     id: demolish
   - at: 175168
     id: gluttony
@@ -713,9 +713,9 @@ timeline:
   - at: 288841
     id: <phase>
     name: Beast Phase
-  - at: 302170
+  - at: 303170
     id: charybdis
-  - at: 309296
+  - at: 310296
     id: comet
   - at: 354380
     id: beastly-fury

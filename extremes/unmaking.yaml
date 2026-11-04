@@ -145,9 +145,9 @@ actions:
     resolve: |
       Get underneath the boss before the cast finishes, then wait 2 seconds until [s:chains-of-condemnation:2s] expires (you may continue to attack as long as those attacks don't move your character). After it expires, move out to [t:clock spots] to take [a:meltdown-spread].
     children:
-    - at: 5483
+    - at: 4483
       id: meltdown-twister
-    - at: 6560
+    - at: 5560
       id: meltdown-spread
   meltdown-twister:
     id: 50041
@@ -210,47 +210,47 @@ actions:
       Dodge the cones as normal. After dodging, rotate your camera towards the last two cones, as these will be the locations of the two big black holes. These two big black holes must be soaked by the tanks. For the remaining black holes, use a simple [t:snake prio]: healers take the first set of small black holes clockwise from the big ones, melees the second, and rangeds the third. Always soak the yellow black hole first, then the purple ones after your [s:magic-vulnerability-up] has expired.
       Be careful of soaking a black hole next to another black hole of the same tether colour, as the two soaks can easily clip each other, especially if one of them is the tanks'.
     children:
-    - at: 1018
+    - at: 18
       id: gaze-of-the-void-cone
       link: then
-    - at: 1460
+    - at: 460
       id: gaze-of-the-void-cone
       link: then
-    - at: 1861
+    - at: 861
       id: gaze-of-the-void-cone
       link: then
-    - at: 2263
+    - at: 1263
       id: gaze-of-the-void-cone
       link: then
-    - at: 2663
+    - at: 1663
       id: gaze-of-the-void-cone
       link: then
-    - at: 3025
+    - at: 2025
       id: gaze-of-the-void-cone
       link: then
-    - at: 3428
+    - at: 2428
       id: gaze-of-the-void-cone
       link: then
-    - at: 3828
+    - at: 2828
       id: gaze-of-the-void-cone
       link: then
-    - at: 4230
+    - at: 3230
       id: gaze-of-the-void-cone
       link: then
-    - at: 4634
+    - at: 3634
       id: gaze-of-the-void-cone
-    - at: 9893
+    - at: 8893
       id: violent-burst
       timing: player
       link: and
-    - at: 9893
+    - at: 8893
       id: burst
       timing: player
-    - at: 16264
+    - at: 15264
       id: violent-burst
       timing: player
       link: and
-    - at: 16264
+    - at: 15264
       id: burst
       timing: player
   gaze-of-the-void-cone:
@@ -318,10 +318,10 @@ actions:
     resolve: |
       The only relevant arc is the short one. Find the short arc, then position yourself just outside of the intersection of two arcs of which *neither arc is the short one or adjacent to the short one*. This will always be safe, with no additional movement necessary after [a:silent-torrent].
     children:
-    - at: 6100
+    - at: 5100
       id: silent-torrent
       link: then
-    - at: 8198
+    - at: 7198
       id: vacuum-hit
   vacuum-meltdown:
     id: 49994
@@ -359,10 +359,10 @@ actions:
     compact: trim
     description: Inflicts [s:freezing-up:2s] on all players and hits two highest-enmity players with a [m:tb.flare].
     children:
-    - at: 986
+    - at: 0
       id: deep-freeze-tankbuster
       link: and
-    - at: 986
+    - at: 0
       id: <addstatus>
       status: freezing-up
   deep-freeze-tankbuster:
@@ -623,13 +623,13 @@ actions:
       Some strategies prefer for the second set of chasers during each [a:naught-hunts] to take their black hole counter-clockwise instead to minimize movement while prepositioning. Please be aware that the entire party must be on board with this if you decide to do this, as two players who each rotate a different way are almost guaranteed to cause a wipe.
       [a:sprint] is strongly recommended to give yourself more leeway and prevent the black hole from being able to catch up to you.
     children:
-    - at: 1021
+    - at: 21
       id: passage-of-naught
       link: and
-    - at: 1114
+    - at: 114
       id: endless-chase
       flatten: omit-children
-    - at: 22312
+    - at: 21312
       id: passage-of-naught
   endless-chase:
     id: 48475
@@ -715,9 +715,9 @@ timeline:
     id: meteorain
   - at: 30233
     id: naught-grows
-  - at: 38340
+  - at: 39340
     id: naught-wakes
-  - at: 44443
+  - at: 45443
     id: meltdown
   - at: 57813
     id: dense-emptiness
@@ -726,16 +726,16 @@ timeline:
     id: airy-emptiness
   - at: 68251
     id: naught-grows
-  - at: 83576
+  - at: 84576
     id: gaze-of-the-void
-  - at: 109719
+  - at: 110719
     id: vacuum
   - at: 123177
     id: airy-emptiness
     link: or
   - at: 123177
     id: dense-emptiness
-  - at: 133345
+  - at: 134345
     id: deep-freeze
   - at: 141500
     id: meteorain
@@ -811,7 +811,7 @@ timeline:
     id: almagest
   - at: 323694
     id: naught-grows-p2
-  - at: 331850
+  - at: 332850
     id: naught-wakes
   - at: 339904
     id: passage-of-naught
@@ -823,22 +823,22 @@ timeline:
     id: naught-grows-p2
   - at: 383897
     id: dimension-zero-i
-  - at: 396757
+  - at: 397757
     id: vacuum-meltdown
-  - at: 422114
+  - at: 423114
     id: gaze-of-the-void
   - at: 455316
     id: almagest
-  - at: 465707
+  - at: 466707
     id: naught-wakes
-  - at: 473851
+  - at: 474851
     id: naught-hunts
   - at: 502193
     id: dense-emptiness
     link: or
   - at: 502193
     id: airy-emptiness
-  - at: 513436
+  - at: 514436
     id: naught-hunts
   - at: 541804
     id: dense-emptiness
@@ -851,13 +851,13 @@ timeline:
     id: almagest
   - at: 579758
     id: naught-grows-p2
-  - at: 587921
+  - at: 588921
     id: naught-wakes
   - at: 595983
     id: passage-of-naught
   - at: 607294
     id: passage-of-naught
-  - at: 612326
+  - at: 613326
     id: deep-freeze
   - at: 627921
     id: naught-grows-p2

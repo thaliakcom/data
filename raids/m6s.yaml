@@ -290,10 +290,10 @@ actions:
       For the first tankbuster in the fight, it doesn't matter which tank takes the close and which tank the far bomb. However, for each subsequent tankbuster both tanks will have opposite [s:warm-tint]/[s:cool-tint] debuffs. Therefore, on each subsequent tankbuster, tanks must identify which bomb is close and which is far, and take the one *opposite* of their current debuff.
       Be aware that each tankbuster *swaps* the debuff for the next one, so tanks must keep alternating between taking [a:warm-bomb] and [a:cool-bomb].
     children:
-    - at: 2101
+    - at: 101
       id: cool-bomb
       link: and
-    - at: 2101
+    - at: 101
       id: warm-bomb
   cool-bomb:
     id: 42643
@@ -554,15 +554,15 @@ actions:
     compact: full
     description: Full party stack with 5 hits. Requires heavy mitigation and healing.
     children:
-    - at: 1072
+    - at: 72
       id: pudding-party-hit
-    - at: 2143
+    - at: 1143
       id: pudding-party-hit
-    - at: 3214
+    - at: 2214
       id: pudding-party-hit
-    - at: 4287
+    - at: 3287
       id: pudding-party-hit
-    - at: 5358
+    - at: 4358
       id: pudding-party-hit
   pudding-party-hit:
     id: 42681
@@ -592,7 +592,7 @@ actions:
     mechanic: enrage
     description: Enrage. [boss] paints a random assortment of AoEs, similar to [a:double-style-hit]. Unlike [a:double-style-hit], however, there is no safe spot.
     children:
-    - at: 6171
+    - at: 5271
       id: artistic-anarchy-hit
   artistic-anarchy-hit:
     name: Artistic Anarchy (Hit)
@@ -603,16 +603,16 @@ actions:
 timeline:
   - at: 12299
     id: mousse-mural
-  - at: 23485
+  - at: 25485
     id: color-riot
-  - at: 36057
+  - at: 36957
     id: wingmark
   - at: 42228
     id: color-clash
   - at: 57900
     id: <addstatus>
     status: stun
-  - at: 58743
+  - at: 59643
     id: double-style
     description: Paints an AoE combination.
   - at: 62902
@@ -621,14 +621,14 @@ timeline:
     id: color-clash-pairs
   - at: 71701
     id: sticky-mousse
-  - at: 83060
+  - at: 85060
     id: color-riot
   - at: 92584
     id: <phase>
     name: Desert Phase
-  - at: 92584
+  - at: 99584
     id: desertscape
-  - at: 108819
+  - at: 114819
     id: layer
     description: Adds six waves of spawning cacti that explode in large [chariots](ms:chariot) ([a:spray-pain]).
   - at: 122994
@@ -661,7 +661,7 @@ timeline:
     id: crowd-brulee
   - at: 151157
     id: sticky-mousse
-  - at: 158674
+  - at: 164674
     id: layer
     description: |
       Adds quicksand to the desertscape.
@@ -674,7 +674,7 @@ timeline:
     count: 9
   - at: 177824
     id: pudding-graf
-  - at: 190303
+  - at: 191203
     id: double-style
     description: Paints a winged bomb and non-winged bomb combination, see [a:pudding-graf-hit].
   - at: 191332
@@ -683,7 +683,7 @@ timeline:
     id: mousse-mural
   - at: 200456
     id: <endphase>
-  - at: 208555
+  - at: 210555
     id: color-riot
   - at: 218830
     id: <phase>
@@ -702,11 +702,11 @@ timeline:
     id: live-painting-3
   - at: 390721
     id: ready-ore-not
-  - at: 399921
+  - at: 400821
     id: single-style
   - at: 404081
     id: rush
-  - at: 413066
+  - at: 415066
     id: color-riot
   - at: 421208
     id: mousse-mural
@@ -716,9 +716,9 @@ timeline:
   - at: 430775
     id: <phase>
     name: Riverscape
-  - at: 430775
+  - at: 437775
     id: riverscape
-  - at: 450950
+  - at: 451850
     id: double-style
     description: Paints a combination of [a:rush] (line AoEs) and either [a:taste-of-fire] or [a:taste-of-thunder].
   - at: 455106
@@ -728,7 +728,7 @@ timeline:
     link: or
   - at: 455196
     id: taste-of-fire
-  - at: 457298
+  - at: 463298
     id: layer
     description: |
       Transforms the riverscape into its second stage.
@@ -760,9 +760,9 @@ timeline:
     link: and
   - at: 513870
     id: highlightning
-  - at: 518569
+  - at: 519569
     id: pudding-party
-  - at: 533031
+  - at: 539031
     id: layer
     description: |
       Transforms the riverscape into its third stage.
@@ -776,7 +776,7 @@ timeline:
     link: then
   - at: 568245
     id: explosion
-  - at: 572482
+  - at: 573382
     id: wingmark
   - at: 583472
     id: <addstatus>
@@ -792,20 +792,20 @@ timeline:
     id: <endphase>
   - at: 610632
     id: sticky-mousse
-  - at: 621987
+  - at: 623987
     id: color-riot
-  - at: 634515
+  - at: 635415
     id: wingmark
   - at: 640669
     id: color-clash
   - at: 656324
     id: <addstatus>
     status: stun
-  - at: 656924
+  - at: 657824
     id: double-style
   - at: 661084
     id: double-style-hit
   - at: 661797
     id: color-clash-parties
-  - at: 678866
+  - at: 679766
     id: artistic-anarchy

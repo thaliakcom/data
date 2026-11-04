@@ -153,9 +153,9 @@ actions:
     children:
       - at: 0
         id: dark-matter-hit
-      - at: 2358
+      - at: 2161
         id: dark-matter-hit
-      - at: 3919
+      - at: 3722
         id: dark-matter-hit
   dark-matter-hit:
     id: 35716
@@ -173,7 +173,7 @@ actions:
       [boss] drives his claws through the arena, leaving only two small triangle-shaped telegraphed safe spots.
       The attack leaves behind 3 crosses in the arena.
     children:
-      - at: 9099
+      - at: 8299
         id: miasmic-blast
   miasmic-blast:
     id: 35657
@@ -200,13 +200,13 @@ actions:
     count: 2
     resolve: Due to the locations of the towers it makes the most sense to place tanks and melees in the northwest tower and healers and ranged DPS in the southeast tower, so melees can maintain uptime.
     children:
-    - at: 1091
+    - at: 91
       id: flare-hit
-    - at: 3091
+    - at: 2091
       id: scald
-    - at: 8120
+    - at: 7120
       id: flare-implosion
-    - at: 8129
+    - at: 7129
       id: prominence-spine
   flare-hit:
     id: 35680
@@ -331,17 +331,17 @@ actions:
       As either group, you cannot place your comet on the far other side (for instance, you cannot play your comet on the far west if you're part of the east group). This is due to the southern comet that is placed in-between the two Dalamud symbols, which you will hit in this case.
       Remember to move back to the hitbox ring after your comet is resolved, to avoid being in the path of the next set of comets or being in the enusing comet explosion.
     children:
-      - at: 1207
+      - at: 207
         id: meteor-impact-fixed
-      - at: 12872
+      - at: 11872
         id: bind-application
-      - at: 13987
+      - at: 12987
         id: meteor-impact-cast
-      - at: 19908
+      - at: 18908
         id: bind-application
-      - at: 21026
+      - at: 20026
         id: meteor-impact-cast
-      - at: 28728
+      - at: 27728
         id: explosion
   meteor-impact-fixed:
     id: 35676
@@ -494,17 +494,17 @@ actions:
       * [a:branding-flare-hit], a [m:stack.partner] that targets either supports or DPS and resolves at the same time as [a:prominence-spine].
       **The name of the cast determines whether the final hit is a stack or a spread. Compare [a:sparking-flare].**
     children:
-    - at: 1091
+    - at: 91
       id: flare-hit
-    - at: 3091
+    - at: 2091
       id: scald
-    - at: 6300
+    - at: 5300
       id: nox
-    - at: 8085
+    - at: 7085
       id: branding-flare-hit
-    - at: 8120
+    - at: 7120
       id: flare-implosion
-    - at: 8129
+    - at: 7129
       id: prominence-spine
   nox:
     id: 36137
@@ -548,17 +548,17 @@ actions:
       * [a:sparking-flare-hit], a [m:spread] that targets all players and resolves at the same time as [a:prominence-spine].
       **The name of the cast determines whether the final hit is a stack or a spread. Compare [a:branding-flare].**
     children:
-    - at: 1091
+    - at: 91
       id: flare-hit
-    - at: 3091
+    - at: 2091
       id: scald
-    - at: 6300
+    - at: 5300
       id: nox
-    - at: 8085
+    - at: 7085
       id: sparking-flare-hit
-    - at: 8120
+    - at: 7120
       id: flare-implosion
-    - at: 8129
+    - at: 7129
       id: prominence-spine
   sparking-flare-hit:
     id: 35684
@@ -690,21 +690,21 @@ timeline:
     id: abyssal-echoes
   - at: 43080
     id: sable-thread
-  - at: 63446
+  - at: 63643
     id: dark-matter
-  - at: 79787
+  - at: 80587
     id: visceral-whirl
-  - at: 103940
+  - at: 104940
     id: flare
   - at: 121097
     id: void-bio
-  - at: 135217
+  - at: 136017
     id: visceral-whirl
   - at: 149433
     id: big-bang
-  - at: 174380
+  - at: 175380
     id: void-meteor
-  - at: 216652
+  - at: 217452
     id: visceral-whirl
   - at: 229309
     id: the-dark-divides
@@ -714,7 +714,7 @@ timeline:
   - at: 236309
     id: forked-lightning
     link: and
-  - at: 236487
+  - at: 236684
     id: dark-matter
   - at: 261000
     id: black-hole
@@ -726,10 +726,10 @@ timeline:
     id: abyssal-echoes
   - at: 331560
     id: sable-thread
-  - at: 355522
+  - at: 356522
     id: branding-flare
     link: or
-  - at: 355522
+  - at: 356522
     id: sparking-flare
   - at: 382783
     id: <loop>
@@ -739,7 +739,7 @@ timeline:
     timing: push
   - at: 517837
     id: nostalgia
-  - at: 541983
+  - at: 542983
     id: flow-of-the-abyss
     link: and
   - at: 543099
@@ -755,9 +755,9 @@ timeline:
   - at: 555130
     id: chasmic-nails
     link: and
-  - at: 556130
+  - at: 557130
     id: flow-of-the-abyss
-  - at: 576291
+  - at: 577291
     id: flow-of-the-abyss
     link: and
   - at: 577408

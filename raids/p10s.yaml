@@ -123,16 +123,16 @@ actions:
     description: 4-hit shared tankbuster on the main target.
     resolve: The off-tank should stack with the main-tank. Alternatively, the main-tank can use their invulnerability. If neither is available, [kitchen sinking](t:kitchen sink) is also an option – the stack scaling is linear, so taking the stack alone will deal about 100,000 damage per hit, which is still easily survivable with sufficient mitigation and some well-placed heals.
     children:
-      - at: 1094
+      - at: 494
         id: soul-grasp-hit
         description: First hit in the [a:soul-grasp] series.
-      - at: 2651
+      - at: 2051
         id: soul-grasp-hit
         description: Second hit in the [a:soul-grasp] series.
-      - at: 4209
+      - at: 3609
         id: soul-grasp-hit
         description: Third hit in the [a:soul-grasp] series.
-      - at: 5771
+      - at: 5171
         id: soul-grasp-hit
         description: Fourth and last hit in the [a:soul-grasp] series.
   soul-grasp-hit:
@@ -214,9 +214,9 @@ actions:
       The knocked distance is quite far, so tanks will need precise positioning (in the northeast of the west tower/the northwest of the east tower) to get knocked onto the two side platforms. Every other position will lead to a fallen tank.
       There is a significant delay between the resolution of the west tower and the east tower, so if you're the tank soaking the east tower, be careful of popping your defensive cooldowns too early.
     children:
-      - at: 1380
+      - at: 280
         id: wicked-step-hit
-      - at: 3794
+      - at: 2694
         id: wicked-step-hit
   wicked-step-hit:
     id: 33434
@@ -267,20 +267,20 @@ actions:
       [boss] will cast either [a:pandæmons-holy] or [a:circles-of-pandæmonium] at the same time as these post-tower mechanics resolve, limiting the party to either the first or second row (the third row will always be unsafe).
       Failing to soak a tower causes an [a:unmitigated-explosion].
     children:
-    - at: 806
+    - at: 0
       id: bury
-    - at: 6641
+    - at: 5441
       id: pandæmons-holy
       link: or
-    - at: 6641
+    - at: 5441
       id: circles-of-pandæmonium
-    - at: 6819
+    - at: 5619
       id: peal-of-damnation
       link: and
-    - at: 7309
+    - at: 6109
       id: cannonspawn
       link: and
-    - at: 7309
+    - at: 6109
       id: imprisonment
   unmitigated-explosion:
     id: 33411
@@ -379,7 +379,7 @@ actions:
       Anyone on the central platform when [boss] stomps on it will be knocked into the abyss and killed instantly.
       Players should evade to the side platforms.
     children:
-      - at: 1292
+      - at: 292
         id: touchdown-hit
   touchdown-hit:
     id: 33422
@@ -433,15 +433,15 @@ actions:
       Note that it is essential the tanks take their solo turret *last*, not first. If they take it first, they will not be able to join any of the other line stacks anymore, which then consigns one pair of baiters to death.
       Be aware that [a:dæmoniac-bonds] resolves immediately after the last two turrets fire.
     children:
-      - at: 805
+      - at: 0
         id: bury
-      - at: 11856
+      - at: 10656
         id: peal-of-condemnation
-      - at: 16400
+      - at: 15200
         id: peal-of-condemnation
-      - at: 20855
+      - at: 19655
         id: peal-of-condemnation
-      - at: 25400
+      - at: 24200
         id: peal-of-condemnation
     strategies:
       turrets-2221:
@@ -512,23 +512,23 @@ actions:
       The last hit deals about 35% more damage and also knocks the entire party back. The distance of the knockback exceeds the length of the arena, so it is not possible to survive the knockback without establishing a wall in the back during [a:pandæmoniac-web]. If a wall **was** established, players will be stopped by the wall and are not killed.
       The sum total of all hits is around 1,120,000 damage for tanks and 470,000 damage for everyone else. Due to the tremendous amount of damage, it is strongly recommended for tanks to use their invulnerabilities after the first or second hit while standing in front of the party. You may also wish to consider using a Tank Limit Break around the fourth hit, as hits 6, 7, and 8 come out much more quickly than the rest while dealing the same amount of damage. If you don't wish to use Tank Limit Break (or you don't have it available), your group's mitigation needs to be *on point*, as there is not enough time to heal in-between hits. As the mechanic deals physical damage, double [a:feint] and [a:reprisal] is all but mandatory along with whatever mitigation your healers and tanks can offer.
     children:
-      - at: 1219
+      - at: 419
         id: harrowing-hell-hit
-      - at: 3174
+      - at: 2374
         id: harrowing-hell-hit
-      - at: 4907
+      - at: 4107
         id: harrowing-hell-hit
-      - at: 6594
+      - at: 5794
         id: harrowing-hell-hit
-      - at: 8280
+      - at: 7480
         id: harrowing-hell-hit
-      - at: 9834
+      - at: 9034
         id: harrowing-hell-hit
-      - at: 11210
+      - at: 10410
         id: harrowing-hell-hit
-      - at: 12495
+      - at: 11695
         id: harrowing-hell-hit
-      - at: 16139
+      - at: 15339
         id: harrowing-hell-lasthit
   harrowing-hell-hit:
     id: 33424
@@ -585,7 +585,7 @@ actions:
 timeline:
   - at: 14240
     id: ultima
-  - at: 23428
+  - at: 24028
     id: soul-grasp
   - at: 34663
     id: dividing-wings
@@ -594,19 +594,19 @@ timeline:
     link: or
   - at: 58828
     id: pandæmons-holy
-  - at: 67467
+  - at: 68567
     id: wicked-step
   - at: 78624
     id: entangling-web
-  - at: 96004
+  - at: 97204
     id: pandæmoniac-pillars
   - at: 108308
     id: silkspit
   - at: 122711
     id: dæmoniac-bonds
-  - at: 131887
+  - at: 132487
     id: pandæmoniac-meltdown
-  - at: 144038
+  - at: 145038
     id: touchdown
   - at: 145554
     id: dæmoniac-bonds-hit
@@ -617,23 +617,23 @@ timeline:
     id: tetradæmoniac-bonds-hit
   - at: 159475
     id: ultima
-  - at: 168643
+  - at: 169243
     id: soul-grasp
   - at: 184634
     id: dæmoniac-bonds
-  - at: 193789
+  - at: 194989
     id: pandæmoniac-turrets
   - at: 223464
     id: duodæmoniac-bonds-hit
   - at: 226450
     id: dæmoniac-bonds-hit
-  - at: 233205
+  - at: 233405
     id: pandæmoniac-ray
   - at: 248634
     id: ultima
-  - at: 257780
+  - at: 258380
     id: soul-grasp
-  - at: 276765
+  - at: 277865
     id: wicked-step
   - at: 287931
     id: entangling-web
@@ -645,12 +645,12 @@ timeline:
     id: dæmoniac-bonds
   - at: 308216
     id: silkspit-hit
-  - at: 315526
+  - at: 316726
     id: pandæmoniac-pillars
   - at: 329172
     id: tetradæmoniac-bonds-hit
     link: then
-  - at: 329796
+  - at: 329996
     id: pandæmoniac-ray
     link: then
   - at: 333174
@@ -659,17 +659,17 @@ timeline:
     id: dividing-wings
   - at: 344083
     id: steel-web
-  - at: 356206
-    id: touchdown
   - at: 356740
     id: dividing-wings-hit
   - at: 357096
     id: steel-web-hit
-  - at: 357185
+  - at: 357206
     id: touchdown
-  - at: 374744
+  - at: 358185
+    id: touchdown
+  - at: 375344
     id: pandæmoniac-meltdown
-  - at: 383912
+  - at: 384512
     id: soul-grasp
   - at: 403990
     id: dividing-wings
@@ -687,7 +687,7 @@ timeline:
     id: dæmoniac-bonds
   - at: 427077
     id: entangling-web-hit
-  - at: 436693
+  - at: 437493
     id: harrowing-hell
   - at: 458187
     id: tetradæmoniac-bonds-hit
@@ -695,15 +695,15 @@ timeline:
     id: dæmoniac-bonds-hit
   - at: 479612
     id: ultima
-  - at: 489749
+  - at: 490349
     id: soul-grasp
-  - at: 511799
+  - at: 512899
     id: wicked-step
   - at: 521939
     id: entangling-web
   - at: 542733
     id: parted-plumes
-  - at: 555002
+  - at: 555202
     id: pandæmoniac-ray
   - at: 562139
     id: circles-of-pandæmonium
@@ -712,9 +712,9 @@ timeline:
     id: pandæmons-holy
   - at: 568339
     id: silkspit
-  - at: 585844
+  - at: 587044
     id: pandæmoniac-pillars
-  - at: 600147
+  - at: 600747
     id: pandæmoniac-meltdown
-  - at: 622902
+  - at: 623702
     id: harrowing-hell
