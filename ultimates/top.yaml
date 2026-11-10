@@ -101,11 +101,11 @@ status:
   remote-glitch:
     id: 3428
     type: condition
-    description: Tethered to another player. While the pair is too close to one another both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The minimum distance required is slightly lower than the entire diameter of the arena.
+    description: Tethered to another player. While the distance between the two players is less than 35 yalms, both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The arena has a diameter of 40 yalms, so the required minimum distance is just slightly less than the entire length of the arena.
   mid-glitch:
     id: 3427
     type: condition
-    description: Tethered to another player. While the pair is too close to or too far from one another both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The required distance is approximately equal to the radius of the arena.
+    description: Tethered to another player. While the distance between the two tethered players is less than 20 yalms or greater than 26 yalms, both players are inflicted with [s:vuln-up], rendering any damage taken lethal. The arena has a diameter of 40 yalms, so the required distance is roughly half the length of the arena.
   vuln-up:
     id: 3366
     type: vuln
@@ -193,11 +193,11 @@ status:
   local-regression:
     id: 3529
     type: condition
-    description: Bound to another player with a red-green tether. Moving too close to the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2:1s]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
+    description: Bound to another player with a red-green tether. Moving closer than ~9 yalms to the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2:1s]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
   remote-regression:
     id: 3530
     type: condition
-    description: Bound to another player with a blue tether. Moving too far away from the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2:1s]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
+    description: Bound to another player with a blue tether. Moving farther than ~9 yalms to the other player [snaps the tether](a:patch), inflicting [s:stacking-magic-vuln:2] and [s:thrice-come-ruin:2:1s]. If the tether is not snapped before the end of the effect's duration or one of the tethered players dies, it will automatically snap itself and deal significantly more damage.
   synchronization-debugger:
     id: 3430
     type: resistance

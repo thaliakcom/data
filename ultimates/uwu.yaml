@@ -76,9 +76,14 @@ status:
   infernal-fetters:
     id: 377
     type: impairment
-    tick: 3862
+    tick: 520
     description: |
-      Tethers a random DPS to the current off-tank. At any given point, the distance between the two players determines the number of [s:infernal-fetters] stacks. Each stack reduces damage dealt and increases the potency of a [t:DoT] on those two players.
+      Tethers a random DPS to the current off-tank. At any given point, the distance between the two players determines the number of [s:infernal-fetters] stacks. Each stack has two effects:
+      **Damage Down**
+      Each stack reduces damage dealt by 10 percentage points. That means at 1 stack (the minimum) both players deal 90% damage, at 2 stacks 80%, etc.
+      The damage down *cannot* be removed, even while standing directly on top of your partner.
+      **[t:DoT]**
+      Both players take 520 damage per [s:infernal-fetters] stack as a [t:DoT] per tick. Note that the damage *ignores all kinds of mitigation*, including tanks' Tank Mastery passive, meaning that both the DPS and the tank take the same amount of damage per tick.
       Inflicted by the action of the same name, [a:infernal-fetters].
   searing-wind:
     id: 1578
