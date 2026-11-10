@@ -1027,3 +1027,25 @@
   type: live letter
   color: "#ef2424"
   at: 2026-10-31 02:00:00
+- name: Patch 7.58 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2026-11-09 10:00:00
+  to: 2026-11-10 10:00:00
+- name: Patch 7.58
+  type: patch
+  color: "#6e9cec"
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b5a3ecf6c8e56e3f669681a077bf6d389dce10bd
+  at: 2026-11-10 10:00:00
+- name: Patch 8.0 Maintenance
+  short: Maintenance
+  type: maintenance
+  color: "#5a8696"
+  from: 2027-02-17 10:00:00
+  to: 2027-02-19 10:00:00
+- name: Evercold (Patch 8.0)
+  short: Patch 8.0
+  type: patch
+  color: "#6e9cec"
+  at: 2027-02-19 10:00:00
