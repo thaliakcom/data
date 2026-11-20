@@ -1044,6 +1044,12 @@
   color: "#6e9cec"
   url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/b5a3ecf6c8e56e3f669681a077bf6d389dce10bd
   at: 2026-11-10 10:00:00
+- name: Letter from the Producer Live Part XCIV
+  short: PLL XCIV
+  type: live letter
+  color: "#ef2424"
+  url: https://eu.finalfantasyxiv.com/lodestone/topics/detail/0e28803c10acdaa55df5639d6b7f7e471e861c5d
+  at: 2026-12-04 11:00:00
 - name: Patch 8.0 Maintenance
   short: Maintenance
   type: maintenance
